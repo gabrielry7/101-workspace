@@ -1,0 +1,119 @@
+﻿{
+    "repository":  "gabrielry7/101-workspace",
+    "url":  "https://github.com/gabrielry7/101-workspace",
+    "private":  true,
+    "defaultBranch":  "main",
+    "importCommit":  "81dbb5bcc73685f9ef5dd27c3a43e648fbb3f3d7",
+    "gitBytes":  62791079,
+    "releaseUrl":  "https://github.com/gabrielry7/101-workspace/releases/tag/workspace-import-2026-10-24",
+    "assets":  [
+                   {
+                       "name":  "101-assets.7z.001",
+                       "size":  444429949,
+                       "digest":  "sha256:d51fa91fc5e7f862942963d53f3bd254b53ed183bbb84b4efe5e6c00d1586858",
+                       "browser_download_url":  "https://github.com/gabrielry7/101-workspace/releases/download/workspace-import-2026-10-24/101-assets.7z.001"
+                   },
+                   {
+                       "name":  "101-experiments-media.7z.001",
+                       "size":  388840304,
+                       "digest":  "sha256:fa08369dcddd69425a338480683e5cd2b5cae31d1459937874e35be2c5200b24",
+                       "browser_download_url":  "https://github.com/gabrielry7/101-workspace/releases/download/workspace-import-2026-10-24/101-experiments-media.7z.001"
+                   },
+                   {
+                       "name":  "asset-manifest.json",
+                       "size":  11840546,
+                       "digest":  "sha256:965c704da96e93a7ee41a2290e8339139913a9996f4ee729efad28e545c6ccb1",
+                       "browser_download_url":  "https://github.com/gabrielry7/101-workspace/releases/download/workspace-import-2026-10-24/asset-manifest.json"
+                   },
+                   {
+                       "name":  "restore-assets.ps1",
+                       "size":  2259,
+                       "digest":  "sha256:ab0e43fa3c63f6eb46a610bea628ccdd21780256c75e08b9811d8b2add7231c9",
+                       "browser_download_url":  "https://github.com/gabrielry7/101-workspace/releases/download/workspace-import-2026-10-24/restore-assets.ps1"
+                   },
+                   {
+                       "name":  "verify-assets.mjs",
+                       "size":  1038,
+                       "digest":  "sha256:dd126c46bee08972e07855240b405facbc79b245e203e1ce2bae80c13d620bcc",
+                       "browser_download_url":  "https://github.com/gabrielry7/101-workspace/releases/download/workspace-import-2026-10-24/verify-assets.mjs"
+                   }
+               ],
+    "collaborator":  {
+                         "repository":  "gabrielry7/101-workspace",
+                         "requested":  "push",
+                         "ownerType":  "User",
+                         "pendingInvitations":  [
+                                                    {
+                                                        "id":  339521222,
+                                                        "permissions":  "write",
+                                                        "html_url":  "https://github.com/gabrielry7/101-workspace/invitations"
+                                                    }
+                                                ],
+                         "acceptedPermission":  {
+                                                    "permission":  "none",
+                                                    "user":  {
+                                                                 "login":  "thomaspradae",
+                                                                 "id":  92346180,
+                                                                 "node_id":  "U_kgDOBYEXRA",
+                                                                 "avatar_url":  "https://avatars.githubusercontent.com/u/92346180?v=4",
+                                                                 "gravatar_id":  "",
+                                                                 "url":  "https://api.github.com/users/thomaspradae",
+                                                                 "html_url":  "https://github.com/thomaspradae",
+                                                                 "followers_url":  "https://api.github.com/users/thomaspradae/followers",
+                                                                 "following_url":  "https://api.github.com/users/thomaspradae/following{/other_user}",
+                                                                 "gists_url":  "https://api.github.com/users/thomaspradae/gists{/gist_id}",
+                                                                 "starred_url":  "https://api.github.com/users/thomaspradae/starred{/owner}{/repo}",
+                                                                 "subscriptions_url":  "https://api.github.com/users/thomaspradae/subscriptions",
+                                                                 "organizations_url":  "https://api.github.com/users/thomaspradae/orgs",
+                                                                 "repos_url":  "https://api.github.com/users/thomaspradae/repos",
+                                                                 "events_url":  "https://api.github.com/users/thomaspradae/events{/privacy}",
+                                                                 "received_events_url":  "https://api.github.com/users/thomaspradae/received_events",
+                                                                 "type":  "User",
+                                                                 "user_view_type":  "public",
+                                                                 "site_admin":  false,
+                                                                 "permissions":  {
+                                                                                     "admin":  false,
+                                                                                     "maintain":  false,
+                                                                                     "push":  false,
+                                                                                     "triage":  false,
+                                                                                     "pull":  false
+                                                                                 },
+                                                                 "role_name":  ""
+                                                             },
+                                                    "role_name":  ""
+                                                }
+                     },
+    "freshClone":  "C:/Users/gabri/101-workspace-staging/admin-local/fresh-clone",
+    "assetRestore":  "PASS",
+    "restoredFiles":  29507,
+    "restoredBytes":  7667481585,
+    "compilerChecks":  [
+                           {
+                               "command":  "npm ci",
+                               "status":  "PASS",
+                               "exitCode":  0
+                           },
+                           {
+                               "command":  "npm run validate",
+                               "status":  "PASS",
+                               "exitCode":  0
+                           },
+                           {
+                               "command":  "npm test",
+                               "status":  "KNOWN_HOST_DEPENDENCY_FAILURE",
+                               "exitCode":  1,
+                               "reason":  "Historical Edge fingerprint differs"
+                           },
+                           {
+                               "command":  "npm run check",
+                               "status":  "PASS",
+                               "exitCode":  0
+                           },
+                           {
+                               "command":  "npm run build",
+                               "status":  "PASS",
+                               "exitCode":  0
+                           }
+                       ],
+    "originalsModified":  false
+}
