@@ -1,0 +1,67 @@
+import { CompatibleArtDirection, DesignPlanV1, type ArtDirection, type DesignPlan } from './contracts.ts';
+import type { GeneralCompositionLab as CompositionLab } from '../composition/lab.ts';
+import { inputSha256 } from '../upstream/v1/protocol.ts';
+import { rightsGate, evaluateSuitability } from '../media/gate.ts';
+
+function mediaCodes(lab: CompositionLab) {
+  if (!lab.media) return [];
+  const { asset, grant, usage } = lab.media;
+  return rightsGate(asset, grant, usage, [asset], lab.evaluated_at).status !== 'ALLOWED'
+    || evaluateSuitability(asset, usage, lab.evaluated_at).length || usage.role !== 'ATMOSPHERIC'
+    || usage.transformations.length ? ['CONTEXT_MEDIA_NOT_AUTHORIZED'] : [];
+}
+
+// The input is data, never instructions. No category→template routing.
+export function designContext(lab: CompositionLab) {
+  return { schema_version: '1.0.0', content: lab.content, media: lab.media, gaps: lab.gaps, constraints: lab.constraints,
+    client_id: lab.client_id, project_id: lab.project_id, evaluated_at: lab.evaluated_at,
+    manifest_sha256: lab.manifest_sha256, registry_version: 'h5-lab-1.0.0',
+    references: { status: 'MISSING', note: 'No licensed reference corpus present; no external reference claims.' },
+    operators: { frame: ['Flow', 'Rail'], stage: ['Sequence', 'Split'], navigation: 'before-content',
+      reading_order: 'modules-before-media', mobile: 'stack-with-visible-navigation', media: 'unaltered-original' },
+  };
+}
+export function contextHash(lab: CompositionLab) { return inputSha256(designContext(lab)); }
+export function validateDirection(raw: unknown, lab: CompositionLab) {
+  const parsed = CompatibleArtDirection.safeParse(raw);
+  if (!parsed.success) return { success: false as const, codes: ['ART_DIRECTION_SCHEMA'], direction: undefined };
+  const d = parsed.data, codes: string[] = mediaCodes(lab);
+  if ((!lab.media && d.materiality !== 'typography-only') || (lab.media && d.materiality !== 'unaltered-photograph')) codes.push('DIRECTION_MATERIALITY_MISMATCH');
+  if (d.context_sha256 !== contextHash(lab)) codes.push('DIRECTION_CONTEXT_MISMATCH');
+  if (JSON.stringify(d.media_usage_ids) !== JSON.stringify(lab.media ? [lab.media.usage.id] : [])) codes.push('DIRECTION_MEDIA_MISMATCH');
+  if (new Set(d.topologies.map(t => `${t.frame}/${t.stage}`)).size !== d.topologies.length) codes.push('DUPLICATE_TOPOLOGY');
+  return { success: !codes.length, codes, direction: d };
+}
+export function validateDesign(raw: unknown, lab: CompositionLab, direction?: ArtDirection) {
+  const parsed = DesignPlanV1.safeParse(raw);
+  if (!parsed.success) return { success: false, codes: ['DESIGN_PLAN_SCHEMA'] };
+  const p = parsed.data, codes: string[] = mediaCodes(lab);
+  if (p.site_plan_id !== lab.content.site_plan_id || p.plan_sha256 !== lab.content.plan_sha256 || p.content_sha256 !== lab.content.content_sha256
+    || p.manifest_sha256 !== lab.manifest_sha256 || p.context_sha256 !== contextHash(lab)) codes.push('DESIGN_CONTEXT_MISMATCH');
+  if (JSON.stringify(p.pages.map(p => p.path)) !== JSON.stringify(lab.content.pages.map(p => p.path))) codes.push('DESIGN_ROUTE_LOSS');
+  for (const page of p.pages) {
+    const source = lab.content.pages.find(s => s.path === page.path);
+    if (!source || JSON.stringify(page.composition.child.module_refs) !== JSON.stringify(source.modules.map(m => m.id))) codes.push('DESIGN_MODULE_LOSS_OR_REORDER');
+    const media = page.path === lab.media?.usage.page ? [lab.media.usage.id] : [];
+    if (JSON.stringify(page.composition.child.media_usage_refs) !== JSON.stringify(media)) codes.push('DESIGN_MEDIA_USAGE_MISMATCH');
+    if (direction && !direction.topologies.some(t => t.frame === page.composition.operator && t.stage === page.composition.child.operator)) codes.push('DIRECTION_TOPOLOGY_MISMATCH');
+  }
+  if (direction && (p.art_direction_id !== direction.id || JSON.stringify(p.tokens) !== JSON.stringify(direction.tokens))) codes.push('DIRECTION_PLAN_MISMATCH');
+  return { success: !codes.length, codes: [...new Set(codes)] };
+}
+export function structuralSignature(p: DesignPlan) {
+  return p.pages.map(page => `${page.path}:${page.composition.operator}/${page.composition.child.operator}:${page.composition.child.module_refs.join(',')}`).join('|');
+}
+export function structuralDistance(a: DesignPlan, b: DesignPlan) {
+  if (a.pages.length !== b.pages.length) return 1;
+  let difference = 0;
+  for (let i = 0; i < a.pages.length; i++) {
+    if (a.pages[i]!.composition.operator !== b.pages[i]!.composition.operator) difference++;
+    if (a.pages[i]!.composition.child.operator !== b.pages[i]!.composition.child.operator) difference++;
+  }
+  return difference / (2 * a.pages.length);
+}
+export function designPreviewPath(id: string, page: string) {
+  if (!/^[a-z0-9][a-z0-9-]{0,79}$/.test(id) || !/^\/(?:[a-z0-9-]+\/)*[a-z0-9-]*$/.test(page)) throw new Error('INVALID_DESIGN_PREVIEW_PATH');
+  return `/h5/${id}${page === '/' ? '/' : `${page}/`}`;
+}

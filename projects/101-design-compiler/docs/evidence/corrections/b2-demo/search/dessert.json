@@ -1,0 +1,24 @@
+{
+  "id": "dessert",
+  "kind": "image",
+  "endpoint": "https://pixabay.com/api/",
+  "query": {
+    "q": "tiramisu",
+    "per_page": "3",
+    "page": "1",
+    "safesearch": "true",
+    "image_type": "photo",
+    "orientation": "horizontal"
+  },
+  "at": "2026-10-15T02:37:37.841Z",
+  "cache_until": "2026-10-16T02:37:37.841Z",
+  "private_cache": ".tools/b2-demo/cache/dessert.json",
+  "response_sha256": "eadbd6ec5d2c8dd828855689d57f4b9fcc1228ae71184046fe4934936c768fda",
+  "response_bytes": 3616,
+  "hits": 3,
+  "rate_limit": {
+    "X-RateLimit-Limit": "100",
+    "X-RateLimit-Remaining": "96",
+    "X-RateLimit-Reset": "58"
+  }
+}

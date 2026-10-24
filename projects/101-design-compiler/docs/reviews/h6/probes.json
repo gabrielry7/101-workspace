@@ -1,0 +1,12 @@
+{
+  "status": "PASSED",
+  "source": "REVIEW_TEST_ONLY",
+  "human_votes": "NOT_COLLECTED",
+  "probes": [
+    "Requested 390 vs observed 1308 remains explicit and blocking",
+    "Complete coverage with stale candidate hashes cannot pass selection",
+    "Mutation policy mismatch rejects and rollback restores full prior candidate",
+    "Credit deletion blocks even with unchanged favorable raster",
+    "Schema-only fixture tests screenshot/context drift and simulation rejection; not a human vote"
+  ]
+}

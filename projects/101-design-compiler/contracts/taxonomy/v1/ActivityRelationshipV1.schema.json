@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "COEXISTING",
+        "ALTERNATIVE"
+      ]
+    },
+    "category_observation_ids": {
+      "minItems": 2,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "evidence_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "kind",
+    "category_observation_ids",
+    "evidence_ids"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ActivityRelationshipV1:1.0.0",
+  "title": "ActivityRelationshipV1",
+  "description": "H1 candidate protocol; semantic checks required. No upstream integration."
+}

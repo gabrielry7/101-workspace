@@ -1,0 +1,83 @@
+import { BusinessInputV1 } from '../contracts/v1/schemas.ts';
+import type { BusinessInput } from '../contracts/v1/schemas.ts';
+import type { Diagnostic } from './validate.ts';
+
+// Shared H0/H1 input boundary: structural/reference validity is independent of planning.
+// Confirmation is checked at the snapshot cutoff; later freshness is a planner gate.
+export function validateBusinessInput(value: unknown): {
+  success: boolean; diagnostics: Diagnostic[]; data?: BusinessInput;
+} {
+  const parsed = BusinessInputV1.safeParse(value);
+  if (!parsed.success) return { success: false, diagnostics: parsed.error.issues.map(x => ({ code: 'SCHEMA_INVALID', path: `input.${x.path.join('.')}`, message: x.message })) };
+  const input = parsed.data;
+  const diagnostics: Diagnostic[] = [];
+  const issue = (code: string, path: string, message: string) => diagnostics.push({ code, path, message });
+  const unique = (ids: readonly string[], path: string) => {
+    if (new Set(ids).size !== ids.length) issue('DUPLICATE_ID', path, 'Duplicate identifiers');
+  };
+  unique(input.facts.map(x => x.id), 'input.facts');
+  unique([input.business_id, ...input.locations.map(x => x.id)], 'input.locations');
+  unique(input.category_observations.map(x => x.id), 'input.category_observations');
+  unique(input.offerings.map(x => x.id), 'input.offerings');
+  unique(input.business_capabilities.map(x => `${x.scope_id}:${x.id}`), 'input.business_capabilities');
+  unique(input.action_destinations.map(x => x.id), 'input.action_destinations');
+  unique(input.existing_media.map(x => x.id), 'input.existing_media');
+  const scopes = new Set([input.business_id, ...input.locations.map(x => x.id)]);
+  const facts = new Map(input.facts.map(x => [x.id, x]));
+  const cutoff = Date.parse(input.as_of);
+  const approved = (id: string) => {
+    const fact = facts.get(id);
+    return fact && fact.publication === 'APPROVED' && Date.parse(fact.observed_at) <= cutoff && (!fact.expires_at || Date.parse(fact.expires_at) > cutoff);
+  };
+  const checkRef = (id: string, path: string, scope?: string) => {
+    const fact = facts.get(id);
+    if (!fact) issue('UNKNOWN_FACT', path, `Missing fact ${id}`);
+    else if (scope && fact.scope_id !== scope && fact.scope_id !== input.business_id) issue('SCOPE_MISMATCH', path, `Cross-branch fact ${id}`);
+  };
+  const checkScope = (scope: string, path: string) => {
+    if (!scopes.has(scope)) issue('UNKNOWN_SCOPE', path, `Unknown scope ${scope}`);
+  };
+  // Check all declared factual references without turning withheld observations into facts.
+  const visit = (object: unknown, path: string, scope?: string): void => {
+    if (!object || typeof object !== 'object') return;
+    if (Array.isArray(object)) { object.forEach((x, index) => visit(x, `${path}.${index}`, scope)); return; }
+    const record = object as Record<string, unknown>;
+    const ownScope = typeof record['scope_id'] === 'string' ? record['scope_id'] : scope;
+    for (const [field, value] of Object.entries(record)) {
+      if (field.endsWith('_fact_id') && typeof value === 'string') checkRef(value, `${path}.${field}`, ownScope);
+      else if ((field.endsWith('_fact_ids') || field === 'fact_ids' || field === 'evidence_ids') && Array.isArray(value)) value.forEach(ref => checkRef(String(ref), `${path}.${field}`, ownScope));
+      else visit(value, `${path}.${field}`, ownScope);
+    }
+  };
+  visit(input, 'input');
+  checkRef(input.identity.name_fact_id, 'input.identity.name_fact_id', input.business_id);
+  if (!approved(input.identity.name_fact_id) || facts.get(input.identity.name_fact_id)?.kind !== 'business_name' || typeof facts.get(input.identity.name_fact_id)?.value !== 'string') issue('IDENTITY_NOT_PUBLISHABLE', 'input.identity.name_fact_id', 'Identity must reference approved current textual business_name');
+  for (const fact of input.facts) {
+    checkScope(fact.scope_id, 'input.facts');
+    if (Date.parse(fact.observed_at) > cutoff) issue('FUTURE_EVIDENCE', 'input.facts', 'Fact observed after cutoff');
+    if (fact.expires_at && Date.parse(fact.expires_at) <= Date.parse(fact.observed_at)) issue('INVALID_VALIDITY', 'input.facts', 'Expiry must follow observation');
+  }
+  for (const item of [...input.offerings, ...input.business_capabilities, ...input.action_destinations, ...input.existing_media]) checkScope(item.scope_id, 'input.scope');
+  for (const branch of input.locations) {
+    const refs = [branch.address_fact_id, ...branch.coordinate_fact_ids, ...branch.opening_hours_fact_ids, ...branch.exception_fact_ids, ...branch.visit_policy_fact_ids];
+    for (const ref of refs) if (ref) checkRef(ref, 'input.locations', branch.id);
+  }
+  for (const media of input.existing_media) if (media.rights_status === 'DOCUMENTED' && !media.rights_document_ids.length) issue('MISSING_RIGHTS_REFERENCE', 'input.existing_media', 'Documented status requires document references; actual rights gate remains H3');
+  for (const cap of input.business_capabilities) {
+    if (cap.status === 'CONFIRMED_PRESENT' || cap.status === 'CONFIRMED_ABSENT') {
+      if (!cap.evidence_ids.length) issue('MISSING_EVIDENCE', 'input.business_capabilities', 'Confirmed status requires evidence');
+      if (!cap.evidence_ids.some(id => {
+        const fact = facts.get(id);
+        return fact?.kind === `capability:${cap.id}` && fact.scope_id === cap.scope_id && fact.value === (cap.status === 'CONFIRMED_PRESENT');
+      })) issue('EVIDENCE_KIND_MISMATCH', 'input.business_capabilities', 'Confirmation requires a matching exact-scope capability assertion');
+      const valid = cap.evidence_ids.length && cap.evidence_ids.every(id => approved(id)) && cap.evidence_ids.some(id => {
+        const fact = facts.get(id);
+        return fact?.kind === `capability:${cap.id}` && fact.scope_id === cap.scope_id && fact.value === (cap.status === 'CONFIRMED_PRESENT');
+      });
+      const contradiction = input.facts.some(fact => fact.scope_id === cap.scope_id && fact.kind === `capability:${cap.id}` && typeof fact.value === 'boolean' && fact.value !== (cap.status === 'CONFIRMED_PRESENT') && approved(fact.id));
+      if (contradiction) issue('CAPABILITY_EVIDENCE_CONFLICT', 'input.business_capabilities', `Conflicting approved assertions for ${cap.scope_id}:${cap.id}`);
+      if (!valid) issue('UNVERIFIED_CAPABILITY', 'input.business_capabilities', `No approved specific evidence for ${cap.scope_id}:${cap.id}`);
+    }
+  }
+  return { success: !diagnostics.length, diagnostics, data: input };
+}

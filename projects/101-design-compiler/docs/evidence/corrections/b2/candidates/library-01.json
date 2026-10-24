@@ -1,0 +1,1168 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "MEDIA_LIBRARY_SIDECAR",
+  "library_id": "b2-usda-single-photo-pilot-v1",
+  "library_sha256": "7a83200c715d201183c5405e1b6a2a143bde8f74fb964c7b639634a885b4dd77",
+  "catalog_sha256": "637a594e69a7c7e2882efc608d8d33f6959ca2bcca3d182c6d411aa25e76a1e6",
+  "review_catalog_sha256": "69d30f3a84b7110e7c3035e5855ce05244583a0228659964023a20d5c9ef1932",
+  "manifest": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-restaurante-001",
+    "snapshot_id": "fixture-restaurante-001-snapshot-v1:b1-restaurante",
+    "site_plan_id": "fixture-restaurante-001-snapshot-v1:b1-restaurante:h2-plan:13f92306d5738e39157038e6",
+    "client_id": "101-design-compiler-fixture-review",
+    "project_id": "b2-media-library-pilot",
+    "evaluated_at": "2026-10-15T01:06:32.439Z",
+    "plan_sha256": "40faa48cdcc099038d066d62f0e52eebf3113e4231aa6c949a63528b0f8ae99e",
+    "requirements_sha256": "8265c3da70d2268c50641a11d24fa6679372978544b4965b2a25ad87422ab3b6",
+    "input_sha256": "77eebdf30cccf91ba80bc0dd5bffeccf320600645c26d90b49bd605645cccf60",
+    "assets": [
+      {
+        "schema_version": "1.0.0",
+        "id": "b2-usda-d255-original",
+        "data_mode": "REAL",
+        "kind": "image",
+        "uri": "/media/h3-pilot/usda-ars-d255-19.jpg",
+        "source": "USDA Agricultural Research Service",
+        "external_id": "D255-19",
+        "audio_track": "NONE",
+        "provenance": [
+          {
+            "source": "USDA ARS",
+            "reference": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+            "recorded_at": "2026-10-15T01:03:00.264Z"
+          },
+          {
+            "source": "USDA ARS",
+            "reference": "https://www.ars.usda.gov/oc/images/copyright/",
+            "recorded_at": "2026-10-15T01:03:00.264Z"
+          },
+          {
+            "source": "B2 reproducible derivation/inspection",
+            "reference": "docs/evidence/corrections/b2/technical-inspection.json",
+            "recorded_at": "2026-10-15T01:06:32.439Z"
+          }
+        ],
+        "upstream_rights_status": null,
+        "upstream_document_ids": [],
+        "original_id": "b2-usda-d255-original",
+        "parent_id": null,
+        "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+        "file_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+        "hash_review": {
+          "status": "VERIFIED",
+          "reference": "docs/evidence/corrections/b2/technical-inspection.json",
+          "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+          "reviewed_at": "2026-10-15T01:06:32.439Z",
+          "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+        },
+        "transformations": [],
+        "restrictions": [
+          "NO_PROVIDER_ENDORSEMENT"
+        ],
+        "denied_purposes": [],
+        "documentary": null,
+        "relevance": [
+          {
+            "purpose": "generic:atmosphere",
+            "scope_id": "fixture-restaurante-001",
+            "review": {
+              "status": "VERIFIED",
+              "reference": "docs/evidence/corrections/b2/visual-review.md",
+              "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+              "reviewed_at": "2026-10-15T01:06:32.439Z",
+              "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+            }
+          }
+        ],
+        "inspection": {
+          "status": "REVIEWED",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "docs/evidence/corrections/b2/visual-review.md",
+            "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+            "reviewed_at": "2026-10-15T01:06:32.439Z",
+            "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+          },
+          "width": 2700,
+          "height": 1819,
+          "duration_seconds": null,
+          "codec": "jpeg",
+          "subject": "Pimientos rojos y follaje; contexto genérico, no oferta ni sede del negocio ficticio",
+          "findings": [
+            "Full pixel decode and measured metadata retained in technical inspection.",
+            "Local original and 480/960 WebP opened with view_image; inspected as contextual figures, no text overlay.",
+            "No claim of suitability for full-width hero or DPR > 1."
+          ],
+          "quality": "PASS"
+        },
+        "third_party": {
+          "model": "NOT_REQUIRED",
+          "property": "NOT_REQUIRED"
+        }
+      },
+      {
+        "schema_version": "1.0.0",
+        "id": "b2-usda-d255-480",
+        "data_mode": "REAL",
+        "kind": "image",
+        "uri": "/media/b2/d255-19-480.webp",
+        "source": "USDA Agricultural Research Service",
+        "external_id": "D255-19",
+        "audio_track": "NONE",
+        "provenance": [
+          {
+            "source": "USDA ARS",
+            "reference": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+            "recorded_at": "2026-10-15T01:03:00.264Z"
+          },
+          {
+            "source": "USDA ARS",
+            "reference": "https://www.ars.usda.gov/oc/images/copyright/",
+            "recorded_at": "2026-10-15T01:03:00.264Z"
+          },
+          {
+            "source": "B2 reproducible derivation/inspection",
+            "reference": "docs/evidence/corrections/b2/technical-inspection.json",
+            "recorded_at": "2026-10-15T01:06:32.439Z"
+          }
+        ],
+        "upstream_rights_status": null,
+        "upstream_document_ids": [],
+        "original_id": "b2-usda-d255-original",
+        "parent_id": "b2-usda-d255-original",
+        "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+        "file_sha256": "591dd2b3a366d8cb2a9c571f5cd7d3734430e7ca5c88db0a598ab0c0dd1218f8",
+        "hash_review": {
+          "status": "VERIFIED",
+          "reference": "docs/evidence/corrections/b2/technical-inspection.json",
+          "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+          "reviewed_at": "2026-10-15T01:06:32.439Z",
+          "evidence_sha256": "591dd2b3a366d8cb2a9c571f5cd7d3734430e7ca5c88db0a598ab0c0dd1218f8"
+        },
+        "transformations": [
+          "RESIZE",
+          "TRANSCODE"
+        ],
+        "restrictions": [
+          "NO_PROVIDER_ENDORSEMENT"
+        ],
+        "denied_purposes": [],
+        "documentary": null,
+        "relevance": [
+          {
+            "purpose": "generic:atmosphere",
+            "scope_id": "fixture-restaurante-001",
+            "review": {
+              "status": "VERIFIED",
+              "reference": "docs/evidence/corrections/b2/visual-review.md",
+              "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+              "reviewed_at": "2026-10-15T01:06:32.439Z",
+              "evidence_sha256": "591dd2b3a366d8cb2a9c571f5cd7d3734430e7ca5c88db0a598ab0c0dd1218f8"
+            }
+          }
+        ],
+        "inspection": {
+          "status": "REVIEWED",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "docs/evidence/corrections/b2/visual-review.md",
+            "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+            "reviewed_at": "2026-10-15T01:06:32.439Z",
+            "evidence_sha256": "591dd2b3a366d8cb2a9c571f5cd7d3734430e7ca5c88db0a598ab0c0dd1218f8"
+          },
+          "width": 480,
+          "height": 323,
+          "duration_seconds": null,
+          "codec": "webp",
+          "subject": "Pimientos rojos y follaje; contexto genérico, no oferta ni sede del negocio ficticio",
+          "findings": [
+            "Full pixel decode and measured metadata retained in technical inspection.",
+            "Local original and 480/960 WebP opened with view_image; inspected as contextual figures, no text overlay.",
+            "No claim of suitability for full-width hero or DPR > 1."
+          ],
+          "quality": "PASS"
+        },
+        "third_party": {
+          "model": "NOT_REQUIRED",
+          "property": "NOT_REQUIRED"
+        }
+      },
+      {
+        "schema_version": "1.0.0",
+        "id": "b2-usda-d255-960",
+        "data_mode": "REAL",
+        "kind": "image",
+        "uri": "/media/b2/d255-19-960.webp",
+        "source": "USDA Agricultural Research Service",
+        "external_id": "D255-19",
+        "audio_track": "NONE",
+        "provenance": [
+          {
+            "source": "USDA ARS",
+            "reference": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+            "recorded_at": "2026-10-15T01:03:00.264Z"
+          },
+          {
+            "source": "USDA ARS",
+            "reference": "https://www.ars.usda.gov/oc/images/copyright/",
+            "recorded_at": "2026-10-15T01:03:00.264Z"
+          },
+          {
+            "source": "B2 reproducible derivation/inspection",
+            "reference": "docs/evidence/corrections/b2/technical-inspection.json",
+            "recorded_at": "2026-10-15T01:06:32.439Z"
+          }
+        ],
+        "upstream_rights_status": null,
+        "upstream_document_ids": [],
+        "original_id": "b2-usda-d255-original",
+        "parent_id": "b2-usda-d255-original",
+        "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+        "file_sha256": "bead733d81673ac54b11d4e1179defce5a2992c94081bc25b7dc788ac49d0f72",
+        "hash_review": {
+          "status": "VERIFIED",
+          "reference": "docs/evidence/corrections/b2/technical-inspection.json",
+          "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+          "reviewed_at": "2026-10-15T01:06:32.439Z",
+          "evidence_sha256": "bead733d81673ac54b11d4e1179defce5a2992c94081bc25b7dc788ac49d0f72"
+        },
+        "transformations": [
+          "RESIZE",
+          "TRANSCODE"
+        ],
+        "restrictions": [
+          "NO_PROVIDER_ENDORSEMENT"
+        ],
+        "denied_purposes": [],
+        "documentary": null,
+        "relevance": [
+          {
+            "purpose": "generic:atmosphere",
+            "scope_id": "fixture-restaurante-001",
+            "review": {
+              "status": "VERIFIED",
+              "reference": "docs/evidence/corrections/b2/visual-review.md",
+              "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+              "reviewed_at": "2026-10-15T01:06:32.439Z",
+              "evidence_sha256": "bead733d81673ac54b11d4e1179defce5a2992c94081bc25b7dc788ac49d0f72"
+            }
+          }
+        ],
+        "inspection": {
+          "status": "REVIEWED",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "docs/evidence/corrections/b2/visual-review.md",
+            "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+            "reviewed_at": "2026-10-15T01:06:32.439Z",
+            "evidence_sha256": "bead733d81673ac54b11d4e1179defce5a2992c94081bc25b7dc788ac49d0f72"
+          },
+          "width": 960,
+          "height": 647,
+          "duration_seconds": null,
+          "codec": "webp",
+          "subject": "Pimientos rojos y follaje; contexto genérico, no oferta ni sede del negocio ficticio",
+          "findings": [
+            "Full pixel decode and measured metadata retained in technical inspection.",
+            "Local original and 480/960 WebP opened with view_image; inspected as contextual figures, no text overlay.",
+            "No claim of suitability for full-width hero or DPR > 1."
+          ],
+          "quality": "PASS"
+        },
+        "third_party": {
+          "model": "NOT_REQUIRED",
+          "property": "NOT_REQUIRED"
+        }
+      }
+    ],
+    "grants": [
+      {
+        "schema_version": "1.0.0",
+        "id": "b2-usda-d255-context-and-technical-derivatives",
+        "data_mode": "REAL",
+        "original_asset_id": "b2-usda-d255-original",
+        "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+        "provider": "USDA Agricultural Research Service",
+        "license_type": "OFFICIAL_PUBLIC_DOMAIN_DECLARATION; distinct narrowed B2 evaluation",
+        "holder": "USDA ARS identifies Steve Ausmus and public-domain status; no ownership claimed by compiler",
+        "purchaser": "NOT_PURCHASED: internal laboratory review",
+        "document": {
+          "reference": "docs/evidence/corrections/b2/acquisition/asset-page.html",
+          "version": "Official unnumbered page; byte snapshot on acquisition date; no numbered legal version",
+          "sha256": "14afefa1a5896c199c819b2f6f750d534104dcefc8f248b25d5fa87bfa841d62"
+        },
+        "review": {
+          "status": "VERIFIED",
+          "reference": "docs/evidence/corrections/b2/legal-review.md",
+          "reviewer": "Codex: byte-pinned official source and local-file assessment; not rights holder or legal certification",
+          "reviewed_at": "2026-10-15T01:06:32.439Z",
+          "evidence_sha256": "14afefa1a5896c199c819b2f6f750d534104dcefc8f248b25d5fa87bfa841d62"
+        },
+        "client_ids": [
+          "101-design-compiler-fixture-review"
+        ],
+        "project_ids": [
+          "b2-media-library-pilot"
+        ],
+        "scope_ids": [
+          "fixture-restaurante-001"
+        ],
+        "purposes": [
+          "generic:atmosphere"
+        ],
+        "pages": [
+          "/"
+        ],
+        "territories": [
+          "CO"
+        ],
+        "valid_from": "2026-10-15T01:06:32.439Z",
+        "valid_until": "2026-11-14T01:06:32.439Z",
+        "revoked": false,
+        "commercial_web": "ALLOWED",
+        "multiple_clients": "DENIED",
+        "reuse": "DENIED",
+        "redistribution": "UNKNOWN",
+        "sublicensing": "UNKNOWN",
+        "exclusive": "DENIED",
+        "derivatives": "ALLOWED",
+        "transformations": [
+          "RESIZE",
+          "TRANSCODE"
+        ],
+        "automation": {
+          "search": "UNKNOWN",
+          "download": "UNKNOWN"
+        },
+        "ai": {
+          "classification": "UNKNOWN",
+          "embedding": "UNKNOWN",
+          "vision": "ALLOWED",
+          "editing": "DENIED",
+          "training": "UNKNOWN"
+        },
+        "attribution": {
+          "required": true,
+          "text": "Photo by Steve Ausmus, USDA Agricultural Research Service."
+        },
+        "required_notices": [
+          "USDA ARS no respalda este fixture, producto, empresa ni posición."
+        ],
+        "releases": {
+          "model": {
+            "status": "UNKNOWN",
+            "reference": null,
+            "reviewer": null,
+            "reviewed_at": null,
+            "evidence_sha256": null
+          },
+          "property": {
+            "status": "UNKNOWN",
+            "reference": null,
+            "reviewer": null,
+            "reviewed_at": null,
+            "evidence_sha256": null
+          }
+        },
+        "restrictions": [
+          "NO_PROVIDER_ENDORSEMENT"
+        ],
+        "retention_until": null,
+        "cost": null
+      }
+    ],
+    "usages": [
+      {
+        "schema_version": "1.0.0",
+        "id": "usage-71a32d2a61baa1ca81db0b49",
+        "need_id": "need-7bacfc78bdb58db1dd06998a",
+        "asset_id": "b2-usda-d255-original",
+        "grant_id": "b2-usda-d255-context-and-technical-derivatives",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "b2-media-library-pilot",
+        "business_id": "fixture-restaurante-001",
+        "scope_id": "fixture-restaurante-001",
+        "page": "/",
+        "module_id": "semantic-7bf9d33184f7e923438acadd",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "representation": "GENERIC_CONTEXT",
+        "subject_ids": [],
+        "transformations": [],
+        "territory": "CO",
+        "attribution_text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+        "generic_label": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+        "endorsement_claimed": false,
+        "context_notices": [
+          "USDA ARS no respalda este fixture, producto, empresa ni posición."
+        ],
+        "ai_operations": [],
+        "automated_access": []
+      },
+      {
+        "schema_version": "1.0.0",
+        "id": "usage-b3e8f130a11a2b4da93e05aa",
+        "need_id": "need-7bacfc78bdb58db1dd06998a",
+        "asset_id": "b2-usda-d255-480",
+        "grant_id": "b2-usda-d255-context-and-technical-derivatives",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "b2-media-library-pilot",
+        "business_id": "fixture-restaurante-001",
+        "scope_id": "fixture-restaurante-001",
+        "page": "/",
+        "module_id": "semantic-7bf9d33184f7e923438acadd",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "representation": "GENERIC_CONTEXT",
+        "subject_ids": [],
+        "transformations": [],
+        "territory": "CO",
+        "attribution_text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+        "generic_label": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+        "endorsement_claimed": false,
+        "context_notices": [
+          "USDA ARS no respalda este fixture, producto, empresa ni posición."
+        ],
+        "ai_operations": [],
+        "automated_access": []
+      },
+      {
+        "schema_version": "1.0.0",
+        "id": "usage-1bfbfa2ab531e5e1404eca47",
+        "need_id": "need-7bacfc78bdb58db1dd06998a",
+        "asset_id": "b2-usda-d255-960",
+        "grant_id": "b2-usda-d255-context-and-technical-derivatives",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "b2-media-library-pilot",
+        "business_id": "fixture-restaurante-001",
+        "scope_id": "fixture-restaurante-001",
+        "page": "/",
+        "module_id": "semantic-7bf9d33184f7e923438acadd",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "representation": "GENERIC_CONTEXT",
+        "subject_ids": [],
+        "transformations": [],
+        "territory": "CO",
+        "attribution_text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+        "generic_label": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+        "endorsement_claimed": false,
+        "context_notices": [
+          "USDA ARS no respalda este fixture, producto, empresa ni posición."
+        ],
+        "ai_operations": [],
+        "automated_access": []
+      }
+    ],
+    "needs": [
+      {
+        "id": "need-33f7e20873460d5156843d28",
+        "requirement_id": "semantic-70d73044727ca9b106d272a8",
+        "module_id": "semantic-70d73044727ca9b106d272a8",
+        "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "purpose": "document:menu",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-7bacfc78bdb58db1dd06998a",
+        "requirement_id": "semantic-7bf9d33184f7e923438acadd",
+        "module_id": "semantic-7bf9d33184f7e923438acadd",
+        "page": "/",
+        "scope_id": "fixture-restaurante-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      }
+    ],
+    "decisions": [
+      {
+        "usage_id": "usage-71a32d2a61baa1ca81db0b49",
+        "status": "ALLOWED",
+        "rights_codes": [],
+        "suitability_codes": [],
+        "inherited_asset_ids": [
+          "b2-usda-d255-original"
+        ]
+      },
+      {
+        "usage_id": "usage-b3e8f130a11a2b4da93e05aa",
+        "status": "ALLOWED",
+        "rights_codes": [],
+        "suitability_codes": [],
+        "inherited_asset_ids": [
+          "b2-usda-d255-480",
+          "b2-usda-d255-original"
+        ]
+      },
+      {
+        "usage_id": "usage-1bfbfa2ab531e5e1404eca47",
+        "status": "ALLOWED",
+        "rights_codes": [],
+        "suitability_codes": [],
+        "inherited_asset_ids": [
+          "b2-usda-d255-960",
+          "b2-usda-d255-original"
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "schema_version": "1.0.0",
+    "site_plan_id": "fixture-restaurante-001-snapshot-v1:b1-restaurante:h2-plan:13f92306d5738e39157038e6",
+    "manifest_sha256": "f1afef4e175566eaf34a450c6de1e770dc4345c8dd1f421ddf57d3be868531ce",
+    "evaluated_at": "2026-10-15T01:06:32.439Z",
+    "gaps": [
+      {
+        "need": {
+          "id": "need-33f7e20873460d5156843d28",
+          "requirement_id": "semantic-70d73044727ca9b106d272a8",
+          "module_id": "semantic-70d73044727ca9b106d272a8",
+          "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "purpose": "document:menu",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "offering-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "closure": "PENDING_AUTHORIZED_MEDIA_PACKAGE"
+  },
+  "bindings": [
+    {
+      "id": "binding:usage-71a32d2a61baa1ca81db0b49",
+      "usage_id": "usage-71a32d2a61baa1ca81db0b49",
+      "capability_id": "identity",
+      "feature_id": "identity",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/",
+      "module_id": "semantic-7bf9d33184f7e923438acadd",
+      "subject_ids": []
+    },
+    {
+      "id": "binding:usage-b3e8f130a11a2b4da93e05aa",
+      "usage_id": "usage-b3e8f130a11a2b4da93e05aa",
+      "capability_id": "identity",
+      "feature_id": "identity",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/",
+      "module_id": "semantic-7bf9d33184f7e923438acadd",
+      "subject_ids": []
+    },
+    {
+      "id": "binding:usage-1bfbfa2ab531e5e1404eca47",
+      "usage_id": "usage-1bfbfa2ab531e5e1404eca47",
+      "capability_id": "identity",
+      "feature_id": "identity",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/",
+      "module_id": "semantic-7bf9d33184f7e923438acadd",
+      "subject_ids": []
+    }
+  ],
+  "requests": [
+    {
+      "id": "catalog:0574c1941224d7051b1d65e8",
+      "capability_id": "class_schedule",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "ILLUSTRATIVE",
+      "purpose": "objective:class_schedule",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_LICENSED_RESOURCE",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:0ee4cd01c116c233b64365f9",
+      "capability_id": "product_catalog",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:product_catalog",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:1056f1670d21f9fec79a876b",
+      "capability_id": "membership",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "ILLUSTRATIVE",
+      "purpose": "objective:membership",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_LICENSED_RESOURCE",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:20182463c91af5d4a5396be4",
+      "capability_id": "membership",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "ILLUSTRATIVE",
+      "purpose": "objective:membership",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_LICENSED_RESOURCE",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:2c77c7074d8052a667a72a10",
+      "capability_id": "branches",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [
+        "fixture-restaurante-001"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:branches",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:2f84fdb21bf742d10091f01a",
+      "capability_id": "case_studies",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [
+        "fixture-restaurante-001"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:case_studies",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:41f496bcc326143b7e2c30dc",
+      "capability_id": "portfolio",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [
+        "fixture-restaurante-001"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:portfolio",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:4cc1b559eb427d4f5679695c",
+      "capability_id": "programs",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "ILLUSTRATIVE",
+      "purpose": "objective:programs",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_LICENSED_RESOURCE",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:5e5f14f6966e360498306f48",
+      "capability_id": "service_catalog",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "ILLUSTRATIVE",
+      "purpose": "objective:service_catalog",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_LICENSED_RESOURCE",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:5ecb2426b96be08e951ccf7a",
+      "capability_id": "menu",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [
+        "offering-1"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:menu",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:60c6db1b3b2034735641ae80",
+      "capability_id": "portfolio",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [
+        "fixture-restaurante-001-branch-1"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:portfolio",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:6e2ba92a64f887ab821a46a3",
+      "capability_id": "menu",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:menu",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:7a89cfb8fee6ad33e1e6ae05",
+      "capability_id": "trainer_profiles",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:trainer_profiles",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:80bab15df6cd586e09c65849",
+      "capability_id": "rooms",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:rooms",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:84bbbd3e989c60ea97319559",
+      "capability_id": "about",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [
+        "fixture-restaurante-001"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:about",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:92a39c56990fd410f7e79cb3",
+      "capability_id": "events",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:events",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:9518e3bfece4d00a8b471fca",
+      "capability_id": "rooms",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:rooms",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:9d8abff08cbadd8281ca4298",
+      "capability_id": "events",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:events",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:a1c63acfba92ab75ddca5bd9",
+      "capability_id": "service_catalog",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "ILLUSTRATIVE",
+      "purpose": "objective:service_catalog",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_LICENSED_RESOURCE",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:a2e31cb43b27e865dc1b2cc5",
+      "capability_id": "programs",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "ILLUSTRATIVE",
+      "purpose": "objective:programs",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_LICENSED_RESOURCE",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:a7e04068407a2b7cf6f76a86",
+      "capability_id": "about",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [
+        "fixture-restaurante-001-branch-1"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:about",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:ab67c25b90756a9480b8df02",
+      "capability_id": "product_catalog",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:product_catalog",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:b4062542d597ef69dc9f1792",
+      "capability_id": "gallery",
+      "feature_id": "media",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [
+        "fixture-restaurante-001"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:gallery",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:bf6bd52f5a59b3c6572f4049",
+      "capability_id": "professional_profiles",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:professional_profiles",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:c24dff9e81bfb7bb2cded4bc",
+      "capability_id": "class_schedule",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "ILLUSTRATIVE",
+      "purpose": "objective:class_schedule",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_LICENSED_RESOURCE",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:d5b5607697cf73e56c495994",
+      "capability_id": "case_studies",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [
+        "fixture-restaurante-001-branch-1"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:case_studies",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:dbd066d29d0e27ecc60f1ed6",
+      "capability_id": "trainer_profiles",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:trainer_profiles",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:efff30e317bb0749a3b1240b",
+      "capability_id": "identity",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [
+        "fixture-restaurante-001"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:identity",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:f5af8f2ee85e2bd3f186aada",
+      "capability_id": "gallery",
+      "feature_id": "media",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [
+        "fixture-restaurante-001-branch-1"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:gallery",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "catalog:fb4a2136962b2df1029554e9",
+      "capability_id": "professional_profiles",
+      "feature_id": "offer_detail",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "SUBJECT_PENDING",
+      "role": "DOCUMENTARY",
+      "purpose": "objective:professional_profiles",
+      "source": "MASTER_CATALOG",
+      "need": null,
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "Objetivo del catálogo, no módulo emitido. Requiere confirmar aplicabilidad, sujeto/rol, archivo y permiso; la ausencia no elimina el hueco. Material genérico permitido sólo en rol ilustrativo/atmosférico."
+    },
+    {
+      "id": "plan:need-33f7e20873460d5156843d28",
+      "capability_id": "menu",
+      "feature_id": null,
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "subject_ids": [
+        "offering-1"
+      ],
+      "subject_status": "EXACT",
+      "role": "DOCUMENTARY",
+      "purpose": "document:menu",
+      "source": "SEMANTIC_PLAN",
+      "need": {
+        "id": "need-33f7e20873460d5156843d28",
+        "requirement_id": "semantic-70d73044727ca9b106d272a8",
+        "module_id": "semantic-70d73044727ca9b106d272a8",
+        "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "purpose": "document:menu",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      "status": "PENDING_AUTHENTIC_MATERIAL",
+      "reason": "La necesidad conserva su rol y alcance. No se rellena con stock documental falso."
+    },
+    {
+      "id": "plan:need-7bacfc78bdb58db1dd06998a",
+      "capability_id": "identity",
+      "feature_id": "identity",
+      "scope_id": "fixture-restaurante-001",
+      "subject_ids": [],
+      "subject_status": "EXACT",
+      "role": "ATMOSPHERIC",
+      "purpose": "generic:atmosphere",
+      "source": "SEMANTIC_PLAN",
+      "need": {
+        "id": "need-7bacfc78bdb58db1dd06998a",
+        "requirement_id": "semantic-7bf9d33184f7e923438acadd",
+        "module_id": "semantic-7bf9d33184f7e923438acadd",
+        "page": "/",
+        "scope_id": "fixture-restaurante-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      "status": "AUTHORIZED",
+      "reason": "Uso revisado específico; no cubre otras funciones."
+    }
+  ],
+  "files": [
+    {
+      "path": "public/media/h3-pilot/usda-ars-d255-19.jpg",
+      "sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "bytes": 2351102,
+      "asset_id": "b2-usda-d255-original"
+    },
+    {
+      "path": "public/media/b2/d255-19-480.webp",
+      "sha256": "591dd2b3a366d8cb2a9c571f5cd7d3734430e7ca5c88db0a598ab0c0dd1218f8",
+      "bytes": 32510,
+      "asset_id": "b2-usda-d255-480"
+    },
+    {
+      "path": "public/media/b2/d255-19-960.webp",
+      "sha256": "bead733d81673ac54b11d4e1179defce5a2992c94081bc25b7dc788ac49d0f72",
+      "bytes": 108258,
+      "asset_id": "b2-usda-d255-960"
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/evidence/corrections/b2/acquisition/asset-page.html",
+      "sha256": "14afefa1a5896c199c819b2f6f750d534104dcefc8f248b25d5fa87bfa841d62",
+      "bytes": 26495,
+      "official_url": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+      "version": "Official unnumbered page; byte snapshot on acquisition date; no numbered legal version"
+    },
+    {
+      "path": "docs/evidence/corrections/b2/acquisition/policy.html",
+      "sha256": "009108a439e8bf7b2f20fbaf6078a0eb38194103bae8a3594e1851c14aa1a7c5",
+      "bytes": 27633,
+      "official_url": "https://www.ars.usda.gov/oc/images/copyright/",
+      "version": "Official unnumbered page; byte snapshot on acquisition date; no numbered legal version"
+    }
+  ],
+  "review": {
+    "path": "docs/evidence/corrections/b2/legal-review.md",
+    "sha256": "0b9b9018f33891c2bab5d2df6d6a81715ed1b15784d0c883fd7009817dcf10dc",
+    "bytes": 3409
+  },
+  "inspection": {
+    "path": "docs/evidence/corrections/b2/visual-review.md",
+    "sha256": "aa112ea4c2a6f8c420f25f771df08039420da031aeac767fee25bc8ea14a5f91",
+    "bytes": 1601
+  },
+  "technical_inspection": {
+    "path": "docs/evidence/corrections/b2/technical-inspection.json",
+    "sha256": "c4fdb3df574fdf8854baa941cc018a451c718570a33c68ac03c9594a2bbc6997",
+    "bytes": 1592
+  },
+  "acquisition": {
+    "path": "docs/evidence/corrections/b2/acquisition/receipt.json",
+    "sha256": "db1a20cacfc3c70814b0a129a1b8d287473872d12427dd8f0292ba682ba057dd",
+    "bytes": 1755
+  },
+  "provider_policy": "USDA_ARS_SINGLE_SELECTED_PUBLIC_DOMAIN_PHOTO_V1",
+  "proof_boundary": "PINNED_SOURCE_REVIEW_NOT_FIXTURE_VERIFIED",
+  "human_design_approval": "NOT_COLLECTED"
+}

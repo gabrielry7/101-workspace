@@ -1,0 +1,15 @@
+{
+  "kind": "LOCAL_VIDEO_ONLY_LOSSLESS_REMUX",
+  "source": ".tools/b2-demo/originals/149678.mp4",
+  "source_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+  "output": "public/media/b3-experience/149678-silent-1280.mp4",
+  "output_sha256": "15d8a7edce609b9a48eea6815cd7d1a275610e3bbce9a8488b86ad1548d252c1",
+  "output_bytes": 2577142,
+  "samples": 234,
+  "width": 1280,
+  "height": 720,
+  "video_payload_bytes": 2573136,
+  "video_payload_sha256": "db208589ecb5798579d3068c4c2385dc7d33b85f7699a0e65cd80eb7cb3d9462",
+  "source_audio": "DROPPED_NOT_COPIED_OR_PLAYED",
+  "new_frames_or_upscaling": false
+}

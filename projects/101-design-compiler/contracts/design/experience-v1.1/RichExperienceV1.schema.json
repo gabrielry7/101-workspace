@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.1.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "B3_RICH_EXPERIENCE"
+    },
+    "source_context_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "media_review_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "research_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "feedback_status": {
+      "type": "string",
+      "const": "HUMAN_LIKED_01_02_REVISE_03_04"
+    },
+    "human_approval": {
+      "type": "string",
+      "const": "NOT_COLLECTED"
+    },
+    "profiles": {
+      "minItems": 4,
+      "maxItems": 4,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^candidate-0[1-4]$"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "root": {
+            "type": "string",
+            "pattern": "^\\/b3\\/candidate-0[1-4]\\/$"
+          },
+          "hero": {
+            "type": "string",
+            "enum": [
+              "Immersive",
+              "Masthead",
+              "Collage",
+              "Poster"
+            ]
+          },
+          "palette": {
+            "type": "string",
+            "enum": [
+              "WhiteInk",
+              "Vermilion",
+              "BordeauxPaper",
+              "CobaltButter"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Classic",
+              "Condensed",
+              "Italic",
+              "Modern"
+            ]
+          },
+          "collection": {
+            "type": "string",
+            "enum": [
+              "Spread",
+              "Rows",
+              "Exhibit",
+              "Index"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 40
+          },
+          "references": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^reference-\\d{2}$"
+            }
+          },
+          "home_composition": {
+            "type": "string",
+            "enum": [
+              "Journal",
+              "EditorialTable",
+              "PosterSequence"
+            ]
+          },
+          "design_status": {
+            "type": "string",
+            "enum": [
+              "LIKED_DIRECTION_REFINEMENT",
+              "NEW_ARTISTIC_PROPOSAL"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "root",
+          "hero",
+          "palette",
+          "type",
+          "collection",
+          "rationale",
+          "references",
+          "home_composition",
+          "design_status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "editorial_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "feedback_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "source_context_sha256",
+    "content_sha256",
+    "plan_sha256",
+    "media_review_sha256",
+    "research_sha256",
+    "feedback_status",
+    "human_approval",
+    "profiles",
+    "editorial_sha256",
+    "feedback_sha256"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:RichExperienceV1:1.1.0",
+  "title": "RichExperienceV1",
+  "description": "Associated B3 human feedback and fictional editorial scope; not final approval or a live social/review integration."
+}

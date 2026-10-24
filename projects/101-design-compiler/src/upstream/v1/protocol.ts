@@ -1,0 +1,79 @@
+import { createHash } from 'node:crypto';
+import { z } from 'zod';
+import { validateBusinessInput } from '../../validation/input.ts';
+import { BusinessInputV1 } from '../../contracts/v1/schemas.ts';
+import { ActivityRelationshipV1, TaxonomyObservationV1, canonicalProvider, comparisonKey, splitHierarchy } from '../../taxonomy/contracts.ts';
+import type { Diagnostic } from '../../validation/validate.ts';
+
+export const UPSTREAM_PROTOCOL_VERSION = '1.0.0' as const;
+const text = z.string().min(1).regex(/\S/);
+export const UpstreamEnvelopeV1 = z.strictObject({
+  protocol_version: z.literal(UPSTREAM_PROTOCOL_VERSION),
+  message_id: text,
+  producer: z.strictObject({
+    system: z.literal('101-world-model'),
+    source_schema: text, source_schema_version: text, source_revision: text,
+    adapter_version: z.literal('1.0.0'),
+  }),
+  produced_at: z.iso.datetime({ offset: true }),
+  business_input_sha256: z.string().regex(/^[a-f0-9]{64}$/),
+  business_input: BusinessInputV1,
+  category_context: z.array(TaxonomyObservationV1),
+  activity_relationships: z.array(ActivityRelationshipV1),
+});
+export type UpstreamEnvelope = z.infer<typeof UpstreamEnvelopeV1>;
+
+// Application-specific canonical JSON: recursive key sorting, preserved array order,
+// finite JSON numbers and no undefined. Not a claim of RFC 8785 conformance/signing.
+export function canonicalJson(value: unknown): string {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return JSON.stringify(value);
+  if (typeof value === 'number' && Number.isFinite(value)) return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
+  if (value && typeof value === 'object' && (Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === null)) {
+    return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${canonicalJson((value as Record<string, unknown>)[key])}`).join(',')}}`;
+  }
+  throw new Error('NON_JSON_VALUE');
+}
+export function inputSha256(value: unknown): string {
+  return createHash('sha256').update(canonicalJson(value), 'utf8').digest('hex');
+}
+
+export function validateUpstreamEnvelope(value: unknown, options: { allow_synthetic?: boolean } = {}): {
+  success: boolean; diagnostics: Diagnostic[]; data?: UpstreamEnvelope;
+} {
+  const result = UpstreamEnvelopeV1.safeParse(value);
+  if (!result.success) return { success: false, diagnostics: result.error.issues.map(x => ({ code: 'PROTOCOL_SCHEMA_INVALID', path: x.path.join('.'), message: x.message })) };
+  const envelope = result.data;
+  const input = envelope.business_input;
+  const diagnostics: Diagnostic[] = [];
+  const issue = (code: string, path: string, message: string) => diagnostics.push({ code, path, message });
+  if (input.data_mode === 'SYNTHETIC_FIXTURE' && !options.allow_synthetic) issue('SYNTHETIC_INPUT_REJECTED', 'business_input.data_mode', 'Consumer must explicitly enable synthetic contract tests');
+  if (Date.parse(envelope.produced_at) < Date.parse(input.as_of)) issue('INVALID_PRODUCTION_TIME', 'produced_at', 'Message cannot predate snapshot cutoff');
+  if (inputSha256(input) !== envelope.business_input_sha256) issue('INPUT_HASH_MISMATCH', 'business_input_sha256', 'Snapshot checksum mismatch');
+  const unique = (ids: readonly string[], path: string) => {
+    if (new Set(ids).size !== ids.length) issue('DUPLICATE_ID', path, 'Duplicate identifiers');
+  };
+  diagnostics.push(...validateBusinessInput(input).diagnostics.map(x => ({ ...x, path: x.path.replace(/^input/, 'business_input') })));
+  unique(envelope.category_context.map(x => x.id), 'category_context');
+  unique(envelope.activity_relationships.map(x => x.id), 'activity_relationships');
+  const facts = new Map(input.facts.map(x => [x.id, x]));
+  const cutoff = Date.parse(input.as_of);
+  const approved = (id: string) => {
+    const fact = facts.get(id);
+    return fact && fact.publication === 'APPROVED' && Date.parse(fact.observed_at) <= cutoff && (!fact.expires_at || Date.parse(fact.expires_at) > cutoff);
+  };
+  for (const context of envelope.category_context) {
+    const observation = input.category_observations.find(x => x.id === context.id);
+    if (!observation || observation.source !== context.source || observation.field !== context.field || observation.value !== context.value || observation.provider_category_id !== context.provider_category_id || observation.normalized_category !== context.normalized_category || JSON.stringify([...observation.evidence_ids].sort()) !== JSON.stringify([...context.evidence_ids].sort())) issue('CATEGORY_CONTEXT_MISMATCH', 'category_context', `Context differs from observation ${context.id}`);
+    if (!context.provenance.length || context.provenance.some(x => x.source !== context.source || Date.parse(x.observed_at) > cutoff)) issue('INVALID_PROVENANCE', 'category_context.provenance', 'Source provenance must be present, consistent and at/before cutoff');
+    if (context.value.includes('>') && JSON.stringify(context.hierarchy) !== JSON.stringify(splitHierarchy(context.value))) issue('HIERARCHY_MISMATCH', 'category_context.hierarchy', 'Delimited source hierarchy must survive unchanged');
+    if (canonicalProvider(context.source) === 'foursquare' && ['foursquare.category', 'category'].includes(comparisonKey(context.field)) && !context.value.includes('>') && comparisonKey(context.hierarchy.at(-1) ?? '') !== comparisonKey(context.value)) issue('HIERARCHY_MISMATCH', 'category_context.hierarchy', 'Hierarchy leaf must match original category label');
+  }
+  for (const observation of input.category_observations) if (!envelope.category_context.some(x => x.id === observation.id)) issue('MISSING_CATEGORY_CONTEXT', 'category_context', `Missing provenance/hierarchy for ${observation.id}`);
+  for (const relationship of envelope.activity_relationships) {
+    unique(relationship.category_observation_ids, 'activity_relationships.category_observation_ids');
+    if (relationship.category_observation_ids.some(id => !input.category_observations.some(x => x.id === id))) issue('UNKNOWN_RELATIONSHIP_CATEGORY', 'activity_relationships', 'Relationship references absent categories');
+    if (!relationship.evidence_ids.every(id => approved(id) && facts.get(id)?.scope_id === input.business_id) || !relationship.evidence_ids.some(id => facts.get(id)?.kind === `activity:${relationship.kind.toLowerCase()}` && facts.get(id)?.value === true)) issue('UNVERIFIED_ACTIVITY_RELATIONSHIP', 'activity_relationships', 'Relationship needs approved, current, business-scoped evidence');
+  }
+  return { success: !diagnostics.length, diagnostics, ...(diagnostics.length ? {} : { data: envelope }) };
+}

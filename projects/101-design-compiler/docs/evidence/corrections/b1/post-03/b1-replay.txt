@@ -1,0 +1,60 @@
+conflicto: context CONFLICTED, H2 CONTENT_BLOCKED, 92 scope/capability entries
+ferreteria: context RESOLVED, H2 READY, 92 scope/capability entries
+gimnasio: context RESOLVED, H2 READY, 92 scope/capability entries
+hibrido: context HYBRID, H2 READY, 92 scope/capability entries
+insuficiente: context UNKNOWN, H2 CONTENT_BLOCKED, 92 scope/capability entries
+objetivo-explicito: context RESOLVED, H2 READY, 92 scope/capability entries
+recurso-no-inspeccionado: context UNKNOWN, H2 CONTENT_BLOCKED, 92 scope/capability entries
+reserva-enlace: context RESOLVED, H2 READY, 92 scope/capability entries
+restaurante: context RESOLVED, H2 READY, 92 scope/capability entries
+sucursales: context MULTISCOPE, H2 READY, 137 scope/capability entries
+{
+  "status": "B1_REPLAY_VERIFIED",
+  "catalog": "06713b81a846df753542424b8cbc66f7747170b298e9b1e11e74db81c78f6550",
+  "artifacts": [
+    {
+      "path": "data/derived/requirements-v1/catalog.json",
+      "sha256": "f2eb9f7312cf6e7f60d658914c16cf2eaca7af8569f661fdc6f724b2bcd70f1c"
+    },
+    {
+      "path": "data/derived/requirements-v1/conflicto.json",
+      "sha256": "a41618a8729a58d0baf31788efe7c5f92c4a15dac1c81a0fbf7e6e9e79fbe4d0"
+    },
+    {
+      "path": "data/derived/requirements-v1/ferreteria.json",
+      "sha256": "a011b04a01be84eadb822a2dddabd4d77a9c0b17c913352d6ae322fbea063e31"
+    },
+    {
+      "path": "data/derived/requirements-v1/gimnasio.json",
+      "sha256": "c0f7c0b426b130a47b0998cb9e5d619a9e2b8e013461fac36fd1c91b44f3bc25"
+    },
+    {
+      "path": "data/derived/requirements-v1/hibrido.json",
+      "sha256": "da4310eb338b52fb504bd252a38cdd264288b932369c01cca3891b66fa909187"
+    },
+    {
+      "path": "data/derived/requirements-v1/insuficiente.json",
+      "sha256": "75287861ce8e8467a4964b5d9afa62ad1b5cbeb9f60a2b1cfea276f03fa0c354"
+    },
+    {
+      "path": "data/derived/requirements-v1/objetivo-explicito.json",
+      "sha256": "abd1e3e47f85bcf1d293f7bfb393c4617b6ba822f73ba3932eeaa297b2a47d46"
+    },
+    {
+      "path": "data/derived/requirements-v1/recurso-no-inspeccionado.json",
+      "sha256": "5bb9800f6b7c00020102971ce313f9695627f7fd7440d9624c87a1709f8c7793"
+    },
+    {
+      "path": "data/derived/requirements-v1/reserva-enlace.json",
+      "sha256": "02ea33d16a97432f9ec805fb06285a60dedd55088b53d929d9efa7431b643266"
+    },
+    {
+      "path": "data/derived/requirements-v1/restaurante.json",
+      "sha256": "76c68024a8b34067f739b86c0c0f9488ff6c94d38c3b5fed2352d4047ac805aa"
+    },
+    {
+      "path": "data/derived/requirements-v1/sucursales.json",
+      "sha256": "f0a8c020007121d159c17e2d84d763764c660cc2b2449d4412d1ccab4ee9d5f9"
+    }
+  ]
+}

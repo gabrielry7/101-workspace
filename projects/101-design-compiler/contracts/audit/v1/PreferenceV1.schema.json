@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "source": {
+      "type": "string",
+      "const": "HUMAN_LOCAL_PANEL"
+    },
+    "comparison_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "left_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "left_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "right_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "left_screenshot_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "right_screenshot_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "semantic_page": {
+      "type": "string",
+      "minLength": 1
+    },
+    "viewport": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "TIE",
+        "NONE"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "maxLength": 3000
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+    },
+    "acceptance_scope": {
+      "type": "string",
+      "const": "THIS_PAIR_ROUTE_VIEWPORT_ONLY"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source",
+    "comparison_id",
+    "context_sha256",
+    "left_id",
+    "right_id",
+    "left_sha256",
+    "right_sha256",
+    "left_screenshot_sha256",
+    "right_screenshot_sha256",
+    "semantic_page",
+    "viewport",
+    "decision",
+    "reason",
+    "recorded_at",
+    "acceptance_scope"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:PreferenceV1:1.0.0",
+  "title": "PreferenceV1",
+  "description": "H6 laboratory audit/mutation/preference contract; hard gates and evidence required. No production approval or manufactured human votes."
+}

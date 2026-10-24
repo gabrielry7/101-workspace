@@ -1,0 +1,126 @@
+{
+  "kind": "B3_SHARED_FALLBACK_EXPANDED_QA",
+  "created_at": "2026-10-15T03:45:54.336Z",
+  "status": "PASS",
+  "context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+  "css_sha256": "0e4e430393adabec7e515e4c3f209068460c46ed0a56ae085d6632975b9754da",
+  "cases": [
+    {
+      "design": "candidate-01",
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "fallback": {
+        "buttons_hidden": true,
+        "details": 4,
+        "scroll": "auto"
+      },
+      "scope": "JavaScript disabled + reduced motion; native details and content remain usable, enhancements hidden"
+    },
+    {
+      "design": "candidate-02",
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "fallback": {
+        "buttons_hidden": true,
+        "details": 4,
+        "scroll": "auto"
+      },
+      "scope": "JavaScript disabled + reduced motion; native details and content remain usable, enhancements hidden"
+    },
+    {
+      "design": "candidate-03",
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "fallback": {
+        "buttons_hidden": true,
+        "details": 4,
+        "scroll": "auto"
+      },
+      "scope": "JavaScript disabled + reduced motion; native details and content remain usable, enhancements hidden"
+    },
+    {
+      "design": "candidate-04",
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "fallback": {
+        "buttons_hidden": true,
+        "details": 4,
+        "scroll": "auto"
+      },
+      "scope": "JavaScript disabled + reduced motion; native details and content remain usable, enhancements hidden"
+    }
+  ],
+  "expanded": {
+    "screenshot": "docs/evidence/corrections/b3/stress-01/expanded-desktop.png",
+    "sha256": "88374a5f90f0b1a27763426cc62e201a24dd044df6fe4e85fd50c2dc63211197",
+    "geometry": {
+      "width": 1440,
+      "document_width": 1425,
+      "height": 7004,
+      "nav": {
+        "x": 0,
+        "y": 41.78125,
+        "width": 1425,
+        "height": 93
+      },
+      "title": {
+        "x": 110.09375,
+        "y": 303.578125,
+        "width": 566.40625,
+        "height": 129.59375
+      },
+      "hero": {
+        "x": 748.5,
+        "y": 276.921875,
+        "width": 566.40625,
+        "height": 410.453125
+      },
+      "collection": {
+        "x": 110.09375,
+        "y": 1845.125,
+        "width": 1204.8125,
+        "height": 1911.703125
+      },
+      "items": [
+        {
+          "x": 110.09375,
+          "y": 1845.125,
+          "width": 582.40625,
+          "height": 923.53125
+        },
+        {
+          "x": 732.5,
+          "y": 1845.125,
+          "width": 582.40625,
+          "height": 923.53125
+        },
+        {
+          "x": 110.09375,
+          "y": 2824.65625,
+          "width": 582.40625,
+          "height": 932.171875
+        },
+        {
+          "x": 732.5,
+          "y": 2824.65625,
+          "width": 582.40625,
+          "height": 932.171875
+        }
+      ],
+      "overflow": []
+    }
+  },
+  "limits": [
+    "No real transactions or personal data",
+    "Not browser zoom, assistive technology or complete WCAG certification",
+    "Expanded screenshot is one shared component state, not an extra candidate or a new human vote"
+  ]
+}

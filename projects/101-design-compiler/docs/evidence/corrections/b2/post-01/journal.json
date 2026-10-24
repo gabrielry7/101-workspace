@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b2-post-01",
+  "created_at": "2026-10-15T01:35:11.627Z",
+  "steps": [
+    {
+      "id": "contracts",
+      "started_at": "2026-10-15T01:35:11.631Z",
+      "finished_at": "2026-10-15T01:35:12.136Z",
+      "wall_seconds": 0.5045092000000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/contracts.txt",
+      "log_sha256": "6fa029d08018732a4a2dc077b85f794d27253550d90a840a37bba55eb0871480"
+    },
+    {
+      "id": "tests",
+      "started_at": "2026-10-15T01:35:12.139Z",
+      "finished_at": "2026-10-15T01:35:18.747Z",
+      "wall_seconds": 6.608535799999999,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b2/post-01/tests.txt",
+      "log_sha256": "24403fad57866ea8733a6ae463edf235c989bb9cbc431c71a5f64e5172132642"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-15T01:35:18.749Z",
+      "finished_at": "2026-10-15T01:35:30.958Z",
+      "wall_seconds": 12.208548,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/check.txt",
+      "log_sha256": "74835d40ed69e41bc3a763cbf06490a777fa0e82fec52b7edd426fd822593ad1"
+    },
+    {
+      "id": "validate",
+      "started_at": "2026-10-15T01:35:30.959Z",
+      "finished_at": "2026-10-15T01:35:31.518Z",
+      "wall_seconds": 0.5581010000000024,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/validate.txt",
+      "log_sha256": "c69bbe0277e4073bddb83b8d77c8996e8c3512e8223499d7947632d37e3681f4"
+    },
+    {
+      "id": "build",
+      "started_at": "2026-10-15T01:35:31.519Z",
+      "finished_at": "2026-10-15T01:35:35.370Z",
+      "wall_seconds": 3.8515649000000014,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/build.txt",
+      "log_sha256": "78bbf0e1b68b3865d04f2e454ca32bca0627c69747bda915bddf23faff69612b"
+    },
+    {
+      "id": "b2-readonly-replay",
+      "started_at": "2026-10-15T01:35:35.371Z",
+      "finished_at": "2026-10-15T01:35:37.574Z",
+      "wall_seconds": 2.202865600000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/b2-readonly-replay.txt",
+      "log_sha256": "46843937874cf604d5786146c7dbd15f4e558eebdae00a4c3e323d6a5eb9080c"
+    },
+    {
+      "id": "corpus-replay",
+      "started_at": "2026-10-15T01:35:37.575Z",
+      "finished_at": "2026-10-15T01:35:37.757Z",
+      "wall_seconds": 0.18182230000000346,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/corpus-replay.txt",
+      "log_sha256": "55cdb84126e3b5c0ad2958e710023999cc5a186b47276d4a666fe02f2ec80d0d"
+    },
+    {
+      "id": "b1-replay",
+      "started_at": "2026-10-15T01:35:37.758Z",
+      "finished_at": "2026-10-15T01:35:38.993Z",
+      "wall_seconds": 1.2349159,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/b1-replay.txt",
+      "log_sha256": "b3216e3a4c37b58fa9c6aeb50bacbf0feff9609c5f98a627b8b99ff6ece23a18"
+    },
+    {
+      "id": "taxonomy",
+      "started_at": "2026-10-15T01:35:38.994Z",
+      "finished_at": "2026-10-15T01:35:39.652Z",
+      "wall_seconds": 0.6579199000000008,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/taxonomy.txt",
+      "log_sha256": "5bdb2a1a3ebcde0961f22b7b26ef4a64a53c24ddefb9272b9eb91f7243bcad0a"
+    },
+    {
+      "id": "planner-replay",
+      "started_at": "2026-10-15T01:35:39.653Z",
+      "finished_at": "2026-10-15T01:35:39.935Z",
+      "wall_seconds": 0.28232099999999993,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/planner-replay.txt",
+      "log_sha256": "846632f40f77a077944ac55e6dbd42683e92b5673ae665dda82ef6ddea8b424a"
+    },
+    {
+      "id": "media-replay",
+      "started_at": "2026-10-15T01:35:39.936Z",
+      "finished_at": "2026-10-15T01:35:40.463Z",
+      "wall_seconds": 0.5264703999999983,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/media-replay.txt",
+      "log_sha256": "a238a3a587e30885acb326264f26b0e73e9dc9402294c0efdb9ce1df860c22e4"
+    },
+    {
+      "id": "media-verify",
+      "started_at": "2026-10-15T01:35:40.464Z",
+      "finished_at": "2026-10-15T01:35:40.890Z",
+      "wall_seconds": 0.4261505999999972,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/media-verify.txt",
+      "log_sha256": "dfed262ff832904ddba0e2baf16b17ba2b8c8fd30797be7128c73b59f8f0f568"
+    },
+    {
+      "id": "composition-replay",
+      "started_at": "2026-10-15T01:35:40.892Z",
+      "finished_at": "2026-10-15T01:35:41.324Z",
+      "wall_seconds": 0.43157540000000155,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/composition-replay.txt",
+      "log_sha256": "938c870a6ab24e641e885a169da8739c49ab4a438e4ecd16288b5abeaa497b76"
+    },
+    {
+      "id": "composition-verify",
+      "started_at": "2026-10-15T01:35:41.325Z",
+      "finished_at": "2026-10-15T01:35:41.783Z",
+      "wall_seconds": 0.45801550000000135,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/composition-verify.txt",
+      "log_sha256": "51e973bac7283abc33be1ac1fefc8489483c5957b9c3b09196e8cd214504a635"
+    },
+    {
+      "id": "design-replay",
+      "started_at": "2026-10-15T01:35:41.784Z",
+      "finished_at": "2026-10-15T01:35:42.238Z",
+      "wall_seconds": 0.45471389999999884,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/design-replay.txt",
+      "log_sha256": "debf7dd8e16ff43197df66a57c304cbc0eee46ab637661bb48d2f195dd00c13c"
+    },
+    {
+      "id": "design-verify",
+      "started_at": "2026-10-15T01:35:42.240Z",
+      "finished_at": "2026-10-15T01:35:42.718Z",
+      "wall_seconds": 0.47820650000000026,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/design-verify.txt",
+      "log_sha256": "505d634e67d6f6746e96ab3839d7b84cfeaa422ec7010f545eb385959bd5bc7e"
+    },
+    {
+      "id": "audit-verify",
+      "started_at": "2026-10-15T01:35:42.719Z",
+      "finished_at": "2026-10-15T01:35:43.845Z",
+      "wall_seconds": 1.1265789000000004,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/audit-verify.txt",
+      "log_sha256": "fa7395471691e7226ee26bd6c4b95f14eb14c431cbe0873d0becb430b6d50f05"
+    },
+    {
+      "id": "cohort-replay",
+      "started_at": "2026-10-15T01:35:43.846Z",
+      "finished_at": "2026-10-15T01:35:44.363Z",
+      "wall_seconds": 0.516788800000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/cohort-replay.txt",
+      "log_sha256": "ede63bd8361a8e64a84792533fb27f35dc2d930d7105490b977b2a7f78992c45"
+    },
+    {
+      "id": "cohort-verify",
+      "started_at": "2026-10-15T01:35:44.364Z",
+      "finished_at": "2026-10-15T01:35:46.011Z",
+      "wall_seconds": 1.6470570000000007,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/cohort-verify.txt",
+      "log_sha256": "f6fea28c3dbd8694a321092ca31ea68f19fa9b900bc73f28be8882ecfc0f7931"
+    },
+    {
+      "id": "lock-verify",
+      "started_at": "2026-10-15T01:35:46.012Z",
+      "finished_at": "2026-10-15T01:35:48.836Z",
+      "wall_seconds": 2.824754200000003,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b2/post-01/lock-verify.txt",
+      "log_sha256": "b920380a734eb1739baa442af28be856c65bc92c1456972f761ff90232485ae1"
+    },
+    {
+      "id": "h9-inventory",
+      "started_at": "2026-10-15T01:35:48.838Z",
+      "finished_at": "2026-10-15T01:35:49.173Z",
+      "wall_seconds": 0.33526610000000073,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/post-01/h9-inventory.txt",
+      "log_sha256": "f45cdb31ff61042b80640b33dce172a2f8cab339e03641f5e72a655645fdbecb"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b1-human-review-browser-01",
+  "created_at": "2026-10-14T03:56:10.846Z",
+  "steps": [
+    {
+      "id": "build",
+      "started_at": "2026-10-14T03:56:10.851Z",
+      "finished_at": "2026-10-14T03:56:13.281Z",
+      "wall_seconds": 2.4296189999999998,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-browser-01/build.txt",
+      "log_sha256": "76d72f4374dc4aa2c58dfb1bdcc09b9b16896b99dfe6bfbbc70fc2abb6737d4f"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

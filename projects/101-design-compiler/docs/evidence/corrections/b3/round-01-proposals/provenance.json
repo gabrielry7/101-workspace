@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-10-15T03:28:16.157Z",
+  "kind": "ACTIVE_CODEX_SESSION_LLM_OUTPUT_RECORDER",
+  "producer": "Active Codex session",
+  "model_id": null,
+  "model_version": null,
+  "context_sha256": "5af71d316a98dd4f0b5c7c8a9b2dbcc17e17496d2b14733cf2f3c06fcc6ae579",
+  "prompt_path": "docs/evidence/corrections/b3/producer-prompt.md",
+  "proposals_sha256": "8f43f7c434b4f9fe66bd49318b878c4e88204f6a83dffed6f2878e097fa9d156",
+  "finalists_sha256": "9812a5917d9e888a6d4eedbadbd50f60ca4313adc8d21f710c524cdfca434d6b",
+  "new_creative_api_calls": 0,
+  "provider_acquisition_calls": 0,
+  "llm_latency_seconds": null,
+  "session_tokens": null,
+  "session_cost": null,
+  "human_work_seconds": null,
+  "sampler_wall_seconds": 0.008748499999999979,
+  "scope": "Four newly authored session proposals; deterministic finite sampling, no autonomous API producer or taste calibration",
+  "human_approval": "NOT_COLLECTED"
+}

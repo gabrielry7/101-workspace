@@ -1,0 +1,9 @@
+---
+import type { ModuleView } from '../../composition/content.ts';
+interface Props { module: ModuleView }
+const { module: m } = Astro.props;
+---
+<section class="identity semantic" data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page}>
+  <p class="eyebrow">Información pública · fixture</p>
+  {m.facts.map((f, i) => i === 0 ? <h1 data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</h1> : <p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}
+</section>

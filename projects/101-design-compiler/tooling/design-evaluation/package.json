@@ -1,0 +1,13 @@
+{
+  "name": "101-design-evaluation-tools",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "dependencies": {
+    "impeccable": "4.7.0",
+    "raven-mcp": "2.6.0",
+    "@modelcontextprotocol/sdk": "1.32.1"
+  }
+}

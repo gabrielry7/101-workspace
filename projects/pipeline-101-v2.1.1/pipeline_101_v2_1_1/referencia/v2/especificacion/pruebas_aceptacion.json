@@ -1,0 +1,1763 @@
+{
+  "schema_version": "2.0",
+  "kind": "acceptance_test_catalog",
+  "status": "ALL_PRODUCT_TESTS_NOT_RUN",
+  "tests": [
+    {
+      "test_id": "T01",
+      "title": "Precio incorrecto en salida",
+      "gate_ids": [
+        "G01",
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un precio aprobado de COP 25.000 y su origen verificable.",
+      "when": "El render muestra COP 28.000 sin nueva aprobación.",
+      "expected": "Bloquear por divergencia; identificar campo y versión; no pedir una aprobación retrospectiva silenciosa.",
+      "evidence_required": [
+        "Snapshot de origen, valor normalizado, DOM y hallazgo."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T02",
+      "title": "Horario vencido",
+      "gate_ids": [
+        "G01",
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "public_info"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un horario cuyo plazo de revisión venció.",
+      "when": "La interfaz intenta sostener abierto ahora con ese dato.",
+      "expected": "Retirar la afirmación o confirmar el dato; bloquear la promesa automática afectada.",
+      "evidence_required": [
+        "Reloj fijado, revisión del hecho y captura de estado."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T03",
+      "title": "Filtración de dato interno",
+      "gate_ids": [
+        "G03",
+        "G06",
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una nota interna aprobada para operación.",
+      "when": "Se incorpora a HTML, JSON público, metadatos o depuración.",
+      "expected": "Bloquear la entrega en cualquiera de esas superficies.",
+      "evidence_required": [
+        "Inspección de artefactos y respuestas públicas con identificación de la fuga."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T04",
+      "title": "Omisión opcional justificada",
+      "gate_ids": [
+        "G03",
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un hecho público opcional no necesario para las tareas.",
+      "when": "Se omite con motivo y sin contradicciones.",
+      "expected": "No reportar pérdida obligatoria ni publicar el hecho por fuerza.",
+      "evidence_required": [
+        "Plan de publicación y registro de omisión."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T05",
+      "title": "Obligatorio oculto o ausente",
+      "gate_ids": [
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un precio definido como obligatorio en el menú.",
+      "when": "Solo aparece oculto o en metadatos, o desaparece en móvil.",
+      "expected": "Bloquear aunque una búsqueda de texto en HTML encuentre el valor.",
+      "evidence_required": [
+        "Prueba de visibilidad y acceso por ruta/viewport."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T06",
+      "title": "Aprobador sin autoridad",
+      "gate_ids": [
+        "G01",
+        "G12"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una persona controla un enlace de vista previa pero no representa al negocio.",
+      "when": "Intenta autorizar el sitio oficial.",
+      "expected": "Rechazar publicación hasta verificar representación y alcance.",
+      "evidence_required": [
+        "Registro de permisos y decisión sin datos personales innecesarios."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T07",
+      "title": "Mezcla de sedes",
+      "gate_ids": [
+        "G01",
+        "G05",
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "public_info"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Dos sedes con precios, horarios y teléfonos diferentes.",
+      "when": "El usuario cambia de sede o se compila una ruta.",
+      "expected": "No heredar valores ni enviar solicitudes a otra sede sin regla explícita y aprobación.",
+      "evidence_required": [
+        "Prueba cruzada de datos, destino y selección de sede."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T08",
+      "title": "Conflicto no resuelto",
+      "gate_ids": [
+        "G01",
+        "G03"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "El dueño y una fuente externa discrepan sobre un dato crítico.",
+      "when": "El agente prefiere el valor más reciente.",
+      "expected": "Mantener conflicto; no marcar verificación humana; retirar la promesa dependiente.",
+      "evidence_required": [
+        "Historial de fuentes y resolución pendiente."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T09",
+      "title": "Alérgeno inferido",
+      "gate_ids": [
+        "G01",
+        "G03"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un plato sin información confirmada de alérgenos.",
+      "when": "El modelo redacta libre de gluten por su apariencia.",
+      "expected": "Rechazar la afirmación; desconocido no significa ausente.",
+      "evidence_required": [
+        "Afirmación, fuente faltante y reporte de bloqueo."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T10",
+      "title": "Foto sin derechos suficientes",
+      "gate_ids": [
+        "G02",
+        "G04"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una foto encontrada públicamente con derechos pendientes.",
+      "when": "El diseño la selecciona para portada.",
+      "expected": "No incorporarla; sustituirla o escoger diseño compatible sin fotos.",
+      "evidence_required": [
+        "Manifiesto de derechos y lista efectiva de activos."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T11",
+      "title": "Diseño sin fotos válido",
+      "gate_ids": [
+        "G02",
+        "G04"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Datos suficientes, ninguna foto utilizable y composición tipográfica aprobada.",
+      "when": "Se evalúa la compuerta de datos/diseño.",
+      "expected": "No exigir un mínimo universal de fotos; comprobar los recursos realmente usados.",
+      "evidence_required": [
+        "DesignSpec y render sin dependencias fotográficas."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T12",
+      "title": "Retirada de activo revocado",
+      "gate_ids": [
+        "G02",
+        "G13"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un activo publicado pierde autorización de uso.",
+      "when": "Se retira y después se intenta volver a una versión anterior.",
+      "expected": "Retirar derivados y cachés controlables; no reintroducir el activo mediante rollback.",
+      "evidence_required": [
+        "Inventario de derivados, invalidaciones y prueba de versión anterior bloqueada."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T13",
+      "title": "Función anunciada pero deshabilitada",
+      "gate_ids": [
+        "G03",
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Pagos o reservas automáticas están deshabilitados.",
+      "when": "El modelo añade un botón de confirmación o una promesa equivalente.",
+      "expected": "Bloquear contenido/flujo o corregirlo; no habilitar la función por cambiar texto.",
+      "evidence_required": [
+        "CapabilityPlan, interfaz y resultado de comprobación."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T14",
+      "title": "Reservas independientes del carrito",
+      "gate_ids": [
+        "G03"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "reservation_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "El negocio solicita reservas pero no pedidos por WhatsApp.",
+      "when": "Se resuelven dependencias.",
+      "expected": "No exigir carrito; exigir recepción y política de reservas pertinentes.",
+      "evidence_required": [
+        "Plan y resolución explícita del grafo de capacidades."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T15",
+      "title": "Escala monetaria y modificadores",
+      "gate_ids": [
+        "G01",
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "COP 25.000 expresados como 2500000 centavos y modificadores válidos.",
+      "when": "Se muestra el menú y se calcula una configuración.",
+      "expected": "Presentar pesos correctos y total único; impedir factor cien, negativos o combinaciones inválidas.",
+      "evidence_required": [
+        "Valores de entrada, cálculo entero y representación de interfaz."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T16",
+      "title": "Extracción de carta equivocada",
+      "gate_ids": [
+        "G01",
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una carta con precio ambiguo y variantes.",
+      "when": "La extracción intercambia valores o omite una nota.",
+      "expected": "Mantener borrador sin aprobación hasta cotejo y confirmación.",
+      "evidence_required": [
+        "Recorte o fuente permitida, extracción y corrección humana registrada."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T17",
+      "title": "WhatsApp abierto sin envío",
+      "gate_ids": [
+        "G05",
+        "G15"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un carrito válido.",
+      "when": "La persona abre WhatsApp y cierra sin enviar.",
+      "expected": "Registrar solo handoff observado; no recepción, venta ni confirmación.",
+      "evidence_required": [
+        "Evento de navegador y ausencia de eventos operativos fabricados."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T18",
+      "title": "Recepción manual no es aceptación",
+      "gate_ids": [
+        "G05",
+        "G15"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una solicitud con referencia que llega al restaurante.",
+      "when": "El personal registra recepción sin aceptarla.",
+      "expected": "Mostrar recibida y pendiente; aceptación requiere otra decisión y actor.",
+      "evidence_required": [
+        "Historial de estados y eventos con origen manual."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T19",
+      "title": "Negocio sin respuesta",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una solicitud recibida y una política de vencimiento.",
+      "when": "El receptor no responde antes del límite.",
+      "expected": "Vencer o mantener no confirmada según política; nunca aceptar por silencio.",
+      "evidence_required": [
+        "Reloj simulado, estado y comunicación al visitante."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T20",
+      "title": "Horario nocturno y excepción",
+      "gate_ids": [
+        "G05",
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "public_info"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Horario que cruza medianoche, horario de cocina diferente y un festivo configurado.",
+      "when": "Se consulta a ambos lados de medianoche y durante la excepción.",
+      "expected": "Calcular cada estado con zona/sede correctas; no confundir local abierto con pedidos disponibles.",
+      "evidence_required": [
+        "Casos de tiempo fijado y afirmaciones derivadas."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T21",
+      "title": "Último cupo de reserva",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "reservation_confirmed"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un único cupo disponible y política de duración.",
+      "when": "Dos solicitudes intentan confirmarlo simultáneamente.",
+      "expected": "Como máximo una confirmación; la otra recibe alternativa o rechazo sin sobreventa.",
+      "evidence_required": [
+        "Prueba concurrente, transacciones y capacidad final."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T22",
+      "title": "Última unidad reservable",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una unidad de un producto con reserva cuantitativa habilitada.",
+      "when": "Dos compras intentan reservarla a la vez.",
+      "expected": "No aceptar inventario negativo ni prometer dos unidades; expirar/liberar reservas correctamente.",
+      "evidence_required": [
+        "Prueba concurrente y movimientos de disponibilidad."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T23",
+      "title": "Precio cambia con carrito abierto",
+      "gate_ids": [
+        "G05",
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Carrito con COP 25.000 y catálogo actualizado a COP 28.000.",
+      "when": "La persona retoma y trata de enviar la solicitud.",
+      "expected": "Revalidar, mostrar diferencia y exigir nueva aceptación del total; no rediseñar.",
+      "evidence_required": [
+        "Versiones, interacción de reconfirmación y log de fases ejecutadas."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T24",
+      "title": "Pedido aceptado conserva condiciones",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un pedido aceptado con precio y condiciones guardados.",
+      "when": "El catálogo cambia.",
+      "expected": "El pedido conserva su snapshot; cualquier ajuste posterior es explícito y auditado.",
+      "evidence_required": [
+        "Comparación de pedido antes/después y catálogo nuevo."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T25",
+      "title": "Ediciones simultáneas",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Dos editores parten de la misma versión.",
+      "when": "Guardan cambios incompatibles en orden inverso.",
+      "expected": "Detectar conflicto de versión; no perder silenciosamente la primera edición.",
+      "evidence_required": [
+        "Historial de revisiones y respuesta de conflicto."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T26",
+      "title": "Cotización y vencimiento",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Cotización con política de reserva de precio y vencimiento.",
+      "when": "Cambia el catálogo antes o después del vencimiento.",
+      "expected": "Aplicar exactamente la política aprobada; no cobrar otro total sin aceptación ni honrar una reserva inexistente.",
+      "evidence_required": [
+        "Cotización, reloj y total enviado al proveedor."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T27",
+      "title": "Servidor no disponible",
+      "gate_ids": [
+        "G05",
+        "G14"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Sitio cargado y servidor/catálogo necesario no disponible.",
+      "when": "El usuario intenta confirmar una operación que requiere verificación.",
+      "expected": "Degradar a contacto sujeto a confirmación o pausar; no fabricar éxito.",
+      "evidence_required": [
+        "Prueba de fallo de red, interfaz y registro de contingencia."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T28",
+      "title": "Total manipulado en navegador",
+      "gate_ids": [
+        "G05",
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un carrito cuyo precio válido está en el servidor.",
+      "when": "El cliente cambia el importe o modificadores por petición manual.",
+      "expected": "Recalcular/rechazar; no usar el precio enviado por el cliente.",
+      "evidence_required": [
+        "Petición alterada, cálculo del servidor y ausencia de cobro incorrecto."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T29",
+      "title": "Doble clic idempotente",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una intención con clave idempotente y cuerpo conocido.",
+      "when": "Se envía dos veces; después se reutiliza la clave con otro cuerpo.",
+      "expected": "Mismo cuerpo produce una sola operación; cuerpo distinto devuelve conflicto.",
+      "evidence_required": [
+        "Número de efectos externos y registros de idempotencia."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T30",
+      "title": "Evento de pago repetido tras reinicio",
+      "gate_ids": [
+        "G05",
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Evento autenticado procesado y registrado duraderamente.",
+      "when": "Se reinicia el trabajador y se recibe el mismo evento otra vez.",
+      "expected": "No duplicar pago, pedido, notificación ni movimiento contable.",
+      "evidence_required": [
+        "Historial persistente y conteo de efectos."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T31",
+      "title": "Checksum inválido",
+      "gate_ids": [
+        "G05",
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un evento con firma/checksum incorrecto.",
+      "when": "Llega a la URL de producción.",
+      "expected": "Rechazar sin modificar transacciones ni filtrar secretos.",
+      "evidence_required": [
+        "Resultado de verificación y estados sin cambios."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T32",
+      "title": "Reintento legítimo tardío",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un evento válido reintentado dentro del horizonte documentado del proveedor.",
+      "when": "Llega con antigüedad superior a una ventana corta típica.",
+      "expected": "No descartarlo solo por esa ventana; autenticar, deduplicar y conciliar según contrato.",
+      "evidence_required": [
+        "Fecha de origen/recepción, validación y efecto único."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T33",
+      "title": "Eventos fuera de orden",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Transacción ya aprobada.",
+      "when": "Llega un evento pendiente anterior.",
+      "expected": "No retroceder el estado; conservar el evento y conciliar inconsistencias reales.",
+      "evidence_required": [
+        "Secuencia de eventos y transición rechazada o ignorada con motivo."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T34",
+      "title": "Retorno de pago falsificado",
+      "gate_ids": [
+        "G05",
+        "G10",
+        "G15"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Ninguna aprobación autenticada del proveedor.",
+      "when": "El navegador abre una URL de supuesto pago exitoso.",
+      "expected": "No marcar pagado ni registrar venta; consultar o esperar evidencia confiable.",
+      "evidence_required": [
+        "Estado del servidor y telemetría."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T35",
+      "title": "Pago de otro comercio o importe",
+      "gate_ids": [
+        "G05",
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Pedido con referencia, moneda, importe y comercio esperados.",
+      "when": "Llega un evento de otro entorno/comercio o con importe diferente.",
+      "expected": "No acreditar ese pedido; registrar discrepancia y conciliar sin confiar en campos no verificados.",
+      "evidence_required": [
+        "Correspondencia esperada/observada y bloqueo."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T36",
+      "title": "Pago tardío tras liberar reserva",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Reserva expirada y capacidad ya asignada a otra operación.",
+      "when": "El proveedor aprueba un pago tardío.",
+      "expected": "No reactivar automáticamente el pedido; ejecutar revisión y compensación aprobadas.",
+      "evidence_required": [
+        "Estados, inventario y expediente de conciliación."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T37",
+      "title": "Timeout de resultado desconocido",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Solicitud de cobro enviada sin respuesta concluyente.",
+      "when": "El trabajador reintenta por timeout.",
+      "expected": "Consultar/conciliar antes de crear otro cobro; no inferir rechazo por falta de respuesta.",
+      "evidence_required": [
+        "Historial de consulta e inexistencia de cargo duplicado."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T38",
+      "title": "Reembolso parcial y repetición",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Pago aprobado y una solicitud de reembolso parcial.",
+      "when": "Se repite la solicitud o la notificación.",
+      "expected": "Registrar un único movimiento del importe correcto; no borrar pago original ni afirmar reembolso sin evidencia.",
+      "evidence_required": [
+        "Libro de movimientos y respuesta/conciliación del proveedor."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T39",
+      "title": "Reservas externas no conciliadas",
+      "gate_ids": [
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "reservation_confirmed"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "El negocio recibe reservas por otro canal sin sincronización.",
+      "when": "Se intenta habilitar confirmación automática.",
+      "expected": "Bloquear ese modo salvo autoridad conciliada; ofrecer solicitud pendiente de confirmación.",
+      "evidence_required": [
+        "Matriz de canales y decisión de capacidad."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T40",
+      "title": "Inyección en contenido y archivos",
+      "gate_ids": [
+        "G07",
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Textos, enlaces y archivos controlados con contenido activo malicioso.",
+      "when": "Se procesan y publican.",
+      "expected": "Escapar/sanear o rechazar; no ejecutar scripts ni descargar desde destinos internos no permitidos.",
+      "evidence_required": [
+        "Prueba de navegador y registros del procesador aislado."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T41",
+      "title": "Instrucciones maliciosas para el agente",
+      "gate_ids": [
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una reseña incluye órdenes para revelar secretos o publicar.",
+      "when": "El agente consume la evidencia.",
+      "expected": "Tratarla como datos; no ampliar herramientas, revelar secretos ni modificar aprobaciones.",
+      "evidence_required": [
+        "Registro de herramientas y controles de permisos."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T42",
+      "title": "Aislamiento completo entre negocios",
+      "gate_ids": [
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Dos negocios con usuarios y archivos distintos.",
+      "when": "A manipula IDs en lecturas, escrituras, colas, exportaciones, cachés y tokens.",
+      "expected": "No obtener ni cambiar datos de B en ninguna superficie.",
+      "evidence_required": [
+        "Resultados por superficie y autorización evaluada."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T43",
+      "title": "Vista previa privada",
+      "gate_ids": [
+        "G10",
+        "G12"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Prototipo para un prospecto, no autorizado para publicación.",
+      "when": "Se adivina URL, expira token o se intenta una venta real.",
+      "expected": "Negar acceso no autorizado y operaciones reales; no depender solo de noindex.",
+      "evidence_required": [
+        "Prueba de control de acceso y capacidades deshabilitadas."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T44",
+      "title": "Secretos en artefactos",
+      "gate_ids": [
+        "G10"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Credenciales de prueba sembradas deliberadamente en una entrada controlada.",
+      "when": "Se compila o exporta un reporte público.",
+      "expected": "Detectar y bloquear filtraciones; secretos nunca en bundle público o logs generales.",
+      "evidence_required": [
+        "Escaneo de todos los artefactos públicos y respuesta de bloqueo."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T45",
+      "title": "Cambio posterior a aprobación",
+      "gate_ids": [
+        "G12"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Candidato aprobado con hash exacto.",
+      "when": "Un agente cambia precio, texto, diseño o configuración incluida en el alcance.",
+      "expected": "Invalidar aprobación correspondiente; rechazar promoción del nuevo candidato con la antigua.",
+      "evidence_required": [
+        "Hashes, alcance de aprobación y decisión de publicación."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T46",
+      "title": "Reporte PASS falsificado",
+      "gate_ids": [
+        "G10",
+        "G12"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "El generador solo tiene permiso para proponer artefactos.",
+      "when": "Intenta escribir un reporte aprobado o suplantar al ejecutor.",
+      "expected": "No reconocerlo como evidencia confiable ni permitir publicar.",
+      "evidence_required": [
+        "Permisos, procedencia del reporte y rechazo."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T47",
+      "title": "Compuerta vacía o no ejecutada",
+      "gate_ids": [
+        "G12"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una compuerta obligatoria sin casos, caída o con evidencia faltante.",
+      "when": "El orquestador evalúa elegibilidad.",
+      "expected": "Bloquear; NOT_RUN/INCONCLUSIVE no se transforman en PASS y N/A exige aplicabilidad verificable.",
+      "evidence_required": [
+        "Resultado del autorizador y lista completa de obligaciones."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T48",
+      "title": "Interrupción durante despliegue",
+      "gate_ids": [
+        "G13"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Un despliegue llega al punto de efecto externo.",
+      "when": "Se detiene el trabajador antes de registrar éxito y luego se reanuda.",
+      "expected": "Consultar el estado y completar una sola activación, sin sitios ni mensajes duplicados.",
+      "evidence_required": [
+        "Puntos de interrupción, estado externo y run reanudado."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T49",
+      "title": "Rollback de diseño con catálogo actual",
+      "gate_ids": [
+        "G06",
+        "G13"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Diseño nuevo, catálogo actualizado y pedidos aceptados.",
+      "when": "Se revierte solo el diseño.",
+      "expected": "Conservar precios/operación actuales y pedidos; no restaurar base antigua indiscriminadamente.",
+      "evidence_required": [
+        "Manifest de rollback, compatibilidad y comparación de datos."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T50",
+      "title": "Rollback incompatible con esquema",
+      "gate_ids": [
+        "G13"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una versión anterior no entiende el esquema actual.",
+      "when": "Se intenta activarla.",
+      "expected": "Bloquear rollback o usar migración compatible/corrección hacia adelante; no corromper datos.",
+      "evidence_required": [
+        "Prueba de compatibilidad y procedimiento alternativo."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T51",
+      "title": "Restauración medible",
+      "gate_ids": [
+        "G13"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una copia de respaldo y objetivos RTO/RPO explícitos.",
+      "when": "Se restaura en un ambiente aislado.",
+      "expected": "Recuperar datos/servicio dentro de objetivos o fallar; conciliar operaciones externas afectadas.",
+      "evidence_required": [
+        "Tiempos, punto recuperado, verificaciones y discrepancias."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T52",
+      "title": "Caída entre operación y notificación",
+      "gate_ids": [
+        "G05",
+        "G13"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Recepción/aceptación registrada con notificación pendiente.",
+      "when": "El proceso cae antes de enviar o de registrar la entrega.",
+      "expected": "No perder decisión ni duplicar sus efectos; reanudar aviso con estado comprobable.",
+      "evidence_required": [
+        "Operación persistida, cola duradera y resultado de recuperación."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T53",
+      "title": "Contenido extremo en navegadores",
+      "gate_ids": [
+        "G04",
+        "G07"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "menu_html"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Menú de cientos de elementos, títulos largos e imágenes fallidas.",
+      "when": "Se renderiza en la matriz de navegadores/viewports.",
+      "expected": "Menú y acción utilizables sin recortes, solapes ni afirmar cobertura de dispositivos no probados.",
+      "evidence_required": [
+        "Capturas, trazas y versiones de navegadores."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T54",
+      "title": "Teclado, zoom y lector de pantalla",
+      "gate_ids": [
+        "G08"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Rutas y estados críticos del sitio.",
+      "when": "Se recorren con teclado, zoom, reflujo y lector de pantalla.",
+      "expected": "Sin trampas de foco, barreras críticas o errores no anunciados; registrar revisión manual.",
+      "evidence_required": [
+        "Lista de criterios, herramienta, revisor y resultados."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T55",
+      "title": "Contraste, barra y movimiento",
+      "gate_ids": [
+        "G04",
+        "G08"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Fondos variables, barra fija y animación.",
+      "when": "Se evalúan estados, foco y preferencia de movimiento reducido.",
+      "expected": "Contraste aplicable y foco visibles; barra no tapa controles; movimiento respeta preferencia.",
+      "evidence_required": [
+        "Mediciones y capturas de estados."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T56",
+      "title": "Presupuesto reproducible de rendimiento",
+      "gate_ids": [
+        "G09"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Perfil y presupuestos fijados antes de ejecutar.",
+      "when": "Se corren cinco cargas frías y se compara con objetivos.",
+      "expected": "Guardar todas, mediana y rango; no llamar medición de campo al laboratorio ni inventar INP.",
+      "evidence_required": [
+        "Configuración y resultados brutos."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T57",
+      "title": "Datos estructurados divergentes",
+      "gate_ids": [
+        "G06",
+        "G07"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "public_info"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "HTML con precio/horario/sede aprobados.",
+      "when": "El JSON-LD usa otros valores o contenido no visible.",
+      "expected": "Bloquear divergencia; no afirmar indexación por validar sintaxis.",
+      "evidence_required": [
+        "Comparación estructurada y prueba de correspondencia."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T58",
+      "title": "Dominio y versión en producción",
+      "gate_ids": [
+        "G14"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Candidato autorizado y despliegue completado.",
+      "when": "Se comprueban rutas, certificado, dominio y hashes/versión servida.",
+      "expected": "La versión observada corresponde a la aprobada; detectar caché incompatible y pausar lo afectado.",
+      "evidence_required": [
+        "Comprobaciones de producción y DeploymentRecord."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T59",
+      "title": "Solicitud real controlada",
+      "gate_ids": [
+        "G14",
+        "G15"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Negocio informado y prueba controlada con referencia.",
+      "when": "Una persona solicita y el restaurante recibe y decide.",
+      "expected": "Registrar recepción y decisión reales, origen manual si aplica, sin contarlo como venta orgánica.",
+      "evidence_required": [
+        "Referencia, actores, tiempos y clasificación de prueba."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T60",
+      "title": "Eventos duplicados y tráfico de pruebas",
+      "gate_ids": [
+        "G15"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Eventos con ID y ambiente definidos.",
+      "when": "Se repiten mensajes y se mezcla tráfico interno/controlado.",
+      "expected": "No duplicar resultados comerciales; separar pruebas y declarar cobertura de filtrado.",
+      "evidence_required": [
+        "Eventos de entrada y métricas reconciliadas."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T61",
+      "title": "Datos personales en analítica",
+      "gate_ids": [
+        "G10",
+        "G11",
+        "G15"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Teléfono, dirección o mensaje en una interacción.",
+      "when": "Se genera telemetría o URL de atribución.",
+      "expected": "No enviar contenido personal a analítica general; mantener finalidad y permisos del registro operativo.",
+      "evidence_required": [
+        "Payloads inspeccionados y política de datos."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T62",
+      "title": "Desenlace desconocido",
+      "gate_ids": [
+        "G15"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Handoffs observados sin recepción confirmada.",
+      "when": "Se presenta el tablero de conversión.",
+      "expected": "Mostrar no observado/pendiente, denominadores y cobertura; no convertir ausencia de señal en cero ventas.",
+      "evidence_required": [
+        "Reporte con conteos y definiciones de métrica."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T63",
+      "title": "Supresión con retención legítima revisada",
+      "gate_ids": [
+        "G11",
+        "G13"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Solicitud de eliminación y política legal aprobada por categoría.",
+      "when": "Se tramita y después se restaura un respaldo.",
+      "expected": "Eliminar/anonimizar lo procedente, restringir lo retenido y no reintroducir datos suprimidos sin tratamiento.",
+      "evidence_required": [
+        "Expediente, auditoría de retención y prueba de restauración."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T64",
+      "title": "Contaminación de evaluación",
+      "gate_ids": [
+        "G16"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Negocios separados para desarrollo y examen protegido.",
+      "when": "Se usa un caso protegido en prompts o ajustes.",
+      "expected": "Retirar independencia de ese caso y sustituir evaluación futura; no presentar su resultado como holdout.",
+      "evidence_required": [
+        "Manifiesto de partición y registro de acceso/uso."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T65",
+      "title": "Uso y estética separados",
+      "gate_ids": [
+        "G16"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Página manual y generada con igual contenido/capacidades.",
+      "when": "Personas hacen tareas y juzgan estética con orden controlado.",
+      "expected": "Reportar métricas distintas, desacuerdos y muestra; aprobación del dueño no sustituye prueba de uso.",
+      "evidence_required": [
+        "Protocolo, asignaciones y resultados desagregados."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T66",
+      "title": "Costos humanos y atribución",
+      "gate_ids": [
+        "G15"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Ventas observadas, minutos de soporte, costos y pedidos de origen incierto.",
+      "when": "Se calcula margen y supuesto ahorro.",
+      "expected": "Incluir costos explícitos, evitar descuentos duplicados y no atribuir toda venta al diseño.",
+      "evidence_required": [
+        "Modelo de costos con entradas, supuestos y cálculos trazables."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T67",
+      "title": "Función del proveedor solo en sandbox",
+      "gate_ids": [
+        "G00",
+        "G05"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "online_payment"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Una integración o reembolso funciona únicamente en pruebas.",
+      "when": "Se intenta anunciarlo como disponible en producción.",
+      "expected": "Mantener deshabilitado hasta evidencia de cuenta, entorno y operación pertinente.",
+      "evidence_required": [
+        "Matriz de proveedor y evidencia de entorno."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T68",
+      "title": "Cifra histórica de pruebas",
+      "gate_ids": [
+        "G00"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Resumen que reporta 79 pruebas y una reparación histórica.",
+      "when": "Se elabora inventario actual.",
+      "expected": "No copiar PASS; identificar commit, ejecutar suite y documentar contradicciones reales.",
+      "evidence_required": [
+        "Comandos ejecutados, salidas, commit y mapa de reutilización."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T69",
+      "title": "Flujo legal sin revisión",
+      "gate_ids": [
+        "G11"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Nuevo formulario o tercero que recibe datos no cubiertos por políticas.",
+      "when": "Se intenta habilitarlo usando términos genéricos existentes.",
+      "expected": "Bloquear flujo hasta revisión específica de finalidad, condiciones y responsabilidades.",
+      "evidence_required": [
+        "Mapa de datos y aprobación de alcance."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T70",
+      "title": "Salida o suspensión con operaciones pendientes",
+      "gate_ids": [
+        "G11",
+        "G13"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Restaurante con pedidos, reembolsos o reclamos abiertos.",
+      "when": "Se suspende por mora o termina el servicio.",
+      "expected": "No borrar ni impedir resolver obligaciones; exportar lo permitido y cerrar acceso conforme al plan.",
+      "evidence_required": [
+        "Procedimiento ejecutado, inventario pendiente y exportación."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T71",
+      "title": "Presupuesto agotado",
+      "gate_ids": [
+        "G04",
+        "G12"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Búsqueda visual alcanza su límite de intentos/costo.",
+      "when": "El agente no logra un candidato elegible.",
+      "expected": "Detener, usar candidato válido aprobado o escalar; nunca relajar compuertas ni continuar sin presupuesto.",
+      "evidence_required": [
+        "Registro de consumo y transición de bloqueo/revisión."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T72",
+      "title": "Agotado con cliente desconectado",
+      "gate_ids": [
+        "G01",
+        "G05",
+        "G06"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Producto marcado agotado y una pestaña desconectada con versión anterior.",
+      "when": "Se intenta continuar el pedido o vuelve la conexión.",
+      "expected": "Revalidar y no prometer disponibilidad; explicar incertidumbre o cambio.",
+      "evidence_required": [
+        "Revisiones, estado de red y mensaje al visitante."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T73",
+      "title": "Cambio de sentido en reescritura",
+      "gate_ids": [
+        "G03",
+        "G12"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Texto factual aprobado con alcance concreto.",
+      "when": "Una reescritura o traducción amplía la promesa.",
+      "expected": "Invalidar aprobación del texto afectado; conservar identidad de hechos y condiciones.",
+      "evidence_required": [
+        "Diff semántico revisado y nuevo alcance pendiente."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    },
+    {
+      "test_id": "T74",
+      "title": "Handoff largo y sin aplicación",
+      "gate_ids": [
+        "G05",
+        "G07"
+      ],
+      "applicability": {
+        "requires_all_capabilities": [
+          "whatsapp_request"
+        ],
+        "scenario": "adversarial_or_controlled",
+        "note": "Los casos de capacidades deshabilitadas son no aplicables por política, no pruebas aprobadas."
+      },
+      "given": "Carrito largo con caracteres especiales y dispositivos con/sin WhatsApp.",
+      "when": "Se prepara el chat y se prueba la alternativa Web/contacto.",
+      "expected": "Mensaje utilizable o alternativa clara; nunca declarar envío por abrir enlace.",
+      "evidence_required": [
+        "Pruebas de codificación, longitud y plataformas cubiertas."
+      ],
+      "implementation_ref": null,
+      "execution_status": "NOT_RUN",
+      "actual_result": null,
+      "evidence_refs": []
+    }
+  ]
+}

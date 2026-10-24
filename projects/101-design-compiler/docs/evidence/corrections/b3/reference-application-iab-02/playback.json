@@ -1,0 +1,293 @@
+{
+  "scope": "UI playback and visible video frame; DOM attributes and geometry. No network/vitals measurement. Earlier screenshots in iab-01 were taken during scrolling and are not used as frame evidence.",
+  "views": [
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "before": {
+        "height": 360,
+        "paused": true,
+        "width": 640,
+        "x": 674.7875366210938,
+        "y": 123.70000457763672
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.108825,
+        "width": 640
+      },
+      "last": {
+        "height": 360,
+        "paused": false,
+        "time": 0.231217,
+        "width": 640,
+        "x": 674.7875366210938,
+        "y": 319.70001220703125
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-01-desktop-playback.jpg",
+        "sha256": "a0769b0b636e1ca00e77797abac9ce85b5ba112ff76a9f4a8648cf983821917b"
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "height": 188.5500030517578,
+        "paused": true,
+        "width": 335.20001220703125,
+        "x": 20,
+        "y": 192.6125030517578
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.11204,
+        "width": 640
+      },
+      "last": {
+        "height": 188.5500030517578,
+        "paused": false,
+        "time": 0.201087,
+        "width": 335.20001220703125,
+        "x": 20,
+        "y": 327.8125
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-01-mobile-playback.jpg",
+        "sha256": "3eda93165291c67317c165ee598c693a32c75dd4d966e21968b7566ae34d3a22"
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "before": {
+        "height": 318.75,
+        "paused": true,
+        "width": 566.6749877929688,
+        "x": 800.5125122070312,
+        "y": 164.875
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.109095,
+        "width": 640
+      },
+      "last": {
+        "height": 318.75,
+        "paused": false,
+        "time": 0.236981,
+        "width": 566.6749877929688,
+        "x": 800.5125122070312,
+        "y": 340.875
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-02-desktop-playback.jpg",
+        "sha256": "ea0b6bd165381267e67e342616449397fefa774b462cf4a486c09f6c4176277e"
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "height": 188.5500030517578,
+        "paused": true,
+        "width": 335.20001220703125,
+        "x": 20,
+        "y": 192.8625030517578
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.108974,
+        "width": 640
+      },
+      "last": {
+        "height": 188.5500030517578,
+        "paused": false,
+        "time": 0.202983,
+        "width": 335.20001220703125,
+        "x": 20,
+        "y": 328.0625
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-02-mobile-playback.jpg",
+        "sha256": "6664089952e80f4ed701229b1bd7d7ab2964e160234d7d65e32882ecfb2ef529"
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "before": {
+        "height": 360,
+        "paused": true,
+        "width": 640,
+        "x": 727.2000122070312,
+        "y": 123.20000457763672
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.114051,
+        "width": 640
+      },
+      "last": {
+        "height": 360,
+        "paused": false,
+        "time": 0.258216,
+        "width": 640,
+        "x": 727.2000122070312,
+        "y": 320
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-03-desktop-playback.jpg",
+        "sha256": "004e3c05a9d902ef68283e48829dece5108b6832a5e7e285f7c12f6cb34f1311"
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "height": 188.5500030517578,
+        "paused": true,
+        "width": 335.20001220703125,
+        "x": 20,
+        "y": 192.6999969482422
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.105462,
+        "width": 640
+      },
+      "last": {
+        "height": 188.5500030517578,
+        "paused": false,
+        "time": 0.171381,
+        "width": 335.20001220703125,
+        "x": 20,
+        "y": 327.1000061035156
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-03-mobile-playback.jpg",
+        "sha256": "c2b2f9a33b5232dbd80e7916b0c7ef7c98c8499bc19727764cad4b5e7f9b1275"
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "before": {
+        "height": 360,
+        "paused": true,
+        "width": 640,
+        "x": 674.7875366210938,
+        "y": 123.6125030517578
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.098386,
+        "width": 640
+      },
+      "last": {
+        "height": 360,
+        "paused": false,
+        "time": 0.213867,
+        "width": 640,
+        "x": 674.7875366210938,
+        "y": 319.6125183105469
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-04-desktop-playback.jpg",
+        "sha256": "c046cccc957a03b952e623220dd97c495b17e2a19481fada9987f6aa2fc0407d"
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "before": {
+        "height": 188.5500030517578,
+        "paused": true,
+        "width": 335.20001220703125,
+        "x": 20,
+        "y": 192.7875061035156
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.09586,
+        "width": 640
+      },
+      "last": {
+        "height": 188.5500030517578,
+        "paused": false,
+        "time": 0.202923,
+        "width": 335.20001220703125,
+        "x": 20,
+        "y": 327.9875183105469
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-04-mobile-playback.jpg",
+        "sha256": "5d64c75dd11c478dd302ffd89c305f694bbdfd99428a7081a8bc27c3fbe42ac8"
+      }
+    }
+  ]
+}

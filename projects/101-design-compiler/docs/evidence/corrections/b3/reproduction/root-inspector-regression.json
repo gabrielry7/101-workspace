@@ -1,0 +1,79 @@
+{
+  "kind": "B3_SAME_HOST_REPRODUCTION_COMPARISON",
+  "created_at": "2026-10-15T03:58:05.970Z",
+  "status": "PASS_HTML_DOM_SERVED_BYTES",
+  "first": "docs/evidence/corrections/b3/qa-05",
+  "second": "docs/evidence/corrections/b3/qa-06",
+  "pairs": [
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "html_sha256": "c45da9677c5382ed07733dc80c1554dc38f2dea5dff5c4b9ec349eb2cb426438",
+      "dom_sha256": "d4b0d3c48bf93ab53c2c83cd42d8b88ef656116fbc9fedc70ce4c76ddbaec446",
+      "served_sha256": "125d74e87ae98ebf52e01172045148ec70742da6a235393c2e96b99e55742673",
+      "rgba_identical": false
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "html_sha256": "c45da9677c5382ed07733dc80c1554dc38f2dea5dff5c4b9ec349eb2cb426438",
+      "dom_sha256": "94ff0a49599fc1a5d2abd451a47a66300694d1313c58233c04da9f878f739a7c",
+      "served_sha256": "deea7548d685ca6ff8a5f7aa41bb3a9712e76ccf8149920d1b7b17a8f892b4d8",
+      "rgba_identical": true
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "html_sha256": "f62914eacf62da8044b4c147335fcfbad7d7b723104671ef19ab4320cc896cc7",
+      "dom_sha256": "fc190353fe85a0024e66ad56112f3b51502e9be2ae04540fd2ed5ec73d58efdf",
+      "served_sha256": "125d74e87ae98ebf52e01172045148ec70742da6a235393c2e96b99e55742673",
+      "rgba_identical": false
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "html_sha256": "f62914eacf62da8044b4c147335fcfbad7d7b723104671ef19ab4320cc896cc7",
+      "dom_sha256": "6bc70d19d22e723e453fc99028f32c24397d56e3c771244c6370a282b0a5a0ae",
+      "served_sha256": "deea7548d685ca6ff8a5f7aa41bb3a9712e76ccf8149920d1b7b17a8f892b4d8",
+      "rgba_identical": false
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "html_sha256": "eb340ad2b06367a7e3935dfc06f308735151edcb759187db8b7ac160308838a7",
+      "dom_sha256": "18ebeb728e855afb80b3275e7e6fe6599c83ba3cd6dc293d8286984605144094",
+      "served_sha256": "125d74e87ae98ebf52e01172045148ec70742da6a235393c2e96b99e55742673",
+      "rgba_identical": false
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "html_sha256": "eb340ad2b06367a7e3935dfc06f308735151edcb759187db8b7ac160308838a7",
+      "dom_sha256": "a43905cd6b29be80df1c6e7fd42844763e2d8d98295719eb1e67b77b56f38d46",
+      "served_sha256": "deea7548d685ca6ff8a5f7aa41bb3a9712e76ccf8149920d1b7b17a8f892b4d8",
+      "rgba_identical": true
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "html_sha256": "3f695e7573221738426f61806b16a85d7cb520c86465905aa798de659e3f9e1b",
+      "dom_sha256": "66e21cedfa4dcb7244133d6448e02659fd510c614fde0481ab2c3af6b73fda6b",
+      "served_sha256": "125d74e87ae98ebf52e01172045148ec70742da6a235393c2e96b99e55742673",
+      "rgba_identical": true
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "html_sha256": "3f695e7573221738426f61806b16a85d7cb520c86465905aa798de659e3f9e1b",
+      "dom_sha256": "4d5eed053279214c5860de213c496271a9fce2f54370227a54f1f9cfb3e448cc",
+      "served_sha256": "deea7548d685ca6ff8a5f7aa41bb3a9712e76ccf8149920d1b7b17a8f892b4d8",
+      "rgba_identical": true
+    }
+  ],
+  "all_rgba_identical": false,
+  "limits": [
+    "Observed native video controls may paint differently; original PNG retained without masking",
+    "Timing/resource-duration observations excluded from stable DOM comparison; geometry/bindings/permissions included",
+    "Same OS/fonts/browser/private package, not portable production or aesthetic approval"
+  ]
+}

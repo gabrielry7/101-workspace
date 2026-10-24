@@ -1,0 +1,780 @@
+{
+  "seed": "b3002026",
+  "attempts": [
+    {
+      "attempt": 1,
+      "source": "editorial-table",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Split",
+        "collection": "Grid",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Columns",
+        "proportion": "balanced",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [],
+      "decision": "FINALIST"
+    },
+    {
+      "attempt": 2,
+      "source": "open-index",
+      "recipe": {
+        "navigation": "Rail",
+        "hero": "Diptych",
+        "collection": "Rows",
+        "mobile_collection": "Compact",
+        "narrative": "AfterCollection",
+        "visit": "Band",
+        "proportion": "type-led",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 7,
+          "mobile": 5
+        }
+      ],
+      "decision": "FINALIST"
+    },
+    {
+      "attempt": 3,
+      "source": "night-gallery",
+      "recipe": {
+        "navigation": "Index",
+        "hero": "Monument",
+        "collection": "Mosaic",
+        "mobile_collection": "Sequence",
+        "narrative": "AfterCollection",
+        "visit": "Columns",
+        "proportion": "image-led",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        }
+      ],
+      "decision": "FINALIST"
+    },
+    {
+      "attempt": 4,
+      "source": "garden-notes",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Stage",
+        "collection": "Rows",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Band",
+        "proportion": "image-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 4,
+          "mobile": 2
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        }
+      ],
+      "decision": "FINALIST"
+    },
+    {
+      "attempt": 5,
+      "source": "editorial-table",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Split",
+        "collection": "Grid",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Columns",
+        "proportion": "type-led",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 2,
+          "mobile": 0
+        },
+        {
+          "desktop": 5,
+          "mobile": 5
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 5,
+          "mobile": 2
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 6,
+      "source": "open-index",
+      "recipe": {
+        "navigation": "Rail",
+        "hero": "Diptych",
+        "collection": "Rows",
+        "mobile_collection": "Compact",
+        "narrative": "AfterCollection",
+        "visit": "Band",
+        "proportion": "type-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 1,
+          "mobile": 0
+        },
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 4,
+          "mobile": 4
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 7,
+      "source": "night-gallery",
+      "recipe": {
+        "navigation": "Index",
+        "hero": "Monument",
+        "collection": "Mosaic",
+        "mobile_collection": "Sequence",
+        "narrative": "AfterCollection",
+        "visit": "Columns",
+        "proportion": "image-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 1,
+          "mobile": 0
+        },
+        {
+          "desktop": 5,
+          "mobile": 5
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 8,
+      "source": "garden-notes",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Stage",
+        "collection": "Rows",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Band",
+        "proportion": "image-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 4,
+          "mobile": 2
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 0,
+          "mobile": 0
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 9,
+      "source": "editorial-table",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Split",
+        "collection": "Grid",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Columns",
+        "proportion": "type-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 1,
+          "mobile": 0
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 4,
+          "mobile": 2
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 10,
+      "source": "open-index",
+      "recipe": {
+        "navigation": "Rail",
+        "hero": "Diptych",
+        "collection": "Rows",
+        "mobile_collection": "Compact",
+        "narrative": "AfterCollection",
+        "visit": "Band",
+        "proportion": "image-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 2,
+          "mobile": 0
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 3,
+          "mobile": 4
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 11,
+      "source": "night-gallery",
+      "recipe": {
+        "navigation": "Index",
+        "hero": "Monument",
+        "collection": "Mosaic",
+        "mobile_collection": "Sequence",
+        "narrative": "AfterCollection",
+        "visit": "Columns",
+        "proportion": "balanced",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 4,
+          "mobile": 4
+        },
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 2,
+          "mobile": 0
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 12,
+      "source": "garden-notes",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Stage",
+        "collection": "Rows",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Band",
+        "proportion": "type-led",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 5,
+          "mobile": 2
+        },
+        {
+          "desktop": 3,
+          "mobile": 4
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 2,
+          "mobile": 0
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 13,
+      "source": "editorial-table",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Split",
+        "collection": "Grid",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Columns",
+        "proportion": "balanced",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 0,
+          "mobile": 0
+        },
+        {
+          "desktop": 7,
+          "mobile": 5
+        },
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 4,
+          "mobile": 2
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 14,
+      "source": "open-index",
+      "recipe": {
+        "navigation": "Rail",
+        "hero": "Diptych",
+        "collection": "Rows",
+        "mobile_collection": "Compact",
+        "narrative": "AfterCollection",
+        "visit": "Band",
+        "proportion": "type-led",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 7,
+          "mobile": 5
+        },
+        {
+          "desktop": 0,
+          "mobile": 0
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 15,
+      "source": "night-gallery",
+      "recipe": {
+        "navigation": "Index",
+        "hero": "Monument",
+        "collection": "Mosaic",
+        "mobile_collection": "Sequence",
+        "narrative": "AfterCollection",
+        "visit": "Columns",
+        "proportion": "type-led",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 4,
+          "mobile": 4
+        },
+        {
+          "desktop": 1,
+          "mobile": 0
+        },
+        {
+          "desktop": 7,
+          "mobile": 5
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 16,
+      "source": "garden-notes",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Stage",
+        "collection": "Rows",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Band",
+        "proportion": "balanced",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 4,
+          "mobile": 2
+        },
+        {
+          "desktop": 4,
+          "mobile": 4
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 2,
+          "mobile": 0
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 17,
+      "source": "editorial-table",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Split",
+        "collection": "Grid",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Columns",
+        "proportion": "image-led",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 2,
+          "mobile": 0
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 4,
+          "mobile": 4
+        },
+        {
+          "desktop": 4,
+          "mobile": 2
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 18,
+      "source": "open-index",
+      "recipe": {
+        "navigation": "Rail",
+        "hero": "Diptych",
+        "collection": "Rows",
+        "mobile_collection": "Compact",
+        "narrative": "AfterCollection",
+        "visit": "Band",
+        "proportion": "balanced",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 5,
+          "mobile": 5
+        },
+        {
+          "desktop": 2,
+          "mobile": 0
+        },
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 4,
+          "mobile": 4
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 19,
+      "source": "night-gallery",
+      "recipe": {
+        "navigation": "Index",
+        "hero": "Monument",
+        "collection": "Mosaic",
+        "mobile_collection": "Sequence",
+        "narrative": "AfterCollection",
+        "visit": "Columns",
+        "proportion": "balanced",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 4,
+          "mobile": 4
+        },
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 2,
+          "mobile": 0
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 20,
+      "source": "garden-notes",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Stage",
+        "collection": "Rows",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Band",
+        "proportion": "type-led",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 5,
+          "mobile": 2
+        },
+        {
+          "desktop": 3,
+          "mobile": 4
+        },
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 2,
+          "mobile": 0
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 21,
+      "source": "editorial-table",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Split",
+        "collection": "Grid",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Columns",
+        "proportion": "image-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 1,
+          "mobile": 0
+        },
+        {
+          "desktop": 7,
+          "mobile": 5
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 3,
+          "mobile": 2
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 22,
+      "source": "open-index",
+      "recipe": {
+        "navigation": "Rail",
+        "hero": "Diptych",
+        "collection": "Rows",
+        "mobile_collection": "Compact",
+        "narrative": "AfterCollection",
+        "visit": "Band",
+        "proportion": "type-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 6,
+          "mobile": 5
+        },
+        {
+          "desktop": 1,
+          "mobile": 0
+        },
+        {
+          "desktop": 6,
+          "mobile": 4
+        },
+        {
+          "desktop": 4,
+          "mobile": 4
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 23,
+      "source": "night-gallery",
+      "recipe": {
+        "navigation": "Index",
+        "hero": "Monument",
+        "collection": "Mosaic",
+        "mobile_collection": "Sequence",
+        "narrative": "AfterCollection",
+        "visit": "Columns",
+        "proportion": "balanced",
+        "measure": "wide"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 5,
+          "mobile": 4
+        },
+        {
+          "desktop": 1,
+          "mobile": 0
+        },
+        {
+          "desktop": 7,
+          "mobile": 5
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    },
+    {
+      "attempt": 24,
+      "source": "garden-notes",
+      "recipe": {
+        "navigation": "Top",
+        "hero": "Stage",
+        "collection": "Rows",
+        "mobile_collection": "Stack",
+        "narrative": "BeforeCollection",
+        "visit": "Band",
+        "proportion": "type-led",
+        "measure": "contained"
+      },
+      "valid": true,
+      "distances": [
+        {
+          "desktop": 4,
+          "mobile": 2
+        },
+        {
+          "desktop": 4,
+          "mobile": 4
+        },
+        {
+          "desktop": 7,
+          "mobile": 5
+        },
+        {
+          "desktop": 1,
+          "mobile": 0
+        }
+      ],
+      "decision": "REJECT_LOW_STRUCTURAL_NOVELTY"
+    }
+  ]
+}

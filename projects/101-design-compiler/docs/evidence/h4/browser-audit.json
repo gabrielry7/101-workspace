@@ -1,0 +1,5986 @@
+{
+  "schema_version": "1.0.0",
+  "browser": "Edg/154.0.4258.62",
+  "evaluated_at": "2026-10-08T23:55:42.782Z",
+  "client_id": "101-design-compiler-fixture-review",
+  "project_id": "h3-restaurante-media-pilot",
+  "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+  "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+  "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+  "receipts": [
+    {
+      "label": "editorial-desktop",
+      "variant": "editorial",
+      "semantic_page": "/",
+      "route": "/h4/editorial/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "html_sha256": "352db30994f7feca5632b1c313bded8f17703564f039ef0ba663bcb34c8a7a0c",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/editorial-desktop.png",
+      "screenshot_sha256": "ac12d2bf2905b94a3a4676ffe77a0541652cc84ae9a0f929c212678ab6860dfb",
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "page_body_bytes": 2363075,
+      "observation": {
+        "semantic_page": "/",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "scope": "fixture-restaurante-001",
+            "page": "/",
+            "required": "true",
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "f-name",
+                "scope": "fixture-restaurante-001",
+                "text": "Restaurante — fixture ficticio"
+              }
+            ],
+            "offerings": []
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [
+          {
+            "asset_id": "usda-ars-d255-19",
+            "usage_id": "h3-real-pilot-atmospheric",
+            "grant_id": "usda-ars-d255-19-pilot-public-domain",
+            "module": "semantic-7bf9d33184f7e923438acadd",
+            "page": "/",
+            "role": "ATMOSPHERIC",
+            "hash": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+            "src": "/media/h3-pilot/usda-ars-d255-19.jpg",
+            "alt": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación",
+            "caption": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+            "credit": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+            "notices": [
+              "USDA ARS no respalda este fixture, producto, empresa ni posición."
+            ],
+            "decoded": true,
+            "width": 2700,
+            "height": 1819,
+            "display_width": 640,
+            "display_height": 431.15625,
+            "object_fit": "fill",
+            "filter": "none"
+          }
+        ],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/editorial/",
+            "current": true
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": false
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "document_width": 1265,
+        "document_height": 1429,
+        "header": {
+          "x": 54.390625,
+          "y": 54.390625,
+          "width": 1156.21875,
+          "height": 42
+        },
+        "nav": {
+          "x": 54.390625,
+          "y": 96.390625,
+          "width": 1156.21875,
+          "height": 84
+        },
+        "stage": {
+          "x": 54.390625,
+          "y": 180.390625,
+          "width": 1156.21875,
+          "height": 945.796875
+        },
+        "title": {
+          "x": 54.390625,
+          "y": 251.578125,
+          "width": 942.75,
+          "height": 203.5
+        },
+        "image": {
+          "x": 312.5,
+          "y": 503.078125,
+          "width": 640,
+          "height": 431.15625
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 54.390625,
+            "y": 212.390625,
+            "width": 1156.21875,
+            "height": 242.6875
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 54.390625,
+          "y": 116.390625,
+          "width": 95.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 182.3125,
+          "y": 116.390625,
+          "width": 166.703125,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 212.390625,
+          "width": 485.15625,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Restaurante — fixture ficticio",
+          "font_px": 96,
+          "contrast": 12.991553532800273,
+          "x": 54.390625,
+          "y": 251.578125,
+          "width": 942.75,
+          "height": 203.5
+        },
+        {
+          "tag": "P",
+          "text": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus plato",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 312.5,
+          "y": 950.234375,
+          "width": 525.578125,
+          "height": 20.796875
+        },
+        {
+          "tag": "P",
+          "text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 312.5,
+          "y": 978.21875,
+          "width": 525.578125,
+          "height": 20.796875
+        },
+        {
+          "tag": "P",
+          "text": "USDA ARS no respalda este fixture, producto, empresa ni posición.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 312.5,
+          "y": 1006.203125,
+          "width": 525.578125,
+          "height": 20.796875
+        },
+        {
+          "tag": "A",
+          "text": "Fuente y permisos · USDA Agricultural Research Service",
+          "font_px": 13,
+          "contrast": 8.410416464892014,
+          "x": 312.5,
+          "y": 1034.1875,
+          "width": 315.75,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 1151.1875,
+          "width": 566.015625,
+          "height": 44.78125
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 1205.5625,
+          "width": 566.015625,
+          "height": 22.390625
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 1237.546875,
+          "width": 1156.21875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 243.109375,
+          "y": 1330.546875,
+          "width": 55.171875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 318.28125,
+          "y": 1330.546875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 382.28125,
+          "y": 1330.546875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 458.28125,
+          "y": 1330.546875,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 2.8000000044703484,
+          "local": true
+        },
+        {
+          "path": "/media/h3-pilot/usda-ars-d255-19.jpg",
+          "type": "img",
+          "bytes": 2351102,
+          "transfer_bytes": 2351402,
+          "duration_ms": 10.200000002980232,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 2.7000000029802322,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 30.100000001490116,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 95.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 166.703125
+            },
+            {
+              "label": "Fuente y permisos · USDA Agricultural Research Service",
+              "height": 44,
+              "width": 315.75
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 1156.21875
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 55.171875
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Restaurante — fixture ficticio"
+        },
+        {
+          "role": "image",
+          "name": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Fuente y permisos · USDA Agricultural Research Service"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "editorial-desktop-offering",
+      "variant": "editorial",
+      "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+      "route": "/h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "html_sha256": "022d1caf93af4cdef358f1145945f8a6197bdf1c8b4bc1ef595638705c4741a9",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/editorial-desktop-offering.png",
+      "screenshot_sha256": "132779453f927fd7f476ea75e0fc1c66a3d5f1aeed6f8d1e4d2c40f7f64d39a4",
+      "original_sha256": null,
+      "page_body_bytes": 11373,
+      "observation": {
+        "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "scope": "fixture-restaurante-001-branch-1",
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "required": "true",
+            "component": "OfferingCollection",
+            "facts": [
+              {
+                "id": "f-offering-1",
+                "scope": "fixture-restaurante-001-branch-1",
+                "text": "Ítem de menú de prueba"
+              }
+            ],
+            "offerings": [
+              {
+                "id": "offering-1",
+                "scope": "fixture-restaurante-001-branch-1"
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/editorial/",
+            "current": false
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": true
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "document_width": 1265,
+        "document_height": 918,
+        "header": {
+          "x": 54.390625,
+          "y": 54.390625,
+          "width": 1156.21875,
+          "height": 42
+        },
+        "nav": {
+          "x": 54.390625,
+          "y": 96.390625,
+          "width": 1156.21875,
+          "height": 84
+        },
+        "stage": {
+          "x": 54.390625,
+          "y": 180.390625,
+          "width": 1156.21875,
+          "height": 434.71875
+        },
+        "title": {
+          "x": 54.390625,
+          "y": 251.578125,
+          "width": 942.75,
+          "height": 101.75
+        },
+        "image": null,
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "visible": true,
+            "x": 54.390625,
+            "y": 212.390625,
+            "width": 1156.21875,
+            "height": 354.71875
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 54.390625,
+          "y": 116.390625,
+          "width": 89.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 176.3125,
+          "y": 116.390625,
+          "width": 177.6875,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 212.390625,
+          "width": 485.15625,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Oferta",
+          "font_px": 96,
+          "contrast": 12.991553532800273,
+          "x": 54.390625,
+          "y": 251.578125,
+          "width": 942.75,
+          "height": 101.75
+        },
+        {
+          "tag": "P",
+          "text": "Alcance: fixture-restaurante-001-branch-1",
+          "font_px": 16,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 369.328125,
+          "width": 646.875,
+          "height": 25.59375
+        },
+        {
+          "tag": "H2",
+          "text": "Ítem de menú de prueba",
+          "font_px": 32,
+          "contrast": 12.991553532800273,
+          "x": 54.390625,
+          "y": 455.921875,
+          "width": 646.875,
+          "height": 51.1875
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 640.109375,
+          "width": 566.015625,
+          "height": 44.78125
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 694.484375,
+          "width": 566.015625,
+          "height": 22.390625
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 726.46875,
+          "width": 1156.21875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 243.109375,
+          "y": 819.46875,
+          "width": 55.171875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 318.28125,
+          "y": 819.46875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 382.28125,
+          "y": 819.46875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 458.28125,
+          "y": 819.46875,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 2,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 1.6999999955296516,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 12.199999995529652,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 89.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 177.6875
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 1156.21875
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 55.171875
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Oferta"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        },
+        {
+          "role": "heading",
+          "name": "Ítem de menú de prueba"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "editorial-mobile",
+      "variant": "editorial",
+      "semantic_page": "/",
+      "route": "/h4/editorial/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "html_sha256": "352db30994f7feca5632b1c313bded8f17703564f039ef0ba663bcb34c8a7a0c",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/editorial-mobile.png",
+      "screenshot_sha256": "3f1bf746c03520a6bdbf97b0cc157829ac03971f8c7341d079f120c002ce68ba",
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "page_body_bytes": 2363075,
+      "observation": {
+        "semantic_page": "/",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "scope": "fixture-restaurante-001",
+            "page": "/",
+            "required": "true",
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "f-name",
+                "scope": "fixture-restaurante-001",
+                "text": "Restaurante — fixture ficticio"
+              }
+            ],
+            "offerings": []
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [
+          {
+            "asset_id": "usda-ars-d255-19",
+            "usage_id": "h3-real-pilot-atmospheric",
+            "grant_id": "usda-ars-d255-19-pilot-public-domain",
+            "module": "semantic-7bf9d33184f7e923438acadd",
+            "page": "/",
+            "role": "ATMOSPHERIC",
+            "hash": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+            "src": "/media/h3-pilot/usda-ars-d255-19.jpg",
+            "alt": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación",
+            "caption": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+            "credit": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+            "notices": [
+              "USDA ARS no respalda este fixture, producto, empresa ni posición."
+            ],
+            "decoded": true,
+            "width": 2700,
+            "height": 1819,
+            "display_width": 334,
+            "display_height": 225.015625,
+            "object_fit": "fill",
+            "filter": "none"
+          }
+        ],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/editorial/",
+            "current": true
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": false
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "document_width": 390,
+        "document_height": 1230,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 334,
+          "height": 69
+        },
+        "nav": {
+          "x": 28,
+          "y": 97,
+          "width": 334,
+          "height": 84
+        },
+        "stage": {
+          "x": 28,
+          "y": 181,
+          "width": 334,
+          "height": 648.421875
+        },
+        "title": {
+          "x": 28,
+          "y": 244.1875,
+          "width": 334,
+          "height": 89.875
+        },
+        "image": {
+          "x": 28,
+          "y": 366.0625,
+          "width": 334,
+          "height": 225.015625
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 28,
+            "y": 205,
+            "width": 334,
+            "height": 129.0625
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 117,
+          "width": 95.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 155.921875,
+          "y": 117,
+          "width": 166.703125,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 205,
+          "width": 334,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Restaurante — fixture ficticio",
+          "font_px": 42.4,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 244.1875,
+          "width": 334,
+          "height": 89.875
+        },
+        {
+          "tag": "P",
+          "text": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus plato",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 607.078125,
+          "width": 334,
+          "height": 41.59375
+        },
+        {
+          "tag": "P",
+          "text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 655.859375,
+          "width": 334,
+          "height": 41.59375
+        },
+        {
+          "tag": "P",
+          "text": "USDA ARS no respalda este fixture, producto, empresa ni posición.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 704.640625,
+          "width": 334,
+          "height": 41.59375
+        },
+        {
+          "tag": "A",
+          "text": "Fuente y permisos · USDA Agricultural Research Service",
+          "font_px": 13,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 753.421875,
+          "width": 315.75,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 854.421875,
+          "width": 334,
+          "height": 67.171875
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 931.1875,
+          "width": 334,
+          "height": 44.78125
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 985.5625,
+          "width": 334,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 1105.5625,
+          "width": 55.171875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 103.171875,
+          "y": 1105.5625,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 167.171875,
+          "y": 1105.5625,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 1157.5625,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 2.2999999970197678,
+          "local": true
+        },
+        {
+          "path": "/media/h3-pilot/usda-ars-d255-19.jpg",
+          "type": "img",
+          "bytes": 2351102,
+          "transfer_bytes": 2351402,
+          "duration_ms": 13.700000002980232,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 1.7000000029802322,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 71.10000000149012,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 95.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 166.703125
+            },
+            {
+              "label": "Fuente y permisos · USDA Agricultural Research Service",
+              "height": 44,
+              "width": 315.75
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 334
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 55.171875
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Restaurante — fixture ficticio"
+        },
+        {
+          "role": "image",
+          "name": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Fuente y permisos · USDA Agricultural Research Service"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "editorial-mobile-offering",
+      "variant": "editorial",
+      "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+      "route": "/h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "html_sha256": "022d1caf93af4cdef358f1145945f8a6197bdf1c8b4bc1ef595638705c4741a9",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/editorial-mobile-offering.png",
+      "screenshot_sha256": "9cde3d5db2c2cb9537300687f164fee92a7761cf598d5a688cca7c27e8e0c506",
+      "original_sha256": null,
+      "page_body_bytes": 11373,
+      "observation": {
+        "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "scope": "fixture-restaurante-001-branch-1",
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "required": "true",
+            "component": "OfferingCollection",
+            "facts": [
+              {
+                "id": "f-offering-1",
+                "scope": "fixture-restaurante-001-branch-1",
+                "text": "Ítem de menú de prueba"
+              }
+            ],
+            "offerings": [
+              {
+                "id": "offering-1",
+                "scope": "fixture-restaurante-001-branch-1"
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/editorial/",
+            "current": false
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": true
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "document_width": 390,
+        "document_height": 922,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 334,
+          "height": 69
+        },
+        "nav": {
+          "x": 28,
+          "y": 97,
+          "width": 334,
+          "height": 84
+        },
+        "stage": {
+          "x": 28,
+          "y": 181,
+          "width": 334,
+          "height": 341.109375
+        },
+        "title": {
+          "x": 28,
+          "y": 244.1875,
+          "width": 334,
+          "height": 44.9375
+        },
+        "image": null,
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "visible": true,
+            "x": 28,
+            "y": 205,
+            "width": 334,
+            "height": 285.109375
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 117,
+          "width": 89.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 149.921875,
+          "y": 117,
+          "width": 177.6875,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 205,
+          "width": 334,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Oferta",
+          "font_px": 42.4,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 244.1875,
+          "width": 334,
+          "height": 44.9375
+        },
+        {
+          "tag": "P",
+          "text": "Alcance: fixture-restaurante-001-branch-1",
+          "font_px": 16,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 305.125,
+          "width": 334,
+          "height": 25.59375
+        },
+        {
+          "tag": "H2",
+          "text": "Ítem de menú de prueba",
+          "font_px": 24,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 391.71875,
+          "width": 334,
+          "height": 38.390625
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 547.109375,
+          "width": 334,
+          "height": 67.171875
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 623.875,
+          "width": 334,
+          "height": 44.78125
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 678.25,
+          "width": 334,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 798.25,
+          "width": 55.171875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 103.171875,
+          "y": 798.25,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 167.171875,
+          "y": 798.25,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 850.25,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 1.7999999970197678,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 1.3999999985098839,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 10.700000002980232,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 89.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 177.6875
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 334
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 55.171875
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Oferta"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        },
+        {
+          "role": "heading",
+          "name": "Ítem de menú de prueba"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "split-desktop",
+      "variant": "split",
+      "semantic_page": "/",
+      "route": "/h4/split/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "html_sha256": "b96ca68fdbd92850b60d47f40723975dd07e01550df7a0603fb2ec701cf36e2a",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/split-desktop.png",
+      "screenshot_sha256": "a98b91a43568f98f974d84134b9b413b6e23973c20ec5fd48d7e3f27a6f7e37a",
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "page_body_bytes": 2363048,
+      "observation": {
+        "semantic_page": "/",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "scope": "fixture-restaurante-001",
+            "page": "/",
+            "required": "true",
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "f-name",
+                "scope": "fixture-restaurante-001",
+                "text": "Restaurante — fixture ficticio"
+              }
+            ],
+            "offerings": []
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [
+          {
+            "asset_id": "usda-ars-d255-19",
+            "usage_id": "h3-real-pilot-atmospheric",
+            "grant_id": "usda-ars-d255-19-pilot-public-domain",
+            "module": "semantic-7bf9d33184f7e923438acadd",
+            "page": "/",
+            "role": "ATMOSPHERIC",
+            "hash": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+            "src": "/media/h3-pilot/usda-ars-d255-19.jpg",
+            "alt": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación",
+            "caption": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+            "credit": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+            "notices": [
+              "USDA ARS no respalda este fixture, producto, empresa ni posición."
+            ],
+            "decoded": true,
+            "width": 2700,
+            "height": 1819,
+            "display_width": 640,
+            "display_height": 431.15625,
+            "object_fit": "fill",
+            "filter": "none"
+          }
+        ],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/split/",
+            "current": true
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": false
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "document_width": 1265,
+        "document_height": 1154,
+        "header": {
+          "x": 54.390625,
+          "y": 54.390625,
+          "width": 1156.21875,
+          "height": 42
+        },
+        "nav": {
+          "x": 54.390625,
+          "y": 96.390625,
+          "width": 1156.21875,
+          "height": 84
+        },
+        "stage": {
+          "x": 54.390625,
+          "y": 180.390625,
+          "width": 1156.21875,
+          "height": 671.109375
+        },
+        "title": {
+          "x": 54.390625,
+          "y": 267.578125,
+          "width": 474.390625,
+          "height": 135.65625
+        },
+        "image": {
+          "x": 568.78125,
+          "y": 228.390625,
+          "width": 640,
+          "height": 431.15625
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 54.390625,
+            "y": 228.390625,
+            "width": 474.390625,
+            "height": 174.84375
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 54.390625,
+          "y": 116.390625,
+          "width": 95.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 182.3125,
+          "y": 116.390625,
+          "width": 166.703125,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 228.390625,
+          "width": 474.390625,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Restaurante — fixture ficticio",
+          "font_px": 64,
+          "contrast": 12.991553532800273,
+          "x": 54.390625,
+          "y": 267.578125,
+          "width": 474.390625,
+          "height": 135.65625
+        },
+        {
+          "tag": "P",
+          "text": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus plato",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 568.78125,
+          "y": 675.546875,
+          "width": 525.578125,
+          "height": 20.796875
+        },
+        {
+          "tag": "P",
+          "text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 568.78125,
+          "y": 703.53125,
+          "width": 525.578125,
+          "height": 20.796875
+        },
+        {
+          "tag": "P",
+          "text": "USDA ARS no respalda este fixture, producto, empresa ni posición.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 568.78125,
+          "y": 731.515625,
+          "width": 525.578125,
+          "height": 20.796875
+        },
+        {
+          "tag": "A",
+          "text": "Fuente y permisos · USDA Agricultural Research Service",
+          "font_px": 13,
+          "contrast": 8.410416464892014,
+          "x": 568.78125,
+          "y": 759.5,
+          "width": 315.75,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 876.5,
+          "width": 566.015625,
+          "height": 44.78125
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 930.875,
+          "width": 566.015625,
+          "height": 22.390625
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 962.859375,
+          "width": 1156.21875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 243.109375,
+          "y": 1055.859375,
+          "width": 50.4375,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 313.546875,
+          "y": 1055.859375,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 377.546875,
+          "y": 1055.859375,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 453.546875,
+          "y": 1055.859375,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 2.5,
+          "local": true
+        },
+        {
+          "path": "/media/h3-pilot/usda-ars-d255-19.jpg",
+          "type": "img",
+          "bytes": 2351102,
+          "transfer_bytes": 2351402,
+          "duration_ms": 7.299999997019768,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 1.6000000014901161,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 18,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 95.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 166.703125
+            },
+            {
+              "label": "Fuente y permisos · USDA Agricultural Research Service",
+              "height": 44,
+              "width": 315.75
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 1156.21875
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 50.4375
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Restaurante — fixture ficticio"
+        },
+        {
+          "role": "image",
+          "name": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Fuente y permisos · USDA Agricultural Research Service"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "split-desktop-offering",
+      "variant": "split",
+      "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+      "route": "/h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "html_sha256": "1b0db25ca8b168f77f90be3acc7887ba155e4b8d46d94e8f850f937e951f3a12",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/split-desktop-offering.png",
+      "screenshot_sha256": "8995f0fb67be280b059724163880ba5fb7224fd047d13b856b6be6162ea548af",
+      "original_sha256": null,
+      "page_body_bytes": 11346,
+      "observation": {
+        "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "scope": "fixture-restaurante-001-branch-1",
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "required": "true",
+            "component": "OfferingCollection",
+            "facts": [
+              {
+                "id": "f-offering-1",
+                "scope": "fixture-restaurante-001-branch-1",
+                "text": "Ítem de menú de prueba"
+              }
+            ],
+            "offerings": [
+              {
+                "id": "offering-1",
+                "scope": "fixture-restaurante-001-branch-1"
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/split/",
+            "current": false
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": true
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "document_width": 1280,
+        "document_height": 900,
+        "header": {
+          "x": 54.390625,
+          "y": 54.390625,
+          "width": 1171.21875,
+          "height": 42
+        },
+        "nav": {
+          "x": 54.390625,
+          "y": 96.390625,
+          "width": 1171.21875,
+          "height": 84
+        },
+        "stage": {
+          "x": 54.390625,
+          "y": 180.390625,
+          "width": 1171.21875,
+          "height": 416.796875
+        },
+        "title": {
+          "x": 54.390625,
+          "y": 267.578125,
+          "width": 510.65625,
+          "height": 67.828125
+        },
+        "image": null,
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "visible": true,
+            "x": 54.390625,
+            "y": 228.390625,
+            "width": 768,
+            "height": 320.796875
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 54.390625,
+          "y": 116.390625,
+          "width": 89.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 176.3125,
+          "y": 116.390625,
+          "width": 177.6875,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 228.390625,
+          "width": 485.15625,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Oferta",
+          "font_px": 64,
+          "contrast": 12.991553532800273,
+          "x": 54.390625,
+          "y": 267.578125,
+          "width": 510.65625,
+          "height": 67.828125
+        },
+        {
+          "tag": "P",
+          "text": "Alcance: fixture-restaurante-001-branch-1",
+          "font_px": 16,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 351.40625,
+          "width": 646.875,
+          "height": 25.59375
+        },
+        {
+          "tag": "H2",
+          "text": "Ítem de menú de prueba",
+          "font_px": 32,
+          "contrast": 12.991553532800273,
+          "x": 54.390625,
+          "y": 438,
+          "width": 646.875,
+          "height": 51.1875
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 622.1875,
+          "width": 566.015625,
+          "height": 44.78125
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 676.5625,
+          "width": 566.015625,
+          "height": 22.390625
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 708.546875,
+          "width": 1171.21875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 243.109375,
+          "y": 801.546875,
+          "width": 50.4375,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 313.546875,
+          "y": 801.546875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 377.546875,
+          "y": 801.546875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 453.546875,
+          "y": 801.546875,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 1.8999999985098839,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 1.7999999970197678,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 11.5,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 89.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 177.6875
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 1156.21875
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 50.4375
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Oferta"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        },
+        {
+          "role": "heading",
+          "name": "Ítem de menú de prueba"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "split-mobile",
+      "variant": "split",
+      "semantic_page": "/",
+      "route": "/h4/split/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "html_sha256": "b96ca68fdbd92850b60d47f40723975dd07e01550df7a0603fb2ec701cf36e2a",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/split-mobile.png",
+      "screenshot_sha256": "18375845031ab0aace49cfb7587b168da01a3ef92ab0677879f05914c9b22855",
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "page_body_bytes": 2363048,
+      "observation": {
+        "semantic_page": "/",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "scope": "fixture-restaurante-001",
+            "page": "/",
+            "required": "true",
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "f-name",
+                "scope": "fixture-restaurante-001",
+                "text": "Restaurante — fixture ficticio"
+              }
+            ],
+            "offerings": []
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [
+          {
+            "asset_id": "usda-ars-d255-19",
+            "usage_id": "h3-real-pilot-atmospheric",
+            "grant_id": "usda-ars-d255-19-pilot-public-domain",
+            "module": "semantic-7bf9d33184f7e923438acadd",
+            "page": "/",
+            "role": "ATMOSPHERIC",
+            "hash": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+            "src": "/media/h3-pilot/usda-ars-d255-19.jpg",
+            "alt": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación",
+            "caption": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+            "credit": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+            "notices": [
+              "USDA ARS no respalda este fixture, producto, empresa ni posición."
+            ],
+            "decoded": true,
+            "width": 2700,
+            "height": 1819,
+            "display_width": 334,
+            "display_height": 225.015625,
+            "object_fit": "fill",
+            "filter": "none"
+          }
+        ],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/split/",
+            "current": true
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": false
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "document_width": 390,
+        "document_height": 1165,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 334,
+          "height": 41
+        },
+        "nav": {
+          "x": 28,
+          "y": 69,
+          "width": 334,
+          "height": 85
+        },
+        "stage": {
+          "x": 28,
+          "y": 154,
+          "width": 334,
+          "height": 610.359375
+        },
+        "title": {
+          "x": 28,
+          "y": 209.1875,
+          "width": 230.953125,
+          "height": 67.8125
+        },
+        "image": {
+          "x": 28,
+          "y": 301,
+          "width": 334,
+          "height": 225.015625
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 28,
+            "y": 170,
+            "width": 334,
+            "height": 107
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 89,
+          "width": 95.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 155.921875,
+          "y": 89,
+          "width": 166.703125,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 170,
+          "width": 334,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Restaurante — fixture ficticio",
+          "font_px": 32,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 209.1875,
+          "width": 230.953125,
+          "height": 67.8125
+        },
+        {
+          "tag": "P",
+          "text": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus plato",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 542.015625,
+          "width": 334,
+          "height": 41.59375
+        },
+        {
+          "tag": "P",
+          "text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 590.796875,
+          "width": 334,
+          "height": 41.59375
+        },
+        {
+          "tag": "P",
+          "text": "USDA ARS no respalda este fixture, producto, empresa ni posición.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 639.578125,
+          "width": 334,
+          "height": 41.59375
+        },
+        {
+          "tag": "A",
+          "text": "Fuente y permisos · USDA Agricultural Research Service",
+          "font_px": 13,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 688.359375,
+          "width": 315.75,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 789.359375,
+          "width": 334,
+          "height": 67.171875
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 866.125,
+          "width": 334,
+          "height": 44.78125
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 920.5,
+          "width": 334,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 1040.5,
+          "width": 50.4375,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 98.4375,
+          "y": 1040.5,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 162.4375,
+          "y": 1040.5,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 1092.5,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 4,
+          "local": true
+        },
+        {
+          "path": "/media/h3-pilot/usda-ars-d255-19.jpg",
+          "type": "img",
+          "bytes": 2351102,
+          "transfer_bytes": 2351402,
+          "duration_ms": 11.700000002980232,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 3.4000000059604645,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 27.099999994039536,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 95.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 166.703125
+            },
+            {
+              "label": "Fuente y permisos · USDA Agricultural Research Service",
+              "height": 44,
+              "width": 315.75
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 334
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 50.4375
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Restaurante — fixture ficticio"
+        },
+        {
+          "role": "image",
+          "name": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Fuente y permisos · USDA Agricultural Research Service"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "split-mobile-offering",
+      "variant": "split",
+      "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+      "route": "/h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "html_sha256": "1b0db25ca8b168f77f90be3acc7887ba155e4b8d46d94e8f850f937e951f3a12",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/split-mobile-offering.png",
+      "screenshot_sha256": "e95b8be7c943c41ccef0af3321778dc8b9b3ad44b67a5a1f0dd6cfb0bff40150",
+      "original_sha256": null,
+      "page_body_bytes": 11346,
+      "observation": {
+        "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "scope": "fixture-restaurante-001-branch-1",
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "required": "true",
+            "component": "OfferingCollection",
+            "facts": [
+              {
+                "id": "f-offering-1",
+                "scope": "fixture-restaurante-001-branch-1",
+                "text": "Ítem de menú de prueba"
+              }
+            ],
+            "offerings": [
+              {
+                "id": "offering-1",
+                "scope": "fixture-restaurante-001-branch-1"
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/split/",
+            "current": false
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": true
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "document_width": 390,
+        "document_height": 876,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 334,
+          "height": 41
+        },
+        "nav": {
+          "x": 28,
+          "y": 69,
+          "width": 334,
+          "height": 85
+        },
+        "stage": {
+          "x": 28,
+          "y": 154,
+          "width": 334,
+          "height": 322.078125
+        },
+        "title": {
+          "x": 28,
+          "y": 209.1875,
+          "width": 230.953125,
+          "height": 33.90625
+        },
+        "image": null,
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "visible": true,
+            "x": 28,
+            "y": 170,
+            "width": 334,
+            "height": 274.078125
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 89,
+          "width": 89.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 149.921875,
+          "y": 89,
+          "width": 177.6875,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 170,
+          "width": 334,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Oferta",
+          "font_px": 32,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 209.1875,
+          "width": 230.953125,
+          "height": 33.90625
+        },
+        {
+          "tag": "P",
+          "text": "Alcance: fixture-restaurante-001-branch-1",
+          "font_px": 16,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 259.09375,
+          "width": 334,
+          "height": 25.59375
+        },
+        {
+          "tag": "H2",
+          "text": "Ítem de menú de prueba",
+          "font_px": 24,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 345.6875,
+          "width": 334,
+          "height": 38.390625
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 501.078125,
+          "width": 334,
+          "height": 67.171875
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 577.84375,
+          "width": 334,
+          "height": 44.78125
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 632.21875,
+          "width": 334,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 752.21875,
+          "width": 50.4375,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 98.4375,
+          "y": 752.21875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 162.4375,
+          "y": 752.21875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 804.21875,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 2.399999998509884,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 2.2000000029802322,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 18,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 89.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 177.6875
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 334
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 50.4375
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Oferta"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        },
+        {
+          "role": "heading",
+          "name": "Ítem de menú de prueba"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "rail-desktop",
+      "variant": "rail",
+      "semantic_page": "/",
+      "route": "/h4/rail/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "html_sha256": "0f0cb061f12d8d0481f077cbba5d8fff895907b90d9d5c3ac5da13915f58bd59",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/rail-desktop.png",
+      "screenshot_sha256": "80fa9c37232b662a7a7150b83833bc34310557ec969bcbab58c492e69ba0a071",
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "page_body_bytes": 2363041,
+      "observation": {
+        "semantic_page": "/",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "scope": "fixture-restaurante-001",
+            "page": "/",
+            "required": "true",
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "f-name",
+                "scope": "fixture-restaurante-001",
+                "text": "Restaurante — fixture ficticio"
+              }
+            ],
+            "offerings": []
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [
+          {
+            "asset_id": "usda-ars-d255-19",
+            "usage_id": "h3-real-pilot-atmospheric",
+            "grant_id": "usda-ars-d255-19-pilot-public-domain",
+            "module": "semantic-7bf9d33184f7e923438acadd",
+            "page": "/",
+            "role": "ATMOSPHERIC",
+            "hash": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+            "src": "/media/h3-pilot/usda-ars-d255-19.jpg",
+            "alt": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación",
+            "caption": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+            "credit": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+            "notices": [
+              "USDA ARS no respalda este fixture, producto, empresa ni posición."
+            ],
+            "decoded": true,
+            "width": 2700,
+            "height": 1819,
+            "display_width": 480,
+            "display_height": 323.375,
+            "object_fit": "fill",
+            "filter": "none"
+          }
+        ],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/rail/",
+            "current": true
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": false
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "document_width": 1265,
+        "document_height": 1072,
+        "header": {
+          "x": 54.390625,
+          "y": 54.390625,
+          "width": 1156.21875,
+          "height": 42
+        },
+        "nav": {
+          "x": 54.390625,
+          "y": 128.390625,
+          "width": 208,
+          "height": 640.78125
+        },
+        "stage": {
+          "x": 302.390625,
+          "y": 128.390625,
+          "width": 908.21875,
+          "height": 640.78125
+        },
+        "title": {
+          "x": 302.390625,
+          "y": 167.578125,
+          "width": 628.5,
+          "height": 54.265625
+        },
+        "image": {
+          "x": 730.609375,
+          "y": 253.84375,
+          "width": 480,
+          "height": 323.375
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 302.390625,
+            "y": 128.390625,
+            "width": 908.21875,
+            "height": 93.453125
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 54.390625,
+          "y": 128.390625,
+          "width": 95.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 54.390625,
+          "y": 188.390625,
+          "width": 166.703125,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 302.390625,
+          "y": 128.390625,
+          "width": 485.15625,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Restaurante — fixture ficticio",
+          "font_px": 51.2,
+          "contrast": 12.991553532800273,
+          "x": 302.390625,
+          "y": 167.578125,
+          "width": 628.5,
+          "height": 54.265625
+        },
+        {
+          "tag": "P",
+          "text": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus plato",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 730.609375,
+          "y": 593.21875,
+          "width": 480,
+          "height": 20.796875
+        },
+        {
+          "tag": "P",
+          "text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 730.609375,
+          "y": 621.203125,
+          "width": 480,
+          "height": 20.796875
+        },
+        {
+          "tag": "P",
+          "text": "USDA ARS no respalda este fixture, producto, empresa ni posición.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 730.609375,
+          "y": 649.1875,
+          "width": 480,
+          "height": 20.796875
+        },
+        {
+          "tag": "A",
+          "text": "Fuente y permisos · USDA Agricultural Research Service",
+          "font_px": 13,
+          "contrast": 8.410416464892014,
+          "x": 730.609375,
+          "y": 677.171875,
+          "width": 315.75,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 794.171875,
+          "width": 566.015625,
+          "height": 44.78125
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 848.546875,
+          "width": 566.015625,
+          "height": 22.390625
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 880.53125,
+          "width": 1156.21875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 243.109375,
+          "y": 973.53125,
+          "width": 50.4375,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 313.546875,
+          "y": 973.53125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 377.546875,
+          "y": 973.53125,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 453.546875,
+          "y": 973.53125,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 2.5,
+          "local": true
+        },
+        {
+          "path": "/media/h3-pilot/usda-ars-d255-19.jpg",
+          "type": "img",
+          "bytes": 2351102,
+          "transfer_bytes": 2351402,
+          "duration_ms": 7.9000000059604645,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 2.7999999970197678,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 21.100000001490116,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 95.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 166.703125
+            },
+            {
+              "label": "Fuente y permisos · USDA Agricultural Research Service",
+              "height": 44,
+              "width": 315.75
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 1156.21875
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 50.4375
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Restaurante — fixture ficticio"
+        },
+        {
+          "role": "image",
+          "name": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Fuente y permisos · USDA Agricultural Research Service"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "rail-desktop-offering",
+      "variant": "rail",
+      "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+      "route": "/h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "html_sha256": "ab873d71df2913ad22ea949ac3fd525d0983121dd84433e87a52b90cc8773771",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/rail-desktop-offering.png",
+      "screenshot_sha256": "9a1e747b8546f40c0c05fad7e41ad89da9333764b5d0c984a28cc4764d34c98a",
+      "original_sha256": null,
+      "page_body_bytes": 11339,
+      "observation": {
+        "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "scope": "fixture-restaurante-001-branch-1",
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "required": "true",
+            "component": "OfferingCollection",
+            "facts": [
+              {
+                "id": "f-offering-1",
+                "scope": "fixture-restaurante-001-branch-1",
+                "text": "Ítem de menú de prueba"
+              }
+            ],
+            "offerings": [
+              {
+                "id": "offering-1",
+                "scope": "fixture-restaurante-001-branch-1"
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/rail/",
+            "current": false
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": true
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 1280,
+          "height": 900
+        },
+        "document_width": 1280,
+        "document_height": 900,
+        "header": {
+          "x": 54.390625,
+          "y": 54.390625,
+          "width": 1171.21875,
+          "height": 42
+        },
+        "nav": {
+          "x": 54.390625,
+          "y": 128.390625,
+          "width": 208,
+          "height": 355.234375
+        },
+        "stage": {
+          "x": 302.390625,
+          "y": 128.390625,
+          "width": 923.21875,
+          "height": 355.234375
+        },
+        "title": {
+          "x": 302.390625,
+          "y": 167.578125,
+          "width": 628.5,
+          "height": 54.265625
+        },
+        "image": null,
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "visible": true,
+            "x": 302.390625,
+            "y": 128.390625,
+            "width": 923.21875,
+            "height": 307.234375
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 54.390625,
+          "y": 128.390625,
+          "width": 89.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 54.390625,
+          "y": 188.390625,
+          "width": 177.6875,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 302.390625,
+          "y": 128.390625,
+          "width": 485.15625,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Oferta",
+          "font_px": 51.2,
+          "contrast": 12.991553532800273,
+          "x": 302.390625,
+          "y": 167.578125,
+          "width": 628.5,
+          "height": 54.265625
+        },
+        {
+          "tag": "P",
+          "text": "Alcance: fixture-restaurante-001-branch-1",
+          "font_px": 16,
+          "contrast": 7.260687204229128,
+          "x": 302.390625,
+          "y": 237.84375,
+          "width": 646.875,
+          "height": 25.59375
+        },
+        {
+          "tag": "H2",
+          "text": "Ítem de menú de prueba",
+          "font_px": 32,
+          "contrast": 12.991553532800273,
+          "x": 302.390625,
+          "y": 324.4375,
+          "width": 646.875,
+          "height": 51.1875
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 508.625,
+          "width": 566.015625,
+          "height": 44.78125
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 563,
+          "width": 566.015625,
+          "height": 22.390625
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 54.390625,
+          "y": 594.984375,
+          "width": 1171.21875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 243.109375,
+          "y": 687.984375,
+          "width": 50.4375,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 313.546875,
+          "y": 687.984375,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 377.546875,
+          "y": 687.984375,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 453.546875,
+          "y": 687.984375,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 2.0999999940395355,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 1.5,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 21.100000001490116,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 89.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 177.6875
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 1156.21875
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 50.4375
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Oferta"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        },
+        {
+          "role": "heading",
+          "name": "Ítem de menú de prueba"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "rail-mobile",
+      "variant": "rail",
+      "semantic_page": "/",
+      "route": "/h4/rail/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "html_sha256": "0f0cb061f12d8d0481f077cbba5d8fff895907b90d9d5c3ac5da13915f58bd59",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/rail-mobile.png",
+      "screenshot_sha256": "2548e989fd1092793146f9ac481c91bc1210c16b8a4940e43224954dc2dfd6e5",
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "page_body_bytes": 2363041,
+      "observation": {
+        "semantic_page": "/",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "scope": "fixture-restaurante-001",
+            "page": "/",
+            "required": "true",
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "f-name",
+                "scope": "fixture-restaurante-001",
+                "text": "Restaurante — fixture ficticio"
+              }
+            ],
+            "offerings": []
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [
+          {
+            "asset_id": "usda-ars-d255-19",
+            "usage_id": "h3-real-pilot-atmospheric",
+            "grant_id": "usda-ars-d255-19-pilot-public-domain",
+            "module": "semantic-7bf9d33184f7e923438acadd",
+            "page": "/",
+            "role": "ATMOSPHERIC",
+            "hash": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+            "src": "/media/h3-pilot/usda-ars-d255-19.jpg",
+            "alt": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación",
+            "caption": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+            "credit": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+            "notices": [
+              "USDA ARS no respalda este fixture, producto, empresa ni posición."
+            ],
+            "decoded": true,
+            "width": 2700,
+            "height": 1819,
+            "display_width": 300.59375,
+            "display_height": 202.5,
+            "object_fit": "fill",
+            "filter": "none"
+          }
+        ],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/rail/",
+            "current": true
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": false
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "document_width": 390,
+        "document_height": 1155,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 334,
+          "height": 41
+        },
+        "nav": {
+          "x": 28,
+          "y": 93,
+          "width": 334,
+          "height": 44
+        },
+        "stage": {
+          "x": 28,
+          "y": 161,
+          "width": 334,
+          "height": 594.34375
+        },
+        "title": {
+          "x": 28,
+          "y": 200.1875,
+          "width": 334,
+          "height": 76.3125
+        },
+        "image": {
+          "x": 61.40625,
+          "y": 308.5,
+          "width": 300.59375,
+          "height": 202.5
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 28,
+            "y": 161,
+            "width": 334,
+            "height": 115.5
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 47,
+          "y": 93,
+          "width": 95.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 162.921875,
+          "y": 93,
+          "width": 166.703125,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 161,
+          "width": 334,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Restaurante — fixture ficticio",
+          "font_px": 36,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 200.1875,
+          "width": 334,
+          "height": 76.3125
+        },
+        {
+          "tag": "P",
+          "text": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus plato",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 61.40625,
+          "y": 527,
+          "width": 300.59375,
+          "height": 41.59375
+        },
+        {
+          "tag": "P",
+          "text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 61.40625,
+          "y": 575.78125,
+          "width": 300.59375,
+          "height": 41.59375
+        },
+        {
+          "tag": "P",
+          "text": "USDA ARS no respalda este fixture, producto, empresa ni posición.",
+          "font_px": 13,
+          "contrast": 7.260687204229128,
+          "x": 61.40625,
+          "y": 624.5625,
+          "width": 300.59375,
+          "height": 41.59375
+        },
+        {
+          "tag": "A",
+          "text": "Fuente y permisos · USDA Agricultural Research Service",
+          "font_px": 13,
+          "contrast": 8.410416464892014,
+          "x": 61.40625,
+          "y": 673.34375,
+          "width": 300.59375,
+          "height": 50
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 780.34375,
+          "width": 334,
+          "height": 67.171875
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 857.109375,
+          "width": 334,
+          "height": 44.78125
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 911.484375,
+          "width": 334,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 1031.484375,
+          "width": 50.4375,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 98.4375,
+          "y": 1031.484375,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 162.4375,
+          "y": 1031.484375,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 1083.484375,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 2.5,
+          "local": true
+        },
+        {
+          "path": "/media/h3-pilot/usda-ars-d255-19.jpg",
+          "type": "img",
+          "bytes": 2351102,
+          "transfer_bytes": 2351402,
+          "duration_ms": 7.399999998509884,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 2.0999999940395355,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 30.30000000447035,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 95.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 166.703125
+            },
+            {
+              "label": "Fuente y permisos · USDA Agricultural Research Service",
+              "height": 50,
+              "width": 300.59375
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 334
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 50.4375
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Restaurante — fixture ficticio"
+        },
+        {
+          "role": "image",
+          "name": "Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Fuente y permisos · USDA Agricultural Research Service"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "label": "rail-mobile-offering",
+      "variant": "rail",
+      "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+      "route": "/h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "html_sha256": "ab873d71df2913ad22ea949ac3fd525d0983121dd84433e87a52b90cc8773771",
+      "styles": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "sha256": "dccadb9a7591b1f66c670532e3bf19d9e85817646cc1751c17fce0188bb9fd29"
+        }
+      ],
+      "screenshot_path": "docs/evidence/h4/rail-mobile-offering.png",
+      "screenshot_sha256": "44cb03a930ffea85405b0bdf0878017e8ce68ddfa5d922bffe43e75e1674b307",
+      "original_sha256": null,
+      "page_body_bytes": 11339,
+      "observation": {
+        "semantic_page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+        "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+        "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+        "client_id": "101-design-compiler-fixture-review",
+        "project_id": "h3-restaurante-media-pilot",
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "scope": "fixture-restaurante-001-branch-1",
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "required": "true",
+            "component": "OfferingCollection",
+            "facts": [
+              {
+                "id": "f-offering-1",
+                "scope": "fixture-restaurante-001-branch-1",
+                "text": "Ítem de menú de prueba"
+              }
+            ],
+            "offerings": [
+              {
+                "id": "offering-1",
+                "scope": "fixture-restaurante-001-branch-1"
+              }
+            ]
+          }
+        ],
+        "diagnostics": [
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "delivery",
+            "reason": "Evidence state preserved from upstream"
+          },
+          {
+            "code": "MISSING_INPUT",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "reservation",
+            "reason": "approved_action_destination"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope": "fixture-restaurante-001-branch-1",
+            "capability": "order",
+            "reason": "Evidence state preserved from upstream"
+          }
+        ],
+        "exclusions": [
+          {
+            "id": "delivery",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "order",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "reason": "MISSING_INPUT"
+          }
+        ],
+        "bindings": [
+          {
+            "id": "f-category",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-identity",
+            "scope": "fixture-restaurante-001",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-menu",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "id": "f-name",
+            "scope": "fixture-restaurante-001",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-offering-1",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "BOUND"
+          },
+          {
+            "id": "f-reservation",
+            "scope": "fixture-restaurante-001-branch-1",
+            "status": "EVIDENCE_ONLY"
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_FIXTURE: no publicar como negocio real"
+        ],
+        "constraints": [
+          "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+          "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+          "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+          "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+        ],
+        "gaps": [
+          "need-33f7e20873460d5156843d28"
+        ],
+        "media": [],
+        "navigation": [
+          {
+            "page": "/",
+            "href": "/h4/rail/",
+            "current": false
+          },
+          {
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "href": "/h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+            "current": true
+          }
+        ],
+        "scripts": 0,
+        "forms": 0,
+        "buttons": 0,
+        "gap_visible": true,
+        "lang": "es",
+        "h1_count": 1,
+        "main_count": 1
+      },
+      "geometry": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "document_width": 390,
+        "document_height": 871,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 334,
+          "height": 41
+        },
+        "nav": {
+          "x": 28,
+          "y": 93,
+          "width": 334,
+          "height": 44
+        },
+        "stage": {
+          "x": 28,
+          "y": 161,
+          "width": 334,
+          "height": 310.328125
+        },
+        "title": {
+          "x": 28,
+          "y": 200.1875,
+          "width": 334,
+          "height": 38.15625
+        },
+        "image": null,
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "visible": true,
+            "x": 28,
+            "y": 161,
+            "width": 334,
+            "height": 278.328125
+          }
+        ]
+      },
+      "readability": [
+        {
+          "tag": "A",
+          "text": "01Identidad",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 47,
+          "y": 93,
+          "width": 89.921875,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "02Oferta de la sucursal",
+          "font_px": 16,
+          "contrast": 8.410416464892014,
+          "x": 156.921875,
+          "y": 93,
+          "width": 177.6875,
+          "height": 44
+        },
+        {
+          "tag": "P",
+          "text": "Información pública · fixture",
+          "font_px": 12,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 161,
+          "width": 334,
+          "height": 19.1875
+        },
+        {
+          "tag": "H1",
+          "text": "Oferta",
+          "font_px": 36,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 200.1875,
+          "width": 334,
+          "height": 38.15625
+        },
+        {
+          "tag": "P",
+          "text": "Alcance: fixture-restaurante-001-branch-1",
+          "font_px": 16,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 254.34375,
+          "width": 334,
+          "height": 25.59375
+        },
+        {
+          "tag": "H2",
+          "text": "Ítem de menú de prueba",
+          "font_px": 24,
+          "contrast": 12.991553532800273,
+          "x": 28,
+          "y": 340.9375,
+          "width": 334,
+          "height": 38.390625
+        },
+        {
+          "tag": "P",
+          "text": "Hueco documental bloqueado. No hay fotografía auténtica de la oferta. La imagen ",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 496.328125,
+          "width": 334,
+          "height": 67.171875
+        },
+        {
+          "tag": "P",
+          "text": "Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 573.09375,
+          "width": 334,
+          "height": 44.78125
+        },
+        {
+          "tag": "SUMMARY",
+          "text": "Trazabilidad y restricciones",
+          "font_px": 14,
+          "contrast": 7.260687204229128,
+          "x": 28,
+          "y": 627.46875,
+          "width": 334,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Editorial",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 747.46875,
+          "width": 50.4375,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Split",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 98.4375,
+          "y": 747.46875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Rail",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 162.4375,
+          "y": 747.46875,
+          "width": 44,
+          "height": 44
+        },
+        {
+          "tag": "A",
+          "text": "Inspector de contratos",
+          "font_px": 14,
+          "contrast": 8.410416464892014,
+          "x": 28,
+          "y": 799.46875,
+          "width": 138.875,
+          "height": 44
+        }
+      ],
+      "resources": [
+        {
+          "path": "/_astro/_..BxM29UAl.css",
+          "type": "link",
+          "bytes": 4294,
+          "transfer_bytes": 4594,
+          "duration_ms": 1.8999999985098839,
+          "local": true
+        },
+        {
+          "path": "/favicon.ico",
+          "type": "other",
+          "bytes": 0,
+          "transfer_bytes": 300,
+          "duration_ms": 1.5999999940395355,
+          "local": true
+        }
+      ],
+      "navigation_duration_ms": 15.200000002980232,
+      "reduced_motion": true,
+      "animated_elements": 0,
+      "keyboard": {
+        "skip": {
+          "focused": true,
+          "top": 16,
+          "outline": "3px"
+        },
+        "skip_target": true,
+        "disclosure": {
+          "open": true,
+          "focus": "3px",
+          "diagnostics": true,
+          "links": [
+            {
+              "label": "01Identidad",
+              "height": 44,
+              "width": 89.921875
+            },
+            {
+              "label": "02Oferta de la sucursal",
+              "height": 44,
+              "width": 177.6875
+            },
+            {
+              "label": "Trazabilidad y restricciones",
+              "height": 44,
+              "width": 334
+            },
+            {
+              "label": "Editorial",
+              "height": 44,
+              "width": 50.4375
+            },
+            {
+              "label": "Split",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Rail",
+              "height": 44,
+              "width": 44
+            },
+            {
+              "label": "Inspector de contratos",
+              "height": 44,
+              "width": 138.875
+            }
+          ]
+        },
+        "local_navigation": true
+      },
+      "accessibility": [
+        {
+          "role": "link",
+          "name": "Saltar al contenido"
+        },
+        {
+          "role": "main",
+          "name": ""
+        },
+        {
+          "role": "navigation",
+          "name": "Páginas del fixture"
+        },
+        {
+          "role": "link",
+          "name": "Identidad"
+        },
+        {
+          "role": "link",
+          "name": "Oferta de la sucursal"
+        },
+        {
+          "role": "heading",
+          "name": "Oferta"
+        },
+        {
+          "role": "navigation",
+          "name": "Variantes"
+        },
+        {
+          "role": "link",
+          "name": "Inspector de contratos"
+        },
+        {
+          "role": "link",
+          "name": "Editorial"
+        },
+        {
+          "role": "link",
+          "name": "Split"
+        },
+        {
+          "role": "link",
+          "name": "Rail"
+        },
+        {
+          "role": "heading",
+          "name": "Ítem de menú de prueba"
+        }
+      ],
+      "status": "PASSED",
+      "codes": []
+    }
+  ],
+  "stress": [
+    {
+      "variant": "editorial",
+      "width": 320,
+      "text_scale": 2,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "document_width": 320,
+        "document_height": 2726,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 264,
+          "height": 133
+        },
+        "nav": {
+          "x": 28,
+          "y": 161,
+          "width": 264,
+          "height": 186
+        },
+        "stage": {
+          "x": 28,
+          "y": 347,
+          "width": 264,
+          "height": 1469.6875
+        },
+        "title": {
+          "x": 28,
+          "y": 467.78125,
+          "width": 264,
+          "height": 449.375
+        },
+        "image": {
+          "x": 28,
+          "y": 949.15625,
+          "width": 264,
+          "height": 177.84375
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 28,
+            "y": 371,
+            "width": 264,
+            "height": 546.15625
+          }
+        ]
+      },
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "variant": "split",
+      "width": 320,
+      "text_scale": 2,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "document_width": 320,
+        "document_height": 2533,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 264,
+          "height": 133
+        },
+        "nav": {
+          "x": 28,
+          "y": 161,
+          "width": 264,
+          "height": 187
+        },
+        "stage": {
+          "x": 28,
+          "y": 348,
+          "width": 264,
+          "height": 1275.625
+        },
+        "title": {
+          "x": 28,
+          "y": 460.78125,
+          "width": 264,
+          "height": 271.3125
+        },
+        "image": {
+          "x": 28,
+          "y": 756.09375,
+          "width": 264,
+          "height": 177.84375
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 28,
+            "y": 364,
+            "width": 264,
+            "height": 368.09375
+          }
+        ]
+      },
+      "status": "PASSED",
+      "codes": []
+    },
+    {
+      "variant": "rail",
+      "width": 320,
+      "text_scale": 2,
+      "geometry": {
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "document_width": 320,
+        "document_height": 2582,
+        "header": {
+          "x": 28,
+          "y": 28,
+          "width": 264,
+          "height": 133
+        },
+        "nav": {
+          "x": 28,
+          "y": 185,
+          "width": 264,
+          "height": 138
+        },
+        "stage": {
+          "x": 28,
+          "y": 347,
+          "width": 264,
+          "height": 1325.375
+        },
+        "title": {
+          "x": 28,
+          "y": 443.78125,
+          "width": 264,
+          "height": 305.25
+        },
+        "image": {
+          "x": 54.40625,
+          "y": 781.03125,
+          "width": 237.59375,
+          "height": 160.0625
+        },
+        "overflow": [],
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "visible": true,
+            "x": 28,
+            "y": 347,
+            "width": 264,
+            "height": 402.03125
+          }
+        ]
+      },
+      "status": "PASSED",
+      "codes": []
+    }
+  ],
+  "status": "PASSED",
+  "errors": []
+}

@@ -1,0 +1,33 @@
+{
+  "model": "gemini-3-flash",
+  "purpose": "EXISTING_UI_LAYOUT_REPRODUCTION",
+  "generationCount": 1,
+  "paidPurchases": false,
+  "licensedMediaBytes": 0,
+  "args": [
+    "tooling/superdesign/node_modules/@superdesign/cli/bin/superdesign.js",
+    "create-design-draft",
+    "--project-id",
+    "919d462f-3d02-4b56-a5d8-9f7953126f37",
+    "--title",
+    "Current La Mesa - source reproduction - media geometry only",
+    "-p",
+    "Reproduce the existing La Mesa home from the supplied COMPLETE literal HTML and CSS. This is the mandatory EXISTING UI source reproduction, not a redesign. Preserve every visible word, native details/summary, link id, data-fact-id, data-media-usage, data-pilot-media key, footer disclaimer, geometry and responsive rule exactly. Preserve the literal text-only La Mesa wordmark; there is no logo image. The source is a real compiled B3 page, not an inspiration description.\nThe source deliberately substitutes self-authored neutral SVG rectangles for licensed photos/video. This is a LAYOUT-ONLY reference: reproduce those rectangles exactly and do NOT fetch, invent, generate, edit or substitute any image or video. All licensed media bytes stay in the user's local 101 runtime. Keep every media element and data-pilot-media key, dimensions, aspect ratio and cover behavior so the same approved assets can be restored locally for the visual comparison. No external media URLs, fonts, icon libraries or scripts. Do not use stock services or transform this into a restaurant template.\nStructure: overlaid shared navigation and full-screen Immersive hero, centered La Mesa and Cocina para quedarse un rato., two bottom route links; house introduction and four-route directory; four editorial stories with their exact original text and disclosures; two fictional opinions; contact/social examples; original shared footer and notices. All destinations are separate demo pages, not features merged onto this home. Preserve all approved Spanish copy and accessibility affordances. Produce one full responsive HTML document, faithful at 1440x1000 and 390x844, with the supplied vanilla CSS intact. Do not make aesthetic changes in this reproduction. Use ONLY the fonts, colors, spacing, and component styles defined in the design system. Do not introduce any fonts, colors, or visual styles not in the design system.",
+    "--device",
+    "custom",
+    "--width",
+    "1440",
+    "--height",
+    "1000",
+    "--model",
+    "gemini-3-flash",
+    "--context-file",
+    ".superdesign/design-system.md",
+    ".superdesign/tmp/current-home.structure.html",
+    "src/design/experience.css",
+    "src/design/rich-experience.css",
+    "src/design/depth-experience.css",
+    "src/design/experience-refinement.css",
+    "--json"
+  ]
+}

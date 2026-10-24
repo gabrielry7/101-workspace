@@ -1,0 +1,3557 @@
+{
+  "kind": "B3_REFERENCE_DEPTH_UI_INTERACTIONS",
+  "records": [
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-01-interaction-mobile-navigation-open.jpg",
+        "sha256": "b590471994fd6b9a271424516f18f523aa0c4143b185a166bed9db11e55419f9",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Compartir",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-01"
+        ],
+        "layout": {
+          "grid": {
+            "height": 484.3541870117187,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 484.3541870117187,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              },
+              "copy": {
+                "height": 209.3541717529297,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.6875
+              },
+              "id": "post-01",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Rituales",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ],
+        "layout": {
+          "grid": {
+            "height": 458.7604370117187,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 458.7604370117187,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.6875
+              },
+              "id": "post-02",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Contrastes",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-03"
+        ],
+        "layout": {
+          "grid": {
+            "height": 458.7604370117187,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 458.7604370117187,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.6875
+              },
+              "id": "post-03",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Sobremesa",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-04"
+        ],
+        "layout": {
+          "grid": {
+            "height": 458.7604370117187,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 458.7604370117187,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.6875
+              },
+              "id": "post-04",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante.",
+        "layout": {
+          "grid": {
+            "height": 795.0521240234375,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875200271606
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 795.0521240234375,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875200271606
+              },
+              "copy": {
+                "height": 520.0521240234375,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.687530517578
+              },
+              "id": "post-02",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875200271606
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-01-interaction-mobile-journal-read.jpg",
+        "sha256": "0f18fe6a9e37cbd986980487d75bc5ea4dfded66aa5d0c95751c6079d5fabab0",
+        "y": 850.6666870117188
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "journal-reset",
+      "observed": {
+        "layout": {
+          "grid": {
+            "height": 771.7396240234375,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875200271606
+          },
+          "state": "all",
+          "visible": [
+            {
+              "card": {
+                "height": 378.6666870117187,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 843.3257279396057
+              },
+              "copy": {
+                "height": 272.44793701171875,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 949.5444793701172
+              },
+              "id": "post-01",
+              "image": {
+                "height": 106.21875,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 843.3257279396057
+              }
+            },
+            {
+              "card": {
+                "height": 378.6666870117187,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 838.6875200271606
+              },
+              "copy": {
+                "height": 246.8541717529297,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 944.9062728881836
+              },
+              "id": "post-02",
+              "image": {
+                "height": 106.21875,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 838.6875200271606
+              }
+            },
+            {
+              "card": {
+                "height": 353.0728759765625,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 1261.992431640625
+              },
+              "copy": {
+                "height": 246.8541259765625,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 1368.211181640625
+              },
+              "id": "post-03",
+              "image": {
+                "height": 106.21875,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 1261.992431640625
+              }
+            },
+            {
+              "card": {
+                "height": 353.0728759765625,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 1261.992431640625
+              },
+              "copy": {
+                "height": 246.8541259765625,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 1368.211181640625
+              },
+              "id": "post-04",
+              "image": {
+                "height": 106.21875,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 1261.992431640625
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-01-interaction-mobile-journal-reset.jpg",
+        "sha256": "ea7aafd5c6f3b0dac4d5374975ae60166b141a840618070a3aebd8a3b48b5906",
+        "y": 850.6666870117188
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-01-interaction-mobile-menu-search.jpg",
+        "sha256": "5149bc8cb3db6ef77a7bbddac4f72faf213c84911263ed084623fa04eee10293",
+        "y": 226.6666717529297
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-02-interaction-mobile-navigation-open.jpg",
+        "sha256": "8b7e36e4a1a3ce08aea9ee5417633572e6f4bafe4319b7f5518576db4350ff79",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Compartir",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-01"
+        ],
+        "layout": {
+          "grid": {
+            "height": 484.3541870117187,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 484.3541870117187,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              },
+              "copy": {
+                "height": 209.3541717529297,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.6875
+              },
+              "id": "post-01",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Rituales",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ],
+        "layout": {
+          "grid": {
+            "height": 458.7604370117187,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 458.7604370117187,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.6875
+              },
+              "id": "post-02",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Contrastes",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-03"
+        ],
+        "layout": {
+          "grid": {
+            "height": 458.7604370117187,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 458.7604370117187,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.6875
+              },
+              "id": "post-03",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Sobremesa",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-04"
+        ],
+        "layout": {
+          "grid": {
+            "height": 458.7604370117187,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 458.7604370117187,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.6875
+              },
+              "id": "post-04",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.6875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante.",
+        "layout": {
+          "grid": {
+            "height": 795.0521240234375,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875200271606
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 795.0521240234375,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.8964710235596
+              },
+              "copy": {
+                "height": 520.0521240234375,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 1113.896484375
+              },
+              "id": "post-02",
+              "image": {
+                "height": 251,
+                "width": 334.66668701171875,
+                "x": 20,
+                "y": 838.8964710235596
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-02-interaction-mobile-journal-read.jpg",
+        "sha256": "d7172b93e9755c805dddcc95e7bd8566fd93646ca995f7cec9dfe7b17ce70366",
+        "y": 850.6666870117188
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "journal-reset",
+      "observed": {
+        "layout": {
+          "grid": {
+            "height": 771.7396240234375,
+            "width": 334.66668701171875,
+            "x": 20,
+            "y": 838.6875200271606
+          },
+          "state": "all",
+          "visible": [
+            {
+              "card": {
+                "height": 378.6666870117187,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 846.0438899993896
+              },
+              "copy": {
+                "height": 272.44793701171875,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 952.2626495361328
+              },
+              "id": "post-01",
+              "image": {
+                "height": 106.21875,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 846.0438899993896
+              }
+            },
+            {
+              "card": {
+                "height": 378.6666870117187,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 838.6875200271606
+              },
+              "copy": {
+                "height": 246.8541717529297,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 944.9062728881836
+              },
+              "id": "post-02",
+              "image": {
+                "height": 106.21875,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 838.6875200271606
+              }
+            },
+            {
+              "card": {
+                "height": 353.07293701171875,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 1264.7105712890625
+              },
+              "copy": {
+                "height": 246.8541717529297,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 1370.9293212890625
+              },
+              "id": "post-03",
+              "image": {
+                "height": 106.21875,
+                "width": 159.33334350585938,
+                "x": 20,
+                "y": 1264.7105712890625
+              }
+            },
+            {
+              "card": {
+                "height": 353.07293701171875,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 1264.7105712890625
+              },
+              "copy": {
+                "height": 246.8541717529297,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 1370.9293212890625
+              },
+              "id": "post-04",
+              "image": {
+                "height": 106.21875,
+                "width": 159.33334350585938,
+                "x": 195.33334350585935,
+                "y": 1264.7105712890625
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-02-interaction-mobile-journal-reset.jpg",
+        "sha256": "899140998bdb1493df6cf28bdf4802ec8cfb35222a84fcc609e9f5a7203cf339",
+        "y": 850.6666870117188
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-02-interaction-mobile-menu-search.jpg",
+        "sha256": "036679cfee88f418b969ae3117c2e80f80b3105cf39084c8239caa170d5047b9",
+        "y": 194.6666717529297
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-03-interaction-mobile-navigation-open.jpg",
+        "sha256": "2b38f235686d50d5ae1c3de0beec1914a34317c98aa9db1027b35039a1ab93a0",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Compartir",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-01"
+        ],
+        "layout": {
+          "grid": {
+            "height": 465.625,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 903
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 465.625,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 903
+              },
+              "copy": {
+                "height": 245.1875,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1123.4375
+              },
+              "id": "post-01",
+              "image": {
+                "height": 196.4375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 903
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Rituales",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ],
+        "layout": {
+          "grid": {
+            "height": 440.03125,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 903
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 440.03125,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 903
+              },
+              "copy": {
+                "height": 219.59375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1123.4375
+              },
+              "id": "post-02",
+              "image": {
+                "height": 196.4375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 903
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Contrastes",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-03"
+        ],
+        "layout": {
+          "grid": {
+            "height": 404.1979370117187,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 903
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 404.1979370117187,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 903
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1123.4375
+              },
+              "id": "post-03",
+              "image": {
+                "height": 196.4375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 903
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Sobremesa",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-04"
+        ],
+        "layout": {
+          "grid": {
+            "height": 429.7916870117187,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 903
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 429.7916870117187,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 903
+              },
+              "copy": {
+                "height": 209.3541717529297,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1123.4375
+              },
+              "id": "post-04",
+              "image": {
+                "height": 196.4375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 903
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante.",
+        "layout": {
+          "grid": {
+            "height": 802.15625,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 903.0000205039978
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 802.15625,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 904.6262130737304
+              },
+              "copy": {
+                "height": 581.71875,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1125.063720703125
+              },
+              "id": "post-02",
+              "image": {
+                "height": 196.4375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 904.6262130737304
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-03-interaction-mobile-journal-read.jpg",
+        "sha256": "debe3b2ce794d9cc2af985d48d8fc6449cf496609f7aeabd73f803420f8351e2",
+        "y": 896.6666870117188
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "journal-reset",
+      "observed": {
+        "layout": {
+          "grid": {
+            "height": 2042.979248046875,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 903.0000205039978
+          },
+          "state": "all",
+          "visible": [
+            {
+              "card": {
+                "height": 494.3125,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 911.7243099212646
+              },
+              "copy": {
+                "height": 297.875,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1108.1618041992188
+              },
+              "id": "post-01",
+              "image": {
+                "height": 196.4375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 911.7243099212646
+              }
+            },
+            {
+              "card": {
+                "height": 443.1770935058594,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1453.3125610351562
+              },
+              "copy": {
+                "height": 272.28125,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1624.2083740234375
+              },
+              "id": "post-02",
+              "image": {
+                "height": 170.89584350585938,
+                "width": 256.35418701171875,
+                "x": 40,
+                "y": 1453.3125610351562
+              }
+            },
+            {
+              "card": {
+                "height": 443.1770935058594,
+                "width": 256.35418701171875,
+                "x": 78.3125,
+                "y": 1952.4896850585935
+              },
+              "copy": {
+                "height": 272.28125,
+                "width": 256.35418701171875,
+                "x": 78.3125,
+                "y": 2123.3854370117188
+              },
+              "id": "post-03",
+              "image": {
+                "height": 170.89584350585938,
+                "width": 256.35418701171875,
+                "x": 78.3125,
+                "y": 1952.4896850585935
+              }
+            },
+            {
+              "card": {
+                "height": 494.3125,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 2451.6666870117188
+              },
+              "copy": {
+                "height": 297.875,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 2648.1041870117188
+              },
+              "id": "post-04",
+              "image": {
+                "height": 196.4375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 2451.6666870117188
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-03-interaction-mobile-journal-reset.jpg",
+        "sha256": "473fd9d321b0646f7cb68a5ef54635d597782d59e568a1e5f29abee90d282246",
+        "y": 896.6666870117188
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-03-interaction-mobile-menu-search.jpg",
+        "sha256": "6dbe67b91778f418967fef60447eb675d8e1c7afec32866abc8bd664f17fd862",
+        "y": 221.3333282470703
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-04-interaction-mobile-navigation-open.jpg",
+        "sha256": "69ede5458002a202eb50990b7f373a852be938a3a125381ccce7125b6f169749",
+        "y": 76
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Compartir",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-01"
+        ],
+        "layout": {
+          "grid": {
+            "height": 442.3541870117187,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 869.875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 442.3541870117187,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 869.875
+              },
+              "copy": {
+                "height": 197.3541717529297,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1114.875
+              },
+              "id": "post-01",
+              "image": {
+                "height": 221,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 869.875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Rituales",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ],
+        "layout": {
+          "grid": {
+            "height": 428.7604370117187,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 869.875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 428.7604370117187,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 869.875
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1114.875
+              },
+              "id": "post-02",
+              "image": {
+                "height": 221,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 869.875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Contrastes",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-03"
+        ],
+        "layout": {
+          "grid": {
+            "height": 428.7604370117187,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 869.875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 428.7604370117187,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 869.875
+              },
+              "copy": {
+                "height": 183.7604217529297,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1114.875
+              },
+              "id": "post-03",
+              "image": {
+                "height": 221,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 869.875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Sobremesa",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-04"
+        ],
+        "layout": {
+          "grid": {
+            "height": 454.3541870117187,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 869.875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 454.3541870117187,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 869.875
+              },
+              "copy": {
+                "height": 209.3541717529297,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1114.875
+              },
+              "id": "post-04",
+              "image": {
+                "height": 221,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 869.875
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante.",
+        "layout": {
+          "grid": {
+            "height": 790.8854370117188,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 869.875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 790.8854370117188,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 871.2676696777344
+              },
+              "copy": {
+                "height": 545.8854370117188,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1116.2676696777344
+              },
+              "id": "post-02",
+              "image": {
+                "height": 221,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 871.2676696777344
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-04-interaction-mobile-journal-read.jpg",
+        "sha256": "f61c32a81c4d4a075bdddc8f096eb17f537d3f17b1bd22dcfbc8d0f48ea08226",
+        "y": 852
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "journal-reset",
+      "observed": {
+        "layout": {
+          "grid": {
+            "height": 2058.21875,
+            "width": 294.66668701171875,
+            "x": 40,
+            "y": 869.875
+          },
+          "state": "all",
+          "visible": [
+            {
+              "card": {
+                "height": 451.6041870117187,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 877.2254390716553
+              },
+              "copy": {
+                "height": 224.93748474121097,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 1103.892120361328
+              },
+              "id": "post-01",
+              "image": {
+                "height": 226.6666717529297,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 877.2254390716553
+              }
+            },
+            {
+              "card": {
+                "height": 571.0104370117188,
+                "width": 235.7291717529297,
+                "x": 98.9375,
+                "y": 1377.4791870117188
+              },
+              "copy": {
+                "height": 276.35418701171875,
+                "width": 235.7291717529297,
+                "x": 98.9375,
+                "y": 1672.1354370117188
+              },
+              "id": "post-02",
+              "image": {
+                "height": 294.65625,
+                "width": 235.7291717529297,
+                "x": 98.9375,
+                "y": 1377.4791870117188
+              }
+            },
+            {
+              "card": {
+                "height": 404,
+                "width": 250.45834350585935,
+                "x": 40,
+                "y": 2004.4896240234375
+              },
+              "copy": {
+                "height": 211.34375,
+                "width": 250.45834350585935,
+                "x": 40,
+                "y": 2197.1458740234375
+              },
+              "id": "post-03",
+              "image": {
+                "height": 192.65625,
+                "width": 250.45834350585935,
+                "x": 40,
+                "y": 2004.4896240234375
+              }
+            },
+            {
+              "card": {
+                "height": 463.6041870117187,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 2464.4896240234375
+              },
+              "copy": {
+                "height": 236.9375,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 2691.15625
+              },
+              "id": "post-04",
+              "image": {
+                "height": 226.6666717529297,
+                "width": 294.66668701171875,
+                "x": 40,
+                "y": 2464.4896240234375
+              }
+            }
+          ],
+          "width": 390
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-04-interaction-mobile-journal-reset.jpg",
+        "sha256": "28cddc49057164473486d25c7f719b5c8d5012c25e860cc72504061ec17e0ffc",
+        "y": 852
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-04-interaction-mobile-menu-search.jpg",
+        "sha256": "a1aaec357feaf7c72f66e6adb480cb1ab1f6958bf3da68c57a0fa5ce7859a85a",
+        "y": 221.3333282470703
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-01-interaction-desktop-navigation-open.jpg",
+        "sha256": "c7f7d44c0855b13925121ccc4480769abc833e932e3eb531b4983866633f9e95",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Compartir",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-01"
+        ],
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333740234375
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.989501953125,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 863.6163330078125
+              },
+              "copy": {
+                "height": 201.145751953125,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 863.6163330078125
+              },
+              "id": "post-01",
+              "image": {
+                "height": 713.989501953125,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 863.6163330078125
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Rituales",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ],
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333740234375
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.9896240234375,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 870.6129760742188
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 870.6129760742188
+              },
+              "id": "post-02",
+              "image": {
+                "height": 713.9896240234375,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 870.6129760742188
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Contrastes",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-03"
+        ],
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333740234375
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.9896850585938,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 869.3726806640625
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 869.3726806640625
+              },
+              "id": "post-03",
+              "image": {
+                "height": 713.9896850585938,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 869.3726806640625
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Sobremesa",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-04"
+        ],
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333740234375
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.989501953125,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 870.195068359375
+              },
+              "copy": {
+                "height": 201.145751953125,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 870.195068359375
+              },
+              "id": "post-04",
+              "image": {
+                "height": 713.989501953125,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 870.195068359375
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante.",
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333129882812
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.9896240234375,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 862.8333129882812
+              },
+              "copy": {
+                "height": 467.9375,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 862.8333129882812
+              },
+              "id": "post-02",
+              "image": {
+                "height": 713.9896240234375,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 862.8333129882812
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-01-interaction-desktop-journal-read.jpg",
+        "sha256": "7edaa1d89ddca07d5c66351d1cdde995b6d9492f8d2e3f51a242a918867332b3",
+        "y": 547.3333129882812
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "journal-reset",
+      "observed": {
+        "layout": {
+          "grid": {
+            "height": 439.5104370117187,
+            "width": 1251.875,
+            "x": 86.39583587646484,
+            "y": 862.8333129882812
+          },
+          "state": "all",
+          "visible": [
+            {
+              "card": {
+                "height": 439.5104370117187,
+                "width": 294.96875,
+                "x": 86.39583587646484,
+                "y": 868.578857421875
+              },
+              "copy": {
+                "height": 232.98959350585935,
+                "width": 294.96875,
+                "x": 86.39583587646484,
+                "y": 1065.2246704101562
+              },
+              "id": "post-01",
+              "image": {
+                "height": 196.64581298828125,
+                "width": 294.96875,
+                "x": 86.39583587646484,
+                "y": 868.578857421875
+              }
+            },
+            {
+              "card": {
+                "height": 439.5104370117187,
+                "width": 294.96875,
+                "x": 405.3645935058594,
+                "y": 862.8333129882812
+              },
+              "copy": {
+                "height": 242.86459350585935,
+                "width": 294.96875,
+                "x": 405.3645935058594,
+                "y": 1059.4791870117188
+              },
+              "id": "post-02",
+              "image": {
+                "height": 196.64584350585935,
+                "width": 294.96875,
+                "x": 405.3645935058594,
+                "y": 862.8333129882812
+              }
+            },
+            {
+              "card": {
+                "height": 439.5104370117187,
+                "width": 294.96875,
+                "x": 724.3333740234375,
+                "y": 868.578857421875
+              },
+              "copy": {
+                "height": 207.39584350585935,
+                "width": 294.96875,
+                "x": 724.3333740234375,
+                "y": 1065.2246704101562
+              },
+              "id": "post-03",
+              "image": {
+                "height": 196.64581298828125,
+                "width": 294.96875,
+                "x": 724.3333740234375,
+                "y": 868.578857421875
+              }
+            },
+            {
+              "card": {
+                "height": 439.5104370117187,
+                "width": 294.96875,
+                "x": 1043.3021240234375,
+                "y": 868.578857421875
+              },
+              "copy": {
+                "height": 232.98959350585935,
+                "width": 294.96875,
+                "x": 1043.3021240234375,
+                "y": 1065.2246704101562
+              },
+              "id": "post-04",
+              "image": {
+                "height": 196.64581298828125,
+                "width": 294.96875,
+                "x": 1043.3021240234375,
+                "y": 868.578857421875
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-01-interaction-desktop-journal-reset.jpg",
+        "sha256": "a2888f1e71271fd2f997460bfef9e50851b03fe85ee9ee4c5f8ebd20fbff645a",
+        "y": 539.3333129882812
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-01-interaction-desktop-menu-search.jpg",
+        "sha256": "428bcc9c5e5b9f63b9b0db35814ef8d7f73045db3f216446273ff04c8c7e115d",
+        "y": 214
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-02-interaction-desktop-navigation-open.jpg",
+        "sha256": "8bc5b670e03e351ad4ec0e34b81ad771bee2a67047e547b55fb469f9310751e8",
+        "y": 218.6666717529297
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Compartir",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-01"
+        ],
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333740234375
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.9896240234375,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 863.6185302734375
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 863.6185302734375
+              },
+              "id": "post-01",
+              "image": {
+                "height": 713.9896240234375,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 863.6185302734375
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Rituales",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ],
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333740234375
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.9896240234375,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 870.2033081054688
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 870.2033081054688
+              },
+              "id": "post-02",
+              "image": {
+                "height": 713.9896240234375,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 870.2033081054688
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Contrastes",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-03"
+        ],
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333740234375
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.9896240234375,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 868.9728393554688
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 868.9728393554688
+              },
+              "id": "post-03",
+              "image": {
+                "height": 713.9896240234375,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 868.9728393554688
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Sobremesa",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-04"
+        ],
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333740234375
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.9896240234375,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 868.9754638671875
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 868.9754638671875
+              },
+              "id": "post-04",
+              "image": {
+                "height": 713.9896240234375,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 868.9754638671875
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante.",
+        "layout": {
+          "grid": {
+            "height": 713.9896240234375,
+            "width": 1200,
+            "x": 112.33333587646484,
+            "y": 862.8333129882812
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 713.9896240234375,
+                "width": 1200,
+                "x": 112.33333587646484,
+                "y": 862.8333129882812
+              },
+              "copy": {
+                "height": 467.9375,
+                "width": 571.2083740234375,
+                "x": 741.125,
+                "y": 862.8333129882812
+              },
+              "id": "post-02",
+              "image": {
+                "height": 713.9896240234375,
+                "width": 571.1979370117188,
+                "x": 112.33333587646484,
+                "y": 862.8333129882812
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-02-interaction-desktop-journal-read.jpg",
+        "sha256": "86e29208787cdd5d96977d465c4a5e2a176678d3d3d5fb2fd47a6c15faf92649",
+        "y": 547.3333129882812
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "journal-reset",
+      "observed": {
+        "layout": {
+          "grid": {
+            "height": 429.6354370117187,
+            "width": 1251.875,
+            "x": 86.39583587646484,
+            "y": 862.8333129882812
+          },
+          "state": "all",
+          "visible": [
+            {
+              "card": {
+                "height": 429.6354370117187,
+                "width": 294.96875,
+                "x": 86.39583587646484,
+                "y": 868.9656677246094
+              },
+              "copy": {
+                "height": 232.98959350585935,
+                "width": 294.96875,
+                "x": 86.39583587646484,
+                "y": 1065.6115112304688
+              },
+              "id": "post-01",
+              "image": {
+                "height": 196.64581298828125,
+                "width": 294.96875,
+                "x": 86.39583587646484,
+                "y": 868.9656677246094
+              }
+            },
+            {
+              "card": {
+                "height": 429.6354370117187,
+                "width": 294.96875,
+                "x": 405.3645935058594,
+                "y": 862.8333129882812
+              },
+              "copy": {
+                "height": 207.39584350585935,
+                "width": 294.96875,
+                "x": 405.3645935058594,
+                "y": 1059.4791870117188
+              },
+              "id": "post-02",
+              "image": {
+                "height": 196.64584350585935,
+                "width": 294.96875,
+                "x": 405.3645935058594,
+                "y": 862.8333129882812
+              }
+            },
+            {
+              "card": {
+                "height": 429.6354370117187,
+                "width": 294.96875,
+                "x": 724.3333740234375,
+                "y": 868.9656677246094
+              },
+              "copy": {
+                "height": 207.39584350585935,
+                "width": 294.96875,
+                "x": 724.3333740234375,
+                "y": 1065.6115112304688
+              },
+              "id": "post-03",
+              "image": {
+                "height": 196.64581298828125,
+                "width": 294.96875,
+                "x": 724.3333740234375,
+                "y": 868.9656677246094
+              }
+            },
+            {
+              "card": {
+                "height": 429.6354370117187,
+                "width": 294.96875,
+                "x": 1043.3021240234375,
+                "y": 868.9656677246094
+              },
+              "copy": {
+                "height": 232.98959350585935,
+                "width": 294.96875,
+                "x": 1043.3021240234375,
+                "y": 1065.6115112304688
+              },
+              "id": "post-04",
+              "image": {
+                "height": 196.64581298828125,
+                "width": 294.96875,
+                "x": 1043.3021240234375,
+                "y": 868.9656677246094
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-02-interaction-desktop-journal-reset.jpg",
+        "sha256": "4235a431055f225789ba8110701792c1c3fea2a79b7985e4fa47b8e01ea4a5a2",
+        "y": 539.3333129882812
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-02-interaction-desktop-menu-search.jpg",
+        "sha256": "3ef7848980d777426d41d055e06ea561a315bca8de4543ce830a78d85fd737c8",
+        "y": 290
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-03-interaction-desktop-navigation-open.jpg",
+        "sha256": "868a6a4db5fafd3dc77367e6c4e9f35453a41c955a31bd8a928f50a4f8ac45d9",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Compartir",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-01"
+        ],
+        "layout": {
+          "grid": {
+            "height": 469.1666870117187,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 1079.916748046875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 469.1666870117187,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 1079.916748046875
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 1079.916748046875
+              },
+              "id": "post-01",
+              "image": {
+                "height": 469.1666870117187,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 1079.916748046875
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Rituales",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ],
+        "layout": {
+          "grid": {
+            "height": 469.1666870117187,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 1079.916748046875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 469.1666870117187,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 1079.916748046875
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 1079.916748046875
+              },
+              "id": "post-02",
+              "image": {
+                "height": 469.1666870117187,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 1079.916748046875
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Contrastes",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-03"
+        ],
+        "layout": {
+          "grid": {
+            "height": 469.1666870117187,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 1079.916748046875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 469.1666870117187,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 1079.916748046875
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 1079.916748046875
+              },
+              "id": "post-03",
+              "image": {
+                "height": 469.1666870117187,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 1079.916748046875
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Sobremesa",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-04"
+        ],
+        "layout": {
+          "grid": {
+            "height": 469.1666870117187,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 1079.916748046875
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 469.1666870117187,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 1079.916748046875
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 1079.916748046875
+              },
+              "id": "post-04",
+              "image": {
+                "height": 469.1666870117187,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 1079.916748046875
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante.",
+        "layout": {
+          "grid": {
+            "height": 469.1666870117187,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 1079.9166870117188
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 469.1666870117187,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 1079.9166870117188
+              },
+              "copy": {
+                "height": 467.9375,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 1079.9166870117188
+              },
+              "id": "post-02",
+              "image": {
+                "height": 469.1666870117187,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 1079.9166870117188
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-03-interaction-desktop-journal-read.jpg",
+        "sha256": "bccb7a3e2893c236464f8ab9e798f7a7e945d0ed7e772d0e2ce42507e7f847f7",
+        "y": 756.6666870117188
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "journal-reset",
+      "observed": {
+        "layout": {
+          "grid": {
+            "height": 2097.20849609375,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 1079.9166870117188
+          },
+          "state": "all",
+          "visible": [
+            {
+              "card": {
+                "height": 682.4270629882812,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 1089.4707641601562
+              },
+              "copy": {
+                "height": 302.54168701171875,
+                "width": 294.3020935058594,
+                "x": 986.375,
+                "y": 1469.3561401367188
+              },
+              "id": "post-01",
+              "image": {
+                "height": 682.4270629882812,
+                "width": 784.7916870117188,
+                "x": 143.98959350585938,
+                "y": 1089.4707641601562
+              }
+            },
+            {
+              "card": {
+                "height": 690.875,
+                "width": 448.4166870117187,
+                "x": 242.3125,
+                "y": 1842.343811035156
+              },
+              "copy": {
+                "height": 276.94793701171875,
+                "width": 448.4166870117187,
+                "x": 242.3125,
+                "y": 2256.2709350585938
+              },
+              "id": "post-02",
+              "image": {
+                "height": 389.9270935058594,
+                "width": 448.4166870117187,
+                "x": 242.3125,
+                "y": 1842.343811035156
+              }
+            },
+            {
+              "card": {
+                "height": 626.3646240234375,
+                "width": 448.4270935058594,
+                "x": 832.25,
+                "y": 1986.343811035156
+              },
+              "copy": {
+                "height": 212.4375,
+                "width": 448.4270935058594,
+                "x": 832.25,
+                "y": 2400.2709350585938
+              },
+              "id": "post-03",
+              "image": {
+                "height": 389.9270935058594,
+                "width": 448.4270935058594,
+                "x": 832.25,
+                "y": 1986.343811035156
+              }
+            },
+            {
+              "card": {
+                "height": 484.4166870117187,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 2692.7084350585938
+              },
+              "copy": {
+                "height": 276.94793701171875,
+                "width": 557.1771240234375,
+                "x": 723.5,
+                "y": 2836.7709350585938
+              },
+              "id": "post-04",
+              "image": {
+                "height": 403.75,
+                "width": 464.3125,
+                "x": 143.98959350585938,
+                "y": 2773.375061035156
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-03-interaction-desktop-journal-reset.jpg",
+        "sha256": "96d7429a216407b82bdca512e36760723d32eb60f36636dc81a4b337b1c1e985",
+        "y": 756.6666870117188
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-03-interaction-desktop-menu-search.jpg",
+        "sha256": "fedc168aa62599c7d34b2fbfa0d4c4f8d4c7b7a232508ff193aeecd3ee7aa94b",
+        "y": 191.3333282470703
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-04-interaction-desktop-navigation-open.jpg",
+        "sha256": "6b4b6fab944e3d98f8763fede08b9b28760ddba150e81f01e13ca142591907f0",
+        "y": 266
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Compartir",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-01"
+        ],
+        "layout": {
+          "grid": {
+            "height": 674.4271240234375,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 936.4583740234376
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 674.4271240234375,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              },
+              "copy": {
+                "height": 189.14584350585935,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 936.4583740234376
+              },
+              "id": "post-01",
+              "image": {
+                "height": 674.4271240234375,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Rituales",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ],
+        "layout": {
+          "grid": {
+            "height": 674.4271240234375,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 936.4583740234376
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 674.4271240234375,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 936.4583740234376
+              },
+              "id": "post-02",
+              "image": {
+                "height": 674.4271240234375,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Contrastes",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-03"
+        ],
+        "layout": {
+          "grid": {
+            "height": 674.4271240234375,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 936.4583740234376
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 674.4271240234375,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 936.4583740234376
+              },
+              "id": "post-03",
+              "image": {
+                "height": 674.4271240234375,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "category": "Sobremesa",
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-04"
+        ],
+        "layout": {
+          "grid": {
+            "height": 674.4271240234375,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 936.4583740234376
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 674.4271240234375,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              },
+              "copy": {
+                "height": 201.14584350585935,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 936.4583740234376
+              },
+              "id": "post-04",
+              "image": {
+                "height": 674.4271240234375,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante.",
+        "layout": {
+          "grid": {
+            "height": 674.4271240234375,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 936.4583740234376
+          },
+          "state": "filtered",
+          "visible": [
+            {
+              "card": {
+                "height": 674.4271240234375,
+                "width": 1136.6875,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              },
+              "copy": {
+                "height": 467.9375,
+                "width": 539.5521240234375,
+                "x": 741.125,
+                "y": 936.4583740234376
+              },
+              "id": "post-02",
+              "image": {
+                "height": 674.4271240234375,
+                "width": 539.5416870117188,
+                "x": 143.98959350585938,
+                "y": 936.4583740234376
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-04-interaction-desktop-journal-read.jpg",
+        "sha256": "92f4bde83eb54a69da4ce609a00d903584f7418a3baccb8dd61874c793af4546",
+        "y": 612.6666870117188
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "journal-reset",
+      "observed": {
+        "layout": {
+          "grid": {
+            "height": 1555.3333740234375,
+            "width": 1136.6875,
+            "x": 143.98959350585938,
+            "y": 936.4583740234376
+          },
+          "state": "all",
+          "visible": [
+            {
+              "card": {
+                "height": 681.447998046875,
+                "width": 743.3854370117188,
+                "x": 143.98959350585938,
+                "y": 946.481201171875
+              },
+              "copy": {
+                "height": 161.8646697998047,
+                "width": 743.3854370117188,
+                "x": 143.98959350585938,
+                "y": 1466.0645141601562
+              },
+              "id": "post-01",
+              "image": {
+                "height": 495.5833129882813,
+                "width": 743.3854370117188,
+                "x": 143.98959350585938,
+                "y": 946.481201171875
+              }
+            },
+            {
+              "card": {
+                "height": 599.3021240234375,
+                "width": 251.78125,
+                "x": 1028.8958740234375,
+                "y": 1096.4583740234375
+              },
+              "copy": {
+                "height": 260.5833435058594,
+                "width": 251.78125,
+                "x": 1028.8958740234375,
+                "y": 1435.1771240234375
+              },
+              "id": "post-02",
+              "image": {
+                "height": 314.71875,
+                "width": 251.78125,
+                "x": 1028.8958740234375,
+                "y": 1096.4583740234375
+              }
+            },
+            {
+              "card": {
+                "height": 653.0729370117188,
+                "width": 350.09375,
+                "x": 242.3125,
+                "y": 1759.7604370117188
+              },
+              "copy": {
+                "height": 191.45834350585935,
+                "width": 350.09375,
+                "x": 242.3125,
+                "y": 2221.375061035156
+              },
+              "id": "post-03",
+              "image": {
+                "height": 437.6145935058594,
+                "width": 350.09375,
+                "x": 242.3125,
+                "y": 1759.7604370117188
+              }
+            },
+            {
+              "card": {
+                "height": 636.03125,
+                "width": 546.75,
+                "x": 733.9271240234375,
+                "y": 1855.7604370117188
+              },
+              "copy": {
+                "height": 191.45834350585935,
+                "width": 546.75,
+                "x": 733.9271240234375,
+                "y": 2300.3334350585938
+              },
+              "id": "post-04",
+              "image": {
+                "height": 420.5729370117187,
+                "width": 546.75,
+                "x": 733.9271240234375,
+                "y": 1855.7604370117188
+              }
+            }
+          ],
+          "width": 1440
+        }
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-04-interaction-desktop-journal-reset.jpg",
+        "sha256": "26e6cd8f8244543903568fe6399a7e293fd169c02b5504a551e58a3570295282",
+        "y": 612.6666870117188
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r3-20261021/candidate-04-interaction-desktop-menu-search.jpg",
+        "sha256": "83323085c397e6ac16430ce80a1a48387c996dea06d4f3d74d9c6a848937a53a",
+        "y": 231.3333282470703
+      }
+    }
+  ]
+}

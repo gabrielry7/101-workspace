@@ -1,0 +1,294 @@
+{
+  "schema_version": "2.1.1",
+  "kind": "design_review_policy",
+  "status": "PROPOSED_NOT_PRODUCT_VALIDATED",
+  "criteria": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8",
+    "R9",
+    "R10",
+    "R11"
+  ],
+  "required_reviewers": 2,
+  "levels": [
+    "falla",
+    "aceptable",
+    "destacado"
+  ],
+  "decision_rule": "Todos los criterios de cada una de dos personas distintas evaluados, con evidencia y sin falla; no sumar ni promediar.",
+  "reference_quality_rule": {
+    "shared_distinguished_required": [
+      "R3",
+      "R4"
+    ],
+    "minimum_other_shared_distinguished": 2
+  },
+  "fingerprint_dimensions": [
+    "composition",
+    "typography",
+    "color",
+    "imagery",
+    "spacing",
+    "components",
+    "motion",
+    "visible_content",
+    "routes_states",
+    "render_environment",
+    "design_policy",
+    "rubric_policy",
+    "capabilities",
+    "assets_rights"
+  ],
+  "criterion_dependencies": {
+    "composition": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "typography": [
+      "R1",
+      "R3",
+      "R4",
+      "R5",
+      "R7",
+      "R8",
+      "R9",
+      "R11"
+    ],
+    "color": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "imagery": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "spacing": [
+      "R1",
+      "R3",
+      "R7",
+      "R8",
+      "R9",
+      "R11"
+    ],
+    "components": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "motion": [
+      "R1",
+      "R2",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "visible_content": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "routes_states": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "render_environment": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "design_policy": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "rubric_policy": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "capabilities": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ],
+    "assets_rights": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7",
+      "R8",
+      "R9",
+      "R10",
+      "R11"
+    ]
+  },
+  "unknown_change_action": "INVALIDATE_ALL",
+  "scope_or_policy_change_action": "INVALIDATE_ALL",
+  "reuse_requirements": [
+    "Mismo ámbito, política, versiones pertinentes e inputs de los criterios conservados.",
+    "Evidencia accesible, no vencida/revocada y procedencia comprobada por integración.",
+    "Nuevo registro completo con referencias a juicios anteriores; no editar la revisión antigua.",
+    "Cambio de candidate_hash invalida aprobación del candidato completo aunque parte de la evidencia de diseño se reutilice."
+  ],
+  "mechanical_assertions": [
+    {
+      "id": "D01",
+      "scope": "coverage",
+      "assertion": "Coincidencia exacta de rutas, estados y perfiles esperados/ejecutados; detector, versión, resultados y evidencia por celda.",
+      "limit": "Sin detector o celda evaluable: INCONCLUSIVE; un conjunto vacío no pasa."
+    },
+    {
+      "id": "D02",
+      "scope": "geometry",
+      "assertion": "Medir desborde, clipping y oclusión de elementos obligatorios/interactivos; declarar superposiciones intencionales y revisar zonas no resolubles.",
+      "limit": "No prueba comprensión ni detecta infaliblemente toda oclusión visual; no dar PASS si el detector no resuelve un caso obligatorio."
+    },
+    {
+      "id": "D03",
+      "scope": "tokens",
+      "assertion": "Comprobar tokens y expresiones de diseño aprobadas en estilos declarados/compilados; excepciones estéticas tienen alcance y evidencia.",
+      "limit": "No comparar cada medida computada, como ancho de texto o auto, contra una lista cerrada de píxeles."
+    },
+    {
+      "id": "D04",
+      "scope": "primary_action",
+      "assertion": "Acción habilitada, nombre/destino correctos y acceso en viewport normal de referencia; reflujo/zoom mantienen acceso sin obstrucción.",
+      "limit": "No exigir primer viewport bajo todo zoom ni reducir texto para forzarlo; claridad y prioridad se revisan humanamente."
+    },
+    {
+      "id": "D05",
+      "scope": "semantic_structure",
+      "assertion": "Inspeccionar DOM, orden de foco y asociación nombre/precio en árbol accesible; registrar divergencias de orden visual/DOM.",
+      "limit": "No demuestra orden lógico comprensible; lo validan personas en G04b y G08."
+    },
+    {
+      "id": "D06",
+      "scope": "resources_states",
+      "assertion": "Recursos usados constan en manifiesto autorizado, capacidades coinciden y estados críticos previstos existen; remitir contraste/rendimiento a G08/G09.",
+      "limit": "Coincidencia documental no acredita por sí sola derechos ni calidad; G02 verifica autorización."
+    }
+  ],
+  "aesthetic_defaults": [
+    {
+      "rule_id": "varied_adjacent_sections",
+      "default": "Variar composición cuando ayude al ritmo; repetición permitida para comparación y continuidad.",
+      "hard_gate": false
+    },
+    {
+      "rule_id": "description_two_lines",
+      "default": "Buscar brevedad sin límite universal de dos líneas ni truncamiento de datos necesarios.",
+      "hard_gate": false
+    },
+    {
+      "rule_id": "two_font_families",
+      "default": "Una o dos familias como guía, salvo necesidad documentada.",
+      "hard_gate": false
+    }
+  ],
+  "exception_required_fields": [
+    "rule_id",
+    "scope",
+    "rationale",
+    "approved_by",
+    "evidence_refs",
+    "design_spec_hash",
+    "review_due"
+  ],
+  "never_waivable": [
+    "truth",
+    "rights",
+    "accessibility",
+    "security",
+    "money",
+    "operational_confirmation"
+  ]
+}

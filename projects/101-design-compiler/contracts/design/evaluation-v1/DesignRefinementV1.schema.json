@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "reading_measure": {
+      "default": "incumbent",
+      "type": "string",
+      "enum": [
+        "incumbent",
+        "bounded"
+      ]
+    },
+    "touch_targets": {
+      "default": "incumbent",
+      "type": "string",
+      "enum": [
+        "incumbent",
+        "comfortable"
+      ]
+    },
+    "type_rhythm": {
+      "default": "incumbent",
+      "type": "string",
+      "enum": [
+        "incumbent",
+        "reading"
+      ]
+    },
+    "tracking": {
+      "default": "incumbent",
+      "type": "string",
+      "enum": [
+        "incumbent",
+        "natural"
+      ]
+    },
+    "label_placement": {
+      "default": "incumbent",
+      "type": "string",
+      "enum": [
+        "incumbent",
+        "after-title"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "reading_measure",
+    "touch_targets",
+    "type_rhythm",
+    "tracking",
+    "label_placement"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:DesignRefinementV1:1.0.0",
+  "title": "DesignRefinementV1"
+}

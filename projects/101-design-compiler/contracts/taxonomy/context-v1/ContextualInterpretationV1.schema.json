@@ -1,0 +1,684 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "CONTEXTUAL_ACTIVITY_INTERPRETATION"
+    },
+    "business_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "business_input_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "policy_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "options_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "interpretation_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "const": "1.0.0"
+        },
+        "business_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "snapshot_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "classification": {
+          "type": "string",
+          "enum": [
+            "RESOLVED",
+            "UNRESOLVED",
+            "NON_BUSINESS"
+          ]
+        },
+        "scope_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "archetypes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "enum": [
+                  "food_hospitality",
+                  "product_retail",
+                  "appointment_service",
+                  "membership_and_classes",
+                  "lodging",
+                  "field_service_and_quote",
+                  "vehicle_service",
+                  "professional_advisory",
+                  "education_programs",
+                  "events_and_entertainment",
+                  "industrial_b2b",
+                  "property_and_spaces",
+                  "transport_and_logistics",
+                  "regulated_services"
+                ]
+              },
+              "relevance": {
+                "type": "string",
+                "enum": [
+                  "primary",
+                  "secondary",
+                  "modifier"
+                ]
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "category_observation_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "offering_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            "required": [
+              "id",
+              "relevance",
+              "confidence",
+              "category_observation_ids",
+              "offering_ids",
+              "evidence_ids"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "offering_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "candidate_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "identity",
+              "about",
+              "locations",
+              "opening_hours",
+              "contact_channels",
+              "social_profiles",
+              "reputation",
+              "gallery",
+              "service_catalog",
+              "product_catalog",
+              "menu",
+              "product_variants",
+              "price_list",
+              "packages",
+              "rooms",
+              "programs",
+              "professional_profiles",
+              "trainer_profiles",
+              "portfolio",
+              "case_studies",
+              "reservation",
+              "appointment",
+              "quote_request",
+              "contact_request",
+              "purchase",
+              "order",
+              "delivery",
+              "pickup",
+              "membership",
+              "membership_signup",
+              "class_enrollment",
+              "ticketing",
+              "room_booking",
+              "visit_booking",
+              "service_request",
+              "class_schedule",
+              "events",
+              "availability_display",
+              "service_area",
+              "delivery_policy",
+              "visit_policy",
+              "payment_methods",
+              "amenities",
+              "accessibility_info",
+              "branches",
+              "faqs",
+              "documents"
+            ]
+          }
+        },
+        "missing_inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "need": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "scope_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "requested_from": {
+                "type": "string",
+                "const": "upstream"
+              }
+            },
+            "required": [
+              "need",
+              "scope_id",
+              "reason",
+              "requested_from"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "business_id",
+        "snapshot_id",
+        "id",
+        "classification",
+        "scope_ids",
+        "archetypes",
+        "offering_ids",
+        "candidate_capabilities",
+        "missing_inputs",
+        "restrictions"
+      ],
+      "additionalProperties": false
+    },
+    "original_categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "field": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "provider_category_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "normalized_category": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "hierarchy": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "provenance": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source_record_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "source": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "observed_at": {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                },
+                "source_uri": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "inventory_record_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "inventory_sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "source_record_id",
+                "source",
+                "observed_at"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "field",
+          "value",
+          "hierarchy",
+          "evidence_ids",
+          "provenance"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "scope_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "rule_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "CATEGORY",
+              "DESCRIPTION",
+              "ACTIVITY_ASSERTION",
+              "OFFERING"
+            ]
+          },
+          "polarity": {
+            "type": "string",
+            "enum": [
+              "POSITIVE",
+              "NEGATIVE"
+            ]
+          },
+          "candidates": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "food_hospitality",
+                "product_retail",
+                "appointment_service",
+                "membership_and_classes",
+                "lodging",
+                "field_service_and_quote",
+                "vehicle_service",
+                "professional_advisory",
+                "education_programs",
+                "events_and_entertainment",
+                "industrial_b2b",
+                "property_and_spaces",
+                "transport_and_logistics",
+                "regulated_services"
+              ]
+            }
+          },
+          "category_observation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "offering_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "fact_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "scope_id",
+          "rule_id",
+          "kind",
+          "polarity",
+          "candidates",
+          "category_observation_ids",
+          "offering_ids",
+          "fact_ids"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "ignored": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "scope_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "id",
+          "scope_id",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scope_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "RESOLVED",
+              "HYBRID",
+              "AMBIGUOUS",
+              "CONFLICTED",
+              "UNKNOWN",
+              "NON_BUSINESS"
+            ]
+          },
+          "archetypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "food_hospitality",
+                "product_retail",
+                "appointment_service",
+                "membership_and_classes",
+                "lodging",
+                "field_service_and_quote",
+                "vehicle_service",
+                "professional_advisory",
+                "education_programs",
+                "events_and_entertainment",
+                "industrial_b2b",
+                "property_and_spaces",
+                "transport_and_logistics",
+                "regulated_services"
+              ]
+            }
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "food_hospitality",
+                "product_retail",
+                "appointment_service",
+                "membership_and_classes",
+                "lodging",
+                "field_service_and_quote",
+                "vehicle_service",
+                "professional_advisory",
+                "education_programs",
+                "events_and_entertainment",
+                "industrial_b2b",
+                "property_and_spaces",
+                "transport_and_logistics",
+                "regulated_services"
+              ]
+            }
+          },
+          "signal_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "diagnostics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "clarification": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "need": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "requested_from": {
+                  "type": "string",
+                  "const": "upstream"
+                },
+                "message": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "need",
+                "requested_from",
+                "message"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "scope_id",
+          "status",
+          "archetypes",
+          "alternatives",
+          "signal_ids",
+          "diagnostics",
+          "clarification"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "RESOLVED",
+        "HYBRID",
+        "MULTISCOPE",
+        "AMBIGUOUS",
+        "CONFLICTED",
+        "UNKNOWN",
+        "NON_BUSINESS"
+      ]
+    },
+    "authority": {
+      "type": "string",
+      "const": "ACTIVITY_RELEVANCE_ONLY_NOT_OPERATIONAL_CONFIRMATION"
+    },
+    "calibrated_confidence": {
+      "type": "null"
+    },
+    "limitations": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "business_id",
+    "snapshot_id",
+    "business_input_sha256",
+    "evaluated_at",
+    "policy_sha256",
+    "options_sha256",
+    "interpretation_sha256",
+    "profile",
+    "original_categories",
+    "signals",
+    "ignored",
+    "scopes",
+    "status",
+    "authority",
+    "calibrated_confidence",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ContextualInterpretationV1:1.0.0",
+  "title": "ContextualInterpretationV1",
+  "description": "B1 associated activity interpretation; exact references/scopes and semantic verification required, not operational confirmation."
+}

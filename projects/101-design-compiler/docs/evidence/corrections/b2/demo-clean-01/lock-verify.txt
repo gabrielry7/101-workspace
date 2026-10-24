@@ -1,0 +1,15 @@
+
+> 101-design-compiler@0.0.0 lock:verify
+> node --experimental-strip-types scripts/verify-h8.ts --rebuild
+
+file:///C:/Users/gabri/101-design-compiler/.tools/corrections/b0/b2-demo-clean/source/scripts/lib/rebuild-lock.ts:28
+ const browser=await browserFingerprint();if(browser.version!==lock.toolchain.browser_version||JSON.stringify(browser.files)!==JSON.stringify(lock.toolchain.browser_files))throw Error('LOCK_BROWSER_MISMATCH');
+                                                                                                                                                                                  ^
+
+Error: LOCK_BROWSER_MISMATCH
+    at verifyLockFiles (file:///C:/Users/gabri/101-design-compiler/.tools/corrections/b0/b2-demo-clean/source/scripts/lib/rebuild-lock.ts:28:179)
+    at async file:///C:/Users/gabri/101-design-compiler/.tools/corrections/b0/b2-demo-clean/source/scripts/verify-h8.ts:17:254
+    at async Promise.all (index 2)
+    at async file:///C:/Users/gabri/101-design-compiler/.tools/corrections/b0/b2-demo-clean/source/scripts/verify-h8.ts:17:13
+
+Node.js v24.21.0

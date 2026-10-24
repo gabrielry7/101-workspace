@@ -1,0 +1,128 @@
+[
+  {
+    "schema_version": "1.0.0",
+    "id": "typographic-pause",
+    "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+    "principle": "La identidad verificada domina una secuencia editorial; el medio mantiene una pausa ambiental independiente.",
+    "dominance": "typography",
+    "materiality": "unaltered-photograph",
+    "rationale": "Dos hechos y una foto atmosférica permiten una jerarquía clara, no una promesa comercial. Separar identidad y oferta respeta el scope de sucursal. Flow/Sequence amplía la pausa; Rail/Sequence conserva la secuencia y hace explícito el índice lateral.",
+    "topologies": [
+      {
+        "frame": "Flow",
+        "stage": "Sequence"
+      },
+      {
+        "frame": "Rail",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "olive",
+      "type": "serif",
+      "hierarchy": "monument",
+      "rhythm": "quiet",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [
+      "h3-real-pilot-atmospheric"
+    ],
+    "motion": "quiet",
+    "risks": [
+      "El contenido escaso puede parecer incompleto: mantener huecos y avisos visibles.",
+      "La imagen original supera el presupuesto habitual móvil y no admite derivados.",
+      "La diversidad móvil de secuencias es menor que en escritorio."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "id": "balanced-dialogue",
+    "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+    "principle": "Texto factual y fotografía ambiental dialogan en campos adyacentes, conservando lectura y crédito.",
+    "dominance": "dialogue",
+    "materiality": "unaltered-photograph",
+    "rationale": "Split relaciona identidad y atmósfera sin superponer texto ni atribuir el medio al negocio. Flow mantiene un índice horizontal; Rail/Split explora una topología anidada de navegación lateral y dos campos de contenido. En móvil ambos campos se apilan en orden lógico.",
+    "topologies": [
+      {
+        "frame": "Flow",
+        "stage": "Split"
+      },
+      {
+        "frame": "Rail",
+        "stage": "Split"
+      }
+    ],
+    "tokens": {
+      "palette": "earth",
+      "type": "serif",
+      "hierarchy": "compact",
+      "rhythm": "dense",
+      "media_width": "full",
+      "media_alignment": "end"
+    },
+    "media_usage_ids": [
+      "h3-real-pilot-atmospheric"
+    ],
+    "motion": "quiet",
+    "risks": [
+      "Rail/Split puede comprimir texto en tablet: reflow temprano a una columna.",
+      "La foto sigue siendo contexto genérico; no sirve como imagen documental de la oferta.",
+      "No forzar dos columnas donde falta medio: oferta ocupa ancho completo."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "1.0.0",
+    "id": "indexed-field",
+    "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+    "principle": "La navegación estructura un campo compacto con medio desplazado; la ausencia documental sigue explícita.",
+    "dominance": "navigation",
+    "materiality": "unaltered-photograph",
+    "rationale": "La separación entre página de identidad y oferta requiere orientación estable, no una plantilla de restaurante. Rail/Sequence prioriza índice y ritmo compacto; Flow/Split contrasta con campos horizontales. La tipografía sans enfatiza lectura del fixture, sin inferir posicionamiento de marca.",
+    "topologies": [
+      {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      {
+        "frame": "Flow",
+        "stage": "Split"
+      }
+    ],
+    "tokens": {
+      "palette": "ink",
+      "type": "sans",
+      "hierarchy": "compact",
+      "rhythm": "dense",
+      "media_width": "inset",
+      "media_alignment": "end"
+    },
+    "media_usage_ids": [
+      "h3-real-pilot-atmospheric"
+    ],
+    "motion": "quiet",
+    "risks": [
+      "No confundir indexación editorial con búsqueda de catálogo implementada.",
+      "La falta de referencias licenciadas limita la investigación estética.",
+      "Preferencia humana pendiente: ninguna dirección se declara ganadora."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  }
+]

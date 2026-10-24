@@ -1,0 +1,121 @@
+{
+  "manifest": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-ferreteria-001",
+    "snapshot_id": "fixture-ferreteria-001-snapshot-v1",
+    "site_plan_id": "fixture-ferreteria-001-snapshot-v1:h2-plan:f7f6647562fe8e0e63b7fa83",
+    "client_id": "synthetic-client",
+    "project_id": "synthetic-project",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "plan_sha256": "b6af80d1307723a37a1e10b7a8f85f4d289e2d56165c0fa0a6b3263d8b6a9733",
+    "requirements_sha256": "ac0d1b79e2d41813f76d22904577b923cb9e693643f55162bff3368ad0542c2f",
+    "input_sha256": "bb0afef071f8ece1592bfc70e98249394bd2b9008ab0b47b65cc1bdef811c72c",
+    "assets": [],
+    "grants": [],
+    "usages": [],
+    "needs": [
+      {
+        "id": "need-1f0db93d09f3e0ab7103ec2f",
+        "requirement_id": "semantic-2a2b3d975fe43910a883fb9f",
+        "module_id": "semantic-2a2b3d975fe43910a883fb9f",
+        "page": "/",
+        "scope_id": "fixture-ferreteria-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-5c95cf4cc6d9a9f59c680dd5",
+        "requirement_id": "semantic-9eb2a7e5d1c81a0e7a82abb1",
+        "module_id": "semantic-9eb2a7e5d1c81a0e7a82abb1",
+        "page": "/sedes/s-8421597e402c0134f6a7a75a/catalogo",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "purpose": "document:product_catalog",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      }
+    ],
+    "decisions": []
+  },
+  "brief": {
+    "schema_version": "1.0.0",
+    "site_plan_id": "fixture-ferreteria-001-snapshot-v1:h2-plan:f7f6647562fe8e0e63b7fa83",
+    "manifest_sha256": "af0d7acb8195b905f31db728418af944984a31f212ed945203df0222ad5286c8",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "gaps": [
+      {
+        "need": {
+          "id": "need-1f0db93d09f3e0ab7103ec2f",
+          "requirement_id": "semantic-2a2b3d975fe43910a883fb9f",
+          "module_id": "semantic-2a2b3d975fe43910a883fb9f",
+          "page": "/",
+          "scope_id": "fixture-ferreteria-001",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      },
+      {
+        "need": {
+          "id": "need-5c95cf4cc6d9a9f59c680dd5",
+          "requirement_id": "semantic-9eb2a7e5d1c81a0e7a82abb1",
+          "module_id": "semantic-9eb2a7e5d1c81a0e7a82abb1",
+          "page": "/sedes/s-8421597e402c0134f6a7a75a/catalogo",
+          "scope_id": "fixture-ferreteria-001-branch-1",
+          "purpose": "document:product_catalog",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "offering-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "closure": "PENDING_AUTHORIZED_MEDIA_PACKAGE"
+  }
+}

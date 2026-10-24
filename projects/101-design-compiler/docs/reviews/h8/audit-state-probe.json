@@ -1,0 +1,118 @@
+{
+  "status": "REQUIREMENT_GAP_CONFIRMED",
+  "requirement": "V0.2 §21.3: design.lock.json includes approvals and audit states",
+  "data_mode": "REVIEW_READ_ONLY_PROBE",
+  "observations": [
+    {
+      "id": "pilot-flow",
+      "lock_sha256": "e29b1a0746592c2b319a8daa3d326351aa5554dbcd8eed53b6273c3677e03851",
+      "validation_without_technical_audit_snapshot": true,
+      "top_level_fields": [
+        "schema_version",
+        "id",
+        "created_at",
+        "lock_sha256",
+        "purpose",
+        "approval",
+        "semantic",
+        "media",
+        "lab",
+        "resolved_plan",
+        "creative",
+        "mount",
+        "components",
+        "source_snapshot_root",
+        "sources",
+        "toolchain",
+        "environment",
+        "media_snapshot_root",
+        "files",
+        "exclusions"
+      ],
+      "audit_fields": [],
+      "approval": {
+        "status": "LAB_TECHNICAL_LOCK_NOT_HUMAN_APPROVED",
+        "human_preference": "NOT_COLLECTED",
+        "production_ready": false,
+        "commercial_runtime": "MISSING"
+      },
+      "technical_audit_files": [],
+      "unknown_audit_state_field_rejected": true,
+      "explanation": "Lock validates with only a literal approval status; no frozen technical audit status, coverage or reference hash is represented. H8 run outside lock is separately recorded."
+    },
+    {
+      "id": "pilot-rail",
+      "lock_sha256": "49413ca5588ede2984b1b323588ca519bc492f77d401a315e0efcc39f286f7de",
+      "validation_without_technical_audit_snapshot": true,
+      "top_level_fields": [
+        "schema_version",
+        "id",
+        "created_at",
+        "lock_sha256",
+        "purpose",
+        "approval",
+        "semantic",
+        "media",
+        "lab",
+        "resolved_plan",
+        "creative",
+        "mount",
+        "components",
+        "source_snapshot_root",
+        "sources",
+        "toolchain",
+        "environment",
+        "media_snapshot_root",
+        "files",
+        "exclusions"
+      ],
+      "audit_fields": [],
+      "approval": {
+        "status": "LAB_TECHNICAL_LOCK_NOT_HUMAN_APPROVED",
+        "human_preference": "NOT_COLLECTED",
+        "production_ready": false,
+        "commercial_runtime": "MISSING"
+      },
+      "technical_audit_files": [],
+      "unknown_audit_state_field_rejected": true,
+      "explanation": "Lock validates with only a literal approval status; no frozen technical audit status, coverage or reference hash is represented. H8 run outside lock is separately recorded."
+    },
+    {
+      "id": "hybrid-no-media",
+      "lock_sha256": "037342861560af1297435c48ddb760c02e0f9f182167c03a637a1c808f5c61f9",
+      "validation_without_technical_audit_snapshot": true,
+      "top_level_fields": [
+        "schema_version",
+        "id",
+        "created_at",
+        "lock_sha256",
+        "purpose",
+        "approval",
+        "semantic",
+        "media",
+        "lab",
+        "resolved_plan",
+        "creative",
+        "mount",
+        "components",
+        "source_snapshot_root",
+        "sources",
+        "toolchain",
+        "environment",
+        "media_snapshot_root",
+        "files",
+        "exclusions"
+      ],
+      "audit_fields": [],
+      "approval": {
+        "status": "LAB_TECHNICAL_LOCK_NOT_HUMAN_APPROVED",
+        "human_preference": "NOT_COLLECTED",
+        "production_ready": false,
+        "commercial_runtime": "MISSING"
+      },
+      "technical_audit_files": [],
+      "unknown_audit_state_field_rejected": true,
+      "explanation": "Lock validates with only a literal approval status; no frozen technical audit status, coverage or reference hash is represented. H8 run outside lock is separately recorded."
+    }
+  ]
+}

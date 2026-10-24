@@ -1,0 +1,14 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import {providerAssessments,providerEvaluationDate} from '../../media/providers.ts';
+import '../../requirements/review.css';
+const labels:Record<string,string>={commercial:'Uso comercial',multiclient:'Multicliente',manual_search:'Búsqueda manual',api:'API y acceso real',automation:'Automatización',download:'Descarga',cache:'Caché',hosting:'Alojamiento',modifications:'Modificaciones',ai_classification:'IA: clasificación',ai_embedding:'IA: embeddings',ai_vision:'IA: visión',ai_editing:'IA: edición',ai_training:'IA: entrenamiento',attribution:'Atribución',model_release:'Releases de personas',property_release:'Propiedad y terceros',costs:'Costos',restrictions:'Restricciones',decision:'Estado'};
+const decisions:Record<string,string>={ONE_SELECTED_ASSET_VERIFIED:'Un archivo concreto y sus usos comprobados',SINGLE_HUMAN_SEARCH_VERIFIED_ASSET_WORKFLOW_PENDING:'Búsqueda comprobada; archivos y permisos pendientes',NOT_CONNECTED_ONBOARDING_PAUSED:'Sin conexión: nuevas claves pausadas',NOT_CONNECTED_LOCAL_ARCHIVE_WORKFLOW_PENDING:'Sin conexión: falta acordar el almacenamiento local',NOT_CONNECTED_ACCESS_AND_BUDGET_PENDING:'Sin conexión: acceso y presupuesto pendientes',NOT_CONNECTED_AUTOMATION_NOT_PERMITTED:'Sin conexión: automatización propuesta no permitida',NOT_CONNECTED_PER_ASSET_REVIEW_PENDING:'Sin conexión: requiere revisar cada archivo'};
+---
+<Foundation title="B2 · Fuentes, permisos y operaciones permitidas">
+ <div class="review" data-b2-page="providers"><nav aria-label="Revisión B2"><a href="/b2/">Resumen</a><a href="/b2/pilot/">Piloto</a></nav><h1>Fuentes y condiciones</h1><p>Evaluación oficial: {providerEvaluationDate}. Cada operación se evalúa por separado; esto no autoriza todos los archivos de un proveedor.</p>
+ <p class="notice">Complemento para pruebas ficticias: cuatro fotografías y un vídeo de Pixabay, con evaluación por archivo y alojamiento local privado. <a href="/b2/demo/">Ver la demo</a>. Las filas siguientes conservan la evaluación inicial B2; el complemento y sus permisos están documentados por separado. No hay catálogo automatizado, compras ni cuentas nuevas.</p>
+ {providerAssessments.map(p=><section data-provider-id={p.id}><h2>{p.name}</h2><p>{decisions[p.decision]}</p><details><summary>Ver condiciones y fuentes oficiales</summary><dl>{Object.entries(p).filter(([key])=>key in labels&&key!=='decision').map(([key,value])=><><dt>{labels[key]}</dt><dd>{String(value)}</dd></>)}</dl><ul>{p.sources.map(url=><li><a href={url}>{new URL(url).hostname} · documentación oficial</a></li>)}</ul></details></section>)}
+ </div>
+</Foundation>
+<style>dt{font-weight:650;margin-top:1rem}dd{margin:.35rem 0;line-height:1.6;max-width:75ch}</style>

@@ -1,0 +1,129 @@
+{
+  "kind": "B2_EXPLICIT_FICTIONAL_RESTAURANT_SEARCH",
+  "created_at": "2026-10-15T02:37:38.464Z",
+  "requests": 5,
+  "media_downloads": 0,
+  "queries": [
+    {
+      "id": "pizza",
+      "kind": "image",
+      "endpoint": "https://pixabay.com/api/",
+      "query": {
+        "q": "pizza",
+        "per_page": "3",
+        "page": "1",
+        "safesearch": "true",
+        "image_type": "photo",
+        "orientation": "horizontal"
+      },
+      "at": "2026-10-15T02:37:35.672Z",
+      "cache_until": "2026-10-16T02:37:35.672Z",
+      "private_cache": ".tools/b2-demo/cache/pizza.json",
+      "response_sha256": "99ae2034bd9644603aa6f808fbc70b3144011c59b0d0d4dde0a99484b79707d9",
+      "response_bytes": 3640,
+      "hits": 3,
+      "rate_limit": {
+        "X-RateLimit-Limit": "100",
+        "X-RateLimit-Remaining": "99",
+        "X-RateLimit-Reset": "60"
+      }
+    },
+    {
+      "id": "pasta",
+      "kind": "image",
+      "endpoint": "https://pixabay.com/api/",
+      "query": {
+        "q": "pasta",
+        "per_page": "3",
+        "page": "1",
+        "safesearch": "true",
+        "image_type": "photo",
+        "orientation": "horizontal"
+      },
+      "at": "2026-10-15T02:37:36.218Z",
+      "cache_until": "2026-10-16T02:37:36.218Z",
+      "private_cache": ".tools/b2-demo/cache/pasta.json",
+      "response_sha256": "4c65a4f47c27dffc9fe367a37644235c20c409b5c12198591a3b86c3eddc9076",
+      "response_bytes": 3949,
+      "hits": 3,
+      "rate_limit": {
+        "X-RateLimit-Limit": "100",
+        "X-RateLimit-Remaining": "98",
+        "X-RateLimit-Reset": "60"
+      }
+    },
+    {
+      "id": "salad",
+      "kind": "image",
+      "endpoint": "https://pixabay.com/api/",
+      "query": {
+        "q": "salad",
+        "per_page": "3",
+        "page": "1",
+        "safesearch": "true",
+        "image_type": "photo",
+        "orientation": "horizontal"
+      },
+      "at": "2026-10-15T02:37:37.237Z",
+      "cache_until": "2026-10-16T02:37:37.237Z",
+      "private_cache": ".tools/b2-demo/cache/salad.json",
+      "response_sha256": "27b18167c40eb46dba89a1e0dfe97808d0cc331f48a91641403c3a7103f1a968",
+      "response_bytes": 3517,
+      "hits": 3,
+      "rate_limit": {
+        "X-RateLimit-Limit": "100",
+        "X-RateLimit-Remaining": "97",
+        "X-RateLimit-Reset": "59"
+      }
+    },
+    {
+      "id": "dessert",
+      "kind": "image",
+      "endpoint": "https://pixabay.com/api/",
+      "query": {
+        "q": "tiramisu",
+        "per_page": "3",
+        "page": "1",
+        "safesearch": "true",
+        "image_type": "photo",
+        "orientation": "horizontal"
+      },
+      "at": "2026-10-15T02:37:37.841Z",
+      "cache_until": "2026-10-16T02:37:37.841Z",
+      "private_cache": ".tools/b2-demo/cache/dessert.json",
+      "response_sha256": "eadbd6ec5d2c8dd828855689d57f4b9fcc1228ae71184046fe4934936c768fda",
+      "response_bytes": 3616,
+      "hits": 3,
+      "rate_limit": {
+        "X-RateLimit-Limit": "100",
+        "X-RateLimit-Remaining": "96",
+        "X-RateLimit-Reset": "58"
+      }
+    },
+    {
+      "id": "motion",
+      "kind": "video",
+      "endpoint": "https://pixabay.com/api/videos/",
+      "query": {
+        "q": "pizza",
+        "per_page": "3",
+        "page": "1",
+        "safesearch": "true",
+        "video_type": "film"
+      },
+      "at": "2026-10-15T02:37:38.463Z",
+      "cache_until": "2026-10-16T02:37:38.463Z",
+      "private_cache": ".tools/b2-demo/cache/motion.json",
+      "response_sha256": "1f0e9dc3090873189d69620e7c8060ba73e1f6aad1abb944ba017c92b39e37b7",
+      "response_bytes": 4063,
+      "hits": 3,
+      "rate_limit": {
+        "X-RateLimit-Limit": "100",
+        "X-RateLimit-Remaining": "95",
+        "X-RateLimit-Reset": "58"
+      }
+    }
+  ],
+  "terms": "https://pixabay.com/api/docs/",
+  "policy": "Five specific searches for one fictional fixture. No pagination, bulk download, account changes or purchases. Raw responses private/24h, not published or replayed."
+}

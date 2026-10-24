@@ -1,0 +1,28 @@
+---
+import Foundation from '../layouts/Foundation.astro';
+import { loadMediaPilot } from '../../scripts/load-media-pilot.ts';
+// Render needs no sealing receipt; that receipt verifies this exact output after build.
+const { output } = await loadMediaPilot({ unsealed: true });
+const usage = output.manifest.usages[0]!;
+const asset = output.manifest.assets.find(a => a.id === usage.asset_id)!;
+---
+<Foundation title="H3: prueba de medios autorizados">
+  <h1>H3: prueba de medios autorizados</h1>
+  <p>Piloto interno del fixture ficticio de restaurante. Esta figura comprueba archivo, permiso y contexto; no es una composición de sitio comercial.</p>
+  <figure data-usage-id={usage.id} data-asset-id={asset.id}>
+    <img src={asset.uri} width={asset.inspection.width!} height={asset.inspection.height!}
+      alt="Pimientos rojos y hojas: imagen atmosférica genérica, ajena al negocio ficticio." />
+    <figcaption>
+      <p data-context>{usage.generic_label}</p>
+      <p data-credit>{usage.attribution_text}</p>
+      {usage.context_notices?.map(notice => <p data-notice>{notice}</p>)}
+      <p><a href="https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/">Origen y declaración de dominio público de USDA ARS</a></p>
+    </figcaption>
+  </figure>
+  <p><strong>Hueco documental bloqueado:</strong> no existe una fotografía auténtica de <code>offering-1</code>. No se utiliza esta imagen para ilustrar el plato ficticio como si fuera real.</p>
+</Foundation>
+<style>
+  figure { margin: 1rem 0; }
+  img { display: block; width: 100%; max-width: 640px; height: auto; }
+  figcaption p { margin: .4rem 0; }
+</style>

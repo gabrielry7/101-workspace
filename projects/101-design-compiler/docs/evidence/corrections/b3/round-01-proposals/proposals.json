@@ -1,0 +1,180 @@
+[
+  {
+    "schema_version": "2.0.0",
+    "id": "editorial-table",
+    "context_sha256": "5af71d316a98dd4f0b5c7c8a9b2dbcc17e17496d2b14733cf2f3c06fcc6ae579",
+    "label": "01 · Sobremesa",
+    "feeling": "Editorial cálido: serif, pausa y dos campos equilibrados.",
+    "principle": "La carta se lee como una invitación. El nombre tiene presencia, la fotografía acompaña y el detalle aparece cuando se solicita.",
+    "rationale": "La carta corta y el relato sintético permiten una lectura editorial sin fingir lujo o procedencia del negocio. Se usa el énfasis editorial reportado de Padella/Noma y la congruencia tipográfica reportada de The Modern House; no se copian sus formas.",
+    "references": [
+      "reference-07",
+      "reference-08",
+      "reference-19"
+    ],
+    "risks": [
+      "Evitar pausas excesivas con sólo cuatro platos.",
+      "No confundir el stock con la receta ficticia."
+    ],
+    "recipe": {
+      "navigation": "Top",
+      "hero": "Split",
+      "collection": "Grid",
+      "mobile_collection": "Stack",
+      "narrative": "BeforeCollection",
+      "visit": "Columns",
+      "proportion": "balanced",
+      "measure": "contained"
+    },
+    "tokens": {
+      "palette": "paper",
+      "voice": "editorial",
+      "scale": "display",
+      "rhythm": "airy",
+      "corners": "square",
+      "motion": "quiet"
+    },
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "2.0.0",
+    "id": "open-index",
+    "context_sha256": "5af71d316a98dd4f0b5c7c8a9b2dbcc17e17496d2b14733cf2f3c06fcc6ae579",
+    "label": "02 · Carta abierta",
+    "feeling": "Directo y expresivo: índice, sans grande y módulos densos.",
+    "principle": "El recorrido se convierte en un índice habitable. La navegación ocupa un campo propio y la carta combina fotografía y lectura lateral.",
+    "rationale": "El contenido abundante necesita accesos reconocibles; Rail y Rows permiten llegar a carta o visita sin convertir toda la web en una grilla de tarjetas. Singer sólo informa la posibilidad de un desplegable móvil; su sitio completo no es referencia aprobada.",
+    "references": [
+      "reference-21",
+      "reference-18",
+      "reference-01",
+      "reference-02"
+    ],
+    "risks": [
+      "Rail no debe consumir demasiado ancho.",
+      "El desplegable móvil necesita teclado y fallback sin JS."
+    ],
+    "recipe": {
+      "navigation": "Rail",
+      "hero": "Diptych",
+      "collection": "Rows",
+      "mobile_collection": "Compact",
+      "narrative": "AfterCollection",
+      "visit": "Band",
+      "proportion": "type-led",
+      "measure": "wide"
+    },
+    "tokens": {
+      "palette": "tomato",
+      "voice": "grotesk",
+      "scale": "monument",
+      "rhythm": "tight",
+      "corners": "square",
+      "motion": "quiet"
+    },
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "2.0.0",
+    "id": "night-gallery",
+    "context_sha256": "5af71d316a98dd4f0b5c7c8a9b2dbcc17e17496d2b14733cf2f3c06fcc6ae579",
+    "label": "03 · Después de las ocho",
+    "feeling": "Galería nocturna: gran título centrado, imágenes y secuencia.",
+    "principle": "Un escenario oscuro y silencioso da protagonismo al color de la comida. El título abre la página y la colección se desarrolla en una secuencia visual.",
+    "rationale": "El fondo oscuro responde al gusto reportado por la coherencia de LUNE, sin afirmar que sea un restaurante nocturno real. Dinesen orienta la relación paleta/medios; Aira/Heckfield sólo motivan evaluar el clip por viewport y por interacción, sin hero de vídeo pesado.",
+    "references": [
+      "reference-17",
+      "reference-16",
+      "reference-05",
+      "reference-14",
+      "reference-20"
+    ],
+    "risks": [
+      "No ampliar el clip de 640px para aparentar calidad desktop.",
+      "Verificar contraste y longitud de lectura sobre fondo oscuro."
+    ],
+    "recipe": {
+      "navigation": "Index",
+      "hero": "Monument",
+      "collection": "Mosaic",
+      "mobile_collection": "Sequence",
+      "narrative": "AfterCollection",
+      "visit": "Columns",
+      "proportion": "image-led",
+      "measure": "wide"
+    },
+    "tokens": {
+      "palette": "night",
+      "voice": "editorial",
+      "scale": "monument",
+      "rhythm": "measured",
+      "corners": "soft",
+      "motion": "quiet"
+    },
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "2.0.0",
+    "id": "garden-notes",
+    "context_sha256": "5af71d316a98dd4f0b5c7c8a9b2dbcc17e17496d2b14733cf2f3c06fcc6ae579",
+    "label": "04 · Cuaderno de mesa",
+    "feeling": "Humano y sereno: escenario enmarcado, lista y bandas.",
+    "principle": "La imagen abre un espacio claro y el relato se organiza en notas cortas. Una carta en filas evita repetir la colección editorial del primer candidato.",
+    "rationale": "La claridad reportada de NORM y el alcance narrativo limitado de Khufu orientan la secuencia. Aponiente se mantiene sólo como referencia del recorrido de menú solicitado, todavía sin inspección actual. No se infieren propiedades específicas de OSIP/Central ni de referencias sin desglose.",
+    "references": [
+      "reference-18",
+      "reference-13",
+      "reference-12",
+      "reference-06",
+      "reference-03",
+      "reference-04",
+      "reference-09",
+      "reference-10",
+      "reference-11",
+      "reference-15"
+    ],
+    "risks": [
+      "No presentar el feeling jardín como procedencia de ingredientes.",
+      "Conservar todas las notas de ficción y los detalles de los platos."
+    ],
+    "recipe": {
+      "navigation": "Top",
+      "hero": "Stage",
+      "collection": "Rows",
+      "mobile_collection": "Stack",
+      "narrative": "BeforeCollection",
+      "visit": "Band",
+      "proportion": "image-led",
+      "measure": "contained"
+    },
+    "tokens": {
+      "palette": "olive",
+      "voice": "humanist",
+      "scale": "compact",
+      "rhythm": "measured",
+      "corners": "soft",
+      "motion": "quiet"
+    },
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  }
+]

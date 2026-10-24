@@ -1,0 +1,35 @@
+{
+  "kind": "release_manifest",
+  "schema_version": "2.1.1",
+  "release_id": "synthetic-do-not-deploy",
+  "candidate_hash": "5e247799092400f5cbc182c7beb0b7c9ca8b8ac7ae12274fb7e9a46719fa384f",
+  "candidate_inputs": {
+    "business_id": "synthetic-business",
+    "location_ids": [
+      "synthetic-location"
+    ],
+    "mode": "authorized_live",
+    "artifacts": [
+      {
+        "path": "ejemplos/artefacto_sintetico.html",
+        "sha256": "d9ec44b0854795e0447b4b7e868907405fd3ddf1e689167f6f03d7ea616462e8",
+        "size_bytes": 171
+      }
+    ],
+    "data_snapshot_hash": "8d04322d91f766001a05d12cc492ae314ca7ba5e126c2b1327c298442cbb8a91",
+    "capability_plan_hash": "46ba0f84ea438e33b13e4c16f64625aae0aba55e6302fda9f52b48db5591cf1a",
+    "site_plan_hash": "b1a19af08d92a65ba7d0459df2373a86cf8c0b6bc8eb21b4f57741284e1670a8",
+    "design_spec_hash": "191b43908f7c1e081cd34f9f4b6f4653f34fba5bf3ea6b08e0baf5709b7e0860",
+    "asset_manifest_hash": "79e778a443869a832af2fbbe9e1ddd153186fc84097535a2e55c1d22af300713",
+    "operations_policy_hash": "b7de18544a74682c3e5b7285910e373b501f740dcbdfd49b823e3bc1ad5ec327",
+    "toolchain_hash": "2b8f9e3c85843f0a526b75afc78ac0591c46b5bde0ef21dc28dc083d11f1015f",
+    "content_version": "synthetic-1",
+    "catalog_version": "synthetic-1",
+    "design_version": "synthetic-1",
+    "backend_contract_version": "synthetic-not-implemented",
+    "compiler_commit": "SYNTHETIC-NOT-A-REAL-COMMIT",
+    "pipeline_policy_version": "2.1.1",
+    "applicability_profile_hash": "a5779d1a7299d018603002571426b9d5726e9cc045f222773be740dd4dccc615"
+  },
+  "created_at": "2026-10-03T00:00:00Z"
+}

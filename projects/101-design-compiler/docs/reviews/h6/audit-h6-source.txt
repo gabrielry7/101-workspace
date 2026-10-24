@@ -1,0 +1,77 @@
+import { readFile,writeFile,mkdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { loadAuditLab } from '../../scripts/load-audit-lab.ts';
+import { openLocalBrowser } from '../../scripts/lib/local-browser.ts';
+import { observePage } from '../../src/composition/observe.ts';
+import { measureRaster,measurePixels } from '../../src/audit/raster.ts';
+import { auditCandidate,auditPreviewPath,chooseAcceptable,type BrowserView } from '../../src/audit/evaluate.ts';
+import { judgeMutation,proposeRepair,mutate } from '../../src/audit/mutate.ts';
+import { inputSha256 } from '../../src/upstream/v1/protocol.ts';
+import { byteSha256 } from '../../src/media/package.ts';
+const state=await loadAuditLab(),browser=await openLocalBrowser();
+const directory='docs/reviews/h6';await mkdir(directory,{recursive:true});
+const receipts:any[]=[],errors:any[]=[];
+async function observe(mount:typeof state.mounts[number],page:string,viewport:{id:string;width:number;height:number},fault?:'truth'|'rights'|'contrast'){
+ await browser.call('Emulation.setDeviceMetricsOverride',{width:viewport.width,height:viewport.height,deviceScaleFactor:1,mobile:viewport.id==='mobile'});
+ await browser.call('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+ const route=auditPreviewPath(mount.id,page);await browser.navigate(route);
+ if(fault==='truth')await browser.evaluate(`document.querySelector('[data-fact-id]').textContent='Precio falso sembrado para prueba negativa'`);
+ if(fault==='rights')await browser.evaluate(`document.querySelector('[data-credit]').textContent=''`);
+ if(fault==='contrast')await browser.evaluate(`document.querySelector('h1').style.color=getComputedStyle(document.querySelector('.lab')).backgroundColor`);
+ const observed=await browser.evaluate(`(${observePage.toString()})()`) as ReturnType<typeof observePage>;
+ await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+ await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+ const skip=await browser.evaluate(`document.activeElement.matches('.skip')&&document.activeElement.getBoundingClientRect().top>=0&&parseFloat(getComputedStyle(document.activeElement).outlineWidth)>=3`);
+ await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+ const skipTarget=await browser.evaluate(`location.hash==='#contenido'`);
+ await browser.evaluate(`document.querySelector('summary').focus()`);
+ await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',windowsVirtualKeyCode:32});await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:' ',code:'Space',windowsVirtualKeyCode:32});
+ const disclosure=await browser.evaluate(`document.querySelector('details').open&&parseFloat(getComputedStyle(document.activeElement).outlineWidth)>=3`);
+ await browser.evaluate(`document.querySelector('details').open=false;document.activeElement.blur();window.scrollTo(0,0);new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))`);
+ const size=await browser.evaluate('({width:document.documentElement.clientWidth,height:document.documentElement.scrollHeight})');
+ const shot=await browser.call('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,width:size.width,height:size.height,scale:1}});
+ const label=`${mount.id}-${viewport.id}${page==='/'?'':'-offering'}${fault?`-seed-${fault}`:''}`;
+ const png=Buffer.from(shot.data,'base64'),path=`${directory}/${label}.png`;await writeFile(path,png);
+ const raster=await browser.evaluate(`(()=>{const measurePixels=${measurePixels.toString()};return (${measureRaster.toString()})(${JSON.stringify(shot.data)},${JSON.stringify(observed.geometry.image)})})()`);
+ const html=await readFile(resolve('dist',`.${route}index.html`));
+ const target=mount.candidate.plan.pages.find(p=>p.path!==page)!;
+ await browser.evaluate(`Array.from(document.querySelectorAll('.site-nav a')).find(e=>e.dataset.route===${JSON.stringify(target.path)}).focus()`);
+ await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+ let navigation=false;for(let i=0;i<30;i++){navigation=await browser.evaluate(`location.pathname===${JSON.stringify(auditPreviewPath(mount.id,target.path))}`);if(navigation)break;await new Promise(r=>setTimeout(r,50));}
+ const view:BrowserView={...observed,mount_id:mount.id,requested_viewport:{width:viewport.width,height:viewport.height},route,screenshot_path:path,page_body_bytes:html.length+observed.resources.reduce((n,r)=>n+r.bytes,0),keyboard:{skip:skip&&skipTarget,disclosure,navigation},raster};
+ const audit=auditCandidate(mount.candidate,state.lab,view,state.policy);
+ const commercial=auditCandidate(mount.candidate,state.lab,view,state.commercial_policy);
+ const expectedFail=mount.candidate.layout.measure==='fixed-wide'&&page==='/'||Boolean(fault);
+ if(expectedFail?(audit.status!=='FAIL'):audit.status!=='LAB_TECHNICAL_PASS_NEEDS_HUMAN_REVIEW')errors.push({label,status:audit.status,codes:audit.issues.map(i=>i.code),expectedFail});
+ const styles=await Promise.all(observed.resources.filter(r=>r.path.endsWith('.css')).map(async r=>({path:r.path,sha256:byteSha256(await readFile(resolve('dist',`.${r.path}`)))})));
+ const served=observed.observation.media.length?byteSha256(new Uint8Array(await(await fetch(browser.origin+state.lab.media.asset.uri)).arrayBuffer())):null;
+ if(served&&served!==state.lab.media.asset.file_sha256)errors.push({label,error:'MEDIA_BYTES_CHANGED'});
+ const receipt={label,mount_id:mount.id,kind:fault?'SEEDED_DOM_DEFECT_TEST':mount.kind,seeded_fault:fault??null,candidate:mount.candidate,candidate_sha256:inputSha256(mount.candidate),
+  viewport,semantic_page:page,html_sha256:byteSha256(html),styles,screenshot_sha256:byteSha256(png),served_media_sha256:served,view,audit,commercial_audit:commercial};
+ receipts.push(receipt);console.log(`${label}: ${audit.status}; ${audit.issues.map(i=>i.code).join(',')||'no issues'}; raster ${raster.sampled_pixels} pixels`);
+ return receipt;
+}
+try{
+ for(const mount of state.mounts)for(const viewport of [{id:'desktop',width:1280,height:900},{id:'mobile',width:390,height:844}]){
+  for(const page of mount.kind==='FINALIST'?mount.candidate.plan.pages.map(p=>p.path):['/'])await observe(mount,page,viewport);
+ }
+ for(const fault of ['truth','rights','contrast'] as const)await observe(state.mounts[0]!,'/',{id:'mobile',width:390,height:844},fault);
+ const group=(id:string)=>receipts.filter(r=>r.mount_id===id&&!r.seeded_fault);
+ const before=group('repair-before'),after=group('repair-after'),worse=group('worse-after'),restored=group('rollback-restored');
+ const proposed=proposeRepair(before[0].audit);
+ if(!proposed||inputSha256(mutate(before[0].candidate,proposed))!==inputSha256(after[0].candidate))throw new Error('REPAIR_NOT_FROM_CRITIC');
+ const history=[judgeMutation(before[0].candidate,after[0].candidate,before.map(r=>r.audit),after.map(r=>r.audit),{before:before.map(r=>r.view.screenshot_path),after:after.map(r=>r.view.screenshot_path)}),
+  judgeMutation(after[0].candidate,worse[0].candidate,after.map(r=>r.audit),worse.map(r=>r.audit),{before:after.map(r=>r.view.screenshot_path),after:worse.map(r=>r.view.screenshot_path)})];
+ const rollbackVerified=history[1]!.kept_sha256===inputSha256(restored[0].candidate)&&restored.every(r=>r.audit.status==='LAB_TECHNICAL_PASS_NEEDS_HUMAN_REVIEW');
+ if(history[0]!.decision!=='KEEP_REPAIR'||history[1]!.decision!=='ROLLBACK'||!rollbackVerified)errors.push({error:'MUTATION_ROLLBACK_FAILED'});
+ const baseline=state.mounts.filter(m=>m.kind==='FINALIST').map(m=>({candidate:m.candidate,reports:group(m.id).map(r=>r.audit)}));
+ const selection=chooseAcceptable(baseline);
+ const blocked=chooseAcceptable(receipts.filter(r=>r.seeded_fault||r.mount_id==='repair-before').map(r=>({candidate:r.candidate,reports:[r.audit]})));
+ const commercial=chooseAcceptable(state.mounts.filter(m=>m.kind==='FINALIST').map(m=>({candidate:m.candidate,reports:group(m.id).map(r=>r.commercial_audit)})));
+ if(selection.finalists.length!==4||blocked.status!=='NO_ACCEPTABLE_DESIGN'||commercial.status!=='NO_ACCEPTABLE_DESIGN')errors.push({error:'SELECTION_GATE_FAILED'});
+ await writeFile(`${directory}/run.json`,JSON.stringify({schema_version:'1.0.0',status:errors.length?'FAILED':'PASSED',errors,browser:browser.version,evaluated_at:new Date().toISOString(),
+  context_sha256:state.result.context_sha256,policy:state.policy,commercial_policy:state.commercial_policy,budget:state.budget,
+  receipts,history,rollback_verified:rollbackVerified,selection,all_failed_selection:blocked,commercial_selection:commercial,
+  human_preference:'NOT_COLLECTED',production_ready:false,historical_critic:state.historical_critic,historical_mutator:state.historical_mutator},null,2)+'\n');
+ if(errors.length)throw new Error(`H6_AUDIT_FAILED:${JSON.stringify(errors)}`);
+}finally{browser.close();}

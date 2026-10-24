@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-10-15T03:51:14.629Z",
+  "changes": [
+    {
+      "path": ".gitattributes",
+      "prior_sha256": "99397f4c0f95b2d8f712cacf9608c771957c39e3cac06caef2c6fb82c9137ef9",
+      "lf_sha256": "421199ab8a74fd4c7398126d87b095b83379eaca08676edb512cb351e9f0f7d0",
+      "reason": "New B3 guard misclassified two text files as binary; Git archive normalizes EOL. No source/old-pin override."
+    },
+    {
+      "path": "scripts/b2-demo-video.py",
+      "prior_sha256": "65186c8b0b18fb6ad4d910a0afeb56560adb2cac71f3e4bd68e1f1bc3139a52b",
+      "lf_sha256": "5c30c7c9538501298be0885484bdfdcfabbb695cfb96bb6428a80316bd1a93a3",
+      "reason": "New B3 guard misclassified two text files as binary; Git archive normalizes EOL. No source/old-pin override."
+    }
+  ]
+}

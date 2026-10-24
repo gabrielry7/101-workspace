@@ -1,0 +1,658 @@
+{
+  "schema_version": "2.0",
+  "kind": "gate_catalog",
+  "status": "SPECIFICATION_NOT_IMPLEMENTATION",
+  "gates": [
+    {
+      "gate_id": "G00",
+      "policy_version": "2.0",
+      "title": "Inventario técnico y compatibilidad",
+      "stage": "integration",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Repositorio, commit y contratos reales identificados; pruebas existentes reproducidas sin usar cifras históricas como resultados actuales.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "integration_lead",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T67",
+        "T68"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Inspeccionar código y documentos; resolver incompatibilidades.",
+      "invalidate_on": [
+        "commit",
+        "registry",
+        "dependency_versions"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G01",
+      "policy_version": "2.0",
+      "title": "Datos, identidad y vigencia",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Cada campo requerido por capacidad tiene sede, evidencia, verificación y vigencia; identidad y autorización suficientes; conflictos críticos resueltos.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "data_reviewer",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T01",
+        "T02",
+        "T06",
+        "T07",
+        "T08",
+        "T09",
+        "T15",
+        "T16",
+        "T72"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Confirmar datos o retirar capacidad dependiente.",
+      "invalidate_on": [
+        "data_snapshot",
+        "authorization",
+        "verification_deadlines",
+        "capability_plan"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G02",
+      "policy_version": "2.0",
+      "title": "Derechos y restricciones",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Cada recurso utilizado está autorizado para el uso concreto y cumple atribución, almacenamiento, transformación y vigencia.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "rights_reviewer",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T10",
+        "T11",
+        "T12"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Retirar/sustituir recurso o cambiar composición.",
+      "invalidate_on": [
+        "asset_rights",
+        "asset_manifest",
+        "source_terms",
+        "revocations"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G03",
+      "policy_version": "2.0",
+      "title": "Capacidades y contenido",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Dependencias explícitas; promesas compatibles; afirmaciones respaldadas; proyección pública y omisiones justificadas.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "content_reviewer",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T03",
+        "T04",
+        "T08",
+        "T09",
+        "T13",
+        "T14",
+        "T73"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Corregir plan, afirmaciones o capacidad.",
+      "invalidate_on": [
+        "site_plan",
+        "capability_plan",
+        "claim_map",
+        "operations_policy"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G04",
+      "policy_version": "2.0",
+      "title": "Diseño y estados",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "No hay solapes, recortes, obstrucciones ni estados críticos sin diseño; composición compatible con los activos y el contenido.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "design_reviewer",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T10",
+        "T11",
+        "T53",
+        "T55",
+        "T71"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Reparar parámetros sin alterar hechos.",
+      "invalidate_on": [
+        "design_spec",
+        "assets",
+        "content",
+        "component_versions"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G05",
+      "policy_version": "2.0",
+      "title": "Funcionalidad y operación",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Todas las capacidades habilitadas cumplen transiciones, recepción, autoridad, consistencia y casos adversos aplicables.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "operations_qa",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T07",
+        "T13",
+        "T15",
+        "T17",
+        "T18",
+        "T19",
+        "T20",
+        "T21",
+        "T22",
+        "T23",
+        "T24",
+        "T25",
+        "T26",
+        "T27",
+        "T28",
+        "T29",
+        "T30",
+        "T31",
+        "T32",
+        "T33",
+        "T34",
+        "T35",
+        "T36",
+        "T37",
+        "T38",
+        "T39",
+        "T52",
+        "T67",
+        "T72",
+        "T74"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Bloquear capacidad; reparar y conciliar efectos.",
+      "invalidate_on": [
+        "backend_contract",
+        "capability_plan",
+        "operations_policy",
+        "provider_config",
+        "catalog_rules"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G06",
+      "policy_version": "2.0",
+      "title": "Integridad de la entrega",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Los obligatorios son accesibles; los opcionales omitidos se explican; afirmaciones y representaciones coinciden; no salen datos internos.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "truth_qa",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T01",
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "T07",
+        "T16",
+        "T20",
+        "T23",
+        "T49",
+        "T57",
+        "T72"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Reparar la proyección, compilador o representación.",
+      "invalidate_on": [
+        "rendered_artifacts",
+        "data_snapshot",
+        "claim_map",
+        "catalog_version"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G07",
+      "policy_version": "2.0",
+      "title": "QA técnico y navegadores",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Rutas, estados y recursos funcionan en la matriz declarada; no hay errores críticos ni cobertura fingida.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "browser_qa",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T40",
+        "T53",
+        "T57",
+        "T74"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Reparar y repetir matriz afectada.",
+      "invalidate_on": [
+        "artifacts",
+        "browser_versions",
+        "runtime",
+        "viewport_matrix"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G08",
+      "policy_version": "2.0",
+      "title": "Accesibilidad",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Criterios aplicables revisados con pruebas automáticas y manuales; sin barreras bloqueantes ni afirmación infundada de conformidad.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "accessibility_reviewer",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T54",
+        "T55"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Resolver barreras; repetir controles.",
+      "invalidate_on": [
+        "artifacts",
+        "design_spec",
+        "components",
+        "a11y_policy"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G09",
+      "policy_version": "2.0",
+      "title": "Rendimiento",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Cinco ejecuciones reproducibles satisfacen presupuestos previos; resultados y rango documentados; plan de medición de campo separado.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "performance_qa",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T56"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Optimizar; cualquier cambio de presupuesto requiere decisión previa y nueva prueba.",
+      "invalidate_on": [
+        "artifacts",
+        "measurement_profile",
+        "performance_policy"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G10",
+      "policy_version": "2.0",
+      "title": "Seguridad y aislamiento",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Permisos, aislamiento, secretos y contenido seguros para las superficies habilitadas; revisiones adicionales de pagos cuando corresponda.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "security_reviewer",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T03",
+        "T28",
+        "T30",
+        "T31",
+        "T34",
+        "T35",
+        "T40",
+        "T41",
+        "T42",
+        "T43",
+        "T44",
+        "T46",
+        "T61"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Contener y corregir; no reducir gravedad para publicar.",
+      "invalidate_on": [
+        "auth_policy",
+        "code",
+        "deployment_config",
+        "secrets_policy",
+        "provider_config"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G11",
+      "policy_version": "2.0",
+      "title": "Legal y operación",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Representación, tratamiento de datos, condiciones, derechos y responsabilidades aprobados para el alcance concreto.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "legal_operations_reviewer",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T61",
+        "T63",
+        "T69",
+        "T70"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "No publicar/recolectar/cobrar fuera del alcance revisado.",
+      "invalidate_on": [
+        "legal_policy",
+        "data_flows",
+        "business_authorization",
+        "operations_policy"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G12",
+      "policy_version": "2.0",
+      "title": "Aprobaciones y versión",
+      "stage": "promotion",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Hashes y alcances coinciden; reportes auténticos, completos y vigentes; aprobadores con autoridad; no hay cambios posteriores sin aprobación.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "release_operator",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T06",
+        "T43",
+        "T45",
+        "T46",
+        "T47",
+        "T71",
+        "T73"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Obtener aprobación vigente o crear otro candidato.",
+      "invalidate_on": [
+        "candidate_hash",
+        "approvals",
+        "gate_reports",
+        "policy_version",
+        "actor_permissions"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G13",
+      "policy_version": "2.0",
+      "title": "Recuperación y reanudación",
+      "stage": "before_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Restauración y objetivos medidos; interrupciones sin duplicar efectos; vuelta atrás compatible con datos y obligaciones actuales.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "infrastructure_lead",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T12",
+        "T48",
+        "T49",
+        "T50",
+        "T51",
+        "T52",
+        "T63",
+        "T70"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Resolver recuperación o reducir alcance.",
+      "invalidate_on": [
+        "infrastructure",
+        "schema_versions",
+        "recovery_policy",
+        "current_data",
+        "revocations"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G14",
+      "policy_version": "2.0",
+      "title": "Verificación de producción",
+      "stage": "after_deployment",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": false,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Versión, dominio, capacidades, recepción operativa y alertas comprobados en producción; simulación distinguida de operación real.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "release_operator",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T27",
+        "T58",
+        "T59"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Pausar, retirar, volver a versión compatible o corregir.",
+      "invalidate_on": [
+        "deployment",
+        "domain",
+        "provider_config",
+        "production_policy"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G15",
+      "policy_version": "2.0",
+      "title": "Medición y economía observable",
+      "stage": "before_and_after_publication",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": true,
+        "required_for_prepublication": true,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Eventos deduplicados y trazables; intención separada de resultado; privacidad, denominadores, costos y desenlaces desconocidos tratados correctamente.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "measurement_reviewer",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T17",
+        "T18",
+        "T34",
+        "T59",
+        "T60",
+        "T61",
+        "T62",
+        "T66"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Corregir instrumentación; no declarar resultados confiables.",
+      "invalidate_on": [
+        "event_schema",
+        "instrumentation",
+        "operations_events",
+        "metric_definitions",
+        "cost_model"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    },
+    {
+      "gate_id": "G16",
+      "policy_version": "2.0",
+      "title": "Evaluación independiente y autonomía",
+      "stage": "before_autonomy_claim",
+      "applicability": {
+        "scope": "capabilities_and_surfaces_in_candidate",
+        "pilot_required": false,
+        "required_for_prepublication": false,
+        "note": "G00 puede heredarse con alcance/versiones comprobados. G14 es posterior. G15 se comprueba antes y después. G16 aplica a generalización/autonomía."
+      },
+      "acceptance_rule": "Separación de desarrollo/evaluación, comparación controlada y límites de incertidumbre documentados antes de reducir revisión humana.",
+      "default_severity": "BLOCKER",
+      "responsible_role": "independent_evaluator",
+      "checker_status": "TO_INTEGRATE",
+      "checker_ref": null,
+      "test_ids": [
+        "T64",
+        "T65"
+      ],
+      "evidence_required": [
+        "Reporte del ejecutor autorizado con contexto y hashes de entradas.",
+        "Resultados de todos los casos aplicables y artefactos de evidencia."
+      ],
+      "repair_action": "Mantener revisión y ampliar evidencia.",
+      "invalidate_on": [
+        "evaluation_split",
+        "rubric",
+        "model_versions",
+        "training_inputs",
+        "autonomy_policy"
+      ],
+      "empty_or_missing_evidence_result": "INCONCLUSIVE"
+    }
+  ]
+}

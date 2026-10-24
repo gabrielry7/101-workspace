@@ -1,0 +1,16 @@
+
+> 101-design-compiler@0.0.0 validate
+> node --experimental-strip-types scripts/validate-fixtures.ts
+
+restaurante: PASSED
+gimnasio: PASSED
+ferreteria: PASSED
+planner/restaurante: PASSED (READY)
+planner/gimnasio: PASSED (READY)
+planner/ferreteria: PASSED (READY)
+planner/clinica: PASSED (READY)
+planner/hibrido-gimnasio-tienda: PASSED (READY)
+planner/hibrido-sin-evidencia: PASSED (CONTENT_BLOCKED)
+planner/hotel-restaurante-sucursales: PASSED (READY)
+planner/informacion-incompleta: PASSED (CONTENT_BLOCKED)
+planner/servicios-profesionales: PASSED (READY)

@@ -1,0 +1,83 @@
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { loadDesignLab } from './load-design-lab.ts';
+import { designPreviewPath, validateDesign, structuralSignature } from '../src/design/search.ts';
+import { observePage } from '../src/composition/observe.ts';
+import { auditRender } from '../src/composition/audit.ts';
+import { byteSha256 } from '../src/media/package.ts';
+import { inputSha256 } from '../src/upstream/v1/protocol.ts';
+import { openLocalBrowser } from './lib/local-browser.ts';
+
+const {lab,result,provenance}=await loadDesignLab(), browser=await openLocalBrowser();
+const directory='docs/evidence/h5'; await mkdir(directory,{recursive:true});
+const receipts:any[]=[], stress:any[]=[], errors:any[]=[], requests:string[]=[], exceptions:any[]=[];
+browser.on('Network.requestWillBeSent',p=>requests.push(p.request.url));
+browser.on('Runtime.exceptionThrown',p=>exceptions.push(p)); await browser.call('Runtime.enable');
+try {
+ for(const plan of result.finalists) for(const viewport of [{id:'desktop',width:1280,height:900},{id:'mobile',width:390,height:844}]) for(const page of plan.pages) {
+  const route=designPreviewPath(plan.id,page.path), label=`${plan.id}-${viewport.id}${page.path==='/'?'':'-offering'}`;
+  requests.length=0;exceptions.length=0;
+  await browser.call('Emulation.setDeviceMetricsOverride',{width:viewport.width,height:viewport.height,deviceScaleFactor:1,mobile:viewport.id==='mobile'});
+  await browser.call('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
+  await browser.navigate(route);
+  const observed=await browser.evaluate(`(${observePage.toString()})()`) as ReturnType<typeof observePage>;
+  const codes=[...validateDesign(plan,lab).codes,...auditRender(observed.observation,lab,'editorial',page.path,p=>designPreviewPath(plan.id,p)).codes];
+  const tree=await browser.evaluate(`({frame:document.querySelector('[data-frame-operator]').dataset.frameOperator,stage:document.querySelector('.stage').dataset.operator,id:document.querySelector('.lab').dataset.designId})`);
+  if(tree.frame!==page.composition.operator||tree.stage!==page.composition.child.operator||tree.id!==plan.id)codes.push('AST_RENDER_MISMATCH');
+  if(observed.geometry.overflow.length||observed.geometry.document_width>viewport.width)codes.push('OVERFLOW');
+  if(observed.readability.some(r=>r.contrast<4.5||r.font_px<12))codes.push('CONTRAST_OR_LEGIBILITY');
+  if(observed.geometry.modules.some(m=>!m.visible))codes.push('MODULE_HIDDEN');
+  if(observed.animated_elements||!observed.reduced_motion)codes.push('MOTION_POLICY');
+  if(observed.resources.some(r=>!r.local)||requests.some(url=>!url.startsWith(browser.origin)))codes.push('EXTERNAL_RESOURCE');
+  if(exceptions.length)codes.push('BROWSER_EXCEPTION');
+  await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+  await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+  const skip=await browser.evaluate(`({focused:document.activeElement.matches('.skip'),top:document.activeElement.getBoundingClientRect().top,outline:getComputedStyle(document.activeElement).outlineWidth})`);
+  if(!skip.focused||skip.top<0||parseFloat(skip.outline)<3)codes.push('KEYBOARD_SKIP_FAILURE');
+  await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  const skipTarget=await browser.evaluate(`location.hash==='#contenido'`);if(!skipTarget)codes.push('SKIP_TARGET_FAILURE');
+  await browser.evaluate(`document.querySelector('summary').focus()`);
+  await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',windowsVirtualKeyCode:32});
+  await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:' ',code:'Space',windowsVirtualKeyCode:32});
+  await browser.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
+  const disclosure=await browser.evaluate(`({open:document.querySelector('details').open,focus:getComputedStyle(document.activeElement).outlineWidth,diagnostics:[...document.querySelectorAll('[data-diagnostic-index]')].every(e=>e.getBoundingClientRect().height>0),links:[...document.querySelectorAll('.lab a,summary')].filter(e=>e.getClientRects().length).map(e=>({height:e.getBoundingClientRect().height,width:e.getBoundingClientRect().width}))})`);
+  if(!disclosure.open||!disclosure.diagnostics||parseFloat(disclosure.focus)<3||disclosure.links.some((l:any)=>l.height<44||l.width<24))codes.push('DISCLOSURE_OR_TOUCH_FAILURE');
+  const ax=await browser.call('Accessibility.getFullAXTree');
+  const landmarks=ax.nodes.filter((n:any)=>!n.ignored&&['main','navigation','heading','image','link'].includes(n.role?.value)).map((n:any)=>({role:n.role.value,name:n.name?.value??''}));
+  if(!landmarks.some((n:any)=>n.role==='main')||!landmarks.some((n:any)=>n.role==='navigation'&&n.name==='Páginas del fixture'))codes.push('AX_LANDMARK_FAILURE');
+  await browser.evaluate(`document.querySelector('details').open=false;document.activeElement.blur();window.scrollTo(0,0)`);
+  await browser.evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
+  const size=await browser.evaluate('({width:document.documentElement.clientWidth,height:document.documentElement.scrollHeight})');
+  const shot=await browser.call('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,width:size.width,height:size.height,scale:1}});
+  const png=Buffer.from(shot.data,'base64');await writeFile(`${directory}/${label}.png`,png);
+  const html=await readFile(resolve('dist',`.${route}index.html`));
+  const styles=await Promise.all(observed.resources.filter(r=>r.type==='link'&&r.path.endsWith('.css')).map(async r=>({path:r.path,sha256:byteSha256(await readFile(resolve('dist',`.${r.path}`)))})));
+  const media=observed.observation.media.length?new Uint8Array(await(await fetch(browser.origin+lab.media.asset.uri)).arrayBuffer()):null;
+  if(media&&byteSha256(media)!==lab.media.asset.file_sha256)codes.push('SERVED_MEDIA_HASH_MISMATCH');
+  const target=plan.pages.find(p=>p.path!==page.path)!;
+  await browser.evaluate(`Array.from(document.querySelectorAll('.site-nav a')).find(e=>e.dataset.route===${JSON.stringify(target.path)}).focus()`);
+  await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  let reached=false;
+  for(let attempt=0;attempt<30;attempt++) { reached=await browser.evaluate(`location.pathname===${JSON.stringify(designPreviewPath(plan.id,target.path))} && document.querySelector('.lab')?.dataset.semanticPage===${JSON.stringify(target.path)}`);if(reached)break;await new Promise(done=>setTimeout(done,50)); }
+  if(!reached)codes.push('KEYBOARD_NAVIGATION_FAILURE');
+  const receipt={label,design_id:plan.id,art_direction_id:plan.art_direction_id,design_sha256:inputSha256(plan),structural_signature:structuralSignature(plan),
+   semantic_page:page.path,route,viewport,tree,html_sha256:byteSha256(html),styles,screenshot_path:`${directory}/${label}.png`,screenshot_sha256:byteSha256(png),
+   original_sha256:media?byteSha256(media):null,page_body_bytes:html.length+observed.resources.reduce((n,r)=>n+r.bytes,0),...observed,
+   keyboard:{skip,skip_target:skipTarget,disclosure,local_navigation:reached},accessibility:landmarks,status:codes.length?'FAILED':'PASSED',codes};
+  receipts.push(receipt);if(codes.length)errors.push({label,codes});
+  console.log(`${label}: ${codes.length?codes.join(','):'PASSED'}; ${tree.frame}/${tree.stage}; body ${receipt.page_body_bytes} bytes`);
+ }
+ for(const plan of result.finalists) for(const width of [320,360,768,801,1024,1440,1920]) {
+  await browser.call('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<800});await browser.navigate(designPreviewPath(plan.id,'/'));
+  if(width===320)await browser.evaluate(`document.querySelectorAll('.lab h1,.lab p,.lab a,.lab summary,.lab-header').forEach(e=>e.style.fontSize=(parseFloat(getComputedStyle(e).fontSize)*2)+'px')`);
+  const observed=await browser.evaluate(`(${observePage.toString()})()`) as ReturnType<typeof observePage>;
+  const codes=observed.geometry.overflow.length||observed.geometry.document_width>width?['RESPONSIVE_OVERFLOW']:[];
+  const item={design_id:plan.id,width,text_scale:width===320?2:1,geometry:observed.geometry,status:codes.length?'FAILED':'PASSED',codes};stress.push(item);if(codes.length)errors.push(item);
+ }
+ await writeFile(`${directory}/browser-audit.json`,JSON.stringify({schema_version:'1.0.0',browser:browser.version,evaluated_at:new Date().toISOString(),
+  search_sha256:inputSha256(result),provenance_sha256:inputSha256(provenance),context_sha256:result.context_sha256,
+  receipts,stress,status:errors.length?'FAILED':'PASSED',errors},null,2)+'\n');
+ if(errors.length)throw new Error(`H5_BROWSER_AUDIT_FAILED:${JSON.stringify(errors.map(e=>({label:e.label,design_id:e.design_id,width:e.width,codes:e.codes})))}`);
+} finally {browser.close();}

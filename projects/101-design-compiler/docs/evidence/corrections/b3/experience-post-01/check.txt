@@ -1,0 +1,16 @@
+
+> 101-design-compiler@0.0.0 check
+> astro check && tsc --noEmit
+
+12:53:21 [types] Generated 136ms
+12:53:21 [check] Getting diagnostics for Astro files in C:\Users\gabri\101-design-compiler...
+scripts/b3-experience-verify.ts:1:43 - error ts(6133): 'stat' is declared but its value is never read.
+
+1 import {readFile,writeFile,access,readdir,stat} from 'node:fs/promises';
+                                            ~~~~
+
+Result (244 files): 
+- 1 error
+- 0 warnings
+- 0 hints
+

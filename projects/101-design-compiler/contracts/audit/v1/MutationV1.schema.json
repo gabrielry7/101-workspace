@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason_issue_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "patch": {
+      "type": "object",
+      "properties": {
+        "measure": {
+          "type": "string",
+          "enum": [
+            "fluid",
+            "fixed-wide"
+          ]
+        }
+      },
+      "required": [
+        "measure"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "reason_issue_id",
+    "patch"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:MutationV1:1.0.0",
+  "title": "MutationV1",
+  "description": "H6 laboratory audit/mutation/preference contract; hard gates and evidence required. No production approval or manufactured human votes."
+}

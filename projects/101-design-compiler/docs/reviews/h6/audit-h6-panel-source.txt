@@ -1,0 +1,51 @@
+import { readFile,writeFile } from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {openLocalBrowser} from '../../scripts/lib/local-browser.ts';
+import {loadComparisons} from '../../scripts/load-comparisons.ts';
+import {byteSha256} from '../../src/media/package.ts';
+import {inputSha256} from '../../src/upstream/v1/protocol.ts';
+const {ready,pairs}=await loadComparisons();if(!ready||pairs.length!==24)throw new Error('H6_PAIRS_NOT_READY');
+const browser=await openLocalBrowser(),receipts:any[]=[],errors:any[]=[],requests:string[]=[];
+browser.on('Network.requestWillBeSent',p=>requests.push(p.request.url));
+async function waitFrames(){
+ const frames=await browser.call('Page.getFrameTree'),children=frames.frameTree.childFrames??[],values=[];
+ for(const child of children){
+  const world=await browser.call('Page.createIsolatedWorld',{frameId:child.frame.id,worldName:'h6-pair-qa'});
+  const r=await browser.call('Runtime.evaluate',{expression:`(async()=>{await Promise.all([...document.images].map(i=>i.decode()));await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));return {width:innerWidth,height:innerHeight,page:document.querySelector('.lab').dataset.semanticPage,images_decoded:[...document.images].every(i=>i.complete&&i.naturalWidth>0)}})()`,contextId:world.executionContextId,awaitPromise:true,returnByValue:true});
+  if(r.exceptionDetails)throw new Error('PANEL_FRAME_DECODE');values.push(r.result.value);
+ }
+ return values;
+}
+try{
+ for(const pair of [pairs[0],pairs.find(p=>p.view==='desktop')]){
+  await browser.call('Emulation.setDeviceMetricsOverride',{width:pair.view==='desktop'?1440:1024,height:900,deviceScaleFactor:1,mobile:false});
+  await browser.navigate(pair.route+'?qa=1');
+  const initial=await browser.evaluate(`({votes:document.querySelectorAll('input[name=decision]:checked').length,outputHidden:document.querySelector('#preference-output').hidden,status:document.querySelector('#preference-status').textContent,frames:[...document.querySelectorAll('iframe')].map(f=>({width:f.width,height:f.height,src:f.getAttribute('src')})),options:[...document.querySelectorAll('input[name=decision]')].map(e=>e.value)})`);
+  if(initial.votes||!initial.outputHidden||!initial.status.includes('TEST_SIMULATION')||JSON.stringify(initial.options)!==JSON.stringify(['A','B','TIE','NONE']))errors.push({id:pair.id,error:'PANEL_INITIAL_STATE'});
+  const actualFrames=await waitFrames();if(actualFrames.length!==2)errors.push({id:pair.id,error:'PAIR_FRAME_COUNT'});
+  if(actualFrames.some(f=>f.width!==pair.viewport.width||f.height!==pair.viewport.height||f.page!==pair.semantic_page||!f.images_decoded))errors.push({id:pair.id,error:'PAIR_VIEWPORT_MISMATCH'});
+  const choices=[];
+  for(const decision of ['A','B','TIE','NONE']){
+   await browser.evaluate(`document.querySelector('input[value=${decision}]').focus()`);
+   await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',windowsVirtualKeyCode:32});await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:' ',code:'Space',windowsVirtualKeyCode:32});
+   await browser.evaluate(`document.querySelector('button[type=submit]').focus()`);
+   await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',windowsVirtualKeyCode:32});await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key:' ',code:'Space',windowsVirtualKeyCode:32});
+   const record=await browser.evaluate(`JSON.parse(document.querySelector('#preference-output').textContent)`);
+   if(record.source!=='TEST_SIMULATION'||record.decision!==decision||record.comparison_id!==pair.id||record.left_sha256!==pair.left_sha256||record.right_sha256!==pair.right_sha256)errors.push({id:pair.id,error:'PANEL_CHOICE_FAILURE',decision});
+   const downloadable=await browser.evaluate(`!document.querySelector('#download-preference').hidden&&document.querySelector('#download-preference').href.startsWith('blob:')`);
+   choices.push({decision,source:record.source,context_sha256:record.context_sha256,acceptance_scope:record.acceptance_scope,downloadable});
+  }
+  await browser.navigate(pair.route);
+  await waitFrames();
+  const reset=await browser.evaluate(`document.querySelectorAll('input[name=decision]:checked').length===0&&document.querySelector('#preference-output').hidden&&document.querySelector('#preference-status').textContent.includes('NOT_COLLECTED')`);
+  if(!reset)errors.push({id:pair.id,error:'UNREQUESTED_PREFERENCE_PERSISTENCE'});
+  const shot=await browser.call('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});const png=Buffer.from(shot.data,'base64');
+  const screenshot_path=`docs/reviews/h6/panel-${pair.view}.png`;await writeFile(screenshot_path,png);
+  receipts.push({pair_id:pair.id,route:pair.route,html_sha256:byteSha256(await readFile(resolve('dist',`.${pair.route}index.html`))),screenshot_path,screenshot_sha256:byteSha256(png),initial,actual_frames:actualFrames,choices,reset_to_not_collected:reset,status:errors.length?'FAILED':'PASSED'});
+ }
+ if(requests.some(url=>!url.startsWith(browser.origin)&&!url.startsWith('blob:')))errors.push({error:'PANEL_EXTERNAL_REQUEST'});
+ await writeFile('docs/reviews/h6/panel-audit.json',JSON.stringify({schema_version:'1.0.0',status:errors.length?'FAILED':'PASSED',errors,browser:browser.version,evaluated_at:new Date().toISOString(),pairs_sha256:inputSha256(pairs),pairs_count:pairs.length,receipts,
+  human_votes:'NOT_COLLECTED',simulation_choices:8,network_writes:0,production_ready:false},null,2)+'\n');
+ if(errors.length)throw new Error('H6_PANEL_FAILED:'+JSON.stringify(errors));
+ console.log('H6 panel PASS: 24 equivalent route/viewport pairs; 2 views; 8 explicitly simulated A/B/TIE/NONE keyboard choices; no human vote stored or transmitted.');
+}finally{browser.close();}

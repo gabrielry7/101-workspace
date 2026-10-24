@@ -1,0 +1,16 @@
+
+> 101-design-compiler@0.0.0 check
+> astro check && tsc --noEmit
+
+22:37:50 [types] Generated 68ms
+22:37:50 [check] Getting diagnostics for Astro files in C:\Users\gabri\101-design-compiler...
+src/requirements/catalog.ts:61:465 - error ts(1117): An object literal cannot have multiple properties with the same name.
+
+61  room_inventory:'Inventario de habitaciones',checkin_checkout_rules:'Entrada y salida del alojamiento',room_rates:'Tarifas por habitación y fecha',visit_target_binding:'Espacio o propiedad que se visitará',visit_calendar:'Agenda actualizable de visitas',visit_capacity:'Cupo de visitas',service_request_questions:'Información necesaria para prestar el servicio',service_area:'Zona de prestación del servicio',service_terms:'Condiciones de prestación del servicio',reception_error_policy:'Recepción, respuesta y errores de la solicitud'};
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ~~~~~~~~~~~~~~~~~~~~~~
+
+Result (142 files): 
+- 1 error
+- 0 warnings
+- 0 hints
+

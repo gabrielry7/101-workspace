@@ -1,0 +1,19 @@
+---
+import type {VerifiedLibrary} from '../../media/library.ts';
+import {libraryData,evaluateLibraryUsage} from '../../media/library.ts';
+interface Props {handle:VerifiedLibrary;usage_ids:string[];evaluated_at:string}
+const {handle,usage_ids,evaluated_at}=Astro.props,library=libraryData(handle);
+const entries=usage_ids.map(id=>{const usage=library.manifest.usages.find(u=>u.id===id);if(!usage||evaluateLibraryUsage(handle,usage,evaluated_at).status!=='ALLOWED')throw Error('FIGURE_USE_BLOCKED');
+ const asset=library.manifest.assets.find(a=>a.id===usage.asset_id)!;return {usage,asset};});
+if(!entries.length||new Set(entries.map(e=>e.asset.original_id)).size!==1||entries.some(e=>e.usage.role==='DOCUMENTARY'||e.usage.generic_label!==entries[0]!.usage.generic_label||e.usage.attribution_text!==entries[0]!.usage.attribution_text))throw Error('FIGURE_CONTEXT_MISMATCH');
+const original=entries.find(e=>!e.asset.parent_id)!,webp=entries.filter(e=>e.asset.inspection.codec==='webp').sort((a,b)=>a.asset.inspection.width!-b.asset.inspection.width!);
+const {usage,asset}=original;
+---
+<figure data-library-media data-library-sha256={library.library_sha256} data-usage-ids={usage_ids.join(' ')} data-semantic-page={usage.page} data-module-id={usage.module_id} data-role={usage.role} data-original-sha256={asset.original_sha256}>
+ <picture>
+  {webp.length>0&&<source type="image/webp" srcset={webp.map(e=>`${e.asset.uri} ${e.asset.inspection.width}w`).join(', ')} sizes="(min-width: 720px) 640px, calc(100vw - 64px)"/>}
+  <img src={asset.uri} alt={`Imagen atmosférica genérica: ${asset.inspection.subject}`} width={asset.inspection.width!} height={asset.inspection.height!} loading="eager" decoding="async"/>
+ </picture>
+ <figcaption><p data-context>{usage.generic_label}</p><p data-credit>{usage.attribution_text}</p>{usage.context_notices?.map(n=><p data-notice>{n}</p>)}<a href={asset.provenance[0]!.reference}>Fuente oficial y declaración del archivo</a></figcaption>
+</figure>
+<style>figure{margin:1rem 0}img{display:block;width:100%;max-width:640px;height:auto}figcaption p{margin:.4rem 0}</style>

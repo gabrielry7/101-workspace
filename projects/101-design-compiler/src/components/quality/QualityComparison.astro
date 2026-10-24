@@ -1,0 +1,43 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import {loadQualityLab,qualityPath} from '../../../scripts/load-quality-lab.ts';
+const run=await loadQualityLab();
+const captures=import.meta.glob('../../../docs/evidence/design-evaluation/iteration-1/*-home.png',{eager:true,query:'?url',import:'default'}) as Record<string,string>;
+const capture=(caseId:string,condition:string,viewport:string)=>captures[`../../../docs/evidence/design-evaluation/iteration-1/${caseId}-${condition.toLowerCase()}-${viewport}-home.png`];
+---
+<Foundation title="101 · comparación Impeccable / Raven">
+ <div class="comparison" data-experiment-id={run.experiment_id}>
+  <h1>Compara el efecto de las herramientas</h1>
+  <p>Experimento de laboratorio con datos ficticios. Mismos hechos, plan y medios en A–D. Los avisos y huecos siguen visibles; ninguna puntuación determina cuál te gusta.</p>
+  <p>A: motor actual · B: Impeccable · C: Raven · D: ambos. Las herramientas están desactivadas por defecto fuera de este experimento.</p>
+  <nav aria-label="Experimentos">{run.cases.map((c:any)=><a href={`#${c.id}`}>{c.id}</a>)}</nav>
+  {run.cases.map((c:any)=><section id={c.id}>
+   <h2>{c.id}</h2><p>{c.id==='hotel'?'Sin fotografía elegible: el hueco se conserva.':'Foto de pimientos atmosférica, no del plato ni del restaurante; crédito y aviso USDA/ARS conservados.'}</p>
+   {['desktop','mobile'].map(viewport=><details open={viewport==='desktop'}><summary>{viewport==='desktop'?'Capturas completas · escritorio 1280 × 900':'Capturas completas · móvil 390 × 844'}</summary><p>Capturas del navegador, reducidas aquí para comparar. Abre una captura para verla en tamaño original.</p><div class="conditions">{c.variants.map((v:any)=><article><h3>{v.condition}</h3><a href={qualityPath(c.id,v.condition,'/')}>Abrir {v.condition} y recorrer sus páginas</a>{capture(c.id,v.condition,viewport)?<a href={capture(c.id,v.condition,viewport)} aria-label={`Ampliar captura ${c.id} ${v.condition} ${viewport}`}><img src={capture(c.id,v.condition,viewport)} alt={`${c.id}, condición ${v.condition}, ${viewport}; incluye avisos, crédito y pie`} loading="lazy"/></a>:<p>Captura pendiente.</p>}</article>)}</div></details>)}
+  </section>)}
+  <section><h2>Tu evaluación</h2><p>Solo se guarda lo que envíes. Se almacena en este navegador; puedes exportarlo en JSON. Esto no entrena un modelo ni aprueba automáticamente un diseño.</p>
+   <form id="quality-preference">
+    <label>Caso<select name="case_id" required><option value="">Elige</option><option>restaurante</option><option>hotel</option></select></label>
+    <label>Vista evaluada<select name="viewport" required><option value="">Elige</option><option value="desktop">Escritorio</option><option value="mobile">Móvil</option></select></label>
+    <label>Versión preferida<select name="preferred" required><option value="">Elige</option>{['A','B','C','D','TIE','NONE'].map(x=><option value={x}>{x==='TIE'?'Empate':x==='NONE'?'Ninguna':x}</option>)}</select></label>
+    <label>Nota del 1 al 10<select name="rating" required><option value="">Elige</option>{Array.from({length:10},(_,i)=><option>{i+1}</option>)}</select></label>
+    <fieldset><legend>Qué influyó</legend>{[['typography','Tipografía'],['palette','Paleta'],['composition','Composición'],['media','Audiovisual'],['navigation','Navegación'],['readability','Lectura']].map(([id,label])=><label><input type="checkbox" name="dimensions" value={id}/>{label}</label>)}</fieldset>
+    <label>Por qué<textarea name="reason" required maxlength="4000" rows="4" /></label>
+    <button type="submit">Guardar evaluación local</button>
+    <button id="quality-export" type="button">Exportar mis evaluaciones</button>
+    <p role="status" id="quality-status">No se ha enviado ninguna evaluación en esta sesión.</p>
+   </form>
+  </section>
+ </div>
+</Foundation>
+<script>
+ const root=document.querySelector<HTMLElement>('[data-experiment-id]')!,form=document.querySelector<HTMLFormElement>('#quality-preference')!,status=document.querySelector('#quality-status')!;
+ const key=`101-design-preferences:${root.dataset.experimentId}`;
+ const records=()=>JSON.parse(localStorage.getItem(key)||'[]');
+ form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const data=new FormData(form),record={schema_version:'1.0.0',experiment_id:root.dataset.experimentId,case_id:data.get('case_id'),viewport:data.get('viewport'),preferred:data.get('preferred'),rating:Number(data.get('rating')),dimensions:data.getAll('dimensions'),reason:data.get('reason'),recorded_at:new Date().toISOString(),source:'EXPLICIT_HUMAN_INPUT'};
+  try{const saved=records();saved.push(record);localStorage.setItem(key,JSON.stringify(saved));status.textContent=`Evaluación guardada en este navegador. Total: ${saved.length}.`;}catch{status.textContent='No se pudo guardar en este navegador. Conserva tu texto e inténtalo de nuevo.';}});
+ document.querySelector('#quality-export')!.addEventListener('click',()=>{try{const saved=records();if(!saved.length){status.textContent='No hay evaluaciones para exportar.';return;}const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(saved,null,2)],{type:'application/json'}));a.href=url;a.download='101-design-preferences.json';a.click();URL.revokeObjectURL(url);}catch{status.textContent='No se pudieron leer las evaluaciones locales.';}});
+</script>
+<style>
+ .comparison nav{display:flex;gap:2rem}.comparison a,.comparison button,.comparison summary{min-height:44px}.comparison a,.comparison button{display:inline-flex;align-items:center}.comparison summary{padding-block:1rem;cursor:pointer}.conditions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}.conditions article{min-width:0}.conditions img{display:block;width:100%;height:auto;border:1px solid #b8c2ca;background:white}form{max-width:45rem;display:grid;gap:1rem}form>label{display:grid;gap:.5rem}select,textarea,button{font:inherit;padding:.75rem}fieldset{display:flex;flex-wrap:wrap;gap:1rem}fieldset label{min-height:44px;display:flex;align-items:center;gap:.5rem}button{cursor:pointer;background:#18232c;color:white;border:0;border-radius:.3rem}@media(max-width:800px){.conditions{grid-template-columns:1fr}}
+</style>

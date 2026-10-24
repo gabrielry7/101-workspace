@@ -1,0 +1,337 @@
+{
+  "status": "PASSED",
+  "browser": "Edg/154.0.4258.62",
+  "evaluated_at": "2026-10-09T02:23:43.672Z",
+  "receipts": [
+    {
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "route": "/h7/",
+      "layout": {
+        "main_count": 1,
+        "nested_main": false,
+        "h1_count": 1,
+        "skip_target_id": "contenido",
+        "skip_target_is_main": true,
+        "requested_width": 1280,
+        "observed_width": 1280,
+        "document_width": 1265,
+        "document_height": 1396,
+        "links": [
+          {
+            "href": "/h7/hotel-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 96.5,
+            "right": 234.25
+          },
+          {
+            "href": "/h7/hotel-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 96.5,
+            "right": 227.078125
+          },
+          {
+            "href": "/h7/dentista-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 96.5,
+            "right": 234.25
+          },
+          {
+            "href": "/h7/dentista-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 96.5,
+            "right": 227.078125
+          },
+          {
+            "href": "/h7/servicio-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 96.5,
+            "right": 234.25
+          },
+          {
+            "href": "/h7/servicio-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 96.5,
+            "right": 227.078125
+          },
+          {
+            "href": "/h7/hibrido-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 96.5,
+            "right": 234.25
+          },
+          {
+            "href": "/h7/hibrido-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 96.5,
+            "right": 227.078125
+          },
+          {
+            "href": "/h7/media-unknown-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 96.5,
+            "right": 234.25
+          },
+          {
+            "href": "/h7/media-unknown-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 96.5,
+            "right": 227.078125
+          }
+        ]
+      },
+      "observation": {
+        "main_count": 1,
+        "nested_main": false,
+        "h1_count": 1,
+        "ax_main_count": 1,
+        "skip_visible": true,
+        "skip_activated": true,
+        "skip_target_id": "contenido",
+        "skip_target_is_main": true,
+        "link_reachable_by_tab": true,
+        "link_activated": true,
+        "link_href": "/h7/hotel-candidate-01/"
+      },
+      "ax_main_nodes": [
+        {
+          "nodeId": "14",
+          "ignored": false,
+          "role": {
+            "type": "role",
+            "value": "main"
+          },
+          "chromeRole": {
+            "type": "internalRole",
+            "value": 118
+          },
+          "name": {
+            "type": "computedString",
+            "value": "",
+            "sources": [
+              {
+                "type": "relatedElement",
+                "attribute": "aria-labelledby"
+              },
+              {
+                "type": "attribute",
+                "attribute": "aria-label"
+              },
+              {
+                "type": "attribute",
+                "attribute": "title"
+              }
+            ]
+          },
+          "properties": [],
+          "parentId": "12",
+          "childIds": [
+            "15"
+          ],
+          "backendDOMNodeId": 14
+        }
+      ],
+      "audit": {
+        "status": "LAB_INDEX_PASS",
+        "codes": [],
+        "production_ready": false
+      },
+      "keyboard_focus": {
+        "outline": "3px",
+        "text": "candidate-01 · Flow"
+      },
+      "screenshot_path": "docs/reviews/h7-correction/index-desktop.png",
+      "screenshot_sha256": "ec584e8af3d089c6a73c9f5abf2183b07712315b5dfbafa7308bb0b79af2edd4",
+      "html_sha256": "ec4f4eb2c4dbb826762f67ae3644728dd11746d71d1a48f5d95f137a52272ef2"
+    },
+    {
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "route": "/h7/",
+      "layout": {
+        "main_count": 1,
+        "nested_main": false,
+        "h1_count": 1,
+        "skip_target_id": "contenido",
+        "skip_target_is_main": true,
+        "requested_width": 390,
+        "observed_width": 390,
+        "document_width": 390,
+        "document_height": 1398,
+        "links": [
+          {
+            "href": "/h7/hotel-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 56,
+            "right": 193.75
+          },
+          {
+            "href": "/h7/hotel-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 56,
+            "right": 186.578125
+          },
+          {
+            "href": "/h7/dentista-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 56,
+            "right": 193.75
+          },
+          {
+            "href": "/h7/dentista-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 56,
+            "right": 186.578125
+          },
+          {
+            "href": "/h7/servicio-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 56,
+            "right": 193.75
+          },
+          {
+            "href": "/h7/servicio-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 56,
+            "right": 186.578125
+          },
+          {
+            "href": "/h7/hibrido-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 56,
+            "right": 193.75
+          },
+          {
+            "href": "/h7/hibrido-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 56,
+            "right": 186.578125
+          },
+          {
+            "href": "/h7/media-unknown-candidate-01/",
+            "text": "candidate-01 · Flow",
+            "width": 137.75,
+            "height": 21,
+            "left": 56,
+            "right": 193.75
+          },
+          {
+            "href": "/h7/media-unknown-candidate-02/",
+            "text": "candidate-02 · Rail",
+            "width": 130.578125,
+            "height": 21,
+            "left": 56,
+            "right": 186.578125
+          }
+        ]
+      },
+      "observation": {
+        "main_count": 1,
+        "nested_main": false,
+        "h1_count": 1,
+        "ax_main_count": 1,
+        "skip_visible": true,
+        "skip_activated": true,
+        "skip_target_id": "contenido",
+        "skip_target_is_main": true,
+        "link_reachable_by_tab": true,
+        "link_activated": true,
+        "link_href": "/h7/hotel-candidate-01/"
+      },
+      "ax_main_nodes": [
+        {
+          "nodeId": "99",
+          "ignored": false,
+          "role": {
+            "type": "role",
+            "value": "main"
+          },
+          "chromeRole": {
+            "type": "internalRole",
+            "value": 118
+          },
+          "name": {
+            "type": "computedString",
+            "value": "",
+            "sources": [
+              {
+                "type": "relatedElement",
+                "attribute": "aria-labelledby"
+              },
+              {
+                "type": "attribute",
+                "attribute": "aria-label"
+              },
+              {
+                "type": "attribute",
+                "attribute": "title"
+              }
+            ]
+          },
+          "properties": [],
+          "parentId": "97",
+          "childIds": [
+            "100"
+          ],
+          "backendDOMNodeId": 99
+        }
+      ],
+      "audit": {
+        "status": "LAB_INDEX_PASS",
+        "codes": [],
+        "production_ready": false
+      },
+      "keyboard_focus": {
+        "outline": "3px",
+        "text": "candidate-01 · Flow"
+      },
+      "screenshot_path": "docs/reviews/h7-correction/index-mobile.png",
+      "screenshot_sha256": "4a4347ba8bc4ad25b56dcf40556ddc32da9105f9914bfecdbe861cff2790a823",
+      "html_sha256": "ec4f4eb2c4dbb826762f67ae3644728dd11746d71d1a48f5d95f137a52272ef2"
+    }
+  ],
+  "production_ready": false,
+  "human_preference": "NOT_COLLECTED"
+}

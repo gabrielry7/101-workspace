@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B2_SINGLE_SELECTED_ACQUISITION",
+  "started_at": "2026-10-15T01:02:58.987Z",
+  "finished_at": "2026-10-15T01:03:00.264Z",
+  "selection": "One official photo selected by agent after official-site search/page/policy review for generic atmosphere; no catalog crawler or provider search API.",
+  "documents": [
+    {
+      "path": "docs/evidence/corrections/b2/acquisition/asset-page.html",
+      "official_url": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+      "sha256": "14afefa1a5896c199c819b2f6f750d534104dcefc8f248b25d5fa87bfa841d62",
+      "bytes": 26495,
+      "version": "Official unnumbered page; byte snapshot on acquisition date; no numbered legal version"
+    },
+    {
+      "path": "docs/evidence/corrections/b2/acquisition/policy.html",
+      "official_url": "https://www.ars.usda.gov/oc/images/copyright/",
+      "sha256": "009108a439e8bf7b2f20fbaf6078a0eb38194103bae8a3594e1851c14aa1a7c5",
+      "bytes": 27633,
+      "version": "Official unnumbered page; byte snapshot on acquisition date; no numbered legal version"
+    }
+  ],
+  "file": {
+    "source_url": "https://www.ars.usda.gov/ARSUserFiles/oc/images/photos/300dpi/kesa/D255-19.jpg",
+    "sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+    "bytes": 2351102,
+    "deduplicated_path": "public/media/h3-pilot/usda-ars-d255-19.jpg"
+  },
+  "method": "Two fixed official page GETs and one linked original GET; subsequent replay is offline.",
+  "new_purchase": false,
+  "cost_amount": null,
+  "cost_note": "Official complimentary source; no payment, total platform cost unknown",
+  "limits": "No general API/crawler/AI-training permission inferred; no documentary business evidence"
+}

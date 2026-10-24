@@ -1,0 +1,54 @@
+import type { GeneralCompositionLab as CompositionLab } from './lab.ts';
+import { previewPath, type CompositionId } from './registry.ts';
+
+export type RenderObservation = {
+  unbound_media?: number;
+  semantic_page: string; plan_sha256: string; content_sha256: string; manifest_sha256: string; client_id: string; project_id: string;
+  modules: { id: string; scope: string; page: string; required: string; component: string;
+    facts: { id: string; scope: string; text: string }[]; offerings: { id: string; scope: string }[] }[];
+  diagnostics: { code: string; scope: string; capability: string; reason: string }[];
+  exclusions: { id: string; scope: string; reason: string }[];
+  bindings: { id: string; scope: string; status: string }[];
+  restrictions: string[]; constraints: string[]; gaps: string[];
+  media: { asset_id: string; usage_id: string; grant_id: string; module: string; page: string; role: string; hash: string;
+    src: string; alt: string; caption: string; credit: string; notices: string[]; decoded: boolean;
+    width: number; height: number; display_width: number; display_height: number; object_fit: string; filter: string }[];
+  navigation: { page: string; href: string; current: boolean }[];
+  scripts: number; forms: number; buttons: number; gap_visible: boolean; lang: string; h1_count: number; main_count: number;
+};
+const canonical = (value: unknown) => JSON.stringify(value);
+export function auditRender(observed: RenderObservation, lab: CompositionLab, variant: CompositionId, page: string, routeForPage: (page: string) => string = p => previewPath(variant,p)) {
+  const codes: string[] = [];
+  if (observed.unbound_media) codes.push('MEDIA_WITHOUT_AUTHORIZATION');
+  const selected = lab.content.pages.find(p => p.path === page);
+  if (!selected) return { success: false, codes: ['UNKNOWN_SEMANTIC_PAGE'] };
+  if (observed.semantic_page !== page || observed.plan_sha256 !== lab.content.plan_sha256 || observed.content_sha256 !== lab.content.content_sha256
+    || observed.manifest_sha256 !== lab.manifest_sha256 || observed.client_id !== lab.client_id || observed.project_id !== lab.project_id) codes.push('RENDER_CONTEXT_MISMATCH');
+  const modules = selected.modules.map(m => ({ id: m.id, scope: m.scope_id, page: m.page, required: String(m.required), component: m.component,
+    facts: [...m.facts, ...m.offerings.flatMap(o => o.facts)].map(f => ({ id:f.id, scope:f.scope_id, text:f.text })),
+    offerings:m.offerings.map(o => ({ id:o.id, scope:o.scope_id })) }));
+  if (canonical(observed.modules) !== canonical(modules)) codes.push('RENDER_BINDING_LOSS_OR_INVENTION');
+  if (canonical(observed.diagnostics) !== canonical(lab.content.diagnostics.map(d => ({code:d.code,scope:d.scope_id,capability:d.capability_id ?? '',reason:d.reason})))) codes.push('DIAGNOSTIC_LOSS');
+  if (canonical(observed.exclusions) !== canonical(lab.content.exclusions.map(e => ({id:e.id,scope:e.scope_id,reason:e.reason})))) codes.push('EXCLUSION_LOSS');
+  if (canonical(observed.bindings) !== canonical(lab.content.bindings.map(b => ({id:b.fact_id,scope:b.scope_id,status:b.status})))) codes.push('LEDGER_LOSS');
+  if (canonical(observed.restrictions) !== canonical(lab.content.restrictions) || canonical(observed.constraints) !== canonical(lab.constraints)
+    || canonical(observed.gaps) !== canonical(lab.gaps.map(g => g.need.id)) || !observed.gap_visible) codes.push('RESTRICTION_OR_GAP_LOSS');
+  if (!lab.media && observed.media.length) codes.push('MEDIA_WITHOUT_AUTHORIZATION');
+  if (lab.media) {
+  const usage = lab.media.usage, asset = lab.media.asset;
+  if (page !== usage.page && observed.media.length) codes.push('MEDIA_ON_UNAUTHORIZED_PAGE');
+  if (page === usage.page) {
+    const m = observed.media[0];
+    if (observed.media.length !== 1 || !m || m.asset_id !== asset.id || m.usage_id !== usage.id || m.grant_id !== lab.media.grant.id
+      || m.module !== usage.module_id || m.page !== usage.page || m.role !== 'ATMOSPHERIC' || m.hash !== asset.file_sha256
+      || m.src !== asset.uri || m.caption !== usage.generic_label || m.credit !== usage.attribution_text
+      || canonical(m.notices) !== canonical(usage.context_notices) || !m.alt.includes('genérica') || !m.decoded
+      || m.width !== asset.inspection.width || m.height !== asset.inspection.height || m.display_width > 640.5
+      || Math.abs(m.display_height - m.display_width * m.height / m.width) > .5 || m.object_fit !== 'fill' || m.filter !== 'none') codes.push('MEDIA_BINDING_OR_PRESENTATION_INVALID');
+  }
+  }
+  if (canonical(observed.navigation) !== canonical(lab.content.pages.map(p => ({page:p.path,href:routeForPage(p.path),current:p.path === page})))) codes.push('ROUTE_LOSS');
+  if (observed.scripts || observed.forms || observed.buttons) codes.push('UNAUTHORIZED_INTERACTION');
+  if (observed.lang !== 'es' || observed.h1_count !== 1 || observed.main_count !== 1) codes.push('LANDMARK_OR_HEADING_INVALID');
+  return { success: !codes.length, codes };
+}

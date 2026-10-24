@@ -1,0 +1,19 @@
+
+> 101-design-compiler@0.0.0 cohort:verify
+> node --experimental-strip-types scripts/verify-h7.ts
+
+node:internal/fs/promises:1345
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open 'C:\Users\gabri\101-design-compiler\dist\h7\index.html'
+    at async open (node:internal/fs/promises:1345:25)
+    at async readFile (node:internal/fs/promises:1996:14)
+    at async file:///C:/Users/gabri/101-design-compiler/scripts/verify-h7.ts:14:145 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\gabri\\101-design-compiler\\dist\\h7\\index.html'
+}
+
+Node.js v24.21.0

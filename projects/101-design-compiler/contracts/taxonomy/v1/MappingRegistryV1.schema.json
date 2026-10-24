@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "provider": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "fields": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "match": {
+            "type": "string",
+            "enum": [
+              "EXACT",
+              "HIERARCHY_NODE"
+            ]
+          },
+          "values": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "outcome": {
+            "type": "string",
+            "enum": [
+              "MAPPED",
+              "AMBIGUOUS",
+              "NON_BUSINESS",
+              "UNKNOWN"
+            ]
+          },
+          "archetypes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "food_hospitality",
+                "product_retail",
+                "appointment_service",
+                "membership_and_classes",
+                "lodging",
+                "field_service_and_quote",
+                "vehicle_service",
+                "professional_advisory",
+                "education_programs",
+                "events_and_entertainment",
+                "industrial_b2b",
+                "property_and_spaces",
+                "transport_and_logistics",
+                "regulated_services"
+              ]
+            }
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "food_hospitality",
+                  "product_retail",
+                  "appointment_service",
+                  "membership_and_classes",
+                  "lodging",
+                  "field_service_and_quote",
+                  "vehicle_service",
+                  "professional_advisory",
+                  "education_programs",
+                  "events_and_entertainment",
+                  "industrial_b2b",
+                  "property_and_spaces",
+                  "transport_and_logistics",
+                  "regulated_services"
+                ]
+              }
+            }
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "id",
+          "provider",
+          "fields",
+          "match",
+          "values",
+          "outcome",
+          "archetypes",
+          "alternatives",
+          "rationale"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "rules"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:MappingRegistryV1:1.0.0",
+  "title": "MappingRegistryV1",
+  "description": "H1 candidate protocol; semantic checks required. No upstream integration."
+}

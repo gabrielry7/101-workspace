@@ -1,0 +1,319 @@
+{
+  "schema_version": "1.0.0",
+  "content": {
+    "site_plan_id": "h7-synthetic-servicio-reserved-v1:h2-plan:e1cb583e502fa91a46a4ee57",
+    "plan_sha256": "e1a0cebead1ddb275c2423b8caa4cbe2ce22d5b8d7da7b61e93ca3d3d5aa4a13",
+    "requirements_sha256": "0f980fc507c35df1b9deba519d8e896513167b1343614c3a76773763b30dd031",
+    "content_sha256": "f1c53356895b3603dfab4f3989505d82a40a6d6012b1ee891d51d68ba65d8ff8",
+    "pages": [
+      {
+        "path": "/",
+        "modules": [
+          {
+            "id": "semantic-8d6186a66bc0eba866d3ee03",
+            "capability_id": "identity",
+            "scope_id": "h7-synthetic-servicio",
+            "required": true,
+            "page": "/",
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope_id": "h7-synthetic-servicio",
+                "kind": "business_name",
+                "text": "servicio · NUEVO fixture sintético H7; no es negocio real"
+              }
+            ],
+            "offerings": []
+          }
+        ]
+      },
+      {
+        "path": "/cobertura",
+        "modules": [
+          {
+            "id": "semantic-15a8812df6395bdab821dc58",
+            "capability_id": "service_area",
+            "scope_id": "h7-synthetic-servicio",
+            "required": false,
+            "page": "/cobertura",
+            "component": "FactCollection",
+            "facts": [
+              {
+                "id": "extra",
+                "scope_id": "h7-synthetic-servicio",
+                "kind": "service_area",
+                "text": "Zona de prueba sintética, sin domicilio operativo."
+              }
+            ],
+            "offerings": []
+          }
+        ]
+      },
+      {
+        "path": "/servicios",
+        "modules": [
+          {
+            "id": "semantic-24139d7ed51f330df8a27cac",
+            "capability_id": "service_catalog",
+            "scope_id": "h7-synthetic-servicio",
+            "required": true,
+            "page": "/servicios",
+            "component": "OfferingCollection",
+            "facts": [],
+            "offerings": [
+              {
+                "id": "object-1",
+                "scope_id": "h7-synthetic-servicio",
+                "facts": [
+                  {
+                    "id": "object-1-name",
+                    "scope_id": "h7-synthetic-servicio",
+                    "kind": "offering_name",
+                    "text": "Objeto 1 de prueba (service); descripción sintética"
+                  },
+                  {
+                    "id": "object-1-description",
+                    "scope_id": "h7-synthetic-servicio",
+                    "kind": "offering_description",
+                    "text": "Información declarada de prueba 1, sin precio o promesa operativa."
+                  }
+                ]
+              },
+              {
+                "id": "object-2",
+                "scope_id": "h7-synthetic-servicio",
+                "facts": [
+                  {
+                    "id": "object-2-name",
+                    "scope_id": "h7-synthetic-servicio",
+                    "kind": "offering_name",
+                    "text": "Objeto 2 de prueba (service); descripción sintética"
+                  },
+                  {
+                    "id": "object-2-description",
+                    "scope_id": "h7-synthetic-servicio",
+                    "kind": "offering_description",
+                    "text": "Información declarada de prueba 2, sin precio o promesa operativa."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "bindings": [
+      {
+        "fact_id": "assert-identity",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "assert-service_area",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "assert-service_catalog",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "category-evidence",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "extra",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [
+          "semantic-15a8812df6395bdab821dc58"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "name",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [
+          "semantic-8d6186a66bc0eba866d3ee03"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "object-1-description",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [
+          "semantic-24139d7ed51f330df8a27cac"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "object-1-name",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [
+          "semantic-24139d7ed51f330df8a27cac"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "object-2-description",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [
+          "semantic-24139d7ed51f330df8a27cac"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "object-2-name",
+        "scope_id": "h7-synthetic-servicio",
+        "module_ids": [
+          "semantic-24139d7ed51f330df8a27cac"
+        ],
+        "status": "BOUND"
+      }
+    ],
+    "diagnostics": [],
+    "exclusions": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: NO PUBLICAR COMO NEGOCIO REAL",
+      "H7 held-out reservation; no real credentials or media permission"
+    ]
+  },
+  "media": null,
+  "gaps": [
+    {
+      "need": {
+        "id": "need-03d3651b233ce1baa0e00d4b",
+        "requirement_id": "semantic-24139d7ed51f330df8a27cac",
+        "module_id": "semantic-24139d7ed51f330df8a27cac",
+        "page": "/servicios",
+        "scope_id": "h7-synthetic-servicio",
+        "purpose": "document:service_catalog",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "object-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      "missing_count": 1,
+      "reasons": [
+        "NO_AUTHORIZED_CANDIDATE"
+      ],
+      "requested_from": "upstream_or_commission"
+    },
+    {
+      "need": {
+        "id": "need-286f98828d495d0f9c172159",
+        "requirement_id": "semantic-15a8812df6395bdab821dc58",
+        "module_id": "semantic-15a8812df6395bdab821dc58",
+        "page": "/cobertura",
+        "scope_id": "h7-synthetic-servicio",
+        "purpose": "illustrate:service_area",
+        "role": "ILLUSTRATIVE",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      "missing_count": 1,
+      "reasons": [
+        "NO_AUTHORIZED_CANDIDATE"
+      ],
+      "requested_from": "licensed_provider"
+    },
+    {
+      "need": {
+        "id": "need-9f6c5af48dfabba3f8244889",
+        "requirement_id": "semantic-24139d7ed51f330df8a27cac",
+        "module_id": "semantic-24139d7ed51f330df8a27cac",
+        "page": "/servicios",
+        "scope_id": "h7-synthetic-servicio",
+        "purpose": "document:service_catalog",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "object-2"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      "missing_count": 1,
+      "reasons": [
+        "NO_AUTHORIZED_CANDIDATE"
+      ],
+      "requested_from": "upstream_or_commission"
+    },
+    {
+      "need": {
+        "id": "need-b498db5f3cbb4701d05b2a4b",
+        "requirement_id": "semantic-8d6186a66bc0eba866d3ee03",
+        "module_id": "semantic-8d6186a66bc0eba866d3ee03",
+        "page": "/",
+        "scope_id": "h7-synthetic-servicio",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      "missing_count": 1,
+      "reasons": [
+        "NO_AUTHORIZED_CANDIDATE"
+      ],
+      "requested_from": "licensed_provider"
+    }
+  ],
+  "constraints": [
+    "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+    "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+    "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+    "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+  ],
+  "client_id": "synthetic-h7-servicio",
+  "project_id": "h7-cohort-servicio",
+  "evaluated_at": "2026-10-08T00:00:00Z",
+  "manifest_sha256": "6d180502c89f6cf176459f1bd50a8426fa0785c6a743d3a4fa57a0e3c0ccde4c",
+  "registry_version": "h5-lab-1.0.0",
+  "references": {
+    "status": "MISSING",
+    "note": "No licensed reference corpus present; no external reference claims."
+  },
+  "operators": {
+    "frame": [
+      "Flow",
+      "Rail"
+    ],
+    "stage": [
+      "Sequence",
+      "Split"
+    ],
+    "navigation": "before-content",
+    "reading_order": "modules-before-media",
+    "mobile": "stack-with-visible-navigation",
+    "media": "unaltered-original"
+  }
+}

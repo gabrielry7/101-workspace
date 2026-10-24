@@ -1,0 +1,8 @@
+---
+import ExperienceComposition from '../../components/composition/ExperienceComposition.astro';
+import {loadB3DepthExperience as loadB3RichExperience} from '../../../scripts/load-b3-depth-experience.ts';
+import {richExperiencePages} from '../../design/rich-experience-contracts.ts';
+export async function getStaticPaths(){const lab=await loadB3RichExperience();return lab.site.profiles.map(profile=>({params:{candidate:profile.id},props:{lab,profile}}));}
+const {lab,profile}=Astro.props;
+---
+<ExperienceComposition {lab} {profile} page={richExperiencePages[0]}/>

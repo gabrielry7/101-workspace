@@ -1,0 +1,44 @@
+﻿{
+    "assetRestoration":  "PASS",
+    "dependencyInstall":  "PASS npm ci",
+    "compilerChecks":  [
+                           {
+                               "command":  "npm run validate",
+                               "exitCode":  0,
+                               "status":  "PASS",
+                               "log":  "local-run-validate.log"
+                           },
+                           {
+                               "command":  "npm test",
+                               "exitCode":  1,
+                               "status":  "FAIL",
+                               "log":  "local-test.log"
+                           },
+                           {
+                               "command":  "npm run check",
+                               "exitCode":  0,
+                               "status":  "PASS",
+                               "log":  "local-run-check.log"
+                           },
+                           {
+                               "command":  "npm run build",
+                               "exitCode":  0,
+                               "status":  "PASS",
+                               "log":  "local-run-build.log"
+                           }
+                       ],
+    "location":  "projects/101-design-compiler",
+    "testedAt":  "2026-10-24T18:49:42.8309669Z",
+    "note":  "Local consolidated source; H8 lock tests require the exact frozen Edge/Windows/fonts/Node environment. Fresh remote clone is tested separately after GitHub authentication.",
+    "testSummary":  {
+                        "tests":  424,
+                        "passed":  423,
+                        "failed":  1,
+                        "knownFailure":  "LOCK_BROWSER_MISMATCH",
+                        "requiredEdge":  "Edg/154.0.4258.62",
+                        "installedEdge":  [
+                                              "155.0.4283.45",
+                                              "156.0.4314.42"
+                                          ]
+                    }
+}

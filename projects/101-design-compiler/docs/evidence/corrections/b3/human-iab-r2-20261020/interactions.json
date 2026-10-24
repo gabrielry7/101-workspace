@@ -1,0 +1,51 @@
+{
+  "scope": "Actual representative candidate-01 mobile actions, not exhaustive combinations",
+  "records": [
+    {
+      "step": "pause",
+      "state": {
+        "label": "Reproducir vídeo de fondo",
+        "paused": true,
+        "text": "▷"
+      }
+    },
+    {
+      "step": "resume",
+      "state": {
+        "muted": true,
+        "paused": false
+      }
+    },
+    {
+      "step": "contact-route",
+      "state": {
+        "email": "hola@lamesa.example",
+        "forms": 0,
+        "social_urls": [
+          "/b3/candidate-01/contacto/",
+          "/b3/candidate-01/contacto/"
+        ],
+        "url": "http://127.0.0.1:4331/b3/candidate-01/contacto/",
+        "whatsapp_disabled": true
+      }
+    },
+    {
+      "step": "reviews-route",
+      "state": {
+        "disclosure": "Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes.",
+        "real_avatars": 0,
+        "reviews": 3,
+        "url": "http://127.0.0.1:4331/b3/candidate-01/opiniones/"
+      }
+    },
+    {
+      "step": "journal-route",
+      "state": {
+        "disclosure": "Selección editorial de muestra con imágenes ilustrativas. No son publicaciones de Instagram ni contenido de una cuenta real.",
+        "iframes": 0,
+        "posts": 4,
+        "url": "http://127.0.0.1:4331/b3/candidate-01/diario/"
+      }
+    }
+  ]
+}

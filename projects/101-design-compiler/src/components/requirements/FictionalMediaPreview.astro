@@ -1,0 +1,22 @@
+---
+import {demoPackageData,evaluateDemoUsage} from '../../media/demo-package.ts';
+import type {DemoPackageHandle} from '../../media/demo-package.ts';
+interface Props{handle:DemoPackageHandle;evaluated_at:string}
+const {handle,evaluated_at}=Astro.props,pack=demoPackageData(handle);
+const entries=pack.needs.map(need=>{const uses=pack.usages.filter(u=>u.need_id===need.id);if(!uses.length||uses.some(u=>evaluateDemoUsage(handle,u,evaluated_at).status!=='ALLOWED'))throw Error('DEMO_PRESENTATION_BLOCKED');
+ return {need,uses,assets:uses.map(u=>pack.assets.find(a=>a.id===u.asset_id)!)};});
+const photos=entries.filter(e=>e.need.placement==='CARD'),motion=entries.find(e=>e.need.placement==='MOTION')!,posterEntry=entries.find(e=>e.need.placement==='POSTER')!,poster=posterEntry.assets[0]!;
+---
+<div class="demo-preview" data-demo-package={pack.package_sha256}>
+ <header><p class="eyebrow">Escenario de prueba · ningún negocio real</p><h1>{pack.scenario.title}</h1><p class="intro">Una mesa para compartir, una carta para explorar.</p><p data-demo-disclosure>{pack.usages[0]!.generic_label}</p></header>
+ <nav aria-label="Recorrido de la demo"><a href="#carta">Explorar la carta de ejemplo</a><a href="#escena">Ver una escena en movimiento</a><a href="/b2/">Volver a B2</a></nav>
+ <section id="carta" aria-labelledby="carta-title"><h2 id="carta-title">Sabores para imaginar</h2><p>Estas cuatro fotografías ilustran una carta ficticia. Las recetas, ingredientes y alérgenos no se deducen de las imágenes.</p>
+ <div class="media-grid">{photos.map((e,index)=><article data-demo-need={e.need.id}><picture><source type="image/webp" srcset={e.assets.map(a=>`${a.uri} ${a.inspection.width}w`).join(', ')} sizes="(min-width: 760px) 560px, calc(100vw - 32px)"/><img src={e.assets[0]!.uri} width={e.assets[0]!.inspection.width!} height={e.assets[0]!.inspection.height!} alt={`${e.need.label}. Fotografía ilustrativa de Pixabay.`} loading={index===0?'eager':'lazy'} decoding="async" data-demo-usage={e.uses.map(u=>u.id).join(' ')}/></picture><div class="card-copy"><h3>{e.need.label}</h3><p>Imagen de ejemplo para esta propuesta ficticia.</p><p class="credit"><a href={pack.sources.find(s=>s.asset_id===e.assets[0]!.original_id)!.page}>{e.uses[0]!.attribution_text}</a></p></div></article>)}</div></section>
+ <section id="escena" aria-labelledby="scene-title"><h2 id="scene-title">Cocina en movimiento</h2><p id="video-description">Una pizza se corta en primer plano. Vídeo ilustrativo de ejemplo, sin pista de sonido; no documenta la cocina de una empresa.</p>
+ <video controls playsinline preload="none" poster={poster.uri} width="640" height="360" aria-describedby="video-description" data-demo-video data-demo-usage={motion.uses[0]!.id} data-demo-poster-usage={posterEntry.uses[0]!.id}><source src={motion.assets[0]!.uri} type="video/webm"/>Tu navegador no puede reproducir este vídeo.</video>
+ <p class="credit"><a href={pack.sources.find(s=>s.asset_id===motion.assets[0]!.original_id)!.page}>{motion.uses[0]!.attribution_text}</a>. Portada ilustrativa: {photos[0]!.uses[0]!.attribution_text}.</p><p>El vídeo se carga al reproducirlo. La versión disponible pesa {(pack.files.find(f=>f.asset_id===motion.assets[0]!.id)!.bytes/1e6).toFixed(2)} MB.</p></section>
+ <footer><p data-provider-notice>{pack.usages[0]!.context_notices?.[0]}</p><p>Esta demo puede usar stock autorizado. El material auténtico se exigirá al representar platos, personas o sedes de una empresa real. El hueco documental del fixture histórico conserva su bloqueo.</p></footer>
+</div>
+<style>
+ .demo-preview{color:#18312d;overflow-wrap:anywhere}.eyebrow{font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}.intro{font-size:1.4rem}header{max-width:72ch}nav{display:flex;flex-wrap:wrap;gap:1rem;margin:1.6rem 0 2.2rem}section{scroll-margin-top:1rem}.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0 3rem}article{min-width:0;background:#fff;border:1px solid #c5cbc7}img{display:block;width:100%;height:auto}.card-copy{padding:1rem 1.2rem}h3{font-size:1.3rem;margin:.15rem 0}.credit{font-size:.9rem}video{display:block;width:100%;max-width:640px;height:auto;background:#17231e}p{line-height:1.65}footer{border-top:1px solid #c5cbc7;margin-top:2rem;padding-top:1rem}@media(max-width:759px){.media-grid{grid-template-columns:1fr}h1{font-size:2rem}.intro{font-size:1.2rem}}
+</style>

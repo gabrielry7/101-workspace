@@ -1,0 +1,243 @@
+{
+  "kind": "B2_FICTIONAL_PACKAGE_SELECTED_TRANSFERS",
+  "created_at": "2026-10-15T02:39:48.962Z",
+  "files": [
+    {
+      "provider": "Pixabay",
+      "id": 4991789,
+      "label": "Pizza de ejemplo",
+      "kind": "image",
+      "source_page": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+      "contributor": "shailesh68",
+      "acquired_at": "2026-10-15T02:39:37.094Z",
+      "source_url_private_record": ".tools/b2-demo/source-4991789.json",
+      "source_host": "pixabay.com",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/4991789.jpg",
+        "sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+        "bytes": 476639,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": {
+        "width": 1280,
+        "height": 853,
+        "codec": "jpeg"
+      },
+      "video_metadata": "PENDING_LOCAL_CONTAINER_AND_BROWSER_INSPECTION",
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/4991789-640.webp",
+          "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed",
+          "bytes": 86066,
+          "width": 640,
+          "height": 427,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        },
+        {
+          "path": "public/media/b2-fictional/4991789-1280.webp",
+          "sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71",
+          "bytes": 305320,
+          "width": 1280,
+          "height": 853,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/pizza.json"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 3547078,
+      "label": "Pasta de ejemplo",
+      "kind": "image",
+      "source_page": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+      "contributor": "RitaE",
+      "acquired_at": "2026-10-15T02:39:39.054Z",
+      "source_url_private_record": ".tools/b2-demo/source-3547078.json",
+      "source_host": "pixabay.com",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/3547078.jpg",
+        "sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+        "bytes": 229835,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": {
+        "width": 1280,
+        "height": 697,
+        "codec": "jpeg"
+      },
+      "video_metadata": "PENDING_LOCAL_CONTAINER_AND_BROWSER_INSPECTION",
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/3547078-640.webp",
+          "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b",
+          "bytes": 41984,
+          "width": 640,
+          "height": 349,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        },
+        {
+          "path": "public/media/b2-fictional/3547078-1280.webp",
+          "sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0",
+          "bytes": 116602,
+          "width": 1280,
+          "height": 697,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/pasta.json"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 5904093,
+      "label": "Ensalada de ejemplo",
+      "kind": "image",
+      "source_page": "https://pixabay.com/photos/salad-greek-salad-feta-food-plate-5904093/",
+      "contributor": "galyafanaseva",
+      "acquired_at": "2026-10-15T02:39:41.083Z",
+      "source_url_private_record": ".tools/b2-demo/source-5904093.json",
+      "source_host": "pixabay.com",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/5904093.jpg",
+        "sha256": "34d7bfc85bad5b0c654838ea3cffe5d84eab4c9d5f094fc003c75edc33e4bcb7",
+        "bytes": 299180,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": {
+        "width": 1280,
+        "height": 1024,
+        "codec": "jpeg"
+      },
+      "video_metadata": "PENDING_LOCAL_CONTAINER_AND_BROWSER_INSPECTION",
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/5904093-640.webp",
+          "sha256": "997cded06e5092ab0da28f32b7e70311224f2606c5d2f48641cbeaad31f741c7",
+          "bytes": 46470,
+          "width": 640,
+          "height": 512,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        },
+        {
+          "path": "public/media/b2-fictional/5904093-1280.webp",
+          "sha256": "f192fa9cc56df2abd73c336cc5c578c54bdae4bf1b41f0ed3b32c5eb767a792f",
+          "bytes": 131882,
+          "width": 1280,
+          "height": 1024,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/salad.json"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 7030032,
+      "label": "Postre de ejemplo",
+      "kind": "image",
+      "source_page": "https://pixabay.com/photos/tiramisu-pastry-baked-sweets-7030032/",
+      "contributor": "yousafbhutta",
+      "acquired_at": "2026-10-15T02:39:43.126Z",
+      "source_url_private_record": ".tools/b2-demo/source-7030032.json",
+      "source_host": "pixabay.com",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/7030032.jpg",
+        "sha256": "93a4752c503e1ae103093f3ad4ae862bc7c0bd88fdb49d0c91351f815ebfeb58",
+        "bytes": 238151,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": {
+        "width": 1280,
+        "height": 853,
+        "codec": "jpeg"
+      },
+      "video_metadata": "PENDING_LOCAL_CONTAINER_AND_BROWSER_INSPECTION",
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/7030032-640.webp",
+          "sha256": "21b8c0685548f6cd38fa76b3fe77feb6abf40c38e4750c1e8c36276beb9bb69f",
+          "bytes": 38660,
+          "width": 640,
+          "height": 427,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        },
+        {
+          "path": "public/media/b2-fictional/7030032-1280.webp",
+          "sha256": "846e4d5fdacbd630aec1df2172c154cc5a072a954bf2613ccbaf1efdc5d58de2",
+          "bytes": 104870,
+          "width": 1280,
+          "height": 853,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/dessert.json"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 136431,
+      "label": "Escena culinaria de ejemplo",
+      "kind": "video",
+      "source_page": "https://pixabay.com/videos/id-136431/",
+      "contributor": "mujtabaonline",
+      "acquired_at": "2026-10-15T02:39:48.957Z",
+      "source_url_private_record": ".tools/b2-demo/source-136431.json",
+      "source_host": "cdn.pixabay.com",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/136431.mp4",
+        "sha256": "0a912d175540da2b82f7613c2d5108119dd6457aa112d1b298595d4f43c399c4",
+        "bytes": 2163796,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": null,
+      "video_metadata": "PENDING_LOCAL_CONTAINER_AND_BROWSER_INSPECTION",
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/136431.mp4",
+          "sha256": "0a912d175540da2b82f7613c2d5108119dd6457aa112d1b298595d4f43c399c4",
+          "bytes": 2163796,
+          "operations": []
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/motion.json"
+    }
+  ],
+  "selection": "Four specific food photographs and one short culinary clip selected for an explicitly fictional restaurant scenario, not a catalog.",
+  "license_sources": [
+    "https://pixabay.com/service/terms/",
+    "https://pixabay.com/api/docs/"
+  ],
+  "authorization": "User explicitly requested images/videos via existing API for fictional trials; bounded selections, no purchase or new account.",
+  "status": "OBTAINED_NOT_YET_ADMITTED_OR_PRESENTED",
+  "private_originals": true,
+  "standalone_redistribution": false
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "SYNTHETIC_EDITORIAL_PRESENTATION"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hero_kicker": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hero_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "module_headings": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "anchors": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*$"
+      }
+    },
+    "offering_order": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "offering_media": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "sections": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "narrative": {
+          "type": "string",
+          "minLength": 1
+        },
+        "collection": {
+          "type": "string",
+          "minLength": 1
+        },
+        "information": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "preview_intents": {
+          "maxItems": 2,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "request",
+              "selection"
+            ]
+          }
+        }
+      },
+      "required": [
+        "identity",
+        "narrative",
+        "collection",
+        "information",
+        "preview_intents"
+      ],
+      "additionalProperties": false
+    },
+    "preview_catalog_references": {
+      "type": "object",
+      "properties": {
+        "selection": {
+          "type": "string"
+        },
+        "request": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "selection",
+        "request"
+      ],
+      "additionalProperties": false
+    },
+    "operation": {
+      "type": "string",
+      "const": "DEMO_ONLY"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "source",
+    "hero_kicker",
+    "hero_note",
+    "module_headings",
+    "anchors",
+    "offering_order",
+    "offering_media",
+    "sections",
+    "preview_catalog_references",
+    "operation"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ContextualPresentationV1:1.0.0",
+  "title": "ContextualPresentationV1",
+  "description": "B3 associated contextual local-lab grammar/review; semantic, byte and current-use gates required. No human approval or commercial integration."
+}

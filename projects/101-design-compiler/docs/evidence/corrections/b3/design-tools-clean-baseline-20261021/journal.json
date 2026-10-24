@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-design-tools-clean-baseline-20261021",
+  "created_at": "2026-10-22T03:39:10.073Z",
+  "steps": [
+    {
+      "id": "contracts",
+      "started_at": "2026-10-22T03:39:10.082Z",
+      "finished_at": "2026-10-22T03:39:10.993Z",
+      "wall_seconds": 0.9108835,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/contracts.txt",
+      "log_sha256": "c31b63019752ecce8f909c1c5a90ab10243dec33ef68a2599c0cb12fa6a4367e"
+    },
+    {
+      "id": "tests",
+      "started_at": "2026-10-22T03:39:10.997Z",
+      "finished_at": "2026-10-22T03:39:20.413Z",
+      "wall_seconds": 9.416495799999998,
+      "exit_code": 1,
+      "status": "FAIL",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/tests.txt",
+      "log_sha256": "cf9ae02b05f5892e71618b963af357655881094bca69074bc7df8455e6489013"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-22T03:39:20.417Z",
+      "finished_at": "2026-10-22T03:39:55.559Z",
+      "wall_seconds": 35.1422149,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/check.txt",
+      "log_sha256": "9fc762c91a9e0714d5e3c58c33ea511043376b54503c01483d0f6e68254bb9f6"
+    },
+    {
+      "id": "validate",
+      "started_at": "2026-10-22T03:39:55.568Z",
+      "finished_at": "2026-10-22T03:39:56.401Z",
+      "wall_seconds": 0.8329395999999979,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/validate.txt",
+      "log_sha256": "c69bbe0277e4073bddb83b8d77c8996e8c3512e8223499d7947632d37e3681f4"
+    },
+    {
+      "id": "build",
+      "started_at": "2026-10-22T03:39:56.408Z",
+      "finished_at": "2026-10-22T03:40:12.875Z",
+      "wall_seconds": 16.468363300000004,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/build.txt",
+      "log_sha256": "f228b7763300c256016d84bcc94cb627ee44caf42d802a017eb5f7e921fef41f"
+    },
+    {
+      "id": "b3-scenario",
+      "started_at": "2026-10-22T03:40:12.879Z",
+      "finished_at": "2026-10-22T03:40:13.254Z",
+      "wall_seconds": 0.3746634000000049,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/b3-scenario.txt",
+      "log_sha256": "837363babcb80a4df67c28bd2febb948250ecd3aba97368f760ca26c735651d3"
+    },
+    {
+      "id": "b3-design-replay",
+      "started_at": "2026-10-22T03:40:13.256Z",
+      "finished_at": "2026-10-22T03:40:14.122Z",
+      "wall_seconds": 0.8662972999999984,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/b3-design-replay.txt",
+      "log_sha256": "b8feb839b12906f24becaf319468674714861ea6ddfcdb40da8bcb97d1833262"
+    },
+    {
+      "id": "b2-media",
+      "started_at": "2026-10-22T03:40:14.126Z",
+      "finished_at": "2026-10-22T03:40:20.449Z",
+      "wall_seconds": 6.3228991000000025,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/b2-media.txt",
+      "log_sha256": "9f5dae56ccdf99c72f7666d214f66749a6859f56bfc584bd9783e152a319f2d2"
+    },
+    {
+      "id": "b2-library",
+      "started_at": "2026-10-22T03:40:20.454Z",
+      "finished_at": "2026-10-22T03:40:23.866Z",
+      "wall_seconds": 3.411819499999998,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/b2-library.txt",
+      "log_sha256": "23be7c658f52b28908ac2979e08be0a1f4dd9b91288cd5578e4eb2dfc0295e7c"
+    },
+    {
+      "id": "b1-replay",
+      "started_at": "2026-10-22T03:40:23.868Z",
+      "finished_at": "2026-10-22T03:40:25.559Z",
+      "wall_seconds": 1.691238499999992,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/b1-replay.txt",
+      "log_sha256": "b3216e3a4c37b58fa9c6aeb50bacbf0feff9609c5f98a627b8b99ff6ece23a18"
+    },
+    {
+      "id": "taxonomy",
+      "started_at": "2026-10-22T03:40:25.563Z",
+      "finished_at": "2026-10-22T03:40:26.499Z",
+      "wall_seconds": 0.9357084999999934,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/taxonomy.txt",
+      "log_sha256": "5bdb2a1a3ebcde0961f22b7b26ef4a64a53c24ddefb9272b9eb91f7243bcad0a"
+    },
+    {
+      "id": "planner-replay",
+      "started_at": "2026-10-22T03:40:26.512Z",
+      "finished_at": "2026-10-22T03:40:26.905Z",
+      "wall_seconds": 0.3930840999999928,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/planner-replay.txt",
+      "log_sha256": "846632f40f77a077944ac55e6dbd42683e92b5673ae665dda82ef6ddea8b424a"
+    },
+    {
+      "id": "media-replay",
+      "started_at": "2026-10-22T03:40:26.907Z",
+      "finished_at": "2026-10-22T03:40:27.662Z",
+      "wall_seconds": 0.7547225999999937,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/media-replay.txt",
+      "log_sha256": "a238a3a587e30885acb326264f26b0e73e9dc9402294c0efdb9ce1df860c22e4"
+    },
+    {
+      "id": "media-verify",
+      "started_at": "2026-10-22T03:40:27.665Z",
+      "finished_at": "2026-10-22T03:40:28.303Z",
+      "wall_seconds": 0.6380895000000019,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/media-verify.txt",
+      "log_sha256": "dfed262ff832904ddba0e2baf16b17ba2b8c8fd30797be7128c73b59f8f0f568"
+    },
+    {
+      "id": "composition-replay",
+      "started_at": "2026-10-22T03:40:28.308Z",
+      "finished_at": "2026-10-22T03:40:29.023Z",
+      "wall_seconds": 0.715347299999994,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/composition-replay.txt",
+      "log_sha256": "938c870a6ab24e641e885a169da8739c49ab4a438e4ecd16288b5abeaa497b76"
+    },
+    {
+      "id": "composition-verify",
+      "started_at": "2026-10-22T03:40:29.025Z",
+      "finished_at": "2026-10-22T03:40:29.692Z",
+      "wall_seconds": 0.6669179000000004,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/composition-verify.txt",
+      "log_sha256": "51e973bac7283abc33be1ac1fefc8489483c5957b9c3b09196e8cd214504a635"
+    },
+    {
+      "id": "design-replay",
+      "started_at": "2026-10-22T03:40:29.697Z",
+      "finished_at": "2026-10-22T03:40:30.400Z",
+      "wall_seconds": 0.7035828000000037,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/design-replay.txt",
+      "log_sha256": "debf7dd8e16ff43197df66a57c304cbc0eee46ab637661bb48d2f195dd00c13c"
+    },
+    {
+      "id": "design-verify",
+      "started_at": "2026-10-22T03:40:30.406Z",
+      "finished_at": "2026-10-22T03:40:31.100Z",
+      "wall_seconds": 0.6940472000000009,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/design-verify.txt",
+      "log_sha256": "505d634e67d6f6746e96ab3839d7b84cfeaa422ec7010f545eb385959bd5bc7e"
+    },
+    {
+      "id": "audit-verify",
+      "started_at": "2026-10-22T03:40:31.103Z",
+      "finished_at": "2026-10-22T03:40:32.670Z",
+      "wall_seconds": 1.5673708000000042,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/audit-verify.txt",
+      "log_sha256": "fa7395471691e7226ee26bd6c4b95f14eb14c431cbe0873d0becb430b6d50f05"
+    },
+    {
+      "id": "cohort-replay",
+      "started_at": "2026-10-22T03:40:32.674Z",
+      "finished_at": "2026-10-22T03:40:33.402Z",
+      "wall_seconds": 0.7287664000000077,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/cohort-replay.txt",
+      "log_sha256": "ede63bd8361a8e64a84792533fb27f35dc2d930d7105490b977b2a7f78992c45"
+    },
+    {
+      "id": "cohort-verify",
+      "started_at": "2026-10-22T03:40:33.406Z",
+      "finished_at": "2026-10-22T03:40:35.683Z",
+      "wall_seconds": 2.2767222000000036,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/cohort-verify.txt",
+      "log_sha256": "f6fea28c3dbd8694a321092ca31ea68f19fa9b900bc73f28be8882ecfc0f7931"
+    },
+    {
+      "id": "lock-verify",
+      "started_at": "2026-10-22T03:40:35.688Z",
+      "finished_at": "2026-10-22T03:40:40.333Z",
+      "wall_seconds": 4.645429199999999,
+      "exit_code": 1,
+      "status": "FAIL",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/lock-verify.txt",
+      "log_sha256": "9e563f744b6302b5ac41b1fb1878a1f6de6c7c13d327ae04924849bee5de0c61"
+    },
+    {
+      "id": "h9-inventory",
+      "started_at": "2026-10-22T03:40:40.338Z",
+      "finished_at": "2026-10-22T03:40:40.821Z",
+      "wall_seconds": 0.4834560999999958,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-clean-baseline-20261021/h9-inventory.txt",
+      "log_sha256": "f45cdb31ff61042b80640b33dce172a2f8cab339e03641f5e72a655645fdbecb"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

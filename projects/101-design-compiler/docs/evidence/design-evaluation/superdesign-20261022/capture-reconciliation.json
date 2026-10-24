@@ -1,0 +1,119 @@
+{
+  "reason": "Re-measured before the full-page screenshot; separately recorded the state reported by the adapter after capture.",
+  "cases": [
+    {
+      "id": "baseline",
+      "device": "desktop",
+      "before": {
+        "height": 1000,
+        "width": 1425
+      },
+      "beforeScrollHeight": 4541,
+      "after": {
+        "height": 1000,
+        "scrollHeight": 4544,
+        "width": 1440
+      },
+      "signature": [
+        255,
+        216,
+        255
+      ]
+    },
+    {
+      "id": "editorial",
+      "device": "desktop",
+      "before": {
+        "height": 1000,
+        "width": 1425
+      },
+      "beforeScrollHeight": 5615,
+      "after": {
+        "height": 1000,
+        "scrollHeight": 5622,
+        "width": 1440
+      },
+      "signature": [
+        255,
+        216,
+        255
+      ]
+    },
+    {
+      "id": "chapters",
+      "device": "desktop",
+      "before": {
+        "height": 1000,
+        "width": 1425
+      },
+      "beforeScrollHeight": 6682,
+      "after": {
+        "height": 1000,
+        "scrollHeight": 6701,
+        "width": 1440
+      },
+      "signature": [
+        255,
+        216,
+        255
+      ]
+    },
+    {
+      "id": "baseline",
+      "device": "mobile",
+      "before": {
+        "height": 844,
+        "width": 375
+      },
+      "beforeScrollHeight": 5685,
+      "after": {
+        "height": 844,
+        "scrollHeight": 5659,
+        "width": 390
+      },
+      "signature": [
+        255,
+        216,
+        255
+      ]
+    },
+    {
+      "id": "editorial",
+      "device": "mobile",
+      "before": {
+        "height": 844,
+        "width": 375
+      },
+      "beforeScrollHeight": 7881,
+      "after": {
+        "height": 844,
+        "scrollHeight": 7895,
+        "width": 390
+      },
+      "signature": [
+        255,
+        216,
+        255
+      ]
+    },
+    {
+      "id": "chapters",
+      "device": "mobile",
+      "before": {
+        "height": 844,
+        "width": 375
+      },
+      "beforeScrollHeight": 5687,
+      "after": {
+        "height": 844,
+        "scrollHeight": 5687,
+        "width": 375
+      },
+      "signature": [
+        255,
+        216,
+        255
+      ]
+    }
+  ]
+}

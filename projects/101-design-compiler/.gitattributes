@@ -1,0 +1,36 @@
+# Byte-exact source inventory and deterministic hash-bearing artifacts.
+"data/reference/message (4).txt" -text
+data/derived/** text eol=lf
+taxonomy/v1/mappings.json text eol=lf
+docs/evidence/*.txt text eol=lf
+# Official snapshots retain source whitespace as part of their byte evidence.
+docs/evidence/h3-pilot/*.html -text -whitespace
+docs/evidence/h3-pilot/*.md text eol=lf
+docs/evidence/h3-pilot/*.json text eol=lf
+fixtures/media/pilot/*.json text eol=lf
+public/media/h3-pilot/* -text
+docs/evidence/h4/*.json text eol=lf
+docs/evidence/h4/*.png -text
+docs/evidence/h5/*.json text eol=lf
+docs/evidence/h5/*.png -text
+fixtures/design/h5/** text eol=lf
+src/design/styles.css text eol=lf
+docs/evidence/h6/*.json text eol=lf
+docs/evidence/h6/*.png -text
+fixtures/cohort/h7/** text eol=lf
+docs/evidence/h7/*.json text eol=lf
+docs/evidence/h7/*.png -text
+fixtures/locks/h8/*.json text eol=lf
+fixtures/locks/h8/source-archive/** text eol=lf
+fixtures/locks/h8/files/public/** -text
+fixtures/locks/h8/files/docs/evidence/h3-pilot/*.html -text -whitespace
+fixtures/locks/h8/files/docs/evidence/h3-pilot/*.md text eol=lf
+fixtures/locks/h8/files/docs/evidence/h3-pilot/*.png -text
+fixtures/locks/h8/files/docs/evidence/h3-pilot/*.json text eol=lf
+docs/evidence/h8/*.json text eol=lf
+docs/evidence/h8/*.png -text
+docs/evidence/h8/outputs/** text eol=lf
+docs/evidence/h8/*.txt text eol=lf
+fixtures/locks/h8/audit-snapshot/** -text -whitespace
+scripts/inventory-h9.ts text eol=lf
+docs/evidence/h9/*.json text eol=lf

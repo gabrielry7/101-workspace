@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-reference-application-qa-01",
+  "created_at": "2026-10-16T13:31:51.655Z",
+  "steps": [
+    {
+      "id": "build",
+      "started_at": "2026-10-16T13:31:51.656Z",
+      "finished_at": "2026-10-16T13:31:57.932Z",
+      "wall_seconds": 6.2752495,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-qa-01/build.txt",
+      "log_sha256": "c38f4d01651f1c5dddd6ec9f0b89792dd8c3a9e1408583a48133b2d7f687f4ef"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "scenario": "recurso-no-inspeccionado",
+  "label": "Foto referenciada sin permiso ni observación verificados",
+  "expected_context_status": "UNKNOWN",
+  "expected_planner_status": "CONTENT_BLOCKED",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-restaurante-001",
+    "snapshot_id": "fixture-restaurante-001-snapshot-v1:b1-insuficiente:b1-recurso-no-inspeccionado",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "osm",
+        "field": "amenity",
+        "value": "Unknown",
+        "confidence": 1,
+        "evidence_ids": [
+          "f-category"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "Restaurante — fixture ficticio",
+        "scope_id": "fixture-restaurante-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-restaurante-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-category",
+        "kind": "observed_category",
+        "value": "Unknown",
+        "scope_id": "fixture-restaurante-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-category",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-offering-1",
+        "kind": "offering_name",
+        "value": "Ítem de menú de prueba",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-offering-1",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-menu",
+        "kind": "capability:menu",
+        "value": true,
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-menu",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-reservation",
+        "kind": "capability:reservation",
+        "value": true,
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-reservation",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-restaurante-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": []
+      }
+    ],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-restaurante-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [
+      {
+        "id": "b1-uninspected-media",
+        "source": "synthetic-fixture",
+        "uri": "https://example.invalid/restaurant-photo.jpg",
+        "kind": "image",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "rights_status": "DOCUMENTED",
+        "rights_document_ids": [
+          "fixture-document-not-a-license"
+        ],
+        "restrictions": [],
+        "width": 1000,
+        "height": 800
+      }
+    ],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "activity_links": [],
+  "activity_relationships": [],
+  "category_context": [],
+  "objective_decisions": []
+}

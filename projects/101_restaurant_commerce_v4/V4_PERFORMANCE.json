@@ -1,0 +1,28 @@
+{
+  "benchmark": "restaurant-commerce-v4-offline",
+  "notes": [
+    "Single-process local benchmark; not a production capacity forecast.",
+    "No external network/provider calls.",
+    "Storefront path is warm shared TTL-cache; quote path hits SQLite and performs authoritative server pricing."
+  ],
+  "quote_server_side": {
+    "elapsed_seconds": 3.6458,
+    "iterations": 2000,
+    "max_ms": 5.122,
+    "mean_ms": 1.8222,
+    "ops_per_second": 548.58,
+    "p50_ms": 1.7389,
+    "p95_ms": 2.1819,
+    "p99_ms": 2.8655
+  },
+  "storefront_cached": {
+    "elapsed_seconds": 0.0098,
+    "iterations": 20000,
+    "max_ms": 0.0682,
+    "mean_ms": 0.0004,
+    "ops_per_second": 2042779.9,
+    "p50_ms": 0.0004,
+    "p95_ms": 0.0004,
+    "p99_ms": 0.0005
+  }
+}

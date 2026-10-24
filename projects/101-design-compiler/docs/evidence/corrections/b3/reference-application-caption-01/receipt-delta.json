@@ -1,0 +1,14 @@
+{
+  "kind": "COMPARATOR_CAPTION_ONLY_EVIDENCE_SOURCE_UPDATE",
+  "base_commit": "a80b7ecd1bb2b4d35b9fffb898c2acb82b26b4bc",
+  "changes": [
+    {
+      "path": "/renderer_sources/13/sha256",
+      "before": "47967aedb0231383cde287bb6aff8180fa3a1a2b9077194d802b727d9bf8a5a9",
+      "after": "045d03d4ccd3ca270acf7613ecb32b8add8fb58c69f6cdf23d93eeea4cbbe755"
+    }
+  ],
+  "source": "src/pages/b3/index.astro",
+  "candidate_html_media_geometry_and_screenshots": "UNCHANGED",
+  "scope": "Explicit update after comparator caption correction; not new candidate observations"
+}

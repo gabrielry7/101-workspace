@@ -1,0 +1,70 @@
+Fresh staged checkout (core.autocrlf=true); existing pinned node_modules mounted by local junction, no dependency download.
+Commands: npm run build; npm run media:verify; npm run composition:verify.
+
+> 101-design-compiler@0.0.0 build
+> npm run validate && astro build
+
+
+> 101-design-compiler@0.0.0 validate
+> node --experimental-strip-types scripts/validate-fixtures.ts
+
+restaurante: PASSED
+gimnasio: PASSED
+ferreteria: PASSED
+planner/restaurante: PASSED (READY)
+planner/gimnasio: PASSED (READY)
+planner/ferreteria: PASSED (READY)
+planner/clinica: PASSED (READY)
+planner/hibrido-gimnasio-tienda: PASSED (READY)
+planner/hibrido-sin-evidencia: PASSED (CONTENT_BLOCKED)
+planner/hotel-restaurante-sucursales: PASSED (READY)
+planner/informacion-incompleta: PASSED (CONTENT_BLOCKED)
+planner/servicios-profesionales: PASSED (READY)
+media/restaurante: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/synthetic-permission-control: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/synthetic-permission-default-blocked: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/gimnasio: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/ferreteria: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/clinica: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/hibrido-gimnasio-tienda: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/hotel-restaurante-sucursales: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/servicios-profesionales: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/real-restaurante-pilot: PASSED (AUTHORIZED_PILOT_PACKAGE_WITH_GAPS)
+19:00:13 [vite] Re-optimizing dependencies because vite config has changed
+19:00:14 [vite] [optimizer] bundling dependencies...
+19:00:15 [types] Generated 1.61s
+19:00:15 [build] output: "static"
+19:00:15 [build] mode: "static"
+19:00:15 [build] directory: C:\Users\gabri\101-design-compiler\.tools\h4-repro-build\dist\
+19:00:15 [build] Collecting build info...
+19:00:15 [build] ✓ Completed in 1.64s.
+19:00:15 [build] Building static entrypoints...
+19:00:15 [vite] ✓ built in 165ms
+19:00:15 [vite] ✓ built in 17ms
+19:00:15 [build] Rearranging server assets...
+
+ generating static routes
+19:00:15   ├─ /h3-media-pilot/index.html (+84ms)
+19:00:15   ├─ /h4/editorial/index.html (+11ms)
+19:00:15   ├─ /h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+8ms)
+19:00:15   ├─ /h4/split/index.html (+4ms)
+19:00:15   ├─ /h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+6ms)
+19:00:15   ├─ /h4/rail/index.html (+5ms)
+19:00:15   ├─ /h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+6ms)
+19:00:15   ├─ /h4/index.html (+7ms)
+19:00:15   ├─ /index.html (+18ms)
+19:00:15 ✓ Completed in 332ms.
+
+19:00:15 [build] ✓ Completed in 563ms.
+19:00:15 [build] 9 page(s) built in 2.20s
+19:00:15 [build] Complete!
+
+> 101-design-compiler@0.0.0 media:verify
+> node --experimental-strip-types scripts/verify-media-pilot.ts
+
+{"status":"PASSED","closure":"AUTHORIZED_PILOT_PACKAGE_WITH_GAPS","media_sha256":"ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715","permission_source":"https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/","documentary_gap_blocked":true,"original_bytes_checked":true,"official_documents_checked":true,"render_receipt_checked":true,"attribution_and_context_checked":true,"current_build_matches_render":true}
+
+> 101-design-compiler@0.0.0 composition:verify
+> node --experimental-strip-types scripts/verify-compositions.ts
+
+{"status":"PASSED","views":12,"primary_views":6,"bindings_preserved":true,"media_preserved":true,"original_sha256":"ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715","plan_sha256":"4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22","content_sha256":"6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b"}

@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "principle": {
+      "type": "string",
+      "minLength": 12,
+      "maxLength": 600
+    },
+    "dominance": {
+      "type": "string",
+      "enum": [
+        "typography",
+        "navigation",
+        "dialogue"
+      ]
+    },
+    "materiality": {
+      "type": "string",
+      "const": "typography-only"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 12,
+      "maxLength": 900
+    },
+    "topologies": {
+      "minItems": 1,
+      "maxItems": 4,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "frame": {
+            "type": "string",
+            "enum": [
+              "Flow",
+              "Rail"
+            ]
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "Sequence",
+              "Split"
+            ]
+          }
+        },
+        "required": [
+          "frame",
+          "stage"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "properties": {
+        "palette": {
+          "type": "string",
+          "enum": [
+            "olive",
+            "ink",
+            "earth"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "serif",
+            "sans"
+          ]
+        },
+        "hierarchy": {
+          "type": "string",
+          "enum": [
+            "monument",
+            "compact"
+          ]
+        },
+        "rhythm": {
+          "type": "string",
+          "enum": [
+            "quiet",
+            "dense"
+          ]
+        },
+        "media_width": {
+          "type": "string",
+          "enum": [
+            "full",
+            "inset"
+          ]
+        },
+        "media_alignment": {
+          "type": "string",
+          "enum": [
+            "center",
+            "end"
+          ]
+        }
+      },
+      "required": [
+        "palette",
+        "type",
+        "hierarchy",
+        "rhythm",
+        "media_width",
+        "media_alignment"
+      ],
+      "additionalProperties": false
+    },
+    "media_usage_ids": {
+      "maxItems": 20,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+      }
+    },
+    "motion": {
+      "type": "string",
+      "const": "quiet"
+    },
+    "risks": {
+      "minItems": 1,
+      "maxItems": 12,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 240
+      }
+    },
+    "constraints_acknowledged": {
+      "type": "object",
+      "properties": {
+        "truth": {
+          "type": "boolean",
+          "const": true
+        },
+        "rights": {
+          "type": "boolean",
+          "const": true
+        },
+        "modules": {
+          "type": "boolean",
+          "const": true
+        },
+        "no_code": {
+          "type": "boolean",
+          "const": true
+        }
+      },
+      "required": [
+        "truth",
+        "rights",
+        "modules",
+        "no_code"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "context_sha256",
+    "principle",
+    "dominance",
+    "materiality",
+    "rationale",
+    "topologies",
+    "tokens",
+    "media_usage_ids",
+    "motion",
+    "risks",
+    "constraints_acknowledged"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ArtDirectionV1_1:1.1.0",
+  "title": "ArtDirectionV1_1",
+  "description": "H7 media-free art direction extension; explicit typography-only materiality, no media permission or production readiness."
+}

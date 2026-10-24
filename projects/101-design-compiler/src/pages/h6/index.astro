@@ -1,0 +1,11 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import {loadComparisons} from '../../../scripts/load-comparisons.ts';
+const {ready,pairs}=await loadComparisons();
+---
+<Foundation title="H6 · auditoría y comparación">
+ <h1>Comparación de finalistas de laboratorio</h1><p>NOT_COLLECTED · Sin votos humanos registrados. Sin publicación ni preparación para producción. Defectos sembrados y mutaciones se conservan solo como experimentos de prueba.</p>
+ {!ready&&<p>Evidencia pendiente: ejecuta auditoría y reconstruye para habilitar las comparaciones.</p>}
+ <ul>{pairs.map(p=><li><a href={p.route}>{p.pair} · {p.view} · {p.page==='identity'?'Identidad':'Oferta de sucursal'}</a></li>)}</ul>
+ <p>Las decisiones se preparan y descargan localmente; no se envían ni conservan en un backend. “Ninguna” y empate están disponibles en cada pareja.</p>
+</Foundation>

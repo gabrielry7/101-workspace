@@ -1,0 +1,162 @@
+{
+  "scenario": "informacion-incompleta",
+  "expected_status": "CONTENT_BLOCKED",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-informacion-incompleta-001",
+    "snapshot_id": "fixture-informacion-incompleta-001-snapshot-v1-h2",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "overture",
+        "field": "taxonomy.primary",
+        "value": "hardware_store",
+        "confidence": 1,
+        "evidence_ids": [
+          "f-category"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "informacion-incompleta — fixture ficticio H2",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-informacion-incompleta-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-category",
+        "kind": "observed_category",
+        "value": "hardware_store",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-category",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-offering-1",
+        "kind": "offering_name",
+        "value": "Categoría de productos de prueba",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-offering-1",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-product_catalog",
+        "kind": "capability:product_catalog",
+        "value": true,
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-product_catalog",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-quote_request",
+        "kind": "capability:quote_request",
+        "value": true,
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-quote_request",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-purchase",
+        "kind": "capability:purchase",
+        "value": false,
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-purchase",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-informacion-incompleta-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": []
+      }
+    ],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      },
+      {
+        "id": "product_catalog",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-product_catalog"
+        ]
+      },
+      {
+        "id": "quote_request",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-quote_request"
+        ]
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      },
+      {
+        "id": "purchase",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_ABSENT",
+        "evidence_ids": [
+          "f-purchase"
+        ]
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "activity_relationships": []
+}

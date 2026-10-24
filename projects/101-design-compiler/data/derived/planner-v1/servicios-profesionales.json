@@ -1,0 +1,537 @@
+{
+  "status": "READY",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-servicios-profesionales-001",
+    "snapshot_id": "fixture-servicios-profesionales-001-snapshot-v1-h2",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "osm",
+        "field": "office",
+        "value": "lawyer",
+        "confidence": 1,
+        "evidence_ids": [
+          "observed-category-1"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "servicios-profesionales — fixture ficticio H2",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-servicios-profesionales-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "observed-category-1",
+        "kind": "observed_category",
+        "value": "lawyer",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-observed-category-1",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "name-service-1",
+        "kind": "offering_name",
+        "value": "Servicio profesional sintético",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-name-service-1",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-service_catalog-4",
+        "kind": "capability:service_catalog",
+        "value": true,
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-service_catalog-4",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-contact_channels-5",
+        "kind": "capability:contact_channels",
+        "value": true,
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-contact_channels-5",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "contact-email",
+        "kind": "email",
+        "value": "fixture@example.invalid",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-contact-email",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-servicios-profesionales-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": []
+      }
+    ],
+    "contact_fact_ids": [
+      "contact-email"
+    ],
+    "service_area_fact_ids": [],
+    "offerings": [
+      {
+        "id": "service-1",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "name_fact_id": "name-service-1",
+        "fact_ids": [],
+        "kind": "service"
+      }
+    ],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      },
+      {
+        "id": "service_catalog",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-service_catalog-4"
+        ]
+      },
+      {
+        "id": "contact_channels",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-contact_channels-5"
+        ]
+      },
+      {
+        "id": "appointment",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "profile": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-servicios-profesionales-001",
+    "snapshot_id": "fixture-servicios-profesionales-001-snapshot-v1-h2",
+    "id": "fixture-servicios-profesionales-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "classification": "RESOLVED",
+    "scope_ids": [
+      "fixture-servicios-profesionales-001",
+      "fixture-servicios-profesionales-001-branch-1"
+    ],
+    "archetypes": [
+      {
+        "id": "professional_advisory",
+        "relevance": "primary",
+        "confidence": 1,
+        "category_observation_ids": [
+          "category-1"
+        ],
+        "offering_ids": [],
+        "evidence_ids": [
+          "observed-category-1"
+        ]
+      }
+    ],
+    "offering_ids": [
+      "service-1"
+    ],
+    "candidate_capabilities": [
+      "contact_request",
+      "professional_profiles",
+      "service_catalog"
+    ],
+    "missing_inputs": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ]
+  },
+  "capabilities": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-servicios-profesionales-001",
+    "snapshot_id": "fixture-servicios-profesionales-001-snapshot-v1-h2",
+    "id": "fixture-servicios-profesionales-001-snapshot-v1-h2:h2-capabilities:9cfa51f08edc5ec046f68e7c",
+    "business_profile_id": "fixture-servicios-profesionales-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "appointment",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": [],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": [
+          "approved_capability_assertion"
+        ]
+      },
+      {
+        "id": "contact_channels",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-contact_channels-5"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "service_catalog",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-service_catalog-4"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [
+          "service-1"
+        ],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      }
+    ]
+  },
+  "requirements": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-servicios-profesionales-001",
+    "snapshot_id": "fixture-servicios-profesionales-001-snapshot-v1-h2",
+    "business_profile_id": "fixture-servicios-profesionales-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "capability_profile_id": "fixture-servicios-profesionales-001-snapshot-v1-h2:h2-capabilities:9cfa51f08edc5ec046f68e7c",
+    "registry_sha256": "9755d7f5af749f2d11e1702d0d589da934fa7862244833d8105e712d289e4af7",
+    "evaluated_at": "2026-10-07T00:00:00Z",
+    "business_input_sha256": "56810fd4dd0ad106eeb9063907ffb192810432f8b077bccce890275011b35c4f",
+    "taxonomy_registry_sha256": "9366f4b62d70ec8551aa1f5a05d6e67c99d6d3e36a638436485c107e4270701f",
+    "classification_context_sha256": "7d9de6782dc7b2b450d43f672453e314e5861d60acd5977c290e923ec2dfadc6",
+    "requirements": [
+      {
+        "id": "semantic-4a19aff31778886d9f8272fc",
+        "capability_id": "identity",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "identity",
+        "policy": "REQUIRED_IF_PRESENT",
+        "priority": 0,
+        "disposition": "INCLUDED",
+        "required": true,
+        "blocks_site": false,
+        "route": "/",
+        "depends_on": [],
+        "missing_inputs": [],
+        "fact_ids": [
+          "f-name"
+        ],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-0e33678300e2e6b910c2d46f",
+        "capability_id": "service_catalog",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "offering_collection",
+        "policy": "REQUIRED_IF_PRESENT",
+        "priority": 10,
+        "disposition": "INCLUDED",
+        "required": true,
+        "blocks_site": false,
+        "route": "/sedes/s-3869a20e94c71bd4b8d1f6db/servicios",
+        "depends_on": [
+          "semantic-4a19aff31778886d9f8272fc"
+        ],
+        "missing_inputs": [],
+        "fact_ids": [],
+        "offering_ids": [
+          "service-1"
+        ]
+      },
+      {
+        "id": "semantic-91a4032fd065fa77e548ce5e",
+        "capability_id": "professional_profiles",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "source": "CANDIDATE_ONLY",
+        "evidence_status": "UNKNOWN",
+        "semantic_module": "offering_collection",
+        "policy": "REQUIRED_IF_PRESENT",
+        "priority": 20,
+        "disposition": "BLOCKED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/equipo",
+        "depends_on": [],
+        "missing_inputs": [
+          "approved_capability_assertion"
+        ],
+        "fact_ids": [],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-b451bb544049743ca57b46bc",
+        "capability_id": "contact_channels",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "fact_collection",
+        "policy": "CONDITIONAL",
+        "priority": 35,
+        "disposition": "INCLUDED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/sedes/s-3869a20e94c71bd4b8d1f6db/contacto",
+        "depends_on": [
+          "semantic-4a19aff31778886d9f8272fc"
+        ],
+        "missing_inputs": [],
+        "fact_ids": [
+          "contact-email"
+        ],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-c6881c1379a4ed9a08f1aafd",
+        "capability_id": "contact_request",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "source": "CANDIDATE_ONLY",
+        "evidence_status": "UNKNOWN",
+        "semantic_module": "external_action",
+        "policy": "CONDITIONAL",
+        "priority": 60,
+        "disposition": "BLOCKED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/contacto",
+        "depends_on": [],
+        "missing_inputs": [
+          "approved_capability_assertion"
+        ],
+        "fact_ids": [],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-571cb1febeed79f672dfb6c4",
+        "capability_id": "appointment",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "UNKNOWN",
+        "semantic_module": "external_action",
+        "policy": "CONDITIONAL",
+        "priority": 60,
+        "disposition": "BLOCKED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/sedes/s-3869a20e94c71bd4b8d1f6db/contacto",
+        "depends_on": [],
+        "missing_inputs": [
+          "approved_capability_assertion"
+        ],
+        "fact_ids": [],
+        "offering_ids": []
+      }
+    ],
+    "omissions": [
+      {
+        "code": "UNKNOWN",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "capability_id": "appointment",
+        "reason": "Evidence state preserved from upstream",
+        "requested_from": "upstream"
+      }
+    ],
+    "bindings": [
+      {
+        "fact_id": "assert-contact_channels-5",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "assert-service_catalog-4",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "contact-email",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "module_ids": [
+          "semantic-b451bb544049743ca57b46bc"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "f-identity",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-name",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "module_ids": [
+          "semantic-4a19aff31778886d9f8272fc"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "name-service-1",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "module_ids": [
+          "semantic-0e33678300e2e6b910c2d46f"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "observed-category-1",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      }
+    ]
+  },
+  "plan": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-servicios-profesionales-001",
+    "snapshot_id": "fixture-servicios-profesionales-001-snapshot-v1-h2",
+    "id": "fixture-servicios-profesionales-001-snapshot-v1-h2:h2-plan:9cfa51f08edc5ec046f68e7c",
+    "business_profile_id": "fixture-servicios-profesionales-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "capability_profile_id": "fixture-servicios-profesionales-001-snapshot-v1-h2:h2-capabilities:9cfa51f08edc5ec046f68e7c",
+    "stage": "FIXTURE_PREVIEW",
+    "archetypes": [
+      "professional_advisory"
+    ],
+    "capabilities": [
+      "contact_channels",
+      "identity",
+      "service_catalog"
+    ],
+    "pages": [
+      {
+        "path": "/",
+        "intent": "approved_business_identity",
+        "modules": [
+          {
+            "id": "semantic-4a19aff31778886d9f8272fc",
+            "capability_id": "identity",
+            "scope_id": "fixture-servicios-profesionales-001",
+            "required": true,
+            "presentation": "STATIC_PUBLIC_INFORMATION",
+            "fact_ids": [
+              "f-name"
+            ],
+            "offering_ids": []
+          }
+        ]
+      },
+      {
+        "path": "/sedes/s-3869a20e94c71bd4b8d1f6db/contacto",
+        "intent": "approved_capabilities_in_scope",
+        "modules": [
+          {
+            "id": "semantic-b451bb544049743ca57b46bc",
+            "capability_id": "contact_channels",
+            "scope_id": "fixture-servicios-profesionales-001-branch-1",
+            "required": false,
+            "presentation": "STATIC_PUBLIC_INFORMATION",
+            "fact_ids": [
+              "contact-email"
+            ],
+            "offering_ids": []
+          }
+        ]
+      },
+      {
+        "path": "/sedes/s-3869a20e94c71bd4b8d1f6db/servicios",
+        "intent": "approved_capabilities_in_scope",
+        "modules": [
+          {
+            "id": "semantic-0e33678300e2e6b910c2d46f",
+            "capability_id": "service_catalog",
+            "scope_id": "fixture-servicios-profesionales-001-branch-1",
+            "required": true,
+            "presentation": "STATIC_PUBLIC_INFORMATION",
+            "fact_ids": [],
+            "offering_ids": [
+              "service-1"
+            ]
+          }
+        ]
+      }
+    ],
+    "excluded_capabilities": [
+      {
+        "id": "appointment",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "reason": "UNKNOWN"
+      }
+    ]
+  },
+  "diagnostics": []
+}

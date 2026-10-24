@@ -1,0 +1,126 @@
+{
+  "kind": "B2_SELECTED_ALTERNATIVES",
+  "created_at": "2026-10-15T02:40:40.248Z",
+  "reason": "First salad contains decorated/textual ceramics; first dessert shows preparation rather than plated dessert; first video has an audio track. Explicit alternatives chosen from the same cached human searches, no new API query.",
+  "files": [
+    {
+      "provider": "Pixabay",
+      "id": 7543170,
+      "label": "Ensalada de ejemplo",
+      "kind": "image",
+      "source_page": "https://pixabay.com/photos/beetroot-salad-vegetables-meal-7543170/",
+      "contributor": "congerdesign",
+      "acquired_at": "2026-10-15T02:40:37.609Z",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/7543170.jpg",
+        "sha256": "78b08afadbdffc4b520433b67f29815cc8be6faff3e4cf74586fde26f87a13ac",
+        "bytes": 151555,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": {
+        "width": 1280,
+        "height": 831,
+        "codec": "jpeg"
+      },
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/7543170-640.webp",
+          "sha256": "69829a64a53fe75c56619dc48a5a1cf54efabeff001e477f607113aee29d16a3",
+          "bytes": 24222,
+          "width": 640,
+          "height": 416,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        },
+        {
+          "path": "public/media/b2-fictional/7543170-1280.webp",
+          "sha256": "42b901d282f008ac5006761921cf1dca2501f753f8109504428ad7ee3ebb9aa1",
+          "bytes": 59742,
+          "width": 1280,
+          "height": 831,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/salad.json"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 8503073,
+      "label": "Postre de ejemplo",
+      "kind": "image",
+      "source_page": "https://pixabay.com/photos/tiramisu-dessert-cake-food-cream-8503073/",
+      "contributor": "Slava_web-designer",
+      "acquired_at": "2026-10-15T02:40:38.712Z",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/8503073.jpg",
+        "sha256": "c388b14aa84cc285d58ef45f0b2e2a30e62e00623785c844de2e388ed3d429c2",
+        "bytes": 320744,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": {
+        "width": 1280,
+        "height": 1280,
+        "codec": "jpeg"
+      },
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/8503073-640.webp",
+          "sha256": "ccbebf19411719976b21c31b283eea77fd8e2e8071667bf820417eece1a66510",
+          "bytes": 47576,
+          "width": 640,
+          "height": 640,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        },
+        {
+          "path": "public/media/b2-fictional/8503073-1280.webp",
+          "sha256": "726f00159112603ab2e2bde5adaae7acba7744d5321837d8f14e5136c726a360",
+          "bytes": 149230,
+          "width": 1280,
+          "height": 1280,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/dessert.json"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 149678,
+      "label": "Escena culinaria de ejemplo",
+      "kind": "video",
+      "source_page": "https://pixabay.com/videos/id-149678/",
+      "contributor": "u_mcy3jdr8zw",
+      "acquired_at": "2026-10-15T02:40:40.245Z",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/149678.mp4",
+        "sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+        "bytes": 2801470,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": null,
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/149678.mp4",
+          "sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+          "bytes": 2801470,
+          "operations": []
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/motion.json"
+    }
+  ]
+}

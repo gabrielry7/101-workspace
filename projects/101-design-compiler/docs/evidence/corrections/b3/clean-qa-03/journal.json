@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-clean-qa-03",
+  "created_at": "2026-10-15T04:07:44.401Z",
+  "steps": [
+    {
+      "id": "build",
+      "started_at": "2026-10-15T04:07:44.402Z",
+      "finished_at": "2026-10-15T04:07:48.227Z",
+      "wall_seconds": 3.8246695,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-qa-03/build.txt",
+      "log_sha256": "bd20feb98b2c5c39652a8d96da8a4847db1a310e471e7696b574beca5fbad479"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

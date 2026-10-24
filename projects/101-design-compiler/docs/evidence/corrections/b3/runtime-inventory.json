@@ -1,0 +1,50 @@
+{
+  "kind": "B3_LOCAL_RUNTIME_INVENTORY",
+  "observed_at": "2026-10-15T04:08:02.054Z",
+  "paths": [
+    {
+      "path": "../101-world-model",
+      "exists": false
+    },
+    {
+      "path": "node_modules/@101/site-runtime",
+      "exists": false
+    },
+    {
+      "path": "src/layouts/Foundation.astro",
+      "exists": true
+    },
+    {
+      "path": "src/composition/content.ts",
+      "exists": true
+    },
+    {
+      "path": "src/planner/plan.ts",
+      "exists": true
+    },
+    {
+      "path": "src/components/composition/DesignComposition.astro",
+      "exists": true
+    },
+    {
+      "path": "src/components/composition/ContextualComposition.astro",
+      "exists": true
+    },
+    {
+      "path": "scripts/lib/local-browser.ts",
+      "exists": true
+    }
+  ],
+  "runtime": "LOCAL_SHARED_ASTRO_LAB_ONLY",
+  "commercial_integration": false,
+  "new_dependencies": 0,
+  "commands": [
+    "scripts/b3-run.ts <id>",
+    "scripts/b3-qa.ts <id>",
+    "scripts/b3-verify.ts"
+  ],
+  "limits": [
+    "Checks named workspace/adjacent paths; not a scan of all disks or evidence of upstream access",
+    "H0 findings retained, historical runtime not simulated"
+  ]
+}

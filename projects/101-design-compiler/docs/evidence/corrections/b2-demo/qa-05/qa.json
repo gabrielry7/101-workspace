@@ -1,0 +1,351 @@
+{
+  "kind": "FICTIONAL_PIXABAY_MEDIA_BROWSER_QA",
+  "created_at": "2026-10-15T03:00:47.305Z",
+  "package_sha256": "970cc4a6bfbe7af3d8d1de15656fe532a97883963a3e81d9c9390dc07d57f425",
+  "runtime_sha256": "8818373779050bdb597c4e9313a31615c46892046a4572e2113366de11b9040b",
+  "status": "TECHNICAL_PASS_HUMAN_PENDING",
+  "browser": {
+    "source": "scripts/lib/local-browser.ts",
+    "source_sha256": "5e085ae09f4634959c57324a9b418440149ad0cfe66e566358b1154cdd11a9d3",
+    "adapted_sha256": "0239744fffa4c3934054563e09c495859a55990244be51ef1b0e2f2812253c36",
+    "flags": [
+      "--no-sandbox",
+      "--disable-background-networking",
+      "--disable-component-update",
+      "--disable-sync"
+    ],
+    "sandbox": "DISABLED_ONLY_FOR_FIXED_LOCAL_TEST_PAGES",
+    "production_browser": false
+  },
+  "views": [
+    {
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "initial": {
+        "video_bytes": 0,
+        "autoplay": false,
+        "preload": "none",
+        "loaded_images": 4
+      },
+      "playback": {
+        "advanced": true,
+        "current_time": 0,
+        "duration": 9.36,
+        "width": 640,
+        "height": 360,
+        "paused": true,
+        "error": null
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 1265,
+        "height": 2690,
+        "overflow": [],
+        "min_font_px": 14.4,
+        "images": [
+          {
+            "src": "/media/b2-fictional/4991789-640.webp",
+            "decoded": true,
+            "width": 562,
+            "height": 374.953125,
+            "loading": "eager",
+            "alt": "Pizza · ejemplo. Fotografía ilustrativa de Pixabay."
+          },
+          {
+            "src": "/media/b2-fictional/3547078-640.webp",
+            "decoded": true,
+            "width": 562,
+            "height": 306.453125,
+            "loading": "lazy",
+            "alt": "Pasta · ejemplo. Fotografía ilustrativa de Pixabay."
+          },
+          {
+            "src": "/media/b2-fictional/791891-640.webp",
+            "decoded": true,
+            "width": 562,
+            "height": 374.953125,
+            "loading": "lazy",
+            "alt": "Ensalada · ejemplo. Fotografía ilustrativa de Pixabay."
+          },
+          {
+            "src": "/media/b2-fictional/1971552-640.webp",
+            "decoded": true,
+            "width": 562,
+            "height": 382.859375,
+            "loading": "lazy",
+            "alt": "Postre · ejemplo. Fotografía ilustrativa de Pixabay."
+          }
+        ],
+        "needs": [
+          "demo-need:pizza",
+          "demo-need:pasta",
+          "demo-need:salad",
+          "demo-need:dessert"
+        ],
+        "usage_ids": [
+          "demo-use:pixabay-4991789-640",
+          "demo-use:pixabay-4991789-1280",
+          "demo-use:pixabay-3547078-640",
+          "demo-use:pixabay-3547078-1280",
+          "demo-use:pixabay-791891-640",
+          "demo-use:pixabay-791891-1280",
+          "demo-use:pixabay-1971552-640",
+          "demo-use:pixabay-1971552-1280",
+          "demo-use:pixabay-149678-silent",
+          "demo-use:poster"
+        ],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "credits": [
+          "shailesh68 / Pixabay",
+          "RitaE / Pixabay",
+          "JillWellington / Pixabay",
+          "Daria-Yakovleva / Pixabay",
+          "u_mcy3jdr8zw / Pixabay. Portada ilustrativa: shailesh68 / Pixabay."
+        ],
+        "forms": 0,
+        "scripts": 0,
+        "links": [
+          "#carta",
+          "#escena",
+          "/b2/",
+          "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+          "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+          "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+          "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+          "https://pixabay.com/videos/pizza-peperonni-cheese-italian-149678/"
+        ],
+        "text_sha256": "0c439783bced733fb43081a7040c92d15473d603414aa6af1a5ef576b7d7b836"
+      },
+      "served": [
+        {
+          "path": "/media/b2-fictional/4991789-640.webp",
+          "bytes": 86066,
+          "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+        },
+        {
+          "path": "/media/b2-fictional/3547078-640.webp",
+          "bytes": 41984,
+          "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+        },
+        {
+          "path": "/media/b2-fictional/791891-640.webp",
+          "bytes": 45472,
+          "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+        },
+        {
+          "path": "/media/b2-fictional/1971552-640.webp",
+          "bytes": 36338,
+          "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+        },
+        {
+          "path": "/media/b2-fictional/149678-silent-640.webm",
+          "bytes": 4446094,
+          "sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+        }
+      ],
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2-demo/qa-05/desktop.png",
+        "sha256": "5c2d842cb9b36f62719eb1b99580cf3bd91ca8c8887fb155ce1ffc08daf1825e",
+        "rgba_sha256": "fe0a27516cd81deba02de2e28e8b69e0a863444dd59193e33c08b9a9bb402418",
+        "scope": "FULL_PAGE"
+      },
+      "html_sha256": "0dc6573963eded0389784fa4b58b3c8ec2100df98c4b4fd760fb5c7abb14245a",
+      "html_bytes": 8765,
+      "requests": [
+        "<LOCAL>/b2/demo/",
+        "<LOCAL>/media/b2-fictional/4991789-640.webp",
+        "<BROWSER_CONTROL_DATA_SVG:494c11e1495dd9894f9ff46d04eb0da0039a77600c8cf1f1687ba1a973e3cb98>",
+        "<BROWSER_CONTROL_DATA_SVG:016f41f4b94aad71385dd35f428d5423b7043da3ee6e74de454cc51c59123f8c>",
+        "<BROWSER_CONTROL_DATA_SVG:6e9507b2fdf358e1da8766056477b2cb687dd3f854db9e11760d7ec6266aded4>",
+        "<LOCAL>/media/b2-fictional/3547078-640.webp",
+        "<LOCAL>/media/b2-fictional/791891-640.webp",
+        "<LOCAL>/media/b2-fictional/1971552-640.webp",
+        "<BROWSER_CONTROL_DATA_SVG:9650c23900a7f176ce836489e0e7e5a78ad52dd1d0cd52668450ef3b0b5051c8>",
+        "<BROWSER_CONTROL_DATA_SVG:3a206a5ef9360c72ac1f2a8937513ee99c3b744f87166ee53b7dc1210210ae1c>",
+        "<BROWSER_CONTROL_DATA_SVG:45ed1ccb8617180e8232d68eb867e968f57916988d08f19436db1718bc332278>",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/media/b2-fictional/149678-silent-640.webm",
+        "<BROWSER_CONTROL_DATA_SVG:227c6c719a93af5a31302fb3e2d871256fab0af90ccc7c61d011b369efa94124>",
+        "<LOCAL>/favicon.ico"
+      ]
+    },
+    {
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "initial": {
+        "video_bytes": 0,
+        "autoplay": false,
+        "preload": "none",
+        "loaded_images": 4
+      },
+      "playback": {
+        "advanced": true,
+        "current_time": 0,
+        "duration": 9.36,
+        "width": 640,
+        "height": 360,
+        "paused": true,
+        "error": null
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 390,
+        "height": 3340,
+        "overflow": [],
+        "min_font_px": 14.4,
+        "images": [
+          {
+            "src": "/media/b2-fictional/4991789-640.webp",
+            "decoded": true,
+            "width": 356,
+            "height": 237.515625,
+            "loading": "eager",
+            "alt": "Pizza · ejemplo. Fotografía ilustrativa de Pixabay."
+          },
+          {
+            "src": "/media/b2-fictional/3547078-640.webp",
+            "decoded": true,
+            "width": 356,
+            "height": 194.125,
+            "loading": "lazy",
+            "alt": "Pasta · ejemplo. Fotografía ilustrativa de Pixabay."
+          },
+          {
+            "src": "/media/b2-fictional/791891-640.webp",
+            "decoded": true,
+            "width": 356,
+            "height": 237.515625,
+            "loading": "lazy",
+            "alt": "Ensalada · ejemplo. Fotografía ilustrativa de Pixabay."
+          },
+          {
+            "src": "/media/b2-fictional/1971552-640.webp",
+            "decoded": true,
+            "width": 356,
+            "height": 242.515625,
+            "loading": "lazy",
+            "alt": "Postre · ejemplo. Fotografía ilustrativa de Pixabay."
+          }
+        ],
+        "needs": [
+          "demo-need:pizza",
+          "demo-need:pasta",
+          "demo-need:salad",
+          "demo-need:dessert"
+        ],
+        "usage_ids": [
+          "demo-use:pixabay-4991789-640",
+          "demo-use:pixabay-4991789-1280",
+          "demo-use:pixabay-3547078-640",
+          "demo-use:pixabay-3547078-1280",
+          "demo-use:pixabay-791891-640",
+          "demo-use:pixabay-791891-1280",
+          "demo-use:pixabay-1971552-640",
+          "demo-use:pixabay-1971552-1280",
+          "demo-use:pixabay-149678-silent",
+          "demo-use:poster"
+        ],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "credits": [
+          "shailesh68 / Pixabay",
+          "RitaE / Pixabay",
+          "JillWellington / Pixabay",
+          "Daria-Yakovleva / Pixabay",
+          "u_mcy3jdr8zw / Pixabay. Portada ilustrativa: shailesh68 / Pixabay."
+        ],
+        "forms": 0,
+        "scripts": 0,
+        "links": [
+          "#carta",
+          "#escena",
+          "/b2/",
+          "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+          "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+          "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+          "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+          "https://pixabay.com/videos/pizza-peperonni-cheese-italian-149678/"
+        ],
+        "text_sha256": "0c439783bced733fb43081a7040c92d15473d603414aa6af1a5ef576b7d7b836"
+      },
+      "served": [
+        {
+          "path": "/media/b2-fictional/4991789-640.webp",
+          "bytes": 86066,
+          "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+        },
+        {
+          "path": "/media/b2-fictional/3547078-640.webp",
+          "bytes": 41984,
+          "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+        },
+        {
+          "path": "/media/b2-fictional/791891-640.webp",
+          "bytes": 45472,
+          "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+        },
+        {
+          "path": "/media/b2-fictional/1971552-640.webp",
+          "bytes": 36338,
+          "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+        },
+        {
+          "path": "/media/b2-fictional/149678-silent-640.webm",
+          "bytes": 4446094,
+          "sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+        }
+      ],
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2-demo/qa-05/mobile.png",
+        "sha256": "0eb959d68d326b70c5a7455f92dd39905b884510caa5deaf82a0ebbae7c3801e",
+        "rgba_sha256": "617e5193b474da9879259cfd328a2c2cfab1240d1de6acfd56d624b9349651a5",
+        "scope": "FULL_PAGE"
+      },
+      "html_sha256": "0dc6573963eded0389784fa4b58b3c8ec2100df98c4b4fd760fb5c7abb14245a",
+      "html_bytes": 8765,
+      "requests": [
+        "<LOCAL>/b2/demo/",
+        "<LOCAL>/media/b2-fictional/4991789-640.webp",
+        "<BROWSER_CONTROL_DATA_SVG:494c11e1495dd9894f9ff46d04eb0da0039a77600c8cf1f1687ba1a973e3cb98>",
+        "<BROWSER_CONTROL_DATA_SVG:016f41f4b94aad71385dd35f428d5423b7043da3ee6e74de454cc51c59123f8c>",
+        "<BROWSER_CONTROL_DATA_SVG:9650c23900a7f176ce836489e0e7e5a78ad52dd1d0cd52668450ef3b0b5051c8>",
+        "<BROWSER_CONTROL_DATA_SVG:45ed1ccb8617180e8232d68eb867e968f57916988d08f19436db1718bc332278>",
+        "<BROWSER_CONTROL_DATA_SVG:6e9507b2fdf358e1da8766056477b2cb687dd3f854db9e11760d7ec6266aded4>",
+        "<LOCAL>/media/b2-fictional/3547078-640.webp",
+        "<LOCAL>/media/b2-fictional/791891-640.webp",
+        "<LOCAL>/media/b2-fictional/1971552-640.webp",
+        "<BROWSER_CONTROL_DATA_SVG:3a206a5ef9360c72ac1f2a8937513ee99c3b744f87166ee53b7dc1210210ae1c>",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/media/b2-fictional/149678-silent-640.webm",
+        "<BROWSER_CONTROL_DATA_SVG:227c6c719a93af5a31302fb3e2d871256fab0af90ccc7c61d011b369efa94124>",
+        "<LOCAL>/favicon.ico"
+      ]
+    }
+  ],
+  "historical_html": 16,
+  "protection": {
+    "status": "PASS",
+    "checked_files": 2630,
+    "normalization": "AS_DECLARED_PER_FILE",
+    "changed": []
+  },
+  "limits": [
+    "Local controlled Edge154/current B2 fonts, not WCAG/field performance certification",
+    "Video 4.45MB only on user interaction; no audio rights claimed for source",
+    "Media retained in private package outside Git; full-page composite screenshots are evidence, not downloadable stock assets",
+    "No B3 grammar, live business, backend or aesthetic approval"
+  ]
+}

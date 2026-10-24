@@ -1,0 +1,13 @@
+---
+import {access} from 'node:fs/promises';
+import Foundation from '../../layouts/Foundation.astro';
+import FictionalMediaPreview from '../../components/requirements/FictionalMediaPreview.astro';
+import {loadDemoPackage} from '../../media/demo-package.ts';
+// A clean clone without the separately retained licensed package shows no media.
+// If presentation bytes exist, ANY verification failure blocks the build.
+const available=await access('public/media/b2-fictional').then(()=>true,()=>false);
+const result=available?await loadDemoPackage():null;
+---
+<Foundation title="B2 · Restaurante ficticio con imágenes y vídeo de Pixabay">
+ {result?<FictionalMediaPreview handle={result.handle} evaluated_at={result.evaluated_at}/>:<><h1>Paquete privado de la demo no disponible</h1><p>Esta copia no contiene los medios licenciados. Se requiere materializar y verificar el paquete autorizado antes de mostrar imágenes o vídeo. No se descargan automáticamente.</p><a href="/b2/">Volver a B2</a></>}
+</Foundation>

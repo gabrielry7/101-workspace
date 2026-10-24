@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-design-tools-baseline-20261021",
+  "created_at": "2026-10-22T03:35:28.739Z",
+  "steps": [
+    {
+      "id": "contracts",
+      "started_at": "2026-10-22T03:35:28.744Z",
+      "finished_at": "2026-10-22T03:35:29.800Z",
+      "wall_seconds": 1.0560246000000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/contracts.txt",
+      "log_sha256": "c31b63019752ecce8f909c1c5a90ab10243dec33ef68a2599c0cb12fa6a4367e"
+    },
+    {
+      "id": "tests",
+      "started_at": "2026-10-22T03:35:29.806Z",
+      "finished_at": "2026-10-22T03:35:39.156Z",
+      "wall_seconds": 9.349717299999998,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/tests.txt",
+      "log_sha256": "165558243728048e69f81b3c03743a7cf787e61a8fec87412cf3b4b32db46a59"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-22T03:35:39.165Z",
+      "finished_at": "2026-10-22T03:36:13.284Z",
+      "wall_seconds": 34.119595499999996,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/check.txt",
+      "log_sha256": "454eb6110beda8b0f3c7c4dafa40eaa3a2f3b994c5fa2f74d1bb2441f1343a9e"
+    },
+    {
+      "id": "validate",
+      "started_at": "2026-10-22T03:36:13.288Z",
+      "finished_at": "2026-10-22T03:36:14.543Z",
+      "wall_seconds": 1.2543706999999995,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/validate.txt",
+      "log_sha256": "c69bbe0277e4073bddb83b8d77c8996e8c3512e8223499d7947632d37e3681f4"
+    },
+    {
+      "id": "build",
+      "started_at": "2026-10-22T03:36:14.546Z",
+      "finished_at": "2026-10-22T03:36:51.158Z",
+      "wall_seconds": 36.61298759999999,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/build.txt",
+      "log_sha256": "7607b84b2312bcd4614594a8caa68ce64844754fe7f032a6200cf0425b68800c"
+    },
+    {
+      "id": "b3-scenario",
+      "started_at": "2026-10-22T03:36:51.162Z",
+      "finished_at": "2026-10-22T03:36:51.632Z",
+      "wall_seconds": 0.4698943999999901,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/b3-scenario.txt",
+      "log_sha256": "837363babcb80a4df67c28bd2febb948250ecd3aba97368f760ca26c735651d3"
+    },
+    {
+      "id": "b3-design-replay",
+      "started_at": "2026-10-22T03:36:51.636Z",
+      "finished_at": "2026-10-22T03:36:52.829Z",
+      "wall_seconds": 1.1931106,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/b3-design-replay.txt",
+      "log_sha256": "b8feb839b12906f24becaf319468674714861ea6ddfcdb40da8bcb97d1833262"
+    },
+    {
+      "id": "b2-media",
+      "started_at": "2026-10-22T03:36:52.832Z",
+      "finished_at": "2026-10-22T03:36:59.352Z",
+      "wall_seconds": 6.51991260000001,
+      "exit_code": 1,
+      "status": "FAIL",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/b2-media.txt",
+      "log_sha256": "e1fccceb0adee3c92b0ff67fcf6804cf673a3318afa3bf604d06c78dc8f1c825"
+    },
+    {
+      "id": "b2-library",
+      "started_at": "2026-10-22T03:36:59.358Z",
+      "finished_at": "2026-10-22T03:37:04.160Z",
+      "wall_seconds": 4.801852199999994,
+      "exit_code": 1,
+      "status": "FAIL",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/b2-library.txt",
+      "log_sha256": "c32365e1aab49b6258bd6b437177229db065a18bb35ee5860112593cced60a9d"
+    },
+    {
+      "id": "b1-replay",
+      "started_at": "2026-10-22T03:37:04.164Z",
+      "finished_at": "2026-10-22T03:37:06.479Z",
+      "wall_seconds": 2.315203600000008,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/b1-replay.txt",
+      "log_sha256": "b3216e3a4c37b58fa9c6aeb50bacbf0feff9609c5f98a627b8b99ff6ece23a18"
+    },
+    {
+      "id": "taxonomy",
+      "started_at": "2026-10-22T03:37:06.484Z",
+      "finished_at": "2026-10-22T03:37:07.543Z",
+      "wall_seconds": 1.0590192999999999,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/taxonomy.txt",
+      "log_sha256": "5bdb2a1a3ebcde0961f22b7b26ef4a64a53c24ddefb9272b9eb91f7243bcad0a"
+    },
+    {
+      "id": "planner-replay",
+      "started_at": "2026-10-22T03:37:07.548Z",
+      "finished_at": "2026-10-22T03:37:07.945Z",
+      "wall_seconds": 0.39771190000000933,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/planner-replay.txt",
+      "log_sha256": "846632f40f77a077944ac55e6dbd42683e92b5673ae665dda82ef6ddea8b424a"
+    },
+    {
+      "id": "media-replay",
+      "started_at": "2026-10-22T03:37:07.949Z",
+      "finished_at": "2026-10-22T03:37:08.660Z",
+      "wall_seconds": 0.711807799999995,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/media-replay.txt",
+      "log_sha256": "a238a3a587e30885acb326264f26b0e73e9dc9402294c0efdb9ce1df860c22e4"
+    },
+    {
+      "id": "media-verify",
+      "started_at": "2026-10-22T03:37:08.665Z",
+      "finished_at": "2026-10-22T03:37:09.286Z",
+      "wall_seconds": 0.6212033999999985,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/media-verify.txt",
+      "log_sha256": "dfed262ff832904ddba0e2baf16b17ba2b8c8fd30797be7128c73b59f8f0f568"
+    },
+    {
+      "id": "composition-replay",
+      "started_at": "2026-10-22T03:37:09.290Z",
+      "finished_at": "2026-10-22T03:37:09.974Z",
+      "wall_seconds": 0.6839340000000084,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/composition-replay.txt",
+      "log_sha256": "938c870a6ab24e641e885a169da8739c49ab4a438e4ecd16288b5abeaa497b76"
+    },
+    {
+      "id": "composition-verify",
+      "started_at": "2026-10-22T03:37:09.977Z",
+      "finished_at": "2026-10-22T03:37:10.650Z",
+      "wall_seconds": 0.6726845999999932,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/composition-verify.txt",
+      "log_sha256": "51e973bac7283abc33be1ac1fefc8489483c5957b9c3b09196e8cd214504a635"
+    },
+    {
+      "id": "design-replay",
+      "started_at": "2026-10-22T03:37:10.652Z",
+      "finished_at": "2026-10-22T03:37:11.415Z",
+      "wall_seconds": 0.7625286999999953,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/design-replay.txt",
+      "log_sha256": "debf7dd8e16ff43197df66a57c304cbc0eee46ab637661bb48d2f195dd00c13c"
+    },
+    {
+      "id": "design-verify",
+      "started_at": "2026-10-22T03:37:11.418Z",
+      "finished_at": "2026-10-22T03:37:12.142Z",
+      "wall_seconds": 0.7234051000000036,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/design-verify.txt",
+      "log_sha256": "505d634e67d6f6746e96ab3839d7b84cfeaa422ec7010f545eb385959bd5bc7e"
+    },
+    {
+      "id": "audit-verify",
+      "started_at": "2026-10-22T03:37:12.146Z",
+      "finished_at": "2026-10-22T03:37:15.373Z",
+      "wall_seconds": 3.226994000000006,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/audit-verify.txt",
+      "log_sha256": "fa7395471691e7226ee26bd6c4b95f14eb14c431cbe0873d0becb430b6d50f05"
+    },
+    {
+      "id": "cohort-replay",
+      "started_at": "2026-10-22T03:37:17.959Z",
+      "finished_at": "2026-10-22T03:37:22.946Z",
+      "wall_seconds": 4.986510899999994,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/cohort-replay.txt",
+      "log_sha256": "ede63bd8361a8e64a84792533fb27f35dc2d930d7105490b977b2a7f78992c45"
+    },
+    {
+      "id": "cohort-verify",
+      "started_at": "2026-10-22T03:37:22.950Z",
+      "finished_at": "2026-10-22T03:37:26.174Z",
+      "wall_seconds": 3.2241793999999935,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/cohort-verify.txt",
+      "log_sha256": "f6fea28c3dbd8694a321092ca31ea68f19fa9b900bc73f28be8882ecfc0f7931"
+    },
+    {
+      "id": "lock-verify",
+      "started_at": "2026-10-22T03:37:26.177Z",
+      "finished_at": "2026-10-22T03:37:27.746Z",
+      "wall_seconds": 1.5694126000000106,
+      "exit_code": 1,
+      "status": "FAIL",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/lock-verify.txt",
+      "log_sha256": "868362ab7e161ae26ce305f3c445ddafeaa16f803875d1785c06fcf7ed1be004"
+    },
+    {
+      "id": "h9-inventory",
+      "started_at": "2026-10-22T03:37:27.750Z",
+      "finished_at": "2026-10-22T03:37:28.230Z",
+      "wall_seconds": 0.48017299999999524,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/design-tools-baseline-20261021/h9-inventory.txt",
+      "log_sha256": "f45cdb31ff61042b80640b33dce172a2f8cab339e03641f5e72a655645fdbecb"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

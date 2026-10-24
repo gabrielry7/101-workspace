@@ -1,0 +1,24 @@
+{
+  "kind": "approval",
+  "schema_version": "2.1.1",
+  "approval_id": "synthetic-rejection",
+  "business_id": "synthetic-business",
+  "location_ids": [
+    "synthetic-location"
+  ],
+  "subject_type": "release_candidate",
+  "subject_hash": "5e247799092400f5cbc182c7beb0b7c9ca8b8ac7ae12274fb7e9a46719fa384f",
+  "actor_id": "synthetic-not-a-real-person",
+  "actor_role": "release_operator",
+  "authority_ref": "synthetic-no-production-authority",
+  "scope": [
+    "publication"
+  ],
+  "decision": "rejected",
+  "decided_at": "2026-10-03T00:00:00Z",
+  "expires_at": null,
+  "revoked_at": null,
+  "evidence_refs": [
+    "synthetic-example-not-production-evidence"
+  ]
+}

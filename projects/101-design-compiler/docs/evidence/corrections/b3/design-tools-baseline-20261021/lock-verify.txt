@@ -1,0 +1,15 @@
+
+> 101-design-compiler@0.0.0 lock:verify
+> node --experimental-strip-types scripts/verify-h8.ts --rebuild
+
+file:///C:/Users/gabri/101-design-compiler/scripts/lib/rebuild-lock.ts:26
+ for(const f of lock.toolchain.lockfiles){if((await fingerprint(root,f.path,f.normalization)).sha256!==f.sha256)throw Error(`LOCK_TOOLCHAIN_MISMATCH:${f.path}`);}
+                                                                                                                      ^
+
+Error: LOCK_TOOLCHAIN_MISMATCH:package-lock.json
+    at verifyLockFiles (file:///C:/Users/gabri/101-design-compiler/scripts/lib/rebuild-lock.ts:26:119)
+    at async file:///C:/Users/gabri/101-design-compiler/scripts/verify-h8.ts:17:254
+    at async Promise.all (index 1)
+    at async file:///C:/Users/gabri/101-design-compiler/scripts/verify-h8.ts:17:13
+
+Node.js v24.21.0

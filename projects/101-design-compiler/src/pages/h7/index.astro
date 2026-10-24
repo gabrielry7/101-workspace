@@ -1,0 +1,6 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import { loadCohortLab,cohortPath } from '../../../scripts/load-cohort-lab.ts';
+const cohort=await loadCohortLab(true);
+---
+<Foundation title="H7 · cohorte sintética"><div><h1>H7 · Generalización de laboratorio</h1><p>Cohorte sintética reservada antes de evaluación. Sin negocios reales, imágenes elegibles, votos humanos ni preparación para producción.</p>{cohort.cases.map(c=><section><h2>{c.scenario} · {c.result.status}</h2>{c.lab&&c.search?<ul>{c.search.finalists.map(d=><li><a href={cohortPath(c.scenario,d.id,'/')}>{d.id} · {d.pages[0]?.composition.operator}</a></li>)}</ul>:<p>Contenido bloqueado: categoría desconocida requiere evidencia upstream. No se genera sitio.</p>}</section>)}</div></Foundation>

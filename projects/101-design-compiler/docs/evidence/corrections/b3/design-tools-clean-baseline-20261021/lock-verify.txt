@@ -1,0 +1,15 @@
+
+> 101-design-compiler@0.0.0 lock:verify
+> node --experimental-strip-types scripts/verify-h8.ts --rebuild
+
+file:///C:/Users/gabri/101-design-compiler/scripts/lib/rebuild-lock.ts:27
+ const installed=await installedFingerprint(root);if(JSON.stringify(installed)!==JSON.stringify(lock.toolchain.installed_dependencies))throw Error('LOCK_INSTALLED_DEPENDENCIES_MISMATCH');
+                                                                                                                                             ^
+
+Error: LOCK_INSTALLED_DEPENDENCIES_MISMATCH
+    at verifyLockFiles (file:///C:/Users/gabri/101-design-compiler/scripts/lib/rebuild-lock.ts:27:142)
+    at async file:///C:/Users/gabri/101-design-compiler/scripts/verify-h8.ts:17:254
+    at async Promise.all (index 0)
+    at async file:///C:/Users/gabri/101-design-compiler/scripts/verify-h8.ts:17:13
+
+Node.js v24.21.0

@@ -1,0 +1,10 @@
+---
+import { loadDesignLab } from '../../../../scripts/load-design-lab.ts';
+import DesignComposition from '../../../components/composition/DesignComposition.astro';
+export async function getStaticPaths() {
+ const {lab,result}=await loadDesignLab();
+ return result.finalists.flatMap(design=>design.pages.map(p=>({params:{candidate:design.id,path:p.path==='/'?undefined:p.path.slice(1)},props:{lab,design,page:p.path}})));
+}
+const {lab,design,page}=Astro.props;
+---
+<DesignComposition lab={lab} design={design} page={page}/>

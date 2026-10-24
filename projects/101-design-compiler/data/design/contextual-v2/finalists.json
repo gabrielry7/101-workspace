@@ -1,0 +1,222 @@
+[
+  {
+    "schema_version": "2.0.0",
+    "id": "candidate-01",
+    "art_direction_id": "editorial-table",
+    "registry_version": "shared-contextual-2.0.0",
+    "context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+    "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+    "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+    "media_sha256": "794ee55ea5d168c93d3943b2299f0a9464b6a24d23bfb043e0d296b22d67608d",
+    "route": "/b3/candidate-01/",
+    "module_refs": [
+      "semantic-81ed181e994dbbfde01a802d",
+      "semantic-fc9f153a3d930e71a4745ebd",
+      "semantic-0e85531be779a8721f214794",
+      "semantic-682a641e4e80786c09f19e2c",
+      "semantic-0e4513ff7883f7164049753c",
+      "semantic-6c29d07e2344be3fe70236f2",
+      "semantic-aba6c699d8ac40b3c0e96e35"
+    ],
+    "recipe": {
+      "navigation": "Top",
+      "hero": "Split",
+      "collection": "Grid",
+      "mobile_collection": "Stack",
+      "narrative": "BeforeCollection",
+      "visit": "Columns",
+      "proportion": "balanced",
+      "measure": "contained"
+    },
+    "tokens": {
+      "palette": "paper",
+      "voice": "editorial",
+      "scale": "display",
+      "rhythm": "airy",
+      "corners": "square",
+      "motion": "quiet"
+    },
+    "sections": {
+      "identity": "semantic-81ed181e994dbbfde01a802d",
+      "narrative": "semantic-fc9f153a3d930e71a4745ebd",
+      "collection": "semantic-682a641e4e80786c09f19e2c",
+      "information": [
+        "semantic-0e85531be779a8721f214794",
+        "semantic-0e4513ff7883f7164049753c",
+        "semantic-6c29d07e2344be3fe70236f2",
+        "semantic-aba6c699d8ac40b3c0e96e35"
+      ],
+      "preview_intents": [
+        "selection",
+        "request"
+      ]
+    },
+    "operational_state": "SYNTHETIC_PREVIEW_NO_BACKEND",
+    "human_approval": "NOT_COLLECTED"
+  },
+  {
+    "schema_version": "2.0.0",
+    "id": "candidate-02",
+    "art_direction_id": "open-index",
+    "registry_version": "shared-contextual-2.0.0",
+    "context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+    "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+    "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+    "media_sha256": "794ee55ea5d168c93d3943b2299f0a9464b6a24d23bfb043e0d296b22d67608d",
+    "route": "/b3/candidate-02/",
+    "module_refs": [
+      "semantic-81ed181e994dbbfde01a802d",
+      "semantic-fc9f153a3d930e71a4745ebd",
+      "semantic-0e85531be779a8721f214794",
+      "semantic-682a641e4e80786c09f19e2c",
+      "semantic-0e4513ff7883f7164049753c",
+      "semantic-6c29d07e2344be3fe70236f2",
+      "semantic-aba6c699d8ac40b3c0e96e35"
+    ],
+    "recipe": {
+      "navigation": "Rail",
+      "hero": "Diptych",
+      "collection": "Rows",
+      "mobile_collection": "Compact",
+      "narrative": "AfterCollection",
+      "visit": "Band",
+      "proportion": "type-led",
+      "measure": "wide"
+    },
+    "tokens": {
+      "palette": "tomato",
+      "voice": "grotesk",
+      "scale": "monument",
+      "rhythm": "tight",
+      "corners": "square",
+      "motion": "quiet"
+    },
+    "sections": {
+      "identity": "semantic-81ed181e994dbbfde01a802d",
+      "narrative": "semantic-fc9f153a3d930e71a4745ebd",
+      "collection": "semantic-682a641e4e80786c09f19e2c",
+      "information": [
+        "semantic-0e85531be779a8721f214794",
+        "semantic-0e4513ff7883f7164049753c",
+        "semantic-6c29d07e2344be3fe70236f2",
+        "semantic-aba6c699d8ac40b3c0e96e35"
+      ],
+      "preview_intents": [
+        "selection",
+        "request"
+      ]
+    },
+    "operational_state": "SYNTHETIC_PREVIEW_NO_BACKEND",
+    "human_approval": "NOT_COLLECTED"
+  },
+  {
+    "schema_version": "2.0.0",
+    "id": "candidate-03",
+    "art_direction_id": "night-gallery",
+    "registry_version": "shared-contextual-2.0.0",
+    "context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+    "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+    "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+    "media_sha256": "794ee55ea5d168c93d3943b2299f0a9464b6a24d23bfb043e0d296b22d67608d",
+    "route": "/b3/candidate-03/",
+    "module_refs": [
+      "semantic-81ed181e994dbbfde01a802d",
+      "semantic-fc9f153a3d930e71a4745ebd",
+      "semantic-0e85531be779a8721f214794",
+      "semantic-682a641e4e80786c09f19e2c",
+      "semantic-0e4513ff7883f7164049753c",
+      "semantic-6c29d07e2344be3fe70236f2",
+      "semantic-aba6c699d8ac40b3c0e96e35"
+    ],
+    "recipe": {
+      "navigation": "Index",
+      "hero": "Monument",
+      "collection": "Mosaic",
+      "mobile_collection": "Sequence",
+      "narrative": "AfterCollection",
+      "visit": "Columns",
+      "proportion": "image-led",
+      "measure": "wide"
+    },
+    "tokens": {
+      "palette": "night",
+      "voice": "editorial",
+      "scale": "monument",
+      "rhythm": "measured",
+      "corners": "soft",
+      "motion": "quiet"
+    },
+    "sections": {
+      "identity": "semantic-81ed181e994dbbfde01a802d",
+      "narrative": "semantic-fc9f153a3d930e71a4745ebd",
+      "collection": "semantic-682a641e4e80786c09f19e2c",
+      "information": [
+        "semantic-0e85531be779a8721f214794",
+        "semantic-0e4513ff7883f7164049753c",
+        "semantic-6c29d07e2344be3fe70236f2",
+        "semantic-aba6c699d8ac40b3c0e96e35"
+      ],
+      "preview_intents": [
+        "selection",
+        "request"
+      ]
+    },
+    "operational_state": "SYNTHETIC_PREVIEW_NO_BACKEND",
+    "human_approval": "NOT_COLLECTED"
+  },
+  {
+    "schema_version": "2.0.0",
+    "id": "candidate-04",
+    "art_direction_id": "garden-notes",
+    "registry_version": "shared-contextual-2.0.0",
+    "context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+    "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+    "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+    "media_sha256": "794ee55ea5d168c93d3943b2299f0a9464b6a24d23bfb043e0d296b22d67608d",
+    "route": "/b3/candidate-04/",
+    "module_refs": [
+      "semantic-81ed181e994dbbfde01a802d",
+      "semantic-fc9f153a3d930e71a4745ebd",
+      "semantic-0e85531be779a8721f214794",
+      "semantic-682a641e4e80786c09f19e2c",
+      "semantic-0e4513ff7883f7164049753c",
+      "semantic-6c29d07e2344be3fe70236f2",
+      "semantic-aba6c699d8ac40b3c0e96e35"
+    ],
+    "recipe": {
+      "navigation": "Top",
+      "hero": "Stage",
+      "collection": "Rows",
+      "mobile_collection": "Stack",
+      "narrative": "BeforeCollection",
+      "visit": "Band",
+      "proportion": "image-led",
+      "measure": "contained"
+    },
+    "tokens": {
+      "palette": "olive",
+      "voice": "humanist",
+      "scale": "compact",
+      "rhythm": "measured",
+      "corners": "soft",
+      "motion": "quiet"
+    },
+    "sections": {
+      "identity": "semantic-81ed181e994dbbfde01a802d",
+      "narrative": "semantic-fc9f153a3d930e71a4745ebd",
+      "collection": "semantic-682a641e4e80786c09f19e2c",
+      "information": [
+        "semantic-0e85531be779a8721f214794",
+        "semantic-0e4513ff7883f7164049753c",
+        "semantic-6c29d07e2344be3fe70236f2",
+        "semantic-aba6c699d8ac40b3c0e96e35"
+      ],
+      "preview_intents": [
+        "selection",
+        "request"
+      ]
+    },
+    "operational_state": "SYNTHETIC_PREVIEW_NO_BACKEND",
+    "human_approval": "NOT_COLLECTED"
+  }
+]

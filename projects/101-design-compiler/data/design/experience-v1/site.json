@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B3_MULTIPAGE_EXPERIENCE",
+  "source_context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+  "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+  "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+  "media_review_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+  "research_sha256": "d92ae3e94755072f73a4782f4a49f68296302b32d679f2240bc36855b0c6e780",
+  "feedback_status": "HUMAN_REQUESTED_ITERATION_NO_SCORE",
+  "human_approval": "NOT_COLLECTED",
+  "profiles": [
+    {
+      "id": "candidate-01",
+      "label": "01 · La mesa abierta",
+      "root": "/b3/candidate-01/",
+      "hero": "Immersive",
+      "palette": "WhiteInk",
+      "type": "Classic",
+      "collection": "Spread",
+      "rationale": "La entrada es una escena a toda pantalla, marca contenida y navegación mínima; blanco neutro en páginas interiores. El vídeo ocupa el fondo y las funciones se abren en páginas propias.",
+      "references": [
+        "reference-01",
+        "reference-03",
+        "reference-09"
+      ]
+    },
+    {
+      "id": "candidate-02",
+      "label": "02 · Mucho apetito",
+      "root": "/b3/candidate-02/",
+      "hero": "Masthead",
+      "palette": "Vermilion",
+      "type": "Condensed",
+      "collection": "Rows",
+      "rationale": "Una cabecera tipográfica roja sobre blanco, a escala de portada, precede al campo audiovisual sin bordes. La carta se lee en filas y el formulario de reserva tiene su propio espacio.",
+      "references": [
+        "reference-07",
+        "reference-17",
+        "reference-04"
+      ]
+    },
+    {
+      "id": "candidate-03",
+      "label": "03 · En movimiento",
+      "root": "/b3/candidate-03/",
+      "hero": "Cinema",
+      "palette": "Nocturne",
+      "type": "Italic",
+      "collection": "Exhibit",
+      "rationale": "Negro y blanco, navegación centrada y una banda cinematográfica ancha; tipografía editorial inclinada y catálogo de imágenes de escalas distintas. No es un formulario largo sobre un fondo oscuro.",
+      "references": [
+        "reference-02",
+        "reference-08",
+        "reference-17",
+        "reference-20"
+      ]
+    },
+    {
+      "id": "candidate-04",
+      "label": "04 · A nuestra manera",
+      "root": "/b3/candidate-04/",
+      "hero": "EditorialFilm",
+      "palette": "PureWhite",
+      "type": "Modern",
+      "collection": "Index",
+      "rationale": "Blanco puro, título y manifiesto en campos tipográficos asimétricos y película de ancho completo. Carta con índice, páginas interiores aireadas y créditos separados del contenido visual.",
+      "references": [
+        "reference-19",
+        "reference-18",
+        "reference-16"
+      ]
+    }
+  ]
+}

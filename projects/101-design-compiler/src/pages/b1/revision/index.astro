@@ -1,0 +1,16 @@
+---
+import Foundation from '../../../layouts/Foundation.astro';
+import {humanReviewCatalog as catalog} from '../../../requirements/review-catalog.ts';
+import '../../../requirements/review.css';
+---
+<Foundation title="B1 · Revisión sencilla de funciones y datos">
+ <div class="review" data-review-page="index">
+  <nav aria-label="Revisión B1"><a href="/b1/">Casos técnicos de B1</a><a href="/b1/revision/food_hospitality/">Empezar con restaurantes</a></nav>
+  <h1>Qué debería tener una buena página</h1>
+  <p class="lead">Elige un tipo de negocio. Revisa qué funciones queremos, qué datos necesitamos y qué falta para construirlas.</p>
+  <p class="notice">Objetivos para revisar. Las interfaces comerciales y conexiones siguen pendientes.</p>
+  <section><h2>Cómo revisarlo</h2><ol><li>¿Falta alguna función importante?</li><li>¿Falta algún dato para hacerla correctamente?</li><li>¿Entiendes qué debe verse y qué necesita una conexión real?</li></ol><p>Tu feedback puede ser: «Restaurantes → Carta → falta…». No hay que revisar IDs ni poner una nota.</p></section>
+  <section><h2>Tipos de negocio</h2><div class="review-profile-grid">{catalog.profiles.map(p=><article><h3><a href={`/b1/revision/${p.archetype_id}/`}>{p.label}</a></h3><p>{p.offering_label}</p>{p.archetype_id==='regulated_services'&&<p>Revisión adicional que se combina con otro tipo.</p>}</article>)}</div></section>
+  <footer><p>{catalog.features.length} funciones detalladas compartidas para {catalog.profiles.length-1} familias y un modificador regulado. Propuesta inicial; no es una lista exhaustiva de todos los negocios.</p><a href="/b1/catalogo/">Ver el catálogo técnico V1 conservado</a></footer>
+ </div>
+</Foundation>

@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b1-human-review-clean-pinned-browser",
+  "created_at": "2026-10-14T04:12:16.585Z",
+  "steps": [
+    {
+      "id": "build",
+      "started_at": "2026-10-14T04:12:16.590Z",
+      "finished_at": "2026-10-14T04:12:19.065Z",
+      "wall_seconds": 2.4748229,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-pinned-browser/build.txt",
+      "log_sha256": "e5e63a7dd1f272f953f39ec9bfae44f27613d5d6f10478f8764309c81e31c2c2"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

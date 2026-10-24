@@ -1,0 +1,74 @@
+[
+  {
+    "schema_version": "1.1.0",
+    "id": "hotel-reading",
+    "context_sha256": "6d2622c5dec2e02b20709f69797db74a211208c477d2c716cf58ac076b383eee",
+    "principle": "Silencio de catálogo: lectura frontal sin medios elegibles.",
+    "dominance": "typography",
+    "materiality": "typography-only",
+    "rationale": "Habitaciones y comodidades separadas por ruta; título serif y espacio amplio sin sugerir fotografía del establecimiento.",
+    "topologies": [
+      {
+        "frame": "Flow",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "earth",
+      "type": "serif",
+      "hierarchy": "monument",
+      "rhythm": "quiet",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [],
+    "motion": "quiet",
+    "risks": [
+      "No beauty calibration or human preference collected.",
+      "Typography-only materiality: no eligible image and no photograph is present.",
+      "Mobile reflow may collapse desktop structural distinction."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "1.1.0",
+    "id": "hotel-indexed",
+    "context_sha256": "6d2622c5dec2e02b20709f69797db74a211208c477d2c716cf58ac076b383eee",
+    "principle": "Silencio de catálogo: índice lateral visible sin medios elegibles.",
+    "dominance": "navigation",
+    "materiality": "typography-only",
+    "rationale": "Índice de alojamiento con navegación lateral explícita para comparar objetos declarados.",
+    "topologies": [
+      {
+        "frame": "Rail",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "earth",
+      "type": "sans",
+      "hierarchy": "compact",
+      "rhythm": "dense",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [],
+    "motion": "quiet",
+    "risks": [
+      "No beauty calibration or human preference collected.",
+      "Typography-only materiality: no eligible image and no photograph is present.",
+      "Mobile reflow may collapse desktop structural distinction."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  }
+]

@@ -1,0 +1,409 @@
+{
+  "schema_version": "1.0.0",
+  "content": {
+    "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+    "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+    "requirements_sha256": "1a0aabe77975db520a65a8415d6ad6735a92438cfd29db347ff2ddd0407fb7a4",
+    "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+    "pages": [
+      {
+        "path": "/",
+        "modules": [
+          {
+            "id": "semantic-7bf9d33184f7e923438acadd",
+            "capability_id": "identity",
+            "scope_id": "fixture-restaurante-001",
+            "required": true,
+            "page": "/",
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "f-name",
+                "scope_id": "fixture-restaurante-001",
+                "kind": "business_name",
+                "text": "Restaurante — fixture ficticio"
+              }
+            ],
+            "offerings": []
+          }
+        ]
+      },
+      {
+        "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "modules": [
+          {
+            "id": "semantic-70d73044727ca9b106d272a8",
+            "capability_id": "menu",
+            "scope_id": "fixture-restaurante-001-branch-1",
+            "required": true,
+            "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+            "component": "OfferingCollection",
+            "facts": [],
+            "offerings": [
+              {
+                "id": "offering-1",
+                "scope_id": "fixture-restaurante-001-branch-1",
+                "facts": [
+                  {
+                    "id": "f-offering-1",
+                    "scope_id": "fixture-restaurante-001-branch-1",
+                    "kind": "offering_name",
+                    "text": "Ítem de menú de prueba"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "bindings": [
+      {
+        "fact_id": "f-category",
+        "scope_id": "fixture-restaurante-001",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-identity",
+        "scope_id": "fixture-restaurante-001",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-menu",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-name",
+        "scope_id": "fixture-restaurante-001",
+        "module_ids": [
+          "semantic-7bf9d33184f7e923438acadd"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "f-offering-1",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "module_ids": [
+          "semantic-70d73044727ca9b106d272a8"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "f-reservation",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      }
+    ],
+    "diagnostics": [
+      {
+        "code": "UNKNOWN",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "capability_id": "delivery",
+        "reason": "Evidence state preserved from upstream",
+        "requested_from": "upstream"
+      },
+      {
+        "code": "MISSING_INPUT",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "capability_id": "reservation",
+        "reason": "approved_action_destination",
+        "requested_from": "upstream"
+      },
+      {
+        "code": "UNKNOWN",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "capability_id": "order",
+        "reason": "Evidence state preserved from upstream",
+        "requested_from": "upstream"
+      }
+    ],
+    "exclusions": [
+      {
+        "id": "delivery",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "reason": "UNKNOWN"
+      },
+      {
+        "id": "order",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "reason": "UNKNOWN"
+      },
+      {
+        "id": "reservation",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "reason": "MISSING_INPUT"
+      }
+    ],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ]
+  },
+  "media": {
+    "asset": {
+      "schema_version": "1.0.0",
+      "id": "usda-ars-d255-19",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/h3-pilot/usda-ars-d255-19.jpg",
+      "source": "USDA Agricultural Research Service",
+      "external_id": "D255-19",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "USDA Agricultural Research Service",
+          "reference": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+          "recorded_at": "2026-10-08T23:11:54Z"
+        },
+        {
+          "source": "USDA Agricultural Research Service",
+          "reference": "https://www.ars.usda.gov/oc/images/copyright/",
+          "recorded_at": "2026-10-08T23:11:54Z"
+        },
+        {
+          "source": "USDA Agricultural Research Service",
+          "reference": "https://www.ars.usda.gov/ARSUserFiles/oc/images/photos/300dpi/kesa/D255-19.jpg",
+          "recorded_at": "2026-10-08T23:11:54Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "usda-ars-d255-19",
+      "parent_id": null,
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "file_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/h3-pilot/review.md",
+        "reviewer": "Codex: official-source and local-file review, not rights holder or legal certification",
+        "reviewed_at": "2026-10-08T23:11:54Z",
+        "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "generic:atmosphere",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "docs/evidence/h3-pilot/review.md",
+            "reviewer": "Codex: official-source and local-file review, not rights holder or legal certification",
+            "reviewed_at": "2026-10-08T23:11:54Z",
+            "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "docs/evidence/h3-pilot/review.md",
+          "reviewer": "Codex: official-source and local-file review, not rights holder or legal certification",
+          "reviewed_at": "2026-10-08T23:11:54Z",
+          "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+        },
+        "width": 2700,
+        "height": 1819,
+        "duration_seconds": null,
+        "codec": null,
+        "subject": "Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación",
+        "findings": [
+          "Local JPEG fully decoded with Pillow; RGB 2700x1819, 2351102 bytes",
+          "Local image opened with view_image; main subject legible for a figure up to 640 CSS px without crop",
+          "No visible people, identifiable buildings, logos or commercial signs; no model/property releases required for this contextual use",
+          "Busy foliage background; no claim of suitability for text overlays",
+          "No claim about actual food, ingredients, cultivation, staff or premises of this fictitious business"
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    "usage": {
+      "schema_version": "1.0.0",
+      "id": "h3-real-pilot-atmospheric",
+      "need_id": "need-7bacfc78bdb58db1dd06998a",
+      "asset_id": "usda-ars-d255-19",
+      "grant_id": "usda-ars-d255-19-pilot-public-domain",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "h3-restaurante-media-pilot",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/",
+      "module_id": "semantic-7bf9d33184f7e923438acadd",
+      "purpose": "generic:atmosphere",
+      "role": "ATMOSPHERIC",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+      "generic_label": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "USDA ARS no respalda este fixture, producto, empresa ni posición."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    "grant": {
+      "schema_version": "1.0.0",
+      "id": "usda-ars-d255-19-pilot-public-domain",
+      "data_mode": "REAL",
+      "original_asset_id": "usda-ars-d255-19",
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "provider": "USDA Agricultural Research Service",
+      "license_type": "OFFICIAL_PUBLIC_DOMAIN_DECLARATION; narrowed evaluated pilot use",
+      "holder": "No copyright ownership asserted; USDA ARS identifies author Steve Ausmus and declares public domain",
+      "purchaser": "NOT_PURCHASED: internal fixture review only",
+      "document": {
+        "reference": "docs/evidence/h3-pilot/usda-asset-page.html",
+        "version": "Official page Last Modified 11/6/2023 (literal); snapshot 2026-10-08; no numbered legal version",
+        "sha256": "362db558cb6b2e96c00e390fe84b2541d711114934f62cf3d700111b8a694bd2"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/h3-pilot/review.md",
+        "reviewer": "Codex: official-source and local-file review, not rights holder or legal certification",
+        "reviewed_at": "2026-10-08T23:11:54Z",
+        "evidence_sha256": "362db558cb6b2e96c00e390fe84b2541d711114934f62cf3d700111b8a694bd2"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "h3-restaurante-media-pilot"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001"
+      ],
+      "purposes": [
+        "generic:atmosphere"
+      ],
+      "pages": [
+        "/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-08T23:11:54Z",
+      "valid_until": null,
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "UNKNOWN",
+      "reuse": "UNKNOWN",
+      "redistribution": "UNKNOWN",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "DENIED",
+      "transformations": [],
+      "automation": {
+        "search": "UNKNOWN",
+        "download": "UNKNOWN"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "UNKNOWN",
+        "editing": "UNKNOWN",
+        "training": "UNKNOWN"
+      },
+      "attribution": {
+        "required": true,
+        "text": "Photo by Steve Ausmus, USDA Agricultural Research Service."
+      },
+      "required_notices": [
+        "USDA ARS no respalda este fixture, producto, empresa ni posición."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    }
+  },
+  "gaps": [
+    {
+      "need": {
+        "id": "need-33f7e20873460d5156843d28",
+        "requirement_id": "semantic-70d73044727ca9b106d272a8",
+        "module_id": "semantic-70d73044727ca9b106d272a8",
+        "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "purpose": "document:menu",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      "missing_count": 1,
+      "reasons": [
+        "NO_AUTHORIZED_CANDIDATE"
+      ],
+      "requested_from": "upstream_or_commission"
+    }
+  ],
+  "constraints": [
+    "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+    "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+    "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+    "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+  ],
+  "client_id": "101-design-compiler-fixture-review",
+  "project_id": "h3-restaurante-media-pilot",
+  "evaluated_at": "2026-10-08T23:18:48.258Z",
+  "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+  "registry_version": "h5-lab-1.0.0",
+  "references": {
+    "status": "MISSING",
+    "note": "No licensed reference corpus present; no external reference claims."
+  },
+  "operators": {
+    "frame": [
+      "Flow",
+      "Rail"
+    ],
+    "stage": [
+      "Sequence",
+      "Split"
+    ],
+    "navigation": "before-content",
+    "reading_order": "modules-before-media",
+    "mobile": "stack-with-visible-navigation",
+    "media": "unaltered-original"
+  }
+}

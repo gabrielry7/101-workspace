@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import {loadCohortLab,cohortBudget} from '../../scripts/load-cohort-lab.ts';
+import {projectContent as baselineProject} from './baseline-content.ts';
+import {planBusiness} from '../../src/planner/plan.ts';
+import {loadMappingRegistry} from '../../scripts/load-taxonomy.ts';
+import {contextHash,searchDesigns,validateDirection} from '../../src/design/search.ts';
+import {auditRender} from '../../src/composition/audit.ts';
+import {cohortPath} from '../../scripts/load-cohort-lab.ts';
+const state=await loadCohortLab(true),registry=await loadMappingRegistry();
+const first=JSON.parse(await readFile('docs/evidence/h7/first-evaluation.json','utf8'));
+const probes:string[]=[];const reproduction:any[]=[];
+for(const c of state.cases){if(c.result.status!=='READY'){reproduction.push({scenario:c.scenario,planner:c.result.status,projection:'NOT_ATTEMPTED'});continue;}
+ let status='PASS',reason='';try{baselineProject({input:c.result.input,profile:c.result.profile,capabilities:c.result.capabilities,plan:c.result.plan},c.result.requirements);}catch(e){status='FAIL';reason=String(e);}
+ assert.equal(first.cases.find((r:any)=>r.scenario===c.scenario).projection.status,status);
+ reproduction.push({scenario:c.scenario,planner:c.result.status,projection:status,reason});
+}
+assert.equal(reproduction.filter(r=>r.projection==='PASS').length,1);assert.equal(reproduction.filter(r=>r.projection==='FAIL').length,4);
+probes.push('Baseline projection loaded from commit3ff5356 reproduces1PASS/4FAIL/Unknownblocked without altering frozen inputs');
+for(const c of state.cases.filter(c=>c.lab)){assert.equal(c.lab!.media,null);for(const d of c.search!.directions){assert.equal(d.schema_version,'1.1.0');assert.equal(d.materiality,'typography-only');assert.deepEqual(d.media_usage_ids,[]);assert.ok(validateDirection(d,c.lab!).success);}
+ const wrong={...c.search!.directions[0],schema_version:'1.0.0',materiality:'unaltered-photograph'};
+ const rejected=searchDesigns([wrong],c.lab!,cohortBudget,1);assert.equal(rejected.finalists.length,0);assert.ok(rejected.rejections.some(r=>r.codes.includes('DIRECTION_MATERIALITY_MISMATCH')));
+}
+probes.push('All5contexts use explicit1.1 typography-only/no refs; legacy photograph materiality rejected before render');
+const hybrid=JSON.parse(await readFile('fixtures/cohort/h7/hibrido.json','utf8'));
+for(const [kind,bad] of [['timezone','Invalid/Zone'],['class_starts_at','not-a-date']]){const changed=structuredClone(hybrid);const fact=changed.input.facts.find((f:any)=>f.kind===kind);assert.ok(fact);fact.value=bad;const result=planBusiness(changed.input,{rules:registry.rules,activity_relationships:changed.activity_relationships});assert.ok(result.status!=='READY'||!result.plan.pages.flatMap((p:any)=>p.modules).some((m:any)=>m.capability_id==='class_schedule'));}
+probes.push('Invalid timezone/date cannot survive as scheduled class module');
+const run=JSON.parse(await readFile('docs/reviews/h7/run.json','utf8')),r=run.receipts.find((r:any)=>!r.seeded_fault),c=state.cases.find(c=>`${c.scenario}-${r.candidate.plan.id}`===r.mount_id)!;
+const wrongScope=structuredClone(r.view.observation);wrongScope.modules[0].scope='foreign-business';assert.equal(auditRender(wrongScope,c.lab!,'editorial',r.semantic_page,p=>cohortPath(c.scenario,r.candidate.plan.id,p)).success,false);
+const unknown=state.cases.find(c=>c.scenario==='media-unknown')!;assert.equal(unknown.media!.manifest.grants.length,0);assert.ok(unknown.media!.manifest.decisions.every(d=>d.status!=='ALLOWED'));assert.equal(unknown.lab!.media,null);
+assert.equal(state.cases.find(c=>c.scenario==='unknown')!.result.status,'CONTENT_BLOCKED');
+probes.push('Crossbusinessscope rejects; UNKNOWNasset usage blocked without grant; Unknowncategory has no site');
+await writeFile('docs/reviews/h7/probes.json',JSON.stringify({status:'PASSED',data_mode:'REVIEW_TEST_ONLY',human_votes:'NOT_COLLECTED',probes,baseline_reproduction:reproduction},null,2)+'\n');
+console.log(JSON.stringify({status:'PASSED',probes:probes.length,baseline_pass:1,baseline_fail:4}));

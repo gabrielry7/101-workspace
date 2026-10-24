@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_id": {
+      "type": "string",
+      "enum": [
+        "identity",
+        "about",
+        "locations",
+        "opening_hours",
+        "contact_channels",
+        "social_profiles",
+        "reputation",
+        "gallery",
+        "service_catalog",
+        "product_catalog",
+        "menu",
+        "product_variants",
+        "price_list",
+        "packages",
+        "rooms",
+        "programs",
+        "professional_profiles",
+        "trainer_profiles",
+        "portfolio",
+        "case_studies",
+        "reservation",
+        "appointment",
+        "quote_request",
+        "contact_request",
+        "purchase",
+        "order",
+        "delivery",
+        "pickup",
+        "membership",
+        "membership_signup",
+        "class_enrollment",
+        "ticketing",
+        "room_booking",
+        "visit_booking",
+        "service_request",
+        "class_schedule",
+        "events",
+        "availability_display",
+        "service_area",
+        "delivery_policy",
+        "visit_policy",
+        "payment_methods",
+        "amenities",
+        "accessibility_info",
+        "branches",
+        "faqs",
+        "documents"
+      ]
+    },
+    "feature_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "subject_status": {
+      "type": "string",
+      "enum": [
+        "EXACT",
+        "SUBJECT_PENDING"
+      ]
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "DOCUMENTARY",
+        "ILLUSTRATIVE",
+        "ATMOSPHERIC"
+      ]
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "SEMANTIC_PLAN",
+        "MASTER_CATALOG"
+      ]
+    },
+    "need": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "requirement_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "module_id": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "page": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scope_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "purpose": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "DOCUMENTARY",
+                "ILLUSTRATIVE",
+                "ATMOSPHERIC"
+              ]
+            },
+            "subject_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "kinds": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "image",
+                  "video",
+                  "audio"
+                ]
+              }
+            },
+            "required": {
+              "type": "boolean"
+            },
+            "count": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            "min_width": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "min_height": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "exclusiveMinimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "requirement_id",
+            "module_id",
+            "page",
+            "scope_id",
+            "purpose",
+            "role",
+            "subject_ids",
+            "kinds",
+            "required",
+            "count",
+            "min_width",
+            "min_height"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "AUTHORIZED",
+        "PENDING_AUTHENTIC_MATERIAL",
+        "PENDING_LICENSED_RESOURCE",
+        "PENDING_EXPLICIT_USE"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "id",
+    "capability_id",
+    "feature_id",
+    "scope_id",
+    "subject_ids",
+    "subject_status",
+    "role",
+    "purpose",
+    "source",
+    "need",
+    "status",
+    "reason"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:MediaRequirementRequestV1:1.0.0",
+  "title": "MediaRequirementRequestV1",
+  "description": "B2 associated byte-pinned media library and reference corpus; semantic, source, scope and current-use verification required. No rights conferred by fixture flags or reference URLs."
+}

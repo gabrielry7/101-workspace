@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "value_type": {
+      "type": "string",
+      "enum": [
+        "IDENTIFIER",
+        "DATE",
+        "TIME",
+        "POSITIVE_INTEGER",
+        "TEXT",
+        "ACKNOWLEDGEMENT"
+      ]
+    },
+    "required_when": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "validation": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    }
+  },
+  "required": [
+    "id",
+    "label",
+    "value_type",
+    "required_when",
+    "validation",
+    "purpose"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:FutureVisitorInputV1:1.0.0",
+  "title": "FutureVisitorInputV1",
+  "description": "B1 associated master catalogue/objective diagnostic; complete V1 registry, no live integrations or fabricated permissions."
+}

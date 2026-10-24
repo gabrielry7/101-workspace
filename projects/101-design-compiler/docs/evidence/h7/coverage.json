@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "first_evaluation_commit": "3ff5356",
+  "first_ready": 5,
+  "first_projection_pass": 1,
+  "first_projection_fail": 4,
+  "after_projection_pass": 5,
+  "unseen_after_adjustment": false,
+  "data_mode": "SYNTHETIC_FIXTURE",
+  "new_client_code_files": 0,
+  "new_client_declarative_data": "six fixtures, five contexts/proposals, ten plans; these are explicitly test client data",
+  "shared_registry_adjustments": [
+    "fact_collection -> FactCollection",
+    "location_information -> FactCollection (supported generically, not exercised in this cohort)",
+    "schedule -> Schedule"
+  ],
+  "shared_pipeline_adjustments": [
+    "explicit nullable authorized medium",
+    "generic module navigation labels on H7 mount",
+    "single primary heading per route",
+    "unbound media hard gate",
+    "separate ArtDirectionV1_1 1.1.0 typography-only materiality; historical schema unchanged"
+  ],
+  "coverage": [
+    {
+      "scenario": "hotel",
+      "browser_views": 12,
+      "routes": 3,
+      "finalists": 2,
+      "technical_pass": 12,
+      "media_rendered": 0,
+      "max_local_body_bytes": 13741,
+      "mobile_structural_diversity": "NOT_ESTABLISHED: Flow/Rail stack with same route/module order; typography/rhythm may differ",
+      "desktop_structural_diversity": "OBSERVED: Flow versus Rail navigation/frame geometry",
+      "human_preference": "NOT_COLLECTED"
+    },
+    {
+      "scenario": "dentista",
+      "browser_views": 12,
+      "routes": 3,
+      "finalists": 2,
+      "technical_pass": 12,
+      "media_rendered": 0,
+      "max_local_body_bytes": 13792,
+      "mobile_structural_diversity": "NOT_ESTABLISHED: Flow/Rail stack with same route/module order; typography/rhythm may differ",
+      "desktop_structural_diversity": "OBSERVED: Flow versus Rail navigation/frame geometry",
+      "human_preference": "NOT_COLLECTED"
+    },
+    {
+      "scenario": "servicio",
+      "browser_views": 12,
+      "routes": 3,
+      "finalists": 2,
+      "technical_pass": 12,
+      "media_rendered": 0,
+      "max_local_body_bytes": 13883,
+      "mobile_structural_diversity": "NOT_ESTABLISHED: Flow/Rail stack with same route/module order; typography/rhythm may differ",
+      "desktop_structural_diversity": "OBSERVED: Flow versus Rail navigation/frame geometry",
+      "human_preference": "NOT_COLLECTED"
+    },
+    {
+      "scenario": "hibrido",
+      "browser_views": 16,
+      "routes": 4,
+      "finalists": 2,
+      "technical_pass": 16,
+      "media_rendered": 0,
+      "max_local_body_bytes": 14932,
+      "mobile_structural_diversity": "NOT_ESTABLISHED: Flow/Rail stack with same route/module order; typography/rhythm may differ",
+      "desktop_structural_diversity": "OBSERVED: Flow versus Rail navigation/frame geometry",
+      "human_preference": "NOT_COLLECTED"
+    },
+    {
+      "scenario": "media-unknown",
+      "browser_views": 8,
+      "routes": 2,
+      "finalists": 2,
+      "technical_pass": 8,
+      "media_rendered": 0,
+      "max_local_body_bytes": 12508,
+      "mobile_structural_diversity": "NOT_ESTABLISHED: Flow/Rail stack with same route/module order; typography/rhythm may differ",
+      "desktop_structural_diversity": "OBSERVED: Flow versus Rail navigation/frame geometry",
+      "human_preference": "NOT_COLLECTED"
+    }
+  ],
+  "unknown_status": "CONTENT_BLOCKED; no site rendered",
+  "costs": {
+    "rendered_plans": 10,
+    "browser_views": 63,
+    "index_browser_views": 2,
+    "wall_seconds": 18.150578299999996,
+    "provider_api_calls": 0,
+    "new_spend": 0,
+    "money_session": "NOT_MEASURED",
+    "tokens": "NOT_MEASURED"
+  },
+  "limitations": [
+    "Not production: synthetic input and absent commercial runtime",
+    "No calibrated aesthetics or actual human votes",
+    "Cohort has been exposed during registry adaptation; fresh independent holdout still needed for unseen generalization",
+    "Field performance/LCP/INP/CLS not measured",
+    "No third-party media or provider benchmark performed"
+  ],
+  "index_qa": {
+    "views": 2,
+    "desktop": "LAB_INDEX_PASS",
+    "mobile": "LAB_INDEX_PASS",
+    "dom_main": 1,
+    "ax_main": 1,
+    "keyboard_skip_and_candidate_navigation": true
+  }
+}

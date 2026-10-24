@@ -1,0 +1,5436 @@
+{
+  "status": "COMPLETE_WITH_REJECTED_ATTEMPTS_PRESERVED",
+  "selection_policy": "URL and viewport must match; image width within 2 CSS pixels of viewport/document width (fractional widths/scrollbar). Passing geometry is necessary, not an aesthetic or complete-load approval.",
+  "receipts": [
+    {
+      "reference_id": "reference-01",
+      "view": "desktop",
+      "stage": "page",
+      "captured_at": "2026-10-16T03:36:34.418Z",
+      "observed": {
+        "body_style": {
+          "background": "rgb(251, 250, 249)",
+          "color": "rgb(0, 0, 0)",
+          "font": "BrutonMedium, serif"
+        },
+        "controls": [
+          {
+            "tag": "A",
+            "text": ".cls-1{fill:#000000}"
+          },
+          {
+            "tag": "A",
+            "text": "Book a Table"
+          },
+          {
+            "tag": "A",
+            "text": "Book a Room"
+          },
+          {
+            "tag": "A",
+            "text": "Menu\n\t\t\t\t\t\t\tClose"
+          }
+        ],
+        "document": {
+          "height": 1000,
+          "width": 9758
+        },
+        "headings": [
+          {
+            "font": "BrutonMedium, serif",
+            "size": "19px",
+            "tag": "H1",
+            "text": "Home"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "25px",
+            "tag": "H2",
+            "text": "Introduction"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "tag": "H2",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "tag": "H2",
+            "text": "The Restaurant"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "tag": "H2",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "tag": "H2",
+            "text": "Private Dining"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "tag": "H2",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "tag": "H2",
+            "text": "The Rooms"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "tag": "H2",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "19px",
+            "tag": "H2",
+            "text": "Open"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "19px",
+            "tag": "H2",
+            "text": "Contact Us"
+          }
+        ],
+        "images": [
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 892,
+            "display_width": 1154,
+            "natural_height": 1980,
+            "natural_width": 2286
+          },
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 892,
+            "display_width": 818,
+            "natural_height": 1,
+            "natural_width": 1
+          },
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 892,
+            "display_width": 1472,
+            "natural_height": 1,
+            "natural_width": 1
+          },
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 892,
+            "display_width": 811,
+            "natural_height": 1,
+            "natural_width": 1
+          },
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 1000,
+            "display_width": 795,
+            "natural_height": 1,
+            "natural_width": 1
+          },
+          {
+            "alt": "Stone rubbing of the Osip logo",
+            "complete": true,
+            "display_height": 151,
+            "display_width": 151,
+            "natural_height": 1,
+            "natural_width": 1
+          }
+        ],
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "title": "Osip – A farm-to-table restaurant located in Somerset",
+        "url": "https://osiprestaurant.com/",
+        "videos": [],
+        "viewport": {
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-01-desktop-page.jpg",
+        "bytes": 104962,
+        "sha256": "176c0dac5edeb69822a885ca1ef3f6cc5e99aa42541321fcd0c717365974272f",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 9758
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-01",
+      "view": "mobile",
+      "stage": "page",
+      "captured_at": "2026-10-16T03:36:38.503Z",
+      "observed": {
+        "body_style": {
+          "background": "rgb(251, 250, 249)",
+          "color": "rgb(0, 0, 0)",
+          "font": "BrutonMedium, serif"
+        },
+        "controls": [
+          {
+            "tag": "A",
+            "text": ".cls-1{fill:#000000}"
+          },
+          {
+            "tag": "A",
+            "text": "Menu\n\t\t\t\t\t\t\tClose"
+          }
+        ],
+        "document": {
+          "height": 4502,
+          "width": 375
+        },
+        "headings": [
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "tag": "H1",
+            "text": "Home"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "16px",
+            "tag": "H2",
+            "text": "Introduction"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "12.8px",
+            "tag": "H2",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "16px",
+            "tag": "H2",
+            "text": "The Restaurant"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "tag": "H2",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "16px",
+            "tag": "H2",
+            "text": "Private Dining"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "tag": "H2",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "16px",
+            "tag": "H2",
+            "text": "The Rooms"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "tag": "H2",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "tag": "H2",
+            "text": "Open"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "tag": "H2",
+            "text": "Contact Us"
+          }
+        ],
+        "images": [
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 289,
+            "display_width": 334,
+            "natural_height": 1980,
+            "natural_width": 2286
+          },
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 1,
+            "display_width": 1,
+            "natural_height": 1,
+            "natural_width": 1
+          },
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 1,
+            "display_width": 1,
+            "natural_height": 1,
+            "natural_width": 1
+          },
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 1,
+            "display_width": 1,
+            "natural_height": 1,
+            "natural_width": 1
+          },
+          {
+            "alt": "Osip",
+            "complete": true,
+            "display_height": 481,
+            "display_width": 378,
+            "natural_height": 1,
+            "natural_width": 1
+          },
+          {
+            "alt": "Stone rubbing of the Osip logo",
+            "complete": true,
+            "display_height": 96,
+            "display_width": 96,
+            "natural_height": 1,
+            "natural_width": 1
+          }
+        ],
+        "scroll": {
+          "x": 0,
+          "y": 0
+        },
+        "title": "Osip – A farm-to-table restaurant located in Somerset",
+        "url": "https://osiprestaurant.com/",
+        "videos": [],
+        "viewport": {
+          "height": 844,
+          "width": 390
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-01-mobile-page.jpg",
+        "bytes": 117054,
+        "sha256": "338f218c5038ea01a7bcc441640fbf6bb92f1e1572179c1fb3850f4e6e242e4a",
+        "pixel": {
+          "format": "jpg",
+          "height": 4502,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-01",
+      "view": "mobile",
+      "stage": "scroll",
+      "captured_at": "2026-10-16T03:37:11.004Z",
+      "observed": {
+        "background": "rgb(251, 250, 249)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 4535,
+        "document_width": 390,
+        "font": "BrutonMedium, serif",
+        "headings": [
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "text": "Home"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "16px",
+            "text": "Introduction"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "12.8px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "16px",
+            "text": "The Restaurant"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "16px",
+            "text": "Private Dining"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "16px",
+            "text": "The Rooms"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "11.2px",
+            "text": "Open"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 27,
+          "total": 32
+        },
+        "scroll_x": 0,
+        "scroll_y": 2343.199951171875,
+        "title": "Osip – A farm-to-table restaurant located in Somerset",
+        "url": "https://osiprestaurant.com/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-01-mobile-scroll.jpg",
+        "bytes": 20671,
+        "sha256": "3f89d021065956c11920c470e362e03fce1845df4864ef6ff92cc0e8db5bfb0b",
+        "pixel": {
+          "format": "jpg",
+          "height": 843,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-01",
+      "view": "desktop",
+      "stage": "scroll",
+      "captured_at": "2026-10-16T03:37:12.095Z",
+      "observed": {
+        "background": "rgb(251, 250, 249)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 1000,
+        "document_width": 9758,
+        "font": "BrutonMedium, serif",
+        "headings": [
+          {
+            "font": "BrutonMedium, serif",
+            "size": "19px",
+            "text": "Home"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "25px",
+            "text": "Introduction"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "text": "The Restaurant"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "text": "Private Dining"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "text": "The Rooms"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "19px",
+            "text": "Open"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 29,
+          "total": 32
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Osip – A farm-to-table restaurant located in Somerset",
+        "url": "https://osiprestaurant.com/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-01-desktop-scroll.jpg",
+        "bytes": 38605,
+        "sha256": "fad52037c13a83ec46a1d4a5a4017a692e5e1e0c519d66a7f499ff7f790401c6",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-01",
+      "view": "desktop",
+      "stage": "horizontal",
+      "captured_at": "2026-10-16T03:37:17.050Z",
+      "observed": {
+        "background": "rgb(251, 250, 249)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 1000,
+        "document_width": 9758,
+        "font": "BrutonMedium, serif",
+        "headings": [
+          {
+            "font": "BrutonMedium, serif",
+            "size": "19px",
+            "text": "Home"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "25px",
+            "text": "Introduction"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "text": "The Restaurant"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "text": "Private Dining"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "21px",
+            "text": "The Rooms"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "22px",
+            "text": "Menus"
+          },
+          {
+            "font": "BrutonMedium, serif",
+            "size": "19px",
+            "text": "Open"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 29,
+          "total": 32
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Osip – A farm-to-table restaurant located in Somerset",
+        "url": "https://osiprestaurant.com/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-01-desktop-horizontal.jpg",
+        "bytes": 21657,
+        "sha256": "42b46d5410ce0c4d4afc48825547a16416041241e8fd05f2ccc51844f880b78b",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-02",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:37:24.036Z",
+      "observed": {
+        "background": "rgb(242, 242, 242)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 3636,
+        "document_width": 1425,
+        "font": "sans-serif",
+        "headings": [
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "UN RECORRIDO"
+          },
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "VERTICAL"
+          },
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "POR EL"
+          },
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "TERRITORIO"
+          },
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "PERUANO"
+          },
+          {
+            "font": "\"PP Editorial New Ultralight Italic\", \"PP Editorial New Ultralight Italic Placeholder\", sans-serif",
+            "size": "32px",
+            "text": "En nuestra mesa"
+          },
+          {
+            "font": "\"PP Editorial New Ultralight Italic\", \"PP Editorial New Ultralight Italic Placeholder\", sans-serif",
+            "size": "32px",
+            "text": "converge el Perú, un país"
+          },
+          {
+            "font": "\"PP Editorial New Ultralight Italic\", \"PP Editorial New Ultralight Italic Placeholder\", sans-serif",
+            "size": "32px",
+            "text": "que sólo puede comprenderse"
+          },
+          {
+            "font": "\"PP Editorial New Ultralight Italic\", \"PP Editorial New Ultralight Italic Placeholder\", sans-serif",
+            "size": "32px",
+            "text": "al recorrer su totalidad"
+          },
+          {
+            "font": "\"PP Editorial Sans Medium\", \"PP Editorial Sans Medium Placeholder\", sans-serif",
+            "size": "10px",
+            "text": "EXPERIENCIAS"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 0,
+          "total": 1
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Central Restaurante",
+        "url": "https://centralrestaurante.com.pe/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 712,
+            "height": 1920,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 4.47167,
+            "width": 1920
+          },
+          {
+            "display_height": 1000,
+            "display_width": 712,
+            "height": 1920,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 4.357986,
+            "width": 1920
+          },
+          {
+            "display_height": 280,
+            "display_width": 280,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 4.320147,
+            "width": 1080
+          },
+          {
+            "display_height": 280,
+            "display_width": 280,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 4.203017,
+            "width": 1080
+          },
+          {
+            "display_height": 280,
+            "display_width": 280,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          },
+          {
+            "display_height": 280,
+            "display_width": 280,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-02-desktop-overview.jpg",
+        "bytes": 373709,
+        "sha256": "41896091a671c5cf4acae1759e4a3509846f22d7686aa945cfd11fb3ff3f758a",
+        "pixel": {
+          "format": "jpg",
+          "height": 3636,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-02",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:37:25.575Z",
+      "observed": {
+        "background": "rgb(34, 34, 34)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 4200,
+        "document_width": 375,
+        "font": "sans-serif",
+        "headings": [
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "UN RECORRIDO"
+          },
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "VERTICAL"
+          },
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "POR EL"
+          },
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "TERRITORIO"
+          },
+          {
+            "font": "\"PP Editorial Sans Ultralight\", \"PP Editorial Sans Ultralight Placeholder\", sans-serif",
+            "size": "28px",
+            "text": "PERUANO"
+          },
+          {
+            "font": "\"PP Editorial New Ultralight Italic\", \"PP Editorial New Ultralight Italic Placeholder\", sans-serif",
+            "size": "30px",
+            "text": "En nuestra mesa converge el Perú, un país que sólo puede comprenderse al recorre"
+          },
+          {
+            "font": "\"PP Editorial Sans Medium\", \"PP Editorial Sans Medium Placeholder\", sans-serif",
+            "size": "10px",
+            "text": "EXPERIENCIAS"
+          },
+          {
+            "font": "\"PP Editorial Sans Medium\", \"PP Editorial Sans Medium Placeholder\", sans-serif",
+            "size": "10px",
+            "text": "RESERVAS"
+          },
+          {
+            "font": "\"PP Editorial Sans Medium\", \"PP Editorial Sans Medium Placeholder\", sans-serif",
+            "size": "10px",
+            "text": "IR A MATER"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 0,
+          "total": 1
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Central Restaurante",
+        "url": "https://centralrestaurante.com.pe/",
+        "videos": [
+          {
+            "display_height": 422,
+            "display_width": 375,
+            "height": 1920,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 6.041441,
+            "width": 1920
+          },
+          {
+            "display_height": 422,
+            "display_width": 375,
+            "height": 1920,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.92774,
+            "width": 1920
+          },
+          {
+            "display_height": 280,
+            "display_width": 280,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.889286,
+            "width": 1080
+          },
+          {
+            "display_height": 280,
+            "display_width": 280,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.772269,
+            "width": 1080
+          },
+          {
+            "display_height": 280,
+            "display_width": 280,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          },
+          {
+            "display_height": 280,
+            "display_width": 280,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-02-mobile-overview.jpg",
+        "bytes": 211389,
+        "sha256": "88828777b5a4b2ac952bb9e5b42a136497caac1671cfa271fb23c98d23a61780",
+        "pixel": {
+          "format": "jpg",
+          "height": 4200,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-03",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:37:34.727Z",
+      "observed": {
+        "background": "rgb(250, 248, 243)",
+        "color": "rgb(51, 51, 51)",
+        "document_height": 4154,
+        "document_width": 1425,
+        "font": "\"Untitled sans\", sans-serif",
+        "headings": [
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "15px",
+            "text": "Cómo funciona"
+          },
+          {
+            "font": "Canela, sans-serif",
+            "size": "67px",
+            "text": "Peticiones de reserva"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "16px",
+            "text": "Precio  300€"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "16px",
+            "text": "Carne y pescado"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "16px",
+            "text": "Comensales"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "16px",
+            "text": "Mediodía"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "15px",
+            "text": "Dónde estamos"
+          },
+          {
+            "font": "Canela, sans-serif",
+            "size": "67px",
+            "text": "Localización"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "15px",
+            "text": "Preguntas frecuentes"
+          },
+          {
+            "font": "Canela, sans-serif",
+            "size": "67px",
+            "text": "FAQs"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 8,
+          "total": 9
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Asador Etxebarri",
+        "url": "https://www.asadoretxebarri.com/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-03-desktop-overview.jpg",
+        "bytes": 447105,
+        "sha256": "0c0a06dc0ed3f79d208e3589f398bf62db9af7b09c2c2318bce0f878aefb659c",
+        "pixel": {
+          "format": "jpg",
+          "height": 4153,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-03",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:37:36.253Z",
+      "observed": {
+        "background": "rgb(250, 248, 243)",
+        "color": "rgb(51, 51, 51)",
+        "document_height": 4483,
+        "document_width": 375,
+        "font": "\"Untitled sans\", sans-serif",
+        "headings": [
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "15px",
+            "text": "Cómo funciona"
+          },
+          {
+            "font": "Canela, sans-serif",
+            "size": "50px",
+            "text": "Peticiones de reserva"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "20px",
+            "text": "Precio  300€"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "20px",
+            "text": "Carne y pescado"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "20px",
+            "text": "Comensales"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "20px",
+            "text": "Mediodía"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "15px",
+            "text": "Dónde estamos"
+          },
+          {
+            "font": "Canela, sans-serif",
+            "size": "50px",
+            "text": "Localización"
+          },
+          {
+            "font": "\"Untitled sans\", sans-serif",
+            "size": "15px",
+            "text": "Preguntas frecuentes"
+          },
+          {
+            "font": "Canela, sans-serif",
+            "size": "50px",
+            "text": "FAQs"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 8,
+          "total": 9
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Asador Etxebarri",
+        "url": "https://www.asadoretxebarri.com/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-03-mobile-overview.jpg",
+        "bytes": 198953,
+        "sha256": "4195f59fa170c63e294d575bb1a17986bbdb5b91bbf921b567278d32ae061668",
+        "pixel": {
+          "format": "jpg",
+          "height": 4483,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-04",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:37:47.056Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(101, 95, 82)",
+        "document_height": 3887,
+        "document_width": 1425,
+        "font": "clearface, serif",
+        "headings": [
+          {
+            "font": "clearface, serif",
+            "size": "14px",
+            "text": "KOL Restaurant\n      \n\n\n   \n      \n   \n                        \n\n\n  .st1{clip-pa"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "28px",
+            "text": "Mexican Soul. British Ingredients."
+          },
+          {
+            "font": "\"KOL Display\", serif",
+            "size": "28px",
+            "text": "KOL"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "24px",
+            "text": ""
+          },
+          {
+            "font": "clearface, serif",
+            "size": "24px",
+            "text": "THE RESTAURANT"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "24px",
+            "text": ""
+          },
+          {
+            "font": "clearface, serif",
+            "size": "24px",
+            "text": "PRIVATE EVENTS"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "24px",
+            "text": "MEXICAN SOUL"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "24px",
+            "text": "KOL at TATE"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 0,
+          "total": 0
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Welcome to KOL • KOL Restaurant",
+        "url": "https://kolrestaurant.com/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-04-desktop-overview.jpg",
+        "bytes": 308856,
+        "sha256": "5000ec45c431dfbbb38db447557e4300e08103a6883bb6a869225739128dad42",
+        "pixel": {
+          "format": "jpg",
+          "height": 3887,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-04",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:37:48.575Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(101, 95, 82)",
+        "document_height": 3994,
+        "document_width": 375,
+        "font": "clearface, serif",
+        "headings": [
+          {
+            "font": "clearface, serif",
+            "size": "14px",
+            "text": "KOL Restaurant\n      \n\n\n   \n      \n   \n                        \n\n\n  .st1{clip-pa"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "22.524px",
+            "text": "Mexican Soul. British Ingredients."
+          },
+          {
+            "font": "\"KOL Display\", serif",
+            "size": "22.524px",
+            "text": "KOL"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "16px",
+            "text": ""
+          },
+          {
+            "font": "clearface, serif",
+            "size": "16px",
+            "text": "THE RESTAURANT"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "16px",
+            "text": ""
+          },
+          {
+            "font": "clearface, serif",
+            "size": "16px",
+            "text": "PRIVATE EVENTS"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "16px",
+            "text": "MEXICAN SOUL"
+          },
+          {
+            "font": "clearface, serif",
+            "size": "16px",
+            "text": "KOL at TATE"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 0,
+          "total": 0
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Welcome to KOL • KOL Restaurant",
+        "url": "https://kolrestaurant.com/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-04-mobile-overview.jpg",
+        "bytes": 147895,
+        "sha256": "c7c661d0ace7aaacfa38e7da02529a304c512a26ae6435bb89b2f8fc607c1e60",
+        "pixel": {
+          "format": "jpg",
+          "height": 3994,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-05",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:38:06.947Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 4082,
+        "document_width": 1425,
+        "font": "\"TT Norms Pro\", sans-serif",
+        "headings": [
+          {
+            "font": "\"TT Norms Pro\", sans-serif",
+            "size": "44px",
+            "text": "AIRA is a 2-star MICHELIN restaurant by chefs Tommy Myllymäki and Pi Le. Combini"
+          },
+          {
+            "font": "\"TT Norms Pro\", sans-serif",
+            "size": "22px",
+            "text": "MAKE A RESERVATION"
+          },
+          {
+            "font": "\"TT Norms Pro\", sans-serif",
+            "size": "44px",
+            "text": "The gastronomic experience at AIRA is constantly evolving, focusing on seasonal "
+          },
+          {
+            "font": "\"TT Norms Pro\", sans-serif",
+            "size": "44px",
+            "text": "Subscribe to the monthly AIRA newsletter"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 5,
+          "total": 7
+        },
+        "scroll_x": 0,
+        "scroll_y": 2848,
+        "title": "AIRA ** Restaurant - Stockholm",
+        "url": "https://aira.se/",
+        "videos": [
+          {
+            "display_height": 1600,
+            "display_width": 2844,
+            "height": 1080,
+            "muted": true,
+            "paused": true,
+            "ready_state": 3,
+            "time": 0,
+            "width": 1920
+          },
+          {
+            "display_height": 712,
+            "display_width": 712,
+            "height": 1080,
+            "muted": true,
+            "paused": true,
+            "ready_state": 3,
+            "time": 0,
+            "width": 1080
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-05-desktop-overview.jpg",
+        "bytes": 371738,
+        "sha256": "d2b10ef76caa638bb31f5fc35322caf0188659984781c4af2657daeb0b620a71",
+        "pixel": {
+          "format": "jpg",
+          "height": 4082,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-05",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:38:08.788Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 4387,
+        "document_width": 375,
+        "font": "\"TT Norms Pro\", sans-serif",
+        "headings": [
+          {
+            "font": "\"TT Norms Pro\", sans-serif",
+            "size": "26px",
+            "text": "AIRA is a 2-star MICHELIN restaurant by chefs Tommy Myllymäki and Pi Le. Combini"
+          },
+          {
+            "font": "\"TT Norms Pro\", sans-serif",
+            "size": "18px",
+            "text": "MAKE A RESERVATION"
+          },
+          {
+            "font": "\"TT Norms Pro\", sans-serif",
+            "size": "26px",
+            "text": "The gastronomic experience at AIRA is constantly evolving, focusing on seasonal "
+          },
+          {
+            "font": "\"TT Norms Pro\", sans-serif",
+            "size": "26px",
+            "text": "Subscribe to the monthly AIRA newsletter"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 7,
+          "total": 7
+        },
+        "scroll_x": 0,
+        "scroll_y": 3082.39990234375,
+        "title": "AIRA ** Restaurant - Stockholm",
+        "url": "https://aira.se/",
+        "videos": [
+          {
+            "display_height": 1350,
+            "display_width": 2401,
+            "height": 1080,
+            "muted": true,
+            "paused": true,
+            "ready_state": 3,
+            "time": 0,
+            "width": 1920
+          },
+          {
+            "display_height": 390,
+            "display_width": 390,
+            "height": 1080,
+            "muted": true,
+            "paused": true,
+            "ready_state": 3,
+            "time": 0,
+            "width": 1080
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-05-mobile-overview.jpg",
+        "bytes": 199149,
+        "sha256": "f7e960d40cc6df16d85a8e867ca9533de0ab4648285f3a5781b2a5224a41a397",
+        "pixel": {
+          "format": "jpg",
+          "height": 4516,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-06",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:38:22.199Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "document_height": 6299,
+        "document_width": 1425,
+        "font": "Magister, serif, system-ui",
+        "headings": [
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "18px",
+            "text": "Our White Truffle Menu"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "18px",
+            "text": "From the pass"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "18px",
+            "text": "LUCA10"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "18px",
+            "text": "Private Dining"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "18px",
+            "text": "Careers"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "18px",
+            "text": "Gifting"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Our Newsletter"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Opening Times"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Contact"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Reservations"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 7,
+          "total": 20
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "A Modern Italian in the heart of Clerkenwell - LUCA",
+        "url": "https://luca.restaurant/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-06-desktop-overview.jpg",
+        "bytes": 189709,
+        "sha256": "0424f83fe1e84901e95298fdd9aa01a52aeb74200544df856a0f85ab732fe5d8",
+        "pixel": {
+          "format": "jpg",
+          "height": 6299,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-06",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:38:24.137Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "document_height": 6355,
+        "document_width": 375,
+        "font": "Magister, serif, system-ui",
+        "headings": [
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Our White Truffle Menu"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "From the pass"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "LUCA10"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Private Dining"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Careers"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Gifting"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Our Newsletter"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Opening Times"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Contact"
+          },
+          {
+            "font": "\"American Grotesk\", sans-serif, system-ui",
+            "size": "16px",
+            "text": "Reservations"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 7,
+          "total": 20
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "A Modern Italian in the heart of Clerkenwell - LUCA",
+        "url": "https://luca.restaurant/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-06-mobile-overview.jpg",
+        "bytes": 100408,
+        "sha256": "22c469d22b4fd0d44edd64757148ab50f1d263b96221b7b71e30ceca62487007",
+        "pixel": {
+          "format": "jpg",
+          "height": 6355,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-07",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:38:46.998Z",
+      "observed": {
+        "background": "rgb(0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "document_height": 3503,
+        "document_width": 1425,
+        "font": "\"Roboto Condensed\", sans-serif",
+        "headings": [
+          {
+            "font": "Oswald, sans-serif",
+            "size": "30px",
+            "text": "Borough Market"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "30px",
+            "text": "Shoreditch"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "30px",
+            "text": "Soho"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "40px",
+            "text": "Friday 16th October"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "40px",
+            "text": "About"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "24px",
+            "text": "Group Bookings"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 10,
+          "total": 10
+        },
+        "scroll_x": 0,
+        "scroll_y": 4.800000190734863,
+        "title": "Italian Restaurant in Shoreditch, Borough Market & Soho • Padella",
+        "url": "https://www.padella.co/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 1425,
+            "height": 722,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 19.225305,
+            "width": 1080
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-07-desktop-overview.jpg",
+        "bytes": 524053,
+        "sha256": "48d2cc6d780d08c5e7e74d0d5ace395d3820c804439a84b2f56fc74e82fdd7b5",
+        "pixel": {
+          "format": "jpg",
+          "height": 3503,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-07",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:38:49.120Z",
+      "observed": {
+        "background": "rgb(0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "document_height": 4644,
+        "document_width": 375,
+        "font": "\"Roboto Condensed\", sans-serif",
+        "headings": [
+          {
+            "font": "Oswald, sans-serif",
+            "size": "20px",
+            "text": "Borough Market"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "20px",
+            "text": "Shoreditch"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "20px",
+            "text": "Soho"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "40px",
+            "text": "Friday 16th October"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "40px",
+            "text": "About"
+          },
+          {
+            "font": "Oswald, sans-serif",
+            "size": "24px",
+            "text": "Group Bookings"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 10,
+          "total": 10
+        },
+        "scroll_x": 0,
+        "scroll_y": 100.8000030517578,
+        "title": "Italian Restaurant in Shoreditch, Borough Market & Soho • Padella",
+        "url": "https://www.padella.co/",
+        "videos": [
+          {
+            "display_height": 844,
+            "display_width": 375,
+            "height": 722,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 21.650856,
+            "width": 1080
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-07-mobile-overview.jpg",
+        "bytes": 278102,
+        "sha256": "8b337070afa079b40253fc1818fb6b89773f2829a0a42a284921154a98624dc9",
+        "pixel": {
+          "format": "jpg",
+          "height": 4644,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-08",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:39:06.027Z",
+      "observed": {
+        "background": "rgb(249, 249, 243)",
+        "color": "rgb(41, 56, 43)",
+        "document_height": 7107,
+        "document_width": 1425,
+        "font": "Reckless, serif",
+        "headings": [
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "72px",
+            "text": "noma"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "36px",
+            "text": "Copenhagen 2026"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Sign up for reservation updates & news from noma."
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Sign up for reservation updates and news from noma."
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "30px",
+            "text": "Bring home the flavors of noma with our collection of innovative pantry products"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "30px",
+            "text": "Introducing the restaurant’s very own coffee subscription, a decade in the makin"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "36px",
+            "text": "Copenhagen 2026:We’re coming home"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "30px",
+            "text": "Noma LA  2026"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Contact"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Booking + Hours"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 18,
+          "total": 20
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "noma",
+        "url": "https://noma.dk/",
+        "videos": [
+          {
+            "display_height": 800,
+            "display_width": 1440,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 0.284978,
+            "width": 1920
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-08-desktop-overview.jpg",
+        "bytes": 1088037,
+        "sha256": "bb863847af24d81f5c7e4ca5946976248aa502cd1b5fe644b783baa46b41514c",
+        "pixel": {
+          "format": "jpg",
+          "height": 7107,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-08",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:39:08.946Z",
+      "observed": {
+        "background": "rgb(249, 249, 243)",
+        "color": "rgb(41, 56, 43)",
+        "document_height": 7566,
+        "document_width": 375,
+        "font": "Reckless, serif",
+        "headings": [
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "32px",
+            "text": "noma"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "28px",
+            "text": "Copenhagen 2026"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Sign up for reservation updates & news from noma."
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Sign up for reservation updates and news from noma."
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Bring home the flavors of noma with our collection of innovative pantry products"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Introducing the restaurant’s very own coffee subscription, a decade in the makin"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "20px",
+            "text": "Copenhagen 2026:We’re coming home"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "24px",
+            "text": "Noma LA  2026"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Contact"
+          },
+          {
+            "font": "Reckless-Neue, serif",
+            "size": "18px",
+            "text": "Booking + Hours"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 18,
+          "total": 20
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "noma",
+        "url": "https://noma.dk/",
+        "videos": [
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1080,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 3.192442,
+            "width": 1920
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-08-mobile-overview.jpg",
+        "bytes": 511611,
+        "sha256": "95fd90a48b07744d42dbafd6df5bea8e66cef751ef40a8cd00a304f5ec5cbf28",
+        "pixel": {
+          "format": "jpg",
+          "height": 7565,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-09",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:39:25.005Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 1000,
+        "document_width": 1440,
+        "font": "futura-pt, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
+        "headings": [],
+        "height": 1000,
+        "images": {
+          "decoded": 2,
+          "total": 2
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Restaurang Äng",
+        "url": "https://restaurangang.se/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-09-desktop-overview.jpg",
+        "bytes": 174003,
+        "sha256": "6ed020236c7fa3f7654863de0dd1f5cc5d443f0577f7cb7c28324df353bf0b6e",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-09",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:39:26.350Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 844,
+        "document_width": 390,
+        "font": "futura-pt, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", sans-serif",
+        "headings": [],
+        "height": 844,
+        "images": {
+          "decoded": 2,
+          "total": 2
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Restaurang Äng",
+        "url": "https://restaurangang.se/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-09-mobile-overview.jpg",
+        "bytes": 49213,
+        "sha256": "2cd432fe3bcab553bd40e623ce9d585c9a58a2df3c4d2ed817fc65f0cb2d3a2e",
+        "pixel": {
+          "format": "jpg",
+          "height": 844,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-10",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:39:33.742Z",
+      "observed": {
+        "background": "rgb(234, 234, 234)",
+        "color": "rgb(234, 234, 234)",
+        "document_height": 1000,
+        "document_width": 1440,
+        "font": "Tobias-Light, sans-serif",
+        "headings": [
+          {
+            "font": "UncutSans-Book, serif",
+            "size": "16px",
+            "text": "Dining"
+          },
+          {
+            "font": "UncutSans-Book, serif",
+            "size": "16px",
+            "text": "Social"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 2,
+          "total": 2
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Kadeau | Home",
+        "url": "https://www.kadeau.dk/",
+        "videos": [
+          {
+            "display_height": 1180,
+            "display_width": 1520,
+            "height": 216,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.508209,
+            "width": 384
+          },
+          {
+            "display_height": 1180,
+            "display_width": 1520,
+            "height": 216,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.453204,
+            "width": 384
+          },
+          {
+            "display_height": 1180,
+            "display_width": 1520,
+            "height": 216,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.341323,
+            "width": 384
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-10-desktop-overview.jpg",
+        "bytes": 23810,
+        "sha256": "735bb50f851ff4e215f8af9f072378c9fcf1ccb72f042538ed49f5872a3b401b",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-10",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:39:34.070Z",
+      "observed": {
+        "background": "rgb(234, 234, 234)",
+        "color": "rgb(234, 234, 234)",
+        "document_height": 844,
+        "document_width": 390,
+        "font": "Tobias-Light, sans-serif",
+        "headings": [
+          {
+            "font": "UncutSans-Book, serif",
+            "size": "13px",
+            "text": "Dining"
+          },
+          {
+            "font": "UncutSans-Book, serif",
+            "size": "13px",
+            "text": "Social"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 2,
+          "total": 2
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Kadeau | Home",
+        "url": "https://www.kadeau.dk/",
+        "videos": [
+          {
+            "display_height": 1024,
+            "display_width": 470,
+            "height": 216,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.923822,
+            "width": 384
+          },
+          {
+            "display_height": 1024,
+            "display_width": 470,
+            "height": 216,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.863916,
+            "width": 384
+          },
+          {
+            "display_height": 1024,
+            "display_width": 470,
+            "height": 216,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 5.763941,
+            "width": 384
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-10-mobile-overview.jpg",
+        "bytes": 11488,
+        "sha256": "da7a9d9176b9657e5f0f81cfc10332a87cca528069954a2515a61f6e158973b2",
+        "pixel": {
+          "format": "jpg",
+          "height": 844,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-11",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:39:44.335Z",
+      "observed": {
+        "background": "rgb(242, 242, 234)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 1233,
+        "document_width": 1425,
+        "font": "sans-serif",
+        "headings": [
+          {
+            "font": "\"PP Editorial New Ultralight\", sans-serif",
+            "size": "72px",
+            "text": "MIL Centro es un viaje atemporal a 3568 msnm."
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 2,
+          "total": 2
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "MIL Centro is a Timeless Journey at 3568 masl.",
+        "url": "https://milcentro.pe/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-11-desktop-overview.jpg",
+        "bytes": 366578,
+        "sha256": "ae87d397f8ee6cfc17ddef1e918d89c35b4c06d90a5a05c9a1fea02df6d3a9c3",
+        "pixel": {
+          "format": "jpg",
+          "height": 1232,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-11",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:39:45.733Z",
+      "observed": {
+        "background": "rgb(242, 242, 234)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 1225,
+        "document_width": 375,
+        "font": "sans-serif",
+        "headings": [
+          {
+            "font": "\"Instrument Serif\", \"Instrument Serif Placeholder\", serif",
+            "size": "42px",
+            "text": "MIL Centro esun viaje atemporala 3568 msnm."
+          },
+          {
+            "font": "\"PP Editorial New Regular\", \"PP Editorial New Regular Placeholder\", sans-serif",
+            "size": "24px",
+            "text": "[Moray, Cusco]"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 2,
+          "total": 2
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "MIL Centro is a Timeless Journey at 3568 masl.",
+        "url": "https://milcentro.pe/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-11-mobile-overview.jpg",
+        "bytes": 109776,
+        "sha256": "563138d7778fb0d47cd1d94604fd98780402e9ff811880d40a05d1513b7a48e4",
+        "pixel": {
+          "format": "jpg",
+          "height": 1224,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-12",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:40:00.982Z",
+      "observed": {
+        "background": "rgb(214, 214, 214)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 2773,
+        "document_width": 1425,
+        "font": "Montserrat, sans-serif",
+        "headings": [
+          {
+            "font": "Canela",
+            "size": "85.28px",
+            "text": "Imagina que no existe la tierra... y solo puedes alimentarte del mar."
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 13,
+          "total": 15
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Menú \"AGUA\" - Aponiente - Ángel León",
+        "url": "https://www.aponiente.com/menu-aponiente-2026/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 1425,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 8.632243,
+            "width": 1920
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-12-desktop-overview.jpg",
+        "bytes": 252192,
+        "sha256": "98df58e6a46191202ac3deb3b66777d4229ab662e52fc8ad613b90caf187ddb8",
+        "pixel": {
+          "format": "jpg",
+          "height": 2772,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-12",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:40:03.098Z",
+      "observed": {
+        "background": "rgb(214, 214, 214)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 2616,
+        "document_width": 375,
+        "font": "Montserrat, sans-serif",
+        "headings": [
+          {
+            "font": "Canela",
+            "size": "37.28px",
+            "text": "Imagina que no existe la tierra... y solo puedes alimentarte del mar."
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 14,
+          "total": 15
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Menú \"AGUA\" - Aponiente - Ángel León",
+        "url": "https://www.aponiente.com/menu-aponiente-2026/",
+        "videos": [
+          {
+            "display_height": 844,
+            "display_width": 375,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 10.483408,
+            "width": 1920
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-12-mobile-overview.jpg",
+        "bytes": 109237,
+        "sha256": "ad3b92915ea5dfd20671e6acaaf2e6b043570b5a0162f6183f9adf544e829355",
+        "pixel": {
+          "format": "jpg",
+          "height": 2616,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-13",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:40:17.779Z",
+      "observed": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(103, 118, 142)",
+        "document_height": 1000,
+        "document_width": 1440,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "64px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE TABLE\n    "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "A PLACE THE WORLD\n      TOOK NOTE OF\n      Recognition With Substance"
+          },
+          {
+            "font": "\"Plus Jakarta Sans\", sans-serif",
+            "size": "24px",
+            "text": "MENA’S 50 BEST, NO. 1"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 18,
+          "total": 27
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 1440,
+            "height": 1156,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 9.023323,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-desktop-overview.jpg",
+        "bytes": 17113,
+        "sha256": "faa820a183abed55a3e3234314d4df794db7e08746cd13221f4b95f0fb30ef40",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-13",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:40:18.880Z",
+      "observed": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(103, 118, 142)",
+        "document_height": 844,
+        "document_width": 390,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "14px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "14px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "39.04px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE TABLE\n    "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "25px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "25px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "31.232px",
+            "text": "A PLACE THE WORLD\n      TOOK NOTE OF\n      Recognition With Substance"
+          },
+          {
+            "font": "\"IvyOra Display\", IvyOra, serif",
+            "size": "24px",
+            "text": "MENA’S 50 BEST, NO. 1"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 18,
+          "total": 27
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 844,
+            "display_width": 390,
+            "height": 1156,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 0.270241,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-mobile-overview.jpg",
+        "bytes": 9580,
+        "sha256": "2321fd84d7db335ef2de73478d536bd6c22e6a90d05676a33f355a558c067b61",
+        "pixel": {
+          "format": "jpg",
+          "height": 844,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-14",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:40:40.202Z",
+      "observed": {
+        "background": "rgb(248, 248, 248)",
+        "color": "rgb(97, 78, 93)",
+        "document_height": 5996,
+        "document_width": 1425,
+        "font": "johnston-medium, Helvetica, Arial, sans-serif",
+        "headings": [
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "14px",
+            "text": "RESOLUTELY NATURAL, ELEGANTLY EVOLVING"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "22px",
+            "text": "HOUSE AND GROUNDS"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "14px",
+            "text": "A COUNTRY HAVEN"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "22px",
+            "text": "Rooms"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "14px",
+            "text": "“Here it begins with the soil”"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "22px",
+            "text": "Food & Drink"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "14px",
+            "text": "The Bothy by Wildsmith"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "22px",
+            "text": "The Bothy by Wildsmith"
+          },
+          {
+            "font": "johnston-light, Helvetica, Arial, sans-serif",
+            "size": "12px",
+            "text": "Find Us"
+          },
+          {
+            "font": "johnston-light, Helvetica, Arial, sans-serif",
+            "size": "12px",
+            "text": "OUR OCCASIONAL NEWSLETTER"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 16,
+          "total": 17
+        },
+        "scroll_x": 0,
+        "scroll_y": 2498.39990234375,
+        "title": "Heckfield Place | Luxury 5-Star Hotel in Hampshire",
+        "url": "https://www.heckfieldplace.com/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-14-desktop-overview.jpg",
+        "bytes": 545089,
+        "sha256": "0d2b7c3f5cd11efdc5004fb899e9e36fb586abd6736bbb84095cef1a86243f0a",
+        "pixel": {
+          "format": "jpg",
+          "height": 5996,
+          "width": 1424
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-14",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:40:41.860Z",
+      "observed": {
+        "background": "rgb(248, 248, 248)",
+        "color": "rgb(97, 78, 93)",
+        "document_height": 5293,
+        "document_width": 375,
+        "font": "johnston-medium, Helvetica, Arial, sans-serif",
+        "headings": [
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "12px",
+            "text": "RESOLUTELY NATURAL, ELEGANTLY EVOLVING"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "18px",
+            "text": "HOUSE AND GROUNDS"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "12px",
+            "text": "A COUNTRY HAVEN"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "18px",
+            "text": "Rooms"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "12px",
+            "text": "“Here it begins with the soil”"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "18px",
+            "text": "Food & Drink"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "12px",
+            "text": "The Bothy by Wildsmith"
+          },
+          {
+            "font": "johnston-medium, Helvetica, Arial, sans-serif",
+            "size": "18px",
+            "text": "The Bothy by Wildsmith"
+          },
+          {
+            "font": "johnston-light, Helvetica, Arial, sans-serif",
+            "size": "12px",
+            "text": "Find Us"
+          },
+          {
+            "font": "johnston-light, Helvetica, Arial, sans-serif",
+            "size": "12px",
+            "text": "OUR OCCASIONAL NEWSLETTER"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 16,
+          "total": 17
+        },
+        "scroll_x": 0,
+        "scroll_y": 2498.39990234375,
+        "title": "Heckfield Place | Luxury 5-Star Hotel in Hampshire",
+        "url": "https://www.heckfieldplace.com/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-14-mobile-overview.jpg",
+        "bytes": 239498,
+        "sha256": "d7f1fb17f1ee664d55a212d3488876ecf9d11459a25bafda00f51dc90f5345b9",
+        "pixel": {
+          "format": "jpg",
+          "height": 5292,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-15",
+      "view": "desktop",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:40:55.714Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 3937,
+        "document_width": 1426,
+        "font": "Univers, sans-serif",
+        "headings": [
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Shipping Destination"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "14px",
+            "text": "Shopping Cart"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "47px",
+            "text": "RATIO SERIES"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "47px",
+            "text": "CANDLE HOLDERS"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "47px",
+            "text": "CARE REFILLS"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "30px",
+            "text": "MOST POPULAR"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Chair 01"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Otto Ceramic Plate Set of Two"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Gift Box: Hand Wash + Hand Lotion"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Heavy Towel Set"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 31,
+          "total": 76
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "FRAMA Official Site - Timeless Design & Honest Materials",
+        "url": "https://framacph.com/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-15-desktop-overview.jpg",
+        "bytes": 353852,
+        "sha256": "c105251f4c096e4fe593c6a0ecf5a3aaa98b6c29294dfce1bab46c22dc5fd097",
+        "pixel": {
+          "format": "jpg",
+          "height": 3936,
+          "width": 1425
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-15",
+      "view": "mobile",
+      "stage": "overview",
+      "captured_at": "2026-10-16T03:40:57.396Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 4022,
+        "document_width": 375,
+        "font": "Univers, sans-serif",
+        "headings": [
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Shipping Destination"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "14px",
+            "text": "Shopping Cart"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "30px",
+            "text": "RATIO SERIES"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "30px",
+            "text": "CANDLE HOLDERS"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "30px",
+            "text": "CARE REFILLS"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "MOST POPULAR"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Chair 01"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Otto Ceramic Plate Set of Two"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Gift Box: Hand Wash + Hand Lotion"
+          },
+          {
+            "font": "Univers, sans-serif",
+            "size": "16px",
+            "text": "Heavy Towel Set"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 36,
+          "total": 76
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "FRAMA Official Site - Timeless Design & Honest Materials",
+        "url": "https://framacph.com/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-15-mobile-overview.jpg",
+        "bytes": 150264,
+        "sha256": "28b919eb207b978597481084ef98b143711283b37625d04b04b2b94ea0d1134d",
+        "pixel": {
+          "format": "jpg",
+          "height": 4021,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "desktop",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:41:27.316Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 1075,
+        "document_width": 1440,
+        "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+        "headings": [
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "What is a cookie?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How/why the homepage uses cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How long are cookies saved?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "This is how you can reject or delete your cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Deleting cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Do you have any questions?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "64px",
+            "text": "Wall and ceiling cladding"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "25px",
+            "text": "Another approach to wooden surfaces"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "25px",
+            "text": ""
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "25px",
+            "text": "Dinesen Country Home"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 7,
+          "total": 50
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Dinesen - Unique wooden flooring",
+        "url": "https://www.dinesen.com/en",
+        "videos": [
+          {
+            "display_height": 150,
+            "display_width": 300,
+            "height": 720,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1280
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-desktop-viewport.jpg",
+        "bytes": 72656,
+        "sha256": "cd0093a185a544bc26bf5a5359851a778b384cd10b20a0d5383e4bb2ef8c9fd8",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "mobile",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:41:27.738Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 919,
+        "document_width": 390,
+        "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+        "headings": [
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "What is a cookie?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How/why the homepage uses cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How long are cookies saved?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "This is how you can reject or delete your cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Deleting cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Do you have any questions?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "64px",
+            "text": "Wall and ceiling cladding"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "25px",
+            "text": "Another approach to wooden surfaces"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "25px",
+            "text": ""
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "25px",
+            "text": "Dinesen Country Home"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 7,
+          "total": 50
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Dinesen - Unique wooden flooring",
+        "url": "https://www.dinesen.com/en",
+        "videos": [
+          {
+            "display_height": 150,
+            "display_width": 300,
+            "height": 720,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1280
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-mobile-viewport.jpg",
+        "bytes": 5179,
+        "sha256": "2080ce00f9a322c5eca5632cefa1a481e8b23775e5f0c05c4f9f6b38c51d134e",
+        "pixel": {
+          "format": "jpg",
+          "height": 271,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-17",
+      "view": "desktop",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:41:58.917Z",
+      "observed": {
+        "background": "rgb(0, 0, 0)",
+        "color": "rgb(34, 34, 34)",
+        "document_height": 5126,
+        "document_width": 1440,
+        "font": "\"Untitled Sans\", sans-serif",
+        "headings": [
+          {
+            "font": "\"Untitled Sans\", sans-serif",
+            "size": "18.72px",
+            "text": "Lune"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—Armadale"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—Fitzroy"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—Melbourne CBD on Russell"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—Melbourne CBD on Lonsdale"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—Brisbane CBD on Burnett"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—South Brisbane"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—Pacific Fair"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—Rosebery"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "14px",
+            "text": "—Sydney CBD on Castlereagh"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 5,
+          "total": 11
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Lune",
+        "url": "https://lunecroissanterie.com/",
+        "videos": [
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-17-desktop-viewport.jpg",
+        "bytes": 67229,
+        "sha256": "4ac17e397ea78a9841581f143cb4a8638cb301dd5aec6e540e0f6f9a6ddb9240",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-17",
+      "view": "mobile",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:41:59.384Z",
+      "observed": {
+        "background": "rgb(0, 0, 0)",
+        "color": "rgb(34, 34, 34)",
+        "document_height": 3939,
+        "document_width": 375,
+        "font": "\"Untitled Sans\", sans-serif",
+        "headings": [
+          {
+            "font": "\"Untitled Sans\", sans-serif",
+            "size": "18.72px",
+            "text": "Lune"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Armadale"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Fitzroy"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Melbourne CBD on Russell"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Melbourne CBD on Lonsdale"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Brisbane CBD on Burnett"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—South Brisbane"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Pacific Fair"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Rosebery"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Sydney CBD on Castlereagh"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 5,
+          "total": 11
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Lune",
+        "url": "https://lunecroissanterie.com/",
+        "videos": [
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-17-mobile-viewport.jpg",
+        "bytes": 3993,
+        "sha256": "97fa62e255d4de9e7e05da580a669cbef8956b11d46340bae60b241a59c8b9d7",
+        "pixel": {
+          "format": "jpg",
+          "height": 260,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-17",
+      "view": "mobile",
+      "stage": "scroll",
+      "captured_at": "2026-10-16T03:41:59.938Z",
+      "observed": {
+        "background": "rgb(0, 0, 0)",
+        "color": "rgb(34, 34, 34)",
+        "document_height": 3939,
+        "document_width": 375,
+        "font": "\"Untitled Sans\", sans-serif",
+        "headings": [
+          {
+            "font": "\"Untitled Sans\", sans-serif",
+            "size": "18.72px",
+            "text": "Lune"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Armadale"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Fitzroy"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Melbourne CBD on Russell"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Melbourne CBD on Lonsdale"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Brisbane CBD on Burnett"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—South Brisbane"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Pacific Fair"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Rosebery"
+          },
+          {
+            "font": "\"DIN Next LT W01 Regular\", sans-serif",
+            "size": "12px",
+            "text": "—Sydney CBD on Castlereagh"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 5,
+          "total": 11
+        },
+        "scroll_x": 0,
+        "scroll_y": 3095.199951171875,
+        "title": "Lune",
+        "url": "https://lunecroissanterie.com/",
+        "videos": [
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-17-mobile-scroll.jpg",
+        "bytes": 20351,
+        "sha256": "81402cd246c3b3f8d0e19c543b472168d47ad9675070f68507049184e48656f6",
+        "pixel": {
+          "format": "jpg",
+          "height": 811,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-18",
+      "view": "desktop",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:42:22.020Z",
+      "observed": {
+        "background": "rgb(245, 241, 229)",
+        "color": "rgb(56, 56, 57)",
+        "document_height": 9864,
+        "document_width": 1440,
+        "font": "Euclid",
+        "headings": [
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "262 Fifth Avenue"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Shoreline Studio"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Dan Bakstudio"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Polène Flagship Store"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Vinhuset"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "1 Hotel Copenhagen"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Audo House"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Guest House No. 16"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Strandgården"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Galleri Sonja"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 4,
+          "total": 21
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Norm Architects | Designing architecture, interiors and products",
+        "url": "https://normcph.com/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 1778,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 2,
+            "time": 1.571699,
+            "width": 1920
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-18-desktop-viewport.jpg",
+        "bytes": 219377,
+        "sha256": "20fa626d6f066a028ae3d012f1f4467109e609db7e6e3a023dd79ac26daae6d8",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-18",
+      "view": "mobile",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:42:23.030Z",
+      "observed": {
+        "background": "rgb(245, 241, 229)",
+        "color": "rgb(56, 56, 57)",
+        "document_height": 9538,
+        "document_width": 375,
+        "font": "Euclid",
+        "headings": [
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "262 Fifth Avenue"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Shoreline Studio"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Dan Bakstudio"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Polène Flagship Store"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Vinhuset"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "1 Hotel Copenhagen"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Audo House"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Guest House No. 16"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Strandgården"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Galleri Sonja"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 4,
+          "total": 21
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Norm Architects | Designing architecture, interiors and products",
+        "url": "https://normcph.com/",
+        "videos": [
+          {
+            "display_height": 591,
+            "display_width": 1050,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 2,
+            "time": 1.571699,
+            "width": 1920
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-18-mobile-viewport.jpg",
+        "bytes": 46821,
+        "sha256": "6efe851318fbaa6bd85d2c2b0de25c0db7ea3b5fe0568c5c7e4c82a55c49b415",
+        "pixel": {
+          "format": "jpg",
+          "height": 811,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-18",
+      "view": "mobile",
+      "stage": "scroll",
+      "captured_at": "2026-10-16T03:42:24.092Z",
+      "observed": {
+        "background": "rgb(245, 241, 229)",
+        "color": "rgb(56, 56, 57)",
+        "document_height": 9538,
+        "document_width": 375,
+        "font": "Euclid",
+        "headings": [
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "262 Fifth Avenue"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Shoreline Studio"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Dan Bakstudio"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Polène Flagship Store"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Vinhuset"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "1 Hotel Copenhagen"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Audo House"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Guest House No. 16"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Strandgården"
+          },
+          {
+            "font": "adobe-caslon-pro, serif",
+            "size": "13px",
+            "text": "Galleri Sonja"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 4,
+          "total": 21
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Norm Architects | Designing architecture, interiors and products",
+        "url": "https://normcph.com/",
+        "videos": [
+          {
+            "display_height": 591,
+            "display_width": 1050,
+            "height": 1080,
+            "muted": true,
+            "paused": false,
+            "ready_state": 2,
+            "time": 1.571699,
+            "width": 1920
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-18-mobile-scroll.jpg",
+        "bytes": 51579,
+        "sha256": "1ce85f2e6e44b77b27b81423adbbe198fc4ce156b63a0a9d030ee097e4ac78a8",
+        "pixel": {
+          "format": "jpg",
+          "height": 811,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-19",
+      "view": "desktop",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:42:48.064Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 3919,
+        "document_width": 1440,
+        "font": "sans, \"sans Fallback\", Arial, sans-serif",
+        "headings": [
+          {
+            "font": "\"serif\", \"serif Fallback\", serif",
+            "size": "32px",
+            "text": "Stable to Sanctuary: an outstanding CarbonLite eco-home in Bristol"
+          },
+          {
+            "font": "sans, \"sans Fallback\", Arial, sans-serif",
+            "size": "14px",
+            "text": "Prime"
+          },
+          {
+            "font": "sans, \"sans Fallback\", Arial, sans-serif",
+            "size": "14px",
+            "text": "New"
+          },
+          {
+            "font": "sans, \"sans Fallback\", Arial, sans-serif",
+            "size": "14px",
+            "text": "Featured"
+          },
+          {
+            "font": "sans, \"sans Fallback\", Arial, sans-serif",
+            "size": "14px",
+            "text": "Past Sales"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 22,
+          "total": 32
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "The Modern House | Selling the UK's most inspiring living spaces",
+        "url": "https://themodernhouse.com/",
+        "videos": [
+          {
+            "display_height": 676,
+            "display_width": 1250,
+            "height": 360,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 9.42064,
+            "width": 640
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-19-desktop-viewport.jpg",
+        "bytes": 110840,
+        "sha256": "0ab1b26a99a385af6dc267c8b2a6c9d1355ec45ccce0b1943ab349bd3cb5e19c",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-19",
+      "view": "mobile",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:42:48.650Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 6478,
+        "document_width": 375,
+        "font": "sans, \"sans Fallback\", Arial, sans-serif",
+        "headings": [
+          {
+            "font": "\"serif\", \"serif Fallback\", serif",
+            "size": "20px",
+            "text": "Stable to Sanctuary: an outstanding CarbonLite eco-home in Bristol"
+          },
+          {
+            "font": "sans, \"sans Fallback\", Arial, sans-serif",
+            "size": "12px",
+            "text": "Prime"
+          },
+          {
+            "font": "sans, \"sans Fallback\", Arial, sans-serif",
+            "size": "12px",
+            "text": "New"
+          },
+          {
+            "font": "sans, \"sans Fallback\", Arial, sans-serif",
+            "size": "12px",
+            "text": "Featured"
+          },
+          {
+            "font": "sans, \"sans Fallback\", Arial, sans-serif",
+            "size": "12px",
+            "text": "Past Sales"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 22,
+          "total": 32
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "The Modern House | Selling the UK's most inspiring living spaces",
+        "url": "https://themodernhouse.com/",
+        "videos": [
+          {
+            "display_height": 274,
+            "display_width": 507,
+            "height": 360,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 0.02224,
+            "width": 640
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-19-mobile-viewport.jpg",
+        "bytes": 42715,
+        "sha256": "1a3c9dac0fe7c06a246f4e59a20fbcc1ef77b814226c8abf3f15f962862aa9d2",
+        "pixel": {
+          "format": "jpg",
+          "height": 811,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-20",
+      "view": "desktop",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:43:01.107Z",
+      "observed": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 7402,
+        "document_width": 1425,
+        "font": "Secondary, serif",
+        "headings": [
+          {
+            "font": "Tertiary, sans-serif",
+            "size": "8px",
+            "text": "En rupture de stock"
+          },
+          {
+            "font": "Tertiary, sans-serif",
+            "size": "8px",
+            "text": "Bientôt disponible"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "16px",
+            "text": "Europe"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "16px",
+            "text": "Americas"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "16px",
+            "text": "Middle East"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "16px",
+            "text": "Asia & Oceania"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "16px",
+            "text": "International"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "16px",
+            "text": "France"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "16px",
+            "text": "Europe"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "16px",
+            "text": "Asia"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 51,
+          "total": 208
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Polène - Maison de Maroquinerie Parisienne | E-shop – Polène FR",
+        "url": "https://www.polene-paris.com/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 1425,
+            "height": 0,
+            "muted": true,
+            "paused": false,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1080,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 3.782902,
+            "width": 606
+          },
+          {
+            "display_height": 801,
+            "display_width": 1425,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-20-desktop-viewport.jpg",
+        "bytes": 35309,
+        "sha256": "a4c9910ec405d26507fa3bf99f498419c8ac3687e5e41e5356d1ebe2ec43a6df",
+        "pixel": {
+          "format": "jpg",
+          "height": 990,
+          "width": 458
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": false,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-20",
+      "view": "mobile",
+      "stage": "viewport",
+      "captured_at": "2026-10-16T03:43:03.181Z",
+      "observed": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 5233,
+        "document_width": 375,
+        "font": "Secondary, serif",
+        "headings": [
+          {
+            "font": "Tertiary, sans-serif",
+            "size": "10px",
+            "text": "En rupture de stock"
+          },
+          {
+            "font": "Tertiary, sans-serif",
+            "size": "10px",
+            "text": "Bientôt disponible"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "28px",
+            "text": "Europe"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "28px",
+            "text": "Americas"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "28px",
+            "text": "Middle East"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "28px",
+            "text": "Asia & Oceania"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "28px",
+            "text": "International"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "28px",
+            "text": "France"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "28px",
+            "text": "Europe"
+          },
+          {
+            "font": "Secondary, serif",
+            "size": "28px",
+            "text": "Asia"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 59,
+          "total": 208
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Polène - Maison de Maroquinerie Parisienne | E-shop – Polène FR",
+        "url": "https://www.polene-paris.com/",
+        "videos": [
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 720,
+            "muted": true,
+            "paused": true,
+            "ready_state": 1,
+            "time": 0,
+            "width": 1592
+          },
+          {
+            "display_height": 844,
+            "display_width": 375,
+            "height": 480,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 4.206238,
+            "width": 270
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          },
+          {
+            "display_height": 211,
+            "display_width": 375,
+            "height": 0,
+            "muted": true,
+            "paused": true,
+            "ready_state": 0,
+            "time": 0,
+            "width": 0
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-20-mobile-viewport.jpg",
+        "bytes": 27466,
+        "sha256": "c3b926f5104a20d663dc071ab0a034eba25027a9970e7c232fb9aef965d3e297",
+        "pixel": {
+          "format": "jpg",
+          "height": 811,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-21",
+      "view": "desktop",
+      "stage": "menu",
+      "captured_at": "2026-10-16T03:43:58.604Z",
+      "observed": {
+        "background": "rgb(36, 37, 37)",
+        "color": "rgb(199, 192, 181)",
+        "document_height": 5793,
+        "document_width": 1425,
+        "font": "Roboto, sans-serif",
+        "headings": [
+          {
+            "font": "\"Soehne Schmal leicht\"",
+            "size": "72px",
+            "text": "A Relentless Pursuit of Excellence"
+          },
+          {
+            "font": "\"Soehne Schmal leicht\"",
+            "size": "62px",
+            "text": "Everything is Important"
+          },
+          {
+            "font": "\"Soehne Schmal leicht\"",
+            "size": "62px",
+            "text": "LuxuryThrough Choice"
+          },
+          {
+            "font": "\"Soehne Schmal leicht\"",
+            "size": "62px",
+            "text": "DesigningTo Delight"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 51,
+          "total": 74
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Singer Vehicle Design | Restored. Reimagined. Reborn",
+        "url": "https://singervehicledesign.com/",
+        "videos": [],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-21-desktop-menu.jpg",
+        "bytes": 135163,
+        "sha256": "c1c19287ca6925b52db724ba9271175845f41bc784f618a35631fc661e0add7a",
+        "pixel": {
+          "format": "jpg",
+          "height": 990,
+          "width": 1425
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-21",
+      "view": "mobile",
+      "stage": "menu",
+      "captured_at": "2026-10-16T03:43:59.697Z",
+      "observed": {
+        "background": "rgb(36, 37, 37)",
+        "color": "rgb(199, 192, 181)",
+        "document_height": 4833,
+        "document_width": 375,
+        "font": "Roboto, sans-serif",
+        "headings": [
+          {
+            "font": "\"Soehne Schmal leicht\"",
+            "size": "46px",
+            "text": "A Relentless Pursuit of Excellence"
+          },
+          {
+            "font": "\"Soehne Schmal leicht\"",
+            "size": "40px",
+            "text": "Everything is Important"
+          },
+          {
+            "font": "\"Soehne Schmal leicht\"",
+            "size": "46px",
+            "text": "LuxuryThrough Choice"
+          },
+          {
+            "font": "\"Soehne Schmal leicht\"",
+            "size": "46px",
+            "text": "DesigningTo Delight"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 54,
+          "total": 74
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Singer Vehicle Design | Restored. Reimagined. Reborn",
+        "url": "https://singervehicledesign.com/",
+        "videos": [],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-21-mobile-menu.jpg",
+        "bytes": 14181,
+        "sha256": "e17b948411eb64c577455b98392fbfa6da7af853e487380de5c9dbcf4879adb0",
+        "pixel": {
+          "format": "jpg",
+          "height": 811,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-13",
+      "view": "desktop",
+      "stage": "after-intro",
+      "captured_at": "2026-10-16T03:44:28.840Z",
+      "observed": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(103, 118, 142)",
+        "document_height": 8815,
+        "document_width": 1440,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "64px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE TABLE\n    "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "A PLACE THE WORLD\n      TOOK NOTE OF\n      Recognition With Substance"
+          },
+          {
+            "font": "\"Plus Jakarta Sans\", sans-serif",
+            "size": "24px",
+            "text": "MENA’S 50 BEST, NO. 1"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 16,
+          "total": 27
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 844,
+            "display_width": 1440,
+            "height": 1156,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 7.802742,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-desktop-after-intro.jpg",
+        "bytes": 16433,
+        "sha256": "027021c4761abb3079e969f5642023c13274df1e9c45e444193f29fdb3e3df45",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 463
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": false,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-13",
+      "view": "mobile",
+      "stage": "after-intro",
+      "captured_at": "2026-10-16T03:44:29.509Z",
+      "observed": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(103, 118, 142)",
+        "document_height": 8570,
+        "document_width": 390,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "14px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "14px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "39.04px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE TABLE\n    "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "25px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "25px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "31.232px",
+            "text": "A PLACE THE WORLD\n      TOOK NOTE OF\n      Recognition With Substance"
+          },
+          {
+            "font": "\"IvyOra Display\", IvyOra, serif",
+            "size": "24px",
+            "text": "MENA’S 50 BEST, NO. 1"
+          }
+        ],
+        "height": 844,
+        "images": {
+          "decoded": 18,
+          "total": 27
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 844,
+            "display_width": 390,
+            "height": 1156,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 8.472004,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-mobile-after-intro.jpg",
+        "bytes": 3077,
+        "sha256": "46345219c1f3b5761955ca54dab9513fe44b4497e0d04baa410c97f4515881d0",
+        "pixel": {
+          "format": "jpg",
+          "height": 271,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "desktop",
+      "stage": "unobstructed",
+      "captured_at": "2026-10-16T03:45:18.806Z",
+      "observed": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(103, 118, 142)",
+        "document_height": 8946,
+        "document_width": 1440,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "64px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE TABLE\n    "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "A PLACE THE WORLD\n      TOOK NOTE OF\n      Recognition With Substance"
+          },
+          {
+            "font": "\"Plus Jakarta Sans\", sans-serif",
+            "size": "24px",
+            "text": "MENA’S 50 BEST, NO. 1"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 15,
+          "total": 27
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 1440,
+            "height": 1156,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 1.616372,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-desktop-unobstructed.jpg",
+        "bytes": 49026,
+        "sha256": "11b29fe23b055880fbc3fd3e1f504f6118cb8e9ef5ee8ba9baeb41a0c6a7a1d4",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": false,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "mobile",
+      "stage": "unobstructed",
+      "captured_at": "2026-10-16T03:45:19.194Z",
+      "observed": {
+        "background": "rgb(255, 255, 255)",
+        "color": "rgb(103, 118, 142)",
+        "document_height": 8946,
+        "document_width": 1440,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "64px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE TABLE\n    "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "A PLACE THE WORLD\n      TOOK NOTE OF\n      Recognition With Substance"
+          },
+          {
+            "font": "\"Plus Jakarta Sans\", sans-serif",
+            "size": "24px",
+            "text": "MENA’S 50 BEST, NO. 1"
+          }
+        ],
+        "height": 1000,
+        "images": {
+          "decoded": 15,
+          "total": 27
+        },
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 1440,
+            "height": 1156,
+            "muted": true,
+            "paused": false,
+            "ready_state": 4,
+            "time": 1.967308,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "muted": true,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-mobile-unobstructed.jpg",
+        "bytes": 48619,
+        "sha256": "ea19991c8722d87ce62671306601bcbe7150d419d7ec0c5c87f526cdad430326",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": false,
+      "valid_image_width": true,
+      "valid_viewport": false
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "desktop",
+      "stage": "clean",
+      "captured_at": "2026-10-16T03:45:42.634Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 6306,
+        "document_width": 1425,
+        "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+        "headings": [
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "What is a cookie?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How/why the homepage uses cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How long are cookies saved?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "This is how you can reject or delete your cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Deleting cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Do you have any questions?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "64px",
+            "text": "Wall and ceiling cladding"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "25px",
+            "text": "Another approach to wooden surfaces"
+          }
+        ],
+        "height": 1000,
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Dinesen - Unique wooden flooring",
+        "url": "https://www.dinesen.com/en",
+        "videos": [
+          {
+            "display_height": 150,
+            "display_width": 300,
+            "height": 720,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1280
+          }
+        ],
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-desktop-clean.jpg",
+        "bytes": 58018,
+        "sha256": "03ea35d56f6ffb07c8f254ae0d93bdf6f6efcf19751cbc55d7affb68c6376bf1",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 463
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": false,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "mobile",
+      "stage": "clean",
+      "captured_at": "2026-10-16T03:45:43.089Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "document_height": 7202,
+        "document_width": 375,
+        "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+        "headings": [
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "What is a cookie?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How/why the homepage uses cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How long are cookies saved?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "This is how you can reject or delete your cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Deleting cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Do you have any questions?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "64px",
+            "text": "Wall and ceiling cladding"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "25px",
+            "text": "Another approach to wooden surfaces"
+          }
+        ],
+        "height": 844,
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Dinesen - Unique wooden flooring",
+        "url": "https://www.dinesen.com/en",
+        "videos": [
+          {
+            "display_height": 150,
+            "display_width": 300,
+            "height": 720,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1280
+          }
+        ],
+        "width": 390
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-mobile-clean.jpg",
+        "bytes": 6163,
+        "sha256": "4d3f50787643991e13cc8c84deda0eaf623e332ba063f6e4a1790b96f2900a6c",
+        "pixel": {
+          "format": "jpg",
+          "height": 260,
+          "width": 375
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "desktop",
+      "stage": "verified",
+      "captured_at": "2026-10-16T03:46:30.052Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "document_height": 6306,
+        "document_width": 1440,
+        "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+        "headings": [
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "What is a cookie?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How/why the homepage uses cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How long are cookies saved?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "This is how you can reject or delete your cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Deleting cookies"
+          }
+        ],
+        "height": 1000,
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Dinesen - Unique wooden flooring",
+        "url": "https://www.dinesen.com/en",
+        "videos": [
+          {
+            "display_height": 150,
+            "display_width": 300,
+            "height": 720,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1280
+          }
+        ],
+        "width": 1440
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-desktop-verified.jpg",
+        "bytes": 155798,
+        "sha256": "25864043c880c35955122cc778b78e2cdf3322cef4b5bb6873278ce4a3394911",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "mobile",
+      "stage": "verified",
+      "captured_at": "2026-10-16T03:46:33.142Z",
+      "observed": {
+        "background": "rgba(0, 0, 0, 0)",
+        "document_height": 7202,
+        "document_width": 375,
+        "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+        "headings": [
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "What is a cookie?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How/why the homepage uses cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "How long are cookies saved?"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "This is how you can reject or delete your cookies"
+          },
+          {
+            "font": "AtlasGrotesk, \"Helvetica Neue\", HelveticaNeue, Helvetica, Arial, sans-serif",
+            "size": "15px",
+            "text": "Deleting cookies"
+          }
+        ],
+        "height": 844,
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Dinesen - Unique wooden flooring",
+        "url": "https://www.dinesen.com/en",
+        "videos": [
+          {
+            "display_height": 150,
+            "display_width": 300,
+            "height": 720,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1280
+          }
+        ],
+        "width": 390
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-mobile-verified.jpg",
+        "bytes": 49696,
+        "sha256": "c38b73c8784e4029affb4f65c25f4eda98246aaf9cde66d6780ddcdecb6baa57",
+        "pixel": {
+          "format": "jpg",
+          "height": 844,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-13",
+      "view": "desktop",
+      "stage": "settled",
+      "captured_at": "2026-10-16T03:47:42.521Z",
+      "observed": {
+        "document_height": 8946,
+        "document_width": 1440,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "18px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "64px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "45px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "28px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          }
+        ],
+        "height": 1000,
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 1000,
+            "display_width": 1440,
+            "height": 1156,
+            "paused": false,
+            "ready_state": 4,
+            "time": 3.821018,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 1440
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1000
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-desktop-settled.jpg",
+        "bytes": 34198,
+        "sha256": "4ffdb00645a9533ff2e403c5ad3ae2aa62d5ecb4e11f0236fe1ff9b5b89945bd",
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-13",
+      "view": "mobile",
+      "stage": "settled",
+      "captured_at": "2026-10-16T03:47:48.022Z",
+      "observed": {
+        "document_height": 8602,
+        "document_width": 390,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "14px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "14px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "39.04px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "25px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "25px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          }
+        ],
+        "height": 844,
+        "scroll_x": 0,
+        "scroll_y": 0,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 844,
+            "display_width": 390,
+            "height": 1156,
+            "paused": false,
+            "ready_state": 4,
+            "time": 9.382086,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 390
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-mobile-settled.jpg",
+        "bytes": 13781,
+        "sha256": "4a1ce4ff5a10f5836332d8e6c5c0c89f28b42bc7b97f0366172f0f6f593d9667",
+        "pixel": {
+          "format": "jpg",
+          "height": 844,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-13",
+      "view": "mobile",
+      "stage": "narrative",
+      "captured_at": "2026-10-16T03:48:16.338Z",
+      "observed": {
+        "document_height": 8582,
+        "document_width": 390,
+        "font": "Inter, sans-serif",
+        "headings": [
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "14px",
+            "text": "RESERVATIONS"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "14px",
+            "text": "BISTRO"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "39.04px",
+            "text": "WHERE THE SETTING\n      \n    \n    \n      \n        BECOMES PART OF THE "
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "25px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "\"Ivyora Display\", sans-serif",
+            "size": "25px",
+            "text": "Dining at the Edge of History"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Setting\n              Where Place Defines Presence"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Composition\n              Every Detail Holds Intention"
+          },
+          {
+            "font": "IvyOraDisplay, serif",
+            "size": "24px",
+            "text": "Atmosphere\n              A Rhythm That Settles In"
+          }
+        ],
+        "height": 844,
+        "scroll_x": 0,
+        "scroll_y": 1688,
+        "title": "Khufu’s | Award-Winning Elevated Egyptian Dining At The Pyramids",
+        "url": "https://khufus.com/",
+        "videos": [
+          {
+            "display_height": 844,
+            "display_width": 390,
+            "height": 1156,
+            "paused": true,
+            "ready_state": 4,
+            "time": 9.732229,
+            "width": 1788
+          },
+          {
+            "display_height": 0,
+            "display_width": 0,
+            "height": 1156,
+            "paused": true,
+            "ready_state": 4,
+            "time": 0,
+            "width": 1788
+          }
+        ],
+        "width": 390
+      },
+      "clip": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-mobile-narrative.jpg",
+        "bytes": 12534,
+        "sha256": "ebed25877b418b22f0366645f5255352bcf4624ae98b0c1738374771f03fa4c3",
+        "pixel": {
+          "format": "jpg",
+          "height": 844,
+          "width": 390
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-20",
+      "view": "desktop",
+      "stage": "recovery",
+      "captured_at": "2026-10-16T03:49:09.685Z",
+      "observed": {
+        "document_height": 7402,
+        "document_width": 1425,
+        "height": 1000,
+        "title": "Polène - Maison de Maroquinerie Parisienne | E-shop – Polène FR",
+        "url": "https://www.polene-paris.com/",
+        "width": 1440
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-20-desktop-recovery.jpg",
+        "bytes": 130843,
+        "sha256": "d39e8e6699d090ccc6505becb398c702ca4add71b95bb085e2993618aad67cf3",
+        "pixel": {
+          "format": "jpg",
+          "height": 990,
+          "width": 1425
+        }
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "desktop",
+      "stage": "final",
+      "captured_at": "2026-10-16T03:59:21.837Z",
+      "observed": {
+        "document_height": 6306,
+        "document_width": 1440,
+        "height": 1000,
+        "title": "Dinesen - Unique wooden flooring",
+        "url": "https://www.dinesen.com/en",
+        "width": 1440
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-desktop-final.jpg",
+        "bytes": 144137,
+        "pixel": {
+          "format": "jpg",
+          "height": 1000,
+          "width": 1440
+        },
+        "sha256": "e839b863b5f9e3f03eb04e40479695b7d639b52697df4b7d1f2be025397b2fae"
+      }
+    },
+    {
+      "reference_id": "reference-16",
+      "view": "mobile",
+      "stage": "final",
+      "captured_at": "2026-10-16T03:59:33.417Z",
+      "observed": {
+        "document_height": 7202,
+        "document_width": 375,
+        "height": 844,
+        "title": "Dinesen - Unique wooden flooring",
+        "url": "https://www.dinesen.com/en",
+        "width": 390
+      },
+      "valid_url": true,
+      "valid_image_width": true,
+      "valid_viewport": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-mobile-final.jpg",
+        "bytes": 43025,
+        "pixel": {
+          "format": "jpg",
+          "height": 811,
+          "width": 375
+        },
+        "sha256": "cc153c1bbae3dd766988bfe4773ab4cbf3ba557d6d65130c0e42f7685359417b"
+      }
+    }
+  ]
+}

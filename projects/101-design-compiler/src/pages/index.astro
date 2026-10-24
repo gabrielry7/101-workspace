@@ -1,0 +1,41 @@
+---
+import Foundation from '../layouts/Foundation.astro';
+import restaurante from '../../fixtures/v1/restaurante.json';
+import gimnasio from '../../fixtures/v1/gimnasio.json';
+import ferreteria from '../../fixtures/v1/ferreteria.json';
+import { validateBundle } from '../validation/validate.ts';
+
+const fixtures = Object.entries({ restaurante, gimnasio, ferreteria }).map(([name, bundle]) => {
+  const result = validateBundle(bundle);
+  if (!result.success || !result.data) throw new Error(`${name}: ${JSON.stringify(result.diagnostics)}`);
+  return { name, ...result.data };
+});
+---
+<Foundation title="101 Design Compiler · H0 Foundation">
+  <p>UnoCeroUno / Desarrollo de plataforma</p>
+  <p><a href="/h3-media-pilot/">H3: prueba de medios reales autorizados</a>. Piloto interno con hueco documental conservado.</p>
+  <h1>H0 · Foundation</h1>
+  <p>Contratos candidatos y fixtures validados. Los datos son ficticios y los perfiles y planes fueron escritos manualmente para pruebas. Esta página es un inspector de contratos; no representa sitios de clientes.</p>
+  <p><strong>Implementado:</strong> contratos V1, validación, taxonomía auditada, protocolo upstream candidato, registry de capacidades y planner semántico determinista. <strong>Pendiente:</strong> medios, representación visual, dirección artística e integración con 101-world-model.</p>
+  <p>Los paquetes siguientes conservan los fixtures manuales H0. Los planes generados H2 y sus bloqueos se verifican con <code>npm run planner:fixtures</code>.</p>
+  {fixtures.map(fixture => (
+    <section aria-labelledby={`title-${fixture.name}`}>
+      <h2 id={`title-${fixture.name}`}>{fixture.name} · fixture ficticio</h2>
+      <p><code>{fixture.input.business_id}</code> · contrato {fixture.input.schema_version} · PASSED</p>
+      <p>Arquetipos de prueba: {fixture.profile.archetypes.map(x => x.id).join(', ')}. Medios: ninguno. Backend: no conectado. Componentes comerciales: pendientes.</p>
+      <div class="scroll" role="region" aria-label={`Capacidades de ${fixture.name}`} tabindex="0">
+        <table>
+          <caption>Estado factual y disposición del plan manual</caption>
+          <thead><tr><th scope="col">Capacidad</th><th scope="col">Evidencia</th><th scope="col">Plan</th></tr></thead>
+          <tbody>{fixture.capabilities.capabilities.map(cap => (
+            <tr>
+              <th scope="row"><code>{cap.id}</code></th>
+              <td><code>{cap.status}</code></td>
+              <td>{fixture.plan.capabilities.includes(cap.id) ? 'Módulo semántico de prueba' : fixture.plan.excluded_capabilities.find(x => x.id === cap.id && x.scope_id === cap.scope_id)?.reason}</td>
+            </tr>
+          ))}</tbody>
+        </table>
+      </div>
+    </section>
+  ))}
+</Foundation>

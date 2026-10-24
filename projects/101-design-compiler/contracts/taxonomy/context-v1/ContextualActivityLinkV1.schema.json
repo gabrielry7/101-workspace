@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "COEXISTING",
+        "ALTERNATIVE"
+      ]
+    },
+    "archetype_ids": {
+      "minItems": 2,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "food_hospitality",
+          "product_retail",
+          "appointment_service",
+          "membership_and_classes",
+          "lodging",
+          "field_service_and_quote",
+          "vehicle_service",
+          "professional_advisory",
+          "education_programs",
+          "events_and_entertainment",
+          "industrial_b2b",
+          "property_and_spaces",
+          "transport_and_logistics",
+          "regulated_services"
+        ]
+      }
+    },
+    "evidence_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "scope_id",
+    "kind",
+    "archetype_ids",
+    "evidence_ids"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ContextualActivityLinkV1:1.0.0",
+  "title": "ContextualActivityLinkV1",
+  "description": "B1 associated activity interpretation; exact references/scopes and semantic verification required, not operational confirmation."
+}

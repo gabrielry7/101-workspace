@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "2.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,79}$"
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "feeling": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "principle": {
+      "type": "string",
+      "minLength": 30,
+      "maxLength": 700
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 30,
+      "maxLength": 1000
+    },
+    "references": {
+      "minItems": 1,
+      "maxItems": 21,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^reference-\\d{2}$"
+      }
+    },
+    "risks": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "recipe": {
+      "type": "object",
+      "properties": {
+        "navigation": {
+          "type": "string",
+          "enum": [
+            "Top",
+            "Rail",
+            "Index"
+          ]
+        },
+        "hero": {
+          "type": "string",
+          "enum": [
+            "Split",
+            "Monument",
+            "Diptych",
+            "Stage"
+          ]
+        },
+        "collection": {
+          "type": "string",
+          "enum": [
+            "Grid",
+            "Rows",
+            "Mosaic"
+          ]
+        },
+        "mobile_collection": {
+          "type": "string",
+          "enum": [
+            "Stack",
+            "Compact",
+            "Sequence"
+          ]
+        },
+        "narrative": {
+          "type": "string",
+          "enum": [
+            "BeforeCollection",
+            "AfterCollection"
+          ]
+        },
+        "visit": {
+          "type": "string",
+          "enum": [
+            "Columns",
+            "Band"
+          ]
+        },
+        "proportion": {
+          "type": "string",
+          "enum": [
+            "balanced",
+            "image-led",
+            "type-led"
+          ]
+        },
+        "measure": {
+          "type": "string",
+          "enum": [
+            "wide",
+            "contained"
+          ]
+        }
+      },
+      "required": [
+        "navigation",
+        "hero",
+        "collection",
+        "mobile_collection",
+        "narrative",
+        "visit",
+        "proportion",
+        "measure"
+      ],
+      "additionalProperties": false
+    },
+    "tokens": {
+      "type": "object",
+      "properties": {
+        "palette": {
+          "type": "string",
+          "enum": [
+            "paper",
+            "tomato",
+            "night",
+            "olive"
+          ]
+        },
+        "voice": {
+          "type": "string",
+          "enum": [
+            "editorial",
+            "humanist",
+            "grotesk"
+          ]
+        },
+        "scale": {
+          "type": "string",
+          "enum": [
+            "monument",
+            "display",
+            "compact"
+          ]
+        },
+        "rhythm": {
+          "type": "string",
+          "enum": [
+            "airy",
+            "measured",
+            "tight"
+          ]
+        },
+        "corners": {
+          "type": "string",
+          "enum": [
+            "square",
+            "soft"
+          ]
+        },
+        "motion": {
+          "type": "string",
+          "const": "quiet"
+        }
+      },
+      "required": [
+        "palette",
+        "voice",
+        "scale",
+        "rhythm",
+        "corners",
+        "motion"
+      ],
+      "additionalProperties": false
+    },
+    "constraints_acknowledged": {
+      "type": "object",
+      "properties": {
+        "truth": {
+          "type": "boolean",
+          "const": true
+        },
+        "rights": {
+          "type": "boolean",
+          "const": true
+        },
+        "modules": {
+          "type": "boolean",
+          "const": true
+        },
+        "no_code": {
+          "type": "boolean",
+          "const": true
+        }
+      },
+      "required": [
+        "truth",
+        "rights",
+        "modules",
+        "no_code"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "context_sha256",
+    "label",
+    "feeling",
+    "principle",
+    "rationale",
+    "references",
+    "risks",
+    "recipe",
+    "tokens",
+    "constraints_acknowledged"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ArtDirectionV2:2.0.0",
+  "title": "ArtDirectionV2",
+  "description": "B3 associated contextual local-lab grammar/review; semantic, byte and current-use gates required. No human approval or commercial integration."
+}

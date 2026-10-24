@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-reference-application-baseline-01",
+  "created_at": "2026-10-16T13:24:29.593Z",
+  "steps": [
+    {
+      "id": "contracts",
+      "started_at": "2026-10-16T13:24:29.609Z",
+      "finished_at": "2026-10-16T13:24:43.805Z",
+      "wall_seconds": 14.195711500000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/contracts.txt",
+      "log_sha256": "c31b63019752ecce8f909c1c5a90ab10243dec33ef68a2599c0cb12fa6a4367e"
+    },
+    {
+      "id": "tests",
+      "started_at": "2026-10-16T13:24:43.809Z",
+      "finished_at": "2026-10-16T13:27:05.187Z",
+      "wall_seconds": 141.379158,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/tests.txt",
+      "log_sha256": "a6df91d349ef87733174a39beb6d8cf3fd3172e052d74640ed086c3c78c13c25"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-16T13:27:05.189Z",
+      "finished_at": "2026-10-16T13:27:39.217Z",
+      "wall_seconds": 34.028847899999995,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/check.txt",
+      "log_sha256": "9a0f94f6a0c8e52e379293b66955cf0e07e3a745f7926291c6d1a68131346aee"
+    },
+    {
+      "id": "validate",
+      "started_at": "2026-10-16T13:27:39.219Z",
+      "finished_at": "2026-10-16T13:27:40.218Z",
+      "wall_seconds": 0.99952429999999,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/validate.txt",
+      "log_sha256": "c69bbe0277e4073bddb83b8d77c8996e8c3512e8223499d7947632d37e3681f4"
+    },
+    {
+      "id": "build",
+      "started_at": "2026-10-16T13:27:40.219Z",
+      "finished_at": "2026-10-16T13:27:52.439Z",
+      "wall_seconds": 12.219320800000016,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/build.txt",
+      "log_sha256": "3204f3299fba0c8af22e9bfd4b72cc453436beb4f2dc70f9d77fc112e6765f92"
+    },
+    {
+      "id": "b3-scenario",
+      "started_at": "2026-10-16T13:27:52.442Z",
+      "finished_at": "2026-10-16T13:27:52.847Z",
+      "wall_seconds": 0.40505180000001567,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/b3-scenario.txt",
+      "log_sha256": "837363babcb80a4df67c28bd2febb948250ecd3aba97368f760ca26c735651d3"
+    },
+    {
+      "id": "b3-design-replay",
+      "started_at": "2026-10-16T13:27:52.848Z",
+      "finished_at": "2026-10-16T13:27:53.813Z",
+      "wall_seconds": 0.9649279000000097,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/b3-design-replay.txt",
+      "log_sha256": "b8feb839b12906f24becaf319468674714861ea6ddfcdb40da8bcb97d1833262"
+    },
+    {
+      "id": "b2-media",
+      "started_at": "2026-10-16T13:27:53.815Z",
+      "finished_at": "2026-10-16T13:28:38.643Z",
+      "wall_seconds": 44.8292291,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/b2-media.txt",
+      "log_sha256": "9f5dae56ccdf99c72f7666d214f66749a6859f56bfc584bd9783e152a319f2d2"
+    },
+    {
+      "id": "b2-library",
+      "started_at": "2026-10-16T13:28:38.646Z",
+      "finished_at": "2026-10-16T13:28:42.144Z",
+      "wall_seconds": 3.4980628000000142,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/b2-library.txt",
+      "log_sha256": "fce91f502950caa86646772ed83fcf5d68fd6675622c2c0fb1da716a7b61c557"
+    },
+    {
+      "id": "b1-replay",
+      "started_at": "2026-10-16T13:28:42.145Z",
+      "finished_at": "2026-10-16T13:28:44.077Z",
+      "wall_seconds": 1.9314375,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/b1-replay.txt",
+      "log_sha256": "b3216e3a4c37b58fa9c6aeb50bacbf0feff9609c5f98a627b8b99ff6ece23a18"
+    },
+    {
+      "id": "taxonomy",
+      "started_at": "2026-10-16T13:28:44.078Z",
+      "finished_at": "2026-10-16T13:28:45.230Z",
+      "wall_seconds": 1.1518113000000012,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/taxonomy.txt",
+      "log_sha256": "5bdb2a1a3ebcde0961f22b7b26ef4a64a53c24ddefb9272b9eb91f7243bcad0a"
+    },
+    {
+      "id": "planner-replay",
+      "started_at": "2026-10-16T13:28:45.232Z",
+      "finished_at": "2026-10-16T13:28:45.674Z",
+      "wall_seconds": 0.4415921000000089,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/planner-replay.txt",
+      "log_sha256": "846632f40f77a077944ac55e6dbd42683e92b5673ae665dda82ef6ddea8b424a"
+    },
+    {
+      "id": "media-replay",
+      "started_at": "2026-10-16T13:28:45.675Z",
+      "finished_at": "2026-10-16T13:28:46.531Z",
+      "wall_seconds": 0.8564489000000176,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/media-replay.txt",
+      "log_sha256": "a238a3a587e30885acb326264f26b0e73e9dc9402294c0efdb9ce1df860c22e4"
+    },
+    {
+      "id": "media-verify",
+      "started_at": "2026-10-16T13:28:46.536Z",
+      "finished_at": "2026-10-16T13:28:47.340Z",
+      "wall_seconds": 0.8035938000000314,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/media-verify.txt",
+      "log_sha256": "dfed262ff832904ddba0e2baf16b17ba2b8c8fd30797be7128c73b59f8f0f568"
+    },
+    {
+      "id": "composition-replay",
+      "started_at": "2026-10-16T13:28:47.342Z",
+      "finished_at": "2026-10-16T13:28:48.073Z",
+      "wall_seconds": 0.7316134000000311,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/composition-replay.txt",
+      "log_sha256": "938c870a6ab24e641e885a169da8739c49ab4a438e4ecd16288b5abeaa497b76"
+    },
+    {
+      "id": "composition-verify",
+      "started_at": "2026-10-16T13:28:48.074Z",
+      "finished_at": "2026-10-16T13:28:48.841Z",
+      "wall_seconds": 0.7670275999999722,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/composition-verify.txt",
+      "log_sha256": "51e973bac7283abc33be1ac1fefc8489483c5957b9c3b09196e8cd214504a635"
+    },
+    {
+      "id": "design-replay",
+      "started_at": "2026-10-16T13:28:48.843Z",
+      "finished_at": "2026-10-16T13:28:49.666Z",
+      "wall_seconds": 0.8231403000000282,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/design-replay.txt",
+      "log_sha256": "debf7dd8e16ff43197df66a57c304cbc0eee46ab637661bb48d2f195dd00c13c"
+    },
+    {
+      "id": "design-verify",
+      "started_at": "2026-10-16T13:28:49.669Z",
+      "finished_at": "2026-10-16T13:28:50.557Z",
+      "wall_seconds": 0.8881614999999874,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/design-verify.txt",
+      "log_sha256": "505d634e67d6f6746e96ab3839d7b84cfeaa422ec7010f545eb385959bd5bc7e"
+    },
+    {
+      "id": "audit-verify",
+      "started_at": "2026-10-16T13:28:50.561Z",
+      "finished_at": "2026-10-16T13:28:52.463Z",
+      "wall_seconds": 1.9022284999999683,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/audit-verify.txt",
+      "log_sha256": "fa7395471691e7226ee26bd6c4b95f14eb14c431cbe0873d0becb430b6d50f05"
+    },
+    {
+      "id": "cohort-replay",
+      "started_at": "2026-10-16T13:28:52.464Z",
+      "finished_at": "2026-10-16T13:28:53.302Z",
+      "wall_seconds": 0.8380597000000416,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/cohort-replay.txt",
+      "log_sha256": "ede63bd8361a8e64a84792533fb27f35dc2d930d7105490b977b2a7f78992c45"
+    },
+    {
+      "id": "cohort-verify",
+      "started_at": "2026-10-16T13:28:53.305Z",
+      "finished_at": "2026-10-16T13:28:55.948Z",
+      "wall_seconds": 2.642793799999985,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/cohort-verify.txt",
+      "log_sha256": "f6fea28c3dbd8694a321092ca31ea68f19fa9b900bc73f28be8882ecfc0f7931"
+    },
+    {
+      "id": "lock-verify",
+      "started_at": "2026-10-16T13:28:55.950Z",
+      "finished_at": "2026-10-16T13:29:00.230Z",
+      "wall_seconds": 4.27990989999997,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/lock-verify.txt",
+      "log_sha256": "f2549cb3343d7d767a2f5a56e53e6338cfc692d27e9ec5c95b2f74d2252cf3f1"
+    },
+    {
+      "id": "h9-inventory",
+      "started_at": "2026-10-16T13:29:00.233Z",
+      "finished_at": "2026-10-16T13:29:00.769Z",
+      "wall_seconds": 0.5365527000000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-baseline-01/h9-inventory.txt",
+      "log_sha256": "f45cdb31ff61042b80640b33dce172a2f8cab339e03641f5e72a655645fdbecb"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

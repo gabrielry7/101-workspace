@@ -1,0 +1,1201 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "ASSISTANT_VISUAL_REFERENCE_REVIEW",
+  "status": "REPRESENTATIVE_VIEWS_REVIEWED_WITH_LIMITS",
+  "evaluation_date": "2026-10-15",
+  "timezone": "America/Bogota",
+  "recorded_at": "2026-10-16T03:54:19.451Z",
+  "authority": "ASSISTANT_OBSERVATIONS_NOT_NEW_USER_VOTES",
+  "source_commit": "9a7995c546c069ef9b150aa6f37de02a0ff2d20e",
+  "source_corpus_path": "data/reference/design/corpus-v1.json",
+  "source_corpus_bytes_sha256": "567192d71fa17b2b562b68549f97764c5e79d0b706b9b4b77aeed4ea446739e9",
+  "source_corpus_semantic_sha256": "cdba0288b3ece26a8387529bbe19b0b5a6fc7c9670f08593d65a7a39d013a399",
+  "source_document_path": "data/reference/design/101_referencias_aprobadas_completas_v01.md",
+  "source_document_bytes_sha256": "85cf092127e3703f699fb53a8ed8553bcf787f611e03a071025362702501ddd9",
+  "coverage": {
+    "references": 21,
+    "representative_views": 42,
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    },
+    "all_subpages_audited": false,
+    "all_videos_quality_verified": false,
+    "accessibility_certified": false,
+    "network_performance_audited": false
+  },
+  "runtime_consumption": "ASSOCIATED_RESEARCH_INPUT_NOT_IN_ACTIVE_PRODUCER_CONTEXT",
+  "user_approval_of_generated_designs": "NOT_COLLECTED",
+  "training": "NOT_PERFORMED",
+  "external_assets_reused": false,
+  "screenshot_use": "INTERNAL_REFERENCE_ANALYSIS_ONLY_NOT_LICENSED_MEDIA_ASSETS",
+  "supplements": [
+    {
+      "reference_id": "reference-16",
+      "url": "https://www.dinesen.com/en",
+      "view": "desktop",
+      "captured_at": null,
+      "recorded_at": "2026-10-16T03:54:19.450Z",
+      "time_note": "Captured earlier in this same inspection session; exact capture timestamp was not logged. Original returned screenshot bytes retained unchanged.",
+      "path": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-desktop-clip-supplement.jpg",
+      "sha256": "25864043c880c35955122cc778b78e2cdf3322cef4b5bb6873278ce4a3394911",
+      "bytes": 155798,
+      "pixel": {
+        "format": "jpg",
+        "height": 1000,
+        "width": 1440
+      }
+    }
+  ],
+  "references": [
+    {
+      "id": "reference-01",
+      "name": "OSIP",
+      "url": "https://osiprestaurant.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Favorita / excepcional",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "La entrada abre un díptico fotográfico y después una secuencia horizontal de texto e imagen con mucho espacio vacío.",
+        "typography": "Serif de trazo peculiar y espaciado amplio; BrutonMedium aparece en el DOM. La identidad no depende de un gran titular convencional.",
+        "palette_and_media": "Blanco cálido y fotografías de luz natural, jardines y arquitectura; las imágenes aportan el carácter del lugar.",
+        "mobile": "El recorrido pasa a una columna vertical. El texto y los enlaces conservan su carácter; varias fotografías diferidas no quedaron resueltas en la captura larga."
+      },
+      "limitations": "Se vio la entrada y parte del recorrido; no se inspeccionaron todos los ensayos fotográficos ni el funcionamiento de reservas. El ancho horizontal de escritorio es deliberado, no se clasifica automáticamente como desbordamiento accidental.",
+      "proposed_shared_rule": "Explorar un recorrido editorial horizontal opcional con alternativa vertical explícita y acceso directo a información práctica; exigir suficientes fotografías coherentes.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-01-desktop-horizontal.jpg",
+          "capture_sha256": "42b46d5410ce0c4d4afc48825547a16416041241e8fd05f2ccc51844f880b78b",
+          "captured_at": "2026-10-16T03:37:17.050Z",
+          "url": "https://osiprestaurant.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1000,
+            "width": 1440
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-01-mobile-scroll.jpg",
+          "capture_sha256": "3f89d021065956c11920c470e362e03fce1845df4864ef6ff92cc0e8db5bfb0b",
+          "captured_at": "2026-10-16T03:37:11.004Z",
+          "url": "https://osiprestaurant.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 843,
+            "width": 390
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-02",
+      "name": "Central Restaurante",
+      "url": "https://centralrestaurante.com.pe/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Favorita / excepcional",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Dos campos de vídeo contiguos abren la página; después aparecen imágenes pequeñas centradas y bloques de texto desplazados a ambos lados.",
+        "typography": "Contraste entre rótulos estrechos y texto editorial en serif, con una frase en cursiva que cambia el ritmo.",
+        "palette_and_media": "Rojo intenso y texturas oscuras en la entrada, seguidos de fondo claro y silencios amplios. El audiovisual se relaciona con el relato territorial.",
+        "mobile": "El díptico se convierte en dos campos apilados; texto, fotografías y acciones se ordenan verticalmente."
+      },
+      "limitations": "Se observaron vídeos avanzando, pero no se midieron bitrate, transferencia, audio, red lenta ni calidad de todo el montaje. La causa de tu preferencia global sigue sin desglosarse.",
+      "proposed_shared_rule": "Representar parejas audiovisuales y pausas editoriales como relaciones de composición, con una regla móvil propia; no convertir el relato de territorio en un hecho de otro negocio.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-02-desktop-overview.jpg",
+          "capture_sha256": "41896091a671c5cf4acae1759e4a3509846f22d7686aa945cfd11fb3ff3f758a",
+          "captured_at": "2026-10-16T03:37:24.036Z",
+          "url": "https://centralrestaurante.com.pe/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 3636,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-02-mobile-overview.jpg",
+          "capture_sha256": "88828777b5a4b2ac952bb9e5b42a136497caac1671cfa271fb23c98d23a61780",
+          "captured_at": "2026-10-16T03:37:25.575Z",
+          "url": "https://centralrestaurante.com.pe/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 4200,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-03",
+      "name": "Asador Etxebarri",
+      "url": "https://www.asadoretxebarri.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Muy positiva",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Una fotografía de arquitectura ocupa la entrada completa; navegación compacta a la izquierda. Después se separan título y explicación de reservas en dos columnas.",
+        "typography": "Titulares serif grandes frente a información práctica en sans; las etiquetas secundarias son discretas.",
+        "palette_and_media": "Piedra, madera y luz del paisaje se acompañan de un fondo crema; no hay una galería obligatoria de platos.",
+        "mobile": "La imagen cambia su encuadre y la información pasa a una columna, conservando categorías y preguntas frecuentes."
+      },
+      "limitations": "Algunos textos prácticos se ven tenues. No se enviaron formularios ni se reservaron mesas.",
+      "proposed_shared_rule": "Permitir una portada sostenida por una sola foto auténtica y una sección práctica independiente; no adoptar su falta de fotos por plato como requisito para nuestro restaurante ficticio.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-03-desktop-overview.jpg",
+          "capture_sha256": "0c0a06dc0ed3f79d208e3589f398bf62db9af7b09c2c2318bce0f878aefb659c",
+          "captured_at": "2026-10-16T03:37:34.727Z",
+          "url": "https://www.asadoretxebarri.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 4153,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-03-mobile-overview.jpg",
+          "capture_sha256": "4195f59fa170c63e294d575bb1a17986bbdb5b91bbf921b567278d32ae061668",
+          "captured_at": "2026-10-16T03:37:36.253Z",
+          "url": "https://www.asadoretxebarri.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 4483,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-04",
+      "name": "KOL",
+      "url": "https://kolrestaurant.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Favorita de una ronda previa",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Primer plano gastronómico a gran escala, acciones de reserva arriba y contenido editorial alternado sobre un fondo cálido.",
+        "typography": "Serif con personalidad, títulos sobrios y bordes de botones con apariencia irregular; el DOM identifica clearface.",
+        "palette_and_media": "Crema amarillento, terracota y rojos del plato forman un conjunto material; se aprecia una dirección cromática compartida.",
+        "mobile": "La comida conserva protagonismo con un recorte mucho más estrecho; las acciones principales permanecen arriba."
+      },
+      "limitations": "El aviso de cookies y los estados de carga/transición ocultan parte de la experiencia; algunas imágenes interiores quedaron borrosas o pendientes en esta pasada.",
+      "proposed_shared_rule": "Coordinar textura de interfaz y fotografía mediante tokens compartidos; comprobar siempre el recorte móvil y ofrecer estados de carga que no parezcan una página vacía.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-04-desktop-overview.jpg",
+          "capture_sha256": "5000ec45c431dfbbb38db447557e4300e08103a6883bb6a869225739128dad42",
+          "captured_at": "2026-10-16T03:37:47.056Z",
+          "url": "https://kolrestaurant.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 3887,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-04-mobile-overview.jpg",
+          "capture_sha256": "c7c661d0ace7aaacfa38e7da02529a304c512a26ae6435bb89b2f8fc607c1e60",
+          "captured_at": "2026-10-16T03:37:48.575Z",
+          "url": "https://kolrestaurant.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 3994,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-05",
+      "name": "Aira",
+      "url": "https://aira.se/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Muy positiva; video destacado",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "La entrada reserva un campo audiovisual grande; siguen una declaración tipográfica amplia y un bloque de foto e información práctica.",
+        "typography": "Sans ligera y abierta, identificada como TT Norms Pro; frases largas ocupan un ancho generoso.",
+        "palette_and_media": "Superficies blancas, interiores de madera y fotografía gastronómica clara; la imagen de entrada se observó como un campo azul desenfocado.",
+        "mobile": "El bloque de dos columnas se apila y las fotografías gastronómicas conservan su función de cierre visual."
+      },
+      "limitations": "Los dos vídeos del DOM estaban pausados con tiempo cero. No se confirma el montaje que te gustó ni se atribuye el desenfoque a una elección artística final.",
+      "proposed_shared_rule": "La gramática debe separar papel del vídeo, poster, reproducción observada y fallback; no dar por buena una dirección audiovisual por la mera presencia de un elemento video.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-05-desktop-overview.jpg",
+          "capture_sha256": "d2b10ef76caa638bb31f5fc35322caf0188659984781c4af2657daeb0b620a71",
+          "captured_at": "2026-10-16T03:38:06.947Z",
+          "url": "https://aira.se/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 4082,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-05-mobile-overview.jpg",
+          "capture_sha256": "f7e960d40cc6df16d85a8e867ca9533de0ab4648285f3a5781b2a5224a41a397",
+          "captured_at": "2026-10-16T03:38:08.788Z",
+          "url": "https://aira.se/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 4516,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-06",
+      "name": "LUCA",
+      "url": "https://luca.restaurant/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Positiva («linda»)",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Portada verde con una foto vertical desplazada y un logotipo fino que se extiende fuera de ella; después, piezas editoriales separadas por grandes pausas.",
+        "typography": "Logotipo muy fino y amplio, serif editorial y etiquetas condensadas; el DOM identifica Magister en el cuerpo.",
+        "palette_and_media": "Verde profundo y fotografía de interiores cálidos y platos; la coherencia procede del conjunto, no de un color de acento aislado.",
+        "mobile": "El logotipo se superpone dentro de una imagen más alta y las piezas forman una secuencia vertical."
+      },
+      "limitations": "Varias imágenes seguían diferidas o borrosas y algunos intervalos quedaron vacíos. No se inspeccionó cada historia ni el diálogo de reservas.",
+      "proposed_shared_rule": "Añadir relaciones entre logotipo, imagen enmarcada y ritmo de artículos; exigir densidad de contenido suficiente para sostener las pausas.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-06-desktop-overview.jpg",
+          "capture_sha256": "0424f83fe1e84901e95298fdd9aa01a52aeb74200544df856a0f85ab732fe5d8",
+          "captured_at": "2026-10-16T03:38:22.199Z",
+          "url": "https://luca.restaurant/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 6299,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-06-mobile-overview.jpg",
+          "capture_sha256": "22c469d22b4fd0d44edd64757148ab50f1d263b96221b7b71e30ceca62487007",
+          "captured_at": "2026-10-16T03:38:24.137Z",
+          "url": "https://luca.restaurant/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 6355,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-07",
+      "name": "Padella",
+      "url": "https://www.padella.co/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Favorita de una primera ronda",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Vídeo de ambiente, selección de tres locales mediante fotos y una carta tipográfica con categorías y precios enmarcada sobre negro.",
+        "typography": "Sans condensada, titulares compactos y precios alineados; el DOM identifica Roboto Condensed.",
+        "palette_and_media": "Negro y blanco con interiores cálidos. La identidad observada hoy no es exclusivamente una estética clara o minimalista.",
+        "mobile": "Los locales pasan a una secuencia vertical y la carta separa comida y bebida mediante pestañas visibles."
+      },
+      "limitations": "Un anuncio de reservas de grupos cubría la entrada. No se probaron las pestañas ni el flujo de reservas; la carta observada no incluye foto por plato.",
+      "proposed_shared_rule": "Conservar la distinción entre local, categoría y producto. La referencia aporta jerarquía de carta; no sustituye nuestros requisitos de fotos, ingredientes, alérgenos, búsqueda y filtros.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-07-desktop-overview.jpg",
+          "capture_sha256": "48d2cc6d780d08c5e7e74d0d5ace395d3820c804439a84b2f56fc74e82fdd7b5",
+          "captured_at": "2026-10-16T03:38:46.998Z",
+          "url": "https://www.padella.co/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 3503,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-07-mobile-overview.jpg",
+          "capture_sha256": "8b337070afa079b40253fc1818fb6b89773f2829a0a42a284921154a98624dc9",
+          "captured_at": "2026-10-16T03:38:49.120Z",
+          "url": "https://www.padella.co/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 4644,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-08",
+      "name": "Noma",
+      "url": "https://noma.dk/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Favorita de una primera ronda",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Entrada audiovisual con acción directa; productos, carta editorial e imágenes de equipo alternan módulos amplios y columnas desiguales.",
+        "typography": "Serif de lectura suave y etiquetas sans discretas; Reckless figura en el cuerpo.",
+        "palette_and_media": "Marfil, verde muy oscuro y fotografía natural con fondos de producto cuidadosamente escogidos.",
+        "mobile": "La portada usa fotografía donde el vídeo de escritorio queda oculto; el relato largo y las imágenes se ordenan en una columna."
+      },
+      "limitations": "La primera toma de escritorio recoge un fotograma oscuro y el aviso de cookies sigue visible. No se auditaron tienda, reserva ni todas las páginas.",
+      "proposed_shared_rule": "Permitir fotografía móvil como alternativa declarada al vídeo y combinar piezas comerciales y editoriales sin alterar su orden factual.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-08-desktop-overview.jpg",
+          "capture_sha256": "bb863847af24d81f5c7e4ca5946976248aa502cd1b5fe644b783baa46b41514c",
+          "captured_at": "2026-10-16T03:39:06.027Z",
+          "url": "https://noma.dk/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 7107,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-08-mobile-overview.jpg",
+          "capture_sha256": "95fd90a48b07744d42dbafd6df5bea8e66cef751ef40a8cd00a304f5ec5cbf28",
+          "captured_at": "2026-10-16T03:39:08.946Z",
+          "url": "https://noma.dk/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 7565,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-09",
+      "name": "ÄNG",
+      "url": "https://www.restaurangang.se/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Aceptación moderada («bien»)",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Una sola imagen de paisaje y arquitectura sostiene toda la entrada; la marca se sitúa en el centro y los enlaces en zonas periféricas.",
+        "typography": "Logotipo serif de gran escala frente a navegación sans, identificada como futura-pt.",
+        "palette_and_media": "Tonos de campo y luz cálida; parte del primer plano está desenfocada en la propia imagen.",
+        "mobile": "La navegación se concentra bajo la marca en vez de conservar las esquinas del escritorio."
+      },
+      "limitations": "Se inspeccionó la entrada. El iframe de reservas no se operó y no se evaluaron todas las páginas interiores.",
+      "proposed_shared_rule": "Usar una portada de navegación espacial sólo cuando la imagen soporte las superposiciones y existan accesos claros en móvil; mantener el menor entusiasmo de tu valoración original.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-09-desktop-overview.jpg",
+          "capture_sha256": "6ed020236c7fa3f7654863de0dd1f5cc5d443f0577f7cb7c28324df353bf0b6e",
+          "captured_at": "2026-10-16T03:39:25.005Z",
+          "url": "https://restaurangang.se/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1000,
+            "width": 1440
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-09-mobile-overview.jpg",
+          "capture_sha256": "2cd432fe3bcab553bd40e623ce9d585c9a58a2df3c4d2ed817fc65f0cb2d3a2e",
+          "captured_at": "2026-10-16T03:39:26.350Z",
+          "url": "https://restaurangang.se/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 844,
+            "width": 390
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-10",
+      "name": "Kadeau",
+      "url": "https://www.kadeau.dk/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Aceptación moderada («bien»)",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "La home funciona como un selector de dos destinos: Copenhagen y Bornholm, distribuidos en dos zonas.",
+        "typography": "Serif ligera con nombres de sede en dos líneas; el DOM identifica Tobias-Light.",
+        "palette_and_media": "El fondo se observó difuso en tonos violetas y grises; los vídeos expuestos tenían resolución de 384 por 216.",
+        "mobile": "Los dos destinos pasan de una relación lateral a una relación superior e inferior."
+      },
+      "limitations": "No se recorrieron los interiores de cada sede. La captura no permite afirmar que el fondo difuso sea su calidad definitiva ni que se hayan revisado todas las funciones.",
+      "proposed_shared_rule": "Hacer explícito el selector de sede como operador antes de mostrar ofertas, horario y acciones; nunca mezclar datos de dos sedes para lograr una composición.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-10-desktop-overview.jpg",
+          "capture_sha256": "735bb50f851ff4e215f8af9f072378c9fcf1ccb72f042538ed49f5872a3b401b",
+          "captured_at": "2026-10-16T03:39:33.742Z",
+          "url": "https://www.kadeau.dk/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1000,
+            "width": 1440
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-10-mobile-overview.jpg",
+          "capture_sha256": "da7a9d9176b9657e5f0f81cfc10332a87cca528069954a2515a61f6e158973b2",
+          "captured_at": "2026-10-16T03:39:34.070Z",
+          "url": "https://www.kadeau.dk/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 844,
+            "width": 390
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-11",
+      "name": "MIL Centro",
+      "url": "https://milcentro.pe/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Aceptación moderada",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Paisaje a pantalla completa, titular grande arriba a la izquierda y dos acciones sencillas; el pie reúne información práctica.",
+        "typography": "Serif estrecha de gran escala sobre imagen, con información inferior en sans.",
+        "palette_and_media": "Verdes y azules de un paisaje concreto; la fotografía comunica lugar, no un decorado intercambiable.",
+        "mobile": "La imagen se reencuadra en vertical y las dos acciones bajan, manteniendo visibles las terrazas del paisaje."
+      },
+      "limitations": "No se verificaron los datos comerciales del sitio como fuente para nuestros fixtures ni se abrieron los flujos de reservas.",
+      "proposed_shared_rule": "Relacionar título y espacio libre de la imagen mediante un punto focal verificable; sólo utilizar una escena territorial como documental cuando corresponda al negocio y tenga permiso.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-11-desktop-overview.jpg",
+          "capture_sha256": "ae87d397f8ee6cfc17ddef1e918d89c35b4c06d90a5a05c9a1fea02df6d3a9c3",
+          "captured_at": "2026-10-16T03:39:44.335Z",
+          "url": "https://milcentro.pe/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1232,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-11-mobile-overview.jpg",
+          "capture_sha256": "563138d7778fb0d47cd1d94604fd98780402e9ff811880d40a05d1513b7a48e4",
+          "captured_at": "2026-10-16T03:39:45.733Z",
+          "url": "https://milcentro.pe/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1224,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-12",
+      "name": "Aponiente — Menú 2026",
+      "url": "https://www.aponiente.com/menu-aponiente-2026/",
+      "approved_scope": "SPECIFIC_PAGE_ONLY",
+      "reported_intensity_literal": "Scroll / composición de esa página",
+      "prior_negative_or_limit_lines": [
+        "- **Límite:** **no** equivale a aprobación de todo el sitio Aponiente."
+      ],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "En la URL exacta del menú: vídeo de entrada, bloque de enlace al menú junto a una foto y galería irregular de platos sobre blanco.",
+        "typography": "Serif de alto contraste en mensajes y acciones; la información visual se apoya en pocos elementos grandes.",
+        "palette_and_media": "Blanco y negro con platos de fondos claros; las proporciones distintas introducen ritmo sin cambiar de paleta en cada bloque.",
+        "mobile": "El enlace al menú y la imagen principal se apilan; la galería mantiene varias columnas pequeñas con alturas diferentes."
+      },
+      "limitations": "Alcance exclusivo de esa página. Se vio el vídeo avanzando, pero no se midió su coste ni se descargó el PDF o los originales.",
+      "proposed_shared_rule": "Añadir una galería editorial con proporciones declaradas y un recorrido móvil distinto; no tratar este gusto parcial como aprobación global de Aponiente.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-12-desktop-overview.jpg",
+          "capture_sha256": "98df58e6a46191202ac3deb3b66777d4229ab662e52fc8ad613b90caf187ddb8",
+          "captured_at": "2026-10-16T03:40:00.982Z",
+          "url": "https://www.aponiente.com/menu-aponiente-2026/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 2772,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-12-mobile-overview.jpg",
+          "capture_sha256": "ad3b92915ea5dfd20671e6acaaf2e6b043570b5a0162f6183f9adf544e829355",
+          "captured_at": "2026-10-16T03:40:03.098Z",
+          "url": "https://www.aponiente.com/menu-aponiente-2026/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 2616,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-13",
+      "name": "Khufu's",
+      "url": "https://khufus.com/",
+      "approved_scope": "STORYTELLING_ONLY",
+      "reported_intensity_literal": "Storytelling visual; no aprobación total",
+      "prior_negative_or_limit_lines": [
+        "- **Límite:** **no** se aprobó la página completa."
+      ],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Introducción de frases que aparecen por etapas, seguida de una escena del lugar, titular y acción; el DOM organiza después capítulos de contexto, intención y atmósfera.",
+        "typography": "Titular serif con cambio de cursiva y de saltos de línea; rótulos y acciones más discretos.",
+        "palette_and_media": "Arena y marrones claros unidos al paisaje; el vídeo observado avanzaba en silencio.",
+        "mobile": "La frase de entrada cambia de extensión y saltos; el paisaje se reencuadra en vertical."
+      },
+      "limitations": "La introducción dominó la primera pasada y hubo una captura transitoria sin titular. Se comprobó la entrada posterior, no el montaje completo de todos los capítulos ni una secuencia completa de scroll animado.",
+      "proposed_shared_rule": "Modelar el relato en capítulos con una alternativa inmediata para omitir la introducción; conservar únicamente el alcance de storytelling que aprobaste.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-desktop-settled.jpg",
+          "capture_sha256": "4ffdb00645a9533ff2e403c5ad3ae2aa62d5ecb4e11f0236fe1ff9b5b89945bd",
+          "captured_at": "2026-10-16T03:47:42.521Z",
+          "url": "https://khufus.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1000,
+            "width": 1440
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-13-mobile-narrative.jpg",
+          "capture_sha256": "ebed25877b418b22f0366645f5255352bcf4624ae98b0c1738374771f03fa4c3",
+          "captured_at": "2026-10-16T03:48:16.338Z",
+          "url": "https://khufus.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 844,
+            "width": 390
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-14",
+      "name": "Heckfield Place",
+      "url": "https://www.heckfieldplace.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Excepcional; móvil especialmente logrado",
+      "prior_negative_or_limit_lines": [
+        "- **Problema advertido:** **la calidad del video disminuye en PC/escritorio**, aunque en móvil gusta mucho."
+      ],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Secuencias de fotos de tamaños distintos, a veces superpuestas, acompañan bloques de texto espaciado; la navegación de estancia permanece separada.",
+        "typography": "Sans con mayúsculas y espaciado amplio; johnston-medium figura en el cuerpo.",
+        "palette_and_media": "Fondo gris azulado, imágenes de campo e interiores y pequeños acentos rojos sostienen una misma atmósfera.",
+        "mobile": "Las parejas y superposiciones se reorganizan en una columna con tamaños todavía diferenciados."
+      },
+      "limitations": "El vídeo de portada está dentro de un iframe de Cloudflare Stream. No se verificó su resolución de reproducción ni se reprodujo la observación histórica de peor calidad en PC; esa crítica se conserva como tu antecedente, sin confirmarla ni revocarla.",
+      "proposed_shared_rule": "Permitir capas fotográficas declaradas con separación segura para texto y controles. Revisar calidad audiovisual por viewport antes de aprobarla, sin inferirla de la buena fotografía.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-14-desktop-overview.jpg",
+          "capture_sha256": "0d2b7c3f5cd11efdc5004fb899e9e36fb586abd6736bbb84095cef1a86243f0a",
+          "captured_at": "2026-10-16T03:40:40.202Z",
+          "url": "https://www.heckfieldplace.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 5996,
+            "width": 1424
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-14-mobile-overview.jpg",
+          "capture_sha256": "d7f1fb17f1ee664d55a212d3488876ecf9d11459a25bafda00f51dc90f5345b9",
+          "captured_at": "2026-10-16T03:40:41.860Z",
+          "url": "https://www.heckfieldplace.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 5292,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-15",
+      "name": "FRAMA",
+      "url": "https://framacph.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Referencia ejemplar de retail",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Campañas grandes en díptico, seguidas de producto, guías y configuración; la navegación comercial es una capa clara e independiente.",
+        "typography": "Sans uniforme y etiquetas limpias; el DOM identifica Univers.",
+        "palette_and_media": "Blanco, madera y fotografía de producto en tonos cálidos; el marco comercial acompaña la materialidad.",
+        "mobile": "Las dos campañas se apilan; los listados de producto se sugieren como carriles horizontales y las secciones editoriales siguen abajo."
+      },
+      "limitations": "Persistieron avisos de cookies y un teaser de newsletter. Algunos productos y guías no terminaron de cargar sus fotos en la toma larga; no se probó compra, configuración o búsqueda.",
+      "proposed_shared_rule": "Separar campaña, ficha de producto y guía editorial como módulos distintos; una portada fotográfica no reemplaza la cobertura del catálogo ni autoriza usar estos activos.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-15-desktop-overview.jpg",
+          "capture_sha256": "c105251f4c096e4fe593c6a0ecf5a3aaa98b6c29294dfce1bab46c22dc5fd097",
+          "captured_at": "2026-10-16T03:40:55.714Z",
+          "url": "https://framacph.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 3936,
+            "width": 1425
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-15-mobile-overview.jpg",
+          "capture_sha256": "28b919eb207b978597481084ef98b143711283b37625d04b04b2b94ea0d1134d",
+          "captured_at": "2026-10-16T03:40:57.396Z",
+          "url": "https://framacph.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 4021,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-16",
+      "name": "Dinesen",
+      "url": "https://www.dinesen.com/en",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Excepcional; audiovisual y color",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Imagen de material y arquitectura a gran escala, texto superpuesto en un área de menor ruido y navegación comercial clara arriba.",
+        "typography": "Sans ligera, titular de líneas amplias y jerarquía simple; AtlasGrotesk figura en el DOM.",
+        "palette_and_media": "Madera dorada y marrón, fondos claros y acento cálido de marca; la propia foto proporciona la mayor parte de la paleta.",
+        "mobile": "El espacio arquitectónico se conserva mediante un recorte estrecho y el titular se distribuye en más líneas."
+      },
+      "limitations": "La primera pasada estuvo tapada por consentimiento; se cerró y se revisó la entrada limpia. La captura larga falló y el vídeo expuesto seguía pausado: no se certifica el montaje ni la calidad de todos los vídeos.",
+      "proposed_shared_rule": "Seleccionar media y paleta en conjunto, reservando espacio real para el texto. No basta con que todas las fotos tengan alta resolución de manera aislada.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-desktop-final.jpg",
+          "capture_sha256": "e839b863b5f9e3f03eb04e40479695b7d639b52697df4b7d1f2be025397b2fae",
+          "captured_at": "2026-10-16T03:59:21.837Z",
+          "url": "https://www.dinesen.com/en",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1000,
+            "width": 1440
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-16-mobile-final.jpg",
+          "capture_sha256": "cc153c1bbae3dd766988bfe4773ab4cbf3ba557d6d65130c0e42f7685359417b",
+          "captured_at": "2026-10-16T03:59:33.417Z",
+          "url": "https://www.dinesen.com/en",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 811,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-17",
+      "name": "LUNE Croissanterie",
+      "url": "https://lunecroissanterie.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Excepcional; personalidad y armonía",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Fondo negro, croissant de gran tamaño y una acción tipográfica desplazada; la fotografía se convierte en una pieza de identidad.",
+        "typography": "Sans de gran peso para la acción frente a controles muy pequeños; el DOM identifica Untitled Sans.",
+        "palette_and_media": "Negro profundo, reflejo del producto y tonos dorados de la masa; el contraste organiza la portada.",
+        "mobile": "El croissant se recorta de forma mucho más vertical y la acción mantiene su escala relativa."
+      },
+      "limitations": "La introducción cambió automáticamente antes de poder pulsar Play video. No se confirmó su reproducción; falló la captura larga y se inspeccionaron tramos de entrada. Algunas tomas inmediatas de resize se descartaron para conclusiones finas.",
+      "proposed_shared_rule": "Admitir identidades oscuras y asimetría controlada; exigir una foto con fondo y encuadre compatibles. No convertir negro más foto en una receta universal.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-17-desktop-viewport.jpg",
+          "capture_sha256": "4ac17e397ea78a9841581f143cb4a8638cb301dd5aec6e540e0f6f9a6ddb9240",
+          "captured_at": "2026-10-16T03:41:58.917Z",
+          "url": "https://lunecroissanterie.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1000,
+            "width": 1440
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-17-mobile-scroll.jpg",
+          "capture_sha256": "81402cd246c3b3f8d0e19c543b472168d47ad9675070f68507049184e48656f6",
+          "captured_at": "2026-10-16T03:41:59.938Z",
+          "url": "https://lunecroissanterie.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 811,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-18",
+      "name": "NORM Architects",
+      "url": "https://normcph.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Muy buena; limpieza y organización",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Portada de proyecto a gran escala con navegación y descripción superpuestas; debajo se anuncia una selección de trabajos.",
+        "typography": "Sans y rótulos espaciados; el DOM identifica Euclid. Los textos sobre la foto son pequeños en la vista observada.",
+        "palette_and_media": "Fotografía de arquitectura y vegetación con tonos naturales; el fondo claro de la siguiente sección continúa la gama.",
+        "mobile": "La portada se vuelve más baja y la descripción ocupa varias líneas; la sección de trabajos comienza dentro del primer recorrido."
+      },
+      "limitations": "Falló la captura larga y algunas imágenes inferiores seguían diferidas. No se midió contraste suficiente para certificar el texto sobre cada fotograma ni se recorrió todo el portfolio.",
+      "proposed_shared_rule": "Evaluar limpieza, color y organización como decisiones coordinadas; mantener un tamaño mínimo legible aunque la referencia utilice tipografía muy discreta.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-18-desktop-viewport.jpg",
+          "capture_sha256": "20fa626d6f066a028ae3d012f1f4467109e609db7e6e3a023dd79ac26daae6d8",
+          "captured_at": "2026-10-16T03:42:22.020Z",
+          "url": "https://normcph.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1000,
+            "width": 1440
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-18-mobile-scroll.jpg",
+          "capture_sha256": "1ce85f2e6e44b77b27b81423adbbe198fc4ce156b63a0a9d030ee097e4ac78a8",
+          "captured_at": "2026-10-16T03:42:24.092Z",
+          "url": "https://normcph.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 811,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-19",
+      "name": "The Modern House",
+      "url": "https://themodernhouse.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Excelente; tipografía e identidad",
+      "prior_negative_or_limit_lines": [],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Medio de gran tamaño a la izquierda y ficha editorial clara a la derecha; después aparece una cuadrícula de inmuebles con etiquetas y precios.",
+        "typography": "Titular serif de tono editorial, marca y metadatos sans; la tipografía acompaña la temática de arquitectura y vivienda.",
+        "palette_and_media": "Blanco cálido, negro y fotografía de espacios; se evita que todos los elementos tengan el mismo peso.",
+        "mobile": "El medio pasa encima de la ficha y la acción queda debajo del titular, antes del listado."
+      },
+      "limitations": "El consentimiento cubría parte del listado; no se enviaron alertas ni se operaron inmuebles. El vídeo observado era de 640 por 360, por lo que no se presenta como prueba de máxima calidad técnica.",
+      "proposed_shared_rule": "Vincular tono tipográfico y dominio del contenido; permitir una ficha editorial junto al medio, diferenciada de la tarjeta repetida de catálogo.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-19-desktop-viewport.jpg",
+          "capture_sha256": "0ab1b26a99a385af6dc267c8b2a6c9d1355ec45ccce0b1943ab349bd3cb5e19c",
+          "captured_at": "2026-10-16T03:42:48.064Z",
+          "url": "https://themodernhouse.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 1000,
+            "width": 1440
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-19-mobile-viewport.jpg",
+          "capture_sha256": "1a3c9dac0fe7c06a246f4e59a20fbcc1ef77b814226c8abf3f15f962862aa9d2",
+          "captured_at": "2026-10-16T03:42:48.650Z",
+          "url": "https://themodernhouse.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 811,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-20",
+      "name": "Polène",
+      "url": "https://www.polene-paris.com/",
+      "approved_scope": "GLOBAL_REPORTED",
+      "reported_intensity_literal": "Buena; fundamentalmente por foto y video",
+      "prior_negative_or_limit_lines": [
+        "- **Límite:** no se atribuyó la misma calidad al resto de sus decisiones de diseño."
+      ],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "Campaña audiovisual a toda pantalla con una ficha de producto pequeña superpuesta y navegación discreta.",
+        "typography": "Marca y nombres en serif, controles y precio secundarios; el producto no compite con un gran bloque de texto.",
+        "palette_and_media": "Paisaje y vestuario en gama fría/terrosa, enlazados cromáticamente con el bolso de la campaña.",
+        "mobile": "La campaña emplea un vídeo vertical distinto y una tarjeta de producto más baja. Se observó un prompt de cambio de región."
+      },
+      "limitations": "Las primeras tomas de escritorio no correspondían al tamaño; se recuperó una captura de escritorio verificable. El prompt regional siguió presente. No se inspeccionó toda la tienda ni se ejecutó ningún WebMCP comercial.",
+      "proposed_shared_rule": "Separar dirección audiovisual de arquitectura de tienda; no ampliar tu aprobación centrada en foto/vídeo al resto del diseño. Comprobar fotogramas y resolución de cada variante antes de elegirlos.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-20-desktop-recovery.jpg",
+          "capture_sha256": "d39e8e6699d090ccc6505becb398c702ca4add71b95bb085e2993618aad67cf3",
+          "captured_at": "2026-10-16T03:49:09.685Z",
+          "url": "https://www.polene-paris.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 990,
+            "width": 1425
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-20-mobile-viewport.jpg",
+          "capture_sha256": "c3b926f5104a20d663dc071ab0a034eba25027a9970e7c232fb9aef965d3e297",
+          "captured_at": "2026-10-16T03:43:03.181Z",
+          "url": "https://www.polene-paris.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 811,
+            "width": 375
+          }
+        }
+      ]
+    },
+    {
+      "id": "reference-21",
+      "name": "Singer Vehicle Design",
+      "url": "https://singervehicledesign.com/",
+      "approved_scope": "DROPDOWN_ONLY",
+      "reported_intensity_literal": "Menú desplegable únicamente",
+      "prior_negative_or_limit_lines": [
+        "- **Valoración registrada:** la página en conjunto **no entusiasma**.",
+        "- **Límite:** **no** usar Singer como referencia global de apariencia."
+      ],
+      "status": "OBSERVED_WITH_LIMITS",
+      "observations": {
+        "composition": "El desplegable observado es un panel lateral estrecho sobre un fondo atenuado y difuso; las categorías forman una lista vertical sencilla.",
+        "typography": "Rótulos en mayúsculas y peso marcado; el cuerpo figura como Roboto en el DOM.",
+        "palette_and_media": "Panel oscuro y translúcido que conserva parte del contexto fotográfico de la página.",
+        "mobile": "El mismo panel ocupa una fracción mucho mayor del ancho; el control de cierre permanece arriba."
+      },
+      "limitations": "Se abrió el desplegable en ambas vistas. No se verificó toda la navegación con teclado, lector de pantalla o submenús. El sitio completo sigue fuera de tu aprobación.",
+      "proposed_shared_rule": "Guardar sólo el patrón de navegación contextual y cierre explícito; imponer contraste, foco, Escape y tamaño de control como condiciones propias antes de implementarlo.",
+      "proposal_status": "RESEARCH_PROPOSAL_NOT_IMPLEMENTED",
+      "new_user_vote": null,
+      "asset_reuse": "NOT_AUTHORIZED_BY_REFERENCE",
+      "captures": [
+        {
+          "view": "desktop",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-21-desktop-menu.jpg",
+          "capture_sha256": "c1c19287ca6925b52db724ba9271175845f41bc784f618a35631fc661e0add7a",
+          "captured_at": "2026-10-16T03:43:58.604Z",
+          "url": "https://singervehicledesign.com/",
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 990,
+            "width": 1425
+          }
+        },
+        {
+          "view": "mobile",
+          "capture": "docs/evidence/corrections/b3/external-references-2026-10-15/reference-21-mobile-menu.jpg",
+          "capture_sha256": "e17b948411eb64c577455b98392fbfa6da7af853e487380de5c9dbcf4879adb0",
+          "captured_at": "2026-10-16T03:43:59.697Z",
+          "url": "https://singervehicledesign.com/",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "pixel": {
+            "format": "jpg",
+            "height": 811,
+            "width": 375
+          }
+        }
+      ]
+    }
+  ]
+}

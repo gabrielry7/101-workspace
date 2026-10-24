@@ -1,0 +1,212 @@
+{
+  "assets": [
+    {
+      "schema_version": "1.0.0",
+      "id": "usda-ars-d255-19",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/h3-pilot/usda-ars-d255-19.jpg",
+      "source": "USDA Agricultural Research Service",
+      "external_id": "D255-19",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "USDA Agricultural Research Service",
+          "reference": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+          "recorded_at": "2026-10-08T23:11:54Z"
+        },
+        {
+          "source": "USDA Agricultural Research Service",
+          "reference": "https://www.ars.usda.gov/oc/images/copyright/",
+          "recorded_at": "2026-10-08T23:11:54Z"
+        },
+        {
+          "source": "USDA Agricultural Research Service",
+          "reference": "https://www.ars.usda.gov/ARSUserFiles/oc/images/photos/300dpi/kesa/D255-19.jpg",
+          "recorded_at": "2026-10-08T23:11:54Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "usda-ars-d255-19",
+      "parent_id": null,
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "file_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/h3-pilot/review.md",
+        "reviewer": "Codex: official-source and local-file review, not rights holder or legal certification",
+        "reviewed_at": "2026-10-08T23:11:54Z",
+        "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "generic:atmosphere",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "docs/evidence/h3-pilot/review.md",
+            "reviewer": "Codex: official-source and local-file review, not rights holder or legal certification",
+            "reviewed_at": "2026-10-08T23:11:54Z",
+            "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "docs/evidence/h3-pilot/review.md",
+          "reviewer": "Codex: official-source and local-file review, not rights holder or legal certification",
+          "reviewed_at": "2026-10-08T23:11:54Z",
+          "evidence_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+        },
+        "width": 2700,
+        "height": 1819,
+        "duration_seconds": null,
+        "codec": null,
+        "subject": "Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación",
+        "findings": [
+          "Local JPEG fully decoded with Pillow; RGB 2700x1819, 2351102 bytes",
+          "Local image opened with view_image; main subject legible for a figure up to 640 CSS px without crop",
+          "No visible people, identifiable buildings, logos or commercial signs; no model/property releases required for this contextual use",
+          "Busy foliage background; no claim of suitability for text overlays",
+          "No claim about actual food, ingredients, cultivation, staff or premises of this fictitious business"
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    }
+  ],
+  "grants": [
+    {
+      "schema_version": "1.0.0",
+      "id": "usda-ars-d255-19-pilot-public-domain",
+      "data_mode": "REAL",
+      "original_asset_id": "usda-ars-d255-19",
+      "original_sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "provider": "USDA Agricultural Research Service",
+      "license_type": "OFFICIAL_PUBLIC_DOMAIN_DECLARATION; narrowed evaluated pilot use",
+      "holder": "No copyright ownership asserted; USDA ARS identifies author Steve Ausmus and declares public domain",
+      "purchaser": "NOT_PURCHASED: internal fixture review only",
+      "document": {
+        "reference": "docs/evidence/h3-pilot/usda-asset-page.html",
+        "version": "Official page Last Modified 11/6/2023 (literal); snapshot 2026-10-08; no numbered legal version",
+        "sha256": "362db558cb6b2e96c00e390fe84b2541d711114934f62cf3d700111b8a694bd2"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/h3-pilot/review.md",
+        "reviewer": "Codex: official-source and local-file review, not rights holder or legal certification",
+        "reviewed_at": "2026-10-08T23:11:54Z",
+        "evidence_sha256": "362db558cb6b2e96c00e390fe84b2541d711114934f62cf3d700111b8a694bd2"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "h3-restaurante-media-pilot"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001"
+      ],
+      "purposes": [
+        "generic:atmosphere"
+      ],
+      "pages": [
+        "/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-08T23:11:54Z",
+      "valid_until": null,
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "UNKNOWN",
+      "reuse": "UNKNOWN",
+      "redistribution": "UNKNOWN",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "DENIED",
+      "transformations": [],
+      "automation": {
+        "search": "UNKNOWN",
+        "download": "UNKNOWN"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "UNKNOWN",
+        "editing": "UNKNOWN",
+        "training": "UNKNOWN"
+      },
+      "attribution": {
+        "required": true,
+        "text": "Photo by Steve Ausmus, USDA Agricultural Research Service."
+      },
+      "required_notices": [
+        "USDA ARS no respalda este fixture, producto, empresa ni posición."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    }
+  ],
+  "usages": [
+    {
+      "schema_version": "1.0.0",
+      "id": "h3-real-pilot-atmospheric",
+      "need_id": "need-7bacfc78bdb58db1dd06998a",
+      "asset_id": "usda-ars-d255-19",
+      "grant_id": "usda-ars-d255-19-pilot-public-domain",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "h3-restaurante-media-pilot",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/",
+      "module_id": "semantic-7bf9d33184f7e923438acadd",
+      "purpose": "generic:atmosphere",
+      "role": "ATMOSPHERIC",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+      "generic_label": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "USDA ARS no respalda este fixture, producto, empresa ni posición."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import {openLocalBrowser} from '../../scripts/lib/local-browser.ts';
+import {auditIndex} from '../../src/audit/index.ts';
+import {byteSha256} from '../../src/media/package.ts';
+const browser=await openLocalBrowser(),receipts:any[]=[];
+const key=async(key:string,code:string,value:number)=>{await browser.call('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:value});await browser.call('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:value});};
+try{for(const viewport of [{id:'desktop',width:1280,height:900},{id:'mobile',width:390,height:844}]){
+ await browser.call('Emulation.setDeviceMetricsOverride',{width:viewport.width,height:viewport.height,deviceScaleFactor:1,mobile:viewport.id==='mobile'});await browser.navigate('/h7/');
+ const layout=await browser.evaluate(`({main_count:document.querySelectorAll('main').length,nested_main:!!document.querySelector('main main'),h1_count:document.querySelectorAll('h1').length,skip_target_id:document.querySelector('.skip').hash.slice(1),skip_target_is_main:document.querySelector(document.querySelector('.skip').hash)?.tagName==='MAIN',requested_width:${viewport.width},observed_width:innerWidth,document_width:document.documentElement.scrollWidth,document_height:document.documentElement.scrollHeight,links:[...document.querySelectorAll('main a')].map(e=>({href:e.getAttribute('href'),text:e.textContent,width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height,left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right}))})`);
+ const ax=await browser.call('Accessibility.getFullAXTree'),mainNodes=ax.nodes.filter((n:any)=>!n.ignored&&n.role?.value==='main');
+ assert.equal(layout.observed_width,viewport.width);assert.ok(layout.document_width<=viewport.width);assert.equal(layout.links.length,10);assert.ok(layout.links.every((l:any)=>l.width>0&&l.height>0&&l.left>=0&&l.right<=viewport.width));
+ await key('Tab','Tab',9);const skipVisible=await browser.evaluate(`document.activeElement.matches('.skip')&&document.activeElement.getBoundingClientRect().top>=0&&parseFloat(getComputedStyle(document.activeElement).outlineWidth)>=3`);
+ await key('Enter','Enter',13);const skipActivated=await browser.evaluate(`location.hash==='#contenido'&&document.querySelector('#contenido').tagName==='MAIN'`);
+ let link='';for(let i=0;i<30;i++){await key('Tab','Tab',9);link=await browser.evaluate(`document.activeElement.tagName==='A'?document.activeElement.getAttribute('href'):''`);if(link?.startsWith('/h7/'))break;}
+ const focusedLink=await browser.evaluate(`({outline:getComputedStyle(document.activeElement).outlineWidth,text:document.activeElement.textContent})`);assert.ok(parseFloat(focusedLink.outline)>=3);
+ let activated=false;if(link.startsWith('/h7/')){await key('Enter','Enter',13);for(let i=0;i<30;i++){activated=await browser.evaluate(`location.pathname===${JSON.stringify(link)}&&document.querySelector('.lab')!==null`);if(activated)break;await new Promise(r=>setTimeout(r,50));}}
+ const observed={main_count:layout.main_count,nested_main:layout.nested_main,h1_count:layout.h1_count,ax_main_count:mainNodes.length,skip_visible:skipVisible,skip_activated:skipActivated,skip_target_id:layout.skip_target_id,skip_target_is_main:layout.skip_target_is_main,link_reachable_by_tab:link.startsWith('/h7/'),link_activated:activated,link_href:link};
+ const audit=auditIndex(observed);assert.equal(audit.status,'LAB_INDEX_PASS');
+ await browser.navigate('/h7/');const size=await browser.evaluate(`({width:document.documentElement.clientWidth,height:document.documentElement.scrollHeight})`),shot=await browser.call('Page.captureScreenshot',{format:'png',captureBeyondViewport:true,clip:{x:0,y:0,width:size.width,height:size.height,scale:1}}),png=Buffer.from(shot.data,'base64'),path=`docs/reviews/h7-correction/index-${viewport.id}.png`;await writeFile(path,png);
+ receipts.push({viewport,route:'/h7/',layout,observation:observed,ax_main_nodes:mainNodes,audit,keyboard_focus:focusedLink,screenshot_path:path,screenshot_sha256:byteSha256(png),html_sha256:byteSha256(await readFile('dist/h7/index.html'))});
+ }
+ await writeFile('docs/reviews/h7-correction/index-run.json',JSON.stringify({status:'PASSED',browser:browser.version,evaluated_at:new Date().toISOString(),receipts,production_ready:false,human_preference:'NOT_COLLECTED'},null,2)+'\n');console.log('PASS: 2 independent index views; unique DOM/AX main and h1; skip and link Tab/Enter; focus and no overflow');
+}finally{browser.close();}

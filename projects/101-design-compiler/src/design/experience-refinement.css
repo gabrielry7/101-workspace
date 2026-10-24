@@ -1,0 +1,12 @@
+/* Shared B3 refinements from measured interaction evidence. Preserve every visual direction. */
+.depth-experience .quick-nav a,.depth-experience .footer-links a{min-inline-size:44px}
+#experience-main{scroll-margin-block-start:100px}
+#experience-main:focus-visible{outline:3px solid currentColor;outline-offset:-3px}
+.depth-experience.page-collection .contextual-collection[data-collection-state=filtered]{grid-template-columns:1fr}
+.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);margin:0;padding-top:0}
+.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.contextual-photo{grid-column:1;grid-row:1}
+.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.item-copy{grid-column:2;grid-row:1;display:block;padding:0}
+@media(max-width:760px){
+ .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item{grid-template-columns:1fr}
+ .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.contextual-photo,.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.item-copy{grid-column:1;grid-row:auto}
+}

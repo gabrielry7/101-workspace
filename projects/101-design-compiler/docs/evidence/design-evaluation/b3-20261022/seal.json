@@ -1,0 +1,1404 @@
+{
+  "kind": "B3_SHARED_MOLD_REFINEMENT",
+  "files": [
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/audit.json",
+      "normalization": "BINARY",
+      "sha256": "828e6d45d21751fd547cae6cd1c18e48e88d21a7f049965470fbd0018210cd5d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/browser.json",
+      "normalization": "BINARY",
+      "sha256": "24cd2f71078534c0e517347a249ad386347894a6a887c490d136ceacb3550d41"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-01-desktop-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "99ce16c73232627fb2c4c7680b5806f6d8c0021c8ed33bb715bf4f3931a887c8"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-01-desktop-home.png",
+      "normalization": "BINARY",
+      "sha256": "1650f099ff7d1e3575959a1eb6660ad2f9137218ff2ba1cf303f24613cab08d9"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-01-mobile-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "6c76dd7f9cc8a5aecf9f1816b7b44ee83a1bc47ab9533a7cdf1a2ae3d451dd61"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-01-mobile-home.png",
+      "normalization": "BINARY",
+      "sha256": "4a2b7f880bf67c170ab788416cabb13c43d832d515ec7daf9aaa5bfe49eb574c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-02-desktop-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "165360ff4c7bf7e0072e522ec13d69a99f301ca619a1639f1e688a43e164fb87"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-02-desktop-home.png",
+      "normalization": "BINARY",
+      "sha256": "0a33edd12a53961afc7a0582655692866d5ed92c4a96de628925e5783f626368"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-02-mobile-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "1a40c60840344efcacf7f1d28f819e978005248ee00e17d7dc0723f0bad10ede"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-02-mobile-home.png",
+      "normalization": "BINARY",
+      "sha256": "203ed7dd8d5b048505b758a21e826a9af31238c0b7475964d48f553dd0ced078"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-03-desktop-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "03ff167560ba832ad33de45794d3d0552500805715d21942ccda187458c6859a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-03-desktop-home.png",
+      "normalization": "BINARY",
+      "sha256": "59d9d8c064e905a0d453f83a5eed1eeb52ee2132e2c2770acc8e03b5ab626225"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-03-mobile-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "84794a027e928780dd3613808697ca7b47491d25e3449e35919c34d2f7318e28"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-03-mobile-home.png",
+      "normalization": "BINARY",
+      "sha256": "335ecac182d6eea43a326ee8c1d4c53a3ccde0bc8270f9c55bdce8bd7079de2e"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-04-desktop-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "4145e55e8b5741fa37e101f0d620545133689097879cedc5702ac422f2accac1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-04-desktop-home.png",
+      "normalization": "BINARY",
+      "sha256": "0e5e7915eadfd76384122318153f3b6edae6eb33b339616fa81c227d63897194"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-04-mobile-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "1c48756344ebb039693d65f8088879d910982d68c2b04b5f1015b8058d7b5370"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/candidate-04-mobile-home.png",
+      "normalization": "BINARY",
+      "sha256": "525187e75ada7206b3100ace33ab29fd613efdd61da28fc51f2740ca57035c1d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/interactions.json",
+      "normalization": "BINARY",
+      "sha256": "e830b32d7c45f96f0065d3324bd49b7ee20a0a3552ba5798d4297618f1f97ac3"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/menu-refinement-visible.jpg",
+      "normalization": "BINARY",
+      "sha256": "bf6922cf54cd2e75c45ec3fad50ea15686ba2d99f6f6fe0ff9a56535c35035e7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-0.json",
+      "normalization": "BINARY",
+      "sha256": "113b338ff98e68a5ea28b2739a86824a684f0dbaf1afbd5d852d2b3b4a965e80"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-1.json",
+      "normalization": "BINARY",
+      "sha256": "e6ab8fb41474109630d9f52fae605c6c9cc68ee32a0faf269ac75dc7e8fcfcb9"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-10.json",
+      "normalization": "BINARY",
+      "sha256": "73e7895975bc86d8cc7628774512045bb4ae4c28bc5ccb8dda4b86ebcd43d31a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-11.json",
+      "normalization": "BINARY",
+      "sha256": "9a323d0a98347c0ce10c82434caa5fea3cefde5c21edbe041a6c65281c048e12"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-12.json",
+      "normalization": "BINARY",
+      "sha256": "6447394ae5a719f22daa10ed6c2e22cf989d78d94681a5faa330b468e781c8b1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-13.json",
+      "normalization": "BINARY",
+      "sha256": "bfb81a489617c57b3ce7378f760665751872e2f6944226f14d19b5eafe6b1811"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-14.json",
+      "normalization": "BINARY",
+      "sha256": "0bb468fa9b7a28a0577ed015bbf880acc3ba1f35cd183ecb2adecedca0f22ed0"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-15.json",
+      "normalization": "BINARY",
+      "sha256": "172de7ca3c51b2aaea8b8bc0be48914a8510e87e324017dc283f32f44744e6fc"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-16.json",
+      "normalization": "BINARY",
+      "sha256": "5f78fcf3870e070176d7bd704c4188a3b994d817ca6e4860ed690beb35e500ed"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-17.json",
+      "normalization": "BINARY",
+      "sha256": "51e9eb54d90f756af20d6d56f38f7c90083453e01b9b095d82d80cafaece25e0"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-18.json",
+      "normalization": "BINARY",
+      "sha256": "8671ed7e905671328f796b3c73da4a88545d64292965399b0c00c7436f1a3c30"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-19.json",
+      "normalization": "BINARY",
+      "sha256": "c0c86651d8a0b01b3f40eed9b2f2f610c9598603dffce1478b9f7412555d6839"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-2.json",
+      "normalization": "BINARY",
+      "sha256": "a0f38bf03c353a090c2154025550e0e189d967a8bdfb2923e6d6796f0d686dae"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-20.json",
+      "normalization": "BINARY",
+      "sha256": "36a40aec144b276c9a9dd04642911f49f29a12a8f5b5fb8a0bf41e6735a6dd7a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-21.json",
+      "normalization": "BINARY",
+      "sha256": "c59f54037a300d3e3c11b34bba34c511486eb94581146302f408ca9b77771dd8"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-22.json",
+      "normalization": "BINARY",
+      "sha256": "2f506298af33d1c02dd203b01cc6a605f213712d4d730135250bef82112ef5d2"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-23.json",
+      "normalization": "BINARY",
+      "sha256": "0d79ee017079500ee3576834381feea9383a0a1828aa20f26f87f9d309659082"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-24.json",
+      "normalization": "BINARY",
+      "sha256": "91ad42a76f88a48b7ae04f4bfd85ff281062e8902412100750ff700d9dbc2e57"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-25.json",
+      "normalization": "BINARY",
+      "sha256": "2f6320be06629812c7317780b216c3bfa4f8777e38db7739f9fe8501d15ccb16"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-26.json",
+      "normalization": "BINARY",
+      "sha256": "8e1e92ff22154c89950b44560ebf15065e7aab598a3db7d4ab0fd5c278dfd5a5"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-27.json",
+      "normalization": "BINARY",
+      "sha256": "99ad7daa4e2e95fa5b282eab0b81b7be93d68d16f9a201dc43d51672c71129a7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-28.json",
+      "normalization": "BINARY",
+      "sha256": "25efc22187b0736a5a67f389a53bab7edadc7e4b65937287c277634109cb32a0"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-29.json",
+      "normalization": "BINARY",
+      "sha256": "bea98b4f8d8f886ba55474dfeae9c0c42bd30d0207e7bf7abeb60d8996c4e93d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-3.json",
+      "normalization": "BINARY",
+      "sha256": "fa22557eb67154ac266b1a52def29a1f2d19b920af7ad442e31f02b96bce32d3"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-30.json",
+      "normalization": "BINARY",
+      "sha256": "a0df0ed94c89de223a9ebf1d9429e08219bb7156c4c2d78e04a3e21ca140ab18"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-31.json",
+      "normalization": "BINARY",
+      "sha256": "d4c741d209d0ca2675c56c2c69636853834416a8e85462ff697453ac7530eb64"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-32.json",
+      "normalization": "BINARY",
+      "sha256": "c291b1030992ea2ef1f0df619e2574e5b96cc57b3989b0e21dc93256d6ba4a95"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-4.json",
+      "normalization": "BINARY",
+      "sha256": "146473bca88d2e5c66e861817bce8df7abcf33e173f72359fb05d91111969e25"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-5.json",
+      "normalization": "BINARY",
+      "sha256": "03ee378a0ecab2e132d6f091fef4d18a54e45ece9c173be612b91a77615054a8"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-6.json",
+      "normalization": "BINARY",
+      "sha256": "bcb75039284dfa5b022a6c151ce51b23fbc5778fc5204040ac0de0ec49a2bd90"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-7.json",
+      "normalization": "BINARY",
+      "sha256": "c7795b98a1543871a8a07fc7076d27de66de55d16c193607e78d317281693ceb"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-8.json",
+      "normalization": "BINARY",
+      "sha256": "59d688d491f579dd02515f5b310c83bbc76d764f910256cbe49f10b5ada72027"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-9.json",
+      "normalization": "BINARY",
+      "sha256": "b3a2754cc2207a468cfd0976350d4dfd5b5fac505d8cc2dd23f402e8a18d52cd"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/audit.json",
+      "normalization": "BINARY",
+      "sha256": "864f864d28b5209905ee0d5e8e7a6783a737dac767b6f091a9bbd76f9661489a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/browser.json",
+      "normalization": "BINARY",
+      "sha256": "10bdcc4ee1a126a233d05988cb24966156734e7ba95eee66ede204b91d978816"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-01-desktop-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "67af541a25671474c4eb9b895b3ad7fef179dc55257507da3f2a3bf8882aea6d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-01-desktop-home.png",
+      "normalization": "BINARY",
+      "sha256": "a6a680701e1376a5031d3b92559271a280d11bdeaef1de7fd3362a86f0cd6169"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-01-mobile-home.png",
+      "normalization": "BINARY",
+      "sha256": "f1c2ffc8757b03d97441c82f91e3cec16d88ee91a3705a9ee094716a9cfb003c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-02-desktop-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "95d7d005e3777a16ce44793ca7e2ee4b53d6124adfa27b8ecf07f288b278df6c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-02-desktop-home.png",
+      "normalization": "BINARY",
+      "sha256": "7884a5c07cc1cae6188dcac65f100b88f2c274e2be1fd7a32313ed49a8dcf0bc"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-02-mobile-home.png",
+      "normalization": "BINARY",
+      "sha256": "f4e58e08db194420a905561c5caf9fc01a8a7c749d1373f0b7005197e37b11d9"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-03-desktop-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "fd61b89d90cd9b401c4531b8d71285e97752ab823d62037707a0d88eb5ad39d7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-03-desktop-home.png",
+      "normalization": "BINARY",
+      "sha256": "bca317e6ae87d0374880ecb4ffe9b4ec01b97373d9142076669d7f888b7bf9df"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-03-mobile-home.png",
+      "normalization": "BINARY",
+      "sha256": "55b775b8d73e6cb3be6b6f75cd8980461424ac2ddcf47773014c56b70e6a6e29"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-04-desktop-filtered.png",
+      "normalization": "BINARY",
+      "sha256": "1e7d36946d92e31c1c80e30f3f3c2b7cca92bf5b57d419f8c886b254f3af56e4"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-04-desktop-home.png",
+      "normalization": "BINARY",
+      "sha256": "51d6f423a5412477513b07a854d966c3f788e080ce46da11284ddb541b6f7524"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/candidate-04-mobile-home.png",
+      "normalization": "BINARY",
+      "sha256": "603077407d4789340ffbaedabcb61dc0fca8745040bcc38428b7ec967508929a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-0.json",
+      "normalization": "BINARY",
+      "sha256": "b7b697dcbf4a3e77c58170984b811c8d63ee03becbd8cba5d6a6c7b4b6659f37"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-1.json",
+      "normalization": "BINARY",
+      "sha256": "bd6e9ebb8935766f5e1973e8801497d0c7c168f723787d893497e92d030f136c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-10.json",
+      "normalization": "BINARY",
+      "sha256": "ab841b22175214adddf7fe49e5ffc2f25662327bd92a848efb548199dcd7399d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-11.json",
+      "normalization": "BINARY",
+      "sha256": "69d2a9b0f9e5d1c21331324310e57fee2f4886f40a9f81811d46fa3a63c59992"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-12.json",
+      "normalization": "BINARY",
+      "sha256": "24aa980c242afa32f38411e84ba4a65507f1d36c0d492b3ea77d34b600017bbf"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-13.json",
+      "normalization": "BINARY",
+      "sha256": "35181ab90684b472f9865d97e96688aa5459715258a8c24417b20998d2d89a77"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-14.json",
+      "normalization": "BINARY",
+      "sha256": "b0e2a05a95feba35065256519e00171abe9bf2c891021964d432a746103897ff"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-15.json",
+      "normalization": "BINARY",
+      "sha256": "8ef77d5666163455bed7c0500f66b5ccdf7e91a4ba90af9c5a4e1c7156cb5c5e"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-16.json",
+      "normalization": "BINARY",
+      "sha256": "3349430fa4864ed8b3676dba3b869ae471bccd1d4c323e435c1ae42061530945"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-17.json",
+      "normalization": "BINARY",
+      "sha256": "3bcd73f42ee2d0f9fd7fb2119a80adfb17f29334cff20f101bc922e9b726c3cf"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-18.json",
+      "normalization": "BINARY",
+      "sha256": "c9d4468682aa3ae7c047d5a74b61dcad93df585566d39493480ffc0776bcb675"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-19.json",
+      "normalization": "BINARY",
+      "sha256": "5f2c133f296cc5e6e5dc4adadcfcbd37994bd756285275ad7a53b960ea3ae56b"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-2.json",
+      "normalization": "BINARY",
+      "sha256": "37ebc43e280e324383068333724af401b7f11eac75d5b9899ae7e6b59771105d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-20.json",
+      "normalization": "BINARY",
+      "sha256": "20770efd8d699806e89488b148193c30a8734e8214ec159ee9c29b4f3c708bd9"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-21.json",
+      "normalization": "BINARY",
+      "sha256": "509291765e680773175dc800591dd6dacc300bc69d8d7a83e42b6e3c468fdaea"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-22.json",
+      "normalization": "BINARY",
+      "sha256": "aee7c8a1d13df5fe2fa9351e311743862c86c239e3961a4b373763463c9a8136"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-23.json",
+      "normalization": "BINARY",
+      "sha256": "cd0a128d71d34e2d5ffd5c0478dffd08735c253b57e7c9ecbabc0e781682d2c6"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-24.json",
+      "normalization": "BINARY",
+      "sha256": "76ca8f0f96b7b41336e54d58664182d2bd23da7ecc0f5f097643e0f0609a7ce4"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-25.json",
+      "normalization": "BINARY",
+      "sha256": "fbde30f4b1bc8ba66156b1801fc11f5f95860399522b1e1d68a857fa3def05d9"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-26.json",
+      "normalization": "BINARY",
+      "sha256": "c4a6d9794cfdcdfa176d337f8d8c03f7510ad9d43beb152f01d8ad1c1442007b"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-27.json",
+      "normalization": "BINARY",
+      "sha256": "2671fe18b884fa9528a64890f89f0726bf7a1462f7437cc27323e7a34a023116"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-28.json",
+      "normalization": "BINARY",
+      "sha256": "7cdd318e9cea7103437511e5518bf6d6ebd0f1fb11b50b16d28ea0b8bd5fe5ad"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-29.json",
+      "normalization": "BINARY",
+      "sha256": "1c23469ce7b1d58c64ee4cc7e09d895bb6d1a63545b583a965b4b648fdf82369"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-3.json",
+      "normalization": "BINARY",
+      "sha256": "0f58b6192c9e61b3fd71782dc00b6443138aa9ff943ee7f9fa2c39158231f67c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-30.json",
+      "normalization": "BINARY",
+      "sha256": "d965fb8a00e714d8ccf00af2efbce7f0b49c4ed6e9bf27c4acccb28d5cd87677"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-31.json",
+      "normalization": "BINARY",
+      "sha256": "006d4abc6254dbe459488b1ecb00e6303e09a86ea83a25bf322562017f47175b"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-32.json",
+      "normalization": "BINARY",
+      "sha256": "67afc67760dea52befe542457c91f3c28cd6174403a7a00d45ef08567bb80e25"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-33.json",
+      "normalization": "BINARY",
+      "sha256": "b7cb72a97e8952a75748510de3a6de9377ebb4c631fab7a470ad9c093f1f1ff6"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-34.json",
+      "normalization": "BINARY",
+      "sha256": "96385efea18576d6bc9ab4bccbf5897f39ec7c791780e6ad825f0b46d7706c16"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-4.json",
+      "normalization": "BINARY",
+      "sha256": "319aea6726c2fac5188b8899f8a17657e07e8ade62d35c66efeb7a5057bae654"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-5.json",
+      "normalization": "BINARY",
+      "sha256": "474244ec45884d3d0517052626a126a100668d75797c563965e693ca07a0ee49"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-6.json",
+      "normalization": "BINARY",
+      "sha256": "f781848b7793e177ae9015cdd63d0b952e489d030befb217f575a39e28eba93b"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-7.json",
+      "normalization": "BINARY",
+      "sha256": "d990eec9f0d3d5634357764d1658df8fc260ac1bf9ebce6caf3fc90f69206d2d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-8.json",
+      "normalization": "BINARY",
+      "sha256": "5057be34a171051c8204520b2cbb7335dc6c9a787ef800427b5a9433df92a47a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-9.json",
+      "normalization": "BINARY",
+      "sha256": "62dd3bc5ddc071b47bd3de8a883dfc954ba4fa624323a91834de0f4884a0bd90"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/decisions.json",
+      "normalization": "BINARY",
+      "sha256": "fcfe88ff3022667b63a223b7239335cc33008127ba4d9135512a542e024f27f6"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/ledger.json",
+      "normalization": "BINARY",
+      "sha256": "32fd10add7babf154a8459ad68e8a62836b8299fb321df6fb360a5a3dd5d1848"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/b3-20261022/observer.js",
+      "normalization": "BINARY",
+      "sha256": "f41ad7234e59df47abd62da9d1dd50adfb3686584e0ad427ba1c94cb239f7d0f"
+    },
+    {
+      "path": "scripts/audit-compositions.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "e4c2e4fa4fb091f9ac20e0908999d99e8b6522afc60594767bacc68e8fa5f8d5"
+    },
+    {
+      "path": "scripts/audit-designs.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "890659a61d682adefdc6f1f475bbb917b411d7734b9730e9f763533736ec68d9"
+    },
+    {
+      "path": "scripts/audit-h6-panel.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "719656f00291e0a9443f6cd683ef71464064a7b557f3efce50ada8bf8aa9484c"
+    },
+    {
+      "path": "scripts/audit-h6.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "30a0e12e366ffb8d877dfa916bf2747981cdfe25806fa6f4d88292bdfae32f1b"
+    },
+    {
+      "path": "scripts/audit-h7.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "f652f295e528bd0e48e67e4a2ca9f3e040008bc3e5b59e941636c5c335befd4c"
+    },
+    {
+      "path": "scripts/audit-h8.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "cc9fbaaf4c098c737e498327c6a2f7e73323b1bd5c3501f7b7fa80a252b0fa65"
+    },
+    {
+      "path": "scripts/audit-taxonomy.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c6edae571aded56bcc39636d4aa55ee44fb4b9a626a78de722a927aedc0d57f6"
+    },
+    {
+      "path": "scripts/b0-baseline.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "590f2d4d70f581fa868f6ea04f94d0ee0dd2d3d17d830cc1a25920996ab27e16"
+    },
+    {
+      "path": "scripts/b0-capture.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4f215627af4178fe36e0339491e1dddd91637f7a618caac482e95667429d52e9"
+    },
+    {
+      "path": "scripts/b0-runtime.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "75956d9a6497c526ad8a8d1c42d69a91790812b1f5a0d9acc971774d89557d8a"
+    },
+    {
+      "path": "scripts/b0-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ce7be3038b6e9c5801f17b1a86d4953f983daf33f5a33ca7945038d16dce693b"
+    },
+    {
+      "path": "scripts/b1-compare.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "9c2bb5e7b3da63cdc68620f47ee89115a6f5a4e8441c8bdf0a492059e1b272c2"
+    },
+    {
+      "path": "scripts/b1-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "718c6f408676325257e40948f8339944683cd024221086794537b7a42a4b2257"
+    },
+    {
+      "path": "scripts/b1-planner-replay.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "a1fb71201caeaf126d38b78050989684d0a5bfa425badc1cc175b3fc4479e071"
+    },
+    {
+      "path": "scripts/b1-qa.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "54b21611175bfac278b7568fcc4a7a757141ffa2147263341b9489e0414edd40"
+    },
+    {
+      "path": "scripts/b1-review-qa.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "9e7a77053730aa5588c9b7fd4035675cc871eed8b78cfa22f526d3c0ac9de0e9"
+    },
+    {
+      "path": "scripts/b1-run.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "e2bc01bdf396507aa2a462c19b749cdf468c0bc6795f8bd4beeca3bc1b282f14"
+    },
+    {
+      "path": "scripts/b1-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "3fc64df9bf33be9e9d89109965185ef309b38b9a0e874fb49d1dee75d3547842"
+    },
+    {
+      "path": "scripts/b2-acquire-usda.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4bb31d8e29a0bf67946bd1a2dd0dd131086df2821bbbc077c2afffca66f2402a"
+    },
+    {
+      "path": "scripts/b2-build-library.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "d88ff563519e5a14ae67a70414110ded85b4aa88efaf1de52d445af98c67bc7b"
+    },
+    {
+      "path": "scripts/b2-compare.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "eae74c9c0028bab01acb865ae49f8637a585b8a16f0805479c5702e8d94b0ab4"
+    },
+    {
+      "path": "scripts/b2-corpus.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "56f4baafd147faeddc8719601f07dc2c7184042886e4b0f73bfbf97561422e0a"
+    },
+    {
+      "path": "scripts/b2-demo-acquire.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "acb950702cb98aacd26051a7d60eb0dcb11b1896821192dddcb4eba9cf3a9d96"
+    },
+    {
+      "path": "scripts/b2-demo-cache-purge.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4ebde8a04ea828c650f7ea539a16e67ef06007eb36e3891e375b9b18b25a44e4"
+    },
+    {
+      "path": "scripts/b2-demo-compare.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "17e99a5238c421369c3df18c51722cfe61b0c8ddd33c25c1627e31668b52d9d5"
+    },
+    {
+      "path": "scripts/b2-demo-historical-pins.mjs",
+      "normalization": "LF_UTF8",
+      "sha256": "6487887aaa29ba01659a4fe213d39c5c0612378845a96e48b5699dd5847de12c"
+    },
+    {
+      "path": "scripts/b2-demo-materialize.mjs",
+      "normalization": "LF_UTF8",
+      "sha256": "447bdf94007c623701ba76e53dcef6eb40f4cf50807c03a65d60e8fee7d422ad"
+    },
+    {
+      "path": "scripts/b2-demo-package.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "b3ca815c9b51b390aa19206708eca3ad1ab8bc5f160c8f3f81c6e24132ee0c14"
+    },
+    {
+      "path": "scripts/b2-demo-qa.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4333df5a59d86e261693d937a36c094711f66c2c8299d4a2b96d0ca452f66d0a"
+    },
+    {
+      "path": "scripts/b2-demo-search.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "190ef6c0740b97e96300313f1a7ed7a22d62796275af5bf9185e11ae4bae8001"
+    },
+    {
+      "path": "scripts/b2-demo-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "b2e30a9f162a28957550639c851f92a4116c82a0cc11a0722a2cff5b1cab2310"
+    },
+    {
+      "path": "scripts/b2-derive.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "8c89f52ba25a38c1ecf2797465c24611384638303b4454b153661636de4ec29f"
+    },
+    {
+      "path": "scripts/b2-materialize.mjs",
+      "normalization": "LF_UTF8",
+      "sha256": "bb33b9ab030d5fba6158fa656e984be0296e3e0d4752fadd5e899e49eca7ca06"
+    },
+    {
+      "path": "scripts/b2-pixabay-request.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "2eaca2efbb4d35d96f533db162b88cf6bc36281fbd442a9024a648a6dd990bb6"
+    },
+    {
+      "path": "scripts/b2-qa.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "5887f1b2e3a810186bc8d89a4fdecfb6a6630c00c03f6a878040624845ff0d8f"
+    },
+    {
+      "path": "scripts/b2-run.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "b726e181426b880f8fbde34781e48310d8cf5c02ae597bae33c7b4bc45cd9328"
+    },
+    {
+      "path": "scripts/b2-runtime.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "f37a21483b9f852a5dc20735d6d71c5539fa79756fe1254b7eb82fdc0a54ceb7"
+    },
+    {
+      "path": "scripts/b2-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c04ca1d13ec00897112d2f9454b40b475bd845199da0573f8735a73000815d34"
+    },
+    {
+      "path": "scripts/b3-compare.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c078ed7516c37a7957a9b4b0c1aa149160c49a26b0eb3b2ad4283660dbde7fbe"
+    },
+    {
+      "path": "scripts/b3-depth-observer.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ec1d131eddd0c0a337b4a97b75ecd945d9a1fcce06b7ab4631e1db94383891e3"
+    },
+    {
+      "path": "scripts/b3-depth-record.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ec04d7a4a710ad177b8c3a830620d19961d2a42b7379e2a01a3955ac30f44ac0"
+    },
+    {
+      "path": "scripts/b3-depth-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "6d40643ebffb35cd9d942d8c6fe5c46da41b2ee9e6d368df877723a9674e1df0"
+    },
+    {
+      "path": "scripts/b3-evaluate.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "100dead9f0300e61f8319f53b514864475612bad946b5d29265f994d52d7dd97"
+    },
+    {
+      "path": "scripts/b3-experience-record.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "8993058ae5b0dc41f6d0b1849624a38c6e0539efb5ae0658b21af2a31cd4815a"
+    },
+    {
+      "path": "scripts/b3-experience-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "446254d5f6983c565e260587dc987f6113120ee9061cf5d41e79261ddedbec08"
+    },
+    {
+      "path": "scripts/b3-materialize.mjs",
+      "normalization": "LF_UTF8",
+      "sha256": "dc4853b81f885f11b328fa7afa2c1dd3ba283604e705f6bf6c278edcc15dda34"
+    },
+    {
+      "path": "scripts/b3-media-review.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "765749e096ac17d6acb145011d94b96136d399f5e33b89cd354897a7218150e2"
+    },
+    {
+      "path": "scripts/b3-preservation.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "e9f8365d9d8ee092aca501244a65f3543913f42705a20b307a8a0204a17b2285"
+    },
+    {
+      "path": "scripts/b3-proposals.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "952e15c897dde55f67db4d0727061c62ad3b97c81ea33c6e478d437a847b5702"
+    },
+    {
+      "path": "scripts/b3-qa.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "29293b6b140c6fb9125ce221fa3672d3cbb826baa57c5dcba7aab2c96219d7d8"
+    },
+    {
+      "path": "scripts/b3-reference-application.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "8ec47686e6342217e0345c39dff24312abd77e19d04282f477d855ae794e4e0f"
+    },
+    {
+      "path": "scripts/b3-reference-comparison.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c5b7ebd6dce95e9184311e44151fe75898c0ced2f7c6b50388555ba424002873"
+    },
+    {
+      "path": "scripts/b3-reference-current-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "89dbb1489177efbe3ccda7dac846c48e0718d654ec5aa9742a2bed68ef5e3f30"
+    },
+    {
+      "path": "scripts/b3-reference-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "db1314c1a3c46d5aee10e65ea4c61b03ed87189f6acd2024ac5bd8c7d6a8e2c7"
+    },
+    {
+      "path": "scripts/b3-remux-video.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "cfa2f18a3218762b17cba44129a0c73ce3cb3cdf16e92bb463072d8a54e0bcd9"
+    },
+    {
+      "path": "scripts/b3-rich-record.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "2299f3a3d6478fb0f1bf79130e5e7f2faed72d1f415521bfd395f7a324bb9ba9"
+    },
+    {
+      "path": "scripts/b3-rich-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "6a6c62fa23fdc212d8f638d69b641e0005953a8f6f5f735c91b3a49456cf05c1"
+    },
+    {
+      "path": "scripts/b3-run.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "f3796558e41f0c9c2c7f7b67953febe90e869268878878eac4a8dd79a00d8097"
+    },
+    {
+      "path": "scripts/b3-scenario.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "70a570b522a04f8611ddf510de7f7d2daefc9096d8edd5ddf7e47fe1e7d85962"
+    },
+    {
+      "path": "scripts/b3-stress.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "5ad46b140b29a4f599f7d3c1ec7072d76589f93480f83c456c735a616ae10335"
+    },
+    {
+      "path": "scripts/b3-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "b460e4aa6eed16a8b65c7b145551f5c3b16c80a1cadee29946ded3543d1b5863"
+    },
+    {
+      "path": "scripts/check-media-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "89cfb32a9b7a62a5ff01b5260db5abe700867d7575f486b668609333ddb5374a"
+    },
+    {
+      "path": "scripts/check-planner-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "dabe142c22770f0332a212fe29edcd98f80f9ab754cbb14cc53a8e152e3b31a9"
+    },
+    {
+      "path": "scripts/cohort-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "fca95110100af32ebe0e1551131f728ce3d32149f3c7a0617def720981886bbc"
+    },
+    {
+      "path": "scripts/composition-bindings.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "f9cb095e3a00fdc530b5bb3cd9ff3863ec3357ce25011aed6b6ab9fb07f3a255"
+    },
+    {
+      "path": "scripts/design-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "0e01569b79565b929013ed0358c9e9fe952171b835b046e9130fbb21116437c2"
+    },
+    {
+      "path": "scripts/evaluate-h7-baseline.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "137cd754d179a7e7c657bae7ce347cf9b0dc2bf6a80a8360c5eda3e201bb1fa8"
+    },
+    {
+      "path": "scripts/export-contracts.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "a5c6d4fc5a3fadf03cfe69f606ad6b2f0fea29368152c5ac350f338dbbb61cf3"
+    },
+    {
+      "path": "scripts/inventory-h9.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "8eea594a4ea3ac74e2f745e8154790e0baba8715f2921e92c0cc544e53139631"
+    },
+    {
+      "path": "scripts/lib/b1-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c3724d5461cd8ed188253b85783fc89406abab0ec3d224a58567b6b14077fc95"
+    },
+    {
+      "path": "scripts/lib/capture-presence.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "58e4b8ee438a698c47280cd08e449c95ca710f889c20ce83b221c76d70ca6fe7"
+    },
+    {
+      "path": "scripts/lib/correction-browser.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c4e1484c5a9c35cce318f715b4f96e45451d990e01beba5621cad0af7e39145b"
+    },
+    {
+      "path": "scripts/lib/correction-evidence.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "7b1eadcb70b6d646593fa4bf39b5722c7929f0a256c7c692df4e307e90193c93"
+    },
+    {
+      "path": "scripts/lib/correction-run.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "6b71bce9fd2fe2952c7c17979e701e3b7f886227873ab34cacb9c9608fae8b75"
+    },
+    {
+      "path": "scripts/lib/correction-runtime.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4f5dc1ed4a6c72c121c7ab8bf3d40727518309b25aa6ce7b0eca12cca562db24"
+    },
+    {
+      "path": "scripts/lib/local-browser.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "5e085ae09f4634959c57324a9b418440149ad0cfe66e566358b1154cdd11a9d3"
+    },
+    {
+      "path": "scripts/lib/lock-files.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "834095b3809e1ac784bdd04c088b5c79733f2c2b18c8a87fa5d73fc56a9970d3"
+    },
+    {
+      "path": "scripts/lib/planner-readonly.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c2b249f1cffc3f95e8b7db2cf3828090b587d7b8daf772bc95abe5e2e657af1a"
+    },
+    {
+      "path": "scripts/lib/rebuild-lock.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "8719109ac928c1c737fd10421776d8ced7b88564dcbea15d4f5532a0c52a0da4"
+    },
+    {
+      "path": "scripts/load-audit-lab.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "d4e8d9c426e5b1e066e65af0de7471f3a91456df3511c8337d5893ea35c6db49"
+    },
+    {
+      "path": "scripts/load-b2-library.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ad12a81d6d9a78afdc43e6079d94f83c8d8f95b4abf662ffcba062f42f4c822d"
+    },
+    {
+      "path": "scripts/load-b3-depth-experience.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "086910d8432b434873c3aeca4fe63ea8f52daf422d122bd17ca0a07881332013"
+    },
+    {
+      "path": "scripts/load-b3-experience.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4af3894d43759dbbc5ed46f2bc781ab1f1a635f47d11ebd6e3e206a82af11d20"
+    },
+    {
+      "path": "scripts/load-b3-lab.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "32a0fd0ee1cdbacfef473ab2077f3e2848db15b9d44e5dac7f150154545c42c6"
+    },
+    {
+      "path": "scripts/load-b3-rich-experience.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "567f0df69a4d2b8b8d4bc967395ff9d543bfe27be96f0b77dfd7434e0b8457ec"
+    },
+    {
+      "path": "scripts/load-cohort-lab.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ac7d676f3e1ec9a7e86e79f9d3c95dcf1ec26f51745910a8ea28aa865933db98"
+    },
+    {
+      "path": "scripts/load-comparisons.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "2433dda14413ffdcee9687f578cc651c5a55b421d60c9f3ef52320b5cdf0b7b0"
+    },
+    {
+      "path": "scripts/load-composition-lab.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "a3ec92706cc76a1fd003ab0c680f5a1ab783f35b700052000534e22ebae54776"
+    },
+    {
+      "path": "scripts/load-design-lab.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "843b4bff233e6c4cba0481a37f5975cb0ee86372002ea68a9b237a1233836be5"
+    },
+    {
+      "path": "scripts/load-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "a7fc91398451fe70dacbd28b5f0139c8f47cbe7dbcf49d9cde6e0caf4e53cc10"
+    },
+    {
+      "path": "scripts/load-media-pilot.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "8e1ebf5be276ac47608f26e105227ebb55ad20637bc948c9bf1684dde254a6d1"
+    },
+    {
+      "path": "scripts/load-planner-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "316c2885c6ebd4f17828b41ca0e388e711739a5c1d1f59b554e08f7db2661d13"
+    },
+    {
+      "path": "scripts/load-quality-lab.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "bcc4343f6c4733a74cb54b9b13f7c6801269e6d779010bf435e687ddab401149"
+    },
+    {
+      "path": "scripts/load-taxonomy.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "5bf04cc864b59eae13015162f475f26b53f3b75538190277e985e9a5a5686290"
+    },
+    {
+      "path": "scripts/media-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ba2c48e4a3528585205d077e6e6b4be77706d40290dfd6c6f1e8c83c968f9f2c"
+    },
+    {
+      "path": "scripts/plan-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ec6e93259905fa6708fddc3a1ae3e8611022ff017d98ca7463fcbad175ac0b30"
+    },
+    {
+      "path": "scripts/quality-audit.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "91529681fc5f2417907930052de79cd3ac9ae6855e47a9541f64e28d85e37390"
+    },
+    {
+      "path": "scripts/quality-checks.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "0beaf5a417af1bab7391de470edfe45de2fc041ccec941632e4cb31371dfeabf"
+    },
+    {
+      "path": "scripts/quality-export.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "e563d56b1cab99bab6040097e02cfa8ac5a868f50ee6cbf6daaf23eeceaf3b2d"
+    },
+    {
+      "path": "scripts/quality-judge.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "d41d86b92187b6fb490b8e82a788c167267670240384a2da5648727de4739f87"
+    },
+    {
+      "path": "scripts/quality-observer.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "14b19d677fcb2c0dcb9fc9f5649d60406412b5906325edc5e911162179e8ddc0"
+    },
+    {
+      "path": "scripts/quality-prepare.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "1e92a13771b7953092da96fc2d877225026fd53faf2367daa8b95ce1c691882f"
+    },
+    {
+      "path": "scripts/quality-repair.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "7221883103a31a834ce82343055d49f02c0293ddcbcb477e3f26e8ccd90bcce7"
+    },
+    {
+      "path": "scripts/quality-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "9c4b0f5f8f0f7b8c14537c53d90947a432f648c81d0abdf37229ae1d0b8fc8a0"
+    },
+    {
+      "path": "scripts/rebuild-h8.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "57028fc9f1446527d84ee9d3253486013b90acffc8ec8a66f1627d9134454b6f"
+    },
+    {
+      "path": "scripts/record-h5-proposals.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c5f7302c937968a33652e442f4c809a1361d11987e731271b66d4b1e070b146d"
+    },
+    {
+      "path": "scripts/record-h7-proposals.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "e650d361e8ded0398ce2880af2b3a98061bc40c0dfc3cce82f010cb493a4da70"
+    },
+    {
+      "path": "scripts/render-h3-pilot.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ee8451edd6d1dea73f2c908646bfc4f6854c3e7229c1edd1fafaf1a33d724949"
+    },
+    {
+      "path": "scripts/reserve-h7-cohort.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "a7872fc1138c2c12ed522580da9720dec6c0749a9ce8b266e2191dbe6c42a757"
+    },
+    {
+      "path": "scripts/seal-design-locks.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4431699ca027be9d3b691133b231f63d201ba31c2e9edc4aa567fc59a43ec697"
+    },
+    {
+      "path": "scripts/seal-media-pilot.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "11901baa6dbb3a904ca7a406d8191f57fc1264ad6b8f4fc968e0ebc4d89a9b94"
+    },
+    {
+      "path": "scripts/validate-fixtures.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "fadef81dc69fc61cc571cc1d0c026a91bac2e51858b4db800ca5257b5b363322"
+    },
+    {
+      "path": "scripts/verify-compositions.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "008bb713f87624eaac136129880ef6c5a1aef941e6d40e400f0cf1a5e389daec"
+    },
+    {
+      "path": "scripts/verify-designs.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "d285957201aa8d694fcdc1903b028c497f756abbc2518a740660de58580c5110"
+    },
+    {
+      "path": "scripts/verify-h6.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "74cfd525afd2092470a72ac16b1c8b5db53b22a5b2c250816fb770c72cdeb7bd"
+    },
+    {
+      "path": "scripts/verify-h7.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "b73aebb9ea00c135595d2da544d536a7629d7777bd27ef2485cc20ca71d6bf0e"
+    },
+    {
+      "path": "scripts/verify-h8.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "fe1b1295beb8bea63a0954fddd39232b3ba46385107abb30a7465641aec23e6b"
+    },
+    {
+      "path": "scripts/verify-media-pilot.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "c15442a4199a03d4f107757f866b9a4c9bac6d07d8b8b861e685ed813410581f"
+    },
+    {
+      "path": "src/components/composition/AuditPanel.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "c2df044aa3bea52389c1a751d39855c36b301c100e247d5381c4c0f6a70fd170"
+    },
+    {
+      "path": "src/components/composition/CommunitySections.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "1a9916b65443dcbd79da1079ea1431240718bcb6e39b112b240234bc9052a297"
+    },
+    {
+      "path": "src/components/composition/Composition.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "5bcd7e5f583510daf268a3a5c3abb87e0564a62e24e4f862f637c82d6e4dd0ba"
+    },
+    {
+      "path": "src/components/composition/ContextualComposition.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "8c62da966838e6cbdb3e760a72823d3da47df9df51dccdc171b21f823383fa4f"
+    },
+    {
+      "path": "src/components/composition/ContextualImage.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "6c8c434d1eff5f590e740d2b2bcc59e01b5a47e1dfc29e5cc913d9a5e271cb97"
+    },
+    {
+      "path": "src/components/composition/ContextualModule.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "dfab04b8d7b6c286b8f03e75f6cf18821656cfc9bb76e78cef2870a2000cd8a3"
+    },
+    {
+      "path": "src/components/composition/DesignComposition.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "2af973bf1ec1cb22423c81ecebf0c2820983d5c0fb60a8ba085bf39c18aa57eb"
+    },
+    {
+      "path": "src/components/composition/ExperienceComposition.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "e1a86f2d89679dbbddf65143bf5dc1a17f29c3b82ef2d4a54e861d2b164531a5"
+    },
+    {
+      "path": "src/components/composition/ExperienceFeatures.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "2ea6d1ccd60defcd31781b127991fee86036584f7921927bd386d5cdc7e55dad"
+    },
+    {
+      "path": "src/components/composition/ExperienceNavigation.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "478a35c70f2462b621800d6c61785e2dfda9826b85b425e1868205149ce16bae"
+    },
+    {
+      "path": "src/components/composition/FactCollection.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "538d418727b1dc506d44f20b3c5d59eac48bf181911a8298bc519e29ec3e188d"
+    },
+    {
+      "path": "src/components/composition/Identity.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "02b0b6efe07ad39e19eae77df65cfa84ddec306836775e25ed0b7104770cb8e4"
+    },
+    {
+      "path": "src/components/composition/MediaFigure.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "2072e955fb4e3671de11714b75cfcb23d2005212798d4e606cb151261fa10577"
+    },
+    {
+      "path": "src/components/composition/OfferingCollection.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "fa8519195d90b535ed42e7276f11d981cb45c60ef9999defd778d7b5a2f32874"
+    },
+    {
+      "path": "src/components/composition/PreviewIntent.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "16b08c905137ea5b2033edf34dfd7cdceee7d79660a160a0e25360aff592aa5d"
+    },
+    {
+      "path": "src/components/composition/Schedule.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "1529056f9fc691e9afaae5475814e0441d4bb571c39bbe1e4ef258d2f2d0d119"
+    },
+    {
+      "path": "src/components/composition/SiteNavigation.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "c3807a80f7a9df56cfad50e47d06de322e46a216c3e56530fc04148c52bfe3d7"
+    },
+    {
+      "path": "src/components/quality/QualityComparison.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "b458cbd9d8c8e9386e11fc21fbb7b00213b07af37586c54d2e6932c800756e52"
+    },
+    {
+      "path": "src/components/requirements/FictionalMediaPreview.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "cfc40c13efd4f241e526844793ed8b688b1254fdbf6417c0b67057da87daf5a8"
+    },
+    {
+      "path": "src/components/requirements/GoalCard.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "3c8d197eabae0ba3542e21432d7fbcd97bcec771a6d94e0452c2325539e77af9"
+    },
+    {
+      "path": "src/components/requirements/LibraryMediaFigure.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "7ba78dd74b04bcb3574d35ae9a613d4326e4d2214e61b921614255b24c77039b"
+    },
+    {
+      "path": "src/components/requirements/ReviewFeatureCard.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "9a8f3d52c46faed99c917e361dc114d07952cc848b89c8bfd1f9a6062adb05cf"
+    },
+    {
+      "path": "src/design/background-policy.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "fd1ac63def551b1e95a63254bea089df63103161fd6fa0091f9f1f9896c6381f"
+    },
+    {
+      "path": "src/design/contextual-audit.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "3ca899fad5460fe1a6f0475a9416fff32db331b5ef925f6450da979d5193e818"
+    },
+    {
+      "path": "src/design/contextual-client.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "3a65bda4a3a0c3176d6134d872dc4e6aa1ad0b17ccb47a49a98a44a3510d82b9"
+    },
+    {
+      "path": "src/design/contextual-contracts.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "b27844b39a9c999cd556bb0ec1d87e845569a557f2c1de9d917c79bd1a3a2c96"
+    },
+    {
+      "path": "src/design/contextual.css",
+      "normalization": "LF_UTF8",
+      "sha256": "c69de0a4253110e601d36aa6f2da751ae529c8390ba490059d4b33d391d2946d"
+    },
+    {
+      "path": "src/design/contextual.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "26455d6d55aeb37ff93587b1c50ac6bc407ce8f04dd2cd0be2a60a648dc63559"
+    },
+    {
+      "path": "src/design/contracts.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "022c63935125429f45692edd3ae7011d425d04fed3f3e47e703c0cd79cc97e03"
+    },
+    {
+      "path": "src/design/depth-experience-audit.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "081aff146f04ff6369aff3d948ab575e14e20e9ae11c7746729dd92ac4d63378"
+    },
+    {
+      "path": "src/design/depth-experience-client.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "abdfd394a0022fb22a908df987799b8c5d00d36e209dd9dbef499a17441ec0a6"
+    },
+    {
+      "path": "src/design/depth-experience-contracts.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "be8349002efd6bc02aa94caadf943de79e74894b293c90eb659b0fb7708b8da6"
+    },
+    {
+      "path": "src/design/depth-experience.css",
+      "normalization": "LF_UTF8",
+      "sha256": "c9d1f1e74d698760082a85d4635843b226d68bdd246f6cd6cab5e5ef53beeecc"
+    },
+    {
+      "path": "src/design/evaluators/binding-observation.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "0f4b6e1938a09f040d17d8e1c85a11e32b1fbe3c7cfcf760049620de28775ca0"
+    },
+    {
+      "path": "src/design/evaluators/contracts.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "249ddb51540ddab68bf31d40ca547457bf1b15f7f5b756421574b27d7dc44958"
+    },
+    {
+      "path": "src/design/evaluators/normalize.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4cac775e6e015d13f9e231d37ecca15a4ff08a3396df1fab7c6c85d99693f84b"
+    },
+    {
+      "path": "src/design/evaluators/observe.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "7add7932e8d468e7b38f87a2edd6fd47a8079d5e91d1690e4a26acc3cf28a689"
+    },
+    {
+      "path": "src/design/evaluators/policy.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "545d5efc58ec428a6fc25c7717114f2a2ed65e8a2d057060aca093fc741d7e54"
+    },
+    {
+      "path": "src/design/evaluators/preflight.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "7bc3c752f3f3d26add1fbdaebbf4406cea67b228ec314360575fcca86802199e"
+    },
+    {
+      "path": "src/design/evaluators/refinement.css",
+      "normalization": "LF_UTF8",
+      "sha256": "029713448b20469331ad8970bf2ee8c098cedab6ffb08afc1f0ddeaf60bf2ffa"
+    },
+    {
+      "path": "src/design/experience-audit.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "692a39efbfc3227163e883a9a50f325f8d48f3f8914c14a155e479838789c776"
+    },
+    {
+      "path": "src/design/experience-client.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "6474e7125e279275109114d7d18caa98d12025aa40bb8d947ba4062d8f319555"
+    },
+    {
+      "path": "src/design/experience-contracts.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "5f4d73b0b0ed31eb6fb881a57c80e0cd67bb43a0615e82587334485f64a4d8b4"
+    },
+    {
+      "path": "src/design/experience-coverage.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "4fb4fde3e725e38ff5299095c2d4190514150000451b38e18040fdf42e8b61ae"
+    },
+    {
+      "path": "src/design/experience-refinement-client.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "14a92a94582e478977c12f8536ff1bdffa193fead69135e5c57c686aec3f7ad6"
+    },
+    {
+      "path": "src/design/experience-refinement.css",
+      "normalization": "LF_UTF8",
+      "sha256": "f1cae70c0a250ef5d6646cdef1518ef3f67a93071fc020e4291ce5af46c6fb9d"
+    },
+    {
+      "path": "src/design/experience.css",
+      "normalization": "LF_UTF8",
+      "sha256": "f23dd7f81ca2775198cea2c85bf731f3b252e9ef978072e71119950a5f22f1f2"
+    },
+    {
+      "path": "src/design/reference-application.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "701964325caa161604cde9a0eb9a5513bb666d119bcd07fb305a404ff47b82c3"
+    },
+    {
+      "path": "src/design/reference-comparison.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "5cb97b340ac34d94651f9118ea21ca6bafe16d97004f6fd51cc58ba4f4cf04e3"
+    },
+    {
+      "path": "src/design/reference-depth-validation.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "59bfe5f9ec02a5055be3c518321d62a6edf6ecc63870add8fd103bbe89411034"
+    },
+    {
+      "path": "src/design/rich-experience-audit.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "ca61e9043fad042ebc923ed5f4b94b90e4c085f2ccab3e33e3b20f9e992abe8f"
+    },
+    {
+      "path": "src/design/rich-experience-contracts.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "9dc090ee4cf0a8c91c1fb93d19573d60f82523327d5510805293683dc34430e1"
+    },
+    {
+      "path": "src/design/rich-experience.css",
+      "normalization": "LF_UTF8",
+      "sha256": "dddb8b0c77fbdbfbbe6c38831c4730c628716944d41439dc9cc4563a63a6a058"
+    },
+    {
+      "path": "src/design/search.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "2d9c1f6aef764ffa31ecc430fe08e56a838284a4c30f62fe05bed3b12c7fa8a4"
+    },
+    {
+      "path": "src/design/styles.css",
+      "normalization": "LF_UTF8",
+      "sha256": "b172c41ebd4982b4cae10c640f0172603670776236bf5171355e94cac194056b"
+    },
+    {
+      "path": "src/design/validate.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "1b3d782a03573d219235b2c975b1742346d9bc5b4667c53f9dee3cc9a95dc8e3"
+    }
+  ],
+  "negative_gates": 3,
+  "interaction_sets": 8,
+  "default_evaluators_enabled": false,
+  "human_preference": "NOT_COLLECTED"
+}

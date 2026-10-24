@@ -1,0 +1,29 @@
+{
+  "kind": "gate_result",
+  "schema_version": "2.1.1",
+  "gate_id": "G01",
+  "gate_policy_version": "2.1.1",
+  "run_id": "synthetic-not-run",
+  "subject_type": "data_bundle",
+  "subject_hash": "5c0b6f26bc4b6472d810c4536bd29644c3be1eaaaf9b88dfe5c5d8d6209f6033",
+  "checker_version": "NOT_IMPLEMENTED",
+  "environment": "spec_example",
+  "started_at": null,
+  "finished_at": null,
+  "status": "NOT_RUN",
+  "applicable_test_ids": [],
+  "case_results": [],
+  "evidence_refs": [],
+  "findings": [],
+  "not_applicable_reason": null,
+  "invalidation_keys": [
+    "data_snapshot",
+    "authorization",
+    "verification_deadlines",
+    "capability_plan"
+  ],
+  "evaluation_context": "prepublication",
+  "applicability_profile_hash": "a5779d1a7299d018603002571426b9d5726e9cc045f222773be740dd4dccc615",
+  "design_review_ref": null,
+  "design_review_hash": null
+}

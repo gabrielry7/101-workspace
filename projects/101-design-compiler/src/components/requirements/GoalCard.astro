@@ -1,0 +1,31 @@
+---
+import {label,ownerLabels} from '../../requirements/labels.ts';
+import type {FunctionalDiagnostic,RequirementCard} from '../../requirements/contracts.ts';
+interface Props {entry:FunctionalDiagnostic['entries'][number];card:RequirementCard}
+const {entry,card}=Astro.props;
+---
+<article class="b1-card" data-goal-card data-capability-id={entry.capability_id} data-scope-id={entry.scope_id} data-relevance={entry.relevance} data-emitted={String(entry.emitted_in_plan)}>
+ <h3>{card.label}</h3>
+ <p><span class="badge">{label(entry.relevance)}</span><span class="badge">{label(entry.evidence_status)}</span></p>
+ <p>{entry.emitted_in_plan?'H2 la incluye en este plan. Eso no implica que estén completos todos los niveles ni que exista una operación conectada.':'H2 no emite esta función en el plan actual. Sus requisitos permanecen aquí.'}</p>
+ {entry.levels.map(level=>(<details data-level-id={level.level_id}>
+  <summary>{level.label} · {label(level.status)}</summary>
+  <p>{card.levels.find(l=>l.id===level.level_id)!.expected_behavior}</p>
+  {card.levels.find(l=>l.id===level.level_id)!.visitor_inputs.length>0&&<details><summary>Datos que pediría esta función al visitante, cuando exista</summary><p>Son campos de una operación futura; B1 no pide datos personales ni envía solicitudes.</p><ul>{card.levels.find(l=>l.id===level.level_id)!.visitor_inputs.map(field=><li><strong>{field.label}</strong>. {field.validation}</li>)}</ul></details>}
+  <p class="muted">{label(level.implementation)}. Verificación operativa pendiente; backend no conectado.</p>
+  <ul class="fields">{level.requirements.toSorted((a,b)=>Number(['SATISFIED','NOT_REQUIRED_BY_CONDITION'].includes(a.status))-Number(['SATISFIED','NOT_REQUIRED_BY_CONDITION'].includes(b.status))).map(req=>(<li class="field" data-requirement-id={req.requirement_id} data-requirement-status={req.status} data-owner={req.owner}>
+   <strong>{req.label}</strong> · {label(req.status)}<br/><span class="muted">Responsable: {ownerLabels[req.owner]}</span>
+   <p>{req.message}</p>{req.next_step&&<p>Siguiente paso: {req.next_step}</p>}
+   {(req.fact_ids.length>0||req.offering_ids.length>0)&&<p class="references">Referencias: <code>{[...req.fact_ids,...req.offering_ids].join(', ')}</code></p>}
+  </li>))}</ul>
+  {level.dependency_checks.length>0&&<ul>{level.dependency_checks.map(dep=>(<li>Dependencia {dep.mode==='ALL'?'obligatoria':'alternativa'}: {dep.capability_ids.join(', ')}. {dep.satisfied?'Presente en el plan.':'Pendiente en este alcance.'} <code>{dep.scope_id}</code></li>))}</ul>}
+  {level.next_steps.length>0&&<details><summary>Lista completa de próximos pasos ({level.next_steps.length})</summary><ul>{level.next_steps.map(step=><li>{step}</li>)}</ul></details>}
+ </details>))}
+ <details><summary>Trazabilidad de la función</summary>
+  <p>Capacidad <code>{entry.capability_id}</code>; alcance <code>{entry.scope_id}</code>.</p>
+  <p>Módulos emitidos: <code>{entry.module_ids.join(', ')||'ninguno'}</code>.</p>
+  <p>Evidencia factual: <code>{entry.factual_evidence_ids.join(', ')||'pendiente'}</code>.</p>
+  <p>Decisión del objetivo: <code>{entry.decision_evidence_ids.join(', ')||'sin exclusión justificada'}</code>.</p>
+  <p>Primeros bloqueos H2: <code>{entry.h2_missing_inputs.join(', ')||'sin código pendiente registrado'}</code>. El inventario completo está en cada nivel.</p>
+ </details>
+</article>

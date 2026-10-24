@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "site_plan_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "need": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "requirement_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "module_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "page": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "scope_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "purpose": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "DOCUMENTARY",
+                  "ILLUSTRATIVE",
+                  "ATMOSPHERIC"
+                ]
+              },
+              "subject_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "kinds": {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "image",
+                    "video",
+                    "audio"
+                  ]
+                }
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "count": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "min_width": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "min_height": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "requirement_id",
+              "module_id",
+              "page",
+              "scope_id",
+              "purpose",
+              "role",
+              "subject_ids",
+              "kinds",
+              "required",
+              "count",
+              "min_width",
+              "min_height"
+            ],
+            "additionalProperties": false
+          },
+          "missing_count": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "reasons": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "requested_from": {
+            "type": "string",
+            "enum": [
+              "rights_review",
+              "inspection",
+              "upstream_or_commission",
+              "licensed_provider"
+            ]
+          }
+        },
+        "required": [
+          "need",
+          "missing_count",
+          "reasons",
+          "requested_from"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "closure": {
+      "type": "string",
+      "enum": [
+        "PENDING_AUTHORIZED_MEDIA_PACKAGE",
+        "AUTHORIZED_PILOT_PACKAGE_WITH_GAPS",
+        "AUTHORIZED_PILOT_PACKAGE"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "site_plan_id",
+    "manifest_sha256",
+    "evaluated_at",
+    "gaps",
+    "constraints",
+    "closure"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:MediaBriefV1:1.0.0",
+  "title": "MediaBriefV1",
+  "description": "H3 media contract; deterministic rights and suitability checks required; no rights conferred by URLs."
+}

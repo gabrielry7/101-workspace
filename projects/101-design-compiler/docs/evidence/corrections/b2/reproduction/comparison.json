@@ -1,0 +1,70 @@
+{
+  "kind": "B2_SAME_HOST_REPRODUCTION_COMPARISON",
+  "created_at": "2026-10-15T01:45:03.986Z",
+  "first": "docs/evidence/corrections/b2/qa-04",
+  "second": "docs/evidence/corrections/b2/clean-qa-01",
+  "status": "PASS",
+  "pairs": [
+    {
+      "label": "b2-desktop",
+      "html_sha256": "937f4f7774e9d760a29364276e85f1d31253d5c6b9db1209d56fee1a83c37335",
+      "rgba_sha256": "9b6cae8e2dce02702e0a0a26078d7bb11dd7529740b770d4f226b9fb00e9edf7",
+      "stable_observations_sha256": "29d1e2752d2d007c8e51f4914d78cc762905eabf929bafeb161bae6533957a39",
+      "status": "IDENTICAL"
+    },
+    {
+      "label": "pilot-desktop",
+      "html_sha256": "dcdb5503f120bdde5bc081748cc59645fea45de6c977d09d3d7efcfd08ded216",
+      "rgba_sha256": "dd2d1323e71acb7680bf31b92f5d88f3d686cb8f030a836b7a1bcbce28fe1503",
+      "stable_observations_sha256": "380bbd0a857152020b53ca31087a16e77be1ab8afa5f1207684efb53ba06dad6",
+      "status": "IDENTICAL"
+    },
+    {
+      "label": "corpus-desktop",
+      "html_sha256": "74b71f8004ad77e2a7c3054ab63ffab61fae0f621645b6f27a9c99ae2af176a9",
+      "rgba_sha256": "9879ea0fe1a661c4c3e3d452f25d218b9d1c31f0c94a8d9cdfdb48209d2ea5bb",
+      "stable_observations_sha256": "1750bf0ede90367ba5443d0cea6bc9cc42c6d8bf379f18df0cd10a62388dc931",
+      "status": "IDENTICAL"
+    },
+    {
+      "label": "providers-desktop",
+      "html_sha256": "c343c0e4ede91110a6dced3aceebd82db23cc2f0d4df36969e247d79536812db",
+      "rgba_sha256": "8b0d444aa8f58a0291c61a0b3a5f02afbbe6785256da3d30546b0b326678e939",
+      "stable_observations_sha256": "87cd68328a58459834d892918856ed6522593e098122c1a345a70718ce7e4417",
+      "status": "IDENTICAL"
+    },
+    {
+      "label": "b2-mobile",
+      "html_sha256": "937f4f7774e9d760a29364276e85f1d31253d5c6b9db1209d56fee1a83c37335",
+      "rgba_sha256": "71a47a9709b45d86089e27437f070b136a4ecb1f0b1f68bfe1b9af14bc9e5a40",
+      "stable_observations_sha256": "2e593863a56566020af31b210cb9fd59c5bc939e3dc4d6c296ac1938d5ba5f60",
+      "status": "IDENTICAL"
+    },
+    {
+      "label": "pilot-mobile",
+      "html_sha256": "dcdb5503f120bdde5bc081748cc59645fea45de6c977d09d3d7efcfd08ded216",
+      "rgba_sha256": "55a7cd9f438209a2485452bd969f993c2d3df07e3d17622dee24269a98c7ec05",
+      "stable_observations_sha256": "9258875391d0580b2d45be2ee1b05d16ca08b081bc2d30d0d8610ff608019c97",
+      "status": "IDENTICAL"
+    },
+    {
+      "label": "corpus-mobile",
+      "html_sha256": "74b71f8004ad77e2a7c3054ab63ffab61fae0f621645b6f27a9c99ae2af176a9",
+      "rgba_sha256": "52f8b5d891a7a47c7fe3a6e7b91bdedaca3c5e8616bc7a680d5cfb59529c6e6b",
+      "stable_observations_sha256": "70c86482cdd406da34c93d9d82802fe58dc1e152c44e11b23f5ccc79c947bc11",
+      "status": "IDENTICAL"
+    },
+    {
+      "label": "providers-mobile",
+      "html_sha256": "c343c0e4ede91110a6dced3aceebd82db23cc2f0d4df36969e247d79536812db",
+      "rgba_sha256": "f48076da01bde125ca848787186e05664f572e014560b8583edc86facb5c691c",
+      "stable_observations_sha256": "cc371cbc99a2cc7acbaae4e8d91d81ab3f8b6dcc57c6561c3b8e396d0f6ed411",
+      "status": "IDENTICAL"
+    }
+  ],
+  "limits": [
+    "Same B2 font observation, OS, dependencies and browser; no historical pixel identity claim",
+    "Network timing and resource bookkeeping excluded; served media hashes, geometry, content, bindings and screenshot pixels compared",
+    "Not a new media acquisition or current aesthetic approval"
+  ]
+}

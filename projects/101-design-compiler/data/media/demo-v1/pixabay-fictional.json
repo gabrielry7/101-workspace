@@ -1,0 +1,2236 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "FICTIONAL_MEDIA_PACKAGE",
+  "package_sha256": "970cc4a6bfbe7af3d8d1de15656fe532a97883963a3e81d9c9390dc07d57f425",
+  "scenario": {
+    "id": "b2-fictional-restaurant-v1",
+    "title": "La Mesa · restaurante ficticio",
+    "mode": "SYNTHETIC_DEMO",
+    "business_id": "fixture-restaurante-001",
+    "site_plan_sha256": "40faa48cdcc099038d066d62f0e52eebf3113e4231aa6c949a63528b0f8ae99e",
+    "input_sha256": "77eebdf30cccf91ba80bc0dd5bffeccf320600645c26d90b49bd605645cccf60",
+    "client_id": "101-design-compiler-fixture-review",
+    "project_id": "b2-fictional-pixabay-demo",
+    "scope_id": "fixture-restaurante-001",
+    "real_business_evidence": false
+  },
+  "evaluated_at": "2026-10-15T02:59:12.955Z",
+  "needs": [
+    {
+      "id": "demo-need:pizza",
+      "label": "Pizza · ejemplo",
+      "placement": "CARD",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "purpose": "fictional:pizza",
+      "role": "ILLUSTRATIVE",
+      "target_module": "semantic-70d73044727ca9b106d272a8",
+      "target_capability": "menu",
+      "target_feature": "offer_detail",
+      "source_need_ids": [
+        "need-33f7e20873460d5156843d28"
+      ],
+      "satisfies_documentary_need": false
+    },
+    {
+      "id": "demo-need:pasta",
+      "label": "Pasta · ejemplo",
+      "placement": "CARD",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "purpose": "fictional:pasta",
+      "role": "ILLUSTRATIVE",
+      "target_module": "semantic-70d73044727ca9b106d272a8",
+      "target_capability": "menu",
+      "target_feature": "offer_detail",
+      "source_need_ids": [
+        "need-33f7e20873460d5156843d28"
+      ],
+      "satisfies_documentary_need": false
+    },
+    {
+      "id": "demo-need:salad",
+      "label": "Ensalada · ejemplo",
+      "placement": "CARD",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "purpose": "fictional:salad",
+      "role": "ILLUSTRATIVE",
+      "target_module": "semantic-70d73044727ca9b106d272a8",
+      "target_capability": "menu",
+      "target_feature": "offer_detail",
+      "source_need_ids": [
+        "need-33f7e20873460d5156843d28"
+      ],
+      "satisfies_documentary_need": false
+    },
+    {
+      "id": "demo-need:dessert",
+      "label": "Postre · ejemplo",
+      "placement": "CARD",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "purpose": "fictional:dessert",
+      "role": "ILLUSTRATIVE",
+      "target_module": "semantic-70d73044727ca9b106d272a8",
+      "target_capability": "menu",
+      "target_feature": "offer_detail",
+      "source_need_ids": [
+        "need-33f7e20873460d5156843d28"
+      ],
+      "satisfies_documentary_need": false
+    },
+    {
+      "id": "demo-need:motion",
+      "label": "Una escena de cocina",
+      "placement": "MOTION",
+      "scope_id": "fixture-restaurante-001",
+      "purpose": "fictional:motion",
+      "role": "ATMOSPHERIC",
+      "target_module": "semantic-7bf9d33184f7e923438acadd",
+      "target_capability": "identity",
+      "target_feature": "identity",
+      "source_need_ids": [
+        "need-7bacfc78bdb58db1dd06998a"
+      ],
+      "satisfies_documentary_need": false
+    },
+    {
+      "id": "demo-need:poster",
+      "label": "Portada ilustrativa del vídeo",
+      "placement": "POSTER",
+      "scope_id": "fixture-restaurante-001",
+      "purpose": "fictional:poster",
+      "role": "ATMOSPHERIC",
+      "target_module": "semantic-7bf9d33184f7e923438acadd",
+      "target_capability": "identity",
+      "target_feature": "identity",
+      "source_need_ids": [
+        "need-7bacfc78bdb58db1dd06998a"
+      ],
+      "satisfies_documentary_need": false
+    }
+  ],
+  "assets": [
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-4991789-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/b2-demo/originals/4991789.jpg",
+      "source": "Pixabay",
+      "external_id": "4991789",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+          "recorded_at": "2026-10-15T02:39:37.094Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-4991789-received",
+      "parent_id": null,
+      "original_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "file_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/4991789.jpg",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pizza",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        },
+        {
+          "purpose": "fictional:poster",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/4991789.jpg",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Pizza · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-4991789-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/4991789-640.webp",
+      "source": "Pixabay",
+      "external_id": "4991789",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+          "recorded_at": "2026-10-15T02:39:37.094Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-4991789-received",
+      "parent_id": "pixabay-4991789-received",
+      "original_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "file_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/4991789-640.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pizza",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        },
+        {
+          "purpose": "fictional:poster",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/4991789-640.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+        },
+        "width": 640,
+        "height": 427,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pizza · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-4991789-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/4991789-1280.webp",
+      "source": "Pixabay",
+      "external_id": "4991789",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+          "recorded_at": "2026-10-15T02:39:37.094Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-4991789-received",
+      "parent_id": "pixabay-4991789-received",
+      "original_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "file_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/4991789-1280.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pizza",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        },
+        {
+          "purpose": "fictional:poster",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/4991789-1280.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pizza · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-3547078-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/b2-demo/originals/3547078.jpg",
+      "source": "Pixabay",
+      "external_id": "3547078",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+          "recorded_at": "2026-10-15T02:39:39.054Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-3547078-received",
+      "parent_id": null,
+      "original_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "file_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/3547078.jpg",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pasta",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/3547078.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/3547078.jpg",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+        },
+        "width": 1280,
+        "height": 697,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Pasta · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-3547078-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/3547078-640.webp",
+      "source": "Pixabay",
+      "external_id": "3547078",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+          "recorded_at": "2026-10-15T02:39:39.054Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-3547078-received",
+      "parent_id": "pixabay-3547078-received",
+      "original_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "file_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/3547078-640.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pasta",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/3547078-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/3547078-640.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+        },
+        "width": 640,
+        "height": 349,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pasta · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-3547078-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/3547078-1280.webp",
+      "source": "Pixabay",
+      "external_id": "3547078",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+          "recorded_at": "2026-10-15T02:39:39.054Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-3547078-received",
+      "parent_id": "pixabay-3547078-received",
+      "original_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "file_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/3547078-1280.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pasta",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/3547078-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/3547078-1280.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+        },
+        "width": 1280,
+        "height": 697,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pasta · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-791891-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/b2-demo/originals/791891.jpg",
+      "source": "Pixabay",
+      "external_id": "791891",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+          "recorded_at": "2026-10-15T02:44:32.394Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-791891-received",
+      "parent_id": null,
+      "original_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "file_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/791891.jpg",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:salad",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/791891.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/791891.jpg",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Ensalada · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-791891-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/791891-640.webp",
+      "source": "Pixabay",
+      "external_id": "791891",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+          "recorded_at": "2026-10-15T02:44:32.394Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-791891-received",
+      "parent_id": "pixabay-791891-received",
+      "original_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "file_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/791891-640.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:salad",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/791891-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/791891-640.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+        },
+        "width": 640,
+        "height": 427,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Ensalada · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-791891-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/791891-1280.webp",
+      "source": "Pixabay",
+      "external_id": "791891",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+          "recorded_at": "2026-10-15T02:44:32.394Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-791891-received",
+      "parent_id": "pixabay-791891-received",
+      "original_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "file_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/791891-1280.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:salad",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/791891-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/791891-1280.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Ensalada · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-1971552-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/b2-demo/originals/1971552.jpg",
+      "source": "Pixabay",
+      "external_id": "1971552",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+          "recorded_at": "2026-10-15T02:44:33.622Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-1971552-received",
+      "parent_id": null,
+      "original_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "file_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/1971552.jpg",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:dessert",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/1971552.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/1971552.jpg",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+        },
+        "width": 1280,
+        "height": 871,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Postre · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-1971552-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/1971552-640.webp",
+      "source": "Pixabay",
+      "external_id": "1971552",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+          "recorded_at": "2026-10-15T02:44:33.622Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-1971552-received",
+      "parent_id": "pixabay-1971552-received",
+      "original_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "file_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/1971552-640.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:dessert",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/1971552-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/1971552-640.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+        },
+        "width": 640,
+        "height": 436,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Postre · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-1971552-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/1971552-1280.webp",
+      "source": "Pixabay",
+      "external_id": "1971552",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+          "recorded_at": "2026-10-15T02:44:33.622Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-1971552-received",
+      "parent_id": "pixabay-1971552-received",
+      "original_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "file_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/1971552-1280.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:dessert",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/1971552-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/1971552-1280.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+        },
+        "width": 1280,
+        "height": 871,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Postre · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-149678-received",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "private:.tools/b2-demo/originals/149678.mp4",
+      "source": "Pixabay",
+      "external_id": "149678",
+      "audio_track": "PRESENT",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-149678/",
+          "recorded_at": "2026-10-15T02:40:40.245Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-149678-received",
+      "parent_id": null,
+      "original_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "file_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/149678.mp4",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:motion",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/149678.mp4",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/149678.mp4",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+        },
+        "width": 1280,
+        "height": 720,
+        "duration_seconds": 9.36,
+        "codec": "h264",
+        "subject": "Una escena de cocina",
+        "findings": [
+          "234 frames decoded; 1-second samples reviewed, pizza/cutter; output track verified separately.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-149678-silent",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "/media/b2-fictional/149678-silent-640.webm",
+      "source": "Pixabay",
+      "external_id": "149678",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-149678/",
+          "recorded_at": "2026-10-15T02:40:40.245Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-149678-received",
+      "parent_id": "pixabay-149678-received",
+      "original_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "file_sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/149678-silent-640.webm",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:motion",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/149678-silent-640.webm",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/149678-silent-640.webm",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+        },
+        "width": 640,
+        "height": 360,
+        "duration_seconds": 9.36,
+        "codec": "vp8",
+        "subject": "Una escena de cocina",
+        "findings": [
+          "234 frames decoded; 1-second samples reviewed, pizza/cutter; output track verified separately.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    }
+  ],
+  "grants": [
+    {
+      "schema_version": "1.0.0",
+      "id": "license:4991789",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-4991789-received",
+      "original_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_CONTENT_LICENSE",
+      "holder": "Provider lists shailesh68; no ownership asserted by compiler",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "version": "Pixabay Terms 2024-11-18, applicable per-file source dates; local applicability review",
+        "sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b2-fictional-pixabay-demo"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001-branch-1",
+        "fixture-restaurante-001"
+      ],
+      "purposes": [
+        "fictional:pizza",
+        "fictional:poster"
+      ],
+      "pages": [
+        "/b2/demo/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-15T02:59:12.955Z",
+      "valid_until": "2026-11-14T02:59:12.955Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "shailesh68 / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "license:3547078",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-3547078-received",
+      "original_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "provider": "Pixabay",
+      "license_type": "CC0_1_0_BY_TERMS_SECTION_4",
+      "holder": "Provider lists RitaE; no ownership asserted by compiler",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "version": "Pixabay Terms 2024-11-18, applicable per-file source dates; local applicability review",
+        "sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b2-fictional-pixabay-demo"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001-branch-1"
+      ],
+      "purposes": [
+        "fictional:pasta"
+      ],
+      "pages": [
+        "/b2/demo/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-15T02:59:12.955Z",
+      "valid_until": "2026-11-14T02:59:12.955Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "RitaE / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "license:791891",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-791891-received",
+      "original_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "provider": "Pixabay",
+      "license_type": "CC0_1_0_BY_TERMS_SECTION_4",
+      "holder": "Provider lists JillWellington; no ownership asserted by compiler",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "version": "Pixabay Terms 2024-11-18, applicable per-file source dates; local applicability review",
+        "sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b2-fictional-pixabay-demo"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001-branch-1"
+      ],
+      "purposes": [
+        "fictional:salad"
+      ],
+      "pages": [
+        "/b2/demo/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-15T02:59:12.955Z",
+      "valid_until": "2026-11-14T02:59:12.955Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "JillWellington / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "license:1971552",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-1971552-received",
+      "original_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "provider": "Pixabay",
+      "license_type": "CC0_1_0_BY_TERMS_SECTION_4",
+      "holder": "Provider lists Daria-Yakovleva; no ownership asserted by compiler",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "version": "Pixabay Terms 2024-11-18, applicable per-file source dates; local applicability review",
+        "sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b2-fictional-pixabay-demo"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001-branch-1"
+      ],
+      "purposes": [
+        "fictional:dessert"
+      ],
+      "pages": [
+        "/b2/demo/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-15T02:59:12.955Z",
+      "valid_until": "2026-11-14T02:59:12.955Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "Daria-Yakovleva / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "license:149678",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-149678-received",
+      "original_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_CONTENT_LICENSE",
+      "holder": "Provider lists u_mcy3jdr8zw; no ownership asserted by compiler",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "version": "Pixabay Terms 2024-11-18, applicable per-file source dates; local applicability review",
+        "sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b2-fictional-pixabay-demo"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001"
+      ],
+      "purposes": [
+        "fictional:motion"
+      ],
+      "pages": [
+        "/b2/demo/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-15T02:59:12.955Z",
+      "valid_until": "2026-11-14T02:59:12.955Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "u_mcy3jdr8zw / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    }
+  ],
+  "usages": [
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-4991789-640",
+      "need_id": "demo-need:pizza",
+      "asset_id": "pixabay-4991789-640",
+      "grant_id": "license:4991789",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "page": "/b2/demo/",
+      "module_id": "semantic-70d73044727ca9b106d272a8",
+      "purpose": "fictional:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-4991789-1280",
+      "need_id": "demo-need:pizza",
+      "asset_id": "pixabay-4991789-1280",
+      "grant_id": "license:4991789",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "page": "/b2/demo/",
+      "module_id": "semantic-70d73044727ca9b106d272a8",
+      "purpose": "fictional:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-3547078-640",
+      "need_id": "demo-need:pasta",
+      "asset_id": "pixabay-3547078-640",
+      "grant_id": "license:3547078",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "page": "/b2/demo/",
+      "module_id": "semantic-70d73044727ca9b106d272a8",
+      "purpose": "fictional:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-3547078-1280",
+      "need_id": "demo-need:pasta",
+      "asset_id": "pixabay-3547078-1280",
+      "grant_id": "license:3547078",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "page": "/b2/demo/",
+      "module_id": "semantic-70d73044727ca9b106d272a8",
+      "purpose": "fictional:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-791891-640",
+      "need_id": "demo-need:salad",
+      "asset_id": "pixabay-791891-640",
+      "grant_id": "license:791891",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "page": "/b2/demo/",
+      "module_id": "semantic-70d73044727ca9b106d272a8",
+      "purpose": "fictional:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-791891-1280",
+      "need_id": "demo-need:salad",
+      "asset_id": "pixabay-791891-1280",
+      "grant_id": "license:791891",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "page": "/b2/demo/",
+      "module_id": "semantic-70d73044727ca9b106d272a8",
+      "purpose": "fictional:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-1971552-640",
+      "need_id": "demo-need:dessert",
+      "asset_id": "pixabay-1971552-640",
+      "grant_id": "license:1971552",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "page": "/b2/demo/",
+      "module_id": "semantic-70d73044727ca9b106d272a8",
+      "purpose": "fictional:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-1971552-1280",
+      "need_id": "demo-need:dessert",
+      "asset_id": "pixabay-1971552-1280",
+      "grant_id": "license:1971552",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "page": "/b2/demo/",
+      "module_id": "semantic-70d73044727ca9b106d272a8",
+      "purpose": "fictional:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:pixabay-149678-silent",
+      "need_id": "demo-need:motion",
+      "asset_id": "pixabay-149678-silent",
+      "grant_id": "license:149678",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b2/demo/",
+      "module_id": "semantic-7bf9d33184f7e923438acadd",
+      "purpose": "fictional:motion",
+      "role": "ATMOSPHERIC",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "u_mcy3jdr8zw / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "demo-use:poster",
+      "need_id": "demo-need:poster",
+      "asset_id": "pixabay-4991789-640",
+      "grant_id": "license:4991789",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b2-fictional-pixabay-demo",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b2/demo/",
+      "module_id": "semantic-7bf9d33184f7e923438acadd",
+      "purpose": "fictional:poster",
+      "role": "ATMOSPHERIC",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [
+        "vision"
+      ],
+      "automated_access": []
+    }
+  ],
+  "files": [
+    {
+      "path": ".tools/b2-demo/originals/4991789.jpg",
+      "sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "bytes": 476639,
+      "asset_id": "pixabay-4991789-received",
+      "publication": "PRIVATE_SOURCE"
+    },
+    {
+      "path": "public/media/b2-fictional/4991789-640.webp",
+      "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed",
+      "bytes": 86066,
+      "asset_id": "pixabay-4991789-640",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    },
+    {
+      "path": "public/media/b2-fictional/4991789-1280.webp",
+      "sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71",
+      "bytes": 305320,
+      "asset_id": "pixabay-4991789-1280",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    },
+    {
+      "path": ".tools/b2-demo/originals/3547078.jpg",
+      "sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "bytes": 229835,
+      "asset_id": "pixabay-3547078-received",
+      "publication": "PRIVATE_SOURCE"
+    },
+    {
+      "path": "public/media/b2-fictional/3547078-640.webp",
+      "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b",
+      "bytes": 41984,
+      "asset_id": "pixabay-3547078-640",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    },
+    {
+      "path": "public/media/b2-fictional/3547078-1280.webp",
+      "sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0",
+      "bytes": 116602,
+      "asset_id": "pixabay-3547078-1280",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    },
+    {
+      "path": ".tools/b2-demo/originals/791891.jpg",
+      "sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "bytes": 283569,
+      "asset_id": "pixabay-791891-received",
+      "publication": "PRIVATE_SOURCE"
+    },
+    {
+      "path": "public/media/b2-fictional/791891-640.webp",
+      "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6",
+      "bytes": 45472,
+      "asset_id": "pixabay-791891-640",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    },
+    {
+      "path": "public/media/b2-fictional/791891-1280.webp",
+      "sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588",
+      "bytes": 126204,
+      "asset_id": "pixabay-791891-1280",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    },
+    {
+      "path": ".tools/b2-demo/originals/1971552.jpg",
+      "sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "bytes": 253809,
+      "asset_id": "pixabay-1971552-received",
+      "publication": "PRIVATE_SOURCE"
+    },
+    {
+      "path": "public/media/b2-fictional/1971552-640.webp",
+      "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9",
+      "bytes": 36338,
+      "asset_id": "pixabay-1971552-640",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    },
+    {
+      "path": "public/media/b2-fictional/1971552-1280.webp",
+      "sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20",
+      "bytes": 127138,
+      "asset_id": "pixabay-1971552-1280",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    },
+    {
+      "path": ".tools/b2-demo/originals/149678.mp4",
+      "sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "bytes": 2801470,
+      "asset_id": "pixabay-149678-received",
+      "publication": "PRIVATE_SOURCE"
+    },
+    {
+      "path": "public/media/b2-fictional/149678-silent-640.webm",
+      "sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b",
+      "bytes": 4446094,
+      "asset_id": "pixabay-149678-silent",
+      "publication": "LOCAL_COMPOSITE_ONLY"
+    }
+  ],
+  "sources": [
+    {
+      "asset_id": "pixabay-4991789-received",
+      "provider_id": 4991789,
+      "page": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+      "contributor": "shailesh68",
+      "published_date": "2020-04-02",
+      "license": "PIXABAY_CONTENT_LICENSE",
+      "terms_version": "2024-11-18",
+      "camera_original": "NOT_OBTAINED",
+      "ai_generated": "NOT_REPORTED"
+    },
+    {
+      "asset_id": "pixabay-3547078-received",
+      "provider_id": 3547078,
+      "page": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+      "contributor": "RitaE",
+      "published_date": "2018-07-19",
+      "license": "CC0_1_0_BY_TERMS_SECTION_4",
+      "terms_version": "2024-11-18",
+      "camera_original": "NOT_OBTAINED",
+      "ai_generated": "NOT_REPORTED"
+    },
+    {
+      "asset_id": "pixabay-791891-received",
+      "provider_id": 791891,
+      "page": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+      "contributor": "JillWellington",
+      "published_date": "2015-06-01",
+      "license": "CC0_1_0_BY_TERMS_SECTION_4",
+      "terms_version": "2024-11-18",
+      "camera_original": "NOT_OBTAINED",
+      "ai_generated": "NOT_REPORTED"
+    },
+    {
+      "asset_id": "pixabay-1971552-received",
+      "provider_id": 1971552,
+      "page": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+      "contributor": "Daria-Yakovleva",
+      "published_date": "2017-01-11",
+      "license": "CC0_1_0_BY_TERMS_SECTION_4",
+      "terms_version": "2024-11-18",
+      "camera_original": "NOT_OBTAINED",
+      "ai_generated": "NOT_REPORTED"
+    },
+    {
+      "asset_id": "pixabay-149678-received",
+      "provider_id": 149678,
+      "page": "https://pixabay.com/videos/pizza-peperonni-cheese-italian-149678/",
+      "contributor": "u_mcy3jdr8zw",
+      "published_date": "2023-02-07",
+      "license": "PIXABAY_CONTENT_LICENSE",
+      "terms_version": "2024-11-18",
+      "camera_original": "NOT_OBTAINED",
+      "ai_generated": "NOT_REPORTED"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/evidence/corrections/b2-demo/legal-review.md",
+      "sha256": "4b2e10a20645014fe0edb1b9f7776c38fd70d85d560a07d055f54e6d502d8056",
+      "bytes": 5922
+    },
+    {
+      "path": "docs/evidence/corrections/b2-demo/video-derivation-640.json",
+      "sha256": "68cfc00589bbddbc97cc2c38fcd9eb50b0a1e23aeba2868761a6156acd36d15b",
+      "bytes": 4708
+    },
+    {
+      "path": "docs/evidence/corrections/b2-demo/current-container.json",
+      "sha256": "7f7b2b9007f36718225c308a773af40aa39ed62dc39c4b131cd9a00b71198956",
+      "bytes": 681
+    },
+    {
+      "path": "docs/evidence/corrections/b2-demo/source-video-metadata.json",
+      "sha256": "a4c8127305c6a73350c7fbc5c853781ae4bf70a1c8126f3ec9d58c6ba05f2f32",
+      "bytes": 155
+    },
+    {
+      "path": "docs/evidence/corrections/b2-demo/acquisition.json",
+      "sha256": "e79503ca066c1e289ec6ef990a05474b4bda2169ab176e8fd951e57c67d0590a",
+      "bytes": 8443
+    },
+    {
+      "path": "docs/evidence/corrections/b2-demo/acquisition-alternatives.json",
+      "sha256": "e9a843cf40e66bdc816705ab8b7c551c704638a3c9ce75997ead34d2cd689f0a",
+      "bytes": 4253
+    },
+    {
+      "path": "docs/evidence/corrections/b2-demo/acquisition-final-candidates.json",
+      "sha256": "83b7120f498de8aa68182dfef6f1c1e51f26da00f805e64ad6aae786fe0eb6ca",
+      "bytes": 3199
+    }
+  ],
+  "silent_video": {
+    "source_asset_id": "pixabay-149678-received",
+    "render_asset_id": "pixabay-149678-silent",
+    "source_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+    "render_sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b",
+    "method": "PIXEL_ONLY_TRANSCODE",
+    "receipt_path": "docs/evidence/corrections/b2-demo/video-derivation-640.json",
+    "source_audio": "PRESENT",
+    "render_audio": "NONE"
+  },
+  "human_aesthetic_approval": "NOT_COLLECTED",
+  "public_stock_redistribution": false
+}

@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0.0",
+  "method": "git checkout-index --all with core.autocrlf=true; isolated ignored directory; existing locked node_modules junction; no downloads",
+  "build": "PASSED",
+  "replay": "PASSED",
+  "media_verify": "PASSED",
+  "composition_verify": "PASSED",
+  "design_verify": "PASSED",
+  "byte_equivalence": [
+    {
+      "path": "dist/h5/candidate-01/index.html",
+      "sha256": "68d6aa3108a3d993c4f0402d2a4f1c093a19101dbb063a576118d4d3c6e2665d"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-01-desktop.png",
+      "sha256": "f3e6bb358934bea7d781983c5f630b2906053beafb3d4aa80ec200dbe4b82241"
+    },
+    {
+      "path": "dist/h5/candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "d057331c44d5a0fe606bfbe2f451c2276110af06518b14ba2f7c97fcbd58c35b"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-01-desktop-offering.png",
+      "sha256": "578dec5891ca433c2417ca8d21778199b849dd67712644a30a329c854de485c6"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-01-mobile.png",
+      "sha256": "a3c5a4f530886fb91d38ec074299b1c750b8cd8caad68fc94a41d08e710081b5"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-01-mobile-offering.png",
+      "sha256": "0278b60310bae772b082f130f3ccd8890baa3bfffa7d412c42566eea59821c7a"
+    },
+    {
+      "path": "dist/h5/candidate-02/index.html",
+      "sha256": "d6851f80ffe3f8d7465827953ce195db3d0eba9bf66ab4b42397adad79f8f0ac"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-02-desktop.png",
+      "sha256": "36176114a758405357756cd0fa5fe1c6fdbdd5bb463c6cb260dece3a0a60533a"
+    },
+    {
+      "path": "dist/h5/candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "b2a253531b01304646ad9c68cd15b1efaa65abdaf74c69d43b1251db652fbe3f"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-02-desktop-offering.png",
+      "sha256": "40eb198886153d48c5f5ee7524629a4fecb692218e92208ad221b81a9013da58"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-02-mobile.png",
+      "sha256": "f02756f8bcf5bce456951f70ac01ece9348c3681bd8fdfece4cf96a20694e864"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-02-mobile-offering.png",
+      "sha256": "89134fe703c4f07d68f0ebb02f8179f94b9e3bf51a6d3d85577fb2f55dee9ad1"
+    },
+    {
+      "path": "dist/h5/candidate-04/index.html",
+      "sha256": "38e84c30e1ce1e40d546a830d9c6a3e318a1685a60cf6575a6234d7b10d41591"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-04-desktop.png",
+      "sha256": "d4798d42fdfa58ff981807ccd754041bc825565ac3bc75e0515e2e0afe548a84"
+    },
+    {
+      "path": "dist/h5/candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "0c80aa99b7bbd2ec73d76d9d0b2655b42f05917f3b56412d3c66c59456522f2d"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-04-desktop-offering.png",
+      "sha256": "ebb3420431616c1a94a8ca1a8785958f8941b2f4661a4b613bbd04e033d0f7f8"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-04-mobile.png",
+      "sha256": "d276f7754d9b508983e9524e8dab4eb3c3f2d2d31c3716cc5b1de5b4562102b1"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-04-mobile-offering.png",
+      "sha256": "4808a684ff4b9e6a73ed704711d5e601a5ba536d62a81bb947ce688ec0004414"
+    },
+    {
+      "path": "dist/h5/candidate-05/index.html",
+      "sha256": "c42f5d6412c3bbc3fae0731a4e07d527b2f54eff6b1bd8acd5141a642519a8c6"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-05-desktop.png",
+      "sha256": "c45cdef17bf6e6f0ec148fc6fcfdef84442674444e08c8bc390c5503d7b0cbb8"
+    },
+    {
+      "path": "dist/h5/candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "f19958d1f20b6f6fd12f33b6baab17590a5b08fab6b96a848d7300c00e7efcea"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-05-desktop-offering.png",
+      "sha256": "94cf7ecf08012a09fc18ebfa5eacc5117df85696120d518c0c69cc32fe97bf65"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-05-mobile.png",
+      "sha256": "da72286c4f78af525351a89b992c06b716c37598a6e095913d7c41a54b53af95"
+    },
+    {
+      "path": "docs/evidence/h5/candidate-05-mobile-offering.png",
+      "sha256": "541a50afd7245a315d789a77f83c059760ea04f824aba77c81279769e82353f3"
+    },
+    {
+      "path": "fixtures/design/h5/prompt.txt",
+      "sha256": "68876234b49dd1fb70f973d64aef6d3072f1ea6de790ce7c45fdb8b92cd1dd58"
+    },
+    {
+      "path": "fixtures/design/h5/llm-output.json",
+      "sha256": "ecab19168d467a03286fa1cdb8ae6ac12158c0ed29782baf85aaa0176fffb4c5"
+    },
+    {
+      "path": "data/derived/design-v1/restaurante-search.json",
+      "sha256": "70f95eb417c3b60156a7e6273fc53d1682a8a2ee863a55831c560c6288aa689b"
+    }
+  ],
+  "evaluated_at": "2026-10-09T01:26:48.811Z",
+  "limitations": "No claim of independent dependency installation or pixel recapture equivalence."
+}

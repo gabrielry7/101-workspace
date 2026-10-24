@@ -1,0 +1,236 @@
+{
+  "scope": "DOCUMENT_PACKAGE_AND_REFERENCE_CONTRACTS_ONLY",
+  "status": "PASS",
+  "spec_checks_total": 54,
+  "spec_checks_passed": 54,
+  "gates_defined": 17,
+  "acceptance_cases_defined": 74,
+  "product_tests_executed": 0,
+  "production_sites_tested": 0,
+  "repository_audited": false,
+  "publication_authorized": false,
+  "limitations": [
+    "No se validaron código ni integraciones de 101.",
+    "Los ejemplos son sintéticos; hashes de entradas auxiliares son ilustrativos.",
+    "La forma de una aprobación o reporte no verifica autoridad o autenticidad.",
+    "Las comprobaciones no constituyen certificación de seguridad, legalidad, accesibilidad ni rendimiento."
+  ],
+  "checks": [
+    {
+      "check": "Esquema JSON Schema 2020-12 bien formado",
+      "status": "PASS"
+    },
+    {
+      "check": "IDs de compuerta únicos",
+      "status": "PASS"
+    },
+    {
+      "check": "IDs de caso únicos",
+      "status": "PASS"
+    },
+    {
+      "check": "Cobertura G00–G16",
+      "status": "PASS"
+    },
+    {
+      "check": "Cada caso tiene preparación, acción, expectativa y evidencia requerida",
+      "status": "PASS"
+    },
+    {
+      "check": "Todos los casos referencian compuertas existentes",
+      "status": "PASS"
+    },
+    {
+      "check": "Todas las compuertas tienen casos existentes",
+      "status": "PASS"
+    },
+    {
+      "check": "Referencias compuerta/caso bidireccionales",
+      "status": "PASS"
+    },
+    {
+      "check": "No se inventaron ejecuciones de pruebas del producto",
+      "status": "PASS"
+    },
+    {
+      "check": "No se inventaron comprobadores integrados",
+      "status": "PASS"
+    },
+    {
+      "check": "G14 no es prerrequisito circular de su propio despliegue",
+      "status": "PASS"
+    },
+    {
+      "check": "G16 no bloquea el primer piloto con revisión humana",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema del ejemplo approval.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local del ejemplo approval.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema del ejemplo asset_rights.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local del ejemplo asset_rights.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema del ejemplo capability_plan.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local del ejemplo capability_plan.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema del ejemplo fact.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local del ejemplo fact.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema del ejemplo gate_result.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local del ejemplo gate_result.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema del ejemplo release_manifest.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local del ejemplo release_manifest.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Seis tipos de ejemplos presentes",
+      "status": "PASS"
+    },
+    {
+      "check": "Hash y tamaño del artefacto sintético",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo sintético refiere el candidato sintético",
+      "status": "PASS"
+    },
+    {
+      "check": "El ejemplo de compuerta permanece NOT_RUN",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: hecho verificado sin verificación",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: clase de publicación desconocida",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: importe negativo",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: importe no entero",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: escala COP incorrecta",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: fecha inválida",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: derechos habilitados sin evidencia",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: atribución exigida pero ausente",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: capacidad habilitada sin responsable/política",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: hash de formato inválido",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: agente suplantando aprobador",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: PASS sin ejecución ni evidencia",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: N/A sin motivo ni evidencia",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: identificador requerido ausente",
+      "status": "PASS"
+    },
+    {
+      "check": "Forma sintética PASS completa aceptada por esquema (no autorización real)",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo de PASS con caso NOT_RUN",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo de PASS con hallazgo bloqueante",
+      "status": "PASS"
+    },
+    {
+      "check": "Hash detecta modificación de contenido del candidato",
+      "status": "PASS"
+    },
+    {
+      "check": "Control local detecta caso aplicable faltante",
+      "status": "PASS"
+    },
+    {
+      "check": "Control local detecta resultado duplicado",
+      "status": "PASS"
+    },
+    {
+      "check": "Control local detecta rutas con ascenso",
+      "status": "PASS"
+    },
+    {
+      "check": "Control local detecta dependencia faltante y operación en prototipo privado",
+      "status": "PASS"
+    },
+    {
+      "check": "Original conservado sin modificaciones",
+      "status": "PASS"
+    },
+    {
+      "check": "Documento conserva las siete fases",
+      "status": "PASS"
+    },
+    {
+      "check": "Documento conserva las cuatro capas transversales",
+      "status": "PASS"
+    },
+    {
+      "check": "Documento referencia todas las compuertas",
+      "status": "PASS"
+    }
+  ]
+}

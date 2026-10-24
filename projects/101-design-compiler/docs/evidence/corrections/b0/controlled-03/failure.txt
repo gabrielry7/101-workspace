@@ -1,0 +1,9 @@
+Recorded after the attempt, not a fabricated process log or timing receipt.
+Result: FAIL. Two builds succeeded. Iteration a completed 16 views. Iteration b stopped after 2 accepted views.
+The next mobile capture raised B0_CAPTURE_FAILED:pilot-flow-mobile:ORIGINAL_MEDIA_LAB_EXCEPTION.
+ORIGINAL_MEDIA_LAB_EXCEPTION is an existing permitted LAB warning, not alone a reason to fail.
+The combined check also examines nonlocal requests and browser exceptions. The old attempt did not persist those arrays.
+The exact failing condition is therefore UNKNOWN. No assertion of root cause or final PASS is made.
+Subsequent harness instrumentation persists failure diagnostics and partial successful view receipts.
+No final capture.json exists. Retain these files as partial failed-attempt evidence.
+Human time, session tokens and total cost remain unknown.

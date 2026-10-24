@@ -1,0 +1,25 @@
+{
+  "reason": "Independent review: exact responsive profile and viewport matrix was not enforced; add exact coverage and negative test",
+  "unchanged": [
+    "rendered HTML",
+    "media bytes",
+    "64 main observations",
+    "16 responsive observations",
+    "interaction observations",
+    "site and rights review"
+  ],
+  "changed_sources": [
+    {
+      "path": "scripts/b3-experience-verify.ts",
+      "sha256": "446254d5f6983c565e260587dc987f6113120ee9061cf5d41e79261ddedbec08"
+    },
+    {
+      "path": "src/design/experience-coverage.ts",
+      "sha256": "4fb4fde3e725e38ff5299095c2d4190514150000451b38e18040fdf42e8b61ae"
+    },
+    {
+      "path": "tests/b3-experience.test.ts",
+      "sha256": "9d150440298d37c557959bb70f43dea8be8decc08f0d70ee0d3808719e32b210"
+    }
+  ]
+}

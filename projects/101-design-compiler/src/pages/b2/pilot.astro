@@ -1,0 +1,22 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import LibraryMediaFigure from '../../components/requirements/LibraryMediaFigure.astro';
+import {loadB2Library} from '../../../scripts/load-b2-library.ts';
+import {diagnoseBoundMedia} from '../../requirements/media-diagnostic.ts';
+import '../../requirements/review.css';
+const {handle,library,diagnostic,evaluated_at}=await loadB2Library(),overlay=diagnoseBoundMedia(diagnostic,handle,evaluated_at);
+---
+<Foundation title="B2 · Un uso real autorizado, con huecos conservados">
+ <div class="review" data-b2-page="pilot" data-library-sha256={library.library_sha256}>
+ <nav aria-label="Revisión B2"><a href="/b2/">Resumen</a><a href="/b2/providers/">Condiciones</a><a href="/b2/corpus/">Referencias</a></nav>
+ <h1>Una foto, un uso concreto</h1><p>Contexto atmosférico del fixture ficticio de restaurante. No representa un plato ni una sede.</p>
+ <LibraryMediaFigure handle={handle} usage_ids={library.manifest.usages.map(u=>u.id)} evaluated_at={evaluated_at}/>
+ <p class="notice"><strong>Hueco documental bloqueado:</strong> falta una foto auténtica y autorizada de <code>offering-1</code>. La foto de pimientos conserva su rol atmosférico.</p>
+ <section><h2>Recorrido y condiciones</h2><ol><li>Necesidad atmosférica del módulo de identidad → selección puntual de ficha oficial y política.</li><li>Obtención del JPEG enlazado → SHA idéntico al original, deduplicado.</li><li>Nuevo permiso B2 acotado → resize/transcode, crédito y ausencia de respaldo.</li><li>Decodificación e inspección de original/480/960 → archivos y linaje conservados.</li><li>Rights gate por uso → presentación responsive, comprobada en navegador.</li></ol>
+ <p>Este snapshot se evaluó el <code>{library.manifest.evaluated_at}</code>. Revisión interna válida hasta <code>{library.manifest.grants[0]!.valid_until}</code>; no es una fecha de expiración del dominio público. Se requiere reevaluar antes de reutilizar/publicar.</p></section>
+ <section><h2>Archivos y linaje</h2>{library.files.map(f=><details data-b2-file={f.asset_id}><summary>{f.path} · {f.bytes.toLocaleString('es-CO')} bytes</summary><p>SHA256: <code>{f.sha256}</code>. Original/descendencia: <code>{library.manifest.assets.find(a=>a.id===f.asset_id)!.original_id}</code>.</p></details>)}</section>
+ <section><h2>Necesidades por función y sujeto</h2><p>Un uso atmosférico no completa los requisitos documentales de identidad o carta. No se rellenan con stock.</p>
+ {library.requests.map(r=><details data-b2-request={r.id} data-media-role={r.role} data-media-scope={r.scope_id} data-media-status={r.status}><summary>{r.capability_id} · {r.role} · {r.status}</summary><p>Alcance: <code>{r.scope_id}</code>. Sujetos: <code>{r.subject_ids.join(', ')||'Pendiente de identificar'}</code>.</p><p>{r.reason}</p><p>Origen: {r.source}. Página/módulo: <code>{r.need?`${r.need.page} / ${r.need.module_id??'pendiente'}`:'objetivo pendiente de planificar'}</code>.</p></details>)}</section>
+ <section><h2>Vínculos comprobados</h2>{library.bindings.map(b=><details data-b2-binding={b.id}><summary>{b.capability_id} → {b.feature_id}</summary><p>Uso <code>{b.usage_id}</code>; página <code>{b.page}</code>; módulo <code>{b.module_id}</code>; scope <code>{b.scope_id}</code>.</p></details>)}<p>Overlay B1 asociado: {overlay.entries.filter(e=>e.status==='SATISFIED').length} requisitos de medios completados; los requisitos documentales conservan sus huecos. V1 y su diagnóstico original no se modifican.</p></section>
+ </div>
+</Foundation>

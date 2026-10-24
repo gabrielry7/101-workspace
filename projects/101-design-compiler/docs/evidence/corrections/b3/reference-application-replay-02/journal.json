@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-reference-application-replay-02",
+  "created_at": "2026-10-16T13:48:17.093Z",
+  "steps": [
+    {
+      "id": "check",
+      "started_at": "2026-10-16T13:48:17.100Z",
+      "finished_at": "2026-10-16T13:48:38.110Z",
+      "wall_seconds": 21.0092523,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-02/check.txt",
+      "log_sha256": "03fb22080b5a0b917a5bac022d989f55e11cf46bce4da4bef2b41e2f62047068"
+    },
+    {
+      "id": "b3-tests",
+      "started_at": "2026-10-16T13:48:38.114Z",
+      "finished_at": "2026-10-16T13:48:39.188Z",
+      "wall_seconds": 1.0738842000000004,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-02/b3-tests.txt",
+      "log_sha256": "a860396840dc9b2fb4a9f8ab3406bcc5d228a4dbd5375a0a7a3c4c1437e48cd5"
+    },
+    {
+      "id": "current-browser-evidence",
+      "started_at": "2026-10-16T13:48:39.192Z",
+      "finished_at": "2026-10-16T13:48:40.599Z",
+      "wall_seconds": 1.4071082000000024,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-02/current-browser-evidence.txt",
+      "log_sha256": "00dd6ba5a74708d5ba6592230e93e279c96d3fbf11a1eb57b7119c26b00368d7"
+    },
+    {
+      "id": "reference-application",
+      "started_at": "2026-10-16T13:48:40.601Z",
+      "finished_at": "2026-10-16T13:48:40.892Z",
+      "wall_seconds": 0.29127460000000066,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-02/reference-application.txt",
+      "log_sha256": "cca2d8ed9302382f40d49e4700079070a9a7377b25068f8a6145a4faa4c114f5"
+    },
+    {
+      "id": "reference-evidence",
+      "started_at": "2026-10-16T13:48:40.894Z",
+      "finished_at": "2026-10-16T13:48:41.213Z",
+      "wall_seconds": 0.3189667000000009,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-02/reference-evidence.txt",
+      "log_sha256": "a1aab5e1b242c697ecfd34a1b5fb95470c56749d310d4c8a8abe1c4ad834b3dd"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

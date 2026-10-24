@@ -1,0 +1,5830 @@
+{
+  "kind": "B3_MULTIPAGE_IAB_OBSERVATIONS",
+  "scope": "16 additional home viewports. Original screenshot paths remain in experience-iab-01; separated from raw 80-view archive without modifying observations.",
+  "views": [
+    {
+      "design": "candidate-01",
+      "kind": "home",
+      "viewport": {
+        "id": "small",
+        "width": 360,
+        "height": 800
+      },
+      "captured_at": "2026-10-16T17:52:24.940Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-01/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 800,
+          "state": "playing",
+          "width": 360,
+          "x": 0,
+          "y": 0
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 360,
+          "height": 1631,
+          "overflow": [],
+          "root": {
+            "height": 1631.550048828125,
+            "width": 360,
+            "x": 0,
+            "y": 0
+          },
+          "width": 360
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 800,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 360,
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 28.8,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "SUMMARY",
+            "text": "Menú ＋"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 80,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 27.2,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 35.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 43.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/",
+        "usage_ids": [
+          "experience:candidate-01:home:hero:640",
+          "experience:candidate-01:home:hero:1280",
+          "experience:candidate-01:home:motion:1280",
+          "experience:candidate-01:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 800,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.597243,
+          "width": 360,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-01-home-small.jpg",
+        "sha256": "a6612267b461dd7353a1705c695b67f9b20f91e392863e63fcd7ba4098bc43e7"
+      }
+    },
+    {
+      "design": "candidate-01",
+      "kind": "home",
+      "viewport": {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "captured_at": "2026-10-16T17:52:26.885Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-01/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 1024,
+          "state": "playing",
+          "width": 768,
+          "x": 0,
+          "y": 0
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 768,
+          "height": 1558,
+          "overflow": [],
+          "root": {
+            "height": 1557.9000244140625,
+            "width": 768,
+            "x": 0,
+            "y": 0
+          },
+          "width": 768
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 1024,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 768,
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 32,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 80,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 24,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 15.2,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 15.2,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/",
+        "usage_ids": [
+          "experience:candidate-01:home:hero:640",
+          "experience:candidate-01:home:hero:1280",
+          "experience:candidate-01:home:motion:1280",
+          "experience:candidate-01:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 1024,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.738422,
+          "width": 768,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-01-home-tablet.jpg",
+        "sha256": "79865b77ffa230a8c61f3205885bd1498f4b43205e3ea96fd76f89e6b70ecd15"
+      }
+    },
+    {
+      "design": "candidate-01",
+      "kind": "home",
+      "viewport": {
+        "id": "laptop",
+        "width": 1024,
+        "height": 768
+      },
+      "captured_at": "2026-10-16T17:52:28.862Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-01/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 768,
+          "state": "playing",
+          "width": 1024,
+          "x": 0,
+          "y": 0
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1024,
+          "height": 1335,
+          "overflow": [],
+          "root": {
+            "height": 1335.25,
+            "width": 1024,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1024
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 768,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1024,
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 32,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 102.4,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 24.576,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 15.2,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 15.2,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 40.96,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/",
+        "usage_ids": [
+          "experience:candidate-01:home:hero:640",
+          "experience:candidate-01:home:hero:1280",
+          "experience:candidate-01:home:motion:1280",
+          "experience:candidate-01:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 768,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.77141,
+          "width": 1024,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-01-home-laptop.jpg",
+        "sha256": "60d356efb4ffe05f85dc0aaed7a9373f4c809f94dfe2c1cefea7321c1a6e2253"
+      }
+    },
+    {
+      "design": "candidate-01",
+      "kind": "home",
+      "viewport": {
+        "id": "wide",
+        "width": 1920,
+        "height": 1080
+      },
+      "captured_at": "2026-10-16T17:52:30.806Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-01/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 1080,
+          "state": "playing",
+          "width": 1920,
+          "x": 0,
+          "y": 0
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1920,
+          "height": 1783,
+          "overflow": [],
+          "root": {
+            "height": 1783.2000732421875,
+            "width": 1920,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1920
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 1080,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1920,
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 32,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 160,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 36,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 15.2,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 15.2,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 64,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/",
+        "usage_ids": [
+          "experience:candidate-01:home:hero:640",
+          "experience:candidate-01:home:hero:1280",
+          "experience:candidate-01:home:motion:1280",
+          "experience:candidate-01:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 1080,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.722967,
+          "width": 1920,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-01-home-wide.jpg",
+        "sha256": "308fd6aebe2815d72e67f4691a1923cc62f327c3843f40e26b2b9f2cbed090a4"
+      }
+    },
+    {
+      "design": "candidate-02",
+      "kind": "home",
+      "viewport": {
+        "id": "small",
+        "width": 360,
+        "height": 800
+      },
+      "captured_at": "2026-10-16T17:52:32.732Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-02/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 472,
+          "state": "playing",
+          "width": 360,
+          "x": 0,
+          "y": 297.88751220703125
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 360,
+          "height": 1636,
+          "overflow": [],
+          "root": {
+            "height": 1636,
+            "width": 360,
+            "x": 0,
+            "y": 0
+          },
+          "width": 360
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 472,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 360,
+            "x": 0,
+            "y": 297.88751220703125
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-02/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-02",
+        "readability": [
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 28.8,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Menú ＋"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 97.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 35.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 43.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 9.237880472130117,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 9.237880472130117,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-02/",
+        "usage_ids": [
+          "experience:candidate-02:home:hero:640",
+          "experience:candidate-02:home:hero:1280",
+          "experience:candidate-02:home:motion:1280",
+          "experience:candidate-02:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 472,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.556356,
+          "width": 360,
+          "x": 0,
+          "y": 297.88751220703125
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-02-home-small.jpg",
+        "sha256": "13ccbe81a7271091cea41e8e5a7f7069c9f2fddc4c25521534410a6e87839252"
+      }
+    },
+    {
+      "design": "candidate-02",
+      "kind": "home",
+      "viewport": {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "captured_at": "2026-10-16T17:52:34.664Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-02/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 416,
+          "state": "playing",
+          "width": 768,
+          "x": 0,
+          "y": 400.875
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 768,
+          "height": 1482,
+          "overflow": [],
+          "root": {
+            "height": 1481.9749755859375,
+            "width": 768,
+            "x": 0,
+            "y": 0
+          },
+          "width": 768
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 416,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 768,
+            "x": 0,
+            "y": 400.875
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-02/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-02",
+        "readability": [
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 184.32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 9.237880472130117,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 9.237880472130117,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-02/",
+        "usage_ids": [
+          "experience:candidate-02:home:hero:640",
+          "experience:candidate-02:home:hero:1280",
+          "experience:candidate-02:home:motion:1280",
+          "experience:candidate-02:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 416,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.739814,
+          "width": 768,
+          "x": 0,
+          "y": 400.875
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-02-home-tablet.jpg",
+        "sha256": "044d93f16367b6b11310b8c8e94903fdfbfb96626df0af819e2f09ba30688b08"
+      }
+    },
+    {
+      "design": "candidate-02",
+      "kind": "home",
+      "viewport": {
+        "id": "laptop",
+        "width": 1024,
+        "height": 768
+      },
+      "captured_at": "2026-10-16T17:52:36.683Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-02/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 491.5125122070313,
+          "state": "playing",
+          "width": 1024,
+          "x": 0,
+          "y": 453.0874938964844
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1024,
+          "height": 1654,
+          "overflow": [],
+          "root": {
+            "height": 1653.800048828125,
+            "width": 1024,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1024
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 491.5125122070313,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1024,
+            "x": 0,
+            "y": 453.0874938964844
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-02/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-02",
+        "readability": [
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 245.76,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 40.96,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 9.237880472130117,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 9.237880472130117,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-02/",
+        "usage_ids": [
+          "experience:candidate-02:home:hero:640",
+          "experience:candidate-02:home:hero:1280",
+          "experience:candidate-02:home:motion:1280",
+          "experience:candidate-02:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 491.5125122070313,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.810672,
+          "width": 1024,
+          "x": 0,
+          "y": 453.0874938964844
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-02-home-laptop.jpg",
+        "sha256": "3df01dc8836c805efb7330cf512dfd40a5f9759381c28be2864bfd0b1e2f404f"
+      }
+    },
+    {
+      "design": "candidate-02",
+      "kind": "home",
+      "viewport": {
+        "id": "wide",
+        "width": 1920,
+        "height": 1080
+      },
+      "captured_at": "2026-10-16T17:52:38.679Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-02/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 720,
+          "state": "playing",
+          "width": 1920,
+          "x": 0,
+          "y": 597.7999877929688
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1920,
+          "height": 2114,
+          "overflow": [],
+          "root": {
+            "height": 2113.800048828125,
+            "width": 1920,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1920
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 720,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1920,
+            "x": 0,
+            "y": 597.7999877929688
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-02/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-02/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-02",
+        "readability": [
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 416,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 64,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 6.894364726843908,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 9.237880472130117,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 9.237880472130117,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-02/",
+        "usage_ids": [
+          "experience:candidate-02:home:hero:640",
+          "experience:candidate-02:home:hero:1280",
+          "experience:candidate-02:home:motion:1280",
+          "experience:candidate-02:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 720,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.759522,
+          "width": 1920,
+          "x": 0,
+          "y": 597.7999877929688
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-02-home-wide.jpg",
+        "sha256": "41b6258775fd224de3f7f2186592accc1c2d9ecfefbb3d326dffdf12a876c7e7"
+      }
+    },
+    {
+      "design": "candidate-03",
+      "kind": "home",
+      "viewport": {
+        "id": "small",
+        "width": 360,
+        "height": 800
+      },
+      "captured_at": "2026-10-16T17:52:40.639Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-03/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 400,
+          "state": "playing",
+          "width": 360,
+          "x": 0,
+          "y": 323.5375061035156
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 360,
+          "height": 1632,
+          "overflow": [],
+          "root": {
+            "height": 1631.8875732421875,
+            "width": 360,
+            "x": 0,
+            "y": 0
+          },
+          "width": 360
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 400,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 360,
+            "x": 0,
+            "y": 323.5375061035156
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-03/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-03",
+        "readability": [
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 28,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Menú ＋"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 38.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 35.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 43.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 12.439655916290286,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 12.439655916290286,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-03/",
+        "usage_ids": [
+          "experience:candidate-03:home:hero:640",
+          "experience:candidate-03:home:hero:1280",
+          "experience:candidate-03:home:motion:1280",
+          "experience:candidate-03:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 400,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.603688,
+          "width": 360,
+          "x": 0,
+          "y": 323.5375061035156
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-03-home-small.jpg",
+        "sha256": "474d13ac48e3b0d527e0a66e0ab14d86030146a09c4bcc95cc0737816198c7b6"
+      }
+    },
+    {
+      "design": "candidate-03",
+      "kind": "home",
+      "viewport": {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "captured_at": "2026-10-16T17:52:42.595Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-03/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 400,
+          "state": "playing",
+          "width": 768,
+          "x": 0,
+          "y": 318.1125183105469
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 768,
+          "height": 1361,
+          "overflow": [],
+          "root": {
+            "height": 1360.8125,
+            "width": 768,
+            "x": 0,
+            "y": 0
+          },
+          "width": 768
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 400,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 768,
+            "x": 0,
+            "y": 318.1125183105469
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-03/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-03",
+        "readability": [
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 28,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 42.24,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 12.439655916290286,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 12.439655916290286,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-03/",
+        "usage_ids": [
+          "experience:candidate-03:home:hero:640",
+          "experience:candidate-03:home:hero:1280",
+          "experience:candidate-03:home:motion:1280",
+          "experience:candidate-03:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 400,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.741863,
+          "width": 768,
+          "x": 0,
+          "y": 318.1125183105469
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-03-home-tablet.jpg",
+        "sha256": "80e9f6eb61cc1e8cbc36c2b16c15100260c578ccd2f6511e2bf306d1cec3d937"
+      }
+    },
+    {
+      "design": "candidate-03",
+      "kind": "home",
+      "viewport": {
+        "id": "laptop",
+        "width": 1024,
+        "height": 768
+      },
+      "captured_at": "2026-10-16T17:52:44.628Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-03/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 430.0750122070313,
+          "state": "playing",
+          "width": 1024,
+          "x": 0,
+          "y": 338.2749938964844
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1024,
+          "height": 1445,
+          "overflow": [],
+          "root": {
+            "height": 1444.4000244140625,
+            "width": 1024,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1024
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 430.0750122070313,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1024,
+            "x": 0,
+            "y": 338.2749938964844
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-03/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-03",
+        "readability": [
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 28,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 61.44,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 56.32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 40.96,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 12.439655916290286,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 12.439655916290286,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-03/",
+        "usage_ids": [
+          "experience:candidate-03:home:hero:640",
+          "experience:candidate-03:home:hero:1280",
+          "experience:candidate-03:home:motion:1280",
+          "experience:candidate-03:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 430.0750122070313,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.7543,
+          "width": 1024,
+          "x": 0,
+          "y": 338.2749938964844
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-03-home-laptop.jpg",
+        "sha256": "bcc47330cbe66f9a212ed94a02e196d80f495345c2365785f711cf96300c1881"
+      }
+    },
+    {
+      "design": "candidate-03",
+      "kind": "home",
+      "viewport": {
+        "id": "wide",
+        "width": 1920,
+        "height": 1080
+      },
+      "captured_at": "2026-10-16T17:52:46.541Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-03/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 688,
+          "state": "playing",
+          "width": 1920,
+          "x": 0,
+          "y": 421.6000061035156
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1920,
+          "height": 1922,
+          "overflow": [],
+          "root": {
+            "height": 1921.5999755859375,
+            "width": 1920,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1920
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 688,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1920,
+            "x": 0,
+            "y": 421.6000061035156
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-03/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-03/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-03",
+        "readability": [
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 28,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 96,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 96,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 64,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.754091134247428,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 12.439655916290286,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 12.439655916290286,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-03/",
+        "usage_ids": [
+          "experience:candidate-03:home:hero:640",
+          "experience:candidate-03:home:hero:1280",
+          "experience:candidate-03:home:motion:1280",
+          "experience:candidate-03:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 688,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.712122,
+          "width": 1920,
+          "x": 0,
+          "y": 421.6000061035156
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-03-home-wide.jpg",
+        "sha256": "f81cc4f47f8ab950337ff1998a5d77121ebe239deeeb6d758e17ec665341e5a7"
+      }
+    },
+    {
+      "design": "candidate-04",
+      "kind": "home",
+      "viewport": {
+        "id": "small",
+        "width": 360,
+        "height": 800
+      },
+      "captured_at": "2026-10-16T17:52:48.524Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-04/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 456,
+          "state": "playing",
+          "width": 360,
+          "x": 0,
+          "y": 359.2250061035156
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 360,
+          "height": 1723,
+          "overflow": [],
+          "root": {
+            "height": 1723.5750732421875,
+            "width": 360,
+            "x": 0,
+            "y": 0
+          },
+          "width": 360
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 456,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 360,
+            "x": 0,
+            "y": 359.2250061035156
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-04/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-04",
+        "readability": [
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 28.8,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Menú ＋"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 88,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 28.8,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 35.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 43.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.49062955635184,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.49062955635184,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-04/",
+        "usage_ids": [
+          "experience:candidate-04:home:hero:640",
+          "experience:candidate-04:home:hero:1280",
+          "experience:candidate-04:home:motion:1280",
+          "experience:candidate-04:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 456,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.624966,
+          "width": 360,
+          "x": 0,
+          "y": 359.2250061035156
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-04-home-small.jpg",
+        "sha256": "92892e3c9465ad2b79af16c922c556b34444994a90f467bcf461ee3a9b462550"
+      }
+    },
+    {
+      "design": "candidate-04",
+      "kind": "home",
+      "viewport": {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "captured_at": "2026-10-16T17:52:50.495Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-04/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 448,
+          "state": "playing",
+          "width": 768,
+          "x": 0,
+          "y": 325.82501220703125
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 768,
+          "height": 1401,
+          "overflow": [],
+          "root": {
+            "height": 1400.5250244140625,
+            "width": 768,
+            "x": 0,
+            "y": 0
+          },
+          "width": 768
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 448,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 768,
+            "x": 0,
+            "y": 325.82501220703125
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-04/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-04",
+        "readability": [
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 84.48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 27.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.49062955635184,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.49062955635184,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-04/",
+        "usage_ids": [
+          "experience:candidate-04:home:hero:640",
+          "experience:candidate-04:home:hero:1280",
+          "experience:candidate-04:home:motion:1280",
+          "experience:candidate-04:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 448,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.734396,
+          "width": 768,
+          "x": 0,
+          "y": 325.82501220703125
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-04-home-tablet.jpg",
+        "sha256": "6100930e54fc904a4f0b38c34d0302f2a3f6552b69afd011e6988251aa415edb"
+      }
+    },
+    {
+      "design": "candidate-04",
+      "kind": "home",
+      "viewport": {
+        "id": "laptop",
+        "width": 1024,
+        "height": 768
+      },
+      "captured_at": "2026-10-16T17:52:52.480Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-04/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 532.4750366210938,
+          "state": "playing",
+          "width": 1024,
+          "x": 0,
+          "y": 351.1625061035156
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1024,
+          "height": 1544,
+          "overflow": [],
+          "root": {
+            "height": 1543.6875,
+            "width": 1024,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1024
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 532.4750366210938,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1024,
+            "x": 0,
+            "y": 351.1625061035156
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-04/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-04",
+        "readability": [
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 112.64,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 32.768,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 40.96,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.49062955635184,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.49062955635184,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-04/",
+        "usage_ids": [
+          "experience:candidate-04:home:hero:640",
+          "experience:candidate-04:home:hero:1280",
+          "experience:candidate-04:home:motion:1280",
+          "experience:candidate-04:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 532.4750366210938,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.777979,
+          "width": 1024,
+          "x": 0,
+          "y": 351.1625061035156
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-04-home-laptop.jpg",
+        "sha256": "41b3fb4296a4bdec1f1dd25dadc68813adcd1dcbf7cb576872167825f0cc89a8"
+      }
+    },
+    {
+      "design": "candidate-04",
+      "kind": "home",
+      "viewport": {
+        "id": "wide",
+        "width": 1920,
+        "height": 1080
+      },
+      "captured_at": "2026-10-16T17:52:54.456Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-04/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "exclusions": [],
+        "film": {
+          "height": 768,
+          "state": "playing",
+          "width": 1920,
+          "x": 0,
+          "y": 422.6000061035156
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1920,
+          "height": 1986,
+          "overflow": [],
+          "root": {
+            "height": 1986.5999755859375,
+            "width": 1920,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1920
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 768,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1920,
+            "x": 0,
+            "y": 422.6000061035156
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-04/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/visita/",
+            "text": "La visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/historia/",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-04/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "378c4506d9e403498a20a66392adb671cf40a910c1ed007a29cd5db601ad0d06",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-04",
+        "readability": [
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 192,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 51.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Pausar vídeo Ⅱ"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cocina, conversación y tiempo."
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 64,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Comida, conversación y tiempo para compartir."
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea ↗"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 18.422536070011542,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.49062955635184,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.49062955635184,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "site_sha256": "90778f31a787742210783c02e731dd00fe0a525dcf73e410d7ddafdac9b18264",
+        "small_controls": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosLa visitaNuestra ideaCocina & sobremesaLa MesaCocina para quedarse un rato.Pausar vídeo ⅡExplorar la carta ↗Encontrarnos en la mesa ↗Cocina, conversación y tiempo.Comida, conversación y tiempo para compartir.Nuestra idea ↗La MesaCartaReservasVisitaPreguntasCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-04/",
+        "usage_ids": [
+          "experience:candidate-04:home:hero:640",
+          "experience:candidate-04:home:hero:1280",
+          "experience:candidate-04:home:motion:1280",
+          "experience:candidate-04:home:hero:1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 768,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 1.767011,
+          "width": 1920,
+          "x": 0,
+          "y": 422.6000061035156
+        }
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/experience-iab-01/candidate-04-home-wide.jpg",
+        "sha256": "123a99de7690b8bc9c6ebcd0e3cc754c0753c0b944fac03ace0890f9b516f362"
+      }
+    }
+  ]
+}

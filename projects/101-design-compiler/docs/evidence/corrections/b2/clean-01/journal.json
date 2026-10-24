@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b2-clean-01",
+  "created_at": "2026-10-15T01:44:22.287Z",
+  "steps": [
+    {
+      "id": "contracts",
+      "started_at": "2026-10-15T01:44:22.291Z",
+      "finished_at": "2026-10-15T01:44:23.114Z",
+      "wall_seconds": 0.8226027999999999,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/contracts.txt",
+      "log_sha256": "6fa029d08018732a4a2dc077b85f794d27253550d90a840a37bba55eb0871480"
+    },
+    {
+      "id": "tests",
+      "started_at": "2026-10-15T01:44:23.117Z",
+      "finished_at": "2026-10-15T01:44:27.987Z",
+      "wall_seconds": 4.8701067,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b2/clean-01/tests.txt",
+      "log_sha256": "7411b86e136adcd668b3a4a568fc409c385b7c3f1cd9fa6e88cc6e6ba7ebfa05"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-15T01:44:27.988Z",
+      "finished_at": "2026-10-15T01:44:42.573Z",
+      "wall_seconds": 14.5848962,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/check.txt",
+      "log_sha256": "c2140fca7d9ce34ebeabf0bc91410ae610ec79673907d91957199a9d6a30700f"
+    },
+    {
+      "id": "validate",
+      "started_at": "2026-10-15T01:44:42.574Z",
+      "finished_at": "2026-10-15T01:44:43.161Z",
+      "wall_seconds": 0.5867842000000019,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/validate.txt",
+      "log_sha256": "c69bbe0277e4073bddb83b8d77c8996e8c3512e8223499d7947632d37e3681f4"
+    },
+    {
+      "id": "build",
+      "started_at": "2026-10-15T01:44:43.163Z",
+      "finished_at": "2026-10-15T01:44:46.892Z",
+      "wall_seconds": 3.729101599999998,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/build.txt",
+      "log_sha256": "9f6f7a49d05959bfec857deb9d42a83f034fb05a4e55da93ff7391a9ee6ad794"
+    },
+    {
+      "id": "b2-readonly-replay",
+      "started_at": "2026-10-15T01:44:46.893Z",
+      "finished_at": "2026-10-15T01:44:49.115Z",
+      "wall_seconds": 2.222505000000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/b2-readonly-replay.txt",
+      "log_sha256": "4e9616ff7c73ba57a77dd0ea810509883a46b6fa174146be71a126224e0c8ad2"
+    },
+    {
+      "id": "corpus-replay",
+      "started_at": "2026-10-15T01:44:49.116Z",
+      "finished_at": "2026-10-15T01:44:49.310Z",
+      "wall_seconds": 0.19338750000000074,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/corpus-replay.txt",
+      "log_sha256": "55cdb84126e3b5c0ad2958e710023999cc5a186b47276d4a666fe02f2ec80d0d"
+    },
+    {
+      "id": "b1-replay",
+      "started_at": "2026-10-15T01:44:49.311Z",
+      "finished_at": "2026-10-15T01:44:50.532Z",
+      "wall_seconds": 1.2212942000000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/b1-replay.txt",
+      "log_sha256": "b3216e3a4c37b58fa9c6aeb50bacbf0feff9609c5f98a627b8b99ff6ece23a18"
+    },
+    {
+      "id": "taxonomy",
+      "started_at": "2026-10-15T01:44:50.533Z",
+      "finished_at": "2026-10-15T01:44:51.189Z",
+      "wall_seconds": 0.6565618999999969,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/taxonomy.txt",
+      "log_sha256": "5bdb2a1a3ebcde0961f22b7b26ef4a64a53c24ddefb9272b9eb91f7243bcad0a"
+    },
+    {
+      "id": "planner-replay",
+      "started_at": "2026-10-15T01:44:51.191Z",
+      "finished_at": "2026-10-15T01:44:51.479Z",
+      "wall_seconds": 0.28783160000000135,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/planner-replay.txt",
+      "log_sha256": "579532c58788911e5f846f1c6a47c5c4ba2cc7427da0765c05d35edffde16c1e"
+    },
+    {
+      "id": "media-replay",
+      "started_at": "2026-10-15T01:44:51.480Z",
+      "finished_at": "2026-10-15T01:44:52.123Z",
+      "wall_seconds": 0.6432769000000007,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/media-replay.txt",
+      "log_sha256": "a238a3a587e30885acb326264f26b0e73e9dc9402294c0efdb9ce1df860c22e4"
+    },
+    {
+      "id": "media-verify",
+      "started_at": "2026-10-15T01:44:52.124Z",
+      "finished_at": "2026-10-15T01:44:52.550Z",
+      "wall_seconds": 0.42640149999999993,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/media-verify.txt",
+      "log_sha256": "dfed262ff832904ddba0e2baf16b17ba2b8c8fd30797be7128c73b59f8f0f568"
+    },
+    {
+      "id": "composition-replay",
+      "started_at": "2026-10-15T01:44:52.552Z",
+      "finished_at": "2026-10-15T01:44:52.988Z",
+      "wall_seconds": 0.43589410000000134,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/composition-replay.txt",
+      "log_sha256": "938c870a6ab24e641e885a169da8739c49ab4a438e4ecd16288b5abeaa497b76"
+    },
+    {
+      "id": "composition-verify",
+      "started_at": "2026-10-15T01:44:52.989Z",
+      "finished_at": "2026-10-15T01:44:53.456Z",
+      "wall_seconds": 0.46741920000000026,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/composition-verify.txt",
+      "log_sha256": "51e973bac7283abc33be1ac1fefc8489483c5957b9c3b09196e8cd214504a635"
+    },
+    {
+      "id": "design-replay",
+      "started_at": "2026-10-15T01:44:53.457Z",
+      "finished_at": "2026-10-15T01:44:53.937Z",
+      "wall_seconds": 0.4796313999999984,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/design-replay.txt",
+      "log_sha256": "debf7dd8e16ff43197df66a57c304cbc0eee46ab637661bb48d2f195dd00c13c"
+    },
+    {
+      "id": "design-verify",
+      "started_at": "2026-10-15T01:44:53.938Z",
+      "finished_at": "2026-10-15T01:44:54.417Z",
+      "wall_seconds": 0.479336000000003,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/design-verify.txt",
+      "log_sha256": "505d634e67d6f6746e96ab3839d7b84cfeaa422ec7010f545eb385959bd5bc7e"
+    },
+    {
+      "id": "audit-verify",
+      "started_at": "2026-10-15T01:44:54.418Z",
+      "finished_at": "2026-10-15T01:44:55.637Z",
+      "wall_seconds": 1.218830200000004,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/audit-verify.txt",
+      "log_sha256": "fa7395471691e7226ee26bd6c4b95f14eb14c431cbe0873d0becb430b6d50f05"
+    },
+    {
+      "id": "cohort-replay",
+      "started_at": "2026-10-15T01:44:55.638Z",
+      "finished_at": "2026-10-15T01:44:56.145Z",
+      "wall_seconds": 0.5076324999999997,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/cohort-replay.txt",
+      "log_sha256": "ede63bd8361a8e64a84792533fb27f35dc2d930d7105490b977b2a7f78992c45"
+    },
+    {
+      "id": "cohort-verify",
+      "started_at": "2026-10-15T01:44:56.147Z",
+      "finished_at": "2026-10-15T01:44:57.708Z",
+      "wall_seconds": 1.5612574999999997,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/cohort-verify.txt",
+      "log_sha256": "f6fea28c3dbd8694a321092ca31ea68f19fa9b900bc73f28be8882ecfc0f7931"
+    },
+    {
+      "id": "lock-verify",
+      "started_at": "2026-10-15T01:44:57.709Z",
+      "finished_at": "2026-10-15T01:45:00.629Z",
+      "wall_seconds": 2.919802100000001,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b2/clean-01/lock-verify.txt",
+      "log_sha256": "f14b19d0d9e822c79ce1e72631fc25a3abda05a4c6cc8012ef735d443338a8a5"
+    },
+    {
+      "id": "h9-inventory",
+      "started_at": "2026-10-15T01:45:00.630Z",
+      "finished_at": "2026-10-15T01:45:00.951Z",
+      "wall_seconds": 0.3206278999999995,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2/clean-01/h9-inventory.txt",
+      "log_sha256": "f45cdb31ff61042b80640b33dce172a2f8cab339e03641f5e72a655645fdbecb"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

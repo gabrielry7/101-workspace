@@ -1,0 +1,3 @@
+*.json -text
+# Raw CLI output includes meaningful byte hashes and tool-emitted spacing.
+*.txt -text -whitespace

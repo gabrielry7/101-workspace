@@ -1,0 +1,56 @@
+
+> 101-design-compiler@0.0.0 build
+> npm run validate && astro build
+
+
+> 101-design-compiler@0.0.0 validate
+> node --experimental-strip-types scripts/validate-fixtures.ts
+
+restaurante: PASSED
+gimnasio: PASSED
+ferreteria: PASSED
+planner/restaurante: PASSED (READY)
+planner/gimnasio: PASSED (READY)
+planner/ferreteria: PASSED (READY)
+planner/clinica: PASSED (READY)
+planner/hibrido-gimnasio-tienda: PASSED (READY)
+planner/hibrido-sin-evidencia: PASSED (CONTENT_BLOCKED)
+planner/hotel-restaurante-sucursales: PASSED (READY)
+planner/informacion-incompleta: PASSED (CONTENT_BLOCKED)
+planner/servicios-profesionales: PASSED (READY)
+media/restaurante: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/synthetic-permission-control: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/synthetic-permission-default-blocked: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/gimnasio: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/ferreteria: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/clinica: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/hibrido-gimnasio-tienda: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/hotel-restaurante-sucursales: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/servicios-profesionales: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/real-restaurante-pilot: PASSED (AUTHORIZED_PILOT_PACKAGE_WITH_GAPS)
+18:56:51 [types] Generated 60ms
+18:56:51 [build] output: "static"
+18:56:51 [build] mode: "static"
+18:56:51 [build] directory: C:\Users\gabri\101-design-compiler\dist\
+18:56:51 [build] Collecting build info...
+18:56:51 [build] ✓ Completed in 82ms.
+18:56:51 [build] Building static entrypoints...
+18:56:51 [vite] ✓ built in 139ms
+18:56:51 [vite] ✓ built in 26ms
+18:56:51 [build] Rearranging server assets...
+
+ generating static routes
+18:56:51   ├─ /h3-media-pilot/index.html (+21ms)
+18:56:51   ├─ /h4/editorial/index.html (+5ms)
+18:56:51   ├─ /h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+18:56:51   ├─ /h4/split/index.html (+2ms)
+18:56:51   ├─ /h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+2ms)
+18:56:51   ├─ /h4/rail/index.html (+2ms)
+18:56:51   ├─ /h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+2ms)
+18:56:51   ├─ /h4/index.html (+3ms)
+18:56:51   ├─ /index.html (+8ms)
+18:56:51 ✓ Completed in 180ms.
+
+18:56:51 [build] ✓ Completed in 401ms.
+18:56:51 [build] 9 page(s) built in 488ms
+18:56:51 [build] Complete!

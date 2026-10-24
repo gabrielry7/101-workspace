@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "usage_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_id": {
+      "type": "string",
+      "enum": [
+        "identity",
+        "about",
+        "locations",
+        "opening_hours",
+        "contact_channels",
+        "social_profiles",
+        "reputation",
+        "gallery",
+        "service_catalog",
+        "product_catalog",
+        "menu",
+        "product_variants",
+        "price_list",
+        "packages",
+        "rooms",
+        "programs",
+        "professional_profiles",
+        "trainer_profiles",
+        "portfolio",
+        "case_studies",
+        "reservation",
+        "appointment",
+        "quote_request",
+        "contact_request",
+        "purchase",
+        "order",
+        "delivery",
+        "pickup",
+        "membership",
+        "membership_signup",
+        "class_enrollment",
+        "ticketing",
+        "room_booking",
+        "visit_booking",
+        "service_request",
+        "class_schedule",
+        "events",
+        "availability_display",
+        "service_area",
+        "delivery_policy",
+        "visit_policy",
+        "payment_methods",
+        "amenities",
+        "accessibility_info",
+        "branches",
+        "faqs",
+        "documents"
+      ]
+    },
+    "feature_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "page": {
+      "type": "string",
+      "minLength": 1
+    },
+    "module_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "acquisition_event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "processing_event_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "id",
+    "usage_id",
+    "capability_id",
+    "feature_id",
+    "scope_id",
+    "page",
+    "module_id",
+    "subject_ids",
+    "acquisition_event_id",
+    "processing_event_ids"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:MediaFunctionBindingV1:1.0.0",
+  "title": "MediaFunctionBindingV1",
+  "description": "B2 associated byte-pinned media library and reference corpus; semantic, source, scope and current-use verification required. No rights conferred by fixture flags or reference URLs."
+}

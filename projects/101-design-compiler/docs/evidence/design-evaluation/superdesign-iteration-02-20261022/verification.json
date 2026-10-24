@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-22",
+  "timezone": "America/Bogota",
+  "status": "READY_FOR_HUMAN_COMPARISON_NOT_APPROVED",
+  "baseCommit": "24c4301c2a36fc5a023d3cd695030afc13a47f09",
+  "newCommitCreated": false,
+  "sourceRuntimeChanged": false,
+  "provider": {
+    "cli": "0.14.0",
+    "model": "gemini-3-flash",
+    "operations": 2,
+    "mode": "replace",
+    "creditsThisRound": 16,
+    "previousCredits": 38,
+    "totalCredits": 54,
+    "expectedBalance": 46,
+    "observedBalance": 46,
+    "purchases": 0,
+    "licensedMediaUploaded": false,
+    "versions": {
+      "editorial": 5,
+      "chapters": 4
+    }
+  },
+  "checks": {
+    "tests": {
+      "passed": 423,
+      "total": 424,
+      "knownFailure": "LOCK_BROWSER_MISMATCH"
+    },
+    "check": {
+      "files": 306,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "contractsExport": "PASS",
+    "validate": "PASS",
+    "build": {
+      "status": "PASS",
+      "pages": 168
+    },
+    "mediaVerify": "PASS",
+    "b3ExactReplay": "PASS",
+    "localReplay": "PASS",
+    "preservation": {
+      "status": "PASS",
+      "files": 2815
+    }
+  },
+  "extraAttempt": {
+    "command": "node --experimental-strip-types scripts/b3-reference-current-verify.ts",
+    "result": "B3_CURRENT_BUILD_STALE",
+    "reason": "Legacy reference-application branch checker does not describe the current depth-experience build; not repaired or counted as a pass. Current B3 evaluator replay run separately."
+  },
+  "captureMethod": {
+    "browser": "Codex in-app browser through CUA",
+    "fullPageCapture": "unavailable this turn",
+    "viewportOverride": "setter did not change the observed 1265x720 viewport; not used as evidence of a resize",
+    "responsiveFrames": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000,
+        "observedClientWidth": 1425,
+        "displayScale": 0.55
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844,
+        "observedClientWidth": 375,
+        "displayScale": 0.62
+      }
+    },
+    "screenshots": "Native JPEG viewport captures. Frame samples are scaled previews; two desktop journal views are direct page captures at default viewport. No stitched/full-page or physical-device claim."
+  },
+  "limits": [
+    "Human aesthetic selection not collected",
+    "No source design/operator integration, B4, new media, backend or upstream",
+    "No vitals, cold-network, full WCAG or all-browser certification",
+    "No claim of provider fidelity without supervised source/CSS corrections"
+  ]
+}

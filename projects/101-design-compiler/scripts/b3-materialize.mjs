@@ -1,0 +1,21 @@
+import {readFile,writeFile,mkdir,access,copyFile,symlink} from 'node:fs/promises';
+import {resolve,relative,isAbsolute} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+const tree=process.argv[2];if(!/^[a-f0-9]{40}$/.test(tree??''))throw Error('EXPLICIT_GIT_TREE_REQUIRED');
+const run=process.argv[3]??'b3-clean';if(!/^b3-clean(?:-[a-z0-9]+)?$/.test(run))throw Error('INVALID_REPRODUCTION_RUN');
+const root=process.cwd(),base=resolve(`.tools/corrections/b0/${run}`),target=resolve(base,'source'),directory=`docs/evidence/corrections/b3/reproduction/${run}`;
+const within=(base,path)=>{const p=resolve(base,path),rel=relative(base,p);if(rel.startsWith('..')||isAbsolute(rel))throw Error('OUTSIDE_WORKSPACE');return p;};within(root,target);
+if(await access(base).then(()=>true,()=>false))throw Error('REPRODUCTION_TARGET_EXISTS');await mkdir(target,{recursive:true});await mkdir(directory,{recursive:true});const archive=resolve(base,'source.tar');
+const git=['-c',`safe.directory=${root.replaceAll('\\','/')}`,'-c','core.autocrlf=false'];execFileSync('git',[...git,'archive',tree,'--format=tar',`--output=${archive}`],{windowsHide:true});execFileSync('tar',['-xf',archive,'-C',target],{windowsHide:true});
+const sha=b=>createHash('sha256').update(b).digest('hex'),runtime=JSON.parse(await readFile('docs/evidence/corrections/b2/runtime.json','utf8')),pack=JSON.parse(await readFile('data/media/demo-v1/pixabay-fictional.json','utf8')),private_files=[];
+for(const f of pack.files){if(!f.path.startsWith('.tools/b2-demo/originals/')&&!f.path.startsWith('public/media/b2-fictional/'))throw Error('NON_PACKAGE_FILE');const bytes=await readFile(f.path);if(bytes.length!==f.bytes||sha(bytes)!==f.sha256)throw Error('PRIVATE_FILE_CHANGED');const to=within(target,f.path);await mkdir(resolve(to,'..'),{recursive:true});await copyFile(f.path,to);private_files.push({path:f.path,bytes:f.bytes,sha256:f.sha256});}
+// The exact same seven historical documentation line-ending overlays identified
+// by B2. Never permits a source/permission/asset/runtime/content override.
+const manifest=JSON.parse(await readFile('docs/evidence/corrections/b2-demo/pre/preservation.json','utf8')),overlays=[];
+for(const f of manifest.files){if(!f.path.endsWith('.txt'))continue;const original=await readFile(f.path),archived=await readFile(within(target,f.path));if(sha(original)===sha(archived))continue;
+ if(sha(original)!==f.sha256||original.toString().replaceAll('\r\n','\n')!==archived.toString().replaceAll('\r\n','\n'))throw Error('NON_DOCUMENT_EOL_OVERLAY');overlays.push({path:f.path,archive_sha256:sha(archived),pinned_sha256:f.sha256});}
+const expected=['docs/evidence/h3-git-repro.txt','docs/reviews/h7/audit-h7-source.txt','docs/reviews/h7/verify-h7-source.txt','docs/reviews/h8-correction/audit-h8-source.txt','docs/reviews/h8-correction/verify-h8-source.txt','docs/reviews/h8/audit-h8-source.txt','docs/reviews/h9/probe-source.txt'].sort();
+if(JSON.stringify(overlays.map(f=>f.path).sort())!==JSON.stringify(expected))throw Error('UNEXPECTED_EOL_OVERLAY_SET');for(const f of overlays)await copyFile(f.path,within(target,f.path));
+for(const path of ['node_modules','.tools/node-v24.21.0-win-x64',runtime.browser_root]){const to=within(target,path);await mkdir(resolve(to,'..'),{recursive:true});await symlink(resolve(path),to,'junction');}
+await writeFile(`${directory}/materialization.json`,JSON.stringify({kind:'B3_ISOLATED_SAME_HOST_REPRODUCTION',created_at:new Date().toISOString(),tree,archive_sha256:sha(await readFile(archive)),target:relative(root,target).replaceAll('\\','/'),private_files,historical_document_eol_overlays:overlays,no_env:!await access(resolve(target,'.env')).then(()=>true,()=>false),provider_calls:0,limits:['Same machine/Windows/B2 fonts, existing pinned Node/dependencies/browser via junctions; not a fresh installation','Only 14 expressly licensed media files materialized from private B2 package, no API response/credential/catalog','Seven predeclared byte-only historical documentation EOL overlays, root untouched','No source/permission changes and no new creative producer calls']},null,2)+'\n');console.log(JSON.stringify({status:'MATERIALIZED',tree,private_files:14,overlays:7}));

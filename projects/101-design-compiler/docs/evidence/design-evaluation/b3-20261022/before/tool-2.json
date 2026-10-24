@@ -1,0 +1,1979 @@
+{
+  "tool": "impeccable.detect",
+  "version": "4.7.0/engine-0.1.16",
+  "target": "dist/b3",
+  "wall_seconds": 3.8142310000000004,
+  "exit_code": 2,
+  "findings": [
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\carta\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Para elegir con ganas\" above h1 \"La carta\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\carta\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\carta\\index.html",
+      "line": 0,
+      "snippet": "5 aphoristic constructions: \"Ingredientes y detalles + Declaración ficticia: contiene trigo (gluten) y leche.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\contacto\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 56px \"¿Nos vemosen la mesa?\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\contacto\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Contacto · demostración\" above h1 \"Hablemos.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\contacto\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\creditos\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Medios y contexto\" above h1 \"Créditos.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\creditos\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\diario\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 48px \"La vidaentre platos.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\diario\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Colección editorial\" above h1 \"El diario.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\diario\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\historia\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Nuestra idea\" above h1 \"El gusto de quedarse.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\historia\\index.html",
+      "line": 0,
+      "snippet": "<section> \"semantic-v2\": children flush against border-top on top (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\historia\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\historia\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Nuestra idea de un buen rato\" above h2 \"La sobremesa también importa.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 80px \"La Mesa\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 48px \"La vidaentre platos.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 48px \"Lo quese queda.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 56px \"¿Nos vemosen la mesa?\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Cocina & sobremesa\" above h1 \"La Mesa\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Una idea sencilla\" above h2 \"El mejor plan es quedarse.\""
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\index.html",
+      "line": 0,
+      "snippet": "3 aphoristic constructions: \"Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 48px \"Lo quese queda.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Opiniones · demostración\" above h1 \"De boca en boca.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Pedido · demostración\" above h1 \"Tu selección.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "6 aphoristic constructions: \"Ingredientes y detalles + Declaración ficticia: contiene trigo (gluten) y leche.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Antes de venir\" above h1 \"Lo que quieres saber.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "<section> \"semantic-v2\": children flush against border-top on top (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Antes de venir\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\reservas\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Reservas · demostración\" above h1 \"Tu próxima mesa.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\reservas\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\reservas\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Una ocasión para reunirse\" above h2 \"¿Una mesa más larga?\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\visita\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"La visita\" above h1 \"Nos vemos aquí.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\visita\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Nos vemos en la mesa.\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"El tiempo de la mesa\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Tu visita, con calma.\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Antes de salir\" above h2 \"El plan, sin dudas.\""
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-01\\visita\\index.html",
+      "line": 0,
+      "snippet": "3 aphoristic constructions: \"Una sede imaginaria para explorar este concepto. No es una ubicación real.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\carta\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Para elegir con ganas\" above h1 \"La carta\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\carta\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\carta\\index.html",
+      "line": 0,
+      "snippet": "5 aphoristic constructions: \"Ingredientes y detalles + Declaración ficticia: contiene trigo (gluten) y leche.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\contacto\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Contacto · demostración\" above h1 \"Hablemos.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\contacto\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\creditos\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Medios y contexto\" above h1 \"Créditos.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\creditos\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\diario\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Colección editorial\" above h1 \"El diario.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\diario\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\historia\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Nuestra idea\" above h1 \"El gusto de quedarse.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\historia\\index.html",
+      "line": 0,
+      "snippet": "<section> \"semantic-v2\": children flush against border-top on top (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\historia\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\historia\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Nuestra idea de un buen rato\" above h2 \"La sobremesa también importa.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Cocina & sobremesa\" above h1 \"La Mesa\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Una idea sencilla\" above h2 \"El mejor plan es quedarse.\""
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\index.html",
+      "line": 0,
+      "snippet": "3 aphoristic constructions: \"Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Opiniones · demostración\" above h1 \"De boca en boca.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Pedido · demostración\" above h1 \"Tu selección.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "6 aphoristic constructions: \"Ingredientes y detalles + Declaración ficticia: contiene trigo (gluten) y leche.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Antes de venir\" above h1 \"Lo que quieres saber.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "<section> \"semantic-v2\": children flush against border-top on top (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Antes de venir\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\reservas\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Reservas · demostración\" above h1 \"Tu próxima mesa.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\reservas\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\reservas\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Una ocasión para reunirse\" above h2 \"¿Una mesa más larga?\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\visita\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"La visita\" above h1 \"Nos vemos aquí.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\visita\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Nos vemos en la mesa.\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"El tiempo de la mesa\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Tu visita, con calma.\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Antes de salir\" above h2 \"El plan, sin dudas.\""
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-02\\visita\\index.html",
+      "line": 0,
+      "snippet": "3 aphoristic constructions: \"Una sede imaginaria para explorar este concepto. No es una ubicación real.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\carta\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"La carta\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\carta\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 48px \"Una carta corta. Muchas ganas.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\carta\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Para elegir con ganas\" above h1 \"La carta\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\carta\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\carta\\index.html",
+      "line": 0,
+      "snippet": "5 aphoristic constructions: \"Ingredientes y detalles + Declaración ficticia: contiene trigo (gluten) y leche.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\contacto\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"Hablemos.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\contacto\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 56px \"¿Nos vemosen la mesa?\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\contacto\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Contacto · demostración\" above h1 \"Hablemos.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<section> \"community-contact\": children flush against border-top+bg on right/left (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\contacto\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\creditos\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"Créditos.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\creditos\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Medios y contexto\" above h1 \"Créditos.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\creditos\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\diario\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"El diario.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\diario\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 56px \"La vidaentre platos.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\diario\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Colección editorial\" above h1 \"El diario.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\diario\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\historia\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"El gusto de quedarse.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\historia\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Nuestra idea\" above h1 \"El gusto de quedarse.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\historia\\index.html",
+      "line": 0,
+      "snippet": "<section> \"semantic-v2\": children flush against border-top on top (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\historia\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\historia\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Nuestra idea de un buen rato\" above h2 \"La sobremesa también importa.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 160px \"La Mesa\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 52px \"El mejor plan es quedarse.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 56px \"La vidaentre platos.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 56px \"Lo quese queda.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 56px \"¿Nos vemosen la mesa?\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Cocina & sobremesa\" above h1 \"La Mesa\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Una idea sencilla\" above h2 \"El mejor plan es quedarse.\""
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\index.html",
+      "line": 0,
+      "snippet": "3 aphoristic constructions: \"Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"De boca en boca.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "italic serif h2 (georgia) at 56px \"Lo quese queda.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Opiniones · demostración\" above h1 \"De boca en boca.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"Tu selección.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Pedido · demostración\" above h1 \"Tu selección.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "6 aphoristic constructions: \"Ingredientes y detalles + Declaración ficticia: contiene trigo (gluten) y leche.\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"Lo que quieres saber.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Antes de venir\" above h1 \"Lo que quieres saber.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "<section> \"semantic-v2\": children flush against border-top on top (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Antes de venir\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\reservas\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"Tu próxima mesa.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\reservas\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Reservas · demostración\" above h1 \"Tu próxima mesa.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\reservas\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\reservas\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Una ocasión para reunirse\" above h2 \"¿Una mesa más larga?\""
+    },
+    {
+      "antipattern": "italic-serif-display",
+      "name": "Italic serif display headline",
+      "description": "Oversized italic serif (Fraunces, Recoleta, Playfair, Newsreader-italic) as the primary hero headline reads as taste in isolation but has become the universal AI-startup landing page hero. Set roman, or move to a non-serif display face. Editorial / magazine register may legitimately want this — judge by context.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\visita\\index.html",
+      "line": 0,
+      "snippet": "italic serif h1 (georgia) at 56px \"Nos vemos aquí.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\visita\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"La visita\" above h1 \"Nos vemos aquí.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\visita\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Nos vemos en la mesa.\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"El tiempo de la mesa\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Tu visita, con calma.\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Antes de salir\" above h2 \"El plan, sin dudas.\""
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-03\\visita\\index.html",
+      "line": 0,
+      "snippet": "3 aphoristic constructions: \"Una sede imaginaria para explorar este concepto. No es una ubicación real.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\carta\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Para elegir con ganas\" above h1 \"La carta\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\carta\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\carta\\index.html",
+      "line": 0,
+      "snippet": "5 aphoristic constructions: \"Ingredientes y detalles + Declaración ficticia: contiene trigo (gluten) y leche.\""
+    },
+    {
+      "antipattern": "gray-on-color",
+      "name": "Gray text on colored background",
+      "description": "Gray text looks washed out on colored backgrounds. Use a darker shade of the background color instead, or white/near-white for contrast.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\contacto\\index.html",
+      "line": 0,
+      "snippet": "text #4f5550 on bg #d8f067"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\contacto\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Contacto · demostración\" above h1 \"Hablemos.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<section> \"community-contact\": children flush against border-top+bg on right/left (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\contacto\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\contacto\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\creditos\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Medios y contexto\" above h1 \"Créditos.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\creditos\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\diario\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Colección editorial\" above h1 \"El diario.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\diario\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\historia\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Nuestra idea\" above h1 \"El gusto de quedarse.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\historia\\index.html",
+      "line": 0,
+      "snippet": "<section> \"semantic-v2\": children flush against border-top on top (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\historia\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\historia\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Nuestra idea de un buen rato\" above h2 \"La sobremesa también importa.\""
+    },
+    {
+      "antipattern": "gray-on-color",
+      "name": "Gray text on colored background",
+      "description": "Gray text looks washed out on colored backgrounds. Use a darker shade of the background color instead, or white/near-white for contrast.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "text #4f5550 on bg #d8f067"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Cocina & sobremesa\" above h1 \"La Mesa\""
+    },
+    {
+      "antipattern": "tight-leading",
+      "name": "Tight line height",
+      "description": "Line height below 1.3x the font size makes multi-line text hard to read. Use 1.5 to 1.7 for body text so lines have room to breathe.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "line-height 1.25x (need >=1.3)"
+    },
+    {
+      "antipattern": "tight-leading",
+      "name": "Tight line height",
+      "description": "Line height below 1.3x the font size makes multi-line text hard to read. Use 1.5 to 1.7 for body text so lines have room to breathe.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "line-height 1.25x (need >=1.3)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "<div> \"social-placeholder\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Una idea sencilla\" above h2 \"El mejor plan es quedarse.\""
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\index.html",
+      "line": 0,
+      "snippet": "3 aphoristic constructions: \"Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Opiniones · demostración\" above h1 \"De boca en boca.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "<section> \"community-reviews\": children flush against border-top+bg on right/left (no inset)"
+    },
+    {
+      "antipattern": "tight-leading",
+      "name": "Tight line height",
+      "description": "Line height below 1.3x the font size makes multi-line text hard to read. Use 1.5 to 1.7 for body text so lines have room to breathe.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "line-height 1.25x (need >=1.3)"
+    },
+    {
+      "antipattern": "tight-leading",
+      "name": "Tight line height",
+      "description": "Line height below 1.3x the font size makes multi-line text hard to read. Use 1.5 to 1.7 for body text so lines have room to breathe.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "line-height 1.25x (need >=1.3)"
+    },
+    {
+      "antipattern": "tight-leading",
+      "name": "Tight line height",
+      "description": "Line height below 1.3x the font size makes multi-line text hard to read. Use 1.5 to 1.7 for body text so lines have room to breathe.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "line-height 1.25x (need >=1.3)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\opiniones\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Pedido · demostración\" above h1 \"Tu selección.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\pedidos\\index.html",
+      "line": 0,
+      "snippet": "6 aphoristic constructions: \"Ingredientes y detalles + Declaración ficticia: contiene trigo (gluten) y leche.\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Antes de venir\" above h1 \"Lo que quieres saber.\""
+    },
+    {
+      "antipattern": "cramped-padding",
+      "name": "Cramped padding",
+      "description": "Text is too close to the edge of its container. Two shapes: (1) an element with its own text where the space between the rendered text and the border box is too small for the font size, and (2) a wrapper whose children's text lands flush against a visible boundary (border, outline, or non-transparent background) with nothing to inset it. Add at least 8px (ideally 12–16px) of space inside bordered, outlined, or colored containers.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "<section> \"semantic-v2\": children flush against border-top on top (no inset)"
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\preguntas\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Antes de venir\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\reservas\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"Reservas · demostración\" above h1 \"Tu próxima mesa.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\reservas\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\reservas\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Una ocasión para reunirse\" above h2 \"¿Una mesa más larga?\""
+    },
+    {
+      "antipattern": "hero-eyebrow-chip",
+      "name": "Hero eyebrow / pill chip",
+      "description": "A tiny uppercase letter-spaced label sitting immediately above an oversized hero headline — or the same shape rendered as a pill chip — is now the default AI SaaS hero. Drop the eyebrow, integrate the kicker into the headline, or run it as a navigation breadcrumb instead.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\visita\\index.html",
+      "line": 0,
+      "snippet": "eyebrow chip (tracked-caps) \"La visita\" above h1 \"Nos vemos aquí.\""
+    },
+    {
+      "antipattern": "overused-font",
+      "name": "Overused font",
+      "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\visita\\index.html",
+      "line": 0,
+      "snippet": "Primary font: arial"
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Nos vemos en la mesa.\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"El tiempo de la mesa\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Información del escenario\" above h2 \"Tu visita, con calma.\""
+    },
+    {
+      "antipattern": "kicker-above-heading",
+      "name": "Kicker / eyebrow label above heading",
+      "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\visita\\index.html",
+      "line": 0,
+      "snippet": "kicker \"Antes de salir\" above h2 \"El plan, sin dudas.\""
+    },
+    {
+      "antipattern": "aphoristic-cadence",
+      "name": "Aphoristic-cadence copy",
+      "description": "Three or more sections landing on a short rebuttal sentence (\"X. No Y.\" / \"X. Just Y.\") or a manufactured-contrast aphorism (\"Not a feature. A platform.\") reads as AI cadence, not voice. Once is fine; the pattern is the tell.",
+      "severity": "warning",
+      "category": "slop",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\candidate-04\\visita\\index.html",
+      "line": 0,
+      "snippet": "3 aphoristic constructions: \"Una sede imaginaria para explorar este concepto. No es una ubicación real.\""
+    },
+    {
+      "antipattern": "tight-leading",
+      "name": "Tight line height",
+      "description": "Line height below 1.3x the font size makes multi-line text hard to read. Use 1.5 to 1.7 for body text so lines have room to breathe.",
+      "severity": "warning",
+      "category": "quality",
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\b3\\index.html",
+      "line": 0,
+      "snippet": "line-height 1.28x (need >=1.3)"
+    }
+  ]
+}

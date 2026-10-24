@@ -1,0 +1,211 @@
+{
+  "manifest": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-hibrido-gimnasio-tienda-001",
+    "snapshot_id": "fixture-hibrido-gimnasio-tienda-001-snapshot-v1-h2",
+    "site_plan_id": "fixture-hibrido-gimnasio-tienda-001-snapshot-v1-h2:h2-plan:acd6ea231dfcf3278595eb9e",
+    "client_id": "synthetic-client",
+    "project_id": "synthetic-project",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "plan_sha256": "58d3a286b52a1367c12008ff3ecfb72ce12c7b8d393e93c9b30cdc2ef1ad7f02",
+    "requirements_sha256": "42c2048f67ff1726caebdd5744fdb27af02fd78195ea737f310cd47b74ef18f3",
+    "input_sha256": "81a499e38e278f90275a0cc014267441ba05abac30c43bc3832d30780d5ef7fe",
+    "assets": [],
+    "grants": [],
+    "usages": [],
+    "needs": [
+      {
+        "id": "need-628f3e288384428228bedbdb",
+        "requirement_id": "semantic-2553a47bd018c5cdeae40230",
+        "module_id": "semantic-2553a47bd018c5cdeae40230",
+        "page": "/sedes/s-c477cad400722515c88d522a/clases",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "purpose": "document:class_schedule",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-2"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-ce154bed5edf914b0057d564",
+        "requirement_id": "semantic-df44674acf9c39a36f1e4a94",
+        "module_id": "semantic-df44674acf9c39a36f1e4a94",
+        "page": "/sedes/s-c477cad400722515c88d522a/membresias",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "purpose": "document:membership",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-df1caa30469b3312a34c0c3f",
+        "requirement_id": "semantic-810ff10ca53d3fece4d69df4",
+        "module_id": "semantic-810ff10ca53d3fece4d69df4",
+        "page": "/",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-e298210ba69c27da88661e20",
+        "requirement_id": "semantic-2593c5404b8a7307f6f3b838",
+        "module_id": "semantic-2593c5404b8a7307f6f3b838",
+        "page": "/sedes/s-c477cad400722515c88d522a/catalogo",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "purpose": "document:product_catalog",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "shop-product"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      }
+    ],
+    "decisions": []
+  },
+  "brief": {
+    "schema_version": "1.0.0",
+    "site_plan_id": "fixture-hibrido-gimnasio-tienda-001-snapshot-v1-h2:h2-plan:acd6ea231dfcf3278595eb9e",
+    "manifest_sha256": "f55fb6226ccba0f3665b274a2fb9f3f58a0645b25dae3da4ae22275f2199ecd6",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "gaps": [
+      {
+        "need": {
+          "id": "need-628f3e288384428228bedbdb",
+          "requirement_id": "semantic-2553a47bd018c5cdeae40230",
+          "module_id": "semantic-2553a47bd018c5cdeae40230",
+          "page": "/sedes/s-c477cad400722515c88d522a/clases",
+          "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+          "purpose": "document:class_schedule",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "offering-2"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-ce154bed5edf914b0057d564",
+          "requirement_id": "semantic-df44674acf9c39a36f1e4a94",
+          "module_id": "semantic-df44674acf9c39a36f1e4a94",
+          "page": "/sedes/s-c477cad400722515c88d522a/membresias",
+          "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+          "purpose": "document:membership",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "offering-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-df1caa30469b3312a34c0c3f",
+          "requirement_id": "semantic-810ff10ca53d3fece4d69df4",
+          "module_id": "semantic-810ff10ca53d3fece4d69df4",
+          "page": "/",
+          "scope_id": "fixture-hibrido-gimnasio-tienda-001",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      },
+      {
+        "need": {
+          "id": "need-e298210ba69c27da88661e20",
+          "requirement_id": "semantic-2593c5404b8a7307f6f3b838",
+          "module_id": "semantic-2593c5404b8a7307f6f3b838",
+          "page": "/sedes/s-c477cad400722515c88d522a/catalogo",
+          "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+          "purpose": "document:product_catalog",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "shop-product"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "closure": "PENDING_AUTHORIZED_MEDIA_PACKAGE"
+  }
+}

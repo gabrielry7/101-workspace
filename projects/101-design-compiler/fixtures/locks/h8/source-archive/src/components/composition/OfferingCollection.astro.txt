@@ -1,0 +1,17 @@
+---
+import type { ModuleView } from '../../composition/content.ts';
+interface Props { module: ModuleView; heading?:'h1'|'h2' }
+const { module: m, heading='h1' } = Astro.props;
+const Heading=heading;
+---
+<section class="offerings semantic" data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page}>
+  <p class="eyebrow">Información pública · fixture</p>
+  <Heading>Oferta</Heading>
+  <p class="scope-label">Alcance: <code>{m.scope_id}</code></p>
+  <ul class="offering-list">
+    {m.offerings.map(o => <li data-offering-id={o.id} data-offering-scope={o.scope_id}>
+      {o.facts.map((f, i) => i === 0 ? <h2 data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</h2> : <p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}
+    </li>)}
+  </ul>
+  {m.facts.map(f => <p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}
+</section>

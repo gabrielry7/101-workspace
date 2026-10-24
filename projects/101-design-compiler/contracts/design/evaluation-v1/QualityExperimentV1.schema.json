@@ -1,0 +1,440 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "experiment_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "seed_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_iterations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "max_tool_calls": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 200
+        },
+        "max_wall_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_new_spend": {
+          "type": "number",
+          "const": 0
+        }
+      },
+      "required": [
+        "max_iterations",
+        "max_tool_calls",
+        "max_wall_seconds",
+        "max_new_spend"
+      ],
+      "additionalProperties": false
+    },
+    "cases": {
+      "minItems": 2,
+      "maxItems": 2,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "restaurante",
+              "hotel"
+            ]
+          },
+          "input_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "data_mode": {
+            "type": "string",
+            "const": "SYNTHETIC_FIXTURE"
+          },
+          "variants": {
+            "minItems": 4,
+            "maxItems": 4,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "condition": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "B",
+                    "C",
+                    "D"
+                  ]
+                },
+                "flags": {
+                  "type": "object",
+                  "properties": {
+                    "impeccable": {
+                      "default": false,
+                      "type": "boolean"
+                    },
+                    "raven": {
+                      "default": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "impeccable",
+                    "raven"
+                  ],
+                  "additionalProperties": false
+                },
+                "design": {
+                  "type": "object",
+                  "properties": {
+                    "schema_version": {
+                      "type": "string",
+                      "const": "1.0.0"
+                    },
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                    },
+                    "art_direction_id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                    },
+                    "site_plan_id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 240
+                    },
+                    "plan_sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "content_sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "manifest_sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "context_sha256": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "registry_version": {
+                      "type": "string",
+                      "const": "h5-lab-1.0.0"
+                    },
+                    "tokens": {
+                      "type": "object",
+                      "properties": {
+                        "palette": {
+                          "type": "string",
+                          "enum": [
+                            "olive",
+                            "ink",
+                            "earth"
+                          ]
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "serif",
+                            "sans"
+                          ]
+                        },
+                        "hierarchy": {
+                          "type": "string",
+                          "enum": [
+                            "monument",
+                            "compact"
+                          ]
+                        },
+                        "rhythm": {
+                          "type": "string",
+                          "enum": [
+                            "quiet",
+                            "dense"
+                          ]
+                        },
+                        "media_width": {
+                          "type": "string",
+                          "enum": [
+                            "full",
+                            "inset"
+                          ]
+                        },
+                        "media_alignment": {
+                          "type": "string",
+                          "enum": [
+                            "center",
+                            "end"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "palette",
+                        "type",
+                        "hierarchy",
+                        "rhythm",
+                        "media_width",
+                        "media_alignment"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "motion": {
+                      "type": "string",
+                      "const": "quiet"
+                    },
+                    "pages": {
+                      "minItems": 1,
+                      "maxItems": 100,
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string",
+                            "pattern": "^\\/(?:[a-z0-9-]+\\/)*[a-z0-9-]*$"
+                          },
+                          "composition": {
+                            "type": "object",
+                            "properties": {
+                              "operator": {
+                                "type": "string",
+                                "enum": [
+                                  "Flow",
+                                  "Rail"
+                                ]
+                              },
+                              "navigation": {
+                                "type": "string",
+                                "const": "before-content"
+                              },
+                              "child": {
+                                "type": "object",
+                                "properties": {
+                                  "operator": {
+                                    "type": "string",
+                                    "enum": [
+                                      "Sequence",
+                                      "Split"
+                                    ]
+                                  },
+                                  "module_refs": {
+                                    "minItems": 1,
+                                    "maxItems": 200,
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                                    }
+                                  },
+                                  "media_usage_refs": {
+                                    "maxItems": 20,
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "operator",
+                                  "module_refs",
+                                  "media_usage_refs"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "required": [
+                              "operator",
+                              "navigation",
+                              "child"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "path",
+                          "composition"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "schema_version",
+                    "id",
+                    "art_direction_id",
+                    "site_plan_id",
+                    "plan_sha256",
+                    "content_sha256",
+                    "manifest_sha256",
+                    "context_sha256",
+                    "registry_version",
+                    "tokens",
+                    "motion",
+                    "pages"
+                  ],
+                  "additionalProperties": false
+                },
+                "refinement": {
+                  "type": "object",
+                  "properties": {
+                    "schema_version": {
+                      "type": "string",
+                      "const": "1.0.0"
+                    },
+                    "reading_measure": {
+                      "default": "incumbent",
+                      "type": "string",
+                      "enum": [
+                        "incumbent",
+                        "bounded"
+                      ]
+                    },
+                    "touch_targets": {
+                      "default": "incumbent",
+                      "type": "string",
+                      "enum": [
+                        "incumbent",
+                        "comfortable"
+                      ]
+                    },
+                    "type_rhythm": {
+                      "default": "incumbent",
+                      "type": "string",
+                      "enum": [
+                        "incumbent",
+                        "reading"
+                      ]
+                    },
+                    "tracking": {
+                      "default": "incumbent",
+                      "type": "string",
+                      "enum": [
+                        "incumbent",
+                        "natural"
+                      ]
+                    },
+                    "label_placement": {
+                      "default": "incumbent",
+                      "type": "string",
+                      "enum": [
+                        "incumbent",
+                        "after-title"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "schema_version",
+                    "reading_measure",
+                    "touch_targets",
+                    "type_rhythm",
+                    "tracking",
+                    "label_placement"
+                  ],
+                  "additionalProperties": false
+                },
+                "iteration": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2
+                },
+                "trace": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "condition",
+                "flags",
+                "design",
+                "refinement",
+                "iteration",
+                "trace"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "input_sha256",
+          "data_mode",
+          "variants"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "metering": {
+      "type": "object",
+      "properties": {
+        "preflight_tool_calls": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "model_api_calls": {
+          "type": "number",
+          "const": 0
+        },
+        "session_tokens": {
+          "type": "null"
+        },
+        "session_cost": {
+          "type": "null"
+        },
+        "paid_provider_spend": {
+          "type": "number",
+          "const": 0
+        }
+      },
+      "required": [
+        "preflight_tool_calls",
+        "model_api_calls",
+        "session_tokens",
+        "session_cost",
+        "paid_provider_spend"
+      ],
+      "additionalProperties": false
+    },
+    "human_preferences": {
+      "type": "string",
+      "const": "NOT_COLLECTED"
+    },
+    "default_enabled": {
+      "type": "boolean",
+      "const": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "seed_status",
+    "budget",
+    "cases",
+    "metering",
+    "human_preferences",
+    "default_enabled"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:QualityExperimentV1:1.0.0",
+  "title": "QualityExperimentV1"
+}

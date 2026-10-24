@@ -1,0 +1,103 @@
+/* Shared editorial operators; the liked Immersive/Masthead entry geometry stays intact. */
+.rich-experience .film-icon{width:44px;height:44px;border-radius:50%;padding:0!important;display:grid;place-items:center;font-family:Arial,sans-serif;font-size:1rem!important;background:#151515!important;border:1px solid #fff!important;opacity:.92}
+.rich-experience .film-icon[hidden]{display:none}
+.rich-experience .experience-Immersive .film-icon{bottom:1.5rem}
+.rich-experience .hero-entry-links{padding-right:clamp(5rem,10vw,10rem)}
+.rich-experience .community-journal,.rich-experience .community-reviews,.rich-experience .community-contact{padding:clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,5rem)}
+.community-heading{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:end;margin-bottom:3.5rem}
+.community-heading h2{font-size:clamp(3rem,5.6vw,6rem);line-height:1.02}
+.community-heading h2 em,.community-contact h2 em{font-weight:400}
+.community-heading>div:last-child{max-width:36ch;justify-self:end}
+.community-heading p+.text-link{margin-top:1.5rem}
+.journal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}
+.journal-entry{position:relative;min-width:0}
+.journal-entry .contextual-photo{aspect-ratio:4/5;overflow:hidden}
+.journal-entry .contextual-photo picture,.journal-entry .contextual-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.journal-number{display:none}
+.journal-copy{padding-top:1.5rem}
+.journal-copy .eyebrow{font-size:.875rem;margin-bottom:.75rem}
+.journal-copy h3{font-size:clamp(1.5rem,2.2vw,2.4rem);line-height:1.12;margin-bottom:1rem}
+.journal-copy>p:last-child{font-size:.95rem;line-height:1.6}
+.editorial-disclosure{font-size:.875rem;line-height:1.6;color:var(--muted);margin-top:2rem!important;max-width:80ch!important}
+.community-reviews{border-top:1px solid var(--line)!important}
+.review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5rem}
+.page-reviews .review-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+.review-card{border-top:1px solid var(--ink);padding-top:1.5rem;min-width:0}
+.quote-mark{display:block;font-family:Georgia,serif;font-size:6rem;line-height:.8;height:4.5rem}
+.review-card blockquote{font-family:var(--display);font-size:clamp(1.6rem,2.6vw,2.5rem);line-height:1.25;margin:0 0 2rem;max-width:28ch}
+.review-byline{display:flex;gap:1.5rem;align-items:start}
+.review-byline>span{font-size:.875rem;padding-top:.1rem}
+.review-byline p{font-size:.875rem}.review-label{color:var(--muted);margin-top:.25rem!important}
+.community-contact{display:grid;grid-template-columns:1.5fr 1fr;gap:4rem;border-top:1px solid var(--line)!important;align-items:end}
+.community-contact h2{font-size:clamp(3rem,6vw,6.5rem);line-height:1.02;margin-bottom:2rem}
+.community-contact-link{display:inline-flex;min-height:64px;align-items:center;justify-content:space-between;font-family:var(--display);font-size:2rem;gap:3rem;border-bottom:1px solid currentColor;text-decoration:none!important;margin-top:2.5rem}
+.social-panel{padding-bottom:.5rem;max-width:32ch;justify-self:end}
+.social-links{display:grid;gap:.25rem}
+.social-placeholder{display:flex;justify-content:space-between;align-items:center;gap:3rem;min-height:52px;font-size:1.25rem;text-decoration:none;border-bottom:1px solid var(--line)}
+.social-panel>.text-link{margin-top:1.5rem}
+.demo-contact-details{border-top:1px solid var(--line);padding-top:2rem;margin-top:2rem}
+.demo-contact-details .contact-address{font-family:var(--display);font-size:clamp(1.4rem,3vw,2.5rem);overflow-wrap:anywhere;margin-bottom:.75rem}
+.demo-contact-details button{border:1px dashed var(--ink);padding:.75rem 1rem;margin-top:1.5rem;color:var(--ink);font-size:1rem}
+.demo-contact-details>p:last-child{font-size:.875rem;margin-top:1rem}
+.page-journal .community-journal,.page-reviews .community-reviews,.page-contact .community-contact{padding:1rem 0 2rem;border-top:0!important}
+.page-journal .community-heading h2,.page-reviews .community-heading h2{font-size:3rem}
+.tone-BordeauxPaper{--paper:#fff6e7;--ink:#641f2a;--muted:#70414a;--line:#bd9794;--display:Georgia,'Times New Roman',serif}
+.tone-CobaltButter{--paper:#fff9d7;--ink:#1737ac;--muted:#344999;--line:#8b95b5;--display:Impact,'Arial Narrow',sans-serif}
+/* Collage: editorial hierarchy, a wide film, offset plates and a ruled quote section. */
+.experience-Collage .exp-header{border-bottom:2px solid var(--ink)}
+.experience-Collage .hero-title{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;padding:3rem 5vw 4rem}
+.experience-Collage .hero-title .eyebrow{grid-column:1/-1;margin-bottom:0;border-bottom:1px solid var(--line);padding-bottom:1rem}
+.experience-Collage .hero-title h1{font-size:clamp(7rem,16vw,17rem);font-style:italic;letter-spacing:-.08em}
+.experience-Collage .hero-tagline{font-size:clamp(2rem,3.8vw,4rem);max-width:13ch!important;justify-self:end;margin:0!important;padding:0 2rem 1rem 0}
+.experience-Collage .hero-film{height:clamp(24rem,45vw,42rem)}
+.experience-Collage .hero-entry-links{border-bottom:2px solid var(--ink);padding-inline:5vw}
+.art-interlude{padding:2rem 5vw;border-bottom:1px solid var(--line);display:flex;gap:2rem;justify-content:space-between;font-family:var(--display);font-size:clamp(1rem,2vw,1.75rem);font-style:italic}
+.home-EditorialTable .community-heading{grid-template-columns:1fr 1fr}
+.home-EditorialTable .journal-grid{grid-template-columns:1.4fr 1fr;gap:4rem 10vw;align-items:start}
+.home-EditorialTable .journal-entry:nth-child(even){padding-top:7rem}
+.home-EditorialTable .journal-entry:nth-child(2) .contextual-photo{border-radius:50%;aspect-ratio:1}
+.home-EditorialTable .journal-entry:nth-child(3) .contextual-photo{aspect-ratio:1.3;border:12px solid var(--paper);outline:1px solid var(--ink)}
+.home-EditorialTable .journal-entry:nth-child(4) .contextual-photo{aspect-ratio:4/5;border-radius:50% 50% 0 0}
+.home-EditorialTable .journal-number{display:block;font-size:clamp(3rem,6vw,5rem);font-family:var(--display);font-style:italic;margin-bottom:1.5rem;line-height:1}
+.home-EditorialTable .journal-copy h3{font-size:clamp(2rem,4vw,4rem)}
+.home-EditorialTable .community-reviews{margin-inline:5vw;padding-inline:0!important;border-block:2px solid var(--ink)!important}
+.home-EditorialTable .community-contact{border-top:0!important}
+/* Poster: a cobalt masthead, a cinematic strip and a graphic sequence with shifted baselines. */
+.experience-Poster .exp-header{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.experience-Poster .hero-title{display:grid;grid-template-columns:2fr 1fr;gap:2rem;padding:3rem 5vw 4rem;align-items:end}
+.experience-Poster .hero-title .eyebrow{grid-column:1/-1;letter-spacing:.16em;border-bottom:3px solid var(--ink);padding-bottom:1rem;margin-bottom:0}
+.experience-Poster .hero-title h1{font-size:clamp(8rem,23vw,25rem);text-transform:uppercase;letter-spacing:-.05em;line-height:.85}
+.experience-Poster .hero-tagline{font-family:Georgia,serif;font-style:italic;font-size:clamp(2rem,3.4vw,3.5rem);margin:0!important;max-width:11ch!important;padding-bottom:.5rem}
+.experience-Poster .hero-film{height:clamp(28rem,42vw,40rem);border-block:12px solid var(--ink)}
+.experience-Poster .hero-entry-links{background:var(--ink);color:var(--paper);border:0;padding:1.5rem 5vw;gap:3rem}
+.experience-Poster .art-interlude{background:var(--ink);color:var(--paper);border:0;padding-block:3rem;font-style:normal;text-transform:uppercase;font-size:clamp(1.5rem,3vw,3rem);gap:1.5rem}
+.home-PosterSequence .community-heading h2{font-size:clamp(3.5rem,7vw,7rem);text-transform:uppercase}
+.home-PosterSequence .community-heading h2 em{font-style:normal}
+.home-PosterSequence .journal-grid{gap:2rem;grid-template-columns:repeat(4,minmax(0,1fr));align-items:start}
+.home-PosterSequence .journal-entry:nth-child(even){margin-top:7rem}
+.home-PosterSequence .journal-entry .contextual-photo{border:8px solid var(--ink);aspect-ratio:3/4}
+.home-PosterSequence .journal-copy h3{font-size:clamp(2rem,3vw,3rem);text-transform:uppercase}
+.home-PosterSequence .journal-number{display:block;font-family:Georgia,serif;font-style:italic;font-size:4rem;line-height:1;margin-bottom:1rem}
+.home-PosterSequence .community-reviews{background:var(--ink);color:var(--paper);--muted:#fff9d7;--line:#a6b4e1}
+.home-PosterSequence .community-reviews .review-card{border-color:var(--paper)}
+.home-PosterSequence .community-reviews .review-card blockquote{font-family:Georgia,serif;font-style:italic}
+.home-PosterSequence .community-contact h2{text-transform:uppercase}
+.home-PosterSequence .community-contact h2 em{font-style:normal}
+.home-PosterSequence .social-placeholder{border-width:2px;font-weight:700}
+@media(min-width:761px) and (max-width:1100px){.rich-experience .exp-nav nav{gap:.8rem}.community-heading{gap:2rem}.journal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}.review-grid{gap:2rem}.page-reviews .review-grid{grid-template-columns:1fr 1fr}.community-contact{gap:2rem}.experience-Collage .hero-title,.experience-Poster .hero-title{grid-template-columns:1.5fr 1fr}.experience-Collage .hero-title h1{font-size:15vw}.experience-Poster .hero-title h1{font-size:21vw}.home-PosterSequence .journal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem}.home-EditorialTable .journal-grid{gap:3rem}}
+@media(max-width:760px){
+ .rich-experience .community-journal,.rich-experience .community-reviews,.rich-experience .community-contact{padding:4rem 1.25rem}
+ .rich-experience .hero-entry-links{padding-right:1.25rem}.rich-experience.experience-Immersive .hero-entry-links{padding-right:5rem}
+ .community-heading,.home-EditorialTable .community-heading{grid-template-columns:1fr;gap:1.5rem;margin-bottom:2.5rem}.community-heading>div:last-child{justify-self:start;max-width:35ch}.community-heading h2{font-size:3.4rem}.community-heading p+.text-link{margin-top:1rem}
+ .journal-grid{grid-template-columns:1fr 1fr;gap:2.5rem 1rem}.journal-entry .contextual-photo{aspect-ratio:3/4}.journal-copy{padding-top:1rem}.journal-copy h3{font-size:1.6rem}.journal-copy .eyebrow{font-size:.875rem;letter-spacing:.04em}.journal-copy>p:last-child{font-size:.875rem}
+ .review-grid,.page-reviews .review-grid{grid-template-columns:1fr;gap:2.5rem}.review-card blockquote{font-size:1.8rem;max-width:28ch}.review-byline p{font-size:.875rem}
+ .community-contact{grid-template-columns:1fr;gap:3rem}.community-contact h2{font-size:3.5rem}.social-panel{justify-self:start;max-width:none;width:100%}.social-placeholder{font-size:1.15rem}.community-contact-link{font-size:1.8rem}.editorial-disclosure{margin-top:1.5rem!important}
+ .experience-Collage .hero-title{grid-template-columns:1fr;gap:1.5rem;padding:2rem 1.25rem}.experience-Collage .hero-title .eyebrow{grid-column:1}.experience-Collage .hero-title h1{font-size:5.6rem}.experience-Collage .hero-tagline{justify-self:start;font-size:2rem;padding:0;max-width:18ch!important}.experience-Collage .hero-film{height:48svh;min-height:320px}.experience-Collage .hero-entry-links{padding-inline:1.25rem}
+ .art-interlude{flex-wrap:wrap;gap:.5rem 1.5rem;padding:1.5rem 1.25rem;font-size:1rem}.home-EditorialTable .journal-grid{grid-template-columns:1fr;gap:3rem}.home-EditorialTable .journal-entry:nth-child(even){padding-top:0;margin-left:12%;width:88%}.home-EditorialTable .journal-number{font-size:3rem}.home-EditorialTable .journal-entry:nth-child(3) .contextual-photo{outline-offset:-1px}.home-EditorialTable .journal-copy h3{font-size:2.5rem}.home-EditorialTable .community-reviews{margin-inline:1.25rem}
+ .experience-Poster .hero-title{grid-template-columns:1fr;gap:1.5rem;padding:2rem 1.25rem}.experience-Poster .hero-title .eyebrow{grid-column:1;font-size:.875rem;letter-spacing:.06em}.experience-Poster .hero-title h1{font-size:29vw}.experience-Poster .hero-tagline{font-size:1.8rem;max-width:18ch!important}.experience-Poster .hero-film{height:48svh;min-height:330px;border-width:8px}.experience-Poster .hero-entry-links{padding:1.25rem;gap:1rem}.experience-Poster .art-interlude{padding:1.25rem;font-size:1.5rem;display:grid;gap:.25rem}
+ .home-PosterSequence .community-heading h2{font-size:3.4rem}.home-PosterSequence .journal-grid{grid-template-columns:1fr;gap:3rem}.home-PosterSequence .journal-entry{width:88%}.home-PosterSequence .journal-entry:nth-child(even){margin:0 0 0 12%}.home-PosterSequence .journal-entry .contextual-photo{aspect-ratio:1.1}.home-PosterSequence .journal-number{font-size:3rem}.home-PosterSequence .journal-copy h3{font-size:2.5rem}
+ .page-journal .community-journal,.page-reviews .community-reviews,.page-contact .community-contact{padding:1rem 0 2rem}.experience-Poster .exp-nav nav{background:var(--ink);color:var(--paper)}
+}
+@media(max-width:380px){.home-Journal .journal-grid{grid-template-columns:1fr}.rich-experience.experience-Immersive .hero-entry-links{padding:1rem 5rem 1rem 1.25rem}.rich-experience .community-heading h2{font-size:3rem}}
+
+.social-placeholder .social-state{font-size:.875rem;font-weight:400}

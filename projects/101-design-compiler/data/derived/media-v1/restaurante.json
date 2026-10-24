@@ -1,0 +1,121 @@
+{
+  "manifest": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-restaurante-001",
+    "snapshot_id": "fixture-restaurante-001-snapshot-v1",
+    "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+    "client_id": "synthetic-client",
+    "project_id": "synthetic-project",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+    "requirements_sha256": "1a0aabe77975db520a65a8415d6ad6735a92438cfd29db347ff2ddd0407fb7a4",
+    "input_sha256": "80b91f071ee916bda4bdf0753fba78c43de70ea7befbf8bc471e88606324e38a",
+    "assets": [],
+    "grants": [],
+    "usages": [],
+    "needs": [
+      {
+        "id": "need-33f7e20873460d5156843d28",
+        "requirement_id": "semantic-70d73044727ca9b106d272a8",
+        "module_id": "semantic-70d73044727ca9b106d272a8",
+        "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "purpose": "document:menu",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-7bacfc78bdb58db1dd06998a",
+        "requirement_id": "semantic-7bf9d33184f7e923438acadd",
+        "module_id": "semantic-7bf9d33184f7e923438acadd",
+        "page": "/",
+        "scope_id": "fixture-restaurante-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      }
+    ],
+    "decisions": []
+  },
+  "brief": {
+    "schema_version": "1.0.0",
+    "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+    "manifest_sha256": "65f84e8223fa8cfd1888c985dc7c9e60c04989ed0e2ff96721e12d0974c3f1a2",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "gaps": [
+      {
+        "need": {
+          "id": "need-33f7e20873460d5156843d28",
+          "requirement_id": "semantic-70d73044727ca9b106d272a8",
+          "module_id": "semantic-70d73044727ca9b106d272a8",
+          "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "purpose": "document:menu",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "offering-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-7bacfc78bdb58db1dd06998a",
+          "requirement_id": "semantic-7bf9d33184f7e923438acadd",
+          "module_id": "semantic-7bf9d33184f7e923438acadd",
+          "page": "/",
+          "scope_id": "fixture-restaurante-001",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "closure": "PENDING_AUTHORIZED_MEDIA_PACKAGE"
+  }
+}

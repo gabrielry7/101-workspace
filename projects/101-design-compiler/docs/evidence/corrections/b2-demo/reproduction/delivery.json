@@ -1,0 +1,17 @@
+{
+  "kind": "B2_FICTIONAL_DELIVERY_INDEX_CHECK",
+  "created_at": "2026-10-15T03:11:35.925Z",
+  "staged_tree_before_receipt": "9b5e9da49750b1ca7f0e2c133121a40301963c74",
+  "staged_files": 182,
+  "private_key_matches": 0,
+  "forbidden_paths": [],
+  "evidence_pins_verified": 7,
+  "package_sha256": "970cc4a6bfbe7af3d8d1de15656fe532a97883963a3e81d9c9390dc07d57f425",
+  "modified_prior_files": [
+    "scripts/export-contracts.ts",
+    "src/pages/b2/index.astro",
+    "src/pages/b2/providers.astro"
+  ],
+  "private_media_not_in_git": true,
+  "standalone_redistribution": false
+}

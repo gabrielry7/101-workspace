@@ -1,0 +1,59 @@
+{
+  "kind": "B2_TECHNICAL_DECODE_AND_DERIVATION",
+  "created_at": "2026-10-15T01:04:29.253Z",
+  "legal_review_sha256": "0b9b9018f33891c2bab5d2df6d6a81715ed1b15784d0c883fd7009817dcf10dc",
+  "tool": {
+    "sharp": "0.35.5",
+    "vips": "8.18.7",
+    "webp": "1.6.0"
+  },
+  "recipe": {
+    "widths": [
+      480,
+      960
+    ],
+    "fit": "proportional-no-crop",
+    "webp_quality": 82,
+    "effort": 6
+  },
+  "files": [
+    {
+      "asset_id": "b2-usda-d255-original",
+      "path": "public/media/h3-pilot/usda-ars-d255-19.jpg",
+      "sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+      "bytes": 2351102,
+      "width": 2700,
+      "height": 1819,
+      "codec": "jpeg",
+      "transformations": []
+    },
+    {
+      "asset_id": "b2-usda-d255-480",
+      "path": "public/media/b2/d255-19-480.webp",
+      "sha256": "591dd2b3a366d8cb2a9c571f5cd7d3734430e7ca5c88db0a598ab0c0dd1218f8",
+      "bytes": 32510,
+      "width": 480,
+      "height": 323,
+      "codec": "webp",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ]
+    },
+    {
+      "asset_id": "b2-usda-d255-960",
+      "path": "public/media/b2/d255-19-960.webp",
+      "sha256": "bead733d81673ac54b11d4e1179defce5a2992c94081bc25b7dc788ac49d0f72",
+      "bytes": 108258,
+      "width": 960,
+      "height": 647,
+      "codec": "webp",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ]
+    }
+  ],
+  "visual_review": "PENDING_SEPARATE_REVIEW",
+  "limits": "Full pixel decode proves readability and measured dimensions; not beauty or business authenticity."
+}

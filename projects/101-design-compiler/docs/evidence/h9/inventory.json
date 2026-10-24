@@ -1,0 +1,455 @@
+{
+  "inventory_version": "h9-evidence-inventory-1",
+  "milestone": "H9",
+  "status": "BLOCKED_EXTERNAL_EVIDENCE",
+  "scope": "Known workspace H3 package, H5-H8 laboratory receipts/locks and H7 cohort/proposal records listed in source_files; not a claim about evidence outside this workspace.",
+  "source_cutoff": "2026-10-09T03:23:18.272Z",
+  "source_files": [
+    {
+      "path": "data/derived/cohort-v1/h7.json",
+      "normalization": "LF_TEXT",
+      "bytes": 376257,
+      "sha256": "753231a39747003c176e831aff99194efc4582734ec4d7217cf50e84820b6815"
+    },
+    {
+      "path": "data/derived/media-v1/real-restaurante-pilot.json",
+      "normalization": "LF_TEXT",
+      "bytes": 13555,
+      "sha256": "f76804066361536a8321f9c4fe67cb5fa59fbbf8dd5696174f66c9768d7a038b"
+    },
+    {
+      "path": "docs/evidence/h3-pilot/render-receipt.json",
+      "normalization": "LF_TEXT",
+      "bytes": 986,
+      "sha256": "77dfec2e3cf048e23c63667866e598fcde94957cd61966eb3b4dfc0be1b0af24"
+    },
+    {
+      "path": "docs/evidence/h3-pilot/render.html",
+      "normalization": "BINARY",
+      "bytes": 2639,
+      "sha256": "584f76e853db29faa1617456ed00b7ef5b5ac0c9488470441a4648729a24c0e5"
+    },
+    {
+      "path": "docs/evidence/h3-pilot/render.png",
+      "normalization": "BINARY",
+      "bytes": 562953,
+      "sha256": "8b88ee6b464011ded71d90b316b5167f4ab8be7e940acee1b4b26703a97a2156"
+    },
+    {
+      "path": "docs/evidence/h3-pilot/review.md",
+      "normalization": "BINARY",
+      "bytes": 4326,
+      "sha256": "a94ccf5caebfe48713763f3eb22dce7e765ded6c3c2f6777504c68059968030a"
+    },
+    {
+      "path": "docs/evidence/h3-pilot/usda-asset-page.html",
+      "normalization": "BINARY",
+      "bytes": 26495,
+      "sha256": "362db558cb6b2e96c00e390fe84b2541d711114934f62cf3d700111b8a694bd2"
+    },
+    {
+      "path": "docs/evidence/h3-pilot/usda-policy.html",
+      "normalization": "BINARY",
+      "bytes": 27633,
+      "sha256": "37f2a2fb164eab70ce65881a810828faf9ba3935dd7d3d6c21cd2d30e86973ac"
+    },
+    {
+      "path": "docs/evidence/h5/browser-audit.json",
+      "normalization": "LF_TEXT",
+      "bytes": 232556,
+      "sha256": "db3879861626507e2dc6f51fb9e45ed7c77d28b00b80b1e73067f416a8b58ac4"
+    },
+    {
+      "path": "docs/evidence/h6/run.json",
+      "normalization": "LF_TEXT",
+      "bytes": 617692,
+      "sha256": "1c657c94249ad5187194ec83698ace4f31a27088e291c2adec0b22d9ae77ac12"
+    },
+    {
+      "path": "docs/evidence/h7/run.json",
+      "normalization": "LF_TEXT",
+      "bytes": 1066198,
+      "sha256": "be98459e7e82d490a1856e7383affbbd32602781b03dd40b3019aa9751ffa879"
+    },
+    {
+      "path": "docs/evidence/h8/run.json",
+      "normalization": "LF_TEXT",
+      "bytes": 10430343,
+      "sha256": "4aa0ad71b8dc2245f45d2d313df6d0ae1a1f5ad9bf94d30f70fbe26deb5d0470"
+    },
+    {
+      "path": "fixtures/cohort/h7/proposals/dentista/provenance.json",
+      "normalization": "LF_TEXT",
+      "bytes": 723,
+      "sha256": "a806c44879ce530a60d81b12452d28e57d80b6ba98a23460ede6aac65eb59717"
+    },
+    {
+      "path": "fixtures/cohort/h7/proposals/hibrido/provenance.json",
+      "normalization": "LF_TEXT",
+      "bytes": 723,
+      "sha256": "1ecbca1627c5396b19a96d57cc4b8aea2c833ed7bb9ba5ebb06b739a1e1a8f0e"
+    },
+    {
+      "path": "fixtures/cohort/h7/proposals/hotel/provenance.json",
+      "normalization": "LF_TEXT",
+      "bytes": 723,
+      "sha256": "72d76f9293896f51957ff56fa79e3f8143f4ccdffdc97358a07ae148f29c342b"
+    },
+    {
+      "path": "fixtures/cohort/h7/proposals/media-unknown/provenance.json",
+      "normalization": "LF_TEXT",
+      "bytes": 723,
+      "sha256": "46d6e22896f098f3a12da62207ce8e02f1841494095884d91151d13e4f1f70fe"
+    },
+    {
+      "path": "fixtures/cohort/h7/proposals/servicio/provenance.json",
+      "normalization": "LF_TEXT",
+      "bytes": 723,
+      "sha256": "2acc524c340fe99e036484c00aceb8233e57b84cc45570c3f4c5893c94dbc45e"
+    },
+    {
+      "path": "fixtures/cohort/h7/reservation.json",
+      "normalization": "LF_TEXT",
+      "bytes": 1186,
+      "sha256": "6eb94fc226772c55015870b6da764cb090085196ef174b66d234dbfcd92fed68"
+    },
+    {
+      "path": "fixtures/design/h5/provenance.json",
+      "normalization": "LF_TEXT",
+      "bytes": 1194,
+      "sha256": "042d88d260d4b2e33612c6ed9ad97620b75e1739117be77762d418dc59dae07b"
+    },
+    {
+      "path": "fixtures/locks/h8/hybrid-no-media.json",
+      "normalization": "LF_TEXT",
+      "bytes": 2949444,
+      "sha256": "093087f456be102d3c0b99706ae12f3f965650d3d28a8282e5266da8fa978e37"
+    },
+    {
+      "path": "fixtures/locks/h8/pilot-flow.json",
+      "normalization": "LF_TEXT",
+      "bytes": 2872888,
+      "sha256": "30ffd671129f3c15cc656249218bff50ff888c6b2d8d0e8adb73848d6c13a172"
+    },
+    {
+      "path": "fixtures/locks/h8/pilot-rail.json",
+      "normalization": "LF_TEXT",
+      "bytes": 2872838,
+      "sha256": "add8ad5c2c9b32d9c199fd7e9538db95767155ed8e7943ef90e6f4e10e6debaf"
+    },
+    {
+      "path": "fixtures/media/pilot/acquisition.json",
+      "normalization": "LF_TEXT",
+      "bytes": 1563,
+      "sha256": "b62e4e21c013143f01417767276c9c60f15bc6993669135701ba3c4e46cfec75"
+    },
+    {
+      "path": "fixtures/media/pilot/package-proof.json",
+      "normalization": "LF_TEXT",
+      "bytes": 1707,
+      "sha256": "b965f4469fd22fc59fa0a666c85971c64b047683377b1e221d41c18f5119867e"
+    },
+    {
+      "path": "public/media/h3-pilot/usda-ars-d255-19.jpg",
+      "normalization": "BINARY",
+      "bytes": 2351102,
+      "sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+    },
+    {
+      "path": "scripts/inventory-h9.ts",
+      "normalization": "LF_TEXT",
+      "bytes": 7726,
+      "sha256": "8eea594a4ea3ac74e2f745e8154790e0baba8715f2921e92c0cc544e53139631"
+    }
+  ],
+  "provider_evidence": {
+    "provider": "USDA Agricultural Research Service",
+    "acquired_assets": 1,
+    "acquisition_date": "2026-10-08",
+    "acquisition_method": "Single explicitly linked JPEG transfer; no API, catalog crawl, account or recurrent automation",
+    "cost_statement": "FREE; no purchase or currency asserted",
+    "numeric_amount": null,
+    "currency": null,
+    "evidence_kind": "REAL_ASSET_FOR_SYNTHETIC_PILOT_ONLY",
+    "package_verification": {
+      "success": true,
+      "codes": []
+    },
+    "internal_grant_at_h3_cutoff": {
+      "id": "usda-ars-d255-19-pilot-public-domain",
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "h3-restaurante-media-pilot"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001"
+      ],
+      "purposes": [
+        "generic:atmosphere"
+      ],
+      "pages": [
+        "/"
+      ],
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "UNKNOWN",
+      "reuse": "UNKNOWN",
+      "automation": {
+        "search": "UNKNOWN",
+        "download": "UNKNOWN"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "UNKNOWN",
+        "editing": "UNKNOWN",
+        "training": "UNKNOWN"
+      },
+      "derivatives": "DENIED",
+      "redistribution": "UNKNOWN",
+      "sublicensing": "UNKNOWN",
+      "retention_until": null,
+      "cost": null
+    },
+    "general_provider_legal_approval": "NOT_ESTABLISHED",
+    "new_terms_research": "NOT_PERFORMED",
+    "catalog_benchmark": "NOT_TESTED",
+    "catalog_sample_size": 0,
+    "api_agreement": "MISSING",
+    "volume_automation": "NOT_AUTHORIZED",
+    "caching": {
+      "observed": "LOCAL_FROZEN_PILOT_BYTES_REPLAY",
+      "general_api_or_multiclient_cache_permission": "NOT_VERIFIED",
+      "retention_interpretation": "NULL_IS_NOT_UNLIMITED_PERMISSION",
+      "storage_cost": "NOT_MEASURED"
+    }
+  },
+  "cohort": [
+    {
+      "scenario": "hotel",
+      "business_id": "h7-synthetic-hotel",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "selected_plans": 2,
+      "real_provider_coverage_status": "NOT_TESTED",
+      "eligible_for_approved_real_site_economics": false
+    },
+    {
+      "scenario": "dentista",
+      "business_id": "h7-synthetic-dentista",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "selected_plans": 2,
+      "real_provider_coverage_status": "NOT_TESTED",
+      "eligible_for_approved_real_site_economics": false
+    },
+    {
+      "scenario": "servicio",
+      "business_id": "h7-synthetic-servicio",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "selected_plans": 2,
+      "real_provider_coverage_status": "NOT_TESTED",
+      "eligible_for_approved_real_site_economics": false
+    },
+    {
+      "scenario": "hibrido",
+      "business_id": "h7-synthetic-hibrido",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "selected_plans": 2,
+      "real_provider_coverage_status": "NOT_TESTED",
+      "eligible_for_approved_real_site_economics": false
+    },
+    {
+      "scenario": "unknown",
+      "business_id": "h7-synthetic-unknown",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "selected_plans": 0,
+      "real_provider_coverage_status": "NOT_TESTED",
+      "eligible_for_approved_real_site_economics": false
+    },
+    {
+      "scenario": "media-unknown",
+      "business_id": "h7-synthetic-media-unknown",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "selected_plans": 2,
+      "real_provider_coverage_status": "NOT_TESTED",
+      "eligible_for_approved_real_site_economics": false
+    }
+  ],
+  "technical_locks": [
+    {
+      "id": "pilot-flow",
+      "lock_sha256": "131a4550ebd18e5b14f973f003d306efd8ed6a1761f1e0ce12530e6333f80694",
+      "business_id": "fixture-restaurante-001",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "approval": {
+        "status": "LAB_TECHNICAL_LOCK_NOT_HUMAN_APPROVED",
+        "human_preference": "NOT_COLLECTED",
+        "production_ready": false,
+        "commercial_runtime": "MISSING"
+      },
+      "eligible_for_approved_real_site_economics": false
+    },
+    {
+      "id": "pilot-rail",
+      "lock_sha256": "6c5834bc14816a79bbeec2ec3a13c96960a66541731ca57d3694fc07f6b093ec",
+      "business_id": "fixture-restaurante-001",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "approval": {
+        "status": "LAB_TECHNICAL_LOCK_NOT_HUMAN_APPROVED",
+        "human_preference": "NOT_COLLECTED",
+        "production_ready": false,
+        "commercial_runtime": "MISSING"
+      },
+      "eligible_for_approved_real_site_economics": false
+    },
+    {
+      "id": "hybrid-no-media",
+      "lock_sha256": "321976f9db28102ca17daf02f42dfa42d42e4ab7ebb6b2d4829cd70efb06adb6",
+      "business_id": "h7-synthetic-hibrido",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "approval": {
+        "status": "LAB_TECHNICAL_LOCK_NOT_HUMAN_APPROVED",
+        "human_preference": "NOT_COLLECTED",
+        "production_ready": false,
+        "commercial_runtime": "MISSING"
+      },
+      "eligible_for_approved_real_site_economics": false
+    }
+  ],
+  "observed_laboratory_metrics": {
+    "h5": {
+      "browser_receipts": 16,
+      "stress_receipts": 28,
+      "session_tokens": null,
+      "session_cost": null,
+      "metering_status": "SESSION_METERING_NOT_AVAILABLE",
+      "new_provider_calls": 0,
+      "new_spend": 0
+    },
+    "h6": {
+      "declared_budget": {
+        "plans": 8,
+        "baseline_views": 16,
+        "mutation_views": 8,
+        "seeded_browser_faults": 4,
+        "raster_stride": 4,
+        "max_mutations": 2,
+        "max_new_spend": 0
+      },
+      "monetary_cost": "NOT_MEASURED",
+      "human_time": "NOT_MEASURED",
+      "human_preference": "NOT_COLLECTED"
+    },
+    "h7": {
+      "actual": {
+        "rendered_plans": 10,
+        "browser_views": 63,
+        "index_browser_views": 2,
+        "wall_seconds": 18.150578299999996,
+        "provider_api_calls": 0,
+        "new_spend": 0,
+        "money_session": "NOT_MEASURED",
+        "tokens": "NOT_MEASURED"
+      },
+      "proposal_metering": [
+        {
+          "scenario": "hotel",
+          "source": "REAL_CODEX_SESSION_AUTHORED_PROPOSALS",
+          "tokens": null,
+          "cost": null,
+          "measured": false,
+          "new_spend": 0,
+          "provider_api_calls": 0
+        },
+        {
+          "scenario": "dentista",
+          "source": "REAL_CODEX_SESSION_AUTHORED_PROPOSALS",
+          "tokens": null,
+          "cost": null,
+          "measured": false,
+          "new_spend": 0,
+          "provider_api_calls": 0
+        },
+        {
+          "scenario": "servicio",
+          "source": "REAL_CODEX_SESSION_AUTHORED_PROPOSALS",
+          "tokens": null,
+          "cost": null,
+          "measured": false,
+          "new_spend": 0,
+          "provider_api_calls": 0
+        },
+        {
+          "scenario": "hibrido",
+          "source": "REAL_CODEX_SESSION_AUTHORED_PROPOSALS",
+          "tokens": null,
+          "cost": null,
+          "measured": false,
+          "new_spend": 0,
+          "provider_api_calls": 0
+        },
+        {
+          "scenario": "media-unknown",
+          "source": "REAL_CODEX_SESSION_AUTHORED_PROPOSALS",
+          "tokens": null,
+          "cost": null,
+          "measured": false,
+          "new_spend": 0,
+          "provider_api_calls": 0
+        }
+      ]
+    },
+    "h8": {
+      "actual": {
+        "wall_seconds": 67.2211025,
+        "llm_calls": 0,
+        "sampler_calls": 0,
+        "media_search": 0,
+        "external_page_requests": 0,
+        "new_spend": 0,
+        "session_tokens": null,
+        "session_money": null
+      }
+    },
+    "interpretation": "Actual browser/build wall and zero NEW calls/spend are laboratory observations, not total site cost, human duration, commercial latency or approved-site samples."
+  },
+  "economics": {
+    "status": "NOT_TESTED",
+    "eligible_approved_real_sites": 0,
+    "sample_size": 0,
+    "currency": null,
+    "p50": null,
+    "p90": null,
+    "quantile_method": "NOT_APPLIED_EMPTY_ELIGIBLE_COHORT",
+    "legal_documentation_cost": "NOT_MEASURED",
+    "human_time": "NOT_MEASURED",
+    "human_cost": "NOT_MEASURED",
+    "provider_total_cost": "NOT_MEASURED",
+    "llm_total_cost": "NOT_MEASURED",
+    "storage_total_cost": "NOT_MEASURED",
+    "total_site_cost": "NOT_MEASURED"
+  },
+  "dependencies": [
+    {
+      "id": "REAL_APPROVED_SITE_COHORT",
+      "missing": "Real authorized business inputs and actual human site acceptance records; all inspected current inputs are synthetic and human preferences NOT_COLLECTED."
+    },
+    {
+      "id": "ITEMIZED_ACTUAL_COSTS",
+      "missing": "Dated provider/license/API/LLM usage and invoices, legal/documentary expenses, storage and human duration/rates/currency linked to each site and all rejected attempts; session totals unavailable."
+    },
+    {
+      "id": "AUTHORIZED_PROVIDER_BENCHMARK",
+      "missing": "Verified access/download/AI/cache/multiclient permissions or agreements and comparable authorized samples by vertical; one internal pilot asset is not catalog coverage or volume evidence."
+    }
+  ],
+  "new_actions": {
+    "provider_calls": 0,
+    "downloads": 0,
+    "new_spend": 0,
+    "production_deployments": 0,
+    "human_votes_created": 0
+  },
+  "production_ready": false,
+  "h9_complete": false
+}

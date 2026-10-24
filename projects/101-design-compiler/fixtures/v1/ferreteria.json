@@ -1,0 +1,352 @@
+{
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-ferreteria-001",
+    "snapshot_id": "fixture-ferreteria-001-snapshot-v1",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "overture",
+        "field": "taxonomy.primary",
+        "value": "hardware_store",
+        "confidence": 1,
+        "evidence_ids": [
+          "f-category"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "Ferretería — fixture ficticio",
+        "scope_id": "fixture-ferreteria-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-ferreteria-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-category",
+        "kind": "observed_category",
+        "value": "hardware_store",
+        "scope_id": "fixture-ferreteria-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-category",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-offering-1",
+        "kind": "offering_name",
+        "value": "Categoría de productos de prueba",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-offering-1",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-product_catalog",
+        "kind": "capability:product_catalog",
+        "value": true,
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-product_catalog",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-quote_request",
+        "kind": "capability:quote_request",
+        "value": true,
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-quote_request",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-purchase",
+        "kind": "capability:purchase",
+        "value": false,
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-purchase",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-ferreteria-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": []
+      }
+    ],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [
+      {
+        "id": "offering-1",
+        "kind": "product_category",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "name_fact_id": "f-offering-1",
+        "fact_ids": []
+      }
+    ],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-ferreteria-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      },
+      {
+        "id": "product_catalog",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-product_catalog"
+        ]
+      },
+      {
+        "id": "quote_request",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-quote_request"
+        ]
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      },
+      {
+        "id": "purchase",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "status": "CONFIRMED_ABSENT",
+        "evidence_ids": [
+          "f-purchase"
+        ]
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "profile": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-ferreteria-001",
+    "snapshot_id": "fixture-ferreteria-001-snapshot-v1",
+    "id": "fixture-ferreteria-001-profile",
+    "classification": "RESOLVED",
+    "scope_ids": [
+      "fixture-ferreteria-001",
+      "fixture-ferreteria-001-branch-1"
+    ],
+    "archetypes": [
+      {
+        "id": "product_retail",
+        "relevance": "primary",
+        "confidence": 1,
+        "category_observation_ids": [
+          "category-1"
+        ],
+        "offering_ids": [
+          "offering-1"
+        ],
+        "evidence_ids": []
+      }
+    ],
+    "offering_ids": [
+      "offering-1"
+    ],
+    "candidate_capabilities": [
+      "identity",
+      "product_catalog",
+      "quote_request",
+      "delivery",
+      "purchase"
+    ],
+    "missing_inputs": [
+      {
+        "need": "approved_address_and_contact",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "reason": "Fixture deliberately omits real address and contact details",
+        "requested_from": "upstream"
+      }
+    ],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ]
+  },
+  "capabilities": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-ferreteria-001",
+    "snapshot_id": "fixture-ferreteria-001-snapshot-v1",
+    "id": "fixture-ferreteria-001-capabilities",
+    "business_profile_id": "fixture-ferreteria-001-profile",
+    "capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-ferreteria-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "product_catalog",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-product_catalog"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [
+          "offering-1"
+        ],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "quote_request",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-quote_request"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": [
+          "approved_action_destination"
+        ]
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": [],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "purchase",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "status": "CONFIRMED_ABSENT",
+        "evidence_ids": [
+          "f-purchase"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      }
+    ]
+  },
+  "plan": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-ferreteria-001",
+    "snapshot_id": "fixture-ferreteria-001-snapshot-v1",
+    "id": "fixture-ferreteria-001-plan",
+    "business_profile_id": "fixture-ferreteria-001-profile",
+    "capability_profile_id": "fixture-ferreteria-001-capabilities",
+    "stage": "FIXTURE_PREVIEW",
+    "archetypes": [
+      "product_retail"
+    ],
+    "capabilities": [
+      "identity",
+      "product_catalog"
+    ],
+    "pages": [
+      {
+        "path": "/",
+        "intent": "Demostración semántica manual H0; no sitio de cliente",
+        "modules": [
+          {
+            "id": "identity",
+            "capability_id": "identity",
+            "scope_id": "fixture-ferreteria-001",
+            "required": true,
+            "presentation": "STATIC_PUBLIC_INFORMATION",
+            "fact_ids": [
+              "f-name"
+            ],
+            "offering_ids": []
+          },
+          {
+            "id": "module-product_catalog",
+            "capability_id": "product_catalog",
+            "scope_id": "fixture-ferreteria-001-branch-1",
+            "required": true,
+            "presentation": "STATIC_PUBLIC_INFORMATION",
+            "fact_ids": [],
+            "offering_ids": [
+              "offering-1"
+            ]
+          }
+        ]
+      }
+    ],
+    "excluded_capabilities": [
+      {
+        "id": "quote_request",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "reason": "MISSING_INPUT"
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "reason": "UNKNOWN"
+      },
+      {
+        "id": "purchase",
+        "scope_id": "fixture-ferreteria-001-branch-1",
+        "reason": "CONFIRMED_ABSENT"
+      }
+    ]
+  }
+}

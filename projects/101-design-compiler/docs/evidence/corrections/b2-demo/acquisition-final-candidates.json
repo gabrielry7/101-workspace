@@ -1,0 +1,100 @@
+{
+  "kind": "B2_EXPLICIT_FINAL_PHOTO_ALTERNATIVES",
+  "files": [
+    {
+      "provider": "Pixabay",
+      "id": 791891,
+      "label": "Ensalada de ejemplo",
+      "kind": "image",
+      "source_page": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+      "contributor": "JillWellington",
+      "acquired_at": "2026-10-15T02:44:32.394Z",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/791891.jpg",
+        "sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+        "bytes": 283569,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": {
+        "width": 1280,
+        "height": 853,
+        "codec": "jpeg"
+      },
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/791891-640.webp",
+          "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6",
+          "bytes": 45472,
+          "width": 640,
+          "height": 427,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        },
+        {
+          "path": "public/media/b2-fictional/791891-1280.webp",
+          "sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588",
+          "bytes": 126204,
+          "width": 1280,
+          "height": 853,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/salad-bowl.json"
+    },
+    {
+      "provider": "Pixabay",
+      "id": 1971552,
+      "label": "Postre de ejemplo",
+      "kind": "image",
+      "source_page": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+      "contributor": "Daria-Yakovleva",
+      "acquired_at": "2026-10-15T02:44:33.622Z",
+      "original_received": {
+        "path": ".tools/b2-demo/originals/1971552.jpg",
+        "sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+        "bytes": 253809,
+        "origin": "PROVIDER_RENDITION_NOT_CAMERA_ORIGINAL"
+      },
+      "decoded_image": {
+        "width": 1280,
+        "height": 871,
+        "codec": "jpeg"
+      },
+      "derivatives": [
+        {
+          "path": "public/media/b2-fictional/1971552-640.webp",
+          "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9",
+          "bytes": 36338,
+          "width": 640,
+          "height": 436,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        },
+        {
+          "path": "public/media/b2-fictional/1971552-1280.webp",
+          "sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20",
+          "bytes": 127138,
+          "width": 1280,
+          "height": 871,
+          "codec": "webp",
+          "operations": [
+            "RESIZE",
+            "TRANSCODE"
+          ]
+        }
+      ],
+      "search_receipt": "docs/evidence/corrections/b2-demo/search/dessert.json"
+    }
+  ],
+  "reason": "Actual plated-salad and plated-dessert subjects from bounded cached searches; no AI generated image selected."
+}

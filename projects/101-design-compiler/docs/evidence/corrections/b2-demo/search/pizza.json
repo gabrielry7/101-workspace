@@ -1,0 +1,24 @@
+{
+  "id": "pizza",
+  "kind": "image",
+  "endpoint": "https://pixabay.com/api/",
+  "query": {
+    "q": "pizza",
+    "per_page": "3",
+    "page": "1",
+    "safesearch": "true",
+    "image_type": "photo",
+    "orientation": "horizontal"
+  },
+  "at": "2026-10-15T02:37:35.672Z",
+  "cache_until": "2026-10-16T02:37:35.672Z",
+  "private_cache": ".tools/b2-demo/cache/pizza.json",
+  "response_sha256": "99ae2034bd9644603aa6f808fbc70b3144011c59b0d0d4dde0a99484b79707d9",
+  "response_bytes": 3640,
+  "hits": 3,
+  "rate_limit": {
+    "X-RateLimit-Limit": "100",
+    "X-RateLimit-Remaining": "99",
+    "X-RateLimit-Reset": "60"
+  }
+}

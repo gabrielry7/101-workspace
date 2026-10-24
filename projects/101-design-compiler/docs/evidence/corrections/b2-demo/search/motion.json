@@ -1,0 +1,23 @@
+{
+  "id": "motion",
+  "kind": "video",
+  "endpoint": "https://pixabay.com/api/videos/",
+  "query": {
+    "q": "pizza",
+    "per_page": "3",
+    "page": "1",
+    "safesearch": "true",
+    "video_type": "film"
+  },
+  "at": "2026-10-15T02:37:38.463Z",
+  "cache_until": "2026-10-16T02:37:38.463Z",
+  "private_cache": ".tools/b2-demo/cache/motion.json",
+  "response_sha256": "1f0e9dc3090873189d69620e7c8060ba73e1f6aad1abb944ba017c92b39e37b7",
+  "response_bytes": 4063,
+  "hits": 3,
+  "rate_limit": {
+    "X-RateLimit-Limit": "100",
+    "X-RateLimit-Remaining": "95",
+    "X-RateLimit-Reset": "58"
+  }
+}

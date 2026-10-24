@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "business_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "business_profile_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "identity",
+              "about",
+              "locations",
+              "opening_hours",
+              "contact_channels",
+              "social_profiles",
+              "reputation",
+              "gallery",
+              "service_catalog",
+              "product_catalog",
+              "menu",
+              "product_variants",
+              "price_list",
+              "packages",
+              "rooms",
+              "programs",
+              "professional_profiles",
+              "trainer_profiles",
+              "portfolio",
+              "case_studies",
+              "reservation",
+              "appointment",
+              "quote_request",
+              "contact_request",
+              "purchase",
+              "order",
+              "delivery",
+              "pickup",
+              "membership",
+              "membership_signup",
+              "class_enrollment",
+              "ticketing",
+              "room_booking",
+              "visit_booking",
+              "service_request",
+              "class_schedule",
+              "events",
+              "availability_display",
+              "service_area",
+              "delivery_policy",
+              "visit_policy",
+              "payment_methods",
+              "amenities",
+              "accessibility_info",
+              "branches",
+              "faqs",
+              "documents"
+            ]
+          },
+          "scope_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CONFIRMED_PRESENT",
+              "CONFIRMED_ABSENT",
+              "UNKNOWN",
+              "CONFLICTED",
+              "WITHHELD"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "frontend_status": {
+            "type": "string",
+            "enum": [
+              "FRONTEND_SUPPORTED",
+              "NOT_SUPPORTED_YET"
+            ]
+          },
+          "backend_status": {
+            "type": "string",
+            "enum": [
+              "BACKEND_NOT_CONNECTED",
+              "BACKEND_CONNECTED"
+            ]
+          },
+          "offering_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "action_destination_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "missing_inputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "scope_id",
+          "status",
+          "evidence_ids",
+          "frontend_status",
+          "backend_status",
+          "offering_ids",
+          "action_destination_ids",
+          "missing_inputs"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "business_id",
+    "snapshot_id",
+    "id",
+    "business_profile_id",
+    "capabilities"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:CapabilityProfileV1:1.0.0",
+  "title": "CapabilityProfileV1",
+  "description": "H0 candidate contract; semantic validation is required in addition to JSON Schema."
+}

@@ -1,0 +1,274 @@
+{
+  "scenario": "hibrido-gimnasio-tienda",
+  "expected_status": "READY",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-hibrido-gimnasio-tienda-001",
+    "snapshot_id": "fixture-hibrido-gimnasio-tienda-001-snapshot-v1-h2",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "foursquare",
+        "field": "foursquare.category",
+        "value": "Sports and Recreation > Gym and Studio > Gym",
+        "confidence": 1,
+        "evidence_ids": [
+          "f-category"
+        ]
+      },
+      {
+        "id": "category-shop",
+        "source": "osm",
+        "field": "shop",
+        "value": "hardware",
+        "confidence": 1,
+        "evidence_ids": [
+          "observed-category-shop"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "hibrido-gimnasio-tienda — fixture ficticio H2",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-category",
+        "kind": "observed_category",
+        "value": "Sports and Recreation > Gym and Studio > Gym",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-category",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-offering-1",
+        "kind": "offering_name",
+        "value": "Plan de prueba",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-offering-1",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-membership",
+        "kind": "capability:membership",
+        "value": true,
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-membership",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-offering-2",
+        "kind": "offering_name",
+        "value": "Sesión de prueba",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-offering-2",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-class-start",
+        "kind": "class_starts_at",
+        "value": "2026-10-15T15:00:00-05:00",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-class-start",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-class-zone",
+        "kind": "timezone",
+        "value": "America/Bogota",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-class-zone",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-class_schedule",
+        "kind": "capability:class_schedule",
+        "value": true,
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-class_schedule",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-product_catalog",
+        "kind": "capability:product_catalog",
+        "value": true,
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-product_catalog",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "observed-category-shop",
+        "kind": "observed_category",
+        "value": "hardware",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-observed-category-shop",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "name-shop-product",
+        "kind": "offering_name",
+        "value": "Categoría de productos sintética",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-name-shop-product",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "hybrid-evidence",
+        "kind": "activity:coexisting",
+        "value": true,
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-hybrid-evidence",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": []
+      }
+    ],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [
+      {
+        "id": "offering-1",
+        "kind": "membership_plan",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "name_fact_id": "f-offering-1",
+        "fact_ids": []
+      },
+      {
+        "id": "offering-2",
+        "kind": "class_session",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "name_fact_id": "f-offering-2",
+        "fact_ids": [],
+        "starts_at_fact_id": "f-class-start",
+        "timezone_fact_id": "f-class-zone"
+      },
+      {
+        "id": "shop-product",
+        "kind": "product_category",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "name_fact_id": "name-shop-product",
+        "fact_ids": []
+      }
+    ],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      },
+      {
+        "id": "membership",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-membership"
+        ]
+      },
+      {
+        "id": "class_schedule",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-class_schedule"
+        ]
+      },
+      {
+        "id": "product_catalog",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-product_catalog"
+        ]
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      },
+      {
+        "id": "membership_signup",
+        "scope_id": "fixture-hibrido-gimnasio-tienda-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "activity_relationships": [
+    {
+      "id": "hybrid-relation",
+      "kind": "COEXISTING",
+      "category_observation_ids": [
+        "category-1",
+        "category-shop"
+      ],
+      "evidence_ids": [
+        "hybrid-evidence"
+      ]
+    }
+  ]
+}

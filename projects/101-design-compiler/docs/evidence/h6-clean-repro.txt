@@ -1,0 +1,132 @@
+
+> 101-design-compiler@0.0.0 build
+> npm run validate && astro build
+
+
+> 101-design-compiler@0.0.0 validate
+> node --experimental-strip-types scripts/validate-fixtures.ts
+
+restaurante: PASSED
+gimnasio: PASSED
+ferreteria: PASSED
+planner/restaurante: PASSED (READY)
+planner/gimnasio: PASSED (READY)
+planner/ferreteria: PASSED (READY)
+planner/clinica: PASSED (READY)
+planner/hibrido-gimnasio-tienda: PASSED (READY)
+planner/hibrido-sin-evidencia: PASSED (CONTENT_BLOCKED)
+planner/hotel-restaurante-sucursales: PASSED (READY)
+planner/informacion-incompleta: PASSED (CONTENT_BLOCKED)
+planner/servicios-profesionales: PASSED (READY)
+media/restaurante: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/synthetic-permission-control: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/synthetic-permission-default-blocked: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/gimnasio: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/ferreteria: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/clinica: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/hibrido-gimnasio-tienda: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/hotel-restaurante-sucursales: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/servicios-profesionales: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/real-restaurante-pilot: PASSED (AUTHORIZED_PILOT_PACKAGE_WITH_GAPS)
+20:50:01 [vite] Re-optimizing dependencies because vite config has changed
+20:50:01 [types] Generated 168ms
+20:50:01 [build] output: "static"
+20:50:01 [build] mode: "static"
+20:50:01 [build] directory: C:\Users\gabri\101-design-compiler\.tools\h6-clean-index\dist\
+20:50:01 [build] Collecting build info...
+20:50:01 [build] ✓ Completed in 214ms.
+20:50:01 [build] Building static entrypoints...
+20:50:01 [vite] ✓ built in 206ms
+20:50:01 [vite] ✓ built in 16ms
+20:50:01 [build] Rearranging server assets...
+
+ generating static routes
+20:50:01   ├─ /h3-media-pilot/index.html (+21ms)
+20:50:01   ├─ /h4/editorial/index.html (+5ms)
+20:50:01   ├─ /h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h4/split/index.html (+2ms)
+20:50:01   ├─ /h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h4/rail/index.html (+2ms)
+20:50:01   ├─ /h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h4/index.html (+3ms)
+20:50:01   ├─ /h5/candidate-01/index.html (+4ms)
+20:50:01   ├─ /h5/candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h5/candidate-02/index.html (+3ms)
+20:50:01   ├─ /h5/candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h5/candidate-04/index.html (+2ms)
+20:50:01   ├─ /h5/candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+4ms)
+20:50:01   ├─ /h5/candidate-05/index.html (+2ms)
+20:50:01   ├─ /h5/candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+4ms)
+20:50:01   ├─ /h5/index.html (+28ms)
+20:50:01   ├─ /h6/compare/pair-01/mobile/identity/index.html (+3ms)
+20:50:01   ├─ /h6/compare/pair-01/mobile/offering/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-01/desktop/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-01/desktop/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-02/mobile/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-02/mobile/offering/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-02/desktop/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-02/desktop/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-03/mobile/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-03/mobile/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-03/desktop/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-03/desktop/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-04/mobile/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-04/mobile/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-04/desktop/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-04/desktop/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-05/mobile/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-05/mobile/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-05/desktop/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-05/desktop/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-06/mobile/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-06/mobile/offering/index.html (+1ms)
+20:50:01   ├─ /h6/compare/pair-06/desktop/identity/index.html (+2ms)
+20:50:01   ├─ /h6/compare/pair-06/desktop/offering/index.html (+1ms)
+20:50:01   ├─ /h6/final-candidate-01/index.html (+3ms)
+20:50:01   ├─ /h6/final-candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h6/final-candidate-02/index.html (+2ms)
+20:50:01   ├─ /h6/final-candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h6/final-candidate-04/index.html (+3ms)
+20:50:01   ├─ /h6/final-candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+5ms)
+20:50:01   ├─ /h6/final-candidate-05/index.html (+2ms)
+20:50:01   ├─ /h6/final-candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+4ms)
+20:50:01   ├─ /h6/repair-before/index.html (+2ms)
+20:50:01   ├─ /h6/repair-before/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h6/repair-after/index.html (+3ms)
+20:50:01   ├─ /h6/repair-after/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+4ms)
+20:50:01   ├─ /h6/worse-after/index.html (+2ms)
+20:50:01   ├─ /h6/worse-after/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h6/rollback-restored/index.html (+2ms)
+20:50:01   ├─ /h6/rollback-restored/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html (+3ms)
+20:50:01   ├─ /h6/index.html (+31ms)
+20:50:01   ├─ /index.html (+6ms)
+20:50:01 ✓ Completed in 515ms.
+
+20:50:01 [build] ✓ Completed in 795ms.
+20:50:01 [build] 59 page(s) built in 1.01s
+20:50:01 [build] Complete!
+
+> 101-design-compiler@0.0.0 design:replay
+> node --experimental-strip-types scripts/design-fixtures.ts --replay
+
+{"status":"FINALISTS_READY_FOR_BROWSER","candidates":6,"finalists":["candidate-01","candidate-02","candidate-04","candidate-05"],"sha256":"0653ba6fa5e21655b94090bbbf794d2678b3262df544ae6643105064e13b7cb7","replay":true}
+
+> 101-design-compiler@0.0.0 media:verify
+> node --experimental-strip-types scripts/verify-media-pilot.ts
+
+{"status":"PASSED","closure":"AUTHORIZED_PILOT_PACKAGE_WITH_GAPS","media_sha256":"ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715","permission_source":"https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/","documentary_gap_blocked":true,"original_bytes_checked":true,"official_documents_checked":true,"render_receipt_checked":true,"attribution_and_context_checked":true,"current_build_matches_render":true}
+
+> 101-design-compiler@0.0.0 composition:verify
+> node --experimental-strip-types scripts/verify-compositions.ts
+
+{"status":"PASSED","views":12,"primary_views":6,"bindings_preserved":true,"media_preserved":true,"original_sha256":"ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715","plan_sha256":"4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22","content_sha256":"6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b"}
+
+> 101-design-compiler@0.0.0 design:verify
+> node --experimental-strip-types scripts/verify-designs.ts
+
+H5 PASSED lab: 16 browser views, 28 responsive/text stress views; current HTML/CSS/PNG, bindings, rights and frozen search hashes valid.
+
+> 101-design-compiler@0.0.0 audit:verify
+> node --experimental-strip-types scripts/verify-h6.ts
+
+H6 PASSED laboratory: 27 view receipts; PNG pixels independently decoded/recomputed; current HTML/CSS, gate/mutation/rollback replay, four diverse finalists. Commercial profile blocked; human votes NOT_COLLECTED.

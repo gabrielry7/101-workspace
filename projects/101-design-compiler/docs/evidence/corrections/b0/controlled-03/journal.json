@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "controlled-03",
+  "created_at": "2026-10-13T01:44:11.389Z",
+  "steps": [
+    {
+      "id": "build-a",
+      "started_at": "2026-10-13T01:44:13.156Z",
+      "finished_at": "2026-10-13T01:44:15.193Z",
+      "wall_seconds": 2.0368254,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b0/controlled-03/build-a.txt",
+      "log_sha256": "cb9cc2ee79cc35909d8e5d9be920926b0af8d069ffc4df5b31b34266b3ab349e"
+    },
+    {
+      "id": "build-b",
+      "started_at": "2026-10-13T01:44:23.567Z",
+      "finished_at": "2026-10-13T01:44:25.644Z",
+      "wall_seconds": 2.0774136,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b0/controlled-03/build-b.txt",
+      "log_sha256": "36ddcbee31c99657f63231df289aee9bd6d2417e29b775d8b649ad1cbbd5382f"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

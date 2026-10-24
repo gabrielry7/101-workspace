@@ -1,0 +1,102 @@
+{
+  "kind": "capability_plan",
+  "schema_version": "2.1.1",
+  "plan_id": "synthetic-plan",
+  "business_id": "synthetic-business",
+  "location_ids": [
+    "synthetic-location"
+  ],
+  "mode": "prospect_private",
+  "capabilities": [
+    {
+      "capability_id": "public_info",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "menu_html",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "whatsapp_contact",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "whatsapp_request",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "reservation_request",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "reservation_confirmed",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "online_payment",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "delivery_dispatch",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "customer_accounts",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    },
+    {
+      "capability_id": "loyalty",
+      "enabled": false,
+      "mode": "none",
+      "owner_role": null,
+      "dependencies": [],
+      "operations_policy_ref": null,
+      "required_test_ids": []
+    }
+  ]
+}

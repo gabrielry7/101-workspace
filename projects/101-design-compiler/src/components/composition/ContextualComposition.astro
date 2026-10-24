@@ -1,0 +1,45 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import ContextualModule from './ContextualModule.astro';
+import PreviewIntent from './PreviewIntent.astro';
+import {contextualMediaData,evaluateContextualUsage} from '../../media/contextual-review.ts';
+import type {ContextualMediaHandle} from '../../media/contextual-review.ts';
+import type {ContextualDesignPlan} from '../../design/contextual-contracts.ts';
+import {validateContextualPlan,validateContextualPresentation} from '../../design/contextual.ts';
+import type {ReferenceComposition} from '../../design/contextual-contracts.ts';
+import styles from '../../design/contextual.css?raw';
+interface Props{scenario:any;design:ContextualDesignPlan;presentation:any;context_sha256:string;handle:ContextualMediaHandle;at:string;revision:ReferenceComposition['variants'][number];application_sha256:string}
+const {scenario:s,design:d,presentation,context_sha256,handle,at}=Astro.props,review=contextualMediaData(handle);
+const {revision,application_sha256}=Astro.props;
+validateContextualPresentation(presentation,s);
+if(!validateContextualPlan(d,s,context_sha256,review.review_sha256).success)throw Error('B3_INVALID_RENDER_PLAN');
+const modules=s.content.pages.flatMap((p:any)=>p.modules),identity=modules.find((m:any)=>m.id===d.sections.identity),menu=modules.find((m:any)=>m.id===d.sections.collection),about=modules.find((m:any)=>m.id===d.sections.narrative),others=d.sections.information.map(id=>modules.find((m:any)=>m.id===id));
+const uses=review.usages.filter(u=>u.page===d.route),motion=uses.find(u=>u.need_id==='b3-need:motion')!,poster=uses.find(u=>u.need_id==='b3-need:poster')!;
+if([motion,poster].some(u=>evaluateContextualUsage(handle,u,at).status!=='ALLOWED'))throw Error('B3_VIDEO_BLOCKED');
+const movie=review.assets.find(a=>a.id===motion.asset_id)!,posterAsset=review.assets.find(a=>a.id===poster.asset_id)!;
+const name=s.input.facts.find((f:any)=>f.id===s.input.identity.name_fact_id).value;
+const nav=[{id:'carta',label:'La carta'},{id:'historia',label:'La idea'},{id:'encuentro',label:'Tu mesa'},{id:'visita',label:'La visita'}];
+---
+<Foundation title={`${name} · ${d.id} · restaurante ficticio`}>
+ <style is:inline set:html={styles.replaceAll('\r\n','\n')}/>
+ <div class:list={['contextual-site',`nav-${d.recipe.navigation}`,`hero-${d.recipe.hero}`,`collection-${d.recipe.collection}`,`mobile-${d.recipe.mobile_collection}`,`visit-${d.recipe.visit}`,`proportion-${d.recipe.proportion}`,`measure-${d.recipe.measure}`,`palette-${d.tokens.palette}`,`voice-${d.tokens.voice}`,`scale-${d.tokens.scale}`,`rhythm-${d.tokens.rhythm}`,`corners-${d.tokens.corners}`]}
+ data-relationship={revision.relationship} data-chapters={revision.chapters} data-reflow={revision.mobile} data-reference-application={application_sha256}
+ data-design-id={d.id} data-context-sha256={context_sha256} data-plan-sha256={d.plan_sha256} data-content-sha256={d.content_sha256} data-media-sha256={d.media_sha256} data-registry-version={d.registry_version}>
+ <div class="demo-ribbon"><span>Restaurante ficticio · demostración de diseño</span><a href="/b3/">Comparar propuestas <span aria-hidden="true">↗</span></a></div>
+ <div class="site-frame"><header class="contextual-nav"><a href="#inicio" class="wordmark" aria-label={`${name}, inicio`}>{name}<span aria-hidden="true">*</span></a><details class="nav-disclosure" open><summary>Explorar <span aria-hidden="true">＋</span></summary><nav aria-label="Recorrido del restaurante ficticio">{nav.map((n,i)=><a href={`#${n.id}`}><span class="nav-index" aria-hidden="true">0{i+1}</span>{n.label}<span aria-hidden="true">↗</span></a>)}</nav></details><a href="#encuentro" class="nav-action">Tu próxima sobremesa <span aria-hidden="true">↗</span></a><p class="nav-caption">Una idea de cocina.<br/>Un lugar para compartir.</p></header>
+ <div class="site-body">
+  <ContextualModule module={identity} {handle} {at} route={d.route} {presentation}/>
+  <p class="media-disclosure" data-media-disclosure>{motion.generic_label}</p>
+  {d.recipe.narrative==='BeforeCollection'&&<ContextualModule module={about} {handle} {at} route={d.route} {presentation}/>}
+  <ContextualModule module={menu} {handle} {at} route={d.route} {presentation}/>
+  {d.sections.preview_intents.includes('selection')&&<PreviewIntent kind="selection"/>}
+  {d.recipe.narrative==='AfterCollection'&&<ContextualModule module={about} {handle} {at} route={d.route} {presentation}/>}
+  <section id="movimiento" class="motion-story"><div><p class="kicker">Un instante en movimiento</p><h2>El placer de<br/> compartir.</h2><p id="motion-description">Una pizza se corta en primer plano. Escena ilustrativa de stock, sin sonido; no muestra la cocina ni los productos de un negocio.</p><p class="motion-note">Reproducción a petición · 9 segundos · 4,45 MB</p></div><figure><video controls playsinline preload="none" poster={posterAsset.uri} width="640" height="360" aria-describedby="motion-description" data-media-usage={motion.id} data-poster-usage={poster.id}><source src={movie.uri} type="video/webm"/>Tu navegador no reproduce este vídeo.</video><figcaption><a href="https://pixabay.com/videos/pizza-peperonni-cheese-italian-149678/">{motion.attribution_text}</a><span>Portada ilustrativa independiente: <a href="https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/">{poster.attribution_text}</a></span></figcaption></figure></section>
+  {d.sections.preview_intents.includes('request')&&<PreviewIntent kind="request"/>}
+  <div class="visit-collection">{others.map((m:any)=><ContextualModule module={m} {handle} {at} route={d.route} {presentation}/>)}</div>
+  <footer class="contextual-footer"><a class="footer-brand" href="#inicio">{name}<span aria-hidden="true">.</span></a><p>Cocina para quedarse un rato.<br/>Un concepto ficticio, ninguna empresa real.</p><div><a href="#carta">Volver a la carta ↗</a><a href="/b3/">Revisar otra dirección ↗</a></div><p class="provider-notice" data-provider-notice>{motion.context_notices?.[0]}</p><details class="context-diagnostic"><summary>Alcance y condiciones de esta demostración</summary><p>Textos, recetas, precios, horarios y lugar son ficción. Ingredientes y alérgenos no son información alimentaria real. Reservas y pedidos no están conectados. No hay reseñas, valoraciones de clientes, pagos ni ubicación real.</p><p>Las fotos no prueban platos ni sedes. El hueco documental histórico sigue pendiente. La integración comercial y upstream no está disponible; se usa Astro local compartido.</p><div data-diagnostics>{s.content.diagnostics.map((v:any)=><p data-diagnostic-sha256={JSON.stringify(v)}>{v.code} · {v.scope_id} · {v.capability_id??v.fact_id??''} · {v.reason}</p>)}</div><ul data-restrictions>{s.content.restrictions.map((v:string)=><li>{v}</li>)}</ul><ul data-exclusions>{s.content.exclusions.map((v:any)=><li>{v.scope_id} · {v.id} · {v.reason}</li>)}</ul></details></footer>
+ </div></div></div>
+</Foundation>
+<script>
+ import '../../design/contextual-client.ts';
+</script>

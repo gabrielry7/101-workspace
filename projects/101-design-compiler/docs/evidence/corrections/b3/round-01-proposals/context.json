@@ -1,0 +1,3745 @@
+{
+  "schema_version": "2.0.0",
+  "scenario": {
+    "schema_version": "1.0.0",
+    "kind": "B3_COMPLETE_FICTIONAL_SCENARIO",
+    "authority": "User authorized complete fictional demos; Codex authored synthetic scenario, not upstream approval",
+    "input": {
+      "schema_version": "1.0.0",
+      "business_id": "b3-la-mesa-fictional",
+      "snapshot_id": "b3-la-mesa-v1",
+      "data_mode": "SYNTHETIC_FIXTURE",
+      "as_of": "2026-10-15T03:00:00Z",
+      "identity": {
+        "name_fact_id": "name",
+        "alias_fact_ids": [
+          "identity-line"
+        ],
+        "status": "ACTIVE",
+        "languages": [
+          "es"
+        ]
+      },
+      "category_observations": [
+        {
+          "id": "category-observation",
+          "source": "osm",
+          "field": "amenity",
+          "value": "restaurant",
+          "confidence": 1,
+          "evidence_ids": [
+            "category"
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "id": "name",
+          "kind": "business_name",
+          "value": "La Mesa",
+          "scope_id": "b3-la-mesa-fictional",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-name",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "category",
+          "kind": "observed_category",
+          "value": "restaurant",
+          "scope_id": "b3-la-mesa-fictional",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-category",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "identity-line",
+          "kind": "brand_name",
+          "value": "Cocina para quedarse un rato.",
+          "scope_id": "b3-la-mesa-fictional",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-identity-line",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-identity",
+          "kind": "capability:identity",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-identity",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-about",
+          "kind": "capability:about",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-about",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "story-1",
+          "kind": "about_text",
+          "value": "Todo empieza alrededor de una mesa.",
+          "scope_id": "b3-la-mesa-fictional",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-story-1",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "story-2",
+          "kind": "about_text",
+          "value": "Imaginamos un lugar de barrio donde la conversación dura más que el último bocado. Una carta corta, platos al centro y tiempo para compartir.",
+          "scope_id": "b3-la-mesa-fictional",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-story-2",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "story-3",
+          "kind": "about_text",
+          "value": "Esta es una historia creada para explorar el diseño de un restaurante ficticio. No describe una empresa, una cocina ni un equipo reales.",
+          "scope_id": "b3-la-mesa-fictional",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-story-3",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-menu",
+          "kind": "capability:menu",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-menu",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pizza-name",
+          "kind": "offering_name",
+          "value": "Pizza de la casa",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pizza-name",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pizza-category",
+          "kind": "offering_category",
+          "value": "Al horno",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pizza-category",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pizza-description",
+          "kind": "offering_description",
+          "value": "Masa fina, tomate y pepperoni. Una idea de carta para compartir desde el centro de la mesa.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pizza-description",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pizza-ingredients",
+          "kind": "offering_ingredients",
+          "value": "Receta ficticia: harina de trigo, tomate, mozzarella, pepperoni, aceite de oliva.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pizza-ingredients",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pizza-allergens",
+          "kind": "offering_allergens",
+          "value": "Declaración ficticia: contiene trigo (gluten) y leche. No apta como información alimentaria real.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pizza-allergens",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pizza-calories",
+          "kind": "offering_calories",
+          "value": "Estimación de ejemplo: 780 kcal por porción. Sin análisis nutricional.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pizza-calories",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pizza-currency",
+          "kind": "currency",
+          "value": "COP",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pizza-currency",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pizza-price",
+          "kind": "price",
+          "value": "42.000 COP",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pizza-price",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pasta-name",
+          "kind": "offering_name",
+          "value": "Pasta junto al mar",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pasta-name",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pasta-category",
+          "kind": "offering_category",
+          "value": "Platos principales",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pasta-category",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pasta-description",
+          "kind": "offering_description",
+          "value": "Pasta con camarones, tomate y una salsa suave. Una pausa larga para la hora del almuerzo.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pasta-description",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pasta-ingredients",
+          "kind": "offering_ingredients",
+          "value": "Receta ficticia: pasta de trigo, camarones, tomate, crema, parmesano, perejil.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pasta-ingredients",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pasta-allergens",
+          "kind": "offering_allergens",
+          "value": "Declaración ficticia: contiene trigo (gluten), crustáceos y leche. No apta como información alimentaria real.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pasta-allergens",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pasta-calories",
+          "kind": "offering_calories",
+          "value": "Estimación de ejemplo: 620 kcal por porción. Sin análisis nutricional.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pasta-calories",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pasta-currency",
+          "kind": "currency",
+          "value": "COP",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pasta-currency",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "pasta-price",
+          "kind": "price",
+          "value": "38.000 COP",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-pasta-price",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "salad-name",
+          "kind": "offering_name",
+          "value": "Verde de temporada",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-salad-name",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "salad-category",
+          "kind": "offering_category",
+          "value": "Del jardín",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-salad-category",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "salad-description",
+          "kind": "offering_description",
+          "value": "Hojas frescas, vegetales y una vinagreta ligera. Textura, color y algo crujiente en cada bocado.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-salad-description",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "salad-ingredients",
+          "kind": "offering_ingredients",
+          "value": "Receta ficticia: lechuga, tomate, pepino, zanahoria, aceite de oliva, limón.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-salad-ingredients",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "salad-allergens",
+          "kind": "offering_allergens",
+          "value": "Declaración ficticia: alérgenos y trazas por confirmar en una cocina real. No se afirma «libre de».",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-salad-allergens",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "salad-calories",
+          "kind": "offering_calories",
+          "value": "Estimación de ejemplo: 280 kcal por porción. Sin análisis nutricional.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-salad-calories",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "salad-currency",
+          "kind": "currency",
+          "value": "COP",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-salad-currency",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "salad-price",
+          "kind": "price",
+          "value": "26.000 COP",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-salad-price",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "dessert-name",
+          "kind": "offering_name",
+          "value": "El último bocado",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-dessert-name",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "dessert-category",
+          "kind": "offering_category",
+          "value": "Algo dulce",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-dessert-category",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "dessert-description",
+          "kind": "offering_description",
+          "value": "Una porción de pastel y unos minutos más de sobremesa. Porque el final también merece su momento.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-dessert-description",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "dessert-ingredients",
+          "kind": "offering_ingredients",
+          "value": "Receta ficticia: harina de trigo, huevo, leche, azúcar, cacao, mantequilla.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-dessert-ingredients",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "dessert-allergens",
+          "kind": "offering_allergens",
+          "value": "Declaración ficticia: contiene trigo (gluten), huevo y leche. No apta como información alimentaria real.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-dessert-allergens",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "dessert-calories",
+          "kind": "offering_calories",
+          "value": "Estimación de ejemplo: 410 kcal por porción. Sin análisis nutricional.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-dessert-calories",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "dessert-currency",
+          "kind": "currency",
+          "value": "COP",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-dessert-currency",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "dessert-price",
+          "kind": "price",
+          "value": "19.000 COP",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-dessert-price",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-locations",
+          "kind": "capability:locations",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-locations",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "address",
+          "kind": "address",
+          "value": "Pasaje de la Imaginación, 12 · sede ficticia, sin ubicación real.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-address",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-opening_hours",
+          "kind": "capability:opening_hours",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-opening_hours",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "hours",
+          "kind": "opening_hours",
+          "value": "Horario de ejemplo: martes a domingo, 12:00–22:00. Lunes cerrado.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-hours",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-amenities",
+          "kind": "capability:amenities",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-amenities",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "parking",
+          "kind": "amenity",
+          "value": "Parqueadero: previsto en este escenario ficticio; plazas y acceso por confirmar antes de una web real.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-parking",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-faqs",
+          "kind": "capability:faqs",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-faqs",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "faq-1",
+          "kind": "faq_answer",
+          "value": "¿Podemos celebrar algo? En esta propuesta imaginamos mesas para cumpleaños y encuentros de hasta ocho personas. No hay disponibilidad real.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-faq-1",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "faq-2",
+          "kind": "faq_answer",
+          "value": "¿Cómo funciona el pedido? Puedes explorar una selección de ejemplo. Esta demo no recibe pedidos, pagos ni datos personales.",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-faq-2",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-reservation",
+          "kind": "capability:reservation",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-reservation",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        },
+        {
+          "id": "evidence-order",
+          "kind": "capability:order",
+          "value": true,
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "publication": "APPROVED",
+          "publication_decision_id": "fiction-authorized-evidence-order",
+          "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+          "observed_at": "2026-10-15T03:00:00Z"
+        }
+      ],
+      "locations": [
+        {
+          "id": "b3-la-mesa-fictional-sede-imaginaria",
+          "address_fact_id": "address",
+          "coordinate_fact_ids": [],
+          "opening_hours_fact_ids": [
+            "hours"
+          ],
+          "exception_fact_ids": [],
+          "visit_policy_fact_ids": []
+        }
+      ],
+      "contact_fact_ids": [],
+      "service_area_fact_ids": [],
+      "offerings": [
+        {
+          "id": "pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "name_fact_id": "pizza-name",
+          "fact_ids": [
+            "pizza-category",
+            "pizza-description",
+            "pizza-ingredients",
+            "pizza-allergens",
+            "pizza-calories",
+            "pizza-currency"
+          ],
+          "kind": "menu_item",
+          "price_fact_id": "pizza-price"
+        },
+        {
+          "id": "pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "name_fact_id": "pasta-name",
+          "fact_ids": [
+            "pasta-category",
+            "pasta-description",
+            "pasta-ingredients",
+            "pasta-allergens",
+            "pasta-calories",
+            "pasta-currency"
+          ],
+          "kind": "menu_item",
+          "price_fact_id": "pasta-price"
+        },
+        {
+          "id": "salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "name_fact_id": "salad-name",
+          "fact_ids": [
+            "salad-category",
+            "salad-description",
+            "salad-ingredients",
+            "salad-allergens",
+            "salad-calories",
+            "salad-currency"
+          ],
+          "kind": "menu_item",
+          "price_fact_id": "salad-price"
+        },
+        {
+          "id": "dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "name_fact_id": "dessert-name",
+          "fact_ids": [
+            "dessert-category",
+            "dessert-description",
+            "dessert-ingredients",
+            "dessert-allergens",
+            "dessert-calories",
+            "dessert-currency"
+          ],
+          "kind": "menu_item",
+          "price_fact_id": "dessert-price"
+        }
+      ],
+      "business_capabilities": [
+        {
+          "id": "identity",
+          "scope_id": "b3-la-mesa-fictional",
+          "status": "CONFIRMED_PRESENT",
+          "evidence_ids": [
+            "evidence-identity"
+          ]
+        },
+        {
+          "id": "about",
+          "scope_id": "b3-la-mesa-fictional",
+          "status": "CONFIRMED_PRESENT",
+          "evidence_ids": [
+            "evidence-about"
+          ]
+        },
+        {
+          "id": "menu",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "status": "CONFIRMED_PRESENT",
+          "evidence_ids": [
+            "evidence-menu"
+          ]
+        },
+        {
+          "id": "locations",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "status": "CONFIRMED_PRESENT",
+          "evidence_ids": [
+            "evidence-locations"
+          ]
+        },
+        {
+          "id": "opening_hours",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "status": "CONFIRMED_PRESENT",
+          "evidence_ids": [
+            "evidence-opening_hours"
+          ]
+        },
+        {
+          "id": "amenities",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "status": "CONFIRMED_PRESENT",
+          "evidence_ids": [
+            "evidence-amenities"
+          ]
+        },
+        {
+          "id": "faqs",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "status": "CONFIRMED_PRESENT",
+          "evidence_ids": [
+            "evidence-faqs"
+          ]
+        },
+        {
+          "id": "reservation",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "status": "UNKNOWN",
+          "evidence_ids": [
+            "evidence-reservation"
+          ]
+        },
+        {
+          "id": "order",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "status": "UNKNOWN",
+          "evidence_ids": [
+            "evidence-order"
+          ]
+        }
+      ],
+      "action_destinations": [],
+      "existing_media": [],
+      "restrictions": [
+        "SYNTHETIC_DEMO_ONLY",
+        "NO_REAL_RESERVATIONS_ORDERS_PAYMENTS_OR_REVIEWS",
+        "STOCK_IS_NOT_BUSINESS_EVIDENCE"
+      ],
+      "preference_fact_ids": []
+    },
+    "planner": {
+      "status": "READY",
+      "input": {
+        "schema_version": "1.0.0",
+        "business_id": "b3-la-mesa-fictional",
+        "snapshot_id": "b3-la-mesa-v1",
+        "data_mode": "SYNTHETIC_FIXTURE",
+        "as_of": "2026-10-15T03:00:00Z",
+        "identity": {
+          "name_fact_id": "name",
+          "alias_fact_ids": [
+            "identity-line"
+          ],
+          "status": "ACTIVE",
+          "languages": [
+            "es"
+          ]
+        },
+        "category_observations": [
+          {
+            "id": "category-observation",
+            "source": "osm",
+            "field": "amenity",
+            "value": "restaurant",
+            "confidence": 1,
+            "evidence_ids": [
+              "category"
+            ]
+          }
+        ],
+        "facts": [
+          {
+            "id": "name",
+            "kind": "business_name",
+            "value": "La Mesa",
+            "scope_id": "b3-la-mesa-fictional",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-name",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "category",
+            "kind": "observed_category",
+            "value": "restaurant",
+            "scope_id": "b3-la-mesa-fictional",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-category",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "identity-line",
+            "kind": "brand_name",
+            "value": "Cocina para quedarse un rato.",
+            "scope_id": "b3-la-mesa-fictional",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-identity-line",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-identity",
+            "kind": "capability:identity",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-identity",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-about",
+            "kind": "capability:about",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-about",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "story-1",
+            "kind": "about_text",
+            "value": "Todo empieza alrededor de una mesa.",
+            "scope_id": "b3-la-mesa-fictional",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-story-1",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "story-2",
+            "kind": "about_text",
+            "value": "Imaginamos un lugar de barrio donde la conversación dura más que el último bocado. Una carta corta, platos al centro y tiempo para compartir.",
+            "scope_id": "b3-la-mesa-fictional",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-story-2",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "story-3",
+            "kind": "about_text",
+            "value": "Esta es una historia creada para explorar el diseño de un restaurante ficticio. No describe una empresa, una cocina ni un equipo reales.",
+            "scope_id": "b3-la-mesa-fictional",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-story-3",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-menu",
+            "kind": "capability:menu",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-menu",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pizza-name",
+            "kind": "offering_name",
+            "value": "Pizza de la casa",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pizza-name",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pizza-category",
+            "kind": "offering_category",
+            "value": "Al horno",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pizza-category",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pizza-description",
+            "kind": "offering_description",
+            "value": "Masa fina, tomate y pepperoni. Una idea de carta para compartir desde el centro de la mesa.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pizza-description",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pizza-ingredients",
+            "kind": "offering_ingredients",
+            "value": "Receta ficticia: harina de trigo, tomate, mozzarella, pepperoni, aceite de oliva.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pizza-ingredients",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pizza-allergens",
+            "kind": "offering_allergens",
+            "value": "Declaración ficticia: contiene trigo (gluten) y leche. No apta como información alimentaria real.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pizza-allergens",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pizza-calories",
+            "kind": "offering_calories",
+            "value": "Estimación de ejemplo: 780 kcal por porción. Sin análisis nutricional.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pizza-calories",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pizza-currency",
+            "kind": "currency",
+            "value": "COP",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pizza-currency",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pizza-price",
+            "kind": "price",
+            "value": "42.000 COP",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pizza-price",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pasta-name",
+            "kind": "offering_name",
+            "value": "Pasta junto al mar",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pasta-name",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pasta-category",
+            "kind": "offering_category",
+            "value": "Platos principales",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pasta-category",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pasta-description",
+            "kind": "offering_description",
+            "value": "Pasta con camarones, tomate y una salsa suave. Una pausa larga para la hora del almuerzo.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pasta-description",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pasta-ingredients",
+            "kind": "offering_ingredients",
+            "value": "Receta ficticia: pasta de trigo, camarones, tomate, crema, parmesano, perejil.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pasta-ingredients",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pasta-allergens",
+            "kind": "offering_allergens",
+            "value": "Declaración ficticia: contiene trigo (gluten), crustáceos y leche. No apta como información alimentaria real.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pasta-allergens",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pasta-calories",
+            "kind": "offering_calories",
+            "value": "Estimación de ejemplo: 620 kcal por porción. Sin análisis nutricional.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pasta-calories",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pasta-currency",
+            "kind": "currency",
+            "value": "COP",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pasta-currency",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "pasta-price",
+            "kind": "price",
+            "value": "38.000 COP",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-pasta-price",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "salad-name",
+            "kind": "offering_name",
+            "value": "Verde de temporada",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-salad-name",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "salad-category",
+            "kind": "offering_category",
+            "value": "Del jardín",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-salad-category",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "salad-description",
+            "kind": "offering_description",
+            "value": "Hojas frescas, vegetales y una vinagreta ligera. Textura, color y algo crujiente en cada bocado.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-salad-description",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "salad-ingredients",
+            "kind": "offering_ingredients",
+            "value": "Receta ficticia: lechuga, tomate, pepino, zanahoria, aceite de oliva, limón.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-salad-ingredients",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "salad-allergens",
+            "kind": "offering_allergens",
+            "value": "Declaración ficticia: alérgenos y trazas por confirmar en una cocina real. No se afirma «libre de».",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-salad-allergens",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "salad-calories",
+            "kind": "offering_calories",
+            "value": "Estimación de ejemplo: 280 kcal por porción. Sin análisis nutricional.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-salad-calories",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "salad-currency",
+            "kind": "currency",
+            "value": "COP",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-salad-currency",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "salad-price",
+            "kind": "price",
+            "value": "26.000 COP",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-salad-price",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "dessert-name",
+            "kind": "offering_name",
+            "value": "El último bocado",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-dessert-name",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "dessert-category",
+            "kind": "offering_category",
+            "value": "Algo dulce",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-dessert-category",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "dessert-description",
+            "kind": "offering_description",
+            "value": "Una porción de pastel y unos minutos más de sobremesa. Porque el final también merece su momento.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-dessert-description",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "dessert-ingredients",
+            "kind": "offering_ingredients",
+            "value": "Receta ficticia: harina de trigo, huevo, leche, azúcar, cacao, mantequilla.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-dessert-ingredients",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "dessert-allergens",
+            "kind": "offering_allergens",
+            "value": "Declaración ficticia: contiene trigo (gluten), huevo y leche. No apta como información alimentaria real.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-dessert-allergens",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "dessert-calories",
+            "kind": "offering_calories",
+            "value": "Estimación de ejemplo: 410 kcal por porción. Sin análisis nutricional.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-dessert-calories",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "dessert-currency",
+            "kind": "currency",
+            "value": "COP",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-dessert-currency",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "dessert-price",
+            "kind": "price",
+            "value": "19.000 COP",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-dessert-price",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-locations",
+            "kind": "capability:locations",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-locations",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "address",
+            "kind": "address",
+            "value": "Pasaje de la Imaginación, 12 · sede ficticia, sin ubicación real.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-address",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-opening_hours",
+            "kind": "capability:opening_hours",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-opening_hours",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "hours",
+            "kind": "opening_hours",
+            "value": "Horario de ejemplo: martes a domingo, 12:00–22:00. Lunes cerrado.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-hours",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-amenities",
+            "kind": "capability:amenities",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-amenities",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "parking",
+            "kind": "amenity",
+            "value": "Parqueadero: previsto en este escenario ficticio; plazas y acceso por confirmar antes de una web real.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-parking",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-faqs",
+            "kind": "capability:faqs",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-faqs",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "faq-1",
+            "kind": "faq_answer",
+            "value": "¿Podemos celebrar algo? En esta propuesta imaginamos mesas para cumpleaños y encuentros de hasta ocho personas. No hay disponibilidad real.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-faq-1",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "faq-2",
+            "kind": "faq_answer",
+            "value": "¿Cómo funciona el pedido? Puedes explorar una selección de ejemplo. Esta demo no recibe pedidos, pagos ni datos personales.",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-faq-2",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-reservation",
+            "kind": "capability:reservation",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-reservation",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          },
+          {
+            "id": "evidence-order",
+            "kind": "capability:order",
+            "value": true,
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "publication": "APPROVED",
+            "publication_decision_id": "fiction-authorized-evidence-order",
+            "source": "USER_AUTHORIZED_SYNTHETIC_DEMO_NOT_REAL_BUSINESS",
+            "observed_at": "2026-10-15T03:00:00Z"
+          }
+        ],
+        "locations": [
+          {
+            "id": "b3-la-mesa-fictional-sede-imaginaria",
+            "address_fact_id": "address",
+            "coordinate_fact_ids": [],
+            "opening_hours_fact_ids": [
+              "hours"
+            ],
+            "exception_fact_ids": [],
+            "visit_policy_fact_ids": []
+          }
+        ],
+        "contact_fact_ids": [],
+        "service_area_fact_ids": [],
+        "offerings": [
+          {
+            "id": "pizza",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "name_fact_id": "pizza-name",
+            "fact_ids": [
+              "pizza-category",
+              "pizza-description",
+              "pizza-ingredients",
+              "pizza-allergens",
+              "pizza-calories",
+              "pizza-currency"
+            ],
+            "kind": "menu_item",
+            "price_fact_id": "pizza-price"
+          },
+          {
+            "id": "pasta",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "name_fact_id": "pasta-name",
+            "fact_ids": [
+              "pasta-category",
+              "pasta-description",
+              "pasta-ingredients",
+              "pasta-allergens",
+              "pasta-calories",
+              "pasta-currency"
+            ],
+            "kind": "menu_item",
+            "price_fact_id": "pasta-price"
+          },
+          {
+            "id": "salad",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "name_fact_id": "salad-name",
+            "fact_ids": [
+              "salad-category",
+              "salad-description",
+              "salad-ingredients",
+              "salad-allergens",
+              "salad-calories",
+              "salad-currency"
+            ],
+            "kind": "menu_item",
+            "price_fact_id": "salad-price"
+          },
+          {
+            "id": "dessert",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "name_fact_id": "dessert-name",
+            "fact_ids": [
+              "dessert-category",
+              "dessert-description",
+              "dessert-ingredients",
+              "dessert-allergens",
+              "dessert-calories",
+              "dessert-currency"
+            ],
+            "kind": "menu_item",
+            "price_fact_id": "dessert-price"
+          }
+        ],
+        "business_capabilities": [
+          {
+            "id": "identity",
+            "scope_id": "b3-la-mesa-fictional",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-identity"
+            ]
+          },
+          {
+            "id": "about",
+            "scope_id": "b3-la-mesa-fictional",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-about"
+            ]
+          },
+          {
+            "id": "menu",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-menu"
+            ]
+          },
+          {
+            "id": "locations",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-locations"
+            ]
+          },
+          {
+            "id": "opening_hours",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-opening_hours"
+            ]
+          },
+          {
+            "id": "amenities",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-amenities"
+            ]
+          },
+          {
+            "id": "faqs",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-faqs"
+            ]
+          },
+          {
+            "id": "reservation",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "UNKNOWN",
+            "evidence_ids": [
+              "evidence-reservation"
+            ]
+          },
+          {
+            "id": "order",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "UNKNOWN",
+            "evidence_ids": [
+              "evidence-order"
+            ]
+          }
+        ],
+        "action_destinations": [],
+        "existing_media": [],
+        "restrictions": [
+          "SYNTHETIC_DEMO_ONLY",
+          "NO_REAL_RESERVATIONS_ORDERS_PAYMENTS_OR_REVIEWS",
+          "STOCK_IS_NOT_BUSINESS_EVIDENCE"
+        ],
+        "preference_fact_ids": []
+      },
+      "profile": {
+        "schema_version": "1.0.0",
+        "business_id": "b3-la-mesa-fictional",
+        "snapshot_id": "b3-la-mesa-v1",
+        "id": "b3-la-mesa-v1:taxonomy-profile:1.0.0",
+        "classification": "RESOLVED",
+        "scope_ids": [
+          "b3-la-mesa-fictional",
+          "b3-la-mesa-fictional-sede-imaginaria"
+        ],
+        "archetypes": [
+          {
+            "id": "food_hospitality",
+            "relevance": "primary",
+            "confidence": 1,
+            "category_observation_ids": [
+              "category-observation"
+            ],
+            "offering_ids": [],
+            "evidence_ids": [
+              "category"
+            ]
+          }
+        ],
+        "offering_ids": [
+          "dessert",
+          "pasta",
+          "pizza",
+          "salad"
+        ],
+        "candidate_capabilities": [
+          "delivery",
+          "menu",
+          "opening_hours",
+          "order",
+          "reservation"
+        ],
+        "missing_inputs": [],
+        "restrictions": [
+          "SYNTHETIC_DEMO_ONLY",
+          "NO_REAL_RESERVATIONS_ORDERS_PAYMENTS_OR_REVIEWS",
+          "STOCK_IS_NOT_BUSINESS_EVIDENCE"
+        ]
+      },
+      "capabilities": {
+        "schema_version": "1.0.0",
+        "business_id": "b3-la-mesa-fictional",
+        "snapshot_id": "b3-la-mesa-v1",
+        "id": "b3-la-mesa-v1:h2-capabilities:b31a62e6f499e60185f8bdee",
+        "business_profile_id": "b3-la-mesa-v1:taxonomy-profile:1.0.0",
+        "capabilities": [
+          {
+            "id": "about",
+            "scope_id": "b3-la-mesa-fictional",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-about"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [],
+            "action_destination_ids": [],
+            "missing_inputs": []
+          },
+          {
+            "id": "identity",
+            "scope_id": "b3-la-mesa-fictional",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-identity"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [],
+            "action_destination_ids": [],
+            "missing_inputs": []
+          },
+          {
+            "id": "amenities",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-amenities"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [],
+            "action_destination_ids": [],
+            "missing_inputs": []
+          },
+          {
+            "id": "faqs",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-faqs"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [],
+            "action_destination_ids": [],
+            "missing_inputs": []
+          },
+          {
+            "id": "locations",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-locations"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [],
+            "action_destination_ids": [],
+            "missing_inputs": []
+          },
+          {
+            "id": "menu",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-menu"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [
+              "dessert",
+              "pasta",
+              "pizza",
+              "salad"
+            ],
+            "action_destination_ids": [],
+            "missing_inputs": []
+          },
+          {
+            "id": "opening_hours",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "CONFIRMED_PRESENT",
+            "evidence_ids": [
+              "evidence-opening_hours"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [],
+            "action_destination_ids": [],
+            "missing_inputs": []
+          },
+          {
+            "id": "order",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "UNKNOWN",
+            "evidence_ids": [
+              "evidence-order"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [],
+            "action_destination_ids": [],
+            "missing_inputs": [
+              "approved_capability_assertion"
+            ]
+          },
+          {
+            "id": "reservation",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "status": "UNKNOWN",
+            "evidence_ids": [
+              "evidence-reservation"
+            ],
+            "frontend_status": "NOT_SUPPORTED_YET",
+            "backend_status": "BACKEND_NOT_CONNECTED",
+            "offering_ids": [],
+            "action_destination_ids": [],
+            "missing_inputs": [
+              "approved_capability_assertion"
+            ]
+          }
+        ]
+      },
+      "requirements": {
+        "schema_version": "1.0.0",
+        "business_id": "b3-la-mesa-fictional",
+        "snapshot_id": "b3-la-mesa-v1",
+        "business_profile_id": "b3-la-mesa-v1:taxonomy-profile:1.0.0",
+        "capability_profile_id": "b3-la-mesa-v1:h2-capabilities:b31a62e6f499e60185f8bdee",
+        "registry_sha256": "9755d7f5af749f2d11e1702d0d589da934fa7862244833d8105e712d289e4af7",
+        "evaluated_at": "2026-10-15T03:00:00Z",
+        "business_input_sha256": "e70b50d0b7746f225c6e193cdfce8545b9c1da561ebe36cb3e54274fde83748c",
+        "taxonomy_registry_sha256": "9366f4b62d70ec8551aa1f5a05d6e67c99d6d3e36a638436485c107e4270701f",
+        "classification_context_sha256": "7d9de6782dc7b2b450d43f672453e314e5861d60acd5977c290e923ec2dfadc6",
+        "requirements": [
+          {
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "capability_id": "identity",
+            "scope_id": "b3-la-mesa-fictional",
+            "source": "UPSTREAM",
+            "evidence_status": "CONFIRMED_PRESENT",
+            "semantic_module": "identity",
+            "policy": "REQUIRED_IF_PRESENT",
+            "priority": 0,
+            "disposition": "INCLUDED",
+            "required": true,
+            "blocks_site": false,
+            "route": "/",
+            "depends_on": [],
+            "missing_inputs": [],
+            "fact_ids": [
+              "identity-line",
+              "name"
+            ],
+            "offering_ids": []
+          },
+          {
+            "id": "semantic-682a641e4e80786c09f19e2c",
+            "capability_id": "menu",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "source": "UPSTREAM",
+            "evidence_status": "CONFIRMED_PRESENT",
+            "semantic_module": "offering_collection",
+            "policy": "REQUIRED_IF_PRESENT",
+            "priority": 10,
+            "disposition": "INCLUDED",
+            "required": true,
+            "blocks_site": false,
+            "route": "/sedes/s-33f4926b8262eb08fb66b3cb/menu",
+            "depends_on": [
+              "semantic-81ed181e994dbbfde01a802d"
+            ],
+            "missing_inputs": [],
+            "fact_ids": [],
+            "offering_ids": [
+              "dessert",
+              "pasta",
+              "pizza",
+              "salad"
+            ]
+          },
+          {
+            "id": "semantic-0e85531be779a8721f214794",
+            "capability_id": "amenities",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "source": "UPSTREAM",
+            "evidence_status": "CONFIRMED_PRESENT",
+            "semantic_module": "fact_collection",
+            "policy": "CONDITIONAL",
+            "priority": 20,
+            "disposition": "INCLUDED",
+            "required": false,
+            "blocks_site": false,
+            "route": "/sedes/s-33f4926b8262eb08fb66b3cb/comodidades",
+            "depends_on": [
+              "semantic-81ed181e994dbbfde01a802d"
+            ],
+            "missing_inputs": [],
+            "fact_ids": [
+              "parking"
+            ],
+            "offering_ids": []
+          },
+          {
+            "id": "semantic-7a95ebebeac3a534bfdc67df",
+            "capability_id": "delivery",
+            "scope_id": "b3-la-mesa-fictional",
+            "source": "CANDIDATE_ONLY",
+            "evidence_status": "UNKNOWN",
+            "semantic_module": "fact_collection",
+            "policy": "CONDITIONAL",
+            "priority": 30,
+            "disposition": "BLOCKED",
+            "required": false,
+            "blocks_site": false,
+            "route": "/modalidades",
+            "depends_on": [],
+            "missing_inputs": [
+              "approved_capability_assertion"
+            ],
+            "fact_ids": [],
+            "offering_ids": []
+          },
+          {
+            "id": "semantic-6c29d07e2344be3fe70236f2",
+            "capability_id": "locations",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "source": "UPSTREAM",
+            "evidence_status": "CONFIRMED_PRESENT",
+            "semantic_module": "location_information",
+            "policy": "CONDITIONAL",
+            "priority": 30,
+            "disposition": "INCLUDED",
+            "required": false,
+            "blocks_site": false,
+            "route": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+            "depends_on": [
+              "semantic-81ed181e994dbbfde01a802d"
+            ],
+            "missing_inputs": [],
+            "fact_ids": [
+              "address"
+            ],
+            "offering_ids": []
+          },
+          {
+            "id": "semantic-aba6c699d8ac40b3c0e96e35",
+            "capability_id": "opening_hours",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "source": "UPSTREAM",
+            "evidence_status": "CONFIRMED_PRESENT",
+            "semantic_module": "fact_collection",
+            "policy": "CONDITIONAL",
+            "priority": 31,
+            "disposition": "INCLUDED",
+            "required": false,
+            "blocks_site": false,
+            "route": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+            "depends_on": [
+              "semantic-81ed181e994dbbfde01a802d"
+            ],
+            "missing_inputs": [],
+            "fact_ids": [
+              "hours"
+            ],
+            "offering_ids": []
+          },
+          {
+            "id": "semantic-fc9f153a3d930e71a4745ebd",
+            "capability_id": "about",
+            "scope_id": "b3-la-mesa-fictional",
+            "source": "UPSTREAM",
+            "evidence_status": "CONFIRMED_PRESENT",
+            "semantic_module": "fact_collection",
+            "policy": "CONDITIONAL",
+            "priority": 40,
+            "disposition": "INCLUDED",
+            "required": false,
+            "blocks_site": false,
+            "route": "/",
+            "depends_on": [
+              "semantic-81ed181e994dbbfde01a802d"
+            ],
+            "missing_inputs": [],
+            "fact_ids": [
+              "story-1",
+              "story-2",
+              "story-3"
+            ],
+            "offering_ids": []
+          },
+          {
+            "id": "semantic-0e4513ff7883f7164049753c",
+            "capability_id": "faqs",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "source": "UPSTREAM",
+            "evidence_status": "CONFIRMED_PRESENT",
+            "semantic_module": "fact_collection",
+            "policy": "CONDITIONAL",
+            "priority": 45,
+            "disposition": "INCLUDED",
+            "required": false,
+            "blocks_site": false,
+            "route": "/sedes/s-33f4926b8262eb08fb66b3cb/preguntas",
+            "depends_on": [
+              "semantic-81ed181e994dbbfde01a802d"
+            ],
+            "missing_inputs": [],
+            "fact_ids": [
+              "faq-1",
+              "faq-2"
+            ],
+            "offering_ids": []
+          },
+          {
+            "id": "semantic-b0a2266f332cc4d11bdd0517",
+            "capability_id": "order",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "source": "UPSTREAM",
+            "evidence_status": "UNKNOWN",
+            "semantic_module": "external_action",
+            "policy": "CONDITIONAL",
+            "priority": 60,
+            "disposition": "BLOCKED",
+            "required": false,
+            "blocks_site": false,
+            "route": "/sedes/s-33f4926b8262eb08fb66b3cb/pedidos",
+            "depends_on": [],
+            "missing_inputs": [
+              "approved_capability_assertion"
+            ],
+            "fact_ids": [],
+            "offering_ids": []
+          },
+          {
+            "id": "semantic-2284fb9d9038a0ee599541be",
+            "capability_id": "reservation",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "source": "UPSTREAM",
+            "evidence_status": "UNKNOWN",
+            "semantic_module": "external_action",
+            "policy": "CONDITIONAL",
+            "priority": 60,
+            "disposition": "BLOCKED",
+            "required": false,
+            "blocks_site": false,
+            "route": "/sedes/s-33f4926b8262eb08fb66b3cb/contacto",
+            "depends_on": [],
+            "missing_inputs": [
+              "approved_capability_assertion"
+            ],
+            "fact_ids": [],
+            "offering_ids": []
+          }
+        ],
+        "omissions": [
+          {
+            "code": "UNKNOWN",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "capability_id": "reservation",
+            "reason": "Evidence state preserved from upstream",
+            "requested_from": "upstream"
+          },
+          {
+            "code": "UNKNOWN",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "capability_id": "order",
+            "reason": "Evidence state preserved from upstream",
+            "requested_from": "upstream"
+          }
+        ],
+        "bindings": [
+          {
+            "fact_id": "address",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-6c29d07e2344be3fe70236f2"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "category",
+            "scope_id": "b3-la-mesa-fictional",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "dessert-allergens",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "dessert-calories",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "dessert-category",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "dessert-currency",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "dessert-description",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "dessert-ingredients",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "dessert-name",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "dessert-price",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "evidence-about",
+            "scope_id": "b3-la-mesa-fictional",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "evidence-amenities",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "evidence-faqs",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "evidence-identity",
+            "scope_id": "b3-la-mesa-fictional",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "evidence-locations",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "evidence-menu",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "evidence-opening_hours",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "evidence-order",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "evidence-reservation",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [],
+            "status": "EVIDENCE_ONLY"
+          },
+          {
+            "fact_id": "faq-1",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-0e4513ff7883f7164049753c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "faq-2",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-0e4513ff7883f7164049753c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "hours",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-aba6c699d8ac40b3c0e96e35"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "identity-line",
+            "scope_id": "b3-la-mesa-fictional",
+            "module_ids": [
+              "semantic-81ed181e994dbbfde01a802d"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "name",
+            "scope_id": "b3-la-mesa-fictional",
+            "module_ids": [
+              "semantic-81ed181e994dbbfde01a802d"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "parking",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-0e85531be779a8721f214794"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pasta-allergens",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pasta-calories",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pasta-category",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pasta-currency",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pasta-description",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pasta-ingredients",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pasta-name",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pasta-price",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pizza-allergens",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pizza-calories",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pizza-category",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pizza-currency",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pizza-description",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pizza-ingredients",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pizza-name",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "pizza-price",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "salad-allergens",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "salad-calories",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "salad-category",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "salad-currency",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "salad-description",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "salad-ingredients",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "salad-name",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "salad-price",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "module_ids": [
+              "semantic-682a641e4e80786c09f19e2c"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "story-1",
+            "scope_id": "b3-la-mesa-fictional",
+            "module_ids": [
+              "semantic-fc9f153a3d930e71a4745ebd"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "story-2",
+            "scope_id": "b3-la-mesa-fictional",
+            "module_ids": [
+              "semantic-fc9f153a3d930e71a4745ebd"
+            ],
+            "status": "BOUND"
+          },
+          {
+            "fact_id": "story-3",
+            "scope_id": "b3-la-mesa-fictional",
+            "module_ids": [
+              "semantic-fc9f153a3d930e71a4745ebd"
+            ],
+            "status": "BOUND"
+          }
+        ]
+      },
+      "plan": {
+        "schema_version": "1.0.0",
+        "business_id": "b3-la-mesa-fictional",
+        "snapshot_id": "b3-la-mesa-v1",
+        "id": "b3-la-mesa-v1:h2-plan:b31a62e6f499e60185f8bdee",
+        "business_profile_id": "b3-la-mesa-v1:taxonomy-profile:1.0.0",
+        "capability_profile_id": "b3-la-mesa-v1:h2-capabilities:b31a62e6f499e60185f8bdee",
+        "stage": "FIXTURE_PREVIEW",
+        "archetypes": [
+          "food_hospitality"
+        ],
+        "capabilities": [
+          "about",
+          "amenities",
+          "faqs",
+          "identity",
+          "locations",
+          "menu",
+          "opening_hours"
+        ],
+        "pages": [
+          {
+            "path": "/",
+            "intent": "approved_business_identity",
+            "modules": [
+              {
+                "id": "semantic-81ed181e994dbbfde01a802d",
+                "capability_id": "identity",
+                "scope_id": "b3-la-mesa-fictional",
+                "required": true,
+                "presentation": "STATIC_PUBLIC_INFORMATION",
+                "fact_ids": [
+                  "identity-line",
+                  "name"
+                ],
+                "offering_ids": []
+              },
+              {
+                "id": "semantic-fc9f153a3d930e71a4745ebd",
+                "capability_id": "about",
+                "scope_id": "b3-la-mesa-fictional",
+                "required": false,
+                "presentation": "STATIC_PUBLIC_INFORMATION",
+                "fact_ids": [
+                  "story-1",
+                  "story-2",
+                  "story-3"
+                ],
+                "offering_ids": []
+              }
+            ]
+          },
+          {
+            "path": "/sedes/s-33f4926b8262eb08fb66b3cb/comodidades",
+            "intent": "approved_capabilities_in_scope",
+            "modules": [
+              {
+                "id": "semantic-0e85531be779a8721f214794",
+                "capability_id": "amenities",
+                "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                "required": false,
+                "presentation": "STATIC_PUBLIC_INFORMATION",
+                "fact_ids": [
+                  "parking"
+                ],
+                "offering_ids": []
+              }
+            ]
+          },
+          {
+            "path": "/sedes/s-33f4926b8262eb08fb66b3cb/menu",
+            "intent": "approved_capabilities_in_scope",
+            "modules": [
+              {
+                "id": "semantic-682a641e4e80786c09f19e2c",
+                "capability_id": "menu",
+                "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                "required": true,
+                "presentation": "STATIC_PUBLIC_INFORMATION",
+                "fact_ids": [],
+                "offering_ids": [
+                  "dessert",
+                  "pasta",
+                  "pizza",
+                  "salad"
+                ]
+              }
+            ]
+          },
+          {
+            "path": "/sedes/s-33f4926b8262eb08fb66b3cb/preguntas",
+            "intent": "approved_capabilities_in_scope",
+            "modules": [
+              {
+                "id": "semantic-0e4513ff7883f7164049753c",
+                "capability_id": "faqs",
+                "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                "required": false,
+                "presentation": "STATIC_PUBLIC_INFORMATION",
+                "fact_ids": [
+                  "faq-1",
+                  "faq-2"
+                ],
+                "offering_ids": []
+              }
+            ]
+          },
+          {
+            "path": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+            "intent": "approved_capabilities_in_scope",
+            "modules": [
+              {
+                "id": "semantic-6c29d07e2344be3fe70236f2",
+                "capability_id": "locations",
+                "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                "required": false,
+                "presentation": "STATIC_PUBLIC_INFORMATION",
+                "fact_ids": [
+                  "address"
+                ],
+                "offering_ids": []
+              },
+              {
+                "id": "semantic-aba6c699d8ac40b3c0e96e35",
+                "capability_id": "opening_hours",
+                "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                "required": false,
+                "presentation": "STATIC_PUBLIC_INFORMATION",
+                "fact_ids": [
+                  "hours"
+                ],
+                "offering_ids": []
+              }
+            ]
+          }
+        ],
+        "excluded_capabilities": [
+          {
+            "id": "order",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "reason": "UNKNOWN"
+          },
+          {
+            "id": "reservation",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+            "reason": "UNKNOWN"
+          }
+        ]
+      },
+      "diagnostics": []
+    },
+    "content": {
+      "site_plan_id": "b3-la-mesa-v1:h2-plan:b31a62e6f499e60185f8bdee",
+      "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+      "requirements_sha256": "bcfab9ecb0822245731fc079b5b6121e42fd428b9dce94f6046b2ab5e6351f97",
+      "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+      "pages": [
+        {
+          "path": "/",
+          "modules": [
+            {
+              "id": "semantic-81ed181e994dbbfde01a802d",
+              "capability_id": "identity",
+              "scope_id": "b3-la-mesa-fictional",
+              "required": true,
+              "page": "/",
+              "component": "Identity",
+              "facts": [
+                {
+                  "id": "identity-line",
+                  "scope_id": "b3-la-mesa-fictional",
+                  "kind": "brand_name",
+                  "text": "Cocina para quedarse un rato."
+                },
+                {
+                  "id": "name",
+                  "scope_id": "b3-la-mesa-fictional",
+                  "kind": "business_name",
+                  "text": "La Mesa"
+                }
+              ],
+              "offerings": []
+            },
+            {
+              "id": "semantic-fc9f153a3d930e71a4745ebd",
+              "capability_id": "about",
+              "scope_id": "b3-la-mesa-fictional",
+              "required": false,
+              "page": "/",
+              "component": "FactCollection",
+              "facts": [
+                {
+                  "id": "story-1",
+                  "scope_id": "b3-la-mesa-fictional",
+                  "kind": "about_text",
+                  "text": "Todo empieza alrededor de una mesa."
+                },
+                {
+                  "id": "story-2",
+                  "scope_id": "b3-la-mesa-fictional",
+                  "kind": "about_text",
+                  "text": "Imaginamos un lugar de barrio donde la conversación dura más que el último bocado. Una carta corta, platos al centro y tiempo para compartir."
+                },
+                {
+                  "id": "story-3",
+                  "scope_id": "b3-la-mesa-fictional",
+                  "kind": "about_text",
+                  "text": "Esta es una historia creada para explorar el diseño de un restaurante ficticio. No describe una empresa, una cocina ni un equipo reales."
+                }
+              ],
+              "offerings": []
+            }
+          ]
+        },
+        {
+          "path": "/sedes/s-33f4926b8262eb08fb66b3cb/comodidades",
+          "modules": [
+            {
+              "id": "semantic-0e85531be779a8721f214794",
+              "capability_id": "amenities",
+              "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+              "required": false,
+              "page": "/sedes/s-33f4926b8262eb08fb66b3cb/comodidades",
+              "component": "FactCollection",
+              "facts": [
+                {
+                  "id": "parking",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "kind": "amenity",
+                  "text": "Parqueadero: previsto en este escenario ficticio; plazas y acceso por confirmar antes de una web real."
+                }
+              ],
+              "offerings": []
+            }
+          ]
+        },
+        {
+          "path": "/sedes/s-33f4926b8262eb08fb66b3cb/menu",
+          "modules": [
+            {
+              "id": "semantic-682a641e4e80786c09f19e2c",
+              "capability_id": "menu",
+              "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+              "required": true,
+              "page": "/sedes/s-33f4926b8262eb08fb66b3cb/menu",
+              "component": "OfferingCollection",
+              "facts": [],
+              "offerings": [
+                {
+                  "id": "dessert",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "facts": [
+                    {
+                      "id": "dessert-name",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_name",
+                      "text": "El último bocado"
+                    },
+                    {
+                      "id": "dessert-allergens",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_allergens",
+                      "text": "Declaración ficticia: contiene trigo (gluten), huevo y leche. No apta como información alimentaria real."
+                    },
+                    {
+                      "id": "dessert-calories",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_calories",
+                      "text": "Estimación de ejemplo: 410 kcal por porción. Sin análisis nutricional."
+                    },
+                    {
+                      "id": "dessert-category",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_category",
+                      "text": "Algo dulce"
+                    },
+                    {
+                      "id": "dessert-currency",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "currency",
+                      "text": "COP"
+                    },
+                    {
+                      "id": "dessert-description",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_description",
+                      "text": "Una porción de pastel y unos minutos más de sobremesa. Porque el final también merece su momento."
+                    },
+                    {
+                      "id": "dessert-ingredients",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_ingredients",
+                      "text": "Receta ficticia: harina de trigo, huevo, leche, azúcar, cacao, mantequilla."
+                    },
+                    {
+                      "id": "dessert-price",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "price",
+                      "text": "19.000 COP"
+                    }
+                  ]
+                },
+                {
+                  "id": "pasta",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "facts": [
+                    {
+                      "id": "pasta-name",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_name",
+                      "text": "Pasta junto al mar"
+                    },
+                    {
+                      "id": "pasta-allergens",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_allergens",
+                      "text": "Declaración ficticia: contiene trigo (gluten), crustáceos y leche. No apta como información alimentaria real."
+                    },
+                    {
+                      "id": "pasta-calories",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_calories",
+                      "text": "Estimación de ejemplo: 620 kcal por porción. Sin análisis nutricional."
+                    },
+                    {
+                      "id": "pasta-category",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_category",
+                      "text": "Platos principales"
+                    },
+                    {
+                      "id": "pasta-currency",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "currency",
+                      "text": "COP"
+                    },
+                    {
+                      "id": "pasta-description",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_description",
+                      "text": "Pasta con camarones, tomate y una salsa suave. Una pausa larga para la hora del almuerzo."
+                    },
+                    {
+                      "id": "pasta-ingredients",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_ingredients",
+                      "text": "Receta ficticia: pasta de trigo, camarones, tomate, crema, parmesano, perejil."
+                    },
+                    {
+                      "id": "pasta-price",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "price",
+                      "text": "38.000 COP"
+                    }
+                  ]
+                },
+                {
+                  "id": "pizza",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "facts": [
+                    {
+                      "id": "pizza-name",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_name",
+                      "text": "Pizza de la casa"
+                    },
+                    {
+                      "id": "pizza-allergens",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_allergens",
+                      "text": "Declaración ficticia: contiene trigo (gluten) y leche. No apta como información alimentaria real."
+                    },
+                    {
+                      "id": "pizza-calories",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_calories",
+                      "text": "Estimación de ejemplo: 780 kcal por porción. Sin análisis nutricional."
+                    },
+                    {
+                      "id": "pizza-category",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_category",
+                      "text": "Al horno"
+                    },
+                    {
+                      "id": "pizza-currency",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "currency",
+                      "text": "COP"
+                    },
+                    {
+                      "id": "pizza-description",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_description",
+                      "text": "Masa fina, tomate y pepperoni. Una idea de carta para compartir desde el centro de la mesa."
+                    },
+                    {
+                      "id": "pizza-ingredients",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_ingredients",
+                      "text": "Receta ficticia: harina de trigo, tomate, mozzarella, pepperoni, aceite de oliva."
+                    },
+                    {
+                      "id": "pizza-price",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "price",
+                      "text": "42.000 COP"
+                    }
+                  ]
+                },
+                {
+                  "id": "salad",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "facts": [
+                    {
+                      "id": "salad-name",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_name",
+                      "text": "Verde de temporada"
+                    },
+                    {
+                      "id": "salad-allergens",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_allergens",
+                      "text": "Declaración ficticia: alérgenos y trazas por confirmar en una cocina real. No se afirma «libre de»."
+                    },
+                    {
+                      "id": "salad-calories",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_calories",
+                      "text": "Estimación de ejemplo: 280 kcal por porción. Sin análisis nutricional."
+                    },
+                    {
+                      "id": "salad-category",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_category",
+                      "text": "Del jardín"
+                    },
+                    {
+                      "id": "salad-currency",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "currency",
+                      "text": "COP"
+                    },
+                    {
+                      "id": "salad-description",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_description",
+                      "text": "Hojas frescas, vegetales y una vinagreta ligera. Textura, color y algo crujiente en cada bocado."
+                    },
+                    {
+                      "id": "salad-ingredients",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "offering_ingredients",
+                      "text": "Receta ficticia: lechuga, tomate, pepino, zanahoria, aceite de oliva, limón."
+                    },
+                    {
+                      "id": "salad-price",
+                      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                      "kind": "price",
+                      "text": "26.000 COP"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "path": "/sedes/s-33f4926b8262eb08fb66b3cb/preguntas",
+          "modules": [
+            {
+              "id": "semantic-0e4513ff7883f7164049753c",
+              "capability_id": "faqs",
+              "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+              "required": false,
+              "page": "/sedes/s-33f4926b8262eb08fb66b3cb/preguntas",
+              "component": "FactCollection",
+              "facts": [
+                {
+                  "id": "faq-1",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "kind": "faq_answer",
+                  "text": "¿Podemos celebrar algo? En esta propuesta imaginamos mesas para cumpleaños y encuentros de hasta ocho personas. No hay disponibilidad real."
+                },
+                {
+                  "id": "faq-2",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "kind": "faq_answer",
+                  "text": "¿Cómo funciona el pedido? Puedes explorar una selección de ejemplo. Esta demo no recibe pedidos, pagos ni datos personales."
+                }
+              ],
+              "offerings": []
+            }
+          ]
+        },
+        {
+          "path": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+          "modules": [
+            {
+              "id": "semantic-6c29d07e2344be3fe70236f2",
+              "capability_id": "locations",
+              "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+              "required": false,
+              "page": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+              "component": "FactCollection",
+              "facts": [
+                {
+                  "id": "address",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "kind": "address",
+                  "text": "Pasaje de la Imaginación, 12 · sede ficticia, sin ubicación real."
+                }
+              ],
+              "offerings": []
+            },
+            {
+              "id": "semantic-aba6c699d8ac40b3c0e96e35",
+              "capability_id": "opening_hours",
+              "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+              "required": false,
+              "page": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+              "component": "FactCollection",
+              "facts": [
+                {
+                  "id": "hours",
+                  "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+                  "kind": "opening_hours",
+                  "text": "Horario de ejemplo: martes a domingo, 12:00–22:00. Lunes cerrado."
+                }
+              ],
+              "offerings": []
+            }
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "fact_id": "address",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-6c29d07e2344be3fe70236f2"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "category",
+          "scope_id": "b3-la-mesa-fictional",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "dessert-allergens",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "dessert-calories",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "dessert-category",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "dessert-currency",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "dessert-description",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "dessert-ingredients",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "dessert-name",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "dessert-price",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "evidence-about",
+          "scope_id": "b3-la-mesa-fictional",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "evidence-amenities",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "evidence-faqs",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "evidence-identity",
+          "scope_id": "b3-la-mesa-fictional",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "evidence-locations",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "evidence-menu",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "evidence-opening_hours",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "evidence-order",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "evidence-reservation",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "faq-1",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-0e4513ff7883f7164049753c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "faq-2",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-0e4513ff7883f7164049753c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "hours",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-aba6c699d8ac40b3c0e96e35"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "identity-line",
+          "scope_id": "b3-la-mesa-fictional",
+          "module_ids": [
+            "semantic-81ed181e994dbbfde01a802d"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "name",
+          "scope_id": "b3-la-mesa-fictional",
+          "module_ids": [
+            "semantic-81ed181e994dbbfde01a802d"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "parking",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-0e85531be779a8721f214794"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pasta-allergens",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pasta-calories",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pasta-category",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pasta-currency",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pasta-description",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pasta-ingredients",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pasta-name",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pasta-price",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pizza-allergens",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pizza-calories",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pizza-category",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pizza-currency",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pizza-description",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pizza-ingredients",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pizza-name",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "pizza-price",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "salad-allergens",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "salad-calories",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "salad-category",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "salad-currency",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "salad-description",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "salad-ingredients",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "salad-name",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "salad-price",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "story-1",
+          "scope_id": "b3-la-mesa-fictional",
+          "module_ids": [
+            "semantic-fc9f153a3d930e71a4745ebd"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "story-2",
+          "scope_id": "b3-la-mesa-fictional",
+          "module_ids": [
+            "semantic-fc9f153a3d930e71a4745ebd"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "story-3",
+          "scope_id": "b3-la-mesa-fictional",
+          "module_ids": [
+            "semantic-fc9f153a3d930e71a4745ebd"
+          ],
+          "status": "BOUND"
+        }
+      ],
+      "diagnostics": [
+        {
+          "code": "UNKNOWN",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "capability_id": "reservation",
+          "reason": "Evidence state preserved from upstream",
+          "requested_from": "upstream"
+        },
+        {
+          "code": "UNKNOWN",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "capability_id": "order",
+          "reason": "Evidence state preserved from upstream",
+          "requested_from": "upstream"
+        }
+      ],
+      "exclusions": [
+        {
+          "id": "order",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "reason": "UNKNOWN"
+        },
+        {
+          "id": "reservation",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "reason": "UNKNOWN"
+        }
+      ],
+      "restrictions": [
+        "SYNTHETIC_DEMO_ONLY",
+        "NO_REAL_RESERVATIONS_ORDERS_PAYMENTS_OR_REVIEWS",
+        "STOCK_IS_NOT_BUSINESS_EVIDENCE"
+      ]
+    },
+    "presentation": {
+      "mode": "SINGLE_PAGE_ANCHOR_BINDINGS",
+      "logical_routes": [
+        {
+          "path": "/",
+          "module_ids": [
+            "semantic-81ed181e994dbbfde01a802d",
+            "semantic-fc9f153a3d930e71a4745ebd"
+          ]
+        },
+        {
+          "path": "/sedes/s-33f4926b8262eb08fb66b3cb/comodidades",
+          "module_ids": [
+            "semantic-0e85531be779a8721f214794"
+          ]
+        },
+        {
+          "path": "/sedes/s-33f4926b8262eb08fb66b3cb/menu",
+          "module_ids": [
+            "semantic-682a641e4e80786c09f19e2c"
+          ]
+        },
+        {
+          "path": "/sedes/s-33f4926b8262eb08fb66b3cb/preguntas",
+          "module_ids": [
+            "semantic-0e4513ff7883f7164049753c"
+          ]
+        },
+        {
+          "path": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+          "module_ids": [
+            "semantic-6c29d07e2344be3fe70236f2",
+            "semantic-aba6c699d8ac40b3c0e96e35"
+          ]
+        }
+      ],
+      "fictional_recipe_source": "WRITTEN_FOR_DEMO_NOT_INFERRED_FROM_STOCK",
+      "live_operations": false
+    }
+  },
+  "media_review_sha256": "794ee55ea5d168c93d3943b2299f0a9464b6a24d23bfb043e0d296b22d67608d",
+  "eligible_media": [
+    {
+      "id": "pixabay-4991789-640",
+      "kind": "image",
+      "width": 640,
+      "height": 427,
+      "role": "GENERIC_ONLY",
+      "subject": "Pizza · ejemplo"
+    },
+    {
+      "id": "pixabay-4991789-1280",
+      "kind": "image",
+      "width": 1280,
+      "height": 853,
+      "role": "GENERIC_ONLY",
+      "subject": "Pizza · ejemplo"
+    },
+    {
+      "id": "pixabay-3547078-640",
+      "kind": "image",
+      "width": 640,
+      "height": 349,
+      "role": "GENERIC_ONLY",
+      "subject": "Pasta · ejemplo"
+    },
+    {
+      "id": "pixabay-3547078-1280",
+      "kind": "image",
+      "width": 1280,
+      "height": 697,
+      "role": "GENERIC_ONLY",
+      "subject": "Pasta · ejemplo"
+    },
+    {
+      "id": "pixabay-791891-640",
+      "kind": "image",
+      "width": 640,
+      "height": 427,
+      "role": "GENERIC_ONLY",
+      "subject": "Ensalada · ejemplo"
+    },
+    {
+      "id": "pixabay-791891-1280",
+      "kind": "image",
+      "width": 1280,
+      "height": 853,
+      "role": "GENERIC_ONLY",
+      "subject": "Ensalada · ejemplo"
+    },
+    {
+      "id": "pixabay-1971552-640",
+      "kind": "image",
+      "width": 640,
+      "height": 436,
+      "role": "GENERIC_ONLY",
+      "subject": "Postre · ejemplo"
+    },
+    {
+      "id": "pixabay-1971552-1280",
+      "kind": "image",
+      "width": 1280,
+      "height": 871,
+      "role": "GENERIC_ONLY",
+      "subject": "Postre · ejemplo"
+    },
+    {
+      "id": "pixabay-149678-silent",
+      "kind": "video",
+      "width": 640,
+      "height": 360,
+      "role": "GENERIC_ONLY",
+      "subject": "Una escena de cocina"
+    }
+  ],
+  "corpus_sha256": "cdba0288b3ece26a8387529bbe19b0b5a6fc7c9670f08593d65a7a39d013a399",
+  "references": [
+    {
+      "id": "reference-01",
+      "url": "https://osiprestaurant.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Favorita / excepcional",
+      "reported_preferences": "### 1. OSIP\n\n- **Web:** https://osiprestaurant.com/\n- **Estado:** `SITIO_POSITIVO` · **Favorita**.\n- **Valoración registrada:** una de las dos páginas que más gustaron en su ronda, junto con Central.\n- **Aspectos concretos señalados:** no se desglosaron explícitamente en esa valoración.\n- **Uso en 101:** ejemplo de aprobación global fuerte; estudiar la composición completa sin atribuirle características no verificadas.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-02",
+      "url": "https://centralrestaurante.com.pe/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Favorita / excepcional",
+      "reported_preferences": "### 2. Central Restaurante\n\n- **Web:** https://centralrestaurante.com.pe/\n- **Estado:** `SITIO_POSITIVO` · **Favorita**.\n- **Valoración registrada:** una de las dos páginas que más gustaron en su ronda, junto con OSIP.\n- **Aspectos concretos señalados:** no se desglosaron explícitamente en esa valoración.\n- **Uso en 101:** referencia global de dirección artística aprobada; registrar por separado cualquier conclusión futura sobre sus componentes.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-03",
+      "url": "https://www.asadoretxebarri.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Muy positiva",
+      "reported_preferences": "### 3. Asador Etxebarri\n\n- **Web:** https://www.asadoretxebarri.com/\n- **Estado:** `SITIO_POSITIVO` · **Muy positiva**.\n- **Valoración registrada:** gustó mucho.\n- **Aspectos concretos señalados:** no se dejaron notas suficientemente específicas para asignar virtudes concretas.\n- **Uso en 101:** referencia favorable integral, pendiente de anotación por sección.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-04",
+      "url": "https://kolrestaurant.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Favorita de una ronda previa",
+      "reported_preferences": "### 4. KOL\n\n- **Web:** https://kolrestaurant.com/\n- **Estado:** `SITIO_POSITIVO` · **Favorita de una ronda previa**.\n- **Valoración registrada:** fue la favorita en una de las revisiones de restaurantes.\n- **Aspectos que se destacaron:** dirección de arte, textura y una presentación con teatralidad.\n- **Uso en 101:** referencia para estudiar identidad y expresividad, sin convertir ese estilo en obligatorio para otros negocios.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-05",
+      "url": "https://aira.se/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Muy positiva; video destacado",
+      "reported_preferences": "### 5. Aira\n\n- **Web:** https://aira.se/\n- **Estado:** `SITIO_POSITIVO` · **Muy positiva**.\n- **Valoración registrada:** gustó especialmente su video.\n- **Aspecto destacado:** video como recurso importante de primera impresión.\n- **Uso en 101:** caso audiovisual positivo; distinguir el valor artístico del video de la calidad técnica de su reproducción.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-06",
+      "url": "https://luca.restaurant/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Positiva («linda»)",
+      "reported_preferences": "### 6. LUCA\n\n- **Web:** https://luca.restaurant/\n- **Estado:** `SITIO_POSITIVO` · **Positiva**.\n- **Valoración registrada:** «linda».\n- **Aspectos concretos señalados:** no se precisaron otros.\n- **Uso en 101:** referencia favorable sin atribuirle una aprobación excepcional ni un patrón estilístico concreto.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-07",
+      "url": "https://www.padella.co/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Favorita de una primera ronda",
+      "reported_preferences": "### 7. Padella\n\n- **Web:** https://www.padella.co/\n- **Estado:** `SITIO_POSITIVO` · **Favorita de una primera ronda**.\n- **Aspectos destacados en la selección:** carácter editorial, tipografía, humanidad, aire visual y protagonismo de la comida/los espacios.\n- **Uso en 101:** lenguaje editorial accesible, sin confundir sobriedad con falta de identidad.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-08",
+      "url": "https://noma.dk/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Favorita de una primera ronda",
+      "reported_preferences": "### 8. Noma\n\n- **Web:** https://noma.dk/\n- **Estado:** `SITIO_POSITIVO` · **Favorita de una primera ronda**.\n- **Aspectos destacados en la selección:** carácter editorial, tipografía, humanidad, aire visual y protagonismo de la comida/los espacios.\n- **Uso en 101:** estudiar el balance entre interfaz y material visual, sin asumir que estos rasgos valen igual para todas las marcas.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-09",
+      "url": "https://www.restaurangang.se/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Aceptación moderada («bien»)",
+      "reported_preferences": "### 9. ÄNG\n\n- **Web:** https://www.restaurangang.se/\n- **Estado:** `SITIO_POSITIVO` · **Aceptación moderada**.\n- **Valoración registrada:** «bien».\n- **Aspectos concretos señalados:** no se especificaron.\n- **Uso en 101:** referencia admitida con menor entusiasmo que las favoritas; no otorgarle el mismo peso cualitativo.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "MINIMAL_TEXT_NOT_DESIGN_EVIDENCE",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-10",
+      "url": "https://www.kadeau.dk/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Aceptación moderada («bien»)",
+      "reported_preferences": "### 10. Kadeau\n\n- **Web:** https://www.kadeau.dk/\n- **Estado:** `SITIO_POSITIVO` · **Aceptación moderada**.\n- **Valoración registrada:** «bien».\n- **Aspectos concretos señalados:** no se especificaron.\n- **Uso en 101:** referencia aceptable, no una favorita inequívoca.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-11",
+      "url": "https://milcentro.pe/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Aceptación moderada",
+      "reported_preferences": "### 11. MIL Centro\n\n- **Web:** https://milcentro.pe/\n- **Estado:** `SITIO_POSITIVO` · **Aceptación moderada**.\n- **Valoración registrada:** positiva moderada.\n- **Aspectos concretos señalados:** no se precisaron.\n- **Uso en 101:** conservarla sin equiparar su nivel de aprobación a OSIP o Central.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-12",
+      "url": "https://www.aponiente.com/menu-aponiente-2026/",
+      "scope": "SPECIFIC_PAGE_ONLY",
+      "intensity": "Scroll / composición de esa página",
+      "reported_preferences": "### 12. Aponiente — Página de menú 2026\n\n- **Web específica:** https://www.aponiente.com/menu-aponiente-2026/\n- **Estado:** `ELEMENTO_POSITIVO` · **Solo una página / algunos elementos**.\n- **Aspectos destacados:** scroll y composición de la página del menú.\n- **Límite:** **no** equivale a aprobación de todo el sitio Aponiente.\n- **Uso en 101:** referencia localizada de composición y recorrido, no de identidad global.\n\n",
+      "negative_or_limits": [
+        "- **Límite:** **no** equivale a aprobación de todo el sitio Aponiente."
+      ],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "FETCH_ERROR",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-13",
+      "url": "https://khufus.com/",
+      "scope": "STORYTELLING_ONLY",
+      "intensity": "Storytelling visual; no aprobación total",
+      "reported_preferences": "### 13. Khufu's\n\n- **Web:** https://khufus.com/\n- **Estado:** `ELEMENTO_POSITIVO` · **Elementos interesantes**.\n- **Aspecto destacado:** storytelling visual.\n- **Límite:** **no** se aprobó la página completa.\n- **Uso en 101:** idea concreta sobre narrativa y secuencias, no plantilla integral.\n",
+      "negative_or_limits": [
+        "- **Límite:** **no** se aprobó la página completa."
+      ],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-14",
+      "url": "https://www.heckfieldplace.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Excepcional; móvil especialmente logrado",
+      "reported_preferences": "### 14. Heckfield Place — Hotelería\n\n- **Web:** https://www.heckfieldplace.com/\n- **Estado:** `SITIO_POSITIVO` · **Excepcional**.\n- **Valoración registrada:** «absurdamente hermosa»; en celular la experiencia parece perfecta.\n- **Lo que gustó:** experiencia audiovisual e impresión visual global.\n- **Problema advertido:** **la calidad del video disminuye en PC/escritorio**, aunque en móvil gusta mucho.\n- **Uso en 101:** referencia de dirección audiovisual y una prueba de calidad **separada por viewport**. No aprobar un video para desktop basándose solo en una buena versión móvil.\n\n",
+      "negative_or_limits": [
+        "- **Problema advertido:** **la calidad del video disminuye en PC/escritorio**, aunque en móvil gusta mucho."
+      ],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-15",
+      "url": "https://framacph.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Referencia ejemplar de retail",
+      "reported_preferences": "### 15. FRAMA — Retail / objetos / diseño\n\n- **Web:** https://framacph.com/\n- **Estado:** `SITIO_POSITIVO` · **Referencia excepcional dentro de retail**.\n- **Valoración registrada:** «la definición de una buena página de retail».\n- **Lo que gustó:** la ejecución del sitio como experiencia comercial global; no se precisó un componente único que explicara todo el juicio.\n- **Uso en 101:** referencia integral para tiendas y productos, sin copiar su estética por defecto a cualquier comercio.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-16",
+      "url": "https://www.dinesen.com/en",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Excepcional; audiovisual y color",
+      "reported_preferences": "### 16. Dinesen — Materiales / manufactura / interiorismo\n\n- **Web:** https://www.dinesen.com/en\n- **Estado:** `SITIO_POSITIVO` · **Excepcional**.\n- **Valoración registrada:** «increíblemente buena».\n- **Lo que gustó:** calidad de fotografías y videos, y cómo sus colores **combinan perfectamente** con los demás elementos de la página.\n- **Principio extraído:** los recursos audiovisuales deben evaluarse junto con la dirección cromática de todo el sitio; una colección de fotos buenas por separado no basta.\n- **Uso en 101:** evaluación conjunta de media, paleta, encuadres y composición.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-17",
+      "url": "https://lunecroissanterie.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Excepcional; personalidad y armonía",
+      "reported_preferences": "### 17. LUNE Croissanterie — Panadería\n\n- **Web:** https://lunecroissanterie.com/\n- **Estado:** `SITIO_POSITIVO` · **Excepcional**.\n- **Valoración registrada:** «absurdamente buena», ejemplo de **página personalizada**.\n- **Lo que gustó:** armonía entre elementos, identidad propia y **fondo negro**, poco habitual entre las referencias previas, pero resuelto muy bien en este caso.\n- **Principio extraído:** la calidad no exige minimalismo claro ni una paleta convencional; exige coherencia con el negocio.\n- **Uso en 101:** ejemplo de originalidad legítima; preservar diversidad de estilos y no penalizar automáticamente los fondos oscuros.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-18",
+      "url": "https://normcph.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Muy buena; limpieza y organización",
+      "reported_preferences": "### 18. NORM Architects — Arquitectura / interiores\n\n- **Web:** https://normcph.com/\n- **Estado:** `SITIO_POSITIVO` · **Muy buena**.\n- **Lo que gustó:** diseño limpio, **gama de colores muy bien escogida** y buena organización.\n- **Uso en 101:** referencia para limpieza y estructura que siguen teniendo dirección artística; no confundir simplicidad ordenada con una página genérica.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-19",
+      "url": "https://themodernhouse.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Excelente; tipografía e identidad",
+      "reported_preferences": "### 19. The Modern House — Inmobiliaria\n\n- **Web:** https://themodernhouse.com/\n- **Estado:** `SITIO_POSITIVO` · **Excelente**.\n- **Lo que gustó:** la **tipografía encaja perfectamente** con el diseño y la temática del negocio.\n- **Principio extraído:** la tipografía no es decoración posterior. Debe elegirse junto con tono, contenido, fotografía, composición y marca.\n- **Uso en 101:** evaluar la congruencia de fuentes y el carácter del negocio como un sistema, no solo legibilidad individual.\n\n",
+      "negative_or_limits": [],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-20",
+      "url": "https://www.polene-paris.com/",
+      "scope": "GLOBAL_REPORTED",
+      "intensity": "Buena; fundamentalmente por foto y video",
+      "reported_preferences": "### 20. Polène — Retail / accesorios\n\n- **Web:** https://www.polene-paris.com/\n- **Estado:** `SITIO_POSITIVO` · **Buena, con una razón principal identificada**.\n- **Valoración registrada:** buena página, pero parece destacar **sobre todo** por la calidad de sus videos e imágenes.\n- **Límite:** no se atribuyó la misma calidad al resto de sus decisiones de diseño.\n- **Uso en 101:** caso positivo de audiovisual potente, pero no prueba de que toda la arquitectura visual sea ejemplar.\n\n",
+      "negative_or_limits": [
+        "- **Límite:** no se atribuyó la misma calidad al resto de sus decisiones de diseño."
+      ],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    },
+    {
+      "id": "reference-21",
+      "url": "https://singervehicledesign.com/",
+      "scope": "DROPDOWN_ONLY",
+      "intensity": "Menú desplegable únicamente",
+      "reported_preferences": "### 21. Singer Vehicle Design — Automotor\n\n- **Web:** https://singervehicledesign.com/\n- **Estado:** `ELEMENTO_POSITIVO` · **Únicamente un componente**.\n- **Valoración registrada:** la página en conjunto **no entusiasma**.\n- **Elemento rescatable:** el **menú desplegable** y su diseño.\n- **Límite:** **no** usar Singer como referencia global de apariencia.\n- **Uso en 101:** guardar y estudiar el patrón concreto de navegación, desasociándolo del resto de la web.\n",
+      "negative_or_limits": [
+        "- **Valoración registrada:** la página en conjunto **no entusiasma**.",
+        "- **Límite:** **no** usar Singer como referencia global de apariencia."
+      ],
+      "current_reading": {
+        "date": "2026-10-14",
+        "method": "OFFICIAL_PAGE_WEB_TEXT",
+        "result": "TEXT_RETURNED",
+        "visual_desktop": "PENDING_BROWSER_UNAVAILABLE",
+        "visual_mobile": "PENDING_BROWSER_UNAVAILABLE",
+        "new_aesthetic_approval": false
+      }
+    }
+  ],
+  "registry": {
+    "Top": {
+      "purpose": "horizontal navigation",
+      "mobile": "wrapped links"
+    },
+    "Rail": {
+      "purpose": "sticky navigation rail",
+      "mobile": "disclosure navigation"
+    },
+    "Index": {
+      "purpose": "numbered navigation",
+      "mobile": "numbered wrapped index"
+    },
+    "Split": {
+      "purpose": "text and natural-ratio image side by side",
+      "mobile": "title, copy, image"
+    },
+    "Monument": {
+      "purpose": "large centered typography then image",
+      "mobile": "centered measured title, image"
+    },
+    "Diptych": {
+      "purpose": "two unequal fields with aligned baselines",
+      "mobile": "compact title, natural image, copy"
+    },
+    "Stage": {
+      "purpose": "framed media then editorial copy",
+      "mobile": "title, framed image, copy"
+    },
+    "Grid": {
+      "purpose": "equal collection columns",
+      "mobile": "Stack or Compact or Sequence"
+    },
+    "Rows": {
+      "purpose": "image/text rows",
+      "mobile": "Stack or Compact or Sequence"
+    },
+    "Mosaic": {
+      "purpose": "staggered columns without cropping",
+      "mobile": "Stack or Compact or Sequence"
+    }
+  },
+  "constraints": {
+    "fictional": true,
+    "crop": false,
+    "video_autoplay": false,
+    "video_max_width": 640,
+    "no_commercial_backend": true,
+    "no_arbitrary_code": true,
+    "no_reference_asset_reuse": true
+  },
+  "budget": {
+    "session_proposals": 4,
+    "cheap_samples": 24,
+    "finalists": 4,
+    "shared_correction_iterations": 2,
+    "new_creative_api_calls": 0,
+    "new_spend_authorized": 0
+  }
+}

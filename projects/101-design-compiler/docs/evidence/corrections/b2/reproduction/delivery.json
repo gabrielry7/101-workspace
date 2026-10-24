@@ -1,0 +1,39 @@
+{
+  "kind": "B2_DELIVERY_PRIVATE_MATERIAL_CHECK",
+  "created_at": "2026-10-15T01:47:31.942Z",
+  "reviewed_commit_before_receipt": "96ea50250b3bad6c243326c178502fe607a59afe",
+  "reviewed_files": 224,
+  "secret_value_matches": 0,
+  "forbidden_paths": [],
+  "isolated_env_present": false,
+  "prior_reader_attempt": "Git show exceeded default 1MiB Node capture buffer on runtime.json; receipt was not emitted. Complete retry uses 32MiB buffer, without dumping file data.",
+  "receipts": [
+    {
+      "path": "docs/evidence/corrections/b2/post-03/journal.json",
+      "sha256": "bf599ac436e34a832bf4aa01c3737ece7e94ff4a700ad47d40021edb4354ff62"
+    },
+    {
+      "path": "docs/evidence/corrections/b2/clean-01/journal.json",
+      "sha256": "967b3b6d4333f8b31b2e52b0413aa43867efbca8665ffcca99b14b566c31dfc6"
+    },
+    {
+      "path": "docs/evidence/corrections/b2/qa-04/qa.json",
+      "sha256": "df0566be24445d56eedeb56769cd782fb99406c02d4026537a0fe6c21372d92b"
+    },
+    {
+      "path": "docs/evidence/corrections/b2/clean-qa-01/qa.json",
+      "sha256": "9cbf1e93ead7e83a18409ff06b5d2f40c41c12b2505b2a2c467b26e595ee6797"
+    },
+    {
+      "path": "docs/evidence/corrections/b2/reproduction/materialization.json",
+      "sha256": "a99ecf05c8fe4ec5a479fdb1eebed4304006f1c7a37ea3f1b060ca7c4ecfa976"
+    },
+    {
+      "path": "docs/evidence/corrections/b2/reproduction/comparison.json",
+      "sha256": "f5fe80b2f629376f369432f135a7d0bcfec6a86c5b0eacce68dda6fb9215385e"
+    }
+  ],
+  "approval": "TECHNICAL_ONLY_HUMAN_PENDING",
+  "provider_media_downloads": 1,
+  "pixabay_media_downloads": 0
+}

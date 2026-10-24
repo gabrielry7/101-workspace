@@ -1,0 +1,38 @@
+
+> 101-design-compiler@0.0.0 build
+> npm run validate && astro build
+
+
+> 101-design-compiler@0.0.0 validate
+> node --experimental-strip-types scripts/validate-fixtures.ts
+
+restaurante: PASSED
+gimnasio: PASSED
+ferreteria: PASSED
+planner/restaurante: PASSED (READY)
+planner/gimnasio: PASSED (READY)
+planner/ferreteria: PASSED (READY)
+planner/clinica: PASSED (READY)
+planner/hibrido-gimnasio-tienda: PASSED (READY)
+planner/hibrido-sin-evidencia: PASSED (CONTENT_BLOCKED)
+planner/hotel-restaurante-sucursales: PASSED (READY)
+planner/informacion-incompleta: PASSED (CONTENT_BLOCKED)
+planner/servicios-profesionales: PASSED (READY)
+22:48:53 [types] Generated 64ms
+22:48:53 [build] output: "static"
+22:48:53 [build] mode: "static"
+22:48:53 [build] directory: C:\Users\gabri\101-design-compiler\dist\
+22:48:53 [build] Collecting build info...
+22:48:53 [build] ✓ Completed in 95ms.
+22:48:53 [build] Building static entrypoints...
+22:48:53 [vite] ✓ built in 134ms
+22:48:53 [vite] ✓ built in 12ms
+22:48:53 [build] Rearranging server assets...
+
+ generating static routes
+22:48:53   ├─ /index.html (+40ms)
+22:48:53 ✓ Completed in 108ms.
+
+22:48:53 [build] ✓ Completed in 321ms.
+22:48:53 [build] 1 page(s) built in 418ms
+22:48:53 [build] Complete!

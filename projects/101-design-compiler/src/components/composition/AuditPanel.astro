@@ -1,0 +1,19 @@
+---
+import type { GeneralCompositionLab as CompositionLab } from '../../composition/lab.ts';
+interface Props { lab: CompositionLab }
+const { lab } = Astro.props;
+---
+<aside class="audit" aria-label="Límites y trazabilidad del laboratorio">
+  {lab.media ? <p class="gap"><strong>Hueco documental bloqueado.</strong> No hay fotografía auténtica de la oferta. La imagen genérica no lo satisface.</p> : <p class="gap"><strong>Sin medios autorizados.</strong> No se muestra fotografía. Los huecos documentales siguen pendientes; no se sustituyen con imágenes inventadas.</p>}
+  <p>Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.</p>
+  <details>
+    <summary>Trazabilidad y restricciones</summary>
+    <p>Contenido ficticio aprobado solo para pruebas. Runtime comercial ausente.</p>
+    <ul>{lab.content.restrictions.map(r => <li data-restriction>{r}</li>)}</ul>
+    <ul>{lab.content.diagnostics.map((d, i) => <li data-diagnostic-index={i} data-diagnostic-code={d.code} data-diagnostic-scope={d.scope_id} data-diagnostic-capability={d.capability_id} data-diagnostic-reason={d.reason}>{d.capability_id} · {d.code} · <code>{d.scope_id}</code> · {d.reason}</li>)}</ul>
+    <ul>{lab.content.exclusions.map((e, i) => <li data-exclusion-index={i} data-exclusion-id={e.id} data-exclusion-reason={e.reason} data-exclusion-scope={e.scope_id}>{e.id} · {e.reason} · <code>{e.scope_id}</code></li>)}</ul>
+    <ul>{lab.content.bindings.map(b => <li data-binding-id={b.fact_id} data-binding-status={b.status} data-binding-scope={b.scope_id}><code>{b.fact_id}</code> · {b.status} · <code>{b.scope_id}</code></li>)}</ul>
+    <ul>{lab.constraints.map(c => <li data-media-constraint>{c}</li>)}</ul>
+    <ul>{lab.gaps.map(g => <li data-gap-id={g.need.id}>{g.need.role} · <code>{g.need.scope_id}</code> · {g.need.subject_ids.join(', ')} · {g.reasons.join(', ')}</li>)}</ul>
+  </details>
+</aside>

@@ -1,0 +1,82 @@
+{
+  "schema_version": "2.1.1",
+  "kind": "applicability_profile",
+  "profile_id": "pilot_n0_single_location",
+  "status": "PROPOSED_NOT_VERIFIED",
+  "mode": "authorized_live",
+  "design_level": "N0",
+  "enabled_capabilities": [
+    "public_info",
+    "menu_html",
+    "whatsapp_contact",
+    "whatsapp_request"
+  ],
+  "features": {
+    "multi_location": false,
+    "shared_tenant_surfaces": false,
+    "durable_notifications": false,
+    "visual_search": false,
+    "evaluation_program": false
+  },
+  "contexts": [
+    "prepublication",
+    "postdeployment"
+  ],
+  "assumptions": [
+    {
+      "id": "S1",
+      "statement": "Una sede y negocio; sin datos/archivos/cachés/colas privados compartidos con otros negocios en este alcance. El taller compartido cuenta como superficie compartida si contiene datos privados de otros clientes.",
+      "verification_status": "NOT_RUN",
+      "evidence_refs": []
+    },
+    {
+      "id": "S2",
+      "statement": "Sitio estático; catálogo versionado y revalidación antes del handoff. Historial de cambios/revocaciones y registro manual se conservan separados de la vuelta atrás del diseño. Sin servidor de pedidos ni notificaciones duraderas.",
+      "verification_status": "NOT_RUN",
+      "evidence_refs": []
+    },
+    {
+      "id": "S3",
+      "statement": "Operador autenticado actualiza con aprobación del dueño. Sin panel/cuentas del restaurante; sí control de accesos, segundo factor y separación generador/ejecutor/publicador.",
+      "verification_status": "NOT_RUN",
+      "evidence_refs": []
+    },
+    {
+      "id": "S4",
+      "statement": "Recepción y aceptación manuales con referencia, actor, hora y condiciones; pendientes de comunicar con responsable y contingencia, sin cola automática.",
+      "verification_status": "NOT_RUN",
+      "evidence_refs": []
+    },
+    {
+      "id": "S5",
+      "statement": "No copiar conversaciones, nombres, teléfonos ni direcciones de comensales en los sistemas de 101. Revisar referencias, analítica, logs, proveedores y datos de operadores/autorizantes; no equivale a ausencia universal de tratamiento.",
+      "verification_status": "NOT_RUN",
+      "evidence_refs": []
+    },
+    {
+      "id": "S6",
+      "statement": "Diseño N0 con dos revisores y sin búsqueda visual automática; no se declara generalización ni reducción de revisión.",
+      "verification_status": "NOT_RUN",
+      "evidence_refs": []
+    }
+  ],
+  "feature_assumptions": {
+    "multi_location": [
+      "S1"
+    ],
+    "shared_tenant_surfaces": [
+      "S1"
+    ],
+    "durable_notifications": [
+      "S2",
+      "S4"
+    ],
+    "visual_search": [
+      "S6"
+    ],
+    "evaluation_program": [
+      "S6"
+    ]
+  },
+  "note": "Este perfil selecciona obligaciones propuestas, no habilita capacidades. NOT_APPLICABLE real exige verificar las condiciones y registrar evidencia en un ejecutor confiable."
+}

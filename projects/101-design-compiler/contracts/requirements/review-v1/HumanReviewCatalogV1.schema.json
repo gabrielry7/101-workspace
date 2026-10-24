@@ -1,0 +1,452 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "HUMAN_REVIEW_REQUIREMENTS_SUPPLEMENT"
+    },
+    "catalog_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "catalog_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "technical_catalog_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "user_request_summary": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "reviewer_thread": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      },
+      "required": [
+        "date",
+        "user_request_summary",
+        "reviewer_thread"
+      ],
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "string",
+      "const": "PROPOSED_FOR_HUMAN_REVIEW"
+    },
+    "business_input_evaluation": {
+      "type": "string",
+      "const": "NOT_PERFORMED"
+    },
+    "common_feature_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "restaurant_requested_feature_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "features": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "group": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "registry_references": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "identity",
+                "about",
+                "locations",
+                "opening_hours",
+                "contact_channels",
+                "social_profiles",
+                "reputation",
+                "gallery",
+                "service_catalog",
+                "product_catalog",
+                "menu",
+                "product_variants",
+                "price_list",
+                "packages",
+                "rooms",
+                "programs",
+                "professional_profiles",
+                "trainer_profiles",
+                "portfolio",
+                "case_studies",
+                "reservation",
+                "appointment",
+                "quote_request",
+                "contact_request",
+                "purchase",
+                "order",
+                "delivery",
+                "pickup",
+                "membership",
+                "membership_signup",
+                "class_enrollment",
+                "ticketing",
+                "room_booking",
+                "visit_booking",
+                "service_request",
+                "class_schedule",
+                "events",
+                "availability_display",
+                "service_area",
+                "delivery_policy",
+                "visit_policy",
+                "payment_methods",
+                "amenities",
+                "accessibility_info",
+                "branches",
+                "faqs",
+                "documents"
+              ]
+            }
+          },
+          "registry_relation": {
+            "type": "string",
+            "enum": [
+              "PARTIAL_V1_REFERENCE",
+              "EXTENSION_REQUIRED"
+            ]
+          },
+          "business_data": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "owner": {
+                  "type": "string",
+                  "enum": [
+                    "BUSINESS",
+                    "PROJECT",
+                    "PLATFORM",
+                    "RIGHTS_HOLDER"
+                  ]
+                },
+                "scope": {
+                  "type": "string",
+                  "enum": [
+                    "BUSINESS",
+                    "EXACT_BRANCH",
+                    "EXACT_OFFERING",
+                    "EXACT_PERSON",
+                    "EXACT_REVIEW",
+                    "EXACT_REVIEW_SUBJECT",
+                    "EXACT_RESOURCE",
+                    "EXACT_MEDIA_USAGE",
+                    "PROJECT"
+                  ]
+                },
+                "evidence_needed": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "validation_hint": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "owner",
+                "scope",
+                "evidence_needed",
+                "validation_hint"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "future_visitor_inputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "frontend_expectation": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "operation_dependencies": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "depends_on": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "acceptance_checks": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "expected_states": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "risks": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "frontend_status": {
+            "type": "string",
+            "const": "NOT_BUILT"
+          },
+          "operation_status": {
+            "type": "string",
+            "const": "NOT_CONNECTED"
+          },
+          "data_status": {
+            "type": "string",
+            "const": "NOT_EVALUATED"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "purpose",
+          "group",
+          "registry_references",
+          "registry_relation",
+          "business_data",
+          "future_visitor_inputs",
+          "frontend_expectation",
+          "operation_dependencies",
+          "depends_on",
+          "acceptance_checks",
+          "expected_states",
+          "risks",
+          "frontend_status",
+          "operation_status",
+          "data_status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "archetype_id": {
+            "type": "string",
+            "enum": [
+              "food_hospitality",
+              "product_retail",
+              "appointment_service",
+              "membership_and_classes",
+              "lodging",
+              "field_service_and_quote",
+              "vehicle_service",
+              "professional_advisory",
+              "education_programs",
+              "events_and_entertainment",
+              "industrial_b2b",
+              "property_and_spaces",
+              "transport_and_logistics",
+              "regulated_services"
+            ]
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "offering_label": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "caveat": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "features": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "feature_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "priority": {
+                  "type": "string",
+                  "enum": [
+                    "BASE",
+                    "CONDITIONAL",
+                    "OPTIONAL"
+                  ]
+                },
+                "condition": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "feature_id",
+                "priority",
+                "condition"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "archetype_id",
+          "label",
+          "offering_label",
+          "caveat",
+          "features"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "performance_source": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "consulted_on": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "targets": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "measurement_status": {
+          "type": "string",
+          "const": "NOT_MEASURED_FOR_FINAL_SITE"
+        }
+      },
+      "required": [
+        "url",
+        "consulted_on",
+        "targets",
+        "measurement_status"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "catalog_id",
+    "catalog_sha256",
+    "technical_catalog_sha256",
+    "source",
+    "status",
+    "business_input_evaluation",
+    "common_feature_ids",
+    "restaurant_requested_feature_ids",
+    "features",
+    "profiles",
+    "performance_source"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:HumanReviewCatalogV1:1.0.0",
+  "title": "HumanReviewCatalogV1",
+  "description": "B1 proposed human review supplement; partial V1 references, no business evaluation, commercial frontend or operational support. Semantic validation required."
+}

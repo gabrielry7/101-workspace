@@ -1,0 +1,216 @@
+{
+  "role": "design-proposal",
+  "task": "Propose two distinct bounded art directions for this exact frozen synthetic business context. Preserve all semantic routes/modules/bindings and media permissions. No code, no invented content, no external images. Flow/Sequence versus Rail/Sequence; no photo dialog with absent media.",
+  "context_sha256": "d7ecd05148bab1203237af43e50eb7e7753c6f5f6795486d35aad74edf8f15aa",
+  "context": {
+    "schema_version": "1.0.0",
+    "content": {
+      "site_plan_id": "h7-synthetic-media-unknown-reserved-v1:h2-plan:17531be79cbae46691d86a6f",
+      "plan_sha256": "06f3c1e210827a66833460ff4c7c981983668d058ec811246abaa4525de0356f",
+      "requirements_sha256": "230a56eaaf7b54aaf825f5e7e2708e29ea93111049a25e5bd311da58a019dace",
+      "content_sha256": "ec8c27958bc5b657967d56b899e682f870abf8fbbca28e047e453157bf30dd8a",
+      "pages": [
+        {
+          "path": "/",
+          "modules": [
+            {
+              "id": "semantic-aa3a515229777195582eecfd",
+              "capability_id": "identity",
+              "scope_id": "h7-synthetic-media-unknown",
+              "required": true,
+              "page": "/",
+              "component": "Identity",
+              "facts": [
+                {
+                  "id": "name",
+                  "scope_id": "h7-synthetic-media-unknown",
+                  "kind": "business_name",
+                  "text": "media-unknown · NUEVO fixture sintético H7; no es negocio real"
+                }
+              ],
+              "offerings": []
+            }
+          ]
+        },
+        {
+          "path": "/servicios",
+          "modules": [
+            {
+              "id": "semantic-898fb455d9a43743787b87cb",
+              "capability_id": "service_catalog",
+              "scope_id": "h7-synthetic-media-unknown",
+              "required": true,
+              "page": "/servicios",
+              "component": "OfferingCollection",
+              "facts": [],
+              "offerings": [
+                {
+                  "id": "object-1",
+                  "scope_id": "h7-synthetic-media-unknown",
+                  "facts": [
+                    {
+                      "id": "object-1-name",
+                      "scope_id": "h7-synthetic-media-unknown",
+                      "kind": "offering_name",
+                      "text": "Objeto 1 de prueba (service); descripción sintética"
+                    },
+                    {
+                      "id": "object-1-description",
+                      "scope_id": "h7-synthetic-media-unknown",
+                      "kind": "offering_description",
+                      "text": "Información declarada de prueba 1, sin precio o promesa operativa."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "fact_id": "assert-identity",
+          "scope_id": "h7-synthetic-media-unknown",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "assert-service_catalog",
+          "scope_id": "h7-synthetic-media-unknown",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "category-evidence",
+          "scope_id": "h7-synthetic-media-unknown",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "name",
+          "scope_id": "h7-synthetic-media-unknown",
+          "module_ids": [
+            "semantic-aa3a515229777195582eecfd"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "object-1-description",
+          "scope_id": "h7-synthetic-media-unknown",
+          "module_ids": [
+            "semantic-898fb455d9a43743787b87cb"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "object-1-name",
+          "scope_id": "h7-synthetic-media-unknown",
+          "module_ids": [
+            "semantic-898fb455d9a43743787b87cb"
+          ],
+          "status": "BOUND"
+        }
+      ],
+      "diagnostics": [],
+      "exclusions": [],
+      "restrictions": [
+        "SYNTHETIC_FIXTURE: NO PUBLICAR COMO NEGOCIO REAL",
+        "H7 held-out reservation; no real credentials or media permission"
+      ]
+    },
+    "media": null,
+    "gaps": [
+      {
+        "need": {
+          "id": "need-1657f7d51c4489c1ad47a6d6",
+          "requirement_id": "semantic-aa3a515229777195582eecfd",
+          "module_id": "semantic-aa3a515229777195582eecfd",
+          "page": "/",
+          "scope_id": "h7-synthetic-media-unknown",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NOT_INSPECTED",
+          "QUALITY_UNCONFIRMED",
+          "RELEVANCE_UNCONFIRMED",
+          "RIGHTS_UNKNOWN"
+        ],
+        "requested_from": "rights_review"
+      },
+      {
+        "need": {
+          "id": "need-295a08b8a7f32bdbbdee45bb",
+          "requirement_id": "semantic-898fb455d9a43743787b87cb",
+          "module_id": "semantic-898fb455d9a43743787b87cb",
+          "page": "/servicios",
+          "scope_id": "h7-synthetic-media-unknown",
+          "purpose": "document:service_catalog",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "object-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "client_id": "synthetic-h7-media-unknown",
+    "project_id": "h7-cohort-media-unknown",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "manifest_sha256": "e81b60c2f1ce015fe103e0e50490fde0aa8df53adfea893864fa3502040e65ac",
+    "registry_version": "h5-lab-1.0.0",
+    "references": {
+      "status": "MISSING",
+      "note": "No licensed reference corpus present; no external reference claims."
+    },
+    "operators": {
+      "frame": [
+        "Flow",
+        "Rail"
+      ],
+      "stage": [
+        "Sequence",
+        "Split"
+      ],
+      "navigation": "before-content",
+      "reading_order": "modules-before-media",
+      "mobile": "stack-with-visible-navigation",
+      "media": "unaltered-original"
+    }
+  },
+  "limits": {
+    "proposals": 2,
+    "samples": 12,
+    "renders": 2,
+    "finalists": 2,
+    "max_output_bytes": 24000,
+    "new_provider_calls": 0,
+    "new_spend": 0
+  }
+}

@@ -1,0 +1,14 @@
+
+> 101-design-compiler@0.0.0 media:fixtures
+> node --experimental-strip-types scripts/media-fixtures.ts
+
+{"scenario":"restaurante","success":true,"manifest_sha256":"65f84e8223fa8cfd1888c985dc7c9e60c04989ed0e2ff96721e12d0974c3f1a2","needs":2,"gaps":2,"allowed":0,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":false,"codes":[],"replay_identical":null}
+{"scenario":"synthetic-permission-control","success":true,"manifest_sha256":"55fc80325f6a7b9d3084401705824debc82485906c47953785024ed3f84a2cfb","needs":2,"gaps":1,"allowed":1,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":true,"codes":[],"replay_identical":null}
+{"scenario":"synthetic-permission-default-blocked","success":true,"manifest_sha256":"625d9ac68a8345195bb5e99fd3638bfeb937fef66dfb9e63794dec3891051b6a","needs":2,"gaps":2,"allowed":0,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":true,"codes":["SYNTHETIC_RIGHTS_REJECTED"],"replay_identical":null}
+{"scenario":"gimnasio","success":true,"manifest_sha256":"6ad61d8a9e683a0467d436aca6f89713a5d075dd9ca98bf2512b1dae9c4558a5","needs":3,"gaps":3,"allowed":0,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":false,"codes":[],"replay_identical":null}
+{"scenario":"ferreteria","success":true,"manifest_sha256":"af0d7acb8195b905f31db728418af944984a31f212ed945203df0222ad5286c8","needs":2,"gaps":2,"allowed":0,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":false,"codes":[],"replay_identical":null}
+{"scenario":"clinica","success":true,"manifest_sha256":"c9a6d180b1823b3f57d324a18f44fedf2055d6c977bb7b4c029281ee7a0866c6","needs":3,"gaps":3,"allowed":0,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":false,"codes":[],"replay_identical":null}
+{"scenario":"hibrido-gimnasio-tienda","success":true,"manifest_sha256":"f55fb6226ccba0f3665b274a2fb9f3f58a0645b25dae3da4ae22275f2199ecd6","needs":4,"gaps":4,"allowed":0,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":false,"codes":[],"replay_identical":null}
+{"scenario":"hotel-restaurante-sucursales","success":true,"manifest_sha256":"96da765c206a5b01ba73ff5f9552710e7e463471c26af561c8e8f775f2391c2d","needs":6,"gaps":6,"allowed":0,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":false,"codes":[],"replay_identical":null}
+{"scenario":"servicios-profesionales","success":true,"manifest_sha256":"f7a304a1d6903a78dc3acc02532f3f0f63625fe52baac00a200c4f61042284b7","needs":2,"gaps":2,"allowed":0,"closure":"PENDING_AUTHORIZED_MEDIA_PACKAGE","synthetic_test_only":false,"codes":[],"replay_identical":null}
+{"scenario":"real-restaurante-pilot","success":true,"manifest_sha256":"233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948","needs":2,"gaps":1,"allowed":1,"closure":"AUTHORIZED_PILOT_PACKAGE_WITH_GAPS","synthetic_test_only":false,"codes":[],"replay_identical":null}

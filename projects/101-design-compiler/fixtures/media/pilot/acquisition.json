@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "provider": "USDA Agricultural Research Service",
+  "obtained_date": "2026-10-08",
+  "reviewed_at": "2026-10-08T23:11:54Z",
+  "file": {
+    "asset_id": "usda-ars-d255-19",
+    "path": "public/media/h3-pilot/usda-ars-d255-19.jpg",
+    "source_url": "https://www.ars.usda.gov/ARSUserFiles/oc/images/photos/300dpi/kesa/D255-19.jpg",
+    "sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+    "bytes": 2351102,
+    "width": 2700,
+    "height": 1819
+  },
+  "documents": [
+    {
+      "path": "docs/evidence/h3-pilot/usda-asset-page.html",
+      "official_url": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+      "sha256": "362db558cb6b2e96c00e390fe84b2541d711114934f62cf3d700111b8a694bd2",
+      "version": "Official page Last Modified 11/6/2023 (literal); snapshot 2026-10-08; no numbered legal version"
+    },
+    {
+      "path": "docs/evidence/h3-pilot/usda-policy.html",
+      "official_url": "https://www.ars.usda.gov/oc/images/copyright/",
+      "sha256": "37f2a2fb164eab70ce65881a810828faf9ba3935dd7d3d6c21cd2d30e86973ac",
+      "version": "Official policy Last Modified 12/10/2020 (literal); snapshot 2026-10-08; no numbered legal version"
+    }
+  ],
+  "review_path": "docs/evidence/h3-pilot/review.md",
+  "review_sha256": "a94ccf5caebfe48713763f3eb22dce7e765ded6c3c2f6777504c68059968030a",
+  "acquisition_method": "Single explicitly linked JPEG transfer; no API, catalog crawl, account or recurrent automation",
+  "cost": "FREE; no purchase or currency asserted"
+}

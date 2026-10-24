@@ -1,0 +1,27 @@
+import type {Archetype} from './contracts.ts';
+// Finite, reviewable language policy. No name-only guesses or remote model call.
+export const contextPolicy={version:'1.0.0',languages:['es','en'],
+ positive_subject_connectors:[' y ',' con ',' and ',' with '],alternative_subject_connectors:[' o ',' or '],
+ descriptions:{
+  food_hospitality:['restaurante','restaurant','cafetería','cafeteria','café','cafe','panadería','bakery'],
+  product_retail:['tienda','store','ferretería','ferreteria','hardware store','boutique'],
+  appointment_service:['clínica','clinica','clinic','consultorio','salón de belleza','beauty salon','dentista','dental clinic'],
+  membership_and_classes:['gimnasio','gym','fitness centre','centro de entrenamiento','estudio de yoga','yoga studio'],
+  lodging:['hotel','hostal','hostel','alojamiento','lodging'],
+  field_service_and_quote:['servicio a domicilio','servicios a domicilio','home repair','empresa de construcción','construction company'],
+  vehicle_service:['taller mecánico','taller mecanico','auto repair','lavado de vehículos','car wash'],
+  professional_advisory:['consultoría','consultoria','consulting firm','despacho de abogados','legal practice','estudio contable'],
+  education_programs:['escuela','school','instituto educativo','academia','academy'],
+  events_and_entertainment:['teatro','theatre','theater','sala de eventos','event venue','discoteca'],
+  industrial_b2b:['fábrica','fabrica','factory','fabricante','manufacturer','proveedor industrial','industrial supplier'],
+  property_and_spaces:['inmobiliaria','property agency','coworking','alquiler de espacios'],
+  transport_and_logistics:['empresa de transporte','transport company','empresa de logística','logistics company'],
+ } satisfies Partial<Record<Archetype,string[]>>,
+ offering_candidates:{menu_item:['food_hospitality'],product:['product_retail','industrial_b2b'],product_category:['product_retail','industrial_b2b'],
+  membership_plan:['membership_and_classes'],class_session:['membership_and_classes','education_programs'],room:['lodging'],program:['education_programs'],
+  event:['events_and_entertainment']} as Record<string,Archetype[]>,
+ description_kinds:['business_description','about_text','activity_description','approved_resource_activity_observation'],
+ limitations:['Finite ES/EN policy; unsupported prose asks for a precise activity assertion, not universal semantic understanding',
+  'Media URLs, names, dimensions and DOCUMENTED status do not prove activity or rights; raw media are not inspected',
+  'Resource observation facts are upstream factual observations, not inspection performed by this compiler',
+  'V1 contextual profile confidence 0 is a compatibility sentinel, not a measured probability; calibrated_confidence is null']};

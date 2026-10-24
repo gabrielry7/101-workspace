@@ -1,0 +1,6 @@
+Recorded after the attempt, not a fabricated process log or timing receipt.
+Result: FAIL. Build-a succeeded. Browser started with documented local sandbox exception.
+Capture harness used nonexistent nav a[data-semantic-page] selector and raised TypeError reading focus.
+Corrected to the existing shared .site-nav a[data-route] navigation contract for subsequent runs.
+No final capture.json exists; the one PNG/HTML pair is partial evidence only.
+Human time, session tokens and total cost remain unknown.

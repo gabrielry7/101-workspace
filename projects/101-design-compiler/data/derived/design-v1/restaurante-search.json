@@ -1,0 +1,2100 @@
+{
+  "schema_version": "1.0.0",
+  "status": "FINALISTS_READY_FOR_BROWSER",
+  "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+  "seed": 1010508,
+  "budget": {
+    "proposals": 3,
+    "samples": 24,
+    "renders": 4,
+    "finalists": 4,
+    "max_output_bytes": 24000,
+    "new_provider_calls": 0,
+    "new_spend": 0
+  },
+  "priors": "CONTEXTUAL_HEURISTICS_NOT_CALIBRATED",
+  "directions": [
+    {
+      "schema_version": "1.0.0",
+      "id": "typographic-pause",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "principle": "La identidad verificada domina una secuencia editorial; el medio mantiene una pausa ambiental independiente.",
+      "dominance": "typography",
+      "materiality": "unaltered-photograph",
+      "rationale": "Dos hechos y una foto atmosférica permiten una jerarquía clara, no una promesa comercial. Separar identidad y oferta respeta el scope de sucursal. Flow/Sequence amplía la pausa; Rail/Sequence conserva la secuencia y hace explícito el índice lateral.",
+      "topologies": [
+        {
+          "frame": "Flow",
+          "stage": "Sequence"
+        },
+        {
+          "frame": "Rail",
+          "stage": "Sequence"
+        }
+      ],
+      "tokens": {
+        "palette": "olive",
+        "type": "serif",
+        "hierarchy": "monument",
+        "rhythm": "quiet",
+        "media_width": "inset",
+        "media_alignment": "center"
+      },
+      "media_usage_ids": [
+        "h3-real-pilot-atmospheric"
+      ],
+      "motion": "quiet",
+      "risks": [
+        "El contenido escaso puede parecer incompleto: mantener huecos y avisos visibles.",
+        "La imagen original supera el presupuesto habitual móvil y no admite derivados.",
+        "La diversidad móvil de secuencias es menor que en escritorio."
+      ],
+      "constraints_acknowledged": {
+        "truth": true,
+        "rights": true,
+        "modules": true,
+        "no_code": true
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "balanced-dialogue",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "principle": "Texto factual y fotografía ambiental dialogan en campos adyacentes, conservando lectura y crédito.",
+      "dominance": "dialogue",
+      "materiality": "unaltered-photograph",
+      "rationale": "Split relaciona identidad y atmósfera sin superponer texto ni atribuir el medio al negocio. Flow mantiene un índice horizontal; Rail/Split explora una topología anidada de navegación lateral y dos campos de contenido. En móvil ambos campos se apilan en orden lógico.",
+      "topologies": [
+        {
+          "frame": "Flow",
+          "stage": "Split"
+        },
+        {
+          "frame": "Rail",
+          "stage": "Split"
+        }
+      ],
+      "tokens": {
+        "palette": "earth",
+        "type": "serif",
+        "hierarchy": "compact",
+        "rhythm": "dense",
+        "media_width": "full",
+        "media_alignment": "end"
+      },
+      "media_usage_ids": [
+        "h3-real-pilot-atmospheric"
+      ],
+      "motion": "quiet",
+      "risks": [
+        "Rail/Split puede comprimir texto en tablet: reflow temprano a una columna.",
+        "La foto sigue siendo contexto genérico; no sirve como imagen documental de la oferta.",
+        "No forzar dos columnas donde falta medio: oferta ocupa ancho completo."
+      ],
+      "constraints_acknowledged": {
+        "truth": true,
+        "rights": true,
+        "modules": true,
+        "no_code": true
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "indexed-field",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "principle": "La navegación estructura un campo compacto con medio desplazado; la ausencia documental sigue explícita.",
+      "dominance": "navigation",
+      "materiality": "unaltered-photograph",
+      "rationale": "La separación entre página de identidad y oferta requiere orientación estable, no una plantilla de restaurante. Rail/Sequence prioriza índice y ritmo compacto; Flow/Split contrasta con campos horizontales. La tipografía sans enfatiza lectura del fixture, sin inferir posicionamiento de marca.",
+      "topologies": [
+        {
+          "frame": "Rail",
+          "stage": "Sequence"
+        },
+        {
+          "frame": "Flow",
+          "stage": "Split"
+        }
+      ],
+      "tokens": {
+        "palette": "ink",
+        "type": "sans",
+        "hierarchy": "compact",
+        "rhythm": "dense",
+        "media_width": "inset",
+        "media_alignment": "end"
+      },
+      "media_usage_ids": [
+        "h3-real-pilot-atmospheric"
+      ],
+      "motion": "quiet",
+      "risks": [
+        "No confundir indexación editorial con búsqueda de catálogo implementada.",
+        "La falta de referencias licenciadas limita la investigación estética.",
+        "Preferencia humana pendiente: ninguna dirección se declara ganadora."
+      ],
+      "constraints_acknowledged": {
+        "truth": true,
+        "rights": true,
+        "modules": true,
+        "no_code": true
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "id": "candidate-01",
+      "direction_id": "typographic-pause",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "PREFILTER_PASSED",
+      "codes": []
+    },
+    {
+      "id": "candidate-02",
+      "direction_id": "balanced-dialogue",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 328.0952380952381,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 556.1904761904761,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "PREFILTER_PASSED",
+      "codes": []
+    },
+    {
+      "id": "candidate-03",
+      "direction_id": "indexed-field",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "PREFILTER_PASSED",
+      "codes": []
+    },
+    {
+      "id": "candidate-04",
+      "direction_id": "typographic-pause",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 721,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 1200,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "PREFILTER_PASSED",
+      "codes": []
+    },
+    {
+      "id": "candidate-05",
+      "direction_id": "balanced-dialogue",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 229.04761904761904,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 457.1428571428571,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "PREFILTER_PASSED",
+      "codes": []
+    },
+    {
+      "id": "candidate-06",
+      "direction_id": "indexed-field",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-07",
+      "direction_id": "typographic-pause",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-08",
+      "direction_id": "balanced-dialogue",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 229.04761904761904,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 457.1428571428571,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-09",
+      "direction_id": "indexed-field",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-10",
+      "direction_id": "typographic-pause",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-11",
+      "direction_id": "balanced-dialogue",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 328.0952380952381,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 556.1904761904761,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-12",
+      "direction_id": "indexed-field",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 328.0952380952381,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 556.1904761904761,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "PREFILTER_PASSED",
+      "codes": []
+    },
+    {
+      "id": "candidate-13",
+      "direction_id": "typographic-pause",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-14",
+      "direction_id": "balanced-dialogue",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 328.0952380952381,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 556.1904761904761,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-15",
+      "direction_id": "indexed-field",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 328.0952380952381,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 556.1904761904761,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-16",
+      "direction_id": "typographic-pause",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 721,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 1200,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-17",
+      "direction_id": "balanced-dialogue",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 328.0952380952381,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 556.1904761904761,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-18",
+      "direction_id": "indexed-field",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-19",
+      "direction_id": "typographic-pause",
+      "topology": {
+        "frame": "Flow",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 721,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 1200,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-20",
+      "direction_id": "balanced-dialogue",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 229.04761904761904,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 457.1428571428571,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-21",
+      "direction_id": "indexed-field",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-22",
+      "direction_id": "typographic-pause",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-23",
+      "direction_id": "balanced-dialogue",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Split"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 229.04761904761904,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 457.1428571428571,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "id": "candidate-24",
+      "direction_id": "indexed-field",
+      "topology": {
+        "frame": "Rail",
+        "stage": "Sequence"
+      },
+      "estimate": {
+        "nodes": 7,
+        "client_js_bytes": 0,
+        "media_dimensions": [
+          2700,
+          1819
+        ],
+        "dense": false,
+        "has_media": true,
+        "weights": [
+          2,
+          2
+        ],
+        "geometry": [
+          {
+            "viewport": 360,
+            "reflow": "stack",
+            "estimated_text_width": 280,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 768,
+            "reflow": "stack",
+            "estimated_text_width": 688,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 801,
+            "reflow": "desktop",
+            "estimated_text_width": 513,
+            "min_text_width": 180
+          },
+          {
+            "viewport": 1280,
+            "reflow": "desktop",
+            "estimated_text_width": 992,
+            "min_text_width": 180
+          }
+        ],
+        "estimate_status": "REGISTRY_HEURISTIC_NOT_BROWSER_MEASUREMENT"
+      },
+      "status": "REJECTED",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-01",
+      "art_direction_id": "typographic-pause",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "olive",
+        "type": "serif",
+        "hierarchy": "monument",
+        "rhythm": "quiet",
+        "media_width": "inset",
+        "media_alignment": "center"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-02",
+      "art_direction_id": "balanced-dialogue",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "earth",
+        "type": "serif",
+        "hierarchy": "compact",
+        "rhythm": "dense",
+        "media_width": "full",
+        "media_alignment": "end"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-03",
+      "art_direction_id": "indexed-field",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "ink",
+        "type": "sans",
+        "hierarchy": "compact",
+        "rhythm": "dense",
+        "media_width": "inset",
+        "media_alignment": "end"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-04",
+      "art_direction_id": "typographic-pause",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "olive",
+        "type": "serif",
+        "hierarchy": "monument",
+        "rhythm": "quiet",
+        "media_width": "inset",
+        "media_alignment": "center"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-05",
+      "art_direction_id": "balanced-dialogue",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "earth",
+        "type": "serif",
+        "hierarchy": "compact",
+        "rhythm": "dense",
+        "media_width": "full",
+        "media_alignment": "end"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-12",
+      "art_direction_id": "indexed-field",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "ink",
+        "type": "sans",
+        "hierarchy": "compact",
+        "rhythm": "dense",
+        "media_width": "inset",
+        "media_alignment": "end"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "finalists": [
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-01",
+      "art_direction_id": "typographic-pause",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "olive",
+        "type": "serif",
+        "hierarchy": "monument",
+        "rhythm": "quiet",
+        "media_width": "inset",
+        "media_alignment": "center"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-02",
+      "art_direction_id": "balanced-dialogue",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "earth",
+        "type": "serif",
+        "hierarchy": "compact",
+        "rhythm": "dense",
+        "media_width": "full",
+        "media_alignment": "end"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-04",
+      "art_direction_id": "typographic-pause",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "olive",
+        "type": "serif",
+        "hierarchy": "monument",
+        "rhythm": "quiet",
+        "media_width": "inset",
+        "media_alignment": "center"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Flow",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Sequence",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "candidate-05",
+      "art_direction_id": "balanced-dialogue",
+      "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+      "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+      "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+      "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+      "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+      "registry_version": "h5-lab-1.0.0",
+      "tokens": {
+        "palette": "earth",
+        "type": "serif",
+        "hierarchy": "compact",
+        "rhythm": "dense",
+        "media_width": "full",
+        "media_alignment": "end"
+      },
+      "motion": "quiet",
+      "pages": [
+        {
+          "path": "/",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-7bf9d33184f7e923438acadd"
+              ],
+              "media_usage_refs": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          }
+        },
+        {
+          "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "composition": {
+            "operator": "Rail",
+            "navigation": "before-content",
+            "child": {
+              "operator": "Split",
+              "module_refs": [
+                "semantic-70d73044727ca9b106d272a8"
+              ],
+              "media_usage_refs": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "rejections": [
+    {
+      "stage": "prefilter",
+      "id": "candidate-06",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-07",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-08",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-09",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-10",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-11",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-13",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-14",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-15",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-16",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-17",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-18",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-19",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-20",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-21",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-22",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-23",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    },
+    {
+      "stage": "prefilter",
+      "id": "candidate-24",
+      "codes": [
+        "DUPLICATE_CANDIDATE"
+      ]
+    }
+  ],
+  "usage": {
+    "proposals": 3,
+    "sample_attempts": 24,
+    "render_slots": 4,
+    "actual_provider_calls": 0,
+    "tokens": null,
+    "llm_cost": null,
+    "new_spend": 0,
+    "human_preference": "NOT_COLLECTED"
+  },
+  "diversity": [
+    {
+      "a": "candidate-01",
+      "b": "candidate-02",
+      "distance": 1
+    },
+    {
+      "a": "candidate-01",
+      "b": "candidate-04",
+      "distance": 0.5
+    },
+    {
+      "a": "candidate-01",
+      "b": "candidate-05",
+      "distance": 0.5
+    },
+    {
+      "a": "candidate-02",
+      "b": "candidate-04",
+      "distance": 0.5
+    },
+    {
+      "a": "candidate-02",
+      "b": "candidate-05",
+      "distance": 0.5
+    },
+    {
+      "a": "candidate-04",
+      "b": "candidate-05",
+      "distance": 1
+    }
+  ]
+}

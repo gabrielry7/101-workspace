@@ -1,0 +1,146 @@
+[
+    {
+        "id":  "tests",
+        "started_at":  "2026-10-13T01:25:10.8838361Z",
+        "finished_at":  "2026-10-13T01:25:14.8003282Z",
+        "wall_seconds":  3.8625664,
+        "exit_code":  1,
+        "log":  "docs/evidence/corrections/b0/pre/tests.txt"
+    },
+    {
+        "id":  "check",
+        "started_at":  "2026-10-13T01:25:14.9043191Z",
+        "finished_at":  "2026-10-13T01:25:27.7143550Z",
+        "wall_seconds":  12.8084914,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/check.txt"
+    },
+    {
+        "id":  "validate",
+        "started_at":  "2026-10-13T01:25:27.7157514Z",
+        "finished_at":  "2026-10-13T01:25:28.3920632Z",
+        "wall_seconds":  0.67410799999999993,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/validate.txt"
+    },
+    {
+        "id":  "build",
+        "started_at":  "2026-10-13T01:25:28.3947671Z",
+        "finished_at":  "2026-10-13T01:25:31.8319971Z",
+        "wall_seconds":  3.4319214,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/build.txt"
+    },
+    {
+        "id":  "contracts",
+        "started_at":  "2026-10-13T01:25:31.8342021Z",
+        "finished_at":  "2026-10-13T01:25:32.3836542Z",
+        "wall_seconds":  0.54763509999999993,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/contracts.txt"
+    },
+    {
+        "id":  "taxonomy",
+        "started_at":  "2026-10-13T01:25:32.3870218Z",
+        "finished_at":  "2026-10-13T01:25:33.1707764Z",
+        "wall_seconds":  0.7821288,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/taxonomy.txt"
+    },
+    {
+        "id":  "planner-replay",
+        "started_at":  "2026-10-13T01:25:33.1734407Z",
+        "finished_at":  "2026-10-13T01:25:33.4645861Z",
+        "wall_seconds":  0.2891562,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/planner-replay.txt"
+    },
+    {
+        "id":  "media-replay",
+        "started_at":  "2026-10-13T01:25:33.4668110Z",
+        "finished_at":  "2026-10-13T01:25:34.1203679Z",
+        "wall_seconds":  0.65131759999999994,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/media-replay.txt"
+    },
+    {
+        "id":  "media-verify",
+        "started_at":  "2026-10-13T01:25:34.1229294Z",
+        "finished_at":  "2026-10-13T01:25:34.6757515Z",
+        "wall_seconds":  0.55182389999999992,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/media-verify.txt"
+    },
+    {
+        "id":  "bindings-replay",
+        "started_at":  "2026-10-13T01:25:34.6778800Z",
+        "finished_at":  "2026-10-13T01:25:35.2529287Z",
+        "wall_seconds":  0.5746338,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/bindings-replay.txt"
+    },
+    {
+        "id":  "composition-verify",
+        "started_at":  "2026-10-13T01:25:35.2549439Z",
+        "finished_at":  "2026-10-13T01:25:35.8645446Z",
+        "wall_seconds":  0.6076239,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/composition-verify.txt"
+    },
+    {
+        "id":  "design-replay",
+        "started_at":  "2026-10-13T01:25:35.8667040Z",
+        "finished_at":  "2026-10-13T01:25:36.4666661Z",
+        "wall_seconds":  0.5982959,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/design-replay.txt"
+    },
+    {
+        "id":  "design-verify",
+        "started_at":  "2026-10-13T01:25:36.4692824Z",
+        "finished_at":  "2026-10-13T01:25:37.0856308Z",
+        "wall_seconds":  0.6142245,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/design-verify.txt"
+    },
+    {
+        "id":  "audit-verify",
+        "started_at":  "2026-10-13T01:25:37.0889101Z",
+        "finished_at":  "2026-10-13T01:25:38.3767937Z",
+        "wall_seconds":  1.2861642,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/audit-verify.txt"
+    },
+    {
+        "id":  "cohort-replay",
+        "started_at":  "2026-10-13T01:25:38.3788023Z",
+        "finished_at":  "2026-10-13T01:25:39.0093932Z",
+        "wall_seconds":  0.6286298,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/cohort-replay.txt"
+    },
+    {
+        "id":  "cohort-verify",
+        "started_at":  "2026-10-13T01:25:39.0127802Z",
+        "finished_at":  "2026-10-13T01:25:40.7559741Z",
+        "wall_seconds":  1.7416139,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/cohort-verify.txt"
+    },
+    {
+        "id":  "lock-verify",
+        "started_at":  "2026-10-13T01:25:40.7586449Z",
+        "finished_at":  "2026-10-13T01:25:43.7971674Z",
+        "wall_seconds":  3.0338388999999997,
+        "exit_code":  1,
+        "log":  "docs/evidence/corrections/b0/pre/lock-verify.txt"
+    },
+    {
+        "id":  "h9-inventory",
+        "started_at":  "2026-10-13T01:25:43.8011797Z",
+        "finished_at":  "2026-10-13T01:25:44.1288289Z",
+        "wall_seconds":  0.32684799999999997,
+        "exit_code":  0,
+        "log":  "docs/evidence/corrections/b0/pre/h9-inventory.txt"
+    }
+]

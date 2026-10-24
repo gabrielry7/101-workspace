@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-reference-application-replay-01",
+  "created_at": "2026-10-16T13:46:40.454Z",
+  "steps": [
+    {
+      "id": "reference-application",
+      "started_at": "2026-10-16T13:46:40.459Z",
+      "finished_at": "2026-10-16T13:46:40.791Z",
+      "wall_seconds": 0.3316042,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-01/reference-application.txt",
+      "log_sha256": "cca2d8ed9302382f40d49e4700079070a9a7377b25068f8a6145a4faa4c114f5"
+    },
+    {
+      "id": "reference-evidence",
+      "started_at": "2026-10-16T13:46:40.798Z",
+      "finished_at": "2026-10-16T13:46:41.109Z",
+      "wall_seconds": 0.31069350000000007,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-01/reference-evidence.txt",
+      "log_sha256": "a1aab5e1b242c697ecfd34a1b5fb95470c56749d310d4c8a8abe1c4ad834b3dd"
+    },
+    {
+      "id": "current-browser-evidence",
+      "started_at": "2026-10-16T13:46:41.111Z",
+      "finished_at": "2026-10-16T13:46:42.306Z",
+      "wall_seconds": 1.1955668000000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-01/current-browser-evidence.txt",
+      "log_sha256": "00dd6ba5a74708d5ba6592230e93e279c96d3fbf11a1eb57b7119c26b00368d7"
+    },
+    {
+      "id": "archived-browser-evidence",
+      "started_at": "2026-10-16T13:46:42.308Z",
+      "finished_at": "2026-10-16T13:46:48.878Z",
+      "wall_seconds": 6.5698154,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-01/archived-browser-evidence.txt",
+      "log_sha256": "fa325480817d73d56d39f7bcf09300c50830e3b33b71d02fc7a550918d90ceab"
+    },
+    {
+      "id": "preservation",
+      "started_at": "2026-10-16T13:46:48.879Z",
+      "finished_at": "2026-10-16T13:46:52.005Z",
+      "wall_seconds": 3.1256736999999992,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-replay-01/preservation.txt",
+      "log_sha256": "a37754fa4c0dbe089b2a3a735f6e56c875a51c01339907f6b0c490741d30f27f"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

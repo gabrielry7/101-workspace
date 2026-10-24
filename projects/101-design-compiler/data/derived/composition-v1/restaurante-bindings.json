@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0.0",
+  "runtime": "LOCAL_ASTRO_LAB_ONLY",
+  "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+  "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+  "requirements_sha256": "1a0aabe77975db520a65a8415d6ad6735a92438cfd29db347ff2ddd0407fb7a4",
+  "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+  "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+  "client_id": "101-design-compiler-fixture-review",
+  "project_id": "h3-restaurante-media-pilot",
+  "variants": [
+    {
+      "id": "editorial",
+      "operator": "Sequence",
+      "pages": [
+        {
+          "semantic_path": "/",
+          "preview_path": "/h4/editorial/",
+          "modules": [
+            {
+              "module_id": "semantic-7bf9d33184f7e923438acadd",
+              "component": "Identity",
+              "scope_id": "fixture-restaurante-001",
+              "required": true,
+              "fact_ids": [
+                "f-name"
+              ],
+              "offering_ids": [],
+              "media_usage_ids": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          ]
+        },
+        {
+          "semantic_path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "preview_path": "/h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+          "modules": [
+            {
+              "module_id": "semantic-70d73044727ca9b106d272a8",
+              "component": "OfferingCollection",
+              "scope_id": "fixture-restaurante-001-branch-1",
+              "required": true,
+              "fact_ids": [
+                "f-offering-1"
+              ],
+              "offering_ids": [
+                "offering-1"
+              ],
+              "media_usage_ids": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "split",
+      "operator": "Split",
+      "pages": [
+        {
+          "semantic_path": "/",
+          "preview_path": "/h4/split/",
+          "modules": [
+            {
+              "module_id": "semantic-7bf9d33184f7e923438acadd",
+              "component": "Identity",
+              "scope_id": "fixture-restaurante-001",
+              "required": true,
+              "fact_ids": [
+                "f-name"
+              ],
+              "offering_ids": [],
+              "media_usage_ids": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          ]
+        },
+        {
+          "semantic_path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "preview_path": "/h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+          "modules": [
+            {
+              "module_id": "semantic-70d73044727ca9b106d272a8",
+              "component": "OfferingCollection",
+              "scope_id": "fixture-restaurante-001-branch-1",
+              "required": true,
+              "fact_ids": [
+                "f-offering-1"
+              ],
+              "offering_ids": [
+                "offering-1"
+              ],
+              "media_usage_ids": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rail",
+      "operator": "Rail",
+      "pages": [
+        {
+          "semantic_path": "/",
+          "preview_path": "/h4/rail/",
+          "modules": [
+            {
+              "module_id": "semantic-7bf9d33184f7e923438acadd",
+              "component": "Identity",
+              "scope_id": "fixture-restaurante-001",
+              "required": true,
+              "fact_ids": [
+                "f-name"
+              ],
+              "offering_ids": [],
+              "media_usage_ids": [
+                "h3-real-pilot-atmospheric"
+              ]
+            }
+          ]
+        },
+        {
+          "semantic_path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+          "preview_path": "/h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+          "modules": [
+            {
+              "module_id": "semantic-70d73044727ca9b106d272a8",
+              "component": "OfferingCollection",
+              "scope_id": "fixture-restaurante-001-branch-1",
+              "required": true,
+              "fact_ids": [
+                "f-offering-1"
+              ],
+              "offering_ids": [
+                "offering-1"
+              ],
+              "media_usage_ids": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "fact_id": "f-category",
+      "scope_id": "fixture-restaurante-001",
+      "module_ids": [],
+      "status": "EVIDENCE_ONLY"
+    },
+    {
+      "fact_id": "f-identity",
+      "scope_id": "fixture-restaurante-001",
+      "module_ids": [],
+      "status": "EVIDENCE_ONLY"
+    },
+    {
+      "fact_id": "f-menu",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "module_ids": [],
+      "status": "EVIDENCE_ONLY"
+    },
+    {
+      "fact_id": "f-name",
+      "scope_id": "fixture-restaurante-001",
+      "module_ids": [
+        "semantic-7bf9d33184f7e923438acadd"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "fact_id": "f-offering-1",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "module_ids": [
+        "semantic-70d73044727ca9b106d272a8"
+      ],
+      "status": "BOUND"
+    },
+    {
+      "fact_id": "f-reservation",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "module_ids": [],
+      "status": "EVIDENCE_ONLY"
+    }
+  ],
+  "diagnostics": [
+    {
+      "code": "UNKNOWN",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "capability_id": "delivery",
+      "reason": "Evidence state preserved from upstream",
+      "requested_from": "upstream"
+    },
+    {
+      "code": "MISSING_INPUT",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "capability_id": "reservation",
+      "reason": "approved_action_destination",
+      "requested_from": "upstream"
+    },
+    {
+      "code": "UNKNOWN",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "capability_id": "order",
+      "reason": "Evidence state preserved from upstream",
+      "requested_from": "upstream"
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "delivery",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "reason": "UNKNOWN"
+    },
+    {
+      "id": "order",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "reason": "UNKNOWN"
+    },
+    {
+      "id": "reservation",
+      "scope_id": "fixture-restaurante-001-branch-1",
+      "reason": "MISSING_INPUT"
+    }
+  ],
+  "restrictions": [
+    "SYNTHETIC_FIXTURE: no publicar como negocio real"
+  ],
+  "media_constraints": [
+    "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+    "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+    "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+    "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+  ],
+  "gaps": [
+    {
+      "need": {
+        "id": "need-33f7e20873460d5156843d28",
+        "requirement_id": "semantic-70d73044727ca9b106d272a8",
+        "module_id": "semantic-70d73044727ca9b106d272a8",
+        "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "purpose": "document:menu",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      "missing_count": 1,
+      "reasons": [
+        "NO_AUTHORIZED_CANDIDATE"
+      ],
+      "requested_from": "upstream_or_commission"
+    }
+  ]
+}

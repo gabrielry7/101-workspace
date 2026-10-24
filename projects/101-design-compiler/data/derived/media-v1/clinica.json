@@ -1,0 +1,166 @@
+{
+  "manifest": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-clinica-001",
+    "snapshot_id": "fixture-clinica-001-snapshot-v1-h2",
+    "site_plan_id": "fixture-clinica-001-snapshot-v1-h2:h2-plan:8e6b286afe6ab532d3d34e9a",
+    "client_id": "synthetic-client",
+    "project_id": "synthetic-project",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "plan_sha256": "40ca10e7e468f3cd028afaf59d23ebf01e4e102334277a907b71c35a8ff117a9",
+    "requirements_sha256": "7579868b10b45925edf10a0efe3bd55b4afa745729aafcd5a18e6028018b8ebe",
+    "input_sha256": "7610045cc7694776990d8773c546ca7cb5fca4c3e62abb35948493139eca7d98",
+    "assets": [],
+    "grants": [],
+    "usages": [],
+    "needs": [
+      {
+        "id": "need-1940ca355c7a030d1de4be2e",
+        "requirement_id": "semantic-d5125e86ff713740bc821b88",
+        "module_id": "semantic-d5125e86ff713740bc821b88",
+        "page": "/sedes/s-ff3eb5111417501779ccb7b0/equipo",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "purpose": "document:professional_profiles",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "professional-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-c4bb2ec9debcb9006072244c",
+        "requirement_id": "semantic-e12f761a8b69cedd195033b7",
+        "module_id": "semantic-e12f761a8b69cedd195033b7",
+        "page": "/",
+        "scope_id": "fixture-clinica-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-fcc66c055fe39d24005a92e0",
+        "requirement_id": "semantic-f8309a2d15f9e9e9a222e8b0",
+        "module_id": "semantic-f8309a2d15f9e9e9a222e8b0",
+        "page": "/sedes/s-ff3eb5111417501779ccb7b0/servicios",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "purpose": "document:service_catalog",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "service-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      }
+    ],
+    "decisions": []
+  },
+  "brief": {
+    "schema_version": "1.0.0",
+    "site_plan_id": "fixture-clinica-001-snapshot-v1-h2:h2-plan:8e6b286afe6ab532d3d34e9a",
+    "manifest_sha256": "c9a6d180b1823b3f57d324a18f44fedf2055d6c977bb7b4c029281ee7a0866c6",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "gaps": [
+      {
+        "need": {
+          "id": "need-1940ca355c7a030d1de4be2e",
+          "requirement_id": "semantic-d5125e86ff713740bc821b88",
+          "module_id": "semantic-d5125e86ff713740bc821b88",
+          "page": "/sedes/s-ff3eb5111417501779ccb7b0/equipo",
+          "scope_id": "fixture-clinica-001-branch-1",
+          "purpose": "document:professional_profiles",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "professional-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-c4bb2ec9debcb9006072244c",
+          "requirement_id": "semantic-e12f761a8b69cedd195033b7",
+          "module_id": "semantic-e12f761a8b69cedd195033b7",
+          "page": "/",
+          "scope_id": "fixture-clinica-001",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      },
+      {
+        "need": {
+          "id": "need-fcc66c055fe39d24005a92e0",
+          "requirement_id": "semantic-f8309a2d15f9e9e9a222e8b0",
+          "module_id": "semantic-f8309a2d15f9e9e9a222e8b0",
+          "page": "/sedes/s-ff3eb5111417501779ccb7b0/servicios",
+          "scope_id": "fixture-clinica-001-branch-1",
+          "purpose": "document:service_catalog",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "service-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "closure": "PENDING_AUTHORIZED_MEDIA_PACKAGE"
+  }
+}

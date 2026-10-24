@@ -1,0 +1,143 @@
+{
+  "kind": "VIDEO_ONLY_PIXEL_TRANSCODE",
+  "source": ".tools/b2-demo/originals/149678.mp4",
+  "source_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+  "output": "public/media/b2-fictional/149678-silent-640.webm",
+  "output_sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b",
+  "output_bytes": 4446094,
+  "tool": {
+    "python": "3.13.0 (tags/v3.13.0:60403a5, Oct  7 2024, 09:38:07) [MSC v.1941 64 bit (AMD64)]",
+    "opencv": "4.10.0",
+    "opencv_binary": "C:\\Users\\gabri\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\cv2\\cv2.pyd",
+    "opencv_sha256": "a73aeb87dc1b2f6cd6e978b653e89604f09be4b9531573020695cb48eb998e8a",
+    "encoder": "VP80"
+  },
+  "width": 640,
+  "height": 360,
+  "fps": 25.0,
+  "source_frames_decoded": 234,
+  "output_frames_decoded": 234,
+  "duration_from_frames": 9.36,
+  "audio_input": "NOT_PASSED_TO_WRITER",
+  "audio_output": "REQUIRES_CONTAINER_VERIFICATION",
+  "source_samples": [
+    {
+      "frame": 0,
+      "seconds": 0.0,
+      "path": ".tools/b2-demo/video-review/original-0000.jpg"
+    },
+    {
+      "frame": 25,
+      "seconds": 1.0,
+      "path": ".tools/b2-demo/video-review/original-0025.jpg"
+    },
+    {
+      "frame": 50,
+      "seconds": 2.0,
+      "path": ".tools/b2-demo/video-review/original-0050.jpg"
+    },
+    {
+      "frame": 75,
+      "seconds": 3.0,
+      "path": ".tools/b2-demo/video-review/original-0075.jpg"
+    },
+    {
+      "frame": 100,
+      "seconds": 4.0,
+      "path": ".tools/b2-demo/video-review/original-0100.jpg"
+    },
+    {
+      "frame": 125,
+      "seconds": 5.0,
+      "path": ".tools/b2-demo/video-review/original-0125.jpg"
+    },
+    {
+      "frame": 150,
+      "seconds": 6.0,
+      "path": ".tools/b2-demo/video-review/original-0150.jpg"
+    },
+    {
+      "frame": 175,
+      "seconds": 7.0,
+      "path": ".tools/b2-demo/video-review/original-0175.jpg"
+    },
+    {
+      "frame": 200,
+      "seconds": 8.0,
+      "path": ".tools/b2-demo/video-review/original-0200.jpg"
+    },
+    {
+      "frame": 225,
+      "seconds": 9.0,
+      "path": ".tools/b2-demo/video-review/original-0225.jpg"
+    }
+  ],
+  "output_samples": [
+    {
+      "frame": 0,
+      "seconds": 0.0,
+      "pixels_sha256": "5edd4e791fba3c2e455e80dae640d536319cd09ea84f35b6887e4a81e7af22f5",
+      "path": ".tools/b2-demo/video-review/derived-0000.jpg"
+    },
+    {
+      "frame": 25,
+      "seconds": 1.0,
+      "pixels_sha256": "e8ed60e6070e608732312d3012bc1e55b375fbd2ae4d979a2d4965fe469311cc",
+      "path": ".tools/b2-demo/video-review/derived-0025.jpg"
+    },
+    {
+      "frame": 50,
+      "seconds": 2.0,
+      "pixels_sha256": "71cf0df873ffcf6ad0863f05d13b0a946df0833aa5102a7c76b005e75101869b",
+      "path": ".tools/b2-demo/video-review/derived-0050.jpg"
+    },
+    {
+      "frame": 75,
+      "seconds": 3.0,
+      "pixels_sha256": "c328a2162f6b8c13e3b70e5768108ab4389fb27a2669557d0e5f57b4da82b8a9",
+      "path": ".tools/b2-demo/video-review/derived-0075.jpg"
+    },
+    {
+      "frame": 100,
+      "seconds": 4.0,
+      "pixels_sha256": "ee8001f5c1b32d3073b59e9ca8c4d5014027b55095057f45c8718f6872a988c1",
+      "path": ".tools/b2-demo/video-review/derived-0100.jpg"
+    },
+    {
+      "frame": 125,
+      "seconds": 5.0,
+      "pixels_sha256": "abd8ec8f7d6a119282b07b30c353d19efed06a28ae376d96aca81bdb8399a1ba",
+      "path": ".tools/b2-demo/video-review/derived-0125.jpg"
+    },
+    {
+      "frame": 150,
+      "seconds": 6.0,
+      "pixels_sha256": "046c45a221de166dd6aaa2bf239862ac36a139ce06094315c722a8bc703d6835",
+      "path": ".tools/b2-demo/video-review/derived-0150.jpg"
+    },
+    {
+      "frame": 175,
+      "seconds": 7.0,
+      "pixels_sha256": "6822c8a04796cafbaaa1a510932add8a0164b0688e43841c72052fdc79ab4b97",
+      "path": ".tools/b2-demo/video-review/derived-0175.jpg"
+    },
+    {
+      "frame": 200,
+      "seconds": 8.0,
+      "pixels_sha256": "3106964c1ff28ca5cfe2c5bd9e880310eb31a86d6492c40e49aaf10d5a1e2102",
+      "path": ".tools/b2-demo/video-review/derived-0200.jpg"
+    },
+    {
+      "frame": 225,
+      "seconds": 9.0,
+      "pixels_sha256": "0e847c3647faca94b8a7b9a89a32c43a1a3c5d3dbbaaea3199d424bed5ceb58a",
+      "path": ".tools/b2-demo/video-review/derived-0225.jpg"
+    }
+  ],
+  "limits": [
+    "No source audio listening/rights approval",
+    "One-frame-per-second visual review is separate from full technical decode",
+    "Original retained privately; only silent derivative may be admitted",
+    "Encoded bytes pinned; recipe is not claimed portable or bit-identical across encoders"
+  ]
+}

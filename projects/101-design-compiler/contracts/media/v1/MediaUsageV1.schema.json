@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "need_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "asset_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "grant_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "client_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "business_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "page": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "module_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "DOCUMENTARY",
+        "ILLUSTRATIVE",
+        "ATMOSPHERIC"
+      ]
+    },
+    "representation": {
+      "type": "string",
+      "enum": [
+        "BUSINESS_EVIDENCE",
+        "GENERIC_CONTEXT"
+      ]
+    },
+    "subject_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CROP",
+          "RESIZE",
+          "TRANSCODE",
+          "COLOR",
+          "AI_EDIT"
+        ]
+      }
+    },
+    "territory": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "attribution_text": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "generic_label": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "endorsement_claimed": {
+      "type": "boolean"
+    },
+    "context_notices": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "ai_operations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "classification",
+          "embedding",
+          "vision",
+          "editing",
+          "training"
+        ]
+      }
+    },
+    "automated_access": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "search",
+          "download"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "need_id",
+    "asset_id",
+    "grant_id",
+    "client_id",
+    "project_id",
+    "business_id",
+    "scope_id",
+    "page",
+    "module_id",
+    "purpose",
+    "role",
+    "representation",
+    "subject_ids",
+    "transformations",
+    "territory",
+    "attribution_text",
+    "generic_label",
+    "ai_operations",
+    "automated_access"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:MediaUsageV1:1.0.0",
+  "title": "MediaUsageV1",
+  "description": "H3 media contract; deterministic rights and suitability checks required; no rights conferred by URLs."
+}

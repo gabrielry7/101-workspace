@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b1-final",
+  "created_at": "2026-10-13T04:41:34.194Z",
+  "steps": [
+    {
+      "id": "workspace",
+      "started_at": "2026-10-13T04:41:34.198Z",
+      "finished_at": "2026-10-13T04:42:13.108Z",
+      "wall_seconds": 38.9098448,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/final/workspace.txt",
+      "log_sha256": "e592f10530b64431b640b6cecea125325ccf63c183f3358b1c85d986b0f49854"
+    },
+    {
+      "id": "clean",
+      "started_at": "2026-10-13T04:42:13.111Z",
+      "finished_at": "2026-10-13T04:42:43.259Z",
+      "wall_seconds": 30.148076199999995,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/final/clean.txt",
+      "log_sha256": "e592f10530b64431b640b6cecea125325ccf63c183f3358b1c85d986b0f49854"
+    },
+    {
+      "id": "equality",
+      "started_at": "2026-10-13T04:42:43.260Z",
+      "finished_at": "2026-10-13T04:42:59.168Z",
+      "wall_seconds": 15.908464599999991,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/final/equality.txt",
+      "log_sha256": "222ffd0fab9bfcfa24146a3e473fe29a046b94266c2a01262005b511122d5db1"
+    },
+    {
+      "id": "b1-tests",
+      "started_at": "2026-10-13T04:42:59.170Z",
+      "finished_at": "2026-10-13T04:43:01.389Z",
+      "wall_seconds": 2.2195671999999904,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/final/b1-tests.txt",
+      "log_sha256": "96b38678aa194d62a292ff3bec7dffe8bf3aaa47fed2ea84cc1cd8ff9b539445"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-13T04:43:01.391Z",
+      "finished_at": "2026-10-13T04:43:15.468Z",
+      "wall_seconds": 14.077393599999995,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/final/check.txt",
+      "log_sha256": "b8333e5585a8b3f703bfd360e52137f224f56ec6fd65724b0d671c986c5fddbc"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

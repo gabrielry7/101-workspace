@@ -1,0 +1,9 @@
+file:///C:/Users/gabri/101-design-compiler/scripts/lib/correction-run.ts:78
+ if (changed.length) throw Error(`B0_PROTECTED_FILES_CHANGED:${changed.join(',')}`);
+                           ^
+
+Error: B0_PROTECTED_FILES_CHANGED:package-lock.json,package.json
+    at verifyProtectedFiles (file:///C:/Users/gabri/101-design-compiler/scripts/lib/correction-run.ts:78:28)
+    at async file:///C:/Users/gabri/101-design-compiler/scripts/b2-verify.ts:23:18
+
+Node.js v24.21.0

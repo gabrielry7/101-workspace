@@ -1,0 +1,7 @@
+---
+import { loadCohortLab } from '../../../../scripts/load-cohort-lab.ts';
+import DesignComposition from '../../../components/composition/DesignComposition.astro';
+export async function getStaticPaths(){const cohort=await loadCohortLab(true);return cohort.cases.flatMap(c=>c.lab&&c.search?c.search.finalists.flatMap(design=>c.lab!.content.pages.map(p=>({params:{variant:`${c.scenario}-${design.id}`,path:p.path==='/'?undefined:p.path.slice(1)},props:{lab:c.lab,design,page:p.path,mountId:`${c.scenario}-${design.id}`}}))):[]);}
+const {lab,design,page,mountId}=Astro.props;
+---
+<DesignComposition lab={lab} design={design} page={page} mount="h7" mountId={mountId}/>

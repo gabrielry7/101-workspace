@@ -1,0 +1,51 @@
+
+> 101-design-compiler@0.0.0 build
+> npm run validate && astro build
+
+
+> 101-design-compiler@0.0.0 validate
+> node --experimental-strip-types scripts/validate-fixtures.ts
+
+restaurante: PASSED
+gimnasio: PASSED
+ferreteria: PASSED
+planner/restaurante: PASSED (READY)
+planner/gimnasio: PASSED (READY)
+planner/ferreteria: PASSED (READY)
+planner/clinica: PASSED (READY)
+planner/hibrido-gimnasio-tienda: PASSED (READY)
+planner/hibrido-sin-evidencia: PASSED (CONTENT_BLOCKED)
+planner/hotel-restaurante-sucursales: PASSED (READY)
+planner/informacion-incompleta: PASSED (CONTENT_BLOCKED)
+planner/servicios-profesionales: PASSED (READY)
+media/restaurante: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/synthetic-permission-control: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/synthetic-permission-default-blocked: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/gimnasio: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/ferreteria: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/clinica: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/hibrido-gimnasio-tienda: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/hotel-restaurante-sucursales: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/servicios-profesionales: PASSED (PENDING_AUTHORIZED_MEDIA_PACKAGE)
+media/real-restaurante-pilot: PASSED (AUTHORIZED_PILOT_PACKAGE_WITH_GAPS)
+22:35:04 [types] Generated 61ms
+22:35:04 [build] output: "static"
+22:35:04 [build] mode: "static"
+22:35:04 [build] directory: C:\Users\gabri\101-design-compiler\dist\
+22:35:04 [build] Collecting build info...
+22:35:04 [build] ✓ Completed in 86ms.
+22:35:04 [build] Building static entrypoints...
+22:35:04 [vite] ✓ built in 223ms
+22:35:04 [vite] ✓ built in 20ms
+22:35:04 [build] Rearranging server assets...
+
+ generating static routes 
+ENOENT: no such file or directory, scandir 'C:\Users\gabri\101-design-compiler\dist\fixtures\corrections\b1\'
+  Location:
+    C:\Users\gabri\101-design-compiler\node_modules\astro\dist\core\render\route-cache.js:32:17
+  Stack trace:
+    at async readdir (node:internal/fs/promises:1661:18)
+    at async Module.getStaticPaths (file:///C:/Users/gabri/101-design-compiler/dist/.prerender/chunks/_scenario__CQ7Rqxwj.mjs:26:10)
+    at async #getPathsForRoute (file:///C:/Users/gabri/101-design-compiler/node_modules/astro/dist/runtime/prerender/static-paths.js:55:25)
+    at async generatePages (file:///C:/Users/gabri/101-design-compiler/node_modules/astro/dist/core/build/generate.js:90:29)
+    at async Object.buildApp (file:///C:/Users/gabri/101-design-compiler/node_modules/vite/dist/node/chunks/node.js:35075:5)

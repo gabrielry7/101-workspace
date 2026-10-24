@@ -1,0 +1,28 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {validateLock,lockHash} from '../../src/lock/validate.ts';
+import {verifyLockFiles} from '../../scripts/lib/rebuild-lock.ts';
+import {auditCandidate} from '../../src/audit/evaluate.ts';
+const original=JSON.parse(await readFile('fixtures/locks/h8/pilot-flow.json','utf8'));
+const results=[];
+for(const mode of ['missing','coverage','context','policy','report','evidence','pin','consistent-fail']){
+ const value=structuredClone(original);
+ if(mode==='missing')delete value.audit_state;
+ if(mode==='coverage')value.audit_state.entries.reverse().pop();
+ if(mode==='context')value.audit_state.context_sha256='1'.repeat(64);
+ if(mode==='policy')value.audit_state.policy.max_requests++;
+ if(mode==='report')value.audit_state.entries[0].audit.measurements.page_body_bytes++;
+ if(mode==='evidence')value.audit_state.evidence=[];
+ if(mode==='pin')value.audit_state.renderer_sources[0].sha256='1'.repeat(64);
+ if(mode==='consistent-fail'){
+  const e=value.audit_state.entries[0];e.view.geometry.document_width=9000;
+  e.audit=auditCandidate({schema_version:'1.0.0',plan:value.resolved_plan,fixture_mode:'FROZEN_LAB',layout:{measure:'fluid'}},value.lab,e.view,value.audit_state.policy,p=>`/${value.mount.kind}/${value.mount.id}${p==='/'?'/':`${p}/`}`);
+  assert.equal(e.audit.status,'FAIL');
+ }
+ value.lock_sha256=lockHash(value);const checked=validateLock(value);assert.equal(checked.success,false,mode);results.push({mode,codes:checked.codes});
+}
+// Removing a pin passes only the in-memory subset check; complete file verification must reject it.
+const incomplete=structuredClone(original);incomplete.audit_state.renderer_sources.pop();incomplete.lock_sha256=lockHash(incomplete);
+await assert.rejects(verifyLockFiles(incomplete),/LOCK_AUDIT_GRAPH_MISMATCH/);results.push({mode:'missing-renderer-pin',code:'LOCK_AUDIT_GRAPH_MISMATCH'});
+await writeFile('docs/reviews/h8-correction/probe.json',JSON.stringify({status:'PASS_NEGATIVES_REJECTED',results},null,2)+'\n');
+console.log('Nine independent resealed negatives rejected, including complete renderer graph linkage.');

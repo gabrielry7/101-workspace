@@ -1,0 +1,992 @@
+{
+  "kind": "B2_ACTUAL_MEDIA_RENDER_QA",
+  "created_at": "2026-10-15T01:44:44.776Z",
+  "status": "TECHNICAL_PASS_HUMAN_REVIEW_PENDING",
+  "library_sha256": "56149318785d0990032e2b902aab01ad15879d1924f4e423c2e2c382eb6a1e45",
+  "runtime_sha256": "8818373779050bdb597c4e9313a31615c46892046a4572e2113366de11b9040b",
+  "browser": {
+    "source": "scripts/lib/local-browser.ts",
+    "source_sha256": "5e085ae09f4634959c57324a9b418440149ad0cfe66e566358b1154cdd11a9d3",
+    "adapted_sha256": "0239744fffa4c3934054563e09c495859a55990244be51ef1b0e2f2812253c36",
+    "flags": [
+      "--no-sandbox",
+      "--disable-background-networking",
+      "--disable-component-update",
+      "--disable-sync"
+    ],
+    "sandbox": "DISABLED_ONLY_FOR_FIXED_LOCAL_TEST_PAGES",
+    "production_browser": false
+  },
+  "views": [
+    {
+      "label": "b2-desktop",
+      "route": "/b2/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 1265,
+        "height": 947,
+        "overflow": [],
+        "min_font_px": 16,
+        "request_ids": [],
+        "bindings": [],
+        "references": [],
+        "providers": [],
+        "forms": 0,
+        "scripts": 0,
+        "images": [],
+        "figure": null,
+        "documentary_gap": false,
+        "resources": [
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 2.5
+          },
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 2
+          }
+        ],
+        "links": [
+          "/b2/pilot/",
+          "/b2/providers/",
+          "/b2/corpus/",
+          "/b1/revision/"
+        ],
+        "text_sha256": "184b349025264cbe46c3add57d6539644d063d501e08c3b19dda9eb58829f6fd"
+      },
+      "keyboard": {
+        "skip": true,
+        "disclosure": true,
+        "navigation": true
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2/clean-qa-01/b2-desktop.png",
+        "sha256": "65af9947040e9215f1ab1656e3c5f091f763abcaa52827223d3de627703a269d",
+        "rgba_sha256": "9b6cae8e2dce02702e0a0a26078d7bb11dd7529740b770d4f226b9fb00e9edf7",
+        "scope": "VIEWPORT_ONLY"
+      },
+      "html_sha256": "937f4f7774e9d760a29364276e85f1d31253d5c6b9db1209d56fee1a83c37335",
+      "html_bytes": 3736,
+      "requests": [
+        "<LOCAL>/b2/",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/pilot/",
+        "<LOCAL>/media/b2/d255-19-960.webp"
+      ]
+    },
+    {
+      "label": "pilot-desktop",
+      "route": "/b2/pilot/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 1265,
+        "height": 10498,
+        "overflow": [],
+        "min_font_px": 13,
+        "request_ids": [
+          "catalog:0574c1941224d7051b1d65e8",
+          "catalog:0ee4cd01c116c233b64365f9",
+          "catalog:1056f1670d21f9fec79a876b",
+          "catalog:20182463c91af5d4a5396be4",
+          "catalog:2c77c7074d8052a667a72a10",
+          "catalog:2f84fdb21bf742d10091f01a",
+          "catalog:41f496bcc326143b7e2c30dc",
+          "catalog:4cc1b559eb427d4f5679695c",
+          "catalog:5e5f14f6966e360498306f48",
+          "catalog:5ecb2426b96be08e951ccf7a",
+          "catalog:60c6db1b3b2034735641ae80",
+          "catalog:6e2ba92a64f887ab821a46a3",
+          "catalog:7a89cfb8fee6ad33e1e6ae05",
+          "catalog:80bab15df6cd586e09c65849",
+          "catalog:84bbbd3e989c60ea97319559",
+          "catalog:92a39c56990fd410f7e79cb3",
+          "catalog:9518e3bfece4d00a8b471fca",
+          "catalog:9d8abff08cbadd8281ca4298",
+          "catalog:a1c63acfba92ab75ddca5bd9",
+          "catalog:a2e31cb43b27e865dc1b2cc5",
+          "catalog:a7e04068407a2b7cf6f76a86",
+          "catalog:ab67c25b90756a9480b8df02",
+          "catalog:b4062542d597ef69dc9f1792",
+          "catalog:bf6bd52f5a59b3c6572f4049",
+          "catalog:c24dff9e81bfb7bb2cded4bc",
+          "catalog:d5b5607697cf73e56c495994",
+          "catalog:dbd066d29d0e27ecc60f1ed6",
+          "catalog:efff30e317bb0749a3b1240b",
+          "catalog:f5af8f2ee85e2bd3f186aada",
+          "catalog:fb4a2136962b2df1029554e9",
+          "plan:need-33f7e20873460d5156843d28",
+          "plan:need-7bacfc78bdb58db1dd06998a"
+        ],
+        "bindings": [
+          "binding:usage-71a32d2a61baa1ca81db0b49",
+          "binding:usage-b3e8f130a11a2b4da93e05aa",
+          "binding:usage-1bfbfa2ab531e5e1404eca47"
+        ],
+        "references": [],
+        "providers": [],
+        "forms": 0,
+        "scripts": 0,
+        "images": [
+          {
+            "src": "/media/b2/d255-19-960.webp",
+            "decoded": true,
+            "natural_width": 640,
+            "natural_height": 431,
+            "width": 640,
+            "height": 431.328125,
+            "alt": "Imagen atmosférica genérica: Pimientos rojos y follaje; contexto genérico, no oferta ni sede del negocio ficticio"
+          }
+        ],
+        "figure": {
+          "libraryMedia": "",
+          "librarySha256": "56149318785d0990032e2b902aab01ad15879d1924f4e423c2e2c382eb6a1e45",
+          "usageIds": "usage-71a32d2a61baa1ca81db0b49 usage-b3e8f130a11a2b4da93e05aa usage-1bfbfa2ab531e5e1404eca47",
+          "semanticPage": "/",
+          "moduleId": "semantic-7bf9d33184f7e923438acadd",
+          "role": "ATMOSPHERIC",
+          "originalSha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+          "astroCidKlbo2nxy": ""
+        },
+        "credit": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+        "context": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+        "notice": "USDA ARS no respalda este fixture, producto, empresa ni posición.",
+        "documentary_gap": true,
+        "resources": [
+          {
+            "path": "/media/b2/d255-19-960.webp",
+            "bytes": 108258,
+            "duration_ms": 2.399999998509884
+          },
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 1.6999999955296516
+          }
+        ],
+        "links": [
+          "/b2/",
+          "/b2/providers/",
+          "/b2/corpus/",
+          "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/"
+        ],
+        "served_media": {
+          "path": "/media/b2/d255-19-960.webp",
+          "bytes": 108258,
+          "sha256": "bead733d81673ac54b11d4e1179defce5a2992c94081bc25b7dc788ac49d0f72",
+          "mime": "application/octet-stream"
+        },
+        "text_sha256": "85a3703ed0ada9ab4d73e8283261d4cac4114d223c7550f796239056a5dd7ce4"
+      },
+      "keyboard": {
+        "skip": true,
+        "disclosure": true,
+        "navigation": true
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2/clean-qa-01/pilot-desktop.png",
+        "sha256": "0abd6006829c43ff26d151968dfad30fcf362fcc9f849179deebb661220f1b17",
+        "rgba_sha256": "dd2d1323e71acb7680bf31b92f5d88f3d686cb8f030a836b7a1bcbce28fe1503",
+        "scope": "VIEWPORT_ONLY"
+      },
+      "html_sha256": "dcdb5503f120bdde5bc081748cc59645fea45de6c977d09d3d7efcfd08ded216",
+      "html_bytes": 29150,
+      "requests": [
+        "<LOCAL>/b2/pilot/",
+        "<LOCAL>/media/b2/d255-19-960.webp",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/",
+        "<LOCAL>/favicon.ico"
+      ]
+    },
+    {
+      "label": "corpus-desktop",
+      "route": "/b2/corpus/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 1265,
+        "height": 12593,
+        "overflow": [],
+        "min_font_px": 16,
+        "request_ids": [],
+        "bindings": [],
+        "references": [
+          {
+            "id": "reference-01",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-02",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-03",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-04",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-05",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-06",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-07",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-08",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-09",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-10",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-11",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-12",
+            "scope": "SPECIFIC_PAGE_ONLY"
+          },
+          {
+            "id": "reference-13",
+            "scope": "STORYTELLING_ONLY"
+          },
+          {
+            "id": "reference-14",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-15",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-16",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-17",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-18",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-19",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-20",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-21",
+            "scope": "DROPDOWN_ONLY"
+          }
+        ],
+        "providers": [],
+        "forms": 0,
+        "scripts": 0,
+        "images": [],
+        "figure": null,
+        "documentary_gap": false,
+        "resources": [
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 1.5999999940395355
+          }
+        ],
+        "links": [
+          "/b2/",
+          "/b2/pilot/",
+          "https://osiprestaurant.com/",
+          "https://centralrestaurante.com.pe/",
+          "https://www.asadoretxebarri.com/",
+          "https://kolrestaurant.com/",
+          "https://aira.se/",
+          "https://luca.restaurant/",
+          "https://www.padella.co/",
+          "https://noma.dk/",
+          "https://www.restaurangang.se/",
+          "https://www.kadeau.dk/",
+          "https://milcentro.pe/",
+          "https://www.aponiente.com/menu-aponiente-2026/",
+          "https://khufus.com/",
+          "https://www.heckfieldplace.com/",
+          "https://framacph.com/",
+          "https://www.dinesen.com/en",
+          "https://lunecroissanterie.com/",
+          "https://normcph.com/",
+          "https://themodernhouse.com/",
+          "https://www.polene-paris.com/",
+          "https://singervehicledesign.com/"
+        ],
+        "text_sha256": "36cd5dc8ecadfdd303854c19d156826398442da60bd9195d757617b71f2e6c5a"
+      },
+      "keyboard": {
+        "skip": true,
+        "disclosure": true,
+        "navigation": true
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2/clean-qa-01/corpus-desktop.png",
+        "sha256": "b1bc062ca40370c8a8b901ee5ec1b9aac374db81a22274f9855ba5346fef1820",
+        "rgba_sha256": "9879ea0fe1a661c4c3e3d452f25d218b9d1c31f0c94a8d9cdfdb48209d2ea5bb",
+        "scope": "VIEWPORT_ONLY"
+      },
+      "html_sha256": "74b71f8004ad77e2a7c3054ab63ffab61fae0f621645b6f27a9c99ae2af176a9",
+      "html_bytes": 26794,
+      "requests": [
+        "<LOCAL>/b2/corpus/",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/",
+        "<LOCAL>/favicon.ico"
+      ]
+    },
+    {
+      "label": "providers-desktop",
+      "route": "/b2/providers/",
+      "viewport": {
+        "id": "desktop",
+        "width": 1280,
+        "height": 900
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 1265,
+        "height": 11814,
+        "overflow": [],
+        "min_font_px": 16,
+        "request_ids": [],
+        "bindings": [],
+        "references": [],
+        "providers": [
+          "usda-ars",
+          "pixabay",
+          "pexels",
+          "unsplash",
+          "adobe-stock",
+          "artlist",
+          "wikimedia"
+        ],
+        "forms": 0,
+        "scripts": 0,
+        "images": [],
+        "figure": null,
+        "documentary_gap": false,
+        "resources": [
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 2
+          }
+        ],
+        "links": [
+          "/b2/",
+          "/b2/pilot/",
+          "https://www.ars.usda.gov/oc/images/copyright/",
+          "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+          "https://pixabay.com/api/docs/",
+          "https://pixabay.com/service/terms/",
+          "https://www.pexels.com/license/",
+          "https://help.pexels.com/hc/en-us/articles/900004904026-How-do-I-get-an-API-key",
+          "https://help.pexels.com/hc/en-us/articles/900005880463-What-are-the-Terms-and-Conditions",
+          "https://unsplash.com/license",
+          "https://unsplash.com/api-terms",
+          "https://help.unsplash.com/en/articles/2511271-guideline-hotlinking-images",
+          "https://helpx.adobe.com/stock/web/common-questions/usage-licensing.html",
+          "https://developer.adobe.com/stock/docs/faq/",
+          "https://artlist.io/help-center/privacy-terms/artlist-license",
+          "https://artlist.io/help-center/privacy-terms/terms-of-use/",
+          "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia",
+          "https://commons.wikimedia.org/wiki/Commons:API"
+        ],
+        "text_sha256": "bfc1c1742faed14156f3265f2350933359ecd906c8699bdec4a66b2574a38c41"
+      },
+      "keyboard": {
+        "skip": true,
+        "disclosure": true,
+        "navigation": true
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2/clean-qa-01/providers-desktop.png",
+        "sha256": "f683683640f862579c07a55cbacc9c097dacddc87110a7e36fdeb7798e374a2f",
+        "rgba_sha256": "8b0d444aa8f58a0291c61a0b3a5f02afbbe6785256da3d30546b0b326678e939",
+        "scope": "VIEWPORT_ONLY"
+      },
+      "html_sha256": "c343c0e4ede91110a6dced3aceebd82db23cc2f0d4df36969e247d79536812db",
+      "html_bytes": 25475,
+      "requests": [
+        "<LOCAL>/b2/providers/",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/",
+        "<LOCAL>/favicon.ico"
+      ]
+    },
+    {
+      "label": "b2-mobile",
+      "route": "/b2/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 390,
+        "height": 1282,
+        "overflow": [],
+        "min_font_px": 16,
+        "request_ids": [],
+        "bindings": [],
+        "references": [],
+        "providers": [],
+        "forms": 0,
+        "scripts": 0,
+        "images": [],
+        "figure": null,
+        "documentary_gap": false,
+        "resources": [
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 1.3999999985098839
+          }
+        ],
+        "links": [
+          "/b2/pilot/",
+          "/b2/providers/",
+          "/b2/corpus/",
+          "/b1/revision/"
+        ],
+        "text_sha256": "184b349025264cbe46c3add57d6539644d063d501e08c3b19dda9eb58829f6fd"
+      },
+      "keyboard": {
+        "skip": true,
+        "disclosure": true,
+        "navigation": true
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2/clean-qa-01/b2-mobile.png",
+        "sha256": "44303c2df6462d60f21a1cfb189e26d4732e831c14342e9d60a93267d7407a57",
+        "rgba_sha256": "71a47a9709b45d86089e27437f070b136a4ecb1f0b1f68bfe1b9af14bc9e5a40",
+        "scope": "VIEWPORT_ONLY"
+      },
+      "html_sha256": "937f4f7774e9d760a29364276e85f1d31253d5c6b9db1209d56fee1a83c37335",
+      "html_bytes": 3736,
+      "requests": [
+        "<LOCAL>/b2/",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/pilot/",
+        "<LOCAL>/media/b2/d255-19-480.webp"
+      ]
+    },
+    {
+      "label": "pilot-mobile",
+      "route": "/b2/pilot/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 390,
+        "height": 15198,
+        "overflow": [],
+        "min_font_px": 13,
+        "request_ids": [
+          "catalog:0574c1941224d7051b1d65e8",
+          "catalog:0ee4cd01c116c233b64365f9",
+          "catalog:1056f1670d21f9fec79a876b",
+          "catalog:20182463c91af5d4a5396be4",
+          "catalog:2c77c7074d8052a667a72a10",
+          "catalog:2f84fdb21bf742d10091f01a",
+          "catalog:41f496bcc326143b7e2c30dc",
+          "catalog:4cc1b559eb427d4f5679695c",
+          "catalog:5e5f14f6966e360498306f48",
+          "catalog:5ecb2426b96be08e951ccf7a",
+          "catalog:60c6db1b3b2034735641ae80",
+          "catalog:6e2ba92a64f887ab821a46a3",
+          "catalog:7a89cfb8fee6ad33e1e6ae05",
+          "catalog:80bab15df6cd586e09c65849",
+          "catalog:84bbbd3e989c60ea97319559",
+          "catalog:92a39c56990fd410f7e79cb3",
+          "catalog:9518e3bfece4d00a8b471fca",
+          "catalog:9d8abff08cbadd8281ca4298",
+          "catalog:a1c63acfba92ab75ddca5bd9",
+          "catalog:a2e31cb43b27e865dc1b2cc5",
+          "catalog:a7e04068407a2b7cf6f76a86",
+          "catalog:ab67c25b90756a9480b8df02",
+          "catalog:b4062542d597ef69dc9f1792",
+          "catalog:bf6bd52f5a59b3c6572f4049",
+          "catalog:c24dff9e81bfb7bb2cded4bc",
+          "catalog:d5b5607697cf73e56c495994",
+          "catalog:dbd066d29d0e27ecc60f1ed6",
+          "catalog:efff30e317bb0749a3b1240b",
+          "catalog:f5af8f2ee85e2bd3f186aada",
+          "catalog:fb4a2136962b2df1029554e9",
+          "plan:need-33f7e20873460d5156843d28",
+          "plan:need-7bacfc78bdb58db1dd06998a"
+        ],
+        "bindings": [
+          "binding:usage-71a32d2a61baa1ca81db0b49",
+          "binding:usage-b3e8f130a11a2b4da93e05aa",
+          "binding:usage-1bfbfa2ab531e5e1404eca47"
+        ],
+        "references": [],
+        "providers": [],
+        "forms": 0,
+        "scripts": 0,
+        "images": [
+          {
+            "src": "/media/b2/d255-19-480.webp",
+            "decoded": true,
+            "natural_width": 326,
+            "natural_height": 219,
+            "width": 358,
+            "height": 240.890625,
+            "alt": "Imagen atmosférica genérica: Pimientos rojos y follaje; contexto genérico, no oferta ni sede del negocio ficticio"
+          }
+        ],
+        "figure": {
+          "libraryMedia": "",
+          "librarySha256": "56149318785d0990032e2b902aab01ad15879d1924f4e423c2e2c382eb6a1e45",
+          "usageIds": "usage-71a32d2a61baa1ca81db0b49 usage-b3e8f130a11a2b4da93e05aa usage-1bfbfa2ab531e5e1404eca47",
+          "semanticPage": "/",
+          "moduleId": "semantic-7bf9d33184f7e923438acadd",
+          "role": "ATMOSPHERIC",
+          "originalSha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715",
+          "astroCidKlbo2nxy": ""
+        },
+        "credit": "Photo by Steve Ausmus, USDA Agricultural Research Service.",
+        "context": "Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.",
+        "notice": "USDA ARS no respalda este fixture, producto, empresa ni posición.",
+        "documentary_gap": true,
+        "resources": [
+          {
+            "path": "/media/b2/d255-19-480.webp",
+            "bytes": 32510,
+            "duration_ms": 2.6999999955296516
+          },
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 2.2000000029802322
+          },
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 1.5
+          }
+        ],
+        "links": [
+          "/b2/",
+          "/b2/providers/",
+          "/b2/corpus/",
+          "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/"
+        ],
+        "served_media": {
+          "path": "/media/b2/d255-19-480.webp",
+          "bytes": 32510,
+          "sha256": "591dd2b3a366d8cb2a9c571f5cd7d3734430e7ca5c88db0a598ab0c0dd1218f8",
+          "mime": "application/octet-stream"
+        },
+        "text_sha256": "85a3703ed0ada9ab4d73e8283261d4cac4114d223c7550f796239056a5dd7ce4"
+      },
+      "keyboard": {
+        "skip": true,
+        "disclosure": true,
+        "navigation": true
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2/clean-qa-01/pilot-mobile.png",
+        "sha256": "647164176752dad79c9578ca34af264ffcc26ace3f2642d3a8e97ff4dd83a4e8",
+        "rgba_sha256": "55a7cd9f438209a2485452bd969f993c2d3df07e3d17622dee24269a98c7ec05",
+        "scope": "VIEWPORT_ONLY"
+      },
+      "html_sha256": "dcdb5503f120bdde5bc081748cc59645fea45de6c977d09d3d7efcfd08ded216",
+      "html_bytes": 29150,
+      "requests": [
+        "<LOCAL>/b2/pilot/",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/media/b2/d255-19-480.webp",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/"
+      ]
+    },
+    {
+      "label": "corpus-mobile",
+      "route": "/b2/corpus/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 390,
+        "height": 16331,
+        "overflow": [],
+        "min_font_px": 16,
+        "request_ids": [],
+        "bindings": [],
+        "references": [
+          {
+            "id": "reference-01",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-02",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-03",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-04",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-05",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-06",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-07",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-08",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-09",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-10",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-11",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-12",
+            "scope": "SPECIFIC_PAGE_ONLY"
+          },
+          {
+            "id": "reference-13",
+            "scope": "STORYTELLING_ONLY"
+          },
+          {
+            "id": "reference-14",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-15",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-16",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-17",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-18",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-19",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-20",
+            "scope": "GLOBAL_REPORTED"
+          },
+          {
+            "id": "reference-21",
+            "scope": "DROPDOWN_ONLY"
+          }
+        ],
+        "providers": [],
+        "forms": 0,
+        "scripts": 0,
+        "images": [],
+        "figure": null,
+        "documentary_gap": false,
+        "resources": [
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 1.7999999970197678
+          }
+        ],
+        "links": [
+          "/b2/",
+          "/b2/pilot/",
+          "https://osiprestaurant.com/",
+          "https://centralrestaurante.com.pe/",
+          "https://www.asadoretxebarri.com/",
+          "https://kolrestaurant.com/",
+          "https://aira.se/",
+          "https://luca.restaurant/",
+          "https://www.padella.co/",
+          "https://noma.dk/",
+          "https://www.restaurangang.se/",
+          "https://www.kadeau.dk/",
+          "https://milcentro.pe/",
+          "https://www.aponiente.com/menu-aponiente-2026/",
+          "https://khufus.com/",
+          "https://www.heckfieldplace.com/",
+          "https://framacph.com/",
+          "https://www.dinesen.com/en",
+          "https://lunecroissanterie.com/",
+          "https://normcph.com/",
+          "https://themodernhouse.com/",
+          "https://www.polene-paris.com/",
+          "https://singervehicledesign.com/"
+        ],
+        "text_sha256": "36cd5dc8ecadfdd303854c19d156826398442da60bd9195d757617b71f2e6c5a"
+      },
+      "keyboard": {
+        "skip": true,
+        "disclosure": true,
+        "navigation": true
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2/clean-qa-01/corpus-mobile.png",
+        "sha256": "63d3fa6a44a517dbcc9e70c57273c5691ddb32d5efcb02524a999ba6c027ac41",
+        "rgba_sha256": "52f8b5d891a7a47c7fe3a6e7b91bdedaca3c5e8616bc7a680d5cfb59529c6e6b",
+        "scope": "VIEWPORT_ONLY"
+      },
+      "html_sha256": "74b71f8004ad77e2a7c3054ab63ffab61fae0f621645b6f27a9c99ae2af176a9",
+      "html_bytes": 26794,
+      "requests": [
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/corpus/",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/"
+      ]
+    },
+    {
+      "label": "providers-mobile",
+      "route": "/b2/providers/",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "observed": {
+        "lang": "es",
+        "main": 1,
+        "h1": 1,
+        "width": 390,
+        "height": 13581,
+        "overflow": [],
+        "min_font_px": 16,
+        "request_ids": [],
+        "bindings": [],
+        "references": [],
+        "providers": [
+          "usda-ars",
+          "pixabay",
+          "pexels",
+          "unsplash",
+          "adobe-stock",
+          "artlist",
+          "wikimedia"
+        ],
+        "forms": 0,
+        "scripts": 0,
+        "images": [],
+        "figure": null,
+        "documentary_gap": false,
+        "resources": [
+          {
+            "path": "/favicon.ico",
+            "bytes": 0,
+            "duration_ms": 1.6000000014901161
+          }
+        ],
+        "links": [
+          "/b2/",
+          "/b2/pilot/",
+          "https://www.ars.usda.gov/oc/images/copyright/",
+          "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+          "https://pixabay.com/api/docs/",
+          "https://pixabay.com/service/terms/",
+          "https://www.pexels.com/license/",
+          "https://help.pexels.com/hc/en-us/articles/900004904026-How-do-I-get-an-API-key",
+          "https://help.pexels.com/hc/en-us/articles/900005880463-What-are-the-Terms-and-Conditions",
+          "https://unsplash.com/license",
+          "https://unsplash.com/api-terms",
+          "https://help.unsplash.com/en/articles/2511271-guideline-hotlinking-images",
+          "https://helpx.adobe.com/stock/web/common-questions/usage-licensing.html",
+          "https://developer.adobe.com/stock/docs/faq/",
+          "https://artlist.io/help-center/privacy-terms/artlist-license",
+          "https://artlist.io/help-center/privacy-terms/terms-of-use/",
+          "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia",
+          "https://commons.wikimedia.org/wiki/Commons:API"
+        ],
+        "text_sha256": "bfc1c1742faed14156f3265f2350933359ecd906c8699bdec4a66b2574a38c41"
+      },
+      "keyboard": {
+        "skip": true,
+        "disclosure": true,
+        "navigation": true
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b2/clean-qa-01/providers-mobile.png",
+        "sha256": "aba7c30825667891964c3c4fa2ab7ee4fc83b3ca8858357c951e50a7ab0454f7",
+        "rgba_sha256": "f48076da01bde125ca848787186e05664f572e014560b8583edc86facb5c691c",
+        "scope": "VIEWPORT_ONLY"
+      },
+      "html_sha256": "c343c0e4ede91110a6dced3aceebd82db23cc2f0d4df36969e247d79536812db",
+      "html_bytes": 25475,
+      "requests": [
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/providers/",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/favicon.ico",
+        "<LOCAL>/b2/"
+      ]
+    }
+  ],
+  "legacy_html": [
+    {
+      "route": "/h5/candidate-01/",
+      "sha256": "68d6aa3108a3d993c4f0402d2a4f1c093a19101dbb063a576118d4d3c6e2665d"
+    },
+    {
+      "route": "/h5/candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "sha256": "d057331c44d5a0fe606bfbe2f451c2276110af06518b14ba2f7c97fcbd58c35b"
+    },
+    {
+      "route": "/h5/candidate-01/",
+      "sha256": "68d6aa3108a3d993c4f0402d2a4f1c093a19101dbb063a576118d4d3c6e2665d"
+    },
+    {
+      "route": "/h5/candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "sha256": "d057331c44d5a0fe606bfbe2f451c2276110af06518b14ba2f7c97fcbd58c35b"
+    },
+    {
+      "route": "/h5/candidate-05/",
+      "sha256": "c42f5d6412c3bbc3fae0731a4e07d527b2f54eff6b1bd8acd5141a642519a8c6"
+    },
+    {
+      "route": "/h5/candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "sha256": "f19958d1f20b6f6fd12f33b6baab17590a5b08fab6b96a848d7300c00e7efcea"
+    },
+    {
+      "route": "/h5/candidate-05/",
+      "sha256": "c42f5d6412c3bbc3fae0731a4e07d527b2f54eff6b1bd8acd5141a642519a8c6"
+    },
+    {
+      "route": "/h5/candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/",
+      "sha256": "f19958d1f20b6f6fd12f33b6baab17590a5b08fab6b96a848d7300c00e7efcea"
+    },
+    {
+      "route": "/h7/hibrido-candidate-01/",
+      "sha256": "f26dab512f49393b057a284fd82573a9f6d9ee439a5ea3c22c008c9ec6ae7999"
+    },
+    {
+      "route": "/h7/hibrido-candidate-01/catalogo/",
+      "sha256": "de6d266db5d747de001a6d246e9b46da669bfd88723d66d394bc3c07137b1c99"
+    },
+    {
+      "route": "/h7/hibrido-candidate-01/clases/",
+      "sha256": "ca6f7396b220e4351a9149fb1f11d4637d6491d3d2c334f0562ec1e6237b7338"
+    },
+    {
+      "route": "/h7/hibrido-candidate-01/membresias/",
+      "sha256": "d07ed263f33fc253db3f264d86783f5926414706b538996962d88dcae4077783"
+    },
+    {
+      "route": "/h7/hibrido-candidate-01/",
+      "sha256": "f26dab512f49393b057a284fd82573a9f6d9ee439a5ea3c22c008c9ec6ae7999"
+    },
+    {
+      "route": "/h7/hibrido-candidate-01/catalogo/",
+      "sha256": "de6d266db5d747de001a6d246e9b46da669bfd88723d66d394bc3c07137b1c99"
+    },
+    {
+      "route": "/h7/hibrido-candidate-01/clases/",
+      "sha256": "ca6f7396b220e4351a9149fb1f11d4637d6491d3d2c334f0562ec1e6237b7338"
+    },
+    {
+      "route": "/h7/hibrido-candidate-01/membresias/",
+      "sha256": "d07ed263f33fc253db3f264d86783f5926414706b538996962d88dcae4077783"
+    }
+  ],
+  "protection": {
+    "status": "PASS",
+    "checked_files": 2407,
+    "normalization": "AS_DECLARED_PER_FILE",
+    "changed": []
+  },
+  "limitations": [
+    "Same-host laboratory, DPR1, no field-performance measurement or full accessibility certification",
+    "No final restaurant design or human aesthetic approval",
+    "Shared historical harness sends WebP as application/octet-stream; actual browser decode and byte hashes verified",
+    "One photo, two technical derivatives; no video/audio downloaded or inspected"
+  ]
+}

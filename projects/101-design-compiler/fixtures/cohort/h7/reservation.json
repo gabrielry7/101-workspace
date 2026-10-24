@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "data_mode": "SYNTHETIC_FIXTURE",
+  "reserved_before_first_execution": true,
+  "baseline_commit": "99dfa596ce922721e03330e23f04888fe7216659",
+  "cohort_version": "h7-synthetic-held-out-1",
+  "external_evidence": false,
+  "human_preferences": "NOT_COLLECTED",
+  "files": [
+    {
+      "path": "fixtures/cohort/h7/hotel.json",
+      "sha256": "239cdc810dbc1be5c20cf1b6b3f482f3f97da5e115f833d96d9069c0cb0a4df6"
+    },
+    {
+      "path": "fixtures/cohort/h7/dentista.json",
+      "sha256": "0a574d9bba59975b0e5132e1de988b4de6137bc7a4b54f549a77157c35bf466a"
+    },
+    {
+      "path": "fixtures/cohort/h7/servicio.json",
+      "sha256": "741adbf37dbcfe70a4ce30cef724b78162982f62cc96a267b37f3c5abd416827"
+    },
+    {
+      "path": "fixtures/cohort/h7/hibrido.json",
+      "sha256": "0c5742ff90cfae649b6794f9fc8effc65bf30a5a62a357be02af9867fc5e544f"
+    },
+    {
+      "path": "fixtures/cohort/h7/unknown.json",
+      "sha256": "38076d8571b7b6af13c6ea98be78ed8fe538979724e60e0f3118ab458108e615"
+    },
+    {
+      "path": "fixtures/cohort/h7/media-unknown.json",
+      "sha256": "85a797eaf4a99aea840355b238a1bbcffeb1b1e1af2cbac3ca18c36d65e607f5"
+    }
+  ]
+}

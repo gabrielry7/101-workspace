@@ -1,0 +1,74 @@
+[
+  {
+    "schema_version": "1.1.0",
+    "id": "hibrido-reading",
+    "context_sha256": "fa872cfdcec39c710ed455be83882f654c1a59b849ed347d447306635819b097",
+    "principle": "Actividades coexistentes: lectura frontal sin medios elegibles.",
+    "dominance": "typography",
+    "materiality": "typography-only",
+    "rationale": "Mantener membresías, calendario con fecha/zona y catálogo en rutas independientes; ningún objeto eclipsa al otro.",
+    "topologies": [
+      {
+        "frame": "Flow",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "ink",
+      "type": "sans",
+      "hierarchy": "monument",
+      "rhythm": "quiet",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [],
+    "motion": "quiet",
+    "risks": [
+      "No beauty calibration or human preference collected.",
+      "Typography-only materiality: no eligible image and no photograph is present.",
+      "Mobile reflow may collapse desktop structural distinction."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "1.1.0",
+    "id": "hibrido-indexed",
+    "context_sha256": "fa872cfdcec39c710ed455be83882f654c1a59b849ed347d447306635819b097",
+    "principle": "Actividades coexistentes: índice lateral visible sin medios elegibles.",
+    "dominance": "navigation",
+    "materiality": "typography-only",
+    "rationale": "Archivo lateral de actividades coexistentes y productos; acortar títulos sin borrar fecha o timezone.",
+    "topologies": [
+      {
+        "frame": "Rail",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "ink",
+      "type": "sans",
+      "hierarchy": "compact",
+      "rhythm": "dense",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [],
+    "motion": "quiet",
+    "risks": [
+      "No beauty calibration or human preference collected.",
+      "Typography-only materiality: no eligible image and no photograph is present.",
+      "Mobile reflow may collapse desktop structural distinction."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  }
+]

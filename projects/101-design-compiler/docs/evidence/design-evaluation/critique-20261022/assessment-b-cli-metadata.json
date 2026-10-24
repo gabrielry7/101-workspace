@@ -1,0 +1,246 @@
+{
+  "assessment": "B",
+  "target": "src/pages/quality/[variant].astro",
+  "scope": "dist/quality",
+  "scannable_html_files": 21,
+  "command": ".agents/skills/impeccable/scripts/impeccable.cmd detect --json dist/quality",
+  "exit_code": 2,
+  "exit_contract": {
+    "clean": 0,
+    "failure": 1,
+    "findings": 2
+  },
+  "tool_version_observed": "4.7.0",
+  "version_command": ".agents/skills/impeccable/scripts/impeccable.cmd --version",
+  "version_exit": 0,
+  "launcher_VERSION_file": "0.1.16",
+  "stdout_file": ".impeccable/critique/assessment-b-detector.stdout.json",
+  "stderr_file": ".impeccable/critique/assessment-b-detector.stderr.txt",
+  "stderr_bytes": 0,
+  "finding_count": 58,
+  "severity": "warning",
+  "rules": [
+    {
+      "rule": "cramped-padding",
+      "count": 12
+    },
+    {
+      "rule": "cream-palette",
+      "count": 20
+    },
+    {
+      "rule": "flat-type-hierarchy",
+      "count": 1
+    },
+    {
+      "rule": "hero-eyebrow-chip",
+      "count": 5
+    },
+    {
+      "rule": "wide-tracking",
+      "count": 20
+    }
+  ],
+  "file_matrix": [
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-a\\comodidades\\index.html",
+      "line": 0,
+      "count": 5,
+      "rules": {
+        "cramped-padding": 1,
+        "hero-eyebrow-chip": 1,
+        "wide-tracking": 2,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-a\\habitaciones\\index.html",
+      "line": 0,
+      "count": 4,
+      "rules": {
+        "hero-eyebrow-chip": 1,
+        "wide-tracking": 2,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-a\\index.html",
+      "line": 0,
+      "count": 5,
+      "rules": {
+        "cramped-padding": 1,
+        "hero-eyebrow-chip": 1,
+        "wide-tracking": 2,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-b\\comodidades\\index.html",
+      "line": 0,
+      "count": 2,
+      "rules": {
+        "cramped-padding": 1,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-b\\habitaciones\\index.html",
+      "line": 0,
+      "count": 1,
+      "rules": {
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-b\\index.html",
+      "line": 0,
+      "count": 2,
+      "rules": {
+        "cramped-padding": 1,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-c\\comodidades\\index.html",
+      "line": 0,
+      "count": 4,
+      "rules": {
+        "cramped-padding": 1,
+        "wide-tracking": 2,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-c\\habitaciones\\index.html",
+      "line": 0,
+      "count": 3,
+      "rules": {
+        "cream-palette": 1,
+        "wide-tracking": 2
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-c\\index.html",
+      "line": 0,
+      "count": 4,
+      "rules": {
+        "cramped-padding": 1,
+        "wide-tracking": 2,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-d\\comodidades\\index.html",
+      "line": 0,
+      "count": 2,
+      "rules": {
+        "cramped-padding": 1,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-d\\habitaciones\\index.html",
+      "line": 0,
+      "count": 1,
+      "rules": {
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\hotel-d\\index.html",
+      "line": 0,
+      "count": 2,
+      "rules": {
+        "cramped-padding": 1,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\index.html",
+      "line": 0,
+      "count": 1,
+      "rules": {
+        "flat-type-hierarchy": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\restaurante-a\\index.html",
+      "line": 0,
+      "count": 5,
+      "rules": {
+        "cramped-padding": 1,
+        "hero-eyebrow-chip": 1,
+        "wide-tracking": 2,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\restaurante-a\\sedes\\s-051d544b94ae77ae0d73a35b\\menu\\index.html",
+      "line": 0,
+      "count": 4,
+      "rules": {
+        "hero-eyebrow-chip": 1,
+        "wide-tracking": 2,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\restaurante-b\\index.html",
+      "line": 0,
+      "count": 2,
+      "rules": {
+        "cramped-padding": 1,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\restaurante-b\\sedes\\s-051d544b94ae77ae0d73a35b\\menu\\index.html",
+      "line": 0,
+      "count": 1,
+      "rules": {
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\restaurante-c\\index.html",
+      "line": 0,
+      "count": 4,
+      "rules": {
+        "cramped-padding": 1,
+        "wide-tracking": 2,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\restaurante-c\\sedes\\s-051d544b94ae77ae0d73a35b\\menu\\index.html",
+      "line": 0,
+      "count": 3,
+      "rules": {
+        "cream-palette": 1,
+        "wide-tracking": 2
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\restaurante-d\\index.html",
+      "line": 0,
+      "count": 2,
+      "rules": {
+        "cramped-padding": 1,
+        "cream-palette": 1
+      }
+    },
+    {
+      "file": "C:\\Users\\gabri\\101-design-compiler\\dist\\quality\\restaurante-d\\sedes\\s-051d544b94ae77ae0d73a35b\\menu\\index.html",
+      "line": 0,
+      "count": 1,
+      "rules": {
+        "cream-palette": 1
+      }
+    }
+  ],
+  "all_detector_line_values": 0,
+  "line_note": "El detector devolvió line=0 para todos los HTML compilados; no es número de línea fuente verificable.",
+  "ignore_list_exists": false,
+  "scratch_ignore_check": "git check-ignore exit 128: dubious ownership; no configuration changed",
+  "mutations": "Solo archivos nuevos en .impeccable/critique; ningún archivo versionado editado"
+}

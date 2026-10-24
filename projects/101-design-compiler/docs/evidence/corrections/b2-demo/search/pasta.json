@@ -1,0 +1,24 @@
+{
+  "id": "pasta",
+  "kind": "image",
+  "endpoint": "https://pixabay.com/api/",
+  "query": {
+    "q": "pasta",
+    "per_page": "3",
+    "page": "1",
+    "safesearch": "true",
+    "image_type": "photo",
+    "orientation": "horizontal"
+  },
+  "at": "2026-10-15T02:37:36.218Z",
+  "cache_until": "2026-10-16T02:37:36.218Z",
+  "private_cache": ".tools/b2-demo/cache/pasta.json",
+  "response_sha256": "4c65a4f47c27dffc9fe367a37644235c20c409b5c12198591a3b86c3eddc9076",
+  "response_bytes": 3949,
+  "hits": 3,
+  "rate_limit": {
+    "X-RateLimit-Limit": "100",
+    "X-RateLimit-Remaining": "98",
+    "X-RateLimit-Reset": "60"
+  }
+}

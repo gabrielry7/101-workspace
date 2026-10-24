@@ -1,0 +1,290 @@
+{
+  "scenario": "hibrido",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "h7-synthetic-hibrido",
+    "snapshot_id": "h7-synthetic-hibrido-reserved-v1",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-08T00:00:00Z",
+    "identity": {
+      "name_fact_id": "name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category",
+        "source": "foursquare",
+        "field": "foursquare.category",
+        "value": "Sports and Recreation > Gym and Studio > Gym",
+        "confidence": 1,
+        "evidence_ids": [
+          "category-evidence"
+        ]
+      },
+      {
+        "id": "shop-category",
+        "source": "osm",
+        "field": "shop",
+        "value": "hardware",
+        "confidence": 1,
+        "evidence_ids": [
+          "shop-evidence"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "name",
+        "kind": "business_name",
+        "value": "hibrido · NUEVO fixture sintético H7; no es negocio real",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-name",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "assert-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-identity",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "category-evidence",
+        "kind": "observed_category",
+        "value": "Sports and Recreation > Gym and Studio > Gym",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-category-evidence",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "assert-membership",
+        "kind": "capability:membership",
+        "value": true,
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-membership",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "object-1-name",
+        "kind": "offering_name",
+        "value": "Objeto 1 de prueba (membership_plan); descripción sintética",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-object-1-name",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "object-1-description",
+        "kind": "offering_description",
+        "value": "Información declarada de prueba 1, sin precio o promesa operativa.",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-object-1-description",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "assert-class_schedule",
+        "kind": "capability:class_schedule",
+        "value": true,
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-class_schedule",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "object-2-name",
+        "kind": "offering_name",
+        "value": "Objeto 2 de prueba (class_session); descripción sintética",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-object-2-name",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "object-2-description",
+        "kind": "offering_description",
+        "value": "Información declarada de prueba 2, sin precio o promesa operativa.",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-object-2-description",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "starts",
+        "kind": "class_starts_at",
+        "value": "2026-11-01T09:00:00-05:00",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-starts",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "zone",
+        "kind": "timezone",
+        "value": "America/Bogota",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-zone",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "assert-product_catalog",
+        "kind": "capability:product_catalog",
+        "value": true,
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-product_catalog",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "object-3-name",
+        "kind": "offering_name",
+        "value": "Objeto 3 de prueba (product_category); descripción sintética",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-object-3-name",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "object-3-description",
+        "kind": "offering_description",
+        "value": "Información declarada de prueba 3, sin precio o promesa operativa.",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-object-3-description",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "shop-evidence",
+        "kind": "observed_category",
+        "value": "hardware",
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-shop-evidence",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "coexisting-evidence",
+        "kind": "activity:coexisting",
+        "value": true,
+        "scope_id": "h7-synthetic-hibrido",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-coexisting-evidence",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      }
+    ],
+    "locations": [],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [
+      {
+        "id": "object-1",
+        "scope_id": "h7-synthetic-hibrido",
+        "name_fact_id": "object-1-name",
+        "fact_ids": [
+          "object-1-description"
+        ],
+        "kind": "membership_plan"
+      },
+      {
+        "id": "object-2",
+        "scope_id": "h7-synthetic-hibrido",
+        "name_fact_id": "object-2-name",
+        "fact_ids": [
+          "object-2-description"
+        ],
+        "kind": "class_session",
+        "starts_at_fact_id": "starts",
+        "timezone_fact_id": "zone"
+      },
+      {
+        "id": "object-3",
+        "scope_id": "h7-synthetic-hibrido",
+        "name_fact_id": "object-3-name",
+        "fact_ids": [
+          "object-3-description"
+        ],
+        "kind": "product_category"
+      }
+    ],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "h7-synthetic-hibrido",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-identity"
+        ]
+      },
+      {
+        "id": "membership",
+        "scope_id": "h7-synthetic-hibrido",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-membership"
+        ]
+      },
+      {
+        "id": "class_schedule",
+        "scope_id": "h7-synthetic-hibrido",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-class_schedule"
+        ]
+      },
+      {
+        "id": "product_catalog",
+        "scope_id": "h7-synthetic-hibrido",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-product_catalog"
+        ]
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: NO PUBLICAR COMO NEGOCIO REAL",
+      "H7 held-out reservation; no real credentials or media permission"
+    ],
+    "preference_fact_ids": []
+  },
+  "activity_relationships": [
+    {
+      "id": "coexisting",
+      "kind": "COEXISTING",
+      "category_observation_ids": [
+        "category",
+        "shop-category"
+      ],
+      "evidence_ids": [
+        "coexisting-evidence"
+      ]
+    }
+  ]
+}

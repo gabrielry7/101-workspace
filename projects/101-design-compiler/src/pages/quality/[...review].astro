@@ -1,0 +1,5 @@
+---
+import QualityComparison from '../../components/quality/QualityComparison.astro';
+export function getStaticPaths(){return process.env.DESIGN_EVALUATION_PREVIEW==='1'?[{params:{review:undefined}}]:[];}
+---
+<QualityComparison/>

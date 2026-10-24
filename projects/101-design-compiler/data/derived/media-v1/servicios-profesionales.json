@@ -1,0 +1,121 @@
+{
+  "manifest": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-servicios-profesionales-001",
+    "snapshot_id": "fixture-servicios-profesionales-001-snapshot-v1-h2",
+    "site_plan_id": "fixture-servicios-profesionales-001-snapshot-v1-h2:h2-plan:9cfa51f08edc5ec046f68e7c",
+    "client_id": "synthetic-client",
+    "project_id": "synthetic-project",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "plan_sha256": "9758cae8bd9cbd6aec1fa9aefa9daba60281ea8ef0c65e4fba81b6f40f33c594",
+    "requirements_sha256": "33197c6b5b55abc62c8d50cbd9d92ad093964aac978895186f7e0dca93ec7003",
+    "input_sha256": "56810fd4dd0ad106eeb9063907ffb192810432f8b077bccce890275011b35c4f",
+    "assets": [],
+    "grants": [],
+    "usages": [],
+    "needs": [
+      {
+        "id": "need-06c18a4c00d64630c0b732aa",
+        "requirement_id": "semantic-0e33678300e2e6b910c2d46f",
+        "module_id": "semantic-0e33678300e2e6b910c2d46f",
+        "page": "/sedes/s-3869a20e94c71bd4b8d1f6db/servicios",
+        "scope_id": "fixture-servicios-profesionales-001-branch-1",
+        "purpose": "document:service_catalog",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "service-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-ef8beed597d40dca8a404f65",
+        "requirement_id": "semantic-4a19aff31778886d9f8272fc",
+        "module_id": "semantic-4a19aff31778886d9f8272fc",
+        "page": "/",
+        "scope_id": "fixture-servicios-profesionales-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      }
+    ],
+    "decisions": []
+  },
+  "brief": {
+    "schema_version": "1.0.0",
+    "site_plan_id": "fixture-servicios-profesionales-001-snapshot-v1-h2:h2-plan:9cfa51f08edc5ec046f68e7c",
+    "manifest_sha256": "f7a304a1d6903a78dc3acc02532f3f0f63625fe52baac00a200c4f61042284b7",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "gaps": [
+      {
+        "need": {
+          "id": "need-06c18a4c00d64630c0b732aa",
+          "requirement_id": "semantic-0e33678300e2e6b910c2d46f",
+          "module_id": "semantic-0e33678300e2e6b910c2d46f",
+          "page": "/sedes/s-3869a20e94c71bd4b8d1f6db/servicios",
+          "scope_id": "fixture-servicios-profesionales-001-branch-1",
+          "purpose": "document:service_catalog",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "service-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-ef8beed597d40dca8a404f65",
+          "requirement_id": "semantic-4a19aff31778886d9f8272fc",
+          "module_id": "semantic-4a19aff31778886d9f8272fc",
+          "page": "/",
+          "scope_id": "fixture-servicios-profesionales-001",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "closure": "PENDING_AUTHORIZED_MEDIA_PACKAGE"
+  }
+}

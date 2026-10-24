@@ -1,0 +1,1108 @@
+{
+  "tool": "get_principles",
+  "version": "2.6.0",
+  "started_at": "2026-10-22T22:02:33.225Z",
+  "wall_seconds": 0.009604800000000068,
+  "status": "OK",
+  "input": {
+    "context": "existing B3 restaurant website keyboard skip navigation filtered menu preserve approved typography palette media",
+    "format": "checklist"
+  },
+  "output": {
+    "context": "existing B3 restaurant website keyboard skip navigation filtered menu preserve approved typography palette media",
+    "category": null,
+    "count": 55,
+    "principles": [
+      {
+        "id": "color-contrast",
+        "name": "Color Contrast",
+        "summary": "Text and interactive elements must have sufficient contrast against their backgrounds.",
+        "implications": [
+          "Normal text: minimum 4.5:1 contrast ratio (WCAG AA)",
+          "Large text (18px+ regular or 14px+ bold): minimum 3:1",
+          "UI components and graphical objects: minimum 3:1",
+          "Enhanced accessibility (WCAG AAA): 7:1 for normal text, 4.5:1 for large",
+          "Don't rely on color alone to convey information — use icons, text, or patterns too",
+          "Test with grayscale to verify information is still clear without color",
+          "Check contrast on all background colors, not just the primary background"
+        ],
+        "violations": [
+          "Light gray text on white background (#999 on #fff = 2.85:1 — fails)",
+          "Colored text on colored background without checking contrast",
+          "Placeholder text with insufficient contrast (common: #aaa on #fff)",
+          "Status indicators using only color (red/green dots with no label)",
+          "Links that are only distinguished from body text by color"
+        ]
+      },
+      {
+        "id": "keyboard-navigation",
+        "name": "Keyboard Navigation",
+        "summary": "All interactive content must be accessible and operable through keyboard alone.",
+        "implications": [
+          "All interactive elements must be focusable and have visible focus indicators",
+          "Tab order must follow the logical reading order of the page",
+          "Modals must trap focus and return focus to the trigger when closed",
+          "Custom dropdowns, tabs, and menus need arrow key navigation",
+          "Escape should close modals, dropdowns, and overlay elements",
+          "Skip navigation links for users to bypass repeated content",
+          "Never remove focus outlines without providing a visible alternative"
+        ],
+        "violations": [
+          "Click-only interactions with no keyboard equivalent",
+          "Invisible or removed focus indicators (outline: none without replacement)",
+          "Modal that doesn't trap focus — Tab goes to elements behind the overlay",
+          "Custom dropdown that doesn't respond to arrow keys or Escape",
+          "Focus order that doesn't match visual order (e.g., due to CSS order/flex)"
+        ]
+      },
+      {
+        "id": "screen-reader-support",
+        "name": "Screen Reader Support",
+        "summary": "Content must be perceivable and understandable when read by assistive technologies.",
+        "implications": [
+          "Use semantic HTML elements (nav, main, header, footer, article, section)",
+          "Provide alt text for all meaningful images; empty alt for decorative images",
+          "Use ARIA labels for interactive elements without visible text labels",
+          "Heading hierarchy should be logical (h1 > h2 > h3, no skipping levels)",
+          "Form inputs must have associated labels (label element or aria-label)",
+          "Live regions (aria-live) for dynamic content updates",
+          "Announce state changes (loading, error, success) to screen readers"
+        ],
+        "violations": [
+          "Images without alt text or with unhelpful alt text ('image.png')",
+          "Div/span used for interactive elements instead of button/a",
+          "Form inputs without labels",
+          "Dynamic content updates that aren't announced to screen readers",
+          "Heading levels skipped or used for styling instead of structure"
+        ]
+      },
+      {
+        "id": "motion-sensitivity",
+        "name": "Motion and Animation Sensitivity",
+        "summary": "Provide mechanisms to pause, stop, or reduce motion for users who are sensitive to animation.",
+        "implications": [
+          "Respect prefers-reduced-motion media query — reduce or eliminate animations",
+          "No content that flashes more than 3 times per second",
+          "Provide pause/stop controls for auto-playing content",
+          "Auto-playing videos must be muted and pausable",
+          "Parallax scrolling should be optional and smooth",
+          "Use subtle, purposeful animations — not gratuitous motion",
+          "Provide a motion preference toggle in app settings"
+        ],
+        "violations": [
+          "Ignoring prefers-reduced-motion — animations play regardless",
+          "Auto-playing video backgrounds with no pause control",
+          "Excessive parallax that causes motion sickness",
+          "Content that flashes rapidly (seizure risk)",
+          "Large, sweeping page transitions with no reduced-motion alternative"
+        ]
+      },
+      {
+        "id": "text-readability",
+        "name": "Text Readability",
+        "summary": "Text must be resizable, reflowable, and formatted for comfortable reading.",
+        "implications": [
+          "Minimum 16px (1rem) body text on web",
+          "Line height of 1.5 for body text (WCAG recommendation)",
+          "Line length of 45-75 characters for optimal readability",
+          "Text must be resizable to 200% without content loss",
+          "Use responsive units (rem, em) not fixed px for font sizes",
+          "Ensure text reflows properly at all zoom levels",
+          "Support user-customized text spacing without breaking layout"
+        ],
+        "violations": [
+          "Body text smaller than 16px on web / 11pt on mobile",
+          "Line length exceeding 80 characters without a max-width",
+          "Fixed font sizes that don't scale with browser zoom",
+          "Text clipped or overflowing when zoomed to 200%",
+          "Single-line height (line-height: 1) on multi-line text"
+        ]
+      },
+      {
+        "id": "color-palette-discipline",
+        "name": "Color Palette Discipline",
+        "summary": "A single page should use ~6–8 core colors plus neutrals and stay at or under 10 distinct values total; every additional hue dilutes hierarchy and signals nothing new.",
+        "implications": [
+          "Define a role-based token set before generating any UI and reuse it everywhere: surface, surface-raised, border, text, text-muted, accent, accent-hover, success, warning, danger",
+          "Keep the page at or under 10 distinct rendered colors; target ~6–8 core hues plus neutrals",
+          "Derive hover/active/disabled states with opacity/alpha (e.g. 0.8, 0.6) or lightness shifts from existing tokens, not new hexes",
+          "Express shadows as rgba() from a neutral token, not as standalone hex colors",
+          "Treat gradient stops as variations of existing tokens, not license to add new hues",
+          "Collapse near-duplicate hexes (within ~5% lightness) into a single token — #333 and #363636 are noise, not two colors",
+          "Audit generated pages by counting distinct hex values — anything over 10 has drifted"
+        ],
+        "violations": [
+          "A landing page with 11+ distinct hex values where several are visually indistinguishable",
+          "Introducing a new gray (#363636) when #333 is already in the palette",
+          "Hardcoding hover states as new hexes instead of deriving them from the base token",
+          "Decorative tints and gradient stops that don't map to any defined token",
+          "Shadow colors written as opaque hex values rather than rgba from a neutral",
+          "Every component author picking a slightly different gray"
+        ]
+      },
+      {
+        "id": "shared-chrome-components",
+        "name": "Shared Chrome Components",
+        "summary": "Navigation, headers, footers, and menus must be single reusable components — never duplicated per-page HTML/CSS.",
+        "implications": [
+          "Extract nav, footer, and mobile menu into a single shared component file",
+          "Use Shadow DOM or CSS Modules for style encapsulation — no page CSS can leak in, no component CSS can leak out",
+          "The component owns ALL its CSS — positioning, typography, colors, shadows, transitions, and responsive overrides",
+          "Pages include the component with a single element tag, no per-page CSS for chrome",
+          "Active page state should be auto-detected by the component (check window.location), not set per-page",
+          "When adding a nav link, update ONE file — the component — and all pages get it",
+          "Hamburger toggle, outside-click dismiss, scroll darkening all live inside the component",
+          "Component reads design tokens from :root CSS custom properties for theming"
+        ],
+        "violations": [
+          "Copy-pasting nav HTML into every page and then forgetting to update one",
+          "Page-level CSS that overrides nav font sizes, colors, or spacing",
+          "Bare element selectors (ul, li) that leak into nav lists from page content styles",
+          "Hamburger JS duplicated in every page's script block",
+          "Different footer HTML structure on different pages",
+          "Nav CSS using hardcoded values on one page but CSS variables on another"
+        ]
+      },
+      {
+        "id": "component-style-encapsulation",
+        "name": "Component Style Encapsulation",
+        "summary": "Component styles must be scoped to prevent CSS leaks — bare element selectors in page CSS must never affect component internals.",
+        "implications": [
+          "Use Shadow DOM for all structural chrome components (nav, footer, mobile menu)",
+          "If Shadow DOM isn't available, scope ALL bare element selectors to a content container class",
+          "Never write `ul { }` or `li { }` at the page level — always `.content ul { }` or `.docs-content li { }`",
+          "Components should set their own resets internally: list-style: none, text-decoration: none, margin: 0",
+          "Test components by adding aggressive page-level styles (large margins, colored backgrounds, list bullets) and verifying they don't affect the component",
+          "When a style 'leak' is found, fix the scope, don't add a compensating override in the component"
+        ],
+        "violations": [
+          "Bare `ul { list-style: disc }` on a page that also has nav ul elements",
+          "Bare `li { margin-bottom: 8px }` pushing nav links apart",
+          "Bare `a { color: blue }` turning nav links blue when the component expected var(--text-secondary)",
+          "Adding `!important` in a component to fight page-level styles instead of scoping the page styles",
+          "Component CSS leaking padding or font-size changes into page content"
+        ]
+      },
+      {
+        "id": "design-system-token-contract",
+        "name": "Design System Token Contract",
+        "summary": "Components consume design tokens via CSS custom properties with fallback defaults — the page sets the theme, the component adapts.",
+        "implications": [
+          "Components must use var(--token, fallback) for ALL visual values — colors, spacing, radii, fonts, shadows",
+          "Fallback defaults must produce a reasonable appearance if no tokens are defined",
+          "The page's :root defines the design system — the component adapts",
+          "Dark mode is a :root variable swap or data-theme attribute, not component-level logic",
+          "Token names must be semantic (--bg-accent, --text-secondary) not raw (--blue, --gray-400)",
+          "Document which tokens a component reads — this is its public API"
+        ],
+        "violations": [
+          "Component uses hardcoded hex colors instead of var(--bg-accent)",
+          "Component defines its own --accent-blue in its CSS instead of reading the page's token",
+          "Different components use different token names for the same concept (--bg-accent vs --accent-blue vs --primary)",
+          "No fallback value provided — component breaks silently when token is undefined",
+          "Dark mode implemented with component-level media queries instead of token swapping"
+        ]
+      },
+      {
+        "id": "gestalt-proximity",
+        "name": "Proximity",
+        "summary": "Elements placed close together are perceived as a group.",
+        "implications": [
+          "Keep related form fields close together with more space between groups",
+          "Use consistent spacing within groups and larger gaps between groups",
+          "Place labels immediately adjacent to their corresponding inputs",
+          "Group navigation items by section with visual separators",
+          "Use spacing ratios (inner spacing = base, outer spacing = 2-3x base)"
+        ],
+        "violations": [
+          "Labels equidistant between two inputs — ambiguous association",
+          "Uniform spacing throughout — no grouping communicated",
+          "Action buttons far from the content they affect"
+        ]
+      },
+      {
+        "id": "fitts-law",
+        "name": "Fitts's Law",
+        "summary": "Pointing speed depends on how far away a target is and how big it is — near, large targets are fastest to hit.",
+        "implications": [
+          "Make primary action buttons large and prominent",
+          "Place important actions near the user's current focus area",
+          "Use minimum 44x44px touch targets on mobile (Apple HIG), 48x48dp (Material)",
+          "Leverage screen edges and corners for frequently used controls",
+          "Group related actions together to reduce cursor travel distance",
+          "Make destructive actions small and far from primary actions",
+          "Consider right-click context menus to bring actions to the cursor"
+        ],
+        "violations": [
+          "Tiny close buttons on modals (12x12px)",
+          "Important CTAs far from the form fields they relate to",
+          "Touch targets smaller than 44px on mobile",
+          "Actions requiring precise cursor placement (thin borders, small checkboxes)",
+          "Critical actions placed in corners far from content"
+        ]
+      },
+      {
+        "id": "hicks-law",
+        "name": "Hick's Law",
+        "summary": "More options mean slower decisions — reaction time rises logarithmically as the choice set grows.",
+        "implications": [
+          "Limit navigation items to 7±2 top-level options",
+          "Use progressive disclosure to reveal options as needed",
+          "Highlight a recommended option in pricing and feature selections",
+          "Break complex decisions into smaller sequential choices",
+          "Use smart defaults to reduce the number of decisions users must make",
+          "Categorize and group options to reduce perceived complexity",
+          "Consider a search/filter for lists with 15+ items"
+        ],
+        "violations": [
+          "Mega-menus with 50+ uncategorized options",
+          "Pricing page with 6+ plans and no recommended option",
+          "Settings page with 100+ toggles all visible at once",
+          "Dropdown with 200 unsearchable options",
+          "Homepage with 10+ competing CTAs"
+        ]
+      },
+      {
+        "id": "jakobs-law",
+        "name": "Jakob's Law",
+        "summary": "People arrive with expectations formed on every other product they use — interfaces that follow familiar conventions are understood immediately.",
+        "implications": [
+          "Follow platform conventions for common interactions (navigation, search, forms)",
+          "Place the logo in the top-left, linking to the homepage",
+          "Put search in the top-right or center of the header",
+          "Use standard e-commerce checkout patterns",
+          "Follow OS conventions for native apps (iOS HIG, Material Design)",
+          "Innovate on value proposition, not on basic interaction patterns",
+          "When you must break convention, provide clear affordances and guidance"
+        ],
+        "violations": [
+          "Custom navigation patterns that don't match any standard app",
+          "Non-standard scroll behavior (horizontal scrolling for content, scroll hijacking)",
+          "Creative but confusing form layouts (labels inside inputs that don't float)",
+          "Bottom navigation on desktop or top tabs on mobile",
+          "Non-standard gestures for common actions"
+        ]
+      },
+      {
+        "id": "law-of-proximity",
+        "name": "Law of Proximity",
+        "summary": "Things placed close together are perceived as related — spacing is the first grouping signal the eye reads.",
+        "implications": [
+          "Place labels close to their corresponding form fields",
+          "Group related actions together (Save, Cancel)",
+          "Use more space between groups than within groups",
+          "Place helper text immediately below the field it describes",
+          "Keep navigation items for the same section visually close",
+          "Separate unrelated actions with significant whitespace"
+        ],
+        "violations": [
+          "Form label equidistant between two fields — unclear which it belongs to",
+          "Helper text so far below a field it looks like a standalone paragraph",
+          "Action buttons scattered across a page instead of grouped",
+          "Equal spacing between all elements — no grouping communicated"
+        ]
+      },
+      {
+        "id": "millers-law",
+        "name": "Miller's Law",
+        "summary": "Working memory holds roughly seven chunks at a time — interfaces should never make people carry information across screens in their head.",
+        "implications": [
+          "Chunk information into meaningful groups of 3-5 items",
+          "Don't require users to remember information from one page to use on another",
+          "Keep navigation categories to ~7 top-level items",
+          "Show relevant context inline rather than requiring memory",
+          "Use step indicators in multi-step flows to offload memory",
+          "Organize long lists into categorized, scannable sections"
+        ],
+        "violations": [
+          "Requiring users to remember a code from page 1 to enter on page 3",
+          "15+ item navigation with no grouping",
+          "Complex comparison requiring users to mentally hold features from scrolled-past options",
+          "Phone numbers displayed as raw 10-digit strings without grouping"
+        ]
+      },
+      {
+        "id": "serial-position-effect",
+        "name": "Serial Position Effect",
+        "summary": "People recall a list's opening and closing items best — whatever sits in the middle is forgotten first.",
+        "implications": [
+          "Place the most important navigation items first and last",
+          "Put key features at the beginning and end of feature lists",
+          "In bottom navigation (mobile), place primary actions at the edges",
+          "Start and end presentations/onboarding with the most important information",
+          "Place the most valuable options at the beginning and end of dropdowns",
+          "Use the middle positions for secondary or less critical items"
+        ],
+        "violations": [
+          "Most important navigation buried in the middle of the menu",
+          "Key features listed in the middle of a long feature comparison",
+          "Primary mobile tab bar actions in center positions",
+          "Burying the most compelling pricing feature mid-list"
+        ]
+      },
+      {
+        "id": "thumb-zone",
+        "name": "Thumb Zone Design",
+        "summary": "Design for one-handed use — the most important actions should be in the natural thumb reach zone.",
+        "implications": [
+          "Place primary actions in the bottom third of the screen",
+          "Use bottom navigation instead of top hamburger menus",
+          "Bottom sheets for action menus and selections",
+          "Floating action button (FAB) in bottom-right for the primary action",
+          "Avoid placing frequent actions in the top-left corner",
+          "Pull-to-refresh works because it uses the natural thumb zone",
+          "Consider swipe gestures for common actions (swipe to delete, archive)"
+        ],
+        "violations": [
+          "Primary navigation only in the top-left hamburger menu",
+          "Important CTAs in the top corners of the screen",
+          "Action sheets that appear at the top of the screen",
+          "Requiring two-handed operation for core tasks",
+          "Small targets in the top corners (back button < 44px)"
+        ]
+      },
+      {
+        "id": "bottom-sheet-pattern",
+        "name": "Bottom Sheet Pattern",
+        "summary": "Bottom sheets are the mobile-native way to present actions, selections, and supplementary content.",
+        "implications": [
+          "Use instead of desktop dropdown menus on mobile",
+          "Include a visible drag handle at the top",
+          "Support swipe-to-dismiss (swipe down)",
+          "Snap to predefined heights: peek (25%), half (50%), full (85-90%)",
+          "Modal bottom sheets: add a scrim behind, tap-outside-to-dismiss",
+          "Content should be scrollable within the sheet when expanded",
+          "Place the most common action at the top of the sheet content"
+        ],
+        "violations": [
+          "Desktop-style dropdown menus on mobile — too small, wrong position",
+          "Full-screen modals for simple selections (date, filter, action)",
+          "Bottom sheet without drag handle — unclear dismissal method",
+          "Bottom sheet covering the full screen with no way to see context behind"
+        ]
+      },
+      {
+        "id": "mobile-forms",
+        "name": "Mobile Form Design",
+        "summary": "Mobile forms must minimize typing, use appropriate keyboards, and handle the virtual keyboard gracefully.",
+        "implications": [
+          "Use appropriate input types: email, tel, number, url, search",
+          "Set autocomplete attributes for auto-fill (name, email, address, cc-number)",
+          "Single-column layout only — never multi-column on mobile",
+          "Replace text inputs with pickers, toggles, and segmented controls where possible",
+          "Labels above inputs (not inline/floating for mobile — they shrink to unreadable sizes)",
+          "Active field must be visible above the virtual keyboard",
+          "Place the submit button above the fold or make it sticky at the bottom"
+        ],
+        "violations": [
+          "Email field without inputmode='email' — shows default keyboard",
+          "Multi-column form layout on mobile — fields too narrow",
+          "Phone field without inputmode='tel' — shows full keyboard",
+          "Form that doesn't scroll when keyboard appears — active field hidden",
+          "No autocomplete attributes — user must type everything manually"
+        ]
+      },
+      {
+        "id": "mobile-navigation",
+        "name": "Mobile Navigation Patterns",
+        "summary": "Mobile navigation should prioritize the thumb zone and minimize the number of taps to reach key content.",
+        "implications": [
+          "Bottom tab bar for 3-5 primary destinations (iOS tab bar, Material bottom nav)",
+          "Always show icon + label on tab items (icon-only reduces discoverability 50%)",
+          "Hamburger menu only for 5+ sections or when navigation is secondary",
+          "Stack navigation with clear back button for hierarchical content",
+          "Search should be prominent — top of screen or dedicated tab",
+          "Maximum 2-3 taps to reach any key content",
+          "Persistent navigation — don't hide it on scroll (or at least show on scroll-up)"
+        ],
+        "violations": [
+          "Hamburger menu as the only navigation with 3 items — should be a tab bar",
+          "Icon-only tab bar with no labels — low discoverability",
+          "More than 5 items in the bottom tab bar — too many to tap accurately",
+          "Navigation hidden on scroll with no way to bring it back",
+          "Deep navigation hierarchy requiring 4+ taps to reach content"
+        ]
+      },
+      {
+        "id": "mobile-web-hamburger-nav",
+        "name": "Mobile Web Hamburger Navigation",
+        "summary": "On mobile web, hide nav links behind a hamburger menu with a glass overlay dropdown. Keep the CTA visible but smaller.",
+        "implications": [
+          "Hide all nav links at mobile breakpoint — show hamburger icon instead",
+          "Hamburger button must be 44px minimum tap target",
+          "CTA button stays visible in the nav bar but with reduced padding (8-12px vertical, 14-16px horizontal)",
+          "Logo text can be hidden on mobile if space is tight — icon alone is sufficient",
+          "Mobile menu: full-width links with 48px+ height, 16px padding, rounded tap targets",
+          "Glass/blur backdrop on mobile menu matching the nav's aesthetic",
+          "Animate hamburger to X on open, close on link tap and outside tap",
+          "Mobile menu appears below nav bar, not fullscreen — user keeps spatial context"
+        ],
+        "violations": [
+          "Nav bar showing only a CTA with no way to access other pages on mobile",
+          "Hamburger menu with 32px links — too small for finger taps",
+          "No outside-tap-to-dismiss on mobile menu — must use hamburger to close",
+          "Full-screen mobile menu that disorientsthe user",
+          "Desktop nav links wrapping to multiple lines on mobile instead of collapsing to hamburger"
+        ]
+      },
+      {
+        "id": "mobile-minimum-font-size",
+        "name": "Mobile Minimum Font Size",
+        "summary": "All readable text on mobile must be at least 13px. No exceptions for body content, labels, or UI text.",
+        "implications": [
+          "Body text: minimum 16px on mobile, ideally 17-18px",
+          "Secondary text (captions, labels, metadata): minimum 13px",
+          "Form labels and placeholder text: minimum 14px",
+          "Navigation links: minimum 14px",
+          "Table cell text: minimum 13px — consider horizontal scroll for data-dense tables",
+          "Code blocks: minimum 13px on mobile (reduce from 14-15px desktop if needed, but never below 13)",
+          "Uppercase labels with letter-spacing: 11px uppercase text is equivalent to ~13px legibility — still push to 13px",
+          "Test at mobile breakpoints — font-size reductions in media queries must respect the 13px floor"
+        ],
+        "violations": [
+          "Font-size: 10px on any element visible at mobile breakpoint",
+          "Font-size: 11px on labels, captions, or metadata — too small for finger-adjacent reading",
+          "Font-size: 12px on navigation items or form elements",
+          "Media query that reduces desktop 14px text to 10px for mobile — overcorrection",
+          "Schedule/grid text at 11px — data tables are hard enough to read on mobile without tiny text"
+        ]
+      },
+      {
+        "id": "nav-consistency-across-pages",
+        "name": "Structural Chrome Consistency Across Pages",
+        "summary": "Navigation bars, headers, footers, and menus must be pixel-identical across every page — same HTML structure, same CSS values, same JS behavior.",
+        "implications": [
+          "Designate one page as the canonical source of truth for all chrome components",
+          "Nav, footer, and mobile menu CSS must use the same CSS custom properties on every page",
+          "Every page must have the exact same nav links in the same order",
+          "Hamburger menu must exist on every page with identical open/close behavior and JS",
+          "Footer must have the same structure, links, and styling on every page",
+          "Mobile responsive overrides for chrome must be identical across all pages",
+          "When updating any chrome component, grep and update ALL pages in one pass",
+          "CTA button in nav must be consistent — same text, same destination, same size",
+          "Box-shadow, border-radius, backdrop-filter, and transition values must match exactly",
+          "Logo size, drop-shadow filters, and brand text must be identical across pages",
+          "Outside-tap-to-dismiss must work on every page's mobile menu"
+        ],
+        "violations": [
+          "Nav uses 14px left-aligned links on about page but 18px center-positioned on index",
+          "Footer has different HTML structure on each page (plain text vs branded layout)",
+          "Nav box-shadow is 0 8px 32px on one page but 0 4px 24px on another",
+          "Logo is 32px on about page but 30px on index page",
+          "Nav CSS uses hardcoded pixel values on one page but CSS variables on another",
+          "Hamburger button exists in HTML but no JavaScript to toggle it",
+          "Footer links differ between pages (some have Docs, some have Pricing, some have neither)",
+          "Mobile menu on one page is missing links that exist on another"
+        ]
+      },
+      {
+        "id": "mobile-button-touch-compliance",
+        "name": "Mobile Button Touch Compliance",
+        "summary": "When buttons shrink at mobile breakpoints, they must maintain a 44px minimum height — use min-height, not just padding.",
+        "implications": [
+          "Every button with reduced mobile padding must have `min-height: 44px`",
+          "Use `display: flex; align-items: center; justify-content: center` for vertical centering with min-height",
+          "Nav bar CTAs: reduce font-size and horizontal padding freely, but never let height drop below 44px",
+          "Inline buttons in forms and cards: same rule — min-height: 44px",
+          "Ghost/text buttons: even without a visible background, the tap target must be 44px",
+          "Test by actually tapping on a real device — simulator clicks are pixel-precise, fingers aren't",
+          "Adjacent buttons in a row: maintain 8px+ gap between them to prevent mis-taps"
+        ],
+        "violations": [
+          "Button with padding: 8px 14px and no min-height — renders at ~29px height",
+          "Nav CTA shrunk to fit mobile nav bar but only 32px tall",
+          "Submit button with font-size: 12px and padding: 6px 12px — ~24px height",
+          "Icon button at 32x32px on mobile — needs 44x44px tap area",
+          "Mobile breakpoint that reduces padding but doesn't add min-height safeguard"
+        ]
+      },
+      {
+        "id": "visibility-of-system-status",
+        "name": "Visibility of System Status",
+        "summary": "The design should always keep users informed about what is going on, through appropriate feedback within a reasonable amount of time.",
+        "implications": [
+          "Show loading indicators for any operation over 1 second",
+          "Provide progress bars for multi-step processes",
+          "Confirm successful actions with visual feedback (toast, check mark, color change)",
+          "Display real-time validation on form inputs",
+          "Show current location in navigation (breadcrumbs, active nav state)",
+          "Indicate unsaved changes before the user navigates away",
+          "Use skeleton screens instead of blank loading states"
+        ],
+        "violations": [
+          "A form submits with no visual feedback — user clicks again, creating duplicates",
+          "File upload with no progress bar — user doesn't know if it's working",
+          "No active state on navigation — user doesn't know which page they're on",
+          "Long-running process with no indication of progress or estimated time",
+          "Button click with no visual response (no disabled state, no spinner)"
+        ]
+      },
+      {
+        "id": "match-real-world",
+        "name": "Match Between System and the Real World",
+        "summary": "The design should speak the users' language. Use words, phrases, and concepts familiar to the user, rather than internal jargon.",
+        "implications": [
+          "Use domain-specific language your users actually use, not internal product terms",
+          "Order information following real-world conventions (dates, addresses, names)",
+          "Use icons and metaphors that map to physical-world objects users recognize",
+          "Design workflows that mirror real-world task sequences",
+          "Use natural language for labels and instructions, not technical jargon",
+          "Show amounts in user's local currency and date format"
+        ],
+        "violations": [
+          "Using 'repository' instead of 'project' for non-developer audiences",
+          "Error codes like 'ERR_404' instead of 'Page not found'",
+          "Technical field names like 'varchar' or 'uuid' visible to end users",
+          "Calendar that starts weeks on Monday in US-locale apps (or Sunday in European ones)",
+          "Using 'tenant' or 'instance' in user-facing copy"
+        ]
+      },
+      {
+        "id": "user-control-freedom",
+        "name": "User Control and Freedom",
+        "summary": "Users often perform actions by mistake. They need a clearly marked 'emergency exit' to leave the unwanted action without having to go through an extended process.",
+        "implications": [
+          "Support undo/redo for all significant actions",
+          "Provide a clear 'Cancel' option on every modal and multi-step flow",
+          "Allow users to go back to previous steps in multi-step processes",
+          "Use 'soft delete' (trash/archive) instead of permanent deletion",
+          "Show confirmation dialogs only for truly irreversible actions",
+          "Let users exit onboarding flows and return later",
+          "Provide a 'Home' or logo link that always returns to a known state"
+        ],
+        "violations": [
+          "Permanent deletion with no undo or archive option",
+          "Multi-step wizard with no back button",
+          "Modal that can only be dismissed by completing the action",
+          "Onboarding flow that can't be skipped or paused",
+          "No way to unsend or edit a message after sending",
+          "Settings change that takes effect immediately with no revert option"
+        ]
+      },
+      {
+        "id": "consistency-standards",
+        "name": "Consistency and Standards",
+        "summary": "Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.",
+        "implications": [
+          "Use standard platform patterns (hamburger menu, search icon, settings gear)",
+          "Keep terminology consistent across the entire product",
+          "Use the same visual treatment for the same type of action everywhere",
+          "Follow platform conventions for gestures, keyboard shortcuts, and navigation",
+          "Maintain a design system to enforce visual and interaction consistency",
+          "Use standard form patterns (labels above inputs, primary action on the right)"
+        ],
+        "violations": [
+          "Different words for the same action ('Remove' vs 'Delete' vs 'Trash')",
+          "Buttons that look different but do the same thing on different pages",
+          "Non-standard icons (using a heart icon for bookmarking)",
+          "Different navigation patterns on different pages of the same app",
+          "Custom scrollbar behavior that doesn't match OS conventions",
+          "Different date formats on different screens"
+        ]
+      },
+      {
+        "id": "recognition-over-recall",
+        "name": "Recognition Rather Than Recall",
+        "summary": "Minimize the user's memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.",
+        "implications": [
+          "Show recently used items and searches",
+          "Use descriptive labels instead of icon-only buttons",
+          "Provide search with autocomplete and suggestions",
+          "Show contextual help and tooltips for complex features",
+          "Display relevant information in context rather than requiring navigation",
+          "Use visual cues (color, icons, thumbnails) to aid recognition",
+          "Keep important actions visible, not buried in menus"
+        ],
+        "violations": [
+          "Icon-only toolbar with no labels or tooltips",
+          "Requiring users to remember codes or IDs from a previous screen",
+          "Hidden navigation that requires memorizing keyboard shortcuts",
+          "No search history or recent items",
+          "Complex settings with no preview of what they affect",
+          "Reference numbers shown once with no way to look them up later"
+        ]
+      },
+      {
+        "id": "flexibility-efficiency",
+        "name": "Flexibility and Efficiency of Use",
+        "summary": "Shortcuts — hidden from novice users — can speed up the interaction for the expert user so that the design can cater to both inexperienced and experienced users.",
+        "implications": [
+          "Provide keyboard shortcuts for common actions",
+          "Support batch/bulk operations for repetitive tasks",
+          "Allow users to customize their workspace and workflows",
+          "Implement progressive disclosure — basic features first, advanced on demand",
+          "Support command palettes for power users (Cmd+K pattern)",
+          "Allow drag-and-drop as an alternative to menu-driven interactions",
+          "Remember user preferences and recent selections"
+        ],
+        "violations": [
+          "No keyboard shortcuts for any actions",
+          "Forcing users through a wizard for a task they do 50 times a day",
+          "No bulk selection or batch operations on lists",
+          "Expert features mixed in with beginner UI, making both worse",
+          "No way to save or template frequently used configurations",
+          "Search that requires exact matches with no fuzzy matching"
+        ]
+      },
+      {
+        "id": "aesthetic-minimalist-design",
+        "name": "Aesthetic and Minimalist Design",
+        "summary": "Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information in an interface competes with the relevant units of information and diminishes their relative visibility.",
+        "implications": [
+          "Prioritize content by user goals — primary task front and center",
+          "Use progressive disclosure to hide secondary information",
+          "Remove decorative elements that don't communicate meaning",
+          "Use generous whitespace to create visual hierarchy",
+          "Limit choices to reduce cognitive load (Hick's Law)",
+          "Show only the most relevant data; let users drill down for details",
+          "Every visual element should serve a purpose — decoration, distinction, or information"
+        ],
+        "violations": [
+          "Dashboard with 20+ metrics all given equal visual weight",
+          "Settings page showing every option at once with no grouping",
+          "Marketing copy mixed into a task-focused UI",
+          "Decorative animations that slow down task completion",
+          "Cluttered headers with too many navigation items",
+          "Showing database fields the user doesn't need to see"
+        ]
+      },
+      {
+        "id": "flex-wrap-over-breakpoints",
+        "name": "Flex Wrap Over Hard Breakpoints",
+        "summary": "Use flex-wrap with min-width on children instead of media query breakpoints for layout reflow.",
+        "implications": [
+          "Use `display: flex; flex-wrap: wrap` on grid/card containers instead of CSS Grid with breakpoint overrides",
+          "Set `flex: 1 1 <min-width>` on children (e.g. `flex: 1 1 280px`) so items grow to fill and wrap when they can't fit",
+          "The min-width value is the design's true breakpoint — when a card can't be narrower than 280px, it wraps",
+          "This works inside any container width, not just viewport — critical for sidebar layouts, modals, and embedded components",
+          "No need to update breakpoints when adding/removing columns — the layout self-adjusts",
+          "Combine with `gap` for consistent spacing that doesn't need breakpoint-specific overrides"
+        ],
+        "violations": [
+          "Media queries that switch between `grid-template-columns: 1fr 1fr 1fr` and `1fr 1fr` and `1fr` at arbitrary widths",
+          "Breakpoints that only work for current designs and break when content changes",
+          "Different gap/spacing values at each breakpoint instead of one consistent value",
+          "Layout that breaks in a sidebar or modal because breakpoints assume full viewport width"
+        ]
+      },
+      {
+        "id": "clamp-over-breakpoint-values",
+        "name": "Clamp for Fluid Sizing",
+        "summary": "Use clamp() for padding, font sizes, and spacing instead of breakpoint-specific values.",
+        "implications": [
+          "Use `clamp(min, preferred, max)` for padding: e.g. `padding: clamp(1rem, 4vw, 3rem)`",
+          "Use clamp for fluid typography: e.g. `font-size: clamp(1rem, 2.5vw, 2rem)` for headings",
+          "Use clamp for container gaps: e.g. `gap: clamp(1rem, 3vw, 2.5rem)`",
+          "The preferred (middle) value uses viewport units (vw) to create the fluid scaling",
+          "Set sensible min/max bounds to prevent text from becoming unreadably small or absurdly large",
+          "Replaces multiple breakpoints worth of font-size and spacing overrides with a single declaration"
+        ],
+        "violations": [
+          "Three or more media queries just to change font-size at different widths",
+          "Breakpoint-specific padding that creates visible jumps when resizing",
+          "Using only vw units without min/max bounds — text becomes microscopic on mobile",
+          "Hardcoded px values at every breakpoint instead of one fluid clamp expression"
+        ]
+      },
+      {
+        "id": "media-queries-last-resort",
+        "name": "Media Queries as Last Resort",
+        "summary": "Reserve media queries only for things that intrinsic layout techniques cannot handle.",
+        "implications": [
+          "Never use media queries for layout reflow — let flex-wrap handle when cards/columns stack",
+          "Never use media queries for font-size scaling — use clamp() instead",
+          "Never use media queries for spacing changes — use clamp() or min()/max()",
+          "Use media queries for: nav collapse (hamburger), showing/hiding elements, switching layout direction",
+          "Use media queries for: print styles, reduced-motion preferences, dark mode (prefers-color-scheme)",
+          "If you have more than 2-3 media queries in a component, audit for intrinsic alternatives"
+        ],
+        "violations": [
+          "5+ breakpoints in a single component's CSS — sign of over-reliance on media queries",
+          "Media queries that only change grid-template-columns — use flex-wrap instead",
+          "Media queries that only change font-size or padding — use clamp() instead",
+          "Components that break at non-standard widths because breakpoints assume specific containers"
+        ]
+      },
+      {
+        "id": "type-scale",
+        "name": "Typographic Scale",
+        "summary": "Use a mathematically consistent type scale to create harmonious size relationships.",
+        "implications": [
+          "Choose a scale ratio based on content type (1.2 for apps, 1.25-1.333 for marketing)",
+          "Base size of 16px (1rem) for body text on web",
+          "Limit to 5-7 sizes in the scale — more creates noise",
+          "Use the scale for all text: headings, body, captions, labels",
+          "Define the scale in design tokens for consistency across the product",
+          "Adjust scale for mobile — tighter ratios (1.125-1.2) work better on small screens"
+        ],
+        "violations": [
+          "Ad-hoc font sizes (13px, 15px, 17px, 19px) with no systematic relationship",
+          "Too many distinct sizes on one page",
+          "Heading sizes too close together — no clear hierarchy",
+          "Scale too aggressive for the content type (1.618 on a dense data app)"
+        ]
+      },
+      {
+        "id": "line-height-spacing",
+        "name": "Line Height and Spacing",
+        "summary": "Proper line height and spacing dramatically impacts readability and scannability.",
+        "implications": [
+          "Body text: line-height 1.5 (WCAG recommendation), range 1.4-1.6",
+          "Headings: line-height 1.1-1.3 (tighter for larger text)",
+          "All-caps text: add letter-spacing of 0.05-0.1em for readability",
+          "Large headings (32px+): tighten letter-spacing slightly (-0.01 to -0.03em)",
+          "Paragraph spacing: at least 1.5x the font size (WCAG)",
+          "Consistent spacing between all typographic elements"
+        ],
+        "violations": [
+          "Single line height (line-height: 1.0) on multi-line body text",
+          "All-caps text without added letter-spacing",
+          "Inconsistent line heights across the same text style",
+          "No paragraph spacing — text blocks run together"
+        ]
+      },
+      {
+        "id": "font-pairing",
+        "name": "Font Pairing",
+        "summary": "Combine typefaces with complementary characteristics for visual variety and hierarchy.",
+        "implications": [
+          "Use at most 2-3 typefaces in a product",
+          "Pair typefaces with contrasting classification but similar proportions",
+          "Consider system font stacks for performance (Inter, -apple-system, system-ui)",
+          "One typeface for headings/display, one for body/UI — or one family with enough weights",
+          "Variable fonts offer weight/width flexibility with a single font file",
+          "Test pairings at all sizes — what works at 48px may not at 14px"
+        ],
+        "violations": [
+          "4+ different typefaces creating visual chaos",
+          "Two similar sans-serifs that don't create clear contrast",
+          "Display typeface used for body text (poor readability at small sizes)",
+          "Font loading flash causing layout shifts"
+        ]
+      },
+      {
+        "id": "text-hierarchy",
+        "name": "Text Hierarchy",
+        "summary": "Create clear levels of importance through size, weight, color, and spacing.",
+        "implications": [
+          "Use 3-4 distinct hierarchy levels: primary (heading), secondary (subheading), body, and muted",
+          "Size is the strongest hierarchy signal — use it for the most important distinction",
+          "Weight creates secondary hierarchy within the same size",
+          "Color (opacity/saturation) creates tertiary hierarchy — muted for less important text",
+          "Combine size + weight + color for maximum hierarchy contrast",
+          "Test hierarchy by squinting — the most important text should still be visible"
+        ],
+        "violations": [
+          "All text the same size and weight — no hierarchy",
+          "Too many hierarchy levels — 6+ sizes that blur the distinctions",
+          "Using only color to create hierarchy (fails for color-blind users)",
+          "Heading and body text too close in size — unclear distinction"
+        ]
+      },
+      {
+        "id": "measure-line-length",
+        "name": "Measure (Line Length)",
+        "summary": "Optimal line length for body text is 45-75 characters per line.",
+        "implications": [
+          "Body text: 45-75 characters per line (max-width: 65ch is a good default)",
+          "Short-form text (cards, labels): 20-40 characters",
+          "Use max-width on text containers — not on the parent layout",
+          "Wider columns need larger text; narrower columns can use smaller text",
+          "Increase line-height if line length exceeds 65 characters",
+          "Left-align body text for Western languages — centered text is harder to read beyond 3 lines"
+        ],
+        "violations": [
+          "Full-width text spanning 1200px+ viewport — 120+ characters per line",
+          "Text constrained to 200px — constant line breaks, choppy reading",
+          "Centered text in paragraphs — hard to find the start of the next line",
+          "Justified text on the web (inconsistent word spacing)"
+        ]
+      },
+      {
+        "id": "clarity-over-cleverness",
+        "name": "Clarity over cleverness",
+        "summary": "Every line of UI copy should be instantly understood. If a user pauses to parse wit or poetry, the copy failed.",
+        "implications": [
+          "Test every headline, button, and error by asking: 'Would this be understood by someone reading it at 3am, in their second language, with a crying baby?'",
+          "Remove metaphors, puns, and analogies unless they save the user real effort.",
+          "If a clever line and a plain line convey the same information, ship the plain one.",
+          "Brand voice lives in the places with room — empty states, marketing, success moments. Not in labels, errors, or forms."
+        ],
+        "violations": [
+          "Button label 'Let's do this!' instead of 'Create account'",
+          "Error message written as a joke about the user's mistake",
+          "Navigation labels that require interpretation ('The Vault', 'Command Center') instead of clear nouns",
+          "Product copy that reads like marketing taglines inside the app"
+        ]
+      },
+      {
+        "id": "front-load-meaning",
+        "name": "Front-load meaning",
+        "summary": "Put the most important word first. Users scan — they rarely read to the end of a line.",
+        "implications": [
+          "Start headings with the noun or verb that matters — not with 'How to', 'Guide to', 'The future of'.",
+          "Buttons lead with a verb: 'Save changes', not 'Please save your changes'.",
+          "Link text leads with the destination: 'Billing settings', not 'Click here to go to billing settings'.",
+          "Bullet lists: first two words carry the meaning.",
+          "Notifications: actor, action, object — in that order. 'Priya commented on Q2 roadmap.'"
+        ],
+        "violations": [
+          "Headings starting with filler: 'Welcome to...', 'Introducing...', 'Let us help you...'",
+          "Links that say 'click here' instead of naming the destination",
+          "Buttons with the verb buried mid-phrase",
+          "Notifications that open with the system ('A new comment has been added to...')"
+        ]
+      },
+      {
+        "id": "match-words-to-mental-model",
+        "name": "Match words to the user's mental model",
+        "summary": "Use the words the user already uses. Internal product names, team vocabulary, and technical jargon confuse users who don't share your context.",
+        "implications": [
+          "Audit all UI copy for internal terms (codenames, schema names, team shorthand).",
+          "Ask three users from the target audience: 'What would you call this?' — use the word that wins.",
+          "When the product must use its own term (trademark, differentiation), define it on first use and stay consistent.",
+          "Localize terms to the industry the user is in, not the industry the product thinks it's in."
+        ],
+        "violations": [
+          "'Tenant' in a B2B SaaS (most admins say 'workspace' or 'organization')",
+          "'Resource' when you mean 'invoice' or 'document'",
+          "'Entity' when you mean 'customer'",
+          "Mixing 'team', 'workspace', 'organization', and 'account' inconsistently in the same product"
+        ]
+      },
+      {
+        "id": "consistent-terminology",
+        "name": "Consistent terminology",
+        "summary": "One concept, one word — used everywhere. Inconsistency makes users wonder if they're looking at the same thing.",
+        "implications": [
+          "Maintain a product lexicon — the canonical term for every concept, plus acceptable synonyms (and a ban list).",
+          "When in doubt, write the term once and do a project-wide find-and-replace.",
+          "Lexicon updates ship in a single PR — don't roll out a rename gradually.",
+          "Changes to core terms need a migration plan: in-product announcements, updated help content, email to active users."
+        ],
+        "violations": [
+          "Using 'user', 'member', and 'teammate' interchangeably for the same role",
+          "Mixing 'delete' and 'remove' for the same destructive action",
+          "Navigation item 'Settings' leading to a page titled 'Preferences'",
+          "Email calling it a 'campaign' but the dashboard calling it a 'send'"
+        ]
+      },
+      {
+        "id": "consistency-with-licensed-exceptions",
+        "name": "Consistency by default; exceptions must be named",
+        "summary": "Every surface follows the brand system unless there's an explicit, documented reason not to. 'Special case' without justification is how brands rot.",
+        "implications": [
+          "Deviation from the brand system requires a named reason, an owner, and (for campaigns) a sunset date.",
+          "Exceptions live in the same documentation as the rules — not in someone's head.",
+          "Review exceptions periodically; retire ones that no longer serve.",
+          "When multiple exceptions accumulate, the system itself may need to evolve — but the evolution is deliberate."
+        ],
+        "violations": [
+          "Each team has invented its own variation with no coordination.",
+          "One-off campaign visuals become the new default because no one pulled them back.",
+          "Marketing uses one color palette; product uses another; neither team knows why.",
+          "Exceptions never reviewed — rot accumulates."
+        ]
+      },
+      {
+        "id": "brand-evolution-with-discipline",
+        "name": "Evolve the brand system — with discipline, not drift",
+        "summary": "Brands must evolve to stay contemporary. But evolution is discrete and documented; drift is continuous and unnoticed. The difference is whether the change was chosen.",
+        "implications": [
+          "Schedule brand system reviews on a cadence (every 18–36 months typically).",
+          "Name an owner for the brand system — someone accountable for consistency and evolution.",
+          "When change is needed, update the canonical system first, then roll out to surfaces.",
+          "Audit surfaces quarterly for drift — especially ones the core team doesn't touch often."
+        ],
+        "violations": [
+          "Brand guide hasn't been updated in 5 years; actual surfaces diverged 3 years ago.",
+          "No named owner — each team guesses.",
+          "Change happens ad hoc; no record of what was deliberate vs. accidental.",
+          "Refresh project happens every 5 years with a big-bang rebrand — traumatic, expensive, avoidable."
+        ]
+      },
+      {
+        "id": "gradient-limit-palette",
+        "name": "Limit gradient palette and direction",
+        "summary": "Every additional color or angle in a gradient system increases brand entropy. Limit the palette to 2-3 harmonious colors and the direction to 1-2 angles. Consistency reads as intention.",
+        "implications": [
+          "Define the gradient palette as 2-3 colors with specific stops — not 'any brand color' — and include them in your design system.",
+          "Pick 1-2 angles (usually 135° or 180° radial) and use them consistently.",
+          "Document gradient tokens: the specific colors, stops, angles, and usage contexts.",
+          "Publish a 'gradient don't' page: unapproved color combinations, unapproved angles.",
+          "When a campaign wants a new gradient, treat it as a brand extension decision, not a per-page choice."
+        ],
+        "violations": [
+          "Different gradient colors on the marketing site, product, email, and social — reads as uncoordinated.",
+          "Random gradient angles per component — chaotic feel.",
+          "Adding a 'limited edition' gradient for every campaign — dilutes the system.",
+          "A 5-color gradient that contains no brand colors — decorative not strategic."
+        ]
+      },
+      {
+        "id": "imagery-consistency",
+        "name": "Imagery is a system, not a collection",
+        "summary": "Photography, illustration, and graphics are brand surfaces. Treat them with the same systematic rigor as typography and color — define the rules, enforce the rules.",
+        "implications": [
+          "Define image treatment rules: color grading, filter, crop, lighting direction.",
+          "Define composition rules: what's in frame, what's excluded, how humans are portrayed.",
+          "Define subject matter rules: activities, environments, cultures represented.",
+          "When commissioning photography or illustration, provide the system — not 'make it look good.'",
+          "Audit imagery across product, marketing, and social regularly for drift.",
+          "Stock imagery is almost never system-compliant. Factor treatment (recoloring, recropping) into the budget."
+        ],
+        "violations": [
+          "Corporate stock on the marketing site, in-house photography on the product, user-generated on social — three different brands.",
+          "A color palette that harmonizes carefully in type but clashes with imagery tints.",
+          "Illustration style 1 on onboarding, style 2 on empty states, style 3 in marketing — each commissioned separately.",
+          "Imagery that contradicts the brand values (e.g., 'inclusive and accessible' brand with a photo-library of only young professionals)."
+        ]
+      },
+      {
+        "id": "logo-dont-distort",
+        "name": "Never distort, recolor outside the system, or embellish the logo",
+        "summary": "A logo is a fixed asset. Stretching, skewing, recoloring, adding effects, or modifying the mark degrades brand equity and must be explicitly forbidden.",
+        "implications": [
+          "Ship the logo as locked SVG/PDF assets — don't give editable source to people who will modify it.",
+          "Publish a 'don'ts' page in the brand guide with visual examples of each forbidden treatment.",
+          "Specify approved color variants (primary, reversed/white, mono black, mono white) — not 'any color that looks good'.",
+          "Specify approved backgrounds (solid, approved photography) — and forbidden (busy patterns, text overlays).",
+          "Include 'do not modify' language in contracts with external vendors."
+        ],
+        "violations": [
+          "Stretching a logo horizontally to fill a wide banner.",
+          "Adding a drop shadow to 'pop' the logo on a white background.",
+          "Recoloring the logo to match a campaign palette that isn't in the brand system.",
+          "Placing the logo inside a shape (circle, pill) that isn't part of the designed lockup.",
+          "Combining the logo with partner logos without approved co-branding rules."
+        ]
+      },
+      {
+        "id": "logo-restraint",
+        "name": "Use the logo sparingly — let it appear, don't repeat it",
+        "summary": "More logos doesn't mean more brand. Placing the logo on every card, section, and footer dilutes its impact and looks insecure. Brand confidence shows in restraint.",
+        "implications": [
+          "One logo per visible surface — not one per section of that surface.",
+          "Don't watermark imagery with the logo unless there's a specific IP reason.",
+          "In cards, lists, and repeating components, use brand cues (color, typography, voice) instead of the logo.",
+          "Let the brand show in the product's tone and visual system — repetition of the mark is not the vehicle for recognition.",
+          "Exception: co-branded contexts where logo presence is required for attribution."
+        ],
+        "violations": [
+          "Every card on the page has the logo in its corner.",
+          "The logo appears 8 times in the marketing hero.",
+          "A watermark on every product photograph.",
+          "Footer with a logo AND a big 'Brand' text treatment AND a byline — all saying the same thing."
+        ]
+      },
+      {
+        "id": "brand-as-system",
+        "name": "A brand is a system, not a logo",
+        "summary": "The logo is one output of the brand system. The brand itself is the set of rules — typography, color, spacing, voice, imagery, motion — that produce coherent surfaces across every context.",
+        "implications": [
+          "Invest in tokens (color, type, spacing, radii, motion) as much as in the logo — the tokens scale; the logo is one instance.",
+          "Publish the system in a public or internal design site — make it easy to find and use.",
+          "Build components that encode the system, so developers can't accidentally violate it.",
+          "When evaluating brand quality, look at non-logo surfaces — empty states, tooltips, invoices, 404s. That's where system consistency shows.",
+          "Prefer decisions that extend the system over decisions that add exceptions."
+        ],
+        "violations": [
+          "A beautiful logo on an inconsistent product — different fonts, random spacing, ad-hoc colors.",
+          "Brand refresh that updates the logo but not the underlying system — nothing actually changes.",
+          "Design system tokens that designers have to discover through Figma search rather than having at their fingertips.",
+          "A 'brand guide' that's 80% logo rules and 20% everything else."
+        ]
+      },
+      {
+        "id": "brand-consistency-with-exceptions",
+        "name": "Be consistent 95% of the time; make 5% deliberate exceptions",
+        "summary": "Rigid consistency makes a brand feel corporate. No consistency makes it feel confused. Rigorous consistency with a small number of deliberate, documented exceptions is the mark of confident design.",
+        "implications": [
+          "Default to the system for all routine surfaces — nav, forms, cards, transactional emails, error states.",
+          "Reserve exceptions for moments of emphasis — hero, campaign, anniversary, launch, onboarding peak.",
+          "Document each exception: why it deviates, for how long, what's specifically different.",
+          "Review exceptions quarterly — retire the ones that have outlived their moment.",
+          "When a team starts breaking rules routinely, the issue is usually that the rules don't serve a real need — revisit the system, not the discipline."
+        ],
+        "violations": [
+          "Every page has a slightly different hero treatment — reads as undesigned.",
+          "Transactional emails that each pick a different type scale — the system never extended to email.",
+          "Campaigns that override brand color every quarter — brand equity dilutes.",
+          "A rigid guide that blocks any deviation, then designers work around it — the system collapses from within."
+        ]
+      },
+      {
+        "id": "brand-accumulate-trust-over-time",
+        "name": "Brand accumulates through consistency over time — not through novelty",
+        "summary": "A brand isn't strong because it's new or surprising. It's strong because users have seen the same signals often enough to recognize and trust them. Consistency over time is the slow compounding that creates real equity.",
+        "implications": [
+          "Resist the 'every 2 years we need a refresh' instinct — most refreshes burn more equity than they build.",
+          "Evolution, not revolution: when you do update, keep visible continuity (same type family, evolved logo, extended palette).",
+          "Measure brand investment in decades, not quarters.",
+          "Audit your own touchpoints for consistency: does a user's experience today match their experience 2 years ago?",
+          "Campaign creativity is fine — it belongs on top of, not instead of, the brand system."
+        ],
+        "violations": [
+          "A brand refresh every 18 months — users never learn the signals.",
+          "'Rebrand' that changes the logo, color palette, typography, and voice at once — starts from zero in trust.",
+          "Marketing campaigns that run with their own visual language disconnected from the brand.",
+          "Legacy surfaces (old emails, old pages) that feel like a different product than the current one."
+        ]
+      },
+      {
+        "id": "brand-shows-without-logo",
+        "name": "The best brands are recognizable without the logo",
+        "summary": "If a user would recognize your product's surface with the logo removed, your brand system is working. If not, the system leans too hard on the logo and hasn't done the deeper work.",
+        "implications": [
+          "Run the 'logo-blind' test on your surfaces — does the brand still show?",
+          "Identify which non-logo signals carry your brand most strongly (type? color? layout? motion? imagery?).",
+          "Invest disproportionately in strengthening those signals — not in making the logo bigger.",
+          "Distinctive choices that persist across time build recognition; trendy choices that turn over don't.",
+          "A weak brand system reaches for the logo when recognition is needed. A strong one doesn't need to."
+        ],
+        "violations": [
+          "Removing the logo leaves a generic-looking surface — brand equity is 100% in the mark.",
+          "Marketing where every asset must include the logo in a corner for anyone to recognize the brand.",
+          "Product screens that could belong to any competitor — no distinctive type, color, or layout cue.",
+          "Investing all brand budget in the logo refresh and nothing in typography, tokens, or voice."
+        ]
+      },
+      {
+        "id": "hierarchy-one-primary-focus",
+        "name": "Every view has one primary focus — not three",
+        "summary": "Visual hierarchy works by differential, not uniform, emphasis. When everything is shouting, nothing is heard. Every view should have one primary, one secondary, and the rest as support.",
+        "implications": [
+          "Designate one primary element per visible region — hero, section, card, screen.",
+          "The primary gets the strongest treatment: largest type, most saturated color, most space, most motion.",
+          "Secondary elements step down clearly — a visible gap in scale, weight, or color intensity.",
+          "Supporting elements recede — muted color, reduced weight, less space.",
+          "If you can't pick the primary, the content isn't prioritized — the design can't fix that."
+        ],
+        "violations": [
+          "Hero with three buttons at equal visual weight — user has no lead.",
+          "Five section headlines at the same size and color — eye has no entry point.",
+          "Every card with a unique accent color — a variegated surface with no focal point.",
+          "Navigation with 12 items at equal emphasis — nothing stands out; user scans everything."
+        ]
+      },
+      {
+        "id": "hierarchy-scale-not-color",
+        "name": "Lead with scale and weight; use color to accent",
+        "summary": "Scale and weight are the most readable hierarchy tools — they work even without color. Color should accent the hierarchy, not carry it. Color-only hierarchy fails for color-blind users and in grayscale print.",
+        "implications": [
+          "Design hierarchy in grayscale first — if it doesn't read, color won't save it.",
+          "Use scale (size) and weight (boldness) as the primary hierarchy tools.",
+          "Use color to reinforce the existing hierarchy — saturation and contrast following scale, not leading it.",
+          "Test designs in grayscale regularly to verify hierarchy holds.",
+          "For color-accessible design (color-blindness, low-contrast screens), scale-and-weight-first is a requirement, not a preference."
+        ],
+        "violations": [
+          "Primary and secondary CTAs at identical size — only color differentiates them.",
+          "H1, H2, H3 all at the same size, differentiated only by color tint.",
+          "Badge system where red, yellow, green signal priority but the size and weight are identical.",
+          "Data tables where the only hierarchy is color-coded rows — unreadable when printed or scanned."
+        ]
+      }
+    ]
+  }
+}

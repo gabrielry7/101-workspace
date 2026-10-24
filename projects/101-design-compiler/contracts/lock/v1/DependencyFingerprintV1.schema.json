@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "pattern": "^(?!\\/)(?!.*(?:^|\\/)\\.{1,2}(?:\\/|$))(?!.*[\\\\:\\x00])[^/]+(?:\\/[^/]+)*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "normalization": {
+      "type": "string",
+      "enum": [
+        "LF_TEXT",
+        "BINARY"
+      ]
+    }
+  },
+  "required": [
+    "path",
+    "sha256",
+    "normalization"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:DependencyFingerprintV1:1.0.0",
+  "title": "DependencyFingerprintV1",
+  "description": "H8 technical laboratory design lock; exact source/toolchain and rights checks, no human approval or production readiness."
+}

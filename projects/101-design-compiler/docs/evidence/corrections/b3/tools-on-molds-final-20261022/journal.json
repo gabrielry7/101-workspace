@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-tools-final-20261022",
+  "created_at": "2026-10-22T22:13:24.110Z",
+  "steps": [
+    {
+      "id": "check",
+      "started_at": "2026-10-22T22:13:24.117Z",
+      "finished_at": "2026-10-22T22:13:47.615Z",
+      "wall_seconds": 23.4980298,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/tools-on-molds-final-20261022/check.txt",
+      "log_sha256": "83c70c802c139f47a4a63e46717bfca5235385d9992ed2fcb3464f8d6e442fba"
+    },
+    {
+      "id": "build-with-existing-evaluators",
+      "started_at": "2026-10-22T22:13:47.619Z",
+      "finished_at": "2026-10-22T22:14:00.247Z",
+      "wall_seconds": 12.6281777,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/tools-on-molds-final-20261022/build-with-existing-evaluators.txt",
+      "log_sha256": "b2c509f69f7a8ee44e05056b34ca8752d432e9aa5ac48369d47858b568e84145"
+    },
+    {
+      "id": "b3-seal",
+      "started_at": "2026-10-22T22:14:00.249Z",
+      "finished_at": "2026-10-22T22:14:03.542Z",
+      "wall_seconds": 3.2926728999999977,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/tools-on-molds-final-20261022/b3-seal.txt",
+      "log_sha256": "34df7ed3939dee1c0bf17aa6928e4c5164112005541d187c40d4675cd9371b70"
+    },
+    {
+      "id": "b3-exact-replay",
+      "started_at": "2026-10-22T22:14:03.543Z",
+      "finished_at": "2026-10-22T22:14:06.607Z",
+      "wall_seconds": 3.0640979000000006,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/tools-on-molds-final-20261022/b3-exact-replay.txt",
+      "log_sha256": "34df7ed3939dee1c0bf17aa6928e4c5164112005541d187c40d4675cd9371b70"
+    },
+    {
+      "id": "original-quality-replay",
+      "started_at": "2026-10-22T22:14:06.609Z",
+      "finished_at": "2026-10-22T22:14:12.394Z",
+      "wall_seconds": 5.785856800000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/tools-on-molds-final-20261022/original-quality-replay.txt",
+      "log_sha256": "458f68b3e684b573a941dd091f89d91774ea28b24ef2a875542c61fd9a5ece7e"
+    },
+    {
+      "id": "preservation",
+      "started_at": "2026-10-22T22:14:12.396Z",
+      "finished_at": "2026-10-22T22:14:14.851Z",
+      "wall_seconds": 2.4558510000000022,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/tools-on-molds-final-20261022/preservation.txt",
+      "log_sha256": "a37754fa4c0dbe089b2a3a735f6e56c875a51c01339907f6b0c490741d30f27f"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

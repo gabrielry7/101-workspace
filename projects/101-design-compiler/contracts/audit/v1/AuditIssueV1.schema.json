@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family": {
+      "type": "string",
+      "enum": [
+        "input",
+        "capabilities",
+        "semantic",
+        "rights",
+        "geometry",
+        "accessibility",
+        "performance",
+        "visual",
+        "diversity"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "BLOCKING",
+        "OBSERVATION"
+      ]
+    },
+    "code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "route": {
+      "type": "string",
+      "minLength": 1
+    },
+    "viewport": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "selector": {
+      "type": "string"
+    },
+    "evidence_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repair": {
+      "type": "string",
+      "enum": [
+        "FLUID_MEASURE",
+        "NONE"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "family",
+    "severity",
+    "code",
+    "route",
+    "viewport",
+    "selector",
+    "evidence_ref",
+    "observation",
+    "repair"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:AuditIssueV1:1.0.0",
+  "title": "AuditIssueV1",
+  "description": "H6 laboratory audit/mutation/preference contract; hard gates and evidence required. No production approval or manufactured human votes."
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "final",
+  "created_at": "2026-10-13T01:55:28.303Z",
+  "steps": [
+    {
+      "id": "runtime",
+      "started_at": "2026-10-13T01:55:28.307Z",
+      "finished_at": "2026-10-13T01:55:30.031Z",
+      "wall_seconds": 1.7234072,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b0/final/runtime.txt",
+      "log_sha256": "110fa224ee529d91e374de851c4b4a1c0f0b8875dde8ec8a6cef77c6fc70a931"
+    },
+    {
+      "id": "workspace-capture",
+      "started_at": "2026-10-13T01:55:30.034Z",
+      "finished_at": "2026-10-13T01:55:34.420Z",
+      "wall_seconds": 4.385801900000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b0/final/workspace-capture.txt",
+      "log_sha256": "b3094d618caddfb9c48050dda133d665cc9e6f4c85ff9880210625bf09ff960e"
+    },
+    {
+      "id": "clean-capture",
+      "started_at": "2026-10-13T01:55:34.421Z",
+      "finished_at": "2026-10-13T01:55:38.412Z",
+      "wall_seconds": 3.9904118,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b0/final/clean-capture.txt",
+      "log_sha256": "b3094d618caddfb9c48050dda133d665cc9e6f4c85ff9880210625bf09ff960e"
+    },
+    {
+      "id": "b0-tests",
+      "started_at": "2026-10-13T01:55:38.414Z",
+      "finished_at": "2026-10-13T01:55:38.696Z",
+      "wall_seconds": 0.2823474000000006,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b0/final/b0-tests.txt",
+      "log_sha256": "d46de478e4f636f4c9a7ac13c313cde3a0610c5c3fe15cf910673eb517677a43"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-13T01:55:38.698Z",
+      "finished_at": "2026-10-13T01:55:51.769Z",
+      "wall_seconds": 13.071421799999998,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b0/final/check.txt",
+      "log_sha256": "535d47023216727669574e2fd7933c08ae6f72fc681ae75e0d98990c1ca20e20"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

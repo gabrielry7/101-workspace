@@ -1,0 +1,594 @@
+{
+  "status": "READY",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-clinica-001",
+    "snapshot_id": "fixture-clinica-001-snapshot-v1-h2",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "osm",
+        "field": "amenity",
+        "value": "dentist",
+        "confidence": 1,
+        "evidence_ids": [
+          "observed-category-1"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "clinica — fixture ficticio H2",
+        "scope_id": "fixture-clinica-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-clinica-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "observed-category-1",
+        "kind": "observed_category",
+        "value": "dentist",
+        "scope_id": "fixture-clinica-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-observed-category-1",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "name-service-1",
+        "kind": "offering_name",
+        "value": "Servicio clínico sintético; sin promesas de resultados",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-name-service-1",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "name-professional-1",
+        "kind": "offering_name",
+        "value": "Profesional ficticio; sin credenciales inventadas",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-name-professional-1",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-service_catalog-5",
+        "kind": "capability:service_catalog",
+        "value": true,
+        "scope_id": "fixture-clinica-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-service_catalog-5",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-professional_profiles-6",
+        "kind": "capability:professional_profiles",
+        "value": true,
+        "scope_id": "fixture-clinica-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-professional_profiles-6",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-appointment-7",
+        "kind": "capability:appointment",
+        "value": true,
+        "scope_id": "fixture-clinica-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-appointment-7",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "external-url",
+        "kind": "action_url",
+        "value": "https://example.invalid/consulta-sintetica",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-external-url",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-clinica-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": []
+      }
+    ],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [
+      {
+        "id": "service-1",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "name_fact_id": "name-service-1",
+        "fact_ids": [],
+        "kind": "service"
+      },
+      {
+        "id": "professional-1",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "name_fact_id": "name-professional-1",
+        "fact_ids": [],
+        "kind": "professional"
+      }
+    ],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-clinica-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      },
+      {
+        "id": "service_catalog",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-service_catalog-5"
+        ]
+      },
+      {
+        "id": "professional_profiles",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-professional_profiles-6"
+        ]
+      },
+      {
+        "id": "appointment",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-appointment-7"
+        ]
+      }
+    ],
+    "action_destinations": [
+      {
+        "id": "action-appointment",
+        "capability_id": "appointment",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "url_fact_id": "external-url"
+      }
+    ],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "profile": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-clinica-001",
+    "snapshot_id": "fixture-clinica-001-snapshot-v1-h2",
+    "id": "fixture-clinica-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "classification": "RESOLVED",
+    "scope_ids": [
+      "fixture-clinica-001",
+      "fixture-clinica-001-branch-1"
+    ],
+    "archetypes": [
+      {
+        "id": "appointment_service",
+        "relevance": "primary",
+        "confidence": 1,
+        "category_observation_ids": [
+          "category-1"
+        ],
+        "offering_ids": [],
+        "evidence_ids": [
+          "observed-category-1"
+        ]
+      },
+      {
+        "id": "regulated_services",
+        "relevance": "modifier",
+        "confidence": 1,
+        "category_observation_ids": [
+          "category-1"
+        ],
+        "offering_ids": [],
+        "evidence_ids": [
+          "observed-category-1"
+        ]
+      }
+    ],
+    "offering_ids": [
+      "professional-1",
+      "service-1"
+    ],
+    "candidate_capabilities": [
+      "appointment",
+      "documents",
+      "professional_profiles",
+      "service_catalog"
+    ],
+    "missing_inputs": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ]
+  },
+  "capabilities": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-clinica-001",
+    "snapshot_id": "fixture-clinica-001-snapshot-v1-h2",
+    "id": "fixture-clinica-001-snapshot-v1-h2:h2-capabilities:8e6b286afe6ab532d3d34e9a",
+    "business_profile_id": "fixture-clinica-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-clinica-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "appointment",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-appointment-7"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [
+          "action-appointment"
+        ],
+        "missing_inputs": []
+      },
+      {
+        "id": "professional_profiles",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-professional_profiles-6"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [
+          "professional-1"
+        ],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "service_catalog",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-service_catalog-5"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [
+          "service-1"
+        ],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      }
+    ]
+  },
+  "requirements": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-clinica-001",
+    "snapshot_id": "fixture-clinica-001-snapshot-v1-h2",
+    "business_profile_id": "fixture-clinica-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "capability_profile_id": "fixture-clinica-001-snapshot-v1-h2:h2-capabilities:8e6b286afe6ab532d3d34e9a",
+    "registry_sha256": "9755d7f5af749f2d11e1702d0d589da934fa7862244833d8105e712d289e4af7",
+    "evaluated_at": "2026-10-07T00:00:00Z",
+    "business_input_sha256": "7610045cc7694776990d8773c546ca7cb5fca4c3e62abb35948493139eca7d98",
+    "taxonomy_registry_sha256": "9366f4b62d70ec8551aa1f5a05d6e67c99d6d3e36a638436485c107e4270701f",
+    "classification_context_sha256": "7d9de6782dc7b2b450d43f672453e314e5861d60acd5977c290e923ec2dfadc6",
+    "requirements": [
+      {
+        "id": "semantic-e12f761a8b69cedd195033b7",
+        "capability_id": "identity",
+        "scope_id": "fixture-clinica-001",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "identity",
+        "policy": "REQUIRED_IF_PRESENT",
+        "priority": 0,
+        "disposition": "INCLUDED",
+        "required": true,
+        "blocks_site": false,
+        "route": "/",
+        "depends_on": [],
+        "missing_inputs": [],
+        "fact_ids": [
+          "f-name"
+        ],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-f8309a2d15f9e9e9a222e8b0",
+        "capability_id": "service_catalog",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "offering_collection",
+        "policy": "REQUIRED_IF_PRESENT",
+        "priority": 10,
+        "disposition": "INCLUDED",
+        "required": true,
+        "blocks_site": false,
+        "route": "/sedes/s-ff3eb5111417501779ccb7b0/servicios",
+        "depends_on": [
+          "semantic-e12f761a8b69cedd195033b7"
+        ],
+        "missing_inputs": [],
+        "fact_ids": [],
+        "offering_ids": [
+          "service-1"
+        ]
+      },
+      {
+        "id": "semantic-d5125e86ff713740bc821b88",
+        "capability_id": "professional_profiles",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "offering_collection",
+        "policy": "REQUIRED_IF_PRESENT",
+        "priority": 20,
+        "disposition": "INCLUDED",
+        "required": true,
+        "blocks_site": false,
+        "route": "/sedes/s-ff3eb5111417501779ccb7b0/equipo",
+        "depends_on": [
+          "semantic-e12f761a8b69cedd195033b7"
+        ],
+        "missing_inputs": [],
+        "fact_ids": [],
+        "offering_ids": [
+          "professional-1"
+        ]
+      },
+      {
+        "id": "semantic-1f2151f491f7894dc69b679d",
+        "capability_id": "documents",
+        "scope_id": "fixture-clinica-001",
+        "source": "CANDIDATE_ONLY",
+        "evidence_status": "UNKNOWN",
+        "semantic_module": "fact_collection",
+        "policy": "CONDITIONAL",
+        "priority": 40,
+        "disposition": "BLOCKED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/documentos",
+        "depends_on": [],
+        "missing_inputs": [
+          "approved_capability_assertion"
+        ],
+        "fact_ids": [],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-887496698f7873f7a3454983",
+        "capability_id": "appointment",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "external_action",
+        "policy": "CONDITIONAL",
+        "priority": 60,
+        "disposition": "INCLUDED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/sedes/s-ff3eb5111417501779ccb7b0/contacto",
+        "depends_on": [
+          "semantic-d5125e86ff713740bc821b88",
+          "semantic-e12f761a8b69cedd195033b7",
+          "semantic-f8309a2d15f9e9e9a222e8b0"
+        ],
+        "missing_inputs": [],
+        "fact_ids": [
+          "external-url"
+        ],
+        "offering_ids": [],
+        "action_destination_id": "action-appointment"
+      }
+    ],
+    "omissions": [],
+    "bindings": [
+      {
+        "fact_id": "assert-appointment-7",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "assert-professional_profiles-6",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "assert-service_catalog-5",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "external-url",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "module_ids": [
+          "semantic-887496698f7873f7a3454983"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "f-identity",
+        "scope_id": "fixture-clinica-001",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-name",
+        "scope_id": "fixture-clinica-001",
+        "module_ids": [
+          "semantic-e12f761a8b69cedd195033b7"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "name-professional-1",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "module_ids": [
+          "semantic-d5125e86ff713740bc821b88"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "name-service-1",
+        "scope_id": "fixture-clinica-001-branch-1",
+        "module_ids": [
+          "semantic-f8309a2d15f9e9e9a222e8b0"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "observed-category-1",
+        "scope_id": "fixture-clinica-001",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      }
+    ]
+  },
+  "plan": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-clinica-001",
+    "snapshot_id": "fixture-clinica-001-snapshot-v1-h2",
+    "id": "fixture-clinica-001-snapshot-v1-h2:h2-plan:8e6b286afe6ab532d3d34e9a",
+    "business_profile_id": "fixture-clinica-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "capability_profile_id": "fixture-clinica-001-snapshot-v1-h2:h2-capabilities:8e6b286afe6ab532d3d34e9a",
+    "stage": "FIXTURE_PREVIEW",
+    "archetypes": [
+      "appointment_service",
+      "regulated_services"
+    ],
+    "capabilities": [
+      "appointment",
+      "identity",
+      "professional_profiles",
+      "service_catalog"
+    ],
+    "pages": [
+      {
+        "path": "/",
+        "intent": "approved_business_identity",
+        "modules": [
+          {
+            "id": "semantic-e12f761a8b69cedd195033b7",
+            "capability_id": "identity",
+            "scope_id": "fixture-clinica-001",
+            "required": true,
+            "presentation": "STATIC_PUBLIC_INFORMATION",
+            "fact_ids": [
+              "f-name"
+            ],
+            "offering_ids": []
+          }
+        ]
+      },
+      {
+        "path": "/sedes/s-ff3eb5111417501779ccb7b0/contacto",
+        "intent": "approved_capabilities_in_scope",
+        "modules": [
+          {
+            "id": "semantic-887496698f7873f7a3454983",
+            "capability_id": "appointment",
+            "scope_id": "fixture-clinica-001-branch-1",
+            "required": false,
+            "presentation": "REAL_APPROVED_EXTERNAL_LINK",
+            "fact_ids": [
+              "external-url"
+            ],
+            "offering_ids": [],
+            "action_destination_id": "action-appointment"
+          }
+        ]
+      },
+      {
+        "path": "/sedes/s-ff3eb5111417501779ccb7b0/equipo",
+        "intent": "approved_capabilities_in_scope",
+        "modules": [
+          {
+            "id": "semantic-d5125e86ff713740bc821b88",
+            "capability_id": "professional_profiles",
+            "scope_id": "fixture-clinica-001-branch-1",
+            "required": true,
+            "presentation": "STATIC_PUBLIC_INFORMATION",
+            "fact_ids": [],
+            "offering_ids": [
+              "professional-1"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "/sedes/s-ff3eb5111417501779ccb7b0/servicios",
+        "intent": "approved_capabilities_in_scope",
+        "modules": [
+          {
+            "id": "semantic-f8309a2d15f9e9e9a222e8b0",
+            "capability_id": "service_catalog",
+            "scope_id": "fixture-clinica-001-branch-1",
+            "required": true,
+            "presentation": "STATIC_PUBLIC_INFORMATION",
+            "fact_ids": [],
+            "offering_ids": [
+              "service-1"
+            ]
+          }
+        ]
+      }
+    ],
+    "excluded_capabilities": []
+  },
+  "diagnostics": []
+}

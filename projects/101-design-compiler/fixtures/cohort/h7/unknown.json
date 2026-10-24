@@ -1,0 +1,63 @@
+{
+  "scenario": "unknown",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "h7-synthetic-unknown",
+    "snapshot_id": "h7-synthetic-unknown-reserved-v1",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-08T00:00:00Z",
+    "identity": {
+      "name_fact_id": "name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [],
+    "facts": [
+      {
+        "id": "name",
+        "kind": "business_name",
+        "value": "unknown · NUEVO fixture sintético H7; no es negocio real",
+        "scope_id": "h7-synthetic-unknown",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-name",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      },
+      {
+        "id": "assert-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "h7-synthetic-unknown",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-identity",
+        "source": "h7-new-synthetic-fixture",
+        "observed_at": "2026-10-08T00:00:00Z"
+      }
+    ],
+    "locations": [],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "h7-synthetic-unknown",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-identity"
+        ]
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: NO PUBLICAR COMO NEGOCIO REAL",
+      "H7 held-out reservation; no real credentials or media permission"
+    ],
+    "preference_fact_ids": []
+  },
+  "activity_relationships": []
+}

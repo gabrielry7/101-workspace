@@ -1,0 +1,1279 @@
+{
+  "schema_version": "2.1.1",
+  "scope": "CONDITIONAL_SPECIFICATION_SELECTION_NOT_PRODUCT_EXECUTION",
+  "profile_id": "pilot_n0_single_location",
+  "profile_hash": "a5779d1a7299d018603002571426b9d5726e9cc045f222773be740dd4dccc615",
+  "catalog_hash": "803bb19a1da375b1fbdc142ce48b21b2660f5924e15cb84ee47dfba18d98d9b1",
+  "profile_verification": "PROPOSED_NOT_VERIFIED",
+  "publication_authorized": false,
+  "tests_total": 84,
+  "in_scope": 61,
+  "out_of_scope": 23,
+  "prepublication_unique": 59,
+  "postdeployment_unique": 10,
+  "gates": [
+    {
+      "gate_id": "G00",
+      "contexts": {
+        "prepublication": [
+          "T68"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G01",
+      "contexts": {
+        "prepublication": [
+          "T01",
+          "T02",
+          "T06",
+          "T08",
+          "T09",
+          "T15",
+          "T16",
+          "T72",
+          "T83"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G02",
+      "contexts": {
+        "prepublication": [
+          "T10",
+          "T11",
+          "T12"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G03",
+      "contexts": {
+        "prepublication": [
+          "T03",
+          "T04",
+          "T08",
+          "T09",
+          "T13",
+          "T73"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G04a",
+      "contexts": {
+        "prepublication": [
+          "T10",
+          "T11",
+          "T53",
+          "T55",
+          "T75",
+          "T77",
+          "T78",
+          "T79"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G04b",
+      "contexts": {
+        "prepublication": [
+          "T76",
+          "T77",
+          "T78",
+          "T79",
+          "T84"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G05",
+      "contexts": {
+        "prepublication": [
+          "T13",
+          "T15",
+          "T17",
+          "T18",
+          "T19",
+          "T20",
+          "T23",
+          "T24",
+          "T25",
+          "T27",
+          "T72",
+          "T74"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G06",
+      "contexts": {
+        "prepublication": [
+          "T01",
+          "T02",
+          "T03",
+          "T04",
+          "T05",
+          "T16",
+          "T20",
+          "T23",
+          "T49",
+          "T57",
+          "T72",
+          "T78",
+          "T83"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G07",
+      "contexts": {
+        "prepublication": [
+          "T40",
+          "T53",
+          "T57",
+          "T74"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G08",
+      "contexts": {
+        "prepublication": [
+          "T54",
+          "T55",
+          "T75",
+          "T78"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G09",
+      "contexts": {
+        "prepublication": [
+          "T56"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G10",
+      "contexts": {
+        "prepublication": [
+          "T03",
+          "T40",
+          "T41",
+          "T43",
+          "T44",
+          "T46",
+          "T61",
+          "T80",
+          "T81",
+          "T83"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G11",
+      "contexts": {
+        "prepublication": [
+          "T61",
+          "T63",
+          "T69",
+          "T70"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G12",
+      "contexts": {
+        "prepublication": [
+          "T06",
+          "T43",
+          "T45",
+          "T46",
+          "T47",
+          "T73",
+          "T77",
+          "T79",
+          "T81",
+          "T82",
+          "T84"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G13",
+      "contexts": {
+        "prepublication": [
+          "T12",
+          "T48",
+          "T49",
+          "T50",
+          "T51",
+          "T63",
+          "T70"
+        ],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G14",
+      "contexts": {
+        "prepublication": [],
+        "postdeployment": [
+          "T27",
+          "T58",
+          "T59"
+        ],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G15",
+      "contexts": {
+        "prepublication": [
+          "T17",
+          "T18",
+          "T60",
+          "T61",
+          "T62",
+          "T66",
+          "T82"
+        ],
+        "postdeployment": [
+          "T17",
+          "T18",
+          "T59",
+          "T60",
+          "T61",
+          "T62",
+          "T66",
+          "T82"
+        ],
+        "evaluation": []
+      }
+    },
+    {
+      "gate_id": "G16",
+      "contexts": {
+        "prepublication": [],
+        "postdeployment": [],
+        "evaluation": []
+      }
+    }
+  ],
+  "cases": [
+    {
+      "test_id": "T01",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T02",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T03",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G03": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ],
+        "G10": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T04",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G03": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T05",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G06": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T06",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T07",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "condición ausente: multi_location",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T08",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G03": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T09",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G03": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T10",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G02": [
+          "prepublication"
+        ],
+        "G04a": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T11",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G02": [
+          "prepublication"
+        ],
+        "G04a": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T12",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G02": [
+          "prepublication"
+        ],
+        "G13": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T13",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G03": [
+          "prepublication"
+        ],
+        "G05": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T14",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: reservation_request",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T15",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G05": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T16",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T17",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ],
+        "G15": [
+          "prepublication",
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T18",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ],
+        "G15": [
+          "prepublication",
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T19",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T20",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T21",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: reservation_confirmed",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T22",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T23",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T24",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T25",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T26",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T27",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ],
+        "G14": [
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T28",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T29",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T30",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T31",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T32",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T33",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T34",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T35",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T36",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T37",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T38",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T39",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: reservation_confirmed",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T40",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G07": [
+          "prepublication"
+        ],
+        "G10": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T41",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G10": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T42",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "condición ausente: shared_tenant_surfaces",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T43",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G10": [
+          "prepublication"
+        ],
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T44",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G10": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T45",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T46",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G10": [
+          "prepublication"
+        ],
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T47",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T48",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G13": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T49",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G06": [
+          "prepublication"
+        ],
+        "G13": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T50",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G13": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T51",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G13": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T52",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "condición ausente: durable_notifications",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T53",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G04a": [
+          "prepublication"
+        ],
+        "G07": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T54",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G08": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T55",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G04a": [
+          "prepublication"
+        ],
+        "G08": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T56",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G09": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T57",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G06": [
+          "prepublication"
+        ],
+        "G07": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T58",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G14": [
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T59",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G14": [
+          "postdeployment"
+        ],
+        "G15": [
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T60",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G15": [
+          "prepublication",
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T61",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G10": [
+          "prepublication"
+        ],
+        "G11": [
+          "prepublication"
+        ],
+        "G15": [
+          "prepublication",
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T62",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G15": [
+          "prepublication",
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T63",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G11": [
+          "prepublication"
+        ],
+        "G13": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T64",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "condición ausente: evaluation_program; contexto fuera del perfil: evaluation",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T65",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "condición ausente: evaluation_program; contexto fuera del perfil: evaluation",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T66",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G15": [
+          "prepublication",
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T67",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "capacidad deshabilitada: online_payment",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T68",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G00": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T69",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G11": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T70",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G11": [
+          "prepublication"
+        ],
+        "G13": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T71",
+      "selection": "OUT_OF_SCOPE",
+      "reason": "condición ausente: visual_search",
+      "contexts_by_gate": {},
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T72",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G05": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T73",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G03": [
+          "prepublication"
+        ],
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T74",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G05": [
+          "prepublication"
+        ],
+        "G07": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T75",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G04a": [
+          "prepublication"
+        ],
+        "G08": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T76",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G04b": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T77",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G04a": [
+          "prepublication"
+        ],
+        "G04b": [
+          "prepublication"
+        ],
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T78",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G04a": [
+          "prepublication"
+        ],
+        "G04b": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ],
+        "G08": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T79",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G04a": [
+          "prepublication"
+        ],
+        "G04b": [
+          "prepublication"
+        ],
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T80",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G10": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T81",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G10": [
+          "prepublication"
+        ],
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T82",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G12": [
+          "prepublication"
+        ],
+        "G15": [
+          "prepublication",
+          "postdeployment"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T83",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G01": [
+          "prepublication"
+        ],
+        "G06": [
+          "prepublication"
+        ],
+        "G10": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "test_id": "T84",
+      "selection": "IN_SCOPE",
+      "reason": "Capacidades, condiciones y contexto cubiertos por el perfil propuesto.",
+      "contexts_by_gate": {
+        "G04b": [
+          "prepublication"
+        ],
+        "G12": [
+          "prepublication"
+        ]
+      },
+      "execution_status": "NOT_RUN"
+    }
+  ]
+}

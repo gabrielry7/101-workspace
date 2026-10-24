@@ -1,0 +1,6 @@
+*.json text eol=lf
+*.txt -text -whitespace
+*.html -text -whitespace
+*.png -text
+# Preserve original rules; new human-review receipts also keep exact bytes.
+human-review-*/** -text -whitespace

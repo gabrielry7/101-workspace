@@ -1,0 +1,49 @@
+{
+  "kind": "BROWSER_CONNECTION_ATTEMPT_NOT_VISUAL_REVIEW",
+  "date": "2026-10-15",
+  "timezone": "America/Bogota",
+  "source_commit": "9a7995c546c069ef9b150aa6f37de02a0ff2d20e",
+  "authorization": "Entonces termina esa parte. es de lo mas importante que tengas ese feedback de las paginas externas de referencia.",
+  "previous_inventory": {
+    "method": "cua.listBrowsers",
+    "returned": [{"id":"2","name":"Codex In-app Browser","type":"iab"},{"id":"1","name":"Codex MCP Apps","type":"mcpapps"}],
+    "limitation": "Discovery alone did not demonstrate a working browser session."
+  },
+  "attempts": [
+    {"method":"cua.getBrowser","browser":"2","result":"Browser is not available: 2"},
+    {"method":"cua.getState","result":{"apps":[],"browsers":[]}},
+    {"method":"cua_repl.js_reset","result":"js kernel reset"},
+    {"method":"cua.createBrowserTab","browser":"iab","url":"https://osiprestaurant.com/","result":"Browser is not available: iab"},
+    {"method":"cua.createBrowserTab","browser":"edge","url":"https://osiprestaurant.com/","result":"Browser is not available: edge"},
+    {"method":"cua.listBrowsers","result":[]}
+  ],
+  "status": "BLOCKED_BROWSER_CONNECTION",
+  "root_cause": "UNKNOWN",
+  "references_total": 21,
+  "required_views": 42,
+  "new_external_screenshots": 0,
+  "new_visual_observations": 0,
+  "new_human_votes": 0,
+  "original_corpus_modified": false,
+  "checks": {
+    "retry_receipt_json": "PASS",
+    "git_diff_check": "PASS_WITH_EXISTING_LINE_ENDING_WARNING",
+    "b3_archive_verifier": {
+      "command": ".tools/node-v24.21.0-win-x64/node.exe --experimental-strip-types scripts/b3-verify.ts",
+      "exit_code": 0,
+      "status": "PASS_ARCHIVED_QA_VERIFIED",
+      "mode": "CURRENT_PACKAGE_AND_ARCHIVED_QA",
+      "views": 8,
+      "responsive": 16,
+      "protected_files": 2815,
+      "changed_protected_files": 0,
+      "external_reference_visual_review": "PENDING",
+      "limitation": "Verifies archived local QA and current package; does not produce a new external browser inspection or a new full test-suite result."
+    },
+    "application_source_changes": 0,
+    "new_commit": null
+  },
+  "next_step": "Bind an available browser to this chat through @Browser or @Edge, then verify actual navigation and screenshot capture before resuming the 21 desktop/mobile reviews.",
+  "official_browser_documentation": "https://learn.chatgpt.com/docs/browser?surface=app",
+  "scope": "External-reference inspection only. No B4, copying external assets, new media acquisition, publication or inferred user preferences."
+}

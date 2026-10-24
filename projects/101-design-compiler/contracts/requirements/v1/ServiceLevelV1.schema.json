@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "expected_behavior": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "requirement_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "specification": {
+      "type": "string",
+      "const": "SPECIFIED"
+    },
+    "implementation": {
+      "type": "string",
+      "enum": [
+        "LAB_INFORMATION_PRIMITIVE",
+        "EXTERNAL_LINK_SEMANTICS_ONLY",
+        "SPECIFICATION_ONLY"
+      ]
+    },
+    "verification": {
+      "type": "string",
+      "const": "NOT_VERIFIED_OPERATIONALLY"
+    },
+    "backend": {
+      "type": "string",
+      "const": "NOT_CONNECTED"
+    },
+    "acceptance_criteria": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "interaction_states": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "visitor_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "value_type": {
+            "type": "string",
+            "enum": [
+              "IDENTIFIER",
+              "DATE",
+              "TIME",
+              "POSITIVE_INTEGER",
+              "TEXT",
+              "ACKNOWLEDGEMENT"
+            ]
+          },
+          "required_when": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "validation": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "value_type",
+          "required_when",
+          "validation",
+          "purpose"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "id",
+    "label",
+    "objective",
+    "expected_behavior",
+    "requirement_ids",
+    "specification",
+    "implementation",
+    "verification",
+    "backend",
+    "acceptance_criteria",
+    "interaction_states",
+    "visitor_inputs"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ServiceLevelV1:1.0.0",
+  "title": "ServiceLevelV1",
+  "description": "B1 associated master catalogue/objective diagnostic; complete V1 registry, no live integrations or fabricated permissions."
+}

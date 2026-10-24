@@ -1,0 +1,24 @@
+{
+  "id": "salad",
+  "kind": "image",
+  "endpoint": "https://pixabay.com/api/",
+  "query": {
+    "q": "salad",
+    "per_page": "3",
+    "page": "1",
+    "safesearch": "true",
+    "image_type": "photo",
+    "orientation": "horizontal"
+  },
+  "at": "2026-10-15T02:37:37.237Z",
+  "cache_until": "2026-10-16T02:37:37.237Z",
+  "private_cache": ".tools/b2-demo/cache/salad.json",
+  "response_sha256": "27b18167c40eb46dba89a1e0dfe97808d0cc331f48a91641403c3a7103f1a968",
+  "response_bytes": 3517,
+  "hits": 3,
+  "rate_limit": {
+    "X-RateLimit-Limit": "100",
+    "X-RateLimit-Remaining": "97",
+    "X-RateLimit-Reset": "59"
+  }
+}

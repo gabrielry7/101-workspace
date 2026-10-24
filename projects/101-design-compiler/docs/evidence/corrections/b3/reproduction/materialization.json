@@ -1,0 +1,124 @@
+{
+  "kind": "B3_ISOLATED_SAME_HOST_REPRODUCTION",
+  "created_at": "2026-10-15T03:47:38.109Z",
+  "tree": "564ecb2c5b97e1d250fc4ec7ccdae3440bc3035f",
+  "archive_sha256": "fec7c6db7d97bc5f7ea7d8eca77f2b977c139527b60d0f96d196dc806f97ce0e",
+  "target": ".tools/corrections/b0/b3-clean/source",
+  "private_files": [
+    {
+      "path": ".tools/b2-demo/originals/4991789.jpg",
+      "bytes": 476639,
+      "sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+    },
+    {
+      "path": "public/media/b2-fictional/4991789-640.webp",
+      "bytes": 86066,
+      "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+    },
+    {
+      "path": "public/media/b2-fictional/4991789-1280.webp",
+      "bytes": 305320,
+      "sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+    },
+    {
+      "path": ".tools/b2-demo/originals/3547078.jpg",
+      "bytes": 229835,
+      "sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+    },
+    {
+      "path": "public/media/b2-fictional/3547078-640.webp",
+      "bytes": 41984,
+      "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+    },
+    {
+      "path": "public/media/b2-fictional/3547078-1280.webp",
+      "bytes": 116602,
+      "sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+    },
+    {
+      "path": ".tools/b2-demo/originals/791891.jpg",
+      "bytes": 283569,
+      "sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+    },
+    {
+      "path": "public/media/b2-fictional/791891-640.webp",
+      "bytes": 45472,
+      "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+    },
+    {
+      "path": "public/media/b2-fictional/791891-1280.webp",
+      "bytes": 126204,
+      "sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+    },
+    {
+      "path": ".tools/b2-demo/originals/1971552.jpg",
+      "bytes": 253809,
+      "sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+    },
+    {
+      "path": "public/media/b2-fictional/1971552-640.webp",
+      "bytes": 36338,
+      "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+    },
+    {
+      "path": "public/media/b2-fictional/1971552-1280.webp",
+      "bytes": 127138,
+      "sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+    },
+    {
+      "path": ".tools/b2-demo/originals/149678.mp4",
+      "bytes": 2801470,
+      "sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+    },
+    {
+      "path": "public/media/b2-fictional/149678-silent-640.webm",
+      "bytes": 4446094,
+      "sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+    }
+  ],
+  "historical_document_eol_overlays": [
+    {
+      "path": "docs/evidence/h3-git-repro.txt",
+      "archive_sha256": "ad40cf28cdc38a17b429164f989fd536c3091df483872e8a886d9dbb8a6b3770",
+      "pinned_sha256": "570e72d5eebd0698dca6620fa11e5e8bac676f7017a86d34daaebfe0113e5c74"
+    },
+    {
+      "path": "docs/reviews/h7/audit-h7-source.txt",
+      "archive_sha256": "7f8934daa58dfebce53af076fee2bc276cc904a17a0ee9f178abbfe7f7235ad7",
+      "pinned_sha256": "fa10b69a54c164ce96a684836059a8c758bcbd915966443b3135bcd44dc721cf"
+    },
+    {
+      "path": "docs/reviews/h7/verify-h7-source.txt",
+      "archive_sha256": "916b5678ef4182cf3f808b3c6d607185ca39d0fceeb9ac209f0d9fa6d81a7175",
+      "pinned_sha256": "03cc25c7bf5538a53340b00218fd7b1532be8767e9abf4f6f7a0190858537c45"
+    },
+    {
+      "path": "docs/reviews/h8-correction/audit-h8-source.txt",
+      "archive_sha256": "17c3d2f17f0190292d0cfb23796756dd46c26c38a25f226e4372fac2ebff0c21",
+      "pinned_sha256": "6b814d1f44a8ef474e861b8f008bd1f2bd3099604e22d6f44056a142760b64bf"
+    },
+    {
+      "path": "docs/reviews/h8-correction/verify-h8-source.txt",
+      "archive_sha256": "f0d639eb73772e9ef057f52a8955ca92fbdb3a27603689cd6eea071f6c15d988",
+      "pinned_sha256": "ccb282c3ff28c925241f4656cd8144671160531c595015a8cb15472986a79afb"
+    },
+    {
+      "path": "docs/reviews/h8/audit-h8-source.txt",
+      "archive_sha256": "e346837a2b3f7aa3ccd59b014bda36efbc28d24345f74603713a84010995d04a",
+      "pinned_sha256": "0694a207bd3a57627dc14f6bc3730acf31ed1edbb026fcc2553242efbc3595b0"
+    },
+    {
+      "path": "docs/reviews/h9/probe-source.txt",
+      "archive_sha256": "abe0567d7f6e688b60e2c383ec1034583d126dc90ff57f83ff43b9995b51fe78",
+      "pinned_sha256": "801d2cf66ee9c303bfb2cdcd169d159c3225993d420de05d6d0b7541cc2e53d3"
+    }
+  ],
+  "no_env": true,
+  "provider_calls": 0,
+  "limits": [
+    "Same machine/Windows/B2 fonts, existing pinned Node/dependencies/browser via junctions; not a fresh installation",
+    "Only 14 expressly licensed media files materialized from private B2 package, no API response/credential/catalog",
+    "Seven predeclared byte-only historical documentation EOL overlays, root untouched",
+    "No source/permission changes and no new creative producer calls"
+  ]
+}

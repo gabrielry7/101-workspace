@@ -1,0 +1,17 @@
+---
+import type { CompositionLab } from '../../../scripts/load-composition-lab.ts';
+import { safeExternalUrl } from '../../planner/content.ts';
+interface Props { media: CompositionLab['media'] }
+const { asset, usage, grant } = Astro.props.media;
+const source = asset.provenance[0]!.reference;
+if (!safeExternalUrl(source)) throw new Error('UNSAFE_MEDIA_SOURCE_LINK');
+---
+<figure class="media" data-asset-id={asset.id} data-usage-id={usage.id} data-grant-id={grant.id} data-media-module={usage.module_id} data-semantic-page={usage.page} data-role={usage.role} data-original-sha256={asset.file_sha256}>
+  <img src={asset.uri} alt={`Imagen atmosférica genérica: ${asset.inspection.subject}`} width={asset.inspection.width!} height={asset.inspection.height!} loading="eager" decoding="async" />
+  <figcaption>
+    <p data-context>{usage.generic_label}</p>
+    <p data-credit>{usage.attribution_text}</p>
+    {usage.context_notices?.map(n => <p data-notice>{n}</p>)}
+    <a href={source}>Fuente y permisos · {grant.provider}</a>
+  </figcaption>
+</figure>

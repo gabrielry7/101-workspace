@@ -1,0 +1,5 @@
+
+> 101-design-compiler@0.0.0 media:verify
+> node --experimental-strip-types scripts/verify-media-pilot.ts
+
+{"status":"PASSED","closure":"AUTHORIZED_PILOT_PACKAGE_WITH_GAPS","media_sha256":"ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715","permission_source":"https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/","documentary_gap_blocked":true,"original_bytes_checked":true,"official_documents_checked":true,"render_receipt_checked":true,"attribution_and_context_checked":true,"current_build_matches_render":true}

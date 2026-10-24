@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "provider_label": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "category_field": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "category_value": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "provider_category_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hierarchy": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "normalized_category": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "row": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "line_start": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "line_end": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "file",
+        "sha256",
+        "row",
+        "line_start",
+        "line_end"
+      ],
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "source_observations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "business_candidates": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "other_observations": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "source_observations",
+        "business_candidates",
+        "other_observations"
+      ],
+      "additionalProperties": false
+    },
+    "raw": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "provider",
+    "provider_label",
+    "category_field",
+    "category_value",
+    "provider_category_id",
+    "hierarchy",
+    "normalized_category",
+    "provenance",
+    "counts",
+    "raw"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:CategoryRecordV1:1.0.0",
+  "title": "CategoryRecordV1",
+  "description": "H1 candidate protocol; semantic checks required. No upstream integration."
+}

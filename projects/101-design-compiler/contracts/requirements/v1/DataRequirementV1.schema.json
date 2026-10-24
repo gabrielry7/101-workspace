@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "owner": {
+      "type": "string",
+      "enum": [
+        "BUSINESS_UPSTREAM",
+        "PROJECT_CONFIGURATION",
+        "PLATFORM",
+        "PROVIDER_RIGHTS"
+      ]
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "DATA",
+        "EVIDENCE",
+        "PERMISSION",
+        "CONFIGURATION",
+        "PLATFORM"
+      ]
+    },
+    "condition": {
+      "type": "string",
+      "enum": [
+        "ALWAYS",
+        "PRICES_PRESENT",
+        "COORDINATES_PRESENT",
+        "MEDIA_PRESENT",
+        "SCOPE_IS_BRANCH"
+      ]
+    },
+    "check": {
+      "type": "string",
+      "enum": [
+        "IDENTITY",
+        "ACTIVE_BUSINESS",
+        "LANGUAGES",
+        "CAPABILITY_ASSERTION",
+        "OFFERINGS",
+        "CONTENT_FACTS",
+        "FACT",
+        "ACTION_DESTINATION",
+        "CONTACT_CHANNEL",
+        "MEDIA_FILE",
+        "MEDIA_RIGHTS",
+        "RIGHTS_REVIEW",
+        "PUBLICATION",
+        "SEMANTIC_SUPPORT",
+        "FRONTEND_SUPPORT",
+        "BACKEND_SUPPORT"
+      ]
+    },
+    "fact_kinds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "binding": {
+      "type": "string",
+      "enum": [
+        "SCOPE",
+        "EACH_OFFERING",
+        "GLOBAL_IDENTITY"
+      ]
+    },
+    "validation": {
+      "type": "string",
+      "enum": [
+        "PRESENT",
+        "TEXT",
+        "NONNEGATIVE_NUMBER",
+        "POSITIVE_NUMBER",
+        "CURRENCY",
+        "TIMEZONE",
+        "ISO_DATETIME",
+        "HTTPS",
+        "COORDINATE_PAIR"
+      ]
+    },
+    "next_step": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    }
+  },
+  "required": [
+    "id",
+    "label",
+    "description",
+    "owner",
+    "kind",
+    "condition",
+    "check",
+    "fact_kinds",
+    "binding",
+    "validation",
+    "next_step"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:DataRequirementV1:1.0.0",
+  "title": "DataRequirementV1",
+  "description": "B1 associated master catalogue/objective diagnostic; complete V1 registry, no live integrations or fabricated permissions."
+}

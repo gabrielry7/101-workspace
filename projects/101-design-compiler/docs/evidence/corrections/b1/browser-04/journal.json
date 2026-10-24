@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b1-browser-04",
+  "created_at": "2026-10-13T04:16:44.000Z",
+  "steps": [
+    {
+      "id": "build",
+      "started_at": "2026-10-13T04:16:45.450Z",
+      "finished_at": "2026-10-13T04:16:47.802Z",
+      "wall_seconds": 2.3516434,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/browser-04/build.txt",
+      "log_sha256": "95a0a6c1694d65f1f6af49e82e93e93b680a49f843ae4d86b64d0223f15b49d5"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

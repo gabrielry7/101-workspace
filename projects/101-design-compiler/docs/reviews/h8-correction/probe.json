@@ -1,0 +1,60 @@
+{
+  "status": "PASS_NEGATIVES_REJECTED",
+  "results": [
+    {
+      "mode": "missing",
+      "codes": [
+        "DESIGN_LOCK_SCHEMA"
+      ]
+    },
+    {
+      "mode": "coverage",
+      "codes": [
+        "LOCK_AUDIT_COVERAGE_INCOMPLETE"
+      ]
+    },
+    {
+      "mode": "context",
+      "codes": [
+        "LOCK_AUDIT_CONTEXT_MISMATCH"
+      ]
+    },
+    {
+      "mode": "policy",
+      "codes": [
+        "LOCK_AUDIT_REPORT_INCONSISTENT",
+        "LOCK_AUDIT_REPORT_INCONSISTENT",
+        "LOCK_AUDIT_REPORT_INCONSISTENT",
+        "LOCK_AUDIT_REPORT_INCONSISTENT"
+      ]
+    },
+    {
+      "mode": "report",
+      "codes": [
+        "LOCK_AUDIT_REPORT_INCONSISTENT"
+      ]
+    },
+    {
+      "mode": "evidence",
+      "codes": [
+        "DESIGN_LOCK_SCHEMA"
+      ]
+    },
+    {
+      "mode": "pin",
+      "codes": [
+        "LOCK_AUDIT_SOURCE_MISMATCH"
+      ]
+    },
+    {
+      "mode": "consistent-fail",
+      "codes": [
+        "LOCK_AUDIT_FAILED"
+      ]
+    },
+    {
+      "mode": "missing-renderer-pin",
+      "code": "LOCK_AUDIT_GRAPH_MISMATCH"
+    }
+  ]
+}

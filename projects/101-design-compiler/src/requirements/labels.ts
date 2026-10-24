@@ -1,0 +1,11 @@
+export const ownerLabels:Record<string,string>={BUSINESS_UPSTREAM:'Negocio o upstream',PROJECT_CONFIGURATION:'Configuración del proyecto',PLATFORM:'Plataforma',PROVIDER_RIGHTS:'Titular o proveedor'};
+export const stateLabels:Record<string,string>={RESOLVED:'Actividad identificada',HYBRID:'Actividades que conviven con respaldo',MULTISCOPE:'Actividades distintas por sucursal',AMBIGUOUS:'Actividad por aclarar',CONFLICTED:'Evidencias contradictorias',UNKNOWN:'Información insuficiente',NON_BUSINESS:'No identificado como negocio',
+ READY:'Plan válido de lo emitible',CONTENT_BLOCKED:'Plan bloqueado',INPUT_INVALID:'Entrada inválida',CONFIRMED_PRESENT:'Disponibilidad respaldada',CONFIRMED_ABSENT:'Ausencia respaldada',WITHHELD:'Publicación retenida',
+ INFORMATION_PLANNED:'Información en el plan',EXTERNAL_INTENT_PLANNED:'Intención de enlace en el plan',PENDING:'Pendiente',NOT_APPLICABLE_JUSTIFIED:'No aplica: justificación explícita',REJECTED:'Rechazado en este objetivo',
+ SATISFIED:'Dato o soporte disponible',MISSING:'Falta dato o evidencia',STALE:'Vencido',NOT_REQUIRED_BY_CONDITION:'Condición no activada',SUPPORT_PENDING:'Soporte por implementar',RIGHTS_REVIEW_PENDING:'Permiso por verificar',
+ REQUESTED:'Solicitado explícitamente',SUGGESTED:'Pertinente para investigar',UPSTREAM_DECLARED:'Declarado por upstream',APPLICABILITY_NOT_EVALUATED:'Aplicabilidad por evaluar',
+ LAB_INFORMATION_PRIMITIVE:'Primitiva de información del laboratorio',EXTERNAL_LINK_SEMANTICS_ONLY:'Sólo intención semántica de enlace',SPECIFICATION_ONLY:'Especificación futura',
+ food_hospitality:'Gastronomía',product_retail:'Venta de productos',appointment_service:'Servicios con cita',membership_and_classes:'Membresías y clases',lodging:'Alojamiento',
+ field_service_and_quote:'Servicios a domicilio y cotización',vehicle_service:'Servicios de vehículos',professional_advisory:'Asesoría profesional',education_programs:'Programas educativos',
+ events_and_entertainment:'Eventos y entretenimiento',industrial_b2b:'Industria B2B',property_and_spaces:'Propiedades y espacios',transport_and_logistics:'Transporte y logística',regulated_services:'Actividad regulada: modificador'};
+export const label=(value:string)=>stateLabels[value]??value;

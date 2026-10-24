@@ -1,0 +1,24 @@
+{
+  "kind": "ACTUAL_SOURCE_AND_SILENT_DERIVATIVE_TRACKS",
+  "source": {
+    "path": ".tools/b2-demo/originals/149678.mp4",
+    "bytes": 2801470,
+    "sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+    "handlers": [
+      "vide",
+      "soun"
+    ]
+  },
+  "render": {
+    "path": "public/media/b2-fictional/149678-silent-640.webm",
+    "bytes": 4446094,
+    "sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b",
+    "tracks": [
+      {
+        "type": 1,
+        "codec": "V_VP8"
+      }
+    ]
+  },
+  "method": "Structural MP4 hdlr and WebM TrackEntry parsing of the exact local bytes, separate from decode and visual review"
+}

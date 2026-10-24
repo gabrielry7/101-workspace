@@ -1,0 +1,15 @@
+---
+import {readFile} from 'node:fs/promises';
+import Foundation from '../../layouts/Foundation.astro';
+import {compileReferenceCorpus} from '../../media/reference-corpus.ts';
+import '../../requirements/review.css';
+const corpus=compileReferenceCorpus(await readFile('data/reference/design/101_referencias_aprobadas_completas_v01.md'));
+---
+<Foundation title="B2 · Tus referencias, con alcance y notas originales">
+ <div class="review" data-b2-page="corpus" data-corpus-sha256={corpus.corpus_sha256}><nav aria-label="Revisión B2"><a href="/b2/">Resumen</a><a href="/b2/pilot/">Medios del piloto</a></nav>
+ <h1>Tus 21 referencias</h1><p class="lead">18 valoraciones globales y 3 parciales, con su intensidad y límites originales.</p><p class="notice">Son preferencias reportadas en el documento aportado. No son inspecciones actuales, votos sobre páginas generadas ni permisos de reutilización de imágenes, código o fuentes.</p>
+ {corpus.references.map(r=><section data-reference-id={r.id} data-reference-scope={r.approved_scope}><h2><a href={r.url}>{r.name}</a></h2><p>{r.sector} · {r.reported_intensity_literal}</p><p>{r.approved_scope==='GLOBAL_REPORTED'?'Valoración global reportada.':`Sólo el fragmento indicado: ${r.approved_scope}.`}</p><details><summary>Leer notas literales y límites</summary><pre>{r.source_section_literal}</pre></details><p>Inspección actual pendiente. Recursos de esta web sin autorización de reutilización.</p></section>)}
+ <section><h2>Referencias negativas conservadas</h2><details><summary>Ver el texto original</summary><pre>{corpus.negative_references_section_literal}</pre></details></section>
+ </div>
+</Foundation>
+<style>pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;line-height:1.6}</style>

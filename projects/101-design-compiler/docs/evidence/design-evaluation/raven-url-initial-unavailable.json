@@ -1,0 +1,56 @@
+{
+  "tool": "audit_url",
+  "version": "2.6.0",
+  "started_at": "2026-10-22T03:52:30.724Z",
+  "wall_seconds": 0.2787852999999999,
+  "status": "ERROR",
+  "input": {
+    "url": "http://127.0.0.1:4331/quality/restaurante-d/",
+    "viewports": [
+      {
+        "w": 390,
+        "h": 844,
+        "label": "mobile"
+      }
+    ],
+    "themes": [
+      "light"
+    ],
+    "compact": true,
+    "timeoutMs": 10000
+  },
+  "output": {
+    "tool": "audit_url",
+    "url": "http://127.0.0.1:4331/quality/restaurante-d/",
+    "viewports": [
+      {
+        "w": 390,
+        "h": 844,
+        "label": "mobile"
+      }
+    ],
+    "themes": [
+      "light"
+    ],
+    "findings": [],
+    "counts": {
+      "total": 0,
+      "confirmed": 0,
+      "likely_artifact": 0,
+      "inconclusive": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "summary": "audit_url needs headless chromium. Run: npx playwright install chromium",
+    "coverage": {
+      "requested": 1,
+      "succeeded": 0,
+      "complete": false
+    },
+    "warnings": [
+      "Playwright chromium not available. Run: npx playwright install chromium"
+    ],
+    "capture_warnings": [],
+    "captures": []
+  }
+}

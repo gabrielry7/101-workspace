@@ -1,0 +1,298 @@
+[
+  {
+    "tool": "audit_url",
+    "version": "2.6.0",
+    "started_at": "2026-10-22T03:57:23.949Z",
+    "wall_seconds": 11.138468200000002,
+    "status": "OK",
+    "input": {
+      "url": "http://127.0.0.1:4331/quality/restaurante-d/",
+      "viewports": [
+        {
+          "w": 1280,
+          "h": 900,
+          "label": "desktop"
+        },
+        {
+          "w": 390,
+          "h": 844,
+          "label": "mobile"
+        }
+      ],
+      "themes": [
+        "light"
+      ],
+      "compact": true,
+      "timeoutMs": 10000
+    },
+    "output": {
+      "tool": "audit_url",
+      "url": "http://127.0.0.1:4331/quality/restaurante-d/",
+      "viewports": [
+        {
+          "w": 1280,
+          "h": 900,
+          "label": "desktop"
+        },
+        {
+          "w": 390,
+          "h": 844,
+          "label": "mobile"
+        }
+      ],
+      "themes": [
+        "light"
+      ],
+      "findings": [
+        {
+          "source": "page",
+          "rule": "responsive/no-grid-breakpoints",
+          "severity": "warning",
+          "message": "3 grid-template-columns overrides found in media queries",
+          "fix": "Remove grid-template-columns from media queries. Use flexbox with min-width instead — it wraps naturally",
+          "viewport": "desktop 1280×900",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "tokens/no-bare-hex",
+          "severity": "warning",
+          "message": "18 bare hex color values found outside custom property definitions",
+          "fix": "Define colors as --color-name: #hex in :root, then use var(--color-name) throughout",
+          "viewport": "desktop 1280×900",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "color/palette-size",
+          "severity": "warning",
+          "message": "21 distinct hex colors found — hierarchy breaks down past ~10",
+          "fix": "Consolidate to 6–10 colors: 1 primary, 1 accent, 4 neutrals, plus semantic (success/warning/error). Reuse with opacity/alpha for variation instead of adding new hues.",
+          "viewport": "desktop 1280×900",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "responsive/no-grid-breakpoints",
+          "severity": "warning",
+          "message": "3 grid-template-columns overrides found in media queries",
+          "fix": "Remove grid-template-columns from media queries. Use flexbox with min-width instead — it wraps naturally",
+          "viewport": "mobile 390×844",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "tokens/no-bare-hex",
+          "severity": "warning",
+          "message": "18 bare hex color values found outside custom property definitions",
+          "fix": "Define colors as --color-name: #hex in :root, then use var(--color-name) throughout",
+          "viewport": "mobile 390×844",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "color/palette-size",
+          "severity": "warning",
+          "message": "21 distinct hex colors found — hierarchy breaks down past ~10",
+          "fix": "Consolidate to 6–10 colors: 1 primary, 1 accent, 4 neutrals, plus semantic (success/warning/error). Reuse with opacity/alpha for variation instead of adding new hues.",
+          "viewport": "mobile 390×844",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        }
+      ],
+      "counts": {
+        "total": 6,
+        "confirmed": 0,
+        "likely_artifact": 0,
+        "inconclusive": 6,
+        "errors": 0,
+        "warnings": 6
+      },
+      "summary": "6 findings across 2 of 2 requested viewport×theme combination(s) — 0 confirmed, 0 likely-artifact, 6 inconclusive",
+      "coverage": {
+        "requested": 2,
+        "succeeded": 2,
+        "complete": true
+      },
+      "warnings": [],
+      "capture_warnings": [],
+      "captures": [
+        {
+          "viewport": "desktop 1280×900",
+          "theme": "light",
+          "scrolledToBottom": true,
+          "animationsSettled": true,
+          "capture_warnings": [],
+          "screenshot_bytes": 775584
+        },
+        {
+          "viewport": "mobile 390×844",
+          "theme": "light",
+          "scrolledToBottom": true,
+          "animationsSettled": true,
+          "capture_warnings": [],
+          "screenshot_bytes": 220668
+        }
+      ]
+    }
+  },
+  {
+    "tool": "audit_url",
+    "version": "2.6.0",
+    "started_at": "2026-10-22T03:57:35.087Z",
+    "wall_seconds": 9.2566835,
+    "status": "OK",
+    "input": {
+      "url": "http://127.0.0.1:4331/quality/hotel-d/",
+      "viewports": [
+        {
+          "w": 1280,
+          "h": 900,
+          "label": "desktop"
+        },
+        {
+          "w": 390,
+          "h": 844,
+          "label": "mobile"
+        }
+      ],
+      "themes": [
+        "light"
+      ],
+      "compact": true,
+      "timeoutMs": 10000
+    },
+    "output": {
+      "tool": "audit_url",
+      "url": "http://127.0.0.1:4331/quality/hotel-d/",
+      "viewports": [
+        {
+          "w": 1280,
+          "h": 900,
+          "label": "desktop"
+        },
+        {
+          "w": 390,
+          "h": 844,
+          "label": "mobile"
+        }
+      ],
+      "themes": [
+        "light"
+      ],
+      "findings": [
+        {
+          "source": "page",
+          "rule": "responsive/no-grid-breakpoints",
+          "severity": "warning",
+          "message": "3 grid-template-columns overrides found in media queries",
+          "fix": "Remove grid-template-columns from media queries. Use flexbox with min-width instead — it wraps naturally",
+          "viewport": "desktop 1280×900",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "tokens/no-bare-hex",
+          "severity": "warning",
+          "message": "18 bare hex color values found outside custom property definitions",
+          "fix": "Define colors as --color-name: #hex in :root, then use var(--color-name) throughout",
+          "viewport": "desktop 1280×900",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "color/palette-size",
+          "severity": "warning",
+          "message": "21 distinct hex colors found — hierarchy breaks down past ~10",
+          "fix": "Consolidate to 6–10 colors: 1 primary, 1 accent, 4 neutrals, plus semantic (success/warning/error). Reuse with opacity/alpha for variation instead of adding new hues.",
+          "viewport": "desktop 1280×900",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "responsive/no-grid-breakpoints",
+          "severity": "warning",
+          "message": "3 grid-template-columns overrides found in media queries",
+          "fix": "Remove grid-template-columns from media queries. Use flexbox with min-width instead — it wraps naturally",
+          "viewport": "mobile 390×844",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "tokens/no-bare-hex",
+          "severity": "warning",
+          "message": "18 bare hex color values found outside custom property definitions",
+          "fix": "Define colors as --color-name: #hex in :root, then use var(--color-name) throughout",
+          "viewport": "mobile 390×844",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        },
+        {
+          "source": "page",
+          "rule": "color/palette-size",
+          "severity": "warning",
+          "message": "21 distinct hex colors found — hierarchy breaks down past ~10",
+          "fix": "Consolidate to 6–10 colors: 1 primary, 1 accent, 4 neutrals, plus semantic (success/warning/error). Reuse with opacity/alpha for variation instead of adding new hues.",
+          "viewport": "mobile 390×844",
+          "theme": "light",
+          "verdict": "inconclusive",
+          "evidence": "no element-level independent re-check available for aggregate/heuristic rule"
+        }
+      ],
+      "counts": {
+        "total": 6,
+        "confirmed": 0,
+        "likely_artifact": 0,
+        "inconclusive": 6,
+        "errors": 0,
+        "warnings": 6
+      },
+      "summary": "6 findings across 2 of 2 requested viewport×theme combination(s) — 0 confirmed, 0 likely-artifact, 6 inconclusive",
+      "coverage": {
+        "requested": 2,
+        "succeeded": 2,
+        "complete": true
+      },
+      "warnings": [],
+      "capture_warnings": [],
+      "captures": [
+        {
+          "viewport": "desktop 1280×900",
+          "theme": "light",
+          "scrolledToBottom": true,
+          "animationsSettled": true,
+          "capture_warnings": [],
+          "screenshot_bytes": 86304
+        },
+        {
+          "viewport": "mobile 390×844",
+          "theme": "light",
+          "scrolledToBottom": true,
+          "animationsSettled": true,
+          "capture_warnings": [],
+          "screenshot_bytes": 50352
+        }
+      ]
+    }
+  }
+]

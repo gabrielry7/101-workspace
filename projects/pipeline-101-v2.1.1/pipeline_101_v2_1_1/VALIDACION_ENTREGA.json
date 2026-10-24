@@ -1,0 +1,648 @@
+{
+  "schema_version": "2.1.1",
+  "scope": "DOCUMENT_PACKAGE_AND_REFERENCE_POLICIES_ONLY",
+  "status": "PASS",
+  "spec_checks_total": 155,
+  "spec_checks_passed": 155,
+  "gates_defined": 18,
+  "acceptance_cases_defined": 84,
+  "pilot_selection_conditional": {
+    "in_scope": 61,
+    "out_of_scope": 23,
+    "prepublication_unique": 59,
+    "postdeployment_unique": 10
+  },
+  "product_tests_executed": 0,
+  "production_sites_tested": 0,
+  "repository_audited": false,
+  "publication_authorized": false,
+  "limitations": [
+    "No se verificaron código, detectores, navegadores ni integraciones del producto.",
+    "El perfil del piloto es propuesto: sus supuestos no están verificados.",
+    "Los ejemplos y PASS efímeros de controles de forma son sintéticos, no revisiones ni resultados reales.",
+    "Las huellas vinculan archivos; no prueban verdad, derechos, autoridad, procedencia confiable ni existencia de una sesión humana.",
+    "No hay certificación legal, de seguridad, accesibilidad o rendimiento; no se volvieron a consultar fuentes externas."
+  ],
+  "checks": [
+    {
+      "check": "JSON Schema 2020-12 bien formado: contratos",
+      "status": "PASS"
+    },
+    {
+      "check": "JSON Schema 2020-12 bien formado: catálogos",
+      "status": "PASS"
+    },
+    {
+      "check": "Estructura estricta de compuertas",
+      "status": "PASS"
+    },
+    {
+      "check": "Estructura estricta de pruebas",
+      "status": "PASS"
+    },
+    {
+      "check": "Estructura estricta de perfil",
+      "status": "PASS"
+    },
+    {
+      "check": "Estructura estricta de diseño",
+      "status": "PASS"
+    },
+    {
+      "check": "18 compuertas activas, sin G04 legado",
+      "status": "PASS"
+    },
+    {
+      "check": "IDs de compuerta únicos",
+      "status": "PASS"
+    },
+    {
+      "check": "IDs T01–T84 presentes exactamente una vez",
+      "status": "PASS"
+    },
+    {
+      "check": "Enum del contrato coincide exactamente con catálogo",
+      "status": "PASS"
+    },
+    {
+      "check": "Versión de contrato activa",
+      "status": "PASS"
+    },
+    {
+      "check": "Referencias compuerta/caso bidireccionales",
+      "status": "PASS"
+    },
+    {
+      "check": "Cada caso declara contexto exactamente para sus compuertas",
+      "status": "PASS"
+    },
+    {
+      "check": "Contextos de caso admitidos por la compuerta",
+      "status": "PASS"
+    },
+    {
+      "check": "Cada caso mantiene preparación, acción y evidencia exigida",
+      "status": "PASS"
+    },
+    {
+      "check": "Ningún resultado de producto inventado",
+      "status": "PASS"
+    },
+    {
+      "check": "Ningún detector integrado declarado sin integración",
+      "status": "PASS"
+    },
+    {
+      "check": "Perfil completo, sin condiciones desconocidas",
+      "status": "PASS"
+    },
+    {
+      "check": "Seis supuestos distintos y aún no verificados",
+      "status": "PASS"
+    },
+    {
+      "check": "Perfil conserva N0 y las cuatro capacidades del piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "Reglas de G14/G16 conservan el momento correcto",
+      "status": "PASS"
+    },
+    {
+      "check": "Selección cubre cada caso exactamente una vez",
+      "status": "PASS"
+    },
+    {
+      "check": "Todas las compuertas previas obligatorias tienen obligaciones",
+      "status": "PASS"
+    },
+    {
+      "check": "G14 no se exige antes ni G16 dentro de este perfil",
+      "status": "PASS"
+    },
+    {
+      "check": "T59 es posterior en G14 y G15, nunca previo",
+      "status": "PASS"
+    },
+    {
+      "check": "T27 separa comprobación previa y producción",
+      "status": "PASS"
+    },
+    {
+      "check": "T66 sigue en G15 y aplica antes y después",
+      "status": "PASS"
+    },
+    {
+      "check": "T22 conserva dependencia de pago y queda fuera del piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T26 conserva dependencia de pago y queda fuera del piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T52 depende de cola duradera, no pago",
+      "status": "PASS"
+    },
+    {
+      "check": "Activar notificaciones activa T52 sin habilitar pago",
+      "status": "PASS"
+    },
+    {
+      "check": "T71 se excluye por no haber búsqueda visual",
+      "status": "PASS"
+    },
+    {
+      "check": "Superficie compartida activa T42 sin exigir segundo sitio publicado",
+      "status": "PASS"
+    },
+    {
+      "check": "T25 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T40 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T41 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T44 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T63 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T66 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T70 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T80 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T81 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "T83 no se elimina por simplificar el piloto",
+      "status": "PASS"
+    },
+    {
+      "check": "G10 conserva inyección, agente, secretos, dependencias y permisos",
+      "status": "PASS"
+    },
+    {
+      "check": "G13 conserva revocación y recuperación con datos actuales",
+      "status": "PASS"
+    },
+    {
+      "check": "Condición ausente no equivale a falsa",
+      "status": "PASS"
+    },
+    {
+      "check": "Condición desconocida no produce exclusión silenciosa",
+      "status": "PASS"
+    },
+    {
+      "check": "N0 no permite activar búsqueda sin revisar el perfil",
+      "status": "PASS"
+    },
+    {
+      "check": "Once criterios de revisión sin duplicados",
+      "status": "PASS"
+    },
+    {
+      "check": "Aserciones D01–D06 completas",
+      "status": "PASS"
+    },
+    {
+      "check": "Todas las dimensiones tienen dependencias de criterios",
+      "status": "PASS"
+    },
+    {
+      "check": "Variación entre secciones y dos líneas no son compuertas duras",
+      "status": "PASS"
+    },
+    {
+      "check": "Excepciones estéticas no desactivan garantías duras",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de approval.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de approval.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de asset_rights.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de asset_rights.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de capability_plan.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de capability_plan.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de design_review.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de design_review.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de fact.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de fact.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de gate_result.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de gate_result.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Perfil y estado NOT_RUN de gate_result.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de gate_result_G04a.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de gate_result_G04a.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Perfil y estado NOT_RUN de gate_result_G04a.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de gate_result_G04b.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de gate_result_G04b.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Perfil y estado NOT_RUN de gate_result_G04b.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Esquema de release_manifest.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Consistencia local de release_manifest.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Siete contratos representados en ejemplos",
+      "status": "PASS"
+    },
+    {
+      "check": "Artefacto sintético dentro de carpeta",
+      "status": "PASS"
+    },
+    {
+      "check": "Huella/tamaño de artefacto sintético",
+      "status": "PASS"
+    },
+    {
+      "check": "Candidato sintético vincula perfil y modo compatibles",
+      "status": "PASS"
+    },
+    {
+      "check": "Aprobación de ejemplo sigue rechazada y vinculada",
+      "status": "PASS"
+    },
+    {
+      "check": "Revisión de diseño de ejemplo no inventa personas ni evaluación",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: hecho verificado sin verificación",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: clase de publicación desconocida",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: importe negativo",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: importe no entero",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: escala COP incorrecta",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: fecha inválida",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: derechos habilitados sin evidencia",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: atribución exigida pero ausente",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: capacidad sin responsable/política",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: hash de formato inválido",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: agente suplantando aprobador",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: PASS sin ejecución ni evidencia",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: N/A sin motivo ni evidencia",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: G04 legado en reporte nuevo",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: versión de política anterior",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo estructural esperado: identificador requerido ausente",
+      "status": "PASS"
+    },
+    {
+      "check": "G04a admitida como identificador activo",
+      "status": "PASS"
+    },
+    {
+      "check": "G04b admitida como identificador activo",
+      "status": "PASS"
+    },
+    {
+      "check": "PASS sintético completo acepta solo forma y obligaciones declaradas",
+      "status": "PASS"
+    },
+    {
+      "check": "PASS con caso NOT_RUN se rechaza",
+      "status": "PASS"
+    },
+    {
+      "check": "PASS con hallazgo bloqueante se rechaza",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio de contenido invalida hash de candidato",
+      "status": "PASS"
+    },
+    {
+      "check": "Control detecta resultado de caso duplicado",
+      "status": "PASS"
+    },
+    {
+      "check": "Control detecta falta de caso aunque el reporte se declare completo",
+      "status": "PASS"
+    },
+    {
+      "check": "Control detecta perfil de otro hash",
+      "status": "PASS"
+    },
+    {
+      "check": "Control detecta PASS sin obligaciones en momento equivocado",
+      "status": "PASS"
+    },
+    {
+      "check": "Control local detecta ruta ascendente",
+      "status": "PASS"
+    },
+    {
+      "check": "Dependencia faltante y operación en prototipo privado se detectan",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio typography invalida R5 sin cambiar composición",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio color invalida R6 sin cambiar composición",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio imagery invalida R2 sin cambiar composición",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio spacing invalida R7 sin cambiar composición",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio motion invalida R10 sin cambiar composición",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio visible_content invalida R3 sin cambiar composición",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio components invalida R8 sin cambiar composición",
+      "status": "PASS"
+    },
+    {
+      "check": "Entradas visuales iguales no exigen nuevo juicio por sí solas",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio de ámbito invalida todos los criterios",
+      "status": "PASS"
+    },
+    {
+      "check": "Dimensión faltante invalida todos los criterios",
+      "status": "PASS"
+    },
+    {
+      "check": "Dimensión desconocida invalida todos los criterios",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio design_policy invalida revisión completa",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio rubric_policy invalida revisión completa",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio routes_states invalida revisión completa",
+      "status": "PASS"
+    },
+    {
+      "check": "Cambio render_environment invalida revisión completa",
+      "status": "PASS"
+    },
+    {
+      "check": "Revisión sintética completa tiene forma válida, no acredita ejecución",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo de revisión: criterio sin evaluar",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo de revisión: criterio fallido",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo de revisión: sin tareas observadas",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo de revisión: agente como revisor",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo de revisión: sin revisión separada",
+      "status": "PASS"
+    },
+    {
+      "check": "Rechazo de revisión: reutilización sin evidencia",
+      "status": "PASS"
+    },
+    {
+      "check": "Revisores duplicados no cuentan como dos personas",
+      "status": "PASS"
+    },
+    {
+      "check": "Once filas con criterio repetido no completan la rúbrica",
+      "status": "PASS"
+    },
+    {
+      "check": "Huella incorrecta de entradas de revisión se detecta",
+      "status": "PASS"
+    },
+    {
+      "check": "G04b estructural vincula revisión completa y candidato",
+      "status": "PASS"
+    },
+    {
+      "check": "G04b PASS sin referencia humana se rechaza",
+      "status": "PASS"
+    },
+    {
+      "check": "G04b con revisión de otro candidato se rechaza",
+      "status": "PASS"
+    },
+    {
+      "check": "G04b con revisión no ejecutada se rechaza",
+      "status": "PASS"
+    },
+    {
+      "check": "G04b con huella de revisión errónea se rechaza",
+      "status": "PASS"
+    },
+    {
+      "check": "Derivación sincronizada: Pipeline_101_restaurantes_v2.1.1.md",
+      "status": "PASS"
+    },
+    {
+      "check": "Derivación sincronizada: PRUEBAS_DE_ACEPTACION.md",
+      "status": "PASS"
+    },
+    {
+      "check": "Derivación sincronizada: APLICABILIDAD_PILOTO.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/Pipeline_101_original.md",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/Pipeline_101_restaurantes_v2.1.md",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/v2/Pipeline_101_restaurantes_v2.md",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/v2/REGISTRO_DE_CAMBIOS.md",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/v2/VALIDACION_ENTREGA.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/v2/especificacion/compuertas.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/v2/especificacion/contratos.schema.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/v2/especificacion/pruebas_aceptacion.json",
+      "status": "PASS"
+    },
+    {
+      "check": "Fuente intacta: referencia/v2/herramientas/validar_especificacion.py",
+      "status": "PASS"
+    },
+    {
+      "check": "Huella conocida del original preservada",
+      "status": "PASS"
+    },
+    {
+      "check": "Siete fases conservadas",
+      "status": "PASS"
+    },
+    {
+      "check": "Cuatro capas conservadas",
+      "status": "PASS"
+    },
+    {
+      "check": "Catálogo visible sin compuerta G04 activa",
+      "status": "PASS"
+    },
+    {
+      "check": "Advertencia de clasificación tentativa anterior retirada",
+      "status": "PASS"
+    }
+  ]
+}

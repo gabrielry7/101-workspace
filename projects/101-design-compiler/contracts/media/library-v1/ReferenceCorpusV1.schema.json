@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "REPORTED_DESIGN_REFERENCE_CORPUS"
+    },
+    "corpus_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_bytes_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_bytes": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "source_authority": {
+      "type": "string",
+      "const": "USER_SUPPLIED_SUMMARY_NOT_NEW_VOTES"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "number": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "sector": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reported_status": {
+            "type": "string",
+            "enum": [
+              "SITIO_POSITIVO",
+              "ELEMENTO_POSITIVO"
+            ]
+          },
+          "approved_scope": {
+            "type": "string",
+            "enum": [
+              "GLOBAL_REPORTED",
+              "SPECIFIC_PAGE_ONLY",
+              "STORYTELLING_ONLY",
+              "DROPDOWN_ONLY"
+            ]
+          },
+          "reported_intensity_literal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_section_literal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "negative_or_limit_lines": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "new_observations": {
+            "maxItems": 0,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "inspected_at": {
+            "type": "null"
+          },
+          "captured_viewports": {
+            "maxItems": 0,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "asset_reuse": {
+            "type": "string",
+            "const": "NOT_AUTHORIZED_BY_REFERENCE"
+          }
+        },
+        "required": [
+          "id",
+          "number",
+          "name",
+          "url",
+          "sector",
+          "reported_status",
+          "approved_scope",
+          "reported_intensity_literal",
+          "source_section_literal",
+          "negative_or_limit_lines",
+          "new_observations",
+          "inspected_at",
+          "captured_viewports",
+          "asset_reuse"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "negative_references_section_literal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "training": {
+      "type": "string",
+      "const": "NOT_PERFORMED"
+    },
+    "human_approval_of_generated_sites": {
+      "type": "string",
+      "const": "NOT_COLLECTED"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "corpus_sha256",
+    "source_path",
+    "source_bytes_sha256",
+    "source_bytes",
+    "source_authority",
+    "references",
+    "negative_references_section_literal",
+    "training",
+    "human_approval_of_generated_sites"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ReferenceCorpusV1:1.0.0",
+  "title": "ReferenceCorpusV1",
+  "description": "B2 associated byte-pinned media library and reference corpus; semantic, source, scope and current-use verification required. No rights conferred by fixture flags or reference URLs."
+}

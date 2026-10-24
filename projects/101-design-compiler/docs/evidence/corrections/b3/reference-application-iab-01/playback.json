@@ -1,0 +1,205 @@
+{
+  "scope": "UI keyboard playback, read-only media element observations; no network transfer measurement",
+  "views": [
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.086258,
+        "width": 640
+      },
+      "last": {
+        "paused": false,
+        "time": 0.233274
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-01/candidate-01-desktop-playback.jpg",
+        "sha256": "87e967db4acd626b9cf28e7b3045b18d657e32b7fb93aef8f7cfa9ba3358bdb6"
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.406305,
+        "width": 640
+      },
+      "last": {
+        "paused": false,
+        "time": 0.492697
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-01/candidate-01-mobile-playback.jpg",
+        "sha256": "1c6947c3c9c9e00d59b599dcbe5572135767c8ed1ff0c3a6ca28bbf242933c60"
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.118595,
+        "width": 640
+      },
+      "last": {
+        "paused": false,
+        "time": 0.20843
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-01/candidate-02-desktop-playback.jpg",
+        "sha256": "511714e79856ae91edef39600c4a7befbb3ef9a5aabfea4062a030cd29a8a0ce"
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.360281,
+        "width": 640
+      },
+      "last": {
+        "paused": false,
+        "time": 0.439754
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-01/candidate-02-mobile-playback.jpg",
+        "sha256": "96e2a92fc8677b00dd4be06eddea3e40c443b85763c8ceb50629ce78aa275820"
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.104554,
+        "width": 640
+      },
+      "last": {
+        "paused": false,
+        "time": 0.23896
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-01/candidate-03-desktop-playback.jpg",
+        "sha256": "ef64150af8eb240a0a218885962d16e813d033107c21b74585ac7610c90618cd"
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.382374,
+        "width": 640
+      },
+      "last": {
+        "paused": false,
+        "time": 0.469124
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-01/candidate-03-mobile-playback.jpg",
+        "sha256": "5f820e871932c41eda63abc6c4a7598178d397dbd86657a30618ef6d47ada282"
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.115854,
+        "width": 640
+      },
+      "last": {
+        "paused": false,
+        "time": 0.215482
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-01/candidate-04-desktop-playback.jpg",
+        "sha256": "0433763a040319c8385c6f000add15227689f5a9026fb8242df76050cc1e63a6"
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "first": {
+        "duration": 9.36,
+        "error": null,
+        "height": 360,
+        "paused": false,
+        "time": 0.358058,
+        "width": 640
+      },
+      "last": {
+        "paused": false,
+        "time": 0.455022
+      },
+      "advanced": true,
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/reference-application-iab-01/candidate-04-mobile-playback.jpg",
+        "sha256": "6be0c75d23cd6de67f45e5f776d44824d17001cb2dd296d2ddb79d231ea88083"
+      }
+    }
+  ]
+}

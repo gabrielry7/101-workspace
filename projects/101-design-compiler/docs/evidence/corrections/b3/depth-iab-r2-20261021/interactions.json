@@ -1,0 +1,917 @@
+{
+  "kind": "B3_REFERENCE_DEPTH_UI_INTERACTIONS",
+  "records": [
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-01-interaction-mobile-navigation-open.jpg",
+        "sha256": "f9bd9e2e4ecf4c8ddb63abdd3440bcd62de6458cca74d711c5b8e7cf5dd2ef69",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante."
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-01-interaction-mobile-journal-read.jpg",
+        "sha256": "3560e495708208286100390626a4bf2222340562f86f984e98837e1a7b20e4f2",
+        "y": 745.3333129882812
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-01-interaction-mobile-menu-search.jpg",
+        "sha256": "5149bc8cb3db6ef77a7bbddac4f72faf213c84911263ed084623fa04eee10293",
+        "y": 225.3333282470703
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-02-interaction-mobile-navigation-open.jpg",
+        "sha256": "8b7e36e4a1a3ce08aea9ee5417633572e6f4bafe4319b7f5518576db4350ff79",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante."
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-02-interaction-mobile-journal-read.jpg",
+        "sha256": "99ca5e8b653b2c87e9675ce0339db5616e1b88f312a218a844200aa3f3ea5998",
+        "y": 745.3333129882812
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-02-interaction-mobile-menu-search.jpg",
+        "sha256": "036679cfee88f418b969ae3117c2e80f80b3105cf39084c8239caa170d5047b9",
+        "y": 194.6666717529297
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-03-interaction-mobile-navigation-open.jpg",
+        "sha256": "2a82c2467ced4758bc3674187c55acbe4946acaab3839d2966c087fb005a4e7e",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante."
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-03-interaction-mobile-journal-read.jpg",
+        "sha256": "79a8a68c2131a1f88b547e816380b6fe0052214f95b1b58126a8a59a25c05be0",
+        "y": 899.3333129882812
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-03-interaction-mobile-menu-search.jpg",
+        "sha256": "7937240fd1eb2ccf407b77f388a33d8f7da8e8cd94da94f89969ca52644270a6",
+        "y": 224
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-04-interaction-mobile-navigation-open.jpg",
+        "sha256": "b102201d064a25dffd6f09635fa8717f174aa0deb8427aaa681ae8aa1a892723",
+        "y": 76
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "journal-filter",
+      "observed": {
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante."
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-04-interaction-mobile-journal-read.jpg",
+        "sha256": "aa0b4ac0a5a61409463b60729fc20e522c496e6f42f6fa4e21bf6af6a8b2e268",
+        "y": 994
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-04-interaction-mobile-menu-search.jpg",
+        "sha256": "63f23b9d55783bc9d697fc48a9ac651d8b5aa55718bb4b4ad377398d00f3ca67",
+        "y": 226.6666717529297
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-01-interaction-desktop-navigation-open.jpg",
+        "sha256": "2494b01916e73ad18208b3029a8bf8db1955a39287bcfd2c6fd59f78b0b03e4a",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante."
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-01-interaction-desktop-journal-read.jpg",
+        "sha256": "380e7fc008981e85df90c00d05e28de24058fa6d1b686936029d30fbff2b85f1",
+        "y": 778
+      }
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-01-interaction-desktop-menu-search.jpg",
+        "sha256": "a62b5f3c62e70a07ba6e29d0444f8865574107338c303c58888645229102b2ec",
+        "y": 276
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-02-interaction-desktop-navigation-open.jpg",
+        "sha256": "2047a0446971c70171fca0d5a9e0cf66e7dfaa121e95c4601c9f60a0fcb751f2",
+        "y": 218.6666717529297
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante."
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-02-interaction-desktop-journal-read.jpg",
+        "sha256": "8112f5d4cdc1597480dd80fc681c016a81cdc20503837dbe450769057de49ce9",
+        "y": 742
+      }
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-02-interaction-desktop-menu-search.jpg",
+        "sha256": "932a19b6488c54d04def3f494d34165433cd58870ebd80325955151bb2678169",
+        "y": 276
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-03-interaction-desktop-navigation-open.jpg",
+        "sha256": "51e2fcf9592fe9a086ab18f19f501e44acea254b17903279a09f580cfc1bd60c",
+        "y": 0
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante."
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-03-interaction-desktop-journal-read.jpg",
+        "sha256": "7311529655272b2a1a5061a4ef2722d835284dcad4dbd881eee5683664260986",
+        "y": 1246
+      }
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-03-interaction-desktop-menu-search.jpg",
+        "sha256": "d4a8bd5bb321f5f0c1a07463ba985ffb96a1ec3858467909c3abc06c1d707d34",
+        "y": 280
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "pause",
+      "observed": {
+        "paused": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "resume",
+      "observed": {
+        "paused": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "navigation-open",
+      "observed": {
+        "open": true
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-04-interaction-desktop-navigation-open.jpg",
+        "sha256": "afd8ce518ca9ed9ebe00355426e0ad61f04512e0f5d90467757c03253ec782d6",
+        "y": 266
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "navigation-escape",
+      "observed": {
+        "focused": true,
+        "open": false
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "journal-filter",
+      "observed": {
+        "count": "1 relato de muestra",
+        "visible": [
+          "post-02"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "journal-read",
+      "observed": {
+        "open": true,
+        "text": "Leer el relato ＋Relato ficticio de muestraA veces el mejor momento del día cabe en una pausa. Dejar a un lado la lista de pendientes, acercar el plato y regalarle un rato a esa conversación que siempre queda para después.Imaginamos un mediodía sin ceremonia, con apetito y tiempo para disfrutar. Es una pieza editorial de ficción: no describe horarios, ingredientes, proveedores o servicios comprobados de un restaurante."
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-04-interaction-desktop-journal-read.jpg",
+        "sha256": "cf2b048d1dfaf85fe034f4e93fad0a8805c1fdd0463f9c11d5b4bbd1405a9050",
+        "y": 1171.3333740234375
+      }
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "step": "menu-search",
+      "observed": {
+        "count": "1 platos de ejemplo",
+        "visible": [
+          "pasta"
+        ]
+      },
+      "hard_checks": {
+        "overflow": [],
+        "unreadable": [],
+        "small_controls": []
+      },
+      "screenshot": {
+        "path": "docs/evidence/corrections/b3/depth-iab-r2-20261021/candidate-04-interaction-desktop-menu-search.jpg",
+        "sha256": "7c9a5f42698d964c741965a0166f13c6f601de77060a083c0f4bd16a25211f47",
+        "y": 283.3333435058594
+      }
+    }
+  ]
+}

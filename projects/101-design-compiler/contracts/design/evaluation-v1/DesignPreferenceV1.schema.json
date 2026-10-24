@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "experiment_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "case_id": {
+      "type": "string",
+      "enum": [
+        "restaurante",
+        "hotel"
+      ]
+    },
+    "viewport": {
+      "type": "string",
+      "enum": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    "preferred": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "TIE",
+        "NONE"
+      ]
+    },
+    "rating": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "typography",
+          "palette",
+          "composition",
+          "media",
+          "navigation",
+          "readability"
+        ]
+      }
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+    },
+    "source": {
+      "type": "string",
+      "const": "EXPLICIT_HUMAN_INPUT"
+    }
+  },
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "case_id",
+    "viewport",
+    "preferred",
+    "rating",
+    "dimensions",
+    "reason",
+    "recorded_at",
+    "source"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:DesignPreferenceV1:1.0.0",
+  "title": "DesignPreferenceV1"
+}

@@ -1,0 +1,166 @@
+{
+  "manifest": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-gimnasio-001",
+    "snapshot_id": "fixture-gimnasio-001-snapshot-v1",
+    "site_plan_id": "fixture-gimnasio-001-snapshot-v1:h2-plan:0008c34f5dfd5c16cb9d3901",
+    "client_id": "synthetic-client",
+    "project_id": "synthetic-project",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "plan_sha256": "08ef32cbac12e8a6dd32e7f6eb3bdb9903f001ef6d931f30168d1fc6e07eb5aa",
+    "requirements_sha256": "cb4837082c8d0777cbdc59a78f46d33f6accdbcf8afdb437b0325877ba072f30",
+    "input_sha256": "9c13231681aa79cd0c1165a844580135399af8ffc4df325e10f2b30d148378ff",
+    "assets": [],
+    "grants": [],
+    "usages": [],
+    "needs": [
+      {
+        "id": "need-0ee36eb8c351eb593d487eac",
+        "requirement_id": "semantic-7757fea94c5065ec8c706acd",
+        "module_id": "semantic-7757fea94c5065ec8c706acd",
+        "page": "/sedes/s-55b42d8a52be80c5a51bab72/membresias",
+        "scope_id": "fixture-gimnasio-001-branch-1",
+        "purpose": "document:membership",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-c92c2d0400c0bc02773f9ec3",
+        "requirement_id": "semantic-73599703484b5b1b50f27c2e",
+        "module_id": "semantic-73599703484b5b1b50f27c2e",
+        "page": "/sedes/s-55b42d8a52be80c5a51bab72/clases",
+        "scope_id": "fixture-gimnasio-001-branch-1",
+        "purpose": "document:class_schedule",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-2"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-e07cd86e2f65698a2005ff66",
+        "requirement_id": "semantic-a52c45614464eab318bd1632",
+        "module_id": "semantic-a52c45614464eab318bd1632",
+        "page": "/",
+        "scope_id": "fixture-gimnasio-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      }
+    ],
+    "decisions": []
+  },
+  "brief": {
+    "schema_version": "1.0.0",
+    "site_plan_id": "fixture-gimnasio-001-snapshot-v1:h2-plan:0008c34f5dfd5c16cb9d3901",
+    "manifest_sha256": "6ad61d8a9e683a0467d436aca6f89713a5d075dd9ca98bf2512b1dae9c4558a5",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "gaps": [
+      {
+        "need": {
+          "id": "need-0ee36eb8c351eb593d487eac",
+          "requirement_id": "semantic-7757fea94c5065ec8c706acd",
+          "module_id": "semantic-7757fea94c5065ec8c706acd",
+          "page": "/sedes/s-55b42d8a52be80c5a51bab72/membresias",
+          "scope_id": "fixture-gimnasio-001-branch-1",
+          "purpose": "document:membership",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "offering-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-c92c2d0400c0bc02773f9ec3",
+          "requirement_id": "semantic-73599703484b5b1b50f27c2e",
+          "module_id": "semantic-73599703484b5b1b50f27c2e",
+          "page": "/sedes/s-55b42d8a52be80c5a51bab72/clases",
+          "scope_id": "fixture-gimnasio-001-branch-1",
+          "purpose": "document:class_schedule",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "offering-2"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-e07cd86e2f65698a2005ff66",
+          "requirement_id": "semantic-a52c45614464eab318bd1632",
+          "module_id": "semantic-a52c45614464eab318bd1632",
+          "page": "/",
+          "scope_id": "fixture-gimnasio-001",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "closure": "PENDING_AUTHORIZED_MEDIA_PACKAGE"
+  }
+}

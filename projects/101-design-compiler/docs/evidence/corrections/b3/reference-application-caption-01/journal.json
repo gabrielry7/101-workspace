@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-reference-application-caption-01",
+  "created_at": "2026-10-16T13:51:56.110Z",
+  "steps": [
+    {
+      "id": "check",
+      "started_at": "2026-10-16T13:51:56.116Z",
+      "finished_at": "2026-10-16T13:52:16.147Z",
+      "wall_seconds": 20.0315501,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-caption-01/check.txt",
+      "log_sha256": "193a328d7125b99c715e8eb4073c9ad1a2eaddd5fa7d676cd53ed359a4acc74b"
+    },
+    {
+      "id": "build",
+      "started_at": "2026-10-16T13:52:16.152Z",
+      "finished_at": "2026-10-16T13:52:23.370Z",
+      "wall_seconds": 7.2171302,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-caption-01/build.txt",
+      "log_sha256": "0d17c29de9b5eb2b1d589c35df5f70a753377ab2dee32e552805c4ebe272ac0e"
+    },
+    {
+      "id": "current-browser-evidence",
+      "started_at": "2026-10-16T13:52:23.373Z",
+      "finished_at": "2026-10-16T13:52:24.761Z",
+      "wall_seconds": 1.3879925000000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/reference-application-caption-01/current-browser-evidence.txt",
+      "log_sha256": "00dd6ba5a74708d5ba6592230e93e279c96d3fbf11a1eb57b7119c26b00368d7"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

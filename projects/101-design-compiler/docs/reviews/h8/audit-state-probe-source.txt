@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import {DesignLockV1} from '../../src/lock/contracts.ts';
+import {validateLock} from '../../src/lock/validate.ts';
+const observations=[];
+for(const id of ['pilot-flow','pilot-rail','hybrid-no-media']){
+ const lock=JSON.parse(await readFile(`fixtures/locks/h8/${id}.json`,'utf8'));
+ const checked=validateLock(lock);assert.ok(checked.success);
+ const approval=lock.approval;
+ assert.equal(approval.status,'LAB_TECHNICAL_LOCK_NOT_HUMAN_APPROVED');
+ const auditKeys=Object.keys(lock).filter(k=>/audit/i.test(k));assert.equal(auditKeys.length,0);
+ assert.ok(!lock.files.some((f:any)=>/h[567].*(?:browser-audit|run|review)|audit-report/i.test(f.path)));
+ const withAudit={...lock,audit_state:{status:'FAIL',coverage:'NOT_VERIFIED'}};
+ assert.equal(DesignLockV1.safeParse(withAudit).success,false);
+ observations.push({id,lock_sha256:lock.lock_sha256,validation_without_technical_audit_snapshot:checked.success,top_level_fields:Object.keys(lock),audit_fields:auditKeys,approval,technical_audit_files:[],unknown_audit_state_field_rejected:true,explanation:'Lock validates with only a literal approval status; no frozen technical audit status, coverage or reference hash is represented. H8 run outside lock is separately recorded.'});
+}
+await writeFile('docs/reviews/h8/audit-state-probe.json',JSON.stringify({status:'REQUIREMENT_GAP_CONFIRMED',requirement:'V0.2 §21.3: design.lock.json includes approvals and audit states',data_mode:'REVIEW_READ_ONLY_PROBE',observations},null,2)+'\n');
+console.log('CONFIRMED: 3 validated locks contain no technical audit status/coverage/reference snapshot; schema rejects additional audit_state');

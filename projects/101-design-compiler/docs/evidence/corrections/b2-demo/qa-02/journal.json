@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b2-demo-qa-02",
+  "created_at": "2026-10-15T02:54:17.241Z",
+  "steps": [
+    {
+      "id": "build",
+      "started_at": "2026-10-15T02:54:17.243Z",
+      "finished_at": "2026-10-15T02:54:20.211Z",
+      "wall_seconds": 2.9677420000000003,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2-demo/qa-02/build.txt",
+      "log_sha256": "0b00aa01fe63bde5808aaf9db86b874afed3c256717dd1ab60a45e3fecc6f3cf"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

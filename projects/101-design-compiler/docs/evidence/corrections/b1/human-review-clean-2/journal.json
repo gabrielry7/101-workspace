@@ -1,0 +1,208 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b1-human-review-clean-2",
+  "created_at": "2026-10-14T04:06:53.813Z",
+  "steps": [
+    {
+      "id": "contracts",
+      "started_at": "2026-10-14T04:06:53.816Z",
+      "finished_at": "2026-10-14T04:06:54.402Z",
+      "wall_seconds": 0.5855418,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/contracts.txt",
+      "log_sha256": "b4262484eaf43bc001dfc62e68e6bf4192378f1ebdb90373d5da3e25a993b8e0"
+    },
+    {
+      "id": "tests",
+      "started_at": "2026-10-14T04:06:54.405Z",
+      "finished_at": "2026-10-14T04:06:59.780Z",
+      "wall_seconds": 5.3749731,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/tests.txt",
+      "log_sha256": "d7f2c8d1b5ae94db86d2024a1df355f8045f466606ae07337eba44ccfc1eb6ad"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-14T04:06:59.781Z",
+      "finished_at": "2026-10-14T04:07:15.475Z",
+      "wall_seconds": 15.693232400000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/check.txt",
+      "log_sha256": "ea68a50d8c7ac7b938943eee4fdbd079c0f81cdb586ef10df5dceb666f9eb457"
+    },
+    {
+      "id": "validate",
+      "started_at": "2026-10-14T04:07:15.476Z",
+      "finished_at": "2026-10-14T04:07:16.023Z",
+      "wall_seconds": 0.5475463999999992,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/validate.txt",
+      "log_sha256": "c69bbe0277e4073bddb83b8d77c8996e8c3512e8223499d7947632d37e3681f4"
+    },
+    {
+      "id": "build",
+      "started_at": "2026-10-14T04:07:16.025Z",
+      "finished_at": "2026-10-14T04:07:19.544Z",
+      "wall_seconds": 3.519060300000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/build.txt",
+      "log_sha256": "e03890c3718a3d38317e9a6f34cf1e890d174b2d8b1b916dde36e25e24501ab9"
+    },
+    {
+      "id": "b1-replay",
+      "started_at": "2026-10-14T04:07:19.547Z",
+      "finished_at": "2026-10-14T04:07:20.768Z",
+      "wall_seconds": 1.2210606000000006,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/b1-replay.txt",
+      "log_sha256": "b3216e3a4c37b58fa9c6aeb50bacbf0feff9609c5f98a627b8b99ff6ece23a18"
+    },
+    {
+      "id": "taxonomy",
+      "started_at": "2026-10-14T04:07:20.769Z",
+      "finished_at": "2026-10-14T04:07:21.409Z",
+      "wall_seconds": 0.6398724000000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/taxonomy.txt",
+      "log_sha256": "5bdb2a1a3ebcde0961f22b7b26ef4a64a53c24ddefb9272b9eb91f7243bcad0a"
+    },
+    {
+      "id": "planner-replay",
+      "started_at": "2026-10-14T04:07:21.411Z",
+      "finished_at": "2026-10-14T04:07:21.693Z",
+      "wall_seconds": 0.282747800000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/planner-replay.txt",
+      "log_sha256": "252ac204d25cf6f33f71602eee4779ad2093e675ad0d9debc5275477fb3a46ac"
+    },
+    {
+      "id": "media-replay",
+      "started_at": "2026-10-14T04:07:21.695Z",
+      "finished_at": "2026-10-14T04:07:22.295Z",
+      "wall_seconds": 0.5997561999999999,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/media-replay.txt",
+      "log_sha256": "a238a3a587e30885acb326264f26b0e73e9dc9402294c0efdb9ce1df860c22e4"
+    },
+    {
+      "id": "media-verify",
+      "started_at": "2026-10-14T04:07:22.296Z",
+      "finished_at": "2026-10-14T04:07:22.728Z",
+      "wall_seconds": 0.4316542000000009,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/media-verify.txt",
+      "log_sha256": "dfed262ff832904ddba0e2baf16b17ba2b8c8fd30797be7128c73b59f8f0f568"
+    },
+    {
+      "id": "composition-replay",
+      "started_at": "2026-10-14T04:07:22.729Z",
+      "finished_at": "2026-10-14T04:07:23.186Z",
+      "wall_seconds": 0.45645950000000085,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/composition-replay.txt",
+      "log_sha256": "938c870a6ab24e641e885a169da8739c49ab4a438e4ecd16288b5abeaa497b76"
+    },
+    {
+      "id": "composition-verify",
+      "started_at": "2026-10-14T04:07:23.187Z",
+      "finished_at": "2026-10-14T04:07:23.761Z",
+      "wall_seconds": 0.5741842000000034,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/composition-verify.txt",
+      "log_sha256": "51e973bac7283abc33be1ac1fefc8489483c5957b9c3b09196e8cd214504a635"
+    },
+    {
+      "id": "design-replay",
+      "started_at": "2026-10-14T04:07:23.763Z",
+      "finished_at": "2026-10-14T04:07:24.247Z",
+      "wall_seconds": 0.4842752,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/design-replay.txt",
+      "log_sha256": "debf7dd8e16ff43197df66a57c304cbc0eee46ab637661bb48d2f195dd00c13c"
+    },
+    {
+      "id": "design-verify",
+      "started_at": "2026-10-14T04:07:24.249Z",
+      "finished_at": "2026-10-14T04:07:24.865Z",
+      "wall_seconds": 0.6165980000000018,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/design-verify.txt",
+      "log_sha256": "505d634e67d6f6746e96ab3839d7b84cfeaa422ec7010f545eb385959bd5bc7e"
+    },
+    {
+      "id": "audit-verify",
+      "started_at": "2026-10-14T04:07:24.867Z",
+      "finished_at": "2026-10-14T04:07:26.268Z",
+      "wall_seconds": 1.4012966000000016,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/audit-verify.txt",
+      "log_sha256": "fa7395471691e7226ee26bd6c4b95f14eb14c431cbe0873d0becb430b6d50f05"
+    },
+    {
+      "id": "cohort-replay",
+      "started_at": "2026-10-14T04:07:26.269Z",
+      "finished_at": "2026-10-14T04:07:26.782Z",
+      "wall_seconds": 0.5127371999999996,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/cohort-replay.txt",
+      "log_sha256": "ede63bd8361a8e64a84792533fb27f35dc2d930d7105490b977b2a7f78992c45"
+    },
+    {
+      "id": "cohort-verify",
+      "started_at": "2026-10-14T04:07:26.784Z",
+      "finished_at": "2026-10-14T04:07:29.007Z",
+      "wall_seconds": 2.222928,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/cohort-verify.txt",
+      "log_sha256": "f6fea28c3dbd8694a321092ca31ea68f19fa9b900bc73f28be8882ecfc0f7931"
+    },
+    {
+      "id": "lock-verify",
+      "started_at": "2026-10-14T04:07:29.008Z",
+      "finished_at": "2026-10-14T04:07:32.091Z",
+      "wall_seconds": 3.0826085999999995,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/lock-verify.txt",
+      "log_sha256": "89c38310d9dc828fa4e7e14b3ce42fe60c8996d47164203c25bf40801d01bea5"
+    },
+    {
+      "id": "h9-inventory",
+      "started_at": "2026-10-14T04:07:32.093Z",
+      "finished_at": "2026-10-14T04:07:32.442Z",
+      "wall_seconds": 0.34883899999999995,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b1/human-review-clean-2/h9-inventory.txt",
+      "log_sha256": "f45cdb31ff61042b80640b33dce172a2f8cab339e03641f5e72a655645fdbecb"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

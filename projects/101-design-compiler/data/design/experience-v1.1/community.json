@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "FICTIONAL_EDITORIAL_COMMUNITY",
+  "data_mode": "SYNTHETIC_FIXTURE",
+  "disclosure": "Opiniones y publicaciones de muestra: textos ficticios, sin clientes ni cuentas reales.",
+  "contact": {
+    "email": "hola@lamesa.example",
+    "phone": null,
+    "social_accounts": [
+      {
+        "label": "Instagram",
+        "url": null
+      },
+      {
+        "label": "Facebook",
+        "url": null
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "id": "review-01",
+      "label": "Opinión ficticia",
+      "author": "Personaje de muestra 1",
+      "quote": "Venir sin prisa, pedir algo para el centro y olvidarse un rato del reloj.",
+      "verified_customer": false,
+      "rating": null
+    },
+    {
+      "id": "review-02",
+      "label": "Opinión ficticia",
+      "author": "Personaje de muestra 2",
+      "quote": "Una mesa larga, una conversación que sigue y ganas de pedir el postre.",
+      "verified_customer": false,
+      "rating": null
+    },
+    {
+      "id": "review-03",
+      "label": "Opinión ficticia",
+      "author": "Personaje de muestra 3",
+      "quote": "Ese plan sencillo que termina siendo la mejor parte de la semana.",
+      "verified_customer": false,
+      "rating": null
+    }
+  ],
+  "posts": [
+    {
+      "id": "post-01",
+      "slot": "pizza",
+      "title": "Al centro de la mesa.",
+      "caption": "La primera porción siempre abre la conversación.",
+      "source": "LOCAL_FICTIONAL_EDITORIAL_NOT_INSTAGRAM",
+      "social_metrics": null
+    },
+    {
+      "id": "post-02",
+      "slot": "pasta",
+      "title": "El ritual del mediodía.",
+      "caption": "Una pausa para saborear el momento.",
+      "source": "LOCAL_FICTIONAL_EDITORIAL_NOT_INSTAGRAM",
+      "social_metrics": null
+    },
+    {
+      "id": "post-03",
+      "slot": "salad",
+      "title": "Un poco de color.",
+      "caption": "Contrastes, texturas y algo fresco.",
+      "source": "LOCAL_FICTIONAL_EDITORIAL_NOT_INSTAGRAM",
+      "social_metrics": null
+    },
+    {
+      "id": "post-04",
+      "slot": "dessert",
+      "title": "Cinco minutos más.",
+      "caption": "Siempre hay sitio para alargar la sobremesa.",
+      "source": "LOCAL_FICTIONAL_EDITORIAL_NOT_INSTAGRAM",
+      "social_metrics": null
+    }
+  ]
+}

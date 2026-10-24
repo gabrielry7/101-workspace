@@ -1,0 +1,9 @@
+import {writeFile} from 'node:fs/promises';
+import {openLocalBrowser} from '../../scripts/lib/local-browser.ts';
+const browser=await openLocalBrowser();
+try{await browser.call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await browser.navigate('/h7/');
+ const dom=await browser.evaluate(`({main_count:document.querySelectorAll('main').length,nested_main:document.querySelector('main main')!==null,main_ids:[...document.querySelectorAll('main')].map(e=>e.id),h1_count:document.querySelectorAll('h1').length,skip_href:document.querySelector('.skip').getAttribute('href')})`);
+ const ax=await browser.call('Accessibility.getFullAXTree');const mains=ax.nodes.filter((n:any)=>!n.ignored&&n.role?.value==='main').map((n:any)=>({role:n.role.value,node_id:n.nodeId}));
+ const result={status:dom.main_count===1&&!dom.nested_main?'PASSED':'FAILED',route:'/h7/',browser:browser.version,evaluated_at:new Date().toISOString(),dom,ax_mains:mains};
+ await writeFile('docs/reviews/h7/index-probe.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+}finally{browser.close();}

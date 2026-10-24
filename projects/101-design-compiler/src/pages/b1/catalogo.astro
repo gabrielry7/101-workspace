@@ -1,0 +1,27 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import {requirementCatalog,validateRequirementCatalog} from '../../requirements/catalog.ts';
+import {label,ownerLabels} from '../../requirements/labels.ts';
+import '../../requirements/inspector.css';
+const catalog=validateRequirementCatalog(requirementCatalog),defs=new Map(catalog.definitions.map(d=>[d.id,d]));
+---
+<Foundation title="B1 · Catálogo maestro de funciones">
+ <div class="b1" data-b1-page="catalog" data-catalog-sha256={catalog.catalog_sha256}>
+  <nav class="b1-nav" aria-label="Revisión B1"><a href="/b1/">Casos de revisión</a><a href="/b1/restaurante/">Restaurante</a></nav>
+  <h1>Un catálogo compartido de requisitos</h1>
+  <p class="lead">Las mismas funciones usan las mismas fichas. Cada negocio aporta sus valores, su evidencia y sus decisiones por sucursal.</p>
+  <p class="notice">47 capacidades del registry V1. Especificación de futuros niveles no equivale a función implementada. Backend no conectado; verificación operativa pendiente.</p>
+  <p>{catalog.definitions.length} definiciones reutilizables. Catálogo {catalog.schema_version} · <code>{catalog.catalog_sha256}</code></p>
+  <section><h2>Fichas por función</h2><div class="b1-grid">{catalog.cards.map(card=><article class="b1-card" data-catalog-card data-capability-id={card.id}>
+   <h3>{card.label}</h3><p>{card.objective}</p><p class="muted">{card.scope_policy==='BUSINESS_ONLY'?'Alcance del negocio.':'Alcance exacto; sólo identidad puede compartirse globalmente.'}</p>
+   {card.levels.map(level=><details data-level-id={level.id}><summary>{level.label}</summary><p>{level.expected_behavior}</p>
+    <p>{label(level.implementation)}; no verificada operacionalmente.</p><ul>{level.requirement_ids.map(id=>{const def=defs.get(id)!;return <li><strong>{def.label}</strong> · {ownerLabels[def.owner]}{def.condition!=='ALWAYS'&&<span> · Condición: {def.condition==='MEDIA_PRESENT'?'uso explícito vinculado por H3; la presencia no basta':<code>{def.condition}</code>}</span>}</li>;})}</ul>
+    {level.visitor_inputs.length>0&&<details><summary>Campos futuros del visitante</summary><ul>{level.visitor_inputs.map(input=><li>{input.label} · {input.validation} {input.required_when}</li>)}</ul><p>B1 no recopila estos valores personales.</p></details>}
+    <details><summary>Pruebas de aceptación y estados esperados</summary><ul>{level.acceptance_criteria.map(c=><li>{c}</li>)}</ul><p>{level.interaction_states.join(' · ')}</p></details>
+   </details>)}
+   <details><summary>Dependencias, medios y soporte</summary><p>Dependencias obligatorias: {card.depends_on.join(', ')||'ninguna'}. Alternativas: {card.depends_on_any.join(', ')||'ninguna'}.</p>
+    <p>Roles de medios previstos: {card.media_roles.join(', ')||'sólo cuando se utilicen medios'}. Material documental requiere vínculo auténtico.</p><p>Primitiva compartida: <code>{card.component_path??'no disponible'}</code>. Semántica: <code>{card.semantic_status}</code>.</p>
+    <ul>{card.future_notes.map(note=><li>{note}</li>)}</ul></details>
+  </article>)}</div></section>
+ </div>
+</Foundation>

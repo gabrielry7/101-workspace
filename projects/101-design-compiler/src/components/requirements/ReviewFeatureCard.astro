@@ -1,0 +1,31 @@
+---
+import type {ReviewFeature} from '../../requirements/review-contracts.ts';
+interface Props {feature:ReviewFeature;condition:string;priority:string;requested:boolean}
+const {feature:f,condition,priority,requested}=Astro.props;
+const owner={BUSINESS:'Negocio o fuente autorizada',PROJECT:'Configuración del proyecto',PLATFORM:'Plataforma',RIGHTS_HOLDER:'Titular de derechos'};
+const scope={BUSINESS:'Negocio identificado',EXACT_BRANCH:'Sucursal exacta',EXACT_OFFERING:'Oferta exacta',EXACT_PERSON:'Persona exacta, vinculada a servicio y sede',EXACT_REVIEW:'Reseña exacta, vinculada a su sujeto',EXACT_REVIEW_SUBJECT:'Sujeto reseñado: tipo e ID exactos',EXACT_RESOURCE:'Recurso o instancia: ID y contexto exactos',EXACT_MEDIA_USAGE:'Archivo, sujeto y uso autorizado exactos',PROJECT:'Proyecto'};
+const priorityLabels:Record<string,string>={BASE:'Base propuesta',CONDITIONAL:'Si el negocio lo ofrece',OPTIONAL:'Complemento opcional'};
+---
+<article class="review-feature" id={`function-${f.id}`} data-review-feature={f.id}>
+ <header><h3>{f.label}</h3><p class="review-meta">{priorityLabels[priority]}{requested&&' · Solicitado por ti para restaurantes'}</p></header>
+ <div class="review-columns">
+  <div><h4>Qué debería verse</h4><p>{f.frontend_expectation}</p></div>
+  <div><h4>Qué necesitamos</h4><ul>{f.business_data.slice(0,3).map(d=><li>{d.label}</li>)}</ul></div>
+  <div><h4>Qué falta para hacerlo</h4><p>Confirmar aplicabilidad, conseguir los datos y construir la interfaz.</p><p>{condition}</p></div>
+ </div>
+ <details><summary>Ver todos los datos y cómo funcionaría</summary>
+  <h4>Datos, responsables y evidencia</h4>
+  <ul>{f.business_data.map(d=><li data-review-data-id={d.id} data-review-owner={d.owner} data-review-scope={d.scope}><strong>{d.label}</strong> — {owner[d.owner]} · {scope[d.scope]}.</li>)}</ul>
+  <p>Cada dato debe tener fuente aprobada, sujeto y alcance exactos, vigencia y responsable de actualización. Desconocido permanece pendiente.</p>
+  {f.future_visitor_inputs.length>0&&<><h4>Lo que pediría al visitante cuando exista</h4><ul>{f.future_visitor_inputs.map(v=><li>{v}</li>)}</ul><p>Estos valores no se piden para preparar el catálogo ni se recopilan en esta revisión.</p></>}
+  <h4>Para funcionar realmente</h4><ul>{f.operation_dependencies.map(d=><li>{d}</li>)}</ul>
+  <h4>Estados que habría que diseñar y probar</h4><p>{f.expected_states.join(' · ')}</p>
+  <h4>Cómo comprobar que está bien</h4><ul>{f.acceptance_checks.map(check=><li>{check}</li>)}</ul>
+  <h4>Precauciones concretas</h4><ul>{f.risks.map(risk=><li>{risk}</li>)}</ul>
+  <details><summary>Referencia técnica y límites</summary>
+   <p>Referencia V1 relacionada: <code>{f.registry_references.join(', ')||'Extensión nueva requerida'}</code>. Relación parcial; no demuestra soporte de esta experiencia completa.</p>
+   <p>Dependencias de la especificación: <code>{f.depends_on.join(', ')||'Ninguna función adicional; sí requiere los datos indicados'}</code>.</p>
+   <p>Datos del negocio: sin evaluar. Frontend de esta función: pendiente. Operación: sin conexión. No se ha aprobado el diseño ni implementado la función comercial.</p>
+  </details>
+ </details>
+</article>

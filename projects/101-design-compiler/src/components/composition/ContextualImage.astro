@@ -1,0 +1,16 @@
+---
+import {compositionMedia} from '../../media/composition-media.ts';
+import type {ContextualMediaHandle} from '../../media/contextual-review.ts';
+interface Props{handle:ContextualMediaHandle;at:string;route:string;slot:string;hero?:boolean;creditMode?:'inline'|'linked';creditsHref?:string;cover?:boolean}
+const {handle,at,route,slot,hero=false,creditMode='inline',creditsHref,cover=false}=Astro.props,{review,evaluate}=compositionMedia(handle);
+const uses=review.usages.filter(u=>u.page===route&&u.need_id===`b3-need:${slot}`);
+if(!uses.length||uses.some(u=>evaluate(u,at).status!=='ALLOWED')||(cover&&uses.some(u=>!u.transformations.includes('CROP')))||(creditMode==='linked'&&!creditsHref))throw Error('B3_IMAGE_USE_BLOCKED');
+if(creditMode==='linked'&&(!('credit_placement' in review.policy)||review.policy.credit_placement!=='LINKED_CREDITS_PAGE'))throw Error('B3_LINKED_CREDIT_POLICY_NOT_REVIEWED');
+const assets=uses.map(u=>review.assets.find(a=>a.id===u.asset_id)!);if(assets.some(a=>a.kind!=='image'))throw Error('B3_EXPECTED_IMAGE');
+const a=assets[0]!,page=a.provenance.find(p=>p.source.startsWith('Pixabay licensed'))!.reference;
+---
+<figure class:list={['contextual-photo',hero?'hero-photo':undefined,cover?'media-cover':undefined]} data-media-slot={slot} data-credit-href={creditMode==='linked'?creditsHref:undefined}>
+ <picture><source type="image/webp" srcset={assets.map(a=>`${a.uri} ${a.inspection.width}w`).join(', ')} sizes={hero?'(min-width: 761px) 1280px, calc(100vw - 40px)':'(min-width: 1000px) 640px, (min-width: 760px) 44vw, calc(100vw - 40px)'}/>
+ <img src={a.uri} width={a.inspection.width!} height={a.inspection.height!} alt={`${a.inspection.subject}. Ilustración de stock, no fotografía de los productos del negocio.`} loading={hero?'eager':'lazy'} fetchpriority={hero?'high':undefined} decoding="async" data-media-usage={uses.map(u=>u.id).join(' ')}/></picture>
+ {creditMode==='inline'&&<figcaption><span>Imagen ilustrativa</span><a href={page}>{uses[0]!.attribution_text}</a></figcaption>}
+</figure>

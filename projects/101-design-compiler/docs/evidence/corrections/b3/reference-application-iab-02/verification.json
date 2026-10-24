@@ -1,0 +1,727 @@
+{
+  "status": "PASS_CURRENT_DOM_MEDIA_AND_CAPTURE_REPLAY_HUMAN_PENDING",
+  "application_sha256": "0637e6d732c4e1a744ccd77f9b426510d5e156411c3da79c3673f3a8abf868dc",
+  "renderer_sources": [
+    {
+      "path": "src/components/composition/ContextualComposition.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "8c62da966838e6cbdb3e760a72823d3da47df9df51dccdc171b21f823383fa4f"
+    },
+    {
+      "path": "src/components/composition/ContextualModule.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "2b11700e95cebd14a5bad3c81c79831fbc76263c680b6690147c95fd3dfc00e7"
+    },
+    {
+      "path": "src/components/composition/ContextualImage.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "3211e5718a617080b8242909b81dc01f544be649560a3eeb20c083187a788283"
+    },
+    {
+      "path": "src/components/composition/PreviewIntent.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "16b08c905137ea5b2033edf34dfd7cdceee7d79660a160a0e25360aff592aa5d"
+    },
+    {
+      "path": "src/layouts/Foundation.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "9d13a5f5bbf2df1b50c2a071c728ec8cc9326af18b4c8483c5a0308c5696f45d"
+    },
+    {
+      "path": "src/design/contextual.css",
+      "normalization": "LF_UTF8",
+      "sha256": "c69de0a4253110e601d36aa6f2da751ae529c8390ba490059d4b33d391d2946d"
+    },
+    {
+      "path": "src/design/contextual-client.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "3a65bda4a3a0c3176d6134d872dc4e6aa1ad0b17ccb47a49a98a44a3510d82b9"
+    },
+    {
+      "path": "src/design/contextual-contracts.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "b27844b39a9c999cd556bb0ec1d87e845569a557f2c1de9d917c79bd1a3a2c96"
+    },
+    {
+      "path": "src/design/contextual.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "26455d6d55aeb37ff93587b1c50ac6bc407ce8f04dd2cd0be2a60a648dc63559"
+    },
+    {
+      "path": "src/design/reference-application.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "701964325caa161604cde9a0eb9a5513bb666d119bcd07fb305a404ff47b82c3"
+    },
+    {
+      "path": "src/design/contextual-audit.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "3ca899fad5460fe1a6f0475a9416fff32db331b5ef925f6450da979d5193e818"
+    },
+    {
+      "path": "scripts/load-b3-lab.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "32a0fd0ee1cdbacfef473ab2077f3e2848db15b9d44e5dac7f150154545c42c6"
+    },
+    {
+      "path": "src/pages/b3/[candidate].astro",
+      "normalization": "LF_UTF8",
+      "sha256": "7873075629a373da30e1ec7e9d14eadfae870c0b7537c194228d74c7d7651ba9"
+    },
+    {
+      "path": "src/pages/b3/index.astro",
+      "normalization": "LF_UTF8",
+      "sha256": "045d03d4ccd3ca270acf7613ecb32b8add8fb58c69f6cdf23d93eeea4cbbe755"
+    },
+    {
+      "path": "scripts/b3-reference-current-verify.ts",
+      "normalization": "LF_UTF8",
+      "sha256": "89dbb1489177efbe3ccda7dac846c48e0718d654ec5aa9742a2bed68ef5e3f30"
+    }
+  ],
+  "results": [
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6204,
+      "min_font": 14,
+      "min_contrast": 11.060899620645245
+    },
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 8311,
+      "min_font": 14,
+      "min_contrast": 11.060899620645245
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 5961,
+      "min_font": 14,
+      "min_contrast": 6.930260733686678
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 7840,
+      "min_font": 14,
+      "min_contrast": 6.930260733686678
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6850,
+      "min_font": 14,
+      "min_contrast": 11.098321761471649
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 8401,
+      "min_font": 14,
+      "min_contrast": 11.098321761471649
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6738,
+      "min_font": 14,
+      "min_contrast": 8.748793928909379
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 8484,
+      "min_font": 14,
+      "min_contrast": 8.748793928909379
+    },
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "responsive-360",
+        "width": 360,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 8753,
+      "min_font": 14,
+      "min_contrast": 11.060899620645245
+    },
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "responsive-768",
+        "width": 768,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 5382,
+      "min_font": 14,
+      "min_contrast": 11.060899620645245
+    },
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "responsive-1024",
+        "width": 1024,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 5740,
+      "min_font": 14,
+      "min_contrast": 11.060899620645245
+    },
+    {
+      "design": "candidate-01",
+      "viewport": {
+        "id": "responsive-1920",
+        "width": 1920,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6439,
+      "min_font": 14,
+      "min_contrast": 11.060899620645245
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "responsive-360",
+        "width": 360,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 9301,
+      "min_font": 14,
+      "min_contrast": 6.930260733686678
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "responsive-768",
+        "width": 768,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6531,
+      "min_font": 14,
+      "min_contrast": 6.930260733686678
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "responsive-1024",
+        "width": 1024,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6239,
+      "min_font": 14,
+      "min_contrast": 6.930260733686678
+    },
+    {
+      "design": "candidate-02",
+      "viewport": {
+        "id": "responsive-1920",
+        "width": 1920,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6499,
+      "min_font": 14,
+      "min_contrast": 6.930260733686678
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "responsive-360",
+        "width": 360,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 8906,
+      "min_font": 14,
+      "min_contrast": 11.098321761471649
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "responsive-768",
+        "width": 768,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 5767,
+      "min_font": 14,
+      "min_contrast": 11.098321761471649
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "responsive-1024",
+        "width": 1024,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6074,
+      "min_font": 14,
+      "min_contrast": 11.098321761471649
+    },
+    {
+      "design": "candidate-03",
+      "viewport": {
+        "id": "responsive-1920",
+        "width": 1920,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 7326,
+      "min_font": 14,
+      "min_contrast": 11.098321761471649
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "responsive-360",
+        "width": 360,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 8986,
+      "min_font": 14,
+      "min_contrast": 8.748793928909379
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "responsive-768",
+        "width": 768,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6104,
+      "min_font": 14,
+      "min_contrast": 8.748793928909379
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "responsive-1024",
+        "width": 1024,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6351,
+      "min_font": 14,
+      "min_contrast": 8.748793928909379
+    },
+    {
+      "design": "candidate-04",
+      "viewport": {
+        "id": "responsive-1920",
+        "width": 1920,
+        "height": 1000
+      },
+      "audit": {
+        "success": true,
+        "codes": []
+      },
+      "height": 6877,
+      "min_font": 14,
+      "min_contrast": 8.748793928909379
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-01-desktop.jpg",
+      "sha256": "6cba4f797e04a0a7925fa01c14aee552c4981489c9a68e137782c06858c3d546",
+      "width": 1424,
+      "height": 6204,
+      "css_width": 1440,
+      "css_height": 1000,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-01-mobile.jpg",
+      "sha256": "6581378db9562c2227ac783f272c6f6bcf8ee603f545dd230da4fea1532c9d8d",
+      "width": 375,
+      "height": 8311,
+      "css_width": 390,
+      "css_height": 844,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-02-desktop.jpg",
+      "sha256": "55c5f40d95929c6f736272c680e03407e7a638d48d3156d8c246df97ff829590",
+      "width": 1424,
+      "height": 5960,
+      "css_width": 1440,
+      "css_height": 1000,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-02-mobile.jpg",
+      "sha256": "c84013986b80cb92b9919d1cee6a8a6c068ce99042195c7542cc2b207203f1c5",
+      "width": 375,
+      "height": 7840,
+      "css_width": 390,
+      "css_height": 844,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-03-desktop.jpg",
+      "sha256": "ef9f95d437dacc009ab8d90885e1bb28714b9a21b85a8e095d15b44e73e2d880",
+      "width": 1424,
+      "height": 6849,
+      "css_width": 1440,
+      "css_height": 1000,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-03-mobile.jpg",
+      "sha256": "2eabb457fe1befd55f2e7781174d127d0929865a4b906c4b140ee22482d63e40",
+      "width": 375,
+      "height": 8400,
+      "css_width": 390,
+      "css_height": 844,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-04-desktop.jpg",
+      "sha256": "6934184f69696c16da2189a2aef0f3eb96fd305966ca32a203bbcd98f0a7415f",
+      "width": 1424,
+      "height": 6738,
+      "css_width": 1440,
+      "css_height": 1000,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-04-mobile.jpg",
+      "sha256": "d0bac8ab2c8d1fac843766c46b3c13df6969d6aeaeeef4722755c6d00b11c150",
+      "width": 375,
+      "height": 8484,
+      "css_width": 390,
+      "css_height": 844,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-01-desktop-playback.jpg",
+      "sha256": "a0769b0b636e1ca00e77797abac9ce85b5ba112ff76a9f4a8648cf983821917b",
+      "width": 1425,
+      "height": 990,
+      "css_width": 1440,
+      "css_height": 1000,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-01-mobile-playback.jpg",
+      "sha256": "3eda93165291c67317c165ee598c693a32c75dd4d966e21968b7566ae34d3a22",
+      "width": 375,
+      "height": 811,
+      "css_width": 390,
+      "css_height": 844,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-02-desktop-playback.jpg",
+      "sha256": "ea0b6bd165381267e67e342616449397fefa774b462cf4a486c09f6c4176277e",
+      "width": 1425,
+      "height": 990,
+      "css_width": 1440,
+      "css_height": 1000,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-02-mobile-playback.jpg",
+      "sha256": "6664089952e80f4ed701229b1bd7d7ab2964e160234d7d65e32882ecfb2ef529",
+      "width": 375,
+      "height": 811,
+      "css_width": 390,
+      "css_height": 844,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-03-desktop-playback.jpg",
+      "sha256": "004e3c05a9d902ef68283e48829dece5108b6832a5e7e285f7c12f6cb34f1311",
+      "width": 1425,
+      "height": 990,
+      "css_width": 1440,
+      "css_height": 1000,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-03-mobile-playback.jpg",
+      "sha256": "c2b2f9a33b5232dbd80e7916b0c7ef7c98c8499bc19727764cad4b5e7f9b1275",
+      "width": 375,
+      "height": 811,
+      "css_width": 390,
+      "css_height": 844,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-04-desktop-playback.jpg",
+      "sha256": "c046cccc957a03b952e623220dd97c495b17e2a19481fada9987f6aa2fc0407d",
+      "width": 1425,
+      "height": 990,
+      "css_width": 1440,
+      "css_height": 1000,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    },
+    {
+      "path": "docs/evidence/corrections/b3/reference-application-iab-02/candidate-04-mobile-playback.jpg",
+      "sha256": "5d64c75dd11c478dd302ffd89c305f694bbdfd99428a7081a8bc27c3fbe42ac8",
+      "width": 375,
+      "height": 811,
+      "css_width": 390,
+      "css_height": 844,
+      "pixel_mapping": "BROWSER_CAPTURE_PIXELS_NOT_PHYSICAL_DEVICE_CERTIFICATION"
+    }
+  ],
+  "pages": [
+    {
+      "design": "candidate-01",
+      "path": "dist/b3/candidate-01/index.html",
+      "bytes": 57316,
+      "sha256": "ca669db46e1564fc280e7c16984f4cf2777d2db810c988c7214a649c5abc0ec9"
+    },
+    {
+      "design": "candidate-02",
+      "path": "dist/b3/candidate-02/index.html",
+      "bytes": 57308,
+      "sha256": "2dd44509c9f4ddbd283c59f1718afa8f9d1fad664723af96707a8e1c2898f385"
+    },
+    {
+      "design": "candidate-03",
+      "path": "dist/b3/candidate-03/index.html",
+      "bytes": 57322,
+      "sha256": "c14d4952ce59f095e9c7895fbd83a2a59e590490b252fa214ab924596ef00fba"
+    },
+    {
+      "design": "candidate-04",
+      "path": "dist/b3/candidate-04/index.html",
+      "bytes": 57310,
+      "sha256": "23549ee9b40adf1825b80f740b36d3f107e36d9c130124d4be7e230ba8f742d7"
+    }
+  ],
+  "media": [
+    {
+      "id": "pixabay-4991789-640",
+      "path": "public/media/b2-fictional/4991789-640.webp",
+      "bytes": 86066,
+      "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+    },
+    {
+      "id": "pixabay-4991789-1280",
+      "path": "public/media/b2-fictional/4991789-1280.webp",
+      "bytes": 305320,
+      "sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+    },
+    {
+      "id": "pixabay-3547078-640",
+      "path": "public/media/b2-fictional/3547078-640.webp",
+      "bytes": 41984,
+      "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+    },
+    {
+      "id": "pixabay-3547078-1280",
+      "path": "public/media/b2-fictional/3547078-1280.webp",
+      "bytes": 116602,
+      "sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+    },
+    {
+      "id": "pixabay-791891-640",
+      "path": "public/media/b2-fictional/791891-640.webp",
+      "bytes": 45472,
+      "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+    },
+    {
+      "id": "pixabay-791891-1280",
+      "path": "public/media/b2-fictional/791891-1280.webp",
+      "bytes": 126204,
+      "sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+    },
+    {
+      "id": "pixabay-1971552-640",
+      "path": "public/media/b2-fictional/1971552-640.webp",
+      "bytes": 36338,
+      "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+    },
+    {
+      "id": "pixabay-1971552-1280",
+      "path": "public/media/b2-fictional/1971552-1280.webp",
+      "bytes": 127138,
+      "sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+    },
+    {
+      "id": "pixabay-149678-silent",
+      "path": "public/media/b2-fictional/149678-silent-640.webm",
+      "bytes": 4446094,
+      "sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+    }
+  ],
+  "page_media_weights": [
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "unique_decoded_image_file_bytes": 429114,
+      "measurement": "LOCAL_FILE_BYTES_FOR_OBSERVED_CURRENT_SRC_NOT_NETWORK_TRANSFER"
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "unique_decoded_image_file_bytes": 515180,
+      "measurement": "LOCAL_FILE_BYTES_FOR_OBSERVED_CURRENT_SRC_NOT_NETWORK_TRANSFER"
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "unique_decoded_image_file_bytes": 429114,
+      "measurement": "LOCAL_FILE_BYTES_FOR_OBSERVED_CURRENT_SRC_NOT_NETWORK_TRANSFER"
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "unique_decoded_image_file_bytes": 515180,
+      "measurement": "LOCAL_FILE_BYTES_FOR_OBSERVED_CURRENT_SRC_NOT_NETWORK_TRANSFER"
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "unique_decoded_image_file_bytes": 429114,
+      "measurement": "LOCAL_FILE_BYTES_FOR_OBSERVED_CURRENT_SRC_NOT_NETWORK_TRANSFER"
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "unique_decoded_image_file_bytes": 515180,
+      "measurement": "LOCAL_FILE_BYTES_FOR_OBSERVED_CURRENT_SRC_NOT_NETWORK_TRANSFER"
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "unique_decoded_image_file_bytes": 429114,
+      "measurement": "LOCAL_FILE_BYTES_FOR_OBSERVED_CURRENT_SRC_NOT_NETWORK_TRANSFER"
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "unique_decoded_image_file_bytes": 515180,
+      "measurement": "LOCAL_FILE_BYTES_FOR_OBSERVED_CURRENT_SRC_NOT_NETWORK_TRANSFER"
+    }
+  ],
+  "limits": [
+    "IAB DOM observations and UI playback; automated controlled Edge startup failed twice",
+    "No resource timing, network transfer, vitals, screenreader, physical-device or complete WCAG certification",
+    "Archived qa-08 is historical evidence, not proof of these revised CSS bytes",
+    "Human aesthetic preference NOT_COLLECTED; no B4 or final Design Lock"
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-clean-02",
+  "created_at": "2026-10-15T03:52:11.597Z",
+  "steps": [
+    {
+      "id": "contracts",
+      "started_at": "2026-10-15T03:52:11.600Z",
+      "finished_at": "2026-10-15T03:52:12.414Z",
+      "wall_seconds": 0.8140026,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/contracts.txt",
+      "log_sha256": "c31b63019752ecce8f909c1c5a90ab10243dec33ef68a2599c0cb12fa6a4367e"
+    },
+    {
+      "id": "tests",
+      "started_at": "2026-10-15T03:52:12.417Z",
+      "finished_at": "2026-10-15T03:52:17.451Z",
+      "wall_seconds": 5.0333023,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b3/clean-02/tests.txt",
+      "log_sha256": "ad43bfdf3a78f96469b7ec28a9b1281b630f104f066ada2028fd159ab2dbb49c"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-15T03:52:17.453Z",
+      "finished_at": "2026-10-15T03:52:35.160Z",
+      "wall_seconds": 17.707221299999997,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/check.txt",
+      "log_sha256": "c6cfcc60a182fdef2b237c8adb2454b64a9ea7200e0d56da7ccfbffe9b25b55d"
+    },
+    {
+      "id": "validate",
+      "started_at": "2026-10-15T03:52:35.162Z",
+      "finished_at": "2026-10-15T03:52:35.742Z",
+      "wall_seconds": 0.5793644999999997,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/validate.txt",
+      "log_sha256": "c69bbe0277e4073bddb83b8d77c8996e8c3512e8223499d7947632d37e3681f4"
+    },
+    {
+      "id": "build",
+      "started_at": "2026-10-15T03:52:35.743Z",
+      "finished_at": "2026-10-15T03:52:41.868Z",
+      "wall_seconds": 6.125093100000002,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/build.txt",
+      "log_sha256": "1e1b8ecf9a184289a61db79a1f4b1ab875c4cc595c6b04b5e5f32c80692e48ab"
+    },
+    {
+      "id": "b3-scenario",
+      "started_at": "2026-10-15T03:52:41.870Z",
+      "finished_at": "2026-10-15T03:52:42.201Z",
+      "wall_seconds": 0.3304985000000015,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/b3-scenario.txt",
+      "log_sha256": "837363babcb80a4df67c28bd2febb948250ecd3aba97368f760ca26c735651d3"
+    },
+    {
+      "id": "b3-design-replay",
+      "started_at": "2026-10-15T03:52:42.202Z",
+      "finished_at": "2026-10-15T03:52:42.844Z",
+      "wall_seconds": 0.6419809999999998,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/b3-design-replay.txt",
+      "log_sha256": "b8feb839b12906f24becaf319468674714861ea6ddfcdb40da8bcb97d1833262"
+    },
+    {
+      "id": "b2-media",
+      "started_at": "2026-10-15T03:52:42.847Z",
+      "finished_at": "2026-10-15T03:53:10.003Z",
+      "wall_seconds": 27.1560268,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/b2-media.txt",
+      "log_sha256": "9f5dae56ccdf99c72f7666d214f66749a6859f56bfc584bd9783e152a319f2d2"
+    },
+    {
+      "id": "b2-library",
+      "started_at": "2026-10-15T03:53:10.004Z",
+      "finished_at": "2026-10-15T03:53:12.194Z",
+      "wall_seconds": 2.189827299999997,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/b2-library.txt",
+      "log_sha256": "0bf667426679d14a7c6ebf93dfc08fc9a46702193f5639dbb76859606fe90d96"
+    },
+    {
+      "id": "b1-replay",
+      "started_at": "2026-10-15T03:53:12.196Z",
+      "finished_at": "2026-10-15T03:53:13.435Z",
+      "wall_seconds": 1.239750899999999,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/b1-replay.txt",
+      "log_sha256": "b3216e3a4c37b58fa9c6aeb50bacbf0feff9609c5f98a627b8b99ff6ece23a18"
+    },
+    {
+      "id": "taxonomy",
+      "started_at": "2026-10-15T03:53:13.437Z",
+      "finished_at": "2026-10-15T03:53:14.112Z",
+      "wall_seconds": 0.6750927000000011,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/taxonomy.txt",
+      "log_sha256": "5bdb2a1a3ebcde0961f22b7b26ef4a64a53c24ddefb9272b9eb91f7243bcad0a"
+    },
+    {
+      "id": "planner-replay",
+      "started_at": "2026-10-15T03:53:14.114Z",
+      "finished_at": "2026-10-15T03:53:14.408Z",
+      "wall_seconds": 0.29431820000000153,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/planner-replay.txt",
+      "log_sha256": "a1fbfef982b449eb730074aa51cc4af886172fbbcacf336259adcb90ce1ce5ce"
+    },
+    {
+      "id": "media-replay",
+      "started_at": "2026-10-15T03:53:14.410Z",
+      "finished_at": "2026-10-15T03:53:14.938Z",
+      "wall_seconds": 0.5282799000000014,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/media-replay.txt",
+      "log_sha256": "a238a3a587e30885acb326264f26b0e73e9dc9402294c0efdb9ce1df860c22e4"
+    },
+    {
+      "id": "media-verify",
+      "started_at": "2026-10-15T03:53:14.939Z",
+      "finished_at": "2026-10-15T03:53:15.405Z",
+      "wall_seconds": 0.4657136000000028,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/media-verify.txt",
+      "log_sha256": "dfed262ff832904ddba0e2baf16b17ba2b8c8fd30797be7128c73b59f8f0f568"
+    },
+    {
+      "id": "composition-replay",
+      "started_at": "2026-10-15T03:53:15.407Z",
+      "finished_at": "2026-10-15T03:53:15.875Z",
+      "wall_seconds": 0.4684887000000017,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/composition-replay.txt",
+      "log_sha256": "938c870a6ab24e641e885a169da8739c49ab4a438e4ecd16288b5abeaa497b76"
+    },
+    {
+      "id": "composition-verify",
+      "started_at": "2026-10-15T03:53:15.877Z",
+      "finished_at": "2026-10-15T03:53:16.349Z",
+      "wall_seconds": 0.47224849999999424,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/composition-verify.txt",
+      "log_sha256": "51e973bac7283abc33be1ac1fefc8489483c5957b9c3b09196e8cd214504a635"
+    },
+    {
+      "id": "design-replay",
+      "started_at": "2026-10-15T03:53:16.351Z",
+      "finished_at": "2026-10-15T03:53:16.831Z",
+      "wall_seconds": 0.4803258999999962,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/design-replay.txt",
+      "log_sha256": "debf7dd8e16ff43197df66a57c304cbc0eee46ab637661bb48d2f195dd00c13c"
+    },
+    {
+      "id": "design-verify",
+      "started_at": "2026-10-15T03:53:16.832Z",
+      "finished_at": "2026-10-15T03:53:17.327Z",
+      "wall_seconds": 0.4946692000000039,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/design-verify.txt",
+      "log_sha256": "505d634e67d6f6746e96ab3839d7b84cfeaa422ec7010f545eb385959bd5bc7e"
+    },
+    {
+      "id": "audit-verify",
+      "started_at": "2026-10-15T03:53:17.328Z",
+      "finished_at": "2026-10-15T03:53:18.501Z",
+      "wall_seconds": 1.1727972999999912,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/audit-verify.txt",
+      "log_sha256": "fa7395471691e7226ee26bd6c4b95f14eb14c431cbe0873d0becb430b6d50f05"
+    },
+    {
+      "id": "cohort-replay",
+      "started_at": "2026-10-15T03:53:18.502Z",
+      "finished_at": "2026-10-15T03:53:19.004Z",
+      "wall_seconds": 0.501359799999991,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/cohort-replay.txt",
+      "log_sha256": "ede63bd8361a8e64a84792533fb27f35dc2d930d7105490b977b2a7f78992c45"
+    },
+    {
+      "id": "cohort-verify",
+      "started_at": "2026-10-15T03:53:19.005Z",
+      "finished_at": "2026-10-15T03:53:20.648Z",
+      "wall_seconds": 1.6429909000000043,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/cohort-verify.txt",
+      "log_sha256": "f6fea28c3dbd8694a321092ca31ea68f19fa9b900bc73f28be8882ecfc0f7931"
+    },
+    {
+      "id": "lock-verify",
+      "started_at": "2026-10-15T03:53:20.649Z",
+      "finished_at": "2026-10-15T03:53:23.768Z",
+      "wall_seconds": 3.1188800000000048,
+      "exit_code": 1,
+      "status": "BLOCKED_HISTORICAL_ENVIRONMENT",
+      "log": "docs/evidence/corrections/b3/clean-02/lock-verify.txt",
+      "log_sha256": "e534ef256d0f852cbdfeb9507ec2b9170bd1d00faeb7fd2882eff5a84b0aa12a"
+    },
+    {
+      "id": "h9-inventory",
+      "started_at": "2026-10-15T03:53:23.769Z",
+      "finished_at": "2026-10-15T03:53:24.126Z",
+      "wall_seconds": 0.3571328000000067,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/clean-02/h9-inventory.txt",
+      "log_sha256": "f45cdb31ff61042b80640b33dce172a2f8cab339e03641f5e72a655645fdbecb"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

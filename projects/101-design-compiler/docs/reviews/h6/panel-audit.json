@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASSED",
+  "errors": [],
+  "browser": "Edg/154.0.4258.62",
+  "evaluated_at": "2026-10-09T01:52:08.802Z",
+  "pairs_sha256": "7b9c3764f85ef4aa445dc5be115e668fb32b68cbcbe5c420df8e3768cc9dcf5f",
+  "pairs_count": 24,
+  "receipts": [
+    {
+      "pair_id": "pair-01-mobile-identity",
+      "route": "/h6/compare/pair-01/mobile/identity/",
+      "html_sha256": "7a9441feeac2cfa5c11a94286c12be33ab1453348d412dc9e87436e6869453b0",
+      "screenshot_path": "docs/reviews/h6/panel-mobile.png",
+      "screenshot_sha256": "7a07537a933bb41dfd2fa12724ba328a2ce909cffd21a71bbdc83cd009a9a2bd",
+      "initial": {
+        "votes": 0,
+        "outputHidden": true,
+        "status": "TEST_SIMULATION: esta página no registra votos humanos.",
+        "frames": [
+          {
+            "width": "390",
+            "height": "844",
+            "src": "/h6/final-candidate-02/"
+          },
+          {
+            "width": "390",
+            "height": "844",
+            "src": "/h6/final-candidate-01/"
+          }
+        ],
+        "options": [
+          "A",
+          "B",
+          "TIE",
+          "NONE"
+        ]
+      },
+      "actual_frames": [
+        {
+          "width": 390,
+          "height": 844,
+          "page": "/",
+          "images_decoded": true
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "page": "/",
+          "images_decoded": true
+        }
+      ],
+      "choices": [
+        {
+          "decision": "A",
+          "source": "TEST_SIMULATION",
+          "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+          "acceptance_scope": "THIS_PAIR_ROUTE_VIEWPORT_ONLY",
+          "downloadable": true
+        },
+        {
+          "decision": "B",
+          "source": "TEST_SIMULATION",
+          "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+          "acceptance_scope": "THIS_PAIR_ROUTE_VIEWPORT_ONLY",
+          "downloadable": true
+        },
+        {
+          "decision": "TIE",
+          "source": "TEST_SIMULATION",
+          "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+          "acceptance_scope": "THIS_PAIR_ROUTE_VIEWPORT_ONLY",
+          "downloadable": true
+        },
+        {
+          "decision": "NONE",
+          "source": "TEST_SIMULATION",
+          "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+          "acceptance_scope": "THIS_PAIR_ROUTE_VIEWPORT_ONLY",
+          "downloadable": true
+        }
+      ],
+      "reset_to_not_collected": true,
+      "status": "PASSED"
+    },
+    {
+      "pair_id": "pair-01-desktop-identity",
+      "route": "/h6/compare/pair-01/desktop/identity/",
+      "html_sha256": "3ecce2e883ecdf9079b6f80a818558d225e27cc676a7ff091a600ed6f82af9b9",
+      "screenshot_path": "docs/reviews/h6/panel-desktop.png",
+      "screenshot_sha256": "1da175dcdd0836d189b4567ef594e3fa64a3534f430892e381c2e1e94376c57f",
+      "initial": {
+        "votes": 0,
+        "outputHidden": true,
+        "status": "TEST_SIMULATION: esta página no registra votos humanos.",
+        "frames": [
+          {
+            "width": "1280",
+            "height": "900",
+            "src": "/h6/final-candidate-01/"
+          },
+          {
+            "width": "1280",
+            "height": "900",
+            "src": "/h6/final-candidate-02/"
+          }
+        ],
+        "options": [
+          "A",
+          "B",
+          "TIE",
+          "NONE"
+        ]
+      },
+      "actual_frames": [
+        {
+          "width": 1280,
+          "height": 900,
+          "page": "/",
+          "images_decoded": true
+        },
+        {
+          "width": 1280,
+          "height": 900,
+          "page": "/",
+          "images_decoded": true
+        }
+      ],
+      "choices": [
+        {
+          "decision": "A",
+          "source": "TEST_SIMULATION",
+          "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+          "acceptance_scope": "THIS_PAIR_ROUTE_VIEWPORT_ONLY",
+          "downloadable": true
+        },
+        {
+          "decision": "B",
+          "source": "TEST_SIMULATION",
+          "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+          "acceptance_scope": "THIS_PAIR_ROUTE_VIEWPORT_ONLY",
+          "downloadable": true
+        },
+        {
+          "decision": "TIE",
+          "source": "TEST_SIMULATION",
+          "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+          "acceptance_scope": "THIS_PAIR_ROUTE_VIEWPORT_ONLY",
+          "downloadable": true
+        },
+        {
+          "decision": "NONE",
+          "source": "TEST_SIMULATION",
+          "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+          "acceptance_scope": "THIS_PAIR_ROUTE_VIEWPORT_ONLY",
+          "downloadable": true
+        }
+      ],
+      "reset_to_not_collected": true,
+      "status": "PASSED"
+    }
+  ],
+  "human_votes": "NOT_COLLECTED",
+  "simulation_choices": 8,
+  "network_writes": 0,
+  "production_ready": false
+}

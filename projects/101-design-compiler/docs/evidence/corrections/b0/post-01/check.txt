@@ -1,0 +1,20 @@
+
+> 101-design-compiler@0.0.0 check
+> astro check && tsc --noEmit
+
+20:34:05 [types] Generated 75ms
+20:34:05 [check] Getting diagnostics for Astro files in C:\Users\gabri\101-design-compiler...
+scripts/b0-capture.ts:112:14 - error ts(7005): Variable 'captures' implicitly has an 'any[]' type.
+
+112  const right=captures[1]!.receipts[index]!;
+                 ~~~~~~~~
+scripts/b0-capture.ts:101:18 - error ts(7034): Variable 'captures' implicitly has type 'any[]' in some locations where its type cannot be determined.
+
+101 const outputs=[],captures=[];
+                     ~~~~~~~~
+
+Result (124 files): 
+- 2 errors
+- 0 warnings
+- 0 hints
+

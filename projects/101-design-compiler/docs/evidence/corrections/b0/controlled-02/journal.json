@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "controlled-02",
+  "created_at": "2026-10-13T01:40:31.059Z",
+  "steps": [
+    {
+      "id": "build-a",
+      "started_at": "2026-10-13T01:40:32.892Z",
+      "finished_at": "2026-10-13T01:40:35.034Z",
+      "wall_seconds": 2.1420160999999998,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b0/controlled-02/build-a.txt",
+      "log_sha256": "1fc5cdb6d6806cdb1cd5a364423dba61fdc92ad5bed6a7d6f3db9fb623248c97"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

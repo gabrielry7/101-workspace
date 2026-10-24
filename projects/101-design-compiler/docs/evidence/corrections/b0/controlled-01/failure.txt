@@ -1,0 +1,14 @@
+Attempt: controlled-01.
+The first Astro build completed (see build-a.txt and journal.json).
+The copied Edge 154 browser returned a CDP version, but Page.enable timed out.
+No successful capture.json was emitted. This attempt is not a PASS.
+
+Diagnostic follow-ups (reported observations, not regenerated historical evidence):
+- Copied version-directory executable with default sandbox: CDP timeout:Page.enable.
+- Original installed version-directory executable: Edg/154.0.4258.62, page title observed successfully.
+- Copied executable with RendererCodeIntegrity disabled: CDP timeout:Page.enable.
+- Copied executable with --no-sandbox: Edg/154.0.4258.62, page title observed successfully.
+
+The successful follow-up does not approve browser security or product quality.
+The new B0 harness records its source overlay and confines this exception to fixed local test builds.
+The original QA helper, global Edge installation and H8 locks were not edited.

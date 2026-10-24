@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-final-checks",
+  "created_at": "2026-10-15T04:14:10.615Z",
+  "steps": [
+    {
+      "id": "current",
+      "started_at": "2026-10-15T04:14:10.619Z",
+      "finished_at": "2026-10-15T04:14:15.474Z",
+      "wall_seconds": 4.854611599999999,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/final-checks/current.txt",
+      "log_sha256": "fa325480817d73d56d39f7bcf09300c50830e3b33b71d02fc7a550918d90ceab"
+    },
+    {
+      "id": "historical",
+      "started_at": "2026-10-15T04:14:15.478Z",
+      "finished_at": "2026-10-15T04:14:20.067Z",
+      "wall_seconds": 4.588599100000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/final-checks/historical.txt",
+      "log_sha256": "00f7f86596304719fc3116b31247765ee564861af19445e2897d28e646064e80"
+    },
+    {
+      "id": "design-replay",
+      "started_at": "2026-10-15T04:14:20.069Z",
+      "finished_at": "2026-10-15T04:14:20.656Z",
+      "wall_seconds": 0.5877716000000001,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/final-checks/design-replay.txt",
+      "log_sha256": "b8feb839b12906f24becaf319468674714861ea6ddfcdb40da8bcb97d1833262"
+    },
+    {
+      "id": "historical-design-replay",
+      "started_at": "2026-10-15T04:14:20.658Z",
+      "finished_at": "2026-10-15T04:14:21.230Z",
+      "wall_seconds": 0.5717971999999991,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/final-checks/historical-design-replay.txt",
+      "log_sha256": "cf9afa74d97322db1e966deefda5ec59116140bb59feff4dd91862b56550c941"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

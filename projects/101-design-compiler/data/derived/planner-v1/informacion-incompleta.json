@@ -1,0 +1,502 @@
+{
+  "status": "CONTENT_BLOCKED",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-informacion-incompleta-001",
+    "snapshot_id": "fixture-informacion-incompleta-001-snapshot-v1-h2",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "overture",
+        "field": "taxonomy.primary",
+        "value": "hardware_store",
+        "confidence": 1,
+        "evidence_ids": [
+          "f-category"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "informacion-incompleta — fixture ficticio H2",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-informacion-incompleta-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-category",
+        "kind": "observed_category",
+        "value": "hardware_store",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-category",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-offering-1",
+        "kind": "offering_name",
+        "value": "Categoría de productos de prueba",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-offering-1",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-product_catalog",
+        "kind": "capability:product_catalog",
+        "value": true,
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-product_catalog",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-quote_request",
+        "kind": "capability:quote_request",
+        "value": true,
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-quote_request",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-purchase",
+        "kind": "capability:purchase",
+        "value": false,
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-purchase",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-informacion-incompleta-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": []
+      }
+    ],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      },
+      {
+        "id": "product_catalog",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-product_catalog"
+        ]
+      },
+      {
+        "id": "quote_request",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-quote_request"
+        ]
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      },
+      {
+        "id": "purchase",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_ABSENT",
+        "evidence_ids": [
+          "f-purchase"
+        ]
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "profile": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-informacion-incompleta-001",
+    "snapshot_id": "fixture-informacion-incompleta-001-snapshot-v1-h2",
+    "id": "fixture-informacion-incompleta-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "classification": "RESOLVED",
+    "scope_ids": [
+      "fixture-informacion-incompleta-001",
+      "fixture-informacion-incompleta-001-branch-1"
+    ],
+    "archetypes": [
+      {
+        "id": "product_retail",
+        "relevance": "primary",
+        "confidence": 1,
+        "category_observation_ids": [
+          "category-1"
+        ],
+        "offering_ids": [],
+        "evidence_ids": [
+          "f-category"
+        ]
+      }
+    ],
+    "offering_ids": [],
+    "candidate_capabilities": [
+      "delivery",
+      "pickup",
+      "product_catalog",
+      "purchase",
+      "quote_request"
+    ],
+    "missing_inputs": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ]
+  },
+  "capabilities": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-informacion-incompleta-001",
+    "snapshot_id": "fixture-informacion-incompleta-001-snapshot-v1-h2",
+    "id": "fixture-informacion-incompleta-001-snapshot-v1-h2:h2-capabilities:75920ed9ee1fade18db2411a",
+    "business_profile_id": "fixture-informacion-incompleta-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": [],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": [
+          "approved_capability_assertion"
+        ]
+      },
+      {
+        "id": "product_catalog",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-product_catalog"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": [
+          "publishable_offering:product|product_category"
+        ]
+      },
+      {
+        "id": "purchase",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_ABSENT",
+        "evidence_ids": [
+          "f-purchase"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": []
+      },
+      {
+        "id": "quote_request",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-quote_request"
+        ],
+        "frontend_status": "NOT_SUPPORTED_YET",
+        "backend_status": "BACKEND_NOT_CONNECTED",
+        "offering_ids": [],
+        "action_destination_ids": [],
+        "missing_inputs": [
+          "approved_action_destination"
+        ]
+      }
+    ]
+  },
+  "requirements": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-informacion-incompleta-001",
+    "snapshot_id": "fixture-informacion-incompleta-001-snapshot-v1-h2",
+    "business_profile_id": "fixture-informacion-incompleta-001-snapshot-v1-h2:taxonomy-profile:1.0.0",
+    "capability_profile_id": "fixture-informacion-incompleta-001-snapshot-v1-h2:h2-capabilities:75920ed9ee1fade18db2411a",
+    "registry_sha256": "9755d7f5af749f2d11e1702d0d589da934fa7862244833d8105e712d289e4af7",
+    "evaluated_at": "2026-10-07T00:00:00Z",
+    "business_input_sha256": "9ad8f2218de4af29624c6979749d7c11dec05c64df58900db169948c13c23307",
+    "taxonomy_registry_sha256": "9366f4b62d70ec8551aa1f5a05d6e67c99d6d3e36a638436485c107e4270701f",
+    "classification_context_sha256": "7d9de6782dc7b2b450d43f672453e314e5861d60acd5977c290e923ec2dfadc6",
+    "requirements": [
+      {
+        "id": "semantic-83e30a77338825f5db17a774",
+        "capability_id": "identity",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "identity",
+        "policy": "REQUIRED_IF_PRESENT",
+        "priority": 0,
+        "disposition": "INCLUDED",
+        "required": true,
+        "blocks_site": false,
+        "route": "/",
+        "depends_on": [],
+        "missing_inputs": [],
+        "fact_ids": [
+          "f-name"
+        ],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-7f5f931a497e9a8204e5ebd0",
+        "capability_id": "product_catalog",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "offering_collection",
+        "policy": "REQUIRED_IF_PRESENT",
+        "priority": 10,
+        "disposition": "BLOCKED",
+        "required": true,
+        "blocks_site": true,
+        "route": "/sedes/s-f2b7eb2982e5e99fd61213a5/catalogo",
+        "depends_on": [],
+        "missing_inputs": [
+          "publishable_offering:product|product_category"
+        ],
+        "fact_ids": [],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-60a87b9671047bc062487e00",
+        "capability_id": "pickup",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "source": "CANDIDATE_ONLY",
+        "evidence_status": "UNKNOWN",
+        "semantic_module": "fact_collection",
+        "policy": "CONDITIONAL",
+        "priority": 30,
+        "disposition": "BLOCKED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/modalidades",
+        "depends_on": [],
+        "missing_inputs": [
+          "approved_capability_assertion"
+        ],
+        "fact_ids": [],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-8d054d58964c22c9177b259f",
+        "capability_id": "delivery",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "UNKNOWN",
+        "semantic_module": "fact_collection",
+        "policy": "CONDITIONAL",
+        "priority": 30,
+        "disposition": "BLOCKED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/sedes/s-f2b7eb2982e5e99fd61213a5/modalidades",
+        "depends_on": [],
+        "missing_inputs": [
+          "approved_capability_assertion"
+        ],
+        "fact_ids": [],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-105f3c4cf22bafd68ebe4387",
+        "capability_id": "purchase",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_ABSENT",
+        "semantic_module": "external_action",
+        "policy": "CONDITIONAL",
+        "priority": 60,
+        "disposition": "OMITTED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/sedes/s-f2b7eb2982e5e99fd61213a5/catalogo",
+        "depends_on": [],
+        "missing_inputs": [],
+        "fact_ids": [],
+        "offering_ids": []
+      },
+      {
+        "id": "semantic-4cf39c7368fb5cdf9ef1d2e2",
+        "capability_id": "quote_request",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "source": "UPSTREAM",
+        "evidence_status": "CONFIRMED_PRESENT",
+        "semantic_module": "external_action",
+        "policy": "CONDITIONAL",
+        "priority": 60,
+        "disposition": "BLOCKED",
+        "required": false,
+        "blocks_site": false,
+        "route": "/sedes/s-f2b7eb2982e5e99fd61213a5/contacto",
+        "depends_on": [],
+        "missing_inputs": [
+          "approved_action_destination"
+        ],
+        "fact_ids": [],
+        "offering_ids": []
+      }
+    ],
+    "omissions": [
+      {
+        "code": "MISSING_INPUT",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "capability_id": "quote_request",
+        "reason": "approved_action_destination",
+        "requested_from": "upstream"
+      },
+      {
+        "code": "UNKNOWN",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "capability_id": "delivery",
+        "reason": "Evidence state preserved from upstream",
+        "requested_from": "upstream"
+      },
+      {
+        "code": "MISSING_INPUT",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "capability_id": "product_catalog",
+        "reason": "publishable_offering:product|product_category",
+        "requested_from": "upstream"
+      },
+      {
+        "code": "UNBOUND",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "fact_id": "f-offering-1",
+        "reason": "No eligible semantic binding for this fact",
+        "requested_from": "upstream"
+      },
+      {
+        "code": "CONFIRMED_ABSENT",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "capability_id": "purchase",
+        "reason": "Evidence state preserved from upstream",
+        "requested_from": "upstream"
+      }
+    ],
+    "bindings": [
+      {
+        "fact_id": "f-category",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-identity",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-name",
+        "scope_id": "fixture-informacion-incompleta-001",
+        "module_ids": [
+          "semantic-83e30a77338825f5db17a774"
+        ],
+        "status": "BOUND"
+      },
+      {
+        "fact_id": "f-offering-1",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "module_ids": [],
+        "status": "UNBOUND"
+      },
+      {
+        "fact_id": "f-product_catalog",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-purchase",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      },
+      {
+        "fact_id": "f-quote_request",
+        "scope_id": "fixture-informacion-incompleta-001-branch-1",
+        "module_ids": [],
+        "status": "EVIDENCE_ONLY"
+      }
+    ]
+  },
+  "diagnostics": [
+    {
+      "code": "CONTENT_BLOCKED",
+      "path": "semantic-7f5f931a497e9a8204e5ebd0",
+      "message": "product_catalog: publishable_offering:product|product_category"
+    },
+    {
+      "code": "INSUFFICIENT_SUBSTANTIVE_CONTENT",
+      "path": "plan",
+      "message": "Identity alone is not an honest substantive site"
+    }
+  ]
+}

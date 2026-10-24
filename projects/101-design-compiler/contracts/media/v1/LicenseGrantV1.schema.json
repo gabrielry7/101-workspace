@@ -1,0 +1,638 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "data_mode": {
+      "type": "string",
+      "enum": [
+        "SYNTHETIC_FIXTURE",
+        "REAL"
+      ]
+    },
+    "original_asset_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "original_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "license_type": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "holder": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "purchaser": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "document": {
+      "type": "object",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "reference",
+        "version",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "UNKNOWN",
+            "VERIFIED",
+            "REJECTED"
+          ]
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewed_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "reference",
+        "reviewer",
+        "reviewed_at",
+        "evidence_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "client_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "project_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "scope_ids": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "purposes": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "pages": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "territories": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "valid_until": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "revoked": {
+      "type": "boolean"
+    },
+    "commercial_web": {
+      "type": "string",
+      "enum": [
+        "ALLOWED",
+        "DENIED",
+        "UNKNOWN"
+      ]
+    },
+    "multiple_clients": {
+      "type": "string",
+      "enum": [
+        "ALLOWED",
+        "DENIED",
+        "UNKNOWN"
+      ]
+    },
+    "reuse": {
+      "type": "string",
+      "enum": [
+        "ALLOWED",
+        "DENIED",
+        "UNKNOWN"
+      ]
+    },
+    "redistribution": {
+      "type": "string",
+      "enum": [
+        "ALLOWED",
+        "DENIED",
+        "UNKNOWN"
+      ]
+    },
+    "sublicensing": {
+      "type": "string",
+      "enum": [
+        "ALLOWED",
+        "DENIED",
+        "UNKNOWN"
+      ]
+    },
+    "exclusive": {
+      "type": "string",
+      "enum": [
+        "ALLOWED",
+        "DENIED",
+        "UNKNOWN"
+      ]
+    },
+    "derivatives": {
+      "type": "string",
+      "enum": [
+        "ALLOWED",
+        "DENIED",
+        "UNKNOWN"
+      ]
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CROP",
+          "RESIZE",
+          "TRANSCODE",
+          "COLOR",
+          "AI_EDIT"
+        ]
+      }
+    },
+    "automation": {
+      "type": "object",
+      "properties": {
+        "search": {
+          "type": "string",
+          "enum": [
+            "ALLOWED",
+            "DENIED",
+            "UNKNOWN"
+          ]
+        },
+        "download": {
+          "type": "string",
+          "enum": [
+            "ALLOWED",
+            "DENIED",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "required": [
+        "search",
+        "download"
+      ],
+      "additionalProperties": false
+    },
+    "ai": {
+      "type": "object",
+      "properties": {
+        "classification": {
+          "type": "string",
+          "enum": [
+            "ALLOWED",
+            "DENIED",
+            "UNKNOWN"
+          ]
+        },
+        "embedding": {
+          "type": "string",
+          "enum": [
+            "ALLOWED",
+            "DENIED",
+            "UNKNOWN"
+          ]
+        },
+        "vision": {
+          "type": "string",
+          "enum": [
+            "ALLOWED",
+            "DENIED",
+            "UNKNOWN"
+          ]
+        },
+        "editing": {
+          "type": "string",
+          "enum": [
+            "ALLOWED",
+            "DENIED",
+            "UNKNOWN"
+          ]
+        },
+        "training": {
+          "type": "string",
+          "enum": [
+            "ALLOWED",
+            "DENIED",
+            "UNKNOWN"
+          ]
+        }
+      },
+      "required": [
+        "classification",
+        "embedding",
+        "vision",
+        "editing",
+        "training"
+      ],
+      "additionalProperties": false
+    },
+    "attribution": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "boolean"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "required",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "required_notices": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "releases": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "UNKNOWN",
+                "VERIFIED",
+                "REJECTED"
+              ]
+            },
+            "reference": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reviewer": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reviewed_at": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_sha256": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "reference",
+            "reviewer",
+            "reviewed_at",
+            "evidence_sha256"
+          ],
+          "additionalProperties": false
+        },
+        "property": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "UNKNOWN",
+                "VERIFIED",
+                "REJECTED"
+              ]
+            },
+            "reference": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reviewer": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reviewed_at": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_sha256": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "reference",
+            "reviewer",
+            "reviewed_at",
+            "evidence_sha256"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "model",
+        "property"
+      ],
+      "additionalProperties": false
+    },
+    "restrictions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "retention_until": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "cost": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "reference": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "amount",
+            "currency",
+            "reference"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "data_mode",
+    "original_asset_id",
+    "original_sha256",
+    "provider",
+    "license_type",
+    "holder",
+    "purchaser",
+    "document",
+    "review",
+    "client_ids",
+    "project_ids",
+    "scope_ids",
+    "purposes",
+    "pages",
+    "territories",
+    "valid_from",
+    "valid_until",
+    "revoked",
+    "commercial_web",
+    "multiple_clients",
+    "reuse",
+    "redistribution",
+    "sublicensing",
+    "exclusive",
+    "derivatives",
+    "transformations",
+    "automation",
+    "ai",
+    "attribution",
+    "releases",
+    "restrictions",
+    "retention_until",
+    "cost"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:LicenseGrantV1:1.0.0",
+  "title": "LicenseGrantV1",
+  "description": "H3 media contract; deterministic rights and suitability checks required; no rights conferred by URLs."
+}

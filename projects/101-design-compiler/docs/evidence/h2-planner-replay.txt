@@ -1,0 +1,13 @@
+
+> 101-design-compiler@0.0.0 planner:fixtures
+> node --experimental-strip-types scripts/plan-fixtures.ts
+
+{"scenario":"restaurante","status":"READY","expected":"READY","modules":["fixture-restaurante-001:identity","fixture-restaurante-001-branch-1:menu"],"diagnostics":[],"success":true}
+{"scenario":"gimnasio","status":"READY","expected":"READY","modules":["fixture-gimnasio-001:identity","fixture-gimnasio-001-branch-1:class_schedule","fixture-gimnasio-001-branch-1:membership"],"diagnostics":[],"success":true}
+{"scenario":"ferreteria","status":"READY","expected":"READY","modules":["fixture-ferreteria-001:identity","fixture-ferreteria-001-branch-1:product_catalog"],"diagnostics":[],"success":true}
+{"scenario":"clinica","status":"READY","expected":"READY","modules":["fixture-clinica-001:identity","fixture-clinica-001-branch-1:appointment","fixture-clinica-001-branch-1:professional_profiles","fixture-clinica-001-branch-1:service_catalog"],"diagnostics":[],"success":true}
+{"scenario":"hibrido-gimnasio-tienda","status":"READY","expected":"READY","modules":["fixture-hibrido-gimnasio-tienda-001:identity","fixture-hibrido-gimnasio-tienda-001-branch-1:product_catalog","fixture-hibrido-gimnasio-tienda-001-branch-1:class_schedule","fixture-hibrido-gimnasio-tienda-001-branch-1:membership"],"diagnostics":[],"success":true}
+{"scenario":"hibrido-sin-evidencia","status":"CONTENT_BLOCKED","expected":"CONTENT_BLOCKED","modules":[],"diagnostics":[{"code":"CLASSIFICATION_BLOCKED","path":"profile.classification","message":"AMBIGUOUS"}],"success":true}
+{"scenario":"hotel-restaurante-sucursales","status":"READY","expected":"READY","modules":["fixture-hotel-restaurante-sucursales-001:identity","fixture-hotel-restaurante-sucursales-001-branch-1:rooms","fixture-hotel-restaurante-sucursales-001-branch-1:menu","fixture-hotel-restaurante-sucursales-001-branch-1:locations","fixture-hotel-restaurante-sucursales-001-branch-2:rooms","fixture-hotel-restaurante-sucursales-001-branch-2:locations"],"diagnostics":[],"success":true}
+{"scenario":"informacion-incompleta","status":"CONTENT_BLOCKED","expected":"CONTENT_BLOCKED","modules":[],"diagnostics":[{"code":"CONTENT_BLOCKED","path":"semantic-7f5f931a497e9a8204e5ebd0","message":"product_catalog: publishable_offering:product|product_category"},{"code":"INSUFFICIENT_SUBSTANTIVE_CONTENT","path":"plan","message":"Identity alone is not an honest substantive site"}],"success":true}
+{"scenario":"servicios-profesionales","status":"READY","expected":"READY","modules":["fixture-servicios-profesionales-001:identity","fixture-servicios-profesionales-001-branch-1:contact_channels","fixture-servicios-profesionales-001-branch-1:service_catalog"],"diagnostics":[],"success":true}

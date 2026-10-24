@@ -1,0 +1,54 @@
+{
+  "kind": "B2_DEMO_HISTORICAL_DOCUMENT_BYTE_OVERLAYS",
+  "created_at": "2026-10-15T03:06:46.618Z",
+  "target": ".tools/corrections/b0/b2-demo-clean/source",
+  "overlays": [
+    {
+      "path": "docs/evidence/h3-git-repro.txt",
+      "archive_sha256": "ad40cf28cdc38a17b429164f989fd536c3091df483872e8a886d9dbb8a6b3770",
+      "pinned_sha256": "570e72d5eebd0698dca6620fa11e5e8bac676f7017a86d34daaebfe0113e5c74",
+      "reason": "PREDECLARED_HISTORICAL_BYTES_LF_EQUIVALENT_NO_PRODUCT_SOURCE_CHANGE"
+    },
+    {
+      "path": "docs/reviews/h7/audit-h7-source.txt",
+      "archive_sha256": "7f8934daa58dfebce53af076fee2bc276cc904a17a0ee9f178abbfe7f7235ad7",
+      "pinned_sha256": "fa10b69a54c164ce96a684836059a8c758bcbd915966443b3135bcd44dc721cf",
+      "reason": "PREDECLARED_HISTORICAL_BYTES_LF_EQUIVALENT_NO_PRODUCT_SOURCE_CHANGE"
+    },
+    {
+      "path": "docs/reviews/h7/verify-h7-source.txt",
+      "archive_sha256": "916b5678ef4182cf3f808b3c6d607185ca39d0fceeb9ac209f0d9fa6d81a7175",
+      "pinned_sha256": "03cc25c7bf5538a53340b00218fd7b1532be8767e9abf4f6f7a0190858537c45",
+      "reason": "PREDECLARED_HISTORICAL_BYTES_LF_EQUIVALENT_NO_PRODUCT_SOURCE_CHANGE"
+    },
+    {
+      "path": "docs/reviews/h8-correction/audit-h8-source.txt",
+      "archive_sha256": "17c3d2f17f0190292d0cfb23796756dd46c26c38a25f226e4372fac2ebff0c21",
+      "pinned_sha256": "6b814d1f44a8ef474e861b8f008bd1f2bd3099604e22d6f44056a142760b64bf",
+      "reason": "PREDECLARED_HISTORICAL_BYTES_LF_EQUIVALENT_NO_PRODUCT_SOURCE_CHANGE"
+    },
+    {
+      "path": "docs/reviews/h8-correction/verify-h8-source.txt",
+      "archive_sha256": "f0d639eb73772e9ef057f52a8955ca92fbdb3a27603689cd6eea071f6c15d988",
+      "pinned_sha256": "ccb282c3ff28c925241f4656cd8144671160531c595015a8cb15472986a79afb",
+      "reason": "PREDECLARED_HISTORICAL_BYTES_LF_EQUIVALENT_NO_PRODUCT_SOURCE_CHANGE"
+    },
+    {
+      "path": "docs/reviews/h8/audit-h8-source.txt",
+      "archive_sha256": "e346837a2b3f7aa3ccd59b014bda36efbc28d24345f74603713a84010995d04a",
+      "pinned_sha256": "0694a207bd3a57627dc14f6bc3730acf31ed1edbb026fcc2553242efbc3595b0",
+      "reason": "PREDECLARED_HISTORICAL_BYTES_LF_EQUIVALENT_NO_PRODUCT_SOURCE_CHANGE"
+    },
+    {
+      "path": "docs/reviews/h9/probe-source.txt",
+      "archive_sha256": "abe0567d7f6e688b60e2c383ec1034583d126dc90ff57f83ff43b9995b51fe78",
+      "pinned_sha256": "801d2cf66ee9c303bfb2cdcd169d159c3225993d420de05d6d0b7541cc2e53d3",
+      "reason": "PREDECLARED_HISTORICAL_BYTES_LF_EQUIVALENT_NO_PRODUCT_SOURCE_CHANGE"
+    }
+  ],
+  "limits": [
+    "Root evidence untouched; only isolated copy historical documentation",
+    "Pre-manifest treated all txt as byte pins; Git normalized seven documents",
+    "No code, media, legal-review, runtime, dependencies, source fixture or permission override"
+  ]
+}

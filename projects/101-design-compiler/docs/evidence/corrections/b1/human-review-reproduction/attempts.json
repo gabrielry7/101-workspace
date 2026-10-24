@@ -1,0 +1,27 @@
+{
+  "kind": "B1_HUMAN_REVIEW_REPRODUCTION_ATTEMPTS",
+  "attempts": [
+    {
+      "id": "human-review-browser-final",
+      "status": "FAIL",
+      "error": "REVIEW_QA_DATA_SCOPE_OR_OWNER_LOSS",
+      "cause": "Comparison used selection order against DOM group order; IDs, scopes and owners were retained.",
+      "correction": "Compare ID+owner+scope ordered by ID, with new run human-review-browser-delivery; keep failed receipt."
+    },
+    {
+      "id": "human-review-clean-2",
+      "status": "FAIL_AFTER_JOURNAL_STEPS",
+      "error": "B0_PROTECTED_FILES_CHANGED",
+      "cause": "Git archive normalized CRLF of frozen HTML evidence declared BINARY. Root protected files were unchanged.",
+      "correction": "Verified original byte-pin overlay with equality of LF-normalized text; rerun as human-review-clean-pinned."
+    },
+    {
+      "id": "human-review-clean-browser",
+      "status": "FAIL_BEFORE_CAPTURE",
+      "error": "B0_DEPENDENCIES_DRIFT",
+      "cause": "Git archive normalized package manifests while runtime pins hash raw bytes; installed dependency bytes were shared unchanged.",
+      "correction": "Restore only verified raw package manifests into isolated copy, without installing/changing root packages; rerun under fresh capture ID."
+    }
+  ],
+  "notes": "Earlier candidate baselines and captures are snapshots, not the final version. Successful final receipts are referenced by the report. No failed attempt constitutes product approval."
+}

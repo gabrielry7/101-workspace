@@ -1,0 +1,74 @@
+[
+  {
+    "schema_version": "1.1.0",
+    "id": "dentista-reading",
+    "context_sha256": "dfdfec57be892702b9192768664d26c503be44b078b54547068677591b831590",
+    "principle": "Lectura prudente: lectura frontal sin medios elegibles.",
+    "dominance": "typography",
+    "materiality": "typography-only",
+    "rationale": "Servicios y perfiles tienen rutas distintas; jerarquía compacta y texto sobrio sin credenciales ni resultados supuestos.",
+    "topologies": [
+      {
+        "frame": "Flow",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "ink",
+      "type": "sans",
+      "hierarchy": "monument",
+      "rhythm": "quiet",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [],
+    "motion": "quiet",
+    "risks": [
+      "No beauty calibration or human preference collected.",
+      "Typography-only materiality: no eligible image and no photograph is present.",
+      "Mobile reflow may collapse desktop structural distinction."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "1.1.0",
+    "id": "dentista-indexed",
+    "context_sha256": "dfdfec57be892702b9192768664d26c503be44b078b54547068677591b831590",
+    "principle": "Lectura prudente: índice lateral visible sin medios elegibles.",
+    "dominance": "navigation",
+    "materiality": "typography-only",
+    "rationale": "Directorio lateral de información clínica ficticia; priorizar acceso visible a perfiles y límites.",
+    "topologies": [
+      {
+        "frame": "Rail",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "ink",
+      "type": "sans",
+      "hierarchy": "compact",
+      "rhythm": "dense",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [],
+    "motion": "quiet",
+    "risks": [
+      "No beauty calibration or human preference collected.",
+      "Typography-only materiality: no eligible image and no photograph is present.",
+      "Mobile reflow may collapse desktop structural distinction."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  }
+]

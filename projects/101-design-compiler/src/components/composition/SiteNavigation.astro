@@ -1,0 +1,9 @@
+---
+import type { ContentProjection } from '../../composition/content.ts';
+import { previewPath, type CompositionId } from '../../composition/registry.ts';
+interface Props { content: ContentProjection; variant: CompositionId; page: string }
+const { content, variant, page } = Astro.props;
+---
+<nav class="site-nav" aria-label="Páginas del fixture">
+  {content.pages.map((p, i) => <a href={previewPath(variant, p.path)} data-route={p.path} aria-current={p.path === page ? 'page' : undefined}><span class="nav-number" aria-hidden="true">0{i+1}</span>{p.path === '/' ? 'Identidad' : 'Oferta de la sucursal'}</a>)}
+</nav>

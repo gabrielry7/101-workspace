@@ -1,0 +1,1182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:unocerouno:pipeline:catalogs:2.1.1",
+  "title": "Catálogos documentales y perfil propuesto — 2.1.1",
+  "description": "Esquema de ESTA entrega: prohíbe inventar ejecuciones. Los reportes operativos se mantienen separados.",
+  "$defs": {
+    "GateCatalog": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "2.1.1"
+        },
+        "kind": {
+          "const": "gate_catalog"
+        },
+        "status": {
+          "const": "SPECIFICATION_NOT_IMPLEMENTATION"
+        },
+        "gates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "gate_id": {
+                "enum": [
+                  "G00",
+                  "G01",
+                  "G02",
+                  "G03",
+                  "G04a",
+                  "G04b",
+                  "G05",
+                  "G06",
+                  "G07",
+                  "G08",
+                  "G09",
+                  "G10",
+                  "G11",
+                  "G12",
+                  "G13",
+                  "G14",
+                  "G15",
+                  "G16"
+                ]
+              },
+              "policy_version": {
+                "const": "2.1.1"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "stage": {
+                "type": "string",
+                "minLength": 1
+              },
+              "applicability": {
+                "type": "object",
+                "properties": {
+                  "scope": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "pilot_required": {
+                    "type": "boolean"
+                  },
+                  "required_for_prepublication": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "contexts": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "prepublication",
+                        "postdeployment",
+                        "evaluation"
+                      ]
+                    },
+                    "uniqueItems": true,
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "scope",
+                  "pilot_required",
+                  "required_for_prepublication",
+                  "note",
+                  "contexts"
+                ],
+                "additionalProperties": false
+              },
+              "acceptance_rule": {
+                "type": "string",
+                "minLength": 1
+              },
+              "default_severity": {
+                "enum": [
+                  "BLOCKER",
+                  "MAJOR",
+                  "MINOR"
+                ]
+              },
+              "responsible_role": {
+                "type": "string",
+                "minLength": 1
+              },
+              "checker_status": {
+                "const": "TO_INTEGRATE"
+              },
+              "checker_ref": {
+                "type": "null"
+              },
+              "test_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^T[0-9]{2}$"
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "evidence_required": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "repair_action": {
+                "type": "string",
+                "minLength": 1
+              },
+              "invalidate_on": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "empty_or_missing_evidence_result": {
+                "const": "INCONCLUSIVE"
+              },
+              "review_policy_ref": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "gate_id",
+              "policy_version",
+              "title",
+              "stage",
+              "applicability",
+              "acceptance_rule",
+              "default_severity",
+              "responsible_role",
+              "checker_status",
+              "checker_ref",
+              "test_ids",
+              "evidence_required",
+              "repair_action",
+              "invalidate_on",
+              "empty_or_missing_evidence_result"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "status",
+        "gates"
+      ],
+      "additionalProperties": false
+    },
+    "TestCatalog": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "2.1.1"
+        },
+        "kind": {
+          "const": "acceptance_test_catalog"
+        },
+        "status": {
+          "const": "ALL_PRODUCT_TESTS_NOT_RUN"
+        },
+        "tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "test_id": {
+                "type": "string",
+                "pattern": "^T[0-9]{2}$"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "gate_ids": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "G00",
+                    "G01",
+                    "G02",
+                    "G03",
+                    "G04a",
+                    "G04b",
+                    "G05",
+                    "G06",
+                    "G07",
+                    "G08",
+                    "G09",
+                    "G10",
+                    "G11",
+                    "G12",
+                    "G13",
+                    "G14",
+                    "G15",
+                    "G16"
+                  ]
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "applicability": {
+                "type": "object",
+                "properties": {
+                  "requires_all_capabilities": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "public_info",
+                        "menu_html",
+                        "whatsapp_contact",
+                        "whatsapp_request",
+                        "reservation_request",
+                        "reservation_confirmed",
+                        "online_payment",
+                        "delivery_dispatch",
+                        "customer_accounts",
+                        "loyalty"
+                      ]
+                    },
+                    "uniqueItems": true
+                  },
+                  "requires_all_features": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "multi_location",
+                        "shared_tenant_surfaces",
+                        "durable_notifications",
+                        "visual_search",
+                        "evaluation_program"
+                      ]
+                    },
+                    "uniqueItems": true
+                  },
+                  "scenario": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "note": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "requires_all_capabilities",
+                  "requires_all_features",
+                  "scenario",
+                  "note"
+                ],
+                "additionalProperties": false
+              },
+              "gate_contexts": {
+                "type": "object",
+                "minProperties": 1,
+                "propertyNames": {
+                  "enum": [
+                    "G00",
+                    "G01",
+                    "G02",
+                    "G03",
+                    "G04a",
+                    "G04b",
+                    "G05",
+                    "G06",
+                    "G07",
+                    "G08",
+                    "G09",
+                    "G10",
+                    "G11",
+                    "G12",
+                    "G13",
+                    "G14",
+                    "G15",
+                    "G16"
+                  ]
+                },
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "prepublication",
+                      "postdeployment",
+                      "evaluation"
+                    ]
+                  },
+                  "uniqueItems": true,
+                  "minItems": 1
+                }
+              },
+              "given": {
+                "type": "string",
+                "minLength": 1
+              },
+              "when": {
+                "type": "string",
+                "minLength": 1
+              },
+              "expected": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_required": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "implementation_ref": {
+                "type": "null"
+              },
+              "execution_status": {
+                "const": "NOT_RUN"
+              },
+              "actual_result": {
+                "type": "null"
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "test_id",
+              "title",
+              "gate_ids",
+              "applicability",
+              "gate_contexts",
+              "given",
+              "when",
+              "expected",
+              "evidence_required",
+              "implementation_ref",
+              "execution_status",
+              "actual_result",
+              "evidence_refs"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "status",
+        "tests"
+      ],
+      "additionalProperties": false
+    },
+    "PilotProfile": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "2.1.1"
+        },
+        "kind": {
+          "const": "applicability_profile"
+        },
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "const": "PROPOSED_NOT_VERIFIED"
+        },
+        "mode": {
+          "enum": [
+            "prospect_private",
+            "authorized_live"
+          ]
+        },
+        "design_level": {
+          "enum": [
+            "N0",
+            "N1",
+            "N2",
+            "N3"
+          ]
+        },
+        "enabled_capabilities": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "public_info",
+              "menu_html",
+              "whatsapp_contact",
+              "whatsapp_request",
+              "reservation_request",
+              "reservation_confirmed",
+              "online_payment",
+              "delivery_dispatch",
+              "customer_accounts",
+              "loyalty"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "features": {
+          "type": "object",
+          "properties": {
+            "multi_location": {
+              "type": "boolean"
+            },
+            "shared_tenant_surfaces": {
+              "type": "boolean"
+            },
+            "durable_notifications": {
+              "type": "boolean"
+            },
+            "visual_search": {
+              "type": "boolean"
+            },
+            "evaluation_program": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "multi_location",
+            "shared_tenant_surfaces",
+            "durable_notifications",
+            "visual_search",
+            "evaluation_program"
+          ],
+          "additionalProperties": false
+        },
+        "contexts": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "prepublication",
+              "postdeployment",
+              "evaluation"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "enum": [
+                  "S1",
+                  "S2",
+                  "S3",
+                  "S4",
+                  "S5",
+                  "S6"
+                ]
+              },
+              "statement": {
+                "type": "string",
+                "minLength": 1
+              },
+              "verification_status": {
+                "const": "NOT_RUN"
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "maxItems": 0
+              }
+            },
+            "required": [
+              "id",
+              "statement",
+              "verification_status",
+              "evidence_refs"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "feature_assumptions": {
+          "type": "object",
+          "properties": {
+            "multi_location": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "S1",
+                  "S2",
+                  "S3",
+                  "S4",
+                  "S5",
+                  "S6"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "shared_tenant_surfaces": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "S1",
+                  "S2",
+                  "S3",
+                  "S4",
+                  "S5",
+                  "S6"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "durable_notifications": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "S1",
+                  "S2",
+                  "S3",
+                  "S4",
+                  "S5",
+                  "S6"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "visual_search": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "S1",
+                  "S2",
+                  "S3",
+                  "S4",
+                  "S5",
+                  "S6"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "evaluation_program": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "S1",
+                  "S2",
+                  "S3",
+                  "S4",
+                  "S5",
+                  "S6"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          },
+          "required": [
+            "multi_location",
+            "shared_tenant_surfaces",
+            "durable_notifications",
+            "visual_search",
+            "evaluation_program"
+          ],
+          "additionalProperties": false
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "profile_id",
+        "status",
+        "mode",
+        "design_level",
+        "enabled_capabilities",
+        "features",
+        "contexts",
+        "assumptions",
+        "feature_assumptions",
+        "note"
+      ],
+      "additionalProperties": false
+    },
+    "DesignPolicy": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "2.1.1"
+        },
+        "kind": {
+          "const": "design_review_policy"
+        },
+        "status": {
+          "const": "PROPOSED_NOT_PRODUCT_VALIDATED"
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "R1",
+              "R2",
+              "R3",
+              "R4",
+              "R5",
+              "R6",
+              "R7",
+              "R8",
+              "R9",
+              "R10",
+              "R11"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 11,
+          "maxItems": 11
+        },
+        "required_reviewers": {
+          "const": 2
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "falla",
+              "aceptable",
+              "destacado"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "decision_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_quality_rule": {
+          "type": "object",
+          "properties": {
+            "shared_distinguished_required": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 2
+            },
+            "minimum_other_shared_distinguished": {
+              "const": 2
+            }
+          },
+          "required": [
+            "shared_distinguished_required",
+            "minimum_other_shared_distinguished"
+          ],
+          "additionalProperties": false
+        },
+        "fingerprint_dimensions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "composition",
+              "typography",
+              "color",
+              "imagery",
+              "spacing",
+              "components",
+              "motion",
+              "visible_content",
+              "routes_states",
+              "render_environment",
+              "design_policy",
+              "rubric_policy",
+              "capabilities",
+              "assets_rights"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 14,
+          "maxItems": 14
+        },
+        "criterion_dependencies": {
+          "type": "object",
+          "properties": {
+            "composition": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "typography": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "color": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "imagery": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "spacing": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "motion": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "visible_content": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "routes_states": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "render_environment": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "design_policy": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "rubric_policy": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "capabilities": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "assets_rights": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "R1",
+                  "R2",
+                  "R3",
+                  "R4",
+                  "R5",
+                  "R6",
+                  "R7",
+                  "R8",
+                  "R9",
+                  "R10",
+                  "R11"
+                ]
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          },
+          "required": [
+            "composition",
+            "typography",
+            "color",
+            "imagery",
+            "spacing",
+            "components",
+            "motion",
+            "visible_content",
+            "routes_states",
+            "render_environment",
+            "design_policy",
+            "rubric_policy",
+            "capabilities",
+            "assets_rights"
+          ],
+          "additionalProperties": false
+        },
+        "unknown_change_action": {
+          "const": "INVALIDATE_ALL"
+        },
+        "scope_or_policy_change_action": {
+          "const": "INVALIDATE_ALL"
+        },
+        "reuse_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "mechanical_assertions": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "enum": [
+                  "D01",
+                  "D02",
+                  "D03",
+                  "D04",
+                  "D05",
+                  "D06"
+                ]
+              },
+              "scope": {
+                "type": "string",
+                "minLength": 1
+              },
+              "assertion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "limit": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "scope",
+              "assertion",
+              "limit"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "aesthetic_defaults": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "rule_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "default": {
+                "type": "string",
+                "minLength": 1
+              },
+              "hard_gate": {
+                "const": false
+              }
+            },
+            "required": [
+              "rule_id",
+              "default",
+              "hard_gate"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "exception_required_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "never_waivable": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "status",
+        "criteria",
+        "required_reviewers",
+        "levels",
+        "decision_rule",
+        "reference_quality_rule",
+        "fingerprint_dimensions",
+        "criterion_dependencies",
+        "unknown_change_action",
+        "scope_or_policy_change_action",
+        "reuse_requirements",
+        "mechanical_assertions",
+        "aesthetic_defaults",
+        "exception_required_fields",
+        "never_waivable"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/GateCatalog"
+    },
+    {
+      "$ref": "#/$defs/TestCatalog"
+    },
+    {
+      "$ref": "#/$defs/PilotProfile"
+    },
+    {
+      "$ref": "#/$defs/DesignPolicy"
+    }
+  ]
+}

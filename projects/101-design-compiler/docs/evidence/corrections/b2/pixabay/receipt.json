@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B2_SINGLE_HUMAN_SEARCH",
+  "started_at": "2026-10-15T01:34:34.918Z",
+  "finished_at": "2026-10-15T01:34:35.880Z",
+  "endpoint": "https://pixabay.com/api/",
+  "query": {
+    "q": "red bell peppers",
+    "image_type": "photo",
+    "category": "food",
+    "safesearch": "true",
+    "per_page": "3",
+    "page": "1"
+  },
+  "credential_source": ".env:PIXABAY_API_KEY (value omitted)",
+  "http_status": 200,
+  "response_sha256": "2aa57d48cde731450bdfc5fb03b1a8b79c8dfc3c28800f9f38c6c3d935b36ba7",
+  "response_bytes": 3771,
+  "response_path": null,
+  "hits": 3,
+  "rate_limit": {
+    "X-RateLimit-Limit": "100",
+    "X-RateLimit-Remaining": "99",
+    "X-RateLimit-Reset": "60"
+  },
+  "cache_until": "2026-10-16T01:34:34.918Z",
+  "requests": 1,
+  "media_downloads": 0,
+  "decision": "AUTHENTICATED_SEARCH_ONLY_NO_ASSET_AUTHORIZED",
+  "terms": [
+    "https://pixabay.com/api/docs/",
+    "https://pixabay.com/service/terms/"
+  ],
+  "boundaries": [
+    "No account changes, purchases, retries, pagination, catalog automation or media downloads",
+    "Search metadata is not inspected pixels, source rights evidence, model release or commercial permission",
+    "No API key or authenticated URL persisted",
+    "Raw result is private temporary cache, excluded from Git; no public redistribution or permanent image URL display"
+  ],
+  "private_cache_path": ".tools/b2-pixabay-cache/response.json",
+  "cache_policy": "PRIVATE_24H_NOT_PUBLISHED_NOT_REPLAYED_PURGE_AFTER_EXPIRY"
+}

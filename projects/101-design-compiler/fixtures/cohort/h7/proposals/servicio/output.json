@@ -1,0 +1,74 @@
+[
+  {
+    "schema_version": "1.1.0",
+    "id": "servicio-reading",
+    "context_sha256": "bca9fcd7aec04f72a9b02d9d379a4659e8c2abe57c497c8fef9255afa186f6e2",
+    "principle": "Manual de cobertura: lectura frontal sin medios elegibles.",
+    "dominance": "typography",
+    "materiality": "typography-only",
+    "rationale": "Separar catálogo de servicios y zona declarada; lectura directa sans y ritmo compacto para textos de alcance.",
+    "topologies": [
+      {
+        "frame": "Flow",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "olive",
+      "type": "sans",
+      "hierarchy": "monument",
+      "rhythm": "quiet",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [],
+    "motion": "quiet",
+    "risks": [
+      "No beauty calibration or human preference collected.",
+      "Typography-only materiality: no eligible image and no photograph is present.",
+      "Mobile reflow may collapse desktop structural distinction."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  },
+  {
+    "schema_version": "1.1.0",
+    "id": "servicio-indexed",
+    "context_sha256": "bca9fcd7aec04f72a9b02d9d379a4659e8c2abe57c497c8fef9255afa186f6e2",
+    "principle": "Manual de cobertura: índice lateral visible sin medios elegibles.",
+    "dominance": "navigation",
+    "materiality": "typography-only",
+    "rationale": "Registro lateral de servicios y cobertura; el índice no representa una solicitud funcional.",
+    "topologies": [
+      {
+        "frame": "Rail",
+        "stage": "Sequence"
+      }
+    ],
+    "tokens": {
+      "palette": "olive",
+      "type": "sans",
+      "hierarchy": "compact",
+      "rhythm": "dense",
+      "media_width": "inset",
+      "media_alignment": "center"
+    },
+    "media_usage_ids": [],
+    "motion": "quiet",
+    "risks": [
+      "No beauty calibration or human preference collected.",
+      "Typography-only materiality: no eligible image and no photograph is present.",
+      "Mobile reflow may collapse desktop structural distinction."
+    ],
+    "constraints_acknowledged": {
+      "truth": true,
+      "rights": true,
+      "modules": true,
+      "no_code": true
+    }
+  }
+]

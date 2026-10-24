@@ -1,0 +1,39 @@
+{
+  "id": "usda-d255-19-authorized-pilot-package",
+  "client_id": "101-design-compiler-fixture-review",
+  "project_id": "h3-restaurante-media-pilot",
+  "evaluated_at": "2026-10-08T23:18:48.258Z",
+  "files": [
+    {
+      "asset_id": "usda-ars-d255-19",
+      "path": "public/media/h3-pilot/usda-ars-d255-19.jpg",
+      "sha256": "ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"
+    }
+  ],
+  "documents": [
+    {
+      "path": "docs/evidence/h3-pilot/usda-asset-page.html",
+      "sha256": "362db558cb6b2e96c00e390fe84b2541d711114934f62cf3d700111b8a694bd2",
+      "official_url": "https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/",
+      "version": "Official page Last Modified 11/6/2023 (literal); snapshot 2026-10-08; no numbered legal version"
+    },
+    {
+      "path": "docs/evidence/h3-pilot/usda-policy.html",
+      "sha256": "37f2a2fb164eab70ce65881a810828faf9ba3935dd7d3d6c21cd2d30e86973ac",
+      "official_url": "https://www.ars.usda.gov/oc/images/copyright/",
+      "version": "Official policy Last Modified 12/10/2020 (literal); snapshot 2026-10-08; no numbered legal version"
+    }
+  ],
+  "render": {
+    "page": "/h3-media-pilot/",
+    "html_path": "docs/evidence/h3-pilot/render.html",
+    "html_sha256": "584f76e853db29faa1617456ed00b7ef5b5ac0c9488470441a4648729a24c0e5",
+    "screenshot_path": "docs/evidence/h3-pilot/render.png",
+    "screenshot_sha256": "8b88ee6b464011ded71d90b316b5167f4ab8be7e940acee1b4b26703a97a2156",
+    "receipt_path": "docs/evidence/h3-pilot/render-receipt.json",
+    "receipt_sha256": "77dfec2e3cf048e23c63667866e598fcde94957cd61966eb3b4dfc0be1b0af24",
+    "usage_ids": [
+      "h3-real-pilot-atmospheric"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "fact",
+  "schema_version": "2.1.1",
+  "fact_id": "synthetic-price",
+  "business_id": "synthetic-business",
+  "location_id": "synthetic-location",
+  "field_key": "menu.item.price",
+  "value": {
+    "amount_minor": 2500000,
+    "currency": "COP",
+    "minor_unit_exponent": 2
+  },
+  "source_refs": [
+    "synthetic-source-not-real-evidence"
+  ],
+  "observed_at": "2026-10-03T00:00:00Z",
+  "verified_at": null,
+  "verified_by": null,
+  "valid_from": null,
+  "valid_until": null,
+  "review_due_at": null,
+  "verification_status": "unverified",
+  "publication_class": "public_required",
+  "usage_state": "pending",
+  "conflict_open": false,
+  "approval_ref": null
+}

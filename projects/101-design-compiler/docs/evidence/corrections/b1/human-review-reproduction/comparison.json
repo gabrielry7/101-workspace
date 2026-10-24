@@ -1,0 +1,826 @@
+{
+  "kind": "B1_HUMAN_REVIEW_REPRODUCTION_COMPARISON",
+  "status": "PASS",
+  "created_at": "2026-10-14T04:12:55.756Z",
+  "source_tree": "a4d85dcff7257e1761dfcd1aced1c3d98b8df58a",
+  "catalog_sha256": "69d30f3a84b7110e7c3035e5855ce05244583a0228659964023a20d5c9ef1932",
+  "paths": [
+    "docs/evidence/corrections/b1/human-review-browser-delivery",
+    "docs/evidence/corrections/b1/human-review-clean-pinned-browser"
+  ],
+  "pairs": [
+    {
+      "label": "review-index-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-food_hospitality-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-food_hospitality-desktop-table-expanded",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-product_retail-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-appointment_service-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-membership_and_classes-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-lodging-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-field_service_and_quote-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-vehicle_service-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-professional_advisory-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-education_programs-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-events_and_entertainment-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-industrial_b2b-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-property_and_spaces-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-transport_and_logistics-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-regulated_services-desktop-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-index-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-food_hospitality-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-food_hospitality-mobile-table-expanded",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-product_retail-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-appointment_service-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-membership_and_classes-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-lodging-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-field_service_and_quote-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-vehicle_service-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-professional_advisory-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-education_programs-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-events_and_entertainment-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-industrial_b2b-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-property_and_spaces-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-transport_and_logistics-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    },
+    {
+      "label": "review-regulated_services-mobile-default",
+      "html": "IDENTICAL",
+      "rgba": "IDENTICAL",
+      "observed": "IDENTICAL"
+    }
+  ],
+  "pins": [
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-index-desktop-default",
+      "png_sha256": "9e6ec201843a47743e2096e862ccdadfc44451245db26553d79c759f1ff4a3b2",
+      "rgba_sha256": "71ff8e5de5f263dff259a1c23c44db78b81650547b3e5c4d5da7b9ea6cb12514",
+      "html_sha256": "c076b4e64fc57e3e491c9753bce31e0abe99afa56362fb95c55bfb8531545737"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-food_hospitality-desktop-default",
+      "png_sha256": "b132d5d3b01c02d83bd96eccb8257259dd35ea8867d35b42a1f7195626be92f0",
+      "rgba_sha256": "2a1fe202f70db8018580c6410120d83aa53e0ca70e34efa2cf9cf21affa65603",
+      "html_sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-food_hospitality-desktop-table-expanded",
+      "png_sha256": "49195d5e5172d4621b551215eb1c831fea679f56fe7accd927aefdf78d4900c0",
+      "rgba_sha256": "095e52a0f688c9341f11b4000357f1925576749e93d226f833b8cc7773bffaa2",
+      "html_sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-product_retail-desktop-default",
+      "png_sha256": "05726ebc65021bba8464b649fc0629454fa71fa1f8c023bf5bd13d8513ff7c2a",
+      "rgba_sha256": "65250900a0239d1edf0aebefec93b4c98e33a006c7266f1b8518aaa62ac1589b",
+      "html_sha256": "a4b507a92ad8debba07ef8d9d7c1bf6aa9560a993034a0d2f44c88078301112d"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-appointment_service-desktop-default",
+      "png_sha256": "27e4d6c6ed538ec9b53c0510671881a2c2286cc157690930b8745c3bcb6190ba",
+      "rgba_sha256": "63efeb96ffc8619f37be903ff8c8132e38dea023ee4f078ae5e27460c3d1e471",
+      "html_sha256": "098e4fa4c1c44538e55b6887456aa1467cdd95b71b1a592ba9bbcafd816ecb77"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-membership_and_classes-desktop-default",
+      "png_sha256": "a3b8c272623f387a4409d28895c2e825a27aa373551b29cec3fb231c20588d74",
+      "rgba_sha256": "860abac60e5f44e1d593d083e230dfbb56e1d8135fe71d06639861aa4fdc53b5",
+      "html_sha256": "7d4760984879c53a788901ac7e1e3110ac3489a2d651367e3281685a42fb6200"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-lodging-desktop-default",
+      "png_sha256": "69b1130eb4a842aad77a8cb6c2ecfaeceb10ecf99f83d1c46dd6b6ca3a98cefe",
+      "rgba_sha256": "ff0caad33a39271ca1bd9c37a6c21b68830fe3b967d664f09fe19a5dd6de80d2",
+      "html_sha256": "d6003e845e7aa077ef520ff3005a2b4ed7f2a765e3c24061595568883fd07c37"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-field_service_and_quote-desktop-default",
+      "png_sha256": "8ca7b4c6d941b2f2a604b3b74a964c2ac308a59cdcbbfa08af6db839c2ce1563",
+      "rgba_sha256": "a0196010822c08993c6a7afec110304e205fe9ab55c1dd8800d9050cce02ebe8",
+      "html_sha256": "79caebc6c058f6734cc6e9f1b2c4ac3f5f9c0978e44b32e92413146fc76ec202"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-vehicle_service-desktop-default",
+      "png_sha256": "a3b4c96cc0aa305ac8de4c639b4f5dbf8486a92ee2d4762abdd98172bbc180e8",
+      "rgba_sha256": "7de3f5a980c2c83fd75965e272ff4ca3bfed1386776fa9bc1f0ad241024f4dc4",
+      "html_sha256": "ec8316dbddb86444a3a7d5c0af318017eb7bdd4c15f6e288a7dab23574992d64"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-professional_advisory-desktop-default",
+      "png_sha256": "d115bfa1094e47ca21740e23036fb54cc4635d2e15aae7fedee2353788fccc71",
+      "rgba_sha256": "0ab5852d15e0f04a970cdbb45880a59f24756b76cb9464a62e1c2b6adf34a58e",
+      "html_sha256": "866c4871d4c756b01bd3d1de41abcc39a729c9a43ff47430cf9456f4c742c7ea"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-education_programs-desktop-default",
+      "png_sha256": "9d7ffaa01acce794c8e22ccc8dcdd301422e5e97e7e69b912b87c4078f602dfa",
+      "rgba_sha256": "12eb758b9b77bf31f8b8907aa6615946882e938bbe89601d8a8d3473d1e38df6",
+      "html_sha256": "119a35ef6dcf9f7e4ed205842e33c317e971e4022d16d67ce8de7856bbbeaf34"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-events_and_entertainment-desktop-default",
+      "png_sha256": "7577a19acfc09ac1b88397d636d4d1140655e912818f8214356de970a54445f9",
+      "rgba_sha256": "131ef2c1d7cdf4d165793f131ca6ccd7ff229961095bc993d066cdf6c24e2671",
+      "html_sha256": "4900f4db3573175098ae17882a20abd7bf763a12c7c6aef70cf62b066c13f69f"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-industrial_b2b-desktop-default",
+      "png_sha256": "46ed26ae9bad1ca4fbb8a66c5bc0068f993f2e9a2d4d6fa61f72af8f3f2f0270",
+      "rgba_sha256": "f8bc4572656f52fe1b5ecc68e205d6478a997b37fbe083bc151cdc59323c8eeb",
+      "html_sha256": "b8d0c61f906b8c25f964a7dd2f3e95bd1701a12d2ab8afc9d0fa6fdcf5507400"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-property_and_spaces-desktop-default",
+      "png_sha256": "90f1fe4c4d02b2c2d25eee5cff0cad6cfdde279cf82c855140503ef71f0ef667",
+      "rgba_sha256": "395cabf9f892c610416b2f259ead7f4026311becd73cfb32ab5715e0f2e42189",
+      "html_sha256": "58a930a73a6e6ece4e968f6db400aaaa8ae4dd07496d422847c3f28f986fa5df"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-transport_and_logistics-desktop-default",
+      "png_sha256": "bb6674ca4a880f4542f49b47ff56b922e2a3e523992662ecea6f6b87efe7a7c5",
+      "rgba_sha256": "fa9979d656ee819cdd7aeeba8cb4ded1a88d43e05d21171d25c5127afa991dea",
+      "html_sha256": "4ae3636c4c93ec2eafd02005b5e51afb9ecdd596909721c065449770bd7f1d9c"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-regulated_services-desktop-default",
+      "png_sha256": "ea3f71576abde8b75ebb9e5eab234fcd6346932897f55f613e6d9e950681fe83",
+      "rgba_sha256": "46a00630819b2687591ca28cfa29bdc8ee26bda779222ba2f00bc89cc841415b",
+      "html_sha256": "f81da79a140665e751be04f5cb6b79866fd884cb9419aaa45f75d3c176bd932d"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-index-mobile-default",
+      "png_sha256": "bb8da7cff753e1b2809ab33243c666b185c3fb57ff324b9b3bff3de316586fcb",
+      "rgba_sha256": "4bb2290e348cf1568b167b746ead9a954db827a9c44edc8f5743e3913b1283bc",
+      "html_sha256": "c076b4e64fc57e3e491c9753bce31e0abe99afa56362fb95c55bfb8531545737"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-food_hospitality-mobile-default",
+      "png_sha256": "7c65833279fd26587e568b2bfcd1c256153086c1b3f0d341042b6dd6ebd7c33d",
+      "rgba_sha256": "ebfa9ba01e29347c6019f9d714da0c60e611c140563bcf6a78e17505781d3667",
+      "html_sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-food_hospitality-mobile-table-expanded",
+      "png_sha256": "74ced3cf09423f8697d300a90c0c64edd2e728e53aa530342dc5da98bd699b35",
+      "rgba_sha256": "45e8e3deea9c42914071a63512141f740c0768b5bd863339b6ae2537c9af8b45",
+      "html_sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-product_retail-mobile-default",
+      "png_sha256": "5840b21951ba09f0dc3003082f3435262d51239d65128222ed30f071b4975e00",
+      "rgba_sha256": "a121b20d2e3dcdde4bbc1a44e77831f1724b480135488eb1bfa0585222e1cd5f",
+      "html_sha256": "a4b507a92ad8debba07ef8d9d7c1bf6aa9560a993034a0d2f44c88078301112d"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-appointment_service-mobile-default",
+      "png_sha256": "acb0aeb0ae07e3ea5751afe8db93735a2b8b7cb78d0994af522c6b8535fa428f",
+      "rgba_sha256": "14c06405fbb903ea7822e8207a7bb088a1088cdae41709f620e98e59a2d2a439",
+      "html_sha256": "098e4fa4c1c44538e55b6887456aa1467cdd95b71b1a592ba9bbcafd816ecb77"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-membership_and_classes-mobile-default",
+      "png_sha256": "91c529551fbee80300de5ea8911e510ac0d8017d685a726a8ebddf67735929eb",
+      "rgba_sha256": "9a8a187809eea93f2c98d97b20c6d0335f4b774f037072a929531e92ea8177f1",
+      "html_sha256": "7d4760984879c53a788901ac7e1e3110ac3489a2d651367e3281685a42fb6200"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-lodging-mobile-default",
+      "png_sha256": "b2f2ba28335ec5ec941c25ba7ffac2a9d14575fc013bdc1730fcb08fbfaa7d01",
+      "rgba_sha256": "1edf398b766a83a3221b447b41ac22299ee2b6dbd20ece4c276f526cf0771d9c",
+      "html_sha256": "d6003e845e7aa077ef520ff3005a2b4ed7f2a765e3c24061595568883fd07c37"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-field_service_and_quote-mobile-default",
+      "png_sha256": "78de71b61e9ebff0f43a7274d4820b1af6c6d64a65d5d93946d2e7a2eeed4f07",
+      "rgba_sha256": "ddaa94afa188b6bc245c3b7283405337de6aeb4c8d5fa1e6b5a6ac5643cd67e7",
+      "html_sha256": "79caebc6c058f6734cc6e9f1b2c4ac3f5f9c0978e44b32e92413146fc76ec202"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-vehicle_service-mobile-default",
+      "png_sha256": "22c11db232e705eff261fad44b2b781330508156125b6cb63664723fe760346e",
+      "rgba_sha256": "7b792d44e1246656ac29e8c3929bc3be403c7395a9010bbd5c9cc529511c18f7",
+      "html_sha256": "ec8316dbddb86444a3a7d5c0af318017eb7bdd4c15f6e288a7dab23574992d64"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-professional_advisory-mobile-default",
+      "png_sha256": "38e0a4a0546b2353e24f90d4f6de60242d00e8c78a7982992ad86f8a9b0a8f47",
+      "rgba_sha256": "f8ab91809f24662eb3b347f3e555332c32494c809178d8dfbbca0d768f791352",
+      "html_sha256": "866c4871d4c756b01bd3d1de41abcc39a729c9a43ff47430cf9456f4c742c7ea"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-education_programs-mobile-default",
+      "png_sha256": "8ef786b883f4a481be50d93a2c6fc177c2e70d3b63fbee1b53bebb6916579764",
+      "rgba_sha256": "7add1c4855125de9120fe3f6046d338589a70c59e05a98d8145a0c65c736d13a",
+      "html_sha256": "119a35ef6dcf9f7e4ed205842e33c317e971e4022d16d67ce8de7856bbbeaf34"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-events_and_entertainment-mobile-default",
+      "png_sha256": "ec0fa7e4b39e06e88dd15f27795d959c2fe4c55781d28bc179b5fdec09fe6dc1",
+      "rgba_sha256": "523a7a887db1531b80800b935fd561796a6eed7d22d2a950f4403de36930d8fe",
+      "html_sha256": "4900f4db3573175098ae17882a20abd7bf763a12c7c6aef70cf62b066c13f69f"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-industrial_b2b-mobile-default",
+      "png_sha256": "d88364c37345a132e4f5366e69cd20e5f9182b596a0af9d24ce28daaa982acd8",
+      "rgba_sha256": "e3710c4819088d6de919f2c0c9a6c1eba79d9995bb52a13a5c2ef7e1ef3e2370",
+      "html_sha256": "b8d0c61f906b8c25f964a7dd2f3e95bd1701a12d2ab8afc9d0fa6fdcf5507400"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-property_and_spaces-mobile-default",
+      "png_sha256": "2cd952687dce8a87c3cf79ab6a55332778f5f23465f8958cc7bb87ea252559eb",
+      "rgba_sha256": "b897e7dc0b131e8bfe8ff073c629a258d8dcea8823cfeacb5094de5d60d5c53d",
+      "html_sha256": "58a930a73a6e6ece4e968f6db400aaaa8ae4dd07496d422847c3f28f986fa5df"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-transport_and_logistics-mobile-default",
+      "png_sha256": "9965e5c4aa1030ea7ca985b3ac42a830b88b06b57754ce608938bc3846151f81",
+      "rgba_sha256": "13c3c995a88bacfbba0f4f2374c5777744815763f723d04fe7aa3e376823ae36",
+      "html_sha256": "4ae3636c4c93ec2eafd02005b5e51afb9ecdd596909721c065449770bd7f1d9c"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-browser-delivery",
+      "label": "review-regulated_services-mobile-default",
+      "png_sha256": "5288b94f8bb5b23e17a7f4f1a496edc43d3d4b217c2d34d141498de561e49b6c",
+      "rgba_sha256": "aa0e089176f52c61a580e0bc011ea83c8bfe344e9f1c571d7412fff216d5819b",
+      "html_sha256": "f81da79a140665e751be04f5cb6b79866fd884cb9419aaa45f75d3c176bd932d"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-index-desktop-default",
+      "png_sha256": "9e6ec201843a47743e2096e862ccdadfc44451245db26553d79c759f1ff4a3b2",
+      "rgba_sha256": "71ff8e5de5f263dff259a1c23c44db78b81650547b3e5c4d5da7b9ea6cb12514",
+      "html_sha256": "c076b4e64fc57e3e491c9753bce31e0abe99afa56362fb95c55bfb8531545737"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-food_hospitality-desktop-default",
+      "png_sha256": "b132d5d3b01c02d83bd96eccb8257259dd35ea8867d35b42a1f7195626be92f0",
+      "rgba_sha256": "2a1fe202f70db8018580c6410120d83aa53e0ca70e34efa2cf9cf21affa65603",
+      "html_sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-food_hospitality-desktop-table-expanded",
+      "png_sha256": "49195d5e5172d4621b551215eb1c831fea679f56fe7accd927aefdf78d4900c0",
+      "rgba_sha256": "095e52a0f688c9341f11b4000357f1925576749e93d226f833b8cc7773bffaa2",
+      "html_sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-product_retail-desktop-default",
+      "png_sha256": "05726ebc65021bba8464b649fc0629454fa71fa1f8c023bf5bd13d8513ff7c2a",
+      "rgba_sha256": "65250900a0239d1edf0aebefec93b4c98e33a006c7266f1b8518aaa62ac1589b",
+      "html_sha256": "a4b507a92ad8debba07ef8d9d7c1bf6aa9560a993034a0d2f44c88078301112d"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-appointment_service-desktop-default",
+      "png_sha256": "27e4d6c6ed538ec9b53c0510671881a2c2286cc157690930b8745c3bcb6190ba",
+      "rgba_sha256": "63efeb96ffc8619f37be903ff8c8132e38dea023ee4f078ae5e27460c3d1e471",
+      "html_sha256": "098e4fa4c1c44538e55b6887456aa1467cdd95b71b1a592ba9bbcafd816ecb77"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-membership_and_classes-desktop-default",
+      "png_sha256": "a3b8c272623f387a4409d28895c2e825a27aa373551b29cec3fb231c20588d74",
+      "rgba_sha256": "860abac60e5f44e1d593d083e230dfbb56e1d8135fe71d06639861aa4fdc53b5",
+      "html_sha256": "7d4760984879c53a788901ac7e1e3110ac3489a2d651367e3281685a42fb6200"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-lodging-desktop-default",
+      "png_sha256": "69b1130eb4a842aad77a8cb6c2ecfaeceb10ecf99f83d1c46dd6b6ca3a98cefe",
+      "rgba_sha256": "ff0caad33a39271ca1bd9c37a6c21b68830fe3b967d664f09fe19a5dd6de80d2",
+      "html_sha256": "d6003e845e7aa077ef520ff3005a2b4ed7f2a765e3c24061595568883fd07c37"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-field_service_and_quote-desktop-default",
+      "png_sha256": "8ca7b4c6d941b2f2a604b3b74a964c2ac308a59cdcbbfa08af6db839c2ce1563",
+      "rgba_sha256": "a0196010822c08993c6a7afec110304e205fe9ab55c1dd8800d9050cce02ebe8",
+      "html_sha256": "79caebc6c058f6734cc6e9f1b2c4ac3f5f9c0978e44b32e92413146fc76ec202"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-vehicle_service-desktop-default",
+      "png_sha256": "a3b4c96cc0aa305ac8de4c639b4f5dbf8486a92ee2d4762abdd98172bbc180e8",
+      "rgba_sha256": "7de3f5a980c2c83fd75965e272ff4ca3bfed1386776fa9bc1f0ad241024f4dc4",
+      "html_sha256": "ec8316dbddb86444a3a7d5c0af318017eb7bdd4c15f6e288a7dab23574992d64"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-professional_advisory-desktop-default",
+      "png_sha256": "d115bfa1094e47ca21740e23036fb54cc4635d2e15aae7fedee2353788fccc71",
+      "rgba_sha256": "0ab5852d15e0f04a970cdbb45880a59f24756b76cb9464a62e1c2b6adf34a58e",
+      "html_sha256": "866c4871d4c756b01bd3d1de41abcc39a729c9a43ff47430cf9456f4c742c7ea"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-education_programs-desktop-default",
+      "png_sha256": "9d7ffaa01acce794c8e22ccc8dcdd301422e5e97e7e69b912b87c4078f602dfa",
+      "rgba_sha256": "12eb758b9b77bf31f8b8907aa6615946882e938bbe89601d8a8d3473d1e38df6",
+      "html_sha256": "119a35ef6dcf9f7e4ed205842e33c317e971e4022d16d67ce8de7856bbbeaf34"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-events_and_entertainment-desktop-default",
+      "png_sha256": "7577a19acfc09ac1b88397d636d4d1140655e912818f8214356de970a54445f9",
+      "rgba_sha256": "131ef2c1d7cdf4d165793f131ca6ccd7ff229961095bc993d066cdf6c24e2671",
+      "html_sha256": "4900f4db3573175098ae17882a20abd7bf763a12c7c6aef70cf62b066c13f69f"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-industrial_b2b-desktop-default",
+      "png_sha256": "46ed26ae9bad1ca4fbb8a66c5bc0068f993f2e9a2d4d6fa61f72af8f3f2f0270",
+      "rgba_sha256": "f8bc4572656f52fe1b5ecc68e205d6478a997b37fbe083bc151cdc59323c8eeb",
+      "html_sha256": "b8d0c61f906b8c25f964a7dd2f3e95bd1701a12d2ab8afc9d0fa6fdcf5507400"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-property_and_spaces-desktop-default",
+      "png_sha256": "90f1fe4c4d02b2c2d25eee5cff0cad6cfdde279cf82c855140503ef71f0ef667",
+      "rgba_sha256": "395cabf9f892c610416b2f259ead7f4026311becd73cfb32ab5715e0f2e42189",
+      "html_sha256": "58a930a73a6e6ece4e968f6db400aaaa8ae4dd07496d422847c3f28f986fa5df"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-transport_and_logistics-desktop-default",
+      "png_sha256": "bb6674ca4a880f4542f49b47ff56b922e2a3e523992662ecea6f6b87efe7a7c5",
+      "rgba_sha256": "fa9979d656ee819cdd7aeeba8cb4ded1a88d43e05d21171d25c5127afa991dea",
+      "html_sha256": "4ae3636c4c93ec2eafd02005b5e51afb9ecdd596909721c065449770bd7f1d9c"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-regulated_services-desktop-default",
+      "png_sha256": "ea3f71576abde8b75ebb9e5eab234fcd6346932897f55f613e6d9e950681fe83",
+      "rgba_sha256": "46a00630819b2687591ca28cfa29bdc8ee26bda779222ba2f00bc89cc841415b",
+      "html_sha256": "f81da79a140665e751be04f5cb6b79866fd884cb9419aaa45f75d3c176bd932d"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-index-mobile-default",
+      "png_sha256": "bb8da7cff753e1b2809ab33243c666b185c3fb57ff324b9b3bff3de316586fcb",
+      "rgba_sha256": "4bb2290e348cf1568b167b746ead9a954db827a9c44edc8f5743e3913b1283bc",
+      "html_sha256": "c076b4e64fc57e3e491c9753bce31e0abe99afa56362fb95c55bfb8531545737"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-food_hospitality-mobile-default",
+      "png_sha256": "7c65833279fd26587e568b2bfcd1c256153086c1b3f0d341042b6dd6ebd7c33d",
+      "rgba_sha256": "ebfa9ba01e29347c6019f9d714da0c60e611c140563bcf6a78e17505781d3667",
+      "html_sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-food_hospitality-mobile-table-expanded",
+      "png_sha256": "74ced3cf09423f8697d300a90c0c64edd2e728e53aa530342dc5da98bd699b35",
+      "rgba_sha256": "45e8e3deea9c42914071a63512141f740c0768b5bd863339b6ae2537c9af8b45",
+      "html_sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-product_retail-mobile-default",
+      "png_sha256": "5840b21951ba09f0dc3003082f3435262d51239d65128222ed30f071b4975e00",
+      "rgba_sha256": "a121b20d2e3dcdde4bbc1a44e77831f1724b480135488eb1bfa0585222e1cd5f",
+      "html_sha256": "a4b507a92ad8debba07ef8d9d7c1bf6aa9560a993034a0d2f44c88078301112d"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-appointment_service-mobile-default",
+      "png_sha256": "acb0aeb0ae07e3ea5751afe8db93735a2b8b7cb78d0994af522c6b8535fa428f",
+      "rgba_sha256": "14c06405fbb903ea7822e8207a7bb088a1088cdae41709f620e98e59a2d2a439",
+      "html_sha256": "098e4fa4c1c44538e55b6887456aa1467cdd95b71b1a592ba9bbcafd816ecb77"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-membership_and_classes-mobile-default",
+      "png_sha256": "91c529551fbee80300de5ea8911e510ac0d8017d685a726a8ebddf67735929eb",
+      "rgba_sha256": "9a8a187809eea93f2c98d97b20c6d0335f4b774f037072a929531e92ea8177f1",
+      "html_sha256": "7d4760984879c53a788901ac7e1e3110ac3489a2d651367e3281685a42fb6200"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-lodging-mobile-default",
+      "png_sha256": "b2f2ba28335ec5ec941c25ba7ffac2a9d14575fc013bdc1730fcb08fbfaa7d01",
+      "rgba_sha256": "1edf398b766a83a3221b447b41ac22299ee2b6dbd20ece4c276f526cf0771d9c",
+      "html_sha256": "d6003e845e7aa077ef520ff3005a2b4ed7f2a765e3c24061595568883fd07c37"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-field_service_and_quote-mobile-default",
+      "png_sha256": "78de71b61e9ebff0f43a7274d4820b1af6c6d64a65d5d93946d2e7a2eeed4f07",
+      "rgba_sha256": "ddaa94afa188b6bc245c3b7283405337de6aeb4c8d5fa1e6b5a6ac5643cd67e7",
+      "html_sha256": "79caebc6c058f6734cc6e9f1b2c4ac3f5f9c0978e44b32e92413146fc76ec202"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-vehicle_service-mobile-default",
+      "png_sha256": "22c11db232e705eff261fad44b2b781330508156125b6cb63664723fe760346e",
+      "rgba_sha256": "7b792d44e1246656ac29e8c3929bc3be403c7395a9010bbd5c9cc529511c18f7",
+      "html_sha256": "ec8316dbddb86444a3a7d5c0af318017eb7bdd4c15f6e288a7dab23574992d64"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-professional_advisory-mobile-default",
+      "png_sha256": "38e0a4a0546b2353e24f90d4f6de60242d00e8c78a7982992ad86f8a9b0a8f47",
+      "rgba_sha256": "f8ab91809f24662eb3b347f3e555332c32494c809178d8dfbbca0d768f791352",
+      "html_sha256": "866c4871d4c756b01bd3d1de41abcc39a729c9a43ff47430cf9456f4c742c7ea"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-education_programs-mobile-default",
+      "png_sha256": "8ef786b883f4a481be50d93a2c6fc177c2e70d3b63fbee1b53bebb6916579764",
+      "rgba_sha256": "7add1c4855125de9120fe3f6046d338589a70c59e05a98d8145a0c65c736d13a",
+      "html_sha256": "119a35ef6dcf9f7e4ed205842e33c317e971e4022d16d67ce8de7856bbbeaf34"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-events_and_entertainment-mobile-default",
+      "png_sha256": "ec0fa7e4b39e06e88dd15f27795d959c2fe4c55781d28bc179b5fdec09fe6dc1",
+      "rgba_sha256": "523a7a887db1531b80800b935fd561796a6eed7d22d2a950f4403de36930d8fe",
+      "html_sha256": "4900f4db3573175098ae17882a20abd7bf763a12c7c6aef70cf62b066c13f69f"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-industrial_b2b-mobile-default",
+      "png_sha256": "d88364c37345a132e4f5366e69cd20e5f9182b596a0af9d24ce28daaa982acd8",
+      "rgba_sha256": "e3710c4819088d6de919f2c0c9a6c1eba79d9995bb52a13a5c2ef7e1ef3e2370",
+      "html_sha256": "b8d0c61f906b8c25f964a7dd2f3e95bd1701a12d2ab8afc9d0fa6fdcf5507400"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-property_and_spaces-mobile-default",
+      "png_sha256": "2cd952687dce8a87c3cf79ab6a55332778f5f23465f8958cc7bb87ea252559eb",
+      "rgba_sha256": "b897e7dc0b131e8bfe8ff073c629a258d8dcea8823cfeacb5094de5d60d5c53d",
+      "html_sha256": "58a930a73a6e6ece4e968f6db400aaaa8ae4dd07496d422847c3f28f986fa5df"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-transport_and_logistics-mobile-default",
+      "png_sha256": "9965e5c4aa1030ea7ca985b3ac42a830b88b06b57754ce608938bc3846151f81",
+      "rgba_sha256": "13c3c995a88bacfbba0f4f2374c5777744815763f723d04fe7aa3e376823ae36",
+      "html_sha256": "4ae3636c4c93ec2eafd02005b5e51afb9ecdd596909721c065449770bd7f1d9c"
+    },
+    {
+      "receipt": "docs/evidence/corrections/b1/human-review-clean-pinned-browser",
+      "label": "review-regulated_services-mobile-default",
+      "png_sha256": "5288b94f8bb5b23e17a7f4f1a496edc43d3d4b217c2d34d141498de561e49b6c",
+      "rgba_sha256": "aa0e089176f52c61a580e0bc011ea83c8bfe344e9f1c571d7412fff216d5819b",
+      "html_sha256": "f81da79a140665e751be04f5cb6b79866fd884cb9419aaa45f75d3c176bd932d"
+    }
+  ],
+  "journals": [
+    {
+      "path": "human-review-final-scope",
+      "steps": [
+        {
+          "id": "contracts",
+          "status": "PASS"
+        },
+        {
+          "id": "tests",
+          "status": "BLOCKED_HISTORICAL_ENVIRONMENT"
+        },
+        {
+          "id": "check",
+          "status": "PASS"
+        },
+        {
+          "id": "validate",
+          "status": "PASS"
+        },
+        {
+          "id": "build",
+          "status": "PASS"
+        },
+        {
+          "id": "b1-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "taxonomy",
+          "status": "PASS"
+        },
+        {
+          "id": "planner-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "media-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "media-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "composition-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "composition-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "design-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "design-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "audit-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "cohort-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "cohort-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "lock-verify",
+          "status": "BLOCKED_HISTORICAL_ENVIRONMENT"
+        },
+        {
+          "id": "h9-inventory",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "path": "human-review-clean-pinned",
+      "steps": [
+        {
+          "id": "contracts",
+          "status": "PASS"
+        },
+        {
+          "id": "tests",
+          "status": "BLOCKED_HISTORICAL_ENVIRONMENT"
+        },
+        {
+          "id": "check",
+          "status": "PASS"
+        },
+        {
+          "id": "validate",
+          "status": "PASS"
+        },
+        {
+          "id": "build",
+          "status": "PASS"
+        },
+        {
+          "id": "b1-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "taxonomy",
+          "status": "PASS"
+        },
+        {
+          "id": "planner-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "media-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "media-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "composition-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "composition-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "design-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "design-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "audit-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "cohort-replay",
+          "status": "PASS"
+        },
+        {
+          "id": "cohort-verify",
+          "status": "PASS"
+        },
+        {
+          "id": "lock-verify",
+          "status": "BLOCKED_HISTORICAL_ENVIRONMENT"
+        },
+        {
+          "id": "h9-inventory",
+          "status": "PASS"
+        }
+      ]
+    }
+  ],
+  "preservation": {
+    "status": "PASS",
+    "checked_files": 1330,
+    "normalization": "AS_DECLARED_PER_FILE",
+    "changed": []
+  },
+  "scope": "SAME_HOST_VERIFIED_RUNTIME_DECLARED_BYTE_PIN_OVERLAYS"
+}

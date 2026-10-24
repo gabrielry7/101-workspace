@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "art_direction_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+    },
+    "site_plan_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "context_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "registry_version": {
+      "type": "string",
+      "const": "h5-lab-1.0.0"
+    },
+    "tokens": {
+      "type": "object",
+      "properties": {
+        "palette": {
+          "type": "string",
+          "enum": [
+            "olive",
+            "ink",
+            "earth"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "serif",
+            "sans"
+          ]
+        },
+        "hierarchy": {
+          "type": "string",
+          "enum": [
+            "monument",
+            "compact"
+          ]
+        },
+        "rhythm": {
+          "type": "string",
+          "enum": [
+            "quiet",
+            "dense"
+          ]
+        },
+        "media_width": {
+          "type": "string",
+          "enum": [
+            "full",
+            "inset"
+          ]
+        },
+        "media_alignment": {
+          "type": "string",
+          "enum": [
+            "center",
+            "end"
+          ]
+        }
+      },
+      "required": [
+        "palette",
+        "type",
+        "hierarchy",
+        "rhythm",
+        "media_width",
+        "media_alignment"
+      ],
+      "additionalProperties": false
+    },
+    "motion": {
+      "type": "string",
+      "const": "quiet"
+    },
+    "pages": {
+      "minItems": 1,
+      "maxItems": 100,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^\\/(?:[a-z0-9-]+\\/)*[a-z0-9-]*$"
+          },
+          "composition": {
+            "type": "object",
+            "properties": {
+              "operator": {
+                "type": "string",
+                "enum": [
+                  "Flow",
+                  "Rail"
+                ]
+              },
+              "navigation": {
+                "type": "string",
+                "const": "before-content"
+              },
+              "child": {
+                "type": "object",
+                "properties": {
+                  "operator": {
+                    "type": "string",
+                    "enum": [
+                      "Sequence",
+                      "Split"
+                    ]
+                  },
+                  "module_refs": {
+                    "minItems": 1,
+                    "maxItems": 200,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                    }
+                  },
+                  "media_usage_refs": {
+                    "maxItems": 20,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9][a-z0-9-]{0,79}$"
+                    }
+                  }
+                },
+                "required": [
+                  "operator",
+                  "module_refs",
+                  "media_usage_refs"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "operator",
+              "navigation",
+              "child"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "path",
+          "composition"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "art_direction_id",
+    "site_plan_id",
+    "plan_sha256",
+    "content_sha256",
+    "manifest_sha256",
+    "context_sha256",
+    "registry_version",
+    "tokens",
+    "motion",
+    "pages"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:DesignPlanV1:1.0.0",
+  "title": "DesignPlanV1",
+  "description": "H5 lab declarative design contract; semantic bindings, rights and budget checks required. No arbitrary code or production readiness."
+}

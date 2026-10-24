@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "EXISTING_B3_MOLDS_SHARED_REFINEMENT",
+  "source_head": "808d4e39b0c67c2e218da6e3b4ab25816279dae0",
+  "user_direction": "Perp esto se deberia hacer con los moldes de paginas que ya se estaban haciendo y perfeccionando esos.",
+  "profiles": ["candidate-01", "candidate-02", "candidate-03", "candidate-04"],
+  "preserved": ["SitePlan", "42 factual references", "7 modules", "editorial content", "human feedback", "media files and 148 authorized contextual uses", "hero operators", "palettes", "typography", "normal catalogue composition"],
+  "decisions": [
+    {"issue":"SKIP_REPEATS_HEADER","evidence":"before/browser.json: skip.inside_header=true after Tab/Enter/Tab","guidance":["Raven keyboard-navigation","Impeccable polish: broken paths first"],"action":"Focusable page-content target after header, shared across the 44 existing B3 routes","automatic_freeform_patch":false},
+    {"issue":"FILTERED_MENU_INHERITS_EDITORIAL_OFFSETS","evidence":"candidate-01 desktop pasta: card 601.94px in 1251.88px grid, padding-top80px; candidate-03 also half-width","guidance":["Raven hierarchy-one-primary-focus","Impeccable polish: real states and shared patterns"],"action":"Shared filtered-reading state; restore incumbent composition when clearing filters; singular and useful zero-result status","automatic_freeform_patch":false},
+    {"issue":"TARGET_44","evidence":"Raven found20 home instances: short Carta/Visita links narrower than44px","guidance":["Raven audit_tap_targets actual DOM rectangles"],"action":"min-inline-size44px only for measured quick-nav/footer link families; no indiscriminate padding","automatic_freeform_patch":false}
+  ],
+  "style_findings_not_auto_applied": ["overused-font", "italic-serif-display", "hero-eyebrow-chip", "kicker-above-heading", "off-scale-size", "tight-leading"],
+  "reason": "Preserve the incumbent directions and the user's liked typography/palette; static pattern warnings are not proof of poor aesthetics. No selection or artistic approval is inferred.",
+  "repair_iterations": 1,
+  "human_preference": "NOT_COLLECTED",
+  "new_milestone": false,
+  "runtime": "Existing Astro laboratory, ExperienceComposition and clients; no commercial/upstream integration"
+}

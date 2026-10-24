@@ -1,0 +1,13 @@
+/* Opt-in shared repairs, bounded data contract; no generated CSS or client selectors. */
+.lab.quality-reading_measure-bounded .semantic p { max-inline-size:65ch; }
+.lab.quality-touch_targets-comfortable a,.lab.quality-touch_targets-comfortable summary { min-inline-size:44px; min-block-size:44px; }
+.lab.quality-touch_targets-comfortable .site-nav a { padding-inline:.5rem; }
+.lab.quality-type_rhythm-reading .semantic p { font-size:1rem; line-height:1.6; }
+.lab.quality-type_rhythm-reading .audit { font-size:1rem; }
+.lab.quality-type_rhythm-reading figcaption { font-size:1rem; }
+.lab.quality-tracking-natural .lab-header { letter-spacing:.02em; }
+.lab.quality-tracking-natural h1 { letter-spacing:-.03em; text-wrap:balance; }
+.lab.quality-tracking-natural .eyebrow { text-transform:none; letter-spacing:0; font-size:.875rem; }
+/* Context remains visible; it no longer competes as a tracked-cap display kicker. */
+.lab.quality-label_placement-after-title .identity { display:flex; flex-direction:column; }
+.lab.quality-label_placement-after-title .identity .eyebrow { order:1; margin-block:1rem 0; }

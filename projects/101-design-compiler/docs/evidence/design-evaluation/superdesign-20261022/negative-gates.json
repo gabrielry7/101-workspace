@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "name": "external-media-url",
+      "css": ".pilot-EditorialSpread .x{background:url(https://example.invalid/media.jpg)}",
+      "expect": "EXTERNAL_OR_EXECUTABLE_CSS",
+      "exitCode": 1,
+      "passed": true,
+      "error": "Error: editorial:EXTERNAL_OR_EXECUTABLE_CSS\r"
+    },
+    {
+      "name": "unscoped-selector",
+      "css": "body{background:white}",
+      "expect": "UNSCOPED_SELECTOR",
+      "exitCode": 1,
+      "passed": true,
+      "error": "Error: editorial:UNSCOPED_SELECTOR:body\r"
+    },
+    {
+      "name": "unreviewed-media-filter",
+      "css": ".pilot-EditorialSpread img{filter:blur(2px)}",
+      "expect": "UNREVIEWED_MEDIA_TRANSFORM",
+      "exitCode": 1,
+      "passed": true,
+      "error": "Error: editorial:UNREVIEWED_MEDIA_TRANSFORM\r"
+    },
+    {
+      "name": "hidden-content",
+      "css": ".pilot-EditorialSpread .house-note{display:none}",
+      "expect": "HIDDEN_CONTENT",
+      "exitCode": 1,
+      "passed": true,
+      "error": "Error: editorial:HIDDEN_CONTENT\r"
+    }
+  ]
+}

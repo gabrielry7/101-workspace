@@ -1,0 +1,14 @@
+{
+  "kind": "B2_STAGED_TREE_REPRODUCTION",
+  "created_at": "2026-10-15T01:44:06.708Z",
+  "source_tree": "e89d0689cad30aa36322d0bdf66670b9441a11e2",
+  "source_archive_sha256": "a8fe29078212c819a4bb00744c72d50190fe71f70688aa3f5d9ecc2e75bae95b",
+  "target": ".tools/corrections/b0/b2-clean/source",
+  "overlays": [],
+  "limits": [
+    "Same Windows host, current B2 font observation and isolated Edge154",
+    "Verified existing Node/dependencies/browser shared through junctions; not a fresh install",
+    "No source-code overlay, provider calls, .env copy or creative recorder",
+    "Final reports/QA receipts added after this staged engine tree are not input to engine generation"
+  ]
+}

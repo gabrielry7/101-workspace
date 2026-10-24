@@ -1,0 +1,28 @@
+{
+  "kind": "B2_FICTIONAL_SAME_HOST_REPRODUCTION",
+  "created_at": "2026-10-15T03:07:38.968Z",
+  "status": "PASS_HTML_DOM_MEDIA",
+  "pairs": [
+    {
+      "viewport": "desktop",
+      "html_sha256": "0dc6573963eded0389784fa4b58b3c8ec2100df98c4b4fd760fb5c7abb14245a",
+      "dom_sha256": "3aaf8cbb85ce01b1dbcdd8e7dc97955a824c3c0ba5a1989a8069aa28ce9ca84d",
+      "served_media_sha256": "a2fa96a7444644e12ce1a3441e2f22ccafec33ad00ba089abece19d6762b5223",
+      "rgba_identical": false
+    },
+    {
+      "viewport": "mobile",
+      "html_sha256": "0dc6573963eded0389784fa4b58b3c8ec2100df98c4b4fd760fb5c7abb14245a",
+      "dom_sha256": "c502ae0428158ed45da92d91e640d6393bc2ae045403d6e201949d49e586eb60",
+      "served_media_sha256": "a2fa96a7444644e12ce1a3441e2f22ccafec33ad00ba089abece19d6762b5223",
+      "rgba_identical": false
+    }
+  ],
+  "all_rgba_identical": false,
+  "first": "docs/evidence/corrections/b2-demo/qa-05",
+  "second": "docs/evidence/corrections/b2-demo/clean-qa-02",
+  "limits": [
+    "Same host/B2 fonts/browser and private media package, not public standalone reproduction",
+    "Native video controls/playback are observed separately from source-byte identity"
+  ]
+}

@@ -1,0 +1,10 @@
+---
+import DesignComposition from '../../../components/composition/DesignComposition.astro';
+import {loadQualityLab} from '../../../../scripts/load-quality-lab.ts';
+import type {GeneralCompositionLab} from '../../../composition/lab.ts';
+import type {DesignPlan} from '../../../design/contracts.ts';
+interface Props {c:{id:string;lab:GeneralCompositionLab};v:{condition:string;design:DesignPlan};page:string}
+export async function getStaticPaths(){if(process.env.DESIGN_EVALUATION_PREVIEW!=='1')return [];const run=await loadQualityLab();return run.cases.flatMap(c=>c.variants.flatMap(v=>c.lab.content.pages.filter(p=>p.path!=='/').map(p=>({params:{variant:`${c.id}-${v.condition.toLowerCase()}`,page:p.path.slice(1)},props:{c,v,page:p.path}}))));}
+const {c,v,page}=Astro.props;
+---
+<DesignComposition lab={c.lab} design={v.design} page={page} mount="h7" mountId={`${c.id}-${v.condition.toLowerCase()}`}/>

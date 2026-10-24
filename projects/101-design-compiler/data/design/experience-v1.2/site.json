@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.2.0",
+  "kind": "B3_REFERENCE_DEPTH_EXPERIENCE",
+  "source_context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+  "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+  "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+  "media_review_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+  "research_sha256": "d92ae3e94755072f73a4782f4a49f68296302b32d679f2240bc36855b0c6e780",
+  "feedback_status": "HUMAN_REJECTED_03_04_ITERATING",
+  "human_approval": "NOT_COLLECTED",
+  "profiles": [
+    {
+      "id": "candidate-01",
+      "label": "01 · La mesa abierta",
+      "root": "/b3/candidate-01/",
+      "hero": "Immersive",
+      "palette": "WhiteInk",
+      "type": "Classic",
+      "collection": "Spread",
+      "rationale": "La entrada es una escena a toda pantalla, marca contenida y navegación mínima; blanco neutro en páginas interiores. El vídeo ocupa el fondo y las funciones se abren en páginas propias.",
+      "references": [
+        "reference-01",
+        "reference-03",
+        "reference-09"
+      ],
+      "home_composition": "Journal",
+      "design_status": "LIKED_DIRECTION_REFINEMENT"
+    },
+    {
+      "id": "candidate-02",
+      "label": "02 · Mucho apetito",
+      "root": "/b3/candidate-02/",
+      "hero": "Masthead",
+      "palette": "Vermilion",
+      "type": "Condensed",
+      "collection": "Rows",
+      "rationale": "Una cabecera tipográfica roja sobre blanco, a escala de portada, precede al campo audiovisual sin bordes. La carta se lee en filas y el formulario de reserva tiene su propio espacio.",
+      "references": [
+        "reference-07",
+        "reference-17",
+        "reference-04"
+      ],
+      "home_composition": "Journal",
+      "design_status": "LIKED_DIRECTION_REFINEMENT"
+    },
+    {
+      "id": "candidate-03",
+      "label": "03 · La mesa, en escena",
+      "root": "/b3/candidate-03/",
+      "hero": "GalleryStage",
+      "palette": "Graphite",
+      "type": "Italic",
+      "collection": "Exhibit",
+      "rationale": "Escena audiovisual oscura a toda pantalla; composición de revista con un gran plano 8:3, dos escalas descentradas y un cierre de sobremesa. Blanco y verde tinta, sin círculos decorativos ni fondos burdeos. Sustituye la propuesta rechazada; espera revisión humana.",
+      "references": [
+        "reference-01",
+        "reference-12",
+        "reference-14",
+        "reference-22"
+      ],
+      "home_composition": "Longform",
+      "design_status": "REPLACEMENT_AWAITING_HUMAN_REVIEW"
+    },
+    {
+      "id": "candidate-04",
+      "label": "04 · Índice de sobremesa",
+      "root": "/b3/candidate-04/",
+      "hero": "StudioIndex",
+      "palette": "NeutralAccent",
+      "type": "Modern",
+      "collection": "Index",
+      "rationale": "Un índice editorial sobre blanco: rail estrecho y marca monumental, escena a todo el ancho, bloques 8:3 y 4:6, pausas y un acento lima contenido. La estructura cambia entre capítulos; sustituye el cartel rechazado y espera revisión humana.",
+      "references": [
+        "reference-18",
+        "reference-19",
+        "reference-23"
+      ],
+      "home_composition": "ModularIndex",
+      "design_status": "REPLACEMENT_AWAITING_HUMAN_REVIEW"
+    }
+  ],
+  "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+  "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+  "depth_research_sha256": "cab3c31c7d38e87107ad1cf4390b32b310895fa1f0a9fb80d7ca17dfe757a4a2",
+  "revision_feedback_sha256": "34737d9c497067faecc21871595a992df76da4ca8004bd2bb4790434b5e9fbc9",
+  "features_sha256": "43cb695175233e7bb057022428301e77af487127f131b71ef766cb1d1f6c61ba"
+}

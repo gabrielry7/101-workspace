@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "B3_HUMAN_REJECTION"
+    },
+    "recorded_date": {
+      "type": "string",
+      "const": "2026-10-21"
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "source": {
+      "type": "string",
+      "const": "DIRECT_USER_MESSAGE"
+    },
+    "verbatim": {
+      "type": "string",
+      "minLength": 100
+    },
+    "rejected": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "string",
+          "const": "candidate-03"
+        },
+        {
+          "type": "string",
+          "const": "candidate-04"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "prior_liked": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "string",
+          "const": "candidate-01"
+        },
+        {
+          "type": "string",
+          "const": "candidate-02"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "ratings": {
+      "type": "null"
+    },
+    "final_design_approval": {
+      "type": "boolean",
+      "const": false
+    },
+    "training": {
+      "type": "string",
+      "const": "NOT_PERFORMED"
+    },
+    "new_references": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "string",
+          "const": "https://pizza4ps.com/kh/"
+        },
+        {
+          "type": "string",
+          "const": "https://www.artek.fi/en/"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "recorded_date",
+    "source_commit",
+    "source",
+    "verbatim",
+    "rejected",
+    "prior_liked",
+    "ratings",
+    "final_design_approval",
+    "training",
+    "new_references"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:DesignIterationFeedbackV1:1.0.0",
+  "title": "DesignIterationFeedbackV1",
+  "description": "Associated B3 iteration after human rejection; reference observations, fictional presentation and evidence bindings. No aesthetic approval, rights grant, backend or training."
+}

@@ -1,0 +1,25 @@
+{
+  "data_mode": "SYNTHETIC_FIXTURE",
+  "description": "Controlled category observations, not records from the missing reference inventory or real businesses.",
+  "cases": [
+    { "source": "osm", "field": "amenity", "value": "restaurant", "archetypes": ["food_hospitality"] },
+    { "source": "osm", "field": "shop", "value": "hardware", "archetypes": ["product_retail"] },
+    { "source": "osm", "field": "leisure", "value": "fitness_centre", "archetypes": ["membership_and_classes"] },
+    { "source": "foursquare", "field": "foursquare.category", "value": "Dining and Drinking > Restaurant > Italian Restaurant", "archetypes": ["food_hospitality"] },
+    { "source": "foursquare", "field": "foursquare.category", "value": "Retail > Hardware Store", "archetypes": ["product_retail"] },
+    { "source": "foursquare", "field": "foursquare.category", "value": "Sports and Recreation > Gym and Studio > Gym", "archetypes": ["membership_and_classes"] },
+    { "source": "overture", "field": "taxonomy.primary", "value": "restaurant", "archetypes": ["food_hospitality"] },
+    { "source": "overture", "field": "taxonomy.hierarchy_level_4", "value": "hardware_store", "archetypes": ["product_retail"] },
+    { "source": "overture", "field": "overture.taxonomy.primary", "value": "gym", "archetypes": ["membership_and_classes"] },
+    { "source": "osm", "field": "amenity", "value": "dentist", "archetypes": ["appointment_service", "regulated_services"] },
+    { "source": "osm", "field": "tourism", "value": "hotel", "archetypes": ["lodging"] },
+    { "source": "osm", "field": "craft", "value": "plumber", "archetypes": ["field_service_and_quote"] },
+    { "source": "overture", "field": "taxonomy.primary", "value": "auto_repair", "archetypes": ["vehicle_service"] },
+    { "source": "osm", "field": "office", "value": "lawyer", "archetypes": ["professional_advisory"] },
+    { "source": "osm", "field": "amenity", "value": "language_school", "archetypes": ["education_programs"] },
+    { "source": "foursquare", "field": "foursquare.category", "value": "Arts > Movie Theater", "archetypes": ["events_and_entertainment"] },
+    { "source": "osm", "field": "man_made", "value": "works", "archetypes": ["industrial_b2b"] },
+    { "source": "overture", "field": "taxonomy.primary", "value": "coworking_space", "archetypes": ["property_and_spaces"] },
+    { "source": "overture", "field": "taxonomy.primary", "value": "courier_service", "archetypes": ["transport_and_logistics"] }
+  ]
+}

@@ -1,0 +1,39 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import Identity from './Identity.astro';
+import OfferingCollection from './OfferingCollection.astro';
+import MediaFigure from './MediaFigure.astro';
+import AuditPanel from './AuditPanel.astro';
+import type { GeneralCompositionLab as CompositionLab } from '../../composition/lab.ts';
+import FactCollection from './FactCollection.astro';
+import Schedule from './Schedule.astro';
+import type { DesignPlan } from '../../design/contracts.ts';
+import { designPreviewPath, validateDesign } from '../../design/validate.ts';
+import baseStyles from '../../composition/styles.css?raw';
+import designStyles from '../../design/styles.css?raw';
+interface Props { lab: CompositionLab; design: DesignPlan; page: string; mount?:'h5'|'h6'|'h7'; mountId?:string; measure?:'fluid'|'fixed-wide'; diagnostic?:boolean }
+const { lab, design, page, mount='h5',mountId=design.id,measure='fluid',diagnostic=false } = Astro.props;
+if(measure==='fixed-wide'&&!diagnostic)throw new Error('SEEDED_LAYOUT_ONLY');
+const routeForPage=(p:string)=>mount==='h5'?designPreviewPath(design.id,p):`/${mount}/${mountId}${p==='/'?'/':`${p}/`}`;
+if (!validateDesign(design,lab).success) throw new Error('INVALID_H5_RENDER_PLAN');
+const selected=lab.content.pages.find(p=>p.path===page)!;
+const tree=design.pages.find(p=>p.path===page)!.composition;
+const tokens=design.tokens;
+---
+<Foundation title={`${design.id} · laboratorio ${mount.toUpperCase()}`}>
+  <style is:inline set:html={(baseStyles + '\n' + designStyles).replace(/\r\n/g,'\n')} />
+  {mount==='h6'&&<style is:inline>.lab.h6.measure-fixed-wide .identity {width:80rem;} .lab.h6.measure-fluid .identity {width:auto;max-width:100%;}</style>}
+  <div class:list={['lab','h5',`frame-${tree.operator.toLowerCase()}`,`stage-${tree.child.operator.toLowerCase()}`,`palette-${tokens.palette}`,`type-${tokens.type}`,`hierarchy-${tokens.hierarchy}`,`rhythm-${tokens.rhythm}`,`media-${tokens.media_width}`,`align-${tokens.media_alignment}`,mount==='h6'?'h6':undefined,mount==='h6'?`measure-${measure}`:undefined]}
+    data-design-id={design.id} data-art-direction-id={design.art_direction_id} data-composition="h5" data-version="1.0.0" data-semantic-page={page} data-plan-sha256={lab.content.plan_sha256} data-content-sha256={lab.content.content_sha256} data-manifest-sha256={lab.manifest_sha256} data-client-id={lab.client_id} data-project-id={lab.project_id}>
+    <header class="lab-header"><span>101 / Laboratorio compartido</span><span>{mount.toUpperCase()} · {design.id} · Ficticio{diagnostic?' · Defecto sembrado / test':''}</span></header>
+    <div class="frame" data-frame-operator={tree.operator}>
+      <nav class="site-nav" aria-label="Páginas del fixture">{lab.content.pages.map((p,i)=><a href={routeForPage(p.path)} data-route={p.path} aria-current={p.path===page?'page':undefined}><span class="nav-number" aria-hidden="true">0{i+1}</span>{mount==='h7' ? (p.path==='/'?'Identidad':p.modules.map(m=>m.capability_id.replaceAll('_',' ')).join(' / ')) : p.path==='/'?'Identidad':'Oferta de la sucursal'}</a>)}</nav>
+      <div class="stage" data-operator={tree.child.operator}>
+        {tree.child.module_refs.map((id,i)=>{const m=selected.modules.find(m=>m.id===id)!;const heading=i===0?'h1':'h2';return m.component==='Identity'?<Identity module={m}/>:m.component==='FactCollection'?<FactCollection module={m} heading={heading}/>:m.component==='Schedule'?<Schedule module={m} heading={heading}/>:<OfferingCollection module={m} heading={heading}/>;})}
+        {tree.child.media_usage_refs.length>0 && lab.media && <MediaFigure media={lab.media}/>}
+      </div>
+    </div>
+    <AuditPanel lab={lab}/>
+    <footer class="lab-footer"><a href={`/${mount}/`}>Comparar finalistas</a><a href="/">Inspector de contratos</a></footer>
+  </div>
+</Foundation>

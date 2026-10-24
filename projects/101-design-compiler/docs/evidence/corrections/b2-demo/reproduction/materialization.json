@@ -1,0 +1,100 @@
+{
+  "kind": "B2_FICTIONAL_DEMO_PRIVATE_PACKAGE_REPRODUCTION",
+  "created_at": "2026-10-15T03:04:09.213Z",
+  "source_tree": "f9b4ec58c040e6195058fc9b1aa5b5707b90eaa7",
+  "source_archive_sha256": "e9537086ed682b9ba12b04b7d62f9dadfff461b358ae1d2d3169bcb59c799d14",
+  "target": ".tools/corrections/b0/b2-demo-clean/source",
+  "private_files": [
+    {
+      "path": ".tools/b2-demo/originals/4991789.jpg",
+      "bytes": 476639,
+      "sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/4991789-640.webp",
+      "bytes": 86066,
+      "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/4991789-1280.webp",
+      "bytes": 305320,
+      "sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": ".tools/b2-demo/originals/3547078.jpg",
+      "bytes": 229835,
+      "sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/3547078-640.webp",
+      "bytes": 41984,
+      "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/3547078-1280.webp",
+      "bytes": 116602,
+      "sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": ".tools/b2-demo/originals/791891.jpg",
+      "bytes": 283569,
+      "sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/791891-640.webp",
+      "bytes": 45472,
+      "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/791891-1280.webp",
+      "bytes": 126204,
+      "sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": ".tools/b2-demo/originals/1971552.jpg",
+      "bytes": 253809,
+      "sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/1971552-640.webp",
+      "bytes": 36338,
+      "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/1971552-1280.webp",
+      "bytes": 127138,
+      "sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": ".tools/b2-demo/originals/149678.mp4",
+      "bytes": 2801470,
+      "sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    },
+    {
+      "path": "public/media/b2-fictional/149678-silent-640.webm",
+      "bytes": 4446094,
+      "sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b",
+      "method": "EXPLICIT_PRIVATE_AUTHORIZED_PACKAGE_COPY_NOT_GIT_OR_DOWNLOAD"
+    }
+  ],
+  "no_env": true,
+  "provider_requests": 0,
+  "limits": [
+    "Git sources plus 14 specifically authorized private media files; not a self-contained public clone",
+    "Same host/current B2 fonts, existing verified Node/dependencies/browser junctions",
+    "No raw API caches, signed source URLs, secrets, rejected candidates, new installs or provider calls copied"
+  ]
+}

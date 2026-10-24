@@ -1,0 +1,56 @@
+import type { GeneralCompositionLab as CompositionLab } from '../composition/lab.ts';
+import { auditRender } from '../composition/audit.ts';
+import { validateDesign, structuralDistance } from '../design/validate.ts';
+import { inputSha256 } from '../upstream/v1/protocol.ts';
+import { AuditCandidateV1,AuditPolicyV1,AuditReportV1, type AuditCandidate,type AuditPolicy,type AuditIssue } from './contracts.ts';
+import type { observePage } from '../composition/observe.ts';
+export type BrowserView=ReturnType<typeof observePage> & { route:string; mount_id:string; requested_viewport:{width:number;height:number}; screenshot_path:string; page_body_bytes:number;
+ keyboard:{skip:boolean;disclosure:boolean;navigation:boolean}; raster:{status:'MEASURED_AUXILIARY';width:number;height:number;sampled_pixels:number;ignored_media_pixels:number;ink_ratio:number;edge_density:number;entropy_bits:number;centroid:{x:number;y:number}|null}; };
+export function auditCandidate(candidate:AuditCandidate,lab:CompositionLab,view:BrowserView,rawPolicy:AuditPolicy,routeForPage?: (page:string)=>string){
+ const policy=AuditPolicyV1.parse(rawPolicy),parsed=AuditCandidateV1.safeParse(candidate),issues:AuditIssue[]=[];
+ const viewport=view.requested_viewport;
+ const add=(family:AuditIssue['family'],code:string,selector:string,observation:string,repair:AuditIssue['repair']='NONE',severity:AuditIssue['severity']='BLOCKING')=>issues.push({id:`${candidate.plan.id}-${code}`,family,severity,code,route:view.route,viewport,selector,evidence_ref:view.screenshot_path,observation,repair});
+ if(!parsed.success)add('input','CANDIDATE_SCHEMA','','Declarative candidate schema rejects unknown fields or unsupported layout.');
+ if(candidate.layout.measure==='fixed-wide'&&candidate.fixture_mode!=='SEEDED_DEFECT_TEST')add('input','SEEDED_LAYOUT_ONLY','','A deliberately faulty fixed layout is allowed only in explicit diagnostic fixtures.');
+ const check=validateDesign(candidate.plan,lab);
+ for(const code of check.codes)add(code.includes('MEDIA')?'rights':code.includes('MODULE')||code.includes('ROUTE')?'capabilities':'input',code,'[data-module-id]','Plan/context/rights invariant fails; visual quality cannot compensate.');
+ const binding=auditRender(view.observation,lab,'editorial',view.observation.semantic_page,routeForPage ?? (p=>auditPreviewPath(view.mount_id,p)));
+ for(const code of binding.codes)add(code.includes('MEDIA')?'rights':code.includes('INTERACTION')?'capabilities':code.includes('LANDMARK')?'accessibility':'semantic',code,'[data-fact-id]','Actual DOM does not preserve approved references, context or semantic content.');
+ if(view.geometry.overflow.length||view.geometry.document_width>viewport.width)add('geometry','OVERFLOW','.identity',`Observed document width ${view.geometry.document_width}px exceeds viewport ${viewport.width}px or contains ${view.geometry.overflow.length} overflowing elements.`,'FLUID_MEASURE');
+ if(view.geometry.modules.some(m=>!m.visible))add('semantic','MODULE_HIDDEN','[data-module-id]','Mandatory module has no visible box.');
+ if(view.readability.some(r=>r.contrast<4.5||r.font_px<12))add('accessibility','CONTRAST_OR_TEXT','h1,p,a','Actual visible text falls below 4.5 contrast or 12px minimum.');
+ if(!view.keyboard.skip||!view.keyboard.disclosure||!view.keyboard.navigation)add('accessibility','KEYBOARD','a,summary','Skip link, native disclosure or route navigation failed.');
+ if(view.animated_elements||!view.reduced_motion)add('accessibility','REDUCED_MOTION','.lab','Reduced motion or quiet grammar invariant failed.');
+ if(view.resources.some(r=>!r.local))add('performance','EXTERNAL_RESOURCE','','Unapproved remote resource was observed.');
+ if(view.resources.length+1>policy.max_requests)add('performance','REQUEST_BUDGET','','Observed resource count plus the HTML document exceeds the explicit local policy.');
+ if(view.observation.scripts>0&&policy.max_client_js_bytes===0)add('performance','JS_BUDGET','script','Candidate grammar must ship zero client scripts.');
+ const overweight=view.page_body_bytes>policy.max_page_bytes;
+ if(overweight)add('performance','BYTE_BUDGET','','Observed page body exceeds the policy; no licensed derivative is available for automatic repair.');
+ const exception=policy.profile==='LAB'&&policy.original_media_exception&&view.observation.media.length>0;
+ if(exception)add('performance','ORIGINAL_MEDIA_LAB_EXCEPTION','figure','The unaltered 2.35MB original is permitted solely for the frozen laboratory, not accepted commercial mobile performance.','NONE','OBSERVATION');
+ if(view.raster.status!=='MEASURED_AUXILIARY'||view.raster.sampled_pixels<=0)add('visual','RASTER_NOT_MEASURED','','Raster pixels were not actually sampled.','NONE','OBSERVATION');
+ const families=(['input','capabilities','semantic','rights','geometry','accessibility','performance','visual','diversity'] as const).map(family=>({family,
+  status:issues.some(i=>i.family===family&&i.severity==='BLOCKING')?'FAIL' as const:family==='visual'||family==='diversity'?'NOT_MEASURED' as const:family==='performance'&&exception?'LAB_EXCEPTION' as const:'PASS' as const,
+  evidence_ref:view.screenshot_path}));
+ return AuditReportV1.parse({schema_version:'1.0.0',candidate_sha256:inputSha256(candidate),policy_sha256:inputSha256(policy),
+  semantic_page:view.observation.semantic_page,route:view.route,viewport,
+  status:issues.some(i=>i.severity==='BLOCKING')?'FAIL':'LAB_TECHNICAL_PASS_NEEDS_HUMAN_REVIEW',production_ready:false,families,issues,
+  raster_status:view.raster.status,human_preference:'NOT_COLLECTED',
+  measurements:{page_body_bytes:view.page_body_bytes,requests_including_document:view.resources.length+1,byte_status:'MEASURED_LOCAL_UNCOMPRESSED',
+   client_js_status:view.observation.scripts?'SCRIPT_PRESENT_BYTES_NOT_MEASURED':'ZERO_SCRIPTS_OBSERVED',lcp:'NOT_MEASURED',inp:'NOT_MEASURED',cls:'NOT_MEASURED',field_p75:'NOT_MEASURED',video:'NOT_APPLICABLE'}});
+}
+export function chooseAcceptable(entries:{candidate:AuditCandidate;reports:ReturnType<typeof auditCandidate>[]}[],viewports=[{width:1280,height:900},{width:390,height:844}]){
+ const coverage=(e:typeof entries[number])=>{
+  const expected=e.candidate.plan.pages.flatMap(p=>viewports.map(v=>`${p.path}:${v.width}:${v.height}`));
+  const observed=e.reports.map(r=>`${r.semantic_page}:${r.viewport.width}:${r.viewport.height}`);
+  return new Set(observed).size===observed.length&&JSON.stringify([...observed].sort())===JSON.stringify(expected.sort());
+ };
+ const valid=entries.filter(e=>coverage(e)&&e.reports.every(r=>r.candidate_sha256===inputSha256(e.candidate)&&r.status==='LAB_TECHNICAL_PASS_NEEDS_HUMAN_REVIEW'));
+ const selected:typeof valid=[];
+ for(const entry of valid)if(selected.every(other=>structuralDistance(entry.candidate.plan,other.candidate.plan)>0))selected.push(entry);
+ return {status:selected.length?'NEEDS_HUMAN_REVIEW':'NO_ACCEPTABLE_DESIGN',finalists:selected.map(e=>e.candidate),human_preference:'NOT_COLLECTED',production_ready:false};
+}
+export function auditPreviewPath(id:string,page:string){
+ if(!/^[a-z0-9][a-z0-9-]{0,79}$/.test(id)||!/^\/(?:[a-z0-9-]+\/)*[a-z0-9-]*$/.test(page))throw new Error('INVALID_AUDIT_PATH');
+ return `/h6/${id}${page==='/'?'/':`${page}/`}`;
+}

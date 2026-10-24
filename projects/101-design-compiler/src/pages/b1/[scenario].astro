@@ -1,0 +1,43 @@
+---
+import {readFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import Foundation from '../../layouts/Foundation.astro';
+import GoalCard from '../../components/requirements/GoalCard.astro';
+import {loadB1Fixtures} from '../../../scripts/lib/b1-fixtures.ts';
+import {ContextualInterpretationV1} from '../../taxonomy/context-contracts.ts';
+import {FunctionalDiagnosticV1} from '../../requirements/contracts.ts';
+import {requirementCatalog} from '../../requirements/catalog.ts';
+import {label} from '../../requirements/labels.ts';
+import '../../requirements/inspector.css';
+export async function getStaticPaths(){return (await loadB1Fixtures()).map(fixture=>({params:{scenario:fixture.scenario},props:{fixture}}));}
+const {fixture}=Astro.props,raw=JSON.parse(await readFile(resolve(`data/derived/requirements-v1/${fixture.scenario}.json`),'utf8'));
+const diagnostic=FunctionalDiagnosticV1.parse(raw.diagnostic),context=ContextualInterpretationV1.parse(raw.context);
+const scopes=context.scopes;
+const name=fixture.input.facts.find(f=>f.id===fixture.input.identity.name_fact_id)!.value;
+const scopeLabel=(scope:string)=>scope===fixture.input.business_id?'Negocio':`Sucursal ${fixture.input.locations.findIndex(l=>l.id===scope)+1}`;
+const cards=new Map(requirementCatalog.cards.map(card=>[card.id,card]));
+---
+<Foundation title={`B1 · ${fixture.label}`}>
+ <div class="b1" data-b1-page="case" data-diagnostic-sha256={diagnostic.diagnostic_sha256} data-contextual-sha256={context.interpretation_sha256} data-catalog-sha256={diagnostic.catalog_sha256}>
+  <nav class="b1-nav" aria-label="Revisión B1"><a href="/b1/">Todos los casos</a><a href="/b1/catalogo/">Catálogo maestro</a></nav>
+  <h1>{fixture.label}</h1><p class="lead">{name}</p>
+  <p class="notice">Fixture ficticio para revisar el motor. No es negocio real ni aprobación de diseño. Reservas, compras y backend no están conectados.</p>
+  <section aria-labelledby="understanding"><h2 id="understanding">Qué entiende el motor</h2>
+   <p><strong>{label(context.status)}</strong> · {context.profile.archetypes.map(a=>label(a.id)).join(', ')||'No hay una actividad resuelta con suficiente respaldo.'}</p>
+   <p>{label(diagnostic.planner_status)}. Un plan válido sólo contiene lo emitible hoy; los requisitos del objetivo completo permanecen debajo.</p>
+   <details><summary>Evidencias y dudas de la interpretación</summary><ul>{context.signals.map(signal=><li>{scopeLabel(signal.scope_id)}: {signal.polarity==='NEGATIVE'?'Niega':'Apoya'} {signal.candidates.map(label).join(' o ')} mediante {signal.kind.toLowerCase()}. <code>{[...signal.fact_ids,...signal.offering_ids,...signal.category_observation_ids].join(', ')}</code></li>)}</ul>
+    {context.scopes.flatMap(scope=>scope.clarification.map(c=><p>{scopeLabel(scope.scope_id)}: {c.message}</p>))}
+    <p>Categorías originales: {context.original_categories.map(c=><span><code>{c.source}/{c.field}: {c.value}</code> · </span>)}</p>
+    <p>No se inspeccionaron medios ni se infieren operaciones desde las categorías. La política textual es acotada; puede solicitar aclaración.</p>
+   </details>
+  </section>
+  <nav class="b1-nav" aria-label="Alcances del diagnóstico">{scopes.map((scope,i)=><a href={`#scope-${i}`}>{scopeLabel(scope.scope_id)}</a>)}</nav>
+  {scopes.map((scope,i)=>{const entries=diagnostic.entries.filter(e=>e.scope_id===scope.scope_id),goals=entries.filter(e=>e.relevance!=='APPLICABILITY_NOT_EVALUATED'),others=entries.filter(e=>e.relevance==='APPLICABILITY_NOT_EVALUATED');return <section class="scope" id={`scope-${i}`} data-goal-scope data-scope-id={scope.scope_id}>
+   <h2>{scopeLabel(scope.scope_id)} · {label(scope.status)}</h2><p class="muted">Alcance: <code>{scope.scope_id}</code>. {entries.length} funciones conservadas.</p>
+   {scope.clarification.map(c=><p>{c.message}</p>)}
+   <div class="b1-grid">{goals.map(entry=><GoalCard entry={entry} card={cards.get(entry.capability_id)!}/>)}</div>
+   {others.length>0&&<details><summary>Otras funciones: aplicabilidad por evaluar ({others.length})</summary><p>Están en el inventario; no se han declarado irrelevantes ni eliminadas por falta de datos.</p><div class="b1-grid">{others.map(entry=><GoalCard entry={entry} card={cards.get(entry.capability_id)!}/>)}</div></details>}
+  </section>;})}
+  <footer><p>Diagnóstico y catálogo asociados versionados; lectores V1 preservados. <code>{diagnostic.diagnostic_sha256}</code></p><a href="/b1/">Volver a los casos</a></footer>
+ </div>
+</Foundation>

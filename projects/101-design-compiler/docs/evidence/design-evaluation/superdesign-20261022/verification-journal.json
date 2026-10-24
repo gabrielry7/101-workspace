@@ -1,0 +1,119 @@
+{
+  "results": [
+    {
+      "id": "test",
+      "args": [
+        ".tools/node-v24.21.0-win-x64/node_modules/npm/bin/npm-cli.js",
+        "test"
+      ],
+      "started": "2026-10-23T00:25:22.904Z",
+      "finished": "2026-10-23T00:25:30.843Z",
+      "exitCode": 1,
+      "knownBaselineFailure": true
+    },
+    {
+      "id": "check",
+      "args": [
+        ".tools/node-v24.21.0-win-x64/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "check"
+      ],
+      "started": "2026-10-23T00:25:30.845Z",
+      "finished": "2026-10-23T00:25:55.197Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    },
+    {
+      "id": "contracts-export",
+      "args": [
+        ".tools/node-v24.21.0-win-x64/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "contracts:export"
+      ],
+      "started": "2026-10-23T00:25:55.198Z",
+      "finished": "2026-10-23T00:25:56.221Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    },
+    {
+      "id": "validate",
+      "args": [
+        ".tools/node-v24.21.0-win-x64/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "validate"
+      ],
+      "started": "2026-10-23T00:25:56.223Z",
+      "finished": "2026-10-23T00:25:57.111Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    },
+    {
+      "id": "build",
+      "args": [
+        ".tools/node-v24.21.0-win-x64/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "build"
+      ],
+      "started": "2026-10-23T00:25:57.112Z",
+      "finished": "2026-10-23T00:26:08.534Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    },
+    {
+      "id": "media-verify",
+      "args": [
+        ".tools/node-v24.21.0-win-x64/node_modules/npm/bin/npm-cli.js",
+        "run",
+        "media:verify"
+      ],
+      "started": "2026-10-23T00:26:08.535Z",
+      "finished": "2026-10-23T00:26:09.263Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    },
+    {
+      "id": "b3-replay",
+      "args": [
+        "--experimental-strip-types",
+        "scripts/b3-evaluate.ts",
+        "verify"
+      ],
+      "started": "2026-10-23T00:26:09.264Z",
+      "finished": "2026-10-23T00:26:12.312Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    },
+    {
+      "id": "preservation",
+      "args": [
+        "--experimental-strip-types",
+        "scripts/b3-preservation.ts",
+        "--verify"
+      ],
+      "started": "2026-10-23T00:26:12.313Z",
+      "finished": "2026-10-23T00:26:14.736Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    },
+    {
+      "id": "prepare-pilot",
+      "args": [
+        "tooling/superdesign/prepare-pilot.mjs"
+      ],
+      "started": "2026-10-23T00:26:14.736Z",
+      "finished": "2026-10-23T00:26:14.832Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    },
+    {
+      "id": "local-replay",
+      "args": [
+        "tooling/superdesign/build-local-review.mjs"
+      ],
+      "started": "2026-10-23T00:26:14.832Z",
+      "finished": "2026-10-23T00:26:15.552Z",
+      "exitCode": 0,
+      "knownBaselineFailure": false
+    }
+  ]
+}

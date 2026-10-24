@@ -1,0 +1,76 @@
+{
+  "status": "LOCAL_REVIEW_READY_NOT_HUMAN_APPROVED",
+  "route": "/b3/candidate-01/",
+  "sourceSha256": "ffa7868a7049279cd867778bd49a1b11c19dce1556603b57bea0987cd48173aa",
+  "mediaReviewSha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+  "licensedMediaUploaded": false,
+  "media": [
+    {
+      "uri": "/media/b2-fictional/4991789-640.webp",
+      "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed",
+      "bytes": 86066
+    },
+    {
+      "uri": "/media/b2-fictional/4991789-1280.webp",
+      "sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71",
+      "bytes": 305320
+    },
+    {
+      "uri": "/media/b3-experience/149678-silent-1280.mp4",
+      "sha256": "15d8a7edce609b9a48eea6815cd7d1a275610e3bbce9a8488b86ad1548d252c1",
+      "bytes": 2577142
+    },
+    {
+      "uri": "/media/b2-fictional/3547078-640.webp",
+      "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b",
+      "bytes": 41984
+    },
+    {
+      "uri": "/media/b2-fictional/3547078-1280.webp",
+      "sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0",
+      "bytes": 116602
+    },
+    {
+      "uri": "/media/b2-fictional/791891-640.webp",
+      "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6",
+      "bytes": 45472
+    },
+    {
+      "uri": "/media/b2-fictional/791891-1280.webp",
+      "sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588",
+      "bytes": 126204
+    },
+    {
+      "uri": "/media/b2-fictional/1971552-640.webp",
+      "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9",
+      "bytes": 36338
+    },
+    {
+      "uri": "/media/b2-fictional/1971552-1280.webp",
+      "sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20",
+      "bytes": 127138
+    }
+  ],
+  "variants": [
+    {
+      "id": "editorial",
+      "label": "Editorial Spread",
+      "operator": "pilot-EditorialSpread",
+      "providerSha256": "4e82c8bf03e78c66710f5d31dd9f6a4cfe26ce3fe15c8161ae824ca349366fe7",
+      "cssSha256": "c614bd8ed1fa3d52261e22758a315eec008a4088ca39d8e1a7b657e1815ac334",
+      "htmlSha256": "fb5e8149aa356a481b992e370f2f307f89b427fa8b2a9586b57d7ca1dfcbc6c2",
+      "cssBytes": 6648,
+      "originalHtmlRoundTrip": true
+    },
+    {
+      "id": "chapters",
+      "label": "Chapter Rhythm",
+      "operator": "pilot-ChapterRhythm",
+      "providerSha256": "883eb7caf75dc2127f4be4f856eebed8639194473b22ba885ebaaed5ba811738",
+      "cssSha256": "f41c89176fddf69f2f79f8bd4cda0e2a363574a67aad4b569fceb057a15a8465",
+      "htmlSha256": "e787e18230fc872902ed9e37845238e09a413cdcc191c0f110dac0ea400c22c6",
+      "cssBytes": 7451,
+      "originalHtmlRoundTrip": true
+    }
+  ]
+}

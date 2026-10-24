@@ -1,0 +1,10 @@
+﻿import {readFile,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const i=JSON.parse(await readFile('docs/evidence/h9/inventory.json','utf8'));
+for(const f of i.source_files){const raw=await readFile(f.path),b=f.normalization==='LF_TEXT'?Buffer.from(raw.toString('utf8').replace(/\r\n/g,'\n')):raw;assert.equal(b.length,f.bytes);assert.equal(createHash('sha256').update(b).digest('hex'),f.sha256);}
+assert.equal(i.source_files.length,26);assert.equal(i.economics.eligible_approved_real_sites,0);assert.equal(i.economics.p50,null);assert.equal(i.economics.p90,null);assert.equal(i.h9_complete,false);
+const locks=await Promise.all(i.technical_locks.map(async l=>JSON.parse(await readFile(`fixtures/locks/h8/${l.id}.json`,'utf8'))));
+assert.ok(locks.every(l=>l.semantic.input.data_mode==='SYNTHETIC_FIXTURE'&&l.approval.human_preference==='NOT_COLLECTED'&&!l.approval.production_ready));
+const panel=JSON.parse(await readFile('docs/evidence/h6/panel-audit.json','utf8'));assert.equal(panel.human_votes,'NOT_COLLECTED');
+await writeFile('docs/reviews/h9/probe.json',JSON.stringify({status:'ACCEPTED_EVIDENCE_INVENTORY',h9:'BLOCKED_EXTERNAL_EVIDENCE',benchmark:'NOT_TESTED',source_hashes_verified:26,eligible_real_approved_sites:0,p50:null,p90:null,synthetic_technical_locks:locks.length,human_votes:panel.human_votes},null,2)+'\n');

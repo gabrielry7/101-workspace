@@ -1,0 +1,14 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import {loadB2Library} from '../../../scripts/load-b2-library.ts';
+import '../../requirements/review.css';
+const {library}=await loadB2Library();
+---
+<Foundation title="B2 · Medios, permisos y referencias">
+ <div class="review" data-b2-page="index"><h1>Qué medios podemos usar y qué falta</h1><p class="lead">Un medio tiene una función, un sujeto y un permiso para ese uso concreto.</p>
+ <nav aria-label="Revisión B2"><a href="/b2/demo/">Ver restaurante ficticio con fotos y vídeo de Pixabay</a><a href="/b2/pilot/">Ver el piloto histórico USDA</a><a href="/b2/providers/">Fuentes y condiciones</a><a href="/b2/corpus/">Tus 21 referencias</a><a href="/b1/revision/">Funciones y datos de B1</a></nav>
+ <p class="notice">Laboratorio compartido Astro. No hay integración con 101-world-model ni runtime comercial, catálogo autónomo, reservas, pedidos o pagos.</p>
+ <section><h2>Lo que se comprobó</h2><p>Una fotografía real seleccionada en USDA/ARS, obtenida de su enlace oficial, con original y dos derivados inspeccionados. El permiso B2 es independiente del permiso histórico H3.</p><p>La figura conserva crédito, contexto y aviso de no respaldo. Su autorización no cubre fotos de platos ni del restaurante.</p></section>
+ <section><h2>Pruebas ficticias y negocios reales</h2><p>Para las pruebas ficticias ya hay cuatro fotografías y un vídeo de Pixabay, con sus usos revisados. Se pueden evaluar medios y composición sin esperar datos de una empresa real.</p><p>Las fotos auténticas de platos, personas y sedes se exigirán cuando representemos un negocio real. Este requisito conserva el bloqueo documental histórico y no impide la demo ilustrativa.</p><p>{library.requests.length} necesidades trazables desde el plan y el catálogo B1. La aprobación estética se hará viendo las propuestas; tener archivos no la sustituye.</p></section>
+ </div>
+</Foundation>

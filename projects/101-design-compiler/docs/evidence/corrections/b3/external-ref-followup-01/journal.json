@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-external-ref-followup-01",
+  "created_at": "2026-10-16T03:57:53.136Z",
+  "steps": [
+    {
+      "id": "reference-evidence",
+      "started_at": "2026-10-16T03:57:53.142Z",
+      "finished_at": "2026-10-16T03:57:53.394Z",
+      "wall_seconds": 0.25214770000000003,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/external-ref-followup-01/reference-evidence.txt",
+      "log_sha256": "a1aab5e1b242c697ecfd34a1b5fb95470c56749d310d4c8a8abe1c4ad834b3dd"
+    },
+    {
+      "id": "check",
+      "started_at": "2026-10-16T03:57:53.397Z",
+      "finished_at": "2026-10-16T03:58:22.760Z",
+      "wall_seconds": 29.3627564,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/external-ref-followup-01/check.txt",
+      "log_sha256": "3b8411666d166c9873ec52fb8b50b50e388b6832fe65bd7349cfb1a11a887a55"
+    },
+    {
+      "id": "preservation",
+      "started_at": "2026-10-16T03:58:22.772Z",
+      "finished_at": "2026-10-16T03:58:25.169Z",
+      "wall_seconds": 2.396571499999998,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/external-ref-followup-01/preservation.txt",
+      "log_sha256": "a37754fa4c0dbe089b2a3a735f6e56c875a51c01339907f6b0c490741d30f27f"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

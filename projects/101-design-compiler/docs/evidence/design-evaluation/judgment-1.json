@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "decisions": [
+    {
+      "case_id": "restaurante",
+      "condition": "B",
+      "keep": true,
+      "stop": false,
+      "reason": "IMPROVED",
+      "before": 18,
+      "after": 0
+    },
+    {
+      "case_id": "hotel",
+      "condition": "B",
+      "keep": true,
+      "stop": false,
+      "reason": "IMPROVED",
+      "before": 18,
+      "after": 0
+    }
+  ]
+}

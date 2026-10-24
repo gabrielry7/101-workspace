@@ -1,0 +1,1519 @@
+{
+  "schema_version": "1.0.0",
+  "rules": [
+    {
+      "id": "osm-food",
+      "provider": "osm",
+      "fields": [
+        "amenity",
+        "osm.amenity"
+      ],
+      "match": "EXACT",
+      "values": [
+        "restaurant",
+        "cafe",
+        "bar",
+        "pub",
+        "fast_food",
+        "food_court",
+        "ice_cream"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "food_hospitality"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial food; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-food",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "restaurant",
+        "cafe",
+        "bar",
+        "coffee_shop",
+        "bakery",
+        "fast_food_restaurant"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "food_hospitality"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial food; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-food",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Restaurant",
+        "Café",
+        "Cafe",
+        "Coffee Shop",
+        "Bar",
+        "Bakery"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "food_hospitality"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial food; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-normalized-food",
+      "provider": "osm",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Food/Restaurant",
+        "Food/Cafe",
+        "Food/Bar"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "food_hospitality"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "overture-normalized-food",
+      "provider": "overture",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Food/Restaurant",
+        "Food/Cafe",
+        "Food/Bar"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "food_hospitality"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "foursquare-normalized-food",
+      "provider": "foursquare",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Food/Restaurant",
+        "Food/Cafe",
+        "Food/Bar"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "food_hospitality"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "osm-retail",
+      "provider": "osm",
+      "fields": [
+        "shop",
+        "osm.shop"
+      ],
+      "match": "EXACT",
+      "values": [
+        "hardware",
+        "clothes",
+        "shoes",
+        "supermarket",
+        "convenience",
+        "furniture",
+        "electronics",
+        "pet",
+        "bakery",
+        "books",
+        "florist"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "product_retail"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial retail; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-retail",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "hardware_store",
+        "clothing_store",
+        "supermarket",
+        "furniture_store",
+        "electronics_store",
+        "pet_store",
+        "grocery_store",
+        "bookstore"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "product_retail"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial retail; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-retail",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Hardware Store",
+        "Clothing Store",
+        "Supermarket",
+        "Furniture Store",
+        "Electronics Store",
+        "Pet Store",
+        "Bookstore"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "product_retail"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial retail; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-normalized-retail",
+      "provider": "osm",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Retail/Hardware",
+        "Retail/Other Retail"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "product_retail"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "overture-normalized-retail",
+      "provider": "overture",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Retail/Hardware",
+        "Retail/Other Retail"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "product_retail"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "foursquare-normalized-retail",
+      "provider": "foursquare",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Retail/Hardware",
+        "Retail/Other Retail"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "product_retail"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "osm-fitness",
+      "provider": "osm",
+      "fields": [
+        "leisure",
+        "osm.leisure"
+      ],
+      "match": "EXACT",
+      "values": [
+        "fitness_centre",
+        "gym",
+        "sports_centre"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "membership_and_classes"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial fitness; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-fitness",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "gym",
+        "fitness_center",
+        "yoga_studio",
+        "pilates_studio"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "membership_and_classes"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial fitness; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-fitness",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Gym",
+        "Gym and Studio",
+        "Yoga Studio",
+        "Pilates Studio"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "membership_and_classes"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial fitness; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-appointment",
+      "provider": "osm",
+      "fields": [
+        "shop",
+        "osm.shop",
+        "amenity",
+        "osm.amenity"
+      ],
+      "match": "EXACT",
+      "values": [
+        "hairdresser",
+        "beauty",
+        "veterinary",
+        "massage"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial appointment; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-appointment",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "hair_salon",
+        "beauty_salon",
+        "barber_shop",
+        "veterinarian",
+        "spa"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial appointment; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-appointment",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Hair Salon",
+        "Barbershop",
+        "Spa",
+        "Veterinarian"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial appointment; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-health",
+      "provider": "osm",
+      "fields": [
+        "amenity",
+        "osm.amenity",
+        "healthcare",
+        "osm.healthcare"
+      ],
+      "match": "EXACT",
+      "values": [
+        "dentist",
+        "doctors",
+        "clinic"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service",
+        "regulated_services"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial health; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-health",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "dentist",
+        "dental_clinic",
+        "medical_clinic"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service",
+        "regulated_services"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial health; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-health",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Dentist",
+        "Medical Center"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service",
+        "regulated_services"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial health; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-normalized-health",
+      "provider": "osm",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Health/Dentist"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service",
+        "regulated_services"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "overture-normalized-health",
+      "provider": "overture",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Health/Dentist"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service",
+        "regulated_services"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "foursquare-normalized-health",
+      "provider": "foursquare",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Health/Dentist"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "appointment_service",
+        "regulated_services"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "osm-lodging",
+      "provider": "osm",
+      "fields": [
+        "tourism",
+        "osm.tourism"
+      ],
+      "match": "EXACT",
+      "values": [
+        "hotel",
+        "motel",
+        "hostel",
+        "guest_house"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "lodging"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial lodging; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-lodging",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "hotel",
+        "motel",
+        "hostel",
+        "guest_house"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "lodging"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial lodging; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-lodging",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Hotel",
+        "Hostel",
+        "Motel"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "lodging"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial lodging; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-home-service",
+      "provider": "osm",
+      "fields": [
+        "craft",
+        "osm.craft"
+      ],
+      "match": "EXACT",
+      "values": [
+        "electrician",
+        "plumber",
+        "carpenter",
+        "painter",
+        "builder",
+        "hvac"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "field_service_and_quote"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial home-service; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-home-service",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "electrician",
+        "plumber",
+        "general_contractor",
+        "house_cleaning_service"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "field_service_and_quote"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial home-service; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-home-service",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Electrician",
+        "Plumber",
+        "Construction"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "field_service_and_quote"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial home-service; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-vehicle",
+      "provider": "osm",
+      "fields": [
+        "shop",
+        "osm.shop",
+        "amenity",
+        "osm.amenity"
+      ],
+      "match": "EXACT",
+      "values": [
+        "car_repair",
+        "car_wash",
+        "tyres"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "vehicle_service"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial vehicle; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-vehicle",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "auto_repair",
+        "car_wash",
+        "tire_shop"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "vehicle_service"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial vehicle; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-vehicle",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Automotive Shop",
+        "Car Wash",
+        "Auto Garage"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "vehicle_service"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial vehicle; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-normalized-vehicle",
+      "provider": "osm",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Automotive/Repair"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "vehicle_service"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "overture-normalized-vehicle",
+      "provider": "overture",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Automotive/Repair"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "vehicle_service"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "foursquare-normalized-vehicle",
+      "provider": "foursquare",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Automotive/Repair"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "vehicle_service"
+      ],
+      "alternatives": [],
+      "rationale": "Categoría normalizada explícita; no se reconstruye asociación entre filas agregadas."
+    },
+    {
+      "id": "osm-professional",
+      "provider": "osm",
+      "fields": [
+        "office",
+        "osm.office"
+      ],
+      "match": "EXACT",
+      "values": [
+        "lawyer",
+        "accountant",
+        "consulting",
+        "architect"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "professional_advisory"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial professional; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-professional",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "law_firm",
+        "accountant",
+        "consulting_firm"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "professional_advisory"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial professional; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-professional",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Law Office",
+        "Accounting Firm"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "professional_advisory"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial professional; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-education",
+      "provider": "osm",
+      "fields": [
+        "amenity",
+        "osm.amenity"
+      ],
+      "match": "EXACT",
+      "values": [
+        "language_school",
+        "driving_school",
+        "music_school"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "education_programs"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial education; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-education",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "language_school",
+        "driving_school",
+        "music_school"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "education_programs"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial education; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-education",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Language School",
+        "Driving School",
+        "Music School"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "education_programs"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial education; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-events",
+      "provider": "osm",
+      "fields": [
+        "amenity",
+        "osm.amenity"
+      ],
+      "match": "EXACT",
+      "values": [
+        "cinema",
+        "theatre",
+        "nightclub"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "events_and_entertainment"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial events; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-events",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "movie_theater",
+        "theater",
+        "nightclub",
+        "event_venue"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "events_and_entertainment"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial events; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-events",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Movie Theater",
+        "Theater",
+        "Night Club",
+        "Event Space"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "events_and_entertainment"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial events; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-industry",
+      "provider": "osm",
+      "fields": [
+        "man_made",
+        "osm.man_made"
+      ],
+      "match": "EXACT",
+      "values": [
+        "works"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "industrial_b2b"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial industry; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-industry",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "manufacturer",
+        "industrial_supplier"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "industrial_b2b"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial industry; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-industry",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Factory",
+        "Industrial Supply Store"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "industrial_b2b"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial industry; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-spaces",
+      "provider": "osm",
+      "fields": [
+        "office",
+        "osm.office"
+      ],
+      "match": "EXACT",
+      "values": [
+        "estate_agent",
+        "coworking"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "property_and_spaces"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial spaces; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-spaces",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "real_estate_agency",
+        "coworking_space"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "property_and_spaces"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial spaces; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-spaces",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Real Estate Office",
+        "Coworking Space"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "property_and_spaces"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial spaces; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-transport",
+      "provider": "osm",
+      "fields": [
+        "office",
+        "osm.office"
+      ],
+      "match": "EXACT",
+      "values": [
+        "logistics",
+        "courier"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "transport_and_logistics"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial transport; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "overture-transport",
+      "provider": "overture",
+      "fields": [
+        "taxonomy.primary",
+        "overture.taxonomy.primary",
+        "taxonomy.hierarchy_level_1",
+        "overture.taxonomy.hierarchy_level_1",
+        "taxonomy.hierarchy_level_2",
+        "overture.taxonomy.hierarchy_level_2",
+        "taxonomy.hierarchy_level_3",
+        "overture.taxonomy.hierarchy_level_3",
+        "taxonomy.hierarchy_level_4",
+        "overture.taxonomy.hierarchy_level_4",
+        "taxonomy.hierarchy_level_5",
+        "overture.taxonomy.hierarchy_level_5",
+        "taxonomy.hierarchy_level_6",
+        "overture.taxonomy.hierarchy_level_6"
+      ],
+      "match": "EXACT",
+      "values": [
+        "courier_service",
+        "logistics_service"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "transport_and_logistics"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial transport; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "foursquare-transport",
+      "provider": "foursquare",
+      "fields": [
+        "foursquare.category",
+        "category"
+      ],
+      "match": "HIERARCHY_NODE",
+      "values": [
+        "Courier Service"
+      ],
+      "outcome": "MAPPED",
+      "archetypes": [
+        "transport_and_logistics"
+      ],
+      "alternatives": [],
+      "rationale": "Hipótesis comercial transport; no verifica ofertas ni capacidades."
+    },
+    {
+      "id": "osm-normalized-unknown",
+      "provider": "osm",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Unknown",
+        "Unclassified",
+        "Unknown/Unknown"
+      ],
+      "outcome": "UNKNOWN",
+      "archetypes": [],
+      "alternatives": [],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "osm-normalized-non-business",
+      "provider": "osm",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Non Business",
+        "Non-Business",
+        "NonBusiness"
+      ],
+      "outcome": "NON_BUSINESS",
+      "archetypes": [],
+      "alternatives": [],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "osm-normalized-broad-professional",
+      "provider": "osm",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Professional Services/Other Professional"
+      ],
+      "outcome": "AMBIGUOUS",
+      "archetypes": [],
+      "alternatives": [
+        [
+          "professional_advisory"
+        ],
+        [
+          "field_service_and_quote"
+        ]
+      ],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "osm-normalized-broad-wellness",
+      "provider": "osm",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Beauty and Wellness/Fitness and Wellness"
+      ],
+      "outcome": "AMBIGUOUS",
+      "archetypes": [],
+      "alternatives": [
+        [
+          "membership_and_classes"
+        ],
+        [
+          "appointment_service"
+        ]
+      ],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "overture-normalized-unknown",
+      "provider": "overture",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Unknown",
+        "Unclassified",
+        "Unknown/Unknown"
+      ],
+      "outcome": "UNKNOWN",
+      "archetypes": [],
+      "alternatives": [],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "overture-normalized-non-business",
+      "provider": "overture",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Non Business",
+        "Non-Business",
+        "NonBusiness"
+      ],
+      "outcome": "NON_BUSINESS",
+      "archetypes": [],
+      "alternatives": [],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "overture-normalized-broad-professional",
+      "provider": "overture",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Professional Services/Other Professional"
+      ],
+      "outcome": "AMBIGUOUS",
+      "archetypes": [],
+      "alternatives": [
+        [
+          "professional_advisory"
+        ],
+        [
+          "field_service_and_quote"
+        ]
+      ],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "overture-normalized-broad-wellness",
+      "provider": "overture",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Beauty and Wellness/Fitness and Wellness"
+      ],
+      "outcome": "AMBIGUOUS",
+      "archetypes": [],
+      "alternatives": [
+        [
+          "membership_and_classes"
+        ],
+        [
+          "appointment_service"
+        ]
+      ],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "foursquare-normalized-unknown",
+      "provider": "foursquare",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Unknown",
+        "Unclassified",
+        "Unknown/Unknown"
+      ],
+      "outcome": "UNKNOWN",
+      "archetypes": [],
+      "alternatives": [],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "foursquare-normalized-non-business",
+      "provider": "foursquare",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Non Business",
+        "Non-Business",
+        "NonBusiness"
+      ],
+      "outcome": "NON_BUSINESS",
+      "archetypes": [],
+      "alternatives": [],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "foursquare-normalized-broad-professional",
+      "provider": "foursquare",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Professional Services/Other Professional"
+      ],
+      "outcome": "AMBIGUOUS",
+      "archetypes": [],
+      "alternatives": [
+        [
+          "professional_advisory"
+        ],
+        [
+          "field_service_and_quote"
+        ]
+      ],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "foursquare-normalized-broad-wellness",
+      "provider": "foursquare",
+      "fields": [
+        "101.normalized_category"
+      ],
+      "match": "EXACT",
+      "values": [
+        "Beauty and Wellness/Fitness and Wellness"
+      ],
+      "outcome": "AMBIGUOUS",
+      "archetypes": [],
+      "alternatives": [
+        [
+          "membership_and_classes"
+        ],
+        [
+          "appointment_service"
+        ]
+      ],
+      "rationale": "Etiqueta amplia/desconocida/no comercial: abstenerse de escoger una actividad específica."
+    },
+    {
+      "id": "osm-non-business-amenity",
+      "provider": "osm",
+      "fields": [
+        "amenity",
+        "osm.amenity"
+      ],
+      "match": "EXACT",
+      "values": [
+        "bench",
+        "waste_basket",
+        "drinking_water"
+      ],
+      "outcome": "NON_BUSINESS",
+      "archetypes": [],
+      "alternatives": [],
+      "rationale": "Infraestructura no comercial; no tratar como cliente."
+    }
+  ]
+}

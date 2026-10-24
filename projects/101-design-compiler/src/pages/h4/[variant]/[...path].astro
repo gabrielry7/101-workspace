@@ -1,0 +1,14 @@
+---
+import Composition from '../../../components/composition/Composition.astro';
+import { compositions } from '../../../composition/registry.ts';
+import { loadCompositionLab } from '../../../../scripts/load-composition-lab.ts';
+export async function getStaticPaths() {
+  const lab = await loadCompositionLab();
+  return compositions.flatMap(c => lab.content.pages.map(p => ({
+    params: { variant:c.id, path:p.path === '/' ? undefined : p.path.slice(1) },
+    props: { lab, variant:c.id, page:p.path },
+  })));
+}
+const { lab, variant, page } = Astro.props;
+---
+<Composition lab={lab} variant={variant} page={page} />

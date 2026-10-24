@@ -1,0 +1,27 @@
+---
+import Foundation from '../../../../../layouts/Foundation.astro';
+import { loadComparisons } from '../../../../../../scripts/load-comparisons.ts';
+import { panelRuntime } from '../../../../../audit/panel.ts';
+export async function getStaticPaths(){const {pairs}=await loadComparisons();return pairs.map(p=>({params:{pair:p.pair,viewport:p.view,page:p.page},props:{pair:p}}));}
+const {pair}=Astro.props;
+---
+<Foundation title="H6 · comparación local">
+ <style is:inline>.comparison-scroll {overflow-x:auto;padding-bottom:1rem}.comparison-pair{display:flex;gap:2rem;width:max-content}.comparison-pair section{border:0;padding:0}.comparison-pair iframe{border:1px solid #b8c2ca;display:block}fieldset{max-width:45rem}label{display:block;padding:.75rem}button,a.download{min-height:44px;padding:.75rem}textarea{width:95%;max-width:40rem;min-height:5rem}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf1f3;padding:1rem}a:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid #144b80;outline-offset:4px}</style>
+ <h1>Comparar A y B</h1>
+ <p>Mismo fixture, ruta y viewport {pair.viewport.width} × {pair.viewport.height}. Orden izquierda/derecha pseudoaleatorio registrado. Laboratorio; sin preparación para producción.</p>
+ <p id="preference-status" role="status">NOT_COLLECTED · Todavía no hay decisión humana. La comparación incluye empate y ninguna.</p>
+ <div class="comparison-scroll" tabindex="0" aria-label="Comparaciones con desplazamiento horizontal"><div class="comparison-pair">
+  <section><h2>A</h2><iframe title="Candidato A" src={pair.left_route} width={pair.viewport.width} height={pair.viewport.height} loading="eager" /></section>
+  <section><h2>B</h2><iframe title="Candidato B" src={pair.right_route} width={pair.viewport.width} height={pair.viewport.height} loading="eager" /></section>
+ </div></div>
+ <form id="preference-form"><fieldset><legend>Tu decisión para esta pareja, ruta y tamaño</legend>
+  <label><input type="radio" name="decision" value="A" required /> A es mejor</label><label><input type="radio" name="decision" value="B" /> B es mejor</label>
+  <label><input type="radio" name="decision" value="TIE" /> Empate</label><label><input type="radio" name="decision" value="NONE" /> Ninguna es aceptable</label>
+  <label>Razón opcional<textarea name="reason" maxlength="3000" /></label><button type="submit" disabled>Preparar decisión local</button>
+ </fieldset></form>
+ <noscript>Activa JavaScript para preparar y descargar un JSON local; no hay backend ni envío automático.</noscript>
+ <pre id="preference-output" hidden /><a class="download" id="download-preference" hidden>Descargar decisión JSON</a>
+ <p><a href="/h6/">Todas las comparaciones</a></p>
+ <script type="application/json" id="pair-data" set:html={JSON.stringify(pair).replace(/</g,'\u003c')} />
+ <script is:inline set:html={`(${panelRuntime.toString()})()`} />
+</Foundation>

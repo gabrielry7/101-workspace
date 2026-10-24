@@ -1,0 +1,25 @@
+---
+import Foundation from '../../../layouts/Foundation.astro';
+import ReviewFeatureCard from '../../../components/requirements/ReviewFeatureCard.astro';
+import {humanReviewCatalog as catalog,reviewFeaturesForProfile} from '../../../requirements/review-catalog.ts';
+import '../../../requirements/review.css';
+export function getStaticPaths(){return catalog.profiles.map(profile=>({params:{activity:profile.archetype_id},props:{profile}}));}
+const {profile}=Astro.props;
+const entries=reviewFeaturesForProfile(profile.archetype_id);
+const groups=[...new Set(entries.map(e=>e.feature.group))];
+const requested=new Set(profile.archetype_id==='food_hospitality'?catalog.restaurant_requested_feature_ids:[]);
+---
+<Foundation title={`B1 · Funciones y datos · ${profile.label}`}>
+ <div class="review" data-review-page="profile" data-review-profile={profile.archetype_id} data-review-catalog-sha256={catalog.catalog_sha256}>
+  <nav aria-label="Revisión B1"><a href="/b1/revision/">Todos los tipos de negocio</a><a href="/b1/catalogo/">Detalle técnico V1</a></nav>
+  <h1>{profile.label}</h1>
+  <p class="lead">Qué debería tener su página, qué debe verse y qué información hace falta.</p>
+  <p class="notice">Lista ideal para revisar. Las funciones comerciales aún no están construidas ni conectadas.</p>
+  <details><summary>Cómo interpretar esta lista</summary><p>Datos del negocio sin evaluar. Las funciones base son una propuesta; las condicionales y opcionales necesitan una decisión documentada. Una categoría no confirma disponibilidad ni permite eliminar lo desconocido.</p><p>{profile.caveat}</p><p>Esta pantalla describe funciones; no simula una tienda ni confirma reservas.</p></details>
+  <nav class="review-sections" aria-label="Grupos de funciones">{groups.map((g,i)=><a href={`#group-${i}`}>{g}</a>)}</nav>
+  {groups.map((g,i)=><section id={`group-${i}`}><h2>{g}</h2>{entries.filter(e=>e.feature.group===g).map(e=><ReviewFeatureCard feature={e.feature} condition={e.selection.condition} priority={e.selection.priority} requested={requested.has(e.feature.id)}/>)}</section>)}
+  <section><h2>Velocidad: objetivo verificable</h2><p>{catalog.performance_source.targets}</p><p>Estos números son objetivos, no resultados de esta muestra. Fuente oficial consultada el {catalog.performance_source.consulted_on}: <a href={catalog.performance_source.url}>Web Vitals</a>.</p></section>
+  <section><h2>Cómo dar feedback</h2><p>Escribe: «{profile.label} → [función] → falta [dato o comportamiento]». También puedes indicar que una función sólo aplica bajo cierta condición.</p><p>Esta pantalla no guarda votos ni declara aprobación humana. Las correcciones se registran con su origen antes de incorporarse al motor.</p></section>
+  <footer><details><summary>Versión y trazabilidad del catálogo</summary><p>Complemento {catalog.schema_version} · <code>{catalog.catalog_sha256}</code>.</p><p>Vinculado al catálogo técnico B1: <code>{catalog.technical_catalog_sha256}</code>. El complemento no modifica sus IDs, reglas, diagnósticos ni contratos.</p></details><a href="/b1/revision/">Volver a todos los tipos</a></footer>
+ </div>
+</Foundation>

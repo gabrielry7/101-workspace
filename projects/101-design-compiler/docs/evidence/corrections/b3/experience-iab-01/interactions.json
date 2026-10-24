@@ -1,0 +1,98 @@
+{
+  "scope": "Representative mobile candidate-04 shared runtime UI, actual actions; not all candidate combinations",
+  "records": [
+    {
+      "step": "autoplay-initial",
+      "state": {
+        "autoplay": true,
+        "controls": false,
+        "muted": true,
+        "paused": false,
+        "time": 5.182051
+      }
+    },
+    {
+      "step": "manual-pause",
+      "state": {
+        "autoplay": true,
+        "controls": false,
+        "muted": true,
+        "paused": true,
+        "time": 5.223248
+      }
+    },
+    {
+      "step": "manual-resume",
+      "state": {
+        "autoplay": true,
+        "controls": false,
+        "muted": true,
+        "paused": false,
+        "time": 5.520921
+      }
+    },
+    {
+      "step": "mobile-menu-open",
+      "state": {
+        "links": [
+          "/b3/candidate-04/carta/",
+          "/b3/candidate-04/reservas/",
+          "/b3/candidate-04/pedidos/",
+          "/b3/candidate-04/visita/",
+          "/b3/candidate-04/historia/"
+        ],
+        "open": true
+      }
+    },
+    {
+      "step": "mobile-menu-escape",
+      "state": {
+        "focus": "SUMMARY",
+        "open": false
+      }
+    },
+    {
+      "step": "search-pasta",
+      "state": {
+        "path": "/b3/candidate-04/carta/",
+        "visible": [
+          "pasta"
+        ]
+      }
+    },
+    {
+      "step": "filter-salad",
+      "state": {
+        "visible": [
+          "salad"
+        ]
+      }
+    },
+    {
+      "step": "dish-details",
+      "state": "01 / Al horno\n\nPizza de la casa\n42.000 COP\n\nMasa fina, tomate y pepperoni. Una idea de carta para compartir desde el centro de la mesa.\n\nIngredientes y detalles\n\nDeclaración ficticia: contiene trigo (gluten) y leche. No apta como información alimentaria real.\n\nEstimación de ejemplo: 780 kcal por porción. Sin análisis nutricional.\n\nCOP\n\nReceta ficticia: harina de trigo, tomate, mozzarella, pepperoni, aceite de oliva.\n\nElegir este plato\n↗"
+    },
+    {
+      "step": "cross-page-pizza",
+      "state": {
+        "url": "http://127.0.0.1:4331/b3/candidate-04/pedidos/?plato=pizza"
+      }
+    },
+    {
+      "step": "add-second-item",
+      "state": "TU SELECCIÓN · SÓLO EN ESTA PANTALLA\n\n¿Lo compartimos?\n\nExplora los platos y reúne tus favoritos en una selección de ejemplo. No es un carrito de compra y no hay pedido, entrega ni cobro.\n\n2 platos elegidos\n\nPizza de la casa\nPasta junto al mar\n\nSelección local de ejemplo. No se ha enviado ningún pedido.\n\nVaciar selección de ejemplo"
+    },
+    {
+      "step": "simulated-table-and-summary",
+      "state": {
+        "disabled": [
+          "Mesa 3Ocupada · ficción",
+          "Mesa 6Ocupada · ficción"
+        ],
+        "path": "/b3/candidate-04/reservas/",
+        "preview": "02 / Un lugar para el encuentroSiempre hay una buena razón.Una comida entre amigos. Un cumpleaños. Un martes cualquiera.Reservas · demostración sin disponibilidad realExplora la interfaz. No se envía ninguna solicitud, no se reserva una mesa y no recogemos datos personales.Personas2 personas4 personas6 personas8 personasCuándoOcasiónUna buena comidaCumpleañosCelebración especialMomentoAlmuerzo · 13:00Cena · 19:30Imaginar la distribución de mesas ＋Plano y ocupación simulados. Elige una mesa sólo para explorar esta interfaz.Mesa 1EjemploMesa 2EjemploMesa 3Ocupada · ficciónMesa 4EjemploMesa 5EjemploMesa 6Ocupada · ficciónVer resumen de ejemplo ↗Resumen de ejemplo: 2 personas, mesa 2. No se ha reservado ni enviado nada.",
+        "table": "Mesa 2Ejemplo"
+      }
+    }
+  ]
+}

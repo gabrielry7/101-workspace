@@ -1,0 +1,309 @@
+{
+  "manifest": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-restaurante-001",
+    "snapshot_id": "fixture-restaurante-001-snapshot-v1",
+    "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+    "client_id": "synthetic-client",
+    "project_id": "synthetic-project",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+    "requirements_sha256": "1a0aabe77975db520a65a8415d6ad6735a92438cfd29db347ff2ddd0407fb7a4",
+    "input_sha256": "80b91f071ee916bda4bdf0753fba78c43de70ea7befbf8bc471e88606324e38a",
+    "assets": [
+      {
+        "schema_version": "1.0.0",
+        "id": "synthetic-original",
+        "data_mode": "SYNTHETIC_FIXTURE",
+        "kind": "image",
+        "uri": "https://example.invalid/synthetic-no-file",
+        "source": "synthetic-contract-test",
+        "external_id": null,
+        "audio_track": "NONE",
+        "provenance": [
+          {
+            "source": "synthetic-contract-test",
+            "reference": "fixtures/media/v1/permissions.ts",
+            "recorded_at": "2026-10-08T00:00:00Z"
+          }
+        ],
+        "upstream_rights_status": "DOCUMENTED",
+        "upstream_document_ids": [
+          "synthetic-document"
+        ],
+        "original_id": "synthetic-original",
+        "parent_id": null,
+        "original_sha256": "f269b02a750f4666c95b93eaa766e5f7cd300be87457528c2187bbfd42a76728",
+        "file_sha256": "f269b02a750f4666c95b93eaa766e5f7cd300be87457528c2187bbfd42a76728",
+        "hash_review": {
+          "status": "VERIFIED",
+          "reference": "https://example.invalid/synthetic-attestation",
+          "reviewer": "SYNTHETIC_REVIEWER_NOT_REAL",
+          "reviewed_at": "2026-10-07T00:00:00Z",
+          "evidence_sha256": "f269b02a750f4666c95b93eaa766e5f7cd300be87457528c2187bbfd42a76728"
+        },
+        "transformations": [],
+        "restrictions": [],
+        "denied_purposes": [],
+        "documentary": {
+          "business_id": "fixture-restaurante-001",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "subject_ids": [
+            "offering-1"
+          ],
+          "review": {
+            "status": "VERIFIED",
+            "reference": "https://example.invalid/synthetic-attestation",
+            "reviewer": "SYNTHETIC_REVIEWER_NOT_REAL",
+            "reviewed_at": "2026-10-07T00:00:00Z",
+            "evidence_sha256": "f269b02a750f4666c95b93eaa766e5f7cd300be87457528c2187bbfd42a76728"
+          }
+        },
+        "relevance": [
+          {
+            "purpose": "document:menu",
+            "scope_id": "fixture-restaurante-001-branch-1",
+            "review": {
+              "status": "VERIFIED",
+              "reference": "https://example.invalid/synthetic-attestation",
+              "reviewer": "SYNTHETIC_REVIEWER_NOT_REAL",
+              "reviewed_at": "2026-10-07T00:00:00Z",
+              "evidence_sha256": "f269b02a750f4666c95b93eaa766e5f7cd300be87457528c2187bbfd42a76728"
+            }
+          }
+        ],
+        "inspection": {
+          "status": "REVIEWED",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "https://example.invalid/synthetic-attestation",
+            "reviewer": "SYNTHETIC_REVIEWER_NOT_REAL",
+            "reviewed_at": "2026-10-07T00:00:00Z",
+            "evidence_sha256": "f269b02a750f4666c95b93eaa766e5f7cd300be87457528c2187bbfd42a76728"
+          },
+          "width": 1600,
+          "height": 1000,
+          "duration_seconds": null,
+          "codec": null,
+          "subject": "SIMULATED_SUBJECT",
+          "findings": [
+            "SIMULATED_INSPECTION; NO FILE INSPECTED"
+          ],
+          "quality": "PASS"
+        },
+        "third_party": {
+          "model": "NOT_REQUIRED",
+          "property": "NOT_REQUIRED"
+        }
+      }
+    ],
+    "grants": [
+      {
+        "schema_version": "1.0.0",
+        "id": "synthetic-grant",
+        "data_mode": "SYNTHETIC_FIXTURE",
+        "original_asset_id": "synthetic-original",
+        "original_sha256": "f269b02a750f4666c95b93eaa766e5f7cd300be87457528c2187bbfd42a76728",
+        "provider": "SYNTHETIC_PROVIDER",
+        "license_type": "SYNTHETIC_TEST_ONLY",
+        "holder": "synthetic-holder",
+        "purchaser": "synthetic-purchaser",
+        "document": {
+          "reference": "https://example.invalid/no-license",
+          "version": "SYNTHETIC",
+          "sha256": "be1d8a4e4216ca3b665bfbb1aaa59a93e1313cf7615dc9e2b4e8c61c803b1981"
+        },
+        "review": {
+          "status": "VERIFIED",
+          "reference": "https://example.invalid/synthetic-attestation",
+          "reviewer": "SYNTHETIC_REVIEWER_NOT_REAL",
+          "reviewed_at": "2026-10-07T00:00:00Z",
+          "evidence_sha256": "be1d8a4e4216ca3b665bfbb1aaa59a93e1313cf7615dc9e2b4e8c61c803b1981"
+        },
+        "client_ids": [
+          "synthetic-client"
+        ],
+        "project_ids": [
+          "synthetic-project"
+        ],
+        "scope_ids": [
+          "fixture-restaurante-001-branch-1"
+        ],
+        "purposes": [
+          "document:menu"
+        ],
+        "pages": [
+          "/sedes/s-051d544b94ae77ae0d73a35b/menu"
+        ],
+        "territories": [
+          "CO"
+        ],
+        "valid_from": "2026-10-07T00:00:00Z",
+        "valid_until": "2027-01-01T00:00:00Z",
+        "revoked": false,
+        "commercial_web": "ALLOWED",
+        "multiple_clients": "DENIED",
+        "reuse": "DENIED",
+        "redistribution": "DENIED",
+        "sublicensing": "DENIED",
+        "exclusive": "DENIED",
+        "derivatives": "ALLOWED",
+        "transformations": [
+          "CROP",
+          "RESIZE",
+          "TRANSCODE",
+          "COLOR"
+        ],
+        "automation": {
+          "search": "UNKNOWN",
+          "download": "UNKNOWN"
+        },
+        "ai": {
+          "classification": "UNKNOWN",
+          "embedding": "UNKNOWN",
+          "vision": "UNKNOWN",
+          "editing": "DENIED",
+          "training": "DENIED"
+        },
+        "attribution": {
+          "required": false,
+          "text": null
+        },
+        "releases": {
+          "model": {
+            "status": "UNKNOWN",
+            "reference": null,
+            "reviewer": null,
+            "reviewed_at": null,
+            "evidence_sha256": null
+          },
+          "property": {
+            "status": "UNKNOWN",
+            "reference": null,
+            "reviewer": null,
+            "reviewed_at": null,
+            "evidence_sha256": null
+          }
+        },
+        "restrictions": [],
+        "retention_until": null,
+        "cost": null
+      }
+    ],
+    "usages": [
+      {
+        "schema_version": "1.0.0",
+        "id": "usage-8d6ac443682f2478cc6d0e59",
+        "need_id": "need-33f7e20873460d5156843d28",
+        "asset_id": "synthetic-original",
+        "grant_id": "synthetic-grant",
+        "client_id": "synthetic-client",
+        "project_id": "synthetic-project",
+        "business_id": "fixture-restaurante-001",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "module_id": "semantic-70d73044727ca9b106d272a8",
+        "purpose": "document:menu",
+        "role": "DOCUMENTARY",
+        "representation": "BUSINESS_EVIDENCE",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "transformations": [],
+        "territory": "CO",
+        "attribution_text": null,
+        "generic_label": null,
+        "ai_operations": [],
+        "automated_access": []
+      }
+    ],
+    "needs": [
+      {
+        "id": "need-33f7e20873460d5156843d28",
+        "requirement_id": "semantic-70d73044727ca9b106d272a8",
+        "module_id": "semantic-70d73044727ca9b106d272a8",
+        "page": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "purpose": "document:menu",
+        "role": "DOCUMENTARY",
+        "subject_ids": [
+          "offering-1"
+        ],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      },
+      {
+        "id": "need-7bacfc78bdb58db1dd06998a",
+        "requirement_id": "semantic-7bf9d33184f7e923438acadd",
+        "module_id": "semantic-7bf9d33184f7e923438acadd",
+        "page": "/",
+        "scope_id": "fixture-restaurante-001",
+        "purpose": "generic:atmosphere",
+        "role": "ATMOSPHERIC",
+        "subject_ids": [],
+        "kinds": [
+          "image"
+        ],
+        "required": false,
+        "count": 1,
+        "min_width": null,
+        "min_height": null
+      }
+    ],
+    "decisions": [
+      {
+        "usage_id": "usage-8d6ac443682f2478cc6d0e59",
+        "status": "ALLOWED",
+        "rights_codes": [],
+        "suitability_codes": [],
+        "inherited_asset_ids": [
+          "synthetic-original"
+        ]
+      }
+    ]
+  },
+  "brief": {
+    "schema_version": "1.0.0",
+    "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+    "manifest_sha256": "55fc80325f6a7b9d3084401705824debc82485906c47953785024ed3f84a2cfb",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "gaps": [
+      {
+        "need": {
+          "id": "need-7bacfc78bdb58db1dd06998a",
+          "requirement_id": "semantic-7bf9d33184f7e923438acadd",
+          "module_id": "semantic-7bf9d33184f7e923438acadd",
+          "page": "/",
+          "scope_id": "fixture-restaurante-001",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "closure": "PENDING_AUTHORIZED_MEDIA_PACKAGE"
+  }
+}

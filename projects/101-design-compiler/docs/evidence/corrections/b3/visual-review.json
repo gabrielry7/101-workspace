@@ -1,0 +1,114 @@
+{
+  "kind": "B3_ASSISTED_VISUAL_REVIEW",
+  "created_at": "2026-10-15T04:03:50.945Z",
+  "context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+  "views": [
+    {
+      "design": "candidate-01",
+      "viewport": "desktop",
+      "screenshot": "docs/evidence/corrections/b3/qa-08/candidate-01-desktop.png",
+      "sha256": "cfeaffe605cb9984088955b19ac256ad6e0098aa04fcc279de0f16eff08220dd",
+      "reviewer": "Codex active session, visual inspection of rendered composite screenshot; not user acceptance",
+      "result": "No visible clipping/overlap found; distinct desktop and mobile hierarchy inspected",
+      "limitations": [
+        "Full-page screenshots inspected at scaled overview; not a human pixel-by-pixel or assistive-technology review",
+        "Native video controls, date/select widgets remain browser-specific",
+        "Fiction disclosures and credits remain visible; cannot certify taste"
+      ]
+    },
+    {
+      "design": "candidate-01",
+      "viewport": "mobile",
+      "screenshot": "docs/evidence/corrections/b3/qa-08/candidate-01-mobile.png",
+      "sha256": "89352187e8c649834ee4178175a4be8116b67c2c6b467baaead0581659ac5490",
+      "reviewer": "Codex active session, visual inspection of rendered composite screenshot; not user acceptance",
+      "result": "No visible clipping/overlap found; distinct desktop and mobile hierarchy inspected",
+      "limitations": [
+        "Full-page screenshots inspected at scaled overview; not a human pixel-by-pixel or assistive-technology review",
+        "Native video controls, date/select widgets remain browser-specific",
+        "Fiction disclosures and credits remain visible; cannot certify taste"
+      ]
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "desktop",
+      "screenshot": "docs/evidence/corrections/b3/qa-08/candidate-02-desktop.png",
+      "sha256": "2f83f539c04d96b69a826d1512488bcb6cca9186d51b2e42f21064bfc51d7303",
+      "reviewer": "Codex active session, visual inspection of rendered composite screenshot; not user acceptance",
+      "result": "No visible clipping/overlap found; distinct desktop and mobile hierarchy inspected",
+      "limitations": [
+        "Full-page screenshots inspected at scaled overview; not a human pixel-by-pixel or assistive-technology review",
+        "Native video controls, date/select widgets remain browser-specific",
+        "Fiction disclosures and credits remain visible; cannot certify taste"
+      ]
+    },
+    {
+      "design": "candidate-02",
+      "viewport": "mobile",
+      "screenshot": "docs/evidence/corrections/b3/qa-08/candidate-02-mobile.png",
+      "sha256": "db160f6fb5181e3935582fa8ad065f299c8836ce6a72b9189c34c801ab963ba5",
+      "reviewer": "Codex active session, visual inspection of rendered composite screenshot; not user acceptance",
+      "result": "No visible clipping/overlap found; distinct desktop and mobile hierarchy inspected",
+      "limitations": [
+        "Full-page screenshots inspected at scaled overview; not a human pixel-by-pixel or assistive-technology review",
+        "Native video controls, date/select widgets remain browser-specific",
+        "Fiction disclosures and credits remain visible; cannot certify taste"
+      ]
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "desktop",
+      "screenshot": "docs/evidence/corrections/b3/qa-08/candidate-03-desktop.png",
+      "sha256": "d13123dd6ff8e0b55ba90da7289265f571b9f93835c1ff59376eea0ca37bde49",
+      "reviewer": "Codex active session, visual inspection of rendered composite screenshot; not user acceptance",
+      "result": "No visible clipping/overlap found; distinct desktop and mobile hierarchy inspected",
+      "limitations": [
+        "Full-page screenshots inspected at scaled overview; not a human pixel-by-pixel or assistive-technology review",
+        "Native video controls, date/select widgets remain browser-specific",
+        "Fiction disclosures and credits remain visible; cannot certify taste"
+      ]
+    },
+    {
+      "design": "candidate-03",
+      "viewport": "mobile",
+      "screenshot": "docs/evidence/corrections/b3/qa-08/candidate-03-mobile.png",
+      "sha256": "bbec9e84473f947103fbfeb47ff4cc72177945fa71b2aa610900b349351bf6d0",
+      "reviewer": "Codex active session, visual inspection of rendered composite screenshot; not user acceptance",
+      "result": "No visible clipping/overlap found; distinct desktop and mobile hierarchy inspected",
+      "limitations": [
+        "Full-page screenshots inspected at scaled overview; not a human pixel-by-pixel or assistive-technology review",
+        "Native video controls, date/select widgets remain browser-specific",
+        "Fiction disclosures and credits remain visible; cannot certify taste"
+      ]
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "desktop",
+      "screenshot": "docs/evidence/corrections/b3/qa-08/candidate-04-desktop.png",
+      "sha256": "cadf5e0bceeacafb8d6ca0c5c7d64bd7aa216d34a38d5e0eaddb1ace10f37bdb",
+      "reviewer": "Codex active session, visual inspection of rendered composite screenshot; not user acceptance",
+      "result": "No visible clipping/overlap found; distinct desktop and mobile hierarchy inspected",
+      "limitations": [
+        "Full-page screenshots inspected at scaled overview; not a human pixel-by-pixel or assistive-technology review",
+        "Native video controls, date/select widgets remain browser-specific",
+        "Fiction disclosures and credits remain visible; cannot certify taste"
+      ]
+    },
+    {
+      "design": "candidate-04",
+      "viewport": "mobile",
+      "screenshot": "docs/evidence/corrections/b3/qa-08/candidate-04-mobile.png",
+      "sha256": "2743537a5e03173f0b7ca8cf43d19f3ab5cd5cc077548904024b919b89739da2",
+      "reviewer": "Codex active session, visual inspection of rendered composite screenshot; not user acceptance",
+      "result": "No visible clipping/overlap found; distinct desktop and mobile hierarchy inspected",
+      "limitations": [
+        "Full-page screenshots inspected at scaled overview; not a human pixel-by-pixel or assistive-technology review",
+        "Native video controls, date/select widgets remain browser-specific",
+        "Fiction disclosures and credits remain visible; cannot certify taste"
+      ]
+    }
+  ],
+  "shared_repair": "Stage mobile now pairs title/copy; desktop hero uses 1280px source, dark native controls use dark color scheme; video 16:9 reserved before/after play with full uncropped poster",
+  "user_preference": "NOT_COLLECTED",
+  "closure": "PENDING_HUMAN_AND_EXTERNAL_REFERENCE_INSPECTION"
+}

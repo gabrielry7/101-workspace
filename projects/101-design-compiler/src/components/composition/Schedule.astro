@@ -1,0 +1,10 @@
+---
+import type { ModuleView } from '../../composition/content.ts';
+interface Props {module:ModuleView; heading?:'h1'|'h2'}
+const {module:m,heading='h1'}=Astro.props;const Heading=heading;
+---
+<section class="semantic schedule" data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page}>
+ <p class="eyebrow">Calendario declarado / sin inscripción operativa</p><Heading>Calendario</Heading>
+ <ul>{m.offerings.map(o=><li data-offering-id={o.id} data-offering-scope={o.scope_id}>{o.facts.map(f=>f.kind==='class_starts_at'?<p><time datetime={f.text} data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</time></p>:<p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</li>)}</ul>
+ {m.facts.map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}
+</section>

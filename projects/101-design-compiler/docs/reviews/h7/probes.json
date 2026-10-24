@@ -1,0 +1,48 @@
+{
+  "status": "PASSED",
+  "data_mode": "REVIEW_TEST_ONLY",
+  "human_votes": "NOT_COLLECTED",
+  "probes": [
+    "Baseline projection loaded from commit3ff5356 reproduces1PASS/4FAIL/Unknownblocked without altering frozen inputs",
+    "All5contexts use explicit1.1 typography-only/no refs; legacy photograph materiality rejected before render",
+    "Invalid timezone/date cannot survive as scheduled class module",
+    "Crossbusinessscope rejects; UNKNOWNasset usage blocked without grant; Unknowncategory has no site"
+  ],
+  "baseline_reproduction": [
+    {
+      "scenario": "hotel",
+      "planner": "READY",
+      "projection": "FAIL",
+      "reason": "Error: UNSUPPORTED_LAB_MODULE:semantic-e393954607f202eecb8bc5a0"
+    },
+    {
+      "scenario": "dentista",
+      "planner": "READY",
+      "projection": "FAIL",
+      "reason": "Error: UNSUPPORTED_LAB_MODULE:semantic-31d8a773a43fffa6f0257733"
+    },
+    {
+      "scenario": "servicio",
+      "planner": "READY",
+      "projection": "FAIL",
+      "reason": "Error: UNSUPPORTED_LAB_MODULE:semantic-15a8812df6395bdab821dc58"
+    },
+    {
+      "scenario": "hibrido",
+      "planner": "READY",
+      "projection": "FAIL",
+      "reason": "Error: UNSUPPORTED_LAB_MODULE:semantic-cbdf39bda207bb83c2aa6adf"
+    },
+    {
+      "scenario": "unknown",
+      "planner": "CONTENT_BLOCKED",
+      "projection": "NOT_ATTEMPTED"
+    },
+    {
+      "scenario": "media-unknown",
+      "planner": "READY",
+      "projection": "PASS",
+      "reason": ""
+    }
+  ]
+}

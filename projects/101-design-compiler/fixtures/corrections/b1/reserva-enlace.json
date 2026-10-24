@@ -1,0 +1,190 @@
+{
+  "scenario": "reserva-enlace",
+  "label": "Reserva: intención de enlace no equivale a mesa confirmada",
+  "expected_context_status": "RESOLVED",
+  "expected_planner_status": "READY",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-restaurante-001",
+    "snapshot_id": "fixture-restaurante-001-snapshot-v1:b1-reserva-enlace",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "osm",
+        "field": "amenity",
+        "value": "Unknown",
+        "confidence": 1,
+        "evidence_ids": [
+          "f-category"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "Restaurante — fixture ficticio",
+        "scope_id": "fixture-restaurante-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-restaurante-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-category",
+        "kind": "observed_category",
+        "value": "Unknown",
+        "scope_id": "fixture-restaurante-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-category",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-offering-1",
+        "kind": "offering_name",
+        "value": "Ítem de menú de prueba",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-offering-1",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-menu",
+        "kind": "capability:menu",
+        "value": true,
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-menu",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-reservation",
+        "kind": "capability:reservation",
+        "value": true,
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-reservation",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "b1-description",
+        "kind": "business_description",
+        "value": "Somos un restaurante de cocina de temporada.",
+        "scope_id": "fixture-restaurante-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "b1-fixture-b1-description",
+        "source": "synthetic-b1-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "b1-external-link",
+        "kind": "action_url",
+        "value": "https://example.invalid/reservation",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "b1-fixture-b1-external-link",
+        "source": "synthetic-b1-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-restaurante-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": []
+      }
+    ],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [
+      {
+        "id": "offering-1",
+        "kind": "menu_item",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "name_fact_id": "f-offering-1",
+        "fact_ids": []
+      }
+    ],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-restaurante-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      },
+      {
+        "id": "menu",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-menu"
+        ]
+      },
+      {
+        "id": "reservation",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-reservation"
+        ]
+      },
+      {
+        "id": "order",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      }
+    ],
+    "action_destinations": [
+      {
+        "id": "b1-reservation-link",
+        "scope_id": "fixture-restaurante-001-branch-1",
+        "capability_id": "reservation",
+        "url_fact_id": "b1-external-link"
+      }
+    ],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "activity_links": [],
+  "activity_relationships": [],
+  "category_context": [],
+  "objective_decisions": []
+}

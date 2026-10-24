@@ -1,0 +1,4 @@
+import { readFile,mkdir,writeFile } from 'node:fs/promises';
+import { DesignLockV1 } from '../src/lock/contracts.ts';
+import { rebuildLock,materializeLockSources } from './lib/rebuild-lock.ts';
+const id=process.argv[2]??'pilot-flow';if(!/^[a-z0-9-]+$/.test(id))throw Error('INVALID_LOCK_ID');const lock=DesignLockV1.parse(JSON.parse(await readFile(`fixtures/locks/h8/${id}.json`,'utf8')));const run=process.argv[3]??`${id}-${Date.now()}`;const sourceRoot=await materializeLockSources(lock,run);const result=await rebuildLock(lock,{run_id:run,source_root:sourceRoot});await mkdir('docs/evidence/h8',{recursive:true});await writeFile(`docs/evidence/h8/${run}-build.json`,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

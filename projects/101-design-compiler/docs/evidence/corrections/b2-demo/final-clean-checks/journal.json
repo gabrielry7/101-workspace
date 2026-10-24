@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b2-demo-final-clean",
+  "created_at": "2026-10-15T03:07:39.452Z",
+  "steps": [
+    {
+      "id": "demo-current",
+      "started_at": "2026-10-15T03:07:39.456Z",
+      "finished_at": "2026-10-15T03:07:42.567Z",
+      "wall_seconds": 3.1110648999999997,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2-demo/final-clean-checks/demo-current.txt",
+      "log_sha256": "9f5dae56ccdf99c72f7666d214f66749a6859f56bfc584bd9783e152a319f2d2"
+    },
+    {
+      "id": "demo-historical",
+      "started_at": "2026-10-15T03:07:42.571Z",
+      "finished_at": "2026-10-15T03:07:45.598Z",
+      "wall_seconds": 3.0277876999999997,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2-demo/final-clean-checks/demo-historical.txt",
+      "log_sha256": "fad7fcec8c1ee4d959563c8e67f20458b0b18b494eae0b8bf0176fd4782b4910"
+    },
+    {
+      "id": "demo-tests",
+      "started_at": "2026-10-15T03:07:45.600Z",
+      "finished_at": "2026-10-15T03:07:46.434Z",
+      "wall_seconds": 0.8343633,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b2-demo/final-clean-checks/demo-tests.txt",
+      "log_sha256": "169b3f8e9e08e7e2ed500959c2aa945eaf832c52bfae9055f6110571dd3d8bec"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

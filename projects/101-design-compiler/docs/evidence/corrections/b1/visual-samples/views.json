@@ -1,0 +1,46 @@
+{
+  "scope": "MANUAL_INSPECTION_SAMPLES_NOT_COMPLETE_PAGE_CAPTURE",
+  "runtime_sha256": "31703af917c090840789fe3055bc7390e96553fc562b8095bf3a768c2fa16071",
+  "views": [
+    {
+      "id": "restaurante-desktop",
+      "route": "/b1/restaurante/",
+      "width": 1280,
+      "height": 900,
+      "path": "docs/evidence/corrections/b1/visual-samples/restaurante-desktop.png",
+      "sha256": "e5e1e7add474ea7d8549e748d9be1344cfe1f5a00a70bb50a729dcd55b4b0727",
+      "capture": "VIEWPORT_ONLY",
+      "state": "default"
+    },
+    {
+      "id": "restaurante-mobile",
+      "route": "/b1/restaurante/",
+      "width": 390,
+      "height": 844,
+      "path": "docs/evidence/corrections/b1/visual-samples/restaurante-mobile.png",
+      "sha256": "8700b08fba52036d5a6e0d241113f4f6b327f2654d0ae9f308895e53c5b80c55",
+      "capture": "VIEWPORT_ONLY",
+      "state": "default"
+    },
+    {
+      "id": "reserva-datos-desktop",
+      "route": "/b1/restaurante/",
+      "width": 1280,
+      "height": 900,
+      "path": "docs/evidence/corrections/b1/visual-samples/reserva-datos-desktop.png",
+      "sha256": "620046f36802122ba3d78e7bf57bdf2990c1033873a1fc34cdb7fc4df8b1113b",
+      "capture": "VIEWPORT_ONLY",
+      "state": "connected-reservation-level-open"
+    },
+    {
+      "id": "catalogo-mobile",
+      "route": "/b1/catalogo/",
+      "width": 390,
+      "height": 844,
+      "path": "docs/evidence/corrections/b1/visual-samples/catalogo-mobile.png",
+      "sha256": "7d805e1a9543bdcbf0f2bcbb33254f24ac0c417ac6148d09dc4253e5858d1d74",
+      "capture": "VIEWPORT_ONLY",
+      "state": "default"
+    }
+  ]
+}

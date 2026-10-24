@@ -1,0 +1,1030 @@
+{
+  "schema_version": "1.0.0",
+  "before": {
+    "schema_version": "1.0.0",
+    "experiment_id": "bb379f6868258f913a2fcbbc9d5fdfe48fd1f0061fa1432a1a1347b9da77b909",
+    "seed_status": "EXISTING_SAVED_PLANS_FROM_SEEDED_SEARCH_IDENTICAL_IN_ALL_CONDITIONS",
+    "budget": {
+      "max_iterations": 2,
+      "max_tool_calls": 200,
+      "max_wall_seconds": 600,
+      "max_new_spend": 0
+    },
+    "cases": [
+      {
+        "id": "restaurante",
+        "input_sha256": "d8295cb9d43dd45f09ffefafeb882d922c0a91fdca8484d12b526e29b14e8622",
+        "data_mode": "SYNTHETIC_FIXTURE",
+        "variants": [
+          {
+            "condition": "A",
+            "flags": {
+              "impeccable": false,
+              "raven": false
+            },
+            "design": {
+              "schema_version": "1.0.0",
+              "id": "candidate-01",
+              "art_direction_id": "typographic-pause",
+              "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+              "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+              "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+              "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+              "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+              "registry_version": "h5-lab-1.0.0",
+              "tokens": {
+                "palette": "olive",
+                "type": "serif",
+                "hierarchy": "monument",
+                "rhythm": "quiet",
+                "media_width": "inset",
+                "media_alignment": "center"
+              },
+              "motion": "quiet",
+              "pages": [
+                {
+                  "path": "/",
+                  "composition": {
+                    "operator": "Rail",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-7bf9d33184f7e923438acadd"
+                      ],
+                      "media_usage_refs": [
+                        "h3-real-pilot-atmospheric"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+                  "composition": {
+                    "operator": "Rail",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-70d73044727ca9b106d272a8"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                }
+              ]
+            },
+            "refinement": {
+              "schema_version": "1.0.0",
+              "reading_measure": "incumbent",
+              "touch_targets": "incumbent",
+              "type_rhythm": "incumbent",
+              "tracking": "incumbent",
+              "label_placement": "incumbent"
+            },
+            "iteration": 0,
+            "trace": []
+          },
+          {
+            "condition": "B",
+            "flags": {
+              "impeccable": true,
+              "raven": false
+            },
+            "design": {
+              "schema_version": "1.0.0",
+              "id": "candidate-01",
+              "art_direction_id": "typographic-pause",
+              "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+              "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+              "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+              "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+              "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+              "registry_version": "h5-lab-1.0.0",
+              "tokens": {
+                "palette": "olive",
+                "type": "serif",
+                "hierarchy": "monument",
+                "rhythm": "quiet",
+                "media_width": "inset",
+                "media_alignment": "center"
+              },
+              "motion": "quiet",
+              "pages": [
+                {
+                  "path": "/",
+                  "composition": {
+                    "operator": "Rail",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-7bf9d33184f7e923438acadd"
+                      ],
+                      "media_usage_refs": [
+                        "h3-real-pilot-atmospheric"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+                  "composition": {
+                    "operator": "Rail",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-70d73044727ca9b106d272a8"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                }
+              ]
+            },
+            "refinement": {
+              "schema_version": "1.0.0",
+              "reading_measure": "incumbent",
+              "touch_targets": "incumbent",
+              "type_rhythm": "reading",
+              "tracking": "natural",
+              "label_placement": "after-title"
+            },
+            "iteration": 1,
+            "trace": [
+              {
+                "source": "IMPECCABLE_AGENT_GUIDANCE",
+                "evidence": [
+                  {
+                    "path": ".agents/skills/impeccable/SKILL.md",
+                    "sha256": "cc6682b9617d62d2c40fd60812d97d34ec28b32a820f9472647c33f47e2e6d72"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/craft.md",
+                    "sha256": "c77d7dd5ee4cb1ad2ef6d016c0eee07aebe1c7ff3769a7d99ac4b5b453c33c11"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/craft-floor.md",
+                    "sha256": "5f2cf2ad1c40d52d95d3de7d75a31dbafe2a036a505c89d52d71c545d6d4731a"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/audit.md",
+                    "sha256": "caf21df33771e760ef4d8ccca78fe9c309c6e9480ef26b3f70862a5a39af44a6"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/polish.md",
+                    "sha256": "be4ea0accf3622da7b7a6054c55d9c6aefa18ff5ee908621e908333d36b0f82c"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/distill.md",
+                    "sha256": "3f9e2a162ec5655fdbb6778e592cbff95c34bf27f0b26981acee2c1d89c1176d"
+                  }
+                ],
+                "decisions": [
+                  "tracking:natural",
+                  "label_placement:after-title"
+                ],
+                "note": "Applied by this Codex session; not an autonomous CLI craft/polish call. Refinement of existing visual world, no new identity."
+              },
+              {
+                "source": "BOUNDED_REPAIR",
+                "audit_sha256": "d28619fb05ad2efca4c8d960c8f2ca3373742903bac47ebe3d18ae840f343d74",
+                "reason_ids": [
+                  "4c426987d41aaa851403fc38",
+                  "c0f612a18cd6184ee3cf5a16",
+                  "b0e6ed97d374488b9260a826",
+                  "b00b177c79d0de957b995a57",
+                  "a09e74da39247d0fb1c476c8",
+                  "883af9f7091aba46904eb3af",
+                  "4d47df058a62df04c0088a42",
+                  "a4d4ca35633b778da4ee2658",
+                  "f70eebfcb1486eff80ce7195",
+                  "72c035076f0474df32ef5fdf",
+                  "b68792955c75f27c5603a09b",
+                  "12e1a1b396ed166a8ba42a0d",
+                  "de60d06599af8a071d3ddcc2",
+                  "13858aa54df618a5b39c33d9",
+                  "a55bdca3432eb4b1259e73cf",
+                  "18928d0439360534911d9460",
+                  "9bc14bffa0bc2f153b3e5f0e",
+                  "a66f345953d1d95cad048f2d"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "C",
+            "flags": {
+              "impeccable": false,
+              "raven": true
+            },
+            "design": {
+              "schema_version": "1.0.0",
+              "id": "candidate-01",
+              "art_direction_id": "typographic-pause",
+              "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+              "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+              "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+              "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+              "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+              "registry_version": "h5-lab-1.0.0",
+              "tokens": {
+                "palette": "olive",
+                "type": "serif",
+                "hierarchy": "monument",
+                "rhythm": "quiet",
+                "media_width": "inset",
+                "media_alignment": "center"
+              },
+              "motion": "quiet",
+              "pages": [
+                {
+                  "path": "/",
+                  "composition": {
+                    "operator": "Rail",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-7bf9d33184f7e923438acadd"
+                      ],
+                      "media_usage_refs": [
+                        "h3-real-pilot-atmospheric"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+                  "composition": {
+                    "operator": "Rail",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-70d73044727ca9b106d272a8"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                }
+              ]
+            },
+            "refinement": {
+              "schema_version": "1.0.0",
+              "reading_measure": "bounded",
+              "touch_targets": "comfortable",
+              "type_rhythm": "reading",
+              "tracking": "incumbent",
+              "label_placement": "incumbent"
+            },
+            "iteration": 0,
+            "trace": [
+              {
+                "source": "RAVEN_MCP",
+                "principle_ids": [
+                  "touch-target-size",
+                  "text-readability"
+                ],
+                "principles_receipt": "7d451af25b81b84d13112c5a2e787822011edbd5c4ce0c8f309ed987e516c07b",
+                "pattern_receipt": "b5f7f43fa9d60981080a1a84a439ccbff4dfcbb3aadfcfe989ac8225cf8c68fd",
+                "decisions": [
+                  "reading_measure:bounded",
+                  "touch_targets:comfortable",
+                  "type_rhythm:reading"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "D",
+            "flags": {
+              "impeccable": true,
+              "raven": true
+            },
+            "design": {
+              "schema_version": "1.0.0",
+              "id": "candidate-01",
+              "art_direction_id": "typographic-pause",
+              "site_plan_id": "fixture-restaurante-001-snapshot-v1:h2-plan:682afd241f624cef533b4097",
+              "plan_sha256": "4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22",
+              "content_sha256": "6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b",
+              "manifest_sha256": "233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948",
+              "context_sha256": "ab9dc6c2b2cf325f07cd4afd45de0ce467184a3b1b5c54b55c0acda8c3056f38",
+              "registry_version": "h5-lab-1.0.0",
+              "tokens": {
+                "palette": "olive",
+                "type": "serif",
+                "hierarchy": "monument",
+                "rhythm": "quiet",
+                "media_width": "inset",
+                "media_alignment": "center"
+              },
+              "motion": "quiet",
+              "pages": [
+                {
+                  "path": "/",
+                  "composition": {
+                    "operator": "Rail",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-7bf9d33184f7e923438acadd"
+                      ],
+                      "media_usage_refs": [
+                        "h3-real-pilot-atmospheric"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "path": "/sedes/s-051d544b94ae77ae0d73a35b/menu",
+                  "composition": {
+                    "operator": "Rail",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-70d73044727ca9b106d272a8"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                }
+              ]
+            },
+            "refinement": {
+              "schema_version": "1.0.0",
+              "reading_measure": "bounded",
+              "touch_targets": "comfortable",
+              "type_rhythm": "reading",
+              "tracking": "natural",
+              "label_placement": "after-title"
+            },
+            "iteration": 0,
+            "trace": [
+              {
+                "source": "IMPECCABLE_AGENT_GUIDANCE",
+                "evidence": [
+                  {
+                    "path": ".agents/skills/impeccable/SKILL.md",
+                    "sha256": "cc6682b9617d62d2c40fd60812d97d34ec28b32a820f9472647c33f47e2e6d72"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/craft.md",
+                    "sha256": "c77d7dd5ee4cb1ad2ef6d016c0eee07aebe1c7ff3769a7d99ac4b5b453c33c11"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/craft-floor.md",
+                    "sha256": "5f2cf2ad1c40d52d95d3de7d75a31dbafe2a036a505c89d52d71c545d6d4731a"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/audit.md",
+                    "sha256": "caf21df33771e760ef4d8ccca78fe9c309c6e9480ef26b3f70862a5a39af44a6"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/polish.md",
+                    "sha256": "be4ea0accf3622da7b7a6054c55d9c6aefa18ff5ee908621e908333d36b0f82c"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/distill.md",
+                    "sha256": "3f9e2a162ec5655fdbb6778e592cbff95c34bf27f0b26981acee2c1d89c1176d"
+                  }
+                ],
+                "decisions": [
+                  "tracking:natural",
+                  "label_placement:after-title"
+                ],
+                "note": "Applied by this Codex session; not an autonomous CLI craft/polish call. Refinement of existing visual world, no new identity."
+              },
+              {
+                "source": "RAVEN_MCP",
+                "principle_ids": [
+                  "touch-target-size",
+                  "text-readability"
+                ],
+                "principles_receipt": "7d451af25b81b84d13112c5a2e787822011edbd5c4ce0c8f309ed987e516c07b",
+                "pattern_receipt": "b5f7f43fa9d60981080a1a84a439ccbff4dfcbb3aadfcfe989ac8225cf8c68fd",
+                "decisions": [
+                  "reading_measure:bounded",
+                  "touch_targets:comfortable",
+                  "type_rhythm:reading"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hotel",
+        "input_sha256": "6bd94710e4ead230c361bf0e4814f29b07c4983d2722b2438f6497580231f1c2",
+        "data_mode": "SYNTHETIC_FIXTURE",
+        "variants": [
+          {
+            "condition": "A",
+            "flags": {
+              "impeccable": false,
+              "raven": false
+            },
+            "design": {
+              "schema_version": "1.0.0",
+              "id": "candidate-01",
+              "art_direction_id": "hotel-reading",
+              "site_plan_id": "h7-synthetic-hotel-reserved-v1:h2-plan:af121cee22b88fa51acc548d",
+              "plan_sha256": "07632832989ef91e32cdaa870c11db4a91376a94b1ec8a7a2ac7c7e05c0430e7",
+              "content_sha256": "11170b97c2afe775d9038b784786ea81c0d77d0fbcb808164f828ca95f723d7d",
+              "manifest_sha256": "1d191ae2cc8cf545b4fb3626533dffb6247762119935137bc5e304746464be74",
+              "context_sha256": "6d2622c5dec2e02b20709f69797db74a211208c477d2c716cf58ac076b383eee",
+              "registry_version": "h5-lab-1.0.0",
+              "tokens": {
+                "palette": "earth",
+                "type": "serif",
+                "hierarchy": "monument",
+                "rhythm": "quiet",
+                "media_width": "inset",
+                "media_alignment": "center"
+              },
+              "motion": "quiet",
+              "pages": [
+                {
+                  "path": "/",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-dffb2f47c1c7baaf773ec46f"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                },
+                {
+                  "path": "/comodidades",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-e393954607f202eecb8bc5a0"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                },
+                {
+                  "path": "/habitaciones",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-1f15c25c66b77b851ca43271"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                }
+              ]
+            },
+            "refinement": {
+              "schema_version": "1.0.0",
+              "reading_measure": "incumbent",
+              "touch_targets": "incumbent",
+              "type_rhythm": "incumbent",
+              "tracking": "incumbent",
+              "label_placement": "incumbent"
+            },
+            "iteration": 0,
+            "trace": []
+          },
+          {
+            "condition": "B",
+            "flags": {
+              "impeccable": true,
+              "raven": false
+            },
+            "design": {
+              "schema_version": "1.0.0",
+              "id": "candidate-01",
+              "art_direction_id": "hotel-reading",
+              "site_plan_id": "h7-synthetic-hotel-reserved-v1:h2-plan:af121cee22b88fa51acc548d",
+              "plan_sha256": "07632832989ef91e32cdaa870c11db4a91376a94b1ec8a7a2ac7c7e05c0430e7",
+              "content_sha256": "11170b97c2afe775d9038b784786ea81c0d77d0fbcb808164f828ca95f723d7d",
+              "manifest_sha256": "1d191ae2cc8cf545b4fb3626533dffb6247762119935137bc5e304746464be74",
+              "context_sha256": "6d2622c5dec2e02b20709f69797db74a211208c477d2c716cf58ac076b383eee",
+              "registry_version": "h5-lab-1.0.0",
+              "tokens": {
+                "palette": "earth",
+                "type": "serif",
+                "hierarchy": "monument",
+                "rhythm": "quiet",
+                "media_width": "inset",
+                "media_alignment": "center"
+              },
+              "motion": "quiet",
+              "pages": [
+                {
+                  "path": "/",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-dffb2f47c1c7baaf773ec46f"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                },
+                {
+                  "path": "/comodidades",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-e393954607f202eecb8bc5a0"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                },
+                {
+                  "path": "/habitaciones",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-1f15c25c66b77b851ca43271"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                }
+              ]
+            },
+            "refinement": {
+              "schema_version": "1.0.0",
+              "reading_measure": "incumbent",
+              "touch_targets": "incumbent",
+              "type_rhythm": "reading",
+              "tracking": "natural",
+              "label_placement": "after-title"
+            },
+            "iteration": 1,
+            "trace": [
+              {
+                "source": "IMPECCABLE_AGENT_GUIDANCE",
+                "evidence": [
+                  {
+                    "path": ".agents/skills/impeccable/SKILL.md",
+                    "sha256": "cc6682b9617d62d2c40fd60812d97d34ec28b32a820f9472647c33f47e2e6d72"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/craft.md",
+                    "sha256": "c77d7dd5ee4cb1ad2ef6d016c0eee07aebe1c7ff3769a7d99ac4b5b453c33c11"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/craft-floor.md",
+                    "sha256": "5f2cf2ad1c40d52d95d3de7d75a31dbafe2a036a505c89d52d71c545d6d4731a"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/audit.md",
+                    "sha256": "caf21df33771e760ef4d8ccca78fe9c309c6e9480ef26b3f70862a5a39af44a6"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/polish.md",
+                    "sha256": "be4ea0accf3622da7b7a6054c55d9c6aefa18ff5ee908621e908333d36b0f82c"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/distill.md",
+                    "sha256": "3f9e2a162ec5655fdbb6778e592cbff95c34bf27f0b26981acee2c1d89c1176d"
+                  }
+                ],
+                "decisions": [
+                  "tracking:natural",
+                  "label_placement:after-title"
+                ],
+                "note": "Applied by this Codex session; not an autonomous CLI craft/polish call. Refinement of existing visual world, no new identity."
+              },
+              {
+                "source": "BOUNDED_REPAIR",
+                "audit_sha256": "d28619fb05ad2efca4c8d960c8f2ca3373742903bac47ebe3d18ae840f343d74",
+                "reason_ids": [
+                  "39211797d6dc21f811db3fbe",
+                  "01906ae924d2911025514b5f",
+                  "bb4728185825d952c1c8e664",
+                  "9d9f363d54852c165dde86d2",
+                  "1f9e898243624486d96942c0",
+                  "ee0cafd13ff9cfd78232bcf8",
+                  "f301bf9d40c448ff59cd0565",
+                  "ab7f18e9617cd103c039106a",
+                  "d206a10142cf4ee702e61ff6",
+                  "5bd8442dcc0b452ae816a866",
+                  "e0f5c7bb313008898cdf6f15",
+                  "63c145bd2b1321a82c97b337",
+                  "f2b46fb21b980db22594968c",
+                  "7bd430af47f57af219a45d8d",
+                  "e24d49dfe44975f8325380cf",
+                  "16649b081d455f1ca089066b",
+                  "980125622e4524e5e5841c9d",
+                  "8b0797366ea492d3ec87ed61"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "C",
+            "flags": {
+              "impeccable": false,
+              "raven": true
+            },
+            "design": {
+              "schema_version": "1.0.0",
+              "id": "candidate-01",
+              "art_direction_id": "hotel-reading",
+              "site_plan_id": "h7-synthetic-hotel-reserved-v1:h2-plan:af121cee22b88fa51acc548d",
+              "plan_sha256": "07632832989ef91e32cdaa870c11db4a91376a94b1ec8a7a2ac7c7e05c0430e7",
+              "content_sha256": "11170b97c2afe775d9038b784786ea81c0d77d0fbcb808164f828ca95f723d7d",
+              "manifest_sha256": "1d191ae2cc8cf545b4fb3626533dffb6247762119935137bc5e304746464be74",
+              "context_sha256": "6d2622c5dec2e02b20709f69797db74a211208c477d2c716cf58ac076b383eee",
+              "registry_version": "h5-lab-1.0.0",
+              "tokens": {
+                "palette": "earth",
+                "type": "serif",
+                "hierarchy": "monument",
+                "rhythm": "quiet",
+                "media_width": "inset",
+                "media_alignment": "center"
+              },
+              "motion": "quiet",
+              "pages": [
+                {
+                  "path": "/",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-dffb2f47c1c7baaf773ec46f"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                },
+                {
+                  "path": "/comodidades",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-e393954607f202eecb8bc5a0"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                },
+                {
+                  "path": "/habitaciones",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-1f15c25c66b77b851ca43271"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                }
+              ]
+            },
+            "refinement": {
+              "schema_version": "1.0.0",
+              "reading_measure": "bounded",
+              "touch_targets": "comfortable",
+              "type_rhythm": "reading",
+              "tracking": "incumbent",
+              "label_placement": "incumbent"
+            },
+            "iteration": 0,
+            "trace": [
+              {
+                "source": "RAVEN_MCP",
+                "principle_ids": [
+                  "touch-target-size",
+                  "text-readability"
+                ],
+                "principles_receipt": "2a83ff4d9b46998a4e9f0c92a52a94203cc6726eb63f501804f4d3d9ca787d94",
+                "pattern_receipt": "00660f3b18f7a5c597cdfe8dd77bf41007dd386cdaee0ef3301a5ab72ef1bc32",
+                "decisions": [
+                  "reading_measure:bounded",
+                  "touch_targets:comfortable",
+                  "type_rhythm:reading"
+                ]
+              }
+            ]
+          },
+          {
+            "condition": "D",
+            "flags": {
+              "impeccable": true,
+              "raven": true
+            },
+            "design": {
+              "schema_version": "1.0.0",
+              "id": "candidate-01",
+              "art_direction_id": "hotel-reading",
+              "site_plan_id": "h7-synthetic-hotel-reserved-v1:h2-plan:af121cee22b88fa51acc548d",
+              "plan_sha256": "07632832989ef91e32cdaa870c11db4a91376a94b1ec8a7a2ac7c7e05c0430e7",
+              "content_sha256": "11170b97c2afe775d9038b784786ea81c0d77d0fbcb808164f828ca95f723d7d",
+              "manifest_sha256": "1d191ae2cc8cf545b4fb3626533dffb6247762119935137bc5e304746464be74",
+              "context_sha256": "6d2622c5dec2e02b20709f69797db74a211208c477d2c716cf58ac076b383eee",
+              "registry_version": "h5-lab-1.0.0",
+              "tokens": {
+                "palette": "earth",
+                "type": "serif",
+                "hierarchy": "monument",
+                "rhythm": "quiet",
+                "media_width": "inset",
+                "media_alignment": "center"
+              },
+              "motion": "quiet",
+              "pages": [
+                {
+                  "path": "/",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-dffb2f47c1c7baaf773ec46f"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                },
+                {
+                  "path": "/comodidades",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-e393954607f202eecb8bc5a0"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                },
+                {
+                  "path": "/habitaciones",
+                  "composition": {
+                    "operator": "Flow",
+                    "navigation": "before-content",
+                    "child": {
+                      "operator": "Sequence",
+                      "module_refs": [
+                        "semantic-1f15c25c66b77b851ca43271"
+                      ],
+                      "media_usage_refs": []
+                    }
+                  }
+                }
+              ]
+            },
+            "refinement": {
+              "schema_version": "1.0.0",
+              "reading_measure": "bounded",
+              "touch_targets": "comfortable",
+              "type_rhythm": "reading",
+              "tracking": "natural",
+              "label_placement": "after-title"
+            },
+            "iteration": 0,
+            "trace": [
+              {
+                "source": "IMPECCABLE_AGENT_GUIDANCE",
+                "evidence": [
+                  {
+                    "path": ".agents/skills/impeccable/SKILL.md",
+                    "sha256": "cc6682b9617d62d2c40fd60812d97d34ec28b32a820f9472647c33f47e2e6d72"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/craft.md",
+                    "sha256": "c77d7dd5ee4cb1ad2ef6d016c0eee07aebe1c7ff3769a7d99ac4b5b453c33c11"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/craft-floor.md",
+                    "sha256": "5f2cf2ad1c40d52d95d3de7d75a31dbafe2a036a505c89d52d71c545d6d4731a"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/audit.md",
+                    "sha256": "caf21df33771e760ef4d8ccca78fe9c309c6e9480ef26b3f70862a5a39af44a6"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/polish.md",
+                    "sha256": "be4ea0accf3622da7b7a6054c55d9c6aefa18ff5ee908621e908333d36b0f82c"
+                  },
+                  {
+                    "path": ".agents/skills/impeccable/reference/distill.md",
+                    "sha256": "3f9e2a162ec5655fdbb6778e592cbff95c34bf27f0b26981acee2c1d89c1176d"
+                  }
+                ],
+                "decisions": [
+                  "tracking:natural",
+                  "label_placement:after-title"
+                ],
+                "note": "Applied by this Codex session; not an autonomous CLI craft/polish call. Refinement of existing visual world, no new identity."
+              },
+              {
+                "source": "RAVEN_MCP",
+                "principle_ids": [
+                  "touch-target-size",
+                  "text-readability"
+                ],
+                "principles_receipt": "2a83ff4d9b46998a4e9f0c92a52a94203cc6726eb63f501804f4d3d9ca787d94",
+                "pattern_receipt": "00660f3b18f7a5c597cdfe8dd77bf41007dd386cdaee0ef3301a5ab72ef1bc32",
+                "decisions": [
+                  "reading_measure:bounded",
+                  "touch_targets:comfortable",
+                  "type_rhythm:reading"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "metering": {
+      "preflight_tool_calls": 5,
+      "model_api_calls": 0,
+      "session_tokens": null,
+      "session_cost": null,
+      "paid_provider_spend": 0
+    },
+    "human_preferences": "NOT_COLLECTED",
+    "default_enabled": false
+  },
+  "after_sha256": "4e5f86dc30cafd2a589e8d4feeac8ce54e5d3d0c41106b13668df87a163e8dde",
+  "decisions": [
+    {
+      "case_id": "restaurante",
+      "condition": "A",
+      "status": "BASELINE_FROZEN"
+    },
+    {
+      "case_id": "restaurante",
+      "condition": "B",
+      "status": "STOP_NO_SAFE_PATCH",
+      "before": {
+        "schema_version": "1.0.0",
+        "reading_measure": "incumbent",
+        "touch_targets": "incumbent",
+        "type_rhythm": "reading",
+        "tracking": "natural",
+        "label_placement": "after-title"
+      },
+      "after": {
+        "schema_version": "1.0.0",
+        "reading_measure": "incumbent",
+        "touch_targets": "incumbent",
+        "type_rhythm": "reading",
+        "tracking": "natural",
+        "label_placement": "after-title"
+      },
+      "reason_ids": []
+    },
+    {
+      "case_id": "restaurante",
+      "condition": "C",
+      "status": "STOP_NO_SAFE_PATCH",
+      "before": {
+        "schema_version": "1.0.0",
+        "reading_measure": "bounded",
+        "touch_targets": "comfortable",
+        "type_rhythm": "reading",
+        "tracking": "incumbent",
+        "label_placement": "incumbent"
+      },
+      "after": {
+        "schema_version": "1.0.0",
+        "reading_measure": "bounded",
+        "touch_targets": "comfortable",
+        "type_rhythm": "reading",
+        "tracking": "incumbent",
+        "label_placement": "incumbent"
+      },
+      "reason_ids": []
+    },
+    {
+      "case_id": "restaurante",
+      "condition": "D",
+      "status": "STOP_NO_SAFE_PATCH",
+      "before": {
+        "schema_version": "1.0.0",
+        "reading_measure": "bounded",
+        "touch_targets": "comfortable",
+        "type_rhythm": "reading",
+        "tracking": "natural",
+        "label_placement": "after-title"
+      },
+      "after": {
+        "schema_version": "1.0.0",
+        "reading_measure": "bounded",
+        "touch_targets": "comfortable",
+        "type_rhythm": "reading",
+        "tracking": "natural",
+        "label_placement": "after-title"
+      },
+      "reason_ids": []
+    },
+    {
+      "case_id": "hotel",
+      "condition": "A",
+      "status": "BASELINE_FROZEN"
+    },
+    {
+      "case_id": "hotel",
+      "condition": "B",
+      "status": "STOP_NO_SAFE_PATCH",
+      "before": {
+        "schema_version": "1.0.0",
+        "reading_measure": "incumbent",
+        "touch_targets": "incumbent",
+        "type_rhythm": "reading",
+        "tracking": "natural",
+        "label_placement": "after-title"
+      },
+      "after": {
+        "schema_version": "1.0.0",
+        "reading_measure": "incumbent",
+        "touch_targets": "incumbent",
+        "type_rhythm": "reading",
+        "tracking": "natural",
+        "label_placement": "after-title"
+      },
+      "reason_ids": []
+    },
+    {
+      "case_id": "hotel",
+      "condition": "C",
+      "status": "STOP_NO_SAFE_PATCH",
+      "before": {
+        "schema_version": "1.0.0",
+        "reading_measure": "bounded",
+        "touch_targets": "comfortable",
+        "type_rhythm": "reading",
+        "tracking": "incumbent",
+        "label_placement": "incumbent"
+      },
+      "after": {
+        "schema_version": "1.0.0",
+        "reading_measure": "bounded",
+        "touch_targets": "comfortable",
+        "type_rhythm": "reading",
+        "tracking": "incumbent",
+        "label_placement": "incumbent"
+      },
+      "reason_ids": []
+    },
+    {
+      "case_id": "hotel",
+      "condition": "D",
+      "status": "STOP_NO_SAFE_PATCH",
+      "before": {
+        "schema_version": "1.0.0",
+        "reading_measure": "bounded",
+        "touch_targets": "comfortable",
+        "type_rhythm": "reading",
+        "tracking": "natural",
+        "label_placement": "after-title"
+      },
+      "after": {
+        "schema_version": "1.0.0",
+        "reading_measure": "bounded",
+        "touch_targets": "comfortable",
+        "type_rhythm": "reading",
+        "tracking": "natural",
+        "label_placement": "after-title"
+      },
+      "reason_ids": []
+    }
+  ]
+}

@@ -1,0 +1,494 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "enum": [
+        "identity",
+        "about",
+        "locations",
+        "opening_hours",
+        "contact_channels",
+        "social_profiles",
+        "reputation",
+        "gallery",
+        "service_catalog",
+        "product_catalog",
+        "menu",
+        "product_variants",
+        "price_list",
+        "packages",
+        "rooms",
+        "programs",
+        "professional_profiles",
+        "trainer_profiles",
+        "portfolio",
+        "case_studies",
+        "reservation",
+        "appointment",
+        "quote_request",
+        "contact_request",
+        "purchase",
+        "order",
+        "delivery",
+        "pickup",
+        "membership",
+        "membership_signup",
+        "class_enrollment",
+        "ticketing",
+        "room_booking",
+        "visit_booking",
+        "service_request",
+        "class_schedule",
+        "events",
+        "availability_display",
+        "service_area",
+        "delivery_policy",
+        "visit_policy",
+        "payment_methods",
+        "amenities",
+        "accessibility_info",
+        "branches",
+        "faqs",
+        "documents"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "objective": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "semantic_module": {
+      "type": "string",
+      "enum": [
+        "identity",
+        "offering_collection",
+        "schedule",
+        "fact_collection",
+        "location_information",
+        "external_action",
+        "deferred_media"
+      ]
+    },
+    "selector": {
+      "type": "string",
+      "enum": [
+        "IDENTITY",
+        "OFFERINGS",
+        "FACTS",
+        "LOCATIONS",
+        "OPENING_HOURS",
+        "CONTACT",
+        "SERVICE_AREA",
+        "VISIT_POLICY",
+        "ACTION",
+        "DEFERRED"
+      ]
+    },
+    "offering_kinds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "menu_item",
+          "product",
+          "product_category",
+          "membership_plan",
+          "class_session",
+          "service",
+          "room",
+          "program",
+          "event",
+          "professional"
+        ]
+      }
+    },
+    "offering_fact_requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "kind"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "fact_kinds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "candidate_archetypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "food_hospitality",
+          "product_retail",
+          "appointment_service",
+          "membership_and_classes",
+          "lodging",
+          "field_service_and_quote",
+          "vehicle_service",
+          "professional_advisory",
+          "education_programs",
+          "events_and_entertainment",
+          "industrial_b2b",
+          "property_and_spaces",
+          "transport_and_logistics",
+          "regulated_services"
+        ]
+      }
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "identity",
+          "about",
+          "locations",
+          "opening_hours",
+          "contact_channels",
+          "social_profiles",
+          "reputation",
+          "gallery",
+          "service_catalog",
+          "product_catalog",
+          "menu",
+          "product_variants",
+          "price_list",
+          "packages",
+          "rooms",
+          "programs",
+          "professional_profiles",
+          "trainer_profiles",
+          "portfolio",
+          "case_studies",
+          "reservation",
+          "appointment",
+          "quote_request",
+          "contact_request",
+          "purchase",
+          "order",
+          "delivery",
+          "pickup",
+          "membership",
+          "membership_signup",
+          "class_enrollment",
+          "ticketing",
+          "room_booking",
+          "visit_booking",
+          "service_request",
+          "class_schedule",
+          "events",
+          "availability_display",
+          "service_area",
+          "delivery_policy",
+          "visit_policy",
+          "payment_methods",
+          "amenities",
+          "accessibility_info",
+          "branches",
+          "faqs",
+          "documents"
+        ]
+      }
+    },
+    "depends_on_any": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "identity",
+          "about",
+          "locations",
+          "opening_hours",
+          "contact_channels",
+          "social_profiles",
+          "reputation",
+          "gallery",
+          "service_catalog",
+          "product_catalog",
+          "menu",
+          "product_variants",
+          "price_list",
+          "packages",
+          "rooms",
+          "programs",
+          "professional_profiles",
+          "trainer_profiles",
+          "portfolio",
+          "case_studies",
+          "reservation",
+          "appointment",
+          "quote_request",
+          "contact_request",
+          "purchase",
+          "order",
+          "delivery",
+          "pickup",
+          "membership",
+          "membership_signup",
+          "class_enrollment",
+          "ticketing",
+          "room_booking",
+          "visit_booking",
+          "service_request",
+          "class_schedule",
+          "events",
+          "availability_display",
+          "service_area",
+          "delivery_policy",
+          "visit_policy",
+          "payment_methods",
+          "amenities",
+          "accessibility_info",
+          "branches",
+          "faqs",
+          "documents"
+        ]
+      }
+    },
+    "scope_policy": {
+      "type": "string",
+      "enum": [
+        "BUSINESS_ONLY",
+        "EXACT_SCOPE_WITH_GLOBAL_IDENTITY_DEPENDENCY"
+      ]
+    },
+    "levels": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "objective": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "expected_behavior": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "requirement_ids": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "specification": {
+            "type": "string",
+            "const": "SPECIFIED"
+          },
+          "implementation": {
+            "type": "string",
+            "enum": [
+              "LAB_INFORMATION_PRIMITIVE",
+              "EXTERNAL_LINK_SEMANTICS_ONLY",
+              "SPECIFICATION_ONLY"
+            ]
+          },
+          "verification": {
+            "type": "string",
+            "const": "NOT_VERIFIED_OPERATIONALLY"
+          },
+          "backend": {
+            "type": "string",
+            "const": "NOT_CONNECTED"
+          },
+          "acceptance_criteria": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "interaction_states": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "visitor_inputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "value_type": {
+                  "type": "string",
+                  "enum": [
+                    "IDENTIFIER",
+                    "DATE",
+                    "TIME",
+                    "POSITIVE_INTEGER",
+                    "TEXT",
+                    "ACKNOWLEDGEMENT"
+                  ]
+                },
+                "required_when": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "validation": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "purpose": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "id",
+                "label",
+                "value_type",
+                "required_when",
+                "validation",
+                "purpose"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "objective",
+          "expected_behavior",
+          "requirement_ids",
+          "specification",
+          "implementation",
+          "verification",
+          "backend",
+          "acceptance_criteria",
+          "interaction_states",
+          "visitor_inputs"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "semantic_status": {
+      "type": "string",
+      "enum": [
+        "AVAILABLE",
+        "DEFERRED"
+      ]
+    },
+    "component_path": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "semantic_test_reference": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "media_roles": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "DOCUMENTARY",
+          "ILLUSTRATIVE",
+          "ATMOSPHERIC"
+        ]
+      }
+    },
+    "future_notes": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "label",
+    "objective",
+    "semantic_module",
+    "selector",
+    "offering_kinds",
+    "offering_fact_requirements",
+    "fact_kinds",
+    "candidate_archetypes",
+    "depends_on",
+    "depends_on_any",
+    "scope_policy",
+    "levels",
+    "semantic_status",
+    "component_path",
+    "semantic_test_reference",
+    "media_roles",
+    "future_notes"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:CapabilityRequirementCardV1:1.0.0",
+  "title": "CapabilityRequirementCardV1",
+  "description": "B1 associated master catalogue/objective diagnostic; complete V1 registry, no live integrations or fabricated permissions."
+}

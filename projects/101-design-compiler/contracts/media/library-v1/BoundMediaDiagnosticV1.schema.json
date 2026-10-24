@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "B1_BOUND_MEDIA_DIAGNOSTIC"
+    },
+    "base_diagnostic_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "library_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "capability_id": {
+            "type": "string",
+            "enum": [
+              "identity",
+              "about",
+              "locations",
+              "opening_hours",
+              "contact_channels",
+              "social_profiles",
+              "reputation",
+              "gallery",
+              "service_catalog",
+              "product_catalog",
+              "menu",
+              "product_variants",
+              "price_list",
+              "packages",
+              "rooms",
+              "programs",
+              "professional_profiles",
+              "trainer_profiles",
+              "portfolio",
+              "case_studies",
+              "reservation",
+              "appointment",
+              "quote_request",
+              "contact_request",
+              "purchase",
+              "order",
+              "delivery",
+              "pickup",
+              "membership",
+              "membership_signup",
+              "class_enrollment",
+              "ticketing",
+              "room_booking",
+              "visit_booking",
+              "service_request",
+              "class_schedule",
+              "events",
+              "availability_display",
+              "service_area",
+              "delivery_policy",
+              "visit_policy",
+              "payment_methods",
+              "amenities",
+              "accessibility_info",
+              "branches",
+              "faqs",
+              "documents"
+            ]
+          },
+          "scope_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "level_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requirement_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "condition_active": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "SATISFIED",
+              "MISSING",
+              "RIGHTS_REVIEW_PENDING",
+              "NOT_REQUIRED_BY_CONDITION"
+            ]
+          },
+          "usage_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "codes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "capability_id",
+          "scope_id",
+          "level_id",
+          "requirement_id",
+          "condition_active",
+          "status",
+          "usage_ids",
+          "codes"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "operational_integrations": {
+      "type": "string",
+      "const": "NOT_CONNECTED"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "base_diagnostic_sha256",
+    "library_sha256",
+    "evaluated_at",
+    "entries",
+    "operational_integrations"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:BoundMediaDiagnosticV1:1.0.0",
+  "title": "BoundMediaDiagnosticV1",
+  "description": "B2 associated byte-pinned media library and reference corpus; semantic, source, scope and current-use verification required. No rights conferred by fixture flags or reference URLs."
+}

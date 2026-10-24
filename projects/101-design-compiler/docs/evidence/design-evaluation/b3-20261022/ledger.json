@@ -1,0 +1,550 @@
+{
+  "schema_version": "1.0.0",
+  "max_operations": 100,
+  "operations": [
+    {
+      "phase": "before",
+      "tool": "get_principles",
+      "input_sha256": "ee2428f8fc9a92d3698b09b51acd5921db723ffd4818a233e5f7b83f174fcdf7",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:33.222Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-0.json"
+    },
+    {
+      "phase": "before",
+      "tool": "get_pattern",
+      "input_sha256": "fdd0f024ef815ca8f9dc8972c826c04a5ae7dc1f721dcd102f490724ca73243f",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:33.269Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-1.json"
+    },
+    {
+      "phase": "before",
+      "tool": "impeccable.detect",
+      "input_sha256": "5d914c9dd3261984336faf8f433d42b84c7e35b92d41a031523d91a95dc3fae1",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:33.318Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-2.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_layout",
+      "input_sha256": "76c3a5dc05ebf59ac33de90596364e43b5320948a543d9f6103020f4a11f9fcd",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.189Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-3.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_typography",
+      "input_sha256": "e37d9ec95a53abe84764bdab02a679acfb52642ae38534581131f380a4d7b1a8",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.242Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-4.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_contrast",
+      "input_sha256": "722609463ea730e7ebee4fcc4bdcc940edc47a003c48220ee031ccf814372b60",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.307Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-5.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_tap_targets",
+      "input_sha256": "b06fb2edf2822e104a763b99d7d1083f5c928c4e55d55c5e1736a961659bf62b",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.374Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-6.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_layout",
+      "input_sha256": "2731e0e85b12a98e58f17a4b8f4f4a5600c8acf7f9b0e457caef5b91c0dd02dc",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.445Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-7.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_typography",
+      "input_sha256": "0f85dfbd34502af151a7591b499136ab871cd2950bf40d3034cf2205d70deac5",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.519Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-8.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_contrast",
+      "input_sha256": "7d3ed667f4c9bf014d9a1304af63fc0669281c0b7a74ecc0e0caaa288f96733c",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.586Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-9.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_tap_targets",
+      "input_sha256": "12d1d30356a068a3c46108e263f651932ba2d5d3fd71d1433167888ba51daae6",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.636Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-10.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_layout",
+      "input_sha256": "b808c77d83f32dfb127ca0615a0b2739b3b62c814ab0cc2f621bd11709249b95",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.707Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-11.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_typography",
+      "input_sha256": "0dc6b8226146343f9e04cc4cf5e17337505fbe57629f723f2a62f6c392c98e5c",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.785Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-12.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_contrast",
+      "input_sha256": "368628881b2f626736662c19ee911aaa28cfef9ba924702f1f3f2d44cea8a377",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.848Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-13.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_tap_targets",
+      "input_sha256": "99c34ba92a7eec4771312144700beb093a582762e26a3fa4c4ca3f3e8372db63",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.906Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-14.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_layout",
+      "input_sha256": "2c08f8fbeb29541ea25462b170fa72803316143403d567ee556b1fdebbb21fb4",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:37.959Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-15.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_typography",
+      "input_sha256": "515620d984ac0842723d59bdf52bba1faeb8e918b4326b27da1fb615d41c33a0",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.000Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-16.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_contrast",
+      "input_sha256": "6870c4f0b5e70feb7617c5d5876574f9911d5766f861822ff7dfdd311e2e67bc",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.066Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-17.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_tap_targets",
+      "input_sha256": "19b99ce930a2ee46e140ca5ae15d782104d7106ac263cfe0a67962ae7bb425fb",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.123Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-18.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_layout",
+      "input_sha256": "f4b89c8cbf1204e12fe7fb9783a182c8b2fa07948e99bb81b672dcf1f45bb072",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.198Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-19.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_typography",
+      "input_sha256": "a9d0821ff338906ad0b1aca11996da79d619d6cabad56df9ec13182723ffd7b7",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.271Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-20.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_contrast",
+      "input_sha256": "452c40e4d289df77855a363f62ace3041cb06de14709357a3b2a4e6880fbb5ef",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.337Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-21.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_tap_targets",
+      "input_sha256": "ec56ed2ddd4d6943171caeeb799f96a90d4fe0aa71e44d26ca35edd2736f0c06",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.396Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-22.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_layout",
+      "input_sha256": "b5b21635f58348a788b1e10307f7fa3f1b5c6735c69d75b7e8bf36e282aefcb9",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.460Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-23.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_typography",
+      "input_sha256": "e870903d1b3911d7bc96ae055dc1d9154ee5d09b2cc75065c4a18fe06a4591f3",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.523Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-24.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_contrast",
+      "input_sha256": "d74780c241f1ea54ce7d02420427026637622774bec64dbe96ef70ac569ca26a",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.589Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-25.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_tap_targets",
+      "input_sha256": "024d5d260d97672b8d1e61f004cd5cdf56e1320ffa0393ecce324355795f38b1",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.645Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-26.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_layout",
+      "input_sha256": "8964e34cd2b99e0b4a6e5567841516c97e506078c9dc5ea5103740478c9e516a",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.710Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-27.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_typography",
+      "input_sha256": "49834f8734295077a47419e2a33d49251c82444ee347b91c04f4f4c782f90ccd",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.774Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-28.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_contrast",
+      "input_sha256": "c1873a7e5456a3fce7c3674b15d3ef0f43c62a14238b4fd5a6b0f867cf2b5a8c",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.843Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-29.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_tap_targets",
+      "input_sha256": "bec1e0045a48b5e9db88af83ea9f89a0d56828e9bd4a4cc5904be96d85ef2d47",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.901Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-30.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_layout",
+      "input_sha256": "963b9dfdf745df3601ec308b789d74ee472d7f82bc57a4c73b704c80e1f87fd6",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:38.968Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-31.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_typography",
+      "input_sha256": "de1c68a6d27aa17eb248788365a4f87707b087a42996dfb54ed048e64a0ac467",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:39.035Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-32.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_contrast",
+      "input_sha256": "7f1e1369b046f8f735a2af00136b9c52d7d8effd484e737e33c2cc63be0edf28",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:39.106Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-33.json"
+    },
+    {
+      "phase": "before",
+      "tool": "audit_tap_targets",
+      "input_sha256": "885c6a0cfaf28a732e3d331f3ecccd34435a37319d674cdb5a87f82771cc107c",
+      "status": "OK",
+      "started_at": "2026-10-22T22:02:39.159Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/before/tool-34.json"
+    },
+    {
+      "phase": "after",
+      "tool": "impeccable.detect",
+      "input_sha256": "5d914c9dd3261984336faf8f433d42b84c7e35b92d41a031523d91a95dc3fae1",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:56.079Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-0.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_layout",
+      "input_sha256": "6370dbb734707d6be8101892260aa0589fe2f893ba3a446a452ff060c58f0909",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.052Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-1.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_typography",
+      "input_sha256": "1351e91ed1d872c4afd0ac7ecf36588616562bab638987d19e44d41123c032de",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.130Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-2.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_contrast",
+      "input_sha256": "34885184a890789e5638d5831bbd91ff1f0eba138ac5c48f19f3dbe64904a80a",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.188Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-3.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_tap_targets",
+      "input_sha256": "cd1574252297cd85a1526b5236571d837d24a4644f6fdb7acf287e3556a7b877",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.250Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-4.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_layout",
+      "input_sha256": "d5539ff4ded883f5a663a67577e9f74b4b5dc47e69a9f3f1ba0038f454798368",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.317Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-5.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_typography",
+      "input_sha256": "257e8520bc47e0d50a74fe9304c1526283ff260d27f8acd787309f9ebb50f0d1",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.389Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-6.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_contrast",
+      "input_sha256": "8b236562a7b4426b0e01a1aac7efb8f9b84fa05933fcb78bd93216229e4c4a65",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.451Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-7.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_tap_targets",
+      "input_sha256": "188f62011c56078bdefff5b3c34d47edad9396c66d0ee4469f6eb419372d4a57",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.511Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-8.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_layout",
+      "input_sha256": "2af5640ea1ecbc0b7192eb4fa610b806eaf1638a35299248faed54b46ef1679e",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.576Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-9.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_typography",
+      "input_sha256": "7c030d6060dfb7ea61b6d4f075c278f6f4cb4a35d0a54124a08ce8f08d73d13a",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.642Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-10.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_contrast",
+      "input_sha256": "368628881b2f626736662c19ee911aaa28cfef9ba924702f1f3f2d44cea8a377",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.701Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-11.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_tap_targets",
+      "input_sha256": "5f110d6cbf3378f0a62d749da315662e359cd759024f2c80d3bc813a49e65bf4",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.760Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-12.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_layout",
+      "input_sha256": "5b446ba8a8b9ac7a7f3c5c51f23fbe73ba9ecac2319b17cba485216b3451d21d",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.810Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-13.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_typography",
+      "input_sha256": "b1f526810b0efd220352f64f3d8f0df12f1935f5c54a0ce809ea94ea310bf2f0",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.857Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-14.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_contrast",
+      "input_sha256": "8f6c938367334a6e8d0014dad08b1e61f231343940b47f132ebf6d6150cf10b5",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.903Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-15.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_tap_targets",
+      "input_sha256": "ae9116a6cb70741a6665176c571421b7c6dd6cc7fe7d4fe9e76cb358c48f7d5f",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:58.952Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-16.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_layout",
+      "input_sha256": "c021b6564fbf85d3a2eb69fa1f69f99854d1a5468242ded21d4f95c88f1f39c4",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.000Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-17.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_typography",
+      "input_sha256": "342538314ea36e4c63b0a372aa289334415c40c4a0b93e86aa84258641ebeffb",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.073Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-18.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_contrast",
+      "input_sha256": "88aaa4c73f042a35cb759295b6f3006c3f111456724dd054cfea518d4dac638d",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.129Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-19.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_tap_targets",
+      "input_sha256": "2abdcadfcb51dff1cf6d714136c7574b185095c0d4c80fda86dcad8416e4a460",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.184Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-20.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_layout",
+      "input_sha256": "474e95feb205c670a8cd8576d0cbd25e9fe08031316a69176e2d0a3d5fbb296b",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.238Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-21.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_typography",
+      "input_sha256": "5d5622bfadf3ccc2cbcfea54c1207e39ff5523dc7c04ee6e58b25fd8733add35",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.293Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-22.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_contrast",
+      "input_sha256": "e166bb66eac0f37759dad8edfcfa3bd6c1b5cb5623fdfac76d7699263a1c6f57",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.350Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-23.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_tap_targets",
+      "input_sha256": "2a844fb4a5317abc1f4d404618bce93393f0e28d6aba0b0e5f07ae6d2d171672",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.412Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-24.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_layout",
+      "input_sha256": "c27f992e108b4e4e3579cfc645ac2336a393f579c84b2dab8cc15549135f678f",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.466Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-25.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_typography",
+      "input_sha256": "286b21378f4fc781d96b6baaf53c57bd82a71698696c56bfd9252fc6f8a58c60",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.525Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-26.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_contrast",
+      "input_sha256": "c1873a7e5456a3fce7c3674b15d3ef0f43c62a14238b4fd5a6b0f867cf2b5a8c",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.589Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-27.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_tap_targets",
+      "input_sha256": "df10631f956a503979ab1b0835407b063eff93d2ac8231a0a446feb1e5ff8622",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.649Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-28.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_layout",
+      "input_sha256": "68bac1cca3e7477bd9afbd66248db09b85dbb3e4f18c9c8d91b4e0c7495ff252",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.706Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-29.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_typography",
+      "input_sha256": "a0daa2c9bda143b83ec2ac64202210669a2f5300958f79f05f19cf75d85610ea",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.773Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-30.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_contrast",
+      "input_sha256": "712feb87f57f84d709174162042ea70ab34df5ddea6684d8995c5ccfbb3ea27d",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.833Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-31.json"
+    },
+    {
+      "phase": "after",
+      "tool": "audit_tap_targets",
+      "input_sha256": "6e664bf00878bdcdcef8171fd9537f4fd8ba3d06b4417d87999d5e527551be95",
+      "status": "OK",
+      "started_at": "2026-10-22T22:07:59.890Z",
+      "path": "docs/evidence/design-evaluation/b3-20261022/after/tool-32.json"
+    }
+  ]
+}

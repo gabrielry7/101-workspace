@@ -1,0 +1,895 @@
+{
+  "tool": "audit_typography",
+  "version": "2.6.0",
+  "started_at": "2026-10-22T22:07:58.152Z",
+  "wall_seconds": 0.005890999999999621,
+  "status": "OK",
+  "input": {
+    "nodes": [
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 19.2,
+        "selector": "html>body:nth-of-type(1)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "Saltar al contenido"
+      },
+      {
+        "fontPx": 32,
+        "fontWeight": 400,
+        "lineHeightPx": 32,
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "La Mesa"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "Carta"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(2)",
+        "tag": "a",
+        "text": "Reservas · demo"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "tag": "summary",
+        "text": "Explorar ＋"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#experience-main>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Cocina & sobremesa"
+      },
+      {
+        "fontPx": 144,
+        "fontWeight": 400,
+        "lineHeightPx": 135.36,
+        "selector": "#experience-main>div:nth-of-type(1)>h1:nth-of-type(1)",
+        "tag": "h1",
+        "text": "La Mesa"
+      },
+      {
+        "fontPx": 34.56,
+        "fontWeight": 400,
+        "lineHeightPx": 39.744,
+        "selector": "#experience-main>div:nth-of-type(1)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Cocina para quedarse un rato."
+      },
+      {
+        "fontPx": 15.2,
+        "fontWeight": 400,
+        "lineHeightPx": 22.8,
+        "selector": "#experience-main>div:nth-of-type(3)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "Explorar la carta ↗"
+      },
+      {
+        "fontPx": 15.2,
+        "fontWeight": 400,
+        "lineHeightPx": 22.8,
+        "selector": "#experience-main>div:nth-of-type(3)>a:nth-of-type(2)",
+        "tag": "a",
+        "text": "Encontrarnos en la mesa ↗"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Una idea sencilla"
+      },
+      {
+        "fontPx": 83.52,
+        "fontWeight": 400,
+        "lineHeightPx": 86.0256,
+        "selector": "#overview-title",
+        "tag": "h2",
+        "text": "El mejor plan es quedarse."
+      },
+      {
+        "fontPx": 16.8,
+        "fontWeight": 400,
+        "lineHeightPx": 26.88,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Algo al centro. Una conversación que encuentra su ritmo. Un último bocado y un rato más. Así imagina"
+      },
+      {
+        "fontPx": 15.2,
+        "fontWeight": 400,
+        "lineHeightPx": 22.8,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "Nuestra idea ↗"
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 24,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "01Qué te apetece.La carta, plato a plato. Ingredientes y detalles de muestra.↗"
+      },
+      {
+        "fontPx": 38.88,
+        "fontWeight": 400,
+        "lineHeightPx": 43.5456,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(1)>div:nth-of-type(1)>h3:nth-of-type(1)",
+        "tag": "h3",
+        "text": "Qué te apetece."
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 23.04,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "La carta, plato a plato. Ingredientes y detalles de muestra."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 24,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(2)",
+        "tag": "a",
+        "text": "02Ven con tiempo.Lugar, horarios y cómo preparar la visita al escenario.↗"
+      },
+      {
+        "fontPx": 38.88,
+        "fontWeight": 400,
+        "lineHeightPx": 43.5456,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(2)>div:nth-of-type(1)>h3:nth-of-type(1)",
+        "tag": "h3",
+        "text": "Ven con tiempo."
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 23.04,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(2)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Lugar, horarios y cómo preparar la visita al escenario."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 24,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(3)",
+        "tag": "a",
+        "text": "03Haz sitio.Explora una reserva de demostración, también para ocasiones especiales.↗"
+      },
+      {
+        "fontPx": 38.88,
+        "fontWeight": 400,
+        "lineHeightPx": 43.5456,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(3)>div:nth-of-type(1)>h3:nth-of-type(1)",
+        "tag": "h3",
+        "text": "Haz sitio."
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 23.04,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(3)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Explora una reserva de demostración, también para ocasiones especiales."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 24,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(4)",
+        "tag": "a",
+        "text": "04Para llevar el plan.Construye un pedido de ejemplo. Sin envío ni cobro.↗"
+      },
+      {
+        "fontPx": 38.88,
+        "fontWeight": 400,
+        "lineHeightPx": 43.5456,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(4)>div:nth-of-type(1)>h3:nth-of-type(1)",
+        "tag": "h3",
+        "text": "Para llevar el plan."
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 23.04,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(4)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Construye un pedido de ejemplo. Sin envío ni cobro."
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>header:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "El diario de la mesa / 01"
+      },
+      {
+        "fontPx": 80.64,
+        "fontWeight": 400,
+        "lineHeightPx": 82.2528,
+        "selector": "#journal-title",
+        "tag": "h2",
+        "text": "La vidaentre platos."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 25.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>header:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Pequeños rituales. Grandes ratos. Una colección para abrir el apetito y alargar la conversación."
+      },
+      {
+        "fontPx": 15.2,
+        "fontWeight": 400,
+        "lineHeightPx": 22.8,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>header:nth-of-type(1)>div:nth-of-type(2)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "Abrir el diario ↗"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Compartir"
+      },
+      {
+        "fontPx": 31.68,
+        "fontWeight": 400,
+        "lineHeightPx": 35.4816,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(2)>h3:nth-of-type(1)",
+        "tag": "h3",
+        "text": "Al centro de la mesa."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 25.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "La primera porción siempre abre la conversación."
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(2)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "tag": "summary",
+        "text": "Leer el relato ＋"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(2)>div:nth-of-type(2)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Rituales"
+      },
+      {
+        "fontPx": 31.68,
+        "fontWeight": 400,
+        "lineHeightPx": 35.4816,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(2)>div:nth-of-type(2)>h3:nth-of-type(1)",
+        "tag": "h3",
+        "text": "El ritual del mediodía."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 25.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(2)>div:nth-of-type(2)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Una pausa para saborear el momento."
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(2)>div:nth-of-type(2)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "tag": "summary",
+        "text": "Leer el relato ＋"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(3)>div:nth-of-type(2)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Contrastes"
+      },
+      {
+        "fontPx": 31.68,
+        "fontWeight": 400,
+        "lineHeightPx": 35.4816,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(3)>div:nth-of-type(2)>h3:nth-of-type(1)",
+        "tag": "h3",
+        "text": "Un poco de color."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 25.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(3)>div:nth-of-type(2)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Contrastes, texturas y algo fresco."
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(3)>div:nth-of-type(2)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "tag": "summary",
+        "text": "Leer el relato ＋"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(4)>div:nth-of-type(2)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Sobremesa"
+      },
+      {
+        "fontPx": 31.68,
+        "fontWeight": 400,
+        "lineHeightPx": 35.4816,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(4)>div:nth-of-type(2)>h3:nth-of-type(1)",
+        "tag": "h3",
+        "text": "Cinco minutos más."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 25.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(4)>div:nth-of-type(2)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Siempre hay sitio para alargar la sobremesa."
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(4)>div:nth-of-type(2)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "tag": "summary",
+        "text": "Leer el relato ＋"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Selección editorial de muestra con imágenes ilustrativas. No son publicaciones de Instagram ni conte"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>header:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Alrededor de la mesa / 02"
+      },
+      {
+        "fontPx": 80.64,
+        "fontWeight": 400,
+        "lineHeightPx": 82.2528,
+        "selector": "#reviews-title",
+        "tag": "h2",
+        "text": "Lo quese queda."
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 25.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>header:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Historias de un buen rato."
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>header:nth-of-type(1)>div:nth-of-type(2)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes."
+      },
+      {
+        "fontPx": 15.2,
+        "fontWeight": 400,
+        "lineHeightPx": 22.8,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>header:nth-of-type(1)>div:nth-of-type(2)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "Ver opiniones de muestra ↗"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>div:nth-of-type(1)>figure:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Personaje de muestra 1"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>div:nth-of-type(1)>figure:nth-of-type(1)>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Opinión ficticia"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>div:nth-of-type(1)>figure:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Personaje de muestra 2"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>div:nth-of-type(1)>figure:nth-of-type(2)>div:nth-of-type(1)>div:nth-of-type(1)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Opinión ficticia"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Seguimos la conversación / 03"
+      },
+      {
+        "fontPx": 86.4,
+        "fontWeight": 400,
+        "lineHeightPx": 88.128,
+        "selector": "#contact-title",
+        "tag": "h2",
+        "text": "¿Nos vemosen la mesa?"
+      },
+      {
+        "fontPx": 16,
+        "fontWeight": 400,
+        "lineHeightPx": 25.6,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(1)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Una pregunta, una celebración o simplemente ganas de venir."
+      },
+      {
+        "fontPx": 32,
+        "fontWeight": 400,
+        "lineHeightPx": 48,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "Hablemos ↗"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 21,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(2)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Fuera de la mesa"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(2)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Redes de ejemplo · sin perfiles reales vinculados. No se envían consultas desde esta demostración."
+      },
+      {
+        "fontPx": 15.2,
+        "fontWeight": 400,
+        "lineHeightPx": 22.8,
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(2)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "La visita ↗"
+      },
+      {
+        "fontPx": 100.8,
+        "fontWeight": 400,
+        "lineHeightPx": 100.8,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "La Mesa"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "tag": "a",
+        "text": "Carta"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(2)",
+        "tag": "a",
+        "text": "Reservas"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(3)",
+        "tag": "a",
+        "text": "Visita"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(4)",
+        "tag": "a",
+        "text": "Nuestra idea"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(5)",
+        "tag": "a",
+        "text": "Preguntas"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(6)",
+        "tag": "a",
+        "text": "Contacto y redes"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(7)",
+        "tag": "a",
+        "text": "Opiniones"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(8)",
+        "tag": "a",
+        "text": "Créditos"
+      },
+      {
+        "fontPx": 14.4,
+        "fontWeight": 400,
+        "lineHeightPx": 21.6,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(9)",
+        "tag": "a",
+        "text": "Comparar propuestas"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>p:nth-of-type(1)",
+        "tag": "p",
+        "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos re"
+      },
+      {
+        "fontPx": 14,
+        "fontWeight": 400,
+        "lineHeightPx": 22.4,
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>p:nth-of-type(2)",
+        "tag": "p",
+        "text": "Pixabay y sus autores no respaldan este escenario."
+      }
+    ]
+  },
+  "output": {
+    "scale": {
+      "sizes": [
+        14,
+        14.4,
+        15.2,
+        16,
+        16.8,
+        31.68,
+        32,
+        34.56,
+        38.88,
+        80.64,
+        83.52,
+        86.4,
+        100.8,
+        144
+      ],
+      "ratios": [
+        1.03,
+        1.06,
+        1.05,
+        1.05,
+        1.89,
+        1.01,
+        1.08,
+        1.13,
+        2.07,
+        1.04,
+        1.03,
+        1.17,
+        1.43
+      ],
+      "detected_ratio": 1.125,
+      "off_scale_sizes": [
+        16.8,
+        86.4,
+        100.8,
+        144
+      ]
+    },
+    "line_height": {
+      "dominant_ratio": 1.5,
+      "outliers": [
+        {
+          "selector": "html>body:nth-of-type(1)>a:nth-of-type(1)",
+          "ratio": 1.2,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>a:nth-of-type(1)",
+          "ratio": 1,
+          "expected": 1.5
+        },
+        {
+          "selector": "#experience-main>div:nth-of-type(1)>h1:nth-of-type(1)",
+          "ratio": 0.94,
+          "expected": 1.5
+        },
+        {
+          "selector": "#experience-main>div:nth-of-type(1)>p:nth-of-type(2)",
+          "ratio": 1.15,
+          "expected": 1.5
+        },
+        {
+          "selector": "#overview-title",
+          "ratio": 1.03,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(1)>div:nth-of-type(1)>h3:nth-of-type(1)",
+          "ratio": 1.12,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(2)>div:nth-of-type(1)>h3:nth-of-type(1)",
+          "ratio": 1.12,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(3)>div:nth-of-type(1)>h3:nth-of-type(1)",
+          "ratio": 1.12,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(4)>div:nth-of-type(1)>h3:nth-of-type(1)",
+          "ratio": 1.12,
+          "expected": 1.5
+        },
+        {
+          "selector": "#journal-title",
+          "ratio": 1.02,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(2)>h3:nth-of-type(1)",
+          "ratio": 1.12,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(2)>div:nth-of-type(2)>h3:nth-of-type(1)",
+          "ratio": 1.12,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(3)>div:nth-of-type(2)>h3:nth-of-type(1)",
+          "ratio": 1.12,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(4)>div:nth-of-type(2)>h3:nth-of-type(1)",
+          "ratio": 1.12,
+          "expected": 1.5
+        },
+        {
+          "selector": "#reviews-title",
+          "ratio": 1.02,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contact-title",
+          "ratio": 1.02,
+          "expected": 1.5
+        },
+        {
+          "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>a:nth-of-type(1)",
+          "ratio": 1,
+          "expected": 1.5
+        }
+      ]
+    },
+    "weight_ladder": {
+      "weights": [
+        400
+      ],
+      "issues": []
+    },
+    "nodes_analyzed": 75,
+    "findings": [
+      {
+        "rule": "typography/off-scale-size",
+        "severity": "warning",
+        "message": "Font size 16.8px is not on the detected modular scale (ratio ~1.125).",
+        "fix": "Align this size to the nearest scale step derived from the base size with ratio 1.125."
+      },
+      {
+        "rule": "typography/off-scale-size",
+        "severity": "warning",
+        "message": "Font size 86.4px is not on the detected modular scale (ratio ~1.125).",
+        "fix": "Align this size to the nearest scale step derived from the base size with ratio 1.125."
+      },
+      {
+        "rule": "typography/off-scale-size",
+        "severity": "warning",
+        "message": "Font size 100.8px is not on the detected modular scale (ratio ~1.125).",
+        "fix": "Align this size to the nearest scale step derived from the base size with ratio 1.125."
+      },
+      {
+        "rule": "typography/off-scale-size",
+        "severity": "warning",
+        "message": "Font size 144px is not on the detected modular scale (ratio ~1.125).",
+        "fix": "Align this size to the nearest scale step derived from the base size with ratio 1.125."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "html>body:nth-of-type(1)>a:nth-of-type(1)",
+        "message": "Line-height ratio 1.2 at \"html>body:nth-of-type(1)>a:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 24px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>a:nth-of-type(1)",
+        "message": "Line-height ratio 1 at \"#contenido>div:nth-of-type(1)>header:nth-of-type(1)>a:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 48px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#experience-main>div:nth-of-type(1)>h1:nth-of-type(1)",
+        "message": "Line-height ratio 0.94 at \"#experience-main>div:nth-of-type(1)>h1:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 216px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#experience-main>div:nth-of-type(1)>p:nth-of-type(2)",
+        "message": "Line-height ratio 1.15 at \"#experience-main>div:nth-of-type(1)>p:nth-of-type(2)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 51.84px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#overview-title",
+        "message": "Line-height ratio 1.03 at \"#overview-title\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 125.28px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(1)>div:nth-of-type(1)>h3:nth-of-type(1)",
+        "message": "Line-height ratio 1.12 at \"#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(1)>div:nth-of-type(1)>h3:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 58.32px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(2)>div:nth-of-type(1)>h3:nth-of-type(1)",
+        "message": "Line-height ratio 1.12 at \"#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(2)>div:nth-of-type(1)>h3:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 58.32px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(3)>div:nth-of-type(1)>h3:nth-of-type(1)",
+        "message": "Line-height ratio 1.12 at \"#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(3)>div:nth-of-type(1)>h3:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 58.32px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(4)>div:nth-of-type(1)>h3:nth-of-type(1)",
+        "message": "Line-height ratio 1.12 at \"#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(4)>div:nth-of-type(1)>h3:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 58.32px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#journal-title",
+        "message": "Line-height ratio 1.02 at \"#journal-title\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 120.96px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(2)>h3:nth-of-type(1)",
+        "message": "Line-height ratio 1.12 at \"#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(2)>h3:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 47.52px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(2)>div:nth-of-type(2)>h3:nth-of-type(1)",
+        "message": "Line-height ratio 1.12 at \"#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(2)>div:nth-of-type(2)>h3:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 47.52px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(3)>div:nth-of-type(2)>h3:nth-of-type(1)",
+        "message": "Line-height ratio 1.12 at \"#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(3)>div:nth-of-type(2)>h3:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 47.52px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(4)>div:nth-of-type(2)>h3:nth-of-type(1)",
+        "message": "Line-height ratio 1.12 at \"#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(4)>div:nth-of-type(2)>h3:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 47.52px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#reviews-title",
+        "message": "Line-height ratio 1.02 at \"#reviews-title\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 120.96px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contact-title",
+        "message": "Line-height ratio 1.02 at \"#contact-title\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 129.6px (ratio 1.5) to match the dominant body rhythm."
+      },
+      {
+        "rule": "typography/line-height-outlier",
+        "severity": "warning",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>a:nth-of-type(1)",
+        "message": "Line-height ratio 1 at \"#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>a:nth-of-type(1)\" differs from the dominant ratio 1.5 by more than 0.15.",
+        "fix": "Set line-height to 151.2px (ratio 1.5) to match the dominant body rhythm."
+      }
+    ]
+  }
+}

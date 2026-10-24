@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B0_LOCAL_RUN_JOURNAL",
+  "run_id": "b3-experience-extra-01",
+  "created_at": "2026-10-16T17:55:03.557Z",
+  "steps": [
+    {
+      "id": "remux",
+      "started_at": "2026-10-16T17:55:03.562Z",
+      "finished_at": "2026-10-16T17:55:03.860Z",
+      "wall_seconds": 0.29780070000000003,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/experience-extra-01/remux.txt",
+      "log_sha256": "46d41c64ab5c8c7069ef737ed514437b772d318fed633a83b87d6d12898f9a59"
+    },
+    {
+      "id": "experience",
+      "started_at": "2026-10-16T17:55:03.864Z",
+      "finished_at": "2026-10-16T17:55:05.568Z",
+      "wall_seconds": 1.7035729999999998,
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "docs/evidence/corrections/b3/experience-extra-01/experience.txt",
+      "log_sha256": "2d353bcabe9f7d0b8a96b69b1c00c979a6349a86ae7198e5472b560f063761c1"
+    }
+  ],
+  "metering": {
+    "machine_time": "MEASURED_WALL_SECONDS",
+    "human_work_seconds": null,
+    "session_tokens": null,
+    "session_cost": null,
+    "total_cost": null,
+    "currency": null,
+    "provider_operations": "NOT_INVOKED_BY_THIS_RECIPE",
+    "human_approval": "NOT_COLLECTED"
+  }
+}

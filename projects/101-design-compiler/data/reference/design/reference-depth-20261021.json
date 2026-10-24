@@ -1,0 +1,770 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "B3_REFERENCE_FEATURE_RESEARCH",
+  "evaluated_date": "2026-10-21",
+  "authority": "ASSISTANT_OBSERVATION_NOT_USER_VOTE",
+  "prior_research_sha256": "d92ae3e94755072f73a4782f4a49f68296302b32d679f2240bc36855b0c6e780",
+  "observations_path": "docs/evidence/corrections/b3/reference-depth-20261021/observations.json",
+  "observations_sha256": "3ba647cf586828fa9f2e2f5dfbdec47157b5d79fdf79feaaa3085f2fc21d0a6a",
+  "asset_reuse": "NOT_AUTHORIZED",
+  "coverage": [
+    {
+      "id": "reference-01",
+      "url": "https://osiprestaurant.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-02",
+      "url": "https://centralrestaurante.com.pe/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-03",
+      "url": "https://www.asadoretxebarri.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "Algunos textos prácticos se ven tenues. No se enviaron formularios ni se reservaron mesas."
+    },
+    {
+      "id": "reference-04",
+      "url": "https://kolrestaurant.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-05",
+      "url": "https://aira.se/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "Los dos vídeos del DOM estaban pausados con tiempo cero. No se confirma el montaje que te gustó ni se atribuye el desenfoque a una elección artística final."
+    },
+    {
+      "id": "reference-06",
+      "url": "https://luca.restaurant/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-07",
+      "url": "https://www.padella.co/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-08",
+      "url": "https://noma.dk/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-09",
+      "url": "https://www.restaurangang.se/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "Se inspeccionó la entrada. El iframe de reservas no se operó y no se evaluaron todas las páginas interiores."
+    },
+    {
+      "id": "reference-10",
+      "url": "https://www.kadeau.dk/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "No se recorrieron los interiores de cada sede. La captura no permite afirmar que el fondo difuso sea su calidad definitiva ni que se hayan revisado todas las funciones."
+    },
+    {
+      "id": "reference-11",
+      "url": "https://milcentro.pe/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "No se verificaron los datos comerciales del sitio como fuente para nuestros fixtures ni se abrieron los flujos de reservas."
+    },
+    {
+      "id": "reference-12",
+      "url": "https://www.aponiente.com/menu-aponiente-2026/",
+      "scope": "SPECIFIC_PAGE_ONLY",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-13",
+      "url": "https://khufus.com/",
+      "scope": "STORYTELLING_ONLY",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-14",
+      "url": "https://www.heckfieldplace.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-15",
+      "url": "https://framacph.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-16",
+      "url": "https://www.dinesen.com/en",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "La primera pasada estuvo tapada por consentimiento; se cerró y se revisó la entrada limpia. La captura larga falló y el vídeo expuesto seguía pausado: no se certifica el montaje ni la calidad de todos los vídeos."
+    },
+    {
+      "id": "reference-17",
+      "url": "https://lunecroissanterie.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-18",
+      "url": "https://normcph.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "Falló la captura larga y algunas imágenes inferiores seguían diferidas. No se midió contraste suficiente para certificar el texto sobre cada fotograma ni se recorrió todo el portfolio."
+    },
+    {
+      "id": "reference-19",
+      "url": "https://themodernhouse.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "El consentimiento cubría parte del listado; no se enviaron alertas ni se operaron inmuebles. El vídeo observado era de 640 por 360, por lo que no se presenta como prueba de máxima calidad técnica."
+    },
+    {
+      "id": "reference-20",
+      "url": "https://www.polene-paris.com/",
+      "scope": "GLOBAL_REPORTED",
+      "inspection": "HISTORICAL_ONLY",
+      "limits": "Las primeras tomas de escritorio no correspondían al tamaño; se recuperó una captura de escritorio verificable. El prompt regional siguió presente. No se inspeccionó toda la tienda ni se ejecutó ningún WebMCP comercial."
+    },
+    {
+      "id": "reference-21",
+      "url": "https://singervehicledesign.com/",
+      "scope": "DROPDOWN_ONLY",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Entrada, tramos de scroll o navegación indicados en observations.json; no auditoría exhaustiva. Cargas/overlays pueden limitar estados. Se mantiene el alcance original."
+    },
+    {
+      "id": "reference-22",
+      "url": "https://pizza4ps.com/kh/",
+      "scope": "NEW_REFERENCE_NO_VOTE",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Home desktop/móvil y carta observadas; no flujo operativo, reserva ni auditoría completa de todas las sedes."
+    },
+    {
+      "id": "reference-23",
+      "url": "https://www.artek.fi/en/",
+      "scope": "NEW_REFERENCE_NO_VOTE",
+      "inspection": "FRESH_WITH_LIMITS",
+      "limits": "Home desktop/móvil, búsqueda/menú y Stool 60 con desplegable observados; no compra, login, descarga de catálogo ni auditoría exhaustiva."
+    }
+  ],
+  "features": [
+    {
+      "id": "entry",
+      "references": [
+        "reference-01",
+        "reference-03",
+        "reference-05",
+        "reference-09",
+        "reference-11",
+        "reference-22"
+      ],
+      "observation": "Entradas con una escena dominante y acciones contenidas; no un catálogo de cajas.",
+      "gap": "03/04 repetían un titular y una franja de vídeo.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "GalleryStage / StudioIndex",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-entry.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "rhythm",
+      "references": [
+        "reference-02",
+        "reference-06",
+        "reference-08",
+        "reference-12",
+        "reference-14",
+        "reference-23"
+      ],
+      "observation": "La escala y posición de imágenes/texto cambian entre capítulos; hay ejes comunes.",
+      "gap": "La galería uniforme dejaba un recorrido plano.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "Longform / ModularIndex",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-visible-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/heckfield-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/aponiente-visible-composition.jpg"
+      ]
+    },
+    {
+      "id": "alignment",
+      "references": [
+        "reference-02",
+        "reference-12",
+        "reference-18",
+        "reference-23"
+      ],
+      "observation": "Las asimetrías se apoyan en columnas y márgenes constantes; no en desplazar todo por igual.",
+      "gap": "Faltaban relaciones 8:3, 5:4, 4:6 y rail de lectura.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "12-column editorial grid",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-stories.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/central-editorial.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "palette",
+      "references": [
+        "reference-04",
+        "reference-16",
+        "reference-17",
+        "reference-19",
+        "reference-23"
+      ],
+      "observation": "Fondos sobrios permiten que los medios dirijan la gama; el contraste tipográfico sostiene identidad.",
+      "gap": "Burdeos/papel y cobalto/mantequilla fueron rechazados.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "Graphite / NeutralAccent",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-visible-top.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "navigation",
+      "references": [
+        "reference-01",
+        "reference-21",
+        "reference-23"
+      ],
+      "observation": "Menús agrupan destinos y conservan un cierre explícito; los accesos principales permanecen separados.",
+      "gap": "Sólo cinco enlaces en el header y el resto en el pie.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "ExperienceNavigation",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/osip-navigation.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/singer-menu-only.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-mobile-navigation.jpg"
+      ]
+    },
+    {
+      "id": "page-hierarchy",
+      "references": [
+        "reference-07",
+        "reference-15",
+        "reference-22",
+        "reference-23"
+      ],
+      "observation": "Carta, sede, producto, historia y contacto tienen recorridos diferenciados.",
+      "gap": "Las once rutas ya existían; faltaba exponer su jerarquía.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "RouteDirectory / breadcrumbs",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-menu-loaded.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/padella-branch.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-product-detail.jpg"
+      ]
+    },
+    {
+      "id": "catalogue",
+      "references": [
+        "reference-07",
+        "reference-22",
+        "reference-23"
+      ],
+      "observation": "Catálogos agrupan ofertas y llevan la información práctica junto a cada pieza.",
+      "gap": "Búsqueda, categorías, precio y fotos ya estaban en la carta.",
+      "disposition": "ALREADY_PRESENT",
+      "operator": "ContextualModule",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-menu-loaded.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/padella-menu-clear.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-product-detail.jpg"
+      ]
+    },
+    {
+      "id": "details",
+      "references": [
+        "reference-23"
+      ],
+      "observation": "Las fichas separan contexto de información técnica desplegable.",
+      "gap": "Ingredientes/alérgenos/calorías ya tenían disclosure; no era una ficha comercial independiente.",
+      "disposition": "ALREADY_PRESENT",
+      "operator": "dish-detail",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-product-data.jpg"
+      ]
+    },
+    {
+      "id": "editorial",
+      "references": [
+        "reference-06",
+        "reference-08",
+        "reference-15",
+        "reference-22",
+        "reference-23"
+      ],
+      "observation": "Un titular editorial conduce a lectura, no termina en una tarjeta sin destino.",
+      "gap": "El diario sólo mostraba cuatro fotos y frases.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "journal-reading / journal categories",
+      "required_data": [
+        "Texto sintético explícito, separado de hechos"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-product-detail.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/frama-visible-products.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-library.jpg"
+      ]
+    },
+    {
+      "id": "visit",
+      "references": [
+        "reference-01",
+        "reference-03",
+        "reference-07",
+        "reference-14"
+      ],
+      "observation": "Información antes de visitar: lugar, horarios, acceso, condiciones y preguntas.",
+      "gap": "La visita carecía de continuidad hacia preparación y dudas.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "visit-preparation",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/padella-branch.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/osip-entered.jpg"
+      ]
+    },
+    {
+      "id": "groups",
+      "references": [
+        "reference-01",
+        "reference-04",
+        "reference-06",
+        "reference-07"
+      ],
+      "observation": "Grupos y celebraciones se presentan con condiciones y contacto específicos.",
+      "gap": "Había ocasión/personas demo pero ninguna explicación del alcance para grupos.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "groups-preview",
+      "required_data": [
+        "Para operación: aforo, espacios, condiciones y responsable"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/kol-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/padella-locations.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/luca-visible-editorial.jpg"
+      ]
+    },
+    {
+      "id": "mobile",
+      "references": [
+        "reference-02",
+        "reference-08",
+        "reference-12",
+        "reference-14",
+        "reference-23"
+      ],
+      "observation": "La composición móvil reorganiza jerarquía, navegación y secuencia; no sólo encoge columnas.",
+      "gap": "Las propuestas artísticas escalaban el mismo patrón.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "responsive Longform / ModularIndex",
+      "required_data": [],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-mobile-entry.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-mobile-navigation.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "motion",
+      "references": [
+        "reference-05",
+        "reference-08",
+        "reference-13",
+        "reference-20",
+        "reference-22"
+      ],
+      "observation": "El vídeo crea atmósfera y las transiciones acompasan capítulos.",
+      "gap": "Autoplay ya existe; falta transición discreta entre secciones sin ocultar contenido.",
+      "disposition": "IMPLEMENT_SHARED",
+      "operator": "nonblocking reveal / reduced motion",
+      "required_data": [
+        "Montaje nuevo requiere medios y usos revisados"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-entry.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/khufus-story-entered.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "reviews",
+      "references": [
+        "reference-13"
+      ],
+      "observation": "Reconocimiento externo no equivale a testimonio propio; su identidad y fuente importan.",
+      "gap": "Ya existen opiniones ficticias con aviso; no hay reseñas auténticas integradas.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Reseñas autorizadas",
+        "Identidad y fuente",
+        "Consentimiento y reglas del proveedor"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/khufus-story-entered.jpg"
+      ]
+    },
+    {
+      "id": "social",
+      "references": [
+        "reference-06",
+        "reference-14",
+        "reference-15",
+        "reference-22",
+        "reference-23"
+      ],
+      "observation": "Redes y novedades reales remiten a cuentas/publicaciones identificables.",
+      "gap": "Los placeholders no pueden convertirse en un feed real por estética.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Cuenta del negocio",
+        "Permiso API/embebido",
+        "Derechos por publicación",
+        "Fechas y enlaces válidos"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-library.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-search-overlay.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/luca-visible-editorial.jpg"
+      ]
+    },
+    {
+      "id": "branches",
+      "references": [
+        "reference-07",
+        "reference-10",
+        "reference-17",
+        "reference-22"
+      ],
+      "observation": "Selectores separan sedes, mapas y horarios propios.",
+      "gap": "Sólo existe una sede ficticia; inventar más falsearía el fixture.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "IDs de sedes",
+        "Ubicación",
+        "Horarios y servicios por sede",
+        "Fotos autorizadas"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-purpose-location.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/padella-branch.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "booking",
+      "references": [
+        "reference-01",
+        "reference-03",
+        "reference-07",
+        "reference-22"
+      ],
+      "observation": "Reservas/cola enlazan a sistemas con condiciones propias.",
+      "gap": "El formulario y plano siguen en DEMO_ONLY.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Proveedor y permiso",
+        "Disponibilidad",
+        "Reglas de aforo/cancelación",
+        "Confirmación y privacidad"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/padella-branch.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-menu-loaded.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "gift",
+      "references": [
+        "reference-01",
+        "reference-06",
+        "reference-07",
+        "reference-12"
+      ],
+      "observation": "Regalos, vouchers y productos editoriales son capacidades comerciales separadas.",
+      "gap": "No existe producto regalo aprobado ni saldo/pago.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Producto/condiciones",
+        "Precio/vigencia",
+        "Canje y política",
+        "Pagos en hito posterior"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/osip-navigation.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/luca-visible-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/aponiente-visible-composition.jpg"
+      ]
+    },
+    {
+      "id": "newsletter",
+      "references": [
+        "reference-01",
+        "reference-06",
+        "reference-08",
+        "reference-14",
+        "reference-15",
+        "reference-23"
+      ],
+      "observation": "Newsletter aparece como invitación específica con canal y política.",
+      "gap": "No hay lista, proveedor ni consentimiento.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Responsable",
+        "Proveedor",
+        "Política/consentimiento",
+        "Canal de suscripción"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/frama-visible-products.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/noma-visible-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-product-detail.jpg"
+      ]
+    },
+    {
+      "id": "team",
+      "references": [
+        "reference-04",
+        "reference-06",
+        "reference-13"
+      ],
+      "observation": "Relatos de cocinero/equipo sitúan autoría y experiencia.",
+      "gap": "No existe equipo auténtico ni autorización de retrato.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Nombres/roles aprobados",
+        "Biografías",
+        "Retratos con releases"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/khufus-story-entered.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/kol-editorial.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "sustainability",
+      "references": [
+        "reference-08",
+        "reference-22",
+        "reference-23"
+      ],
+      "observation": "Origen y sostenibilidad se sostienen con iniciativas/documentos propios.",
+      "gap": "No tenemos trazabilidad del restaurante ficticio.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Afirmaciones revisadas",
+        "Fuentes",
+        "Métricas y fechas",
+        "Medios por iniciativa"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-purpose-location.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-visible-editorial.jpg"
+      ]
+    },
+    {
+      "id": "awards",
+      "references": [
+        "reference-13"
+      ],
+      "observation": "Los reconocimientos llevan entidad, año y contexto.",
+      "gap": "No podemos inventar premios, estrellas o cifras para llenar espacio.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Entidad otorgante",
+        "Documento",
+        "Año",
+        "Permiso de marcas"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/khufus-story-entered.jpg"
+      ]
+    },
+    {
+      "id": "careers",
+      "references": [
+        "reference-04",
+        "reference-06",
+        "reference-08",
+        "reference-22",
+        "reference-23"
+      ],
+      "observation": "Empleo tiene contenido y destino propios.",
+      "gap": "No hay vacantes ni proceso de selección.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Vacantes aprobadas",
+        "Responsable",
+        "Destino y privacidad"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/luca-visible-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-library.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-product-detail.jpg"
+      ]
+    },
+    {
+      "id": "language",
+      "references": [
+        "reference-07",
+        "reference-12",
+        "reference-22",
+        "reference-23"
+      ],
+      "observation": "La selección de idioma aparece ligada a versiones reales de contenido.",
+      "gap": "No hay traducciones aprobadas ni rutas por idioma.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Idiomas requeridos",
+        "Traducciones aprobadas",
+        "URLs/canonical/hreflang"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-mobile-navigation.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/pizza4ps-entry.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/aponiente-visible-top.jpg"
+      ]
+    },
+    {
+      "id": "campaigns",
+      "references": [
+        "reference-06",
+        "reference-08",
+        "reference-15",
+        "reference-23"
+      ],
+      "observation": "Campañas y novedades distinguen vigencia y contenido editorial.",
+      "gap": "El diario local es ficción sin fechas; no novedades operativas.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Campaña aprobada",
+        "Vigencia",
+        "Objetivo",
+        "Media y CTA autorizado"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/frama-entry.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/noma-visible-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-visible-top.jpg"
+      ]
+    },
+    {
+      "id": "authentic-media",
+      "references": [
+        "reference-01",
+        "reference-02",
+        "reference-03",
+        "reference-09",
+        "reference-11",
+        "reference-13",
+        "reference-14"
+      ],
+      "observation": "Lugar, personas y proceso aportan una identidad que una foto genérica no prueba.",
+      "gap": "Cuatro fotos de stock y un clip no equivalen a campaña completa.",
+      "disposition": "NEEDS_DATA",
+      "operator": null,
+      "required_data": [
+        "Fotografías auténticas del local",
+        "Equipo/platos reales",
+        "Permisos por archivo",
+        "Montaje y encuadres por formato"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/osip-entry.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/heckfield-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/khufus-story-entered.jpg",
+        "data/reference/design/visual-review-2026-10-15.json"
+      ]
+    },
+    {
+      "id": "retail-specific",
+      "references": [
+        "reference-15",
+        "reference-23"
+      ],
+      "observation": "Configurador, materiales, descargas y garantía pertenecen al objeto/producto retail.",
+      "gap": "No son funcionalidades automáticas de cualquier restaurante.",
+      "disposition": "OUT_OF_SCOPE",
+      "operator": null,
+      "required_data": [
+        "Arquetipo y objetos pertinentes",
+        "Contratos de cada capacidad"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/artek-product-data.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/frama-visible-products.jpg"
+      ]
+    },
+    {
+      "id": "inspection-limits",
+      "references": [
+        "reference-04",
+        "reference-06",
+        "reference-08",
+        "reference-17"
+      ],
+      "observation": "Cargas, introducciones y overlays impidieron observar algunos estados completos.",
+      "gap": "No usar campos vacíos como prueba de estética ni afirmar auditoría completa.",
+      "disposition": "RESEARCH_LIMIT",
+      "operator": null,
+      "required_data": [
+        "Nueva observación de estados pendientes"
+      ],
+      "evidence": [
+        "docs/evidence/corrections/b3/reference-depth-20261021/kol-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/luca-editorial.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/noma-products-news.jpg",
+        "docs/evidence/corrections/b3/reference-depth-20261021/lune-content.jpg"
+      ]
+    }
+  ]
+}

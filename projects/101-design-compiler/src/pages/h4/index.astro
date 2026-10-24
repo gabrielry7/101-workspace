@@ -1,0 +1,12 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import { compositions, previewPath } from '../../composition/registry.ts';
+---
+<Foundation title="H4 · composiciones en laboratorio">
+  <p>101 / Desarrollo de plataforma</p>
+  <h1>H4 · Composiciones base</h1>
+  <p>Tres variantes, el mismo SitePlan H2 y los mismos datos ficticios. Astro local es el laboratorio compartido; el runtime comercial está ausente.</p>
+  <ul>{compositions.map(c => <li><a href={previewPath(c.id,'/')}>{c.label}</a> — {c.description}</li>)}</ul>
+  <p>La imagen atmosférica de H3 conserva permisos y atribución. No documenta el plato ni el negocio; ese hueco permanece bloqueado. La oferta de la sucursal sigue en su ruta semántica y se alcanza por navegación.</p>
+  <p>Sin operaciones comerciales. <a href="/">Volver al inspector de contratos</a>.</p>
+</Foundation>

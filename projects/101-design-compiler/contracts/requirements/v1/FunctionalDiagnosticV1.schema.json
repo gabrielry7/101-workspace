@@ -1,0 +1,499 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "FUNCTIONAL_OBJECTIVE_DIAGNOSTIC"
+    },
+    "business_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "business_input_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evaluated_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "catalog_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "contextual_interpretation_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "diagnostic_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "data_mode": {
+      "type": "string",
+      "enum": [
+        "SYNTHETIC_FIXTURE",
+        "UPSTREAM_SNAPSHOT"
+      ]
+    },
+    "planner_status": {
+      "type": "string",
+      "enum": [
+        "READY",
+        "INPUT_INVALID",
+        "CONTENT_BLOCKED"
+      ]
+    },
+    "plan_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "plan_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "objective_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "capability_id": {
+            "type": "string",
+            "enum": [
+              "identity",
+              "about",
+              "locations",
+              "opening_hours",
+              "contact_channels",
+              "social_profiles",
+              "reputation",
+              "gallery",
+              "service_catalog",
+              "product_catalog",
+              "menu",
+              "product_variants",
+              "price_list",
+              "packages",
+              "rooms",
+              "programs",
+              "professional_profiles",
+              "trainer_profiles",
+              "portfolio",
+              "case_studies",
+              "reservation",
+              "appointment",
+              "quote_request",
+              "contact_request",
+              "purchase",
+              "order",
+              "delivery",
+              "pickup",
+              "membership",
+              "membership_signup",
+              "class_enrollment",
+              "ticketing",
+              "room_booking",
+              "visit_booking",
+              "service_request",
+              "class_schedule",
+              "events",
+              "availability_display",
+              "service_area",
+              "delivery_policy",
+              "visit_policy",
+              "payment_methods",
+              "amenities",
+              "accessibility_info",
+              "branches",
+              "faqs",
+              "documents"
+            ]
+          },
+          "scope_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "relevance": {
+            "type": "string",
+            "enum": [
+              "REQUESTED",
+              "SUGGESTED",
+              "UPSTREAM_DECLARED",
+              "APPLICABILITY_NOT_EVALUATED",
+              "NOT_APPLICABLE_JUSTIFIED",
+              "REJECTED"
+            ]
+          },
+          "decision_evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "evidence_status": {
+            "type": "string",
+            "enum": [
+              "CONFIRMED_PRESENT",
+              "CONFIRMED_ABSENT",
+              "UNKNOWN",
+              "CONFLICTED",
+              "WITHHELD"
+            ]
+          },
+          "emitted_in_plan": {
+            "type": "boolean"
+          },
+          "module_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "factual_evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "h2_missing_inputs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "levels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "level_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "implementation": {
+                  "type": "string",
+                  "enum": [
+                    "LAB_INFORMATION_PRIMITIVE",
+                    "EXTERNAL_LINK_SEMANTICS_ONLY",
+                    "SPECIFICATION_ONLY"
+                  ]
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "INFORMATION_PLANNED",
+                    "EXTERNAL_INTENT_PLANNED",
+                    "PENDING",
+                    "NOT_APPLICABLE_JUSTIFIED",
+                    "REJECTED"
+                  ]
+                },
+                "requirements": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "requirement_id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      },
+                      "label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      },
+                      "owner": {
+                        "type": "string",
+                        "enum": [
+                          "BUSINESS_UPSTREAM",
+                          "PROJECT_CONFIGURATION",
+                          "PLATFORM",
+                          "PROVIDER_RIGHTS"
+                        ]
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "SATISFIED",
+                          "MISSING",
+                          "WITHHELD",
+                          "CONFLICTED",
+                          "STALE",
+                          "NOT_REQUIRED_BY_CONDITION",
+                          "SUPPORT_PENDING",
+                          "RIGHTS_REVIEW_PENDING"
+                        ]
+                      },
+                      "fact_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "pattern": "\\S"
+                        }
+                      },
+                      "offering_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "pattern": "\\S"
+                        }
+                      },
+                      "message": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      },
+                      "next_step": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "minLength": 1,
+                            "pattern": "\\S"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "requirement_id",
+                      "label",
+                      "owner",
+                      "status",
+                      "fact_ids",
+                      "offering_ids",
+                      "message",
+                      "next_step"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "dependency_checks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "capability_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "identity",
+                            "about",
+                            "locations",
+                            "opening_hours",
+                            "contact_channels",
+                            "social_profiles",
+                            "reputation",
+                            "gallery",
+                            "service_catalog",
+                            "product_catalog",
+                            "menu",
+                            "product_variants",
+                            "price_list",
+                            "packages",
+                            "rooms",
+                            "programs",
+                            "professional_profiles",
+                            "trainer_profiles",
+                            "portfolio",
+                            "case_studies",
+                            "reservation",
+                            "appointment",
+                            "quote_request",
+                            "contact_request",
+                            "purchase",
+                            "order",
+                            "delivery",
+                            "pickup",
+                            "membership",
+                            "membership_signup",
+                            "class_enrollment",
+                            "ticketing",
+                            "room_booking",
+                            "visit_booking",
+                            "service_request",
+                            "class_schedule",
+                            "events",
+                            "availability_display",
+                            "service_area",
+                            "delivery_policy",
+                            "visit_policy",
+                            "payment_methods",
+                            "amenities",
+                            "accessibility_info",
+                            "branches",
+                            "faqs",
+                            "documents"
+                          ]
+                        }
+                      },
+                      "mode": {
+                        "type": "string",
+                        "enum": [
+                          "ALL",
+                          "ANY"
+                        ]
+                      },
+                      "scope_id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      },
+                      "satisfied": {
+                        "type": "boolean"
+                      },
+                      "message": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "\\S"
+                      }
+                    },
+                    "required": [
+                      "capability_ids",
+                      "mode",
+                      "scope_id",
+                      "satisfied",
+                      "message"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "blockers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  }
+                },
+                "next_steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  }
+                }
+              },
+              "required": [
+                "level_id",
+                "label",
+                "implementation",
+                "status",
+                "requirements",
+                "dependency_checks",
+                "blockers",
+                "next_steps"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "capability_id",
+          "scope_id",
+          "relevance",
+          "decision_evidence_ids",
+          "evidence_status",
+          "emitted_in_plan",
+          "module_ids",
+          "factual_evidence_ids",
+          "h2_missing_inputs",
+          "levels"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "operational_integrations": {
+      "type": "string",
+      "const": "NOT_CONNECTED"
+    },
+    "human_design_approval": {
+      "type": "string",
+      "const": "NOT_COLLECTED"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "business_id",
+    "snapshot_id",
+    "business_input_sha256",
+    "evaluated_at",
+    "catalog_sha256",
+    "contextual_interpretation_sha256",
+    "diagnostic_sha256",
+    "data_mode",
+    "planner_status",
+    "plan_id",
+    "plan_sha256",
+    "objective_sha256",
+    "entries",
+    "warnings",
+    "operational_integrations",
+    "human_design_approval"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:FunctionalDiagnosticV1:1.0.0",
+  "title": "FunctionalDiagnosticV1",
+  "description": "B1 associated master catalogue/objective diagnostic; complete V1 registry, no live integrations or fabricated permissions."
+}

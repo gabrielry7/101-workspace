@@ -1,0 +1,455 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.2.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "B3_REFERENCE_DEPTH_EXPERIENCE"
+    },
+    "source_context_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "content_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "plan_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "media_review_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "research_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "feedback_status": {
+      "type": "string",
+      "const": "HUMAN_REJECTED_03_04_ITERATING"
+    },
+    "human_approval": {
+      "type": "string",
+      "const": "NOT_COLLECTED"
+    },
+    "profiles": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "const": "candidate-01"
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "root": {
+              "type": "string",
+              "pattern": "^\\/b3\\/candidate-0[1-4]\\/$"
+            },
+            "hero": {
+              "type": "string",
+              "enum": [
+                "Immersive",
+                "Masthead",
+                "GalleryStage",
+                "StudioIndex"
+              ]
+            },
+            "palette": {
+              "type": "string",
+              "enum": [
+                "WhiteInk",
+                "Vermilion",
+                "Graphite",
+                "NeutralAccent"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Classic",
+                "Condensed",
+                "Italic",
+                "Modern"
+              ]
+            },
+            "collection": {
+              "type": "string",
+              "enum": [
+                "Spread",
+                "Rows",
+                "Exhibit",
+                "Index"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 40
+            },
+            "references": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^reference-\\d{2}$"
+              }
+            },
+            "home_composition": {
+              "type": "string",
+              "enum": [
+                "Journal",
+                "Longform",
+                "ModularIndex"
+              ]
+            },
+            "design_status": {
+              "type": "string",
+              "const": "LIKED_DIRECTION_REFINEMENT"
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "root",
+            "hero",
+            "palette",
+            "type",
+            "collection",
+            "rationale",
+            "references",
+            "home_composition",
+            "design_status"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "const": "candidate-02"
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "root": {
+              "type": "string",
+              "pattern": "^\\/b3\\/candidate-0[1-4]\\/$"
+            },
+            "hero": {
+              "type": "string",
+              "enum": [
+                "Immersive",
+                "Masthead",
+                "GalleryStage",
+                "StudioIndex"
+              ]
+            },
+            "palette": {
+              "type": "string",
+              "enum": [
+                "WhiteInk",
+                "Vermilion",
+                "Graphite",
+                "NeutralAccent"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Classic",
+                "Condensed",
+                "Italic",
+                "Modern"
+              ]
+            },
+            "collection": {
+              "type": "string",
+              "enum": [
+                "Spread",
+                "Rows",
+                "Exhibit",
+                "Index"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 40
+            },
+            "references": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^reference-\\d{2}$"
+              }
+            },
+            "home_composition": {
+              "type": "string",
+              "enum": [
+                "Journal",
+                "Longform",
+                "ModularIndex"
+              ]
+            },
+            "design_status": {
+              "type": "string",
+              "const": "LIKED_DIRECTION_REFINEMENT"
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "root",
+            "hero",
+            "palette",
+            "type",
+            "collection",
+            "rationale",
+            "references",
+            "home_composition",
+            "design_status"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "const": "candidate-03"
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "root": {
+              "type": "string",
+              "pattern": "^\\/b3\\/candidate-0[1-4]\\/$"
+            },
+            "hero": {
+              "type": "string",
+              "enum": [
+                "Immersive",
+                "Masthead",
+                "GalleryStage",
+                "StudioIndex"
+              ]
+            },
+            "palette": {
+              "type": "string",
+              "enum": [
+                "WhiteInk",
+                "Vermilion",
+                "Graphite",
+                "NeutralAccent"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Classic",
+                "Condensed",
+                "Italic",
+                "Modern"
+              ]
+            },
+            "collection": {
+              "type": "string",
+              "enum": [
+                "Spread",
+                "Rows",
+                "Exhibit",
+                "Index"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 40
+            },
+            "references": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^reference-\\d{2}$"
+              }
+            },
+            "home_composition": {
+              "type": "string",
+              "enum": [
+                "Journal",
+                "Longform",
+                "ModularIndex"
+              ]
+            },
+            "design_status": {
+              "type": "string",
+              "const": "REPLACEMENT_AWAITING_HUMAN_REVIEW"
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "root",
+            "hero",
+            "palette",
+            "type",
+            "collection",
+            "rationale",
+            "references",
+            "home_composition",
+            "design_status"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "const": "candidate-04"
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "root": {
+              "type": "string",
+              "pattern": "^\\/b3\\/candidate-0[1-4]\\/$"
+            },
+            "hero": {
+              "type": "string",
+              "enum": [
+                "Immersive",
+                "Masthead",
+                "GalleryStage",
+                "StudioIndex"
+              ]
+            },
+            "palette": {
+              "type": "string",
+              "enum": [
+                "WhiteInk",
+                "Vermilion",
+                "Graphite",
+                "NeutralAccent"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "Classic",
+                "Condensed",
+                "Italic",
+                "Modern"
+              ]
+            },
+            "collection": {
+              "type": "string",
+              "enum": [
+                "Spread",
+                "Rows",
+                "Exhibit",
+                "Index"
+              ]
+            },
+            "rationale": {
+              "type": "string",
+              "minLength": 40
+            },
+            "references": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^reference-\\d{2}$"
+              }
+            },
+            "home_composition": {
+              "type": "string",
+              "enum": [
+                "Journal",
+                "Longform",
+                "ModularIndex"
+              ]
+            },
+            "design_status": {
+              "type": "string",
+              "const": "REPLACEMENT_AWAITING_HUMAN_REVIEW"
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "root",
+            "hero",
+            "palette",
+            "type",
+            "collection",
+            "rationale",
+            "references",
+            "home_composition",
+            "design_status"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "editorial_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "feedback_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "depth_research_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "revision_feedback_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "features_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "source_context_sha256",
+    "content_sha256",
+    "plan_sha256",
+    "media_review_sha256",
+    "research_sha256",
+    "feedback_status",
+    "human_approval",
+    "profiles",
+    "editorial_sha256",
+    "feedback_sha256",
+    "depth_research_sha256",
+    "revision_feedback_sha256",
+    "features_sha256"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:DepthExperienceV1:1.2.0",
+  "title": "DepthExperienceV1",
+  "description": "Associated B3 iteration after human rejection; reference observations, fictional presentation and evidence bindings. No aesthetic approval, rights grant, backend or training."
+}

@@ -1,0 +1,10 @@
+---
+import { loadAuditLab } from '../../../../scripts/load-audit-lab.ts';
+import DesignComposition from '../../../components/composition/DesignComposition.astro';
+export async function getStaticPaths(){
+ const {lab,mounts}=await loadAuditLab();
+ return mounts.flatMap(m=>m.candidate.plan.pages.map(p=>({params:{candidate:m.id,path:p.path==='/'?undefined:p.path.slice(1)},props:{lab,candidate:m.candidate,mountId:m.id,page:p.path}})));
+}
+const {lab,candidate,mountId,page}=Astro.props;
+---
+<DesignComposition lab={lab} design={candidate.plan} page={page} mount="h6" mountId={mountId} measure={candidate.layout.measure} diagnostic={candidate.fixture_mode==='SEEDED_DEFECT_TEST'} />

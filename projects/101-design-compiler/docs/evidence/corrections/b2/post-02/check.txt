@@ -1,0 +1,16 @@
+
+> 101-design-compiler@0.0.0 check
+> astro check && tsc --noEmit
+
+20:39:59 [types] Generated 78ms
+20:39:59 [check] Getting diagnostics for Astro files in C:\Users\gabri\101-design-compiler...
+scripts/b2-qa.ts:52:248 - error ts(2532): Object is possibly 'undefined'.
+
+52     if(observed.figure?.librarySha256!==library.library_sha256||observed.figure?.role!=='ATMOSPHERIC'||observed.credit!==library.manifest.usages[0]!.attribution_text||observed.context!==library.manifest.usages[0]!.generic_label||observed.notice!==library.manifest.usages[0]!.context_notices[0])throw Error('QA_MEDIA_CONTEXT_LOST');
+                                                                                                                                                                                                                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Result (181 files): 
+- 1 error
+- 0 warnings
+- 0 hints
+

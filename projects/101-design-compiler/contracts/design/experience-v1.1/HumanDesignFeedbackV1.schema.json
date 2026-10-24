@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "B3_HUMAN_DIRECTION_FEEDBACK"
+    },
+    "recorded_date": {
+      "type": "string",
+      "const": "2026-10-20"
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "source": {
+      "type": "string",
+      "const": "DIRECT_USER_MESSAGE"
+    },
+    "verbatim": {
+      "type": "string",
+      "minLength": 100
+    },
+    "liked_directions": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "string",
+          "const": "candidate-01"
+        },
+        {
+          "type": "string",
+          "const": "candidate-02"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "ratings": {
+      "type": "null"
+    },
+    "final_design_approval": {
+      "type": "boolean",
+      "const": false
+    },
+    "training": {
+      "type": "string",
+      "const": "NOT_PERFORMED"
+    },
+    "requested": {
+      "minItems": 5,
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "recorded_date",
+    "source_commit",
+    "source",
+    "verbatim",
+    "liked_directions",
+    "ratings",
+    "final_design_approval",
+    "training",
+    "requested"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:HumanDesignFeedbackV1:1.0.0",
+  "title": "HumanDesignFeedbackV1",
+  "description": "Associated B3 human feedback and fictional editorial scope; not final approval or a live social/review integration."
+}

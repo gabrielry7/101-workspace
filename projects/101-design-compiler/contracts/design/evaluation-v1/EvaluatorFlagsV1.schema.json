@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "impeccable": {
+      "default": false,
+      "type": "boolean"
+    },
+    "raven": {
+      "default": false,
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "impeccable",
+    "raven"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:EvaluatorFlagsV1:1.0.0",
+  "title": "EvaluatorFlagsV1"
+}

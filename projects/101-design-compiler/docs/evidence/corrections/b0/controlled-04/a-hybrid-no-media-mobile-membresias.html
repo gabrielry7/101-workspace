@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>candidate-01 · laboratorio H7</title><style>:root{color-scheme:light;color:#18232c;background:#f6f7f8;font-family:system-ui,sans-serif}body{margin:0}main{max-width:72rem;margin:auto;padding:2rem clamp(1rem,4vw,3rem)}h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.1}p,li{max-width:75ch;line-height:1.6}section{border-top:1px solid #b8c2ca;padding:1rem 0 2rem}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #b8c2ca;padding:.8rem}th{font-weight:650}code{overflow-wrap:anywhere}a{color:#144b80}:focus-visible{outline-offset:4px;outline:3px solid #144b80}.skip{background:#fff;padding:1rem;position:absolute;top:-5rem;left:1rem}.skip:focus{top:1rem}
+</style></head><body><a class="skip" href="#contenido">Saltar al contenido</a><main id="contenido"><style>/* Shared laboratory grammar: layout parameters, never sector/client selectors. */
+.lab { --ink:#202b23; --paper:#f4f1e8; --muted:#465248; --line:#879084; --accent:#244e32; background:var(--paper); color:var(--ink); font-family:system-ui,sans-serif; padding:clamp(1rem,3vw,2.5rem); }
+body:has(.lab) { background:#e8e6df; }
+main:has(.lab) { max-width:80rem; padding:1rem; }
+.lab *, .lab *::before, .lab *::after { box-sizing:border-box; }
+.lab a { color:var(--accent); text-underline-offset:.25em; }
+.lab a:focus-visible, .lab summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.lab-header { display:flex; flex-wrap:wrap; gap:.75rem 2rem; justify-content:space-between; font-size:.8125rem; letter-spacing:.06em; padding-bottom:1.5rem; border-bottom:1px solid var(--line); }
+.lab .site-nav { display:flex; gap:1rem 2rem; flex-wrap:wrap; padding:1.25rem 0; }
+.lab .site-nav a { display:flex; align-items:center; gap:.6rem; min-height:44px; font-size:1rem; }
+.lab .nav-number { font-size:.75rem; color:var(--muted); }
+.lab [aria-current=page] { font-weight:750; }
+.lab .semantic { border:0; padding:0; min-width:0; }
+.lab .eyebrow { font-size:.75rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 1.25rem; }
+.lab h1 { margin:0; font-family:Georgia,'Times New Roman',serif; font-weight:400; line-height:1.06; letter-spacing:-.04em; overflow-wrap:break-word; }
+.lab p { line-height:1.6; }
+.lab .stage { min-width:0; padding:2rem 0 3rem; }
+.lab .media { margin:0; min-width:0; max-width:640px; }
+.lab .media img { display:block; width:100%; height:auto; /* No crop, filtering or transformed derivative. */ }
+.lab figcaption { padding-top:1rem; color:var(--muted); font-size:.8125rem; }
+.lab figcaption p { margin:0 0 .45rem; }
+.lab figcaption a { display:inline-flex; align-items:center; min-height:44px; padding:.5rem 0; }
+.lab code { font-size:.8125em; overflow-wrap:anywhere; }
+.lab .audit { border-top:1px solid var(--line); padding:1.5rem 0; color:var(--muted); font-size:.875rem; }
+.lab .audit p { margin:0 0 .6rem; }
+.lab summary { cursor:pointer; padding:.75rem 0; min-height:44px; font-weight:650; }
+.lab .audit li { overflow-wrap:anywhere; }
+.lab .lab-footer { border-top:1px solid var(--line); padding-top:1.5rem; display:flex; flex-wrap:wrap; align-items:center; gap:1rem 2rem; font-size:.875rem; }
+.lab .lab-footer nav { display:flex; flex-wrap:wrap; gap:1.25rem; }
+.lab .lab-footer a { display:inline-flex; align-items:center; min-height:44px; min-width:44px; }
+.lab .offering-list { list-style:none; padding:0; margin:2rem 0; }
+.lab .offering-list li { border-top:1px solid var(--line); padding:1.75rem 0; }
+.lab h2 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.5rem,3vw,2rem); font-weight:400; margin:0; }
+.lab .scope-label { color:var(--muted); }
+.lab.editorial .stage { display:flex; flex-direction:column; gap:3rem; }
+.lab.editorial h1 { font-size:clamp(2.75rem,7.5vw,6.5rem); max-width:16ch; }
+.lab.editorial .media { width:70%; align-self:center; }
+.lab.split .stage { display:grid; grid-template-columns:minmax(0, .85fr) minmax(0,1.15fr); align-items:start; gap:2.5rem; padding-top:3rem; }
+.lab.split h1 { font-size:clamp(2.5rem,5vw,4.5rem); max-width:13ch; }
+.lab.split .media { width:100%; }
+.lab.split .offerings { grid-column:1/-1; max-width:48rem; }
+.lab.rail .frame { display:grid; grid-template-columns:13rem minmax(0,1fr); gap:2.5rem; padding-top:2rem; }
+.lab.rail .site-nav { flex-direction:column; align-items:start; padding:0; border-right:1px solid var(--line); }
+.lab.rail .stage { padding-top:0; display:flex; flex-direction:column; gap:2rem; }
+.lab.rail h1 { font-size:clamp(2.25rem,4vw,3.5rem); max-width:20ch; }
+.lab.rail .media { width:82%; max-width:480px; align-self:flex-end; }
+@media(max-width:700px) {
+  main:has(.lab) { padding:.5rem; }
+  .lab { padding:1.25rem; }
+  .lab-header { font-size:.75rem; }
+  .lab .stage { padding:1.5rem 0 2rem; }
+  .lab.editorial .stage { gap:2rem; }
+  .lab.editorial h1 { font-size:clamp(2.65rem,10vw,4rem); }
+  .lab.editorial .media { width:100%; }
+  .lab.split .stage { grid-template-columns:minmax(0,1fr); gap:1.5rem; padding-top:1rem; }
+  .lab.split h1 { font-family:system-ui,sans-serif; font-weight:600; font-size:clamp(2rem,8vw,3rem); letter-spacing:-.03em; }
+  .lab.split .site-nav { border-bottom:1px solid var(--line); }
+  .lab.rail .frame { grid-template-columns:minmax(0,1fr); gap:1.5rem; padding-top:1.5rem; }
+  .lab.rail .site-nav { flex-direction:row; border-right:0; border-left:3px solid var(--accent); padding-left:1rem; gap:.5rem 1.25rem; }
+  .lab.rail h1 { font-size:2.25rem; }
+  .lab.rail .media { width:90%; }
+  .lab .lab-footer { gap:.5rem 1.25rem; }
+}
+@media(prefers-reduced-motion:reduce) { .lab *, .lab *::before, .lab *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+
+/* Shared grammar: bounded enums only. No client/sector selectors or generated CSS. */
+.lab.h5.palette-ink { --ink:#172432; --paper:#edf1f3; --muted:#364c60; --accent:#173b59; --line:#82909b; }
+.lab.h5.palette-earth { --ink:#38281f; --paper:#f4ede2; --muted:#604336; --accent:#633923; --line:#9c8575; }
+.lab.h5 .stage { display:flex; flex-direction:column; gap:3rem; }
+.lab.h5 h1 { font-size:clamp(2.5rem,6vw,5.5rem); max-width:18ch; }
+.lab.h5.type-sans h1 { font-family:system-ui,sans-serif; font-weight:600; letter-spacing:-.05em; }
+.lab.h5.hierarchy-compact h1 { font-size:clamp(2.25rem,4vw,3.5rem); max-width:20ch; }
+.lab.h5 .media { width:100%; align-self:center; }
+.lab.h5.media-inset .media { width:75%; }
+.lab.h5.align-end .media { align-self:flex-end; }
+.lab.h5.frame-rail .frame { display:grid; grid-template-columns:11rem minmax(0,1fr); gap:2rem; padding-top:2rem; }
+.lab.h5.frame-rail .site-nav { flex-direction:column; align-items:start; border-right:1px solid var(--line); padding:0 1rem 0 0; }
+.lab.h5.frame-rail .stage { padding-top:0; }
+.lab.h5.stage-split .stage { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:2rem; align-items:start; }
+.lab.h5.stage-split .media { width:100%; }
+.lab.h5.stage-split h1 { font-size:clamp(2.25rem,4vw,3.5rem); }
+.lab.h5.stage-split .offerings { grid-column:1/-1; }
+.lab.h5.rhythm-dense .stage { gap:1.5rem; padding-bottom:2rem; }
+@media(max-width:800px) {
+ .lab.h5.frame-rail .frame { grid-template-columns:minmax(0,1fr); gap:1.5rem; }
+ .lab.h5.frame-rail .site-nav { flex-direction:row; border-right:0; border-left:3px solid var(--accent); padding:0 0 0 1rem; }
+ .lab.h5.stage-split .stage { grid-template-columns:minmax(0,1fr); }
+ .lab.h5 h1 { font-size:clamp(2.25rem,10vw,4rem); }
+ .lab.h5.hierarchy-compact h1 { font-size:2.25rem; }
+ .lab.h5.media-inset .media { width:88%; }
+ .lab.h5.stage-split .media { width:100%; }
+}
+</style><div class="lab h5 frame-flow stage-sequence palette-ink type-sans hierarchy-monument rhythm-quiet media-inset align-center" data-design-id="candidate-01" data-art-direction-id="hibrido-reading" data-composition="h5" data-version="1.0.0" data-semantic-page="/membresias" data-plan-sha256="1fbda264a709b16c71531c366afff420603f14fd8d6eb610b3f61095598d7743" data-content-sha256="b9e1783c667ecb3935c2274b33218b4337dd1cab22c63d3d659e2f1bf10c83c7" data-manifest-sha256="f725e462c42a59f91815782398444f829262e64820ba84e195704030b1c3e7d2" data-client-id="synthetic-h7-hibrido" data-project-id="h7-cohort-hibrido"><header class="lab-header"><span>101 / Laboratorio compartido</span><span>H7 · candidate-01 · Ficticio</span></header><div class="frame" data-frame-operator="Flow"><nav class="site-nav" aria-label="Páginas del fixture"><a href="/h7/hibrido-candidate-01/" data-route="/"><span class="nav-number" aria-hidden="true">01</span>Identidad</a><a href="/h7/hibrido-candidate-01/catalogo/" data-route="/catalogo"><span class="nav-number" aria-hidden="true">02</span>product catalog</a><a href="/h7/hibrido-candidate-01/clases/" data-route="/clases"><span class="nav-number" aria-hidden="true">03</span>class schedule</a><a href="/h7/hibrido-candidate-01/membresias/" data-route="/membresias" aria-current="page"><span class="nav-number" aria-hidden="true">04</span>membership</a></nav><div class="stage" data-operator="Sequence"><section class="offerings semantic" data-module-id="semantic-a60cc46a7cc24b1e7af42ba9" data-component="OfferingCollection" data-scope-id="h7-synthetic-hibrido" data-required="true" data-semantic-page="/membresias"><p class="eyebrow">Información pública · fixture</p><h1>Oferta</h1><p class="scope-label">Alcance: <code>h7-synthetic-hibrido</code></p><ul class="offering-list"><li data-offering-id="object-1" data-offering-scope="h7-synthetic-hibrido"><h2 data-fact-id="object-1-name" data-fact-scope="h7-synthetic-hibrido">Objeto 1 de prueba (membership_plan); descripción sintética</h2><p data-fact-id="object-1-description" data-fact-scope="h7-synthetic-hibrido">Información declarada de prueba 1, sin precio o promesa operativa.</p></li></ul></section></div></div><aside class="audit" aria-label="Límites y trazabilidad del laboratorio"><p class="gap"><strong>Sin medios autorizados.</strong> No se muestra fotografía. Los huecos documentales siguen pendientes; no se sustituyen con imágenes inventadas.</p><p>Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.</p><details><summary>Trazabilidad y restricciones</summary><p>Contenido ficticio aprobado solo para pruebas. Runtime comercial ausente.</p><ul><li data-restriction>SYNTHETIC_FIXTURE: NO PUBLICAR COMO NEGOCIO REAL</li><li data-restriction>H7 held-out reservation; no real credentials or media permission</li></ul><ul></ul><ul></ul><ul><li data-binding-id="assert-class_schedule" data-binding-status="EVIDENCE_ONLY" data-binding-scope="h7-synthetic-hibrido"><code>assert-class_schedule</code> · EVIDENCE_ONLY · <code>h7-synthetic-hibrido</code></li><li data-binding-id="assert-identity" data-binding-status="EVIDENCE_ONLY" data-binding-scope="h7-synthetic-hibrido"><code>assert-identity</code> · EVIDENCE_ONLY · <code>h7-synthetic-hibrido</code></li><li data-binding-id="assert-membership" data-binding-status="EVIDENCE_ONLY" data-binding-scope="h7-synthetic-hibrido"><code>assert-membership</code> · EVIDENCE_ONLY · <code>h7-synthetic-hibrido</code></li><li data-binding-id="assert-product_catalog" data-binding-status="EVIDENCE_ONLY" data-binding-scope="h7-synthetic-hibrido"><code>assert-product_catalog</code> · EVIDENCE_ONLY · <code>h7-synthetic-hibrido</code></li><li data-binding-id="category-evidence" data-binding-status="EVIDENCE_ONLY" data-binding-scope="h7-synthetic-hibrido"><code>category-evidence</code> · EVIDENCE_ONLY · <code>h7-synthetic-hibrido</code></li><li data-binding-id="coexisting-evidence" data-binding-status="EVIDENCE_ONLY" data-binding-scope="h7-synthetic-hibrido"><code>coexisting-evidence</code> · EVIDENCE_ONLY · <code>h7-synthetic-hibrido</code></li><li data-binding-id="name" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>name</code> · BOUND · <code>h7-synthetic-hibrido</code></li><li data-binding-id="object-1-description" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>object-1-description</code> · BOUND · <code>h7-synthetic-hibrido</code></li><li data-binding-id="object-1-name" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>object-1-name</code> · BOUND · <code>h7-synthetic-hibrido</code></li><li data-binding-id="object-2-description" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>object-2-description</code> · BOUND · <code>h7-synthetic-hibrido</code></li><li data-binding-id="object-2-name" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>object-2-name</code> · BOUND · <code>h7-synthetic-hibrido</code></li><li data-binding-id="object-3-description" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>object-3-description</code> · BOUND · <code>h7-synthetic-hibrido</code></li><li data-binding-id="object-3-name" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>object-3-name</code> · BOUND · <code>h7-synthetic-hibrido</code></li><li data-binding-id="shop-evidence" data-binding-status="EVIDENCE_ONLY" data-binding-scope="h7-synthetic-hibrido"><code>shop-evidence</code> · EVIDENCE_ONLY · <code>h7-synthetic-hibrido</code></li><li data-binding-id="starts" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>starts</code> · BOUND · <code>h7-synthetic-hibrido</code></li><li data-binding-id="zone" data-binding-status="BOUND" data-binding-scope="h7-synthetic-hibrido"><code>zone</code> · BOUND · <code>h7-synthetic-hibrido</code></li></ul><ul><li data-media-constraint>GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE</li><li data-media-constraint>NO_PROVIDER_AUTOMATION_AUTHORIZED</li><li data-media-constraint>NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW</li><li data-media-constraint>NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW</li></ul><ul><li data-gap-id="need-412770150512e46516f6ffd0">DOCUMENTARY · <code>h7-synthetic-hibrido</code> · object-1 · NO_AUTHORIZED_CANDIDATE</li><li data-gap-id="need-517963097a727b3185963bbf">DOCUMENTARY · <code>h7-synthetic-hibrido</code> · object-2 · NO_AUTHORIZED_CANDIDATE</li><li data-gap-id="need-75f0ad5f078b98766dc8393e">DOCUMENTARY · <code>h7-synthetic-hibrido</code> · object-3 · NO_AUTHORIZED_CANDIDATE</li><li data-gap-id="need-aeb6cda2cbcd995661050b0f">ATMOSPHERIC · <code>h7-synthetic-hibrido</code> ·  · NO_AUTHORIZED_CANDIDATE</li></ul></details></aside><footer class="lab-footer"><a href="/h7/">Comparar finalistas</a><a href="/">Inspector de contratos</a></footer></div></main></body></html>

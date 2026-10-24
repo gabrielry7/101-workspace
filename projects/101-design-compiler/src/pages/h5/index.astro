@@ -1,0 +1,12 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import { loadDesignLab } from '../../../scripts/load-design-lab.ts';
+import { designPreviewPath } from '../../design/search.ts';
+const {result}=await loadDesignLab();
+---
+<Foundation title="H5 · búsqueda de composición">
+ <h1>Finalistas de laboratorio H5</h1>
+ <p>Mismo fixture ficticio, contenido y permiso H3. Sin preparación para producción ni preferencia humana registrada.</p>
+ <p>Cuatro estructuras; selección por diversidad, sin puntuación automática de belleza.</p>
+ <ul>{result.finalists.map(p=><li><a href={designPreviewPath(p.id,'/')}>{p.id}</a> · {p.pages[0]!.composition.operator} / {p.pages[0]!.composition.child.operator}</li>)}</ul>
+</Foundation>

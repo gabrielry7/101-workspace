@@ -1,0 +1,333 @@
+{
+  "role": "design-proposal",
+  "task": "Propose two distinct bounded art directions for this exact frozen synthetic business context. Preserve all semantic routes/modules/bindings and media permissions. No code, no invented content, no external images. Flow/Sequence versus Rail/Sequence; no photo dialog with absent media.",
+  "context_sha256": "6d2622c5dec2e02b20709f69797db74a211208c477d2c716cf58ac076b383eee",
+  "context": {
+    "schema_version": "1.0.0",
+    "content": {
+      "site_plan_id": "h7-synthetic-hotel-reserved-v1:h2-plan:af121cee22b88fa51acc548d",
+      "plan_sha256": "07632832989ef91e32cdaa870c11db4a91376a94b1ec8a7a2ac7c7e05c0430e7",
+      "requirements_sha256": "e44a76b2994ba1f3e4e714eac4447b300ab5852d86daa7b2715be87542bcfb9c",
+      "content_sha256": "11170b97c2afe775d9038b784786ea81c0d77d0fbcb808164f828ca95f723d7d",
+      "pages": [
+        {
+          "path": "/",
+          "modules": [
+            {
+              "id": "semantic-dffb2f47c1c7baaf773ec46f",
+              "capability_id": "identity",
+              "scope_id": "h7-synthetic-hotel",
+              "required": true,
+              "page": "/",
+              "component": "Identity",
+              "facts": [
+                {
+                  "id": "name",
+                  "scope_id": "h7-synthetic-hotel",
+                  "kind": "business_name",
+                  "text": "hotel · NUEVO fixture sintético H7; no es negocio real"
+                }
+              ],
+              "offerings": []
+            }
+          ]
+        },
+        {
+          "path": "/comodidades",
+          "modules": [
+            {
+              "id": "semantic-e393954607f202eecb8bc5a0",
+              "capability_id": "amenities",
+              "scope_id": "h7-synthetic-hotel",
+              "required": false,
+              "page": "/comodidades",
+              "component": "FactCollection",
+              "facts": [
+                {
+                  "id": "extra",
+                  "scope_id": "h7-synthetic-hotel",
+                  "kind": "amenity",
+                  "text": "Patio de prueba sintético, sin fotografía documental."
+                }
+              ],
+              "offerings": []
+            }
+          ]
+        },
+        {
+          "path": "/habitaciones",
+          "modules": [
+            {
+              "id": "semantic-1f15c25c66b77b851ca43271",
+              "capability_id": "rooms",
+              "scope_id": "h7-synthetic-hotel",
+              "required": true,
+              "page": "/habitaciones",
+              "component": "OfferingCollection",
+              "facts": [],
+              "offerings": [
+                {
+                  "id": "object-1",
+                  "scope_id": "h7-synthetic-hotel",
+                  "facts": [
+                    {
+                      "id": "object-1-name",
+                      "scope_id": "h7-synthetic-hotel",
+                      "kind": "offering_name",
+                      "text": "Objeto 1 de prueba (room); descripción sintética"
+                    },
+                    {
+                      "id": "object-1-description",
+                      "scope_id": "h7-synthetic-hotel",
+                      "kind": "offering_description",
+                      "text": "Información declarada de prueba 1, sin precio o promesa operativa."
+                    }
+                  ]
+                },
+                {
+                  "id": "object-2",
+                  "scope_id": "h7-synthetic-hotel",
+                  "facts": [
+                    {
+                      "id": "object-2-name",
+                      "scope_id": "h7-synthetic-hotel",
+                      "kind": "offering_name",
+                      "text": "Objeto 2 de prueba (room); descripción sintética"
+                    },
+                    {
+                      "id": "object-2-description",
+                      "scope_id": "h7-synthetic-hotel",
+                      "kind": "offering_description",
+                      "text": "Información declarada de prueba 2, sin precio o promesa operativa."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "fact_id": "assert-amenities",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "assert-identity",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "assert-rooms",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "category-evidence",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [],
+          "status": "EVIDENCE_ONLY"
+        },
+        {
+          "fact_id": "extra",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [
+            "semantic-e393954607f202eecb8bc5a0"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "name",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [
+            "semantic-dffb2f47c1c7baaf773ec46f"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "object-1-description",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [
+            "semantic-1f15c25c66b77b851ca43271"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "object-1-name",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [
+            "semantic-1f15c25c66b77b851ca43271"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "object-2-description",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [
+            "semantic-1f15c25c66b77b851ca43271"
+          ],
+          "status": "BOUND"
+        },
+        {
+          "fact_id": "object-2-name",
+          "scope_id": "h7-synthetic-hotel",
+          "module_ids": [
+            "semantic-1f15c25c66b77b851ca43271"
+          ],
+          "status": "BOUND"
+        }
+      ],
+      "diagnostics": [],
+      "exclusions": [],
+      "restrictions": [
+        "SYNTHETIC_FIXTURE: NO PUBLICAR COMO NEGOCIO REAL",
+        "H7 held-out reservation; no real credentials or media permission"
+      ]
+    },
+    "media": null,
+    "gaps": [
+      {
+        "need": {
+          "id": "need-38a551951d4c06d9799cbae6",
+          "requirement_id": "semantic-e393954607f202eecb8bc5a0",
+          "module_id": "semantic-e393954607f202eecb8bc5a0",
+          "page": "/comodidades",
+          "scope_id": "h7-synthetic-hotel",
+          "purpose": "illustrate:amenities",
+          "role": "ILLUSTRATIVE",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      },
+      {
+        "need": {
+          "id": "need-3c0502ac4618c04add319e34",
+          "requirement_id": "semantic-1f15c25c66b77b851ca43271",
+          "module_id": "semantic-1f15c25c66b77b851ca43271",
+          "page": "/habitaciones",
+          "scope_id": "h7-synthetic-hotel",
+          "purpose": "document:rooms",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "object-2"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-76f4ece5a24f5e53b064ca38",
+          "requirement_id": "semantic-1f15c25c66b77b851ca43271",
+          "module_id": "semantic-1f15c25c66b77b851ca43271",
+          "page": "/habitaciones",
+          "scope_id": "h7-synthetic-hotel",
+          "purpose": "document:rooms",
+          "role": "DOCUMENTARY",
+          "subject_ids": [
+            "object-1"
+          ],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "upstream_or_commission"
+      },
+      {
+        "need": {
+          "id": "need-774e4de3d4cdf2dd24798e0a",
+          "requirement_id": "semantic-dffb2f47c1c7baaf773ec46f",
+          "module_id": "semantic-dffb2f47c1c7baaf773ec46f",
+          "page": "/",
+          "scope_id": "h7-synthetic-hotel",
+          "purpose": "generic:atmosphere",
+          "role": "ATMOSPHERIC",
+          "subject_ids": [],
+          "kinds": [
+            "image"
+          ],
+          "required": false,
+          "count": 1,
+          "min_width": null,
+          "min_height": null
+        },
+        "missing_count": 1,
+        "reasons": [
+          "NO_AUTHORIZED_CANDIDATE"
+        ],
+        "requested_from": "licensed_provider"
+      }
+    ],
+    "constraints": [
+      "GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE",
+      "NO_PROVIDER_AUTOMATION_AUTHORIZED",
+      "NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW",
+      "NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW"
+    ],
+    "client_id": "synthetic-h7-hotel",
+    "project_id": "h7-cohort-hotel",
+    "evaluated_at": "2026-10-08T00:00:00Z",
+    "manifest_sha256": "1d191ae2cc8cf545b4fb3626533dffb6247762119935137bc5e304746464be74",
+    "registry_version": "h5-lab-1.0.0",
+    "references": {
+      "status": "MISSING",
+      "note": "No licensed reference corpus present; no external reference claims."
+    },
+    "operators": {
+      "frame": [
+        "Flow",
+        "Rail"
+      ],
+      "stage": [
+        "Sequence",
+        "Split"
+      ],
+      "navigation": "before-content",
+      "reading_order": "modules-before-media",
+      "mobile": "stack-with-visible-navigation",
+      "media": "unaltered-original"
+    }
+  },
+  "limits": {
+    "proposals": 2,
+    "samples": 12,
+    "renders": 2,
+    "finalists": 2,
+    "max_output_bytes": 24000,
+    "new_provider_calls": 0,
+    "new_spend": 0
+  }
+}

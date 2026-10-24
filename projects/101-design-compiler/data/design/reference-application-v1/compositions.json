@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "ASSISTANT_REFERENCE_APPLICATION",
+  "source_context_sha256": "5977906c97f2c7cf9de7ad6593c24b9562572f7710908bfff1b4935ceae074fb",
+  "research_sha256": "d92ae3e94755072f73a4782f4a49f68296302b32d679f2240bc36855b0c6e780",
+  "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+  "media_sha256": "794ee55ea5d168c93d3943b2299f0a9464b6a24d23bfb043e0d296b22d67608d",
+  "authority": "ASSISTANT_OBSERVATIONS_NOT_NEW_USER_VOTES",
+  "human_approval": "NOT_COLLECTED",
+  "variants": [
+    {
+      "id": "candidate-01",
+      "art_direction_id": "editorial-table",
+      "relationship": "EditorialCard",
+      "chapters": "Editorial",
+      "mobile": "ReadingFirst",
+      "palette": "paper",
+      "voice": "editorial",
+      "references": [
+        "reference-19",
+        "reference-16",
+        "reference-04"
+      ],
+      "decision": "Ficha editorial junto a fotografía natural; primero lectura en móvil. La paleta cálida y la serif trabajan con la madera de la imagen, sin superponer texto sobre el stock.",
+      "media_policy": "NATURAL_RATIO_NO_CROP_STATIC_HERO_REQUEST_VIDEO_640"
+    },
+    {
+      "id": "candidate-02",
+      "art_direction_id": "open-index",
+      "relationship": "OffsetPair",
+      "chapters": "Direct",
+      "mobile": "CompactIndex",
+      "palette": "tomato",
+      "voice": "grotesk",
+      "references": [
+        "reference-02",
+        "reference-06",
+        "reference-21"
+      ],
+      "decision": "Dos campos desplazados conectan título y fotografía sin invadir sus zonas legibles; filas alternas y un índice móvil nativo. No requiere una segunda imagen hero ni copia la arquitectura completa de Singer.",
+      "media_policy": "NATURAL_RATIO_NO_CROP_STATIC_HERO_REQUEST_VIDEO_640"
+    },
+    {
+      "id": "candidate-03",
+      "art_direction_id": "night-gallery",
+      "relationship": "TypeGallery",
+      "chapters": "Exhibit",
+      "mobile": "ImageSequence",
+      "palette": "night",
+      "voice": "editorial",
+      "references": [
+        "reference-17",
+        "reference-07",
+        "reference-12"
+      ],
+      "decision": "Una apertura tipográfica oscura y una imagen de escala contenida preceden una galería escalonada. Pausas editoriales y secuencia móvil sin ampliar el vídeo ni inferir un negocio nocturno.",
+      "media_policy": "NATURAL_RATIO_NO_CROP_STATIC_HERO_REQUEST_VIDEO_640"
+    },
+    {
+      "id": "candidate-04",
+      "art_direction_id": "garden-notes",
+      "relationship": "FramedCover",
+      "chapters": "Notebook",
+      "mobile": "CoverFirst",
+      "palette": "olive",
+      "voice": "humanist",
+      "references": [
+        "reference-03",
+        "reference-06",
+        "reference-18",
+        "reference-13"
+      ],
+      "decision": "La foto enmarcada abre el recorrido visual antes de la ficha editorial; carta como cuaderno con columnas de índice y lectura. En móvil se conserva título accesible y aparece la foto antes de los detalles, sin introducción obligatoria.",
+      "media_policy": "NATURAL_RATIO_NO_CROP_STATIC_HERO_REQUEST_VIDEO_640"
+    }
+  ]
+}

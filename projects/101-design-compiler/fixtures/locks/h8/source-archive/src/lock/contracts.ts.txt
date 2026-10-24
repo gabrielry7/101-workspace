@@ -1,0 +1,27 @@
+import { z } from 'zod';
+import { BusinessInputV1,BusinessProfileV1,CapabilityProfileV1,SitePlanV1 } from '../contracts/v1/schemas.ts';
+import { SiteRequirementsV1 } from '../planner/contracts.ts';
+import { MediaManifestV1,MediaBriefV1 } from '../media/contracts.ts';
+import { CompatibleArtDirection,DesignPlanV1 } from '../design/contracts.ts';
+import { AuditPolicyV1,AuditReportV1 } from '../audit/contracts.ts';
+const hash=z.string().regex(/^[a-f0-9]{64}$/),id=z.string().regex(/^[a-z0-9][a-z0-9-]{0,79}$/);
+const relative=z.string().regex(/^(?!\/)(?!.*(?:^|\/)\.{1,2}(?:\/|$))(?!.*[\\:\x00])[^/]+(?:\/[^/]+)*$/);
+export const DependencyFingerprintV1=z.strictObject({path:relative,sha256:hash,normalization:z.enum(['LF_TEXT','BINARY'])});
+const auditFile=z.strictObject({path:relative,stored_path:relative,sha256:hash,bytes:z.number().int().nonnegative()});
+const auditEntry=z.strictObject({semantic_page:z.string(),viewport:z.strictObject({id:z.enum(['desktop','mobile']),width:z.number().positive(),height:z.number().positive()}),html_sha256:hash,html_path:relative,styles:z.array(z.strictObject({path:z.string(),stored_path:relative,sha256:hash})),served_media_sha256:hash.nullable(),screenshot_path:relative,screenshot_sha256:hash,fonts:z.array(z.unknown()),view:z.unknown(),audit:AuditReportV1});
+export const DesignLockV1=z.strictObject({schema_version:z.literal('1.0.0'),id,created_at:z.iso.datetime({offset:true}),lock_sha256:hash,
+ purpose:z.enum(['NORMAL_LAB_SNAPSHOT','SEEDED_COMPONENT_REGRESSION']),
+ approval:z.strictObject({status:z.literal('LAB_TECHNICAL_LOCK_NOT_HUMAN_APPROVED'),human_preference:z.literal('NOT_COLLECTED'),production_ready:z.literal(false),commercial_runtime:z.literal('MISSING')}),
+ audit_state:z.strictObject({status:z.enum(['REAL_BROWSER_LAB_TECHNICAL_PASS','BASELINE_ONLY_SEEDED_NOT_ACCEPTED']),origin:z.literal('EQUIVALENT_H8_ORIGINAL_BROWSER_CAPTURE'),source:auditFile.extend({created_at:z.iso.datetime(),group_label:z.string(),lock_sha256:hash,lock_file:auditFile}),candidate_sha256:hash,context_sha256:hash,policy:AuditPolicyV1,renderer_sources:z.array(DependencyFingerprintV1).min(1),entries:z.array(auditEntry).min(1),evidence:z.array(auditFile).min(1),pending:z.strictObject({human_preference:z.literal('NOT_COLLECTED'),aesthetic_calibration:z.literal('NOT_MEASURED'),commercial_runtime:z.literal('MISSING')})}),
+ semantic:z.strictObject({input:BusinessInputV1,profile:BusinessProfileV1,capabilities:CapabilityProfileV1,plan:SitePlanV1,requirements:SiteRequirementsV1}),
+ media:z.strictObject({manifest:MediaManifestV1,brief:MediaBriefV1}),
+ lab:z.unknown(),resolved_plan:DesignPlanV1,
+ creative:z.strictObject({proposals:z.array(CompatibleArtDirection).min(1),provenance:z.unknown(),prompt:z.unknown(),context:z.unknown(),resolved_without_new_sampling:z.literal(true)}),
+ mount:z.strictObject({kind:z.enum(['h5','h7']),id,original_routes:z.array(z.string().regex(/^\/[a-z0-9/-]+$/)).min(1)}),
+ components:z.strictObject({composition_version:z.literal('1.0.0'),design_registry_version:z.literal('h5-lab-1.0.0'),version_identity:z.literal('SOURCE_FINGERPRINTS_PLUS_DECLARED_VERSIONS')}),
+ source_snapshot_root:relative,sources:z.array(DependencyFingerprintV1).min(1),toolchain:z.strictObject({node_version:z.string(),node_sha256:hash,platform:z.string(),arch:z.string(),browser_version:z.string(),browser_files:z.array(DependencyFingerprintV1).min(1),lockfiles:z.array(DependencyFingerprintV1).min(1),installed_dependencies:z.array(DependencyFingerprintV1).min(1),normalization_policy:z.literal('SOURCE_TEXT_LF_INSTALLED_TOOLCHAIN_BYTES')}),
+ environment:z.strictObject({scope:z.literal('CONTROLLED_LOCAL_WINDOWS_BROWSER'),os_release:z.string(),os_version:z.string(),font_files:z.array(DependencyFingerprintV1).min(1),viewports:z.array(z.strictObject({id:z.enum(['desktop','mobile']),width:z.number().int().positive(),height:z.number().int().positive()})).length(2),device_scale_factor:z.literal(1),reduced_motion:z.literal(true),external_network:z.literal('FORBIDDEN'),font_source:z.literal('LOCAL_SYSTEM_FONTS_SAME_MACHINE')}),
+ media_snapshot_root:relative,files:z.array(z.strictObject({path:relative,stored_path:relative,sha256:hash,bytes:z.number().int().nonnegative(),role:z.enum(['AUTHORIZED_MEDIA','RIGHTS_DOCUMENT','MEDIA_EVIDENCE'])})),
+ exclusions:z.strictObject({llm_calls:z.literal(0),media_search:z.literal(0),provider_calls:z.literal(0),sampler_calls:z.literal(0),new_spend:z.literal(0)})});
+export type DesignLock=z.infer<typeof DesignLockV1>;
+export const lockContracts={DesignLockV1,DependencyFingerprintV1};

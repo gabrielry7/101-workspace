@@ -1,0 +1,46 @@
+
+> 101-design-compiler@0.0.0 taxonomy:audit
+> node --experimental-strip-types scripts/audit-taxonomy.ts
+
+{
+  "sources": [
+    {
+      "file": "data/reference/message (4).txt",
+      "sha256": "ef6e8856e431e6414b5826887cabafb12667f8c0bba4a9d3998d91b747de5f80",
+      "inventory_rows": 4582
+    }
+  ],
+  "provider_summaries": [
+    {
+      "provider": "foursquare",
+      "inventory_rows": 890,
+      "mapped_rows": 189,
+      "ambiguous_rows": 2,
+      "non_business_rows": 1,
+      "unknown_rows": 1,
+      "unmapped_rows": 697,
+      "mapped_row_fraction": 0.21235955056179776
+    },
+    {
+      "provider": "osm",
+      "inventory_rows": 1195,
+      "mapped_rows": 59,
+      "ambiguous_rows": 2,
+      "non_business_rows": 4,
+      "unknown_rows": 1,
+      "unmapped_rows": 1129,
+      "mapped_row_fraction": 0.049372384937238493
+    },
+    {
+      "provider": "overture",
+      "inventory_rows": 2497,
+      "mapped_rows": 77,
+      "ambiguous_rows": 2,
+      "non_business_rows": 1,
+      "unknown_rows": 1,
+      "unmapped_rows": 2416,
+      "mapped_row_fraction": 0.030837004405286344
+    }
+  ],
+  "unit": "TAXONOMY_INVENTORY_ROWS_NOT_UNIQUE_BUSINESSES"
+}

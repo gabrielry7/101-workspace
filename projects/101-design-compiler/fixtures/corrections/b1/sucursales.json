@@ -1,0 +1,345 @@
+{
+  "scenario": "sucursales",
+  "label": "Dos sucursales con actividades y ofertas distintas",
+  "expected_context_status": "MULTISCOPE",
+  "expected_planner_status": "READY",
+  "input": {
+    "schema_version": "1.0.0",
+    "business_id": "fixture-hotel-restaurante-sucursales-001",
+    "snapshot_id": "fixture-hotel-restaurante-sucursales-001-snapshot-v1-h2:b1-sucursales",
+    "data_mode": "SYNTHETIC_FIXTURE",
+    "as_of": "2026-10-07T00:00:00Z",
+    "identity": {
+      "name_fact_id": "f-name",
+      "alias_fact_ids": [],
+      "status": "ACTIVE",
+      "languages": [
+        "es"
+      ]
+    },
+    "category_observations": [
+      {
+        "id": "category-1",
+        "source": "osm",
+        "field": "amenity",
+        "value": "Unknown",
+        "confidence": 1,
+        "evidence_ids": [
+          "f-category"
+        ]
+      },
+      {
+        "id": "category-hotel",
+        "source": "osm",
+        "field": "tourism",
+        "value": "Unknown",
+        "confidence": 1,
+        "evidence_ids": [
+          "observed-category-hotel"
+        ]
+      }
+    ],
+    "facts": [
+      {
+        "id": "f-name",
+        "kind": "business_name",
+        "value": "hotel-restaurante-sucursales — fixture ficticio H2",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-name",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-identity",
+        "kind": "capability:identity",
+        "value": true,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-identity",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-category",
+        "kind": "observed_category",
+        "value": "Unknown",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-category",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-offering-1",
+        "kind": "offering_name",
+        "value": "Ítem de menú de prueba",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-offering-1",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-menu",
+        "kind": "capability:menu",
+        "value": true,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-menu",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "f-reservation",
+        "kind": "capability:reservation",
+        "value": true,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "fixture-decision-f-reservation",
+        "source": "synthetic-fixture",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "observed-category-hotel",
+        "kind": "observed_category",
+        "value": "Unknown",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-observed-category-hotel",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "hybrid-evidence",
+        "kind": "activity:coexisting",
+        "value": true,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-hybrid-evidence",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "name-room-1",
+        "kind": "offering_name",
+        "value": "Habitación sintética 1",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-name-room-1",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-rooms-9",
+        "kind": "capability:rooms",
+        "value": false,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-rooms-9",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "address-1",
+        "kind": "address",
+        "value": "Dirección ficticia 1; no corresponde a un local real",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-address-1",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-locations-11",
+        "kind": "capability:locations",
+        "value": true,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-locations-11",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "name-room-2",
+        "kind": "offering_name",
+        "value": "Habitación sintética 2",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-name-room-2",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-rooms-13",
+        "kind": "capability:rooms",
+        "value": true,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-rooms-13",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "address-2",
+        "kind": "address",
+        "value": "Dirección ficticia 2; no corresponde a un local real",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-address-2",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-locations-15",
+        "kind": "capability:locations",
+        "value": true,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-locations-15",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      },
+      {
+        "id": "assert-room_booking-16",
+        "kind": "capability:room_booking",
+        "value": false,
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "publication": "APPROVED",
+        "publication_decision_id": "synthetic-decision-assert-room_booking-16",
+        "source": "synthetic-fixture-h2",
+        "observed_at": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "locations": [
+      {
+        "id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": [],
+        "address_fact_id": "address-1"
+      },
+      {
+        "id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "coordinate_fact_ids": [],
+        "opening_hours_fact_ids": [],
+        "exception_fact_ids": [],
+        "visit_policy_fact_ids": [],
+        "address_fact_id": "address-2"
+      }
+    ],
+    "contact_fact_ids": [],
+    "service_area_fact_ids": [],
+    "offerings": [
+      {
+        "id": "offering-1",
+        "kind": "menu_item",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "name_fact_id": "f-offering-1",
+        "fact_ids": []
+      },
+      {
+        "id": "room-2",
+        "kind": "room",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "name_fact_id": "name-room-2",
+        "fact_ids": []
+      }
+    ],
+    "business_capabilities": [
+      {
+        "id": "identity",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-identity"
+        ]
+      },
+      {
+        "id": "menu",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-menu"
+        ]
+      },
+      {
+        "id": "reservation",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "f-reservation"
+        ]
+      },
+      {
+        "id": "order",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      },
+      {
+        "id": "delivery",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      },
+      {
+        "id": "rooms",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "status": "CONFIRMED_ABSENT",
+        "evidence_ids": [
+          "assert-rooms-9"
+        ]
+      },
+      {
+        "id": "locations",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-1",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-locations-11"
+        ]
+      },
+      {
+        "id": "rooms",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-rooms-13"
+        ]
+      },
+      {
+        "id": "locations",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "status": "CONFIRMED_PRESENT",
+        "evidence_ids": [
+          "assert-locations-15"
+        ]
+      },
+      {
+        "id": "menu",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "status": "UNKNOWN",
+        "evidence_ids": []
+      },
+      {
+        "id": "room_booking",
+        "scope_id": "fixture-hotel-restaurante-sucursales-001-branch-2",
+        "status": "CONFIRMED_ABSENT",
+        "evidence_ids": [
+          "assert-room_booking-16"
+        ]
+      }
+    ],
+    "action_destinations": [],
+    "existing_media": [],
+    "restrictions": [
+      "SYNTHETIC_FIXTURE: no publicar como negocio real"
+    ],
+    "preference_fact_ids": []
+  },
+  "activity_links": [],
+  "activity_relationships": [],
+  "category_context": [],
+  "objective_decisions": []
+}

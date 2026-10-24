@@ -1,0 +1,4374 @@
+{
+  "scope": "R3 actual current DOM plus original top viewport; home/contact additional social viewport. R2 preserves longer scroll series. No fullpage/pixel-perfect/vitals assertion.",
+  "views": [
+    {
+      "design": "candidate-01",
+      "kind": "home",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "captured_at": "2026-10-20T18:09:18.215Z",
+      "observed": {
+        "contact_disclosure": "Redes de ejemplo · sin perfiles reales vinculados. No se envían consultas desde esta demostración.",
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+        "editorials": [
+          {
+            "id": "post-01",
+            "slot": "journal-pizza",
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "text": "CompartirAl centro de la mesa.La primera porción siempre abre la conversación.",
+            "uses": [
+              "rich-editorial:candidate-01:home:pixabay-4991789-640",
+              "rich-editorial:candidate-01:home:pixabay-4991789-1280"
+            ]
+          },
+          {
+            "id": "post-02",
+            "slot": "journal-pasta",
+            "src": "/media/b2-fictional/3547078-640.webp",
+            "text": "DisfrutarEl ritual del mediodía.Una pausa para saborear el momento.",
+            "uses": [
+              "rich-editorial:candidate-01:home:pixabay-3547078-640",
+              "rich-editorial:candidate-01:home:pixabay-3547078-1280"
+            ]
+          },
+          {
+            "id": "post-03",
+            "slot": "journal-salad",
+            "src": "/media/b2-fictional/791891-640.webp",
+            "text": "DescubrirUn poco de color.Contrastes, texturas y algo fresco.",
+            "uses": [
+              "rich-editorial:candidate-01:home:pixabay-791891-640",
+              "rich-editorial:candidate-01:home:pixabay-791891-1280"
+            ]
+          },
+          {
+            "id": "post-04",
+            "slot": "journal-dessert",
+            "src": "/media/b2-fictional/1971552-640.webp",
+            "text": "QuedarseCinco minutos más.Siempre hay sitio para alargar la sobremesa.",
+            "uses": [
+              "rich-editorial:candidate-01:home:pixabay-1971552-640",
+              "rich-editorial:candidate-01:home:pixabay-1971552-1280"
+            ]
+          }
+        ],
+        "embeds": 0,
+        "exclusions": [],
+        "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+        "film": {
+          "height": 1000,
+          "state": "playing",
+          "width": 1424.666748046875,
+          "x": 0,
+          "y": 0
+        },
+        "film_control": {
+          "label": "Pausar vídeo de fondo",
+          "text": "Ⅱ",
+          "title": "Pausar vídeo de fondo"
+        },
+        "forms": 0,
+        "geometry": {
+          "document_width": 1425,
+          "height": 3573,
+          "overflow": [],
+          "root": {
+            "height": 3573.28125,
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1440
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 1000,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 201.4375,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 302.16668701171875,
+            "x": 72,
+            "y": 1380.6771240234375
+          },
+          {
+            "alt": "Pasta · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 201.4375,
+            "src": "/media/b2-fictional/3547078-640.webp",
+            "width": 302.16668701171875,
+            "x": 398.1666870117187,
+            "y": 1380.6771240234375
+          },
+          {
+            "alt": "Ensalada · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 201.4375,
+            "src": "/media/b2-fictional/791891-640.webp",
+            "width": 302.16668701171875,
+            "x": 724.3333740234375,
+            "y": 1380.6771240234375
+          },
+          {
+            "alt": "Postre · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 201.4375,
+            "src": "/media/b2-fictional/1971552-640.webp",
+            "width": 302.16668701171875,
+            "x": 1050.5,
+            "y": 1380.6771240234375
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "El diario"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "Abrir el diario ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Ver opiniones de muestra ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Hablemos ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "La visita ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto y redes"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Opiniones"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+        "modules": [
+          {
+            "component": "Identity",
+            "facts": [
+              {
+                "id": "name",
+                "scope": "b3-la-mesa-fictional",
+                "text": "La Mesa"
+              },
+              {
+                "id": "identity-line",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Cocina para quedarse un rato."
+              }
+            ],
+            "id": "semantic-81ed181e994dbbfde01a802d",
+            "offerings": [],
+            "page": "/",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "home",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 32,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Contacto"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 14.4,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "El diario"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 14,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina & sobremesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 144,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "H1",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 4.937756204949658,
+            "font_px": 34.56,
+            "method": "WHITE_WORST_CASE_UNDER_MINIMUM_056_BLACK_MEDIA_OVERLAY",
+            "tag": "P",
+            "text": "Cocina para quedarse un rato."
+          },
+          {
+            "contrast": 18.26117697443392,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Ⅱ"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 15.2,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Explorar la carta ↗"
+          },
+          {
+            "contrast": 7.259923327766011,
+            "font_px": 15.2,
+            "method": "WHITE_WORST_CASE_UNDER_BLACK_ALPHA_BACKPLATE",
+            "tag": "A",
+            "text": "Encontrarnos en la mesa ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "El diario de la mesa / 01"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 80.64,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "La vidaentre platos."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pequeños rituales. Grandes ratos. Una colección para abrir e"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Abrir el diario ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Compartir"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 31.68,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Al centro de la mesa."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "La primera porción siempre abre la conversación."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Disfrutar"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 31.68,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "El ritual del mediodía."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Una pausa para saborear el momento."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Descubrir"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 31.68,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Un poco de color."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Contrastes, texturas y algo fresco."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Quedarse"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 31.68,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Cinco minutos más."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Siempre hay sitio para alargar la sobremesa."
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Selección editorial de muestra con imágenes ilustrativas. No"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Alrededor de la mesa / 02"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 80.64,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "Lo quese queda."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Historias de un buen rato."
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Opiniones de muestra · personajes y textos ficticios. No son"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Ver opiniones de muestra ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 37.44,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BLOCKQUOTE",
+            "text": "Venir sin prisa, pedir algo para el centro y olvidarse un ra"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Personaje de muestra 1"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Opinión ficticia"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 37.44,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BLOCKQUOTE",
+            "text": "Una mesa larga, una conversación que sigue y ganas de pedir "
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Personaje de muestra 2"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Opinión ficticia"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Seguimos la conversación / 03"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 86.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "¿Nos vemosen la mesa?"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Una pregunta, una celebración o simplemente ganas de venir."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Hablemos ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Fuera de la mesa"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Redes de ejemplo · sin perfiles reales vinculados. No se env"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La visita ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto y redes"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Opiniones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "review_disclosure": "Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes.",
+        "reviews": [
+          {
+            "author": "Personaje de muestra 1",
+            "id": "review-01",
+            "label": "Opinión ficticia",
+            "quote": "Venir sin prisa, pedir algo para el centro y olvidarse un rato del reloj."
+          },
+          {
+            "author": "Personaje de muestra 2",
+            "id": "review-02",
+            "label": "Opinión ficticia",
+            "quote": "Una mesa larga, una conversación que sigue y ganas de pedir el postre."
+          }
+        ],
+        "site_sha256": "a3e4756f748ff5bb5d0716c7dc3850dfddedebc9fba39f6f1a0b779723d71eaa",
+        "small_controls": [],
+        "social_controls": 0,
+        "social_disclosure": "Selección editorial de muestra con imágenes ilustrativas. No son publicaciones de Instagram ni contenido de una cuenta real.",
+        "social_placeholders": [
+          "InstagramDe muestra",
+          "FacebookDe muestra"
+        ],
+        "text": "La MesaMenú ＋La cartaReservasPedidosContactoEl diarioCocina & sobremesaLa MesaCocina para quedarse un rato.ⅡExplorar la carta ↗Encontrarnos en la mesa ↗El diario de la mesa / 01La vidaentre platos.Pequeños rituales. Grandes ratos. Una colección para abrir el apetito y alargar la conversación.Abrir el diario ↗01CompartirAl centro de la mesa.La primera porción siempre abre la conversación.02DisfrutarEl ritual del mediodía.Una pausa para saborear el momento.03DescubrirUn poco de color.Contrastes, texturas y algo fresco.04QuedarseCinco minutos más.Siempre hay sitio para alargar la sobremesa.Selección editorial de muestra con imágenes ilustrativas. No son publicaciones de Instagram ni contenido de una cuenta real.Alrededor de la mesa / 02Lo quese queda.Historias de un buen rato.Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes.Ver opiniones de muestra ↗“Venir sin prisa, pedir algo para el centro y olvidarse un rato del reloj.01Personaje de muestra 1Opinión ficticia“Una mesa larga, una conversación que sigue y ganas de pedir el postre.02Personaje de muestra 2Opinión ficticiaSeguimos la conversación / 03¿Nos vemosen la mesa?Una pregunta, una celebración o simplemente ganas de venir.Hablemos ↗Fuera de la mesaInstagramDe muestraFacebookDe muestraRedes de ejemplo · sin perfiles reales vinculados. No se envían consultas desde esta demostración.La visita ↗La MesaCartaReservasVisitaNuestra ideaPreguntasContacto y redesOpinionesCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/",
+        "usage_ids": [
+          "rich-experience:candidate-01:home:hero:640",
+          "rich-experience:candidate-01:home:hero:1280",
+          "rich-experience:candidate-01:home:motion:1280",
+          "rich-experience:candidate-01:home:hero:1280",
+          "rich-editorial:candidate-01:home:pixabay-4991789-640",
+          "rich-editorial:candidate-01:home:pixabay-4991789-1280",
+          "rich-editorial:candidate-01:home:pixabay-3547078-640",
+          "rich-editorial:candidate-01:home:pixabay-3547078-1280",
+          "rich-editorial:candidate-01:home:pixabay-791891-640",
+          "rich-editorial:candidate-01:home:pixabay-791891-1280",
+          "rich-editorial:candidate-01:home:pixabay-1971552-640",
+          "rich-editorial:candidate-01:home:pixabay-1971552-1280"
+        ],
+        "video": {
+          "autoplay": true,
+          "controls": false,
+          "duration": 9.36,
+          "fit": "cover",
+          "height": 1000,
+          "inline": true,
+          "loop": true,
+          "muted": true,
+          "native_height": 720,
+          "native_width": 1280,
+          "paused": false,
+          "preload": "none",
+          "src": "/media/b3-experience/149678-silent-1280.mp4",
+          "time": 3.633048,
+          "width": 1424.666748046875,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "screenshots": [
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-home-desktop-top.jpg",
+          "sha256": "4b1efca916358a04654c9cf0f3e9dd7ff45479c5ed7cb56d80b1db15d6aa9c19",
+          "document_height": 3573,
+          "height": 1000,
+          "y": 2573.333251953125
+        },
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-home-desktop-social.jpg",
+          "sha256": "66d88444cb3632341612512edd6952b01417fdcdf4aed9ea8abe236eeced4949",
+          "document_height": 3573,
+          "height": 1000,
+          "y": 2573.333251953125
+        }
+      ]
+    },
+    {
+      "design": "candidate-01",
+      "kind": "collection",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "captured_at": "2026-10-20T18:09:26.930Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+        "editorials": [],
+        "embeds": 0,
+        "exclusions": [],
+        "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+        "film": null,
+        "film_control": null,
+        "forms": 0,
+        "geometry": {
+          "document_width": 1425,
+          "height": 2801,
+          "overflow": [],
+          "root": {
+            "height": 2801.14599609375,
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1440
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 401.2916870117187,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 601.9375,
+            "x": 86.39583587646484,
+            "y": 798.6458740234375
+          },
+          {
+            "alt": "Pasta · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 401.2916870117187,
+            "src": "/media/b2-fictional/3547078-640.webp",
+            "width": 601.9375,
+            "x": 736.3333740234375,
+            "y": 878.6458740234375
+          },
+          {
+            "alt": "Ensalada · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 401.2916870117187,
+            "src": "/media/b2-fictional/791891-640.webp",
+            "width": 601.9375,
+            "x": 86.39583587646484,
+            "y": 1656.7708740234375
+          },
+          {
+            "alt": "Postre · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 401.2916870117187,
+            "src": "/media/b2-fictional/1971552-640.webp",
+            "width": 601.9375,
+            "x": 736.3333740234375,
+            "y": 1736.7708740234375
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": "page",
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "El diario"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/?plato=pizza",
+            "text": "Elegir este plato ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/?plato=pasta",
+            "text": "Elegir este plato ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/?plato=salad",
+            "text": "Elegir este plato ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/?plato=dessert",
+            "text": "Elegir este plato ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto y redes"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Opiniones"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+        "modules": [
+          {
+            "component": "OfferingCollection",
+            "facts": [
+              {
+                "id": "pizza-category",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Al horno"
+              },
+              {
+                "id": "pizza-name",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Pizza de la casa"
+              },
+              {
+                "id": "pizza-price",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "42.000 COP"
+              },
+              {
+                "id": "pizza-description",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Masa fina, tomate y pepperoni. Una idea de carta para compartir desde el centro de la mesa."
+              },
+              {
+                "id": "pizza-allergens",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Declaración ficticia: contiene trigo (gluten) y leche. No apta como información alimentaria real."
+              },
+              {
+                "id": "pizza-calories",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Estimación de ejemplo: 780 kcal por porción. Sin análisis nutricional."
+              },
+              {
+                "id": "pizza-currency",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "COP"
+              },
+              {
+                "id": "pizza-ingredients",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Receta ficticia: harina de trigo, tomate, mozzarella, pepperoni, aceite de oliva."
+              },
+              {
+                "id": "pasta-category",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Platos principales"
+              },
+              {
+                "id": "pasta-name",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Pasta junto al mar"
+              },
+              {
+                "id": "pasta-price",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "38.000 COP"
+              },
+              {
+                "id": "pasta-description",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Pasta con camarones, tomate y una salsa suave. Una pausa larga para la hora del almuerzo."
+              },
+              {
+                "id": "pasta-allergens",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Declaración ficticia: contiene trigo (gluten), crustáceos y leche. No apta como información alimentaria real."
+              },
+              {
+                "id": "pasta-calories",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Estimación de ejemplo: 620 kcal por porción. Sin análisis nutricional."
+              },
+              {
+                "id": "pasta-currency",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "COP"
+              },
+              {
+                "id": "pasta-ingredients",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Receta ficticia: pasta de trigo, camarones, tomate, crema, parmesano, perejil."
+              },
+              {
+                "id": "salad-category",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Del jardín"
+              },
+              {
+                "id": "salad-name",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Verde de temporada"
+              },
+              {
+                "id": "salad-price",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "26.000 COP"
+              },
+              {
+                "id": "salad-description",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Hojas frescas, vegetales y una vinagreta ligera. Textura, color y algo crujiente en cada bocado."
+              },
+              {
+                "id": "salad-allergens",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Declaración ficticia: alérgenos y trazas por confirmar en una cocina real. No se afirma «libre de»."
+              },
+              {
+                "id": "salad-calories",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Estimación de ejemplo: 280 kcal por porción. Sin análisis nutricional."
+              },
+              {
+                "id": "salad-currency",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "COP"
+              },
+              {
+                "id": "salad-ingredients",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Receta ficticia: lechuga, tomate, pepino, zanahoria, aceite de oliva, limón."
+              },
+              {
+                "id": "dessert-category",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Algo dulce"
+              },
+              {
+                "id": "dessert-name",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "El último bocado"
+              },
+              {
+                "id": "dessert-price",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "19.000 COP"
+              },
+              {
+                "id": "dessert-description",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Una porción de pastel y unos minutos más de sobremesa. Porque el final también merece su momento."
+              },
+              {
+                "id": "dessert-allergens",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Declaración ficticia: contiene trigo (gluten), huevo y leche. No apta como información alimentaria real."
+              },
+              {
+                "id": "dessert-calories",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Estimación de ejemplo: 410 kcal por porción. Sin análisis nutricional."
+              },
+              {
+                "id": "dessert-currency",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "COP"
+              },
+              {
+                "id": "dessert-ingredients",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Receta ficticia: harina de trigo, huevo, leche, azúcar, cacao, mantequilla."
+              }
+            ],
+            "id": "semantic-682a641e4e80786c09f19e2c",
+            "offerings": [
+              {
+                "id": "pizza",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "slot": "pizza",
+                "src": "/media/b2-fictional/4991789-1280.webp",
+                "uses": [
+                  "rich-experience:candidate-01:collection:pizza:640",
+                  "rich-experience:candidate-01:collection:pizza:1280"
+                ]
+              },
+              {
+                "id": "pasta",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "slot": "pasta",
+                "src": "/media/b2-fictional/3547078-640.webp",
+                "uses": [
+                  "rich-experience:candidate-01:collection:pasta:640",
+                  "rich-experience:candidate-01:collection:pasta:1280"
+                ]
+              },
+              {
+                "id": "salad",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "slot": "salad",
+                "src": "/media/b2-fictional/791891-640.webp",
+                "uses": [
+                  "rich-experience:candidate-01:collection:salad:640",
+                  "rich-experience:candidate-01:collection:salad:1280"
+                ]
+              },
+              {
+                "id": "dessert",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "slot": "dessert",
+                "src": "/media/b2-fictional/1971552-640.webp",
+                "uses": [
+                  "rich-experience:candidate-01:collection:dessert:640",
+                  "rich-experience:candidate-01:collection:dessert:1280"
+                ]
+              }
+            ],
+            "page": "/sedes/s-33f4926b8262eb08fb66b3cb/menu",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional-sede-imaginaria"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "collection",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "El diario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Para elegir con ganas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 115.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16.8,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cuatro platos para este concepto ficticio. Elige uno y explo"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "01 / La carta de ejemplo"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 43.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "Una carta corta. Muchas ganas."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Cuatro ideas para abrir el apetito. Fotografías ilustrativas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "LABEL",
+            "text": "Buscar en la carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "INPUT",
+            "text": ""
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "LABEL",
+            "text": "CategoríaToda la cartaAlgo dulcePlatos principalesAl hornoDe"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SELECT",
+            "text": "Toda la cartaAlgo dulcePlatos principalesAl hornoDel jardín"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "4 platos de ejemplo"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "01 / Al horno"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 37.44,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Pizza de la casa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Masa fina, tomate y pepperoni. Una idea de carta para compar"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Ingredientes y detalles +"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Elegir este plato ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "02 / Platos principales"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 37.44,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Pasta junto al mar"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pasta con camarones, tomate y una salsa suave. Una pausa lar"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Ingredientes y detalles +"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Elegir este plato ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "03 / Del jardín"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 37.44,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Verde de temporada"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Hojas frescas, vegetales y una vinagreta ligera. Textura, co"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Ingredientes y detalles +"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Elegir este plato ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "04 / Algo dulce"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 37.44,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "El último bocado"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Una porción de pastel y unos minutos más de sobremesa. Porqu"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Ingredientes y detalles +"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Elegir este plato ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto y redes"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Opiniones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "reviews": [],
+        "site_sha256": "a3e4756f748ff5bb5d0716c7dc3850dfddedebc9fba39f6f1a0b779723d71eaa",
+        "small_controls": [],
+        "social_controls": 0,
+        "social_placeholders": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosContactoEl diarioPara elegir con ganasLa cartaCuatro platos para este concepto ficticio. Elige uno y explora sus detalles.01 / La carta de ejemploUna carta corta. Muchas ganas.Cuatro ideas para abrir el apetito. Fotografías ilustrativas; las recetas y precios son ficticios.Buscar en la cartaCategoríaToda la cartaAlgo dulcePlatos principalesAl hornoDel jardín4 platos de ejemplo01 / Al hornoPizza de la casa42.000 COPMasa fina, tomate y pepperoni. Una idea de carta para compartir desde el centro de la mesa.Ingredientes y detalles +Declaración ficticia: contiene trigo (gluten) y leche. No apta como información alimentaria real.Estimación de ejemplo: 780 kcal por porción. Sin análisis nutricional.COPReceta ficticia: harina de trigo, tomate, mozzarella, pepperoni, aceite de oliva.Elegir este plato ↗02 / Platos principalesPasta junto al mar38.000 COPPasta con camarones, tomate y una salsa suave. Una pausa larga para la hora del almuerzo.Ingredientes y detalles +Declaración ficticia: contiene trigo (gluten), crustáceos y leche. No apta como información alimentaria real.Estimación de ejemplo: 620 kcal por porción. Sin análisis nutricional.COPReceta ficticia: pasta de trigo, camarones, tomate, crema, parmesano, perejil.Elegir este plato ↗03 / Del jardínVerde de temporada26.000 COPHojas frescas, vegetales y una vinagreta ligera. Textura, color y algo crujiente en cada bocado.Ingredientes y detalles +Declaración ficticia: alérgenos y trazas por confirmar en una cocina real. No se afirma «libre de».Estimación de ejemplo: 280 kcal por porción. Sin análisis nutricional.COPReceta ficticia: lechuga, tomate, pepino, zanahoria, aceite de oliva, limón.Elegir este plato ↗04 / Algo dulceEl último bocado19.000 COPUna porción de pastel y unos minutos más de sobremesa. Porque el final también merece su momento.Ingredientes y detalles +Declaración ficticia: contiene trigo (gluten), huevo y leche. No apta como información alimentaria real.Estimación de ejemplo: 410 kcal por porción. Sin análisis nutricional.COPReceta ficticia: harina de trigo, huevo, leche, azúcar, cacao, mantequilla.Elegir este plato ↗<p>La carta completa y sus detalles funcionan sin JavaScript. La búsqueda y la selección local necesitan JavaScript.</p>La MesaCartaReservasVisitaNuestra ideaPreguntasContacto y redesOpinionesCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/carta/",
+        "usage_ids": [
+          "rich-experience:candidate-01:collection:pizza:640",
+          "rich-experience:candidate-01:collection:pizza:1280",
+          "rich-experience:candidate-01:collection:pasta:640",
+          "rich-experience:candidate-01:collection:pasta:1280",
+          "rich-experience:candidate-01:collection:salad:640",
+          "rich-experience:candidate-01:collection:salad:1280",
+          "rich-experience:candidate-01:collection:dessert:640",
+          "rich-experience:candidate-01:collection:dessert:1280"
+        ],
+        "video": null
+      },
+      "screenshots": [
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-collection-desktop-top.jpg",
+          "sha256": "690ae81574e15d2e5ee38ba252dfbeb10230ece1f7a4ef6f7330613cbdae12ed",
+          "document_height": 2801,
+          "height": 1000,
+          "y": 1801.3333740234375
+        }
+      ]
+    },
+    {
+      "design": "candidate-01",
+      "kind": "request",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "captured_at": "2026-10-20T18:09:29.097Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+        "editorials": [],
+        "embeds": 0,
+        "exclusions": [],
+        "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+        "film": null,
+        "film_control": null,
+        "forms": 0,
+        "geometry": {
+          "document_width": 1425,
+          "height": 1275,
+          "overflow": [],
+          "root": {
+            "height": 1274.385498046875,
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1440
+        },
+        "h1": 1,
+        "images": [],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": "page",
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "El diario"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto y redes"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Opiniones"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+        "modules": [],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [
+          "DEMO_ONLY"
+        ],
+        "page": "request",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "El diario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Reservas · demostración"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 115.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "Tu próxima mesa."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16.8,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Una ocasión para reunirnos. Explora el formulario sin efectu"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "02 / Un lugar para el encuentro"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 57.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "Siempre hay una buena razón."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Una comida entre amigos. Un cumpleaños. Un martes cualquiera"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Reservas · demostración sin disponibilidad real"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Explora la interfaz. No se envía ninguna solicitud, no se re"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "LABEL",
+            "text": "Personas2 personas4 personas6 personas8 personas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SELECT",
+            "text": "2 personas4 personas6 personas8 personas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "LABEL",
+            "text": "Cuándo"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "INPUT",
+            "text": ""
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "LABEL",
+            "text": "OcasiónUna buena comidaCumpleañosCelebración especial"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SELECT",
+            "text": "Una buena comidaCumpleañosCelebración especial"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "LABEL",
+            "text": "MomentoAlmuerzo · 13:00Cena · 19:30"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SELECT",
+            "text": "Almuerzo · 13:00Cena · 19:30"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Imaginar la distribución de mesas ＋"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Ver resumen de ejemplo ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "No hay reserva ni conexión operativa."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto y redes"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Opiniones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "reviews": [],
+        "site_sha256": "a3e4756f748ff5bb5d0716c7dc3850dfddedebc9fba39f6f1a0b779723d71eaa",
+        "small_controls": [],
+        "social_controls": 0,
+        "social_placeholders": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosContactoEl diarioReservas · demostraciónTu próxima mesa.Una ocasión para reunirnos. Explora el formulario sin efectuar una reserva real.02 / Un lugar para el encuentroSiempre hay una buena razón.Una comida entre amigos. Un cumpleaños. Un martes cualquiera.Reservas · demostración sin disponibilidad realExplora la interfaz. No se envía ninguna solicitud, no se reserva una mesa y no recogemos datos personales.Personas2 personas4 personas6 personas8 personasCuándoOcasiónUna buena comidaCumpleañosCelebración especialMomentoAlmuerzo · 13:00Cena · 19:30Imaginar la distribución de mesas ＋Plano y ocupación simulados. Elige una mesa sólo para explorar esta interfaz.Mesa 1EjemploMesa 2EjemploMesa 3Ocupada · ficciónMesa 4EjemploMesa 5EjemploMesa 6Ocupada · ficciónVer resumen de ejemplo ↗No hay reserva ni conexión operativa.La MesaCartaReservasVisitaNuestra ideaPreguntasContacto y redesOpinionesCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/reservas/",
+        "usage_ids": [],
+        "video": null
+      },
+      "screenshots": [
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-request-desktop-top.jpg",
+          "sha256": "1f587f5bef4c364a98c3b27239ccada33a44d354a9b067c5d12b6d4d2f3477c5",
+          "document_height": 1275,
+          "height": 1000,
+          "y": 274.6666564941406
+        }
+      ]
+    },
+    {
+      "design": "candidate-01",
+      "kind": "selection",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "captured_at": "2026-10-20T18:09:39.422Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/",
+          "/b3/candidate-01/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+        "editorials": [],
+        "embeds": 0,
+        "exclusions": [],
+        "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+        "film": null,
+        "film_control": null,
+        "forms": 0,
+        "geometry": {
+          "document_width": 1425,
+          "height": 2424,
+          "overflow": [],
+          "root": {
+            "height": 2423.90625,
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1440
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pizza · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 120,
+            "src": "/media/b2-fictional/4991789-1280.webp",
+            "width": 120,
+            "x": 86.39583587646484,
+            "y": 656.6979370117188
+          },
+          {
+            "alt": "Pasta · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 120,
+            "src": "/media/b2-fictional/3547078-640.webp",
+            "width": 120,
+            "x": 86.39583587646484,
+            "y": 1018.9375
+          },
+          {
+            "alt": "Ensalada · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 120,
+            "src": "/media/b2-fictional/791891-640.webp",
+            "width": 120,
+            "x": 86.39583587646484,
+            "y": 1381.1771240234375
+          },
+          {
+            "alt": "Postre · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 120,
+            "src": "/media/b2-fictional/1971552-640.webp",
+            "width": 120,
+            "x": 86.39583587646484,
+            "y": 1743.416748046875
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": "page",
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "El diario"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto y redes"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Opiniones"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+        "modules": [
+          {
+            "component": "OfferingCollection",
+            "facts": [
+              {
+                "id": "pizza-category",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Al horno"
+              },
+              {
+                "id": "pizza-name",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Pizza de la casa"
+              },
+              {
+                "id": "pizza-price",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "42.000 COP"
+              },
+              {
+                "id": "pizza-description",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Masa fina, tomate y pepperoni. Una idea de carta para compartir desde el centro de la mesa."
+              },
+              {
+                "id": "pizza-allergens",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Declaración ficticia: contiene trigo (gluten) y leche. No apta como información alimentaria real."
+              },
+              {
+                "id": "pizza-calories",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Estimación de ejemplo: 780 kcal por porción. Sin análisis nutricional."
+              },
+              {
+                "id": "pizza-currency",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "COP"
+              },
+              {
+                "id": "pizza-ingredients",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Receta ficticia: harina de trigo, tomate, mozzarella, pepperoni, aceite de oliva."
+              },
+              {
+                "id": "pasta-category",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Platos principales"
+              },
+              {
+                "id": "pasta-name",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Pasta junto al mar"
+              },
+              {
+                "id": "pasta-price",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "38.000 COP"
+              },
+              {
+                "id": "pasta-description",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Pasta con camarones, tomate y una salsa suave. Una pausa larga para la hora del almuerzo."
+              },
+              {
+                "id": "pasta-allergens",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Declaración ficticia: contiene trigo (gluten), crustáceos y leche. No apta como información alimentaria real."
+              },
+              {
+                "id": "pasta-calories",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Estimación de ejemplo: 620 kcal por porción. Sin análisis nutricional."
+              },
+              {
+                "id": "pasta-currency",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "COP"
+              },
+              {
+                "id": "pasta-ingredients",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Receta ficticia: pasta de trigo, camarones, tomate, crema, parmesano, perejil."
+              },
+              {
+                "id": "salad-category",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Del jardín"
+              },
+              {
+                "id": "salad-name",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Verde de temporada"
+              },
+              {
+                "id": "salad-price",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "26.000 COP"
+              },
+              {
+                "id": "salad-description",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Hojas frescas, vegetales y una vinagreta ligera. Textura, color y algo crujiente en cada bocado."
+              },
+              {
+                "id": "salad-allergens",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Declaración ficticia: alérgenos y trazas por confirmar en una cocina real. No se afirma «libre de»."
+              },
+              {
+                "id": "salad-calories",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Estimación de ejemplo: 280 kcal por porción. Sin análisis nutricional."
+              },
+              {
+                "id": "salad-currency",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "COP"
+              },
+              {
+                "id": "salad-ingredients",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Receta ficticia: lechuga, tomate, pepino, zanahoria, aceite de oliva, limón."
+              },
+              {
+                "id": "dessert-category",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Algo dulce"
+              },
+              {
+                "id": "dessert-name",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "El último bocado"
+              },
+              {
+                "id": "dessert-price",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "19.000 COP"
+              },
+              {
+                "id": "dessert-description",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Una porción de pastel y unos minutos más de sobremesa. Porque el final también merece su momento."
+              },
+              {
+                "id": "dessert-allergens",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Declaración ficticia: contiene trigo (gluten), huevo y leche. No apta como información alimentaria real."
+              },
+              {
+                "id": "dessert-calories",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Estimación de ejemplo: 410 kcal por porción. Sin análisis nutricional."
+              },
+              {
+                "id": "dessert-currency",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "COP"
+              },
+              {
+                "id": "dessert-ingredients",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Receta ficticia: harina de trigo, huevo, leche, azúcar, cacao, mantequilla."
+              }
+            ],
+            "id": "semantic-682a641e4e80786c09f19e2c",
+            "offerings": [
+              {
+                "id": "pizza",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "slot": "pizza",
+                "src": "/media/b2-fictional/4991789-1280.webp",
+                "uses": [
+                  "rich-experience:candidate-01:selection:pizza:640",
+                  "rich-experience:candidate-01:selection:pizza:1280"
+                ]
+              },
+              {
+                "id": "pasta",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "slot": "pasta",
+                "src": "/media/b2-fictional/3547078-640.webp",
+                "uses": [
+                  "rich-experience:candidate-01:selection:pasta:640",
+                  "rich-experience:candidate-01:selection:pasta:1280"
+                ]
+              },
+              {
+                "id": "salad",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "slot": "salad",
+                "src": "/media/b2-fictional/791891-640.webp",
+                "uses": [
+                  "rich-experience:candidate-01:selection:salad:640",
+                  "rich-experience:candidate-01:selection:salad:1280"
+                ]
+              },
+              {
+                "id": "dessert",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "slot": "dessert",
+                "src": "/media/b2-fictional/1971552-640.webp",
+                "uses": [
+                  "rich-experience:candidate-01:selection:dessert:640",
+                  "rich-experience:candidate-01:selection:dessert:1280"
+                ]
+              }
+            ],
+            "page": "/sedes/s-33f4926b8262eb08fb66b3cb/menu",
+            "required": "true",
+            "scope": "b3-la-mesa-fictional-sede-imaginaria"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [
+          "DEMO_ONLY"
+        ],
+        "page": "selection",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "El diario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pedido · demostración"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 115.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "Tu selección."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16.8,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Elige los platos que te apetecen. Esta es una demostración: "
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "LABEL",
+            "text": "Buscar en la carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "INPUT",
+            "text": ""
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "LABEL",
+            "text": "CategoríaToda la cartaAlgo dulcePlatos principalesAl hornoDe"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SELECT",
+            "text": "Toda la cartaAlgo dulcePlatos principalesAl hornoDel jardín"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "4 platos de ejemplo"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "01 / Al horno"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 25.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Pizza de la casa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Masa fina, tomate y pepperoni. Una idea de carta para compar"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Ingredientes y detalles +"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Añadir a selección de ejemplo ＋"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "02 / Platos principales"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 25.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Pasta junto al mar"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pasta con camarones, tomate y una salsa suave. Una pausa lar"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Ingredientes y detalles +"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Añadir a selección de ejemplo ＋"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "03 / Del jardín"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 25.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "Verde de temporada"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Hojas frescas, vegetales y una vinagreta ligera. Textura, co"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Ingredientes y detalles +"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Añadir a selección de ejemplo ＋"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "04 / Algo dulce"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 25.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H3",
+            "text": "El último bocado"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Una porción de pastel y unos minutos más de sobremesa. Porqu"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Ingredientes y detalles +"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Añadir a selección de ejemplo ＋"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Tu selección · sólo en esta pantalla"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "¿Lo compartimos?"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Explora los platos y reúne tus favoritos en una selección de"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "0 platos elegidos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Una carta para imaginar."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "BUTTON",
+            "text": "Vaciar selección de ejemplo"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto y redes"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Opiniones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "reviews": [],
+        "site_sha256": "a3e4756f748ff5bb5d0716c7dc3850dfddedebc9fba39f6f1a0b779723d71eaa",
+        "small_controls": [],
+        "social_controls": 0,
+        "social_placeholders": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosContactoEl diarioPedido · demostraciónTu selección.Elige los platos que te apetecen. Esta es una demostración: no se envían pedidos ni se realizan cobros.01 / La carta de ejemploUna carta corta. Muchas ganas.Cuatro ideas para abrir el apetito. Fotografías ilustrativas; las recetas y precios son ficticios.Buscar en la cartaCategoríaToda la cartaAlgo dulcePlatos principalesAl hornoDel jardín4 platos de ejemplo01 / Al hornoPizza de la casa42.000 COPMasa fina, tomate y pepperoni. Una idea de carta para compartir desde el centro de la mesa.Ingredientes y detalles +Declaración ficticia: contiene trigo (gluten) y leche. No apta como información alimentaria real.Estimación de ejemplo: 780 kcal por porción. Sin análisis nutricional.COPReceta ficticia: harina de trigo, tomate, mozzarella, pepperoni, aceite de oliva.Añadir a selección de ejemplo ＋02 / Platos principalesPasta junto al mar38.000 COPPasta con camarones, tomate y una salsa suave. Una pausa larga para la hora del almuerzo.Ingredientes y detalles +Declaración ficticia: contiene trigo (gluten), crustáceos y leche. No apta como información alimentaria real.Estimación de ejemplo: 620 kcal por porción. Sin análisis nutricional.COPReceta ficticia: pasta de trigo, camarones, tomate, crema, parmesano, perejil.Añadir a selección de ejemplo ＋03 / Del jardínVerde de temporada26.000 COPHojas frescas, vegetales y una vinagreta ligera. Textura, color y algo crujiente en cada bocado.Ingredientes y detalles +Declaración ficticia: alérgenos y trazas por confirmar en una cocina real. No se afirma «libre de».Estimación de ejemplo: 280 kcal por porción. Sin análisis nutricional.COPReceta ficticia: lechuga, tomate, pepino, zanahoria, aceite de oliva, limón.Añadir a selección de ejemplo ＋04 / Algo dulceEl último bocado19.000 COPUna porción de pastel y unos minutos más de sobremesa. Porque el final también merece su momento.Ingredientes y detalles +Declaración ficticia: contiene trigo (gluten), huevo y leche. No apta como información alimentaria real.Estimación de ejemplo: 410 kcal por porción. Sin análisis nutricional.COPReceta ficticia: harina de trigo, huevo, leche, azúcar, cacao, mantequilla.Añadir a selección de ejemplo ＋<p>La carta completa y sus detalles funcionan sin JavaScript. La búsqueda y la selección local necesitan JavaScript.</p>Tu selección · sólo en esta pantalla¿Lo compartimos?Explora los platos y reúne tus favoritos en una selección de ejemplo. No es un carrito de compra y no hay pedido, entrega ni cobro.0 platos elegidosUna carta para imaginar.Vaciar selección de ejemploLa MesaCartaReservasVisitaNuestra ideaPreguntasContacto y redesOpinionesCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/pedidos/",
+        "usage_ids": [
+          "rich-experience:candidate-01:selection:pizza:640",
+          "rich-experience:candidate-01:selection:pizza:1280",
+          "rich-experience:candidate-01:selection:pasta:640",
+          "rich-experience:candidate-01:selection:pasta:1280",
+          "rich-experience:candidate-01:selection:salad:640",
+          "rich-experience:candidate-01:selection:salad:1280",
+          "rich-experience:candidate-01:selection:dessert:640",
+          "rich-experience:candidate-01:selection:dessert:1280"
+        ],
+        "video": null
+      },
+      "screenshots": [
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-selection-desktop-top.jpg",
+          "sha256": "85abe948ac0fa9fe8eecf04fd677aa8c1e531f0b89478243fb2fda487922f094",
+          "document_height": 2424,
+          "height": 1000,
+          "y": 1424
+        }
+      ]
+    },
+    {
+      "design": "candidate-01",
+      "kind": "visit",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "captured_at": "2026-10-20T18:09:46.875Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+        "editorials": [],
+        "embeds": 0,
+        "exclusions": [],
+        "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+        "film": null,
+        "film_control": null,
+        "forms": 0,
+        "geometry": {
+          "document_width": 1425,
+          "height": 1422,
+          "overflow": [],
+          "root": {
+            "height": 1421.822998046875,
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1440
+        },
+        "h1": 1,
+        "images": [],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "El diario"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Antes de venir ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto y redes"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Opiniones"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+        "modules": [
+          {
+            "component": "FactCollection",
+            "facts": [
+              {
+                "id": "address",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Pasaje de la Imaginación, 12 · sede ficticia, sin ubicación real."
+              }
+            ],
+            "id": "semantic-6c29d07e2344be3fe70236f2",
+            "offerings": [],
+            "page": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+            "required": "false",
+            "scope": "b3-la-mesa-fictional-sede-imaginaria"
+          },
+          {
+            "component": "FactCollection",
+            "facts": [
+              {
+                "id": "hours",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Horario de ejemplo: martes a domingo, 12:00–22:00. Lunes cerrado."
+              }
+            ],
+            "id": "semantic-aba6c699d8ac40b3c0e96e35",
+            "offerings": [],
+            "page": "/sedes/s-33f4926b8262eb08fb66b3cb/ubicacion",
+            "required": "false",
+            "scope": "b3-la-mesa-fictional-sede-imaginaria"
+          },
+          {
+            "component": "FactCollection",
+            "facts": [
+              {
+                "id": "parking",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "Parqueadero: previsto en este escenario ficticio; plazas y acceso por confirmar antes de una web real."
+              }
+            ],
+            "id": "semantic-0e85531be779a8721f214794",
+            "offerings": [],
+            "page": "/sedes/s-33f4926b8262eb08fb66b3cb/comodidades",
+            "required": "false",
+            "scope": "b3-la-mesa-fictional-sede-imaginaria"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "visit",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "El diario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "La visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 115.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "Nos vemos aquí."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16.8,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Una sede imaginaria para explorar este concepto. No es una u"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Información del escenario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 40,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "Nos vemos en la mesa."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 17.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pasaje de la Imaginación, 12 · sede ficticia, sin ubicación "
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Información del escenario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 40,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "El tiempo de la mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 17.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Horario de ejemplo: martes a domingo, 12:00–22:00. Lunes cer"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Información del escenario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 40,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "Tu visita, con calma."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 17.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Parqueadero: previsto en este escenario ficticio; plazas y a"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Antes de venir ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto y redes"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Opiniones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "reviews": [],
+        "site_sha256": "a3e4756f748ff5bb5d0716c7dc3850dfddedebc9fba39f6f1a0b779723d71eaa",
+        "small_controls": [],
+        "social_controls": 0,
+        "social_placeholders": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosContactoEl diarioLa visitaNos vemos aquí.Una sede imaginaria para explorar este concepto. No es una ubicación real.Información del escenarioNos vemos en la mesa.Pasaje de la Imaginación, 12 · sede ficticia, sin ubicación real.Información del escenarioEl tiempo de la mesaHorario de ejemplo: martes a domingo, 12:00–22:00. Lunes cerrado.Información del escenarioTu visita, con calma.Parqueadero: previsto en este escenario ficticio; plazas y acceso por confirmar antes de una web real.Antes de venir ↗La MesaCartaReservasVisitaNuestra ideaPreguntasContacto y redesOpinionesCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/visita/",
+        "usage_ids": [],
+        "video": null
+      },
+      "screenshots": [
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-visit-desktop-top.jpg",
+          "sha256": "cac5ce3e60bd17c14ab969791c5f94c990555d49ac8d2c11537c2b3e798f10d2",
+          "document_height": 1422,
+          "height": 1000,
+          "y": 422
+        }
+      ]
+    },
+    {
+      "design": "candidate-01",
+      "kind": "story",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "captured_at": "2026-10-20T18:09:53.936Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [
+          "/b3/candidate-01/creditos/"
+        ],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+        "editorials": [],
+        "embeds": 0,
+        "exclusions": [],
+        "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+        "film": null,
+        "film_control": null,
+        "forms": 0,
+        "geometry": {
+          "document_width": 1425,
+          "height": 1569,
+          "overflow": [],
+          "root": {
+            "height": 1568.729248046875,
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1440
+        },
+        "h1": 1,
+        "images": [
+          {
+            "alt": "Pasta · ejemplo. Ilustración de stock, no fotografía de los productos del negocio.",
+            "decoded": true,
+            "filter": "none",
+            "fit": "cover",
+            "height": 784.8229370117188,
+            "src": "/media/b2-fictional/3547078-640.webp",
+            "width": 627.8646240234375,
+            "x": 710.40625,
+            "y": 433.65625
+          }
+        ],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "El diario"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto y redes"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Opiniones"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+        "modules": [
+          {
+            "component": "FactCollection",
+            "facts": [
+              {
+                "id": "story-1",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Todo empieza alrededor de una mesa."
+              },
+              {
+                "id": "story-2",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Imaginamos un lugar de barrio donde la conversación dura más que el último bocado. Una carta corta, platos al centro y tiempo para compartir."
+              },
+              {
+                "id": "story-3",
+                "scope": "b3-la-mesa-fictional",
+                "text": "Esta es una historia creada para explorar el diseño de un restaurante ficticio. No describe una empresa, una cocina ni un equipo reales."
+              }
+            ],
+            "id": "semantic-fc9f153a3d930e71a4745ebd",
+            "offerings": [],
+            "page": "/",
+            "required": "false",
+            "scope": "b3-la-mesa-fictional"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "story",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "El diario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 115.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "El gusto de quedarse."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Nuestra idea de un buen rato"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 57.6,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "La sobremesa también importa."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Todo empieza alrededor de una mesa."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Imaginamos un lugar de barrio donde la conversación dura más"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Esta es una historia creada para explorar el diseño de un re"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto y redes"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Opiniones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "reviews": [],
+        "site_sha256": "a3e4756f748ff5bb5d0716c7dc3850dfddedebc9fba39f6f1a0b779723d71eaa",
+        "small_controls": [],
+        "social_controls": 0,
+        "social_placeholders": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosContactoEl diarioNuestra ideaEl gusto de quedarse.Nuestra idea de un buen ratoLa sobremesa también importa.Todo empieza alrededor de una mesa.Imaginamos un lugar de barrio donde la conversación dura más que el último bocado. Una carta corta, platos al centro y tiempo para compartir.Esta es una historia creada para explorar el diseño de un restaurante ficticio. No describe una empresa, una cocina ni un equipo reales.La MesaCartaReservasVisitaNuestra ideaPreguntasContacto y redesOpinionesCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/historia/",
+        "usage_ids": [
+          "rich-experience:candidate-01:story:story:640",
+          "rich-experience:candidate-01:story:story:1280"
+        ],
+        "video": null
+      },
+      "screenshots": [
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-story-desktop-top.jpg",
+          "sha256": "4539645759455b61edcd5805507e2c33d5f173a88140c4dba321f6054ecc8af9",
+          "document_height": 1569,
+          "height": 1000,
+          "y": 568.6666870117188
+        }
+      ]
+    },
+    {
+      "design": "candidate-01",
+      "kind": "faq",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "captured_at": "2026-10-20T18:09:56.021Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [],
+        "credits": [],
+        "diagnostics": [],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+        "editorials": [],
+        "embeds": 0,
+        "exclusions": [],
+        "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+        "film": null,
+        "film_control": null,
+        "forms": 0,
+        "geometry": {
+          "document_width": 1425,
+          "height": 1021,
+          "overflow": [],
+          "root": {
+            "height": 1021.4375,
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1440
+        },
+        "h1": 1,
+        "images": [],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "El diario"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto y redes"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Opiniones"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+        "modules": [
+          {
+            "component": "FactCollection",
+            "facts": [
+              {
+                "id": "faq-1",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "¿Podemos celebrar algo? En esta propuesta imaginamos mesas para cumpleaños y encuentros de hasta ocho personas. No hay disponibilidad real."
+              },
+              {
+                "id": "faq-2",
+                "scope": "b3-la-mesa-fictional-sede-imaginaria",
+                "text": "¿Cómo funciona el pedido? Puedes explorar una selección de ejemplo. Esta demo no recibe pedidos, pagos ni datos personales."
+              }
+            ],
+            "id": "semantic-0e4513ff7883f7164049753c",
+            "offerings": [],
+            "page": "/sedes/s-33f4926b8262eb08fb66b3cb/preguntas",
+            "required": "false",
+            "scope": "b3-la-mesa-fictional-sede-imaginaria"
+          }
+        ],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "faq",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "El diario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Antes de venir"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 115.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "Lo que quieres saber."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Información del escenario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "Antes de venir"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "01 / Celebraciones y grupos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "02 / Pedidos de ejemplo"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto y redes"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Opiniones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [],
+        "reviews": [],
+        "site_sha256": "a3e4756f748ff5bb5d0716c7dc3850dfddedebc9fba39f6f1a0b779723d71eaa",
+        "small_controls": [],
+        "social_controls": 0,
+        "social_placeholders": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosContactoEl diarioAntes de venirLo que quieres saber.Información del escenarioAntes de venir01 / Celebraciones y grupos¿Podemos celebrar algo? En esta propuesta imaginamos mesas para cumpleaños y encuentros de hasta ocho personas. No hay disponibilidad real.02 / Pedidos de ejemplo¿Cómo funciona el pedido? Puedes explorar una selección de ejemplo. Esta demo no recibe pedidos, pagos ni datos personales.La MesaCartaReservasVisitaNuestra ideaPreguntasContacto y redesOpinionesCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/preguntas/",
+        "usage_ids": [],
+        "video": null
+      },
+      "screenshots": [
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-faq-desktop-top.jpg",
+          "sha256": "e02019c9ed03dfaa536c9b8ae4d5266e7c2a707fe300474d47e09514a059f6b5",
+          "document_height": 1021,
+          "height": 1000,
+          "y": 21.33333396911621
+        }
+      ]
+    },
+    {
+      "design": "candidate-01",
+      "kind": "credits",
+      "viewport": {
+        "id": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "captured_at": "2026-10-20T18:10:03.183Z",
+      "observed": {
+        "content_sha256": "d4f98282bf8bbb379df4da54953487d5ffb6f914746b8c366849b529ced7e04c",
+        "credit_hrefs": [],
+        "credits": [
+          "shailesh68 / PixabayPIXABAY_CONTENT_LICENSEVer origen en Pixabay ↗",
+          "RitaE / PixabayCC0_1_0_BY_TERMS_SECTION_4Ver origen en Pixabay ↗",
+          "JillWellington / PixabayCC0_1_0_BY_TERMS_SECTION_4Ver origen en Pixabay ↗",
+          "Daria-Yakovleva / PixabayCC0_1_0_BY_TERMS_SECTION_4Ver origen en Pixabay ↗",
+          "u_mcy3jdr8zw / PixabayPIXABAY_CONTENT_LICENSEVer origen en Pixabay ↗"
+        ],
+        "diagnostics": [
+          {
+            "capability_id": "reservation",
+            "code": "UNKNOWN",
+            "reason": "Evidence state preserved from upstream",
+            "requested_from": "upstream",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria"
+          },
+          {
+            "capability_id": "order",
+            "code": "UNKNOWN",
+            "reason": "Evidence state preserved from upstream",
+            "requested_from": "upstream",
+            "scope_id": "b3-la-mesa-fictional-sede-imaginaria"
+          }
+        ],
+        "disclosure": "Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.",
+        "editorial_sha256": "2ef2b53867e3830e7c961043643a9ee714cf9d693381fb99817ea60d02fd6c51",
+        "editorials": [],
+        "embeds": 0,
+        "exclusions": [
+          "b3-la-mesa-fictional-sede-imaginaria · order · UNKNOWN",
+          "b3-la-mesa-fictional-sede-imaginaria · reservation · UNKNOWN"
+        ],
+        "feedback_sha256": "a9c319d90f10313d1bbd840d9300e794e7245d563dab4a4fd1e23d1c086977c2",
+        "film": null,
+        "film_control": null,
+        "forms": 0,
+        "geometry": {
+          "document_width": 1425,
+          "height": 1619,
+          "overflow": [],
+          "root": {
+            "height": 1618.854248046875,
+            "width": 1424.666748046875,
+            "x": 0,
+            "y": 0
+          },
+          "width": 1440
+        },
+        "h1": 1,
+        "images": [],
+        "inline_credits": 0,
+        "lang": "es",
+        "links": [
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "La carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/pedidos/",
+            "text": "Pedidos"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/diario/",
+            "text": "El diario"
+          },
+          {
+            "current": null,
+            "href": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "current": null,
+            "href": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "current": null,
+            "href": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "current": null,
+            "href": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "current": null,
+            "href": "https://pixabay.com/videos/id-149678/",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/",
+            "text": "La Mesa"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/carta/",
+            "text": "Carta"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/reservas/",
+            "text": "Reservas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/visita/",
+            "text": "Visita"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/historia/",
+            "text": "Nuestra idea"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/preguntas/",
+            "text": "Preguntas"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/contacto/",
+            "text": "Contacto y redes"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/opiniones/",
+            "text": "Opiniones"
+          },
+          {
+            "current": null,
+            "href": "/b3/candidate-01/creditos/",
+            "text": "Créditos"
+          },
+          {
+            "current": null,
+            "href": "/b3/",
+            "text": "Comparar propuestas"
+          }
+        ],
+        "main": 1,
+        "media_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+        "modules": [],
+        "notice": "Pixabay y sus autores no respaldan este escenario.",
+        "operation": [],
+        "page": "credits",
+        "plan_sha256": "96647f5c9a49862422f7e058511c901084b80696720632bc01646bbc8f9217bd",
+        "profile": "candidate-01",
+        "readability": [
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 32,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Pedidos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "El diario"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Medios y contexto"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 115.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H1",
+            "text": "Créditos."
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16.8,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Las imágenes y el vídeo son ilustrativos. No representan una"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 27.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "shailesh68 / Pixabay"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "PIXABAY_CONTENT_LICENSE"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 27.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "RitaE / Pixabay"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "CC0_1_0_BY_TERMS_SECTION_4"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 27.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "JillWellington / Pixabay"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "CC0_1_0_BY_TERMS_SECTION_4"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 27.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "Daria-Yakovleva / Pixabay"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "CC0_1_0_BY_TERMS_SECTION_4"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 27.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "H2",
+            "text": "u_mcy3jdr8zw / Pixabay"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "PIXABAY_CONTENT_LICENSE"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 16,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Ver origen en Pixabay ↗"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 15.2,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "SUMMARY",
+            "text": "Alcance de la demostración y condiciones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 48,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "La Mesa"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Carta"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Reservas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Visita"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Nuestra idea"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Preguntas"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Contacto y redes"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Opiniones"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Créditos"
+          },
+          {
+            "contrast": 17.756264715186326,
+            "font_px": 14.4,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "A",
+            "text": "Comparar propuestas"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Restaurante ficticio · imágenes y vídeo ilustrativos. No rep"
+          },
+          {
+            "contrast": 8.098978657494216,
+            "font_px": 14,
+            "method": "OPAQUE_COMPUTED_SURFACE",
+            "tag": "P",
+            "text": "Pixabay y sus autores no respaldan este escenario."
+          }
+        ],
+        "restrictions": [
+          "SYNTHETIC_DEMO_ONLY",
+          "NO_REAL_RESERVATIONS_ORDERS_PAYMENTS_OR_REVIEWS",
+          "STOCK_IS_NOT_BUSINESS_EVIDENCE"
+        ],
+        "reviews": [],
+        "site_sha256": "a3e4756f748ff5bb5d0716c7dc3850dfddedebc9fba39f6f1a0b779723d71eaa",
+        "small_controls": [],
+        "social_controls": 0,
+        "social_placeholders": [],
+        "text": "La MesaMenú ＋La cartaReservasPedidosContactoEl diarioMedios y contextoCréditos.Las imágenes y el vídeo son ilustrativos. No representan una empresa, sus instalaciones o sus productos reales.shailesh68 / PixabayPIXABAY_CONTENT_LICENSEVer origen en Pixabay ↗RitaE / PixabayCC0_1_0_BY_TERMS_SECTION_4Ver origen en Pixabay ↗JillWellington / PixabayCC0_1_0_BY_TERMS_SECTION_4Ver origen en Pixabay ↗Daria-Yakovleva / PixabayCC0_1_0_BY_TERMS_SECTION_4Ver origen en Pixabay ↗u_mcy3jdr8zw / PixabayPIXABAY_CONTENT_LICENSEVer origen en Pixabay ↗Alcance de la demostración y condicionesTextos, recetas, precios, calorías, alérgenos, horarios, lugar, plano y ocupación de mesas son ficción. No hay conexión comercial, disponibilidad real, pagos, reservas enviadas, reseñas de consumidores ni sede visitable.El material no acredita platos o negocios. El hueco documental histórico permanece bloqueado. Se usa el laboratorio Astro compartido; upstream y runtime comercial no están integrados.Vídeo original 1280×720 sin audio: 9,36 segundos, 2.577.142 bytes. Recorte de presentación ambiental y posible ampliación en pantallas mayores; no 1080p/4K. Autoplay sujeto a movimiento y navegador.UNKNOWN · b3-la-mesa-fictional-sede-imaginaria · Evidence state preserved from upstreamUNKNOWN · b3-la-mesa-fictional-sede-imaginaria · Evidence state preserved from upstreamSYNTHETIC_DEMO_ONLYNO_REAL_RESERVATIONS_ORDERS_PAYMENTS_OR_REVIEWSSTOCK_IS_NOT_BUSINESS_EVIDENCEb3-la-mesa-fictional-sede-imaginaria · order · UNKNOWNb3-la-mesa-fictional-sede-imaginaria · reservation · UNKNOWNLa MesaCartaReservasVisitaNuestra ideaPreguntasContacto y redesOpinionesCréditosComparar propuestasRestaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.Pixabay y sus autores no respaldan este escenario.",
+        "url": "http://127.0.0.1:4331/b3/candidate-01/creditos/",
+        "usage_ids": [],
+        "video": null
+      },
+      "screenshots": [
+        {
+          "path": "docs/evidence/corrections/b3/human-iab-r3-20261020/candidate-01-credits-desktop-top.jpg",
+          "sha256": "83a68e6e99a959ffb854a356f327cefa4ceb6aac298d3d342e5d5005b070ee15",
+          "document_height": 1619,
+          "height": 1000,
+          "y": 618.6666870117188
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import {loadB1Fixtures} from '../../../scripts/lib/b1-fixtures.ts';
+import {label} from '../../requirements/labels.ts';
+import '../../requirements/inspector.css';
+const fixtures=await loadB1Fixtures();
+---
+<Foundation title="B1 · Datos, funciones y comprensión del negocio">
+ <div class="b1" data-b1-page="index">
+  <p>101 · Revisión del motor</p><h1>Qué podemos construir y qué falta</h1>
+  <p class="lead">Revisa cómo entiende el motor cada negocio, qué funciones considera y qué datos o soporte necesita para completarlas.</p>
+  <p class="notice">Todos estos casos son fixtures ficticios. El inspector muestra diagnóstico y especificaciones; no confirma reservas, compras ni conexiones reales. No acredita calidad estética del sitio final.</p>
+  <nav class="b1-nav" aria-label="Revisión B1"><a href="/b1/revision/">Revisión sencilla de funciones y datos</a><a href="/b1/catalogo/">Catálogo maestro de las 47 funciones</a><a href="/">Inspector histórico</a></nav>
+  <section aria-labelledby="cases"><h2 id="cases">Casos para revisar</h2><div class="b1-grid case-links">
+   {fixtures.map(f=><article class="b1-card"><h3><a href={`/b1/${f.scenario}/`}>{f.label}</a></h3><p>{label(f.expected_context_status)} · {label(f.expected_planner_status)}</p><p>Datos sintéticos con procedencia y alcance conservados.</p></article>)}
+  </div></section>
+  <section><h2>Cómo revisarlo</h2><ol><li>Abre el restaurante y comprueba qué datos respaldan su actividad.</li><li>Busca reservas y compara contacto, solicitud, enlace y confirmación.</li><li>Abre cada nivel para ver todos los datos faltantes, el responsable y el siguiente paso.</li><li>Revisa las sucursales y los casos bloqueados: una incertidumbre no desaparece del objetivo.</li></ol></section>
+ </div>
+</Foundation>

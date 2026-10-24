@@ -1,0 +1,53 @@
+{
+  "name": "101-design-compiler",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run validate && astro build",
+    "preview": "astro preview",
+    "check": "astro check && tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "validate": "node --experimental-strip-types scripts/validate-fixtures.ts",
+    "contracts:export": "node --experimental-strip-types scripts/export-contracts.ts",
+    "taxonomy:audit": "node --experimental-strip-types scripts/audit-taxonomy.ts",
+    "planner:fixtures": "node --experimental-strip-types scripts/plan-fixtures.ts",
+    "media:fixtures": "node --experimental-strip-types scripts/media-fixtures.ts",
+    "media:replay": "node --experimental-strip-types scripts/media-fixtures.ts --replay",
+    "media:render": "node --experimental-strip-types scripts/render-h3-pilot.ts",
+    "media:seal": "node --experimental-strip-types scripts/seal-media-pilot.ts",
+    "media:verify": "node --experimental-strip-types scripts/verify-media-pilot.ts",
+    "composition:bindings": "node --experimental-strip-types scripts/composition-bindings.ts",
+    "composition:replay": "node --experimental-strip-types scripts/composition-bindings.ts --replay",
+    "composition:audit": "node --experimental-strip-types scripts/audit-compositions.ts",
+    "composition:verify": "node --experimental-strip-types scripts/verify-compositions.ts",
+    "design:fixtures": "node --experimental-strip-types scripts/design-fixtures.ts",
+    "design:replay": "node --experimental-strip-types scripts/design-fixtures.ts --replay",
+    "design:audit": "node --experimental-strip-types scripts/audit-designs.ts",
+    "design:verify": "node --experimental-strip-types scripts/verify-designs.ts",
+    "audit:browser": "node --experimental-strip-types scripts/audit-h6.ts",
+    "audit:panel": "node --experimental-strip-types scripts/audit-h6-panel.ts",
+    "audit:verify": "node --experimental-strip-types scripts/verify-h6.ts",
+    "cohort:fixtures": "node --experimental-strip-types scripts/cohort-fixtures.ts",
+    "cohort:replay": "node --experimental-strip-types scripts/cohort-fixtures.ts --replay",
+    "cohort:audit": "node --experimental-strip-types scripts/audit-h7.ts",
+    "cohort:verify": "node --experimental-strip-types scripts/verify-h7.ts",
+    "lock:seal": "node --experimental-strip-types scripts/seal-design-locks.ts",
+    "lock:rebuild": "node --experimental-strip-types scripts/rebuild-h8.ts",
+    "lock:audit": "node --experimental-strip-types scripts/audit-h8.ts",
+    "lock:verify": "node --experimental-strip-types scripts/verify-h8.ts"
+  },
+  "dependencies": {
+    "astro": "7.3.7",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@types/node": "24.19.1",
+    "typescript": "6.0.3"
+  }
+}

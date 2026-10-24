@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "max_iterations": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2
+    },
+    "max_tool_calls": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 200
+    },
+    "max_wall_seconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "max_new_spend": {
+      "type": "number",
+      "const": 0
+    }
+  },
+  "required": [
+    "max_iterations",
+    "max_tool_calls",
+    "max_wall_seconds",
+    "max_new_spend"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:EvaluationBudgetV1:1.0.0",
+  "title": "EvaluationBudgetV1"
+}

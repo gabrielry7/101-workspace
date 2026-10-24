@@ -1,0 +1,10 @@
+---
+import type { ModuleView } from '../../composition/content.ts';
+interface Props {module:ModuleView; heading?:'h1'|'h2'}
+const {module:m,heading='h1'}=Astro.props;const Heading=heading;
+---
+<section class="semantic information" data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page}>
+  <p class="eyebrow">Información declarada / fixture sintético</p>
+  <Heading>{m.capability_id.replaceAll('_',' ')}</Heading>
+  <div>{m.facts.map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div>
+</section>

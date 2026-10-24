@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "proposals": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "samples": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "renders": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "finalists": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "max_output_bytes": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 1000000
+    },
+    "new_provider_calls": {
+      "type": "number",
+      "const": 0
+    },
+    "new_spend": {
+      "type": "number",
+      "const": 0
+    }
+  },
+  "required": [
+    "proposals",
+    "samples",
+    "renders",
+    "finalists",
+    "max_output_bytes",
+    "new_provider_calls",
+    "new_spend"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:SearchBudgetV1:1.0.0",
+  "title": "SearchBudgetV1",
+  "description": "H5 lab declarative design contract; semantic bindings, rights and budget checks required. No arbitrary code or production readiness."
+}

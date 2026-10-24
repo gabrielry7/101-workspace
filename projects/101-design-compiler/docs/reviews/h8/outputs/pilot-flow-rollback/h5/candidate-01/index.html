@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>candidate-01 · laboratorio H5</title><style>:root{color-scheme:light;color:#18232c;background:#f6f7f8;font-family:system-ui,sans-serif}body{margin:0}main{max-width:72rem;margin:auto;padding:2rem clamp(1rem,4vw,3rem)}h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.1}p,li{max-width:75ch;line-height:1.6}section{border-top:1px solid #b8c2ca;padding:1rem 0 2rem}.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%}th,td{text-align:left;vertical-align:top;border-bottom:1px solid #b8c2ca;padding:.8rem}th{font-weight:650}code{overflow-wrap:anywhere}a{color:#144b80}:focus-visible{outline-offset:4px;outline:3px solid #144b80}.skip{background:#fff;padding:1rem;position:absolute;top:-5rem;left:1rem}.skip:focus{top:1rem}
+</style></head><body><a class="skip" href="#contenido">Saltar al contenido</a><main id="contenido"><style>/* Shared laboratory grammar: layout parameters, never sector/client selectors. */
+.lab { --ink:#202b23; --paper:#f4f1e8; --muted:#465248; --line:#879084; --accent:#244e32; background:var(--paper); color:var(--ink); font-family:system-ui,sans-serif; padding:clamp(1rem,3vw,2.5rem); }
+body:has(.lab) { background:#e8e6df; }
+main:has(.lab) { max-width:80rem; padding:1rem; }
+.lab *, .lab *::before, .lab *::after { box-sizing:border-box; }
+.lab a { color:var(--accent); text-underline-offset:.25em; }
+.lab a:focus-visible, .lab summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.lab-header { display:flex; flex-wrap:wrap; gap:.75rem 2rem; justify-content:space-between; font-size:.8125rem; letter-spacing:.06em; padding-bottom:1.5rem; border-bottom:1px solid var(--line); }
+.lab .site-nav { display:flex; gap:1rem 2rem; flex-wrap:wrap; padding:1.25rem 0; }
+.lab .site-nav a { display:flex; align-items:center; gap:.6rem; min-height:44px; font-size:1rem; }
+.lab .nav-number { font-size:.75rem; color:var(--muted); }
+.lab [aria-current=page] { font-weight:750; }
+.lab .semantic { border:0; padding:0; min-width:0; }
+.lab .eyebrow { font-size:.75rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); margin:0 0 1.25rem; }
+.lab h1 { margin:0; font-family:Georgia,'Times New Roman',serif; font-weight:400; line-height:1.06; letter-spacing:-.04em; overflow-wrap:break-word; }
+.lab p { line-height:1.6; }
+.lab .stage { min-width:0; padding:2rem 0 3rem; }
+.lab .media { margin:0; min-width:0; max-width:640px; }
+.lab .media img { display:block; width:100%; height:auto; /* No crop, filtering or transformed derivative. */ }
+.lab figcaption { padding-top:1rem; color:var(--muted); font-size:.8125rem; }
+.lab figcaption p { margin:0 0 .45rem; }
+.lab figcaption a { display:inline-flex; align-items:center; min-height:44px; padding:.5rem 0; }
+.lab code { font-size:.8125em; overflow-wrap:anywhere; }
+.lab .audit { border-top:1px solid var(--line); padding:1.5rem 0; color:var(--muted); font-size:.875rem; }
+.lab .audit p { margin:0 0 .6rem; }
+.lab summary { cursor:pointer; padding:.75rem 0; min-height:44px; font-weight:650; }
+.lab .audit li { overflow-wrap:anywhere; }
+.lab .lab-footer { border-top:1px solid var(--line); padding-top:1.5rem; display:flex; flex-wrap:wrap; align-items:center; gap:1rem 2rem; font-size:.875rem; }
+.lab .lab-footer nav { display:flex; flex-wrap:wrap; gap:1.25rem; }
+.lab .lab-footer a { display:inline-flex; align-items:center; min-height:44px; min-width:44px; }
+.lab .offering-list { list-style:none; padding:0; margin:2rem 0; }
+.lab .offering-list li { border-top:1px solid var(--line); padding:1.75rem 0; }
+.lab h2 { font-family:Georgia,'Times New Roman',serif; font-size:clamp(1.5rem,3vw,2rem); font-weight:400; margin:0; }
+.lab .scope-label { color:var(--muted); }
+.lab.editorial .stage { display:flex; flex-direction:column; gap:3rem; }
+.lab.editorial h1 { font-size:clamp(2.75rem,7.5vw,6.5rem); max-width:16ch; }
+.lab.editorial .media { width:70%; align-self:center; }
+.lab.split .stage { display:grid; grid-template-columns:minmax(0, .85fr) minmax(0,1.15fr); align-items:start; gap:2.5rem; padding-top:3rem; }
+.lab.split h1 { font-size:clamp(2.5rem,5vw,4.5rem); max-width:13ch; }
+.lab.split .media { width:100%; }
+.lab.split .offerings { grid-column:1/-1; max-width:48rem; }
+.lab.rail .frame { display:grid; grid-template-columns:13rem minmax(0,1fr); gap:2.5rem; padding-top:2rem; }
+.lab.rail .site-nav { flex-direction:column; align-items:start; padding:0; border-right:1px solid var(--line); }
+.lab.rail .stage { padding-top:0; display:flex; flex-direction:column; gap:2rem; }
+.lab.rail h1 { font-size:clamp(2.25rem,4vw,3.5rem); max-width:20ch; }
+.lab.rail .media { width:82%; max-width:480px; align-self:flex-end; }
+@media(max-width:700px) {
+  main:has(.lab) { padding:.5rem; }
+  .lab { padding:1.25rem; }
+  .lab-header { font-size:.75rem; }
+  .lab .stage { padding:1.5rem 0 2rem; }
+  .lab.editorial .stage { gap:2rem; }
+  .lab.editorial h1 { font-size:clamp(2.65rem,10vw,4rem); }
+  .lab.editorial .media { width:100%; }
+  .lab.split .stage { grid-template-columns:minmax(0,1fr); gap:1.5rem; padding-top:1rem; }
+  .lab.split h1 { font-family:system-ui,sans-serif; font-weight:600; font-size:clamp(2rem,8vw,3rem); letter-spacing:-.03em; }
+  .lab.split .site-nav { border-bottom:1px solid var(--line); }
+  .lab.rail .frame { grid-template-columns:minmax(0,1fr); gap:1.5rem; padding-top:1.5rem; }
+  .lab.rail .site-nav { flex-direction:row; border-right:0; border-left:3px solid var(--accent); padding-left:1rem; gap:.5rem 1.25rem; }
+  .lab.rail h1 { font-size:2.25rem; }
+  .lab.rail .media { width:90%; }
+  .lab .lab-footer { gap:.5rem 1.25rem; }
+}
+@media(prefers-reduced-motion:reduce) { .lab *, .lab *::before, .lab *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+
+/* Shared grammar: bounded enums only. No client/sector selectors or generated CSS. */
+.lab.h5.palette-ink { --ink:#172432; --paper:#edf1f3; --muted:#364c60; --accent:#173b59; --line:#82909b; }
+.lab.h5.palette-earth { --ink:#38281f; --paper:#f4ede2; --muted:#604336; --accent:#633923; --line:#9c8575; }
+.lab.h5 .stage { display:flex; flex-direction:column; gap:3rem; }
+.lab.h5 h1 { font-size:clamp(2.5rem,6vw,5.5rem); max-width:18ch; }
+.lab.h5.type-sans h1 { font-family:system-ui,sans-serif; font-weight:600; letter-spacing:-.05em; }
+.lab.h5.hierarchy-compact h1 { font-size:clamp(2.25rem,4vw,3.5rem); max-width:20ch; }
+.lab.h5 .media { width:100%; align-self:center; }
+.lab.h5.media-inset .media { width:75%; }
+.lab.h5.align-end .media { align-self:flex-end; }
+.lab.h5.frame-rail .frame { display:grid; grid-template-columns:11rem minmax(0,1fr); gap:2rem; padding-top:2rem; }
+.lab.h5.frame-rail .site-nav { flex-direction:column; align-items:start; border-right:1px solid var(--line); padding:0 1rem 0 0; }
+.lab.h5.frame-rail .stage { padding-top:0; }
+.lab.h5.stage-split .stage { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:2rem; align-items:start; }
+.lab.h5.stage-split .media { width:100%; }
+.lab.h5.stage-split h1 { font-size:clamp(2.25rem,4vw,3.5rem); }
+.lab.h5.stage-split .offerings { grid-column:1/-1; }
+.lab.h5.rhythm-dense .stage { gap:1.5rem; padding-bottom:2rem; }
+@media(max-width:800px) {
+ .lab.h5.frame-rail .frame { grid-template-columns:minmax(0,1fr); gap:1.5rem; }
+ .lab.h5.frame-rail .site-nav { flex-direction:row; border-right:0; border-left:3px solid var(--accent); padding:0 0 0 1rem; }
+ .lab.h5.stage-split .stage { grid-template-columns:minmax(0,1fr); }
+ .lab.h5 h1 { font-size:clamp(2.25rem,10vw,4rem); }
+ .lab.h5.hierarchy-compact h1 { font-size:2.25rem; }
+ .lab.h5.media-inset .media { width:88%; }
+ .lab.h5.stage-split .media { width:100%; }
+}
+</style><div class="lab h5 frame-rail stage-sequence palette-olive type-serif hierarchy-monument rhythm-quiet media-inset align-center" data-design-id="candidate-01" data-art-direction-id="typographic-pause" data-composition="h5" data-version="1.0.0" data-semantic-page="/" data-plan-sha256="4095293f66936680f0de4f49dc03410ec436154e89646da514a5307af8fa5f22" data-content-sha256="6fbe1021d1e6fd1249c04d4ebf99df477ee49bdb70e3373730d826f7b97d4c8b" data-manifest-sha256="233a731c012e82d0c78836aa715dd215083f9e3e51c0de282283e01378d1d948" data-client-id="101-design-compiler-fixture-review" data-project-id="h3-restaurante-media-pilot"><header class="lab-header"><span>101 / Laboratorio compartido</span><span>H5 · candidate-01 · Ficticio</span></header><div class="frame" data-frame-operator="Rail"><nav class="site-nav" aria-label="Páginas del fixture"><a href="/h5/candidate-01/" data-route="/" aria-current="page"><span class="nav-number" aria-hidden="true">01</span>Identidad</a><a href="/h5/candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/" data-route="/sedes/s-051d544b94ae77ae0d73a35b/menu"><span class="nav-number" aria-hidden="true">02</span>Oferta de la sucursal</a></nav><div class="stage" data-operator="Sequence"><section class="identity semantic" data-module-id="semantic-7bf9d33184f7e923438acadd" data-component="Identity" data-scope-id="fixture-restaurante-001" data-required="true" data-semantic-page="/"><p class="eyebrow">Información pública · fixture</p><h1 data-fact-id="f-name" data-fact-scope="fixture-restaurante-001">Restaurante — fixture ficticio</h1></section><figure class="media" data-asset-id="usda-ars-d255-19" data-usage-id="h3-real-pilot-atmospheric" data-grant-id="usda-ars-d255-19-pilot-public-domain" data-media-module="semantic-7bf9d33184f7e923438acadd" data-semantic-page="/" data-role="ATMOSPHERIC" data-original-sha256="ffdb883d56a41ba9a03a51fb7d1bdf8f0b9e30d3946eda180b750620a17c3715"><img src="/media/h3-pilot/usda-ars-d255-19.jpg" alt="Imagen atmosférica genérica: Pimientos rojos grandes y pequeños, frutos oscuros y hojas; contexto genérico de ingredientes/vegetación" width="2700" height="1819" loading="eager" decoding="async"><figcaption><p data-context>Imagen atmosférica de pimientos; no documenta este negocio ficticio ni sus platos.</p><p data-credit>Photo by Steve Ausmus, USDA Agricultural Research Service.</p><p data-notice>USDA ARS no respalda este fixture, producto, empresa ni posición.</p><a href="https://www.ars.usda.gov/oc/images/photos/featuredphoto/mar23/bell-peppers/">Fuente y permisos · USDA Agricultural Research Service</a></figcaption></figure></div></div><aside class="audit" aria-label="Límites y trazabilidad del laboratorio"><p class="gap"><strong>Hueco documental bloqueado.</strong> No hay fotografía auténtica de la oferta. La imagen genérica no lo satisface.</p><p>Sin reservas, pedidos o compras operativas. Navegación informativa del fixture.</p><details><summary>Trazabilidad y restricciones</summary><p>Contenido ficticio aprobado solo para pruebas. Runtime comercial ausente.</p><ul><li data-restriction>SYNTHETIC_FIXTURE: no publicar como negocio real</li></ul><ul><li data-diagnostic-index="0" data-diagnostic-code="UNKNOWN" data-diagnostic-scope="fixture-restaurante-001-branch-1" data-diagnostic-capability="delivery" data-diagnostic-reason="Evidence state preserved from upstream">delivery · UNKNOWN · <code>fixture-restaurante-001-branch-1</code> · Evidence state preserved from upstream</li><li data-diagnostic-index="1" data-diagnostic-code="MISSING_INPUT" data-diagnostic-scope="fixture-restaurante-001-branch-1" data-diagnostic-capability="reservation" data-diagnostic-reason="approved_action_destination">reservation · MISSING_INPUT · <code>fixture-restaurante-001-branch-1</code> · approved_action_destination</li><li data-diagnostic-index="2" data-diagnostic-code="UNKNOWN" data-diagnostic-scope="fixture-restaurante-001-branch-1" data-diagnostic-capability="order" data-diagnostic-reason="Evidence state preserved from upstream">order · UNKNOWN · <code>fixture-restaurante-001-branch-1</code> · Evidence state preserved from upstream</li></ul><ul><li data-exclusion-index="0" data-exclusion-id="delivery" data-exclusion-reason="UNKNOWN" data-exclusion-scope="fixture-restaurante-001-branch-1">delivery · UNKNOWN · <code>fixture-restaurante-001-branch-1</code></li><li data-exclusion-index="1" data-exclusion-id="order" data-exclusion-reason="UNKNOWN" data-exclusion-scope="fixture-restaurante-001-branch-1">order · UNKNOWN · <code>fixture-restaurante-001-branch-1</code></li><li data-exclusion-index="2" data-exclusion-id="reservation" data-exclusion-reason="MISSING_INPUT" data-exclusion-scope="fixture-restaurante-001-branch-1">reservation · MISSING_INPUT · <code>fixture-restaurante-001-branch-1</code></li></ul><ul><li data-binding-id="f-category" data-binding-status="EVIDENCE_ONLY" data-binding-scope="fixture-restaurante-001"><code>f-category</code> · EVIDENCE_ONLY · <code>fixture-restaurante-001</code></li><li data-binding-id="f-identity" data-binding-status="EVIDENCE_ONLY" data-binding-scope="fixture-restaurante-001"><code>f-identity</code> · EVIDENCE_ONLY · <code>fixture-restaurante-001</code></li><li data-binding-id="f-menu" data-binding-status="EVIDENCE_ONLY" data-binding-scope="fixture-restaurante-001-branch-1"><code>f-menu</code> · EVIDENCE_ONLY · <code>fixture-restaurante-001-branch-1</code></li><li data-binding-id="f-name" data-binding-status="BOUND" data-binding-scope="fixture-restaurante-001"><code>f-name</code> · BOUND · <code>fixture-restaurante-001</code></li><li data-binding-id="f-offering-1" data-binding-status="BOUND" data-binding-scope="fixture-restaurante-001-branch-1"><code>f-offering-1</code> · BOUND · <code>fixture-restaurante-001-branch-1</code></li><li data-binding-id="f-reservation" data-binding-status="EVIDENCE_ONLY" data-binding-scope="fixture-restaurante-001-branch-1"><code>f-reservation</code> · EVIDENCE_ONLY · <code>fixture-restaurante-001-branch-1</code></li></ul><ul><li data-media-constraint>GENERIC_MEDIA_IS_NOT_BUSINESS_EVIDENCE</li><li data-media-constraint>NO_PROVIDER_AUTOMATION_AUTHORIZED</li><li data-media-constraint>NO_VISUAL_INSPECTION_IMPLIED_WITHOUT_FILE_REVIEW</li><li data-media-constraint>NO_AUDIO_WITHOUT_SEPARATE_RIGHTS_REVIEW</li></ul><ul><li data-gap-id="need-33f7e20873460d5156843d28">DOCUMENTARY · <code>fixture-restaurante-001-branch-1</code> · offering-1 · NO_AUTHORIZED_CANDIDATE</li></ul></details></aside><footer class="lab-footer"><a href="/h5/">Comparar finalistas</a><a href="/">Inspector de contratos</a></footer></div></main></body></html>

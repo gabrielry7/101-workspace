@@ -1,0 +1,1547 @@
+{
+  "schema_version": "1.0.0",
+  "experiment_id": "bb379f6868258f913a2fcbbc9d5fdfe48fd1f0061fa1432a1a1347b9da77b909",
+  "files": [
+    {
+      "path": "astro.config.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 97,
+      "sha256": "28d4a9a2c15ae2fefc8d2b0abdff1cb45e5d10c2daa68f278972e42270f18513"
+    },
+    {
+      "path": "contracts/design/evaluation-v1/DesignFindingV1.schema.json",
+      "normalization": "LF_UTF8",
+      "bytes": 2239,
+      "sha256": "3de228139cbf7aa33ddd286aa235b24fe0446e54809f5d281c81ee8b9e9122b1"
+    },
+    {
+      "path": "contracts/design/evaluation-v1/DesignPreferenceV1.schema.json",
+      "normalization": "LF_UTF8",
+      "bytes": 1870,
+      "sha256": "21e2b5267129d3f8708edd52ae3759c136a637c5797b155c7699f9581c66427b"
+    },
+    {
+      "path": "contracts/design/evaluation-v1/DesignRefinementV1.schema.json",
+      "normalization": "LF_UTF8",
+      "bytes": 1196,
+      "sha256": "97a048ad4890868af7d0a02917cff9a2d8247c6ee2d7f73e5d1da1c284430b49"
+    },
+    {
+      "path": "contracts/design/evaluation-v1/EvaluationBudgetV1.schema.json",
+      "normalization": "LF_UTF8",
+      "bytes": 691,
+      "sha256": "9e4aba2bfdb75e53f470bfae82be75334feaed482e41f7294bef43e7b4774109"
+    },
+    {
+      "path": "contracts/design/evaluation-v1/EvaluatorFlagsV1.schema.json",
+      "normalization": "LF_UTF8",
+      "bytes": 426,
+      "sha256": "a91476be7277caa6987943ec1207296e3c54ab24c0f31b444eab3641b5bbeccd"
+    },
+    {
+      "path": "contracts/design/evaluation-v1/QualityExperimentV1.schema.json",
+      "normalization": "LF_UTF8",
+      "bytes": 13964,
+      "sha256": "33d54540ded79556a01a49f21c2eb7cdd3ee31f757bd88a4ed73eb08a8b642bc"
+    },
+    {
+      "path": "data/derived/design-evaluation-v1/experiment.json",
+      "normalization": "LF_UTF8",
+      "bytes": 33392,
+      "sha256": "634465bd44bb9a9427e8a423c6925d6b1261a8df6008f68f35edd448ccd9d2e9"
+    },
+    {
+      "path": "dist/quality/hotel-a/comodidades/index.html",
+      "normalization": "BINARY",
+      "bytes": 13082,
+      "sha256": "8b26b56cb329e2a7b038e29c2c3128552a3ac4c3e8a0e9f68b323317b5d2d1e6"
+    },
+    {
+      "path": "dist/quality/hotel-a/habitaciones/index.html",
+      "normalization": "BINARY",
+      "bytes": 13738,
+      "sha256": "c8a3fd74d5f6b818b7bcfd79e192f3f96cc42e91796d63f2a6e4cea809e40f8c"
+    },
+    {
+      "path": "dist/quality/hotel-a/index.html",
+      "normalization": "BINARY",
+      "bytes": 13012,
+      "sha256": "09e48dbc90065f6909fec5926d74a9910247ba1964d2301d09dfec238eee3bef"
+    },
+    {
+      "path": "dist/quality/hotel-b/comodidades/index.html",
+      "normalization": "BINARY",
+      "bytes": 14275,
+      "sha256": "44404afa3be146bae01db43900ba5cc636cb07ec3946f2aa5c28693b75a66ab8"
+    },
+    {
+      "path": "dist/quality/hotel-b/habitaciones/index.html",
+      "normalization": "BINARY",
+      "bytes": 14931,
+      "sha256": "d53c7caf297f679787572a65658a8dbe92b7cadf47d148888e72e4d82acdcbc1"
+    },
+    {
+      "path": "dist/quality/hotel-b/index.html",
+      "normalization": "BINARY",
+      "bytes": 14205,
+      "sha256": "783ea855559e04e08a342c0b80cae7d7e3871abb6612428db4848c11cd3ebddf"
+    },
+    {
+      "path": "dist/quality/hotel-c/comodidades/index.html",
+      "normalization": "BINARY",
+      "bytes": 14280,
+      "sha256": "1a02dd431b885a616530decfd9c9488784ef8887c9d539bb613b69554fd4e0ff"
+    },
+    {
+      "path": "dist/quality/hotel-c/habitaciones/index.html",
+      "normalization": "BINARY",
+      "bytes": 14936,
+      "sha256": "30d209f75ced05e34a2a1065d837002be25bca15e246c69dd2446d983f71b481"
+    },
+    {
+      "path": "dist/quality/hotel-c/index.html",
+      "normalization": "BINARY",
+      "bytes": 14210,
+      "sha256": "a8566c9d3ce9621e431423fe7d3e607077e78a5512d5bc6c0bf4871b53e4e38e"
+    },
+    {
+      "path": "dist/quality/hotel-d/comodidades/index.html",
+      "normalization": "BINARY",
+      "bytes": 14341,
+      "sha256": "0b791a76899a8a2fedb3096c79546ccc7a2d2f344b6053cb10382718ce67126a"
+    },
+    {
+      "path": "dist/quality/hotel-d/habitaciones/index.html",
+      "normalization": "BINARY",
+      "bytes": 14997,
+      "sha256": "b30f4f8e565f5ff6f1712e52dcab7a1cc4654d19fa3acd12535137918ba690b9"
+    },
+    {
+      "path": "dist/quality/hotel-d/index.html",
+      "normalization": "BINARY",
+      "bytes": 14271,
+      "sha256": "4a3bc3f28a0ab6d0e91e25f823d67ca5157ca8af5c7315418111009337e89de8"
+    },
+    {
+      "path": "dist/quality/restaurante-a/index.html",
+      "normalization": "BINARY",
+      "bytes": 14522,
+      "sha256": "8d67235e9771357214eb9f8281b07f0967e77a0e3d99e09581feef8fe46c9737"
+    },
+    {
+      "path": "dist/quality/restaurante-a/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "normalization": "BINARY",
+      "bytes": 13808,
+      "sha256": "b3656cd5c28994ce0e53217a7a671cff2d1ec11f28618669900e06808b57150c"
+    },
+    {
+      "path": "dist/quality/restaurante-b/index.html",
+      "normalization": "BINARY",
+      "bytes": 15715,
+      "sha256": "209d7700da7c4dfbfea51a8744bba83108252c72b98915805d80292b0434c054"
+    },
+    {
+      "path": "dist/quality/restaurante-b/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "normalization": "BINARY",
+      "bytes": 15001,
+      "sha256": "692e5ca5771e4de1fe7bf11c224a67fdc4feb3db340bc27b2bd98612af256b84"
+    },
+    {
+      "path": "dist/quality/restaurante-c/index.html",
+      "normalization": "BINARY",
+      "bytes": 15720,
+      "sha256": "f4d92e2f0e6b9a824134757ab42aac4ee8ff3c8e385b93dc2bea8df9f7c1ebb6"
+    },
+    {
+      "path": "dist/quality/restaurante-c/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "normalization": "BINARY",
+      "bytes": 15006,
+      "sha256": "0366c6f695fdbdf0b1bc5ee48c2e1bc3204ceadcaf4ee47737abcbec363a9798"
+    },
+    {
+      "path": "dist/quality/restaurante-d/index.html",
+      "normalization": "BINARY",
+      "bytes": 15781,
+      "sha256": "47344bdc42a3be78c9ff16e933c37ed77041e2d1bbc7cff044371a26f6841753"
+    },
+    {
+      "path": "dist/quality/restaurante-d/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "normalization": "BINARY",
+      "bytes": 15067,
+      "sha256": "5e65dedd513b4c8f6e1a7d068ab5b66a86f400bfbfb0ac533909c5de7d5ed3a7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/baseline-without-tools.json",
+      "normalization": "BINARY",
+      "bytes": 235,
+      "sha256": "04e234a5133552dad2d0bade6ce82f9c9508a95df4f539c75d2011b423097b15"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/baseline-without-tools.txt",
+      "normalization": "BINARY",
+      "bytes": 13037,
+      "sha256": "91444b9a2f510a2ffa8f2102623b5ff17e3d4dfc2113a3d9736875fe1210100b"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/capture-anomalies/hotel-b-mobile-stale-paint.png",
+      "normalization": "BINARY",
+      "bytes": 41207,
+      "sha256": "7dc2d6f8f16e78fe0b708c0c732c303322b868ca7c3e999b45156c97779f8b49"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/comparison-desktop.png",
+      "normalization": "BINARY",
+      "bytes": 80046,
+      "sha256": "2d018c4bad4443cc874a507d79ae82f9be3f8fd39ec8d1b5b528a4455f7d01eb"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/comparison-mobile.json",
+      "normalization": "BINARY",
+      "bytes": 954,
+      "sha256": "51cb6e6ddf7dfe6449e334f4e493abea296cc497b3a3fc87b8ef4d356960dcff"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/comparison-mobile.png",
+      "normalization": "BINARY",
+      "bytes": 43024,
+      "sha256": "e321e693125f6c227c1a10dcc6b840547ce417d1d8972fd280381a58d21e69e3"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/comparison-panel.json",
+      "normalization": "BINARY",
+      "bytes": 2773,
+      "sha256": "a72b8c8793659e9e6493b94be36f4aeca195aaa2772d3123d0140959fb860470"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/interactions.json",
+      "normalization": "BINARY",
+      "bytes": 484,
+      "sha256": "d4d65a67ddfa5ee1a16d3e307978c7001bf3ba298e7f91921504e99298af1739"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/audit.json",
+      "normalization": "BINARY",
+      "bytes": 1607626,
+      "sha256": "4f6ab8ded586487e86328e80bbdd9f8efb816318509f7bd786716ac523c7dad5"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/browser.json",
+      "normalization": "BINARY",
+      "bytes": 1653220,
+      "sha256": "f9249563fc0a4406ecab7e7c5e9d52dee03b4d77402af13789044fff71401c0e"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-desktop-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 50012,
+      "sha256": "34eccda4c33456ed0b3c4b6ec7dfab8d3f9ad11025a5d26e86c58c4de774b3a6"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-desktop-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 74943,
+      "sha256": "2aaec33bdfe450890e1d310e86fe4b3852bcc8f91231d1abcfe7cdf496cb5d69"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 65345,
+      "sha256": "272d4a82bde9d5446953e89e97a285ba3403add15c080c4540e4f83db16f2d91"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-mobile-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 37889,
+      "sha256": "42bc0bfcc599c37b5b6979669b6de9f4e14445bac3a22aed9a690302cfa3da42"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-mobile-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 55616,
+      "sha256": "abb999dc2c47e47cab366b6057324c2a542cfc241b0cd0c9f7ced24259f0f4dc"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 42972,
+      "sha256": "d237212c2cce7e0fe68eaebf8f80664ab2174db4ec707af4aad1f4cb9a01bf2d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-desktop-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 50070,
+      "sha256": "898b490cdcef3e880c73eea37b04fef98a4d06d330abdea986f640da4ca10bc4"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-desktop-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 76039,
+      "sha256": "4fddd2de2098ec10810a4945904a8fcebed721f116d5eb4daea3fe59b77a9972"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 65834,
+      "sha256": "fb00cbc1f2cee31d253201d034996e64d787a3407f1869d92638566f60e8f901"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-mobile-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 35716,
+      "sha256": "3abef91cf40cce4190c99c7d49aeb9987a15fb7013e6f734295dddcdcafc5a06"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-mobile-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 55270,
+      "sha256": "abcecdd896609d45c167b775902696a0f58b940ce023bc3eec6ec5ba2259dfad"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 40860,
+      "sha256": "3ee88568966088e588a9ad9c8d3060ce11b126d93c1b20da6d7a2e0c47afc112"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-desktop-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 54016,
+      "sha256": "95b5f2ee28d18592a682efbb22a59aaf03f1bd8223aed46658da9c555063bc90"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-desktop-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 81443,
+      "sha256": "560bcd948c21bf93c8b36f0862d465aa50bb99526b040e912c31a23334cf8c6c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 68535,
+      "sha256": "a3fe0d57d17ab15bff18b3439134a08ed36216fe41fa46a194ab334d9c34c21f"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-mobile-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 41453,
+      "sha256": "703dcecb671c8044b9d67b989a68922ee9a1c4f77e8b405c2f67128a055b5741"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-mobile-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 57484,
+      "sha256": "11dc94fb7c9c85117b0d8b2e5e1f3976469ba0b2f8623fbdb5423bffc87af8f7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 43764,
+      "sha256": "375cdf794fc97e81d012a824127baba8e15d402a7dbfdca724bff4b6d4591d03"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-desktop-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 52187,
+      "sha256": "4f43b9b232d2fdafbabd07973063cd2ab343636ef85d8d685acd1cb75d12ae0c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-desktop-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 80197,
+      "sha256": "c2110ef19cf5d102fe9dbc919c08ed3bbf59e7f65ad1efebaea36ab61463f65c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 69485,
+      "sha256": "32b04ada668b8473b48f171bd51817417e6f5efc62f68803ee3b9aed8d8e04c7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-mobile-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 39361,
+      "sha256": "7a5da7b78fea530ce49f3fd7c1abfd97534f437c942e32e97a8b630bd2ad7bfb"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-mobile-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 56637,
+      "sha256": "7ae34a0840bcb1b8389996ca3da538054262444264191e57a68ec0925b032db2"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 43973,
+      "sha256": "13517609920a43f871a680d7d3b634579f7a46454e768ffefe8eafd724ce75ee"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-a-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 132845,
+      "sha256": "2f1441cae874631eae07a2f8d8d8c1d65b7b7957f6f36d64a3afcd01b1ebc0ec"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-a-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 48804,
+      "sha256": "8945db776557fe9f8426fec1670533dc23557181e953eef11d521149a575e677"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-a-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 63099,
+      "sha256": "4d947fa1e29b9d0910ff50ebc036ee88f9d2e9739eca3d8cc8fbb315ccd13d11"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-a-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 34048,
+      "sha256": "b3102ae515bd21012916605264045ac3b6338a2c80a6b2002f89ec23d46939a8"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-b-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 129958,
+      "sha256": "3238dddd11bfe3559f85d85fb93c2b35d36650d3148c0d16b51dc1571b816383"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-b-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 47244,
+      "sha256": "a3101457c906822c4645e38c14aa14be661dd341dc005f4f343c6a2c89f473ee"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-b-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 61505,
+      "sha256": "679228be8ca2ae1a7ed40748326937a67d64b5bede12b46b8f527b2133badc2c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-b-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 33852,
+      "sha256": "1ad974922b892497b33b66d5430ae3c0721c0c9ce0cc2802688a086b5e24a066"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-c-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 138877,
+      "sha256": "e6b7893dc0da91374da09a978f66fdfffe93abbef7c47acd3e158a5777055c04"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-c-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 53265,
+      "sha256": "14aa75f87373cb5fba4f9f4cdaf1cffd16478e21b38dc9050a159862e6ddbccb"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-c-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 69001,
+      "sha256": "874b0faedeae76cd0d31a2a57b7a4eba1f5e6dfb5ee55a795b9fd3b44e3791a3"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-c-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 38416,
+      "sha256": "5cf0107f0cc8346af019a904cec46b9eaeada636c5232ba8f2a51035838329a1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-d-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 137718,
+      "sha256": "001a0f204bf3c8b7dea372e251b2afd5e6dfdd0ff4df17d53d2a530d3099412a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-d-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 52348,
+      "sha256": "3bf0ff8948fa1d93ce6dd3782b3d9edccf3581fc0f9a4e0a61adefccbe0df2a1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-d-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 69684,
+      "sha256": "6bb48e201d1ee2e53f86d6bc701a7cf26d9b5bef1b2249c50c73f2a17dcfa67c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-d-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 37506,
+      "sha256": "4c243f23a2352b7e2df1f289acbb77ce16f9a22a7feeb20c1a908413b8dadf40"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/audit.json",
+      "normalization": "BINARY",
+      "bytes": 1568429,
+      "sha256": "d290070b2cd1dbc4553b1d79107286cb6d212b130a92fde96072b55d1ac672ba"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/browser.json",
+      "normalization": "BINARY",
+      "bytes": 1656627,
+      "sha256": "08c805be0d5f65f5ff2747621e240535d9a4785ab3ecdf5d0583775b1517a3db"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-desktop-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 48191,
+      "sha256": "3982593acbc86e4b1e85df899daa276127347794f9301f9a13c731a5fa91806c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-desktop-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 73330,
+      "sha256": "666a529c1b456025140fe7feaeeb93efdae5fb94adebee2090fbbda12d5a1549"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 63525,
+      "sha256": "d3e2c2dc63556993ecd2048969786af49b9b6e385ce85bcb20e0373e93fd2252"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-mobile-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 33723,
+      "sha256": "9560601ab5a54707c33b310ddfacca21af44316414401645e476d515822563e5"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-mobile-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 54526,
+      "sha256": "5e3fd8c2dae12c6bf760d887d707b8a44c09843a1e1972447aad95bad266197a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 40440,
+      "sha256": "2b050aaf260acb691400005e085aeb1389753dc559356a1271fdd7dcb7a1c88c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-desktop-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 50341,
+      "sha256": "7f4dcb5f8b1d6db4c404caaa7f4bab6b5e153d73f4eec7c0b5d0123d5584f4d7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-desktop-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 78294,
+      "sha256": "76a4fc835393c48164f23814400a9fb646462b65c806732ecfcecf5ccc8b8368"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 67674,
+      "sha256": "09eff3cdc2682f9b09ca97764fe4bf4774114b932d62c1253b416afac84f24dc"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-mobile-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 37696,
+      "sha256": "75e453c24ce9803f383689c5f34fb80808c0467ae6342bcc6d9be57afc06081d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-mobile-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 57479,
+      "sha256": "ce24ee116d102f33671f2aa41bf54e7d77d023ecdb41470e8f0270d9a4b9d527"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 41207,
+      "sha256": "7dc2d6f8f16e78fe0b708c0c732c303322b868ca7c3e999b45156c97779f8b49"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-desktop-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 52196,
+      "sha256": "90423b1b0c652a68bade4ff22c64e0a5ecb013f06becf003cc3390e3cea55c2e"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-desktop-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 79536,
+      "sha256": "c2aa3a0d641f6a6913373190234f13616e132a9a84bd0179696a8681e7c7468a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 66698,
+      "sha256": "dc030067a4baaf88e53b79cb660b407f7ec7b610f6add3029bdc217c16130496"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-mobile-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 39842,
+      "sha256": "4fc580eac79332f93eeb4889ff8c60d91aff7498e51a4a057ed9ff04de81794f"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-mobile-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 56011,
+      "sha256": "d8cd6a86b2f42c122a70dac4e6456f0b5cdcf87511b308fe484b0d307fc2d82d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 42361,
+      "sha256": "d5be5eb6b6084e30154375347032cb6ab2a9ec2c65920873794e82d6fcb0f324"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-desktop-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 50352,
+      "sha256": "67bd772de09448bae6f5d588600fd39573f7d8d46e1ac249b684e3dfc6c58725"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-desktop-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 78154,
+      "sha256": "f8d5bb7b3bb88dfd96654ed83840f52e652934928f77d7605add0e5394a252c1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 67689,
+      "sha256": "918746bd2de8f3b54b0daf8f53e1cfabbbe362f6e8705f9f2d5c723026f818bc"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-mobile-comodidades.png",
+      "normalization": "BINARY",
+      "bytes": 37874,
+      "sha256": "e4a586489011a0a4c0375a47595ddaf4a6a42335d658d8788d343b1489745636"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-mobile-habitaciones.png",
+      "normalization": "BINARY",
+      "bytes": 55183,
+      "sha256": "ae83e541f57204db9d1de8f536529986e485f3f28e930e91a2fd2408787adf15"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 42433,
+      "sha256": "bf674cf13824f4631de5e3dd0f8faa168316cfc7587a6decb53b5c117071fad7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-a-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 133014,
+      "sha256": "31759b6709154774c011feac2cf27cbc0c77fa88b2b19a606ede4a9675523807"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-a-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 48804,
+      "sha256": "8945db776557fe9f8426fec1670533dc23557181e953eef11d521149a575e677"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-a-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 64245,
+      "sha256": "0e08a2e9d5bad3ca3b7f47148def547d0b835eb670c9cb9a052c09683c72e153"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-a-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 34048,
+      "sha256": "b3102ae515bd21012916605264045ac3b6338a2c80a6b2002f89ec23d46939a8"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-b-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 137900,
+      "sha256": "502bfb2d8cc9934dbf7c9abb9300d43f277e87e5c7839b8afe30df4061317a32"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-b-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 52318,
+      "sha256": "069fb3f03e486607c7107333f6194dfacaddd6f70feac1398b1a2ac2728870c0"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-b-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 68823,
+      "sha256": "77447d3093bb4f2f1725b18e0b0d693ca6092791554fc9ed593e7334776bfc44"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-b-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 34362,
+      "sha256": "ce65a92baf54c3dd02f572f594892b97a02709abca0b7d6b2c91bc853979c48e"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-c-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 139096,
+      "sha256": "9fbc8478b8fd0088f6468d210cc09c6b50147dd73223a24794c6e9dac82b1587"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-c-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 53265,
+      "sha256": "14aa75f87373cb5fba4f9f4cdaf1cffd16478e21b38dc9050a159862e6ddbccb"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-c-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 70150,
+      "sha256": "74d0bdf9ce334ec58a74a3ac92e8203d7d44c7b53b3fa875b1f6fc5447b185d9"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-c-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 39082,
+      "sha256": "c1a23d5dcf8bc7d57489b75a6f87de4097cdfa6daa24ff8f51355739c61ed8f6"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-d-desktop-home.png",
+      "normalization": "BINARY",
+      "bytes": 137942,
+      "sha256": "567325a27cc0e149c216f79be58b9d74697e8c6dc0023475c2700d769e4a95ba"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-d-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 52348,
+      "sha256": "3bf0ff8948fa1d93ce6dd3782b3d9edccf3581fc0f9a4e0a61adefccbe0df2a1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-d-mobile-home.png",
+      "normalization": "BINARY",
+      "bytes": 70735,
+      "sha256": "f7b37df0a2681296698a624bb2fb7af836ef04822917cf59f9d65645d34b77ed"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-d-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "normalization": "BINARY",
+      "bytes": 38115,
+      "sha256": "471766e04701e829330d5cf82b557a9790dc90e9d068cf1031b383c899f13b55"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/judgment-1.json",
+      "normalization": "BINARY",
+      "bytes": 397,
+      "sha256": "82726490d7b51b1e9f953e3fcef6d5e1f9f31c26fa291002ec835962a153d188"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/preflight/raven.json",
+      "normalization": "BINARY",
+      "bytes": 421944,
+      "sha256": "5bc2a2d7e718bceb8ca762ad9e7a1045e44404e02a0d8890eed4920c3e896dcf"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/raven-url-initial-unavailable.json",
+      "normalization": "BINARY",
+      "bytes": 1166,
+      "sha256": "9018b8636c059c413ae35551e3d7652c51581b2d5478e39e8419212a127084ce"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/raven-url.json",
+      "normalization": "BINARY",
+      "bytes": 10500,
+      "sha256": "6f68f66cca2b193bd41a695fa668cb05b08fc3bc14cceaba6396c682c0d948de"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/repair-1.json",
+      "normalization": "BINARY",
+      "bytes": 38432,
+      "sha256": "1b1af4296cbb4a9ebadb3a68f37d035130d759cfcb54a3d008a74b95fc3bfda1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/repair-2.json",
+      "normalization": "BINARY",
+      "bytes": 39214,
+      "sha256": "ab65f49953e3bead5b7c306944884dbc94c3edaced475108751e807dd6e6969a"
+    },
+    {
+      "path": "scripts/load-quality-lab.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 1965,
+      "sha256": "bcc4343f6c4733a74cb54b9b13f7c6801269e6d779010bf435e687ddab401149"
+    },
+    {
+      "path": "scripts/quality-audit.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 7417,
+      "sha256": "91529681fc5f2417907930052de79cd3ac9ae6855e47a9541f64e28d85e37390"
+    },
+    {
+      "path": "scripts/quality-checks.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 1579,
+      "sha256": "0beaf5a417af1bab7391de470edfe45de2fc041ccec941632e4cb31371dfeabf"
+    },
+    {
+      "path": "scripts/quality-export.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 570,
+      "sha256": "e563d56b1cab99bab6040097e02cfa8ac5a868f50ee6cbf6daaf23eeceaf3b2d"
+    },
+    {
+      "path": "scripts/quality-judge.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 2076,
+      "sha256": "d41d86b92187b6fb490b8e82a788c167267670240384a2da5648727de4739f87"
+    },
+    {
+      "path": "scripts/quality-observer.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 1137,
+      "sha256": "14b19d677fcb2c0dcb9fc9f5649d60406412b5906325edc5e911162179e8ddc0"
+    },
+    {
+      "path": "scripts/quality-prepare.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 3577,
+      "sha256": "1e92a13771b7953092da96fc2d877225026fd53faf2367daa8b95ce1c691882f"
+    },
+    {
+      "path": "scripts/quality-repair.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 2296,
+      "sha256": "7221883103a31a834ce82343055d49f02c0293ddcbcb477e3f26e8ccd90bcce7"
+    },
+    {
+      "path": "scripts/quality-verify.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 7742,
+      "sha256": "9c4b0f5f8f0f7b8c14537c53d90947a432f648c81d0abdf37229ae1d0b8fc8a0"
+    },
+    {
+      "path": "src/components/composition/DesignComposition.astro",
+      "normalization": "LF_UTF8",
+      "bytes": 3826,
+      "sha256": "2af973bf1ec1cb22423c81ecebf0c2820983d5c0fb60a8ba085bf39c18aa57eb"
+    },
+    {
+      "path": "src/components/quality/QualityComparison.astro",
+      "normalization": "LF_UTF8",
+      "bytes": 6279,
+      "sha256": "b458cbd9d8c8e9386e11fc21fbb7b00213b07af37586c54d2e6932c800756e52"
+    },
+    {
+      "path": "src/design/evaluators/binding-observation.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 976,
+      "sha256": "0f4b6e1938a09f040d17d8e1c85a11e32b1fbe3c7cfcf760049620de28775ca0"
+    },
+    {
+      "path": "src/design/evaluators/contracts.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 3194,
+      "sha256": "249ddb51540ddab68bf31d40ca547457bf1b15f7f5b756421574b27d7dc44958"
+    },
+    {
+      "path": "src/design/evaluators/normalize.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 2674,
+      "sha256": "4cac775e6e015d13f9e231d37ecca15a4ff08a3396df1fab7c6c85d99693f84b"
+    },
+    {
+      "path": "src/design/evaluators/observe.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 2753,
+      "sha256": "7add7932e8d468e7b38f87a2edd6fd47a8079d5e91d1690e4a26acc3cf28a689"
+    },
+    {
+      "path": "src/design/evaluators/policy.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 2639,
+      "sha256": "545d5efc58ec428a6fc25c7717114f2a2ed65e8a2d057060aca093fc741d7e54"
+    },
+    {
+      "path": "src/design/evaluators/preflight.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 918,
+      "sha256": "7bc3c752f3f3d26add1fbdaebbf4406cea67b228ec314360575fcca86802199e"
+    },
+    {
+      "path": "src/design/evaluators/refinement.css",
+      "normalization": "LF_UTF8",
+      "bytes": 1103,
+      "sha256": "029713448b20469331ad8970bf2ee8c098cedab6ffb08afc1f0ddeaf60bf2ffa"
+    },
+    {
+      "path": "src/pages/quality/[...review].astro",
+      "normalization": "LF_UTF8",
+      "bytes": 230,
+      "sha256": "c4603b57090fc2125fad49082451e6a63b67d0c70def3605f6ca9a39ed0eed7c"
+    },
+    {
+      "path": "src/pages/quality/[variant].astro",
+      "normalization": "LF_UTF8",
+      "bytes": 784,
+      "sha256": "7bd59d173ad547632d028f826c2ee9d047fda7d78d72e2bb1dbdf9afeb8f97c5"
+    },
+    {
+      "path": "src/pages/quality/[variant]/[...page].astro",
+      "normalization": "LF_UTF8",
+      "bytes": 905,
+      "sha256": "9cd918513a4bdbe4b604188744cc654c2496dd709f61950fc79fa2b4d6253452"
+    },
+    {
+      "path": "tests/design-evaluators.test.ts",
+      "normalization": "LF_UTF8",
+      "bytes": 7622,
+      "sha256": "a6864e9747a8dd2647e703f0f3a61d5fd3cb6d70ac0a00876ad00dffe005aed9"
+    },
+    {
+      "path": "tooling/design-evaluation/.gitignore",
+      "normalization": "LF_UTF8",
+      "bytes": 8,
+      "sha256": "831aa77ed9ffd529d4bb0fc5107165785ba098eb00d518755d136e323635cb91"
+    },
+    {
+      "path": "tooling/design-evaluation/astro.config.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 347,
+      "sha256": "752280b97228c13c9b11bd49eba5c1c444dde111e3f5a4d31b8aaec022d532f7"
+    },
+    {
+      "path": "tooling/design-evaluation/baseline-without-tools.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 1809,
+      "sha256": "c22289d851ef71fb78e181300d58da47d46f686af5fb7fb54da1285b82627e08"
+    },
+    {
+      "path": "tooling/design-evaluation/compiler-extension.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 3306,
+      "sha256": "4cdcb7110224064449430459c93a758f6a9603cb67388f708780f496c48d8652"
+    },
+    {
+      "path": "tooling/design-evaluation/impeccable.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 835,
+      "sha256": "6ff6b55a4a93b3cecdad67c5a6a2f8cb25a80a62f17889c127699f31f5ae7ae9"
+    },
+    {
+      "path": "tooling/design-evaluation/install.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 2438,
+      "sha256": "a25cdb3788eb1cff2355eeeaf58fc12274b64591df28cfb044e23175df65815c"
+    },
+    {
+      "path": "tooling/design-evaluation/launch-raven.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 457,
+      "sha256": "f53e261c4f91681019220fdc2fc39e4ad4cf01a767dd6334a7d1b5a71aa43bb6"
+    },
+    {
+      "path": "tooling/design-evaluation/live-audit.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 707,
+      "sha256": "5dee0e9f4e54fade393807d00d832edef4ec88f7f6cc7a7c3039ce6a6cb8184b"
+    },
+    {
+      "path": "tooling/design-evaluation/package-lock.json",
+      "normalization": "LF_UTF8",
+      "bytes": 49261,
+      "sha256": "c89f216842343f2047b2cb1ecdbc1bc3fe721c5cfd56c314d3b73665750c10d3"
+    },
+    {
+      "path": "tooling/design-evaluation/package.json",
+      "normalization": "LF_UTF8",
+      "bytes": 246,
+      "sha256": "7cab2f3dd3a7db38767b9a1fbb22a762005166cb0acd822e933eeb2a3f736972"
+    },
+    {
+      "path": "tooling/design-evaluation/probe.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 850,
+      "sha256": "defff2c9ccafde6d259b4b0ace784a0c349f128e85b78811f589c6d63cba7b6e"
+    },
+    {
+      "path": "tooling/design-evaluation/raven-client.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 2614,
+      "sha256": "941e339b7796093bb4b5ae70335879fb6ba394d3d871391c958868591f42d03b"
+    },
+    {
+      "path": "tooling/design-evaluation/run.mjs",
+      "normalization": "LF_UTF8",
+      "bytes": 619,
+      "sha256": "067778a28ae71619f22035661dab8e5ec9197a7f1605b1a1baf36b686fab7a20"
+    },
+    {
+      "path": "tooling/design-evaluation/skill-integrity.json",
+      "normalization": "LF_UTF8",
+      "bytes": 10217,
+      "sha256": "53c492ba353c473d709307d8ddfa3de73578001d24caaf6375bb4e03aafa3181"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-a-desktop-home.png",
+      "width": 1264,
+      "height": 1303,
+      "bytes": 132845,
+      "sha256": "2f1441cae874631eae07a2f8d8d8c1d65b7b7957f6f36d64a3afcd01b1ebc0ec"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-a-mobile-home.png",
+      "width": 374,
+      "height": 1120,
+      "bytes": 63099,
+      "sha256": "4d947fa1e29b9d0910ff50ebc036ee88f9d2e9739eca3d8cc8fbb315ccd13d11"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-a-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 48804,
+      "sha256": "8945db776557fe9f8426fec1670533dc23557181e953eef11d521149a575e677"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-a-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 34048,
+      "sha256": "b3102ae515bd21012916605264045ac3b6338a2c80a6b2002f89ec23d46939a8"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-b-desktop-home.png",
+      "width": 1264,
+      "height": 1302,
+      "bytes": 129958,
+      "sha256": "3238dddd11bfe3559f85d85fb93c2b35d36650d3148c0d16b51dc1571b816383"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-b-mobile-home.png",
+      "width": 374,
+      "height": 1120,
+      "bytes": 61505,
+      "sha256": "679228be8ca2ae1a7ed40748326937a67d64b5bede12b46b8f527b2133badc2c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-b-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 47244,
+      "sha256": "a3101457c906822c4645e38c14aa14be661dd341dc005f4f343c6a2c89f473ee"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-b-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 33852,
+      "sha256": "1ad974922b892497b33b66d5430ae3c0721c0c9ce0cc2802688a086b5e24a066"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-c-desktop-home.png",
+      "width": 1264,
+      "height": 1335,
+      "bytes": 138877,
+      "sha256": "e6b7893dc0da91374da09a978f66fdfffe93abbef7c47acd3e158a5777055c04"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-c-mobile-home.png",
+      "width": 374,
+      "height": 1267,
+      "bytes": 69001,
+      "sha256": "874b0faedeae76cd0d31a2a57b7a4eba1f5e6dfb5ee55a795b9fd3b44e3791a3"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-c-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 53265,
+      "sha256": "14aa75f87373cb5fba4f9f4cdaf1cffd16478e21b38dc9050a159862e6ddbccb"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-c-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 374,
+      "height": 914,
+      "bytes": 38416,
+      "sha256": "5cf0107f0cc8346af019a904cec46b9eaeada636c5232ba8f2a51035838329a1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-d-desktop-home.png",
+      "width": 1264,
+      "height": 1331,
+      "bytes": 137718,
+      "sha256": "001a0f204bf3c8b7dea372e251b2afd5e6dfdd0ff4df17d53d2a530d3099412a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-d-mobile-home.png",
+      "width": 374,
+      "height": 1263,
+      "bytes": 69684,
+      "sha256": "6bb48e201d1ee2e53f86d6bc701a7cf26d9b5bef1b2249c50c73f2a17dcfa67c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-d-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 52348,
+      "sha256": "3bf0ff8948fa1d93ce6dd3782b3d9edccf3581fc0f9a4e0a61adefccbe0df2a1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/restaurante-d-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 374,
+      "height": 914,
+      "bytes": 37506,
+      "sha256": "4c243f23a2352b7e2df1f289acbb77ce16f9a22a7feeb20c1a908413b8dadf40"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-desktop-home.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 65345,
+      "sha256": "272d4a82bde9d5446953e89e97a285ba3403add15c080c4540e4f83db16f2d91"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-mobile-home.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 42972,
+      "sha256": "d237212c2cce7e0fe68eaebf8f80664ab2174db4ec707af4aad1f4cb9a01bf2d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-desktop-comodidades.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 50012,
+      "sha256": "34eccda4c33456ed0b3c4b6ec7dfab8d3f9ad11025a5d26e86c58c4de774b3a6"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-mobile-comodidades.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37889,
+      "sha256": "42bc0bfcc599c37b5b6979669b6de9f4e14445bac3a22aed9a690302cfa3da42"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-desktop-habitaciones.png",
+      "width": 1264,
+      "height": 1222,
+      "bytes": 74943,
+      "sha256": "2aaec33bdfe450890e1d310e86fe4b3852bcc8f91231d1abcfe7cdf496cb5d69"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-a-mobile-habitaciones.png",
+      "width": 374,
+      "height": 1236,
+      "bytes": 55616,
+      "sha256": "abb999dc2c47e47cab366b6057324c2a542cfc241b0cd0c9f7ced24259f0f4dc"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-desktop-home.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 65834,
+      "sha256": "fb00cbc1f2cee31d253201d034996e64d787a3407f1869d92638566f60e8f901"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-mobile-home.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 40860,
+      "sha256": "3ee88568966088e588a9ad9c8d3060ce11b126d93c1b20da6d7a2e0c47afc112"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-desktop-comodidades.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 50070,
+      "sha256": "898b490cdcef3e880c73eea37b04fef98a4d06d330abdea986f640da4ca10bc4"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-mobile-comodidades.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 35716,
+      "sha256": "3abef91cf40cce4190c99c7d49aeb9987a15fb7013e6f734295dddcdcafc5a06"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-desktop-habitaciones.png",
+      "width": 1264,
+      "height": 1225,
+      "bytes": 76039,
+      "sha256": "4fddd2de2098ec10810a4945904a8fcebed721f116d5eb4daea3fe59b77a9972"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-b-mobile-habitaciones.png",
+      "width": 374,
+      "height": 1240,
+      "bytes": 55270,
+      "sha256": "abcecdd896609d45c167b775902696a0f58b940ce023bc3eec6ec5ba2259dfad"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-desktop-home.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 68535,
+      "sha256": "a3fe0d57d17ab15bff18b3439134a08ed36216fe41fa46a194ab334d9c34c21f"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-mobile-home.png",
+      "width": 374,
+      "height": 890,
+      "bytes": 43764,
+      "sha256": "375cdf794fc97e81d012a824127baba8e15d402a7dbfdca724bff4b6d4591d03"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-desktop-comodidades.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 54016,
+      "sha256": "95b5f2ee28d18592a682efbb22a59aaf03f1bd8223aed46658da9c555063bc90"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-mobile-comodidades.png",
+      "width": 374,
+      "height": 916,
+      "bytes": 41453,
+      "sha256": "703dcecb671c8044b9d67b989a68922ee9a1c4f77e8b405c2f67128a055b5741"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-desktop-habitaciones.png",
+      "width": 1264,
+      "height": 1239,
+      "bytes": 81443,
+      "sha256": "560bcd948c21bf93c8b36f0862d465aa50bb99526b040e912c31a23334cf8c6c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-c-mobile-habitaciones.png",
+      "width": 374,
+      "height": 1346,
+      "bytes": 57484,
+      "sha256": "11dc94fb7c9c85117b0d8b2e5e1f3976469ba0b2f8623fbdb5423bffc87af8f7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-desktop-home.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 69485,
+      "sha256": "32b04ada668b8473b48f171bd51817417e6f5efc62f68803ee3b9aed8d8e04c7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-mobile-home.png",
+      "width": 374,
+      "height": 927,
+      "bytes": 43973,
+      "sha256": "13517609920a43f871a680d7d3b634579f7a46454e768ffefe8eafd724ce75ee"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-desktop-comodidades.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 52187,
+      "sha256": "4f43b9b232d2fdafbabd07973063cd2ab343636ef85d8d685acd1cb75d12ae0c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-mobile-comodidades.png",
+      "width": 374,
+      "height": 890,
+      "bytes": 39361,
+      "sha256": "7a5da7b78fea530ce49f3fd7c1abfd97534f437c942e32e97a8b630bd2ad7bfb"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-desktop-habitaciones.png",
+      "width": 1264,
+      "height": 1239,
+      "bytes": 80197,
+      "sha256": "c2110ef19cf5d102fe9dbc919c08ed3bbf59e7f65ad1efebaea36ab61463f65c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-0/hotel-d-mobile-habitaciones.png",
+      "width": 374,
+      "height": 1346,
+      "bytes": 56637,
+      "sha256": "7ae34a0840bcb1b8389996ca3da538054262444264191e57a68ec0925b032db2"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-a-desktop-home.png",
+      "width": 1280,
+      "height": 1303,
+      "bytes": 133014,
+      "sha256": "31759b6709154774c011feac2cf27cbc0c77fa88b2b19a606ede4a9675523807"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-a-mobile-home.png",
+      "width": 390,
+      "height": 1130,
+      "bytes": 64245,
+      "sha256": "0e08a2e9d5bad3ca3b7f47148def547d0b835eb670c9cb9a052c09683c72e153"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-a-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 48804,
+      "sha256": "8945db776557fe9f8426fec1670533dc23557181e953eef11d521149a575e677"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-a-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 34048,
+      "sha256": "b3102ae515bd21012916605264045ac3b6338a2c80a6b2002f89ec23d46939a8"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-b-desktop-home.png",
+      "width": 1280,
+      "height": 1331,
+      "bytes": 137900,
+      "sha256": "502bfb2d8cc9934dbf7c9abb9300d43f277e87e5c7839b8afe30df4061317a32"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-b-mobile-home.png",
+      "width": 390,
+      "height": 1212,
+      "bytes": 68823,
+      "sha256": "77447d3093bb4f2f1725b18e0b0d693ca6092791554fc9ed593e7334776bfc44"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-b-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 52318,
+      "sha256": "069fb3f03e486607c7107333f6194dfacaddd6f70feac1398b1a2ac2728870c0"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-b-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 390,
+      "height": 854,
+      "bytes": 34362,
+      "sha256": "ce65a92baf54c3dd02f572f594892b97a02709abca0b7d6b2c91bc853979c48e"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-c-desktop-home.png",
+      "width": 1280,
+      "height": 1335,
+      "bytes": 139096,
+      "sha256": "9fbc8478b8fd0088f6468d210cc09c6b50147dd73223a24794c6e9dac82b1587"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-c-mobile-home.png",
+      "width": 390,
+      "height": 1276,
+      "bytes": 70150,
+      "sha256": "74d0bdf9ce334ec58a74a3ac92e8203d7d44c7b53b3fa875b1f6fc5447b185d9"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-c-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 53265,
+      "sha256": "14aa75f87373cb5fba4f9f4cdaf1cffd16478e21b38dc9050a159862e6ddbccb"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-c-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 390,
+      "height": 914,
+      "bytes": 39082,
+      "sha256": "c1a23d5dcf8bc7d57489b75a6f87de4097cdfa6daa24ff8f51355739c61ed8f6"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-d-desktop-home.png",
+      "width": 1280,
+      "height": 1331,
+      "bytes": 137942,
+      "sha256": "567325a27cc0e149c216f79be58b9d74697e8c6dc0023475c2700d769e4a95ba"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-d-mobile-home.png",
+      "width": 390,
+      "height": 1272,
+      "bytes": 70735,
+      "sha256": "f7b37df0a2681296698a624bb2fb7af836ef04822917cf59f9d65645d34b77ed"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-d-desktop-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 52348,
+      "sha256": "3bf0ff8948fa1d93ce6dd3782b3d9edccf3581fc0f9a4e0a61adefccbe0df2a1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/restaurante-d-mobile-sedes-s-051d544b94ae77ae0d73a35b-menu.png",
+      "width": 390,
+      "height": 914,
+      "bytes": 38115,
+      "sha256": "471766e04701e829330d5cf82b557a9790dc90e9d068cf1031b383c899f13b55"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-desktop-home.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 63525,
+      "sha256": "d3e2c2dc63556993ecd2048969786af49b9b6e385ce85bcb20e0373e93fd2252"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-mobile-home.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 40440,
+      "sha256": "2b050aaf260acb691400005e085aeb1389753dc559356a1271fdd7dcb7a1c88c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-desktop-comodidades.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 48191,
+      "sha256": "3982593acbc86e4b1e85df899daa276127347794f9301f9a13c731a5fa91806c"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-mobile-comodidades.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 33723,
+      "sha256": "9560601ab5a54707c33b310ddfacca21af44316414401645e476d515822563e5"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-desktop-habitaciones.png",
+      "width": 1280,
+      "height": 1222,
+      "bytes": 73330,
+      "sha256": "666a529c1b456025140fe7feaeeb93efdae5fb94adebee2090fbbda12d5a1549"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-a-mobile-habitaciones.png",
+      "width": 390,
+      "height": 1176,
+      "bytes": 54526,
+      "sha256": "5e3fd8c2dae12c6bf760d887d707b8a44c09843a1e1972447aad95bad266197a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-desktop-home.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 67674,
+      "sha256": "09eff3cdc2682f9b09ca97764fe4bf4774114b932d62c1253b416afac84f24dc"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-mobile-home.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 41207,
+      "sha256": "7dc2d6f8f16e78fe0b708c0c732c303322b868ca7c3e999b45156c97779f8b49"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-desktop-comodidades.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 50341,
+      "sha256": "7f4dcb5f8b1d6db4c404caaa7f4bab6b5e153d73f4eec7c0b5d0123d5584f4d7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-mobile-comodidades.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37696,
+      "sha256": "75e453c24ce9803f383689c5f34fb80808c0467ae6342bcc6d9be57afc06081d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-desktop-habitaciones.png",
+      "width": 1280,
+      "height": 1239,
+      "bytes": 78294,
+      "sha256": "76a4fc835393c48164f23814400a9fb646462b65c806732ecfcecf5ccc8b8368"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-b-mobile-habitaciones.png",
+      "width": 390,
+      "height": 1226,
+      "bytes": 57479,
+      "sha256": "ce24ee116d102f33671f2aa41bf54e7d77d023ecdb41470e8f0270d9a4b9d527"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-desktop-home.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 66698,
+      "sha256": "dc030067a4baaf88e53b79cb660b407f7ec7b610f6add3029bdc217c16130496"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-mobile-home.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 42361,
+      "sha256": "d5be5eb6b6084e30154375347032cb6ab2a9ec2c65920873794e82d6fcb0f324"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-desktop-comodidades.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 52196,
+      "sha256": "90423b1b0c652a68bade4ff22c64e0a5ecb013f06becf003cc3390e3cea55c2e"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-mobile-comodidades.png",
+      "width": 390,
+      "height": 856,
+      "bytes": 39842,
+      "sha256": "4fc580eac79332f93eeb4889ff8c60d91aff7498e51a4a057ed9ff04de81794f"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-desktop-habitaciones.png",
+      "width": 1280,
+      "height": 1239,
+      "bytes": 79536,
+      "sha256": "c2aa3a0d641f6a6913373190234f13616e132a9a84bd0179696a8681e7c7468a"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-c-mobile-habitaciones.png",
+      "width": 390,
+      "height": 1286,
+      "bytes": 56011,
+      "sha256": "d8cd6a86b2f42c122a70dac4e6456f0b5cdcf87511b308fe484b0d307fc2d82d"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-desktop-home.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 67689,
+      "sha256": "918746bd2de8f3b54b0daf8f53e1cfabbbe362f6e8705f9f2d5c723026f818bc"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-mobile-home.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 42433,
+      "sha256": "bf674cf13824f4631de5e3dd0f8faa168316cfc7587a6decb53b5c117071fad7"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-desktop-comodidades.png",
+      "width": 1280,
+      "height": 900,
+      "bytes": 50352,
+      "sha256": "67bd772de09448bae6f5d588600fd39573f7d8d46e1ac249b684e3dfc6c58725"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-mobile-comodidades.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 37874,
+      "sha256": "e4a586489011a0a4c0375a47595ddaf4a6a42335d658d8788d343b1489745636"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-desktop-habitaciones.png",
+      "width": 1280,
+      "height": 1239,
+      "bytes": 78154,
+      "sha256": "f8d5bb7b3bb88dfd96654ed83840f52e652934928f77d7605add0e5394a252c1"
+    },
+    {
+      "path": "docs/evidence/design-evaluation/iteration-1/hotel-d-mobile-habitaciones.png",
+      "width": 390,
+      "height": 1286,
+      "bytes": 55183,
+      "sha256": "ae83e541f57204db9d1de8f536529986e485f3f28e930e91a2fd2408787adf15"
+    }
+  ],
+  "preservation": {
+    "checked": 2815,
+    "associated_extensions": []
+  },
+  "status": "TECHNICAL_PILOT_NEEDS_HUMAN_PREFERENCE",
+  "human_preference": "NOT_COLLECTED",
+  "external_business_validation": "PENDING"
+}

@@ -1,0 +1,30 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import Identity from './Identity.astro';
+import OfferingCollection from './OfferingCollection.astro';
+import MediaFigure from './MediaFigure.astro';
+import SiteNavigation from './SiteNavigation.astro';
+import AuditPanel from './AuditPanel.astro';
+import { compositions, previewPath, type CompositionId } from '../../composition/registry.ts';
+import type { CompositionLab } from '../../../scripts/load-composition-lab.ts';
+import '../../composition/styles.css';
+interface Props { lab: CompositionLab; variant: CompositionId; page: string }
+const { lab, variant, page } = Astro.props;
+const composition = compositions.find(c => c.id === variant)!;
+const selected = lab.content.pages.find(p => p.path === page)!;
+if (!selected) throw new Error('COMPOSITION_PAGE_MISSING');
+---
+<Foundation title={`${composition.label} · laboratorio H4`}>
+  <div class:list={['lab', variant]} data-composition={variant} data-version="1.0.0" data-semantic-page={page} data-plan-sha256={lab.content.plan_sha256} data-content-sha256={lab.content.content_sha256} data-manifest-sha256={lab.manifest_sha256} data-client-id={lab.client_id} data-project-id={lab.project_id}>
+    <header class="lab-header"><span>101 / Laboratorio compartido</span><span>H4 · {composition.label} · Ficticio</span></header>
+    <div class="frame">
+      <SiteNavigation content={lab.content} variant={variant} page={page} />
+      <div class="stage" data-operator={composition.operator}>
+        {selected.modules.map(m => m.component === 'Identity' ? <Identity module={m} /> : <OfferingCollection module={m} />)}
+        {lab.media.usage.page === page && <MediaFigure media={lab.media} />}
+      </div>
+    </div>
+    <AuditPanel lab={lab} />
+    <footer class="lab-footer"><span>Comparar composiciones</span><nav aria-label="Variantes">{compositions.map(c => <a href={previewPath(c.id, page)} aria-current={c.id === variant ? 'page' : undefined}>{c.label}</a>)}</nav><a href="/">Inspector de contratos</a></footer>
+  </div>
+</Foundation>

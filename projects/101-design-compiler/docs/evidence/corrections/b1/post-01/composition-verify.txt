@@ -1,0 +1,20 @@
+
+> 101-design-compiler@0.0.0 composition:verify
+> node --experimental-strip-types scripts/verify-compositions.ts
+
+node:internal/fs/promises:1345
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open 'C:\Users\gabri\101-design-compiler\dist\h4\editorial\index.html'
+    at async open (node:internal/fs/promises:1345:25)
+    at async readFile (node:internal/fs/promises:1996:14)
+    at async verifyCompositions (file:///C:/Users/gabri/101-design-compiler/scripts/verify-compositions.ts:29:19)
+    at async file:///C:/Users/gabri/101-design-compiler/scripts/verify-compositions.ts:37:83 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\gabri\\101-design-compiler\\dist\\h4\\editorial\\index.html'
+}
+
+Node.js v24.21.0

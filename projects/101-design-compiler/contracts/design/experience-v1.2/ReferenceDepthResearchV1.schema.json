@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string",
+      "const": "B3_REFERENCE_FEATURE_RESEARCH"
+    },
+    "evaluated_date": {
+      "type": "string",
+      "const": "2026-10-21"
+    },
+    "authority": {
+      "type": "string",
+      "const": "ASSISTANT_OBSERVATION_NOT_USER_VOTE"
+    },
+    "prior_research_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "observations_path": {
+      "type": "string"
+    },
+    "observations_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "asset_reuse": {
+      "type": "string",
+      "const": "NOT_AUTHORIZED"
+    },
+    "coverage": {
+      "minItems": 23,
+      "maxItems": 23,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^reference-\\d{2}$"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "inspection": {
+            "type": "string",
+            "enum": [
+              "FRESH_WITH_LIMITS",
+              "HISTORICAL_ONLY"
+            ]
+          },
+          "limits": {
+            "type": "string",
+            "minLength": 15
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "scope",
+          "inspection",
+          "limits"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "features": {
+      "minItems": 20,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "references": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^reference-\\d{2}$"
+            }
+          },
+          "observation": {
+            "type": "string",
+            "minLength": 20
+          },
+          "gap": {
+            "type": "string",
+            "minLength": 10
+          },
+          "disposition": {
+            "type": "string",
+            "enum": [
+              "IMPLEMENT_SHARED",
+              "ALREADY_PRESENT",
+              "NEEDS_DATA",
+              "OUT_OF_SCOPE",
+              "RESEARCH_LIMIT"
+            ]
+          },
+          "operator": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "required_data": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "references",
+          "observation",
+          "gap",
+          "disposition",
+          "operator",
+          "required_data",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "evaluated_date",
+    "authority",
+    "prior_research_sha256",
+    "observations_path",
+    "observations_sha256",
+    "asset_reuse",
+    "coverage",
+    "features"
+  ],
+  "additionalProperties": false,
+  "$id": "urn:unocerouno:contracts:ReferenceDepthResearchV1:1.0.0",
+  "title": "ReferenceDepthResearchV1",
+  "description": "Associated B3 iteration after human rejection; reference observations, fictional presentation and evidence bindings. No aesthetic approval, rights grant, backend or training."
+}

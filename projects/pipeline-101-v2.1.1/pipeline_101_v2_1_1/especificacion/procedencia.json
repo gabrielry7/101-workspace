@@ -1,0 +1,53 @@
+{
+  "schema_version": "2.1.1",
+  "kind": "source_manifest",
+  "sources": [
+    {
+      "path": "referencia/Pipeline_101_original.md",
+      "sha256": "0019fe79ce07f24d05620bae7843ffd2cbd8cca0e05b984c61dbf072c1005837",
+      "size_bytes": 34803
+    },
+    {
+      "path": "referencia/Pipeline_101_restaurantes_v2.1.md",
+      "sha256": "3f5048dfa35975158b30c8e17be09c0de9e59a30bbe082800de1b39191461f9e",
+      "size_bytes": 116430
+    },
+    {
+      "path": "referencia/v2/Pipeline_101_restaurantes_v2.md",
+      "sha256": "9f1b290f9a9cb237031081e0754e5fea6ce4dd370b30ee9eae8787c08fe5d2e1",
+      "size_bytes": 87855
+    },
+    {
+      "path": "referencia/v2/REGISTRO_DE_CAMBIOS.md",
+      "sha256": "3e8f2da2e2b5cdcfe9edcf07db1e82ff73b906bdd5ae34587b1709d39007c37c",
+      "size_bytes": 6839
+    },
+    {
+      "path": "referencia/v2/VALIDACION_ENTREGA.json",
+      "sha256": "311357aa60e1833155d8ce793125b7d059b8b701af0c2bca72f1a51d475ae52d",
+      "size_bytes": 6213
+    },
+    {
+      "path": "referencia/v2/especificacion/compuertas.json",
+      "sha256": "dffaf62812c84e61893de61926453037364fa8f31671ba0b7a606492e6bc05c0",
+      "size_bytes": 23893
+    },
+    {
+      "path": "referencia/v2/especificacion/contratos.schema.json",
+      "sha256": "00322c514163f744134b93f201f11e1d2043c07b48f2ed47ccb8dc242c9c6216",
+      "size_bytes": 29588
+    },
+    {
+      "path": "referencia/v2/especificacion/pruebas_aceptacion.json",
+      "sha256": "ca5c7471c57d4e98a40cd58fedac61aabc1e95a6bfc9bddce4c38bb857aa644e",
+      "size_bytes": 64645
+    },
+    {
+      "path": "referencia/v2/herramientas/validar_especificacion.py",
+      "sha256": "43809d37a4ba5f0a1f68260ca051aed796b592a13e6ddc8f4b3bbdda199c74b7",
+      "size_bytes": 14062
+    }
+  ],
+  "source_zip_sha256": "02876b4f28d6f76ebd7c31cf4c471efc08d114b208c2560b1858cc3da651bc0a",
+  "note": "Fuentes locales sin modificar; consultas externas heredadas, no revalidadas en 2.1.1."
+}

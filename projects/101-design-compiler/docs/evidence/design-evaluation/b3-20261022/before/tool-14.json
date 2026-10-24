@@ -1,0 +1,330 @@
+{
+  "tool": "audit_tap_targets",
+  "version": "2.6.0",
+  "started_at": "2026-10-22T22:02:37.926Z",
+  "wall_seconds": 0.0021479999999992287,
+  "status": "OK",
+  "input": {
+    "elements": [
+      {
+        "h": 53.33333587646485,
+        "role": "a",
+        "selector": "html>body:nth-of-type(1)>a:nth-of-type(1)",
+        "text": "Saltar al contenido",
+        "w": 163.7604217529297,
+        "x": 16,
+        "y": -80
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>a:nth-of-type(1)",
+        "text": "La Mesa",
+        "w": 105.9375,
+        "x": 57.59375,
+        "y": 22
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "text": "Carta",
+        "w": 35.19791793823242,
+        "x": 1074.7083740234375,
+        "y": 22
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(2)",
+        "text": "Reservas · demo",
+        "w": 109.16667175292967,
+        "x": 1141.90625,
+        "y": 22
+      },
+      {
+        "h": 48,
+        "role": "summary",
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "text": "Explorar ＋",
+        "w": 84,
+        "x": 1283.072998046875,
+        "y": 20
+      },
+      {
+        "h": 44,
+        "role": "button",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(2)>button:nth-of-type(1)",
+        "text": "▷",
+        "w": 44,
+        "x": 1323.072998046875,
+        "y": 936
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(3)>a:nth-of-type(1)",
+        "text": "Explorar la carta ↗",
+        "w": 145.8125,
+        "x": 57.59375,
+        "y": 931.3333740234376
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(1)>div:nth-of-type(3)>a:nth-of-type(2)",
+        "text": "Encontrarnos en la mesa ↗",
+        "w": 204.125,
+        "x": 1108.541748046875,
+        "y": 931.3333740234376
+      },
+      {
+        "h": 48,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "text": "Nuestra idea ↗",
+        "w": 113.32292175292967,
+        "x": 57.59375,
+        "y": 1489.666748046875
+      },
+      {
+        "h": 143.05209350585938,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(1)",
+        "text": "01Qué te apetece.La carta, plato a plato. Ingredientes y detalles de muestra.↗",
+        "w": 541.28125,
+        "x": 825.7916870117188,
+        "y": 1160
+      },
+      {
+        "h": 143.05209350585938,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(2)",
+        "text": "02Ven con tiempo.Lugar, horarios y cómo preparar la visita al escenario.↗",
+        "w": 541.28125,
+        "x": 825.7916870117188,
+        "y": 1303.0521240234375
+      },
+      {
+        "h": 143.05209350585938,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(3)",
+        "text": "03Haz sitio.Explora una reserva de demostración, también para ocasiones especiales.↗",
+        "w": 541.28125,
+        "x": 825.7916870117188,
+        "y": 1446.104248046875
+      },
+      {
+        "h": 143.71875,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(2)>div:nth-of-type(2)>a:nth-of-type(4)",
+        "text": "04Para llevar el plan.Construye un pedido de ejemplo. Sin envío ni cobro.↗",
+        "w": 541.28125,
+        "x": 825.7916870117188,
+        "y": 1589.15625
+      },
+      {
+        "h": 48,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>header:nth-of-type(1)>div:nth-of-type(2)>a:nth-of-type(1)",
+        "text": "Abrir el diario ↗",
+        "w": 116.6875,
+        "x": 1046.71875,
+        "y": 2189.541748046875
+      },
+      {
+        "h": 48,
+        "role": "summary",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(1)>div:nth-of-type(2)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "text": "Leer el relato ＋",
+        "w": 341.4270935058594,
+        "x": 1025.6458740234375,
+        "y": 3036.572998046875
+      },
+      {
+        "h": 48,
+        "role": "summary",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(2)>div:nth-of-type(2)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "text": "Leer el relato ＋",
+        "w": 520.4166870117188,
+        "x": 170.3125,
+        "y": 3870.05224609375
+      },
+      {
+        "h": 48,
+        "role": "summary",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(3)>div:nth-of-type(2)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "text": "Leer el relato ＋",
+        "w": 520.4271240234375,
+        "x": 846.6458740234375,
+        "y": 3949.55224609375
+      },
+      {
+        "h": 48,
+        "role": "summary",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(3)>div:nth-of-type(1)>article:nth-of-type(4)>div:nth-of-type(2)>details:nth-of-type(1)>summary:nth-of-type(1)",
+        "text": "Leer el relato ＋",
+        "w": 593.84375,
+        "x": 744.4375,
+        "y": 4452.45849609375
+      },
+      {
+        "h": 48,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(4)>header:nth-of-type(1)>div:nth-of-type(2)>a:nth-of-type(1)",
+        "text": "Ver opiniones de muestra ↗",
+        "w": 199.5104217529297,
+        "x": 1032.322998046875,
+        "y": 5148.3857421875
+      },
+      {
+        "h": 64,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "text": "Hablemos ↗",
+        "w": 215.4479217529297,
+        "x": 72,
+        "y": 6211.0732421875
+      },
+      {
+        "h": 48,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>section:nth-of-type(5)>div:nth-of-type(2)>a:nth-of-type(1)",
+        "text": "La visita ↗",
+        "w": 82.90625,
+        "x": 1067.916748046875,
+        "y": 6219.0732421875
+      },
+      {
+        "h": 100.80208587646484,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>a:nth-of-type(1)",
+        "text": "La Mesa",
+        "w": 420.4895935058594,
+        "x": 57.59375,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "text": "Carta",
+        "w": 35.19791793823242,
+        "x": 530.46875,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(2)",
+        "text": "Reservas",
+        "w": 60.80208587646485,
+        "x": 589.6666870117188,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(3)",
+        "text": "Visita",
+        "w": 34.9375,
+        "x": 674.46875,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(4)",
+        "text": "Nuestra idea",
+        "w": 81.61458587646484,
+        "x": 733.40625,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(5)",
+        "text": "Preguntas",
+        "w": 65.61458587646484,
+        "x": 839.0208740234375,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(6)",
+        "text": "Contacto y redes",
+        "w": 108.8125,
+        "x": 928.6354370117188,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(7)",
+        "text": "Opiniones",
+        "w": 64.8125,
+        "x": 1061.447998046875,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(8)",
+        "text": "Créditos",
+        "w": 53.60416793823242,
+        "x": 1150.260498046875,
+        "y": 6454.9375
+      },
+      {
+        "h": 44,
+        "role": "a",
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(9)",
+        "text": "Comparar propuestas",
+        "w": 139.20834350585938,
+        "x": 1227.8646240234375,
+        "y": 6454.9375
+      }
+    ],
+    "minSize": 44
+  },
+  "output": {
+    "minSize": 44,
+    "total": 31,
+    "passing": 28,
+    "failing": 3,
+    "fix_table": [
+      {
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(3)",
+        "role": "a",
+        "text": "Visita",
+        "w": 34.9375,
+        "h": 44,
+        "deficit_w": 9.1,
+        "deficit_h": 0,
+        "fix": "add min-width: 44px (or add padding-left/right: 5px)"
+      },
+      {
+        "selector": "#contenido>div:nth-of-type(1)>header:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "role": "a",
+        "text": "Carta",
+        "w": 35.19791793823242,
+        "h": 44,
+        "deficit_w": 8.8,
+        "deficit_h": 0,
+        "fix": "add min-width: 44px (or add padding-left/right: 5px)"
+      },
+      {
+        "selector": "#contenido>div:nth-of-type(1)>footer:nth-of-type(1)>div:nth-of-type(1)>a:nth-of-type(1)",
+        "role": "a",
+        "text": "Carta",
+        "w": 35.19791793823242,
+        "h": 44,
+        "deficit_w": 8.8,
+        "deficit_h": 0,
+        "fix": "add min-width: 44px (or add padding-left/right: 5px)"
+      }
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,12 @@
+---
+// Generic, non-operational intent primitive. This does not add a business
+// capability to H2, call a service, collect identity or persist preferences B4.
+interface Props{kind:'request'|'selection'}
+const {kind}=Astro.props;
+---
+{kind==='request'?<section id="encuentro" class="preview-intent" data-operation="DEMO_ONLY">
+ <div><p class="kicker">02 / Un lugar para el encuentro</p><h2>Siempre hay una<br/> buena razón.</h2><p>Una comida entre amigos. Un cumpleaños. Un martes cualquiera.</p><p class="demo-label">Reservas · demostración sin disponibilidad real</p><p>Explora la interfaz. No se envía ninguna solicitud, no se reserva una mesa y no recogemos datos personales.</p></div>
+ <div class="request-panel"><div class="request-fields"><label>Personas<select data-party><option>2 personas</option><option>4 personas</option><option>6 personas</option><option>8 personas</option></select></label><label>Cuándo<input type="date" aria-label="Fecha de ejemplo"/></label><label>Ocasión<select><option>Una buena comida</option><option>Cumpleaños</option><option>Celebración especial</option></select></label><label>Momento<select><option>Almuerzo · 13:00</option><option>Cena · 19:30</option></select></label></div>
+ <details class="table-preview"><summary>Imaginar la distribución de mesas <span aria-hidden="true">＋</span></summary><p>Plano y ocupación simulados. Elige una mesa sólo para explorar esta interfaz.</p><div class="table-map" role="group" aria-label="Mesas de ejemplo, sin disponibilidad real">{[1,2,3,4,5,6].map(n=><button type="button" aria-pressed="false" disabled={n===3||n===6} data-demo-table={n}>Mesa {n}<small>{n===3||n===6?'Ocupada · ficción':'Ejemplo'}</small></button>)}</div></details>
+ <button type="button" class="button primary demo-request" hidden>Ver resumen de ejemplo <span aria-hidden="true">↗</span></button><p class="intent-status" role="status" data-request-status>No hay reserva ni conexión operativa.</p>
+ </div></section>:<aside id="seleccion" class="selection-preview" data-operation="DEMO_ONLY"><div><p class="kicker">Tu selección · sólo en esta pantalla</p><h2>¿Lo compartimos?</h2><p>Explora los platos y reúne tus favoritos en una selección de ejemplo. No es un carrito de compra y no hay pedido, entrega ni cobro.</p></div><div><p class="selection-count" data-selection-count>0 platos elegidos</p><ul data-selection-list></ul><p role="status" data-selection-status>Una carta para imaginar.</p><button type="button" class="text-link" data-selection-clear hidden>Vaciar selección de ejemplo</button></div></aside>}

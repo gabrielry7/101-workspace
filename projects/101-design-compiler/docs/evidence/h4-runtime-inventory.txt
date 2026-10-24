@@ -1,0 +1,50 @@
+Inventory before H4: H3 HEAD e2b83d441776bcc7d643ffa2f0c3dee4e648b62d; initial worktree clean.
+Search scope: repository; home peer directories; Desktop, Documents and Downloads file listings.
+Command: git ls-tree -r --name-only e2b83d4 src scripts package.json
+Relevant existing files:
+package.json
+scripts/audit-taxonomy.ts
+scripts/check-media-fixtures.ts
+scripts/check-planner-fixtures.ts
+scripts/export-contracts.ts
+scripts/load-fixtures.ts
+scripts/load-media-pilot.ts
+scripts/load-planner-fixtures.ts
+scripts/load-taxonomy.ts
+scripts/media-fixtures.ts
+scripts/plan-fixtures.ts
+scripts/render-h3-pilot.ts
+scripts/seal-media-pilot.ts
+scripts/validate-fixtures.ts
+scripts/verify-h3.ps1
+scripts/verify-media-pilot.ts
+src/contracts/v1/schemas.ts
+src/layouts/Foundation.astro
+src/media/contracts.ts
+src/media/gate.ts
+src/media/package.ts
+src/media/plan.ts
+src/pages/h3-media-pilot.astro
+src/pages/index.astro
+src/planner/content.ts
+src/planner/contracts.ts
+src/planner/plan.ts
+src/planner/registry.ts
+src/planner/validate.ts
+src/taxonomy/contracts.ts
+src/taxonomy/inventory.ts
+src/taxonomy/resolve.ts
+src/upstream/v1/protocol.ts
+src/validation/input.ts
+src/validation/validate.ts
+Command: npm ls --depth=0
+101-design-compiler@0.0.0 C:\Users\gabri\101-design-compiler
+├── @astrojs/check@0.9.10
+├── @types/node@24.19.1
+├── astro@7.3.7
+├── typescript@6.0.3
+└── zod@4.6.5
+
+No @101/site-runtime package/import in H3 sources or lockfile. No historical visual operators/components, Truth, SiteSpec compiler or topology solver in the available workspace.
+Reusable: Foundation.astro shell, planner validation/content helpers, media rights gate/package verification, H3 browser QA technique.
+H4 additions are local Astro lab primitives, not imported historical implementations or production integration.
