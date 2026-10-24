@@ -26,7 +26,7 @@ Install Git, GitHub CLI and 7-Zip. Authenticate with your own GitHub account:
 ```powershell
 gh auth login --hostname github.com --git-protocol https --web
 gh auth setup-git
-gh repo clone gabrielry7/101-workspace
+gh repo clone gabrielry7/101-workspace -- --config core.longpaths=true
 cd 101-workspace
 powershell -NoProfile -ExecutionPolicy Bypass -File ./restore-assets.ps1 -Repository gabrielry7/101-workspace
 ```

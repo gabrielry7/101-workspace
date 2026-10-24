@@ -1,0 +1,16 @@
+﻿{
+    "status":  "PENDING_FRESH_CLONE_RECONSTRUCTION",
+    "files":  27229,
+    "bytes":  6631638608,
+    "archives":  [
+                     {
+                         "name":  "101-experiments-media.7z.001",
+                         "bytes":  388840304,
+                         "sha256":  "fa08369dcddd69425a338480683e5cd2b5cae31d1459937874e35be2c5200b24",
+                         "archive":  "101-experiments-media.7z",
+                         "firstVolume":  "101-experiments-media.7z.001"
+                     }
+                 ],
+    "security":  "No credential pattern findings",
+    "note":  "The full decompression and SHA256 check for all files is performed once, after downloading both archives from the Release in a fresh clone."
+}

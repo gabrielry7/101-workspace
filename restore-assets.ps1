@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$Repository,[string]$SevenZip='',[string]$DownloadDirectory='')
+param([Parameter(Mandatory=$true)][string]$Repository,[string]$SevenZip='',[string]$DownloadDirectory='',[string]$NodePath='')
 $ErrorActionPreference='Stop'
 $root=$PSScriptRoot
 $manifest=Get-Content -LiteralPath (Join-Path $root 'asset-manifest.json') -Raw | ConvertFrom-Json
@@ -18,6 +18,12 @@ foreach($a in $manifest.archives){
 foreach($first in @($manifest.archives.firstVolume|Select-Object -Unique)){
  & $SevenZip x (Join-Path $DownloadDirectory $first) "-o$root" -y -bsp0
  if($LASTEXITCODE -ne 0){throw 'Archive extraction failed'}
+}
+if(-not $NodePath){$NodePath=(Get-Command node -ErrorAction SilentlyContinue).Source}
+if($NodePath -and (Test-Path (Join-Path $root 'verify-assets.mjs'))){
+ & $NodePath (Join-Path $root 'verify-assets.mjs') $root
+ if($LASTEXITCODE -ne 0){throw 'Restored asset verification failed'}
+ return
 }
 foreach($f in $manifest.files){
  $path=[IO.Path]::GetFullPath((Join-Path $root $f.path))
