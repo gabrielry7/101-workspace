@@ -1,0 +1,146 @@
+{
+  "id": "restaurant-artistic-20261025",
+  "mode": "implement",
+  "base": "24c4301c2a36fc5a023d3cd695030afc13a47f09",
+  "worktree": "C:\\Users\\gabri\\101-design-compiler\\.tools\\claude-worktrees\\restaurant-artistic-20261025",
+  "limits": {
+    "maxCalls": 4,
+    "maxTurns": 60,
+    "timeoutMs": 720000,
+    "maxBudgetUsdPerCall": 3,
+    "maxBudgetUsdTotal": 12,
+    "model": "sonnet"
+  },
+  "sessionId": "b9de09a3-1a84-4ef7-968e-a59f66d95b9d",
+  "calls": [
+    {
+      "index": 1,
+      "startedAt": "2026-10-25T13:54:07.790Z",
+      "resume": null,
+      "budgetReservationUsd": 3,
+      "status": "responded",
+      "cliVersion": "2.1.308 (Claude Code)",
+      "finishedAt": "2026-10-25T13:55:21.552Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "sessionId": "b9de09a3-1a84-4ef7-968e-a59f66d95b9d",
+      "sameSession": true,
+      "usage": {
+        "input_tokens": 6,
+        "cache_creation_input_tokens": 68102,
+        "cache_read_input_tokens": 121674,
+        "output_tokens": 8014,
+        "output_tokens_details": {
+          "thinking_tokens": 2350
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 68102,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "estimatedCostUsd": 0.36472740000000003,
+      "incrementalEstimatedCostUsd": 0.36472740000000003,
+      "numTurns": 13,
+      "durationMs": 72928,
+      "permissionDenials": [],
+      "error": null,
+      "changedFiles": ""
+    },
+    {
+      "index": 2,
+      "startedAt": "2026-10-25T14:04:26.474Z",
+      "resume": "b9de09a3-1a84-4ef7-968e-a59f66d95b9d",
+      "budgetReservationUsd": 3,
+      "status": "responded",
+      "cliVersion": "2.1.308 (Claude Code)",
+      "finishedAt": "2026-10-25T14:13:42.410Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "sessionId": "b9de09a3-1a84-4ef7-968e-a59f66d95b9d",
+      "sameSession": true,
+      "usage": {
+        "input_tokens": 24,
+        "cache_creation_input_tokens": 136748,
+        "cache_read_input_tokens": 1727496,
+        "output_tokens": 80434,
+        "output_tokens_details": {
+          "thinking_tokens": 48734
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 136748,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "estimatedCostUsd": 1.8888570000000002,
+      "incrementalEstimatedCostUsd": 1.5241296000000002,
+      "numTurns": 29,
+      "durationMs": 555124,
+      "permissionDenials": [],
+      "error": null,
+      "changedFiles": " M src/components/composition/CommunitySections.astro\n M src/components/composition/ExperienceComposition.astro\n M src/components/composition/PreviewIntent.astro\n M src/design/experience-refinement.css\n?? AGENTS.md\n?? data/media/demo-v1/artistic-20261025.json\n?? data/media/demo-v1/claude-optional-20261024.json\n?? docs/evidence/claude-code/artistic-20261025/resources-review.json\n?? docs/evidence/claude-code/redesign-20261024/multimedia-review.json\n?? public/fonts/b3-artistic/bodonimoda-OFL.txt\n?? public/fonts/b3-artistic/bodonimoda.woff\n?? public/fonts/b3-artistic/dmsans-OFL.txt\n?? public/fonts/b3-artistic/dmsans.woff\n?? public/fonts/b3-artistic/syne-OFL.txt\n?? public/fonts/b3-artistic/syne.woff\n?? public/media/b3-artistic/.gitignore\n?? public/media/b3-optional/.gitignore\n?? src/components/composition/ArtisticImage.astro\n?? src/components/composition/ArtisticPages.astro\n?? src/components/composition/ArtisticVideo.astro\n?? src/components/composition/SupplementalImage.astro\n?? src/design/artistic-direction.ts\n?? src/design/artistic-ember.css\n?? src/design/artistic-film.js\n?? src/design/artistic-plate.css\n?? src/media/artistic-restaurant.ts\n?? src/media/optional-restaurant.ts\n?? tests/artistic-restaurant.test.ts\n?? tests/optional-restaurant.test.ts\n"
+    },
+    {
+      "index": 3,
+      "startedAt": "2026-10-25T14:22:19.099Z",
+      "resume": "b9de09a3-1a84-4ef7-968e-a59f66d95b9d",
+      "budgetReservationUsd": 3,
+      "status": "responded",
+      "cliVersion": "2.1.308 (Claude Code)",
+      "finishedAt": "2026-10-25T14:25:43.855Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "sessionId": "b9de09a3-1a84-4ef7-968e-a59f66d95b9d",
+      "sameSession": true,
+      "usage": {
+        "input_tokens": 14,
+        "cache_creation_input_tokens": 46839,
+        "cache_read_input_tokens": 1604032,
+        "output_tokens": 29345,
+        "output_tokens_details": {
+          "thinking_tokens": 13130
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 46839,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "estimatedCostUsd": 2.5300942,
+      "incrementalEstimatedCostUsd": 0.6412372,
+      "numTurns": 39,
+      "durationMs": 203948,
+      "permissionDenials": [],
+      "error": null,
+      "changedFiles": " M src/components/composition/CommunitySections.astro\n M src/components/composition/ExperienceComposition.astro\n M src/components/composition/PreviewIntent.astro\n M src/design/experience-refinement.css\n?? AGENTS.md\n?? data/media/demo-v1/artistic-20261025.json\n?? data/media/demo-v1/claude-optional-20261024.json\n?? docs/evidence/claude-code/artistic-20261025/resources-review.json\n?? docs/evidence/claude-code/redesign-20261024/multimedia-review.json\n?? public/fonts/b3-artistic/bodonimoda-OFL.txt\n?? public/fonts/b3-artistic/bodonimoda.woff\n?? public/fonts/b3-artistic/dmsans-OFL.txt\n?? public/fonts/b3-artistic/dmsans.woff\n?? public/fonts/b3-artistic/syne-OFL.txt\n?? public/fonts/b3-artistic/syne.woff\n?? public/media/b3-artistic/.gitignore\n?? public/media/b3-optional/.gitignore\n?? src/components/composition/ArtisticImage.astro\n?? src/components/composition/ArtisticPages.astro\n?? src/components/composition/ArtisticVideo.astro\n?? src/components/composition/SupplementalImage.astro\n?? src/design/artistic-direction.ts\n?? src/design/artistic-ember.css\n?? src/design/artistic-film.js\n?? src/design/artistic-plate.css\n?? src/media/artistic-restaurant.ts\n?? src/media/optional-restaurant.ts\n?? tests/artistic-restaurant.test.ts\n?? tests/optional-restaurant.test.ts\n"
+    }
+  ],
+  "reservedUsd": 9,
+  "status": "responded",
+  "createdAt": "2026-10-25T13:54:06.455Z"
+}

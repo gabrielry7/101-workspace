@@ -1,0 +1,35 @@
+---
+import type {ModuleView,BoundFact} from '../../composition/content.ts';
+import ContextualImage from './ContextualImage.astro';
+import type {ContextualMediaHandle} from '../../media/contextual-review.ts';
+interface Props{module:ModuleView;handle:ContextualMediaHandle;at:string;route:string;presentation:any}
+const {module:m,handle,at,route,presentation}=Astro.props;
+const title=presentation.module_headings[m.id];
+const details=['offering_ingredients','offering_allergens','offering_calories','currency'];
+const get=(facts:BoundFact[],kind:string)=>facts.find(f=>f.kind===kind);
+const anchors:Record<string,string>=presentation.anchors;
+---
+<section id={anchors[m.id]??m.id} class:list={['semantic-v2',`module-${m.capability_id}`]} data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page}>
+ {m.component==='Identity'?<>
+  <div class="hero-copy"><p class="kicker">{presentation.hero_kicker}</p>
+   {[...m.facts].sort((a,b)=>Number(b.kind==='business_name')-Number(a.kind==='business_name')).map(f=>f.kind==='business_name'?<h1 data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</h1>:<p class="hero-line" data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}
+   <div class="hero-actions"><a class="button primary" href="#carta">Descubre la carta <span aria-hidden="true">↗</span></a><a class="text-link" href="#encuentro">Imagina tu mesa <span aria-hidden="true">↗</span></a></div>
+   <p class="hero-note">{presentation.hero_note}</p>
+  </div><ContextualImage {handle} {at} {route} slot="hero" hero {...presentation.media_presentation}/>
+ </>:m.component==='OfferingCollection'?<>
+  <header class="section-heading"><p class="kicker">01 / La carta de ejemplo</p><h2>{title}</h2><p>Cuatro ideas para abrir el apetito. Fotografías ilustrativas; las recetas y precios son ficticios.</p></header>
+  <div class="collection-tools" data-menu-tools hidden><label>Buscar en la carta<input type="search" data-menu-search placeholder="¿Qué te apetece?" autocomplete="off"/></label><label>Categoría<select data-menu-category><option value="">Toda la carta</option>{m.offerings.map(o=><option value={o.id}>{get(o.facts,'offering_category')?.text}</option>)}</select></label><p role="status" data-menu-count>4 platos de ejemplo</p></div>
+  <div class="contextual-collection">{[...m.offerings].sort((a,b)=>presentation.offering_order.indexOf(a.id)-presentation.offering_order.indexOf(b.id)).map((o,i)=>{const category=get(o.facts,'offering_category')!,name=get(o.facts,'offering_name')!,price=get(o.facts,'price')!;return <article class="collection-item" data-offering-id={o.id} data-offering-scope={o.scope_id} data-search={o.facts.map(f=>f.text).join(' ')}>
+   <ContextualImage {handle} {at} {route} slot={presentation.offering_media[o.id]} {...presentation.media_presentation}/>
+   <div class="item-copy"><p class="item-category"><span aria-hidden="true">0{i+1} / </span><span data-fact-id={category.id} data-fact-scope={category.scope_id}>{category.text}</span></p>
+    <div class="item-title"><h3 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h3><span class="item-price" data-fact-id={price.id} data-fact-scope={price.scope_id}>{price.text}</span></div>
+    {o.facts.filter(f=>!details.includes(f.kind)&&!['offering_name','offering_category','price'].includes(f.kind)).map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}
+    <details class="dish-detail"><summary>Ingredientes y detalles <span aria-hidden="true">+</span></summary><div>{o.facts.filter(f=>details.includes(f.kind)).map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div></details>
+    {presentation.selection_href?<a class="text-link demo-add" href={`${presentation.selection_href}?plato=${encodeURIComponent(o.id)}`}>Elegir este plato <span aria-hidden="true">↗</span></a>:<button type="button" class="text-link demo-add" data-demo-add={name.text} aria-label={`Añadir ${name.text} a una selección de ejemplo`} hidden>Añadir a selección de ejemplo <span aria-hidden="true">＋</span></button>}
+   </div></article>;})}</div>
+  <noscript><p>La carta completa y sus detalles funcionan sin JavaScript. La búsqueda y la selección local necesitan JavaScript.</p></noscript>
+ </>:<>
+  <header class="section-heading"><h2>{m.capability_id==='about'?'Sobre el restaurante':m.capability_id==='faqs'?'Preguntas frecuentes':m.capability_id==='opening_hours'?'Horarios':m.capability_id==='amenities'?'Servicios':m.capability_id==='locations'?'Local ficticio':title}</h2></header>
+  <div class="fact-copy">{m.facts.map((f,i)=>m.capability_id==='faqs'?<details><summary>{i===0?'Celebraciones y grupos':'Reservas de ejemplo'}</summary><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p></details>:<p class:list={[m.capability_id==='about'&&i===0?'lead':undefined]} data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div>
+ </>}
+</section>

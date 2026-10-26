@@ -1,0 +1,333 @@
+{
+  "acceptedPort": [
+    {
+      "path": "src/components/composition/ExperienceComposition.astro",
+      "sha256": "a85aa1e4576854f1bb5ef96f9da7943f03d18623f3d2ee6b0db066b02223df23",
+      "bytes": 11861
+    },
+    {
+      "path": "src/components/composition/CommunitySections.astro",
+      "sha256": "b2dbdfa7414bd1f41da71fba6aa157f17994dcb283235627084224cdb65d1ddb",
+      "bytes": 5395
+    },
+    {
+      "path": "src/components/composition/PreviewIntent.astro",
+      "sha256": "acefba4de8e516223b567d525c30cf483c6cba668d8edc8154bbe5bf32911bdc",
+      "bytes": 2624
+    },
+    {
+      "path": "src/design/experience-refinement.css",
+      "sha256": "cd6736398062f32d2482757b108078ae242a3aa53b133d6ad2444da8a2fa6616",
+      "bytes": 20466
+    },
+    {
+      "path": "src/components/composition/SupplementalImage.astro",
+      "sha256": "ca65e464cafc6d98dfbd1876bcf38d698b46161b4bc78e0396a250eba0d4ea01",
+      "bytes": 1068
+    },
+    {
+      "path": "src/media/optional-restaurant.ts",
+      "sha256": "35db836715eec84917aba3587cb49a7c5cf0d1e459054f29ccb5e7e5a1d32128",
+      "bytes": 2038
+    },
+    {
+      "path": "tests/optional-restaurant.test.ts",
+      "sha256": "0cf641b45abd5fa386a1a7600feed2df577b3210d7b4f40bcdd558ef42e39506",
+      "bytes": 2072
+    },
+    {
+      "path": "data/media/demo-v1/claude-optional-20261024.json",
+      "sha256": "b72e6b7fd8dbb85821697d370bbcb1a79c6f48b436058242203bbe9ca1b307c4",
+      "bytes": 69359
+    },
+    {
+      "path": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+      "sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614",
+      "bytes": 13568
+    },
+    {
+      "path": "public/media/b3-optional/.gitignore",
+      "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d",
+      "bytes": 14
+    }
+  ],
+  "mediaAssets": 55,
+  "registeredUses": 792,
+  "choices": [
+    {
+      "id": 2481346,
+      "label": "Cítricos cortados",
+      "kind": "image",
+      "contributor": "NoName_13",
+      "page": "https://pixabay.com/photos/lime-slices-lemons-lime-slices-2481346/"
+    },
+    {
+      "id": 8594421,
+      "label": "Limones en rama",
+      "kind": "image",
+      "contributor": "fietzfotos",
+      "page": "https://pixabay.com/photos/lemons-fruits-citrus-mediterranean-8594421/"
+    },
+    {
+      "id": 1887240,
+      "label": "Tomates y albahaca",
+      "kind": "image",
+      "contributor": "Daria-Yakovleva",
+      "page": "https://pixabay.com/photos/tomatoes-red-tomatoes-fresh-harvest-1887240/"
+    },
+    {
+      "id": 1932466,
+      "label": "Ingredientes sobre madera",
+      "kind": "image",
+      "contributor": "Daria-Yakovleva",
+      "page": "https://pixabay.com/photos/spaghetti-tomatoes-basil-1932466/"
+    },
+    {
+      "id": 4367047,
+      "label": "Hojas de salvia",
+      "kind": "image",
+      "contributor": "cferrigno426",
+      "page": "https://pixabay.com/photos/sage-herb-food-spice-seasoning-4367047/"
+    },
+    {
+      "id": 1665402,
+      "label": "Perejil",
+      "kind": "image",
+      "contributor": "tegrafik",
+      "page": "https://pixabay.com/photos/parsley-herb-food-curly-parsley-1665402/"
+    },
+    {
+      "id": 1596417,
+      "label": "Aceite en una jarra",
+      "kind": "image",
+      "contributor": "Couleur",
+      "page": "https://pixabay.com/photos/olive-oil-oil-food-carafe-1596417/"
+    },
+    {
+      "id": 968657,
+      "label": "Aceitunas y aceite",
+      "kind": "image",
+      "contributor": "stevepb",
+      "page": "https://pixabay.com/photos/olive-oil-olives-food-oil-natural-968657/"
+    },
+    {
+      "id": 10266737,
+      "label": "Porcelana blanca",
+      "kind": "image",
+      "contributor": "ahuanzuishuai111",
+      "page": "https://pixabay.com/photos/white-porcelain-teapot-10266737/"
+    },
+    {
+      "id": 10258355,
+      "label": "Manos y arcilla",
+      "kind": "image",
+      "contributor": "MrHà",
+      "page": "https://pixabay.com/photos/pottery-handcraft-ceramic-vessel-10258355/"
+    },
+    {
+      "id": 1868396,
+      "label": "Manos trabajando masa",
+      "kind": "image",
+      "contributor": "Pexels",
+      "page": "https://pixabay.com/photos/bakery-bread-baker-apron-baking-1868396/"
+    },
+    {
+      "id": 943245,
+      "label": "Harina e ingredientes",
+      "kind": "image",
+      "contributor": "ClickerHappy",
+      "page": "https://pixabay.com/photos/new-year-background-dough-cook-943245/"
+    },
+    {
+      "id": 1543170,
+      "label": "Movimiento de vino",
+      "kind": "image",
+      "contributor": "ponce_photography",
+      "page": "https://pixabay.com/photos/wine-splash-glass-red-alcohol-1543170/"
+    },
+    {
+      "id": 1004255,
+      "label": "Copas de vino",
+      "kind": "image",
+      "contributor": "Quadronet_Webdesign",
+      "page": "https://pixabay.com/photos/red-wine-glass-drink-wine-glass-1004255/"
+    },
+    {
+      "id": 972271,
+      "label": "Higos cortados",
+      "kind": "image",
+      "contributor": "stux",
+      "page": "https://pixabay.com/photos/fig-slice-food-fruit-organic-972271/"
+    },
+    {
+      "id": 8233676,
+      "label": "Pastel y frutos",
+      "kind": "image",
+      "contributor": "PixelPerfectMom",
+      "page": "https://pixabay.com/photos/cake-berries-dessert-sweet-8233676/"
+    },
+    {
+      "id": 120734,
+      "label": "Fuego y brasas",
+      "kind": "video",
+      "contributor": "FilipFilipovic",
+      "page": "https://pixabay.com/videos/id-120734/"
+    },
+    {
+      "id": 267,
+      "label": "Vapor de una olla",
+      "kind": "video",
+      "contributor": "Life-Of-Vids",
+      "page": "https://pixabay.com/videos/id-267/"
+    },
+    {
+      "id": "120734-poster",
+      "label": "Fotograma de fuego",
+      "kind": "image",
+      "contributor": "FilipFilipovic",
+      "page": "https://pixabay.com/videos/id-120734/"
+    }
+  ],
+  "fontRecords": [
+    {
+      "family": "syne",
+      "path": ".tools/claude-code/artistic-resources-20261025/fonts/syne.woff",
+      "bytes": 53956,
+      "sha256": "db4c864d91aaa1b709d97cafebf862a28b7893747b030885436454cbe7813301",
+      "format": "woff",
+      "reason": "WOFF2 Brotli extension unavailable; native WOFF subset retains Spanish, Latin, punctuation and arrows; OFL notices retained."
+    },
+    {
+      "family": "bodonimoda",
+      "path": ".tools/claude-code/artistic-resources-20261025/fonts/bodonimoda.woff",
+      "bytes": 75704,
+      "sha256": "3ac63a7baa08bb7af148929baf5288b31bc2b3c3a14763ab0ca6541b8ab33ae3",
+      "format": "woff",
+      "reason": "WOFF2 Brotli extension unavailable; native WOFF subset retains Spanish, Latin, punctuation and arrows; OFL notices retained."
+    },
+    {
+      "family": "dmsans",
+      "path": ".tools/claude-code/artistic-resources-20261025/fonts/dmsans.woff",
+      "bytes": 94588,
+      "sha256": "d137b1c03916ead1adf9d604a6a020f4716a5a367fb09cc53e645f412922a173",
+      "format": "woff",
+      "reason": "WOFF2 Brotli extension unavailable; native WOFF subset retains Spanish, Latin, punctuation and arrows; OFL notices retained."
+    }
+  ],
+  "manifest_pin": "041b95f7b9d6b142a532706a6940ef86b9e9bba38231c8172f8d0cfe26a741d3",
+  "bytesPinned": true,
+  "credentialsCopied": false,
+  "rawApiCacheCopied": false,
+  "protectedRoutes": [
+    {
+      "route": "/b3/candidate-01/",
+      "sha256": "bd6ab35bbf566e91e8e4bd0342298d5400e7ec191ec9cb93e533ae13448cf182",
+      "bytes": 94985
+    },
+    {
+      "route": "/b3/candidate-01/carta/",
+      "sha256": "37411978c2c6d9ae5300d32223369344dc5d122b6e88ec0f9f0c32bbff2d8afe",
+      "bytes": 94198
+    },
+    {
+      "route": "/b3/candidate-01/pedidos/",
+      "sha256": "2d913811061e7eb2a226d84b60a0153d7a2ced86c834cedf6c960ee2c4c39a8d",
+      "bytes": 95261
+    },
+    {
+      "route": "/b3/candidate-01/reservas/",
+      "sha256": "ae8dba8249c7ca3deb26cb23182ce4a6877ddb70c902bcc1ce7264bd2b8b054d",
+      "bytes": 85460
+    },
+    {
+      "route": "/b3/candidate-01/historia/",
+      "sha256": "96a66db243396522b320fce8c028d9ac9cc0f44aac536dec315a1ba7126dcf39",
+      "bytes": 84305
+    },
+    {
+      "route": "/b3/candidate-01/visita/",
+      "sha256": "b313c8e1d046cce3c088039d8dfbd5f4a1ac6d5a954ebd4c2ede1255af7d7814",
+      "bytes": 84282
+    },
+    {
+      "route": "/b3/candidate-01/preguntas/",
+      "sha256": "110b458d3111d4d05c0999778d0e036f64710e207ec54fbaf050cb5f1919ea1b",
+      "bytes": 82877
+    },
+    {
+      "route": "/b3/candidate-01/diario/",
+      "sha256": "7933d7cc61e5851eb257bc100425e1755273e827c3a7217549f5fcbd5a13419e",
+      "bytes": 89536
+    },
+    {
+      "route": "/b3/candidate-01/opiniones/",
+      "sha256": "e2ef45fce824ad141564cf6658d5f20ae9595b4f27c721c5c33027d055549ce8",
+      "bytes": 83488
+    },
+    {
+      "route": "/b3/candidate-01/contacto/",
+      "sha256": "de6de3add857359c24ff166381df77d2057849e8268d70fc35e3a74d0ff30783",
+      "bytes": 84401
+    },
+    {
+      "route": "/b3/candidate-01/creditos/",
+      "sha256": "555586af102fbccedf30e6f94264bdf33cd82c753f0502111e8f58e24e961eeb",
+      "bytes": 85786
+    },
+    {
+      "route": "/b3/candidate-02/",
+      "sha256": "9f71f90d474ed8ad13a4616caa7f1dcbdf5cfac4f0869b60610946ab5eca50bf",
+      "bytes": 94983
+    },
+    {
+      "route": "/b3/candidate-02/carta/",
+      "sha256": "b9029a406f358599cb95175b2cf585e7b8f792af8bec5d57cb26b67e4cf20f60",
+      "bytes": 94196
+    },
+    {
+      "route": "/b3/candidate-02/pedidos/",
+      "sha256": "52abdce95d7eaa55e2654c24ce3d48faa9a44c2d27a0586e472dada6ff787918",
+      "bytes": 95259
+    },
+    {
+      "route": "/b3/candidate-02/reservas/",
+      "sha256": "4d1da38c52dee0181f514f4ac9045daa6eb16862937f017de4a7d36982099a7a",
+      "bytes": 85458
+    },
+    {
+      "route": "/b3/candidate-02/historia/",
+      "sha256": "aa2c4463f2cb27608ee07894d5adcd814322ec1a05feb23b749acf2ca680057a",
+      "bytes": 84303
+    },
+    {
+      "route": "/b3/candidate-02/visita/",
+      "sha256": "f7e3d28e1e1e642983bd37dc4d38332b72ff669c0d09c68a980b645407bfdb0d",
+      "bytes": 84280
+    },
+    {
+      "route": "/b3/candidate-02/preguntas/",
+      "sha256": "28c667ed8f896f9dcf6e2d5513aa771c3a95ef7519114330326b721d5164374e",
+      "bytes": 82875
+    },
+    {
+      "route": "/b3/candidate-02/diario/",
+      "sha256": "706ba4e3b4b0decc5aa2668133db61639e7d9da397a0b2954e0d53c5a8e19378",
+      "bytes": 89534
+    },
+    {
+      "route": "/b3/candidate-02/opiniones/",
+      "sha256": "0940cccf833134c6307b8702b917d295ba5caa264d8595f7923ca07ecb7d6aa5",
+      "bytes": 83486
+    },
+    {
+      "route": "/b3/candidate-02/contacto/",
+      "sha256": "aec23b917170781543b7bb30297be7b98f630f9acc6338f975c1c7bd88ec9bf2",
+      "bytes": 84399
+    },
+    {
+      "route": "/b3/candidate-02/creditos/",
+      "sha256": "587a6679ed216396af0a6e63d91de6ca626925adf1f7b9d75eaac3aafb8a8259",
+      "bytes": 85784
+    }
+  ]
+}

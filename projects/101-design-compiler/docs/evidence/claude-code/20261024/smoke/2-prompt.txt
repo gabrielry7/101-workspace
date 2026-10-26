@@ -1,0 +1,12 @@
+Task restaurant-analysis-smoke. Worktree: C:\Users\gabri\101-design-compiler\.tools\claude-worktrees\restaurant-analysis-smoke. Mode: analysis.
+Your answer was appropriately explicit that several files were unread. Two corrections: the assigned scope is the restaurant HOME, so the second opportunity on Carta is outside this task. Also, do not label "Encontrarnos en la mesa" a reservations action without checking its actual href and page kind in ExperienceComposition.astro.
+
+Read the actual worktree ExperienceComposition.astro plus the relevant existing hero CSS/client logic now. Verify that link destination and revise your critique to two HOME-specific opportunities. Distinguish measured findings from design hypotheses; do not invent contrast failures without rendered measurements. Keep the four semantic directions and the fictional/demo notices. No edits and no tests requested.
+
+Finally recall the exact review marker from our previous exchange without asking me to restate it. Report whether you corrected your earlier reservation interpretation, with precise source paths and the evidence you read.
+
+Evaluation criteria:
+[]
+Explicit context (current orchestrator snapshot; worktree starts from 24c4301c2a36fc5a023d3cd695030afc13a47f09):
+
+Return a concise report with changed files, decisions, checks and risks. Do not claim checks Codex has not run.

@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T04:16:29.260593+00:00",
+  "title": "Design System: La Mesa - current eight-world feedback revision",
+  "extensions": {
+    "provenance": {
+      "artifact": "C:\\Users\\gabri\\101-design-compiler\\.tools\\claude-worktrees\\restaurant-feedback8-20261025",
+      "status": "AWAITING_USER_REVIEW",
+      "scope": "Current revision of all eight candidates; task-scoped record only",
+      "sources": [
+        {
+          "path": "data/media/demo-v1/feedback8-20261025.json",
+          "sha256": "bc1703cb16f4271e678a6b38bf2be3d6324df9f828d07cd67f18983c8037e98e"
+        },
+        {
+          "path": "src/components/composition/ArtisticPages.astro",
+          "sha256": "1e7fa3482b7ee311dfb09ceca0ad2d21805247994b9a37ad00c9852002aaf96a"
+        },
+        {
+          "path": "src/components/composition/DishDetail.astro",
+          "sha256": "069b6668c51f3f50267a26bb409b7642be7d5de2807559b827b4c92d46f36420"
+        },
+        {
+          "path": "src/components/composition/ExperienceComposition.astro",
+          "sha256": "116be449a637afb1e62dec3de7b4e75a1b3c848e70b8f756be8ce3746a743861"
+        },
+        {
+          "path": "src/components/composition/ExperienceNavigation.astro",
+          "sha256": "bf8747ac604477541c69df3efeddf32eb685f4eb1a285561a23806e98fa24765"
+        },
+        {
+          "path": "src/components/composition/InteriorPages.astro",
+          "sha256": "2f2c090b83345d7b624cd98aafdbed7d8c6a57ba5ca61ceb37801fcbd278c23e"
+        },
+        {
+          "path": "src/components/composition/LocationPanel.astro",
+          "sha256": "e61cee07fe32f447d4994c3970b76efbb6a8f20fcd44edbbcce60285a5700771"
+        },
+        {
+          "path": "src/components/composition/MenuCollection.astro",
+          "sha256": "bae71e1ea65d9b9dc2e9d0366b6739aa2f397973b6c03fd4a43781d001afc232"
+        },
+        {
+          "path": "src/components/composition/PreviewIntent.astro",
+          "sha256": "7cf831b40a5f7abeda6628b1f4356daf8da09a37e88c690f61a0bb3f5138cd1e"
+        },
+        {
+          "path": "src/components/composition/StyleEngineSite.astro",
+          "sha256": "4044de7b554f86cd5d4e01a88dae0933eb91a56df3f6150b4617df1c429c8b2b"
+        },
+        {
+          "path": "src/design/artistic-ember.css",
+          "sha256": "98dc189eca3cbe4e0a3c9e31aa224a74a20b39cdca690bbf1005c47ab0ddf85a"
+        },
+        {
+          "path": "src/design/artistic-plate.css",
+          "sha256": "dc3ee7f1c4283be9326084dba0f4ee128b4980ed508a1b00e711e91c749f6e60"
+        },
+        {
+          "path": "src/design/b3-feedback-client.js",
+          "sha256": "9fcec3f845040c133fc450206cf70fc72bf84683bd6ae989ef02815ee627ce76"
+        },
+        {
+          "path": "src/design/catalogue.css",
+          "sha256": "e07db240732333c2d268779acc8832427acdbf90ea954c81c8bc81d65c748bdd"
+        },
+        {
+          "path": "src/design/depth-experience.css",
+          "sha256": "850101f18be289f17db469adad9bb4fadab78dd61df65ef4bc88742f9825158d"
+        },
+        {
+          "path": "src/design/dish-detail.css",
+          "sha256": "ca5dcc051efeaefbe16946f9ce0ab76620c3cd7a213cc0cf98435357182aab7e"
+        },
+        {
+          "path": "src/design/engine-base.css",
+          "sha256": "004d0b7a0438ab42b027d77e109879dc6a4f816d218dbd2b082f0ff262ac404d"
+        },
+        {
+          "path": "src/design/engine-indice.css",
+          "sha256": "d8d0dd9790e1be2fb41a4209670bb5527f1691174d7c1ae281f50ca0ba79ddfc"
+        },
+        {
+          "path": "src/design/engine-marea.css",
+          "sha256": "938ebacf026776e19be9162e46c5c28c2950a22cab4721b31752865f193975fb"
+        },
+        {
+          "path": "src/design/engine-market.css",
+          "sha256": "6a20d7e10493a6140ce3c12745d3fd68c8152039e8c0a43efab964e2932edbff"
+        },
+        {
+          "path": "src/design/engine-riso.css",
+          "sha256": "483f45a2b4fb139f657937c8a174ebdb11f3c1939cbb6b06b0f489dd10ba947b"
+        },
+        {
+          "path": "src/design/experience-refinement.css",
+          "sha256": "cd6736398062f32d2482757b108078ae242a3aa53b133d6ad2444da8a2fa6616"
+        },
+        {
+          "path": "src/design/experience.css",
+          "sha256": "d572a046eb154fb59d8eda6e1f0e5e28663ebc63acd72f27c02c98d571c7129a"
+        },
+        {
+          "path": "src/design/interior-kinds.css",
+          "sha256": "a36270fc067cb7012cba2787609d832dc3b8751e0d656d171bcff96288ba2d5e"
+        },
+        {
+          "path": "src/design/location-example.ts",
+          "sha256": "76f130b1bd9e59bdd6072f19e6454361cb004180b31326903421d748206d9160"
+        },
+        {
+          "path": "src/design/nav-labels.ts",
+          "sha256": "6f4224e3745a993269c475d0f3248f74b53e956ceb65101f6de7699bd190eed4"
+        },
+        {
+          "path": "src/design/rich-experience.css",
+          "sha256": "d71cb627e9029685487cb38075738378a6414756a05a5a10d402217d5186bb9a"
+        },
+        {
+          "path": "src/design/style-engines.ts",
+          "sha256": "3b6b94f5277c22d36c5b6d4c20c94d2e2e4dc70db87bbde34a45a3c00c1c61a0"
+        },
+        {
+          "path": "src/media/feedback-media.ts",
+          "sha256": "e4e33e3c9aadc844896c8bc3183dd1e568cd6e9f8a2cb6f9f541a1d74658b960"
+        }
+      ],
+      "verification": "Existing reviewed receipts only; no build, detector or new browser audit run by documenter."
+    },
+    "typographyMeta": {
+      "w01-entry-display": {
+        "displayName": "WhiteInk entry",
+        "purpose": "Exact source entry scale; not a universal type ramp."
+      },
+      "w02-entry-display": {
+        "displayName": "Vermilion entry",
+        "purpose": "Exact source entry scale; not a universal type ramp."
+      },
+      "w03-entry-display": {
+        "displayName": "Brasa entry",
+        "purpose": "Exact source entry scale; not a universal type ramp."
+      },
+      "w04-entry-display": {
+        "displayName": "Herbario entry",
+        "purpose": "Exact source entry scale; not a universal type ramp."
+      },
+      "w05-entry-display": {
+        "displayName": "Casa y patio entry",
+        "purpose": "Exact source entry scale; not a universal type ramp."
+      },
+      "w06-entry-display": {
+        "displayName": "Cocina abierta entry",
+        "purpose": "Exact source entry scale; not a universal type ramp."
+      },
+      "w07-entry-display": {
+        "displayName": "Cartel duotono entry",
+        "purpose": "Exact source entry scale; not a universal type ramp."
+      },
+      "w08-entry-display": {
+        "displayName": "Hoja de contactos entry",
+        "purpose": "Exact source entry scale; not a universal type ramp."
+      }
+    },
+    "shadows": [
+      {
+        "name": "open-navigation",
+        "value": "0 60px 100px #0005",
+        "purpose": "General open navigation panel."
+      },
+      {
+        "name": "plate-open-navigation",
+        "value": "0 30px 60px #2a102033",
+        "purpose": "04 open navigation override."
+      },
+      {
+        "name": "ember-navigation",
+        "value": "none",
+        "purpose": "03 left-rail navigation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "engine-state",
+        "value": "background-color .2s ease-out,color .2s ease-out,filter .35s ease-out,transform .35s ease-out",
+        "purpose": "Engine action/media transitions only under no-preference."
+      },
+      {
+        "name": "background-reveal",
+        "value": "opacity .6s",
+        "purpose": "Poster-to-video transition; removed under reduced motion."
+      },
+      {
+        "name": "contact-sheet-color",
+        "value": "filter .5s",
+        "purpose": "08 grayscale/color state; removed under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-photo-reflow",
+        "value": "700px"
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "760px"
+      },
+      {
+        "name": "desktop-interior",
+        "value": "900px"
+      },
+      {
+        "name": "ember-left-rail",
+        "value": "1025px"
+      },
+      {
+        "name": "menu-row-stack-container",
+        "value": "34rem"
+      },
+      {
+        "name": "menu-thumbnail-shrink-container",
+        "value": "22rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Engine primary action",
+      "kind": "button",
+      "description": "Extracted current shared B3 component; preview uses source-token fallbacks.",
+      "html": "<a class=\"ds-button\" href=\"#reserve\">Reservar mesa</a>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.5rem;font:700 1rem var(--ds-preview-font,DM Sans),Arial,sans-serif;color:var(--on-action,#fff7ea);background:var(--action,#9c3a18);border:2px solid var(--action,#9c3a18);text-decoration:none}.ds-button:hover{text-decoration:underline;text-underline-offset:.25em}.ds-button:focus-visible{outline:3px solid var(--focus,#2b1a10);outline-offset:5px}",
+      "refersTo": "engine-button"
+    },
+    {
+      "name": "Engine ghost action",
+      "kind": "button",
+      "description": "Extracted current shared B3 component; preview uses source-token fallbacks.",
+      "html": "<a class=\"ds-ghost\" href=\"#menu\">Ver menú</a>",
+      "css": ".ds-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.5rem;font:700 1rem var(--ds-preview-font,DM Sans),Arial,sans-serif;color:var(--ink,#2b1a10);background:transparent;border:2px solid var(--ink,#2b1a10);text-decoration:none}.ds-ghost:hover{text-decoration:underline;text-underline-offset:.25em}.ds-ghost:focus-visible{outline:3px solid var(--focus,#2b1a10);outline-offset:5px}"
+    },
+    {
+      "name": "Planner field",
+      "kind": "input",
+      "description": "Extracted current shared B3 component; preview uses source-token fallbacks.",
+      "html": "<label class=\"ds-label\">Día<input class=\"ds-field\" type=\"date\" name=\"fecha\"></label>",
+      "css": ".ds-label{display:grid;gap:.3rem;font:600 .9375rem var(--ds-preview-font,DM Sans),Arial,sans-serif;color:var(--ink,#2b1a10)}.ds-field{min-height:44px;padding:0 .75rem;font:400 1rem var(--ds-preview-font,DM Sans),Arial,sans-serif;color:var(--ink,#2b1a10);background:var(--paper,#f6ead7);border:1px solid var(--control,#7a5a40);border-radius:0}.ds-field:focus-visible{outline:3px solid var(--focus,#2b1a10);outline-offset:2px}",
+      "refersTo": "planner-input"
+    },
+    {
+      "name": "Menu category navigation",
+      "kind": "nav",
+      "description": "Extracted current shared B3 component; preview uses source-token fallbacks.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Categorías de la carta\"><a href=\"#entradas\">Entradas</a><a href=\"#postres\">Postres</a></nav>",
+      "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:0 1.5rem}.ds-nav a{display:flex;align-items:center;min-height:44px;color:var(--accent-text,#9c3a18);font:600 1rem/1.25 var(--ds-preview-font,DM Sans),Arial,sans-serif;text-decoration:underline;text-decoration-color:var(--mark,#f0b429);text-decoration-thickness:2px;text-underline-offset:.3em}.ds-nav a:focus-visible{outline:3px solid var(--focus,#2b1a10);outline-offset:3px}.ds-nav a:hover{text-decoration:underline}"
+    },
+    {
+      "name": "Planner summary",
+      "kind": "card",
+      "description": "Extracted current shared B3 component; preview uses source-token fallbacks.",
+      "html": "<aside class=\"ds-summary\"><h3>Tu visita</h3><p>Elige día, personas y ocasión.</p><button>Ver resumen de ejemplo</button><p>No hay reserva ni conexión operativa.</p></aside>",
+      "css": ".ds-summary{display:grid;gap:.6rem;padding:1rem 1.25rem;background:var(--paper,#f6ead7);border:2px solid var(--ink,#2b1a10);color:var(--ink,#2b1a10);font:1rem/1.5 var(--ds-preview-font,DM Sans),Arial,sans-serif}.ds-summary h3{margin:0;font-size:1.25rem}.ds-summary p{margin:0}.ds-summary button{min-height:48px;padding:0 1.25rem;font:700 1rem var(--ds-preview-font,DM Sans),Arial,sans-serif;color:var(--on-action,#fff7ea);background:var(--action,#9c3a18);border:0;cursor:pointer}.ds-summary button:hover{text-decoration:underline}.ds-summary button:focus-visible{outline:3px solid var(--focus,#2b1a10);outline-offset:2px}"
+    },
+    {
+      "name": "Example map action",
+      "kind": "button",
+      "description": "Extracted current shared B3 component; preview uses source-token fallbacks.",
+      "html": "<button class=\"ds-map\">Mostrar mapa aquí</button>",
+      "css": ".ds-map{display:inline-flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:48px;padding:.25rem 1rem;font:700 1rem var(--ds-preview-font,DM Sans),Arial,sans-serif;color:var(--ink,#2b1a10);background:var(--paper,#f6ead7);border:2px solid var(--ink,#2b1a10);cursor:pointer;text-align:left}.ds-map:hover:not(:disabled){background:var(--action,#9c3a18);color:var(--on-action,#fff7ea)}.ds-map:focus-visible{outline:3px solid var(--focus,#2b1a10);outline-offset:2px}.ds-map:disabled{opacity:.75;cursor:default}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Eight photographic restaurant worlds",
+    "overview": "Eight implementations of the same fictional restaurant share semantic content and page-kind operators. This scoped record describes the retained feedback revision, not a selected production identity. The factual organizing phrase below is documentation language, not an approved creative workshop result. Every current revision is AWAITING_USER_REVIEW.",
+    "keyCharacteristics": [
+      "Photography supplies atmosphere and illustration; bound facts supply restaurant information.",
+      "Eight separate identities remain visible through shared semantic interiors.",
+      "Useful navigation, local demo actions, explicit provider loading and motion preferences remain part of the visual system."
+    ],
+    "rules": [
+      {
+        "name": "The World Boundary Rule",
+        "body": "Keep each candidate's own palette and lettering attached to its operator; the shared renderer does not imply one combined brand.",
+        "section": "colors"
+      },
+      {
+        "name": "The Page-Kind Rule",
+        "body": "Change composition with the visitor's task: menu rows, reservation planner, story spread, map, disclosure, editorial list, quotations and contact choices.",
+        "section": "layout"
+      },
+      {
+        "name": "The Evidence Rule",
+        "body": "Photography never establishes recipe, allergen, nutrition, business or location facts. Keep illustrative and fictional labels and credit access visible.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do preserve the user-liked 01/02 entry geometry, 03 left desktop rail and fire, and 04 wine/parsley collage with upright Fraunces.",
+      "Do keep photos on all 40 dish details, eight category bindings and the four existing manual dish videos.",
+      "Do keep the eight clear public destinations, keyboard focus, mobile reflow, local demo labels and linked credits.",
+      "Do load the embedded map only after its own action and request location only after its separate action.",
+      "Do honor reduced motion, save-data, visibility and the navigation pause/resume utility."
+    ],
+    "donts": [
+      "Don't promote any current revision to user-approved or production-ready.",
+      "Don't infer facts from stock photography or represent the example map point as a real La Mesa venue.",
+      "Don't advertise the retired Pedidos URL or turn the local planner into a submitted reservation.",
+      "Don't replace distinct page-kind structure with a repeated title-and-body template.",
+      "Don't treat inherited craft-floor drift as a reusable system rule."
+    ]
+  }
+}

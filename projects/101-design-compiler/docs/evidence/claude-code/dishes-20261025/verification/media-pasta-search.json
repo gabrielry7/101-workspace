@@ -1,0 +1,14 @@
+{
+  "endpoint": "https://pixabay.com/api/videos/",
+  "query": {
+    "q": "shrimp pasta",
+    "per_page": "4",
+    "page": "1",
+    "safesearch": "true",
+    "video_type": "film"
+  },
+  "at": "2026-10-25T18:16:06.210Z",
+  "cache_until": "2026-10-26T18:16:06.210Z",
+  "response_sha256": "e662c9c9008dff18ff6f89428d7cceef0af9a377dfa3a3649f02bd2a0da30fd4",
+  "private_cache": ".tools/claude-code/dish-resources-20261025/cache/pasta.json"
+}

@@ -1,0 +1,16 @@
+Task restaurant-feedback8-20261025. Worktree: C:\Users\gabri\101-design-compiler\.tools\claude-worktrees\restaurant-feedback8-20261025. Mode: implement.
+Finalchecks:439/440tests(newmedia+maptestsPASS;soleoldH8fail),typecheck340files0errors/warnings/hints,build532PASS. ALL40menusat5widthsPASS;all320bounddishfacts/photosPASS;newdishheadingfixesallpasssofar. Navigation/menu→detail→reservation,mapdistance1.1kmandnativepermission-deniedall8flowPASS,autoplaymutedloop01/02/03+pause/resumewithcorrectlabelsPASS,03desktopnavLEFT92pxPASS. LiveOSMmapactuallyrendersrealtilesandproviderDocument200;parentviewednativecapture. InitialmaptestmistakenlyexpectedtileeventsfrommainCDPtarget(thetilesareOOPIF),NOTaproductbug;Codexfixesharness. DoNOTchangeanymap/provider/API ormotionlogic.
+
+Only THREE real remaining CSS issues, plus one non-scrolling clip cleanup. Fix ONLY these:
+1 03contactlinks computedcolor=rgb(11,9,8),background=rgb(11,9,8),contrast1onallwidths. Yourvar(--paper)/var(--ink)pairfailsbecauseinside.community-contact BOTH --paperAND--inkarelocally#0b0908. Use03-scopedknownpalettepair(e.gtext#0b0908on#ff6a2bor#efe6d8),includinghover/visited/focus. Don'treuseequalnestedtokens. Specificselector `.art-EmberReel .interior-contact .community-contact .contact-shortcuts a`. Other7profilesalreadycontrastpass.
+2 03story768 H1'Sobre el restaurante':container691.56px,scroll722,actualfont80058.78pxSyne. Yours8.5cqiratioisjusttoo wideforRESTaurante. Reduce03interiorheadingratio~7.8cqiorotherwisefitwholewordtorealcontainer;current28pxflooron360fits,keepthat. DoNOTreturntooldgrid/fixedsize. Other8typesareworking.
+3 06HOME1440quicklinks oneLI/anchorx720.5,y2084.875,width308,height115.19,scrollwidth>308. Thisisthe'Ubicación'primaryquicklinkprobablynesteddesc/arrowlayout. Itstillfailsafterfontsreadyandallscrolloffsetsreset;realoverflow. Makeallgridtracksandchildrenmin-width0,boundedwholewordwrapping;inspectgridspansandarrow,notjustfont-stretch. DoNOTshrinkallsitecopy. Primaryquicklinks usea3col/4colmix;ensureinternalCSScolumnconsistency.
+4 04CTAfixisactuallyCORRECTinitialstate(x20,width320at360). EarliernegativepositionswereCAPTUREARTIFACT: image.scrollIntoViewcanscrolltheoverflow:hidden.art-titleby29/31pxhorizontallytoexposecroppedwine. Codexharnesswillresetallancestorsbeforemeasurement. Set04.art-titleoverflow:clipinsteadofhiddenifneededtopreventthisnon-scrollabledecorativesurfacebecomingascroller;KEEPnegativeart-cutcollagepositionsandallwine/parsleycrops. DoNOTredesignalignmentagainorremovephotography. AtdefaultscrollLeft0controlsfit. Intentionaldecorativemediawaiversverifiedbyclippingboundariesarevalid;no hidingtext.
+
+Allsourcehelper/media/gates/pins,fonts,menus,all40photosandfrozenfactslockedtoverifiedcurrentversion;don'teditotherfiles. Noadditionalfeaturework,conceptswap,detectororpolish. Thisislastboundedfrontendfixcallinthesame session. Returnexactchanges.Codexwillcheck/recapturetheseknownscopesthenfreshreview.
+
+Evaluation criteria:
+[]
+Explicit context (current orchestrator snapshot; worktree starts from 24c4301c2a36fc5a023d3cd695030afc13a47f09):
+
+Return a concise report with changed files, decisions, checks and risks. Do not claim checks Codex has not run.

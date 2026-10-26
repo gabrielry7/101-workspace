@@ -1,0 +1,128 @@
+{
+  "id": "restaurant-dishes-20261025",
+  "status": "responded",
+  "sessionId": "4fc1f9d7-cf75-4efe-ac67-cccb6b7e421d",
+  "exchanges": [
+    {
+      "index": 1,
+      "sessionId": "4fc1f9d7-cf75-4efe-ac67-cccb6b7e421d",
+      "resumedFrom": null,
+      "success": true,
+      "reportedSessionCostUsd": 0.1772839,
+      "incrementalEstimatedCostUsd": 0.1772839,
+      "numTurns": 3
+    },
+    {
+      "index": 2,
+      "sessionId": "4fc1f9d7-cf75-4efe-ac67-cccb6b7e421d",
+      "resumedFrom": "4fc1f9d7-cf75-4efe-ac67-cccb6b7e421d",
+      "success": true,
+      "reportedSessionCostUsd": 0.6393647,
+      "incrementalEstimatedCostUsd": 0.4620808,
+      "numTurns": 31
+    },
+    {
+      "index": 3,
+      "sessionId": "4fc1f9d7-cf75-4efe-ac67-cccb6b7e421d",
+      "resumedFrom": "4fc1f9d7-cf75-4efe-ac67-cccb6b7e421d",
+      "success": true,
+      "reportedSessionCostUsd": 0.8516812000000001,
+      "incrementalEstimatedCostUsd": 0.21231650000000013,
+      "numTurns": 22
+    }
+  ],
+  "files": [
+    {
+      "path": "task.json",
+      "bytes": 7124,
+      "sha256": "c8b01ee1fc9bcfdf530380adc91bb07b32ea12b9effe7e26639a6116471e23d1"
+    },
+    {
+      "path": "state.json",
+      "bytes": 11584,
+      "sha256": "896e352a8501e574c493729bca62dc2675660608fbc4f49b7e6e34b80d753191"
+    },
+    {
+      "path": "attachments.json",
+      "bytes": 2161,
+      "sha256": "f54c73cbca9bda29987faf5790b7217de45932b26ad77e3a623cd4664d9788c1"
+    },
+    {
+      "path": "1-prompt.txt",
+      "bytes": 71763,
+      "sha256": "8d25aefae97b6b0effacb62526733239690baf37fdf4f2012307c0e45265be14"
+    },
+    {
+      "path": "1-stdout.json",
+      "bytes": 9531,
+      "sha256": "99c037298c730d1ea88da04a8a82b7d988bc7859e5b057f81c47e865b8fd83b4"
+    },
+    {
+      "path": "1-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "1-changes.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "1-status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2-prompt.txt",
+      "bytes": 6054,
+      "sha256": "095efceef7c1e3fe7de38b0966d202d886520be09b6637bf707ecef6cf2892c2"
+    },
+    {
+      "path": "2-stdout.json",
+      "bytes": 6742,
+      "sha256": "ac2febabbce0f2679b9af8259bd3afa01578596ba59eac86d9b71c824d8dfb61"
+    },
+    {
+      "path": "2-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2-changes.patch",
+      "bytes": 48575,
+      "sha256": "cff9c25cdee84f28e3302ec7164ce5a1a7bd3bf1e48ef0ab8aefc7739ab1de75"
+    },
+    {
+      "path": "2-status.txt",
+      "bytes": 3421,
+      "sha256": "d32a289a2b99e518b4732ef790dcff3dc5d538373868297af4ae063b18e5db07"
+    },
+    {
+      "path": "3-prompt.txt",
+      "bytes": 5148,
+      "sha256": "0dac5cdc9b5fd997e8f95b1e937171347089ce2953ba29dcf9df36e58f3baee9"
+    },
+    {
+      "path": "3-stdout.json",
+      "bytes": 4504,
+      "sha256": "578bc96bb75d0eaf672d7cbb19939e1c501641158727113b9d7919dc41324b5b"
+    },
+    {
+      "path": "3-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "3-changes.patch",
+      "bytes": 50259,
+      "sha256": "72927d9313dac94546805d8f5c32c4184c91368f9d3997533ce2568ced5164a1"
+    },
+    {
+      "path": "3-status.txt",
+      "bytes": 3631,
+      "sha256": "7a20a8febf53517363fb5dfe9b5ce546212bb060638d157865ce79b74237d4a4"
+    }
+  ],
+  "source": "Actual installed Claude Code CLI process stdout, not transport test fixtures",
+  "exportedAt": "2026-10-25T18:48:54.829Z"
+}

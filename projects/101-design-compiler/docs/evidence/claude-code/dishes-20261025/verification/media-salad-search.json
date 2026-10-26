@@ -1,0 +1,14 @@
+{
+  "endpoint": "https://pixabay.com/api/videos/",
+  "query": {
+    "q": "salad",
+    "per_page": "4",
+    "page": "1",
+    "safesearch": "true",
+    "video_type": "film"
+  },
+  "at": "2026-10-25T18:16:06.628Z",
+  "cache_until": "2026-10-26T18:16:06.628Z",
+  "response_sha256": "6ce5fc329b7ad15c201737aff0c43cf01c4fa9fa84a75913901a047b90293ac4",
+  "private_cache": ".tools/claude-code/dish-resources-20261025/cache/salad.json"
+}

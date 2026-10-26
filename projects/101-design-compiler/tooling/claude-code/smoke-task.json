@@ -1,0 +1,7 @@
+{
+  "id": "restaurant-analysis-smoke",
+  "mode": "analysis",
+  "prompt": "Inspect src/pages/b3/[candidate].astro and its shared composition. Identify two concrete restaurant-home design opportunities, with source paths and accessibility risks. Make no edits. Remember the exact review marker cedar-731 for the next exchange; include it in your response.",
+  "context": ["src/pages/b3/[candidate].astro", "src/components/composition/ExperienceComposition.astro", "src/design/experience-refinement.css"],
+  "criteria": ["Existing B3 restaurant page only", "Preserve semantic content, media rights, navigation and fictional notices", "Use existing shared Astro/CSS architecture"]
+}

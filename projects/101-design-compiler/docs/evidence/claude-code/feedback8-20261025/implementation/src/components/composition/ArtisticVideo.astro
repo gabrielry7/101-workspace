@@ -1,0 +1,20 @@
+---
+// Silent environmental background film (03 fire, 04 steam). Autoplay muted loop only when the shared motion policy allows it;
+// otherwise the static poster stays. No overlay button: pause/resume lives in the navigation utility.
+import ArtisticImage from './ArtisticImage.astro';
+import {loadFeedbackMedia,evaluateFeedbackUsage} from '../../media/feedback-media.ts';
+import feedbackClient from '../../design/b3-feedback-client.js?url';
+interface Props{id:number;posterId:number|string;route:string;creditsHref:string;class?:string;eager?:boolean;posterSizes?:string}
+const {id,posterId,route,creditsHref,class:className,eager=false,posterSizes}=Astro.props;
+const fm=await loadFeedbackMedia(),{review}=fm;
+const uses=review.usages.filter((u:any)=>u.page===route&&u.need_id===`b3-need:art:${id}`);
+const use=uses[0];
+if(uses.length!==1||!use||evaluateFeedbackUsage(fm.handle,use,fm.evaluated_at).status!=='ALLOWED')throw Error('ART_VIDEO_USE_BLOCKED');
+const a=review.assets.find((x:any)=>x.id===use.asset_id);
+if(!a||a.kind!=='video'||a.audio_track!=='NONE')throw Error('ART_SILENT_VIDEO_EXPECTED');
+---
+<div class:list={['art-film','fb-bg',className]} data-feedback-background data-art-asset={id} data-art-review={review.review_sha256} data-art-usage={use.id} data-art-film-state="poster" data-credit-href={creditsHref}>
+ <ArtisticImage id={posterId} {route} {creditsHref} hero={eager} sizes={posterSizes} class="art-film-poster"/>
+ <video muted loop playsinline preload="none" width={a.inspection.width!} height={a.inspection.height!} data-src={a.uri} aria-hidden="true" tabindex="-1"></video>
+</div>
+<script is:inline type="module" src={feedbackClient}></script>

@@ -1,0 +1,9 @@
+---
+// Native, collapsible wrapper for the shared selection panel on the 40-dish menu.
+// The panel (and its single [data-selection-count] / [data-selection-list]) stays in the slot untouched;
+// the summary only mirrors the count (catalogue-client.js). Closed by default so 40 chosen names never push the carta down.
+---
+<details class="cat-selection" id="cat-seleccion" data-cat-selection>
+ <summary><span class="cat-selection-label">Tu selección de ejemplo</span> <span class="cat-selection-count" data-cat-summary-count>0 platos elegidos</span></summary>
+ <slot/>
+</details>

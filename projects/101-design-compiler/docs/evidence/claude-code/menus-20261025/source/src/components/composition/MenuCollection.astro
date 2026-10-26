@@ -1,0 +1,27 @@
+---
+// Authored carta for the collection page only. Same semantic OfferingCollection contract as ContextualModule
+// (fact ids/scopes, offering ids, search text, tools, details, selection links); only the composition differs.
+import type {ModuleView,BoundFact} from '../../composition/content.ts';
+import ContextualImage from './ContextualImage.astro';
+import type {ContextualMediaHandle} from '../../media/contextual-review.ts';
+interface Props{module:ModuleView;handle:ContextualMediaHandle;at:string;route:string;presentation:any;layout:'ledger'|'front-page'|'frames'|'plate'}
+const {module:m,handle,at,route,presentation,layout}=Astro.props;
+const title=presentation.module_headings[m.id];
+const details=['offering_ingredients','offering_allergens','offering_calories','currency'];
+const get=(facts:BoundFact[],kind:string)=>facts.find(f=>f.kind===kind);
+const anchors:Record<string,string>=presentation.anchors;
+const offerings=[...m.offerings].sort((a,b)=>presentation.offering_order.indexOf(a.id)-presentation.offering_order.indexOf(b.id));
+---
+<section id={anchors[m.id]??m.id} class:list={['semantic-v2',`module-${m.capability_id}`,'menu-carta']} data-menu-layout={layout} data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page}>
+ <header class="section-heading"><h2>{title}</h2><p>Cuatro ideas para abrir el apetito. Fotografías ilustrativas; las recetas y precios son ficticios.</p></header>
+ <div class="collection-tools" data-menu-tools hidden><label>Buscar en la carta<input type="search" data-menu-search placeholder="¿Qué te apetece?" autocomplete="off"/></label><label>Categoría<select data-menu-category><option value="">Toda la carta</option>{m.offerings.map(o=><option value={o.id}>{get(o.facts,'offering_category')?.text}</option>)}</select></label><p role="status" data-menu-count>4 platos de ejemplo</p></div>
+ <div class="contextual-collection">{offerings.map(o=>{const category=get(o.facts,'offering_category')!,name=get(o.facts,'offering_name')!,price=get(o.facts,'price')!;return <article class="menu-dish" data-offering-id={o.id} data-offering-scope={o.scope_id} data-search={o.facts.map(f=>f.text).join(' ')}>
+  <ContextualImage {handle} {at} {route} slot={presentation.offering_media[o.id]} {...presentation.media_presentation}/>
+  <div class="menu-body"><p class="menu-category" data-fact-id={category.id} data-fact-scope={category.scope_id}>{category.text}</p>
+   <div class="menu-head"><h3 class="menu-name" data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h3><span class="menu-leader" aria-hidden="true"></span><span class="menu-price" data-fact-id={price.id} data-fact-scope={price.scope_id}>{price.text}</span></div>
+   <div class="menu-desc">{o.facts.filter(f=>!details.includes(f.kind)&&!['offering_name','offering_category','price'].includes(f.kind)).map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div>
+   <div class="menu-actions"><details class="dish-detail"><summary>Ingredientes y detalles <span aria-hidden="true">+</span></summary><div>{o.facts.filter(f=>details.includes(f.kind)).map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div></details>
+   {presentation.selection_href?<a class="text-link demo-add" href={`${presentation.selection_href}?plato=${encodeURIComponent(o.id)}`}>Elegir este plato <span aria-hidden="true">↗</span></a>:<button type="button" class="text-link demo-add" data-demo-add={name.text} aria-label={`Añadir ${name.text} a una selección de ejemplo`} hidden>Añadir a selección de ejemplo <span aria-hidden="true">＋</span></button>}</div>
+  </div></article>;})}</div>
+ <noscript><p>La carta completa y sus detalles funcionan sin JavaScript. La búsqueda y la selección local necesitan JavaScript.</p></noscript>
+</section>

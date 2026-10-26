@@ -1,0 +1,34 @@
+{
+  "id": "restaurant-journal-pilot-01",
+  "mode": "implement",
+  "prompt": "Implement a bounded visual refinement of the existing /b3/candidate-01/ restaurant HOME. This is the Immersive hero / WhiteInk / Classic / home-Journal associated composition. Codex inspected the real rendered home: the journal currently gives four stories identical weight, and the large overview pause makes the desktop progression feel flat. Improve journal composition with a clear lead story and responsive editorial rhythm, retaining the incumbent Georgia/Arial, white/ink palette and cinematic hero. You may adjust home section spacing modestly where it supports the hierarchy. Keep other hero directions and all non-home pages unchanged. Make actual CSS edits ONLY in src/design/experience-refinement.css, using existing shared composition classes (for example .depth-experience.experience-Immersive.page-home); never customer IDs. Do not alter markup, copy, story order, bindings, credits, photos, source media, JavaScript, routes, controls or grants. Read the CSS in full rather than relying on truncated grep. Read the two approved screenshot attachments using Read: these are current layout screenshots with photo/video pixels replaced by neutral geometry by the existing 101 Superdesign preparation tool, whose source HTML hash exactly matches the current build. Codex has real baseline screenshots locally. Do not read other image/media files in the worktree. This is a refinement, not a new design world or generator. Explain design choices and remaining hypotheses. Codex will build and render; do not claim to have run those checks.",
+  "context": [
+    "AGENTS.md",
+    "src/pages/b3/[candidate].astro",
+    "src/components/composition/CommunitySections.astro",
+    "src/design/experience-refinement.css",
+    "src/design/rich-experience.css",
+    "src/design/depth-experience.css"
+  ],
+  "attachments": [
+    ".tools/claude-code/geometry-baseline/desktop.png",
+    ".tools/claude-code/geometry-baseline/mobile.png"
+  ],
+  "attachmentAuthorization": "Current existing 101 media-neutral layout export, source SHA256 ffa7868a7049279cd867778bd49a1b11c19dce1556603b57bea0987cd48173aa. Existing prepare-pilot.mjs replaces all licensed media pixels with neutral SVG geometry and removes scripts. No licensed photo/video pixels or reference screenshots are included. User authorizes Claude frontend collaboration and screenshot context.",
+  "criteria": [
+    "Actual CSS-only implementation in the existing shared renderer",
+    "Only the existing Immersive home associated composition changes",
+    "All text, links, semantic modules, media gates and fictional notices preserved",
+    "Desktop 1440 and mobile 390, with no overflow and usable keyboard focus",
+    "Responsive layout remains useful at 360, 768 and 1024 pixels",
+    "No new requests, client JavaScript, external media, dependencies or animation",
+    "No hidden content, reordered DOM or removed interactive elements"
+  ],
+  "limits": {
+    "maxCalls": 2,
+    "maxTurns": 12,
+    "timeoutMs": 240000,
+    "maxBudgetUsdPerCall": 0.75,
+    "maxBudgetUsdTotal": 1.5
+  }
+}

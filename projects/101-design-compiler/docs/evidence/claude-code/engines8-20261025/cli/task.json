@@ -1,0 +1,33 @@
+{
+  "id": "restaurant-engines8-20261025",
+  "mode": "implement",
+  "prompt": "User wants EIGHT TOTAL style engines: retain accepted01-04 unchanged as preliminary; add05-06 GENERAL_PURPOSE and07-08 ARTISTIC with creative freedom, then stop aesthetic iteration and advance other compiler work. Codex owns roadmap. First exchange PLAN ONLY no edits. Choose four genuinely distinct concepts (name, palette, type using existing selfhosted Syne/Bodoni Moda/DM Sans, homepage composition and menu treatment), shared component architecture, asset needs. Existing four:01bone/terracotta classic;02vermilion newspaper;03black/ember rail/Syne;04paper/plum botanical/Bodoni. New artistic worlds must differ from these and each other. Practical05-06 can be broadly usable rather than onlyfine-dining. All are restaurant LAB engines, not yet universal production engines.\nNew worktree starts at committed HEAD; actual accepted40dish snapshot in selected context resources is newer UNCOMMITTED reviewed worktree, not main. Codex will stage those exact reviewed files, verified existing media, runtime and helpers after your plan. Preserve every current01-04 page byte-for-byte except /b3/ gallery extends8. No edits until feedback. Nocredentials/APIcaches provided.\nUse existing shared Astro/CSS renderer and semantic modules, not another generator/framework/service or four copied customer sites. Add independent style-engine registry for05-08; old frozen DepthExperience schema/JSON remains4 and its historical rejection statuses are not current user votes. Codex supplies registry helper (newEngineProfiles, engineForProfile), route loops extending8, and NEW route-scoped media companion/verified handle. Existing original media manifests/pins and16dish-media routes remain sealed; do not borrow route permissions. Original4dish images/videos work onnewprofiles through new admitted handle;36newdishdetails remain text-only. Forty-item catalogue/search/category/query selection/native/no-JS behavior shared across8. New05-08 each51routes=204newroutes, total532includingotherhistoricalpages.\nSuggested implementation: StyleEnginePages.astro with four composition operators for home and shared semantic interiors, engine-only CSS. ExperienceComposition branches engine before existing art/home. Oldrootclasses/styles untouched when noengine. ContextualImage can receive new verified handle. Reuse MenuCollection,CatalogueSelection,PreviewIntent,ContextualModule,DishDetail,ExperienceNavigation andexisting businessfeatures; retain allcontent,disclosures,credits,demo labels,links. New CommunitySections media override or distinct shared engine editorial rendering may avoid old SupplementalImage grants onnewroutes. Codex handles media/data trust; ask for helper shape. Own new CSS scoped .engine-site/.engine-ID, conditionalstyles onlynewroutes. Do not change shared old JS/CSS/assets (newconditionalassetsfine).\nNo new backend/payments/realreservations/fakeproof. No missing/fabricated data, noexternalruntimefonts, no unnecessary autoplay. Manualnative mutedvideooptional. Accessibility contrast4.5,44pxcontrols/body14+,keyboard/reducedmotion, nooverflow360-1440, actual menusnormaltextrowsnot40cards. Images are existinglicensed illustrative Pixabaystock, optional and never falsely exactdish. Existingfonts224KB+OFL. Codex tests and visuallyreviews.\nRespond with exact concept choices and minimal bounded implementation plan.",
+  "context": [
+    "AGENTS.md",
+    ".tools/claude-code/engines8-resources-20261025/accepted/src/components/composition/ExperienceComposition.astro",
+    ".tools/claude-code/engines8-resources-20261025/accepted/src/components/composition/ArtisticPages.astro",
+    ".tools/claude-code/engines8-resources-20261025/accepted/src/components/composition/MenuCollection.astro",
+    ".tools/claude-code/engines8-resources-20261025/accepted/src/components/composition/DishDetail.astro",
+    ".tools/claude-code/engines8-resources-20261025/accepted/src/design/catalogue.css",
+    ".tools/claude-code/engines8-resources-20261025/accepted/src/design/restaurant-catalogue.ts",
+    "src/components/composition/ExperienceNavigation.astro",
+    "src/components/composition/ContextualModule.astro",
+    "src/design/depth-experience-contracts.ts",
+    ".agents/skills/impeccable/reference/craft-floor.md"
+  ],
+  "attachments": [],
+  "criteria": [
+    "8 total registry profiles:4preserved+2generic+2artistic",
+    "204newroutes,40dish sharedmenu/selection nativefallback",
+    "Distinct four new home compositions and complete interiors",
+    "Preserve old media trust and current327pages+assets",
+    "Bounded real Claude plan and implementation+feedback; Codex QA"
+  ],
+  "limits": {
+    "maxCalls": 4,
+    "maxTurns": 75,
+    "timeoutMs": 720000,
+    "maxBudgetUsdPerCall": 3,
+    "maxBudgetUsdTotal": 12
+  }
+}

@@ -1,0 +1,72 @@
+---
+import Foundation from '../../layouts/Foundation.astro';
+import ContextualModule from './ContextualModule.astro';
+import ContextualImage from './ContextualImage.astro';
+import PreviewIntent from './PreviewIntent.astro';
+import CommunitySections from './CommunitySections.astro';
+import ExperienceNavigation from './ExperienceNavigation.astro';
+import ExperienceFeatures from './ExperienceFeatures.astro';
+import SupplementalImage from './SupplementalImage.astro';
+import {loadOptionalRestaurantMedia} from '../../media/optional-restaurant.ts';
+import {richExperiencePages as experiencePages} from '../../design/rich-experience-contracts.ts';
+import {experienceRoute} from '../../design/experience-contracts.ts';
+import {evaluateRichExperienceUsage as evaluateExperienceUsage} from '../../media/rich-experience-review.ts';
+import styles from '../../design/experience.css?raw';
+import richStyles from '../../design/rich-experience.css?raw';
+import depthStyles from '../../design/depth-experience.css?raw';
+import refinementStyles from '../../design/experience-refinement.css?raw';
+import emberStyles from '../../design/artistic-ember.css?raw';
+import plateStyles from '../../design/artistic-plate.css?raw';
+import MenuCollection from './MenuCollection.astro';
+import menuStyles from '../../design/menu-carta.css?raw';
+import ArtisticPages from './ArtisticPages.astro';
+import {artisticDirectionFor,artisticChoices} from '../../design/artistic-direction.ts';
+import {loadArtisticRestaurantMedia} from '../../media/artistic-restaurant.ts';
+import type {loadB3DepthExperience as loadB3Experience} from '../../../scripts/load-b3-depth-experience.ts';
+import type {DepthExperience as Experience} from '../../design/depth-experience-contracts.ts';
+import type {RichExperiencePage as ExperiencePage} from '../../design/rich-experience-contracts.ts';
+interface Props{lab:Awaited<ReturnType<typeof loadB3Experience>>;profile:Experience['profiles'][number];page:ExperiencePage}
+const {lab,profile:p,page}=Astro.props,s=lab.scenario,media=lab.experience_media,route=experienceRoute(p.root,page as any),modules=s.content.pages.flatMap((p:any)=>p.modules);
+const by=(capability:string)=>modules.find((m:any)=>m.capability_id===capability),identity=by('identity'),menu=by('menu'),story=by('about');
+const name=identity.facts.find((f:any)=>f.kind==='business_name'),tagline=identity.facts.find((f:any)=>f.kind!=='business_name');
+const link=(kind:string)=>experienceRoute(p.root,experiencePages.find(p=>p.kind===kind)! as any);
+const creditHref=link('credits'),view={...lab.presentation,media_presentation:{creditMode:'linked' as const,creditsHref:creditHref,cover:true},selection_href:page.kind==='collection'?link('selection'):null};
+const optional=page.kind==='credits'?await loadOptionalRestaurantMedia():null,supplements=optional?[...new Map(optional.grants.flatMap(g=>{const a=optional.assets.find(a=>a.id===g.original_asset_id);return a?[[a.external_id,{g,a,source:a.provenance.find(p=>p.source.startsWith('Pixabay licensed'))?.reference}] as const]:[];})).values()].filter(s=>s.source):[];
+const uses=media.review.usages.filter(u=>u.page===route);if(uses.some(u=>evaluateExperienceUsage(media.handle,u,media.evaluated_at).status!=='ALLOWED'))throw Error('EXPERIENCE_RENDER_USE_BLOCKED');
+const motion=uses.find(u=>u.need_id==='b3-need:motion'),movie=motion&&media.review.assets.find(a=>a.id===motion.asset_id),posterUse=uses.find(u=>u.need_id==='b3-need:hero'&&media.review.assets.find(a=>a.id===u.asset_id)?.inspection.width===1280),poster=posterUse&&media.review.assets.find(a=>a.id===posterUse.asset_id);
+const art=artisticDirectionFor(p.hero),menuLayout=page.kind==='collection'?(art==='EmberReel'?'frames':art==='PlateStudy'?'plate':p.hero==='Immersive'?'ledger':p.hero==='Masthead'?'front-page':undefined):undefined,artPackage=art&&page.kind==='credits'?await loadArtisticRestaurantMedia():null;
+const artCredits=artPackage&&art?artisticChoices[art].flatMap(id=>{const c=artPackage.choices.find(c=>c.id===id);return c?[{c,text:artPackage.grants.find(g=>g.attribution.text?.includes(c.contributor))?.attribution.text??`${c.contributor} / Pixabay`}]:[];}):[];
+---
+<Foundation title={`${name.text} · ${page.label} · ${p.label}`}>
+ <style is:inline set:html={(styles+'\n'+richStyles+'\n'+depthStyles+'\n'+refinementStyles+(art==='EmberReel'?'\n'+emberStyles:art==='PlateStudy'?'\n'+plateStyles:'')+(menuLayout?'\n'+menuStyles:'')).replaceAll('\r\n','\n')}/>
+ <div class:list={art?['contextual-site','experience-site','rich-experience','depth-experience','artistic-site',`art-${art}`,`page-${page.kind}`]:['contextual-site','experience-site','rich-experience','depth-experience',`experience-${p.hero}`,`tone-${p.palette}`,`type-${p.type}`,`catalogue-${p.collection}`,`home-${p.home_composition}`,`page-${page.kind}`]} data-experience-sha256={lab.site_sha256} data-editorial-sha256={lab.site.editorial_sha256} data-feedback-sha256={lab.site.feedback_sha256} data-revision-feedback-sha256={lab.site.revision_feedback_sha256} data-features-sha256={lab.site.features_sha256} data-depth-research-sha256={lab.site.depth_research_sha256} data-profile-id={p.id} data-page-kind={page.kind} data-content-sha256={s.content.content_sha256} data-plan-sha256={s.content.plan_sha256} data-media-sha256={media.review.review_sha256}>
+  <ExperienceNavigation root={p.root} name={name.text} kind={page.kind}/>
+  {art&&page.kind!=='credits'?<ArtisticPages {art} {lab} profile={p} {page} {route} {creditHref}/>:page.kind==='home'?<>
+   <section class="experience-hero" id="experience-main" tabindex="-1" data-module-id={identity.id} data-component={identity.component} data-scope-id={identity.scope_id} data-semantic-page={identity.page} data-required={String(identity.required)}>
+    <div class="hero-title"><p class="eyebrow">Cocina & sobremesa</p><h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1><p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p></div>
+    <div class="hero-film" data-film-state="poster">
+     <ContextualImage handle={media.handle} at={media.evaluated_at} {route} slot="hero" hero creditMode="linked" creditsHref={creditHref} cover/>
+     <video muted loop playsinline preload="none" poster={poster!.uri} width="1280" height="720" data-background-video data-src={movie!.uri} data-media-usage={motion!.id} data-poster-usage={posterUse!.id} aria-hidden="true" tabindex="-1"></video>
+     <div class="film-shade" aria-hidden="true"></div><button type="button" class="film-toggle film-icon" data-film-toggle hidden aria-label="Pausar vídeo de fondo" title="Pausar vídeo de fondo"><span aria-hidden="true" data-film-icon>Ⅱ</span></button>
+    </div>
+    <div class="hero-entry-links"><a href={link('collection')}>Explorar la carta <span aria-hidden="true">↗</span></a><a href={link('request')}>Encontrarnos en la mesa <span aria-hidden="true">↗</span></a></div>
+   </section>
+   <ExperienceFeatures features={lab.features} root={p.root} mode="home"/>
+   <CommunitySections {lab} features={lab.features} root={p.root} {route} mode="home"/>
+  </>:<div class="experience-content" id="experience-main" tabindex="-1">
+   <nav class="depth-breadcrumb" aria-label="Ruta de navegación"><a href={p.root}>Inicio</a><span aria-current="page">{page.label}</span></nav>
+   {page.kind==='collection'&&<><div class="page-intro">{!menuLayout&&<p class="eyebrow">Para elegir con ganas</p>}<h1>La carta</h1><p>Cuatro platos para este concepto ficticio. Elige uno y explora sus detalles.</p></div>{menuLayout?<MenuCollection module={menu} handle={media.handle} at={media.evaluated_at} {route} presentation={view} layout={menuLayout}/>:<ContextualModule module={menu} handle={media.handle} at={media.evaluated_at} {route} presentation={view}/>}</>}
+   {page.kind==='selection'&&<><div class="page-intro"><p class="eyebrow">Pedido · demostración</p><h1>Tu selección.</h1><p>Elige los platos que te apetecen. Esta es una demostración: no se envían pedidos ni se realizan cobros.</p></div><div class="order-layout"><ContextualModule module={menu} handle={media.handle} at={media.evaluated_at} {route} presentation={view}/><PreviewIntent kind="selection"/></div></>}
+   {page.kind==='request'&&<><div class="page-intro"><p class="eyebrow">Reservas · demostración</p><h1>Tu próxima mesa.</h1><p>Una ocasión para reunirnos. Explora el formulario sin efectuar una reserva real.</p></div><PreviewIntent kind="request"><SupplementalImage slot="scene" id={5356682} {route} creditsHref={creditHref} class="request-scene"/></PreviewIntent><ExperienceFeatures features={lab.features} root={p.root} mode="request"/></>}
+   {page.kind==='story'&&<><div class="page-intro"><p class="eyebrow">Nuestra idea</p><h1>El gusto de quedarse.</h1></div><div class="story-layout"><ContextualModule module={story} handle={media.handle} at={media.evaluated_at} {route} presentation={view}/><ContextualImage handle={media.handle} at={media.evaluated_at} {route} slot="story" creditMode="linked" creditsHref={creditHref} cover/></div><SupplementalImage id={4642686} {route} creditsHref={creditHref} class="story-inset"/></>}
+   {page.kind==='visit'&&<><div class="page-intro"><p class="eyebrow">La visita</p><h1>Nos vemos aquí.</h1><p>Una sede imaginaria para explorar este concepto. No es una ubicación real.</p></div><div class="visit-layout">{['locations','opening_hours','amenities'].map(cap=><ContextualModule module={by(cap)} handle={media.handle} at={media.evaluated_at} {route} presentation={view}/>)}</div><ExperienceFeatures features={lab.features} root={p.root} mode="visit"/></>}
+   {page.kind==='faq'&&<><div class="page-intro"><p class="eyebrow">Antes de venir</p><h1>Lo que quieres saber.</h1></div><ContextualModule module={by('faqs')} handle={media.handle} at={media.evaluated_at} {route} presentation={view}/></>}
+   {page.kind==='journal'&&<><div class="page-intro"><p class="eyebrow">Colección editorial</p><h1>El diario.</h1></div><CommunitySections {lab} features={lab.features} root={p.root} {route} mode="journal"/></>}
+   {page.kind==='reviews'&&<><div class="page-intro"><p class="eyebrow">Opiniones · demostración</p><h1>De boca en boca.</h1></div><CommunitySections {lab} root={p.root} {route} mode="reviews"/></>}
+   {page.kind==='contact'&&<><div class="page-intro"><p class="eyebrow">Contacto · demostración</p><h1>Hablemos.</h1></div><CommunitySections {lab} root={p.root} {route} mode="contact"/></>}
+   {page.kind==='credits'&&<><div class="page-intro"><p class="eyebrow">Medios y contexto</p><h1>Créditos.</h1><p>Las imágenes y el vídeo son ilustrativos. No representan una empresa, sus instalaciones o sus productos reales.</p></div><div class="credit-list">{media.review.grants.map(g=>{const a=media.review.assets.find(a=>a.id===g.original_asset_id)!,source=a.provenance.find(p=>p.source.startsWith('Pixabay licensed'))!.reference;return <article data-credit-original={a.id}><h2>{g.attribution.text}</h2><p>{g.license_type}</p><a href={source}>Ver origen en Pixabay ↗</a></article>;})}{supplements.map(({g,a,source})=><article class="supplement-credit" data-supplement-credit={a.external_id}><h2>{g.attribution.text}</h2><p>Pixabay · imagen ilustrativa</p><a href={source}>Ver origen en Pixabay ↗</a></article>)}{artCredits.map(({c,text})=><article class="art-credit" data-art-credit={c.id}><h2>{c.label}</h2><p>{text} · {c.kind==='video'?'película':'imagen'} ilustrativa</p><a href={c.page}>Ver origen en Pixabay ↗</a></article>)}</div><details class="experience-scope"><summary>Alcance de la demostración y condiciones</summary><p>Textos, recetas, precios, calorías, alérgenos, horarios, lugar, plano y ocupación de mesas son ficción. No hay conexión comercial, disponibilidad real, pagos, reservas enviadas, reseñas de consumidores ni sede visitable.</p><p>El material no acredita platos o negocios. El hueco documental histórico permanece bloqueado. Se usa el laboratorio Astro compartido; upstream y runtime comercial no están integrados.</p>{art==='EmberReel'?<p>Película «Fuego y brasas» 1280×720 sin audio: 11,44 segundos, 4.268.776 bytes. Se recorta y amplía en pantalla para ocultar el marco de la estufa; no es 1080p/4K. No se reproduce sola: sólo con el botón, y sin él se ve un fotograma fijo.</p>:art==='PlateStudy'?<p>Película «Vapor de una olla» 640×360 sin audio: 25,29 segundos, 2.091.936 bytes. Resolución baja, ampliada en pantalla. No se reproduce sola: sólo con el botón, y sin él se ve un fotograma fijo.</p>:<p>Vídeo original 1280×720 sin audio: 9,36 segundos, 2.577.142 bytes. Recorte de presentación ambiental y posible ampliación en pantallas mayores; no 1080p/4K. Autoplay sujeto a movimiento y navegador.</p>}<div data-diagnostics>{s.content.diagnostics.map((v:any)=><p data-diagnostic-sha256={JSON.stringify(v)}>{v.code} · {v.scope_id} · {v.reason}</p>)}</div><ul data-restrictions>{s.content.restrictions.map((v:string)=><li>{v}</li>)}</ul><ul data-exclusions>{s.content.exclusions.map((v:any)=><li>{v.scope_id} · {v.id} · {v.reason}</li>)}</ul></details></>}
+  </div>}
+  <footer class="exp-footer"><a class="footer-wordmark" href={p.root}>{name.text}</a><div class="footer-links"><a href={link('collection')}>Carta</a><a href={link('request')}>Reservas</a><a href={link('visit')}>Visita</a><a href={link('story')}>Nuestra idea</a><a href={link('faq')}>Preguntas</a><a href={link('contact')}>Contacto y redes</a><a href={link('reviews')}>Opiniones</a><a href={creditHref} data-credits-link>Créditos</a><a href="/b3/">Comparar propuestas</a></div><p class="fiction-notice" data-media-disclosure>Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.</p><p class="provider-notice" data-provider-notice>Pixabay y sus autores no respaldan este escenario.</p></footer>
+ </div>
+</Foundation>
+<script>import '../../design/depth-experience-client.ts';import '../../design/experience-refinement-client.ts';</script>

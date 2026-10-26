@@ -1,0 +1,25 @@
+---
+// Traditional carta for the collection page only: grouped rows, aligned prices, real links to each dish page.
+// Same semantic OfferingCollection contract as ContextualModule (fact ids/scopes, offering ids, search text, tools);
+// ingredients, allergens, calories and currency live on the dish page.
+import type {ModuleView,BoundFact} from '../../composition/content.ts';
+import {dishRoute} from '../../design/dish-routes.ts';
+interface Props{module:ModuleView;root:string;presentation:any;layout:'ledger'|'front-page'|'frames'|'plate'}
+const {module:m,root,presentation,layout}=Astro.props;
+const title=presentation.module_headings[m.id];
+const details=['offering_ingredients','offering_allergens','offering_calories','currency'];
+const get=(facts:BoundFact[],kind:string)=>facts.find(f=>f.kind===kind);
+const anchors:Record<string,string>=presentation.anchors;
+const offerings=[...m.offerings].sort((a,b)=>presentation.offering_order.indexOf(a.id)-presentation.offering_order.indexOf(b.id));
+---
+<section id={anchors[m.id]??m.id} class:list={['semantic-v2',`module-${m.capability_id}`,'menu-carta']} data-menu-layout={layout} data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page} aria-labelledby={`${m.id}-title`}>
+ <h2 class="menu-title" id={`${m.id}-title`}>{title}</h2>
+ <div class="collection-tools" data-menu-tools hidden><label>Buscar en la carta<input type="search" data-menu-search placeholder="¿Qué te apetece?" autocomplete="off"/></label><label>Categoría<select data-menu-category><option value="">Toda la carta</option>{m.offerings.map(o=><option value={o.id}>{get(o.facts,'offering_category')?.text}</option>)}</select></label><p role="status" data-menu-count>4 platos de ejemplo</p></div>
+ <div class="contextual-collection">{offerings.map(o=>{const category=get(o.facts,'offering_category')!,name=get(o.facts,'offering_name')!,price=get(o.facts,'price')!,href=dishRoute(root,o.id);return <article class="menu-dish" data-offering-id={o.id} data-offering-scope={o.scope_id} data-search={o.facts.map(f=>f.text).join(' ')}>
+  <h3 class="menu-category" data-fact-id={category.id} data-fact-scope={category.scope_id}>{category.text}</h3>
+  <div class="menu-head"><h4 class="menu-name" data-fact-id={name.id} data-fact-scope={name.scope_id}><a href={href}>{name.text}</a></h4><span class="menu-leader" aria-hidden="true"></span><span class="menu-price" data-fact-id={price.id} data-fact-scope={price.scope_id}>{price.text}</span></div>
+  <div class="menu-desc">{o.facts.filter(f=>!details.includes(f.kind)&&!['offering_name','offering_category','price'].includes(f.kind)).map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div>
+  <a class="menu-open" href={href} aria-label={`Ver plato: ${name.text}`}>Ver plato</a>
+ </article>;})}</div>
+ <p class="menu-note">Recetas, precios y fotografías son ilustrativos y ficticios.</p>
+</section>

@@ -1,0 +1,266 @@
+{
+  "created_at": "2026-10-25T18:53:06.390Z",
+  "pass": true,
+  "scope": "Four traditional menus plus16individual dish pages in existing renderer",
+  "worktree": "C:\\Users\\gabri\\101-design-compiler\\.tools\\claude-worktrees\\restaurant-dishes-20261025",
+  "sources": [
+    {
+      "path": "src/components/composition/MenuCollection.astro",
+      "bytes": 2966,
+      "sha256": "24a5b8fc2ae95047fa0bdf180853baa73f32206ed629b9eecb2921dadab96a3a"
+    },
+    {
+      "path": "src/components/composition/DishDetail.astro",
+      "bytes": 4136,
+      "sha256": "352e01c2b63da28c03af9ff7aef3826b38c85afdcfd2cce87cc6e911be7d57c9"
+    },
+    {
+      "path": "src/components/composition/ExperienceComposition.astro",
+      "bytes": 14969,
+      "sha256": "9535ce4198f32436f45193300095da74a570a8b444e9922ba65df102e05598f6"
+    },
+    {
+      "path": "src/components/composition/ArtisticPages.astro",
+      "bytes": 8793,
+      "sha256": "c2023bc7d99074db7a676da54f5f96cc5c6dc65e0656b00dca014b5c4a6d047b"
+    },
+    {
+      "path": "src/components/composition/ExperienceNavigation.astro",
+      "bytes": 1460,
+      "sha256": "32d0ac9c40fd562155d41e677d453d230f4efe2f8fd4443e6767e75008d28cc8"
+    },
+    {
+      "path": "src/design/menu-carta.css",
+      "bytes": 6448,
+      "sha256": "25b53d32ed4a818e49e325d0ddb90ed1c566416aa24965befebcf439eac18921"
+    },
+    {
+      "path": "src/design/dish-detail.css",
+      "bytes": 5109,
+      "sha256": "ca5dcc051efeaefbe16946f9ce0ab76620c3cd7a213cc0cf98435357182aab7e"
+    },
+    {
+      "path": "src/design/dish-routes.ts",
+      "bytes": 374,
+      "sha256": "52d2cae825670bc7e56d81ac4f62a4f85fd61c029b6a72863a23fa1b102aef1e"
+    },
+    {
+      "path": "src/pages/b3/[candidate]/carta/[dish].astro",
+      "bytes": 1140,
+      "sha256": "23b9e6d59aa72eb7c47da929227c2771eb70f618cd1b68c4ce71e55bf3381a5b"
+    },
+    {
+      "path": "src/media/composition-media.ts",
+      "bytes": 1007,
+      "sha256": "5da72097b2281bbbfb2fed8547206c6db520fd3294adf77ae51fe311ebd63d40"
+    },
+    {
+      "path": "src/media/dish-media.ts",
+      "bytes": 5361,
+      "sha256": "1839f494baca3ec1ac7274e57b48a441f26f4d788e249d7d4531b6ce5e337217"
+    },
+    {
+      "path": "tests/dish-flow.test.ts",
+      "bytes": 2417,
+      "sha256": "988e88ed4c43824cd5cef99d90b71454c4ff4f0562c7bc3fb2608dcf16f885c3"
+    },
+    {
+      "path": "data/media/demo-v1/dish-details-20261025.json",
+      "bytes": 175942,
+      "sha256": "6418aeabd2094fc8819bb90076288495a4c2d4c6a5eb44d54c581c3883742add"
+    }
+  ],
+  "protectedOldHtml": 164,
+  "changedOldMenus": 4,
+  "newDetailPages": 16,
+  "allOldClientAssetsIdentical": true,
+  "browserViews": 100,
+  "minAuditedContrast": 5.0645742699205565,
+  "manualVideoSamples": [
+    {
+      "route": "/b3/candidate-01/carta/pizza/",
+      "width": 390,
+      "start": {
+        "ready": 0,
+        "paused": true
+      },
+      "playback": {
+        "time": 0.475,
+        "width": 1280,
+        "height": 720,
+        "muted": true,
+        "error": null
+      }
+    },
+    {
+      "route": "/b3/candidate-01/carta/pasta/",
+      "width": 390,
+      "start": {
+        "ready": 0,
+        "paused": true
+      },
+      "playback": {
+        "time": 0.4741,
+        "width": 640,
+        "height": 360,
+        "muted": true,
+        "error": null
+      }
+    },
+    {
+      "route": "/b3/candidate-01/carta/salad/",
+      "width": 390,
+      "start": {
+        "ready": 0,
+        "paused": true
+      },
+      "playback": {
+        "time": 0.4717,
+        "width": 1280,
+        "height": 720,
+        "muted": true,
+        "error": null
+      }
+    },
+    {
+      "route": "/b3/candidate-01/carta/dessert/",
+      "width": 390,
+      "start": {
+        "ready": 0,
+        "paused": true
+      },
+      "playback": {
+        "time": 0.4828,
+        "width": 720,
+        "height": 1280,
+        "muted": true,
+        "error": null
+      }
+    },
+    {
+      "route": "/b3/candidate-01/carta/pizza/",
+      "width": 1440,
+      "start": {
+        "ready": 0,
+        "paused": true
+      },
+      "playback": {
+        "time": 0.4776,
+        "width": 1280,
+        "height": 720,
+        "muted": true,
+        "error": null
+      }
+    },
+    {
+      "route": "/b3/candidate-01/carta/pasta/",
+      "width": 1440,
+      "start": {
+        "ready": 0,
+        "paused": true
+      },
+      "playback": {
+        "time": 0.4655,
+        "width": 640,
+        "height": 360,
+        "muted": true,
+        "error": null
+      }
+    },
+    {
+      "route": "/b3/candidate-01/carta/salad/",
+      "width": 1440,
+      "start": {
+        "ready": 0,
+        "paused": true
+      },
+      "playback": {
+        "time": 0.4757,
+        "width": 1280,
+        "height": 720,
+        "muted": true,
+        "error": null
+      }
+    },
+    {
+      "route": "/b3/candidate-01/carta/dessert/",
+      "width": 1440,
+      "start": {
+        "ready": 0,
+        "paused": true
+      },
+      "playback": {
+        "time": 0.473,
+        "width": 720,
+        "height": 1280,
+        "muted": true,
+        "error": null
+      }
+    }
+  ],
+  "keyboardNavigationSmoke": true,
+  "previewRoutes": 20,
+  "invalid404": [
+    {
+      "route": "/b3/candidate-05/carta/pizza/",
+      "status": 404
+    },
+    {
+      "route": "/b3/candidate-01/carta/no-existe/",
+      "status": 404
+    }
+  ],
+  "media": {
+    "pin": "3ef00cf620d6eec4ae04f844713e5c6f8fbebbe470be955ee28c613cf1931332",
+    "assets": 20,
+    "usages": 48,
+    "files": 20,
+    "video_choices": {
+      "pizza": {
+        "asset_id": "b3-video-1280-silent",
+        "label": "Pizza · vídeo ilustrativo"
+      },
+      "salad": {
+        "asset_id": "dish-video-3510",
+        "label": "Verduras frescas · vídeo ilustrativo"
+      },
+      "dessert": {
+        "asset_id": "dish-video-258562",
+        "label": "Decoración de pastel · vídeo ilustrativo"
+      },
+      "pasta": {
+        "asset_id": "dish-video-200157",
+        "label": "Elaboración de pasta · vídeo ilustrativo"
+      }
+    },
+    "credentials_copied": false
+  },
+  "cliSession": "4fc1f9d7-cf75-4efe-ac67-cccb6b7e421d",
+  "cliCalls": [
+    {
+      "index": 1,
+      "status": "responded",
+      "sameSession": true,
+      "estimatedCostUsd": 0.1772839
+    },
+    {
+      "index": 2,
+      "status": "responded",
+      "sameSession": true,
+      "estimatedCostUsd": 0.6393647
+    },
+    {
+      "index": 3,
+      "status": "responded",
+      "sameSession": true,
+      "estimatedCostUsd": 0.8516812000000001
+    }
+  ],
+  "detector": [],
+  "credentialsCopied": false,
+  "apiCachesExported": false,
+  "limitations": [
+    "Local computed contrast/geometry checks are not full WCAG certification.",
+    "Warm local media playback, not a cold mobile-network performance certification."
+  ]
+}

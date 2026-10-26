@@ -1,0 +1,37 @@
+/* 06 Cocina abierta — general purpose. An evening dining room: deep green, brass, ivory; Archivo (semi-expanded) with Newsreader for editorial text. */
+@font-face{font-family:'Archivo';src:url(/fonts/feedback8/archivo.woff) format('woff');font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap}
+@font-face{font-family:'Newsreader';src:url(/fonts/feedback8/newsreader.woff) format('woff');font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(/fonts/b3-artistic/dmsans.woff) format('woff');font-weight:100 1000;font-style:normal;font-display:swap}
+.depth-experience.engine-marea{--paper:#10241b;--ink:#f3ead6;--muted:#cdd6c4;--line:#2f4a3c;--control:#8aa08f;--accent:#d9a441;--accent-text:#e6b655;--mark:#d9a441;--action:#d9a441;--on-action:#10241b;--surface:#1a3427;--focus:#f3ead6;--footer-bg:#0a1812;--footer-ink:#f3ead6;--footer-muted:#c5d0c0;--display:'Archivo',system-ui,sans-serif;font-family:'DM Sans',system-ui,sans-serif;background:var(--paper);color:var(--ink)}
+.engine-marea :is(h1,h2,.footer-wordmark,.exp-brand){font-family:'Archivo',system-ui,sans-serif;font-stretch:112%;font-weight:700;letter-spacing:-.015em}
+.engine-marea h3{font-family:'Archivo',system-ui,sans-serif;font-weight:600}
+.engine-marea :is(blockquote,.module-about .lead,.journal-copy>p,.int-head p){font-family:'Newsreader',Georgia,serif}
+.engine-marea .exp-header{background:var(--paper);border-bottom:1px solid var(--line)}
+.engine-marea .ma-hero{display:grid;min-height:min(80svh,46rem)}
+@media(min-width:900px){.engine-marea .ma-hero{grid-template-columns:minmax(0,5fr) minmax(0,4fr)}}
+.engine-marea .ma-panel{display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,6vw,5rem) var(--pad);background:var(--surface)}
+.engine-marea .ma-panel h1{margin:0;font-size:clamp(2.25rem,5.5vw,4.25rem);line-height:1.03;color:var(--ink)}
+.engine-marea .ma-panel .hero-tagline{margin:1rem 0 0;max-width:30ch;font:400 clamp(1.25rem,2.2vw,1.625rem)/1.4 'Newsreader',Georgia,serif;color:var(--muted)}
+.engine-marea .ma-strip{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;margin:1.5rem 0 0;padding-top:1rem;border-top:1px solid var(--line)}
+.engine-marea .ma-strip a{display:inline-flex;align-items:center;min-height:44px;color:var(--accent-text);font-weight:600}
+.engine-marea .ma-stack{display:grid;grid-template-rows:3fr 2fr;gap:6px;min-height:22rem}
+.engine-marea .ma-stack .eg-media{min-height:10rem}
+.engine-marea .eg-btn.eg-ghost{color:var(--ink);border-color:var(--ink)}
+.engine-marea .eg-btn{border-radius:10px}
+.engine-marea .quick-links a{border-top-color:var(--line)}
+.engine-marea .quick-links .is-primary a{border-radius:12px;border-top-color:var(--action)}
+.engine-marea .review-card{padding:1.25rem 1.5rem;background:var(--surface);border-radius:14px}
+.engine-marea .eg-featured ul{grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))}
+.engine-marea .eg-featured a{grid-template-columns:96px minmax(0,1fr);align-items:center;gap:.25rem .9rem;padding:.6rem;background:var(--surface);border-radius:14px}
+.engine-marea .eg-featured .eg-feat-photo{grid-row:span 2}
+.engine-marea .eg-featured .eg-feat-name{align-self:end;min-width:0}
+.engine-marea .eg-featured .eg-price{align-self:start}
+.engine-marea .eg-feat-photo{aspect-ratio:1;border-radius:10px}
+.engine-marea .ma-mosaic ul{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:0;padding:clamp(1.5rem,4vw,3rem) var(--pad);list-style:none}
+.engine-marea .ma-mosaic li{border-radius:14px;overflow:clip;min-height:11rem}
+.engine-marea .ma-m-1{grid-column:span 3}.engine-marea .ma-m-2{grid-column:span 2}.engine-marea .ma-m-3{grid-column:span 1}
+.engine-marea .ma-mosaic .eg-media,.engine-marea .ma-mosaic .contextual-photo{height:100%}
+.engine-marea .cat-menu .cat-group-title{font:700 1rem/1.3 'Archivo',system-ui,sans-serif;font-stretch:112%;color:var(--accent-text);border-bottom-color:var(--line)}
+.engine-marea .cat-menu .cat-name{font-family:'Archivo',system-ui,sans-serif;font-weight:600;font-size:1.1875rem}
+.engine-marea .cat-menu :is(.cat-tools :is(input,select)){background:var(--surface);color:var(--ink)}
+@media(max-width:700px){.engine-marea .ma-stack{grid-template-rows:none;grid-template-columns:1fr 1fr;min-height:0}.engine-marea .ma-mosaic ul{grid-template-columns:repeat(2,minmax(0,1fr))}.engine-marea :is(.ma-m-1,.ma-m-2,.ma-m-3){grid-column:span 1}.engine-marea .ma-m-1{grid-column:1/-1}}

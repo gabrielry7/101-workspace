@@ -1,0 +1,124 @@
+{
+  "kind": "CLAUDE_CODE_REAL_PILOT_VERIFICATION",
+  "createdAt": "2026-10-25T03:51:37.994Z",
+  "files": [
+    {
+      "path": "final-test.log",
+      "source": ".tools/claude-code/restaurant-journal-pilot-01/final-test.log",
+      "bytes": 40752,
+      "sha256": "a0a87cdac6ae9c7bd362657bc7ba230c5220f1c65a5b4ed8dad9372b3f3509b1"
+    },
+    {
+      "path": "final-check.log",
+      "source": ".tools/claude-code/restaurant-journal-pilot-01/final-check.log",
+      "bytes": 302,
+      "sha256": "4656a249709f1576be1ac02d225ac069ea1b8e36a4d4c414a4fe448d228abbf0"
+    },
+    {
+      "path": "final-build.log",
+      "source": ".tools/claude-code/restaurant-journal-pilot-01/final-build.log",
+      "bytes": 13154,
+      "sha256": "453d66e7083515e76799821a5b4ac2cdedb42aa9a707c1339e7c812ad8832d52"
+    },
+    {
+      "path": "final-checks.json",
+      "source": ".tools/claude-code/restaurant-journal-pilot-01/final.json",
+      "bytes": 621,
+      "sha256": "bf8bf02a7ff4656e02e06cc2b37154be594b1ccda1fb4037368b6a0518317ab1"
+    },
+    {
+      "path": "initial-test-failure.log",
+      "source": ".tools/claude-code/restaurant-journal-pilot-01/verify-test.log",
+      "bytes": 42469,
+      "sha256": "916f2fb988f248c1979ae0ad81ac263f9e5b994f72e33b1d83bcc8b572e3a060"
+    },
+    {
+      "path": "preparation.json",
+      "source": ".tools/claude-code/restaurant-journal-pilot-01/preparation.json",
+      "bytes": 3021,
+      "sha256": "a75bf662945a3f14e71b15666194c132767d6bf94ce412b57ebc0e5dd500eecf"
+    },
+    {
+      "path": "preservation.json",
+      "source": ".tools/claude-code/restaurant-journal-pilot-01/preservation.json",
+      "bytes": 740,
+      "sha256": "74b092b97ac84d9a383de7598a1c495ff94ca7cd4932e0c74b4b32c24a9c3a11"
+    },
+    {
+      "path": "baseline-audit.json",
+      "source": ".tools/claude-code/baseline-audit/audit.json",
+      "bytes": 481592,
+      "sha256": "f8942d112e8d721c5cf413dcb80a36ec299d7301db5cb9864b3fb8c5459cb48a"
+    },
+    {
+      "path": "pilot-audit.json",
+      "source": ".tools/claude-code/restaurant-journal-pilot-01/visual-final-isolated/audit.json",
+      "bytes": 482386,
+      "sha256": "0a1f2de451b9b2778ef027509732da84748f18c2f23509e924a6a2244fd09cec"
+    },
+    {
+      "path": "before-capture.json",
+      "source": ".tools/claude-code/before-review/capture.json",
+      "bytes": 11893,
+      "sha256": "671af3c748821f3e6e5cd6748432da1e8fd5e59236fa50560c5f2861cb7fe38b"
+    },
+    {
+      "path": "after-capture.json",
+      "source": ".tools/claude-code/after-review/capture.json",
+      "bytes": 11942,
+      "sha256": "0f9768bc5297af6acc2296d5055c83fe70435aaa87fb479eb1abb00736156463"
+    },
+    {
+      "path": "review-source.mjs",
+      "source": ".tools/claude-code/review-pilot.mjs",
+      "bytes": 4065,
+      "sha256": "5d262300bd9c693c1dac0156cbac92d42550d47514bbefd403f346d6d0ddc273"
+    },
+    {
+      "path": "preservation-source.mjs",
+      "source": ".tools/claude-code/compare-builds.mjs",
+      "bytes": 2860,
+      "sha256": "a6d82aecd2f18e669f67202e0fd53616ca6dfb7b8d79ed95ea4f7eef07463415"
+    },
+    {
+      "path": "doctor.json",
+      "source": ".tools/claude-code/doctor.json",
+      "bytes": 328,
+      "sha256": "136a89e94994792597cdf2e56f8f74b179557f787237a0bb0e0a2b3c1c77fc3b"
+    },
+    {
+      "path": "unauthenticated-probe.json",
+      "source": ".tools/claude-code/unauthenticated-probe.json",
+      "bytes": 1463,
+      "sha256": "b091c4051169e0f54d27eed18b3bf4b6855849a4f7a071486ee6bcf8d69efa29"
+    }
+  ],
+  "results": {
+    "bridgeTests": "6/6 PASS",
+    "tests": "423/424; inherited H8 LOCK_BROWSER_MISMATCH",
+    "check": "0 diagnostics",
+    "build": "168 pages",
+    "browserWidths": [
+      360,
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "browserAudits": "PASS closed/expanded + keyboard",
+    "impeccableDetector": [],
+    "pilotMerged": false,
+    "automaticThirdCallRejected": true
+  },
+  "screenshots": {
+    "before": ".tools/claude-code/before-review",
+    "after": ".tools/claude-code/after-review",
+    "format": "native viewport PNG; hero/journal/continuation",
+    "exportedPixels": false
+  },
+  "limits": [
+    "Full-page mobile screenshots are incomplete compositor evidence; native viewport screenshots were inspected",
+    "Archived audit source retains its original .tools/claude-code relative import layout; run the retained original from repository root",
+    "No cold-network Core Web Vitals or full WCAG certification"
+  ]
+}

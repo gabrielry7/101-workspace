@@ -1,0 +1,132 @@
+---
+// Style engines 05-08 (Mercado · Marea · Riso · Índice): one shared interior renderer plus four home operators.
+// Same semantic modules, catalogue and demo features as 01-04; media comes only from the route-scoped engine package.
+import Foundation from '../../layouts/Foundation.astro';
+import ContextualModule from './ContextualModule.astro';
+import ContextualImage from './ContextualImage.astro';
+import PreviewIntent from './PreviewIntent.astro';
+import CommunitySections from './CommunitySections.astro';
+import ExperienceNavigation from './ExperienceNavigation.astro';
+import ExperienceFeatures from './ExperienceFeatures.astro';
+import MenuCollection from './MenuCollection.astro';
+import DishDetail from './DishDetail.astro';
+import CatalogueSelection from './CatalogueSelection.astro';
+import {loadEngineMedia,engineDishVideo} from '../../media/engine-media.ts';
+import {loadRestaurantCatalogue} from '../../design/restaurant-catalogue.ts';
+import {richExperiencePages as experiencePages} from '../../design/rich-experience-contracts.ts';
+import {experienceRoute} from '../../design/experience-contracts.ts';
+import {dishRoute} from '../../design/dish-routes.ts';
+import styles from '../../design/experience.css?raw';
+import richStyles from '../../design/rich-experience.css?raw';
+import depthStyles from '../../design/depth-experience.css?raw';
+import refinementStyles from '../../design/experience-refinement.css?raw';
+import dishStyles from '../../design/dish-detail.css?raw';
+import catalogueStyles from '../../design/catalogue.css?raw';
+import catalogueClient from '../../design/catalogue-client.js?url';
+import baseCss from '../../design/engine-base.css?raw';
+import marketCss from '../../design/engine-market.css?raw';
+import mareaCss from '../../design/engine-marea.css?raw';
+import risoCss from '../../design/engine-riso.css?raw';
+import indiceCss from '../../design/engine-indice.css?raw';
+interface Props{lab:any;profile:any;page:any;offering?:any;engine:{id:string;label:string;operator:string;role:string}}
+const {lab,profile:p,page,offering,engine}=Astro.props,op=engine.operator as 'market'|'marea'|'riso'|'indice',s=lab.scenario,em=await loadEngineMedia();
+const engineCss={market:marketCss,marea:mareaCss,riso:risoCss,indice:indiceCss}[op];
+const route=offering?dishRoute(p.root,offering.id):experienceRoute(p.root,page),k:string=offering?'dish':page.kind;
+const modules=s.content.pages.flatMap((q:any)=>q.modules),by=(c:string)=>modules.find((m:any)=>m.capability_id===c);
+const identity=by('identity'),story=by('about'),baseMenu=by('menu'),catalogue=lab.catalogue??loadRestaurantCatalogue(lab).catalogue,menu=lab.catalogue?.module??baseMenu;
+const name=identity.facts.find((f:any)=>f.kind==='business_name'),tagline=identity.facts.find((f:any)=>f.kind!=='business_name');
+const link=(kind:string)=>experienceRoute(p.root,experiencePages.find(q=>q.kind===kind)! as any);
+const creditHref=link('credits'),carta=link('collection');
+const view={...lab.presentation,media_presentation:{creditMode:'linked' as const,creditsHref:creditHref,cover:true},selection_href:null};
+const mod={handle:em.handle,at:em.evaluated_at,route,presentation:view};
+const img={handle:em.handle,at:em.evaluated_at,route,creditMode:'linked' as const,creditsHref:creditHref,cover:true};
+const engLab={...lab,experience_media:em};
+const dishGroup=offering?catalogue.groups.find((g:any)=>g.offering_ids.includes(offering.id)):undefined,dishName=offering?.facts.find((f:any)=>f.kind==='offering_name')?.text;
+const catalogueFlow=['collection','selection'].includes(k);
+const videoOverride=offering&&lab.presentation.offering_media[offering.id]?await engineDishVideo(offering.id,route):undefined;
+const get=(o:any,kind:string)=>o.facts.find((f:any)=>f.kind===kind);
+const starters=[...baseMenu.offerings].sort((a:any,b:any)=>lab.presentation.offering_order.indexOf(a.id)-lab.presentation.offering_order.indexOf(b.id)).map((o:any)=>({id:o.id,name:get(o,'offering_name').text,price:get(o,'price').text,href:dishRoute(p.root,o.id)}));
+const words=String(name.text).split(/\s+/);
+const indexArt=[2481346,8594421,1887240,1932466,4367047,1665402,1596417,10258355],plateArt=[{id:2481346,cap:'Cítricos'},{id:1887240,cap:'Tomates'},{id:4367047,cap:'Salvia'}];
+const heads:Record<string,{h:string;p?:string}>={
+ collection:{h:'La carta',p:'Cuarenta platos para este concepto ficticio, en ocho categorías. Elige uno y explora sus detalles.'},
+ selection:{h:'Tu selección.',p:'Pedido · demostración. Elige los platos que te apetecen. Esta es una demostración: no se envían pedidos ni se realizan cobros.'},
+ request:{h:'Tu próxima mesa.',p:'Reservas · demostración. Una ocasión para reunirnos. Explora el formulario sin efectuar una reserva real.'},
+ story:{h:'El gusto de quedarse.'},
+ visit:{h:'Nos vemos aquí.',p:'Una sede imaginaria para explorar este concepto. No es una ubicación real.'},
+ faq:{h:'Lo que quieres saber.'},
+ journal:{h:'El diario.'},
+ reviews:{h:'De boca en boca.',p:'Opiniones · demostración.'},
+ contact:{h:'Hablemos.',p:'Contacto · demostración.'},
+ credits:{h:'Créditos.',p:'Las imágenes y el vídeo son ilustrativos. No representan una empresa, sus instalaciones o sus productos reales.'}
+};
+const interiorHead=heads[k];
+if(k!=='home'&&k!=='dish'&&!interiorHead)throw Error('ENGINE_PAGE_KIND_UNSUPPORTED');
+const head:{h:string;p?:string}=interiorHead??{h:''};
+const mine=em.review.usages.filter((u:any)=>u.page.startsWith(p.root)),credits=k==='credits'?[...new Map(mine.flatMap((u:any)=>{const g=em.review.grants.find((x:any)=>x.id===u.grant_id),a=g&&em.review.assets.find((x:any)=>x.id===g.original_asset_id),src=a?.provenance.find((q:any)=>q.source.startsWith('Pixabay licensed'))?.reference;return g&&a&&src?[[a.id,{g,a,src}] as const]:[];})).values()]:[];
+const css=(styles+'\n'+richStyles+'\n'+depthStyles+'\n'+refinementStyles+(offering?'\n'+dishStyles:'')+(catalogue&&(offering||catalogueFlow)?'\n'+catalogueStyles:'')+'\n'+baseCss+'\n'+engineCss).replaceAll('\r\n','\n');
+const idAttrs={'data-module-id':identity.id,'data-component':identity.component,'data-scope-id':identity.scope_id,'data-semantic-page':identity.page,'data-required':String(identity.required)};
+---
+<Foundation title={offering?`${dishName} · ${name.text} · ${p.label}`:`${name.text} · ${page.label} · ${p.label}`}>
+ <style is:inline set:html={css}/>
+ <div class:list={['contextual-site','experience-site','rich-experience','depth-experience','engine-site',`engine-${op}`,`page-${k}`]} data-experience-sha256={lab.site_sha256} data-editorial-sha256={lab.site.editorial_sha256} data-feedback-sha256={lab.site.feedback_sha256} data-revision-feedback-sha256={lab.site.revision_feedback_sha256} data-features-sha256={lab.site.features_sha256} data-depth-research-sha256={lab.site.depth_research_sha256} data-profile-id={p.id} data-engine={engine.id} data-engine-role={engine.role} data-page-kind={k} data-content-sha256={s.content.content_sha256} data-plan-sha256={s.content.plan_sha256} data-media-sha256={em.review.review_sha256} data-catalogue-sha256={catalogue.sha256}>
+  <a class="eg-skip" href="#experience-main">Saltar al contenido</a>
+  <ExperienceNavigation root={p.root} name={name.text} kind={k}/>
+  {offering?<div class="experience-content dish-content" id="experience-main" tabindex="-1">
+   <nav class="depth-breadcrumb" aria-label="Ruta de navegación"><a href={p.root}>Inicio</a><a href={carta}>La carta</a>{dishGroup&&<a href={`${carta}#cat-${dishGroup.id}`}>{dishGroup.label}</a>}<span aria-current="page">{dishName}</span></nav>
+   <DishDetail {offering} menu={menu} {route} root={p.root} collectionHref={carta} selectionHref={link('selection')} presentation={lab.presentation} {catalogue} mediaOverride={em} {videoOverride}/>
+  </div>:k==='home'?<>
+   {op==='market'&&<>
+    <section class="mk-top" id="experience-main" tabindex="-1" {...idAttrs}>
+     <div class="mk-copy"><h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1><p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p><div class="eg-actions"><a class="eg-btn" href={carta}>Ver la carta</a><a class="eg-btn eg-ghost" href={link('request')}>Reservar · demostración</a></div></div>
+     <div class="eg-media mk-photo"><ContextualImage {...img} slot="hero" hero/></div>
+    </section>
+    <nav class="mk-chips" aria-label="Categorías de la carta"><ul>{catalogue.groups.map((g:any)=><li><a href={`${carta}#cat-${g.id}`}>{g.label}</a></li>)}</ul></nav>
+    <section class="mk-start" aria-labelledby="mk-start-title"><h2 id="mk-start-title">Para empezar</h2><ul class="eg-quick">{starters.map((d:any)=><li><a href={d.href}><span>{d.name}</span><span class="eg-price">{d.price}</span></a></li>)}</ul><p class="eg-note">Platos de ejemplo de un restaurante ficticio. Precios ilustrativos.</p></section>
+   </>}
+   {op==='marea'&&<>
+    <section class="ma-hero" id="experience-main" tabindex="-1" {...idAttrs}>
+     <div class="ma-copy"><h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1><p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p><div class="eg-actions"><a class="eg-btn" href={carta}>Explorar la carta</a><a class="eg-btn eg-ghost" href={link('request')}>Reservar · demostración</a></div></div>
+     <div class="eg-media ma-arch"><ContextualImage {...img} slot="hero" hero/></div>
+    </section>
+    <section class="ma-tiles" aria-labelledby="ma-tiles-title"><h2 id="ma-tiles-title">La carta, por categorías</h2><ul>{catalogue.groups.map((g:any)=><li><a href={`${carta}#cat-${g.id}`}><span class="ma-tile-name">{g.label}</span><span class="ma-tile-count">{g.offering_ids.length} platos</span></a></li>)}</ul></section>
+    <section class="ma-sig" aria-labelledby="ma-sig-title"><h2 id="ma-sig-title">Para abrir mesa</h2><ul class="eg-quick">{starters.map((d:any)=><li><a href={d.href}><span>{d.name}</span><span class="eg-price">{d.price}</span></a></li>)}</ul><p class="eg-note">Platos de ejemplo de un restaurante ficticio. Precios ilustrativos.</p></section>
+   </>}
+   {op==='riso'&&<>
+    <section class="rs-poster" id="experience-main" tabindex="-1" {...idAttrs}>
+     <h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{words.map((w:string)=><span>{w}</span>)}</h1>
+     <p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p>
+     <div class="eg-actions"><a class="eg-btn" href={carta}>Ver la carta</a><a class="eg-btn eg-ghost" href={link('request')}>Reservar · demostración</a></div>
+    </section>
+    <section class="rs-plates" aria-label="Imágenes de ambiente">{plateArt.map((a,i)=><figure class={`rs-plate rs-plate-${i+1}`}><div class="eg-media rs-photo"><ContextualImage {...img} slot={`art:${a.id}`}/></div><figcaption>{a.cap} · imagen de ambiente</figcaption></figure>)}</section>
+    <section class="rs-band"><p>{tagline.text}</p></section>
+    <section class="rs-house" aria-labelledby="rs-house-title"><h2 id="rs-house-title">Platos de la casa</h2><ul class="eg-quick">{starters.map((d:any)=><li><a href={d.href}><span>{d.name}</span><span class="eg-price">{d.price}</span></a></li>)}</ul><p class="eg-note">Platos de ejemplo de un restaurante ficticio. Precios ilustrativos.</p></section>
+   </>}
+   {op==='indice'&&<>
+    <section class="ix-intro" id="experience-main" tabindex="-1" {...idAttrs}>
+     <h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1>
+     <p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p>
+     <div class="eg-actions"><a class="eg-btn" href={carta}>Ver la carta completa</a><a class="eg-btn eg-ghost" href={link('request')}>Reservar · demostración</a></div>
+    </section>
+    <section class="ix-index" aria-labelledby="ix-index-title"><h2 id="ix-index-title">Índice de la carta</h2><ul class="ix-list">{catalogue.groups.map((g:any,i:number)=><li class="ix-item"><a class="ix-word" href={`${carta}#cat-${g.id}`}>{g.label}<span class="ix-count">{g.offering_ids.length} platos</span></a><div class="eg-media ix-photo"><ContextualImage {...img} slot={`art:${indexArt[i]}`}/></div></li>)}</ul><p class="eg-note">Las imágenes de este índice son de ambiente: no muestran los platos de cada categoría.</p></section>
+   </>}
+   <ExperienceFeatures features={lab.features} root={p.root} mode="home"/>
+   <CommunitySections lab={engLab} features={lab.features} root={p.root} {route} mode="home" noSupplemental/>
+  </>:<div class="experience-content" id="experience-main" tabindex="-1">
+   <nav class="depth-breadcrumb" aria-label="Ruta de navegación"><a href={p.root}>Inicio</a><span aria-current="page">{page.label}</span></nav>
+   <header class="page-intro eg-head"><h1>{head.h}</h1>{head.p&&<p>{head.p}</p>}</header>
+   {k==='collection'&&<MenuCollection module={menu} root={p.root} presentation={view} layout="ledger" {catalogue}/>}
+   {k==='selection'&&<div class="order-layout"><MenuCollection module={menu} root={p.root} presentation={view} layout="ledger" {catalogue} mode="select"/><CatalogueSelection><PreviewIntent kind="selection"/></CatalogueSelection></div>}
+   {k==='request'&&<><PreviewIntent kind="request"/><ExperienceFeatures features={lab.features} root={p.root} mode="request"/></>}
+   {k==='story'&&<div class="story-layout"><ContextualModule module={story} {...mod} handle={em.handle} at={em.evaluated_at}/><ContextualImage {...img} slot="story"/></div>}
+   {k==='visit'&&<><div class="visit-layout">{['locations','opening_hours','amenities'].map(cap=><ContextualModule module={by(cap)} {...mod}/>)}</div><ExperienceFeatures features={lab.features} root={p.root} mode="visit"/></>}
+   {k==='faq'&&<ContextualModule module={by('faqs')} {...mod}/>}
+   {k==='journal'&&<CommunitySections lab={engLab} features={lab.features} root={p.root} {route} mode="journal" noSupplemental/>}
+   {k==='reviews'&&<CommunitySections lab={engLab} root={p.root} {route} mode="reviews" noSupplemental/>}
+   {k==='contact'&&<CommunitySections lab={engLab} root={p.root} {route} mode="contact" noSupplemental/>}
+   {k==='credits'&&<><div class="credit-list">{credits.map(({g,a,src})=><article data-credit-original={a.id}><h2>{g.attribution.text}</h2><p>{a.kind==='video'?'Vídeo ilustrativo':'Imagen ilustrativa'} · {g.license_type}</p><a href={src}>Ver origen en Pixabay ↗</a></article>)}</div><details class="experience-scope"><summary>Alcance de la demostración y condiciones</summary><p>Textos, recetas, precios, calorías, alérgenos, horarios, lugar, plano y ocupación de mesas son ficción. No hay conexión comercial, disponibilidad real, pagos, reservas enviadas, reseñas de consumidores ni sede visitable.</p><p>El material no acredita platos o negocios. Las imágenes de ambiente no representan productos concretos. Los vídeos de los platos son opcionales, sin audio y sólo se reproducen con sus controles. Se usa el laboratorio Astro compartido; upstream y runtime comercial no están integrados. Este motor es un candidato de laboratorio pendiente de valoración humana.</p><div data-diagnostics>{s.content.diagnostics.map((v:any)=><p data-diagnostic-sha256={JSON.stringify(v)}>{v.code} · {v.scope_id} · {v.reason}</p>)}</div><ul data-restrictions>{s.content.restrictions.map((v:string)=><li>{v}</li>)}</ul><ul data-exclusions>{s.content.exclusions.map((v:any)=><li>{v.scope_id} · {v.id} · {v.reason}</li>)}</ul></details></>}
+  </div>}
+  <footer class="exp-footer"><a class="footer-wordmark" href={p.root}>{name.text}</a><div class="footer-links"><a href={carta}>Carta</a><a href={link('request')}>Reservas</a><a href={link('visit')}>Visita</a><a href={link('story')}>Nuestra idea</a><a href={link('faq')}>Preguntas</a><a href={link('contact')}>Contacto y redes</a><a href={link('reviews')}>Opiniones</a><a href={creditHref} data-credits-link>Créditos</a><a href="/b3/">Comparar propuestas</a></div><p class="fiction-notice" data-media-disclosure>Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.</p><p class="provider-notice" data-provider-notice>Pixabay y sus autores no respaldan este escenario.</p></footer>
+ </div>
+ {catalogueFlow&&<script is:inline type="module" src={catalogueClient}></script>}
+</Foundation>

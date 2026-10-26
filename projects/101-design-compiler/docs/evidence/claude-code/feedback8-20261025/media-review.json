@@ -1,0 +1,1153 @@
+{
+  "kind": "EXPLICIT_USER_FEEDBACK_EIGHT_ENGINE_MEDIA",
+  "at": "2026-10-26T02:47:49.117Z",
+  "authorization": "Latest direct feedback: photos for40dishdetails, richdistinctinteriors, autoplaymutedloopambientvideo withoutoverlaybuttons; user authorized arbitraryexamplemap. Samefictionalrestaurantfixture only.",
+  "sources": [
+    {
+      "pin": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+      "evidence": [
+        {
+          "path": "docs/evidence/corrections/b3/experience-media-01/review.md",
+          "sha256": "eebdac10a32a8c995884c0eef8126e8d327c3a870532ab5a4e0248791f8d2887"
+        },
+        {
+          "path": "docs/evidence/corrections/b3/experience-media-01/remux.json",
+          "sha256": "c0f36173b22d748ce76438719e9d51ab7dc956a4f20fb3d4c3cf8acfb8fe7ad8"
+        },
+        {
+          "path": "docs/evidence/corrections/b3/experience-media-01/decode.json",
+          "sha256": "b113588c500a39e9dff32d2195084309346478fbfa711d537bcf76985b6af1e9"
+        },
+        {
+          "path": "docs/evidence/corrections/b3/human-media-20261020/review.md",
+          "sha256": "bf224ec23d8f97e5d3210d2834e874757d36d7f2fd314e6aa608041fe8b377e4"
+        }
+      ]
+    },
+    {
+      "pin": "041b95f7b9d6b142a532706a6940ef86b9e9bba38231c8172f8d0cfe26a741d3",
+      "evidence": {
+        "path": "docs/evidence/claude-code/artistic-20261025/resources-review.json",
+        "sha256": "308adb3b05a4299675dfa4c16d70328e943a40c9cfdc7ffedcbe45d64ff06648"
+      }
+    },
+    {
+      "pin": "3ef00cf620d6eec4ae04f844713e5c6f8fbebbe470be955ee28c613cf1931332",
+      "evidence": {
+        "path": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      }
+    }
+  ],
+  "terms": {
+    "official": "https://pixabay.com/service/terms/",
+    "version": "2026-10-20",
+    "verified_at": "2026-10-26T02:47:49.117Z",
+    "api": "https://pixabay.com/api/docs/",
+    "new_searches": 42,
+    "bounded": "36specificmenuqueries plus6manualfollowupqueries; no pagination/crawl/bulkcatalogue; onechosenrenditionper36missingdish, temporary24hmetadata cache; noaccountchange/purchase/training"
+  },
+  "photos": [
+    {
+      "dish": "bruschetta-tomate",
+      "id": 5619887,
+      "page": "https://pixabay.com/photos/gourmet-food-bread-dish-bruschetta-5619887/",
+      "contributor": "amiraxgelcola",
+      "original_sha256": "507cfb823d590a86130d4d8d6bc1c57c5a9e72ee2acf15a2d7172bd74788c1c9",
+      "derivatives": [
+        {
+          "sha256": "7784eefb1865309c146d1ff21fda41a2e2d50358a5140bb1bbb351717b92f215",
+          "bytes": 21310,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "a2b1400911a6f9d71dd807faf34fb8af3ddb130ce90f0b7863e8609bf89b34f1",
+          "bytes": 64710,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "03a6b78e75ec13d2cbd05cdac274cfe89587d47742e3a1601c32af411985c0cd",
+          "bytes": 194400,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "crema-calabaza",
+      "id": 2972858,
+      "page": "https://pixabay.com/photos/pumpkin-soup-soup-2972858/",
+      "contributor": "congerdesign",
+      "original_sha256": "fe3015584621943227637da7ffdde9f23a1ee12fc91ab7dd01d80fdf806de26d",
+      "derivatives": [
+        {
+          "sha256": "63fd9ed390859258a09a59f2ac2e9ffed9d4368b02a2b16f2c7f442f22d5cee0",
+          "bytes": 16700,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "c0bc772a54b7c7ee2d4dded22c472b04d8d4d2561e12c5a8d75f5ac6c6087471",
+          "bytes": 44308,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "eead59f49658c9c2f8ea2a6bf072150ac7633b1dcccdd5bcb454aa5df6926a88",
+          "bytes": 120180,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "carpaccio-remolacha",
+      "id": 7543170,
+      "page": "https://pixabay.com/photos/beetroot-salad-vegetables-meal-7543170/",
+      "contributor": "congerdesign",
+      "original_sha256": "78b08afadbdffc4b520433b67f29815cc8be6faff3e4cf74586fde26f87a13ac",
+      "derivatives": [
+        {
+          "sha256": "3bf29e63852d399cec8bf1b72a67422be7eb6b7b62c1488cf5262b5d640d7809",
+          "bytes": 9458,
+          "width": 320,
+          "height": 208
+        },
+        {
+          "sha256": "0d79ee6c7bbf2cccab538ea7862c3eda1a13e7c209ed6bde95f6211b5afd743b",
+          "bytes": 22992,
+          "width": 640,
+          "height": 416
+        },
+        {
+          "sha256": "1b13540fb5cba43239773bc15470a4240b652cd8af338cb6f92526bcd342f96e",
+          "bytes": 55984,
+          "width": 1280,
+          "height": 831
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "croquetas-setas",
+      "id": 5681992,
+      "page": "https://pixabay.com/photos/croquette-shrimp-croquette-food-5681992/",
+      "contributor": "CharlotteGovaert",
+      "original_sha256": "1dd36e79045e5a41f9c65d94239aa311bb009acd588d0970f145163463dba9bd",
+      "derivatives": [
+        {
+          "sha256": "52fef2c05bafd5da369c1530d73a3d5cf733776bb6f57d9c383d4a466207024e",
+          "bytes": 8922,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "d6cd0ee86bd2a99fbfdcf3f0e2fccaa598b28a6c35307d31c60821cd22c9761c",
+          "bytes": 21082,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "44a94b0963d6c5eda394fcff2b7b3b97980da022e3a87fea77c4025d23ca1599",
+          "bytes": 50040,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Closeup of breaded croquettes; provider identifies alternative shrimp recipe, so caption explicitly says preparation of another recipe, not exact mushroom filling. No actual allergy or ingredient claim is derived."
+      ]
+    },
+    {
+      "dish": "burrata-tomates",
+      "id": 5451457,
+      "page": "https://pixabay.com/photos/salad-food-burrata-healthy-lunch-5451457/",
+      "contributor": "blandinejoannic",
+      "original_sha256": "3b6c64c6b00a4fb185182ef46a663a1f00a0e1abc4d0d4d583307955cd9df197",
+      "derivatives": [
+        {
+          "sha256": "424de2260863531e94b559187804b863eb1407d4d0fc73b44ce11ce53283fab6",
+          "bytes": 31106,
+          "width": 320,
+          "height": 480
+        },
+        {
+          "sha256": "c8560b1c926c1372165f15d00fb157091faec61db6c4216e7c5bc716c8b75ab7",
+          "bytes": 93756,
+          "width": 640,
+          "height": 960
+        },
+        {
+          "sha256": "f10fd47388caca6309efc4071622d5bc1d1be3d916268cff51b21bb9b2ca18ef",
+          "bytes": 152548,
+          "width": 853,
+          "height": 1280
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "tabla-quesos",
+      "id": 6153716,
+      "page": "https://pixabay.com/photos/cheese-platter-food-snack-grapes-6153716/",
+      "contributor": "mariya_m",
+      "original_sha256": "97fca6839292874a4c7fc7e3edcf36ff8f91b65f9bafc7a6113683860505b487",
+      "derivatives": [
+        {
+          "sha256": "b06fd0f6f8ad3962e1261af84bad10e3cc208bcfd80a7cd7038390e78ea93547",
+          "bytes": 8668,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "7d64189bb00f5858bdf70c62596df7fa01240ff3bf0096c6b60b69a6db756cf5",
+          "bytes": 19552,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "5b943a297c0226fdaccf7e6577c18d49ebfd74cc96d67b5ee34b44516fdccfe9",
+          "bytes": 48710,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "focaccia-romero",
+      "id": 4913279,
+      "page": "https://pixabay.com/photos/food-focaccia-bread-focaccia-herbs-4913279/",
+      "contributor": "lisapadgett",
+      "original_sha256": "21adef158cfbff8d613eab065db2557799f8c57e8e37fb681d3e3431ac801ffb",
+      "derivatives": [
+        {
+          "sha256": "2a2b8590961c5627d00f25fb9da1e4578f62b7010c46f290675b09052a9332ba",
+          "bytes": 18876,
+          "width": 320,
+          "height": 256
+        },
+        {
+          "sha256": "000f9dfa06528d6c9a9b6ade9229b66e46145061990c471fca675a3f6a66fc5b",
+          "bytes": 63748,
+          "width": 640,
+          "height": 512
+        },
+        {
+          "sha256": "5fdb0f51659ae67327a83eb2fc50b82737d61aadbad5673cd0c4882d5439cdf3",
+          "bytes": 198324,
+          "width": 1280,
+          "height": 1024
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "hummus-pan",
+      "id": 4544056,
+      "page": "https://pixabay.com/photos/hummus-pita-bread-food-pita-4544056/",
+      "contributor": "mirsa",
+      "original_sha256": "6ec301ffec5eed1c913fb2a0dd5855d0918d0019a4dd5b882702ecbae5764158",
+      "derivatives": [
+        {
+          "sha256": "f4c3910e3937f6f6356bee83b7a44a848ae2d1dd786c64f40399f9c29aa0887f",
+          "bytes": 5434,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "f4615f3be116d5f9adeb061f7c0fb286960eae50247c71d856cbb27311411800",
+          "bytes": 15964,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "3e02f4a54e4fca55766ea900266aa58d0ed8c72631070aef87550b6cda8dd508",
+          "bytes": 47730,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "berenjenas-asadas",
+      "id": 1985391,
+      "page": "https://pixabay.com/photos/melanzana-eggplant-pomegranate-1985391/",
+      "contributor": "Einladung_zum_Essen",
+      "original_sha256": "9910e2e2faee022f649cc8bdd00a9e147c706316b67217e7ad19df8f5f4c88df",
+      "derivatives": [
+        {
+          "sha256": "995522250663cb14d8062fa7cf6c306f77e5d417d9fa1535c85dd78a75a291de",
+          "bytes": 14526,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "e18637ca4e452cd78b4482771a6fe78167e0bca89c7b641c41868aa661baf01a",
+          "bytes": 37262,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "fad70c1883df5dd80a07dac6f6bbdebcaab82119c1b82c94d418b00e5b0b0adc",
+          "bytes": 93706,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "patatas-bravas",
+      "id": 1842294,
+      "page": "https://pixabay.com/photos/bowl-french-fries-food-fries-1842294/",
+      "contributor": "Pexels",
+      "original_sha256": "356141da4f127fd423c6373c2fbf0b468363da50edf2a4a28e822de5f5c62136",
+      "derivatives": [
+        {
+          "sha256": "fc0d903ceb250152316220fb69e9f272ae85b801b77373f67c3673bb07f9f30b",
+          "bytes": 9868,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "2069bebcda52b339379885731872baf6711b676fa49503ddd4ae67a2d79a061c",
+          "bytes": 23628,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "c98aed16d8e85b9335ec92132fa9623310e82584ab765f767cafc4d2aaa1bce9",
+          "bytes": 58976,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "pizza-margarita",
+      "id": 5275191,
+      "page": "https://pixabay.com/photos/pizza-kitchen-pizzeria-food-tomato-5275191/",
+      "contributor": "MatteoPhotoPro2020",
+      "original_sha256": "b51e0f4f10fdfcedf983a94628a0116ce0492e5e8c23b6ab6641349e6c569a27",
+      "derivatives": [
+        {
+          "sha256": "1cb1a68684b60bb35f12f267a81dfd3af5d0a03f3fe2106f254e060c4d738988",
+          "bytes": 18942,
+          "width": 320,
+          "height": 214
+        },
+        {
+          "sha256": "0c99bc5832bef7184b8f80086495157030a33d5bbe7dbf6b0594661dd11e673e",
+          "bytes": 55646,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "83e9ef0457d7235a87cc7772466373372e035c663739fb369e810203239a1e32",
+          "bytes": 151060,
+          "width": 1280,
+          "height": 854
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "pizza-cuatro-quesos",
+      "id": 3010062,
+      "page": "https://pixabay.com/photos/pizza-plate-food-cheese-lunch-3010062/",
+      "contributor": "zuzi99",
+      "original_sha256": "6434ec4c7117b69370be582489035dce7fb2ff778d6b79659aae15f4c5379c89",
+      "derivatives": [
+        {
+          "sha256": "21e442a69b92a2f69b2d0f72a93854d220291f76bb2f938438984bf975b92832",
+          "bytes": 17184,
+          "width": 320,
+          "height": 214
+        },
+        {
+          "sha256": "7abab201cf1d904a50e159178aac197f7dca39b76b73a85c4ca432ef570e3926",
+          "bytes": 52000,
+          "width": 640,
+          "height": 428
+        },
+        {
+          "sha256": "1aa6305ed8fe50829201e70e549261e5b50a858b8d9c12f89e84839f58f87ac9",
+          "bytes": 149926,
+          "width": 1280,
+          "height": 855
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "pizza-huerta",
+      "id": 346985,
+      "page": "https://pixabay.com/photos/pizza-vegetables-toppings-346985/",
+      "contributor": "keram",
+      "original_sha256": "05074811253af4b7c1431bea577b34bea4ccbad29a847db05212de8a20bcd0ec",
+      "derivatives": [
+        {
+          "sha256": "dc43b91f1c457d1d61a277b2d7e6301ae51185497c379c4a3b43181cbd30c6a8",
+          "bytes": 11724,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "37d247cb03155b98e0fd5418bd39ee0c06c7b20aa8760ba6a5d99b92d9082e13",
+          "bytes": 30530,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "f55f1080b0190c5e34f31871aa897a1d55cafdd8ed249666b14e099b69172072",
+          "bytes": 77920,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "calzone-espinacas",
+      "id": 3835086,
+      "page": "https://pixabay.com/photos/calzone-italian-food-pizza-cooking-3835086/",
+      "contributor": "SallyMeza",
+      "original_sha256": "8131743bef3b65892119f7f6dc6661bb8a9429efea567efbb0374c3073115ad8",
+      "derivatives": [
+        {
+          "sha256": "09267b5ca42ba85af38bc5f4506d07bd34d358543eb225224f37f676e34908df",
+          "bytes": 11410,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "71c437979544fa773230999b93470895c6571f79424fc16c690abdc5cf407b1e",
+          "bytes": 44146,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "4259a4cfd5eb053970d5d562407b439bbc21c7846d9d61a0f39a85baec243c3b",
+          "bytes": 172638,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "tagliatelle-setas",
+      "id": 5579058,
+      "page": "https://pixabay.com/photos/pasta-food-dish-cuisine-fettuccine-5579058/",
+      "contributor": "Engin_Akyurt",
+      "original_sha256": "126bb5317839305987f0aaf92378396ab8858c3355c232bc351caa096a5b440f",
+      "derivatives": [
+        {
+          "sha256": "df5e275e0a30b6af63c9d5bc24112a754ddd2902ebcfc596ecfbb5762e7e1e89",
+          "bytes": 15004,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "b7d2b2f2a0bd3635979cd5e8ef4fea34b3e0cf62625ee179e43f270f38a655cb",
+          "bytes": 40184,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "4a0650f595d6d3a4dfed99cfe18dbb7aee6de1d0fce443ff0a6f534880da4a3a",
+          "bytes": 104692,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "ravioli-ricotta",
+      "id": 8577854,
+      "page": "https://pixabay.com/photos/recipe-ravioli-food-pastry-8577854/",
+      "contributor": "35796437",
+      "original_sha256": "fc94a0386ce99d230d7e7364d0cd722cfb5002e00a11a6bcb747c61cbe9b2bb6",
+      "derivatives": [
+        {
+          "sha256": "9dcb56e499ac60562db3ee10288d3246e70deb079da230286a85d43e92bd6c86",
+          "bytes": 44906,
+          "width": 320,
+          "height": 427
+        },
+        {
+          "sha256": "de07231466a764862237a4a80bb1b5184df8109fadef06fc7b639de3dd14611c",
+          "bytes": 186750,
+          "width": 640,
+          "height": 853
+        },
+        {
+          "sha256": "21569629ac2112a293b0f84e74da20ce274b5b34b8eb6d981955e64fd9a3419f",
+          "bytes": 426370,
+          "width": 960,
+          "height": 1280
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "spaghetti-pomodoro",
+      "id": 1392266,
+      "page": "https://pixabay.com/photos/spaghetti-tomatoes-tomato-sauce-1392266/",
+      "contributor": "RitaE",
+      "original_sha256": "2a62132ffc34c5d5dd76077f892d2e8440d52d76599a9f809a1afc368dacdbd8",
+      "derivatives": [
+        {
+          "sha256": "47273403ec96a6e42d5513f4ad58fb6520f6bfb1741cc4e136b235a318b7e0aa",
+          "bytes": 9728,
+          "width": 320,
+          "height": 180
+        },
+        {
+          "sha256": "655c40df6d7d1693e3974d983d75c4b557418605ff2808968953d5cf2288a691",
+          "bytes": 26420,
+          "width": 640,
+          "height": 360
+        },
+        {
+          "sha256": "a1d8e15464763cca4f90a7b7f5714b5c814cad4f815c6aa8f028d6e34a882156",
+          "bytes": 68758,
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "gnocchi-pesto",
+      "id": 4770756,
+      "page": "https://pixabay.com/photos/food-gnocchi-plate-fresh-pasta-4770756/",
+      "contributor": "JCdesignproduction",
+      "original_sha256": "f1cd2e0fe8fc0e02691c845be3265a0ec03d597e2cba1562a32342dcec2b0546",
+      "derivatives": [
+        {
+          "sha256": "d62a13d37c38ddbfc61e310ac8b15581ab6edbbe21055eca065e1d5f0107a213",
+          "bytes": 4158,
+          "width": 320,
+          "height": 214
+        },
+        {
+          "sha256": "555cef5793a5a8136925e4b5de6c95e87877c5b8950f999a99ba3bea559835db",
+          "bytes": 13390,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "ca3e3ea69631c7fbc9e666aca01ebf845c45f510cb402e238e98ed28960360fb",
+          "bytes": 51320,
+          "width": 1280,
+          "height": 854
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "risotto-setas",
+      "id": 5894347,
+      "page": "https://pixabay.com/photos/risotto-meal-food-dish-5894347/",
+      "contributor": "katiklinski",
+      "original_sha256": "2cb3b8d7954764dfce78f17620c950e68be648d6d685d9ff301dba43c8994e8f",
+      "derivatives": [
+        {
+          "sha256": "c336ccc577f6bc1f200ef3ec9cb990de93dd53ecfc9e726c78ead6381081c4bc",
+          "bytes": 17710,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "a63874512bcdc75dae1dce1b7c2aee796adc9ed1437172dc5a7e394a8921f66a",
+          "bytes": 44192,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "761894278a0f41d89ba2703a79a59ed58804f2a5ac98f4396dcf9a1d3df462c7",
+          "bytes": 105478,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "arroz-mariscos",
+      "id": 8380096,
+      "page": "https://pixabay.com/photos/paella-rice-cook-meal-seafood-8380096/",
+      "contributor": "omisido",
+      "original_sha256": "246efdac9833f5a35495ae9b0ac8fdbaef870506c8b8b0314c945e5b4c6a7353",
+      "derivatives": [
+        {
+          "sha256": "51bc6e9cf1c3835b1b1478965477631ff6aa1121479e39508e963193d11c6683",
+          "bytes": 12224,
+          "width": 320,
+          "height": 222
+        },
+        {
+          "sha256": "f0c2a7f0a5382fd79919d9570587e69d116c88d9547faaeb153276a168289c81",
+          "bytes": 30418,
+          "width": 640,
+          "height": 443
+        },
+        {
+          "sha256": "7a3aa97f16691e5c70ed0f66080587407d1cbd0e8172a98935a9e061b292076f",
+          "bytes": 76616,
+          "width": 1280,
+          "height": 886
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "arroz-verduras",
+      "id": 5921491,
+      "page": "https://pixabay.com/photos/meal-food-tofu-rice-dish-cooked-5921491/",
+      "contributor": "sontung57",
+      "original_sha256": "2336ba62281215dbfd2a8c42c65d99daaa0ceb8d423ed97042a8e8e5c9ef2d8f",
+      "derivatives": [
+        {
+          "sha256": "82f33b67f1140663a0434596f83649fcb6e8b9aeb7042bfa0da67cd91bf45a17",
+          "bytes": 19922,
+          "width": 320,
+          "height": 214
+        },
+        {
+          "sha256": "19aa9ba47ff8ada654ae188a8876f378bb5c3a7a250a6daf4fe9253a936b1392",
+          "bytes": 71352,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "ec98edc6caea4b66a01b1562b7d7aafa95eb23cc2ee8a8c25e02eff616a7ba81",
+          "bytes": 297900,
+          "width": 1280,
+          "height": 854
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "risotto-limon",
+      "id": 7014164,
+      "page": "https://pixabay.com/photos/risotto-food-sauce-rice-7014164/",
+      "contributor": "chacha7777",
+      "original_sha256": "4ed95caeae9d25023db408e96e10177fe032444401c39b55eb3a6322ae012eac",
+      "derivatives": [
+        {
+          "sha256": "1dd482690b4aa51c7cd5986f8353777a38f5dcdad42722da84311315790e1ad9",
+          "bytes": 21528,
+          "width": 320,
+          "height": 320
+        },
+        {
+          "sha256": "6b70ec7b9b58cf4419e8e25220696045ce98dcd98b59892f10585b5cb42de091",
+          "bytes": 65258,
+          "width": 640,
+          "height": 640
+        },
+        {
+          "sha256": "5d14e13e0cf1b353f648dd71a7744777f04b83e2b6a702aef55f4d5e3451b38f",
+          "bytes": 185876,
+          "width": 1280,
+          "height": 1280
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "arroz-pollo",
+      "id": 8326234,
+      "page": "https://pixabay.com/photos/biryani-chicken-rice-meal-dinner-8326234/",
+      "contributor": "MD-OSMAN-GANI",
+      "original_sha256": "d0f4d42e8a8131152e2035d41744e04895f9c7781b9803e4f89a2e91fc8a6e09",
+      "derivatives": [
+        {
+          "sha256": "0b5e07b44f4fc6e2e14ae65c111c65e8a3e78b745ae753caa930634708086692",
+          "bytes": 12546,
+          "width": 320,
+          "height": 209
+        },
+        {
+          "sha256": "467a0082d7a1aa2b8123059ee6ba623536d4b033903bd43b6a9d568010325e0f",
+          "bytes": 31898,
+          "width": 640,
+          "height": 418
+        },
+        {
+          "sha256": "0930b30b3fdd58e97cf3a36231080d2f482c6941ac55cd4f9623073a82b2c119",
+          "bytes": 82146,
+          "width": 1280,
+          "height": 836
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "pollo-hierbas",
+      "id": 4497439,
+      "page": "https://pixabay.com/photos/food-cooking-chicken-4497439/",
+      "contributor": "hainguyenzero15",
+      "original_sha256": "a09661bc3b7fa4f5f603dce9eb5e390c4907ceca0eb7c996550f345e77c3adc1",
+      "derivatives": [
+        {
+          "sha256": "1cf25cc76978fabe7a797da169eb76dcf60a19e7bce5e471615f7dfd58834261",
+          "bytes": 8014,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "822bce436680da8e5cc34f8cd78d304aafbabee901e67d503acece773b9926a8",
+          "bytes": 24292,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "7288f6c5cf9c330da9b462e888cf0b0ac5ab78a902db4542f4496258e02db301",
+          "bytes": 72940,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "salmon-limon",
+      "id": 518032,
+      "page": "https://pixabay.com/photos/new-years-eve-salmon-fish-seafood-518032/",
+      "contributor": "cattalin",
+      "original_sha256": "3cf837d8f62cff955d856bba203d3ea5102d2e62e93f3fc117b78c36874342b3",
+      "derivatives": [
+        {
+          "sha256": "befe57ce0e5122adf6de2e85cc9b70caa13313fb69e60f8ea6793b8bfef9f4ea",
+          "bytes": 12478,
+          "width": 320,
+          "height": 240
+        },
+        {
+          "sha256": "932667a7917d8fde85bb30f15914f4e0f62a80086954482ee6b7538957d3c809",
+          "bytes": 30882,
+          "width": 640,
+          "height": 480
+        },
+        {
+          "sha256": "ffde28b506b9cd1e92ede90e3a9c3ceec1524cdc988d9bc107db26a5665b1095",
+          "bytes": 84136,
+          "width": 1280,
+          "height": 960
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "lomo-pimienta",
+      "id": 3640560,
+      "page": "https://pixabay.com/photos/steak-meat-beef-steak-food-beef-3640560/",
+      "contributor": "RitaE",
+      "original_sha256": "e3960347d4ea9a4aaa7504ab1108ff9edbcc6108a217d4a744a5a5d053c322a0",
+      "derivatives": [
+        {
+          "sha256": "d1d26d1289a10592c9fcded632b6b0ab773601823284cb882d495c3fcca7ff05",
+          "bytes": 19026,
+          "width": 320,
+          "height": 180
+        },
+        {
+          "sha256": "db7550e68af5a1b2570f6e2ec575a0a283c7230e3fc4cdfe5ac9a1f9718cfd28",
+          "bytes": 53930,
+          "width": 640,
+          "height": 360
+        },
+        {
+          "sha256": "63a7cb58acc6cb54be50288e17f9bfa683499ba4ddda2df51c846ce51cd68771",
+          "bytes": 143286,
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "pescado-horno",
+      "id": 8031138,
+      "page": "https://pixabay.com/photos/fish-fillet-vegetables-redfish-8031138/",
+      "contributor": "eatde",
+      "original_sha256": "323538c265560848d7ca8ddf53faae1701cc0f51d74af07f0a75f8ee81df018b",
+      "derivatives": [
+        {
+          "sha256": "a29f8d2ba66de40e2d360eec5b21de690d2971a4a41ba586b1790b37cdf4c253",
+          "bytes": 24030,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "f927b78e06b8c634e9e2cc77c4c45ccc1a543e5882a74317c83505cfc2b61add",
+          "bytes": 78244,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "6d8b29b449323be74310ef08f35f7706c6b0fcd4444b3927d4119340e416f7ec",
+          "bytes": 252364,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "albondigas-tomate",
+      "id": 4511773,
+      "page": "https://pixabay.com/photos/meatballs-flesh-minced-meat-dinner-4511773/",
+      "contributor": "RitaE",
+      "original_sha256": "e590cd310a9cc5cdeb6384acea1a2cb19e46dc6dfd5c0adcc7c545ea05fceec3",
+      "derivatives": [
+        {
+          "sha256": "1cd5f8d0ed8b32b22db52942479891b138213fc2af9c3865d2790c997b32a5be",
+          "bytes": 14416,
+          "width": 320,
+          "height": 231
+        },
+        {
+          "sha256": "4011f6a9fd84add519cc06b45e5ac481b19213bae5ccef7867f2f9d5e4d02e2a",
+          "bytes": 38874,
+          "width": 640,
+          "height": 462
+        },
+        {
+          "sha256": "0e30dc711d5e2942f97a24ee9992cc22c4686db00e46ca0e62539b2106e3f47a",
+          "bytes": 114922,
+          "width": 1280,
+          "height": 923
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "ensalada-mediterranea",
+      "id": 2104592,
+      "page": "https://pixabay.com/photos/greek-salad-feta-shell-vegetables-2104592/",
+      "contributor": "lukasbieri",
+      "original_sha256": "3af80d517cd180d44e35ded97191aca3d384911c5a0c1981aa90d6a8cf8a4eb0",
+      "derivatives": [
+        {
+          "sha256": "fdf757ae22dd889e6426c72c1f6c426a5679f2fcafc81386d63ce5eecbc4a237",
+          "bytes": 10202,
+          "width": 320,
+          "height": 194
+        },
+        {
+          "sha256": "a02dd999b0320524eb092d70bbb6f652c949376627ac582c50184139af1f3cc0",
+          "bytes": 26442,
+          "width": 640,
+          "height": 389
+        },
+        {
+          "sha256": "1915422aafcfb3017f859ee8cbc9050817586d81380efdcc7973103ac97f0d05",
+          "bytes": 67992,
+          "width": 1280,
+          "height": 777
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "ensalada-pera",
+      "id": 1786327,
+      "page": "https://pixabay.com/photos/salad-lenses-pear-beets-vegetarian-1786327/",
+      "contributor": "Einladung_zum_Essen",
+      "original_sha256": "b665e6e1901381a83fd80387f02e71b1a7a7a6a43fedac41165b8d0a2b88edc9",
+      "derivatives": [
+        {
+          "sha256": "0661889e7a24d68144c22a296539a523a6c629db92c202c8ec7a61bf478f49b6",
+          "bytes": 19612,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "838906fb4e7c196fa661ef66a649ff889cf68c7d20d5815f363217258badbd54",
+          "bytes": 65620,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "2f888e7ed703bc248a68bf0e5d39aa877b41d14b4e1899d5d8d8097f8b4b49a6",
+          "bytes": 200838,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "ensalada-quinoa",
+      "id": 1822176,
+      "page": "https://pixabay.com/photos/quinoa-salad-tomatoes-lime-rocket-1822176/",
+      "contributor": "Einladung_zum_Essen",
+      "original_sha256": "f2c42fb8fd492a4acfa86eef1ed59c592577463a69525a074a6246fdebdb83d4",
+      "derivatives": [
+        {
+          "sha256": "ee96e75d438e90db0fc8f974a083b4525dc41df42438afe0d999370aa608dbb8",
+          "bytes": 11986,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "c700c9342868e70b4ee0e8ac8ffee68225f8a5b0b277a49dca00088a86918d69",
+          "bytes": 32616,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "d17f66e4fe58abb719af10112ef22481e08574e6ce5cc40247ab2d933f76a560",
+          "bytes": 75436,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "ensalada-caprese",
+      "id": 5254110,
+      "page": "https://pixabay.com/photos/mozzarella-salad-healthy-basil-5254110/",
+      "contributor": "omisido",
+      "original_sha256": "4cea93a99d76e2442e6b1dce59bd1fcef188e6f38b2d49ebc8ea5f214d1266fb",
+      "derivatives": [
+        {
+          "sha256": "5b30b112bb295457e7ff4566583db7e1bcb70f799887f878b6ba68553f7b7979",
+          "bytes": 9416,
+          "width": 320,
+          "height": 213
+        },
+        {
+          "sha256": "544c10eb1ac05fffa5df5b0d52cb8199109f3928ca2f80ab2851d64fd044f97e",
+          "bytes": 24966,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "4dc0e42e777d566fa5b30b2a90c818c8a9a528d7dd3f420222ad28d716854f8f",
+          "bytes": 66472,
+          "width": 1280,
+          "height": 853
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "panna-cotta",
+      "id": 4388588,
+      "page": "https://pixabay.com/photos/panna-cotta-cream-dessert-cute-4388588/",
+      "contributor": "RitaE",
+      "original_sha256": "f9ee3414a3042a8b22ff21db52c31b70d93e395a30bf4598add176b9cdebefcb",
+      "derivatives": [
+        {
+          "sha256": "151c5eb559acdb081a4a011a141ceae26b7da0c9835042bee74c81927daab56a",
+          "bytes": 12772,
+          "width": 320,
+          "height": 214
+        },
+        {
+          "sha256": "d8bf4df1708b0058c28f77d8b9de51e86c2c85e14ddd5a808f245501aeab1661",
+          "bytes": 31300,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "b5226df675ed5826ea91d6b97ac2563db8b9186a2cf5f4ed2108349008e9649d",
+          "bytes": 79008,
+          "width": 1280,
+          "height": 854
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "tarta-limon",
+      "id": 7398976,
+      "page": "https://pixabay.com/photos/cake-pastry-shop-food-nutrition-7398976/",
+      "contributor": "MoustachePhotography",
+      "original_sha256": "fa41fe5c8a65dd59df6ea5847ecc306019b6c8f149d3f44b1d0900f5d9e6b065",
+      "derivatives": [
+        {
+          "sha256": "cfaf7db65693b1bd42d163c6903c21fdf40338b4e12f612269b75c6d68a49389",
+          "bytes": 11136,
+          "width": 320,
+          "height": 480
+        },
+        {
+          "sha256": "487b2e268cad379571a71493bc4dd6008475bc6c4efc844f87bdd4cc7c3c951a",
+          "bytes": 30380,
+          "width": 640,
+          "height": 960
+        },
+        {
+          "sha256": "f71692b0d19cc89b0ed502e01b4b86f747dacd88715961922ed9566a7d8c4831",
+          "bytes": 48532,
+          "width": 853,
+          "height": 1280
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "brownie-helado",
+      "id": 6402535,
+      "page": "https://pixabay.com/photos/brownie-ice-cream-chocolate-dessert-6402535/",
+      "contributor": "filosofiainteresante",
+      "original_sha256": "db3128efdc03935fb76e485968645ee0fe8c71e969df585c483f32414e19eaf1",
+      "derivatives": [
+        {
+          "sha256": "193bd17ae58474e7c1a193361fafb8273e59eec785699ab877df5c5b499d0c1c",
+          "bytes": 12776,
+          "width": 320,
+          "height": 260
+        },
+        {
+          "sha256": "78487305f3764fe29b3bb4764045a1d9035a66236d1ecb952b89dbc296a13f18",
+          "bytes": 37550,
+          "width": 640,
+          "height": 520
+        },
+        {
+          "sha256": "5a702c2974a965d13fc7c758fba56530e174425ec034d21ff750647de5181283",
+          "bytes": 106662,
+          "width": 1280,
+          "height": 1040
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    },
+    {
+      "dish": "fruta-temporada",
+      "id": 5393314,
+      "page": "https://pixabay.com/photos/fruit-salad-berries-blueberries-red-5393314/",
+      "contributor": "jhenning",
+      "original_sha256": "753cae98e2a4d81c8b725a4e19e0bc9f5d1c2640c6e51fae07881857a0fcda90",
+      "derivatives": [
+        {
+          "sha256": "184d2d8ae8bc8454e1b7bc5bc0fc71938484b6639cc05947580bc8cd654d6a56",
+          "bytes": 19526,
+          "width": 320,
+          "height": 214
+        },
+        {
+          "sha256": "76a27e8328c456d35c280c82a79982c3a3dfb24944bf435f367de2b3d65c54b4",
+          "bytes": 51878,
+          "width": 640,
+          "height": 427
+        },
+        {
+          "sha256": "bd9f50020fa42dbd8c10f24781e42c2a13d425c2a9a00ba4549c21ffbed0b432",
+          "bytes": 139870,
+          "width": 1280,
+          "height": 854
+        }
+      ],
+      "findings": [
+        "Viewed selected pixels in bounded menucontact sheets, no visiblelogos/watermarks/identifiablefaces observed; generic presentation only, doesnotproveexactrecipe,ingredient,nutrition or business."
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "id": 5904093,
+      "reason": "Legible branded pouringbottle; replaced"
+    },
+    {
+      "id": 4136431,
+      "reason": "Foregroundtomato salad doesnotillustratebeetrootwell; replaced"
+    },
+    {
+      "id": 6142611,
+      "reason": "Copyright-marked querycandidate never selected/downloaded"
+    }
+  ],
+  "motion": {
+    "background": "Userrequestedmutedautoplayloop; defaultstaticforreducedmotion/saveData; nooverlaidbutton; navigationpauseutility; pausehidden/offscreen; playrejectionposter",
+    "dish": "Existingfourmanualnativevideosonly, noautoplay orloops"
+  },
+  "existing": "Noexistingassetbytes,sourcepins,grantexpiry or sealedregistriesmodified. Explicitnewtaskscopedgrants maintainunderlyingvalidity andproviderconditions. Noaudio, nofileeditingofsealedassets.",
+  "vision": "Onlytask-scopedvisualreview/designanalysisofthechosenstockbytes, noembedding,training,classificationdatasetorcredentialsharing.",
+  "category_extension": "Eight selectedNEWfoodphotos explicitlyadmittedto current8homepages for correctcategoryimagery. Newsourcephoto grantspermitCOLOR under provideradaptationlicense, with actualCOLORusage only08home for userrequestedgrayscale-to-color. OriginalfourfoodphotograntsandtheirnoCOLORscope unchanged."
+}

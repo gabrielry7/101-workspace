@@ -1,0 +1,30 @@
+{
+  "scope": "Consolidated preapproved8engine compiler inside existing GitHub monorepo; exact reviewed sources copied, no new design edits.",
+  "userStatus": "PREAPPROVED",
+  "checks": [
+    {
+      "script": "test",
+      "start": "2026-10-26T20:32:41.471Z",
+      "end": "2026-10-26T20:35:20.930Z",
+      "exitCode": 1,
+      "timedOut": false
+    },
+    {
+      "script": "check",
+      "start": "2026-10-26T20:35:20.930Z",
+      "end": "2026-10-26T20:37:09.732Z",
+      "exitCode": 1,
+      "timedOut": false
+    },
+    {
+      "script": "build",
+      "start": "2026-10-26T20:37:09.733Z",
+      "end": "2026-10-26T20:39:44.485Z",
+      "exitCode": 0,
+      "timedOut": false
+    }
+  ],
+  "historicalTestFailure": "H8 LOCK_BROWSER_MISMATCH vs expected LOCK_AUDIT_FILE_MISMATCH; unchanged known environment limitation, not waived.",
+  "productionApproval": false,
+  "publicOriginalMediaExport": false
+}

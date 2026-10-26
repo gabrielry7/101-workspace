@@ -1,0 +1,40 @@
+{
+  "id": "restaurant-menus-20261025",
+  "mode": "implement",
+  "prompt": "Focus ONLY on the four existing /b3/candidate-01/carta/ through 04/carta/ menu pages. User: \"Muy buenos esos dos pero ahora mejoremos en todos la carta ... Hagamos para cada uno un diseño de la carta ya que los de todos son el mismo, explora diseños reales, mira las cartas de los restaurantes que vimos\". Creative task: FOUR substantially DIFFERENT menu compositions, each belonging to its approved parent identity. You are the real Claude frontend design specialist; choose the final design directions yourself. No user choice required. Do not produce another shared card grid merely recolored.\nFIRST EXCHANGE: inspect supplied current screenshots and real official menu screenshots/research, report four concrete chosen directions and implementation plan. DO NOT EDIT yet. Your worktree starts at committed HEAD, which lacks the accepted uncommitted Claude version; selected snapshots under .tools/claude-code/menu-resources-20261025/accepted/ are actual accepted current source. Codex will stage that reviewed baseline and media before same-session feedback authorizes implementation.\nApproved worlds: 01 Immersive WhiteInk bone/warm black/terracotta/Georgia; 02 Masthead Vermilion warm white/vermilion/condensed display; 03 Brasa/EmberReel warm black/ember/Syne with left desktop rail; 04 Herbario/PlateStudy paper/plum/Bodoni Moda/DM Sans centered masthead. Keep their homes, nav, footers, other pages and media worlds unchanged.\nUse the real menu references as lessons in reading rhythm, price alignment, course grouping, whitespace, composition, not as assets or contents to copy. You may decide which existing media to use and how. No new API/media required; use the four truth-bound original illustrative food photos through ContextualImage. Already admitted atmospheric stock may be used only where its route permission permits and never pretending it shows an actual recipe.\nARCHITECTURE: existing shared Astro/CSS renderer + semantic business modules only, no new generator/pipeline/framework/service/customer template. A new shared authored menu component with semantic layout operator and conditional route-specific raw stylesheet is appropriate. Keep legacy ContextualModule defaults untouched so pedidos and historical pages do not change. ExperienceComposition should append menu CSS ONLY when page.kind==='collection'; ArtisticPages collection can call the same menu operator. Never change general shared emitted CSS/client bundles across other routes. Codex expects all other 164 HTML files byte-identical to accepted baseline and no non-carta functional changes. Do not mutate profiles/contracts/facts/manifests/tests to game this.\nCONTENT/FUNCTION: preserve all four dishes, names, descriptions, categories, prices, currency, ingredient/allergen/calorie details, original offering and fact ids/scopes/module metadata, original image bindings and credits, selection query links. Keep original module title/introduction findable; presentation order/reorganization allowed. Existing JS searches [data-menu-search], filters [data-menu-category], enumerates [data-offering-id] with data-search, counts [data-menu-count], uses .contextual-collection and data-collection-state. Preserve those contracts; filters must work across all authored layouts, filtered single and empty state must not leave huge gaps or ghost decorative sections. Native details work without JS; tools remain hidden unless JS. Preserve fictional labels, no invented service/course/date/availability/food claims, no item numbers as decoration, no gratuitous eyebrow labels. Keep one clear H1, 44px controls, body >=14px and contrast>=4.5, visible focus, 360px usable without overflow, reduced-motion/static defaults, no photo overlays making text illegible.\nReturn your chosen four directions, structural differences and intended source changes. Do NOT implement this first call and do not claim shell/browser verification.",
+  "context": [
+    "AGENTS.md",
+    ".tools/claude-code/menu-resources-20261025/research.md",
+    ".tools/claude-code/menu-resources-20261025/accepted/src/components/composition/ExperienceComposition.astro",
+    ".tools/claude-code/menu-resources-20261025/accepted/src/components/composition/ArtisticPages.astro",
+    ".tools/claude-code/menu-resources-20261025/accepted/src/design/experience-refinement.css",
+    ".tools/claude-code/menu-resources-20261025/accepted/src/design/artistic-ember.css",
+    ".tools/claude-code/menu-resources-20261025/accepted/src/design/artistic-plate.css",
+    "src/components/composition/ContextualModule.astro",
+    "src/components/composition/ContextualImage.astro",
+    "src/design/experience-client.ts",
+    "src/design/experience-refinement-client.ts",
+    ".agents/skills/impeccable/reference/craft-floor.md"
+  ],
+  "attachments": [
+    ".tools/claude-code/menu-resources-20261025/luca.png",
+    ".tools/claude-code/menu-resources-20261025/osip.png",
+    ".tools/claude-code/menu-resources-20261025/before-desktop.png",
+    ".tools/claude-code/menu-resources-20261025/before-mobile.png"
+  ],
+  "attachmentAuthorization": "User explicitly requests real menus of our previously liked restaurant references, and has authorized supplying visual references to Claude. Official LUCA/Osip raster pages are private internal analysis only; no reuse of logos/art/food copy/prices/fonts in product. Own four accepted menu captures use already admitted fictional stock. This scoped experiment only; no training, embedding or general reuse. Codex reviewed all four attachments.",
+  "criteria": [
+    "Four structurally distinct authored carta designs within existing approved identities",
+    "Only four carta pages change; other 164 outputs byte-identical",
+    "All original bound menu facts/media and filtering/details/order links preserved",
+    "Codex independently checks real browser visuals and responsive/keyboard/contrast/function",
+    "Real CLI first plan, same-session feedback implementation and concrete review"
+  ],
+  "limits": {
+    "maxCalls": 4,
+    "maxTurns": 60,
+    "timeoutMs": 720000,
+    "maxBudgetUsdPerCall": 3,
+    "maxBudgetUsdTotal": 12
+  }
+}

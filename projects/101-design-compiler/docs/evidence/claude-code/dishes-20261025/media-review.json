@@ -1,0 +1,122 @@
+{
+  "kind": "EXPLICIT_DISH_DETAIL_MEDIA_APPLICABILITY",
+  "reviewed_at": "2026-10-25T18:29:48.214Z",
+  "user_scope": "Traditional menus and complete individual dish pages, including relevant illustrative video where possible; existing API multimedia authorization persists",
+  "routes": [
+    "/b3/candidate-01/carta/pizza/",
+    "/b3/candidate-01/carta/pasta/",
+    "/b3/candidate-01/carta/salad/",
+    "/b3/candidate-01/carta/dessert/",
+    "/b3/candidate-02/carta/pizza/",
+    "/b3/candidate-02/carta/pasta/",
+    "/b3/candidate-02/carta/salad/",
+    "/b3/candidate-02/carta/dessert/",
+    "/b3/candidate-03/carta/pizza/",
+    "/b3/candidate-03/carta/pasta/",
+    "/b3/candidate-03/carta/salad/",
+    "/b3/candidate-03/carta/dessert/",
+    "/b3/candidate-04/carta/pizza/",
+    "/b3/candidate-04/carta/pasta/",
+    "/b3/candidate-04/carta/salad/",
+    "/b3/candidate-04/carta/dessert/"
+  ],
+  "parent_review_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+  "provider_sources": [
+    "https://pixabay.com/api/docs/",
+    "https://pixabay.com/service/terms/"
+  ],
+  "terms_checked": "2026-10-25; official terms updated2026-10-20. Prior assets retain their reviewed source licenses. New selection under current terms, including applicable CC0 provisions.",
+  "new_queries": 3,
+  "new_downloads": 5,
+  "accepted_new": [
+    {
+      "id": 3510,
+      "role": "Vegetable ingredient study, no cooking or finished-salad claim",
+      "findings": [
+        "Viewed source/derivative storyboard samples every1.5s after full equal-pixel decode: slow camera move over fresh vegetables, no identifiable people, marks or third-party property observed."
+      ]
+    },
+    {
+      "id": 258562,
+      "role": "Illustrative cake decoration, not the exact slice/recipe",
+      "findings": [
+        "Viewed samples throughout18.68s after full equal-pixel decode: hands decorating plain cake, face out of frame, no distinct personal marks or logos observed."
+      ]
+    },
+    {
+      "id": 200157,
+      "role": "Illustrative pasta making, not the exact shrimp recipe",
+      "findings": [
+        "Viewed full storyboard after source/output equal-frame decode; pasta dough and hand-operated preparation; no face; faint out-of-focus embossing on steel is not legible at native640, generic preparation with no endorsement."
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "id": 33256,
+      "reason": "Visible branded bottle in cooking scene"
+    },
+    {
+      "id": 175152,
+      "reason": "Different provider id repeats same branded-bottle scene; rejected independently"
+    }
+  ],
+  "existing_assets": "Four original food photographs and the already reviewed video-only pizza149678 are explicitly admitted to these new paths via a separate companion. No sealed historical review changed.",
+  "derivatives": [
+    {
+      "id": 3510,
+      "path": ".tools/claude-code/dish-resources-20261025/assets/3510-silent.mp4",
+      "sha256": "10a89fe1c4ed3fd61c0c0beb9751ff15b7436ee93f566d3dea17623dcf7f3510",
+      "bytes": 3122326,
+      "source_sha256": "850b5bba8c36297946d566bfee390ea376fac8879846655a770a4721e5770953",
+      "width": 1280,
+      "height": 720,
+      "source_frames_decoded": 240,
+      "output_frames_decoded": 240,
+      "every_decoded_frame_pixel_identical": true,
+      "fps": 23.976023976023978,
+      "duration": 10.01,
+      "audio": "NONE_VIDEO_ONLY_FFMPEG_REMUX",
+      "sample_interval_seconds": 1.5,
+      "codec": "avc1"
+    },
+    {
+      "id": 258562,
+      "path": ".tools/claude-code/dish-resources-20261025/assets/258562-silent.mp4",
+      "sha256": "3dd435193da615cd4efebfd0f36aeeafe0a23c3a97886a200014f25c06271c44",
+      "bytes": 2648506,
+      "source_sha256": "9ad710be580ae5e68a2e3f8081f8bb335ca0d359db36eea7c1a45c32c8c7d8ed",
+      "width": 720,
+      "height": 1280,
+      "source_frames_decoded": 467,
+      "output_frames_decoded": 467,
+      "every_decoded_frame_pixel_identical": true,
+      "fps": 25,
+      "duration": 18.68,
+      "audio": "NONE_VIDEO_ONLY_FFMPEG_REMUX",
+      "sample_interval_seconds": 1.5,
+      "codec": "avc1"
+    },
+    {
+      "id": 200157,
+      "path": ".tools/claude-code/dish-resources-20261025/assets/200157-silent.mp4",
+      "sha256": "b63637332ba77bca42997a66511f0b52a220e743003b9d97df8d7371a8b5738b",
+      "bytes": 1542861,
+      "source_sha256": "1b7f6b9bd60d6b663da552da0e4eb70d6ee2d4760f20940577f4b30149753fd2",
+      "width": 640,
+      "height": 360,
+      "source_frames_decoded": 438,
+      "output_frames_decoded": 438,
+      "every_decoded_frame_pixel_identical": true,
+      "fps": 25,
+      "duration": 17.52,
+      "audio": "NONE_VIDEO_ONLY_FFMPEG_REMUX",
+      "sample_interval_seconds": 1.5,
+      "codec": "avc1"
+    }
+  ],
+  "video_policy": "Only pinned video-only MP4 derivatives. No audio, autoplay, looping, source originals or automatic video request. Native manual controls and poster. Inline exact contributor credits and generic illustration wording. Not evidence of recipes, nutrition or actual business.",
+  "reference_assets_in_runtime": false,
+  "credentials_shared": false,
+  "reviewer": "Codex: scoped local applicability and actual-file visual/technical assessment; not copyright holder"
+}

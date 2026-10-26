@@ -1,0 +1,19 @@
+---
+// Credits for the current B3 renderer: every asset used under this root, deduplicated by original, with its origin.
+import {pageHeads} from '../../design/nav-labels.ts';
+import type {loadFeedbackMedia} from '../../media/feedback-media.ts';
+type Review=Awaited<ReturnType<typeof loadFeedbackMedia>>['review'];
+type CreditRow={g:Review['grants'][number];a:Review['assets'][number];src:string};
+interface Props{fm:Awaited<ReturnType<typeof loadFeedbackMedia>>;root:string;s:any;variant:string}
+const {fm,root,s,variant}=Astro.props,review=fm.review;
+const mine=review.usages.filter(u=>u.page.startsWith(root));
+const rows:Array<readonly [string,CreditRow]>=mine.flatMap(u=>{const g=review.grants.find(x=>x.id===u.grant_id),a=g&&review.assets.find(x=>x.id===g.original_asset_id),src=a?.provenance.find(q=>q.source.startsWith('Pixabay licensed'))?.reference;return g&&a&&src?[[a.id,{g,a,src}] as const]:[];});
+const credits:CreditRow[]=[...new Map<string,CreditRow>(rows).values()];
+const head=pageHeads.credits!;
+---
+<div class="experience-content interior interior-credits" id="experience-main" tabindex="-1" data-variant={variant}>
+ <nav class="depth-breadcrumb" aria-label="Ruta de navegación"><a href={root}>Inicio</a><span aria-current="page">{head.h}</span></nav>
+ <header class="page-intro eg-head int-head"><div class="int-head-text"><h1>{head.h}</h1><p>{head.p}</p></div></header>
+ <div class="credit-list">{credits.map(({g,a,src})=><article data-credit-original={a.id}><h2>{g.attribution.text}</h2><p>{a.kind==='video'?'Vídeo ilustrativo':'Imagen ilustrativa'} · {g.license_type}</p><a href={src}>Ver origen en Pixabay ↗</a></article>)}</div>
+ <details class="experience-scope"><summary>Alcance de la demostración y condiciones</summary><p>Textos, recetas, precios, calorías, alérgenos, horarios, local, plano y ocupación de mesas son ficción. No hay conexión comercial, disponibilidad real, pagos, reservas enviadas, reseñas de consumidores ni sede visitable. El punto del mapa en Ubicación es un lugar de ejemplo, no una sede real de La Mesa.</p><p>El material no acredita platos o negocios: las imágenes de platos muestran ingredientes o presentaciones ilustrativas, no la receta exacta. Los vídeos de fondo no llevan audio; se reproducen solos sólo si el navegador y tus preferencias de movimiento lo permiten, y se pueden pausar desde el menú Explorar. Los vídeos de los platos se reproducen sólo con sus controles. Se usa el laboratorio Astro compartido; upstream y runtime comercial no están integrados.</p><div data-diagnostics>{s.content.diagnostics.map((v:any)=><p data-diagnostic-sha256={JSON.stringify(v)}>{v.code} · {v.scope_id} · {v.reason}</p>)}</div><ul data-restrictions>{s.content.restrictions.map((v:string)=><li>{v}</li>)}</ul><ul data-exclusions>{s.content.exclusions.map((v:any)=><li>{v.scope_id} · {v.id} · {v.reason}</li>)}</ul></details>
+</div>

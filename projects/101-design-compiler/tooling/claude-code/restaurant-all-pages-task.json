@@ -1,0 +1,49 @@
+{
+  "id": "restaurant-all-pages-20261024",
+  "mode": "implement",
+  "prompt": "The user asks the REAL Claude Code to redesign the EXISTING pages, improving visual design and color palettes on EACH page, after Codex supplies more multimedia through the existing API and leaves the choice to Claude. Implement the frontend changes, not merely suggestions. Scope is all FOUR B3 proposals, 11 page kinds per proposal, 44 routes. Legacy h3/h4/h5/h6/h7/b1/b2 routes are historical evidence and out of scope. The shared Astro renderer is the only implementation architecture. Existing main source/data exactly match committed HEAD; only README, AGENTS.md, CLI tooling and review evidence are uncommitted. We reviewed and explicitly selected AGENTS.md and multimedia review as snapshot context; no user dirty source, credentials, .env or unrelated private data are copied.\n\nRead full src/design/experience.css, rich-experience.css, depth-experience.css and experience-refinement.css, ExperienceComposition.astro, CommunitySections.astro, ExperienceFeatures.astro, ExperienceNavigation.astro, ContextualModule.astro and PreviewIntent.astro. Read selected research and site profiles. Retain the user-liked immersive/masthead character of proposals 01/02, while improving palettes and hierarchy across the sites. 03/04 must stay distinct replacements, not resurrect earlier rejected collage/poster designs. Choose a deliberate palette direction per existing semantic tone and CSS variables: canvas, ink, muted, accent, line, action, focus. Own that direction through all eleven pages, no recoloring by customer id or pathname. Keep every factual/fictional copy, semantic binding, route, interaction, credit, media gate and disclosure. Do not alter sealed data, historical feedback, hashes, fixtures, tests or thresholds.\n\nCover EVERY page kind in actual styling: home cinematic entry/section rhythm; collection readable menu/filter/detail hierarchy; selection order summary and item rhythm; request form/map/status; story editorial layout; visit clear practical details and preparation; faq disclosure hierarchy; journal lead story and filtered readable state; reviews typographic hierarchy with fictional label; contact useful local demo actions; credits quiet legible source list/scope. Common navigation/footer and mobile behavior need equal care. Avoid identical-card scaffolds. Keep the eleven page kinds recognizably related while matching their job. Scope selectors to .depth-experience plus existing page/experience/tone/home classes so B2 and historical pages stay unchanged. Use existing typography intentionally; no dependencies, web fonts or external runtime requests. Keep body/control text >=14px, controls >=44px, body contrast >=4.5, focus visible, reduced motion and no overflow at 360/390/768/1024/1440. Keep existing DOM order and selectors used by the client. Do not hide content to make layout fit.\n\nNEW MULTIMEDIA: attachments 1-5 correspond to ids 5356682 (sunset table), 2532192 (bread rolls), 4642686 (loaf), 2714970 (coffee on wood), 15994 (coffee/beans). Attachment 6 is storyboard of optional new steam-pot video 267; a silent 640x360 derivative exists. The room image 1834784 is rejected and not provided. Remaining attachments are current authorized baseline desktop/mobile screenshots of all four home directions and contact sheets of all eleven candidate-01 page kinds, captured from the existing renderer. Use Read to inspect these images. The full new asset metadata is in the selected multimedia-review.json snapshot. Decide which assets, if any, fit your design. In this first exchange DO NOT render an unregistered new asset and DO NOT bypass ContextualImage or media gates. Report exact ids/semantic placements you choose, and give reasons for unused material; Codex will supply the existing-gate integration in this same worktree before feedback. Your design work may otherwise be complete. A decision to skip all is allowed only when based on visual fit, not missing network/file access.\n\nPrefer deliberate, consolidated edits to existing experience-refinement.css and shared Astro components; no generator, framework, pipeline, service, route duplication, per-customer selectors, backend or fabricated claims. Do not rewrite all existing CSS blindly. You have no Bash/browser/network: Codex runs checks and actual captures. Return changed files, palette choices, a coverage matrix with all 11 page kinds, selected/skipped multimedia and concrete risks.",
+  "context": [
+    "AGENTS.md",
+    "src/components/composition/ExperienceComposition.astro",
+    "src/components/composition/CommunitySections.astro",
+    "src/design/experience-refinement.css",
+    "data/design/experience-v1.2/site.json",
+    "data/reference/design/reference-depth-20261021.json",
+    "docs/evidence/claude-code/redesign-20261024/multimedia-review.json"
+  ],
+  "attachments": [
+    ".tools/claude-code/multimedia-20261024/assets/5356682-640.webp",
+    ".tools/claude-code/multimedia-20261024/assets/2532192-640.webp",
+    ".tools/claude-code/multimedia-20261024/assets/4642686-640.webp",
+    ".tools/claude-code/multimedia-20261024/assets/2714970-640.webp",
+    ".tools/claude-code/multimedia-20261024/assets/15994-640.webp",
+    ".tools/claude-code/multimedia-20261024/video-contact-sheet.jpg",
+    ".tools/claude-code/redesign-baseline/candidate-01-home-desktop.png",
+    ".tools/claude-code/redesign-baseline/candidate-01-home-mobile.png",
+    ".tools/claude-code/redesign-baseline/candidate-02-home-desktop.png",
+    ".tools/claude-code/redesign-baseline/candidate-02-home-mobile.png",
+    ".tools/claude-code/redesign-baseline/candidate-03-home-desktop.png",
+    ".tools/claude-code/redesign-baseline/candidate-03-home-mobile.png",
+    ".tools/claude-code/redesign-baseline/candidate-04-home-desktop.png",
+    ".tools/claude-code/redesign-baseline/candidate-04-home-mobile.png",
+    ".tools/claude-code/redesign-baseline/candidate-01-desktop-sheet.png",
+    ".tools/claude-code/redesign-baseline/candidate-01-mobile-sheet.png"
+  ],
+  "attachmentAuthorization": "User explicitly requests Claude to redesign these existing fictional pages and choose among newly fetched media. Codex reviewed selected photos and sampled video storyboard, excludes rejected room image, and authorizes scoped task vision under the existing project media-review interpretation. Own UI baseline screenshots include already-admitted fictional stock media with existing scoped vision review; user now explicitly delegates the design and multimedia choice to Claude. No third-party website screenshots, unrelated private material, credentials, training, embeddings or generative asset editing are included.",
+  "criteria": [
+    "Actual shared Astro/CSS implementation across all 44 B3 routes, with deliberate treatment for each of 11 page kinds",
+    "Four coherent but distinct improved palette directions; preserve user-liked immersive/masthead character",
+    "All original semantic facts, module ids, fictional notices, credits, links, media gates and client interactions remain intact",
+    "New assets are OPTIONAL, explicitly selected/rejected with rationale; no unregistered source in rendered markup",
+    "Responsive and keyboard usable; no overflow at 360,390,768,1024,1440; reduced motion retained",
+    "No new dependencies, generators, services, external media/font requests, client identifiers or sealed-data changes",
+    "Codex owns build, test, browser, accessibility/performance verification; changes retained isolated, no merge/push"
+  ],
+  "limits": {
+    "maxCalls": 4,
+    "maxTurns": 40,
+    "timeoutMs": 720000,
+    "maxBudgetUsdPerCall": 2,
+    "maxBudgetUsdTotal": 8
+  }
+}

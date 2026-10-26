@@ -1,0 +1,49 @@
+/* Dish pages (/carta/<id>/): shared layout for all four worlds, inheriting each world's tokens and display face.
+   Appended only when ExperienceComposition receives an offering. */
+.page-dish .dish-content{padding-bottom:clamp(2rem,5vw,4rem)}
+.page-dish .dish-page{display:grid;grid-template-columns:minmax(0,1fr);gap:1.5rem 3rem;max-width:72rem;margin-top:1rem}
+.page-dish .dish-page>*{min-width:0}
+.page-dish .dish-head{container-type:inline-size}
+.page-dish .dish-category{margin:.75rem 0 0;font-size:1rem;font-weight:600;color:var(--muted)}
+.page-dish .dish-name{margin:0;font-family:var(--display);font-size:clamp(2.25rem,8vw,4rem);line-height:1.02;overflow-wrap:normal;word-break:normal;hyphens:none}
+.page-dish .dish-price{margin:.5rem 0 0;font-size:1.5rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.page-dish .dish-description{margin:1rem 0 0;max-width:46ch;font-size:1.0625rem;line-height:1.6;color:var(--muted)}
+.page-dish .dish-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.5rem;margin-top:1.5rem}
+.page-dish .dish-order{display:inline-flex;align-items:center;gap:.4rem;min-height:48px;padding:0 1.25rem;background:var(--action);color:var(--on-action);font-weight:700;text-decoration:none}
+.page-dish .dish-back,.page-dish .dish-others a,.page-dish .dish-video-credit a,.page-dish .dish-photo figcaption a{display:inline-flex;align-items:center;min-height:44px;color:var(--accent-text);font-weight:600;text-decoration:underline;text-decoration-color:var(--mark);text-decoration-thickness:2px;text-underline-offset:.3em}
+.page-dish :is(.dish-order,.dish-back,.dish-others a,.dish-video-credit a,.dish-photo figcaption a,.dish-content .depth-breadcrumb a):focus-visible,.page-dish video:focus-visible{outline:3px solid var(--focus,var(--accent));outline-offset:3px}
+.page-dish .dish-photo .contextual-photo{position:static;display:block;width:100%;margin:0;padding:0;border:0;border-radius:0;background:var(--surface)}
+.page-dish .dish-photo :is(picture,img){position:static;display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.page-dish .dish-photo figcaption{display:flex;flex-wrap:wrap;gap:.25rem 1rem;align-items:center;padding-top:.5rem;font-size:.875rem;color:var(--muted)}
+.page-dish .dish-facts h2,.page-dish .dish-video h2,.page-dish .dish-others h2{margin:0 0 .75rem;font-family:var(--display);font-size:1.5rem;line-height:1.15}
+.page-dish .dish-facts dl{margin:0 0 .75rem;border-top:1px solid var(--ink)}
+.page-dish .dish-fact{display:grid;gap:.25rem 1.5rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.page-dish .dish-fact dt{margin:0;font-size:.875rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
+.page-dish .dish-fact dd{margin:0;max-width:56ch;font-size:1.0625rem;line-height:1.55;color:var(--ink)}
+@media(min-width:600px){.page-dish .dish-fact{grid-template-columns:8rem minmax(0,1fr)}}
+.page-dish .dish-facts .dish-fiction,.page-dish .dish-video-label,.page-dish .dish-video-credit{font-size:.875rem;color:var(--muted)}
+.page-dish .dish-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.page-dish .dish-video-label{margin:.75rem 0 0;max-width:56ch}
+.page-dish .dish-video-credit{margin:0}
+.page-dish .dish-others ul{display:grid;margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.page-dish .dish-others li{border-bottom:1px solid var(--line)}
+.page-dish .dish-others a{display:flex;justify-content:space-between;gap:1rem;width:100%;min-height:48px;font-weight:600;text-decoration:none;color:var(--ink)}
+.page-dish .dish-others a:hover .dish-other-name{text-decoration:underline;text-decoration-color:var(--mark);text-underline-offset:.25em}
+.page-dish .dish-other-price{font-variant-numeric:tabular-nums;color:var(--accent-text)}
+@media(min-width:900px){
+ .page-dish .dish-page{grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-areas:"head photo" "facts photo" "video video" "others others";align-items:start}
+ .page-dish .dish-head{grid-area:head}
+ .page-dish .dish-photo{grid-area:photo}
+ .page-dish .dish-facts{grid-area:facts}
+ .page-dish .dish-video{grid-area:video;max-width:48rem}
+ .page-dish .dish-others{grid-area:others;max-width:36rem}
+}
+/* world accents */
+.page-dish.art-EmberReel .dish-head .dish-name{font-size:clamp(1.625rem,8cqi,2.75rem);line-height:1.05;text-transform:uppercase;font-weight:800;letter-spacing:-.01em}
+@media(max-width:760px){.page-dish.art-EmberReel .dish-head .dish-name{text-transform:none;font-size:clamp(1.75rem,9cqi,2.5rem)}}
+.page-dish.art-EmberReel .dish-price{font-family:var(--display);color:var(--accent-text)}
+.page-dish.art-PlateStudy .dish-category{font:italic 400 1.0625rem var(--display)}
+.page-dish.art-PlateStudy .dish-name{font-weight:500}
+.page-dish.experience-Masthead .dish-name{text-transform:uppercase;font-weight:800}
+.page-dish.experience-Immersive .dish-name{font-weight:400}
+@media(prefers-reduced-motion:no-preference){.page-dish .dish-order,.page-dish .dish-back{transition:opacity .15s}.page-dish .dish-order:hover{opacity:.88}}

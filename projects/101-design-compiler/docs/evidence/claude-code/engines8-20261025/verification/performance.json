@@ -1,0 +1,2684 @@
+{
+  "pass": true,
+  "scope": "Static regression budget: new rendered page gzip adds <=20KiB versus same semantic candidate01 page; runtime dependency files unchanged; external script/autoplay forbidden. Not field performance or LCP certification.",
+  "max_gzip_html_bytes": 26168,
+  "max_js_bytes": 10546,
+  "max_delta_gzip": 2324,
+  "fonts": [
+    {
+      "path": "bodonimoda.woff",
+      "bytes": 75704
+    },
+    {
+      "path": "dmsans.woff",
+      "bytes": 94588
+    },
+    {
+      "path": "syne.woff",
+      "bytes": 53956
+    }
+  ],
+  "dependenciesUnchanged": true,
+  "rows": [
+    {
+      "path": "b3/candidate-05/carta/albondigas-tomate/index.html",
+      "html_bytes": 107171,
+      "gzip_html_bytes": 20970,
+      "delta_gzip_vs01": 1220,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/arroz-mariscos/index.html",
+      "html_bytes": 107072,
+      "gzip_html_bytes": 20933,
+      "delta_gzip_vs01": 1215,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/arroz-pollo/index.html",
+      "html_bytes": 107035,
+      "gzip_html_bytes": 20908,
+      "delta_gzip_vs01": 1215,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/arroz-verduras/index.html",
+      "html_bytes": 107065,
+      "gzip_html_bytes": 20942,
+      "delta_gzip_vs01": 1214,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/berenjenas-asadas/index.html",
+      "html_bytes": 107145,
+      "gzip_html_bytes": 20953,
+      "delta_gzip_vs01": 1218,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/brownie-helado/index.html",
+      "html_bytes": 107097,
+      "gzip_html_bytes": 20961,
+      "delta_gzip_vs01": 1217,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/bruschetta-tomate/index.html",
+      "html_bytes": 107125,
+      "gzip_html_bytes": 20938,
+      "delta_gzip_vs01": 1217,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/burrata-tomates/index.html",
+      "html_bytes": 107088,
+      "gzip_html_bytes": 20932,
+      "delta_gzip_vs01": 1218,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/calzone-espinacas/index.html",
+      "html_bytes": 107118,
+      "gzip_html_bytes": 20937,
+      "delta_gzip_vs01": 1220,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/carpaccio-remolacha/index.html",
+      "html_bytes": 107159,
+      "gzip_html_bytes": 20948,
+      "delta_gzip_vs01": 1216,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/crema-calabaza/index.html",
+      "html_bytes": 107096,
+      "gzip_html_bytes": 20949,
+      "delta_gzip_vs01": 1218,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/croquetas-setas/index.html",
+      "html_bytes": 107101,
+      "gzip_html_bytes": 20943,
+      "delta_gzip_vs01": 1214,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/dessert/index.html",
+      "html_bytes": 108371,
+      "gzip_html_bytes": 21519,
+      "delta_gzip_vs01": 1146,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/ensalada-caprese/index.html",
+      "html_bytes": 107107,
+      "gzip_html_bytes": 20932,
+      "delta_gzip_vs01": 1217,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/ensalada-mediterranea/index.html",
+      "html_bytes": 107181,
+      "gzip_html_bytes": 20938,
+      "delta_gzip_vs01": 1218,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/ensalada-pera/index.html",
+      "html_bytes": 107061,
+      "gzip_html_bytes": 20921,
+      "delta_gzip_vs01": 1217,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/ensalada-quinoa/index.html",
+      "html_bytes": 107114,
+      "gzip_html_bytes": 20950,
+      "delta_gzip_vs01": 1215,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/focaccia-romero/index.html",
+      "html_bytes": 107134,
+      "gzip_html_bytes": 20953,
+      "delta_gzip_vs01": 1217,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/fruta-temporada/index.html",
+      "html_bytes": 107065,
+      "gzip_html_bytes": 20947,
+      "delta_gzip_vs01": 1220,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/gnocchi-pesto/index.html",
+      "html_bytes": 107132,
+      "gzip_html_bytes": 20957,
+      "delta_gzip_vs01": 1212,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/hummus-pan/index.html",
+      "html_bytes": 107105,
+      "gzip_html_bytes": 20967,
+      "delta_gzip_vs01": 1219,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/index.html",
+      "html_bytes": 148290,
+      "gzip_html_bytes": 25013,
+      "delta_gzip_vs01": 1276,
+      "scripts": [
+        "/_astro/catalogue-client.BUP0tm98.js",
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 10546,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/lomo-pimienta/index.html",
+      "html_bytes": 107129,
+      "gzip_html_bytes": 20959,
+      "delta_gzip_vs01": 1218,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/panna-cotta/index.html",
+      "html_bytes": 107048,
+      "gzip_html_bytes": 20951,
+      "delta_gzip_vs01": 1217,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/pasta/index.html",
+      "html_bytes": 108394,
+      "gzip_html_bytes": 21487,
+      "delta_gzip_vs01": 1146,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/patatas-bravas/index.html",
+      "html_bytes": 107098,
+      "gzip_html_bytes": 20939,
+      "delta_gzip_vs01": 1218,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/pescado-horno/index.html",
+      "html_bytes": 107128,
+      "gzip_html_bytes": 20949,
+      "delta_gzip_vs01": 1216,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/pizza/index.html",
+      "html_bytes": 108328,
+      "gzip_html_bytes": 21466,
+      "delta_gzip_vs01": 1149,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/pizza-cuatro-quesos/index.html",
+      "html_bytes": 107142,
+      "gzip_html_bytes": 20958,
+      "delta_gzip_vs01": 1219,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/pizza-huerta/index.html",
+      "html_bytes": 107085,
+      "gzip_html_bytes": 20950,
+      "delta_gzip_vs01": 1216,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/pizza-margarita/index.html",
+      "html_bytes": 107109,
+      "gzip_html_bytes": 20958,
+      "delta_gzip_vs01": 1219,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/pollo-hierbas/index.html",
+      "html_bytes": 107123,
+      "gzip_html_bytes": 20954,
+      "delta_gzip_vs01": 1218,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/ravioli-ricotta/index.html",
+      "html_bytes": 107157,
+      "gzip_html_bytes": 20955,
+      "delta_gzip_vs01": 1218,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/risotto-limon/index.html",
+      "html_bytes": 107049,
+      "gzip_html_bytes": 20916,
+      "delta_gzip_vs01": 1212,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/risotto-setas/index.html",
+      "html_bytes": 107055,
+      "gzip_html_bytes": 20913,
+      "delta_gzip_vs01": 1211,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/salad/index.html",
+      "html_bytes": 108361,
+      "gzip_html_bytes": 21503,
+      "delta_gzip_vs01": 1147,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/salmon-limon/index.html",
+      "html_bytes": 107106,
+      "gzip_html_bytes": 20957,
+      "delta_gzip_vs01": 1217,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/spaghetti-pomodoro/index.html",
+      "html_bytes": 107170,
+      "gzip_html_bytes": 20949,
+      "delta_gzip_vs01": 1216,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/tabla-quesos/index.html",
+      "html_bytes": 107099,
+      "gzip_html_bytes": 20954,
+      "delta_gzip_vs01": 1216,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/tagliatelle-setas/index.html",
+      "html_bytes": 107180,
+      "gzip_html_bytes": 20963,
+      "delta_gzip_vs01": 1217,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/carta/tarta-limon/index.html",
+      "html_bytes": 107043,
+      "gzip_html_bytes": 20956,
+      "delta_gzip_vs01": 1216,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/contacto/index.html",
+      "html_bytes": 89485,
+      "gzip_html_bytes": 17694,
+      "delta_gzip_vs01": 1098,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/creditos/index.html",
+      "html_bytes": 96338,
+      "gzip_html_bytes": 19046,
+      "delta_gzip_vs01": 1977,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/diario/index.html",
+      "html_bytes": 95062,
+      "gzip_html_bytes": 19049,
+      "delta_gzip_vs01": 1397,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/historia/index.html",
+      "html_bytes": 89312,
+      "gzip_html_bytes": 17818,
+      "delta_gzip_vs01": 1232,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/index.html",
+      "html_bytes": 101162,
+      "gzip_html_bytes": 20315,
+      "delta_gzip_vs01": 1539,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/opiniones/index.html",
+      "html_bytes": 89380,
+      "gzip_html_bytes": 17607,
+      "delta_gzip_vs01": 1427,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/pedidos/index.html",
+      "html_bytes": 156132,
+      "gzip_html_bytes": 25917,
+      "delta_gzip_vs01": 1267,
+      "scripts": [
+        "/_astro/catalogue-client.BUP0tm98.js",
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 10546,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/preguntas/index.html",
+      "html_bytes": 88747,
+      "gzip_html_bytes": 17606,
+      "delta_gzip_vs01": 1426,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/reservas/index.html",
+      "html_bytes": 90529,
+      "gzip_html_bytes": 18086,
+      "delta_gzip_vs01": 1098,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-05/visita/index.html",
+      "html_bytes": 90157,
+      "gzip_html_bytes": 17873,
+      "delta_gzip_vs01": 1429,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/albondigas-tomate/index.html",
+      "html_bytes": 108027,
+      "gzip_html_bytes": 21118,
+      "delta_gzip_vs01": 1368,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/arroz-mariscos/index.html",
+      "html_bytes": 107928,
+      "gzip_html_bytes": 21082,
+      "delta_gzip_vs01": 1364,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/arroz-pollo/index.html",
+      "html_bytes": 107891,
+      "gzip_html_bytes": 21058,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/arroz-verduras/index.html",
+      "html_bytes": 107921,
+      "gzip_html_bytes": 21090,
+      "delta_gzip_vs01": 1362,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/berenjenas-asadas/index.html",
+      "html_bytes": 108001,
+      "gzip_html_bytes": 21100,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/brownie-helado/index.html",
+      "html_bytes": 107953,
+      "gzip_html_bytes": 21110,
+      "delta_gzip_vs01": 1366,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/bruschetta-tomate/index.html",
+      "html_bytes": 107981,
+      "gzip_html_bytes": 21086,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/burrata-tomates/index.html",
+      "html_bytes": 107944,
+      "gzip_html_bytes": 21080,
+      "delta_gzip_vs01": 1366,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/calzone-espinacas/index.html",
+      "html_bytes": 107974,
+      "gzip_html_bytes": 21086,
+      "delta_gzip_vs01": 1369,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/carpaccio-remolacha/index.html",
+      "html_bytes": 108015,
+      "gzip_html_bytes": 21095,
+      "delta_gzip_vs01": 1363,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/crema-calabaza/index.html",
+      "html_bytes": 107952,
+      "gzip_html_bytes": 21098,
+      "delta_gzip_vs01": 1367,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/croquetas-setas/index.html",
+      "html_bytes": 107957,
+      "gzip_html_bytes": 21091,
+      "delta_gzip_vs01": 1362,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/dessert/index.html",
+      "html_bytes": 109227,
+      "gzip_html_bytes": 21669,
+      "delta_gzip_vs01": 1296,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/ensalada-caprese/index.html",
+      "html_bytes": 107963,
+      "gzip_html_bytes": 21080,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/ensalada-mediterranea/index.html",
+      "html_bytes": 108037,
+      "gzip_html_bytes": 21085,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/ensalada-pera/index.html",
+      "html_bytes": 107917,
+      "gzip_html_bytes": 21066,
+      "delta_gzip_vs01": 1362,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/ensalada-quinoa/index.html",
+      "html_bytes": 107970,
+      "gzip_html_bytes": 21098,
+      "delta_gzip_vs01": 1363,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/focaccia-romero/index.html",
+      "html_bytes": 107990,
+      "gzip_html_bytes": 21100,
+      "delta_gzip_vs01": 1364,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/fruta-temporada/index.html",
+      "html_bytes": 107921,
+      "gzip_html_bytes": 21095,
+      "delta_gzip_vs01": 1368,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/gnocchi-pesto/index.html",
+      "html_bytes": 107988,
+      "gzip_html_bytes": 21108,
+      "delta_gzip_vs01": 1363,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/hummus-pan/index.html",
+      "html_bytes": 107961,
+      "gzip_html_bytes": 21115,
+      "delta_gzip_vs01": 1367,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/index.html",
+      "html_bytes": 149146,
+      "gzip_html_bytes": 25171,
+      "delta_gzip_vs01": 1434,
+      "scripts": [
+        "/_astro/catalogue-client.BUP0tm98.js",
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 10546,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/lomo-pimienta/index.html",
+      "html_bytes": 107985,
+      "gzip_html_bytes": 21106,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/panna-cotta/index.html",
+      "html_bytes": 107904,
+      "gzip_html_bytes": 21098,
+      "delta_gzip_vs01": 1364,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/pasta/index.html",
+      "html_bytes": 109250,
+      "gzip_html_bytes": 21636,
+      "delta_gzip_vs01": 1295,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/patatas-bravas/index.html",
+      "html_bytes": 107954,
+      "gzip_html_bytes": 21086,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/pescado-horno/index.html",
+      "html_bytes": 107984,
+      "gzip_html_bytes": 21098,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/pizza/index.html",
+      "html_bytes": 109184,
+      "gzip_html_bytes": 21614,
+      "delta_gzip_vs01": 1297,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/pizza-cuatro-quesos/index.html",
+      "html_bytes": 107998,
+      "gzip_html_bytes": 21107,
+      "delta_gzip_vs01": 1368,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/pizza-huerta/index.html",
+      "html_bytes": 107941,
+      "gzip_html_bytes": 21099,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/pizza-margarita/index.html",
+      "html_bytes": 107965,
+      "gzip_html_bytes": 21107,
+      "delta_gzip_vs01": 1368,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/pollo-hierbas/index.html",
+      "html_bytes": 107979,
+      "gzip_html_bytes": 21101,
+      "delta_gzip_vs01": 1365,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/ravioli-ricotta/index.html",
+      "html_bytes": 108013,
+      "gzip_html_bytes": 21103,
+      "delta_gzip_vs01": 1366,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/risotto-limon/index.html",
+      "html_bytes": 107905,
+      "gzip_html_bytes": 21063,
+      "delta_gzip_vs01": 1359,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/risotto-setas/index.html",
+      "html_bytes": 107911,
+      "gzip_html_bytes": 21060,
+      "delta_gzip_vs01": 1358,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/salad/index.html",
+      "html_bytes": 109217,
+      "gzip_html_bytes": 21653,
+      "delta_gzip_vs01": 1297,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/salmon-limon/index.html",
+      "html_bytes": 107962,
+      "gzip_html_bytes": 21104,
+      "delta_gzip_vs01": 1364,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/spaghetti-pomodoro/index.html",
+      "html_bytes": 108026,
+      "gzip_html_bytes": 21097,
+      "delta_gzip_vs01": 1364,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/tabla-quesos/index.html",
+      "html_bytes": 107955,
+      "gzip_html_bytes": 21102,
+      "delta_gzip_vs01": 1364,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/tagliatelle-setas/index.html",
+      "html_bytes": 108036,
+      "gzip_html_bytes": 21110,
+      "delta_gzip_vs01": 1364,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/carta/tarta-limon/index.html",
+      "html_bytes": 107899,
+      "gzip_html_bytes": 21104,
+      "delta_gzip_vs01": 1364,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/contacto/index.html",
+      "html_bytes": 90341,
+      "gzip_html_bytes": 17870,
+      "delta_gzip_vs01": 1274,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/creditos/index.html",
+      "html_bytes": 97194,
+      "gzip_html_bytes": 19219,
+      "delta_gzip_vs01": 2150,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/diario/index.html",
+      "html_bytes": 95918,
+      "gzip_html_bytes": 19225,
+      "delta_gzip_vs01": 1573,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/historia/index.html",
+      "html_bytes": 90170,
+      "gzip_html_bytes": 17993,
+      "delta_gzip_vs01": 1407,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/index.html",
+      "html_bytes": 102696,
+      "gzip_html_bytes": 20518,
+      "delta_gzip_vs01": 1742,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/opiniones/index.html",
+      "html_bytes": 90236,
+      "gzip_html_bytes": 17782,
+      "delta_gzip_vs01": 1602,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/pedidos/index.html",
+      "html_bytes": 156988,
+      "gzip_html_bytes": 26080,
+      "delta_gzip_vs01": 1430,
+      "scripts": [
+        "/_astro/catalogue-client.BUP0tm98.js",
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 10546,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/preguntas/index.html",
+      "html_bytes": 89603,
+      "gzip_html_bytes": 17787,
+      "delta_gzip_vs01": 1607,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/reservas/index.html",
+      "html_bytes": 91385,
+      "gzip_html_bytes": 18266,
+      "delta_gzip_vs01": 1278,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-06/visita/index.html",
+      "html_bytes": 91013,
+      "gzip_html_bytes": 18046,
+      "delta_gzip_vs01": 1602,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/albondigas-tomate/index.html",
+      "html_bytes": 108492,
+      "gzip_html_bytes": 21226,
+      "delta_gzip_vs01": 1476,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/arroz-mariscos/index.html",
+      "html_bytes": 108393,
+      "gzip_html_bytes": 21187,
+      "delta_gzip_vs01": 1469,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/arroz-pollo/index.html",
+      "html_bytes": 108356,
+      "gzip_html_bytes": 21167,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/arroz-verduras/index.html",
+      "html_bytes": 108386,
+      "gzip_html_bytes": 21196,
+      "delta_gzip_vs01": 1468,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/berenjenas-asadas/index.html",
+      "html_bytes": 108466,
+      "gzip_html_bytes": 21209,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/brownie-helado/index.html",
+      "html_bytes": 108418,
+      "gzip_html_bytes": 21217,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/bruschetta-tomate/index.html",
+      "html_bytes": 108446,
+      "gzip_html_bytes": 21194,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/burrata-tomates/index.html",
+      "html_bytes": 108409,
+      "gzip_html_bytes": 21187,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/calzone-espinacas/index.html",
+      "html_bytes": 108439,
+      "gzip_html_bytes": 21195,
+      "delta_gzip_vs01": 1478,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/carpaccio-remolacha/index.html",
+      "html_bytes": 108480,
+      "gzip_html_bytes": 21204,
+      "delta_gzip_vs01": 1472,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/crema-calabaza/index.html",
+      "html_bytes": 108417,
+      "gzip_html_bytes": 21206,
+      "delta_gzip_vs01": 1475,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/croquetas-setas/index.html",
+      "html_bytes": 108422,
+      "gzip_html_bytes": 21202,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/dessert/index.html",
+      "html_bytes": 109692,
+      "gzip_html_bytes": 21773,
+      "delta_gzip_vs01": 1400,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/ensalada-caprese/index.html",
+      "html_bytes": 108428,
+      "gzip_html_bytes": 21188,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/ensalada-mediterranea/index.html",
+      "html_bytes": 108502,
+      "gzip_html_bytes": 21196,
+      "delta_gzip_vs01": 1476,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/ensalada-pera/index.html",
+      "html_bytes": 108382,
+      "gzip_html_bytes": 21178,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/ensalada-quinoa/index.html",
+      "html_bytes": 108435,
+      "gzip_html_bytes": 21207,
+      "delta_gzip_vs01": 1472,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/focaccia-romero/index.html",
+      "html_bytes": 108455,
+      "gzip_html_bytes": 21210,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/fruta-temporada/index.html",
+      "html_bytes": 108386,
+      "gzip_html_bytes": 21203,
+      "delta_gzip_vs01": 1476,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/gnocchi-pesto/index.html",
+      "html_bytes": 108453,
+      "gzip_html_bytes": 21216,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/hummus-pan/index.html",
+      "html_bytes": 108426,
+      "gzip_html_bytes": 21224,
+      "delta_gzip_vs01": 1476,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/index.html",
+      "html_bytes": 149611,
+      "gzip_html_bytes": 25255,
+      "delta_gzip_vs01": 1518,
+      "scripts": [
+        "/_astro/catalogue-client.BUP0tm98.js",
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 10546,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/lomo-pimienta/index.html",
+      "html_bytes": 108450,
+      "gzip_html_bytes": 21214,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/panna-cotta/index.html",
+      "html_bytes": 108369,
+      "gzip_html_bytes": 21208,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/pasta/index.html",
+      "html_bytes": 109715,
+      "gzip_html_bytes": 21743,
+      "delta_gzip_vs01": 1402,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/patatas-bravas/index.html",
+      "html_bytes": 108419,
+      "gzip_html_bytes": 21196,
+      "delta_gzip_vs01": 1475,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/pescado-horno/index.html",
+      "html_bytes": 108449,
+      "gzip_html_bytes": 21207,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/pizza/index.html",
+      "html_bytes": 109649,
+      "gzip_html_bytes": 21721,
+      "delta_gzip_vs01": 1404,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/pizza-cuatro-quesos/index.html",
+      "html_bytes": 108463,
+      "gzip_html_bytes": 21216,
+      "delta_gzip_vs01": 1477,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/pizza-huerta/index.html",
+      "html_bytes": 108406,
+      "gzip_html_bytes": 21208,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/pizza-margarita/index.html",
+      "html_bytes": 108430,
+      "gzip_html_bytes": 21216,
+      "delta_gzip_vs01": 1477,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/pollo-hierbas/index.html",
+      "html_bytes": 108444,
+      "gzip_html_bytes": 21210,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/ravioli-ricotta/index.html",
+      "html_bytes": 108478,
+      "gzip_html_bytes": 21210,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/risotto-limon/index.html",
+      "html_bytes": 108370,
+      "gzip_html_bytes": 21172,
+      "delta_gzip_vs01": 1468,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/risotto-setas/index.html",
+      "html_bytes": 108376,
+      "gzip_html_bytes": 21169,
+      "delta_gzip_vs01": 1467,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/salad/index.html",
+      "html_bytes": 109682,
+      "gzip_html_bytes": 21759,
+      "delta_gzip_vs01": 1403,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/salmon-limon/index.html",
+      "html_bytes": 108427,
+      "gzip_html_bytes": 21212,
+      "delta_gzip_vs01": 1472,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/spaghetti-pomodoro/index.html",
+      "html_bytes": 108491,
+      "gzip_html_bytes": 21206,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/tabla-quesos/index.html",
+      "html_bytes": 108420,
+      "gzip_html_bytes": 21212,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/tagliatelle-setas/index.html",
+      "html_bytes": 108501,
+      "gzip_html_bytes": 21220,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/carta/tarta-limon/index.html",
+      "html_bytes": 108364,
+      "gzip_html_bytes": 21213,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/contacto/index.html",
+      "html_bytes": 90806,
+      "gzip_html_bytes": 17942,
+      "delta_gzip_vs01": 1346,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/creditos/index.html",
+      "html_bytes": 97659,
+      "gzip_html_bytes": 19297,
+      "delta_gzip_vs01": 2228,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/diario/index.html",
+      "html_bytes": 96391,
+      "gzip_html_bytes": 19287,
+      "delta_gzip_vs01": 1635,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/historia/index.html",
+      "html_bytes": 90635,
+      "gzip_html_bytes": 18067,
+      "delta_gzip_vs01": 1481,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/index.html",
+      "html_bytes": 103539,
+      "gzip_html_bytes": 20584,
+      "delta_gzip_vs01": 1808,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/opiniones/index.html",
+      "html_bytes": 90701,
+      "gzip_html_bytes": 17855,
+      "delta_gzip_vs01": 1675,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/pedidos/index.html",
+      "html_bytes": 157453,
+      "gzip_html_bytes": 26163,
+      "delta_gzip_vs01": 1513,
+      "scripts": [
+        "/_astro/catalogue-client.BUP0tm98.js",
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 10546,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/preguntas/index.html",
+      "html_bytes": 90068,
+      "gzip_html_bytes": 17855,
+      "delta_gzip_vs01": 1675,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/reservas/index.html",
+      "html_bytes": 91850,
+      "gzip_html_bytes": 18336,
+      "delta_gzip_vs01": 1348,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-07/visita/index.html",
+      "html_bytes": 91478,
+      "gzip_html_bytes": 18116,
+      "delta_gzip_vs01": 1672,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/albondigas-tomate/index.html",
+      "html_bytes": 108820,
+      "gzip_html_bytes": 21226,
+      "delta_gzip_vs01": 1476,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/arroz-mariscos/index.html",
+      "html_bytes": 108721,
+      "gzip_html_bytes": 21188,
+      "delta_gzip_vs01": 1470,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/arroz-pollo/index.html",
+      "html_bytes": 108684,
+      "gzip_html_bytes": 21167,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/arroz-verduras/index.html",
+      "html_bytes": 108714,
+      "gzip_html_bytes": 21197,
+      "delta_gzip_vs01": 1469,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/berenjenas-asadas/index.html",
+      "html_bytes": 108794,
+      "gzip_html_bytes": 21206,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/brownie-helado/index.html",
+      "html_bytes": 108746,
+      "gzip_html_bytes": 21217,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/bruschetta-tomate/index.html",
+      "html_bytes": 108774,
+      "gzip_html_bytes": 21193,
+      "delta_gzip_vs01": 1472,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/burrata-tomates/index.html",
+      "html_bytes": 108737,
+      "gzip_html_bytes": 21187,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/calzone-espinacas/index.html",
+      "html_bytes": 108767,
+      "gzip_html_bytes": 21192,
+      "delta_gzip_vs01": 1475,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/carpaccio-remolacha/index.html",
+      "html_bytes": 108808,
+      "gzip_html_bytes": 21202,
+      "delta_gzip_vs01": 1470,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/crema-calabaza/index.html",
+      "html_bytes": 108745,
+      "gzip_html_bytes": 21204,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/croquetas-setas/index.html",
+      "html_bytes": 108750,
+      "gzip_html_bytes": 21198,
+      "delta_gzip_vs01": 1469,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/dessert/index.html",
+      "html_bytes": 110020,
+      "gzip_html_bytes": 21775,
+      "delta_gzip_vs01": 1402,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/ensalada-caprese/index.html",
+      "html_bytes": 108756,
+      "gzip_html_bytes": 21186,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/ensalada-mediterranea/index.html",
+      "html_bytes": 108830,
+      "gzip_html_bytes": 21193,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/ensalada-pera/index.html",
+      "html_bytes": 108710,
+      "gzip_html_bytes": 21175,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/ensalada-quinoa/index.html",
+      "html_bytes": 108763,
+      "gzip_html_bytes": 21205,
+      "delta_gzip_vs01": 1470,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/focaccia-romero/index.html",
+      "html_bytes": 108783,
+      "gzip_html_bytes": 21208,
+      "delta_gzip_vs01": 1472,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/fruta-temporada/index.html",
+      "html_bytes": 108714,
+      "gzip_html_bytes": 21203,
+      "delta_gzip_vs01": 1476,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/gnocchi-pesto/index.html",
+      "html_bytes": 108781,
+      "gzip_html_bytes": 21213,
+      "delta_gzip_vs01": 1468,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/hummus-pan/index.html",
+      "html_bytes": 108754,
+      "gzip_html_bytes": 21222,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/index.html",
+      "html_bytes": 149939,
+      "gzip_html_bytes": 25260,
+      "delta_gzip_vs01": 1523,
+      "scripts": [
+        "/_astro/catalogue-client.BUP0tm98.js",
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 10546,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/lomo-pimienta/index.html",
+      "html_bytes": 108778,
+      "gzip_html_bytes": 21212,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/panna-cotta/index.html",
+      "html_bytes": 108697,
+      "gzip_html_bytes": 21205,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/pasta/index.html",
+      "html_bytes": 110043,
+      "gzip_html_bytes": 21746,
+      "delta_gzip_vs01": 1405,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/patatas-bravas/index.html",
+      "html_bytes": 108747,
+      "gzip_html_bytes": 21194,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/pescado-horno/index.html",
+      "html_bytes": 108777,
+      "gzip_html_bytes": 21205,
+      "delta_gzip_vs01": 1472,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/pizza/index.html",
+      "html_bytes": 109977,
+      "gzip_html_bytes": 21722,
+      "delta_gzip_vs01": 1405,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/pizza-cuatro-quesos/index.html",
+      "html_bytes": 108791,
+      "gzip_html_bytes": 21213,
+      "delta_gzip_vs01": 1474,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/pizza-huerta/index.html",
+      "html_bytes": 108734,
+      "gzip_html_bytes": 21205,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/pizza-margarita/index.html",
+      "html_bytes": 108758,
+      "gzip_html_bytes": 21214,
+      "delta_gzip_vs01": 1475,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/pollo-hierbas/index.html",
+      "html_bytes": 108772,
+      "gzip_html_bytes": 21209,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/ravioli-ricotta/index.html",
+      "html_bytes": 108806,
+      "gzip_html_bytes": 21210,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/risotto-limon/index.html",
+      "html_bytes": 108698,
+      "gzip_html_bytes": 21175,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/risotto-setas/index.html",
+      "html_bytes": 108704,
+      "gzip_html_bytes": 21172,
+      "delta_gzip_vs01": 1470,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/salad/index.html",
+      "html_bytes": 110010,
+      "gzip_html_bytes": 21758,
+      "delta_gzip_vs01": 1402,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/salmon-limon/index.html",
+      "html_bytes": 108755,
+      "gzip_html_bytes": 21213,
+      "delta_gzip_vs01": 1473,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/spaghetti-pomodoro/index.html",
+      "html_bytes": 108819,
+      "gzip_html_bytes": 21204,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/tabla-quesos/index.html",
+      "html_bytes": 108748,
+      "gzip_html_bytes": 21209,
+      "delta_gzip_vs01": 1471,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/tagliatelle-setas/index.html",
+      "html_bytes": 108829,
+      "gzip_html_bytes": 21218,
+      "delta_gzip_vs01": 1472,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/carta/tarta-limon/index.html",
+      "html_bytes": 108692,
+      "gzip_html_bytes": 21212,
+      "delta_gzip_vs01": 1472,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/contacto/index.html",
+      "html_bytes": 91134,
+      "gzip_html_bytes": 18038,
+      "delta_gzip_vs01": 1442,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/creditos/index.html",
+      "html_bytes": 97987,
+      "gzip_html_bytes": 19393,
+      "delta_gzip_vs01": 2324,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/diario/index.html",
+      "html_bytes": 96719,
+      "gzip_html_bytes": 19387,
+      "delta_gzip_vs01": 1735,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/historia/index.html",
+      "html_bytes": 90965,
+      "gzip_html_bytes": 18163,
+      "delta_gzip_vs01": 1577,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/index.html",
+      "html_bytes": 107252,
+      "gzip_html_bytes": 20933,
+      "delta_gzip_vs01": 2157,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/opiniones/index.html",
+      "html_bytes": 91029,
+      "gzip_html_bytes": 17951,
+      "delta_gzip_vs01": 1771,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/pedidos/index.html",
+      "html_bytes": 157781,
+      "gzip_html_bytes": 26168,
+      "delta_gzip_vs01": 1518,
+      "scripts": [
+        "/_astro/catalogue-client.BUP0tm98.js",
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 10546,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/preguntas/index.html",
+      "html_bytes": 90396,
+      "gzip_html_bytes": 17952,
+      "delta_gzip_vs01": 1772,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/reservas/index.html",
+      "html_bytes": 92178,
+      "gzip_html_bytes": 18433,
+      "delta_gzip_vs01": 1445,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    },
+    {
+      "path": "b3/candidate-08/visita/index.html",
+      "html_bytes": 91806,
+      "gzip_html_bytes": 18212,
+      "delta_gzip_vs01": 1768,
+      "scripts": [
+        "/_astro/ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js"
+      ],
+      "js_bytes": 5791,
+      "inlineScriptBytes": 0,
+      "external_scripts": [],
+      "videoAutoplay": false
+    }
+  ]
+}

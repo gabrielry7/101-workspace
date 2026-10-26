@@ -1,0 +1,38 @@
+
+> 101-design-compiler@0.0.0 check
+> astro check && tsc --noEmit
+
+09:30:15 [types] Generated 106ms
+09:30:15 [check] Getting diagnostics for Astro files in C:\Users\gabri\101-design-compiler\.tools\claude-worktrees\restaurant-artistic-20261025...
+[96msrc/components/composition/ArtisticPages.astro[0m:[93m80[0m:[93m137[0m - [91merror[0m[90m ts(18048): [0m'head' is possibly 'undefined'.
+
+[7m80[0m  <div class:list={['art-head',hi&&'has-image']}><div class="art-head-text"><p class="eyebrow">{head.e}</p><h1>{head.h}</h1>{head.p&&<p>{head.p}</p>}</div>{hi&&<ArtisticImage id={hi.id} {...img} class={`art-head-image ${hi.cls}`}/>}</div>
+[7m  [0m [91m                                                                                                                                        ~~~~[0m
+[96msrc/components/composition/ArtisticPages.astro[0m:[93m80[0m:[93m125[0m - [91merror[0m[90m ts(18048): [0m'head' is possibly 'undefined'.
+
+[7m80[0m  <div class:list={['art-head',hi&&'has-image']}><div class="art-head-text"><p class="eyebrow">{head.e}</p><h1>{head.h}</h1>{head.p&&<p>{head.p}</p>}</div>{hi&&<ArtisticImage id={hi.id} {...img} class={`art-head-image ${hi.cls}`}/>}</div>
+[7m  [0m [91m                                                                                                                            ~~~~[0m
+[96msrc/components/composition/ArtisticPages.astro[0m:[93m80[0m:[93m112[0m - [91merror[0m[90m ts(18048): [0m'head' is possibly 'undefined'.
+
+[7m80[0m  <div class:list={['art-head',hi&&'has-image']}><div class="art-head-text"><p class="eyebrow">{head.e}</p><h1>{head.h}</h1>{head.p&&<p>{head.p}</p>}</div>{hi&&<ArtisticImage id={hi.id} {...img} class={`art-head-image ${hi.cls}`}/>}</div>
+[7m  [0m [91m                                                                                                               ~~~~[0m
+[96msrc/components/composition/ArtisticPages.astro[0m:[93m80[0m:[93m96[0m - [91merror[0m[90m ts(18048): [0m'head' is possibly 'undefined'.
+
+[7m80[0m  <div class:list={['art-head',hi&&'has-image']}><div class="art-head-text"><p class="eyebrow">{head.e}</p><h1>{head.h}</h1>{head.p&&<p>{head.p}</p>}</div>{hi&&<ArtisticImage id={hi.id} {...img} class={`art-head-image ${hi.cls}`}/>}</div>
+[7m  [0m [91m                                                                                               ~~~~[0m
+
+[96msrc/components/composition/ArtisticVideo.astro[0m:[93m10[0m:[93m3[0m - [91merror[0m[90m ts(2375): [0mType '{ id: string | number; route: string; creditsHref: string; hero: boolean; sizes: string | undefined; class: string; }' is not assignable to type 'IntrinsicAttributes & Props' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Type '{ id: string | number; route: string; creditsHref: string; hero: boolean; sizes: string | undefined; class: string; }' is not assignable to type 'Props' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Types of property 'sizes' are incompatible.
+      Type 'string | undefined' is not assignable to type 'string'.
+        Type 'undefined' is not assignable to type 'string'.
+
+[7m10[0m  <ArtisticImage id={posterId} {route} {creditsHref} hero={eager} sizes={posterSizes} class="art-film-poster"/>
+[7m  [0m [91m  ~~~~~~~~~~~~~[0m
+
+Result (316 files): 
+- 5 errors
+- 0 warnings
+- 0 hints
+
+

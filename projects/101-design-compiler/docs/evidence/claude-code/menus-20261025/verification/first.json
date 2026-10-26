@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "script": "test",
+      "startedAt": "2026-10-25T15:26:38.707Z",
+      "finishedAt": "2026-10-25T15:26:52.651Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "passed": false
+    },
+    {
+      "script": "check",
+      "startedAt": "2026-10-25T15:26:52.651Z",
+      "finishedAt": "2026-10-25T15:27:42.825Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "passed": true
+    },
+    {
+      "script": "build",
+      "startedAt": "2026-10-25T15:27:42.825Z",
+      "finishedAt": "2026-10-25T15:28:02.403Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "passed": true
+    }
+  ]
+}

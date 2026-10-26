@@ -1,0 +1,18 @@
+Task restaurant-menus-20261025. Worktree: C:\Users\gabri\101-design-compiler\.tools\claude-worktrees\restaurant-menus-20261025. Mode: implement.
+Codex independently built the 168 pages (pass), checked 317 files (0 errors/warnings/hints), ran 430 tests (429 pass, sole unchanged historical H8 LOCK_BROWSER_MISMATCH versus expected LOCK_AUDIT_FILE_MISMATCH), and checked native desktop/mobile at 360/390/768/1024/1440. EXACTLY the four carta HTML files changed; other 164 are byte-identical. All original facts/media/fallbacks/filters/order query links preserved, no external requests/errors. Do not disturb that scope isolation.
+
+HOWEVER visual review caught TWO REAL FAILURES missed by the inherited generic overflow audit. Fix before acceptance, source CSS only if sufficient:
+
+1. LEDGER 01 at desktop AND phones: photos invade text and cover parts of dish names, categories and descriptions. The image is not contained by the declared grid track! At 390px actual .menu-dish grid columns are 72px +278px; .contextual-photo is x20 width216 height144, while .menu-body starts x92 (278px wide). Figure computed min-width:auto, aspect-ratio:3/2 and min-height:144 force 216px width, overlapping the reading column. At desktop a similar aspect/min-height issue makes it wider than its left column. Give the photo an explicit bounded track width/min-width/max-width and an appropriate height/aspect reset, full stretch down each row if needed, with image confined inside. Keep original photo-to-item binding and readable strip concept. Do not just hide overlap with a clip on the whole body. Mobile long names/prices must also fit as readable words. If necessary put the price below the title on narrow sizes rather than forcing a tiny name column.
+
+2. BRASA 03 phone caption: price is 203.47px wide, flex-shrink:0; name column only122.53px with overflow-wrap:break-word. Names are mutilated into fragments like 'Past / a / junt / o / al / mar' and 'Verd / e de / temp / orad / a'. At 390px .menu-head flex nowrap width350 and gap24; title has width122.53. On phones let title use the full width and place price on its own clear line below or above, or redesign the caption so full words remain intact. Do not reduce body font or ruin the expressive Syne world. Verify all four dish names, including 'Verde de temporada', at360/390 AND intermediate widths, not only first dish.
+
+Private own browser screenshots have been copied into .tools/menu-review/01-mobile.png,01-desktop.png,03-mobile.png,02-desktop.png,04-mobile.png. Read 01/03 screenshots before fixing. 02's lead/columns and 04's quiet centered specimens work and should stay as they are. 03 desktop also works; preserve it. Keep other164 outputs untouched. No new facts, JS, manifests, dependencies, framework or tests. Native details, controls and all filters must keep working.
+
+Implement the concrete fixes this call. Explain actual changes and any residual concern; Codex will rebuild, visually verify the screenshots again, and add explicit image/text overlap and broken-word geometry checks. Do not claim you ran shell or browser.
+
+Evaluation criteria:
+[]
+Explicit context (current orchestrator snapshot; worktree starts from 24c4301c2a36fc5a023d3cd695030afc13a47f09):
+
+Return a concise report with changed files, decisions, checks and risks. Do not claim checks Codex has not run.

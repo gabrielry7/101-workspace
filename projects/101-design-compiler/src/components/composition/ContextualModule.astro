@@ -29,7 +29,7 @@ const anchors:Record<string,string>=presentation.anchors;
    </div></article>;})}</div>
   <noscript><p>La carta completa y sus detalles funcionan sin JavaScript. La búsqueda y la selección local necesitan JavaScript.</p></noscript>
  </>:<>
-  <header class="section-heading"><p class="kicker">{m.capability_id==='about'?'Nuestra idea de un buen rato':'Información del escenario'}</p><h2>{title}</h2></header>
-  <div class="fact-copy">{m.facts.map((f,i)=>m.capability_id==='faqs'?<details><summary>0{i+1} / {i===0?'Celebraciones y grupos':'Pedidos de ejemplo'}</summary><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p></details>:<p class:list={[m.capability_id==='about'&&i===0?'lead':undefined]} data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div>
+  <header class="section-heading"><h2>{m.capability_id==='about'?'Sobre el restaurante':m.capability_id==='faqs'?'Preguntas frecuentes':m.capability_id==='opening_hours'?'Horarios':m.capability_id==='amenities'?'Servicios':m.capability_id==='locations'?'Local ficticio':title}</h2></header>
+  <div class="fact-copy">{m.facts.map((f,i)=>m.capability_id==='faqs'?<details><summary>{i===0?'Celebraciones y grupos':'Reservas de ejemplo'}</summary><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p></details>:<p class:list={[m.capability_id==='about'&&i===0?'lead':undefined]} data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div>
  </>}
 </section>

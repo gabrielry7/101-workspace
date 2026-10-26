@@ -1,0 +1,12 @@
+﻿{
+    "source":  "src/design/engine-marea.css",
+    "change":  "Two rows for name and price beside photo; no truncation or mid-word breaking",
+    "targetedProbe":  "last-link-probe.json",
+    "author":  "Codex",
+    "claudeCallsAlreadyUsed":  4,
+    "scope":  "Candidate06 featured dish photo/name/price grid only",
+    "noAdditionalClaudeCall":  true,
+    "sha256":  "938ebacf026776e19be9162e46c5c28c2950a22cab4721b31752865f193975fb",
+    "reason":  "Remaining 1440px overflow was eg-featured list, not quick-links",
+    "targetedOverflows":  0
+}

@@ -1,0 +1,135 @@
+/* Carta compositions: four authored menu layouts for the collection page only (MenuCollection).
+   ledger = printed sheet · front-page = lead + columns · frames = widescreen stack · plate = centred specimens.
+   Hidden dishes always win over any display rule; filtered state drops every lead/offset. Appended only on page.kind==='collection'. */
+
+/* ==== Shared ==== */
+.depth-experience.page-collection .menu-carta{display:block;max-width:none;margin-inline:0;padding-inline:0;grid-template-columns:none}
+.page-collection .menu-carta [data-offering-id][hidden]{display:none!important}
+.page-collection .menu-carta .section-heading{max-width:none;margin:0 0 clamp(1.5rem,3vw,2.5rem);padding:0}
+.page-collection .menu-carta .section-heading h2{margin:0}
+.page-collection .menu-carta .section-heading p{margin:.75rem 0 0;max-width:46ch;color:var(--muted)}
+.page-collection .menu-carta .collection-tools{margin:0 0 clamp(1.5rem,3vw,2.5rem);border-radius:0}
+.page-collection .menu-carta .collection-tools :is(input,select){min-height:44px}
+.page-collection .menu-carta .contextual-collection{display:flex;flex-direction:column;gap:0;grid-template-columns:none;max-width:none;padding:0}
+.page-collection .menu-carta .menu-dish{min-width:0;margin:0;padding:0;border:0;background:none}
+.page-collection .menu-carta .menu-body{min-width:0}
+.page-collection .menu-carta .menu-head{display:flex;align-items:baseline;gap:.5rem 1rem}
+.page-collection .menu-carta .menu-leader{display:none}
+.page-collection .menu-carta .menu-name{margin:0;min-width:0;overflow-wrap:break-word;text-transform:none}
+.page-collection .menu-carta .menu-price{border:0;padding:0;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.page-collection .menu-carta .menu-category{margin:0 0 .5rem;font-size:.875rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text)}
+.page-collection .menu-carta .menu-desc p{margin:.5rem 0 0;max-width:42ch;color:var(--muted);line-height:1.55}
+.page-collection .menu-carta .menu-actions{margin-top:.75rem}
+.page-collection .menu-carta .contextual-photo{position:relative;overflow:hidden;margin:0;border:0;border-radius:0;background:var(--surface)}
+.page-collection .menu-carta .contextual-photo :is(picture,img){position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.page-collection .menu-carta .dish-detail{background:none;border:0;padding:0}
+.page-collection .menu-carta .dish-detail>summary{display:flex;align-items:center;gap:.5rem;min-height:44px;cursor:pointer;font-weight:600}
+.page-collection .menu-carta .dish-detail>div p{margin:0 0 .5rem;max-width:42ch;color:var(--muted);line-height:1.5}
+.page-collection .menu-carta .demo-add{display:inline-flex;align-items:center;gap:.4rem;width:fit-content;min-height:44px;margin:0;padding:0;background:none;color:var(--accent-text);border:0;border-bottom:2px solid var(--mark);font-weight:600}
+
+/* ==== 01 · ledger: a printed sheet, price column on the right, photo strip down the left ==== */
+.depth-experience.page-collection .menu-carta[data-menu-layout=ledger]{max-width:58rem;margin-inline:auto}
+.menu-carta[data-menu-layout=ledger] .section-heading h2{font-size:clamp(1.75rem,3.4vw,2.5rem);font-weight:400;letter-spacing:-.01em}
+.menu-carta[data-menu-layout=ledger] .collection-tools{background:none;border:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:1rem 0}
+.menu-carta[data-menu-layout=ledger] .menu-dish{display:grid;grid-template-columns:clamp(7rem,17vw,11rem) minmax(0,1fr)}
+.menu-carta[data-menu-layout=ledger] .contextual-photo{box-sizing:border-box;grid-column:1;width:100%;min-width:0;max-width:100%;height:auto;aspect-ratio:auto;align-self:stretch;justify-self:stretch;min-height:11rem;contain:paint}
+.menu-carta[data-menu-layout=ledger] .menu-body{grid-column:2}
+.menu-carta[data-menu-layout=ledger] .menu-head{flex-wrap:wrap}
+.menu-carta[data-menu-layout=ledger] .menu-name{flex:0 1 auto;overflow-wrap:normal}
+.menu-carta[data-menu-layout=ledger] .menu-body{padding:clamp(1.5rem,3vw,2.5rem) 0 clamp(1.5rem,3vw,2.5rem) clamp(1.25rem,3.5vw,3rem);border-bottom:1px solid var(--line)}
+.menu-carta[data-menu-layout=ledger] .menu-name{font-family:var(--display);font-size:clamp(1.35rem,2.4vw,1.75rem);font-weight:400;line-height:1.2;letter-spacing:0}
+.menu-carta[data-menu-layout=ledger] .menu-leader{display:block;flex:1 1 1rem;min-width:.75rem;border-bottom:2px dotted var(--control);transform:translateY(-.3em)}
+.menu-carta[data-menu-layout=ledger] .menu-price{font-family:var(--display);font-size:1.25rem;font-weight:400;color:var(--ink)}
+.menu-carta[data-menu-layout=ledger] .menu-category{letter-spacing:.16em}
+@media(max-width:640px){
+ .menu-carta[data-menu-layout=ledger] .menu-dish{grid-template-columns:4.5rem minmax(0,1fr)}
+ .menu-carta[data-menu-layout=ledger] .contextual-photo{min-height:9rem}
+ .menu-carta[data-menu-layout=ledger] .menu-name{flex-basis:100%}
+ .menu-carta[data-menu-layout=ledger] .menu-leader{display:none}
+ .menu-carta[data-menu-layout=ledger] .menu-price{margin-top:.25rem}
+ .menu-carta[data-menu-layout=ledger] .menu-body{padding:1.25rem 0 1.25rem 1rem}
+ .menu-carta[data-menu-layout=ledger] .menu-category{letter-spacing:.1em}
+}
+
+/* ==== 02 · front page: one lead story, then compact columns ==== */
+.menu-carta[data-menu-layout=front-page] .section-heading{border-top:6px solid var(--ink);padding-top:1rem}
+.menu-carta[data-menu-layout=front-page] .section-heading h2{font-size:clamp(1.75rem,4vw,3rem);line-height:1}
+.menu-carta[data-menu-layout=front-page] .menu-dish{display:grid;grid-template-columns:minmax(0,1fr) clamp(6rem,24vw,9rem);gap:.25rem 1rem;padding:1.25rem 0;border-top:2px solid var(--ink)}
+.menu-carta[data-menu-layout=front-page] .menu-body{grid-column:1;grid-row:1}
+.menu-carta[data-menu-layout=front-page] .contextual-photo{grid-column:2;grid-row:1;align-self:start;aspect-ratio:1}
+.menu-carta[data-menu-layout=front-page] .menu-head{display:block}
+.menu-carta[data-menu-layout=front-page] .menu-name{font-size:clamp(1.5rem,5vw,1.9rem);line-height:1;color:var(--ink)}
+.menu-carta[data-menu-layout=front-page] .menu-price{display:inline-block;margin-top:.5rem;font-size:1.25rem;color:var(--accent-text)}
+.menu-carta[data-menu-layout=front-page] .demo-add{padding:0 1rem;background:var(--action);color:var(--on-action);border:0}
+/* lead only while the whole carta is visible */
+.menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child{grid-template-columns:1fr;padding:1.5rem 0 2rem;border-top:6px solid var(--ink)}
+.menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .contextual-photo{grid-column:1;grid-row:1;aspect-ratio:4/3;margin-bottom:1rem}
+.menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .menu-body{grid-column:1;grid-row:2}
+.menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .menu-name{font-size:clamp(2.6rem,13vw,3.6rem);line-height:.9;color:var(--head,var(--accent-text))}
+.menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .menu-price{margin-top:.9rem;padding:.2rem .8rem;background:var(--accent);color:#fff;font-size:clamp(1.5rem,6vw,2rem)}
+@media(min-width:641px) and (max-width:899px){
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .contextual-photo{aspect-ratio:16/9}
+}
+@media(min-width:900px){
+ .menu-carta[data-menu-layout=front-page] .contextual-collection[data-collection-state=filtered] .menu-dish{grid-template-columns:minmax(0,1fr) 14rem}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection[data-collection-state=filtered] .menu-name{font-size:2.6rem}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:0}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish{grid-template-columns:1fr;padding:1.25rem 1.5rem 0}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish .contextual-photo{grid-column:1;grid-row:1;aspect-ratio:3/2;margin-bottom:.9rem}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish .menu-body{grid-column:1;grid-row:2}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:nth-child(2){padding-left:0}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:nth-child(n+3){border-left:1px solid var(--ink)}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:nth-child(4){padding-right:0}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child{grid-column:1/-1;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:clamp(1.5rem,3vw,3rem);align-items:end;padding:1.5rem 0 2rem}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .contextual-photo{aspect-ratio:3/2;margin:0}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .menu-body{grid-column:2;grid-row:1}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .menu-name{font-size:clamp(3rem,6.5vw,6rem)}
+ .menu-carta[data-menu-layout=front-page] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:first-child .menu-price{font-size:clamp(1.5rem,2.4vw,2.2rem)}
+}
+
+/* ==== 03 · frames: one widescreen frame per dish, caption line under it ==== */
+.menu-carta[data-menu-layout=frames] .section-heading h2{font-size:clamp(1.6rem,3.6vw,2.8rem)}
+.menu-carta[data-menu-layout=frames] .contextual-collection{gap:clamp(2.5rem,6vw,5rem)}
+.menu-carta[data-menu-layout=frames] .menu-dish{display:block}
+.menu-carta[data-menu-layout=frames] .contextual-photo{aspect-ratio:3/2;border-bottom:3px solid var(--accent)}
+.menu-carta[data-menu-layout=frames] .menu-body{padding-top:1.25rem}
+.menu-carta[data-menu-layout=frames] .menu-head{justify-content:space-between;align-items:baseline;gap:.5rem 1.5rem;margin-bottom:.75rem}
+.menu-carta[data-menu-layout=frames] .menu-head{flex-wrap:wrap}
+.menu-carta[data-menu-layout=frames] .menu-name{flex:1 1 100%;overflow-wrap:normal;font-size:clamp(1.5rem,7vw,2.2rem);line-height:1}
+.menu-carta[data-menu-layout=frames] .menu-price{flex:none;font:800 clamp(1.3rem,5vw,1.8rem)/1 var(--display);color:var(--accent-text)}
+.menu-carta[data-menu-layout=frames] .dish-detail{border-bottom:1px solid var(--line)}
+.menu-carta[data-menu-layout=frames] .demo-add{padding:0 1.25rem;margin-top:.75rem;background:var(--action);color:var(--on-action);border:0;letter-spacing:.04em}
+@media(min-width:641px){
+ .menu-carta[data-menu-layout=frames] .contextual-photo{aspect-ratio:16/9}
+ .menu-carta[data-menu-layout=frames] .menu-body{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:clamp(1.5rem,4vw,4rem)}
+ .menu-carta[data-menu-layout=frames] .menu-category,.menu-carta[data-menu-layout=frames] .menu-head{grid-column:1/-1}
+ .menu-carta[data-menu-layout=frames] .menu-name{flex:0 1 auto;font-size:clamp(1.8rem,4.2vw,3.6rem)}
+ .menu-carta[data-menu-layout=frames] .menu-price{font-size:clamp(1.5rem,3vw,2.4rem)}
+ .menu-carta[data-menu-layout=frames] .menu-desc{grid-column:1}
+ .menu-carta[data-menu-layout=frames] .menu-desc p:first-child{margin-top:0}
+ .menu-carta[data-menu-layout=frames] .menu-actions{grid-column:2;margin-top:0}
+}
+@media(min-width:1025px){.menu-carta[data-menu-layout=frames] .contextual-photo{aspect-ratio:2/1}}
+
+/* ==== 04 · plate: a centred column, small specimen photographs, uneven air ==== */
+.depth-experience.page-collection .menu-carta[data-menu-layout=plate]{max-width:36rem;margin-inline:auto;text-align:center}
+.menu-carta[data-menu-layout=plate] .section-heading h2{font-size:clamp(2rem,5vw,3rem);font-weight:400}
+.menu-carta[data-menu-layout=plate] .section-heading p{margin-inline:auto}
+.menu-carta[data-menu-layout=plate] .collection-tools{background:none;border:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:1rem 0;text-align:left}
+.menu-carta[data-menu-layout=plate] .contextual-collection{align-items:center}
+.menu-carta[data-menu-layout=plate] .menu-dish{display:flex;flex-direction:column;align-items:center;width:100%;margin-bottom:clamp(3rem,8vw,5rem)}
+.menu-carta[data-menu-layout=plate] .contextual-photo{box-sizing:border-box;width:clamp(8.5rem,34vw,11rem);aspect-ratio:4/5;padding:.5rem;background:#fbf6ec;border:1px solid var(--line)}
+.menu-carta[data-menu-layout=plate] .contextual-photo picture{inset:.5rem;width:calc(100% - 1rem);height:calc(100% - 1rem)}
+.menu-carta[data-menu-layout=plate] .menu-body{display:flex;flex-direction:column;align-items:center;width:100%;margin-top:1.5rem}
+.menu-carta[data-menu-layout=plate] .menu-category{font:italic 400 1.0625rem var(--display);letter-spacing:0;text-transform:none;color:var(--muted)}
+.menu-carta[data-menu-layout=plate] .menu-head{flex-direction:column;align-items:center;gap:.75rem}
+.menu-carta[data-menu-layout=plate] .menu-name{font-size:clamp(2rem,6vw,2.75rem);font-weight:500;line-height:1.05}
+.menu-carta[data-menu-layout=plate] .menu-price{min-width:3rem;padding-top:.75rem;border-top:1px solid var(--accent);font:500 1.35rem var(--display);color:var(--ink)}
+.menu-carta[data-menu-layout=plate] .menu-desc p{margin-inline:auto;max-width:34ch;font-size:1.0625rem}
+.menu-carta[data-menu-layout=plate] .menu-actions{display:flex;flex-direction:column;align-items:center;width:100%;margin-top:.75rem}
+.menu-carta[data-menu-layout=plate] .dish-detail{width:100%;max-width:26rem}
+.menu-carta[data-menu-layout=plate] .dish-detail>summary{justify-content:center}
+.menu-carta[data-menu-layout=plate] .dish-detail>div p{margin-inline:auto}
+.menu-carta[data-menu-layout=plate] .demo-add{justify-content:center}
+.menu-carta[data-menu-layout=plate] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:nth-child(even){margin-bottom:clamp(1.75rem,4vw,3rem)}
+.menu-carta[data-menu-layout=plate] .contextual-collection:not([data-collection-state=filtered]) .menu-dish:nth-child(even) .contextual-photo{width:clamp(11rem,52vw,16rem);aspect-ratio:1}

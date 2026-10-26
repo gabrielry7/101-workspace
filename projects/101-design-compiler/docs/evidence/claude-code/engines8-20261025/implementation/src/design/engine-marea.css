@@ -1,0 +1,33 @@
+/* 06 Marea — general-purpose coastal brasserie. Sea-glass, navy, teal, sand; upright light Bodoni Moda over DM Sans. */
+@font-face{font-family:'Bodoni Moda';src:url(/fonts/b3-artistic/bodonimoda.woff) format('woff');font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(/fonts/b3-artistic/dmsans.woff) format('woff');font-weight:100 1000;font-style:normal;font-display:swap}
+.depth-experience.engine-marea{--paper:#eef5f3;--ink:#0b2b3a;--muted:#3f5a66;--line:#c3d6d3;--control:#5f7f86;--accent:#0e5f66;--accent-text:#0e5f66;--mark:#f2c9a5;--action:#0b2b3a;--on-action:#eef5f3;--surface:#e0ece9;--focus:#0e5f66;--footer-bg:#0b2b3a;--footer-ink:#eef5f3;--footer-muted:#c9dcdd;--display:'Bodoni Moda',Georgia,serif;font-family:'DM Sans',system-ui,sans-serif}
+.engine-marea :is(h1,h2,h3,.footer-wordmark){font-family:'Bodoni Moda',Georgia,serif;font-weight:400;letter-spacing:-.015em}
+.engine-marea .exp-brand{font-family:'Bodoni Moda',Georgia,serif;font-weight:500}
+.engine-marea .ma-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(1.5rem,5vw,5rem);align-items:end;padding:clamp(1.5rem,4vw,3.5rem) var(--pad) 0}
+.engine-marea .ma-hero h1{margin:0;font-size:clamp(2.75rem,7vw,5.5rem);line-height:.98}
+.engine-marea .ma-hero .hero-tagline{max-width:32ch;margin:1.25rem 0 1.5rem;font-size:1.25rem;line-height:1.45;color:var(--muted)}
+.engine-marea .ma-arch{aspect-ratio:3/4;max-height:36rem;width:100%;border-radius:50% 50% 0 0/32% 32% 0 0}
+.engine-marea .ma-tiles{padding:clamp(2.5rem,6vw,5rem) var(--pad) 0}
+.engine-marea .ma-tiles h2,.engine-marea .ma-sig h2{margin:0 0 1.25rem;font-size:clamp(1.75rem,3.5vw,2.75rem)}
+.engine-marea .ma-tiles ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin:0;padding:0;list-style:none}
+.engine-marea .ma-tiles a{display:flex;flex-direction:column;justify-content:flex-end;gap:.25rem;min-height:9rem;height:100%;padding:1rem;color:var(--ink);background:var(--mark);text-decoration:none}
+.engine-marea .ma-tiles li:nth-child(4n+2) a{color:#fff;background:var(--accent)}
+.engine-marea .ma-tiles li:nth-child(4n+3) a{background:var(--surface)}
+.engine-marea .ma-tiles li:nth-child(4n) a{color:#fff;background:var(--ink)}
+.engine-marea .ma-tiles li:nth-child(n+5):nth-child(-n+8) a{box-shadow:inset 0 0 0 2px currentColor}
+.engine-marea .ma-tile-name{font-family:'Bodoni Moda',Georgia,serif;font-size:1.5rem;line-height:1.1}
+.engine-marea .ma-tile-count{font-size:.875rem}
+.engine-marea .ma-tiles a:hover .ma-tile-name{text-decoration:underline;text-underline-offset:.2em}
+.engine-marea .eg-price{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;font-size:1.25rem}
+.engine-marea .page-intro.eg-head{text-align:center;border-bottom:1px solid var(--ink)}
+.engine-marea .page-intro.eg-head h1{font-size:clamp(2.5rem,6vw,4.5rem)}
+.engine-marea .page-intro.eg-head p{margin-inline:auto}
+/* carta: category names in large Bodoni on sand, dotted leaders, Bodoni prices */
+.engine-marea .cat-menu{max-width:52rem;margin-inline:auto}
+.engine-marea .cat-menu .cat-group-title{padding:.6rem 1rem;font:400 clamp(1.5rem,3vw,2rem)/1.15 'Bodoni Moda',Georgia,serif;letter-spacing:0;text-transform:none;color:var(--ink);background:var(--mark);border:0}
+.engine-marea .cat-menu[data-menu-layout] .cat-name{font-family:'DM Sans',system-ui,sans-serif;font-weight:600;font-size:1.1875rem}
+.engine-marea .cat-menu[data-menu-layout] .cat-price{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;font-size:1.25rem;color:var(--accent-text)}
+.engine-marea .cat-menu .cat-leader{border-bottom-color:var(--accent)}
+@media(max-width:960px){.engine-marea .ma-tiles ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.engine-marea .ma-hero{grid-template-columns:minmax(0,1fr)}.engine-marea .ma-arch{max-height:26rem}}

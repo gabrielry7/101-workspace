@@ -1,0 +1,232 @@
+Task restaurant-journal-pilot-01. Worktree: C:\Users\gabri\101-design-compiler\.tools\claude-worktrees\restaurant-journal-pilot-01. Mode: implement.
+Implement a bounded visual refinement of the existing /b3/candidate-01/ restaurant HOME. This is the Immersive hero / WhiteInk / Classic / home-Journal associated composition. Codex inspected the real rendered home: the journal currently gives four stories identical weight, and the large overview pause makes the desktop progression feel flat. Improve journal composition with a clear lead story and responsive editorial rhythm, retaining the incumbent Georgia/Arial, white/ink palette and cinematic hero. You may adjust home section spacing modestly where it supports the hierarchy. Keep other hero directions and all non-home pages unchanged. Make actual CSS edits ONLY in src/design/experience-refinement.css, using existing shared composition classes (for example .depth-experience.experience-Immersive.page-home); never customer IDs. Do not alter markup, copy, story order, bindings, credits, photos, source media, JavaScript, routes, controls or grants. Read the CSS in full rather than relying on truncated grep. Read the two approved screenshot attachments using Read: these are current layout screenshots with photo/video pixels replaced by neutral geometry by the existing 101 Superdesign preparation tool, whose source HTML hash exactly matches the current build. Codex has real baseline screenshots locally. Do not read other image/media files in the worktree. This is a refinement, not a new design world or generator. Explain design choices and remaining hypotheses. Codex will build and render; do not claim to have run those checks.
+Approved local vision attachments (use Read): [{"source":".tools/claude-code/geometry-baseline/desktop.png","path":".tools/claude-inputs/1.png","sha256":"5c89c0f283804c30a109a62e7dc105eae7456442d0094bf9e14a0cdd4dbc765d","authorization":"Current existing 101 media-neutral layout export, source SHA256 ffa7868a7049279cd867778bd49a1b11c19dce1556603b57bea0987cd48173aa. Existing prepare-pilot.mjs replaces all licensed media pixels with neutral SVG geometry and removes scripts. No licensed photo/video pixels or reference screenshots are included. User authorizes Claude frontend collaboration and screenshot context."},{"source":".tools/claude-code/geometry-baseline/mobile.png","path":".tools/claude-inputs/2.png","sha256":"63675493e08a9826a474e2002ce17c3f9b6fed5acfe9f306f89cb9434b914f7e","authorization":"Current existing 101 media-neutral layout export, source SHA256 ffa7868a7049279cd867778bd49a1b11c19dce1556603b57bea0987cd48173aa. Existing prepare-pilot.mjs replaces all licensed media pixels with neutral SVG geometry and removes scripts. No licensed photo/video pixels or reference screenshots are included. User authorizes Claude frontend collaboration and screenshot context."}]
+Evaluation criteria:
+["Actual CSS-only implementation in the existing shared renderer","Only the existing Immersive home associated composition changes","All text, links, semantic modules, media gates and fictional notices preserved","Desktop 1440 and mobile 390, with no overflow and usable keyboard focus","Responsive layout remains useful at 360, 768 and 1024 pixels","No new requests, client JavaScript, external media, dependencies or animation","No hidden content, reordered DOM or removed interactive elements"]
+Explicit context (current orchestrator snapshot; worktree starts from 24c4301c2a36fc5a023d3cd695030afc13a47f09):
+PATH AGENTS.md SHA256 4cfd8498340131c8217cd14be8820ca5b1aa867488ee85a037142386bbd4ee79
+# 101 collaboration
+
+Codex is the primary orchestrator and owns architecture, requirements, code
+review, verification and integration decisions. Preserve uncommitted user work.
+Do not merge or push agent work automatically.
+
+When asked to ask Claude, collaborate with Claude Code, or iterate with Claude
+on an existing page, use the real CLI bridge documented in
+[tooling/claude-code/README.md](tooling/claude-code/README.md).
+Run its doctor first, create an explicit scoped task JSON, invoke `start`,
+inspect its actual response and worktree diff, then use `feedback` with the
+same task ID. Never substitute a Codex subagent or mocked response for Claude.
+If authentication fails, report the exact blocker and user login command.
+
+Claude acts as a frontend design/development specialist. Keep changes in the
+existing shared Astro/CSS renderer and semantic business modules. Preserve
+media gates, fictional labels, credits, navigation, accessibility, mobile
+usability, reduced motion and performance. Reuse existing design references
+and `scripts/lib/local-browser.ts` for screenshots. Do not create a new
+generator, pipeline, framework or service.
+
+Before delegation, review selected context and media vision permissions;
+exclude credentials and unrelated private material. Claude worktrees start at
+committed HEAD. Disclose differences from a dirty working tree; never copy
+uncommitted user changes without reviewing and explicitly selecting them.
+Each task has bounded calls, turns, time and estimated spend. Codex runs
+builds, tests, browser/accessibility/performance checks, reviews screenshots,
+and retains the implementation for user review. A successful CLI response is
+not evidence that a design passes quality checks.
+
+PATH src/pages/b3/[candidate].astro SHA256 e9be8b2a2d1274568ec2244424a8bdc4e0b4dbe940cf4bc1b3951f83144c13f8
+---
+import ExperienceComposition from '../../components/composition/ExperienceComposition.astro';
+import {loadB3DepthExperience as loadB3RichExperience} from '../../../scripts/load-b3-depth-experience.ts';
+import {richExperiencePages} from '../../design/rich-experience-contracts.ts';
+export async function getStaticPaths(){const lab=await loadB3RichExperience();return lab.site.profiles.map(profile=>({params:{candidate:profile.id},props:{lab,profile}}));}
+const {lab,profile}=Astro.props;
+---
+<ExperienceComposition {lab} {profile} page={richExperiencePages[0]}/>
+
+PATH src/components/composition/CommunitySections.astro SHA256 1a9916b65443dcbd79da1079ea1431240718bcb6e39b112b240234bc9052a297
+---
+import ContextualImage from './ContextualImage.astro';
+import type {ExperienceFeatures} from '../../design/depth-experience-contracts.ts';
+import type {loadB3RichExperience} from '../../../scripts/load-b3-rich-experience.ts';
+interface Props{lab:Pick<Awaited<ReturnType<typeof loadB3RichExperience>>,'community'|'experience_media'>;root:string;route:string;mode:'home'|'journal'|'reviews'|'contact';features?:ExperienceFeatures}
+const {lab,root,route,mode,features}=Astro.props,c=lab.community,home=mode==='home';
+---
+{(home||mode==='journal')&&<section class="community-journal" data-editorial-section="journal" aria-labelledby="journal-title">
+ <header class="community-heading"><div><p class="eyebrow">El diario de la mesa / 01</p><h2 id="journal-title">La vida<br/><em>entre platos.</em></h2></div><div><p>Pequeños rituales. Grandes ratos. Una colección para abrir el apetito y alargar la conversación.</p>{home&&<a class="text-link" href={`${root}diario/`}>Abrir el diario <span aria-hidden="true">↗</span></a>}</div></header>
+ {features&&mode==='journal'&&<div class="journal-tools" data-journal-tools hidden><label>Explorar el diario<select data-journal-category><option value="">Todos los relatos</option>{features.reads.map(r=><option value={r.category}>{r.category}</option>)}</select></label><p role="status" data-journal-count>4 relatos de muestra</p></div>}
+ <div class="journal-grid" data-journal-layout="all">{c.posts.map((post,i)=>{const read=features?.reads.find(r=>r.post_id===post.id);return <article class="journal-entry" data-editorial-id={post.id} data-journal-category={read?.category} data-reveal><div class="journal-number" aria-hidden="true">0{i+1}</div><ContextualImage handle={lab.experience_media.handle} at={lab.experience_media.evaluated_at} {route} slot={`journal-${post.slot}`} creditMode="linked" creditsHref={`${root}creditos/`} cover/><div class="journal-copy"><p class="eyebrow">{read?.category??['Compartir','Disfrutar','Descubrir','Quedarse'][i]}</p><h3>{post.title}</h3><p>{post.caption}</p>{read&&<details class="journal-reading" data-read-id={read.post_id}><summary>Leer el relato <span aria-hidden="true">＋</span></summary><div><p class="editorial-disclosure">{read.label}</p>{read.body.map(t=><p data-read-paragraph>{t}</p>)}</div></details>}</div></article>;})}</div>
+ <p class="editorial-disclosure" data-social-disclosure>Selección editorial de muestra con imágenes ilustrativas. No son publicaciones de Instagram ni contenido de una cuenta real.</p>
+</section>}
+{(home||mode==='reviews')&&<section class="community-reviews" data-editorial-section="reviews" aria-labelledby="reviews-title"><header class="community-heading"><div><p class="eyebrow">Alrededor de la mesa / 02</p><h2 id="reviews-title">Lo que<br/><em>se queda.</em></h2></div><div><p>Historias de un buen rato.</p><p class="editorial-disclosure" data-review-disclosure>Opiniones de muestra · personajes y textos ficticios. No son reseñas de clientes.</p>{home&&<a class="text-link" href={`${root}opiniones/`}>Ver opiniones de muestra <span aria-hidden="true">↗</span></a>}</div></header><div class="review-grid">{c.reviews.slice(0,home?2:3).map((r,i)=><figure class="review-card" data-demo-review={r.id}><span class="quote-mark" aria-hidden="true">“</span><blockquote>{r.quote}</blockquote><div class="review-byline"><span aria-hidden="true">0{i+1}</span><div><p>{r.author}</p><p class="review-label">{r.label}</p></div></div></figure>)}</div></section>}
+{(home||mode==='contact')&&<section class="community-contact" data-editorial-section="contact" aria-labelledby="contact-title"><div><p class="eyebrow">Seguimos la conversación / 03</p><h2 id="contact-title">¿Nos vemos<br/><em>en la mesa?</em></h2><p>Una pregunta, una celebración o simplemente ganas de venir.</p>{home?<a class="community-contact-link" href={`${root}contacto/`}>Hablemos <span aria-hidden="true">↗</span></a>:<div class="demo-contact-details" data-demo-contact><p class="eyebrow">Correo de ejemplo</p><p class="contact-address">{c.contact.email}</p><p>Dirección ficticia, sin recepción de mensajes.</p><button type="button" disabled aria-describedby="contact-demo-notice">Consultar por WhatsApp ↗</button><p id="contact-demo-notice">Vista de demostración: no hay número ni canal de envío conectado.</p></div>}</div><div class="social-panel"><p class="eyebrow">Fuera de la mesa</p><div class="social-links">{c.contact.social_accounts.map(a=><div class="social-placeholder" data-social-placeholder><span>{a.label}</span><span class="social-state">De muestra</span></div>)}</div><p class="editorial-disclosure" data-contact-disclosure>Redes de ejemplo · sin perfiles reales vinculados. No se envían consultas desde esta demostración.</p><a class="text-link" href={`${root}visita/`}>La visita <span aria-hidden="true">↗</span></a></div></section>}
+
+PATH src/design/experience-refinement.css SHA256 f1cae70c0a250ef5d6646cdef1518ef3f67a93071fc020e4291ce5af46c6fb9d
+/* Shared B3 refinements from measured interaction evidence. Preserve every visual direction. */
+.depth-experience .quick-nav a,.depth-experience .footer-links a{min-inline-size:44px}
+#experience-main{scroll-margin-block-start:100px}
+#experience-main:focus-visible{outline:3px solid currentColor;outline-offset:-3px}
+.depth-experience.page-collection .contextual-collection[data-collection-state=filtered]{grid-template-columns:1fr}
+.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);margin:0;padding-top:0}
+.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.contextual-photo{grid-column:1;grid-row:1}
+.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.item-copy{grid-column:2;grid-row:1;display:block;padding:0}
+@media(max-width:760px){
+ .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item{grid-template-columns:1fr}
+ .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.contextual-photo,.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.item-copy{grid-column:1;grid-row:auto}
+}
+
+PATH src/design/rich-experience.css SHA256 dddb8b0c77fbdbfbbe6c38831c4730c628716944d41439dc9cc4563a63a6a058
+/* Shared editorial operators; the liked Immersive/Masthead entry geometry stays intact. */
+.rich-experience .film-icon{width:44px;height:44px;border-radius:50%;padding:0!important;display:grid;place-items:center;font-family:Arial,sans-serif;font-size:1rem!important;background:#151515!important;border:1px solid #fff!important;opacity:.92}
+.rich-experience .film-icon[hidden]{display:none}
+.rich-experience .experience-Immersive .film-icon{bottom:1.5rem}
+.rich-experience .hero-entry-links{padding-right:clamp(5rem,10vw,10rem)}
+.rich-experience .community-journal,.rich-experience .community-reviews,.rich-experience .community-contact{padding:clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,5rem)}
+.community-heading{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:end;margin-bottom:3.5rem}
+.community-heading h2{font-size:clamp(3rem,5.6vw,6rem);line-height:1.02}
+.community-heading h2 em,.community-contact h2 em{font-weight:400}
+.community-heading>div:last-child{max-width:36ch;justify-self:end}
+.community-heading p+.text-link{margin-top:1.5rem}
+.journal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem}
+.journal-entry{position:relative;min-width:0}
+.journal-entry .contextual-photo{aspect-ratio:4/5;overflow:hidden}
+.journal-entry .contextual-photo picture,.journal-entry .contextual-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.journal-number{display:none}
+.journal-copy{padding-top:1.5rem}
+.journal-copy .eyebrow{font-size:.875rem;margin-bottom:.75rem}
+.journal-copy h3{font-size:clamp(1.5rem,2.2vw,2.4rem);line-height:1.12;margin-bottom:1rem}
+.journal-copy>p:last-child{font-size:.95rem;line-height:1.6}
+.editorial-disclosure{font-size:.875rem;line-height:1.6;color:var(--muted);margin-top:2rem!important;max-width:80ch!important}
+.community-reviews{border-top:1px solid var(--line)!important}
+.review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5rem}
+.page-reviews .review-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+.review-card{border-top:1px solid var(--ink);padding-top:1.5rem;min-width:0}
+.quote-mark{display:block;font-family:Georgia,serif;font-size:6rem;line-height:.8;height:4.5rem}
+.review-card blockquote{font-family:var(--display);font-size:clamp(1.6rem,2.6vw,2.5rem);line-height:1.25;margin:0 0 2rem;max-width:28ch}
+.review-byline{display:flex;gap:1.5rem;align-items:start}
+.review-byline>span{font-size:.875rem;padding-top:.1rem}
+.review-byline p{font-size:.875rem}.review-label{color:var(--muted);margin-top:.25rem!important}
+.community-contact{display:grid;grid-template-columns:1.5fr 1fr;gap:4rem;border-top:1px solid var(--line)!important;align-items:end}
+.community-contact h2{font-size:clamp(3rem,6vw,6.5rem);line-height:1.02;margin-bottom:2rem}
+.community-contact-link{display:inline-flex;min-height:64px;align-items:center;justify-content:space-between;font-family:var(--display);font-size:2rem;gap:3rem;border-bottom:1px solid currentColor;text-decoration:none!important;margin-top:2.5rem}
+.social-panel{padding-bottom:.5rem;max-width:32ch;justify-self:end}
+.social-links{display:grid;gap:.25rem}
+.social-placeholder{display:flex;justify-content:space-between;align-items:center;gap:3rem;min-height:52px;font-size:1.25rem;text-decoration:none;border-bottom:1px solid var(--line)}
+.social-panel>.text-link{margin-top:1.5rem}
+.demo-contact-details{border-top:1px solid var(--line);padding-top:2rem;margin-top:2rem}
+.demo-contact-details .contact-address{font-family:var(--display);font-size:clamp(1.4rem,3vw,2.5rem);overflow-wrap:anywhere;margin-bottom:.75rem}
+.demo-contact-details button{border:1px dashed var(--ink);padding:.75rem 1rem;margin-top:1.5rem;color:var(--ink);font-size:1rem}
+.demo-contact-details>p:last-child{font-size:.875rem;margin-top:1rem}
+.page-journal .community-journal,.page-reviews .community-reviews,.page-contact .community-contact{padding:1rem 0 2rem;border-top:0!important}
+.page-journal .community-heading h2,.page-reviews .community-heading h2{font-size:3rem}
+.tone-BordeauxPaper{--paper:#fff6e7;--ink:#641f2a;--muted:#70414a;--line:#bd9794;--display:Georgia,'Times New Roman',serif}
+.tone-CobaltButter{--paper:#fff9d7;--ink:#1737ac;--muted:#344999;--line:#8b95b5;--display:Impact,'Arial Narrow',sans-serif}
+/* Collage: editorial hierarchy, a wide film, offset plates and a ruled quote section. */
+.experience-Collage .exp-header{border-bottom:2px solid var(--ink)}
+.experience-Collage .hero-title{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:end;padding:3rem 5vw 4rem}
+.experience-Collage .hero-title .eyebrow{grid-column:1/-1;margin-bottom:0;border-bottom:1px solid var(--line);padding-bottom:1rem}
+.experience-Collage .hero-title h1{font-size:clamp(7rem,16vw,17rem);font-style:italic;letter-spacing:-.08em}
+.experience-Collage .hero-tagline{font-size:clamp(2rem,3.8vw,4rem);max-width:13ch!important;justify-self:end;margin:0!important;padding:0 2rem 1rem 0}
+.experience-Collage .hero-film{height:clamp(24rem,45vw,42rem)}
+.experience-Collage .hero-entry-links{border-bottom:2px solid var(--ink);padding-inline:5vw}
+.art-interlude{padding:2rem 5vw;border-bottom:1px solid var(--line);display:flex;gap:2rem;justify-content:space-between;font-family:var(--display);font-size:clamp(1rem,2vw,1.75rem);font-style:italic}
+.home-EditorialTable .community-heading{grid-template-columns:1fr 1fr}
+.home-EditorialTable .journal-grid{grid-template-columns:1.4fr 1fr;gap:4rem 10vw;align-items:start}
+.home-EditorialTable .journal-entry:nth-child(even){padding-top:7rem}
+.home-EditorialTable .journal-entry:nth-child(2) .contextual-photo{border-radius:50%;aspect-ratio:1}
+.home-EditorialTable .journal-entry:nth-child(3) .contextual-photo{aspect-ratio:1.3;border:12px solid var(--paper);outline:1px solid var(--ink)}
+.home-EditorialTable .journal-entry:nth-child(4) .contextual-photo{aspect-ratio:4/5;border-radius:50% 50% 0 0}
+.home-EditorialTable .journal-number{display:block;font-size:clamp(3rem,6vw,5rem);font-family:var(--display);font-style:italic;margin-bottom:1.5rem;line-height:1}
+.home-EditorialTable .journal-copy h3{font-size:clamp(2rem,4vw,4rem)}
+.home-EditorialTable .community-reviews{margin-inline:5vw;padding-inline:0!important;border-block:2px solid var(--ink)!important}
+.home-EditorialTable .community-contact{border-top:0!important}
+/* Poster: a cobalt masthead, a cinematic strip and a graphic sequence with shifted baselines. */
+.experience-Poster .exp-header{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.experience-Poster .hero-title{display:grid;grid-template-columns:2fr 1fr;gap:2rem;padding:3rem 5vw 4rem;align-items:end}
+.experience-Poster .hero-title .eyebrow{grid-column:1/-1;letter-spacing:.16em;border-bottom:3px solid var(--ink);padding-bottom:1rem;margin-bottom:0}
+.experience-Poster .hero-title h1{font-size:clamp(8rem,23vw,25rem);text-transform:uppercase;letter-spacing:-.05em;line-height:.85}
+.experience-Poster .hero-tagline{font-family:Georgia,serif;font-style:italic;font-size:clamp(2rem,3.4vw,3.5rem);margin:0!important;max-width:11ch!important;padding-bottom:.5rem}
+.experience-Poster .hero-film{height:clamp(28rem,42vw,40rem);border-block:12px solid var(--ink)}
+.experience-Poster .hero-entry-links{background:var(--ink);color:var(--paper);border:0;padding:1.5rem 5vw;gap:3rem}
+.experience-Poster .art-interlude{background:var(--ink);color:var(--paper);border:0;padding-block:3rem;font-style:normal;text-transform:uppercase;font-size:clamp(1.5rem,3vw,3rem);gap:1.5rem}
+.home-PosterSequence .community-heading h2{font-size:clamp(3.5rem,7vw,7rem);text-transform:uppercase}
+.home-PosterSequence .community-heading h2 em{font-style:normal}
+.home-PosterSequence .journal-grid{gap:2rem;grid-template-columns:repeat(4,minmax(0,1fr));align-items:start}
+.home-PosterSequence .journal-entry:nth-child(even){margin-top:7rem}
+.home-PosterSequence .journal-entry .contextual-photo{border:8px solid var(--ink);aspect-ratio:3/4}
+.home-PosterSequence .journal-copy h3{font-size:clamp(2rem,3vw,3rem);text-transform:uppercase}
+.home-PosterSequence .journal-number{display:block;font-family:Georgia,serif;font-style:italic;font-size:4rem;line-height:1;margin-bottom:1rem}
+.home-PosterSequence .community-reviews{background:var(--ink);color:var(--paper);--muted:#fff9d7;--line:#a6b4e1}
+.home-PosterSequence .community-reviews .review-card{border-color:var(--paper)}
+.home-PosterSequence .community-reviews .review-card blockquote{font-family:Georgia,serif;font-style:italic}
+.home-PosterSequence .community-contact h2{text-transform:uppercase}
+.home-PosterSequence .community-contact h2 em{font-style:normal}
+.home-PosterSequence .social-placeholder{border-width:2px;font-weight:700}
+@media(min-width:761px) and (max-width:1100px){.rich-experience .exp-nav nav{gap:.8rem}.community-heading{gap:2rem}.journal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}.review-grid{gap:2rem}.page-reviews .review-grid{grid-template-columns:1fr 1fr}.community-contact{gap:2rem}.experience-Collage .hero-title,.experience-Poster .hero-title{grid-template-columns:1.5fr 1fr}.experience-Collage .hero-title h1{font-size:15vw}.experience-Poster .hero-title h1{font-size:21vw}.home-PosterSequence .journal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem}.home-EditorialTable .journal-grid{gap:3rem}}
+@media(max-width:760px){
+ .rich-experience .community-journal,.rich-experience .community-reviews,.rich-experience .community-contact{padding:4rem 1.25rem}
+ .rich-experience .hero-entry-links{padding-right:1.25rem}.rich-experience.experience-Immersive .hero-entry-links{padding-right:5rem}
+ .community-heading,.home-EditorialTable .community-heading{grid-template-columns:1fr;gap:1.5rem;margin-bottom:2.5rem}.community-heading>div:last-child{justify-self:start;max-width:35ch}.community-heading h2{font-size:3.4rem}.community-heading p+.text-link{margin-top:1rem}
+ .journal-grid{grid-template-columns:1fr 1fr;gap:2.5rem 1rem}.journal-entry .contextual-photo{aspect-ratio:3/4}.journal-copy{padding-top:1rem}.journal-copy h3{font-size:1.6rem}.journal-copy .eyebrow{font-size:.875rem;letter-spacing:.04em}.journal-copy>p:last-child{font-size:.875rem}
+ .review-grid,.page-reviews .review-grid{grid-template-columns:1fr;gap:2.5rem}.review-card blockquote{font-size:1.8rem;max-width:28ch}.review-byline p{font-size:.875rem}
+ .community-contact{grid-template-columns:1fr;gap:3rem}.community-contact h2{font-size:3.5rem}.social-panel{justify-self:start;max-width:none;width:100%}.social-placeholder{font-size:1.15rem}.community-contact-link{font-size:1.8rem}.editorial-disclosure{margin-top:1.5rem!important}
+ .experience-Collage .hero-title{grid-template-columns:1fr;gap:1.5rem;padding:2rem 1.25rem}.experience-Collage .hero-title .eyebrow{grid-column:1}.experience-Collage .hero-title h1{font-size:5.6rem}.experience-Collage .hero-tagline{justify-self:start;font-size:2rem;padding:0;max-width:18ch!important}.experience-Collage .hero-film{height:48svh;min-height:320px}.experience-Collage .hero-entry-links{padding-inline:1.25rem}
+ .art-interlude{flex-wrap:wrap;gap:.5rem 1.5rem;padding:1.5rem 1.25rem;font-size:1rem}.home-EditorialTable .journal-grid{grid-template-columns:1fr;gap:3rem}.home-EditorialTable .journal-entry:nth-child(even){padding-top:0;margin-left:12%;width:88%}.home-EditorialTable .journal-number{font-size:3rem}.home-EditorialTable .journal-entry:nth-child(3) .contextual-photo{outline-offset:-1px}.home-EditorialTable .journal-copy h3{font-size:2.5rem}.home-EditorialTable .community-reviews{margin-inline:1.25rem}
+ .experience-Poster .hero-title{grid-template-columns:1fr;gap:1.5rem;padding:2rem 1.25rem}.experience-Poster .hero-title .eyebrow{grid-column:1;font-size:.875rem;letter-spacing:.06em}.experience-Poster .hero-title h1{font-size:29vw}.experience-Poster .hero-tagline{font-size:1.8rem;max-width:18ch!important}.experience-Poster .hero-film{height:48svh;min-height:330px;border-width:8px}.experience-Poster .hero-entry-links{padding:1.25rem;gap:1rem}.experience-Poster .art-interlude{padding:1.25rem;font-size:1.5rem;display:grid;gap:.25rem}
+ .home-PosterSequence .community-heading h2{font-size:3.4rem}.home-PosterSequence .journal-grid{grid-template-columns:1fr;gap:3rem}.home-PosterSequence .journal-entry{width:88%}.home-PosterSequence .journal-entry:nth-child(even){margin:0 0 0 12%}.home-PosterSequence .journal-entry .contextual-photo{aspect-ratio:1.1}.home-PosterSequence .journal-number{font-size:3rem}.home-PosterSequence .journal-copy h3{font-size:2.5rem}
+ .page-journal .community-journal,.page-reviews .community-reviews,.page-contact .community-contact{padding:1rem 0 2rem}.experience-Poster .exp-nav nav{background:var(--ink);color:var(--paper)}
+}
+@media(max-width:380px){.home-Journal .journal-grid{grid-template-columns:1fr}.rich-experience.experience-Immersive .hero-entry-links{padding:1rem 5rem 1rem 1.25rem}.rich-experience .community-heading h2{font-size:3rem}}
+
+.social-placeholder .social-state{font-size:.875rem;font-weight:400}
+
+PATH src/design/depth-experience.css SHA256 c9d1f1e74d698760082a85d4635843b226d68bdd246f6cd6cab5e5ef53beeecc
+/* B3 associated operators. No client selectors, fonts or assets from reference sites. */
+.depth-experience{--gutter:clamp(1.25rem,4vw,4rem);isolation:isolate}
+.depth-header{position:sticky;top:0;min-height:88px;padding:1rem var(--gutter);background:var(--paper);color:var(--ink);gap:2rem;z-index:40}
+.quick-nav{display:flex;gap:2rem;margin-left:auto;align-items:center}.quick-nav a{display:flex;min-height:44px;align-items:center;text-decoration:none;font-size:.9rem}.nav-demo{margin-left:.3rem;font-size:.875rem}
+.depth-navigation>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:2rem;min-height:44px;cursor:pointer;font-size:.9rem}.depth-navigation>summary::-webkit-details-marker{display:none}.depth-navigation[open]>summary>span{transform:rotate(45deg)}
+.depth-navigation nav{position:fixed;inset:88px 0 auto;max-height:calc(100svh - 88px);overflow:auto;background:var(--paper);color:var(--ink);padding:3rem var(--gutter) 2rem;display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;border-block:1px solid var(--line);box-shadow:0 60px 100px #0005}
+.depth-navigation:not([open]) nav{display:none}.navigation-heading>p:last-child{font-family:var(--display);font-size:clamp(2rem,4vw,4.5rem);line-height:1.1;letter-spacing:-.04em}.navigation-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}.navigation-groups .eyebrow{color:var(--muted)}.navigation-groups a{display:flex;align-items:center;justify-content:space-between;min-height:48px;border-bottom:1px solid var(--line);text-decoration:none;gap:.5rem;font-size:1rem}.navigation-groups a[aria-current]{font-weight:700}.navigation-context{grid-column:1/-1;font-size:.875rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}
+.experience-Immersive.page-home .depth-header{position:absolute;background:rgb(0 0 0 / .66)}.experience-Immersive.page-home .depth-navigation nav{--paper:#fff;--ink:#181818;--muted:#50504c;--line:#d0d0cb}
+.depth-breadcrumb{display:flex;align-items:center;gap:1rem;padding-top:1.5rem;font-size:.875rem;color:var(--muted)}.depth-breadcrumb a{min-height:44px;display:inline-flex;align-items:center}.depth-breadcrumb>span:last-child{border-left:1px solid var(--line);padding-left:1rem}
+.depth-experience .experience-overview{padding:clamp(4rem,9vw,9rem) var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:start;border-bottom:1px solid var(--line)}
+.house-note h2{font-size:clamp(3rem,5.8vw,6rem);line-height:1.03;letter-spacing:-.06em;max-width:12ch;margin-bottom:2rem}.house-note>p:not(.eyebrow){max-width:40ch;font-size:1.05rem}.house-note .text-link{margin-top:2rem}.route-directory>a{display:grid;grid-template-columns:2rem 1fr auto;gap:1rem;align-items:start;padding:1.4rem 0;text-decoration:none;border-top:1px solid var(--line);transition:padding .2s}.route-directory>a:last-child{border-bottom:1px solid var(--line)}.route-directory h3{font-size:clamp(1.8rem,2.7vw,3rem)}.route-directory p{font-size:.9rem;margin-top:.5rem;max-width:32ch;color:var(--muted)}.directory-number{font-size:.875rem;padding-top:.4rem}.directory-arrow{font-size:1.8rem;line-height:1.3}.route-directory>a:hover{padding-left:.5rem}
+.journal-reading{margin-top:1.5rem;border-block:1px solid var(--line)}.journal-reading summary{display:flex;align-items:center;justify-content:space-between;min-height:48px;gap:1rem;font-size:.9rem;list-style:none}.journal-reading summary::-webkit-details-marker{display:none}.journal-reading[open] summary>span{transform:rotate(45deg)}.journal-reading>div{padding-bottom:1.5rem}.journal-reading p{font-size:.95rem;line-height:1.7}.journal-reading p+p{margin-top:1rem}.journal-reading .editorial-disclosure{font-size:.875rem}
+.journal-tools{display:flex;align-items:end;justify-content:space-between;gap:2rem;border-block:1px solid var(--line);padding:1rem 0;margin-bottom:3rem}.journal-tools select{min-width:14rem}.journal-tools p{font-size:.875rem;color:var(--muted);padding-bottom:.75rem}.depth-experience .journal-entry[hidden]{display:none!important}.page-journal .journal-entry:has(.journal-reading[open]){align-self:start}
+.depth-experience .visit-preparation{padding:3rem;margin-top:4rem;border:1px solid var(--line);display:grid;grid-template-columns:1fr 1.3fr;gap:1rem 4rem}.visit-preparation .eyebrow{grid-column:1/-1}.visit-preparation h2{font-size:clamp(2.5rem,4vw,4.5rem)}.visit-preparation>p:not(.eyebrow){font-size:1rem}.visit-preparation .text-link{grid-column:2;justify-self:start}
+.depth-experience .exp-footer{padding-block:4rem}.depth-experience .footer-wordmark{font-size:clamp(3rem,7vw,7rem);line-height:1}.depth-experience .footer-links{align-items:start}
+/* GalleryStage / Longform: continuous dark entry, monumental edge, then a magazine spread. */
+.tone-Graphite{--paper:#f9f9f6;--ink:#1c221e;--muted:#4a524b;--line:#c4c9c2;--display:Georgia,'Times New Roman',serif}
+.experience-GalleryStage.page-home .depth-header{position:absolute;background:rgb(0 0 0 / .66);color:white;border:0}.experience-GalleryStage .depth-navigation nav{background:var(--paper);color:var(--ink)}
+.experience-GalleryStage .experience-hero{min-height:max(760px,100svh);background:#121a14;color:#fff;display:flex;align-items:end;position:relative}.experience-GalleryStage .hero-film{position:absolute;inset:0;height:100%;width:100%}.experience-GalleryStage .film-shade{background:#0009}.experience-GalleryStage .hero-title{z-index:2;width:100%;position:relative;padding:12rem var(--gutter) 10rem;display:grid;grid-template-columns:2.5fr 1fr;gap:2rem;align-items:end}.experience-GalleryStage .hero-title .eyebrow{grid-column:1/-1;border-bottom:1px solid #ffffff70;padding-bottom:1rem;margin-bottom:0}.experience-GalleryStage .hero-title h1{font-size:clamp(7rem,16vw,17rem);line-height:.8;letter-spacing:-.09em;max-width:5ch;font-style:italic}.experience-GalleryStage .hero-tagline{font-size:clamp(1.8rem,3vw,3rem);max-width:15ch!important;line-height:1.2!important;margin:0!important;padding-bottom:.3rem}.experience-GalleryStage .hero-entry-links{position:absolute;bottom:0;left:0;right:0;z-index:3;padding-block:1.5rem;background:#111b;border-color:#ffffff70;padding-right:7rem}.experience-GalleryStage .film-toggle{z-index:4}
+.home-Longform .experience-overview{grid-template-columns:1.1fr 1fr;gap:12vw;padding-block:8rem}.home-Longform .house-note h2{font-style:italic;max-width:12ch}.home-Longform .route-directory{padding-top:2rem}.home-Longform .community-journal{padding:6rem var(--gutter);background:#1c221e;color:#fff;--muted:#d1d8d0;--line:#758174}.home-Longform .community-heading h2{font-style:italic;font-size:clamp(4rem,8vw,8rem)}
+.home-Longform .journal-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:5rem 3vw;align-items:start}.home-Longform .journal-entry{display:grid;gap:1.5rem}.home-Longform .journal-entry:nth-child(1){grid-column:1/-1;grid-template-columns:8fr 3fr;gap:4vw;align-items:end}.home-Longform .journal-entry:nth-child(1) .contextual-photo{aspect-ratio:1.45}.home-Longform .journal-entry:nth-child(2){grid-column:2/7}.home-Longform .journal-entry:nth-child(2) .contextual-photo{aspect-ratio:.88}.home-Longform .journal-entry:nth-child(3){grid-column:8/-1;margin-top:9rem}.home-Longform .journal-entry:nth-child(3) .contextual-photo{aspect-ratio:1}.home-Longform .journal-entry:nth-child(4){grid-column:1/-1;grid-template-columns:5fr 6fr;align-items:center;gap:8vw;border-top:1px solid var(--line);padding-top:5rem}.home-Longform .journal-entry:nth-child(4) .contextual-photo{aspect-ratio:1.2}.home-Longform .journal-entry:nth-child(4) .journal-copy{padding:0 2vw}.home-Longform .journal-copy{padding:0}.home-Longform .journal-copy h3{font-size:clamp(2.5rem,4vw,4.5rem);font-style:italic}.home-Longform .journal-number{display:none}.home-Longform .community-reviews{padding-block:7rem}.home-Longform .review-card{border:0;position:relative;padding-top:0}.home-Longform .review-grid{gap:8vw}.home-Longform .review-card blockquote{font-style:italic;font-size:clamp(2rem,3.6vw,3.8rem)}.home-Longform .community-contact{background:#1c221e;color:white;--muted:#d1d8d0;--line:#758174}.home-Longform .community-contact h2{font-style:italic}
+/* StudioIndex / ModularIndex: an open white grid, a narrow rail and a changing editorial cadence. */
+.tone-NeutralAccent{--paper:#fff;--ink:#171a18;--muted:#4f5550;--line:#c4c9c5;--display:Arial,Helvetica,sans-serif;--accent:#d8f067}
+.experience-StudioIndex .hero-title{display:grid;grid-template-columns:1fr 2fr;gap:2rem 4vw;padding:4rem var(--gutter);align-items:end;min-height:430px}.experience-StudioIndex .hero-title .eyebrow{grid-column:1;grid-row:1;margin:0;align-self:start;max-width:14ch}.experience-StudioIndex .hero-title h1{grid-column:2;grid-row:1/3;font-size:clamp(7rem,14vw,15rem);font-weight:500;line-height:.85;letter-spacing:-.09em;max-width:5ch}.experience-StudioIndex .hero-tagline{grid-column:1;grid-row:2;font-family:Georgia,serif;font-style:italic;font-size:clamp(1.7rem,2.4vw,2.5rem);margin:0!important;max-width:15ch!important}.experience-StudioIndex .hero-film{height:clamp(28rem,49vw,45rem)}.experience-StudioIndex .hero-entry-links{background:var(--accent);border-color:var(--ink)}
+.home-ModularIndex .experience-overview{grid-template-columns:1fr 2fr;gap:4vw}.home-ModularIndex .house-note h2{font-size:clamp(2.7rem,4.1vw,4.6rem);max-width:10ch}.home-ModularIndex .route-directory{display:grid;grid-template-columns:1fr 1fr;gap:0 3vw}.home-ModularIndex .route-directory>a{grid-template-columns:1fr auto;gap:1rem;min-height:210px;padding-top:1.25rem;border-bottom:1px solid var(--line)}.home-ModularIndex .directory-number{grid-column:1;grid-row:1}.home-ModularIndex .directory-arrow{grid-column:2;grid-row:1}.home-ModularIndex .route-directory a>div{grid-column:1/-1}.home-ModularIndex .community-journal{padding:0 var(--gutter) 7rem}.home-ModularIndex .community-heading{border-top:1px solid var(--ink);padding-top:2rem;grid-template-columns:1fr 1fr;margin-bottom:4rem}.home-ModularIndex .community-heading h2{font-size:clamp(3rem,5vw,5rem)}.home-ModularIndex .community-heading h2 em{font-style:normal}
+.home-ModularIndex .journal-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:4rem 3vw;align-items:start}.home-ModularIndex .journal-entry{display:grid;grid-template-columns:1fr;gap:1.5rem}.home-ModularIndex .journal-entry:nth-child(1){grid-column:1/9}.home-ModularIndex .journal-entry:nth-child(1) .contextual-photo{aspect-ratio:1.5}.home-ModularIndex .journal-entry:nth-child(2){grid-column:10/-1;margin-top:10rem}.home-ModularIndex .journal-entry:nth-child(2) .contextual-photo{aspect-ratio:.8}.home-ModularIndex .journal-entry:nth-child(3){grid-column:2/6}.home-ModularIndex .journal-entry:nth-child(3) .contextual-photo{aspect-ratio:.8}.home-ModularIndex .journal-entry:nth-child(4){grid-column:7/-1;margin-top:6rem}.home-ModularIndex .journal-entry:nth-child(4) .contextual-photo{aspect-ratio:1.3}.home-ModularIndex .journal-copy{padding-top:0}.home-ModularIndex .journal-copy h3{font-size:clamp(1.6rem,2.7vw,3rem);letter-spacing:-.05em}.home-ModularIndex .journal-entry:nth-child(1) .journal-copy{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem}.home-ModularIndex .journal-entry:nth-child(1) .journal-copy>.eyebrow{grid-column:1/-1;margin-bottom:0}.home-ModularIndex .journal-entry:nth-child(1) .journal-reading{grid-column:2;margin-top:0}.home-ModularIndex .community-reviews{background:#f1f3ef}.home-ModularIndex .review-card blockquote{font-size:clamp(1.7rem,2.5vw,2.6rem);font-family:Georgia,serif}.home-ModularIndex .community-contact{background:var(--accent);border-color:var(--ink)!important}.home-ModularIndex .community-contact h2{letter-spacing:-.06em}.home-ModularIndex .community-contact h2 em{font-style:normal}
+.experience-GalleryStage .hero-title{background:rgb(0 0 0 / .56)}
+.experience-GalleryStage.page-home .depth-header{left:0;right:0}
+.home-Longform .demo-contact-details button{color:inherit;border-color:currentColor}
+.depth-experience [data-reveal].has-arrived{animation:depth-arrive .65s ease-out both}@keyframes depth-arrive{from{transform:translateY(12px)}to{transform:translateY(0)}}
+@media(min-width:761px) and (max-width:1100px){.depth-navigation nav{grid-template-columns:1fr;gap:2rem}.navigation-heading{display:none}.home-Longform .journal-entry:nth-child(1){grid-template-columns:2fr 1fr;gap:2rem}.home-Longform .journal-entry:nth-child(3){margin-top:5rem}.home-ModularIndex .experience-overview{grid-template-columns:1fr 1.6fr;gap:2rem}.home-ModularIndex .route-directory{grid-template-columns:1fr}.home-ModularIndex .route-directory>a{min-height:0;grid-template-columns:2rem 1fr auto}.home-ModularIndex .directory-number{grid-column:1}.home-ModularIndex .route-directory a>div{grid-column:2;grid-row:1}.home-ModularIndex .directory-arrow{grid-column:3}.home-ModularIndex .journal-entry:nth-child(2){grid-column:9/-1;margin-top:4rem}.home-ModularIndex .journal-entry:nth-child(1){grid-column:1/8}.home-ModularIndex .journal-entry:nth-child(1) .journal-copy{display:block}}
+@media(max-width:760px){.depth-header{min-height:76px;padding:1rem 1.25rem;gap:1rem;align-items:center}.quick-nav{display:none}.depth-navigation{margin-left:auto}.depth-navigation>summary{gap:1.2rem}.depth-navigation nav{inset:76px 0 auto;max-height:calc(100svh - 76px);grid-template-columns:1fr;gap:1.5rem;padding:1.5rem 1.25rem}.navigation-heading{display:none}.navigation-groups{grid-template-columns:1fr;gap:1.25rem}.navigation-groups>div{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}.navigation-groups .eyebrow{grid-column:1/-1;margin-bottom:.5rem}.navigation-groups a{font-size:.95rem}.navigation-context{font-size:.875rem}.depth-breadcrumb{padding-top:.75rem}.depth-experience .experience-overview,.home-ModularIndex .experience-overview,.home-Longform .experience-overview{grid-template-columns:1fr;padding:4rem 1.25rem;gap:3rem}.house-note h2,.home-ModularIndex .house-note h2{font-size:3.25rem;max-width:13ch}.house-note>p:not(.eyebrow){font-size:1rem}.route-directory h3{font-size:2rem}.route-directory>a{gap:.75rem}.home-Longform .route-directory{padding:0}.home-ModularIndex .route-directory{grid-template-columns:1fr}.home-ModularIndex .route-directory>a{min-height:0;grid-template-columns:2rem 1fr auto}.home-ModularIndex .directory-number{grid-column:1}.home-ModularIndex .route-directory a>div{grid-column:2;grid-row:1}.home-ModularIndex .directory-arrow{grid-column:3}
+.experience-GalleryStage .experience-hero{min-height:max(780px,100svh)}.experience-GalleryStage .hero-title{grid-template-columns:1fr;padding:9rem 1.25rem 12rem;gap:2rem}.experience-GalleryStage .hero-title .eyebrow{grid-column:1}.experience-GalleryStage .hero-title h1{font-size:clamp(6.3rem,27vw,10rem);max-width:5ch}.experience-GalleryStage .hero-tagline{font-size:1.8rem;max-width:18ch!important}.experience-GalleryStage .hero-entry-links{padding:1rem 5rem 1rem 1.25rem;flex-direction:column;gap:.25rem}.experience-GalleryStage .hero-entry-links a{width:100%}.experience-GalleryStage .film-toggle{bottom:1.5rem}
+.experience-StudioIndex .hero-title{min-height:0;grid-template-columns:1fr;gap:1.5rem;padding:2rem 1.25rem 3rem}.experience-StudioIndex .hero-title .eyebrow,.experience-StudioIndex .hero-title h1,.experience-StudioIndex .hero-tagline{grid-column:1;grid-row:auto}.experience-StudioIndex .hero-title .eyebrow{max-width:none}.experience-StudioIndex .hero-title h1{font-size:clamp(6rem,27vw,10rem);max-width:5ch}.experience-StudioIndex .hero-tagline{font-size:1.8rem;max-width:18ch!important}.experience-StudioIndex .hero-film{height:53svh;min-height:360px}
+.home-Longform .community-journal{padding:4rem 1.25rem}.home-Longform .community-heading h2{font-size:3.5rem}.home-Longform .journal-grid,.home-ModularIndex .journal-grid{grid-template-columns:1fr;gap:3.5rem}.home-Longform .journal-entry:nth-child(n),.home-ModularIndex .journal-entry:nth-child(n){grid-column:auto;margin:0;display:block;padding:0;border:0}.home-Longform .journal-entry:nth-child(n) .contextual-photo{aspect-ratio:1.2}.home-Longform .journal-entry:nth-child(2) .contextual-photo{aspect-ratio:.9;width:87%}.home-Longform .journal-entry:nth-child(3){width:87%;justify-self:end}.home-Longform .journal-entry:nth-child(4) .journal-copy{padding:1.5rem 0 0}.home-Longform .journal-copy{padding-top:1.5rem}.home-Longform .journal-copy h3{font-size:2.8rem}.home-Longform .community-reviews{padding-block:4rem}.home-Longform .review-card blockquote{font-size:2.3rem}.home-Longform .review-grid{gap:3rem}
+.home-ModularIndex .community-journal{padding:0 1.25rem 4rem}.home-ModularIndex .community-heading{grid-template-columns:1fr;margin-bottom:3rem}.home-ModularIndex .community-heading h2{font-size:3.2rem}.home-ModularIndex .journal-entry:nth-child(1) .journal-copy{display:block}.home-ModularIndex .journal-entry:nth-child(n) .contextual-photo{aspect-ratio:1.3}.home-ModularIndex .journal-entry:nth-child(2){width:80%;justify-self:end}.home-ModularIndex .journal-entry:nth-child(3){width:85%}.home-ModularIndex .journal-entry:nth-child(2) .contextual-photo{aspect-ratio:.8}.home-ModularIndex .journal-copy{padding-top:1.5rem}.home-ModularIndex .journal-copy h3{font-size:2.2rem}.home-ModularIndex .journal-entry:nth-child(1) .journal-reading{margin-top:1.5rem}
+.journal-tools{display:grid;grid-template-columns:1fr;gap:1rem}.journal-tools select{min-width:0}.journal-tools p{padding:0}.depth-experience .visit-preparation{padding:1.5rem;grid-template-columns:1fr;gap:1rem;margin-top:3rem}.visit-preparation .eyebrow,.visit-preparation .text-link{grid-column:1}.visit-preparation h2{font-size:2.8rem}.depth-experience .footer-wordmark{font-size:4.2rem}}
+@media(prefers-reduced-motion:reduce){.depth-experience [data-reveal].has-arrived{animation:none}.route-directory>a{transition:none}}
+/* A filtered result becomes a reading spread; nth-child art direction belongs to the full collection. */
+.depth-experience.page-journal .journal-grid[data-journal-layout=filtered]{display:grid;grid-template-columns:1fr;gap:3rem;max-width:1200px;width:100%;margin-inline:auto}
+.depth-experience.page-journal .journal-grid[data-journal-layout=filtered] .journal-entry:nth-child(n){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-column:auto;gap:clamp(2rem,4vw,4rem);width:100%;margin:0;padding:0;border:0;align-items:start}
+.depth-experience.page-journal .journal-grid[data-journal-layout=filtered] .journal-entry:nth-child(n) .contextual-photo{width:100%;aspect-ratio:4/5;border:0;border-radius:0;outline:0}
+.depth-experience.page-journal .journal-grid[data-journal-layout=filtered] .journal-entry:nth-child(n) .journal-copy{display:block;padding:0;max-width:65ch}
+.depth-experience.page-journal .journal-grid[data-journal-layout=filtered] .journal-entry:nth-child(n) .journal-reading{grid-column:auto;margin-top:1.5rem}
+.depth-experience.page-journal .journal-grid[data-journal-layout=filtered] .journal-copy h3{font-size:clamp(2rem,3.3vw,3.5rem)}
+@media(max-width:760px){.depth-experience.page-journal .journal-grid[data-journal-layout=filtered] .journal-entry:nth-child(n){grid-template-columns:1fr;gap:1.5rem}.depth-experience.page-journal .journal-grid[data-journal-layout=filtered] .journal-entry:nth-child(n) .contextual-photo{aspect-ratio:4/3}}
+
+Return a concise report with changed files, decisions, checks and risks. Do not claim checks Codex has not run.

@@ -1,0 +1,51 @@
+{
+  "scope": "Consolidated preapproved8engine compiler inside existing GitHub monorepo; exact reviewed sources copied, no new design edits.",
+  "userStatus": "PREAPPROVED",
+  "checks": [
+    {
+      "script": "test",
+      "start": "2026-10-26T20:32:41.471Z",
+      "end": "2026-10-26T20:35:20.930Z",
+      "exitCode": 1,
+      "timedOut": false
+    },
+    {
+      "script": "build",
+      "start": "2026-10-26T20:37:09.733Z",
+      "end": "2026-10-26T20:39:44.485Z",
+      "exitCode": 0,
+      "timedOut": false
+    },
+    {
+      "script": "check",
+      "start": "2026-10-26T20:40:22.621Z",
+      "end": "2026-10-26T20:41:12.139Z",
+      "exitCode": 0,
+      "timedOut": false
+    }
+  ],
+  "historicalTestFailure": "Full suite before archive-only config correction439/440 (LOCK_BROWSER_MISMATCH). Final targeted H8 verification recorded separately; the frozen toolchain also pins tsconfig.json and correctly detects the explicit current config change.",
+  "productionApproval": false,
+  "publicOriginalMediaExport": false,
+  "initialArchiveCheck": {
+    "exitCode": 1,
+    "errors": 599,
+    "allDiagnosticsInsideHistoricalSourceArchives": true,
+    "log": "initial-check.log"
+  },
+  "archiveConfigFix": "Only historical docs/evidence/claude-code/**/source and **/implementation excluded. Application/scripts/tests remain strictly checked. No design/semantic changes; successful532page build precedes only this typecheck-exclusion fix.",
+  "passExceptHistoricalH8": true,
+  "bridgeUnitTests": {
+    "passed": 6,
+    "total": 6
+  },
+  "postConfigH8": {
+    "exitCode": 1,
+    "timedOut": false,
+    "log": "h8-postconfig.log",
+    "failures": [
+      "Error: LOCK_TOOLCHAIN_MISMATCH:tsconfig.json"
+    ],
+    "scope": "Targeted recheck after the only post-suite change, archive-only TypeScript exclusions. No lock resealing."
+  }
+}

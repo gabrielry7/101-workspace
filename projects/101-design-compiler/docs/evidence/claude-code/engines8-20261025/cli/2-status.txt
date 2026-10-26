@@ -1,0 +1,103 @@
+ M src/components/composition/CommunitySections.astro
+ M src/components/composition/ExperienceComposition.astro
+ M src/components/composition/ExperienceNavigation.astro
+ M src/components/composition/PreviewIntent.astro
+ M src/design/experience-refinement.css
+ M src/media/composition-media.ts
+ M src/pages/b3/[candidate].astro
+ M src/pages/b3/[candidate]/[page].astro
+ M src/pages/b3/index.astro
+?? data/content/demo-catalogue-40.json
+?? data/media/demo-v1/artistic-20261025.json
+?? data/media/demo-v1/claude-optional-20261024.json
+?? data/media/demo-v1/dish-details-20261025.json
+?? data/media/demo-v1/engines8-20261025.json
+?? docs/evidence/claude-code/artistic-20261025/resources-review.json
+?? docs/evidence/claude-code/dishes-20261025/media-review.json
+?? docs/evidence/claude-code/engines8-20261025/media-scope.json
+?? docs/evidence/claude-code/redesign-20261024/multimedia-review.json
+?? public/fonts/b3-artistic/bodonimoda-OFL.txt
+?? public/fonts/b3-artistic/bodonimoda.woff
+?? public/fonts/b3-artistic/dmsans-OFL.txt
+?? public/fonts/b3-artistic/dmsans.woff
+?? public/fonts/b3-artistic/syne-OFL.txt
+?? public/fonts/b3-artistic/syne.woff
+?? public/media/b3-artistic/1004255-1280.webp
+?? public/media/b3-artistic/1004255-640.webp
+?? public/media/b3-artistic/10258355-1280.webp
+?? public/media/b3-artistic/10258355-640.webp
+?? public/media/b3-artistic/10266737-640.webp
+?? public/media/b3-artistic/10266737-853.webp
+?? public/media/b3-artistic/120734-poster-1280.webp
+?? public/media/b3-artistic/120734-poster-640.webp
+?? public/media/b3-artistic/120734-silent.mp4
+?? public/media/b3-artistic/1543170-1280.webp
+?? public/media/b3-artistic/1543170-640.webp
+?? public/media/b3-artistic/1596417-1280.webp
+?? public/media/b3-artistic/1596417-640.webp
+?? public/media/b3-artistic/1665402-1280.webp
+?? public/media/b3-artistic/1665402-640.webp
+?? public/media/b3-artistic/1868396-1280.webp
+?? public/media/b3-artistic/1868396-640.webp
+?? public/media/b3-artistic/1887240-640.webp
+?? public/media/b3-artistic/1887240-853.webp
+?? public/media/b3-artistic/1932466-1280.webp
+?? public/media/b3-artistic/1932466-640.webp
+?? public/media/b3-artistic/2481346-1280.webp
+?? public/media/b3-artistic/2481346-640.webp
+?? public/media/b3-artistic/267-silent.webm
+?? public/media/b3-artistic/4367047-1280.webp
+?? public/media/b3-artistic/4367047-640.webp
+?? public/media/b3-artistic/8233676-1280.webp
+?? public/media/b3-artistic/8233676-640.webp
+?? public/media/b3-artistic/8594421-640.webp
+?? public/media/b3-artistic/8594421-960.webp
+?? public/media/b3-artistic/943245-1280.webp
+?? public/media/b3-artistic/943245-640.webp
+?? public/media/b3-artistic/968657-1280.webp
+?? public/media/b3-artistic/968657-640.webp
+?? public/media/b3-artistic/972271-1280.webp
+?? public/media/b3-artistic/972271-640.webp
+?? public/media/b3-dishes/200157-silent.mp4
+?? public/media/b3-dishes/258562-silent.mp4
+?? public/media/b3-dishes/3510-silent.mp4
+?? public/media/b3-optional/2714970-1280.webp
+?? public/media/b3-optional/2714970-640.webp
+?? public/media/b3-optional/4642686-1280.webp
+?? public/media/b3-optional/4642686-640.webp
+?? public/media/b3-optional/5356682-1280.webp
+?? public/media/b3-optional/5356682-640.webp
+?? src/components/composition/ArtisticImage.astro
+?? src/components/composition/ArtisticPages.astro
+?? src/components/composition/ArtisticVideo.astro
+?? src/components/composition/CatalogueSelection.astro
+?? src/components/composition/DishDetail.astro
+?? src/components/composition/MenuCollection.astro
+?? src/components/composition/StyleEngineSite.astro
+?? src/components/composition/SupplementalImage.astro
+?? src/design/artistic-direction.ts
+?? src/design/artistic-ember.css
+?? src/design/artistic-film.js
+?? src/design/artistic-plate.css
+?? src/design/catalogue-client.js
+?? src/design/catalogue.css
+?? src/design/dish-detail.css
+?? src/design/dish-routes.ts
+?? src/design/engine-base.css
+?? src/design/engine-indice.css
+?? src/design/engine-marea.css
+?? src/design/engine-market.css
+?? src/design/engine-riso.css
+?? src/design/menu-carta.css
+?? src/design/restaurant-catalogue.ts
+?? src/design/style-engines.ts
+?? src/media/artistic-restaurant.ts
+?? src/media/dish-media.ts
+?? src/media/engine-media.ts
+?? src/media/optional-restaurant.ts
+?? src/pages/b3/[candidate]/carta/[dish].astro
+?? tests/artistic-restaurant.test.ts
+?? tests/dish-flow.test.ts
+?? tests/optional-restaurant.test.ts
+?? tests/restaurant-catalogue.test.ts
+?? tests/style-engines.test.ts

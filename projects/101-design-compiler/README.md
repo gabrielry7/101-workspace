@@ -1,5 +1,7 @@
 # 101 Design Compiler
 
+Colaboración Codex ↔ Claude Code: [configuración, tareas aisladas y verificación](tooling/claude-code/README.md). Codex conserva la orquestación; Claude se invoca mediante su CLI oficial y la integración exige autenticación antes de delegar.
+
 Motor multivertical de UnoCeroUno. **H0–H3 cerrados; H4 verificado en laboratorio para revisión**. Produce planes semánticos, manifiestos de medios y composiciones base compartidas; conserva los huecos documentales y no genera sitios comerciales operativos.
 
 La especificación principal está en [docs/pipeline.md](docs/pipeline.md). El documento V0.2 original permanece intacto. Consultar [hallazgos H0](docs/h0-findings.md), [informe H0](docs/h0-report.md), [protocolo upstream](docs/upstream-protocol-v1.md), [taxonomía](docs/taxonomy-v1.md), [informe H1](docs/h1-report.md) e [informe H2](docs/h2-report.md).

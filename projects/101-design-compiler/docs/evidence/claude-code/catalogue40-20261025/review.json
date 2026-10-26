@@ -1,0 +1,145 @@
+{
+  "created_at": "2026-10-25T20:03:53.902Z",
+  "pass": true,
+  "scope": "40distinctdemoofferings/8groups/160detailpages;fourincumbentworlds",
+  "sources": [
+    {
+      "path": "src/components/composition/ExperienceComposition.astro",
+      "bytes": 16399,
+      "sha256": "0376178b28e754081161f79c890f11d588e377d74e064169f362c466b5514c8f"
+    },
+    {
+      "path": "src/components/composition/ArtisticPages.astro",
+      "bytes": 9250,
+      "sha256": "6cc17fabef0c11c28b4f115ec9037a62e3548f64e73ad4c0841ac794b3858a49"
+    },
+    {
+      "path": "src/components/composition/MenuCollection.astro",
+      "bytes": 6938,
+      "sha256": "1095776d1ee2ad2b3c65a51bc6e8b4b5afe535c94eae9176eb901af9193ee206"
+    },
+    {
+      "path": "src/components/composition/DishDetail.astro",
+      "bytes": 4910,
+      "sha256": "02d0deb3efbf3d7623d4020dc3ab0f44895a29e3744e049c7f6719daf16f18e7"
+    },
+    {
+      "path": "src/components/composition/CatalogueSelection.astro",
+      "bytes": 580,
+      "sha256": "de1f126bb9302a7120b3a87ee2acca41ff61f48e4e66867d9e122453ad8e8843"
+    },
+    {
+      "path": "src/design/catalogue-client.js",
+      "bytes": 4755,
+      "sha256": "f23e441f28173bbe81207b078ad685f5a5b983bc4ea3866b1656e23469a11928"
+    },
+    {
+      "path": "src/design/catalogue.css",
+      "bytes": 11145,
+      "sha256": "e07db240732333c2d268779acc8832427acdbf90ea954c81c8bc81d65c748bdd"
+    },
+    {
+      "path": "src/design/restaurant-catalogue.ts",
+      "bytes": 4160,
+      "sha256": "a8afc132011242a921a9e0aa72257ac172799ff62e6051489123ac6fb5a31e26"
+    },
+    {
+      "path": "src/design/dish-routes.ts",
+      "bytes": 401,
+      "sha256": "4eccea678d0649f8f5195b258ad5f2afae852a61ee8853becb979da46634fbf0"
+    },
+    {
+      "path": "src/media/dish-media.ts",
+      "bytes": 5427,
+      "sha256": "04120aab9e2c6186446cc58bb729f3f0780313b012e017f1ffdc74409559a2fa"
+    },
+    {
+      "path": "src/pages/b3/[candidate]/[page].astro",
+      "bytes": 818,
+      "sha256": "b19b5a642119d9b0882be84e9fda0dec44126e90a0305b342497fb51652cf730"
+    },
+    {
+      "path": "src/pages/b3/[candidate]/carta/[dish].astro",
+      "bytes": 1160,
+      "sha256": "517d1b85d80d8006afe530f3ab4a37f3932289aa6297aad959bd82cb49921384"
+    },
+    {
+      "path": "data/content/demo-catalogue-40.json",
+      "bytes": 10277,
+      "sha256": "cab5d68e110b85754c43f41d6526272befb252ab9c0fc59a5cf3e4c033364be4"
+    },
+    {
+      "path": "tests/dish-flow.test.ts",
+      "bytes": 2418,
+      "sha256": "67da83a0f9f3f944716477edcc46e45bd1f025f04551cc40fd3e6750d53c591e"
+    },
+    {
+      "path": "tests/restaurant-catalogue.test.ts",
+      "bytes": 3016,
+      "sha256": "51a91fc5ab584ab091647e7aed7398c3d04f85fb2f27347acdc0693a65c2f52d"
+    }
+  ],
+  "totalPages": 328,
+  "protectedOldPages": 160,
+  "changedOldPages": 24,
+  "newPages": 144,
+  "oldClientAssetsIdentical": true,
+  "mainMatrix": {
+    "views": 256,
+    "staticDetailFactChecks": 160,
+    "pass": true,
+    "version": "Before final CSS-only summary visibility correction"
+  },
+  "releaseSummary": {
+    "states": 60,
+    "pass": true,
+    "minContrast": 5.0645742699205565
+  },
+  "nativeKeyboardFlow": true,
+  "previewRoutes": 168,
+  "invalid404": [
+    {
+      "route": "/b3/candidate-05/carta/pizza/",
+      "status": 404
+    },
+    {
+      "route": "/b3/candidate-01/carta/no-existe/",
+      "status": 404
+    }
+  ],
+  "cliSession": "989dd842-6113-46ea-997e-390cd9ede2dc",
+  "cliCalls": [
+    {
+      "index": 1,
+      "status": "responded",
+      "sameSession": true,
+      "estimatedCostUsd": 0.15723939999999997
+    },
+    {
+      "index": 2,
+      "status": "responded",
+      "sameSession": true,
+      "estimatedCostUsd": 0.8844494999999999
+    },
+    {
+      "index": 3,
+      "status": "responded",
+      "sameSession": true,
+      "estimatedCostUsd": 1.2535111
+    },
+    {
+      "index": 4,
+      "status": "responded",
+      "sameSession": true,
+      "estimatedCostUsd": 1.3026142
+    }
+  ],
+  "originalMediaRegistryUnchanged": true,
+  "originalFactsUnchanged": true,
+  "apiRequests": 0,
+  "credentialsCopied": false,
+  "limits": [
+    "Review verdict covers the scored fixes, not whole-project approval.",
+    "Local computed geometry/contrast and warm browser checks, not full WCAG/cold-network certification."
+  ]
+}

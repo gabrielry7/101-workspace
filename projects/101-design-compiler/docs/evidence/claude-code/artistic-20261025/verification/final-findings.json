@@ -1,0 +1,87 @@
+{
+  "pass": false,
+  "views": 220,
+  "failures": 3,
+  "counts": {
+    "JOURNAL_FILTER_FAILED": 3
+  },
+  "samples": {
+    "JOURNAL_FILTER_FAILED": {
+      "route": "/b3/candidate-04/diario/",
+      "width": 768,
+      "readability": [],
+      "overflow": [],
+      "smallControls": [],
+      "expanded": {
+        "codes": [],
+        "overflow": [],
+        "readability": [],
+        "smallControls": []
+      },
+      "keyboard": {
+        "skip": true,
+        "navOpened": true,
+        "navClosed": true
+      },
+      "interactions": {
+        "filteredJournal": {
+          "success": false,
+          "codes": [
+            "JOURNAL_FILTER_READING_TOO_NARROW"
+          ]
+        }
+      }
+    }
+  },
+  "videoChecks": [
+    {
+      "route": "/b3/candidate-03/",
+      "width": 390,
+      "before": 0,
+      "playback": {
+        "muted": true,
+        "advanced": true,
+        "error": null,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "route": "/b3/candidate-04/",
+      "width": 390,
+      "before": 0,
+      "playback": {
+        "muted": true,
+        "advanced": true,
+        "error": null,
+        "width": 640,
+        "height": 360
+      }
+    },
+    {
+      "route": "/b3/candidate-03/",
+      "width": 1440,
+      "before": 0,
+      "playback": {
+        "muted": true,
+        "advanced": true,
+        "error": null,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "route": "/b3/candidate-04/",
+      "width": 1440,
+      "before": 0,
+      "playback": {
+        "muted": true,
+        "advanced": true,
+        "error": null,
+        "width": 640,
+        "height": 360
+      }
+    }
+  ],
+  "protectedFailures": []
+}

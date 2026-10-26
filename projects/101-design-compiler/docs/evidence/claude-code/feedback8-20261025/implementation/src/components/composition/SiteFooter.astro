@@ -1,0 +1,9 @@
+---
+import {richExperiencePages} from '../../design/rich-experience-contracts.ts';
+import {experienceRoute} from '../../design/experience-contracts.ts';
+import {publicLabel,navKinds} from '../../design/nav-labels.ts';
+interface Props{root:string;name:string}
+const {root,name}=Astro.props;
+const href=(k:string)=>experienceRoute(root,richExperiencePages.find(p=>p.kind===k)! as any);
+---
+<footer class="exp-footer"><a class="footer-wordmark" href={root}>{name}</a><div class="footer-links">{navKinds.map(k=><a href={href(k)}>{publicLabel(k)}</a>)}<a href={href('credits')} data-credits-link>Créditos</a><a href="/b3/">Comparar propuestas</a></div><p class="fiction-notice" data-media-disclosure>Restaurante ficticio · imágenes y vídeo ilustrativos. No representan una empresa ni sus productos reales.</p><p class="provider-notice" data-provider-notice>Pixabay y sus autores no respaldan este escenario.</p></footer>

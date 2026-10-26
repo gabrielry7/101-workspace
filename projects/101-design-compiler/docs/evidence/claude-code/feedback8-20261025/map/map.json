@@ -1,0 +1,29 @@
+{
+  "pass": true,
+  "initial": {
+    "iframe": 0,
+    "distance": ""
+  },
+  "responses": [
+    {
+      "url": "https://www.openstreetmap.org/export/embed.html?bbox=-74.0904234%2C4.6501303%2C-74.0724234%2C4.6621303&layer=mapnik&marker=4.6561303%2C-74.0814234",
+      "status": 200,
+      "type": "Document"
+    }
+  ],
+  "blocked": [],
+  "denied": {
+    "text": "No diste permiso de ubicación. Puedes intentarlo de nuevo o abrir las indicaciones en Google Maps.",
+    "retry": true
+  },
+  "external": [
+    "https://www.openstreetmap.org/export/embed.html?bbox=-74.0904234%2C4.6501303%2C-74.0724234%2C4.6621303&layer=mapnik&marker=4.6561303%2C-74.0814234"
+  ],
+  "mobile": {
+    "width": 390,
+    "viewport": 390,
+    "frame": 348
+  },
+  "iframe_note": "Cross-origin tile requests use an out-of-process frame and are absent from the parent CDP network stream. Native map screenshots visually confirm actual tiles; document200 is recorded.",
+  "privacy": "Only clicked destination map loaded; no real user geolocation requested. Denied native permission tested in isolated headless browser."
+}

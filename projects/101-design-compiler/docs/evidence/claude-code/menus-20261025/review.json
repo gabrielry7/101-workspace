@@ -1,0 +1,165 @@
+{
+  "created_at": "2026-10-25T15:33:27.306Z",
+  "pass": true,
+  "scope": "Only four B3 carta pages",
+  "files": [
+    {
+      "path": "src/components/composition/MenuCollection.astro",
+      "sha256": "9c1769c7bc3f208611e77a27515cb051fdc6accb56588c6f5d09ee10fa9eee6e",
+      "bytes": 3861
+    },
+    {
+      "path": "src/design/menu-carta.css",
+      "sha256": "0b667f01f76ff335bdfdb1c48e89bc260b971db0360099ed0e66f70489e0946e",
+      "bytes": 14820
+    },
+    {
+      "path": "src/components/composition/ExperienceComposition.astro",
+      "sha256": "18747402f33b1dde7ca6762bc2d9fe939d524a9cce86dc7167c3221f8d73e4db",
+      "bytes": 14094
+    },
+    {
+      "path": "src/components/composition/ArtisticPages.astro",
+      "sha256": "0fdb3ed94ad9caae3ae1cefcd943004084af4c01648982589a78807d0298d750",
+      "bytes": 8779
+    }
+  ],
+  "changedAccepted": [
+    "src/components/composition/ArtisticPages.astro",
+    "src/components/composition/ExperienceComposition.astro"
+  ],
+  "protectedHtml": 164,
+  "changedHtml": 4,
+  "assetRows": [
+    {
+      "path": "ExperienceComposition.astro_astro_type_script_index_0_lang.CwRevf-C.js",
+      "unchanged": true
+    },
+    {
+      "path": "hotel-a-desktop-home.DmGO_ko-.png",
+      "unchanged": true
+    },
+    {
+      "path": "hotel-a-mobile-home.DrPhtPiP.png",
+      "unchanged": true
+    },
+    {
+      "path": "hotel-b-desktop-home.CfO5Ilpl.png",
+      "unchanged": true
+    },
+    {
+      "path": "hotel-b-mobile-home.BURc7lO2.png",
+      "unchanged": true
+    },
+    {
+      "path": "hotel-c-desktop-home.Cx3GAAff.png",
+      "unchanged": true
+    },
+    {
+      "path": "hotel-c-mobile-home.NgC2JD7E.png",
+      "unchanged": true
+    },
+    {
+      "path": "hotel-d-desktop-home.BK-jjwAz.png",
+      "unchanged": true
+    },
+    {
+      "path": "hotel-d-mobile-home.B2Ksp_kf.png",
+      "unchanged": true
+    },
+    {
+      "path": "restaurante-a-desktop-home.Bi_5e5HU.png",
+      "unchanged": true
+    },
+    {
+      "path": "restaurante-a-mobile-home.Cytbcosy.png",
+      "unchanged": true
+    },
+    {
+      "path": "restaurante-b-desktop-home.DFHQafGI.png",
+      "unchanged": true
+    },
+    {
+      "path": "restaurante-b-mobile-home.C5cCrFEc.png",
+      "unchanged": true
+    },
+    {
+      "path": "restaurante-c-desktop-home.1YGZq_9E.png",
+      "unchanged": true
+    },
+    {
+      "path": "restaurante-c-mobile-home.BmQHE82j.png",
+      "unchanged": true
+    },
+    {
+      "path": "restaurante-d-desktop-home.u7mR7b1c.png",
+      "unchanged": true
+    },
+    {
+      "path": "restaurante-d-mobile-home.D7t9mL8p.png",
+      "unchanged": true
+    },
+    {
+      "path": "_..BxM29UAl.css",
+      "unchanged": true
+    }
+  ],
+  "delta": [
+    {
+      "candidate": "01",
+      "before": 94198,
+      "after": 109262,
+      "extraHtmlBytes": 15064
+    },
+    {
+      "candidate": "02",
+      "before": 94196,
+      "after": 109264,
+      "extraHtmlBytes": 15068
+    },
+    {
+      "candidate": "03",
+      "before": 115036,
+      "after": 130100,
+      "extraHtmlBytes": 15064
+    },
+    {
+      "candidate": "04",
+      "before": 115891,
+      "after": 130954,
+      "extraHtmlBytes": 15063
+    }
+  ],
+  "cli": {
+    "sessionId": "db3a7260-b3bd-4f75-b04a-28b7d2f09b20",
+    "calls": [
+      {
+        "index": 1,
+        "status": "responded",
+        "sameSession": true,
+        "estimatedCostUsd": 0.311198
+      },
+      {
+        "index": 2,
+        "status": "responded",
+        "sameSession": true,
+        "estimatedCostUsd": 0.9356736
+      },
+      {
+        "index": 3,
+        "status": "responded",
+        "sameSession": true,
+        "estimatedCostUsd": 1.0430272
+      }
+    ],
+    "cumulativeEstimatedCostUsd": 1.0430272
+  },
+  "browserViews": 20,
+  "minAuditedContrast": 5.395525242973207,
+  "credentialsCopied": false,
+  "referenceAssetsInRuntime": false,
+  "limitations": [
+    "Computed local contrast/target checks are not a full WCAG certification.",
+    "Warm local browser renders; request bytes are not a cold mobile network performance certification."
+  ]
+}

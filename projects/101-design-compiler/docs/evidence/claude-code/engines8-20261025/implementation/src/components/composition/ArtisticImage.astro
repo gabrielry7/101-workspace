@@ -1,0 +1,11 @@
+---
+import {artisticMedia} from '../../media/artistic-restaurant.ts';
+interface Props{id:number|string;route:string;creditsHref:string;class?:string;hero?:boolean;sizes?:string|undefined}
+const {id,route,creditsHref,class:className,hero=false,sizes}=Astro.props;
+const resolvedSizes=sizes??(hero?'100vw':'(min-width: 1000px) 640px, (min-width: 761px) 50vw, calc(100vw - 40px)');
+const root=route.match(/^\/b3\/candidate-0[34]\//)?.[0];if(!root||creditsHref!==root+'creditos/')throw Error('ART_CREDIT_ROUTE_MISMATCH');
+const {assets,uses,review_sha256}=await artisticMedia(id,route),a=assets[0]!;if(assets.some(a=>a.kind!=='image'))throw Error('ART_IMAGE_EXPECTED');
+---
+<figure class:list={['contextual-photo','media-cover','art-photo',className]} data-art-asset={id} data-art-review={review_sha256} data-art-usage={uses.map(u=>u.id).join(' ')} data-credit-href={creditsHref}>
+ <picture><source type="image/webp" srcset={assets.map(a=>`${a.uri} ${a.inspection.width}w`).join(', ')} sizes={resolvedSizes}/><img src={a.uri} width={a.inspection.width!} height={a.inspection.height!} alt={`${a.inspection.subject}. Imagen ilustrativa de stock; no representa el negocio ni sus productos reales.`} loading={hero?'eager':'lazy'} fetchpriority={hero?'high':undefined} decoding="async"/></picture>
+</figure>

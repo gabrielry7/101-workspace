@@ -1,0 +1,25 @@
+/* Style engines 05-08: structure shared by the four home operators. Loaded only on /b3/candidate-05..08 routes.
+   Every rule is scoped to .engine-site; tokens (--paper, --ink, --accent-text, ...) come from the engine file. */
+.engine-site{--pad:clamp(1.25rem,4vw,3.5rem)}
+.engine-site .eg-skip{position:absolute;left:.5rem;top:-4rem;z-index:100;display:inline-flex;align-items:center;min-height:44px;padding:0 1rem;background:var(--action);color:var(--on-action);font-weight:700;text-decoration:none}
+.engine-site .eg-skip:focus{top:.5rem}
+.engine-site :is(h1,h2,h3){text-wrap:balance;overflow-wrap:break-word}
+.engine-site .eg-media{position:relative;min-width:0;overflow:clip;background:var(--surface)}
+.engine-site .eg-media .contextual-photo{margin:0;width:100%;height:100%}
+.engine-site .eg-media picture{display:block;width:100%;height:100%}
+.engine-site .eg-media img{display:block;width:100%;height:100%;object-fit:cover}
+.engine-site .eg-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.engine-site .eg-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 1.5rem;font:inherit;font-size:1rem;font-weight:700;color:var(--on-action);background:var(--action);border:2px solid var(--action);text-decoration:none}
+.engine-site .eg-btn.eg-ghost{color:var(--ink);background:transparent;border-color:var(--ink)}
+.engine-site .eg-btn:hover{text-decoration:underline;text-underline-offset:.25em}
+.engine-site .eg-quick{display:grid;margin:0;padding:0;list-style:none;max-width:44rem}
+.engine-site .eg-quick a{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;min-height:48px;padding:.6rem 0;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);font-size:1.125rem}
+.engine-site .eg-quick a:hover span:first-child{text-decoration:underline;text-underline-offset:.25em;text-decoration-color:var(--mark);text-decoration-thickness:2px}
+.engine-site .eg-price{flex:none;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.engine-site .eg-note{margin:1rem 0 0;max-width:56ch;font-size:.875rem;line-height:1.5;color:var(--muted)}
+.engine-site :is(.mk-start,.ma-sig,.rs-house,.ix-index){padding:clamp(2rem,5vw,4rem) var(--pad)}
+.engine-site .page-intro.eg-head{padding-inline:0}
+.engine-site .page-intro.eg-head h1{margin:0;line-height:1;overflow-wrap:break-word}
+.engine-site .page-intro.eg-head p{margin:1rem 0 0;max-width:48ch;font-size:1.125rem;color:var(--muted)}
+.engine-site ::selection{background:var(--mark);color:var(--ink)}
+@media(prefers-reduced-motion:no-preference){.engine-site .eg-btn,.engine-site .eg-media img{transition:background-color .2s ease-out,color .2s ease-out,filter .35s ease-out,transform .35s ease-out}}

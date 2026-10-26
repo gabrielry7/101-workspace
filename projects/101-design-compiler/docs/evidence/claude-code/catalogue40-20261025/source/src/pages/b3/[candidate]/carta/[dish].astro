@@ -1,0 +1,15 @@
+---
+import ExperienceComposition from '../../../../components/composition/ExperienceComposition.astro';
+import {loadB3DepthExperience as loadB3RichExperience} from '../../../../../scripts/load-b3-depth-experience.ts';
+import {richExperiencePages} from '../../../../design/rich-experience-contracts.ts';
+import {dishIds,isDishId,dishRoute} from '../../../../design/dish-routes.ts';
+import {loadRestaurantCatalogue} from '../../../../design/restaurant-catalogue.ts';
+export async function getStaticPaths(){
+ const lab=loadRestaurantCatalogue(await loadB3RichExperience()),page=richExperiencePages.find(p=>p.kind==='collection')!;
+ const offerings=lab.catalogue.module.offerings,ids:string[]=offerings.map(o=>o.id);
+ if(ids.length!==dishIds.length||new Set(ids).size!==ids.length||ids.some(id=>!isDishId(id)))throw Error('DISH_OFFERINGS_UNSUPPORTED');
+ return lab.site.profiles.flatMap(profile=>offerings.map(offering=>{dishRoute(profile.root,offering.id);return {params:{candidate:profile.id,dish:offering.id},props:{lab,profile,page,offering}};}));
+}
+const {lab,profile,page,offering}=Astro.props;
+---
+<ExperienceComposition {lab} {profile} {page} {offering}/>

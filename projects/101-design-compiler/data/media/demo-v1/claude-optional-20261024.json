@@ -1,0 +1,1807 @@
+{
+  "kind": "OPTIONAL_B3_REDESIGN_MEDIA",
+  "evaluated_at": "2026-10-25T04:09:38.241Z",
+  "evidence": {
+    "path": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+    "sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614"
+  },
+  "assets": [
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-5356682-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/claude-code/multimedia-20261024/originals/5356682.jpg",
+      "source": "Pixabay",
+      "external_id": "5356682",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/table-glassware-cutlery-silverware-5356682/",
+          "recorded_at": "2026-10-25T04:00:29.175Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-5356682-received",
+      "parent_id": null,
+      "original_sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa",
+      "file_sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/claude-code/multimedia-20261024/originals/5356682.jpg",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-request",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/claude-code/multimedia-20261024/originals/5356682.jpg",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/claude-code/multimedia-20261024/originals/5356682.jpg",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Mesa preparada al atardecer",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-5356682-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b3-optional/5356682-640.webp",
+      "source": "Pixabay",
+      "external_id": "5356682",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/table-glassware-cutlery-silverware-5356682/",
+          "recorded_at": "2026-10-25T04:00:29.175Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-5356682-received",
+      "parent_id": "optional-5356682-received",
+      "original_sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa",
+      "file_sha256": "644ceb214c5ef2306a604a1ca54bc95251e7a5e99a6afe55927f1a5706e2af18",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b3-optional/5356682-640.webp",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "644ceb214c5ef2306a604a1ca54bc95251e7a5e99a6afe55927f1a5706e2af18"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-request",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b3-optional/5356682-640.webp",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "644ceb214c5ef2306a604a1ca54bc95251e7a5e99a6afe55927f1a5706e2af18"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b3-optional/5356682-640.webp",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "644ceb214c5ef2306a604a1ca54bc95251e7a5e99a6afe55927f1a5706e2af18"
+        },
+        "width": 640,
+        "height": 427,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Mesa preparada al atardecer",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-5356682-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b3-optional/5356682-1280.webp",
+      "source": "Pixabay",
+      "external_id": "5356682",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/table-glassware-cutlery-silverware-5356682/",
+          "recorded_at": "2026-10-25T04:00:29.175Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-5356682-received",
+      "parent_id": "optional-5356682-received",
+      "original_sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa",
+      "file_sha256": "aeca932c06956db2ca6dd45dcb9d79a5f24d163069fdfd3be4e6c6429f0fa59f",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b3-optional/5356682-1280.webp",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "aeca932c06956db2ca6dd45dcb9d79a5f24d163069fdfd3be4e6c6429f0fa59f"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-request",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b3-optional/5356682-1280.webp",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "aeca932c06956db2ca6dd45dcb9d79a5f24d163069fdfd3be4e6c6429f0fa59f"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b3-optional/5356682-1280.webp",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "aeca932c06956db2ca6dd45dcb9d79a5f24d163069fdfd3be4e6c6429f0fa59f"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Mesa preparada al atardecer",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-2714970-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/claude-code/multimedia-20261024/originals/2714970.jpg",
+      "source": "Pixabay",
+      "external_id": "2714970",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/coffee-coffee-cup-cup-drink-beans-2714970/",
+          "recorded_at": "2026-10-25T04:00:32.235Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-2714970-received",
+      "parent_id": null,
+      "original_sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263",
+      "file_sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/claude-code/multimedia-20261024/originals/2714970.jpg",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-contact",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/claude-code/multimedia-20261024/originals/2714970.jpg",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/claude-code/multimedia-20261024/originals/2714970.jpg",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Café de sobremesa",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-2714970-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b3-optional/2714970-640.webp",
+      "source": "Pixabay",
+      "external_id": "2714970",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/coffee-coffee-cup-cup-drink-beans-2714970/",
+          "recorded_at": "2026-10-25T04:00:32.235Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-2714970-received",
+      "parent_id": "optional-2714970-received",
+      "original_sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263",
+      "file_sha256": "a7d7d225b19eecec47cf703e7569ce803d61ae211755f4469bd820b6b3562432",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b3-optional/2714970-640.webp",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "a7d7d225b19eecec47cf703e7569ce803d61ae211755f4469bd820b6b3562432"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-contact",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b3-optional/2714970-640.webp",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "a7d7d225b19eecec47cf703e7569ce803d61ae211755f4469bd820b6b3562432"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b3-optional/2714970-640.webp",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "a7d7d225b19eecec47cf703e7569ce803d61ae211755f4469bd820b6b3562432"
+        },
+        "width": 640,
+        "height": 427,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Café de sobremesa",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-2714970-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b3-optional/2714970-1280.webp",
+      "source": "Pixabay",
+      "external_id": "2714970",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/coffee-coffee-cup-cup-drink-beans-2714970/",
+          "recorded_at": "2026-10-25T04:00:32.235Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-2714970-received",
+      "parent_id": "optional-2714970-received",
+      "original_sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263",
+      "file_sha256": "59159aeaed4124e5450c695e70359d2a5f343b3d3172b1b12a5782d63bf1677e",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b3-optional/2714970-1280.webp",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "59159aeaed4124e5450c695e70359d2a5f343b3d3172b1b12a5782d63bf1677e"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-contact",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b3-optional/2714970-1280.webp",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "59159aeaed4124e5450c695e70359d2a5f343b3d3172b1b12a5782d63bf1677e"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b3-optional/2714970-1280.webp",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "59159aeaed4124e5450c695e70359d2a5f343b3d3172b1b12a5782d63bf1677e"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Café de sobremesa",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-4642686-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/claude-code/multimedia-20261024/originals/4642686.jpg",
+      "source": "Pixabay",
+      "external_id": "4642686",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/bread-loaf-white-bread-baked-food-4642686/",
+          "recorded_at": "2026-10-25T04:00:30.966Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-4642686-received",
+      "parent_id": null,
+      "original_sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82",
+      "file_sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/claude-code/multimedia-20261024/originals/4642686.jpg",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-story",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/claude-code/multimedia-20261024/originals/4642686.jpg",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/claude-code/multimedia-20261024/originals/4642686.jpg",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82"
+        },
+        "width": 1280,
+        "height": 880,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Pan y hogaza",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-4642686-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b3-optional/4642686-640.webp",
+      "source": "Pixabay",
+      "external_id": "4642686",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/bread-loaf-white-bread-baked-food-4642686/",
+          "recorded_at": "2026-10-25T04:00:30.966Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-4642686-received",
+      "parent_id": "optional-4642686-received",
+      "original_sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82",
+      "file_sha256": "908c8c1723a4f66d99b5dde592e787e19bc2eedf9b643da20635a56fc11346c5",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b3-optional/4642686-640.webp",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "908c8c1723a4f66d99b5dde592e787e19bc2eedf9b643da20635a56fc11346c5"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-story",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b3-optional/4642686-640.webp",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "908c8c1723a4f66d99b5dde592e787e19bc2eedf9b643da20635a56fc11346c5"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b3-optional/4642686-640.webp",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "908c8c1723a4f66d99b5dde592e787e19bc2eedf9b643da20635a56fc11346c5"
+        },
+        "width": 640,
+        "height": 440,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pan y hogaza",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-4642686-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b3-optional/4642686-1280.webp",
+      "source": "Pixabay",
+      "external_id": "4642686",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/bread-loaf-white-bread-baked-food-4642686/",
+          "recorded_at": "2026-10-25T04:00:30.966Z"
+        },
+        {
+          "source": "Explicit user Claude selection and Codex task-scoped review",
+          "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+          "recorded_at": "2026-10-25T04:09:38.241Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "optional-4642686-received",
+      "parent_id": "optional-4642686-received",
+      "original_sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82",
+      "file_sha256": "9894a52cbb04edc9264c759c0ef2513b66bbcb3d8c576945440cde0dff459ac6",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b3-optional/4642686-1280.webp",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "9894a52cbb04edc9264c759c0ef2513b66bbcb3d8c576945440cde0dff459ac6"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:optional-story",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b3-optional/4642686-1280.webp",
+            "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+            "reviewed_at": "2026-10-25T04:09:38.241Z",
+            "evidence_sha256": "9894a52cbb04edc9264c759c0ef2513b66bbcb3d8c576945440cde0dff459ac6"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b3-optional/4642686-1280.webp",
+          "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+          "reviewed_at": "2026-10-25T04:09:38.241Z",
+          "evidence_sha256": "9894a52cbb04edc9264c759c0ef2513b66bbcb3d8c576945440cde0dff459ac6"
+        },
+        "width": 1280,
+        "height": 880,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pan y hogaza",
+        "findings": [
+          "Selected rendition visually reviewed, no identifiable people or marks observed.",
+          "Generic stock illustration only, not actual business/recipe/location evidence.",
+          "CSS crop only for contextual composition; no generative edits or colour transforms."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    }
+  ],
+  "grants": [
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-license:5356682",
+      "data_mode": "REAL",
+      "original_asset_id": "optional-5356682-received",
+      "original_sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_TERMS_2026_10_20",
+      "holder": "Provider lists JoelFazhari; no compiler ownership asserted",
+      "purchaser": "Existing user API account; selected free resource",
+      "document": {
+        "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+        "version": "Pixabay Terms 2026-10-20, scoped task review",
+        "sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-claude-redesign-20261024"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001"
+      ],
+      "purposes": [
+        "fictional:optional-request"
+      ],
+      "pages": [
+        "/b3/candidate-01/reservas/",
+        "/b3/candidate-02/reservas/",
+        "/b3/candidate-03/reservas/",
+        "/b3/candidate-04/reservas/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T04:09:38.241Z",
+      "valid_until": "2026-11-24T04:09:38.241Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "JoelFazhari / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-license:2714970",
+      "data_mode": "REAL",
+      "original_asset_id": "optional-2714970-received",
+      "original_sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_TERMS_2026_10_20",
+      "holder": "Provider lists cocoparisienne; no compiler ownership asserted",
+      "purchaser": "Existing user API account; selected free resource",
+      "document": {
+        "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+        "version": "Pixabay Terms 2026-10-20, scoped task review",
+        "sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-claude-redesign-20261024"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001"
+      ],
+      "purposes": [
+        "fictional:optional-contact"
+      ],
+      "pages": [
+        "/b3/candidate-01/contacto/",
+        "/b3/candidate-02/contacto/",
+        "/b3/candidate-03/contacto/",
+        "/b3/candidate-04/contacto/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T04:09:38.241Z",
+      "valid_until": "2026-11-24T04:09:38.241Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "cocoparisienne / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-license:4642686",
+      "data_mode": "REAL",
+      "original_asset_id": "optional-4642686-received",
+      "original_sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_TERMS_2026_10_20",
+      "holder": "Provider lists congerdesign; no compiler ownership asserted",
+      "purchaser": "Existing user API account; selected free resource",
+      "document": {
+        "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+        "version": "Pixabay Terms 2026-10-20, scoped task review",
+        "sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+        "reviewer": "Codex: selected bytes/source/visual review for explicit fictional restaurant task; not rights holder",
+        "reviewed_at": "2026-10-25T04:09:38.241Z",
+        "evidence_sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-claude-redesign-20261024"
+      ],
+      "scope_ids": [
+        "fixture-restaurante-001"
+      ],
+      "purposes": [
+        "fictional:optional-story"
+      ],
+      "pages": [
+        "/b3/candidate-01/historia/",
+        "/b3/candidate-02/historia/",
+        "/b3/candidate-03/historia/",
+        "/b3/candidate-04/historia/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T04:09:38.241Z",
+      "valid_until": "2026-11-24T04:09:38.241Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "congerdesign / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    }
+  ],
+  "usages": [
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:5356682:640:/b3/candidate-01/reservas/",
+      "need_id": "b3-optional:request",
+      "asset_id": "optional-5356682-640",
+      "grant_id": "optional-license:5356682",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-01/reservas/",
+      "module_id": "b3-optional:request",
+      "purpose": "fictional:optional-request",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JoelFazhari / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:5356682:640:/b3/candidate-02/reservas/",
+      "need_id": "b3-optional:request",
+      "asset_id": "optional-5356682-640",
+      "grant_id": "optional-license:5356682",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-02/reservas/",
+      "module_id": "b3-optional:request",
+      "purpose": "fictional:optional-request",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JoelFazhari / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:5356682:640:/b3/candidate-03/reservas/",
+      "need_id": "b3-optional:request",
+      "asset_id": "optional-5356682-640",
+      "grant_id": "optional-license:5356682",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-03/reservas/",
+      "module_id": "b3-optional:request",
+      "purpose": "fictional:optional-request",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JoelFazhari / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:5356682:640:/b3/candidate-04/reservas/",
+      "need_id": "b3-optional:request",
+      "asset_id": "optional-5356682-640",
+      "grant_id": "optional-license:5356682",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-04/reservas/",
+      "module_id": "b3-optional:request",
+      "purpose": "fictional:optional-request",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JoelFazhari / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:5356682:1280:/b3/candidate-01/reservas/",
+      "need_id": "b3-optional:request",
+      "asset_id": "optional-5356682-1280",
+      "grant_id": "optional-license:5356682",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-01/reservas/",
+      "module_id": "b3-optional:request",
+      "purpose": "fictional:optional-request",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JoelFazhari / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:5356682:1280:/b3/candidate-02/reservas/",
+      "need_id": "b3-optional:request",
+      "asset_id": "optional-5356682-1280",
+      "grant_id": "optional-license:5356682",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-02/reservas/",
+      "module_id": "b3-optional:request",
+      "purpose": "fictional:optional-request",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JoelFazhari / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:5356682:1280:/b3/candidate-03/reservas/",
+      "need_id": "b3-optional:request",
+      "asset_id": "optional-5356682-1280",
+      "grant_id": "optional-license:5356682",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-03/reservas/",
+      "module_id": "b3-optional:request",
+      "purpose": "fictional:optional-request",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JoelFazhari / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:5356682:1280:/b3/candidate-04/reservas/",
+      "need_id": "b3-optional:request",
+      "asset_id": "optional-5356682-1280",
+      "grant_id": "optional-license:5356682",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-04/reservas/",
+      "module_id": "b3-optional:request",
+      "purpose": "fictional:optional-request",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JoelFazhari / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:2714970:640:/b3/candidate-01/contacto/",
+      "need_id": "b3-optional:contact",
+      "asset_id": "optional-2714970-640",
+      "grant_id": "optional-license:2714970",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-01/contacto/",
+      "module_id": "b3-optional:contact",
+      "purpose": "fictional:optional-contact",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "cocoparisienne / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:2714970:640:/b3/candidate-02/contacto/",
+      "need_id": "b3-optional:contact",
+      "asset_id": "optional-2714970-640",
+      "grant_id": "optional-license:2714970",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-02/contacto/",
+      "module_id": "b3-optional:contact",
+      "purpose": "fictional:optional-contact",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "cocoparisienne / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:2714970:640:/b3/candidate-03/contacto/",
+      "need_id": "b3-optional:contact",
+      "asset_id": "optional-2714970-640",
+      "grant_id": "optional-license:2714970",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-03/contacto/",
+      "module_id": "b3-optional:contact",
+      "purpose": "fictional:optional-contact",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "cocoparisienne / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:2714970:640:/b3/candidate-04/contacto/",
+      "need_id": "b3-optional:contact",
+      "asset_id": "optional-2714970-640",
+      "grant_id": "optional-license:2714970",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-04/contacto/",
+      "module_id": "b3-optional:contact",
+      "purpose": "fictional:optional-contact",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "cocoparisienne / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:2714970:1280:/b3/candidate-01/contacto/",
+      "need_id": "b3-optional:contact",
+      "asset_id": "optional-2714970-1280",
+      "grant_id": "optional-license:2714970",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-01/contacto/",
+      "module_id": "b3-optional:contact",
+      "purpose": "fictional:optional-contact",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "cocoparisienne / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:2714970:1280:/b3/candidate-02/contacto/",
+      "need_id": "b3-optional:contact",
+      "asset_id": "optional-2714970-1280",
+      "grant_id": "optional-license:2714970",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-02/contacto/",
+      "module_id": "b3-optional:contact",
+      "purpose": "fictional:optional-contact",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "cocoparisienne / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:2714970:1280:/b3/candidate-03/contacto/",
+      "need_id": "b3-optional:contact",
+      "asset_id": "optional-2714970-1280",
+      "grant_id": "optional-license:2714970",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-03/contacto/",
+      "module_id": "b3-optional:contact",
+      "purpose": "fictional:optional-contact",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "cocoparisienne / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:2714970:1280:/b3/candidate-04/contacto/",
+      "need_id": "b3-optional:contact",
+      "asset_id": "optional-2714970-1280",
+      "grant_id": "optional-license:2714970",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-04/contacto/",
+      "module_id": "b3-optional:contact",
+      "purpose": "fictional:optional-contact",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "cocoparisienne / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:4642686:640:/b3/candidate-01/historia/",
+      "need_id": "b3-optional:story",
+      "asset_id": "optional-4642686-640",
+      "grant_id": "optional-license:4642686",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-01/historia/",
+      "module_id": "b3-optional:story",
+      "purpose": "fictional:optional-story",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "congerdesign / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:4642686:640:/b3/candidate-02/historia/",
+      "need_id": "b3-optional:story",
+      "asset_id": "optional-4642686-640",
+      "grant_id": "optional-license:4642686",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-02/historia/",
+      "module_id": "b3-optional:story",
+      "purpose": "fictional:optional-story",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "congerdesign / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:4642686:640:/b3/candidate-03/historia/",
+      "need_id": "b3-optional:story",
+      "asset_id": "optional-4642686-640",
+      "grant_id": "optional-license:4642686",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-03/historia/",
+      "module_id": "b3-optional:story",
+      "purpose": "fictional:optional-story",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "congerdesign / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:4642686:640:/b3/candidate-04/historia/",
+      "need_id": "b3-optional:story",
+      "asset_id": "optional-4642686-640",
+      "grant_id": "optional-license:4642686",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-04/historia/",
+      "module_id": "b3-optional:story",
+      "purpose": "fictional:optional-story",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "congerdesign / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:4642686:1280:/b3/candidate-01/historia/",
+      "need_id": "b3-optional:story",
+      "asset_id": "optional-4642686-1280",
+      "grant_id": "optional-license:4642686",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-01/historia/",
+      "module_id": "b3-optional:story",
+      "purpose": "fictional:optional-story",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "congerdesign / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:4642686:1280:/b3/candidate-02/historia/",
+      "need_id": "b3-optional:story",
+      "asset_id": "optional-4642686-1280",
+      "grant_id": "optional-license:4642686",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-02/historia/",
+      "module_id": "b3-optional:story",
+      "purpose": "fictional:optional-story",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "congerdesign / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:4642686:1280:/b3/candidate-03/historia/",
+      "need_id": "b3-optional:story",
+      "asset_id": "optional-4642686-1280",
+      "grant_id": "optional-license:4642686",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-03/historia/",
+      "module_id": "b3-optional:story",
+      "purpose": "fictional:optional-story",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "congerdesign / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "optional-use:4642686:1280:/b3/candidate-04/historia/",
+      "need_id": "b3-optional:story",
+      "asset_id": "optional-4642686-1280",
+      "grant_id": "optional-license:4642686",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-claude-redesign-20261024",
+      "business_id": "fixture-restaurante-001",
+      "scope_id": "fixture-restaurante-001",
+      "page": "/b3/candidate-04/historia/",
+      "module_id": "b3-optional:story",
+      "purpose": "fictional:optional-story",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "congerdesign / Pixabay",
+      "generic_label": "Restaurante ficticio · imagen ilustrativa de Pixabay; no representa una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    }
+  ],
+  "files": [
+    {
+      "asset_id": "optional-5356682-received",
+      "path": ".tools/claude-code/multimedia-20261024/originals/5356682.jpg",
+      "sha256": "7be37b8276297b757c5349df8d849eb60e181008a330a1be3f9c911204582afa",
+      "bytes": 176279
+    },
+    {
+      "asset_id": "optional-5356682-640",
+      "path": "public/media/b3-optional/5356682-640.webp",
+      "sha256": "644ceb214c5ef2306a604a1ca54bc95251e7a5e99a6afe55927f1a5706e2af18",
+      "bytes": 25778
+    },
+    {
+      "asset_id": "optional-5356682-1280",
+      "path": "public/media/b3-optional/5356682-1280.webp",
+      "sha256": "aeca932c06956db2ca6dd45dcb9d79a5f24d163069fdfd3be4e6c6429f0fa59f",
+      "bytes": 65096
+    },
+    {
+      "asset_id": "optional-2714970-received",
+      "path": ".tools/claude-code/multimedia-20261024/originals/2714970.jpg",
+      "sha256": "f8ec117af555d1a25acc373174171b39d14a4c28d4e0cdcaa4615d51c55f3263",
+      "bytes": 658643
+    },
+    {
+      "asset_id": "optional-2714970-640",
+      "path": "public/media/b3-optional/2714970-640.webp",
+      "sha256": "a7d7d225b19eecec47cf703e7569ce803d61ae211755f4469bd820b6b3562432",
+      "bytes": 107214
+    },
+    {
+      "asset_id": "optional-2714970-1280",
+      "path": "public/media/b3-optional/2714970-1280.webp",
+      "sha256": "59159aeaed4124e5450c695e70359d2a5f343b3d3172b1b12a5782d63bf1677e",
+      "bytes": 447254
+    },
+    {
+      "asset_id": "optional-4642686-received",
+      "path": ".tools/claude-code/multimedia-20261024/originals/4642686.jpg",
+      "sha256": "7597670c9088dca35642d98fee2d4b7f4ae2fc5158548cc01e7571771ea8ad82",
+      "bytes": 234186
+    },
+    {
+      "asset_id": "optional-4642686-640",
+      "path": "public/media/b3-optional/4642686-640.webp",
+      "sha256": "908c8c1723a4f66d99b5dde592e787e19bc2eedf9b643da20635a56fc11346c5",
+      "bytes": 33900
+    },
+    {
+      "asset_id": "optional-4642686-1280",
+      "path": "public/media/b3-optional/4642686-1280.webp",
+      "sha256": "9894a52cbb04edc9264c759c0ef2513b66bbcb3d8c576945440cde0dff459ac6",
+      "bytes": 96082
+    }
+  ],
+  "choices": [
+    {
+      "id": 5356682,
+      "kind": "request",
+      "slug": "reservas"
+    },
+    {
+      "id": 2714970,
+      "kind": "contact",
+      "slug": "contacto"
+    },
+    {
+      "id": 4642686,
+      "kind": "story",
+      "slug": "historia"
+    }
+  ],
+  "review_sha256": "658c2a2405a9a4cd718531de1b06c213aaa0569e5b4f1b5a293017eb42f7d731"
+}

@@ -1,0 +1,41 @@
+---
+// One page per dish: every bound fact of the offering, the admitted stock photograph and an optional manual video.
+// Photo goes through ContextualImage with the dish media handle; the video comes only from dishVideo().
+import type {BoundFact} from '../../composition/content.ts';
+import ContextualImage from './ContextualImage.astro';
+import {loadDishMedia,dishVideo} from '../../media/dish-media.ts';
+import {dishRoute} from '../../design/dish-routes.ts';
+interface Props{offering:any;menu:any;route:string;root:string;collectionHref:string;selectionHref:string;presentation:any}
+const {offering:o,menu,route,root,collectionHref,selectionHref,presentation}=Astro.props;
+const details=['offering_ingredients','offering_allergens','offering_calories','currency'];
+const get=(facts:BoundFact[],kind:string)=>facts.find(f=>f.kind===kind);
+const category=get(o.facts,'offering_category')!,name=get(o.facts,'offering_name')!,price=get(o.facts,'price')!;
+const description=o.facts.filter((f:BoundFact)=>!details.includes(f.kind)&&!['offering_name','offering_category','price'].includes(f.kind));
+const facts=details.flatMap(k=>o.facts.filter((f:BoundFact)=>f.kind===k));
+const labels:Record<string,string>={offering_ingredients:'Ingredientes',offering_allergens:'Alérgenos',offering_calories:'Calorías',currency:'Moneda'};
+const order:string[]=presentation.offering_order,at=order.indexOf(o.id);
+const others=order.map((_,i)=>order[(at+1+i)%order.length]!).filter(id=>id!==o.id).map(id=>{const d=menu.offerings.find((x:any)=>x.id===id);return {id,name:get(d.facts,'offering_name')!.text,price:get(d.facts,'price')!.text};});
+const media=await loadDishMedia(),video=await dishVideo(o.id,route);
+---
+<article class="dish-page" data-dish={o.id} data-offering-scope={o.scope_id} data-module-id={menu.id} data-component={menu.component} data-scope-id={menu.scope_id} data-required={String(menu.required)} data-semantic-page={menu.page}>
+ <header class="dish-head">
+  <h1 class="dish-name" data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1>
+  <p class="dish-category" data-fact-id={category.id} data-fact-scope={category.scope_id}>{category.text}</p>
+  <p class="dish-price" data-fact-id={price.id} data-fact-scope={price.scope_id}>{price.text}</p>
+  {description.map((f:BoundFact)=><p class="dish-description" data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}
+  <div class="dish-actions"><a class="dish-order" href={`${selectionHref}?plato=${encodeURIComponent(o.id)}`}>Elegir este plato</a><a class="dish-back" href={collectionHref}>Volver a la carta</a></div>
+ </header>
+ <div class="dish-photo"><ContextualImage handle={media.handle} at={media.evaluated_at} {route} slot={presentation.offering_media[o.id]} creditMode="inline"/></div>
+ <section class="dish-facts" aria-labelledby="dish-facts-title">
+  <h2 id="dish-facts-title">Ingredientes y datos del plato</h2>
+  <dl>{facts.map((f:BoundFact)=><div class="dish-fact"><dt>{labels[f.kind]}</dt><dd data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</dd></div>)}</dl>
+  <p class="dish-fiction">Datos de demostración de un restaurante ficticio.</p>
+ </section>
+ {video&&<section class="dish-video" aria-labelledby="dish-video-title">
+  <h2 id="dish-video-title">Vídeo</h2>
+  <video controls muted playsinline preload="none" poster={video.poster} width={video.asset.inspection.width!} height={video.asset.inspection.height!} data-dish-video={o.id} data-media-usage={video.usage.id} data-dish-media-sha256={video.review_sha256}><source src={video.asset.uri} type={video.asset.uri.endsWith('.webm')?'video/webm':'video/mp4'}/><p>Tu navegador no reproduce este vídeo.</p></video>
+  <p class="dish-video-label">{video.label}. Vídeo ilustrativo; no corresponde a esta receta.</p>
+  <p class="dish-video-credit">{video.credit} · <a href={video.source}>Ver origen en Pixabay</a></p>
+ </section>}
+ <nav class="dish-others" aria-label="Otros platos"><h2>Otros platos</h2><ul>{others.map(d=><li><a href={dishRoute(root,d.id)}><span class="dish-other-name">{d.name}</span><span class="dish-other-price">{d.price}</span></a></li>)}</ul></nav>
+</article>

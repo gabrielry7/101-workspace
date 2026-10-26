@@ -1,0 +1,18 @@
+Task restaurant-catalogue40-20261025. Worktree: C:\Users\gabri\101-design-compiler\.tools\claude-worktrees\restaurant-catalogue40-20261025. Mode: implement.
+FINAL bounded regression fix, same task/session. Independent reviewer scored3of4fixes RESOLVED; selectionat-scale PARTIAL because the disclosure summary visuallyshows ONLY'+'/'−', hiding its label and mirrored count in all4worlds. This is real, confirmed by Codex native capture and computedCSS, not justtextContent.
+
+Exact cause from actual browser:
+.cat-selection-label: display:none,width0,font16px
+.cat-selection-count: display:none,width0,font16px
+matching inherited rule: .experience-site details summary > span { display:none; }
+Summaryitselfdisplay:flex,width350px. Your scoped label/count rule doesnot override that legacyselector.
+
+Fix ONLY catalogue.css with sufficientlyspecific scopedselectors restoring visible display/normalflow for THESE TWOspanclasses inside .cat-selection>summary. Example .page-selection .cat-selection>summary>.cat-selection-label, .page-selection .cat-selection>summary>.cat-selection-count {display:inline/block;...} at specificityabove inherited0,1,3. Retain44px summary, wrappingfits360px, correctvarink/mutedcontrast, visiblefocus and the native marker. Avoid!importantunlessneeded; no global summary/legacyCSSchanges, no otherstylehunting. No businessstatechange, sourcecountstillone and mirrorobserverunchanged. Use no newUnicodeicon. Both label 'Tu selección de ejemplo' and realcountmust beVISIBLE, notjustinDOM, in0/1/40states,mobileclosed anddesktopopen. Keepfirstdishdiscovery,titlefit,categoryindex,40selectedscrollcap andallprotectedoutputs unchanged.
+
+Allotherfinalchecks alreadyPASS:326files0errors/warnings/hints;328builtpages;256renderedview/160staticfullfactchecks;8×5groups/search/noJS/40addclear/lastitemquery;noexternal/HTTP/JSerrors;160unrelatedpages&18oldassetsbyte-identical;detector[]. Do noteditanythingexceptscopedCSSforlabel/countvisibility. No fakebrowserclaim. Codex will rebuild, explicitlymeasure childdisplay/width/visibility/font/contrast andsendrecaptured0/1/40states tosamereviewer forverdict. Implementthisonefixnow.
+
+Evaluation criteria:
+[]
+Explicit context (current orchestrator snapshot; worktree starts from 24c4301c2a36fc5a023d3cd695030afc13a47f09):
+
+Return a concise report with changed files, decisions, checks and risks. Do not claim checks Codex has not run.

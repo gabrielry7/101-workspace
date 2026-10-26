@@ -1,0 +1,19 @@
+# Preaprobación de la versión actual de los ocho candidatos
+
+El 26 de octubre de 2026 el usuario indicó: «los cambioss actuales quedan preaprobados entonces subelo al github».
+
+Esta instrucción preaprueba la revisión `restaurant-feedback8-20261025` de los ocho candidatos, con carta de 40 platos, fotografías ilustrativas, navegación clara, interiores diferenciados, reservas demostrativas y mapa de ejemplo. Sustituye el estado pendiente de valoración de esa revisión en los informes anteriores; esos informes y capturas se conservan como evidencia histórica. No supone una integración comercial, un Design Lock de producción ni una elección de un único estilo ganador.
+
+La implementación revisada se consolida en el checkout canónico y se publica en la rama `codex/restaurant-preapproved-20261026` de `gabrielry7/101-workspace`, dentro de `projects/101-design-compiler`. El repositorio independiente del compiler conserva su historial original; el monorepo mantiene su propio historial de importación. No se fuerza ningún push ni se reescribe la rama principal. Las carpetas de experimentación y la versión anterior permanecen disponibles localmente.
+
+La copia seleccionada se contrasta con los SHA-256 del [snapshot revisado](../evidence/claude-code/feedback8-20261025/artifact-manifest.json). Se incluyen código, contratos, fuentes con OFL, derivados multimedia de la aplicación, documentación y evidencia de las iteraciones. Se excluyen credenciales, `.env`, cachés de API, perfiles de navegador, dependencias instaladas, builds y originales de medios guardados bajo `.tools`. No se publica una colección independiente de originales de Pixabay.
+
+Los originales privados de los manifiestos siguen siendo entradas locales obligatorias de las validaciones: el Release histórico del workspace sólo restaura sus recursos históricos, no adquiere ni restaura automáticamente los nuevos originales de las iteraciones de Claude. Los `files` de los manifiestos en `data/media/demo-v1` registran sus rutas y hashes. Para reproducir desde otro equipo se requiere el paquete autorizado de entradas exactas; no se sustituyen con otras fotografías ni se deshabilitan los gates. El código y los derivados web quedan versionados aunque esas entradas de validación se mantengan fuera de Git.
+
+La revisión anterior verificó 532 páginas, cero diagnósticos de tipos, 472 vistas de carta/detalles y 288 de interiores, recorridos por teclado en los ocho y mapa real tras acción explícita. La suite completa registró 439/440, con el único fallo histórico H8 `LOCK_BROWSER_MISMATCH`. La consolidación repite las comprobaciones de código y build sin convertir ese fallo en un resultado verde ni resealar locks.
+
+Al consolidar también las evidencias históricas, el chequeo inicial intentó compilar sus copias parciales de código como si fueran fuentes de la aplicación. `tsconfig.json` excluye específicamente los subdirectorios `source` e `implementation` de esas evidencias. Se conservan sus bytes y hashes; la implementación vigente, los scripts y las pruebas mantienen las comprobaciones estrictas. La configuración corregida se vuelve a verificar antes del push.
+
+El chequeo final pasa sin diagnósticos. Las 532 páginas del build consolidado coinciden por bytes con la versión revisada. La suite completa anterior al ajuste de exclusiones registró 439/440. Una comprobación dirigida posterior confirma que el lock histórico H8 detecta ahora `LOCK_TOOLCHAIN_MISMATCH:tsconfig.json`, porque fija también la configuración anterior: no se reescribe ese lock ni se presenta como una prueba pasada. Los registros de la consolidación en el monorepo distinguen ambas ejecuciones y el cambio explícito de configuración.
+
+La siguiente prioridad del [roadmap](../roadmap-next-steps-20261025.md) es consolidación reproducible e integración de datos autorizados; no abrir otra expansión estética por defecto.

@@ -1,0 +1,37 @@
+{
+  "id": "restaurant-feedback8-20261025",
+  "mode": "implement",
+  "prompt": "User's detailed feedback supersedes earlier preliminary acceptance. Iterate ALL8existing restaurant engines, not a new generator. First exchange PLAN ONLY, no edits. Existingworktree startsHEAD24c4301; actual reviewed8engine/40dish baseline is newer uncommitted source snapshots supplied ascontext. Codexwillstagebaseline+media+helpersafteryourplan. MainREADME/unrelatedprivateworknotdelegated.\nUSER BRIEF:\n01/02: preserve first hero/home visual identity. Remove overlaidpause/playvideo button. Replace vague 'Una idea sencilla/El mejor plan es quedarse/Qué te apetece/Ven con tiempo' home blocks with direct useful Menú/Reservas/Ubicación/etc links. Opinions move prominently tohome nearbeginning. Cartauseswastedhalfwidth: usefullwidthor2columns; improvevisualpresentationofdishes. All40dishdetailsneedappropriateillustrativephotos whenavailable; Codexacquiresandadmitsmissingphotos,neverfakeexactdish. Redesignreservationsandotherinteriors: theycurrentlyfeelplainandidentical. No repeatedsamepagetemplatewithonlytitlechanged.\nALL8 navigation clear names: Menú,Reservas,Sobre el restaurante,Ubicación,Preguntas,Noticias (or another self-explanatory editorialname),Opiniones,Contacto. No 'La visita','Nuestra idea','Sobre la mesa','El diario' publiclabels. Remove Pedidos fromnavigationandallmainuserflows; itwasdemoplateselection,notreservation. Change dishCTAtoReserveatable/backtomenugroup; no deadlinks. Old/pedidosURLcanremainlegacyaccessiblewithclearreturn/navigation,notadvertised. Reservations remainhonestdemo(no actualbackend/payments/availabilitypromises). Opinions fictionaldisclosuresmustremainfindable.\n03: strongestlikedworld; retainasymmetricmediaandrichvisualcomposition; desktopnavigation LEFT rail (mobileusableclear). Replace 'Verpelícula' buttonwithautoplaymutedloopwhenallowed,staticposterreducedmotion/saveData/tabhidden/offscreen/autoplayrejection. Nooverlaidbuttons. Keep pause/resumeaccessibility in navigationmotionutility, nothero. Codexprovidesnewscopedmotionintentmetadata. This03/04asymmetrycaninfluenceothers,notcopiedidenticallayouts.\n04: keeprichwinebackground/photographiccomposition; userdislikescurrentBodoni font. Changeface/treatment meaningfully,notthesamehairlineitalic. Codexcanprovidelegitimateadditionalselfhostedfontsifneeded. Preserveimagesandstrongvisualidentity.\n05/06: userrejectsboth designs,typographyandpalettesasugly,too simple,likeadlist. Replace worlds/compositions/palettesentirelywhileretaining2GENERAL_PURPOSE slots. Notjustrecoloroldtiles. Groundinphoto-richrestaurantdesignwithstronginteriors.\n07: userrejectsfirstimpression/restofdesign; onlyfilteredimagesliked. Replaceartisticworld/hero/structure,preservegoodduotonephotographictechniqueonadmittedartassets. Notoldhugeyellowtextposter.\n08: retainimagegrayscale->colorinteraction; replacebadpaletteandimage-lessfirstimpressionwithvisuallyrichphoto-ledentry. StillARTISTICanddifferentfrom07/03/04.\nALL8 everysectionowncompositionconsistentwithbrand: Menu broadrealtextmenu/2columns+selectivephotography; reservationsdesignedvisit-planningexperience; aboutstoryphotospread; locationrecognizablemap/layout; FAQsusefulreadabledisclosure; newseditorialflow; reviewsnarrativeproof; contactclearoptions. Notsharedunchangedtitle+samegrid. Useexistingsemanticcomponents/businessmodules,operatorregistryandsharedAstro/CSS. DoNOTcreate8bespokecustomerfiles/framework/service. Reusablepage-compositionoperatorsandenginevariation.\nLOCATION: restaurantcurrentlyFICTIONAL,noauthenticaddress. UseraskedGoogleMaps/distance; Codexaskedforrealaddressasynchronously. DoNOTinventrealcoordinatesorlabelrealplaceasrestaurant. Providehonestwelldesigneddemolocationandcomponentforoptionalvalidatedrealconfiguration. GoogleMaps/OpenStreetMaploadedonlyonuseraction,geolocationonlyafterexplicitbuttonclick; nohardcodedAPIkey. Codexownsverifiedmapdata/purehelper,notyou. Continueindependentlywhileanswerpending.\nMEDIA/TRUTH: historicalscenario4frozen; separatecatalogue40projectionimmutable. Allrecipes/prices/nutrition/reviewsbusinessfictional. PreservefactIDs,credits,rights/suitabilitygates,unforgeablemediahandles,scope/routebindings,silentvideos. Don'tborrowoldroutepermissions. CodexsuppliesnewfeedbackmediahandlecompatibleContextualImage,original4videosandnew36dishphotoswithperdishbindings/labels. Artstockavailable19choices. Runtimeassetrequestsalllocalexceptexplicitloadedmap. NoAPIcredentials/networktoolstoClaude.\nCONTROLS: Nohoveronlycriticalcontent; keyboard/focus/mobile>=360; body>=14,controls44,contrast4.5. Nativeimages&video,motionrespect,mediabudgets. NewmotionmodulemaybesingleplainJSconditionalB3entryinsteadeditingoldclients/historicalassets. Existingoldclientslegacybehaviorsnotbusinessstate toduplicate. Noongoingorderingfunctionneeded. Preserveall124historicalnon-B3HTML+assetsbyteexact; current408B3pagesauthorizedchangesplusgallery. Finalreviewsbounded2rounds,onlymaterialfixes.\nRespond with exactproposed4replacementdirectionsand04fontchange,concretepagekindcompositionmatrix,sharedcomponent/mediahelperplanandrisks. Noeditsuntilfeedback.",
+  "context": [
+    "AGENTS.md",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/components/composition/ExperienceComposition.astro",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/components/composition/StyleEngineSite.astro",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/components/composition/ArtisticPages.astro",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/components/composition/DishDetail.astro",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/components/composition/MenuCollection.astro",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/components/composition/CommunitySections.astro",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/components/composition/ExperienceNavigation.astro",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/design/style-engines.ts",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/design/catalogue.css",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/design/engine-indice.css",
+    ".tools/claude-code/feedback8-resources-20261025/accepted/src/design/artistic-plate.css",
+    "src/components/composition/ExperienceFeatures.astro",
+    "src/components/composition/ContextualModule.astro",
+    ".agents/skills/impeccable/reference/craft-floor.md"
+  ],
+  "attachments": [],
+  "criteria": [
+    "Preserve liked01/02entry,03/04photographicstrength;replace05-08rejectedworlds",
+    "Clearlabels,noPedidosflow,wide40dishmenuandappropriatedetailphotos",
+    "Distinctpage-kindcompositions,designedreservations,homeopinions,left03navigation",
+    "Mutedloopautoplaypolicywithnavigationmotionutility;truthfuloptionalrealmap",
+    "Sharedrenderer/historicalpreservation/accessibility/rights/performance"
+  ],
+  "limits": {
+    "maxCalls": 4,
+    "maxTurns": 90,
+    "timeoutMs": 900000,
+    "maxBudgetUsdPerCall": 4,
+    "maxBudgetUsdTotal": 16
+  }
+}

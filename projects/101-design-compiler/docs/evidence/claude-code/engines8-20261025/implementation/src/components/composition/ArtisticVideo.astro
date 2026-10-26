@@ -1,0 +1,14 @@
+---
+import {artisticMedia} from '../../media/artistic-restaurant.ts';
+import ArtisticImage from './ArtisticImage.astro';
+import filmClient from '../../design/artistic-film.js?url';
+interface Props{id:number;posterId:number|string;route:string;creditsHref:string;class?:string;eager?:boolean;posterSizes?:string}
+const {id,posterId,route,creditsHref,class:className,eager=false,posterSizes}=Astro.props,{assets,uses,review_sha256}=await artisticMedia(id,route),a=assets[0]!;
+if(assets.length!==1||a.kind!=='video'||a.audio_track!=='NONE')throw Error('ART_SILENT_VIDEO_EXPECTED');
+---
+<div class:list={['art-film',className]} data-art-film data-art-asset={id} data-art-review={review_sha256} data-art-usage={uses[0]!.id} data-art-film-state="poster" data-credit-href={creditsHref}>
+ <ArtisticImage id={posterId} {route} {creditsHref} hero={eager} sizes={posterSizes} class="art-film-poster"/>
+ <video muted loop playsinline preload="none" width={a.inspection.width!} height={a.inspection.height!} data-art-video data-src={a.uri} aria-hidden="true" tabindex="-1"></video>
+ <button type="button" data-art-film-toggle hidden aria-label="Reproducir película ilustrativa sin audio">Ver película</button><span role="status" data-art-film-status></span>
+</div>
+<script is:inline type="module" src={filmClient}></script>

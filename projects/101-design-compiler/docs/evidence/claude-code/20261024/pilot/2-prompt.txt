@@ -1,0 +1,12 @@
+Task restaurant-journal-pilot-01. Worktree: C:\Users\gabri\101-design-compiler\.tools\claude-worktrees\restaurant-journal-pilot-01. Mode: implement.
+I reviewed your actual diff and real-media desktop/mobile renders. The lead/supporting hierarchy is clearer and the scope is correct. Existing 101 semantic, media, contrast, target-size and overflow audits pass at 360,390,768,1024,1440, including an expanded supporting-story disclosure. The minimum computed contrast was 4.94:1. No markup, links or JS changed.
+
+Critique: the lead square and row spacing add too much vertical length for this bounded refinement. At 1440 the page grew from 4546px to 4940px; at 390 it grew from 5664px to 6195px. The three supporting desktop stories feel too far apart relative to their small images. Keep the editorial hierarchy but compact the journal meaningfully. Prefer a landscape lead image and tighter supporting-row rhythm, rather than reducing body text below 16px or hiding any content. Aim roughly <=4800px desktop and <=6000px at 390 if achievable without damaging composition; these are pacing goals, not permission to change content or overflow thresholds. The 360px single-column fallback must remain usable.
+
+Make the revision ONLY in src/design/experience-refinement.css, within your same shared Immersive / Journal home scope. Preserve hero, typography family, palette, story DOM order, all copy/controls, mobile usability and visible focus. No other files. State the decisions and checks you cannot run. Do not read any additional private/media files; use source and these Codex measurements. This is the final permitted model call for this pilot; Codex will build and verify the revised worktree.
+
+Evaluation criteria:
+[]
+Explicit context (current orchestrator snapshot; worktree starts from 24c4301c2a36fc5a023d3cd695030afc13a47f09):
+
+Return a concise report with changed files, decisions, checks and risks. Do not claim checks Codex has not run.

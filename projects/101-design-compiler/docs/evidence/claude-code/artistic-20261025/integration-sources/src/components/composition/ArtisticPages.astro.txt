@@ -1,0 +1,91 @@
+---
+// Art-directed pages for the two artistic operators only (EmberReel / PlateStudy).
+// Reuses the shared semantic modules; credits stay in ExperienceComposition.
+import ContextualModule from './ContextualModule.astro';
+import PreviewIntent from './PreviewIntent.astro';
+import CommunitySections from './CommunitySections.astro';
+import ExperienceFeatures from './ExperienceFeatures.astro';
+import ArtisticImage from './ArtisticImage.astro';
+import ArtisticVideo from './ArtisticVideo.astro';
+import {richExperiencePages as experiencePages} from '../../design/rich-experience-contracts.ts';
+import {experienceRoute} from '../../design/experience-contracts.ts';
+interface Props{art:'EmberReel'|'PlateStudy';lab:any;profile:any;page:any;route:string;creditHref:string}
+const {art,lab,profile:p,page,route,creditHref}=Astro.props,s=lab.scenario,media=lab.experience_media,k:string=page.kind,ember=art==='EmberReel';
+const modules=s.content.pages.flatMap((q:any)=>q.modules),by=(c:string)=>modules.find((m:any)=>m.capability_id===c);
+const identity=by('identity'),menu=by('menu'),story=by('about');
+const name=identity.facts.find((f:any)=>f.kind==='business_name'),tagline=identity.facts.find((f:any)=>f.kind!=='business_name');
+const link=(kind:string)=>experienceRoute(p.root,experiencePages.find(q=>q.kind===kind)! as any);
+const view={...lab.presentation,media_presentation:{creditMode:'linked' as const,creditsHref:creditHref,cover:true},selection_href:k==='collection'?link('selection'):null};
+const mod={handle:media.handle,at:media.evaluated_at,route,presentation:view};
+const heads:Record<string,{e:string;h:string;p?:string}>={
+ collection:{e:'Para elegir con ganas',h:'La carta',p:'Cuatro platos para este concepto ficticio. Elige uno y explora sus detalles.'},
+ selection:{e:'Pedido · demostración',h:'Tu selección.',p:'Elige los platos que te apetecen. Esta es una demostración: no se envían pedidos ni se realizan cobros.'},
+ request:{e:'Reservas · demostración',h:'Tu próxima mesa.',p:'Una ocasión para reunirnos. Explora el formulario sin efectuar una reserva real.'},
+ story:{e:'Nuestra idea',h:'El gusto de quedarse.'},
+ visit:{e:'La visita',h:'Nos vemos aquí.',p:'Una sede imaginaria para explorar este concepto. No es una ubicación real.'},
+ faq:{e:'Antes de venir',h:'Lo que quieres saber.'},
+ journal:{e:'Colección editorial',h:'El diario.'},
+ reviews:{e:'Opiniones · demostración',h:'De boca en boca.'},
+ contact:{e:'Contacto · demostración',h:'Hablemos.'}
+};
+const headImages:Record<string,{id:number;cls:string}>=ember?{visit:{id:1596417,cls:'is-wide'},reviews:{id:1004255,cls:'is-wide'}}:{selection:{id:8594421,cls:'is-portrait'},visit:{id:968657,cls:'is-wide'},faq:{id:1665402,cls:'is-cut'},reviews:{id:1543170,cls:'is-cut'}};
+const head=heads[k],hi=headImages[k];
+if(k!=='home'&&!head)throw Error('ARTISTIC_PAGE_KIND_UNSUPPORTED');
+const img={route,creditsHref:creditHref};
+---
+{k==='home'&&ember&&<>
+ <section class="art-hero" id="experience-main" tabindex="-1" data-module-id={identity.id} data-component={identity.component} data-scope-id={identity.scope_id} data-semantic-page={identity.page} data-required={String(identity.required)}>
+  <div class="art-hero-copy">
+   <p class="eyebrow">Cocina & sobremesa</p>
+   <h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1>
+   <p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p>
+   <div class="hero-entry-links"><a href={link('collection')}>Explorar la carta <span aria-hidden="true">↗</span></a><a href={link('request')}>Encontrarnos en la mesa <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <ArtisticVideo id={120734} posterId="120734-poster" eager posterSizes="1280px" {...img} class="art-hero-film"/>
+ </section>
+ <section class="art-collage" aria-label="Masa, aceite y barro">
+  <div class="art-shot art-shot-a" data-reveal><ArtisticImage id={1868396} {...img}/><p class="art-cap">01 · Masa</p></div>
+  <div class="art-shot art-shot-b" data-reveal><ArtisticImage id={10258355} {...img}/><p class="art-cap">02 · Barro</p></div>
+  <div class="art-shot art-shot-c" data-reveal><ArtisticImage id={1596417} {...img}/><p class="art-cap">03 · Aceite</p></div>
+ </section>
+ <ExperienceFeatures features={lab.features} root={p.root} mode="home"/>
+ <section class="art-band" aria-label="Sobremesa"><ArtisticImage id={8233676} {...img} class="art-band-photo"/><p class="art-word" aria-hidden="true">Sobremesa</p></section>
+ <CommunitySections {lab} features={lab.features} root={p.root} {route} mode="home"/>
+</>}
+{k==='home'&&!ember&&<>
+ <section class="art-title" id="experience-main" tabindex="-1" data-module-id={identity.id} data-component={identity.component} data-scope-id={identity.scope_id} data-semantic-page={identity.page} data-required={String(identity.required)}>
+  <div class="art-cut art-cut-a"><ArtisticImage id={1665402} {...img} hero class="art-cutout"/></div>
+  <div class="art-cut art-cut-b"><ArtisticImage id={1543170} {...img} hero class="art-cutout"/></div>
+  <p class="eyebrow">Cocina & sobremesa</p>
+  <h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1>
+  <p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p>
+  <div class="hero-entry-links"><a href={link('collection')}>Explorar la carta <span aria-hidden="true">↗</span></a><a href={link('request')}>Encontrarnos en la mesa <span aria-hidden="true">↗</span></a></div>
+ </section>
+ <section class="art-plates" aria-label="Láminas de ingredientes">
+  <div class="art-plate is-wide" data-reveal><ArtisticImage id={4367047} {...img}/><p class="art-cap"><b>Lám. I</b> Salvia</p></div>
+  <div class="art-plate is-portrait" data-reveal><ArtisticImage id={8594421} {...img}/><p class="art-cap"><b>Lám. II</b> Limones</p></div>
+  <div class="art-plate is-portrait" data-reveal><ArtisticImage id={1887240} {...img}/><p class="art-cap"><b>Lám. III</b> Tomates</p></div>
+  <div class="art-plate is-portrait" data-reveal><ArtisticImage id={10266737} {...img}/><p class="art-cap"><b>Lám. IV</b> Porcelana</p></div>
+  <div class="art-plate is-wide" data-reveal><ArtisticImage id={943245} {...img}/><p class="art-cap"><b>Lám. V</b> Harina</p></div>
+ </section>
+ <ExperienceFeatures features={lab.features} root={p.root} mode="home"/>
+ <section class="art-interlude" aria-label="Una pausa">
+  <div class="art-interlude-text"><h2>Una pausa<br/>en la mesa.</h2><p>Imagen en movimiento ilustrativa, sin sonido. Se reproduce sólo si tú quieres.</p></div>
+  <ArtisticVideo id={267} posterId={968657} posterSizes="(min-width: 1025px) 700px, calc(100vw - 40px)" {...img} class="art-interlude-film"/>
+ </section>
+ <section class="art-figs" aria-label="Higos"><div data-reveal><ArtisticImage id={972271} {...img} class="art-figs-photo"/><p class="art-cap"><b>Lám. VI</b> Higos</p></div></section>
+ <CommunitySections {lab} features={lab.features} root={p.root} {route} mode="home"/>
+</>}
+{k!=='home'&&head&&<div class="experience-content art-content" id="experience-main" tabindex="-1">
+ <nav class="depth-breadcrumb" aria-label="Ruta de navegación"><a href={p.root}>Inicio</a><span aria-current="page">{page.label}</span></nav>
+ <div class:list={['art-head',hi&&'has-image']}><div class="art-head-text"><p class="eyebrow">{head.e}</p><h1>{head.h}</h1>{head.p&&<p>{head.p}</p>}</div>{hi&&<ArtisticImage id={hi.id} {...img} class={`art-head-image ${hi.cls}`}/>}</div>
+ {k==='collection'&&<ContextualModule module={menu} {...mod}/>}
+ {k==='selection'&&<div class="order-layout"><ContextualModule module={menu} {...mod}/><PreviewIntent kind="selection"/></div>}
+ {k==='request'&&<><PreviewIntent kind="request"><ArtisticImage slot="scene" id={ember?1932466:10266737} {...img} class="request-scene"/></PreviewIntent><ExperienceFeatures features={lab.features} root={p.root} mode="request"/></>}
+ {k==='story'&&<div class="art-story"><ArtisticImage id={ember?10258355:943245} {...img} class="art-story-main"/><ContextualModule module={story} {...mod}/><ArtisticImage id={ember?1868396:4367047} {...img} class="art-story-inset"/></div>}
+ {k==='visit'&&<><div class="visit-layout">{['locations','opening_hours','amenities'].map(cap=><ContextualModule module={by(cap)} {...mod}/>)}</div><ExperienceFeatures features={lab.features} root={p.root} mode="visit"/></>}
+ {k==='faq'&&<ContextualModule module={by('faqs')} {...mod}/>}
+ {k==='journal'&&<CommunitySections {lab} features={lab.features} root={p.root} {route} mode="journal"/>}
+ {k==='reviews'&&<CommunitySections {lab} root={p.root} {route} mode="reviews"/>}
+ {k==='contact'&&<CommunitySections {lab} root={p.root} {route} mode="contact"/>}
+</div>}

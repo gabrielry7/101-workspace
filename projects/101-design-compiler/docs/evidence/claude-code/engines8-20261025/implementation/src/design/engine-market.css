@@ -1,0 +1,27 @@
+/* 05 Mercado — general-purpose, menu-first counter. Chalk, pine, marigold; DM Sans only. */
+@font-face{font-family:'DM Sans';src:url(/fonts/b3-artistic/dmsans.woff) format('woff');font-weight:100 1000;font-style:normal;font-display:swap}
+.depth-experience.engine-market{--paper:#f6f7f1;--ink:#17211c;--muted:#4a5750;--line:#d3d8cc;--control:#6b7a70;--accent:#1e4d3a;--accent-text:#1e4d3a;--mark:#e8a317;--action:#1e4d3a;--on-action:#f6f7f1;--surface:#e9eee3;--focus:#1e4d3a;--footer-bg:#14352a;--footer-ink:#f6f7f1;--footer-muted:#d6e0d6;--display:'DM Sans',system-ui,sans-serif;font-family:'DM Sans',system-ui,sans-serif}
+.engine-market :is(h1,h2,h3,h4,.exp-brand,.footer-wordmark){font-family:'DM Sans',system-ui,sans-serif;font-weight:700;letter-spacing:-.025em}
+.engine-market .mk-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;padding:clamp(1.5rem,4vw,3.5rem) var(--pad)}
+.engine-market .mk-top h1{margin:0;font-size:clamp(2.5rem,6.5vw,5rem);line-height:1}
+.engine-market .mk-top .hero-tagline{max-width:34ch;margin:1rem 0 0;font-size:1.25rem;line-height:1.4;color:var(--muted)}
+.engine-market .mk-photo{aspect-ratio:4/3;border-radius:14px}
+.engine-market .mk-chips{padding:0 var(--pad) 1rem}
+.engine-market .mk-chips ul{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+.engine-market .mk-chips a{display:inline-flex;align-items:center;min-height:44px;padding:0 1rem;font-weight:600;color:var(--accent-text);background:var(--paper);border:2px solid var(--accent);border-radius:999px;text-decoration:none}
+.engine-market .mk-chips a:hover{background:var(--mark);color:var(--ink);border-color:var(--mark)}
+.engine-market .mk-start h2{margin:0 0 .5rem;font-size:clamp(1.75rem,3.5vw,2.5rem)}
+.engine-market .page-intro.eg-head{border-bottom:4px solid var(--mark)}
+.engine-market .page-intro.eg-head h1{font-size:clamp(2.25rem,5vw,3.75rem)}
+/* carta: dense two-column text rows, no leaders */
+.engine-market .cat-menu{max-width:none}
+.engine-market .cat-menu .cat-groups{column-gap:3rem}
+/* two columns only on the full-width carta; the pedidos column is too narrow for them */
+@media(min-width:960px){.engine-market.page-collection .cat-menu .cat-groups{columns:2}.engine-market.page-collection .cat-menu .cat-group{break-inside:avoid}}
+.engine-market .cat-menu .cat-group-title{padding:.6rem .75rem;color:var(--on-action);background:var(--accent);border:0;letter-spacing:.06em}
+.engine-market .cat-menu .cat-leader{display:none}
+.engine-market .cat-menu .cat-head{justify-content:space-between}
+.engine-market .cat-menu[data-menu-layout] .cat-name{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:1.1875rem}
+.engine-market .cat-menu[data-menu-layout] .cat-price{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:1.0625rem}
+.engine-market .cat-menu .cat-row{padding-inline:.25rem}
+@media(max-width:760px){.engine-market .mk-top{grid-template-columns:minmax(0,1fr)}}

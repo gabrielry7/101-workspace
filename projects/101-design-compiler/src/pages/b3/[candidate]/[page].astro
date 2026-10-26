@@ -2,7 +2,9 @@
 import ExperienceComposition from '../../../components/composition/ExperienceComposition.astro';
 import {loadB3DepthExperience as loadB3RichExperience} from '../../../../scripts/load-b3-depth-experience.ts';
 import {richExperiencePages} from '../../../design/rich-experience-contracts.ts';
-export async function getStaticPaths(){const lab=await loadB3RichExperience();return lab.site.profiles.flatMap(profile=>richExperiencePages.filter(page=>page.slug).map(page=>({params:{candidate:profile.id,page:page.slug},props:{lab,profile,page}})));}
+import {loadRestaurantCatalogue} from '../../../design/restaurant-catalogue.ts';
+import{newEngineProfiles}from'../../../design/style-engines.ts';
+export async function getStaticPaths(){const lab=await loadB3RichExperience(),expanded=loadRestaurantCatalogue(lab);return [...lab.site.profiles,...newEngineProfiles(lab)].flatMap(profile=>richExperiencePages.filter(page=>page.slug).map(page=>({params:{candidate:profile.id,page:page.slug},props:{lab:page.kind==='collection'||page.kind==='selection'?expanded:lab,profile,page}})));}
 const {lab,profile,page}=Astro.props;
 ---
 <ExperienceComposition {lab} {profile} {page}/>

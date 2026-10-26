@@ -1,0 +1,1492 @@
+{
+  "kind": "REVIEWED_EIGHT_ENGINE_FEEDBACK_ITERATION",
+  "source": "C:\\Users\\gabri\\101-design-compiler\\.tools\\claude-worktrees\\restaurant-feedback8-20261025",
+  "created_at": "2026-10-26T04:20:01.040Z",
+  "credentials": false,
+  "raw_api_caches": false,
+  "production_media_bytes_exported": false,
+  "media": "Images/video originals and production derivatives remain in the retained scoped worktree; this archive contains sources, manifests, public font/OFL files, metadata and QA screenshots.",
+  "cli": "Actual4realClaudeCodeexchangesareseparatelyindexedundercli/index.json",
+  "files": [
+    {
+      "path": "implementation/data/content/demo-catalogue-40.json",
+      "bytes": 10277,
+      "sha256": "cab5d68e110b85754c43f41d6526272befb252ab9c0fc59a5cf3e4c033364be4"
+    },
+    {
+      "path": "implementation/data/media/demo-v1/artistic-20261025.json",
+      "bytes": 1171713,
+      "sha256": "7773333d8d644107a83891793ed27a6264b10858fd0909d86c075b81c9cc22ff"
+    },
+    {
+      "path": "implementation/data/media/demo-v1/claude-optional-20261024.json",
+      "bytes": 69359,
+      "sha256": "b72e6b7fd8dbb85821697d370bbcb1a79c6f48b436058242203bbe9ca1b307c4"
+    },
+    {
+      "path": "implementation/data/media/demo-v1/dish-details-20261025.json",
+      "bytes": 175942,
+      "sha256": "6418aeabd2094fc8819bb90076288495a4c2d4c6a5eb44d54c581c3883742add"
+    },
+    {
+      "path": "implementation/data/media/demo-v1/engines8-20261025.json",
+      "bytes": 2705346,
+      "sha256": "8135df753c3bfc11f1cf5c1059be2e3d59641ae685227b1676d6cea320deb079"
+    },
+    {
+      "path": "implementation/data/media/demo-v1/feedback8-20261025.json",
+      "bytes": 9569924,
+      "sha256": "bc1703cb16f4271e678a6b38bf2be3d6324df9f828d07cd67f18983c8037e98e"
+    },
+    {
+      "path": "implementation/public/fonts/b3-artistic/bodonimoda-OFL.txt",
+      "bytes": 4400,
+      "sha256": "931dfe2e0cd3c9443295f5c1d754b8a8403bf060df50c1d5900267ade83d0046"
+    },
+    {
+      "path": "implementation/public/fonts/b3-artistic/bodonimoda.woff",
+      "bytes": 75704,
+      "sha256": "3ac63a7baa08bb7af148929baf5288b31bc2b3c3a14763ab0ca6541b8ab33ae3"
+    },
+    {
+      "path": "implementation/public/fonts/b3-artistic/dmsans-OFL.txt",
+      "bytes": 4482,
+      "sha256": "9af36190332437f5ecd09974de43c1f7c77a310a996cdd8ceb25628b458840e1"
+    },
+    {
+      "path": "implementation/public/fonts/b3-artistic/dmsans.woff",
+      "bytes": 94588,
+      "sha256": "d137b1c03916ead1adf9d604a6a020f4716a5a367fb09cc53e645f412922a173"
+    },
+    {
+      "path": "implementation/public/fonts/b3-artistic/syne-OFL.txt",
+      "bytes": 4402,
+      "sha256": "cc43cdce6f91c57989af8459341c276655e34224e954fa69c2ad700831a742d8"
+    },
+    {
+      "path": "implementation/public/fonts/b3-artistic/syne.woff",
+      "bytes": 53956,
+      "sha256": "db4c864d91aaa1b709d97cafebf862a28b7893747b030885436454cbe7813301"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/archivo-OFL.txt",
+      "bytes": 4388,
+      "sha256": "108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/archivo.woff",
+      "bytes": 148240,
+      "sha256": "4615c55cc86ea311fd95e5deffd0d9486f319361fe1cd1aba6dbf5b21deb18b5"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/familjengrotesk-OFL.txt",
+      "bytes": 4408,
+      "sha256": "9708dd560d1f8aa1f006461aa447a31fda7b9aff662d152837654a388e0eb2ee"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/familjengrotesk.woff",
+      "bytes": 26260,
+      "sha256": "8a8745b18f7d01ee94bfa11026c581af7f89647605eb1a02ae0738648ead94bb"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/fraunces-OFL.txt",
+      "bytes": 4391,
+      "sha256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/fraunces.woff",
+      "bytes": 183248,
+      "sha256": "4669f4b637641c0dfbd95ce9f3c49a911317b87aeec8df91478e223161144dcb"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/instrumentserif-OFL.txt",
+      "bytes": 4405,
+      "sha256": "129ed7618959716959f2941fdd5b49e0ad6e6c1d78726761786a00253d865521"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/instrumentserif.woff",
+      "bytes": 30944,
+      "sha256": "69472e4084b35e43f445fedb682fc96ed6a734e3b92056a5f258d85fbd6b76bf"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/newsreader-OFL.txt",
+      "bytes": 4394,
+      "sha256": "fdfad38143ec470553cae82a1e45320bdd1b9ec70415d37bd0171051d8a4ded8"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/newsreader.woff",
+      "bytes": 196636,
+      "sha256": "ce012f922f970abe574fc56511b4b1d80e00a04e01aaa8065cfaa144f475443f"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/youngserif-OFL.txt",
+      "bytes": 4398,
+      "sha256": "737d8d343b674c6894f373de71a044b6782c130f2aebf180933d63ddf7a3dc19"
+    },
+    {
+      "path": "implementation/public/fonts/feedback8/youngserif.woff",
+      "bytes": 37320,
+      "sha256": "90b7d39fed6798a4c580fb29f09b1677615fd857032658e9a099c7453ff1d3c4"
+    },
+    {
+      "path": "implementation/src/components/composition/ArtisticImage.astro",
+      "bytes": 1745,
+      "sha256": "ec15e07d775b7c7eca98e628de0332a3edac46d6f4b449ca6ea13a2d72231db8"
+    },
+    {
+      "path": "implementation/src/components/composition/ArtisticPages.astro",
+      "bytes": 5398,
+      "sha256": "1e7fa3482b7ee311dfb09ceca0ad2d21805247994b9a37ad00c9852002aaf96a"
+    },
+    {
+      "path": "implementation/src/components/composition/ArtisticVideo.astro",
+      "bytes": 1671,
+      "sha256": "7081ac1efd108be290f2353932686d7c1699848f92720725287a206e237e2221"
+    },
+    {
+      "path": "implementation/src/components/composition/CatalogueSelection.astro",
+      "bytes": 580,
+      "sha256": "de1f126bb9302a7120b3a87ee2acca41ff61f48e4e66867d9e122453ad8e8843"
+    },
+    {
+      "path": "implementation/src/components/composition/CreditsList.astro",
+      "bytes": 2905,
+      "sha256": "b00504ce0abce2d79cdc7eab05c7cf8740ae2bc1ce2595a89d835ee96ca7b7f2"
+    },
+    {
+      "path": "implementation/src/components/composition/DishDetail.astro",
+      "bytes": 5430,
+      "sha256": "069b6668c51f3f50267a26bb409b7642be7d5de2807559b827b4c92d46f36420"
+    },
+    {
+      "path": "implementation/src/components/composition/HomeQuickLinks.astro",
+      "bytes": 1088,
+      "sha256": "3391119563d10ab43883cf351550aae65fd8d726f801c2644fa16c2840fb0c3d"
+    },
+    {
+      "path": "implementation/src/components/composition/InteriorPages.astro",
+      "bytes": 4742,
+      "sha256": "2f2c090b83345d7b624cd98aafdbed7d8c6a57ba5ca61ceb37801fcbd278c23e"
+    },
+    {
+      "path": "implementation/src/components/composition/LocationPanel.astro",
+      "bytes": 1884,
+      "sha256": "e61cee07fe32f447d4994c3970b76efbb6a8f20fcd44edbbcce60285a5700771"
+    },
+    {
+      "path": "implementation/src/components/composition/MenuCollection.astro",
+      "bytes": 7873,
+      "sha256": "bae71e1ea65d9b9dc2e9d0366b6739aa2f397973b6c03fd4a43781d001afc232"
+    },
+    {
+      "path": "implementation/src/components/composition/SiteFooter.astro",
+      "bytes": 920,
+      "sha256": "3b8b9b31e3d344ba80187daa7ecbb7552fcdb80eaa0213f6353671c051e387a3"
+    },
+    {
+      "path": "implementation/src/components/composition/StyleEngineSite.astro",
+      "bytes": 11249,
+      "sha256": "4044de7b554f86cd5d4e01a88dae0933eb91a56df3f6150b4617df1c429c8b2b"
+    },
+    {
+      "path": "implementation/src/components/composition/SupplementalImage.astro",
+      "bytes": 1068,
+      "sha256": "ca65e464cafc6d98dfbd1876bcf38d698b46161b4bc78e0396a250eba0d4ea01"
+    },
+    {
+      "path": "implementation/src/design/artistic-direction.ts",
+      "bytes": 761,
+      "sha256": "58ccd101f44fa090ac4f9fc362bd785a96de337291a26d36bb0a66d8932f5751"
+    },
+    {
+      "path": "implementation/src/design/artistic-ember.css",
+      "bytes": 20841,
+      "sha256": "98dc189eca3cbe4e0a3c9e31aa224a74a20b39cdca690bbf1005c47ab0ddf85a"
+    },
+    {
+      "path": "implementation/src/design/artistic-film.js",
+      "bytes": 1244,
+      "sha256": "d07d0f28ef31a9432e7d892d57c8d8d0d72c054b76308f25512527ad6abf9a2f"
+    },
+    {
+      "path": "implementation/src/design/artistic-plate.css",
+      "bytes": 21980,
+      "sha256": "dc3ee7f1c4283be9326084dba0f4ee128b4980ed508a1b00e711e91c749f6e60"
+    },
+    {
+      "path": "implementation/src/design/b3-feedback-client.js",
+      "bytes": 5531,
+      "sha256": "9fcec3f845040c133fc450206cf70fc72bf84683bd6ae989ef02815ee627ce76"
+    },
+    {
+      "path": "implementation/src/design/catalogue-client.js",
+      "bytes": 4755,
+      "sha256": "f23e441f28173bbe81207b078ad685f5a5b983bc4ea3866b1656e23469a11928"
+    },
+    {
+      "path": "implementation/src/design/catalogue.css",
+      "bytes": 11145,
+      "sha256": "e07db240732333c2d268779acc8832427acdbf90ea954c81c8bc81d65c748bdd"
+    },
+    {
+      "path": "implementation/src/design/dish-detail.css",
+      "bytes": 5109,
+      "sha256": "ca5dcc051efeaefbe16946f9ce0ab76620c3cd7a213cc0cf98435357182aab7e"
+    },
+    {
+      "path": "implementation/src/design/dish-routes.ts",
+      "bytes": 401,
+      "sha256": "8c3b0fa7a667b8bbe4a8fa888194b575c7c2f519fc4235c7429c5a920bfe335d"
+    },
+    {
+      "path": "implementation/src/design/engine-base.css",
+      "bytes": 2746,
+      "sha256": "004d0b7a0438ab42b027d77e109879dc6a4f816d218dbd2b082f0ff262ac404d"
+    },
+    {
+      "path": "implementation/src/design/engine-indice.css",
+      "bytes": 4957,
+      "sha256": "d8d0dd9790e1be2fb41a4209670bb5527f1691174d7c1ae281f50ca0ba79ddfc"
+    },
+    {
+      "path": "implementation/src/design/engine-marea.css",
+      "bytes": 4469,
+      "sha256": "938ebacf026776e19be9162e46c5c28c2950a22cab4721b31752865f193975fb"
+    },
+    {
+      "path": "implementation/src/design/engine-market.css",
+      "bytes": 3032,
+      "sha256": "6a20d7e10493a6140ce3c12745d3fd68c8152039e8c0a43efab964e2932edbff"
+    },
+    {
+      "path": "implementation/src/design/engine-riso.css",
+      "bytes": 4326,
+      "sha256": "483f45a2b4fb139f657937c8a174ebdb11f3c1939cbb6b06b0f489dd10ba947b"
+    },
+    {
+      "path": "implementation/src/design/interior-kinds.css",
+      "bytes": 20256,
+      "sha256": "a36270fc067cb7012cba2787609d832dc3b8751e0d656d171bcff96288ba2d5e"
+    },
+    {
+      "path": "implementation/src/design/location-example.ts",
+      "bytes": 1691,
+      "sha256": "76f130b1bd9e59bdd6072f19e6454361cb004180b31326903421d748206d9160"
+    },
+    {
+      "path": "implementation/src/design/menu-carta.css",
+      "bytes": 6448,
+      "sha256": "25b53d32ed4a818e49e325d0ddb90ed1c566416aa24965befebcf439eac18921"
+    },
+    {
+      "path": "implementation/src/design/nav-labels.ts",
+      "bytes": 1877,
+      "sha256": "6f4224e3745a993269c475d0f3248f74b53e956ceb65101f6de7699bd190eed4"
+    },
+    {
+      "path": "implementation/src/design/restaurant-catalogue.ts",
+      "bytes": 4160,
+      "sha256": "a8afc132011242a921a9e0aa72257ac172799ff62e6051489123ac6fb5a31e26"
+    },
+    {
+      "path": "implementation/src/design/style-engines.ts",
+      "bytes": 1894,
+      "sha256": "3b6b94f5277c22d36c5b6d4c20c94d2e2e4dc70db87bbde34a45a3c00c1c61a0"
+    },
+    {
+      "path": "implementation/src/media/artistic-restaurant.ts",
+      "bytes": 3251,
+      "sha256": "25ed2a9d24d06600eb8166e4b147d5aefd0e0a163d2b24ef9864eb25400c7f21"
+    },
+    {
+      "path": "implementation/src/media/dish-media.ts",
+      "bytes": 5427,
+      "sha256": "04120aab9e2c6186446cc58bb729f3f0780313b012e017f1ffdc74409559a2fa"
+    },
+    {
+      "path": "implementation/src/media/engine-media.ts",
+      "bytes": 6305,
+      "sha256": "8f8da9f75d8ba3132c19812c2e6cc6075382943c3a84639ca54234183614d75d"
+    },
+    {
+      "path": "implementation/src/media/feedback-media.ts",
+      "bytes": 7475,
+      "sha256": "e4e33e3c9aadc844896c8bc3183dd1e568cd6e9f8a2cb6f9f541a1d74658b960"
+    },
+    {
+      "path": "implementation/src/media/optional-restaurant.ts",
+      "bytes": 2038,
+      "sha256": "35db836715eec84917aba3587cb49a7c5cf0d1e459054f29ccb5e7e5a1d32128"
+    },
+    {
+      "path": "implementation/src/pages/b3/[candidate]/carta/[dish].astro",
+      "bytes": 1259,
+      "sha256": "9c55144553d13d3a3bcc22320da8dbc13d4688d4dbf7b41aa505d740b9bbd2a3"
+    },
+    {
+      "path": "implementation/tests/artistic-restaurant.test.ts",
+      "bytes": 1473,
+      "sha256": "76db3b7c303292f51b3c0830d99a98b5119ac1c56f8f9f84af139e414e57a76d"
+    },
+    {
+      "path": "implementation/tests/dish-flow.test.ts",
+      "bytes": 2503,
+      "sha256": "084f51afa93823e806b7f125d3b3eb8c1649b95dd331f5327243b0138a391d8c"
+    },
+    {
+      "path": "implementation/tests/feedback-media.test.ts",
+      "bytes": 3390,
+      "sha256": "fb8154626c6c6bcb48e4cd72aa12f4e2bf01b374e3608cbfa60d41d3d5e1125a"
+    },
+    {
+      "path": "implementation/tests/optional-restaurant.test.ts",
+      "bytes": 2072,
+      "sha256": "0cf641b45abd5fa386a1a7600feed2df577b3210d7b4f40bcdd558ef42e39506"
+    },
+    {
+      "path": "implementation/tests/restaurant-catalogue.test.ts",
+      "bytes": 3016,
+      "sha256": "51a91fc5ab584ab091647e7aed7398c3d04f85fb2f27347acdc0693a65c2f52d"
+    },
+    {
+      "path": "implementation/tests/style-engines.test.ts",
+      "bytes": 2511,
+      "sha256": "e6cf3dd66073cc2c15062d8e8e7fac6604c52d3b5066ba40adafeb0b1d89535b"
+    },
+    {
+      "path": "implementation/src/components/composition/CommunitySections.astro",
+      "bytes": 5140,
+      "sha256": "bccfa4526cd195b6e9b2b9d455cf7a03455a423eff07e71b96dcea6dadf91fb6"
+    },
+    {
+      "path": "implementation/src/components/composition/ContextualImage.astro",
+      "bytes": 2138,
+      "sha256": "60dff3c4357bb5ff396f8e853dbb500ee8fa7b290abf4b4173765b89a91ddc17"
+    },
+    {
+      "path": "implementation/src/components/composition/ContextualModule.astro",
+      "bytes": 5026,
+      "sha256": "b892f8909f6359b4bca80666221ffabbfcb469c81846e1b78b7e02075367f4a4"
+    },
+    {
+      "path": "implementation/src/components/composition/ExperienceComposition.astro",
+      "bytes": 8403,
+      "sha256": "116be449a637afb1e62dec3de7b4e75a1b3c848e70b8f756be8ce3746a743861"
+    },
+    {
+      "path": "implementation/src/components/composition/ExperienceFeatures.astro",
+      "bytes": 636,
+      "sha256": "2c5152d1d1c3b85cf542f495b01b6563f26aeefe846d6c057110b65006013f89"
+    },
+    {
+      "path": "implementation/src/components/composition/ExperienceNavigation.astro",
+      "bytes": 1721,
+      "sha256": "bf8747ac604477541c69df3efeddf32eb685f4eb1a285561a23806e98fa24765"
+    },
+    {
+      "path": "implementation/src/components/composition/PreviewIntent.astro",
+      "bytes": 3017,
+      "sha256": "7cf831b40a5f7abeda6628b1f4356daf8da09a37e88c690f61a0bb3f5138cd1e"
+    },
+    {
+      "path": "implementation/src/design/experience-refinement.css",
+      "bytes": 20466,
+      "sha256": "cd6736398062f32d2482757b108078ae242a3aa53b133d6ad2444da8a2fa6616"
+    },
+    {
+      "path": "implementation/src/media/composition-media.ts",
+      "bytes": 1459,
+      "sha256": "9e262c3b6d4aa1fcde07292501a715a4fea4112fcf53cd2aaca6f3b954d07a8d"
+    },
+    {
+      "path": "implementation/src/pages/b3/[candidate].astro",
+      "bytes": 667,
+      "sha256": "5891e5b80c160428d396144fdfe983af798a2500f04528408601861c87fcd4b1"
+    },
+    {
+      "path": "implementation/src/pages/b3/[candidate]/[page].astro",
+      "bytes": 914,
+      "sha256": "18f6961e397a258cff76a13c34049a2cc7c39dd8b4c5e21a7618af8e634b6f4d"
+    },
+    {
+      "path": "implementation/src/pages/b3/index.astro",
+      "bytes": 4735,
+      "sha256": "764b283c8201684c8c4c81e65ffa542ebd8518d5d41009b6a743fabf2ff981c5"
+    },
+    {
+      "path": "verification/final.json",
+      "bytes": 621,
+      "sha256": "11e35b32451595c52bc8ec30eee93166090a7deb6e3b880a3109015709de6a9c"
+    },
+    {
+      "path": "verification/final-test.log",
+      "bytes": 42338,
+      "sha256": "cb72842be22d6a8e37f30a68266931a783d332e8e6b418ee44881d56c017370a"
+    },
+    {
+      "path": "verification/final-check.log",
+      "bytes": 303,
+      "sha256": "c446ea0c72a2bbc3e9cd60e81372c5a99d4385ddba8ac5547660259c3ade9329"
+    },
+    {
+      "path": "verification/final-build.log",
+      "bytes": 40112,
+      "sha256": "79a7ea46669fd6f07e9533c29c00a9cadf3f6683eae01f5a7f80916be71e1819"
+    },
+    {
+      "path": "verification/close-check.log",
+      "bytes": 304,
+      "sha256": "3365cef82bf70f89586f48bc17434e032bc87cca30129e4f79cfad4f739c1dfd"
+    },
+    {
+      "path": "verification/close-build.log",
+      "bytes": 40124,
+      "sha256": "fcbdd9fcd7e7707f1347c575d5d0e8c22c93e91c2a56a92239fdae2c5a199bf4"
+    },
+    {
+      "path": "verification/close-checks.json",
+      "bytes": 551,
+      "sha256": "a448196ecaace61482e3dce18032940efa41a7b4f23b3c5030236a3fffe2e87b"
+    },
+    {
+      "path": "verification/protection-final.json",
+      "bytes": 11886,
+      "sha256": "0b20781ce1022a11f1d338b3f2bfd24d7f81f37a86c63a82efa7df07753f76bf"
+    },
+    {
+      "path": "verification/performance.json",
+      "bytes": 186742,
+      "sha256": "af13a3e6fa7927cd88178a40b15c48546076e0ad800ddd2ab6e14836ea5833a2"
+    },
+    {
+      "path": "verification/detector.json",
+      "bytes": 3698,
+      "sha256": "cf2664f33bbd7d6c4b79bf45f363b91df030459d985719572ce04274cfd6d8bf"
+    },
+    {
+      "path": "verification/review-packet.md",
+      "bytes": 9653,
+      "sha256": "5012eaa2b65c29dbe5db702c6df2507f0891d457c8a9c3f1dab4663257794f8c"
+    },
+    {
+      "path": "verification/initial-review-recapture.md",
+      "bytes": 692,
+      "sha256": "7839fad661fda8d912caabb9186384e998dd547660885e4631354633219281e1"
+    },
+    {
+      "path": "verification/independent-review.md",
+      "bytes": 8147,
+      "sha256": "d5b3183bc5600d03ce365fbc28132100121643d9f69101e97c7fb4a463a10454"
+    },
+    {
+      "path": "verification/design-documentation.md",
+      "bytes": 8256,
+      "sha256": "965e971fa67b26726090db4f83db54f133580def0a139908a11747645e3e6494"
+    },
+    {
+      "path": "verification/codex-final-fix.json",
+      "bytes": 564,
+      "sha256": "e0a68aef38e0ba9a3a2e7596090672c5a8676b91acf81e9690f55e65b0e1912a"
+    },
+    {
+      "path": "verification/scripts/audit-feedback8-menu.mjs",
+      "bytes": 14808,
+      "sha256": "9d40c55fd8e1db479bf2f7a9e6491a15d6e380d23a0445708a9c1ae47227cc2b"
+    },
+    {
+      "path": "verification/scripts/audit-feedback8-pages.mjs",
+      "bytes": 7540,
+      "sha256": "31e28f4179ba2895f94f60ba9682793e2abee0a837ddccc319cb08dfe2bc8a60"
+    },
+    {
+      "path": "verification/scripts/capture-feedback8-review.mjs",
+      "bytes": 2771,
+      "sha256": "ce4103f7ed4e44d5624e755e9d56863e31fa2600bb72a0a873cf2b9ee812caea"
+    },
+    {
+      "path": "verification/scripts/smoke-feedback8.mjs",
+      "bytes": 7480,
+      "sha256": "cd8fa5f6c3500713420318e61ac0e71a8dffbd10d46f600101205d30a8f49416"
+    },
+    {
+      "path": "verification/scripts/live-feedback8-map.mjs",
+      "bytes": 4660,
+      "sha256": "616670a2cdf43b19e733db31a58eba68c40c771ad72b94f8d78187c100072b70"
+    },
+    {
+      "path": "verification/scripts/protect-feedback8.mjs",
+      "bytes": 1498,
+      "sha256": "3e6fea6c7bbab3d5df9fd15a3bf0f59b5febdd00fdb668e0b0770b09ea52775f"
+    },
+    {
+      "path": "verification/scripts/measure-feedback8.mjs",
+      "bytes": 2666,
+      "sha256": "dfebf2b3f612646f5225ee3932b0ec98473c2212ad60d6ce91bb807b68041163"
+    },
+    {
+      "path": "verification/scripts/artistic-capture-adapter.mjs",
+      "bytes": 5746,
+      "sha256": "b9a347c70df8b4269712e796b13d3383eca3f2fbec1a6af84d3d9fcab4fb06cf"
+    },
+    {
+      "path": "verification/scripts/check-build-feedback8.mjs",
+      "bytes": 1204,
+      "sha256": "3bfea303fff4b397d2afca2f3f25dae57fb5c06861db4d6036a840ff1dc3b49f"
+    },
+    {
+      "path": "media-review.json",
+      "bytes": 42854,
+      "sha256": "bc4871afcfc023bfee567752988ffc73068484ad4e7f1860560ee0508a021c3e"
+    },
+    {
+      "path": "resources/accepted.json",
+      "bytes": 92393,
+      "sha256": "1aa5084119b762a6f25f8bb5fd23a7b99c0fcfc51b115933a659d57271a64f57"
+    },
+    {
+      "path": "resources/photo-inventory.json",
+      "bytes": 57958,
+      "sha256": "d123b67b8563508cbf84f4ea4afd62cfd36b26e28502feba1cf9b3ea58e6b54a"
+    },
+    {
+      "path": "resources/location-lookup.json",
+      "bytes": 869,
+      "sha256": "102f996a295f16384960e64b5dc50d92e7b7cc7a1174056a181fe3c7d55e88b9"
+    },
+    {
+      "path": "resources/fonts/receipt.json",
+      "bytes": 2435,
+      "sha256": "92d11ad2d30d5460832db577a6a08bcb2ff28feb81022e784534170afdb1018f"
+    },
+    {
+      "path": "design-system/.impeccable/design.json",
+      "bytes": 15963,
+      "sha256": "cdeab7c1361b723958ce8b2d28dec08aa79922013826c5f3e67e0b6ef366ddee"
+    },
+    {
+      "path": "design-system/DESIGN.md",
+      "bytes": 19197,
+      "sha256": "f9fcedacc6541bc9c15028a142d84a970dcb9b3ce00d24624c5c487a63d7ee0d"
+    },
+    {
+      "path": "captures/01-carta-1440.png",
+      "bytes": 120092,
+      "sha256": "5b6c5c4aa34e9e89de99b0229879b8db03fd03ae20755efa0a7f2bb09250cb48"
+    },
+    {
+      "path": "captures/01-carta-390.png",
+      "bytes": 134577,
+      "sha256": "12630ae0ca7dd9cbda5b9581775843cd6a666ea4ba3fa99ec40f6171a74de96a"
+    },
+    {
+      "path": "captures/01-detail-1440.png",
+      "bytes": 372399,
+      "sha256": "a5e4df4cd0f83d1f61f5223e0d4f05b6772e00c59987c5cba5d41fd04bf922ac"
+    },
+    {
+      "path": "captures/01-detail-390.png",
+      "bytes": 157041,
+      "sha256": "086d3be7d857b7c1fbfe3113490d4b5e57d9a4d63c3a40a304ad39b0767a3f76"
+    },
+    {
+      "path": "captures/01-home-1440.png",
+      "bytes": 1719935,
+      "sha256": "5a77d51b067d0f767c8fbef11a38a0ae83b3c21231d20be584bacb89989f9d0c"
+    },
+    {
+      "path": "captures/01-home-390.png",
+      "bytes": 389333,
+      "sha256": "5d5617d109b962da9d37a66b3393e54bdbdd8a81267eb19ef3213ad3901571d4"
+    },
+    {
+      "path": "captures/01-reservas-1440.png",
+      "bytes": 295216,
+      "sha256": "b674fc17144728a08528fcc2f1f5d4b7b26f08ce80979305924f36d20129be40"
+    },
+    {
+      "path": "captures/01-reservas-390.png",
+      "bytes": 188916,
+      "sha256": "94d8762838336e93bb32f55f50798d6b345d7f2ec2d27df18188bcf1fd47b2d7"
+    },
+    {
+      "path": "captures/01-story-1440.png",
+      "bytes": 574080,
+      "sha256": "2407a6f6c26fd59f88358b617cb1eec6845c1fccb174c8aae59e4d576e0d59f7"
+    },
+    {
+      "path": "captures/01-story-390.png",
+      "bytes": 162501,
+      "sha256": "579ae0b2ecf82e244ec2ab017d26ef811d733eb753b61b7685e36f545eecf4c1"
+    },
+    {
+      "path": "captures/01-surfaces-1440-sheet.png",
+      "bytes": 1052727,
+      "sha256": "09a893ac566c566862dc4647f5384f5af11738f7d59abc65dbf5387ef3356408"
+    },
+    {
+      "path": "captures/01-surfaces-390-sheet.png",
+      "bytes": 1317261,
+      "sha256": "06a225d9f473c246bcb2c29d4d7c105bf2615319219fdf8c09b0cc8ce98c3f9f"
+    },
+    {
+      "path": "captures/02-carta-1440.png",
+      "bytes": 106689,
+      "sha256": "7f3971e5b6db6b63917f26d8c1adc881677bf529e9ec5d088444aa5551905e37"
+    },
+    {
+      "path": "captures/02-carta-390.png",
+      "bytes": 133138,
+      "sha256": "ff45050a7418f122b51eec72df7901f34990b66714a4e4ac45d0bba0b1a0ba4f"
+    },
+    {
+      "path": "captures/02-detail-1440.png",
+      "bytes": 369335,
+      "sha256": "799768cac42b6c8d83d67a6da7dbc275290609fabd7b6b25fa123dbf6e6bb51f"
+    },
+    {
+      "path": "captures/02-detail-390.png",
+      "bytes": 156731,
+      "sha256": "75260792c968c3a050b4553bffd0976425c20b36d69e827513bc8653485bb6a9"
+    },
+    {
+      "path": "captures/02-home-1440.png",
+      "bytes": 1344434,
+      "sha256": "d3403782b5949ae17dbc8c2d2e10133fed89933a435f7a44d760bbc504c4f3bf"
+    },
+    {
+      "path": "captures/02-home-390.png",
+      "bytes": 402263,
+      "sha256": "ac25fcc32053bbbdd04df7b4f0fa5c2abe32cd7596e1bd47a6d0c713fabd0ada"
+    },
+    {
+      "path": "captures/02-reservas-1440.png",
+      "bytes": 285754,
+      "sha256": "077cda3f2b5d0f5fedd4820a5830c29c571ce567fb2f0f735c732bc181d03f85"
+    },
+    {
+      "path": "captures/02-reservas-390.png",
+      "bytes": 176054,
+      "sha256": "6e6c71bbea68f2e5517d82fd2a8d921768a5a14e4b42f04cb7c5f96253fe1faa"
+    },
+    {
+      "path": "captures/02-story-1440.png",
+      "bytes": 517982,
+      "sha256": "267ddca23330d35124e27e413775273f4298a348858cc3947adb303eb88309d6"
+    },
+    {
+      "path": "captures/02-story-390.png",
+      "bytes": 161566,
+      "sha256": "46195249ffe89764972d045e3cbddc964bcd571bea24deefe88be3a901bfb1d0"
+    },
+    {
+      "path": "captures/02-surfaces-1440-sheet.png",
+      "bytes": 910917,
+      "sha256": "ee2d8e54ce0fefff05064242cb6b622f3d62eaa0b5dc0194195c5128112146be"
+    },
+    {
+      "path": "captures/02-surfaces-390-sheet.png",
+      "bytes": 1241129,
+      "sha256": "30bf34869abdda5ea621903f7fa48ed406d31e8f4fa75f6c50a62d5e12c9db16"
+    },
+    {
+      "path": "captures/03-carta-1440.png",
+      "bytes": 252283,
+      "sha256": "fec48c681a54c3d92b9d4419d533d3d955a8afb099bb6dad152d6309adf2dbcc"
+    },
+    {
+      "path": "captures/03-carta-390.png",
+      "bytes": 125759,
+      "sha256": "ae10f513deed158c1cf9a0d4800e06f18b7d57c337518f1307c4d4ccfe1cbf38"
+    },
+    {
+      "path": "captures/03-detail-1440.png",
+      "bytes": 408839,
+      "sha256": "0091ea83784719abf7d7d40690957f77d38f02af8c233d9fd1a1861bc0a287d3"
+    },
+    {
+      "path": "captures/03-detail-390.png",
+      "bytes": 164483,
+      "sha256": "fb77918154cd902ce2a35f9033c43c71c7a547e40d9403b60beeb2dfc656783b"
+    },
+    {
+      "path": "captures/03-home-1440.png",
+      "bytes": 433520,
+      "sha256": "919c620f7a83ab4441000571e69b8ad4410ee8af6717b5196c547dff72dc031a"
+    },
+    {
+      "path": "captures/03-home-390.png",
+      "bytes": 134192,
+      "sha256": "2f3f2f16aefa24e24fb4687741aa9dfaf6906e2772ec5b2a3315160185d99ce1"
+    },
+    {
+      "path": "captures/03-reservas-1440.png",
+      "bytes": 493298,
+      "sha256": "7eaa79fd30d335b1d68aa9d828df837432b81b04743e48641bf3038f852ee1dc"
+    },
+    {
+      "path": "captures/03-reservas-390.png",
+      "bytes": 171983,
+      "sha256": "3c51b09382fa3406b0a93ddc4651525b588f8b676acae8a1affa8f6ef560b610"
+    },
+    {
+      "path": "captures/03-story-1440.png",
+      "bytes": 300829,
+      "sha256": "5f325784360b473cafc5a0d7b67fee7259318b053453bfdf219aa7f999fab9fe"
+    },
+    {
+      "path": "captures/03-story-390.png",
+      "bytes": 68206,
+      "sha256": "fe7f6d240ab18bb017284229f3b9458848d76f414916e317243293b6cc2dd0de"
+    },
+    {
+      "path": "captures/03-surfaces-1440-sheet.png",
+      "bytes": 834188,
+      "sha256": "77892c0446770708eeb48d0e5598498c4cecaba3f0843f96c35b0a56c67789af"
+    },
+    {
+      "path": "captures/03-surfaces-390-sheet.png",
+      "bytes": 903312,
+      "sha256": "9ed648347051d5c3d4fcf8e8475f2f44d9309a9c07630de9fae147d8f6e048b1"
+    },
+    {
+      "path": "captures/04-carta-1440.png",
+      "bytes": 135943,
+      "sha256": "1adacaa763943f756754e24f3f64cf13d87dd355d5ab3cc519256580b984aa59"
+    },
+    {
+      "path": "captures/04-carta-390.png",
+      "bytes": 132315,
+      "sha256": "b222c3a2843984afd5d1722640aaadd827ed32b62adde947686c86701f82ac84"
+    },
+    {
+      "path": "captures/04-detail-1440.png",
+      "bytes": 411233,
+      "sha256": "67217c6f6a864a9096fc62e7689b1b68caf3830d21a9f85aac21d2490d4c9a6a"
+    },
+    {
+      "path": "captures/04-detail-390.png",
+      "bytes": 171064,
+      "sha256": "f313837ce668fc57c2b3b55637fdca863fba90f08e62701f97b89645d93c50d3"
+    },
+    {
+      "path": "captures/04-home-1440.png",
+      "bytes": 305976,
+      "sha256": "6bc6c6796d710143789fa8cafed47194d3effbf212248a10afde2b226b1a21f7"
+    },
+    {
+      "path": "captures/04-home-390.png",
+      "bytes": 79348,
+      "sha256": "8a33ea441be32e7daeb88a3507f9f429a10e22ed738c03e9da7d7873db754e2c"
+    },
+    {
+      "path": "captures/04-reservas-1440.png",
+      "bytes": 228619,
+      "sha256": "be13eca3c6a8c334be9bdcdb75151e6502e48d2eee8fb44be134cdc238de3cee"
+    },
+    {
+      "path": "captures/04-reservas-390.png",
+      "bytes": 102443,
+      "sha256": "6cf67d453487aa63bae48995ac2ff8ff15475a9a1d935c0ea676dc3d3575c18c"
+    },
+    {
+      "path": "captures/04-story-1440.png",
+      "bytes": 473527,
+      "sha256": "172360121876f0d75a0285b58feeb335ae91e2ac4b60800a5acffb6d3db23b4e"
+    },
+    {
+      "path": "captures/04-story-390.png",
+      "bytes": 107895,
+      "sha256": "bf76bbf3bfec6d57637b7c91190a085249eb1fee13841ab28af4be54fff0f716"
+    },
+    {
+      "path": "captures/04-surfaces-1440-sheet.png",
+      "bytes": 604405,
+      "sha256": "0cc462e96a50d363ac14caa974994c5cc194a0ed9ea4b366ad599de52e5db249"
+    },
+    {
+      "path": "captures/04-surfaces-390-sheet.png",
+      "bytes": 780209,
+      "sha256": "49664d4dd4aa02bbb6b9f3b586980725ad981991528deeb77c7e5a7c44727019"
+    },
+    {
+      "path": "captures/05-carta-1440.png",
+      "bytes": 127151,
+      "sha256": "8770d847c5d43ebf2831c9be4b1aceb7384f51c723f99532ef7f8c85f041e170"
+    },
+    {
+      "path": "captures/05-carta-390.png",
+      "bytes": 126436,
+      "sha256": "690ba1286967bab4595f08f5a317d7f462d6d57cae0e96f9c234fa6a8569ee08"
+    },
+    {
+      "path": "captures/05-detail-1440.png",
+      "bytes": 406089,
+      "sha256": "c9196a3ed13a3ddb0a898e75a589208cb8f116dd6c0921e22d64c36a9b82c13b"
+    },
+    {
+      "path": "captures/05-detail-390.png",
+      "bytes": 168594,
+      "sha256": "c5819c88e2315c3112a37997fc18b94fb97e84e54c7af93d017e4087c96d04e7"
+    },
+    {
+      "path": "captures/05-home-1440.png",
+      "bytes": 1637339,
+      "sha256": "78cba7c530104eb5a41650664ae439d6b503efcbfd98b39be0d14c661ab1edcd"
+    },
+    {
+      "path": "captures/05-home-390.png",
+      "bytes": 252757,
+      "sha256": "5bea9000328bc071e75e3a46aec7b7b6a7463a2e46e39040f6706a198b03cb7e"
+    },
+    {
+      "path": "captures/05-reservas-1440.png",
+      "bytes": 403816,
+      "sha256": "534dd63cf195e3e0ac113178645f6cc93bc27429f5b4809516e4dbbd658ec048"
+    },
+    {
+      "path": "captures/05-reservas-390.png",
+      "bytes": 235593,
+      "sha256": "fb360d617cbdd136cdc84af4b68e6c2435b7fcc7da519bc668cf217ab099fec2"
+    },
+    {
+      "path": "captures/05-story-1440.png",
+      "bytes": 605696,
+      "sha256": "e818e86b3251c917b5c6c1429e0d0942ab511adb14a544b4918217892795a518"
+    },
+    {
+      "path": "captures/05-story-390.png",
+      "bytes": 113360,
+      "sha256": "8798a455912e8354c470e8a0c381a096ceab0eaa7bd2a6dafc2e80ddba880d6c"
+    },
+    {
+      "path": "captures/05-surfaces-1440-sheet.png",
+      "bytes": 1033898,
+      "sha256": "59ce3aaab2c43f826d31f9c4a3ad5e65487b6f47cce5a0a07ac9d22abe3edc39"
+    },
+    {
+      "path": "captures/05-surfaces-390-sheet.png",
+      "bytes": 1091004,
+      "sha256": "a7d2dfceb3e5d4f1b67d01b0ce88fea30289ca91b00e1016e5c5fa75db7e7cf9"
+    },
+    {
+      "path": "captures/06-carta-1440.png",
+      "bytes": 137290,
+      "sha256": "ba8fdd29451e0b700493b0b0c56e72a4a5cc45e2e687aa3af573b0909ae9cdd3"
+    },
+    {
+      "path": "captures/06-carta-390.png",
+      "bytes": 145762,
+      "sha256": "0290ed6bbb1165652b4b67b71155647afb9ef8b0a9ea2dba2fb0af808d63d94c"
+    },
+    {
+      "path": "captures/06-detail-1440.png",
+      "bytes": 406357,
+      "sha256": "3d40caef212aa8d07d5bb90f6e48d7eee4f282bf9c0ad55553c232d425ef3f37"
+    },
+    {
+      "path": "captures/06-detail-390.png",
+      "bytes": 168907,
+      "sha256": "b795c58dfd2f99e52d32a63ca3016b76abcb5a8bb22acbc521881d3b86813f6e"
+    },
+    {
+      "path": "captures/06-home-1440.png",
+      "bytes": 1243079,
+      "sha256": "174aa037766639667b6d5057fd99e9166a5a513dc1a1d42f59841445fd222ed4"
+    },
+    {
+      "path": "captures/06-home-390.png",
+      "bytes": 250830,
+      "sha256": "a742916859cf21e7457d39d8adfa920904f9831d8c9d8139bbb41edf6dab6c3f"
+    },
+    {
+      "path": "captures/06-reservas-1440.png",
+      "bytes": 430267,
+      "sha256": "3f3b06b3af2efcc664ec22833f46e4a4ae3a3e77a92ff1c8dfd4df8c593b1e49"
+    },
+    {
+      "path": "captures/06-reservas-390.png",
+      "bytes": 181957,
+      "sha256": "859f3771b9e7fd1d64dd0bfbd395ce4f6d82fc76cab54dca6afc5730eea3e4e9"
+    },
+    {
+      "path": "captures/06-story-1440.png",
+      "bytes": 585246,
+      "sha256": "076d4b5df7159e28aa9a0bffee189af8e35301fac5066c94bae093a0cfcfdb34"
+    },
+    {
+      "path": "captures/06-story-390.png",
+      "bytes": 145364,
+      "sha256": "6a4ec1ec33a325273c3229007e9929604b6ef02a2f6d2eb9434aad1797d67143"
+    },
+    {
+      "path": "captures/06-surfaces-1440-sheet.png",
+      "bytes": 904170,
+      "sha256": "8c21c03a3edd60ffacbc2ddadc8e16a30bdd682373c1c7955be9a4577aa4c307"
+    },
+    {
+      "path": "captures/06-surfaces-390-sheet.png",
+      "bytes": 1078673,
+      "sha256": "d86c0fd483c248c347cd37e536dbb6d4d87fd6134035ee75e93bb289cc3bd745"
+    },
+    {
+      "path": "captures/07-carta-1440.png",
+      "bytes": 106204,
+      "sha256": "995cc19a2961fe006d12c1d7dda7acfaf169001db838fc399cb3f06b764fb2f0"
+    },
+    {
+      "path": "captures/07-carta-390.png",
+      "bytes": 125478,
+      "sha256": "eba5410737e359364e0be86017b38b472b38180aa4ec29cf46866d2e3580357d"
+    },
+    {
+      "path": "captures/07-detail-1440.png",
+      "bytes": 405024,
+      "sha256": "654a4ce5b264023492a07a35d59fb2dbd3f947b46a892512aedd17e17f348975"
+    },
+    {
+      "path": "captures/07-detail-390.png",
+      "bytes": 167134,
+      "sha256": "50b8f6fd68ca7495cffdafbd0aa3187be8a4580912651d7cf06bae463c65fe1e"
+    },
+    {
+      "path": "captures/07-home-1440.png",
+      "bytes": 600148,
+      "sha256": "076f68e328e9eb0d0cce875e0865322e18275e8a3b65badbacdd46f5c245b988"
+    },
+    {
+      "path": "captures/07-home-390.png",
+      "bytes": 164027,
+      "sha256": "4718620335635c5af94baa595656056560eb87759d2687d6c975fbdd05990fc3"
+    },
+    {
+      "path": "captures/07-reservas-1440.png",
+      "bytes": 394866,
+      "sha256": "127c6535a03285c2f7437adb6bc1a056c07be924e4b0d4e2000d6c9f9de400e4"
+    },
+    {
+      "path": "captures/07-reservas-390.png",
+      "bytes": 157892,
+      "sha256": "51e3a9346217056e202da84811bded8bb40b1fcd847971790afbddf855846dff"
+    },
+    {
+      "path": "captures/07-story-1440.png",
+      "bytes": 256535,
+      "sha256": "504c7e6609c07bc6b327972d7cf7f5552baf35ca9d845fd8fdb6b29928923de2"
+    },
+    {
+      "path": "captures/07-story-390.png",
+      "bytes": 133028,
+      "sha256": "33eb3ee12e08eff0cb5f66660a464013b70e441ee42b2a49b1bb7ae4835195f0"
+    },
+    {
+      "path": "captures/07-surfaces-1440-sheet.png",
+      "bytes": 652142,
+      "sha256": "4fd6ded807df70c4211f88ed5960efbd4bea22ce10fccc498934442feaa74d66"
+    },
+    {
+      "path": "captures/07-surfaces-390-sheet.png",
+      "bytes": 876792,
+      "sha256": "71666c03b3717aa09a8ac47d4fdb71016da93692a1581b0031ad153bb192ca76"
+    },
+    {
+      "path": "captures/08-carta-1440.png",
+      "bytes": 149801,
+      "sha256": "add916a47d6e839e00b9322e07ab8bb07e8d7217ac4bddac53e41b3b3c2af4d6"
+    },
+    {
+      "path": "captures/08-carta-390.png",
+      "bytes": 140816,
+      "sha256": "f6aa9138b490b484269fff450c5296ac8aed15298c1a4ab16b8396a790ed3f8d"
+    },
+    {
+      "path": "captures/08-detail-1440.png",
+      "bytes": 403199,
+      "sha256": "eaf42c2dfcd7c0be75e8d8c68180873bc2c9908b5cafc1eb1991c73b4024b5e8"
+    },
+    {
+      "path": "captures/08-detail-390.png",
+      "bytes": 167338,
+      "sha256": "d9acf348a5e2e374548c8477e62280019017a246048cfb15c09eaf8200d9c6e8"
+    },
+    {
+      "path": "captures/08-home-1440.png",
+      "bytes": 591812,
+      "sha256": "002870a8928050accc8c872fe3a2b9b49b596e70bb7c844f4267531e9884de8c"
+    },
+    {
+      "path": "captures/08-home-390.png",
+      "bytes": 175226,
+      "sha256": "6f4bedfd97f94494ad316da8449576bc8fb709ad1528d81f4fd012ffa49245b4"
+    },
+    {
+      "path": "captures/08-reservas-1440.png",
+      "bytes": 354786,
+      "sha256": "a5d26060fb2233998d74dcc379e5b25d4fc220b31ee77cf72cd58f4400ef4a0f"
+    },
+    {
+      "path": "captures/08-reservas-390.png",
+      "bytes": 146764,
+      "sha256": "11588a4efecd66baafe58234d527348da7ef8c133ad69b45c61f1511a1a686ac"
+    },
+    {
+      "path": "captures/08-story-1440.png",
+      "bytes": 202604,
+      "sha256": "06250cf3ff88e25765a7eb0df316a3121562cd37ded5dd26fbcba3f79dc9968e"
+    },
+    {
+      "path": "captures/08-story-390.png",
+      "bytes": 109753,
+      "sha256": "e711c114769c6457714392bef521481a8daf1937c2bfa2971d2bd461de575dc0"
+    },
+    {
+      "path": "captures/08-surfaces-1440-sheet.png",
+      "bytes": 668219,
+      "sha256": "203472412119d7629e4f227f54409473afc43ed5f28b9757a9b0d0b8e064de05"
+    },
+    {
+      "path": "captures/08-surfaces-390-sheet.png",
+      "bytes": 953537,
+      "sha256": "207804ee7523b31b5bb5015ed600558c689b7e1a0ae81dfe1c75e2eca04b1de9"
+    },
+    {
+      "path": "captures/captures.json",
+      "bytes": 30703,
+      "sha256": "1b33c290cd72e168fac2c17df7845c03975fb19d5935b97254979a1590e4d9d4"
+    },
+    {
+      "path": "catalogue/01-bruschetta-tomate-desktop-sheet.png",
+      "bytes": 602856,
+      "sha256": "661ee8e5e74b947c5afb4a8f0dc0cc5cf489c224dd90696b8a93f859782b81ef"
+    },
+    {
+      "path": "catalogue/01-bruschetta-tomate-mobile-sheet.png",
+      "bytes": 704035,
+      "sha256": "f80a29feb5b49fe5671189a68c5b10f18a69f0a72412e484f186cb63a78ee90a"
+    },
+    {
+      "path": "catalogue/01-carta-desktop-sheet.png",
+      "bytes": 561085,
+      "sha256": "a9efa9b7b3d138a51d4cddf0cafa20b206712f1873bfa82685fdb4e41d0eb686"
+    },
+    {
+      "path": "catalogue/01-carta-mobile-sheet.png",
+      "bytes": 638399,
+      "sha256": "c7d9f22087727fbf8c02c2071f81bf05f940102897f0ed033ee6f4f3e4254949"
+    },
+    {
+      "path": "catalogue/01-ensalada-mediterranea-desktop-sheet.png",
+      "bytes": 535692,
+      "sha256": "84cf2cf99744899b3a6ae5507627378a82c843471c15468d8b5489f6b944fdff"
+    },
+    {
+      "path": "catalogue/01-ensalada-mediterranea-mobile-sheet.png",
+      "bytes": 629279,
+      "sha256": "5256e79fb39b00d63f0ca70b7dfe4ad2386d9ec5f633c31b63f1ee4b88632ccd"
+    },
+    {
+      "path": "catalogue/01-pizza-desktop-sheet.png",
+      "bytes": 786689,
+      "sha256": "105f188c9db13f19754d6f55816fa33c5cc09d80ce3c88324171aa522ffcbac4"
+    },
+    {
+      "path": "catalogue/01-pizza-mobile-sheet.png",
+      "bytes": 776026,
+      "sha256": "2788ffb37ebd084cfd36d46ab976499f9391174e8f5b5a0147af18371348ec51"
+    },
+    {
+      "path": "catalogue/02-bruschetta-tomate-desktop-sheet.png",
+      "bytes": 594650,
+      "sha256": "19834632bc0605b58293b43ab09c1632a990063cf8dfb1b7a009af184b3d195b"
+    },
+    {
+      "path": "catalogue/02-bruschetta-tomate-mobile-sheet.png",
+      "bytes": 690967,
+      "sha256": "ca5c6a780e866d65d9d4f0096b40afc82e6797557bb8635af44290e71d7ab461"
+    },
+    {
+      "path": "catalogue/02-carta-desktop-sheet.png",
+      "bytes": 615952,
+      "sha256": "5b47b153cb32f28ab7f8032c1b4086d582dc205f13335f7301390e3416f3f61c"
+    },
+    {
+      "path": "catalogue/02-carta-mobile-sheet.png",
+      "bytes": 640543,
+      "sha256": "d13dfe7804683d92c6e6e8a7287e006ac8fd5102ce6e1fad3d1eafbada234880"
+    },
+    {
+      "path": "catalogue/02-ensalada-mediterranea-desktop-sheet.png",
+      "bytes": 527198,
+      "sha256": "a3fe95d7d91a7b38ca54b6e519e8c345483b414af6be9a9104bb10cc8e91118d"
+    },
+    {
+      "path": "catalogue/02-ensalada-mediterranea-mobile-sheet.png",
+      "bytes": 617630,
+      "sha256": "0397e453137a42a065b3c1826fa2fb73941ee0df194bd5eae9c93d24c3b55315"
+    },
+    {
+      "path": "catalogue/02-pizza-desktop-sheet.png",
+      "bytes": 778096,
+      "sha256": "0e10da5b5cfd0da3e3f723f49d16887932f236df4922d3eb52255efcce1caba0"
+    },
+    {
+      "path": "catalogue/02-pizza-mobile-sheet.png",
+      "bytes": 766032,
+      "sha256": "fea98a65d6e6563a92cdcba79c32a0b8448f343a0a347d54cc9b4e04a6dc628d"
+    },
+    {
+      "path": "catalogue/03-bruschetta-tomate-desktop-sheet.png",
+      "bytes": 410060,
+      "sha256": "dd94301074b3cf6e7e8ff8f29ade76685d15b4e1f0c035c124121cbf77fda374"
+    },
+    {
+      "path": "catalogue/03-bruschetta-tomate-mobile-sheet.png",
+      "bytes": 715056,
+      "sha256": "1ee6006956857d7ff99d7318080e13ffd854c75f882d6b39c8c976bc4f53428b"
+    },
+    {
+      "path": "catalogue/03-carta-desktop-sheet.png",
+      "bytes": 666693,
+      "sha256": "909c9a1baff7e35738d36cded3997df85ea50b8c5f50e1c4f479120109e6ef4b"
+    },
+    {
+      "path": "catalogue/03-carta-mobile-sheet.png",
+      "bytes": 653958,
+      "sha256": "067004041d92758c868314b712b52a03eca8ef38fdd32213274d881f2cbcc1d6"
+    },
+    {
+      "path": "catalogue/03-ensalada-mediterranea-desktop-sheet.png",
+      "bytes": 374161,
+      "sha256": "08ac11fed4c5416d831ded36a07d9731695cfcb6d4c79ca6da988b8fd2a1447b"
+    },
+    {
+      "path": "catalogue/03-ensalada-mediterranea-mobile-sheet.png",
+      "bytes": 649159,
+      "sha256": "7c29d1526bfd6477dda1645f3ba3b88ef6786a33e44fdf441820768b5107b822"
+    },
+    {
+      "path": "catalogue/03-pizza-desktop-sheet.png",
+      "bytes": 596460,
+      "sha256": "d24e847ec46c7f65b0be6bda855cba85b4bc0c8a19dd5683f59353d5a4c4d12b"
+    },
+    {
+      "path": "catalogue/03-pizza-mobile-sheet.png",
+      "bytes": 792751,
+      "sha256": "b25d432fd26a78797a591bfc0cdb6f2f2a072b612951166b1453f40fe3d11ef1"
+    },
+    {
+      "path": "catalogue/04-bruschetta-tomate-desktop-sheet.png",
+      "bytes": 592011,
+      "sha256": "beef4f37439d29a1762180a0c82d833455a0fe822a57596d83775355c7a5ab3b"
+    },
+    {
+      "path": "catalogue/04-bruschetta-tomate-mobile-sheet.png",
+      "bytes": 728076,
+      "sha256": "54946331373bc6d2459e5f6707b49b892216f75c255f750ed20ae10c4bbedb07"
+    },
+    {
+      "path": "catalogue/04-carta-desktop-sheet.png",
+      "bytes": 603387,
+      "sha256": "7725e221a36420cca74829364476343ff2a312e0be0999b33c56ccc2c8af6614"
+    },
+    {
+      "path": "catalogue/04-carta-mobile-sheet.png",
+      "bytes": 653044,
+      "sha256": "1239f153a8c09f490c4d5da394c2808342399d7835a24498c5bf17416192dc9a"
+    },
+    {
+      "path": "catalogue/04-ensalada-mediterranea-desktop-sheet.png",
+      "bytes": 532259,
+      "sha256": "1a058c61ffc50f5d7a53a7b9387c8ba3a560bbaa3d985cba908847534fd9a374"
+    },
+    {
+      "path": "catalogue/04-ensalada-mediterranea-mobile-sheet.png",
+      "bytes": 661594,
+      "sha256": "a579aab2c9a1be62147d1ee3644f36765efbb1d77661be8d1628d38362de356a"
+    },
+    {
+      "path": "catalogue/04-pizza-desktop-sheet.png",
+      "bytes": 783701,
+      "sha256": "04c12c2956431372ac69070733c89920c4b3d2cd0780f6248d3bbe0f7677b487"
+    },
+    {
+      "path": "catalogue/04-pizza-mobile-sheet.png",
+      "bytes": 814598,
+      "sha256": "806090a73799d84da62a511997740ef9af434683983265676b9ae5716d36036d"
+    },
+    {
+      "path": "catalogue/05-bruschetta-tomate-desktop-sheet.png",
+      "bytes": 617103,
+      "sha256": "48bd6b66d1a2848e3be21357a5445f4dacd7f71748adad9628a34bbbdfb30c48"
+    },
+    {
+      "path": "catalogue/05-bruschetta-tomate-mobile-sheet.png",
+      "bytes": 727465,
+      "sha256": "b241c8601202a963643da2bdef1c46f9181a83641d8bf0bd8144d766f0b5a73a"
+    },
+    {
+      "path": "catalogue/05-carta-desktop-sheet.png",
+      "bytes": 571192,
+      "sha256": "2bea6015f945cb5d4e4d0f87604fd774aa5a886d4513df9dd7735ad5efaa7840"
+    },
+    {
+      "path": "catalogue/05-carta-mobile-sheet.png",
+      "bytes": 639971,
+      "sha256": "d45e8ffc2f326d6ab2744e04e05219c0483132a50cbd5891088cc1e09e18d0e2"
+    },
+    {
+      "path": "catalogue/05-ensalada-mediterranea-desktop-sheet.png",
+      "bytes": 521497,
+      "sha256": "18ad1b080b6c4bef4b11df9b07831d2ef8edb52fb5a664b6d6317d26886826ad"
+    },
+    {
+      "path": "catalogue/05-ensalada-mediterranea-mobile-sheet.png",
+      "bytes": 648516,
+      "sha256": "29db88d36f2dd657ddb001bd0ee7f456a1f0293428a4672deb9edfbe50d47c66"
+    },
+    {
+      "path": "catalogue/05-pizza-desktop-sheet.png",
+      "bytes": 804379,
+      "sha256": "62d718d1d769363d98dc488bff38568718dadd7eab87f56c088155ee9edd725b"
+    },
+    {
+      "path": "catalogue/05-pizza-mobile-sheet.png",
+      "bytes": 806711,
+      "sha256": "8280668182bc5289c7cbb6335d1229473c8643dbe2f855f5f0636d0e33fd44b3"
+    },
+    {
+      "path": "catalogue/06-bruschetta-tomate-desktop-sheet.png",
+      "bytes": 581999,
+      "sha256": "2992d8722965201d90b6c2ae8b169a6a144b736d1794ec30297c3f693f8bdb74"
+    },
+    {
+      "path": "catalogue/06-bruschetta-tomate-mobile-sheet.png",
+      "bytes": 733530,
+      "sha256": "e5556efac5803ccc78aafc990e21e2b44162f43b0cd3bb970058a4a334c31d8f"
+    },
+    {
+      "path": "catalogue/06-carta-desktop-sheet.png",
+      "bytes": 580107,
+      "sha256": "7239bccd92a698245a2f73c188b65e537b511cf1de5da94893f5ebd6e94ec1e6"
+    },
+    {
+      "path": "catalogue/06-carta-mobile-sheet.png",
+      "bytes": 661975,
+      "sha256": "f25591f75d48cca0bf7511912bf3b3acb5251383d9ddea57d3a3efbc36758ed4"
+    },
+    {
+      "path": "catalogue/06-ensalada-mediterranea-desktop-sheet.png",
+      "bytes": 524879,
+      "sha256": "1999b1372d0afb6149bcba31d07ed7f5dc5f999f8b85dbd799a46075467ce975"
+    },
+    {
+      "path": "catalogue/06-ensalada-mediterranea-mobile-sheet.png",
+      "bytes": 667003,
+      "sha256": "63e37be7ba99671ba358cc2402318b50e49b4975d0df6f958324e423c14fb637"
+    },
+    {
+      "path": "catalogue/06-pizza-desktop-sheet.png",
+      "bytes": 775433,
+      "sha256": "2c217f78c494a6f2e0b3af85d10dd579b12e3fd41ebb976bfde88d7647ceb917"
+    },
+    {
+      "path": "catalogue/06-pizza-mobile-sheet.png",
+      "bytes": 798348,
+      "sha256": "fe1e5f973f06ba2cac7aab61e09d32c8684227248fcf8dfbca14395d949304c0"
+    },
+    {
+      "path": "catalogue/07-bruschetta-tomate-desktop-sheet.png",
+      "bytes": 603900,
+      "sha256": "52aa82ba1dcb372d8d3d7098d47cb16f41e50f694a91516258c7952d886c15e3"
+    },
+    {
+      "path": "catalogue/07-bruschetta-tomate-mobile-sheet.png",
+      "bytes": 704057,
+      "sha256": "7ceaf46557affc32385d909b52f895fd72975a33ad23fab9d1b66c1c03b57a4c"
+    },
+    {
+      "path": "catalogue/07-carta-desktop-sheet.png",
+      "bytes": 538077,
+      "sha256": "9a9c4aed3c7bd3add329ed98182fe3c17d8fbbad1b2da1ef03b227a06942e5ef"
+    },
+    {
+      "path": "catalogue/07-carta-mobile-sheet.png",
+      "bytes": 606294,
+      "sha256": "a23940647bba245212fc9d9d221c81b1fd3e3c904afeb5e9a328d5057e781a57"
+    },
+    {
+      "path": "catalogue/07-ensalada-mediterranea-desktop-sheet.png",
+      "bytes": 534988,
+      "sha256": "73340ec7bb1f9b209dfd50bb2fc80629a0b7a8eb822d1536f61a90d0c4370db4"
+    },
+    {
+      "path": "catalogue/07-ensalada-mediterranea-mobile-sheet.png",
+      "bytes": 636661,
+      "sha256": "df61ea603ad6a674e70e4279e9e5fcc452b38cb126c930e8a392e5f4b81498ce"
+    },
+    {
+      "path": "catalogue/07-pizza-desktop-sheet.png",
+      "bytes": 794889,
+      "sha256": "93707f7fc7be0f38d21a837e4828b2c6518acfbfdbaabf7907ac9e19497f668e"
+    },
+    {
+      "path": "catalogue/07-pizza-mobile-sheet.png",
+      "bytes": 785881,
+      "sha256": "2e446a389ab9b976a0b988f9fe289265c7e0daee5b334d59bb541a9d6c9e9412"
+    },
+    {
+      "path": "catalogue/08-bruschetta-tomate-desktop-sheet.png",
+      "bytes": 614047,
+      "sha256": "b45e0dbc4279148e64652269b9aab9fd860799d3cfdf6fff100afc4929c7b3e8"
+    },
+    {
+      "path": "catalogue/08-bruschetta-tomate-mobile-sheet.png",
+      "bytes": 720217,
+      "sha256": "255b462c191f6f833e3d373e544446a07bced3773ebb6aa43f75cedc4766a5b2"
+    },
+    {
+      "path": "catalogue/08-carta-desktop-sheet.png",
+      "bytes": 559208,
+      "sha256": "9c4798b3b334f7c096ff18b84f35273bf35fcc9cec5959475e0b8e5237838147"
+    },
+    {
+      "path": "catalogue/08-carta-mobile-sheet.png",
+      "bytes": 634336,
+      "sha256": "ad73ed9503f2011896231e7f017bd3e017847abdf0f8e0012dfb746bbd2c332c"
+    },
+    {
+      "path": "catalogue/08-ensalada-mediterranea-desktop-sheet.png",
+      "bytes": 544544,
+      "sha256": "0bade2687b6e451241b0519286ea31e0c97b62bc2e56f5ff3ec18aa2173a4053"
+    },
+    {
+      "path": "catalogue/08-ensalada-mediterranea-mobile-sheet.png",
+      "bytes": 651631,
+      "sha256": "eb4e829a509ad1ea9b92dcddd8c614b3323622c5c69fb2528d9549c72e5ee49c"
+    },
+    {
+      "path": "catalogue/08-pizza-desktop-sheet.png",
+      "bytes": 801584,
+      "sha256": "b2046e7a1c17155f87db5472534de40f90f6771124e8a454171a9bc324c2ee0b"
+    },
+    {
+      "path": "catalogue/08-pizza-mobile-sheet.png",
+      "bytes": 799171,
+      "sha256": "3b393b3b8e76ecc23e81f6b22636333cb2c62ffeb39bacfd981b9188ea85b27a"
+    },
+    {
+      "path": "catalogue/audit.json",
+      "bytes": 17218985,
+      "sha256": "808ef714e8ce7617c29a2a39e97784c4479514822642371f20c3b825085c4fa7"
+    },
+    {
+      "path": "interiors/01-pages-1440-sheet.png",
+      "bytes": 420906,
+      "sha256": "f033ffdd706d2650a9feb0aef8d7ecbc23c309e41189cb920e705412c1ddcc51"
+    },
+    {
+      "path": "interiors/01-pages-390-sheet.png",
+      "bytes": 1512528,
+      "sha256": "81e5250ce07417b15407021e8fe064642797fa0a8fc4e3d408a15a919caf5f6a"
+    },
+    {
+      "path": "interiors/02-pages-1440-sheet.png",
+      "bytes": 374458,
+      "sha256": "a8e27554419903e0a012512e2c12e64a1b74cfce3a0fb0c76c301a309f2b134a"
+    },
+    {
+      "path": "interiors/02-pages-390-sheet.png",
+      "bytes": 1398796,
+      "sha256": "fa738dc87188f5ab977ad5d373be811be50fa2521437f024cde49ffc4a13dcc8"
+    },
+    {
+      "path": "interiors/03-pages-1440-sheet.png",
+      "bytes": 437847,
+      "sha256": "4347ef20a77558ef9196f6a46832606fed70538046c9280b2e6dc0a3fe309ab9"
+    },
+    {
+      "path": "interiors/03-pages-390-sheet.png",
+      "bytes": 1431988,
+      "sha256": "c09b8c022fa222fba9bcaaf68d56e428215b8c7d19e4b72408a74b21d5363aff"
+    },
+    {
+      "path": "interiors/04-pages-1440-sheet.png",
+      "bytes": 306341,
+      "sha256": "ce0f3ee1af49e568e9acc058737be6487d630c919fa3f872a90bd41e6b96317b"
+    },
+    {
+      "path": "interiors/04-pages-390-sheet.png",
+      "bytes": 1255713,
+      "sha256": "93655de8e41faaaa9b2a921426fec77b35fab22dd3429b87a02fcc06de440f9d"
+    },
+    {
+      "path": "interiors/05-pages-1440-sheet.png",
+      "bytes": 418198,
+      "sha256": "e55bf1d9bdf838b8511bceae9c727974ad6989c1c27c8b791d6e0f164b9a1a44"
+    },
+    {
+      "path": "interiors/05-pages-390-sheet.png",
+      "bytes": 1312051,
+      "sha256": "8621acb106ca1f47f948b1932e0f87dfff9565c5153e36927a58d02342b7dc6c"
+    },
+    {
+      "path": "interiors/06-pages-1440-sheet.png",
+      "bytes": 416991,
+      "sha256": "0b280bfe54a67b0ace4e6e0440e337371a09ccd7b3bd3a52852b012f4ebc1f2a"
+    },
+    {
+      "path": "interiors/06-pages-390-sheet.png",
+      "bytes": 1522834,
+      "sha256": "83895ab26b329c341e9ceddc1c322be411912180e498127605c162e4cc98bfcf"
+    },
+    {
+      "path": "interiors/07-pages-1440-sheet.png",
+      "bytes": 362276,
+      "sha256": "7b5108c50e7ccd0e7058b0d631788a58ca3a5406a2192a7e5a3d9e6eb627bc92"
+    },
+    {
+      "path": "interiors/07-pages-390-sheet.png",
+      "bytes": 1424745,
+      "sha256": "935a7b45b97184ab448955d7c73bfb81334829e2efff0d9bf2438324e9a41e11"
+    },
+    {
+      "path": "interiors/08-pages-1440-sheet.png",
+      "bytes": 364695,
+      "sha256": "e39448db6e1be5ad508c9f05f45b3f4c3b7a8839af75c0e98c821440ac2382e2"
+    },
+    {
+      "path": "interiors/08-pages-390-sheet.png",
+      "bytes": 1509247,
+      "sha256": "327754943e503f74ed98172857c7795baef36291861bbf2565f915abeb6cb813"
+    },
+    {
+      "path": "interiors/audit.json",
+      "bytes": 8752548,
+      "sha256": "e601ffdd3f7b044a77df9bd01cb03bc086e7f72017184a7906dfd9c6d189267f"
+    },
+    {
+      "path": "flows/flows.json",
+      "bytes": 16159,
+      "sha256": "48a5d36f66b2b9d78dc082df3079a1ee73c1852064acdf27dc6e9f158412a2ad"
+    },
+    {
+      "path": "map/map-desktop.png",
+      "bytes": 566935,
+      "sha256": "67db1037f1e1d0b1a6b6c62bbb5f982149433a2ff5be9536957ef16f4eaf3197"
+    },
+    {
+      "path": "map/map-mobile.png",
+      "bytes": 209687,
+      "sha256": "047a7bc9f343c1573b58e844ae2af0d76b55977846c87640832cb88a400ac180"
+    },
+    {
+      "path": "map/map.json",
+      "bytes": 1091,
+      "sha256": "a5478a560bbe582bc69afe89871492115d19f69eb5a09fe616517f98851578c2"
+    },
+    {
+      "path": "current-feedback.json",
+      "bytes": 767,
+      "sha256": "df068cec8b1ce51d24283ee237fa9623c9149524080f3dfd721932048f878b75"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+/* 07 Riso — artistic two-ink poster. Newsprint, riso blue, riso yellow; black-weight Bodoni Moda fat face. */
+@font-face{font-family:'Bodoni Moda';src:url(/fonts/b3-artistic/bodonimoda.woff) format('woff');font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(/fonts/b3-artistic/dmsans.woff) format('woff');font-weight:100 1000;font-style:normal;font-display:swap}
+.depth-experience.engine-riso{--paper:#f3eedf;--ink:#14183a;--muted:#3e4570;--line:#b9b49f;--control:#5a5f8a;--accent:#1d3fbb;--accent-text:#1d3fbb;--mark:#ffd21f;--action:#1d3fbb;--on-action:#fff;--surface:#fbe27a;--focus:#1d3fbb;--footer-bg:#1d3fbb;--footer-ink:#fff;--footer-muted:#dce3ff;--display:'Bodoni Moda',Georgia,serif;font-family:'DM Sans',system-ui,sans-serif}
+.engine-riso :is(h1,h2,h3,.footer-wordmark){font-family:'Bodoni Moda',Georgia,serif;font-weight:900;letter-spacing:-.03em;color:var(--accent-text)}
+.engine-riso .exp-brand{font-family:'Bodoni Moda',Georgia,serif;font-weight:900;color:var(--accent-text)}
+.engine-riso .exp-footer :is(h2,.footer-wordmark){color:var(--footer-ink)}
+.engine-riso .eg-btn.eg-ghost{color:var(--ink);border-color:var(--ink)}
+.engine-riso .rs-poster{padding:clamp(1.5rem,5vw,4rem) var(--pad) clamp(2rem,5vw,4rem);background:var(--mark);border-bottom:6px solid var(--accent)}
+.engine-riso .rs-poster h1{display:flex;flex-direction:column;margin:0;font-size:clamp(3rem,13vw,8rem);line-height:.85;text-transform:uppercase;overflow-wrap:anywhere}
+.engine-riso .rs-poster h1 span:nth-child(even){align-self:flex-end;color:var(--ink)}
+.engine-riso .rs-poster .hero-tagline{max-width:30ch;margin:1.5rem 0 0;font-size:1.25rem;font-weight:500;color:var(--ink)}
+.engine-riso .rs-poster .eg-btn.eg-ghost{background:var(--paper)}
+.engine-riso .rs-plates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.75rem,2vw,2rem);padding:clamp(2rem,5vw,4rem) var(--pad);overflow-x:clip}
+.engine-riso .rs-plate{margin:0}
+.engine-riso .rs-plate:nth-child(1){transform:rotate(-1.5deg)}.engine-riso .rs-plate:nth-child(2){margin-top:2rem}.engine-riso .rs-plate:nth-child(3){transform:rotate(1.5deg)}
+.engine-riso .rs-photo{aspect-ratio:3/4;isolation:isolate;background:var(--mark)}
+.engine-riso .rs-photo img{filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
+.engine-riso .rs-plate:nth-child(2) .rs-photo{background:var(--accent)}
+.engine-riso .rs-plate:nth-child(2) .rs-photo img{mix-blend-mode:screen}
+.engine-riso .rs-plate figcaption{margin-top:.5rem;font-size:.875rem;font-weight:600;color:var(--ink)}
+.engine-riso .rs-band{padding:clamp(1.5rem,4vw,3rem) var(--pad);background:var(--accent);color:#fff}
+.engine-riso .rs-band p{margin:0;max-width:24ch;font:900 clamp(1.75rem,4.5vw,3.5rem)/1.05 'Bodoni Moda',Georgia,serif;letter-spacing:-.02em}
+.engine-riso .rs-house h2{margin:0 0 .75rem;font-size:clamp(1.75rem,4vw,3rem)}
+.engine-riso .eg-price{font-family:'Bodoni Moda',Georgia,serif;font-weight:900;color:var(--accent-text)}
+.engine-riso .page-intro.eg-head{border-bottom:6px solid var(--accent)}
+.engine-riso .page-intro.eg-head h1{display:inline;padding:.05em .25em;font-size:clamp(2.25rem,6vw,4.5rem);line-height:1.25;background:var(--mark);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.engine-riso .page-intro.eg-head p{color:var(--muted)}
+/* carta: blue band per category, yellow-tinted alternate rows, fat-face prices */
+.engine-riso .cat-menu .cat-group-title{padding:.6rem 1rem;font:900 clamp(1.375rem,3vw,1.875rem)/1.15 'Bodoni Moda',Georgia,serif;letter-spacing:-.01em;text-transform:none;color:#fff;background:var(--accent);border:0}
+.engine-riso .cat-menu .cat-row{padding-inline:1rem}
+.engine-riso .cat-menu .cat-row:nth-child(odd){background:rgb(255 210 31 / .28)}
+.engine-riso .cat-menu[data-menu-layout] .cat-name{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:1.1875rem;color:var(--ink)}
+.engine-riso .cat-menu[data-menu-layout] .cat-price{font-family:'Bodoni Moda',Georgia,serif;font-weight:900;font-size:1.25rem;color:var(--accent-text)}
+.engine-riso .cat-menu .cat-leader{border-bottom-color:var(--ink)}
+@media(max-width:760px){.engine-riso .rs-plates{grid-template-columns:minmax(0,1fr)}.engine-riso .rs-plate:nth-child(n){margin-top:0;transform:none}.engine-riso .rs-photo{aspect-ratio:4/3}}

@@ -1,0 +1,62 @@
+---
+// Art-directed homes for the two artistic photographic operators (03 EmberReel / 04 PlateStudy).
+// Interiors come from the shared InteriorPages operators; credits stay in ExperienceComposition.
+import CommunitySections from './CommunitySections.astro';
+import HomeQuickLinks from './HomeQuickLinks.astro';
+import InteriorPages from './InteriorPages.astro';
+import ArtisticImage from './ArtisticImage.astro';
+import ArtisticVideo from './ArtisticVideo.astro';
+import {richExperiencePages as experiencePages} from '../../design/rich-experience-contracts.ts';
+import {experienceRoute} from '../../design/experience-contracts.ts';
+interface Props{art:'EmberReel'|'PlateStudy';lab:any;fm:any;profile:any;page:any;route:string;creditHref:string}
+const {art,lab,fm,profile:p,page,route,creditHref}=Astro.props,s=lab.scenario,k:string=page.kind,ember=art==='EmberReel';
+const modules=s.content.pages.flatMap((q:any)=>q.modules),by=(c:string)=>modules.find((m:any)=>m.capability_id===c);
+const identity=by('identity');
+const name=identity.facts.find((f:any)=>f.kind==='business_name'),tagline=identity.facts.find((f:any)=>f.kind!=='business_name');
+const link=(kind:string)=>experienceRoute(p.root,experiencePages.find(q=>q.kind===kind)! as any);
+const img={route,creditsHref:creditHref},cl={...lab,experience_media:fm};
+---
+{k==='home'&&ember&&<>
+ <section class="art-hero" id="experience-main" tabindex="-1" data-module-id={identity.id} data-component={identity.component} data-scope-id={identity.scope_id} data-semantic-page={identity.page} data-required={String(identity.required)}>
+  <div class="art-hero-copy">
+   <h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1>
+   <p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p>
+   <div class="hero-entry-links"><a href={link('collection')}>Ver el menú <span aria-hidden="true">↗</span></a><a href={link('request')}>Reservar mesa <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <ArtisticVideo id={120734} posterId="120734-poster" eager posterSizes="1280px" {...img} class="art-hero-film"/>
+ </section>
+ <CommunitySections lab={cl} root={p.root} {route} mode="home" only={['reviews']}/>
+ <HomeQuickLinks root={p.root}/>
+ <section class="art-collage" aria-label="Masa, aceite y barro">
+  <div class="art-shot art-shot-a" data-reveal><ArtisticImage id={1868396} {...img}/><p class="art-cap">Masa</p></div>
+  <div class="art-shot art-shot-b" data-reveal><ArtisticImage id={10258355} {...img}/><p class="art-cap">Barro</p></div>
+  <div class="art-shot art-shot-c" data-reveal><ArtisticImage id={1596417} {...img}/><p class="art-cap">Aceite</p></div>
+ </section>
+ <section class="art-band" aria-label="Sobremesa"><ArtisticImage id={8233676} {...img} class="art-band-photo"/><p class="art-word" aria-hidden="true">Sobremesa</p></section>
+ <CommunitySections lab={cl} root={p.root} {route} mode="home" only={['journal']}/>
+</>}
+{k==='home'&&!ember&&<>
+ <section class="art-title" id="experience-main" tabindex="-1" data-module-id={identity.id} data-component={identity.component} data-scope-id={identity.scope_id} data-semantic-page={identity.page} data-required={String(identity.required)}>
+  <div class="art-cut art-cut-a"><ArtisticImage id={1665402} {...img} hero class="art-cutout"/></div>
+  <div class="art-cut art-cut-b"><ArtisticImage id={1543170} {...img} hero class="art-cutout"/></div>
+  <h1 data-fact-id={name.id} data-fact-scope={name.scope_id}>{name.text}</h1>
+  <p class="hero-tagline" data-fact-id={tagline.id} data-fact-scope={tagline.scope_id}>{tagline.text}</p>
+  <div class="hero-entry-links"><a href={link('collection')}>Ver el menú <span aria-hidden="true">↗</span></a><a href={link('request')}>Reservar mesa <span aria-hidden="true">↗</span></a></div>
+ </section>
+ <CommunitySections lab={cl} root={p.root} {route} mode="home" only={['reviews']}/>
+ <HomeQuickLinks root={p.root}/>
+ <section class="art-plates" aria-label="Láminas de ingredientes">
+  <div class="art-plate is-wide" data-reveal><ArtisticImage id={4367047} {...img}/><p class="art-cap"><b>I</b> Salvia</p></div>
+  <div class="art-plate is-portrait" data-reveal><ArtisticImage id={8594421} {...img}/><p class="art-cap"><b>II</b> Limones</p></div>
+  <div class="art-plate is-portrait" data-reveal><ArtisticImage id={1887240} {...img}/><p class="art-cap"><b>III</b> Tomates</p></div>
+  <div class="art-plate is-portrait" data-reveal><ArtisticImage id={10266737} {...img}/><p class="art-cap"><b>IV</b> Porcelana</p></div>
+  <div class="art-plate is-wide" data-reveal><ArtisticImage id={943245} {...img}/><p class="art-cap"><b>V</b> Harina</p></div>
+ </section>
+ <section class="art-interlude" aria-label="Cocina en calma">
+  <div class="art-interlude-text"><h2>Cocina en calma</h2><p>Película ilustrativa, sin sonido.</p></div>
+  <ArtisticVideo id={267} posterId={968657} posterSizes="(min-width: 1025px) 700px, calc(100vw - 40px)" {...img} class="art-interlude-film"/>
+ </section>
+ <section class="art-figs" aria-label="Higos"><div data-reveal><ArtisticImage id={972271} {...img} class="art-figs-photo"/><p class="art-cap"><b>VI</b> Higos</p></div></section>
+ <CommunitySections lab={cl} root={p.root} {route} mode="home" only={['journal']}/>
+</>}
+{k!=='home'&&<InteriorPages {lab} {fm} root={p.root} kind={k} {route} variant={ember?'ember':'plate'} skin={ember?'frames':'plate'}/>}

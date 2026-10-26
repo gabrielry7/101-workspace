@@ -34,3 +34,7 @@ docs/evidence/h8/*.txt text eol=lf
 fixtures/locks/h8/audit-snapshot/** -text -whitespace
 scripts/inventory-h9.ts text eol=lf
 docs/evidence/h9/*.json text eol=lf
+# Reviewed snapshots and media evidence carry hashes of their exact bytes.
+docs/evidence/claude-code/** -text -whitespace
+docs/evidence/design-evaluation/superdesign-iteration-02-20261022/** -text -whitespace
+data/content/** -text

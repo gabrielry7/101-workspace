@@ -1,0 +1,774 @@
+{
+  "label": "staged",
+  "pass": true,
+  "protectedRoutes": 22,
+  "protectedUnchanged": true,
+  "otherHistoricalRoutes": 124,
+  "historicalUnchanged": true,
+  "changedArtisticRoutes": 0,
+  "allSame": true,
+  "results": [
+    {
+      "route": "/b3/candidate-01/",
+      "unchanged": true,
+      "expected": "bd6ab35bbf566e91e8e4bd0342298d5400e7ec191ec9cb93e533ae13448cf182",
+      "actual": "bd6ab35bbf566e91e8e4bd0342298d5400e7ec191ec9cb93e533ae13448cf182"
+    },
+    {
+      "route": "/b3/candidate-01/carta/",
+      "unchanged": true,
+      "expected": "37411978c2c6d9ae5300d32223369344dc5d122b6e88ec0f9f0c32bbff2d8afe",
+      "actual": "37411978c2c6d9ae5300d32223369344dc5d122b6e88ec0f9f0c32bbff2d8afe"
+    },
+    {
+      "route": "/b3/candidate-01/pedidos/",
+      "unchanged": true,
+      "expected": "2d913811061e7eb2a226d84b60a0153d7a2ced86c834cedf6c960ee2c4c39a8d",
+      "actual": "2d913811061e7eb2a226d84b60a0153d7a2ced86c834cedf6c960ee2c4c39a8d"
+    },
+    {
+      "route": "/b3/candidate-01/reservas/",
+      "unchanged": true,
+      "expected": "ae8dba8249c7ca3deb26cb23182ce4a6877ddb70c902bcc1ce7264bd2b8b054d",
+      "actual": "ae8dba8249c7ca3deb26cb23182ce4a6877ddb70c902bcc1ce7264bd2b8b054d"
+    },
+    {
+      "route": "/b3/candidate-01/historia/",
+      "unchanged": true,
+      "expected": "96a66db243396522b320fce8c028d9ac9cc0f44aac536dec315a1ba7126dcf39",
+      "actual": "96a66db243396522b320fce8c028d9ac9cc0f44aac536dec315a1ba7126dcf39"
+    },
+    {
+      "route": "/b3/candidate-01/visita/",
+      "unchanged": true,
+      "expected": "b313c8e1d046cce3c088039d8dfbd5f4a1ac6d5a954ebd4c2ede1255af7d7814",
+      "actual": "b313c8e1d046cce3c088039d8dfbd5f4a1ac6d5a954ebd4c2ede1255af7d7814"
+    },
+    {
+      "route": "/b3/candidate-01/preguntas/",
+      "unchanged": true,
+      "expected": "110b458d3111d4d05c0999778d0e036f64710e207ec54fbaf050cb5f1919ea1b",
+      "actual": "110b458d3111d4d05c0999778d0e036f64710e207ec54fbaf050cb5f1919ea1b"
+    },
+    {
+      "route": "/b3/candidate-01/diario/",
+      "unchanged": true,
+      "expected": "7933d7cc61e5851eb257bc100425e1755273e827c3a7217549f5fcbd5a13419e",
+      "actual": "7933d7cc61e5851eb257bc100425e1755273e827c3a7217549f5fcbd5a13419e"
+    },
+    {
+      "route": "/b3/candidate-01/opiniones/",
+      "unchanged": true,
+      "expected": "e2ef45fce824ad141564cf6658d5f20ae9595b4f27c721c5c33027d055549ce8",
+      "actual": "e2ef45fce824ad141564cf6658d5f20ae9595b4f27c721c5c33027d055549ce8"
+    },
+    {
+      "route": "/b3/candidate-01/contacto/",
+      "unchanged": true,
+      "expected": "de6de3add857359c24ff166381df77d2057849e8268d70fc35e3a74d0ff30783",
+      "actual": "de6de3add857359c24ff166381df77d2057849e8268d70fc35e3a74d0ff30783"
+    },
+    {
+      "route": "/b3/candidate-01/creditos/",
+      "unchanged": true,
+      "expected": "555586af102fbccedf30e6f94264bdf33cd82c753f0502111e8f58e24e961eeb",
+      "actual": "555586af102fbccedf30e6f94264bdf33cd82c753f0502111e8f58e24e961eeb"
+    },
+    {
+      "route": "/b3/candidate-02/",
+      "unchanged": true,
+      "expected": "9f71f90d474ed8ad13a4616caa7f1dcbdf5cfac4f0869b60610946ab5eca50bf",
+      "actual": "9f71f90d474ed8ad13a4616caa7f1dcbdf5cfac4f0869b60610946ab5eca50bf"
+    },
+    {
+      "route": "/b3/candidate-02/carta/",
+      "unchanged": true,
+      "expected": "b9029a406f358599cb95175b2cf585e7b8f792af8bec5d57cb26b67e4cf20f60",
+      "actual": "b9029a406f358599cb95175b2cf585e7b8f792af8bec5d57cb26b67e4cf20f60"
+    },
+    {
+      "route": "/b3/candidate-02/pedidos/",
+      "unchanged": true,
+      "expected": "52abdce95d7eaa55e2654c24ce3d48faa9a44c2d27a0586e472dada6ff787918",
+      "actual": "52abdce95d7eaa55e2654c24ce3d48faa9a44c2d27a0586e472dada6ff787918"
+    },
+    {
+      "route": "/b3/candidate-02/reservas/",
+      "unchanged": true,
+      "expected": "4d1da38c52dee0181f514f4ac9045daa6eb16862937f017de4a7d36982099a7a",
+      "actual": "4d1da38c52dee0181f514f4ac9045daa6eb16862937f017de4a7d36982099a7a"
+    },
+    {
+      "route": "/b3/candidate-02/historia/",
+      "unchanged": true,
+      "expected": "aa2c4463f2cb27608ee07894d5adcd814322ec1a05feb23b749acf2ca680057a",
+      "actual": "aa2c4463f2cb27608ee07894d5adcd814322ec1a05feb23b749acf2ca680057a"
+    },
+    {
+      "route": "/b3/candidate-02/visita/",
+      "unchanged": true,
+      "expected": "f7e3d28e1e1e642983bd37dc4d38332b72ff669c0d09c68a980b645407bfdb0d",
+      "actual": "f7e3d28e1e1e642983bd37dc4d38332b72ff669c0d09c68a980b645407bfdb0d"
+    },
+    {
+      "route": "/b3/candidate-02/preguntas/",
+      "unchanged": true,
+      "expected": "28c667ed8f896f9dcf6e2d5513aa771c3a95ef7519114330326b721d5164374e",
+      "actual": "28c667ed8f896f9dcf6e2d5513aa771c3a95ef7519114330326b721d5164374e"
+    },
+    {
+      "route": "/b3/candidate-02/diario/",
+      "unchanged": true,
+      "expected": "706ba4e3b4b0decc5aa2668133db61639e7d9da397a0b2954e0d53c5a8e19378",
+      "actual": "706ba4e3b4b0decc5aa2668133db61639e7d9da397a0b2954e0d53c5a8e19378"
+    },
+    {
+      "route": "/b3/candidate-02/opiniones/",
+      "unchanged": true,
+      "expected": "0940cccf833134c6307b8702b917d295ba5caa264d8595f7923ca07ecb7d6aa5",
+      "actual": "0940cccf833134c6307b8702b917d295ba5caa264d8595f7923ca07ecb7d6aa5"
+    },
+    {
+      "route": "/b3/candidate-02/contacto/",
+      "unchanged": true,
+      "expected": "aec23b917170781543b7bb30297be7b98f630f9acc6338f975c1c7bd88ec9bf2",
+      "actual": "aec23b917170781543b7bb30297be7b98f630f9acc6338f975c1c7bd88ec9bf2"
+    },
+    {
+      "route": "/b3/candidate-02/creditos/",
+      "unchanged": true,
+      "expected": "587a6679ed216396af0a6e63d91de6ca626925adf1f7b9d75eaac3aafb8a8259",
+      "actual": "587a6679ed216396af0a6e63d91de6ca626925adf1f7b9d75eaac3aafb8a8259"
+    },
+    {
+      "route": "/b3/candidate-03/",
+      "unchanged": true,
+      "expected": "c9d3f4817ce60dc210ed9b0ee87fc62175be55c43a6bcbc1ce1fae3e6818410a",
+      "actual": "c9d3f4817ce60dc210ed9b0ee87fc62175be55c43a6bcbc1ce1fae3e6818410a"
+    },
+    {
+      "route": "/b3/candidate-03/carta/",
+      "unchanged": true,
+      "expected": "0bbe7d91b39443922ce79de44b1a03cc0979455c6f58029154d1609fbd57d528",
+      "actual": "0bbe7d91b39443922ce79de44b1a03cc0979455c6f58029154d1609fbd57d528"
+    },
+    {
+      "route": "/b3/candidate-03/pedidos/",
+      "unchanged": true,
+      "expected": "dc658a0f3c0eab6415035f2f2249668f11eb4da8cc2f289d23d2766eda4dd36f",
+      "actual": "dc658a0f3c0eab6415035f2f2249668f11eb4da8cc2f289d23d2766eda4dd36f"
+    },
+    {
+      "route": "/b3/candidate-03/reservas/",
+      "unchanged": true,
+      "expected": "13942f3504ca2b635be975cc0b312d2301a934e4acc329b07058fd8027b6071c",
+      "actual": "13942f3504ca2b635be975cc0b312d2301a934e4acc329b07058fd8027b6071c"
+    },
+    {
+      "route": "/b3/candidate-03/historia/",
+      "unchanged": true,
+      "expected": "f46dfdc61da59e9173cf4b7c542ca99cfac3f99def9abb14cc1856e2895f879c",
+      "actual": "f46dfdc61da59e9173cf4b7c542ca99cfac3f99def9abb14cc1856e2895f879c"
+    },
+    {
+      "route": "/b3/candidate-03/visita/",
+      "unchanged": true,
+      "expected": "1bad86c9313e4f10e9a710144f0a12904c3d4bb5e5da3ae4ccd60848867f5550",
+      "actual": "1bad86c9313e4f10e9a710144f0a12904c3d4bb5e5da3ae4ccd60848867f5550"
+    },
+    {
+      "route": "/b3/candidate-03/preguntas/",
+      "unchanged": true,
+      "expected": "5934ac5da76b393eeb3e4d961b43536ec34cc4f1140435be99dbff5ca8ffcee0",
+      "actual": "5934ac5da76b393eeb3e4d961b43536ec34cc4f1140435be99dbff5ca8ffcee0"
+    },
+    {
+      "route": "/b3/candidate-03/diario/",
+      "unchanged": true,
+      "expected": "abd0c5642c31a2f260ac4db6b18ae0e55358290bbe8b2105945d6de8bd0cc189",
+      "actual": "abd0c5642c31a2f260ac4db6b18ae0e55358290bbe8b2105945d6de8bd0cc189"
+    },
+    {
+      "route": "/b3/candidate-03/opiniones/",
+      "unchanged": true,
+      "expected": "123004d371d598f2bd78d294e0dff229b6f789b58ebca1aa2f7f351f4d95c938",
+      "actual": "123004d371d598f2bd78d294e0dff229b6f789b58ebca1aa2f7f351f4d95c938"
+    },
+    {
+      "route": "/b3/candidate-03/contacto/",
+      "unchanged": true,
+      "expected": "c53ef26a0a01f84243d74139a368117fac6249a2ecfebd895e01fc31fc67a67f",
+      "actual": "c53ef26a0a01f84243d74139a368117fac6249a2ecfebd895e01fc31fc67a67f"
+    },
+    {
+      "route": "/b3/candidate-03/creditos/",
+      "unchanged": true,
+      "expected": "0e7d262469113d1b3989020b7c02a73f3bb6dd5cf4c756457c0225a1afcc546d",
+      "actual": "0e7d262469113d1b3989020b7c02a73f3bb6dd5cf4c756457c0225a1afcc546d"
+    },
+    {
+      "route": "/b3/candidate-04/",
+      "unchanged": true,
+      "expected": "85b809250ec30cc890c4b35aa6b9a523b72b89676e7ee05071ab3d9c86cf46b8",
+      "actual": "85b809250ec30cc890c4b35aa6b9a523b72b89676e7ee05071ab3d9c86cf46b8"
+    },
+    {
+      "route": "/b3/candidate-04/carta/",
+      "unchanged": true,
+      "expected": "165dff0824a01ef1e7cb7b7e72f1dcebfad2808d96d50a95ae4c8b72ba1678d9",
+      "actual": "165dff0824a01ef1e7cb7b7e72f1dcebfad2808d96d50a95ae4c8b72ba1678d9"
+    },
+    {
+      "route": "/b3/candidate-04/pedidos/",
+      "unchanged": true,
+      "expected": "28c62910bcb97e0f95fecc2e35d7f0dae8b2c05bad89d4e43cb0dfe9b58b2b95",
+      "actual": "28c62910bcb97e0f95fecc2e35d7f0dae8b2c05bad89d4e43cb0dfe9b58b2b95"
+    },
+    {
+      "route": "/b3/candidate-04/reservas/",
+      "unchanged": true,
+      "expected": "76e8e678eb2a6081bc6134b1f02b5c44b949008e8dea72b3c3348d6f0347e835",
+      "actual": "76e8e678eb2a6081bc6134b1f02b5c44b949008e8dea72b3c3348d6f0347e835"
+    },
+    {
+      "route": "/b3/candidate-04/historia/",
+      "unchanged": true,
+      "expected": "9c9de9267c99ba62b433dbc7ae809351a609dc2cbf27ceb07b755be7f10f455a",
+      "actual": "9c9de9267c99ba62b433dbc7ae809351a609dc2cbf27ceb07b755be7f10f455a"
+    },
+    {
+      "route": "/b3/candidate-04/visita/",
+      "unchanged": true,
+      "expected": "89c1cca60c14c159df10c9b3856f45bb2bab7c8d7748f4c6b6d9c079c4519ded",
+      "actual": "89c1cca60c14c159df10c9b3856f45bb2bab7c8d7748f4c6b6d9c079c4519ded"
+    },
+    {
+      "route": "/b3/candidate-04/preguntas/",
+      "unchanged": true,
+      "expected": "29886dba6c20b49d7f33e8b6177cc97bf73b389effb3a279998755bf1dcb0182",
+      "actual": "29886dba6c20b49d7f33e8b6177cc97bf73b389effb3a279998755bf1dcb0182"
+    },
+    {
+      "route": "/b3/candidate-04/diario/",
+      "unchanged": true,
+      "expected": "4ac1ea7c9b65b4a2b479a6112401d0da85cfd9e0674020b29a77d66905c5504a",
+      "actual": "4ac1ea7c9b65b4a2b479a6112401d0da85cfd9e0674020b29a77d66905c5504a"
+    },
+    {
+      "route": "/b3/candidate-04/opiniones/",
+      "unchanged": true,
+      "expected": "d40a3bc57e10103eb618bc5c1930c013de3fa33d2dc42336c9cb718b405843e9",
+      "actual": "d40a3bc57e10103eb618bc5c1930c013de3fa33d2dc42336c9cb718b405843e9"
+    },
+    {
+      "route": "/b3/candidate-04/contacto/",
+      "unchanged": true,
+      "expected": "798818137afa3375f700cf3c9dbfc7692d2ecd36cf9058ef2f08319401bb676b",
+      "actual": "798818137afa3375f700cf3c9dbfc7692d2ecd36cf9058ef2f08319401bb676b"
+    },
+    {
+      "route": "/b3/candidate-04/creditos/",
+      "unchanged": true,
+      "expected": "5465d3f84e03ece351a1f27632b401478da8babcb188d28ec6f9ed026cce52ed",
+      "actual": "5465d3f84e03ece351a1f27632b401478da8babcb188d28ec6f9ed026cce52ed"
+    }
+  ],
+  "outside": [
+    {
+      "path": "b1/catalogo/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/conflicto/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/ferreteria/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/gimnasio/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/hibrido/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/hibrido-descripcion/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/insuficiente/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/objetivo-explicito/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/recurso-no-inspeccionado/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/reserva-enlace/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/restaurante/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/appointment_service/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/education_programs/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/events_and_entertainment/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/field_service_and_quote/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/food_hospitality/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/industrial_b2b/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/lodging/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/membership_and_classes/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/product_retail/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/professional_advisory/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/property_and_spaces/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/regulated_services/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/transport_and_logistics/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/revision/vehicle_service/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b1/sucursales/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b2/corpus/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b2/demo/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b2/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b2/pilot/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b2/providers/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "b3/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h3-media-pilot/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h4/editorial/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h4/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h4/rail/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h4/split/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/candidate-01/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/candidate-02/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/candidate-04/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/candidate-05/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h5/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-01/desktop/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-01/desktop/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-01/mobile/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-01/mobile/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-02/desktop/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-02/desktop/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-02/mobile/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-02/mobile/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-03/desktop/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-03/desktop/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-03/mobile/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-03/mobile/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-04/desktop/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-04/desktop/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-04/mobile/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-04/mobile/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-05/desktop/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-05/desktop/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-05/mobile/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-05/mobile/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-06/desktop/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-06/desktop/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-06/mobile/identity/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/compare/pair-06/mobile/offering/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/final-candidate-01/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/final-candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/final-candidate-02/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/final-candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/final-candidate-04/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/final-candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/final-candidate-05/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/final-candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/repair-after/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/repair-after/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/repair-before/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/repair-before/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/rollback-restored/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/rollback-restored/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/worse-after/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h6/worse-after/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/dentista-candidate-01/equipo/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/dentista-candidate-01/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/dentista-candidate-01/servicios/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/dentista-candidate-02/equipo/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/dentista-candidate-02/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/dentista-candidate-02/servicios/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hibrido-candidate-01/catalogo/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hibrido-candidate-01/clases/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hibrido-candidate-01/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hibrido-candidate-01/membresias/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hibrido-candidate-02/catalogo/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hibrido-candidate-02/clases/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hibrido-candidate-02/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hibrido-candidate-02/membresias/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hotel-candidate-01/comodidades/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hotel-candidate-01/habitaciones/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hotel-candidate-01/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hotel-candidate-02/comodidades/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hotel-candidate-02/habitaciones/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/hotel-candidate-02/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/media-unknown-candidate-01/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/media-unknown-candidate-01/servicios/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/media-unknown-candidate-02/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/media-unknown-candidate-02/servicios/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/servicio-candidate-01/cobertura/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/servicio-candidate-01/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/servicio-candidate-01/servicios/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/servicio-candidate-02/cobertura/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/servicio-candidate-02/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "h7/servicio-candidate-02/servicios/index.html",
+      "unchanged": true
+    },
+    {
+      "path": "index.html",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+---
+// Shared page-kind operators for every current B3 engine (01-08). One composition per page kind;
+// the engine only chooses the skin (data-variant) and whether photo-led arrangements are used.
+import ContextualModule from './ContextualModule.astro';
+import ContextualImage from './ContextualImage.astro';
+import MenuCollection from './MenuCollection.astro';
+import PreviewIntent from './PreviewIntent.astro';
+import CommunitySections from './CommunitySections.astro';
+import ExperienceFeatures from './ExperienceFeatures.astro';
+import LocationPanel from './LocationPanel.astro';
+import {richExperiencePages as experiencePages} from '../../design/rich-experience-contracts.ts';
+import {experienceRoute} from '../../design/experience-contracts.ts';
+import {pageHeads} from '../../design/nav-labels.ts';
+interface Props{lab:any;fm:any;root:string;kind:string;route:string;variant:string;skin:'ledger'|'front-page'|'frames'|'plate'}
+const {lab,fm,root,kind:k,route,variant,skin}=Astro.props,s=lab.scenario;
+const modules=s.content.pages.flatMap((q:any)=>q.modules),by=(c:string)=>modules.find((m:any)=>m.capability_id===c);
+const link=(kind:string)=>experienceRoute(root,experiencePages.find(q=>q.kind===kind)! as any);
+const creditsHref=link('credits'),carta=link('collection');
+const catalogue=lab.catalogue,menu=catalogue?.module??by('menu');
+const view={...lab.presentation,media_presentation:{creditMode:'linked' as const,creditsHref,cover:true},selection_href:null};
+const mod={handle:fm.handle,at:fm.evaluated_at,route,presentation:view};
+const img={handle:fm.handle,at:fm.evaluated_at,route,creditMode:'linked' as const,creditsHref,cover:true};
+const rich=['ember','plate','riso','indice','marea'].includes(variant);
+const pool=[1868396,10258355,1596417,1004255,968657,1932466,2481346,8594421,1887240,4367047,943245,972271,10266737,1665402,1543170,8233676];
+const vi=['ledger','front-page','ember','plate','market','marea','riso','indice'].indexOf(variant),ki=['collection','request','story','visit','faq','journal','reviews','contact'].indexOf(k);
+const art=(n:number)=>`art:${pool[(vi*3+ki*5+n)%pool.length]}`;
+const head=pageHeads[k]!;
+const photos={handle:fm.handle,at:fm.evaluated_at,route,creditsHref,bindings:fm.review.dish_bindings??{}};
+const headSlot=rich&&['request','visit','faq','reviews','contact'].includes(k)?art(0):undefined;
+---
+<div class:list={['experience-content','interior',`interior-${k}`]} data-variant={variant} id="experience-main" tabindex="-1">
+ <nav class="depth-breadcrumb" aria-label="Ruta de navegación"><a href={root}>Inicio</a><span aria-current="page">{head.h}</span></nav>
+ <header class:list={['page-intro','eg-head','int-head',headSlot&&'has-photo']}><div class="int-head-text"><h1>{head.h}</h1><p>{head.p}</p></div>{headSlot&&<div class="int-head-photo eg-media"><ContextualImage {...img} slot={headSlot}/></div>}</header>
+ {k==='collection'&&<MenuCollection module={menu} root={root} presentation={view} layout={skin} {catalogue} {photos}/>}
+ {k==='selection'&&<section class="int-retired"><p>Esta página formaba parte de una prueba de demostración y ya no ofrece ninguna función.</p><div class="eg-actions"><a class="eg-btn" href={carta}>Ir al menú</a><a class="eg-btn eg-ghost" href={link('request')}>Reservar una mesa</a></div></section>}
+ {k==='request'&&<><PreviewIntent kind="request"><div slot="scene" class="request-scene eg-media"><ContextualImage {...img} slot={art(1)}/></div></PreviewIntent><ExperienceFeatures features={lab.features} root={root} mode="request"/></>}
+ {k==='story'&&<div class="int-story"><ContextualModule module={by('about')} {...mod}/><div class="int-story-photos"><ContextualImage {...img} slot="story"/><ContextualImage {...img} slot={art(0)}/><ContextualImage {...img} slot={art(1)}/></div></div>}
+ {k==='visit'&&<><LocationPanel/><div class="int-visit-facts">{['locations','opening_hours','amenities'].map(cap=><ContextualModule module={by(cap)} {...mod}/>)}</div><ExperienceFeatures features={lab.features} root={root} mode="visit"/></>}
+ {k==='faq'&&<div class="int-faq"><ContextualModule module={by('faqs')} {...mod}/><aside class="int-faq-more"><h2>¿Sigues con dudas?</h2><p>Escríbenos o prepara tu visita.</p><a class="eg-btn" href={link('contact')}>Contacto</a><a class="eg-btn eg-ghost" href={link('request')}>Reservas</a></aside></div>}
+ {k==='journal'&&<CommunitySections lab={{...lab,experience_media:fm}} features={lab.features} root={root} {route} mode="journal" noSupplemental/>}
+ {k==='reviews'&&<CommunitySections lab={{...lab,experience_media:fm}} root={root} {route} mode="reviews" noSupplemental/>}
+ {k==='contact'&&<CommunitySections lab={{...lab,experience_media:fm}} root={root} {route} mode="contact" noSupplemental/>}
+</div>

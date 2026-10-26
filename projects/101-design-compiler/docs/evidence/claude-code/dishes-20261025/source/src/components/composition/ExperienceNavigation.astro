@@ -1,0 +1,8 @@
+---
+import {richExperiencePages} from '../../design/rich-experience-contracts.ts';
+import {experienceRoute} from '../../design/experience-contracts.ts';
+interface Props{root:string;name:string;kind:string;parentKind?:string|undefined}
+const {root,name,kind,parentKind}=Astro.props;
+const groups=[{label:'En la mesa',kinds:['collection','request','selection']},{label:'La casa',kinds:['story','visit','faq']},{label:'Alrededor',kinds:['journal','reviews','contact']}];
+---
+<header class="exp-header depth-header"><a class="exp-brand" href={root} aria-label={`${name}, inicio`}>{name}</a><div class="quick-nav"><a href={`${root}carta/`}>Carta</a><a href={`${root}reservas/`}>Reservas <span class="nav-demo">· demo</span></a></div><details class="depth-navigation" data-depth-nav><summary>Explorar <span aria-hidden="true">＋</span></summary><nav aria-label="Navegación principal"><div class="navigation-heading"><p class="eyebrow">Todo empieza en una mesa.</p><p>Qué te<br/><em>apetece hacer.</em></p></div><div class="navigation-groups">{groups.map(g=><div><p class="eyebrow">{g.label}</p>{g.kinds.map(k=>{const p=richExperiencePages.find(p=>p.kind===k)!;return <a href={experienceRoute(root,p as any)} aria-current={kind===k?'page':parentKind===k?'true':undefined}>{p.label}<span aria-hidden="true">↗</span></a>;})}</div>)}</div><p class="navigation-context">Concepto ficticio · reservas y pedidos de demostración.</p></nav></details></header>

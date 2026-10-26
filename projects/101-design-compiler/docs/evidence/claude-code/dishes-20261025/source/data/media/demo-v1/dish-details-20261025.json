@@ -1,0 +1,4479 @@
+{
+  "kind": "B3_DISH_DETAIL_MEDIA_COMPANION",
+  "evaluated_at": "2026-10-25T18:29:48.214Z",
+  "parent_review_sha256": "5f114b66dab6e87092e87e5b942135e2a17922330f845f0393d2afcaefed567a",
+  "evidence": {
+    "path": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+    "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+  },
+  "routes": [
+    "/b3/candidate-01/carta/pizza/",
+    "/b3/candidate-01/carta/pasta/",
+    "/b3/candidate-01/carta/salad/",
+    "/b3/candidate-01/carta/dessert/",
+    "/b3/candidate-02/carta/pizza/",
+    "/b3/candidate-02/carta/pasta/",
+    "/b3/candidate-02/carta/salad/",
+    "/b3/candidate-02/carta/dessert/",
+    "/b3/candidate-03/carta/pizza/",
+    "/b3/candidate-03/carta/pasta/",
+    "/b3/candidate-03/carta/salad/",
+    "/b3/candidate-03/carta/dessert/",
+    "/b3/candidate-04/carta/pizza/",
+    "/b3/candidate-04/carta/pasta/",
+    "/b3/candidate-04/carta/salad/",
+    "/b3/candidate-04/carta/dessert/"
+  ],
+  "assets": [
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-4991789-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/b2-demo/originals/4991789.jpg",
+      "source": "Pixabay",
+      "external_id": "4991789",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+          "recorded_at": "2026-10-15T02:39:37.094Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-4991789-received",
+      "parent_id": null,
+      "original_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "file_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/4991789.jpg",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pizza",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        },
+        {
+          "purpose": "fictional:poster",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        },
+        {
+          "purpose": "b3-fictional:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        },
+        {
+          "purpose": "b3-fictional:hero",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        },
+        {
+          "purpose": "b3-fictional:poster",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        },
+        {
+          "purpose": "b3-experience:hero",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        },
+        {
+          "purpose": "b3-experience:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/4991789.jpg",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/4991789.jpg",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Pizza · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-4991789-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/4991789-640.webp",
+      "source": "Pixabay",
+      "external_id": "4991789",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+          "recorded_at": "2026-10-15T02:39:37.094Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-4991789-received",
+      "parent_id": "pixabay-4991789-received",
+      "original_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "file_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/4991789-640.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pizza",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        },
+        {
+          "purpose": "fictional:poster",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        },
+        {
+          "purpose": "b3-fictional:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        },
+        {
+          "purpose": "b3-fictional:hero",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        },
+        {
+          "purpose": "b3-fictional:poster",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        },
+        {
+          "purpose": "b3-experience:hero",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        },
+        {
+          "purpose": "b3-experience:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        },
+        {
+          "purpose": "dish-detail:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-640.webp",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/4991789-640.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed"
+        },
+        "width": 640,
+        "height": 427,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pizza · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-4991789-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/4991789-1280.webp",
+      "source": "Pixabay",
+      "external_id": "4991789",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pepperoni-pizza-thin-crest-4991789/",
+          "recorded_at": "2026-10-15T02:39:37.094Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-4991789-received",
+      "parent_id": "pixabay-4991789-received",
+      "original_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "file_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/4991789-1280.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pizza",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        },
+        {
+          "purpose": "fictional:poster",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        },
+        {
+          "purpose": "b3-fictional:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        },
+        {
+          "purpose": "b3-fictional:hero",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        },
+        {
+          "purpose": "b3-fictional:poster",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        },
+        {
+          "purpose": "b3-experience:hero",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        },
+        {
+          "purpose": "b3-experience:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        },
+        {
+          "purpose": "dish-detail:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/4991789-1280.webp",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/4991789-1280.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pizza · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-3547078-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/b2-demo/originals/3547078.jpg",
+      "source": "Pixabay",
+      "external_id": "3547078",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+          "recorded_at": "2026-10-15T02:39:39.054Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-3547078-received",
+      "parent_id": null,
+      "original_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "file_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/3547078.jpg",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pasta",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/3547078.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+          }
+        },
+        {
+          "purpose": "b3-fictional:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/3547078.jpg",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+          }
+        },
+        {
+          "purpose": "b3-experience:story",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/3547078.jpg",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+          }
+        },
+        {
+          "purpose": "b3-experience:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/3547078.jpg",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/3547078.jpg",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1"
+        },
+        "width": 1280,
+        "height": 697,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Pasta · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-3547078-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/3547078-640.webp",
+      "source": "Pixabay",
+      "external_id": "3547078",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+          "recorded_at": "2026-10-15T02:39:39.054Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-3547078-received",
+      "parent_id": "pixabay-3547078-received",
+      "original_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "file_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/3547078-640.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pasta",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/3547078-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+          }
+        },
+        {
+          "purpose": "b3-fictional:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/3547078-640.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+          }
+        },
+        {
+          "purpose": "b3-experience:story",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/3547078-640.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+          }
+        },
+        {
+          "purpose": "b3-experience:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/3547078-640.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+          }
+        },
+        {
+          "purpose": "dish-detail:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/3547078-640.webp",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/3547078-640.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b"
+        },
+        "width": 640,
+        "height": 349,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pasta · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-3547078-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/3547078-1280.webp",
+      "source": "Pixabay",
+      "external_id": "3547078",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/pasta-italian-cuisine-dish-3547078/",
+          "recorded_at": "2026-10-15T02:39:39.054Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-3547078-received",
+      "parent_id": "pixabay-3547078-received",
+      "original_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "file_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/3547078-1280.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:pasta",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/3547078-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+          }
+        },
+        {
+          "purpose": "b3-fictional:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/3547078-1280.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+          }
+        },
+        {
+          "purpose": "b3-experience:story",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/3547078-1280.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+          }
+        },
+        {
+          "purpose": "b3-experience:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/3547078-1280.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+          }
+        },
+        {
+          "purpose": "dish-detail:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/3547078-1280.webp",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/3547078-1280.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0"
+        },
+        "width": 1280,
+        "height": 697,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Pasta · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-791891-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/b2-demo/originals/791891.jpg",
+      "source": "Pixabay",
+      "external_id": "791891",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+          "recorded_at": "2026-10-15T02:44:32.394Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-791891-received",
+      "parent_id": null,
+      "original_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "file_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/791891.jpg",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:salad",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/791891.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+          }
+        },
+        {
+          "purpose": "b3-fictional:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/791891.jpg",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+          }
+        },
+        {
+          "purpose": "b3-experience:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/791891.jpg",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/791891.jpg",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Ensalada · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-791891-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/791891-640.webp",
+      "source": "Pixabay",
+      "external_id": "791891",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+          "recorded_at": "2026-10-15T02:44:32.394Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-791891-received",
+      "parent_id": "pixabay-791891-received",
+      "original_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "file_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/791891-640.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:salad",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/791891-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+          }
+        },
+        {
+          "purpose": "b3-fictional:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/791891-640.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+          }
+        },
+        {
+          "purpose": "b3-experience:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/791891-640.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+          }
+        },
+        {
+          "purpose": "dish-detail:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/791891-640.webp",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/791891-640.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6"
+        },
+        "width": 640,
+        "height": 427,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Ensalada · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-791891-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/791891-1280.webp",
+      "source": "Pixabay",
+      "external_id": "791891",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/salad-fresh-veggies-vegetables-791891/",
+          "recorded_at": "2026-10-15T02:44:32.394Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-791891-received",
+      "parent_id": "pixabay-791891-received",
+      "original_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "file_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/791891-1280.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:salad",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/791891-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+          }
+        },
+        {
+          "purpose": "b3-fictional:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/791891-1280.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+          }
+        },
+        {
+          "purpose": "b3-experience:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/791891-1280.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+          }
+        },
+        {
+          "purpose": "dish-detail:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/791891-1280.webp",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/791891-1280.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588"
+        },
+        "width": 1280,
+        "height": 853,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Ensalada · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-1971552-received",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "private:.tools/b2-demo/originals/1971552.jpg",
+      "source": "Pixabay",
+      "external_id": "1971552",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+          "recorded_at": "2026-10-15T02:44:33.622Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-1971552-received",
+      "parent_id": null,
+      "original_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "file_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/1971552.jpg",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:dessert",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/1971552.jpg",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+          }
+        },
+        {
+          "purpose": "b3-fictional:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/1971552.jpg",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+          }
+        },
+        {
+          "purpose": "b3-experience:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/1971552.jpg",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/1971552.jpg",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36"
+        },
+        "width": 1280,
+        "height": 871,
+        "duration_seconds": null,
+        "codec": "jpeg",
+        "subject": "Postre · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-1971552-640",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/1971552-640.webp",
+      "source": "Pixabay",
+      "external_id": "1971552",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+          "recorded_at": "2026-10-15T02:44:33.622Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-1971552-received",
+      "parent_id": "pixabay-1971552-received",
+      "original_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "file_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/1971552-640.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:dessert",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/1971552-640.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+          }
+        },
+        {
+          "purpose": "b3-fictional:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/1971552-640.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+          }
+        },
+        {
+          "purpose": "b3-experience:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/1971552-640.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+          }
+        },
+        {
+          "purpose": "dish-detail:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/1971552-640.webp",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/1971552-640.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9"
+        },
+        "width": 640,
+        "height": 436,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Postre · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-1971552-1280",
+      "data_mode": "REAL",
+      "kind": "image",
+      "uri": "/media/b2-fictional/1971552-1280.webp",
+      "source": "Pixabay",
+      "external_id": "1971552",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/photos/cake-piece-plate-dessert-pastry-1971552/",
+          "recorded_at": "2026-10-15T02:44:33.622Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-1971552-received",
+      "parent_id": "pixabay-1971552-received",
+      "original_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "file_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "public/media/b2-fictional/1971552-1280.webp",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:dessert",
+          "scope_id": "fixture-restaurante-001-branch-1",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/1971552-1280.webp",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+          }
+        },
+        {
+          "purpose": "b3-fictional:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/1971552-1280.webp",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+          }
+        },
+        {
+          "purpose": "b3-experience:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/1971552-1280.webp",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+          }
+        },
+        {
+          "purpose": "dish-detail:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/1971552-1280.webp",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "public/media/b2-fictional/1971552-1280.webp",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20"
+        },
+        "width": 1280,
+        "height": 871,
+        "duration_seconds": null,
+        "codec": "webp",
+        "subject": "Postre · ejemplo",
+        "findings": [
+          "Original and local resized files visually reviewed and fully decoded; no identifying people or marks observed.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "pixabay-149678-received",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "private:.tools/b2-demo/originals/149678.mp4",
+      "source": "Pixabay",
+      "external_id": "149678",
+      "audio_track": "PRESENT",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-149678/",
+          "recorded_at": "2026-10-15T02:40:40.245Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-149678-received",
+      "parent_id": null,
+      "original_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "file_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/b2-demo/originals/149678.mp4",
+        "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+        "reviewed_at": "2026-10-15T02:59:12.955Z",
+        "evidence_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:motion",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": ".tools/b2-demo/originals/149678.mp4",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+          }
+        },
+        {
+          "purpose": "b3-fictional:motion",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/149678.mp4",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+          }
+        },
+        {
+          "purpose": "b3-experience:motion",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "private:.tools/b2-demo/originals/149678.mp4",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/b2-demo/originals/149678.mp4",
+          "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+          "reviewed_at": "2026-10-15T02:59:12.955Z",
+          "evidence_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0"
+        },
+        "width": 1280,
+        "height": 720,
+        "duration_seconds": 9.36,
+        "codec": "h264",
+        "subject": "Una escena de cocina",
+        "findings": [
+          "234 frames decoded; 1-second samples reviewed, pizza/cutter; output track verified separately.",
+          "Fictional illustration only; not recipe, allergen, factual business or human design approval."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "b3-video-1280-silent",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "/media/b3-experience/149678-silent-1280.mp4",
+      "source": "Pixabay",
+      "external_id": "149678",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-149678/",
+          "recorded_at": "2026-10-15T02:40:40.245Z"
+        },
+        {
+          "source": "B2 fictional usage review",
+          "reference": "docs/evidence/corrections/b2-demo/legal-review.md",
+          "recorded_at": "2026-10-15T02:59:12.955Z"
+        },
+        {
+          "source": "Local video-only lossless remux and actual decode comparison",
+          "reference": "docs/evidence/corrections/b3/experience-media-01/remux.json",
+          "recorded_at": "2026-10-16T17:26:55.897Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "pixabay-149678-received",
+      "parent_id": "pixabay-149678-received",
+      "original_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "file_sha256": "15d8a7edce609b9a48eea6815cd7d1a275610e3bbce9a8488b86ad1548d252c1",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "/media/b3-experience/149678-silent-1280.mp4",
+        "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+        "reviewed_at": "2026-10-16T17:26:55.897Z",
+        "evidence_sha256": "15d8a7edce609b9a48eea6815cd7d1a275610e3bbce9a8488b86ad1548d252c1"
+      },
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "fictional:motion",
+          "scope_id": "fixture-restaurante-001",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "public/media/b2-fictional/149678-silent-640.webm",
+            "reviewer": "Codex: pinned official policy applicability and actual-file assessment; not rights holder",
+            "reviewed_at": "2026-10-15T02:59:12.955Z",
+            "evidence_sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+          }
+        },
+        {
+          "purpose": "b3-fictional:motion",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b2-fictional/149678-silent-640.webm",
+            "reviewer": "Codex: B3 applicability review of existing licensed bytes, not the rights holder",
+            "reviewed_at": "2026-10-15T03:27:12.190Z",
+            "evidence_sha256": "d49c312d1db0515b802ce668206cbf4ded1670ea3b537f0dfbf1a058563d353b"
+          }
+        },
+        {
+          "purpose": "b3-experience:motion",
+          "scope_id": "b3-la-mesa-fictional",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b3-experience/149678-silent-1280.mp4",
+            "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+            "reviewed_at": "2026-10-16T17:26:55.897Z",
+            "evidence_sha256": "15d8a7edce609b9a48eea6815cd7d1a275610e3bbce9a8488b86ad1548d252c1"
+          }
+        },
+        {
+          "purpose": "dish-detail:pizza",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b3-experience/149678-silent-1280.mp4",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "15d8a7edce609b9a48eea6815cd7d1a275610e3bbce9a8488b86ad1548d252c1"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "/media/b3-experience/149678-silent-1280.mp4",
+          "reviewer": "Codex applicability/actual-byte review, not the rights holder",
+          "reviewed_at": "2026-10-16T17:26:55.897Z",
+          "evidence_sha256": "15d8a7edce609b9a48eea6815cd7d1a275610e3bbce9a8488b86ad1548d252c1"
+        },
+        "width": 1280,
+        "height": 720,
+        "duration_seconds": 9.36,
+        "codec": "h264",
+        "subject": "Una escena de cocina",
+        "findings": [
+          "All 234 decoded frames identical to reviewed 1280x720 source.",
+          "Only video chunks copied; no audio track or orphan audio payload.",
+          "Generic fictional atmosphere only; not evidence of recipes or business."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-pixabay-3510-received",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "private:.tools/claude-code/dish-resources-20261025/originals/3510.mp4",
+      "source": "Pixabay",
+      "external_id": "3510",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-3510/",
+          "recorded_at": "2026-10-25T18:18:42.311Z"
+        },
+        {
+          "source": "Task-scoped decode and visual review",
+          "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+          "recorded_at": "2026-10-25T18:29:48.214Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "dish-pixabay-3510-received",
+      "parent_id": null,
+      "original_sha256": "850b5bba8c36297946d566bfee390ea376fac8879846655a770a4721e5770953",
+      "file_sha256": "850b5bba8c36297946d566bfee390ea376fac8879846655a770a4721e5770953",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/claude-code/dish-resources-20261025/originals/3510.mp4",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "850b5bba8c36297946d566bfee390ea376fac8879846655a770a4721e5770953"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/claude-code/dish-resources-20261025/originals/3510.mp4",
+          "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+          "reviewed_at": "2026-10-25T18:29:48.214Z",
+          "evidence_sha256": "850b5bba8c36297946d566bfee390ea376fac8879846655a770a4721e5770953"
+        },
+        "width": 1280,
+        "height": 720,
+        "duration_seconds": 10.01,
+        "codec": "avc1",
+        "subject": "Vegetable ingredient study, no cooking or finished-salad claim",
+        "findings": [
+          "Viewed source/derivative storyboard samples every1.5s after full equal-pixel decode: slow camera move over fresh vegetables, no identifiable people, marks or third-party property observed."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-video-3510",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "/media/b3-dishes/3510-silent.mp4",
+      "source": "Pixabay",
+      "external_id": "3510",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-3510/",
+          "recorded_at": "2026-10-25T18:18:42.311Z"
+        },
+        {
+          "source": "Task-scoped decode and visual review",
+          "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+          "recorded_at": "2026-10-25T18:29:48.214Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "dish-pixabay-3510-received",
+      "parent_id": "dish-pixabay-3510-received",
+      "original_sha256": "850b5bba8c36297946d566bfee390ea376fac8879846655a770a4721e5770953",
+      "file_sha256": "10a89fe1c4ed3fd61c0c0beb9751ff15b7436ee93f566d3dea17623dcf7f3510",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "/media/b3-dishes/3510-silent.mp4",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "10a89fe1c4ed3fd61c0c0beb9751ff15b7436ee93f566d3dea17623dcf7f3510"
+      },
+      "transformations": [
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "dish-detail:salad",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b3-dishes/3510-silent.mp4",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "10a89fe1c4ed3fd61c0c0beb9751ff15b7436ee93f566d3dea17623dcf7f3510"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "/media/b3-dishes/3510-silent.mp4",
+          "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+          "reviewed_at": "2026-10-25T18:29:48.214Z",
+          "evidence_sha256": "10a89fe1c4ed3fd61c0c0beb9751ff15b7436ee93f566d3dea17623dcf7f3510"
+        },
+        "width": 1280,
+        "height": 720,
+        "duration_seconds": 10.01,
+        "codec": "avc1",
+        "subject": "Vegetable ingredient study, no cooking or finished-salad claim",
+        "findings": [
+          "Viewed source/derivative storyboard samples every1.5s after full equal-pixel decode: slow camera move over fresh vegetables, no identifiable people, marks or third-party property observed."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-pixabay-258562-received",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "private:.tools/claude-code/dish-resources-20261025/originals/258562.mp4",
+      "source": "Pixabay",
+      "external_id": "258562",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-258562/",
+          "recorded_at": "2026-10-25T18:18:42.382Z"
+        },
+        {
+          "source": "Task-scoped decode and visual review",
+          "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+          "recorded_at": "2026-10-25T18:29:48.214Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "dish-pixabay-258562-received",
+      "parent_id": null,
+      "original_sha256": "9ad710be580ae5e68a2e3f8081f8bb335ca0d359db36eea7c1a45c32c8c7d8ed",
+      "file_sha256": "9ad710be580ae5e68a2e3f8081f8bb335ca0d359db36eea7c1a45c32c8c7d8ed",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/claude-code/dish-resources-20261025/originals/258562.mp4",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "9ad710be580ae5e68a2e3f8081f8bb335ca0d359db36eea7c1a45c32c8c7d8ed"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/claude-code/dish-resources-20261025/originals/258562.mp4",
+          "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+          "reviewed_at": "2026-10-25T18:29:48.214Z",
+          "evidence_sha256": "9ad710be580ae5e68a2e3f8081f8bb335ca0d359db36eea7c1a45c32c8c7d8ed"
+        },
+        "width": 720,
+        "height": 1280,
+        "duration_seconds": 18.68,
+        "codec": "avc1",
+        "subject": "Illustrative cake decoration, not the exact slice/recipe",
+        "findings": [
+          "Viewed samples throughout18.68s after full equal-pixel decode: hands decorating plain cake, face out of frame, no distinct personal marks or logos observed."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-video-258562",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "/media/b3-dishes/258562-silent.mp4",
+      "source": "Pixabay",
+      "external_id": "258562",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-258562/",
+          "recorded_at": "2026-10-25T18:18:42.382Z"
+        },
+        {
+          "source": "Task-scoped decode and visual review",
+          "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+          "recorded_at": "2026-10-25T18:29:48.214Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "dish-pixabay-258562-received",
+      "parent_id": "dish-pixabay-258562-received",
+      "original_sha256": "9ad710be580ae5e68a2e3f8081f8bb335ca0d359db36eea7c1a45c32c8c7d8ed",
+      "file_sha256": "3dd435193da615cd4efebfd0f36aeeafe0a23c3a97886a200014f25c06271c44",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "/media/b3-dishes/258562-silent.mp4",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "3dd435193da615cd4efebfd0f36aeeafe0a23c3a97886a200014f25c06271c44"
+      },
+      "transformations": [
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "dish-detail:dessert",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b3-dishes/258562-silent.mp4",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "3dd435193da615cd4efebfd0f36aeeafe0a23c3a97886a200014f25c06271c44"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "/media/b3-dishes/258562-silent.mp4",
+          "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+          "reviewed_at": "2026-10-25T18:29:48.214Z",
+          "evidence_sha256": "3dd435193da615cd4efebfd0f36aeeafe0a23c3a97886a200014f25c06271c44"
+        },
+        "width": 720,
+        "height": 1280,
+        "duration_seconds": 18.68,
+        "codec": "avc1",
+        "subject": "Illustrative cake decoration, not the exact slice/recipe",
+        "findings": [
+          "Viewed samples throughout18.68s after full equal-pixel decode: hands decorating plain cake, face out of frame, no distinct personal marks or logos observed."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-pixabay-200157-received",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "private:.tools/claude-code/dish-resources-20261025/originals/200157.mp4",
+      "source": "Pixabay",
+      "external_id": "200157",
+      "audio_track": "PRESENT",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-200157/",
+          "recorded_at": "2026-10-25T18:27:34.905Z"
+        },
+        {
+          "source": "Task-scoped decode and visual review",
+          "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+          "recorded_at": "2026-10-25T18:29:48.214Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "dish-pixabay-200157-received",
+      "parent_id": null,
+      "original_sha256": "1b7f6b9bd60d6b663da552da0e4eb70d6ee2d4760f20940577f4b30149753fd2",
+      "file_sha256": "1b7f6b9bd60d6b663da552da0e4eb70d6ee2d4760f20940577f4b30149753fd2",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": ".tools/claude-code/dish-resources-20261025/originals/200157.mp4",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "1b7f6b9bd60d6b663da552da0e4eb70d6ee2d4760f20940577f4b30149753fd2"
+      },
+      "transformations": [],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": ".tools/claude-code/dish-resources-20261025/originals/200157.mp4",
+          "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+          "reviewed_at": "2026-10-25T18:29:48.214Z",
+          "evidence_sha256": "1b7f6b9bd60d6b663da552da0e4eb70d6ee2d4760f20940577f4b30149753fd2"
+        },
+        "width": 640,
+        "height": 360,
+        "duration_seconds": 17.52,
+        "codec": "avc1",
+        "subject": "Illustrative pasta making, not the exact shrimp recipe",
+        "findings": [
+          "Viewed full storyboard after source/output equal-frame decode; pasta dough and hand-operated preparation; no face; faint out-of-focus embossing on steel is not legible at native640, generic preparation with no endorsement."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-video-200157",
+      "data_mode": "REAL",
+      "kind": "video",
+      "uri": "/media/b3-dishes/200157-silent.mp4",
+      "source": "Pixabay",
+      "external_id": "200157",
+      "audio_track": "NONE",
+      "provenance": [
+        {
+          "source": "Pixabay licensed provider rendition; not camera original",
+          "reference": "https://pixabay.com/videos/id-200157/",
+          "recorded_at": "2026-10-25T18:27:34.905Z"
+        },
+        {
+          "source": "Task-scoped decode and visual review",
+          "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+          "recorded_at": "2026-10-25T18:29:48.214Z"
+        }
+      ],
+      "upstream_rights_status": null,
+      "upstream_document_ids": [],
+      "original_id": "dish-pixabay-200157-received",
+      "parent_id": "dish-pixabay-200157-received",
+      "original_sha256": "1b7f6b9bd60d6b663da552da0e4eb70d6ee2d4760f20940577f4b30149753fd2",
+      "file_sha256": "b63637332ba77bca42997a66511f0b52a220e743003b9d97df8d7371a8b5738b",
+      "hash_review": {
+        "status": "VERIFIED",
+        "reference": "/media/b3-dishes/200157-silent.mp4",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b63637332ba77bca42997a66511f0b52a220e743003b9d97df8d7371a8b5738b"
+      },
+      "transformations": [
+        "TRANSCODE"
+      ],
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "denied_purposes": [],
+      "documentary": null,
+      "relevance": [
+        {
+          "purpose": "dish-detail:pasta",
+          "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+          "review": {
+            "status": "VERIFIED",
+            "reference": "/media/b3-dishes/200157-silent.mp4",
+            "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+            "reviewed_at": "2026-10-25T18:29:48.214Z",
+            "evidence_sha256": "b63637332ba77bca42997a66511f0b52a220e743003b9d97df8d7371a8b5738b"
+          }
+        }
+      ],
+      "inspection": {
+        "status": "REVIEWED",
+        "review": {
+          "status": "VERIFIED",
+          "reference": "/media/b3-dishes/200157-silent.mp4",
+          "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+          "reviewed_at": "2026-10-25T18:29:48.214Z",
+          "evidence_sha256": "b63637332ba77bca42997a66511f0b52a220e743003b9d97df8d7371a8b5738b"
+        },
+        "width": 640,
+        "height": 360,
+        "duration_seconds": 17.52,
+        "codec": "avc1",
+        "subject": "Illustrative pasta making, not the exact shrimp recipe",
+        "findings": [
+          "Viewed full storyboard after source/output equal-frame decode; pasta dough and hand-operated preparation; no face; faint out-of-focus embossing on steel is not legible at native640, generic preparation with no endorsement."
+        ],
+        "quality": "PASS"
+      },
+      "third_party": {
+        "model": "NOT_REQUIRED",
+        "property": "NOT_REQUIRED"
+      }
+    }
+  ],
+  "grants": [
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-grant:pixabay-4991789-received",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-4991789-received",
+      "original_sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_CONTENT_LICENSE",
+      "holder": "Provider lists shailesh68; no compiler ownership asserted",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1",
+        "version": "Scoped dish-detail applicability2026-10-25; existing source license and current Pixabay terms2026-10-20"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-dish-details-20261025"
+      ],
+      "scope_ids": [
+        "b3-la-mesa-fictional-sede-imaginaria"
+      ],
+      "purposes": [
+        "dish-detail:pizza"
+      ],
+      "pages": [
+        "/b3/candidate-01/carta/pizza/",
+        "/b3/candidate-02/carta/pizza/",
+        "/b3/candidate-03/carta/pizza/",
+        "/b3/candidate-04/carta/pizza/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T18:29:48.214Z",
+      "valid_until": "2026-11-24T18:29:48.214Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "shailesh68 / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-grant:pixabay-3547078-received",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-3547078-received",
+      "original_sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "provider": "Pixabay",
+      "license_type": "CC0_1_0_BY_TERMS_SECTION_4",
+      "holder": "Provider lists RitaE; no compiler ownership asserted",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1",
+        "version": "Scoped dish-detail applicability2026-10-25; existing source license and current Pixabay terms2026-10-20"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-dish-details-20261025"
+      ],
+      "scope_ids": [
+        "b3-la-mesa-fictional-sede-imaginaria"
+      ],
+      "purposes": [
+        "dish-detail:pasta"
+      ],
+      "pages": [
+        "/b3/candidate-01/carta/pasta/",
+        "/b3/candidate-02/carta/pasta/",
+        "/b3/candidate-03/carta/pasta/",
+        "/b3/candidate-04/carta/pasta/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T18:29:48.214Z",
+      "valid_until": "2026-11-24T18:29:48.214Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "RitaE / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-grant:pixabay-791891-received",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-791891-received",
+      "original_sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "provider": "Pixabay",
+      "license_type": "CC0_1_0_BY_TERMS_SECTION_4",
+      "holder": "Provider lists JillWellington; no compiler ownership asserted",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1",
+        "version": "Scoped dish-detail applicability2026-10-25; existing source license and current Pixabay terms2026-10-20"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-dish-details-20261025"
+      ],
+      "scope_ids": [
+        "b3-la-mesa-fictional-sede-imaginaria"
+      ],
+      "purposes": [
+        "dish-detail:salad"
+      ],
+      "pages": [
+        "/b3/candidate-01/carta/salad/",
+        "/b3/candidate-02/carta/salad/",
+        "/b3/candidate-03/carta/salad/",
+        "/b3/candidate-04/carta/salad/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T18:29:48.214Z",
+      "valid_until": "2026-11-24T18:29:48.214Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "JillWellington / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-grant:pixabay-1971552-received",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-1971552-received",
+      "original_sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "provider": "Pixabay",
+      "license_type": "CC0_1_0_BY_TERMS_SECTION_4",
+      "holder": "Provider lists Daria-Yakovleva; no compiler ownership asserted",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1",
+        "version": "Scoped dish-detail applicability2026-10-25; existing source license and current Pixabay terms2026-10-20"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-dish-details-20261025"
+      ],
+      "scope_ids": [
+        "b3-la-mesa-fictional-sede-imaginaria"
+      ],
+      "purposes": [
+        "dish-detail:dessert"
+      ],
+      "pages": [
+        "/b3/candidate-01/carta/dessert/",
+        "/b3/candidate-02/carta/dessert/",
+        "/b3/candidate-03/carta/dessert/",
+        "/b3/candidate-04/carta/dessert/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T18:29:48.214Z",
+      "valid_until": "2026-11-24T18:29:48.214Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "Daria-Yakovleva / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-grant:pixabay-149678-received",
+      "data_mode": "REAL",
+      "original_asset_id": "pixabay-149678-received",
+      "original_sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_CONTENT_LICENSE",
+      "holder": "Provider lists u_mcy3jdr8zw; no compiler ownership asserted",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1",
+        "version": "Scoped dish-detail applicability2026-10-25; existing source license and current Pixabay terms2026-10-20"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-dish-details-20261025"
+      ],
+      "scope_ids": [
+        "b3-la-mesa-fictional-sede-imaginaria"
+      ],
+      "purposes": [
+        "dish-detail:pizza"
+      ],
+      "pages": [
+        "/b3/candidate-01/carta/pizza/",
+        "/b3/candidate-02/carta/pizza/",
+        "/b3/candidate-03/carta/pizza/",
+        "/b3/candidate-04/carta/pizza/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T18:29:48.214Z",
+      "valid_until": "2026-11-24T18:29:48.214Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "u_mcy3jdr8zw / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-grant:dish-pixabay-3510-received",
+      "data_mode": "REAL",
+      "original_asset_id": "dish-pixabay-3510-received",
+      "original_sha256": "850b5bba8c36297946d566bfee390ea376fac8879846655a770a4721e5770953",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_TERMS_2026_10_20",
+      "holder": "Provider lists Skylent; no compiler ownership asserted",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1",
+        "version": "Scoped dish-detail applicability2026-10-25; existing source license and current Pixabay terms2026-10-20"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-dish-details-20261025"
+      ],
+      "scope_ids": [
+        "b3-la-mesa-fictional-sede-imaginaria"
+      ],
+      "purposes": [
+        "dish-detail:salad"
+      ],
+      "pages": [
+        "/b3/candidate-01/carta/salad/",
+        "/b3/candidate-02/carta/salad/",
+        "/b3/candidate-03/carta/salad/",
+        "/b3/candidate-04/carta/salad/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T18:29:48.214Z",
+      "valid_until": "2026-11-24T18:29:48.214Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "Skylent / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-grant:dish-pixabay-258562-received",
+      "data_mode": "REAL",
+      "original_asset_id": "dish-pixabay-258562-received",
+      "original_sha256": "9ad710be580ae5e68a2e3f8081f8bb335ca0d359db36eea7c1a45c32c8c7d8ed",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_TERMS_2026_10_20",
+      "holder": "Provider lists SOÑA; no compiler ownership asserted",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1",
+        "version": "Scoped dish-detail applicability2026-10-25; existing source license and current Pixabay terms2026-10-20"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-dish-details-20261025"
+      ],
+      "scope_ids": [
+        "b3-la-mesa-fictional-sede-imaginaria"
+      ],
+      "purposes": [
+        "dish-detail:dessert"
+      ],
+      "pages": [
+        "/b3/candidate-01/carta/dessert/",
+        "/b3/candidate-02/carta/dessert/",
+        "/b3/candidate-03/carta/dessert/",
+        "/b3/candidate-04/carta/dessert/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T18:29:48.214Z",
+      "valid_until": "2026-11-24T18:29:48.214Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "SOÑA / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish-grant:dish-pixabay-200157-received",
+      "data_mode": "REAL",
+      "original_asset_id": "dish-pixabay-200157-received",
+      "original_sha256": "1b7f6b9bd60d6b663da552da0e4eb70d6ee2d4760f20940577f4b30149753fd2",
+      "provider": "Pixabay",
+      "license_type": "PIXABAY_TERMS_2026_10_20",
+      "holder": "Provider lists Pana68; no compiler ownership asserted",
+      "purchaser": "User existing Pixabay API account; free selected resources",
+      "document": {
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1",
+        "version": "Scoped dish-detail applicability2026-10-25; existing source license and current Pixabay terms2026-10-20"
+      },
+      "review": {
+        "status": "VERIFIED",
+        "reference": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+        "reviewer": "Codex: task-scoped source/byte/visual applicability review, not rights holder",
+        "reviewed_at": "2026-10-25T18:29:48.214Z",
+        "evidence_sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+      },
+      "client_ids": [
+        "101-design-compiler-fixture-review"
+      ],
+      "project_ids": [
+        "b3-dish-details-20261025"
+      ],
+      "scope_ids": [
+        "b3-la-mesa-fictional-sede-imaginaria"
+      ],
+      "purposes": [
+        "dish-detail:pasta"
+      ],
+      "pages": [
+        "/b3/candidate-01/carta/pasta/",
+        "/b3/candidate-02/carta/pasta/",
+        "/b3/candidate-03/carta/pasta/",
+        "/b3/candidate-04/carta/pasta/"
+      ],
+      "territories": [
+        "CO"
+      ],
+      "valid_from": "2026-10-25T18:29:48.214Z",
+      "valid_until": "2026-11-24T18:29:48.214Z",
+      "revoked": false,
+      "commercial_web": "ALLOWED",
+      "multiple_clients": "DENIED",
+      "reuse": "DENIED",
+      "redistribution": "DENIED",
+      "sublicensing": "UNKNOWN",
+      "exclusive": "DENIED",
+      "derivatives": "ALLOWED",
+      "transformations": [
+        "RESIZE",
+        "TRANSCODE",
+        "CROP"
+      ],
+      "automation": {
+        "search": "ALLOWED",
+        "download": "ALLOWED"
+      },
+      "ai": {
+        "classification": "UNKNOWN",
+        "embedding": "UNKNOWN",
+        "vision": "ALLOWED",
+        "editing": "DENIED",
+        "training": "DENIED"
+      },
+      "attribution": {
+        "required": true,
+        "text": "Pana68 / Pixabay"
+      },
+      "required_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "releases": {
+        "model": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        },
+        "property": {
+          "status": "UNKNOWN",
+          "reference": null,
+          "reviewer": null,
+          "reviewed_at": null,
+          "evidence_sha256": null
+        }
+      },
+      "restrictions": [
+        "NO_PROVIDER_ENDORSEMENT"
+      ],
+      "retention_until": null,
+      "cost": null
+    }
+  ],
+  "usages": [
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/pizza/:b3-need:pizza:640",
+      "need_id": "b3-need:pizza",
+      "asset_id": "pixabay-4991789-640",
+      "grant_id": "dish-grant:pixabay-4991789-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/pizza/:b3-need:pizza:640",
+      "need_id": "b3-need:pizza",
+      "asset_id": "pixabay-4991789-640",
+      "grant_id": "dish-grant:pixabay-4991789-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/pizza/:b3-need:pizza:640",
+      "need_id": "b3-need:pizza",
+      "asset_id": "pixabay-4991789-640",
+      "grant_id": "dish-grant:pixabay-4991789-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/pizza/:b3-need:pizza:640",
+      "need_id": "b3-need:pizza",
+      "asset_id": "pixabay-4991789-640",
+      "grant_id": "dish-grant:pixabay-4991789-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/pizza/:b3-need:pizza:1280",
+      "need_id": "b3-need:pizza",
+      "asset_id": "pixabay-4991789-1280",
+      "grant_id": "dish-grant:pixabay-4991789-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/pizza/:b3-need:pizza:1280",
+      "need_id": "b3-need:pizza",
+      "asset_id": "pixabay-4991789-1280",
+      "grant_id": "dish-grant:pixabay-4991789-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/pizza/:b3-need:pizza:1280",
+      "need_id": "b3-need:pizza",
+      "asset_id": "pixabay-4991789-1280",
+      "grant_id": "dish-grant:pixabay-4991789-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/pizza/:b3-need:pizza:1280",
+      "need_id": "b3-need:pizza",
+      "asset_id": "pixabay-4991789-1280",
+      "grant_id": "dish-grant:pixabay-4991789-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "shailesh68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/pasta/:b3-need:pasta:640",
+      "need_id": "b3-need:pasta",
+      "asset_id": "pixabay-3547078-640",
+      "grant_id": "dish-grant:pixabay-3547078-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/pasta/:b3-need:pasta:640",
+      "need_id": "b3-need:pasta",
+      "asset_id": "pixabay-3547078-640",
+      "grant_id": "dish-grant:pixabay-3547078-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/pasta/:b3-need:pasta:640",
+      "need_id": "b3-need:pasta",
+      "asset_id": "pixabay-3547078-640",
+      "grant_id": "dish-grant:pixabay-3547078-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/pasta/:b3-need:pasta:640",
+      "need_id": "b3-need:pasta",
+      "asset_id": "pixabay-3547078-640",
+      "grant_id": "dish-grant:pixabay-3547078-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/pasta/:b3-need:pasta:1280",
+      "need_id": "b3-need:pasta",
+      "asset_id": "pixabay-3547078-1280",
+      "grant_id": "dish-grant:pixabay-3547078-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/pasta/:b3-need:pasta:1280",
+      "need_id": "b3-need:pasta",
+      "asset_id": "pixabay-3547078-1280",
+      "grant_id": "dish-grant:pixabay-3547078-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/pasta/:b3-need:pasta:1280",
+      "need_id": "b3-need:pasta",
+      "asset_id": "pixabay-3547078-1280",
+      "grant_id": "dish-grant:pixabay-3547078-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/pasta/:b3-need:pasta:1280",
+      "need_id": "b3-need:pasta",
+      "asset_id": "pixabay-3547078-1280",
+      "grant_id": "dish-grant:pixabay-3547078-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "RitaE / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/salad/:b3-need:salad:640",
+      "need_id": "b3-need:salad",
+      "asset_id": "pixabay-791891-640",
+      "grant_id": "dish-grant:pixabay-791891-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/salad/:b3-need:salad:640",
+      "need_id": "b3-need:salad",
+      "asset_id": "pixabay-791891-640",
+      "grant_id": "dish-grant:pixabay-791891-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/salad/:b3-need:salad:640",
+      "need_id": "b3-need:salad",
+      "asset_id": "pixabay-791891-640",
+      "grant_id": "dish-grant:pixabay-791891-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/salad/:b3-need:salad:640",
+      "need_id": "b3-need:salad",
+      "asset_id": "pixabay-791891-640",
+      "grant_id": "dish-grant:pixabay-791891-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/salad/:b3-need:salad:1280",
+      "need_id": "b3-need:salad",
+      "asset_id": "pixabay-791891-1280",
+      "grant_id": "dish-grant:pixabay-791891-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/salad/:b3-need:salad:1280",
+      "need_id": "b3-need:salad",
+      "asset_id": "pixabay-791891-1280",
+      "grant_id": "dish-grant:pixabay-791891-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/salad/:b3-need:salad:1280",
+      "need_id": "b3-need:salad",
+      "asset_id": "pixabay-791891-1280",
+      "grant_id": "dish-grant:pixabay-791891-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/salad/:b3-need:salad:1280",
+      "need_id": "b3-need:salad",
+      "asset_id": "pixabay-791891-1280",
+      "grant_id": "dish-grant:pixabay-791891-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "JillWellington / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/dessert/:b3-need:dessert:640",
+      "need_id": "b3-need:dessert",
+      "asset_id": "pixabay-1971552-640",
+      "grant_id": "dish-grant:pixabay-1971552-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/dessert/:b3-need:dessert:640",
+      "need_id": "b3-need:dessert",
+      "asset_id": "pixabay-1971552-640",
+      "grant_id": "dish-grant:pixabay-1971552-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/dessert/:b3-need:dessert:640",
+      "need_id": "b3-need:dessert",
+      "asset_id": "pixabay-1971552-640",
+      "grant_id": "dish-grant:pixabay-1971552-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/dessert/:b3-need:dessert:640",
+      "need_id": "b3-need:dessert",
+      "asset_id": "pixabay-1971552-640",
+      "grant_id": "dish-grant:pixabay-1971552-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/dessert/:b3-need:dessert:1280",
+      "need_id": "b3-need:dessert",
+      "asset_id": "pixabay-1971552-1280",
+      "grant_id": "dish-grant:pixabay-1971552-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/dessert/:b3-need:dessert:1280",
+      "need_id": "b3-need:dessert",
+      "asset_id": "pixabay-1971552-1280",
+      "grant_id": "dish-grant:pixabay-1971552-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/dessert/:b3-need:dessert:1280",
+      "need_id": "b3-need:dessert",
+      "asset_id": "pixabay-1971552-1280",
+      "grant_id": "dish-grant:pixabay-1971552-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/dessert/:b3-need:dessert:1280",
+      "need_id": "b3-need:dessert",
+      "asset_id": "pixabay-1971552-1280",
+      "grant_id": "dish-grant:pixabay-1971552-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Daria-Yakovleva / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/pizza/:dish-video:pizza:1280",
+      "need_id": "dish-video:pizza",
+      "asset_id": "b3-video-1280-silent",
+      "grant_id": "dish-grant:pixabay-149678-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "u_mcy3jdr8zw / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/pizza/:dish-video:pizza:1280",
+      "need_id": "dish-video:pizza",
+      "asset_id": "b3-video-1280-silent",
+      "grant_id": "dish-grant:pixabay-149678-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "u_mcy3jdr8zw / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/pizza/:dish-video:pizza:1280",
+      "need_id": "dish-video:pizza",
+      "asset_id": "b3-video-1280-silent",
+      "grant_id": "dish-grant:pixabay-149678-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "u_mcy3jdr8zw / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/pizza/:dish-video:pizza:1280",
+      "need_id": "dish-video:pizza",
+      "asset_id": "b3-video-1280-silent",
+      "grant_id": "dish-grant:pixabay-149678-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/pizza/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pizza",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "u_mcy3jdr8zw / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/salad/:dish-video:salad:1280",
+      "need_id": "dish-video:salad",
+      "asset_id": "dish-video-3510",
+      "grant_id": "dish-grant:dish-pixabay-3510-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Skylent / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/salad/:dish-video:salad:1280",
+      "need_id": "dish-video:salad",
+      "asset_id": "dish-video-3510",
+      "grant_id": "dish-grant:dish-pixabay-3510-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Skylent / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/salad/:dish-video:salad:1280",
+      "need_id": "dish-video:salad",
+      "asset_id": "dish-video-3510",
+      "grant_id": "dish-grant:dish-pixabay-3510-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Skylent / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/salad/:dish-video:salad:1280",
+      "need_id": "dish-video:salad",
+      "asset_id": "dish-video-3510",
+      "grant_id": "dish-grant:dish-pixabay-3510-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/salad/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:salad",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Skylent / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/dessert/:dish-video:dessert:720",
+      "need_id": "dish-video:dessert",
+      "asset_id": "dish-video-258562",
+      "grant_id": "dish-grant:dish-pixabay-258562-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "SOÑA / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/dessert/:dish-video:dessert:720",
+      "need_id": "dish-video:dessert",
+      "asset_id": "dish-video-258562",
+      "grant_id": "dish-grant:dish-pixabay-258562-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "SOÑA / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/dessert/:dish-video:dessert:720",
+      "need_id": "dish-video:dessert",
+      "asset_id": "dish-video-258562",
+      "grant_id": "dish-grant:dish-pixabay-258562-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "SOÑA / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/dessert/:dish-video:dessert:720",
+      "need_id": "dish-video:dessert",
+      "asset_id": "dish-video-258562",
+      "grant_id": "dish-grant:dish-pixabay-258562-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/dessert/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:dessert",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "SOÑA / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-01/carta/pasta/:dish-video:pasta:640",
+      "need_id": "dish-video:pasta",
+      "asset_id": "dish-video-200157",
+      "grant_id": "dish-grant:dish-pixabay-200157-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-01/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Pana68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-02/carta/pasta/:dish-video:pasta:640",
+      "need_id": "dish-video:pasta",
+      "asset_id": "dish-video-200157",
+      "grant_id": "dish-grant:dish-pixabay-200157-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-02/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Pana68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-03/carta/pasta/:dish-video:pasta:640",
+      "need_id": "dish-video:pasta",
+      "asset_id": "dish-video-200157",
+      "grant_id": "dish-grant:dish-pixabay-200157-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-03/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Pana68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "dish:/b3/candidate-04/carta/pasta/:dish-video:pasta:640",
+      "need_id": "dish-video:pasta",
+      "asset_id": "dish-video-200157",
+      "grant_id": "dish-grant:dish-pixabay-200157-received",
+      "client_id": "101-design-compiler-fixture-review",
+      "project_id": "b3-dish-details-20261025",
+      "business_id": "b3-la-mesa-fictional",
+      "scope_id": "b3-la-mesa-fictional-sede-imaginaria",
+      "page": "/b3/candidate-04/carta/pasta/",
+      "module_id": "semantic-682a641e4e80786c09f19e2c",
+      "purpose": "dish-detail:pasta",
+      "role": "ILLUSTRATIVE",
+      "representation": "GENERIC_CONTEXT",
+      "subject_ids": [],
+      "transformations": [
+        "CROP"
+      ],
+      "territory": "CO",
+      "attribution_text": "Pana68 / Pixabay",
+      "generic_label": "Restaurante ficticio · imágenes y vídeo ilustrativos de Pixabay. No representan una empresa ni sus productos reales.",
+      "endorsement_claimed": false,
+      "context_notices": [
+        "Pixabay y sus autores no respaldan este escenario."
+      ],
+      "ai_operations": [],
+      "automated_access": []
+    }
+  ],
+  "files": [
+    {
+      "asset_id": "pixabay-4991789-received",
+      "path": ".tools/b2-demo/originals/4991789.jpg",
+      "sha256": "7b18540ba092957d5be611ff45096ba8339f46102bf523ce08fdff4290e00bfb",
+      "bytes": 476639
+    },
+    {
+      "asset_id": "pixabay-4991789-640",
+      "path": "public/media/b2-fictional/4991789-640.webp",
+      "sha256": "304c465d59617f819c660824ca95f14484a8da38e358d6570d0879f0ee605eed",
+      "bytes": 86066
+    },
+    {
+      "asset_id": "pixabay-4991789-1280",
+      "path": "public/media/b2-fictional/4991789-1280.webp",
+      "sha256": "d5b24f7273d2155765e7c797742be0e1ee6b92645ab4991f727c17fdce1aaa71",
+      "bytes": 305320
+    },
+    {
+      "asset_id": "pixabay-3547078-received",
+      "path": ".tools/b2-demo/originals/3547078.jpg",
+      "sha256": "de53d4b3b757d22f964b0c7a9c7058be60afb64e9c6978a49a789180fdfe47c1",
+      "bytes": 229835
+    },
+    {
+      "asset_id": "pixabay-3547078-640",
+      "path": "public/media/b2-fictional/3547078-640.webp",
+      "sha256": "d87e768d8d19669021f51899f4e1839ff40f22e4dbf4b1b5129d1cdd629abb1b",
+      "bytes": 41984
+    },
+    {
+      "asset_id": "pixabay-3547078-1280",
+      "path": "public/media/b2-fictional/3547078-1280.webp",
+      "sha256": "de51e1f0d8597ef3f111e9a6389a5845bba104e87d2717904f4d098f0bc21ee0",
+      "bytes": 116602
+    },
+    {
+      "asset_id": "pixabay-791891-received",
+      "path": ".tools/b2-demo/originals/791891.jpg",
+      "sha256": "88287ff705eae28a0690ce06c0b411da1461b9b875bdab8a2c79bb832542376c",
+      "bytes": 283569
+    },
+    {
+      "asset_id": "pixabay-791891-640",
+      "path": "public/media/b2-fictional/791891-640.webp",
+      "sha256": "84045ff5d1dfaf994d3b5f644b5ce4f1cc4e5d0bb1e9bf0c6703c86f199350d6",
+      "bytes": 45472
+    },
+    {
+      "asset_id": "pixabay-791891-1280",
+      "path": "public/media/b2-fictional/791891-1280.webp",
+      "sha256": "7dc9dac87c3da0356ec8e7d2f96656a4146f22bebe9e9bd7ddaa7eea6929e588",
+      "bytes": 126204
+    },
+    {
+      "asset_id": "pixabay-1971552-received",
+      "path": ".tools/b2-demo/originals/1971552.jpg",
+      "sha256": "1845534709cdd7efad8f66f872dc07de79c43b231fec8b44c917c6ccefe5dc36",
+      "bytes": 253809
+    },
+    {
+      "asset_id": "pixabay-1971552-640",
+      "path": "public/media/b2-fictional/1971552-640.webp",
+      "sha256": "dc7172ca75590e66163fb594d6f09dacd35d4e0e43eae59608e52395b1c62cf9",
+      "bytes": 36338
+    },
+    {
+      "asset_id": "pixabay-1971552-1280",
+      "path": "public/media/b2-fictional/1971552-1280.webp",
+      "sha256": "70a1c9f5c2769bd83bab4c123b20cc1fd5aad035c7b3de1aba3fca6f10956f20",
+      "bytes": 127138
+    },
+    {
+      "asset_id": "pixabay-149678-received",
+      "path": ".tools/b2-demo/originals/149678.mp4",
+      "sha256": "37d5f583f0368d376dcb461b18b5c06021eeee92bed281dc16be4df2734223d0",
+      "bytes": 2801470
+    },
+    {
+      "asset_id": "b3-video-1280-silent",
+      "path": "public/media/b3-experience/149678-silent-1280.mp4",
+      "sha256": "15d8a7edce609b9a48eea6815cd7d1a275610e3bbce9a8488b86ad1548d252c1",
+      "bytes": 2577142
+    },
+    {
+      "asset_id": "dish-pixabay-3510-received",
+      "path": ".tools/claude-code/dish-resources-20261025/originals/3510.mp4",
+      "sha256": "850b5bba8c36297946d566bfee390ea376fac8879846655a770a4721e5770953",
+      "bytes": 3122555
+    },
+    {
+      "asset_id": "dish-video-3510",
+      "path": "public/media/b3-dishes/3510-silent.mp4",
+      "sha256": "10a89fe1c4ed3fd61c0c0beb9751ff15b7436ee93f566d3dea17623dcf7f3510",
+      "bytes": 3122326
+    },
+    {
+      "asset_id": "dish-pixabay-258562-received",
+      "path": ".tools/claude-code/dish-resources-20261025/originals/258562.mp4",
+      "sha256": "9ad710be580ae5e68a2e3f8081f8bb335ca0d359db36eea7c1a45c32c8c7d8ed",
+      "bytes": 2646784
+    },
+    {
+      "asset_id": "dish-video-258562",
+      "path": "public/media/b3-dishes/258562-silent.mp4",
+      "sha256": "3dd435193da615cd4efebfd0f36aeeafe0a23c3a97886a200014f25c06271c44",
+      "bytes": 2648506
+    },
+    {
+      "asset_id": "dish-pixabay-200157-received",
+      "path": ".tools/claude-code/dish-resources-20261025/originals/200157.mp4",
+      "sha256": "1b7f6b9bd60d6b663da552da0e4eb70d6ee2d4760f20940577f4b30149753fd2",
+      "bytes": 1964106
+    },
+    {
+      "asset_id": "dish-video-200157",
+      "path": "public/media/b3-dishes/200157-silent.mp4",
+      "sha256": "b63637332ba77bca42997a66511f0b52a220e743003b9d97df8d7371a8b5738b",
+      "bytes": 1542861
+    }
+  ],
+  "video_choices": {
+    "pizza": {
+      "asset_id": "b3-video-1280-silent",
+      "label": "Pizza · vídeo ilustrativo"
+    },
+    "salad": {
+      "asset_id": "dish-video-3510",
+      "label": "Verduras frescas · vídeo ilustrativo"
+    },
+    "dessert": {
+      "asset_id": "dish-video-258562",
+      "label": "Decoración de pastel · vídeo ilustrativo"
+    },
+    "pasta": {
+      "asset_id": "dish-video-200157",
+      "label": "Elaboración de pasta · vídeo ilustrativo"
+    }
+  },
+  "review_sha256": "3ef00cf620d6eec4ae04f844713e5c6f8fbebbe470be955ee28c613cf1931332"
+}

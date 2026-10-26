@@ -1,0 +1,1500 @@
+{
+  "source": "C:\\Users\\gabri\\101-design-compiler\\.tools\\claude-worktrees\\restaurant-catalogue40-20261025",
+  "sources": [
+    {
+      "path": "data/content/demo-catalogue-40.json",
+      "sha256": "cab5d68e110b85754c43f41d6526272befb252ab9c0fc59a5cf3e4c033364be4"
+    },
+    {
+      "path": "data/media/demo-v1/artistic-20261025.json",
+      "sha256": "7773333d8d644107a83891793ed27a6264b10858fd0909d86c075b81c9cc22ff"
+    },
+    {
+      "path": "data/media/demo-v1/claude-optional-20261024.json",
+      "sha256": "b72e6b7fd8dbb85821697d370bbcb1a79c6f48b436058242203bbe9ca1b307c4"
+    },
+    {
+      "path": "data/media/demo-v1/dish-details-20261025.json",
+      "sha256": "6418aeabd2094fc8819bb90076288495a4c2d4c6a5eb44d54c581c3883742add"
+    },
+    {
+      "path": "docs/evidence/claude-code/artistic-20261025/resources-review.json",
+      "sha256": "308adb3b05a4299675dfa4c16d70328e943a40c9cfdc7ffedcbe45d64ff06648"
+    },
+    {
+      "path": "docs/evidence/claude-code/dishes-20261025/media-review.json",
+      "sha256": "b7d9d53aaeeeb89edec1d86bd109b0ab12f71fb2bd2a889c47e674d19e8f49f1"
+    },
+    {
+      "path": "docs/evidence/claude-code/redesign-20261024/multimedia-review.json",
+      "sha256": "a7fa3be173da51daa56293af8a28f96ae07aaa887ceff8f56ebf6b1c0028a614"
+    },
+    {
+      "path": "public/fonts/b3-artistic/bodonimoda-OFL.txt",
+      "sha256": "931dfe2e0cd3c9443295f5c1d754b8a8403bf060df50c1d5900267ade83d0046"
+    },
+    {
+      "path": "public/fonts/b3-artistic/bodonimoda.woff",
+      "sha256": "3ac63a7baa08bb7af148929baf5288b31bc2b3c3a14763ab0ca6541b8ab33ae3"
+    },
+    {
+      "path": "public/fonts/b3-artistic/dmsans-OFL.txt",
+      "sha256": "9af36190332437f5ecd09974de43c1f7c77a310a996cdd8ceb25628b458840e1"
+    },
+    {
+      "path": "public/fonts/b3-artistic/dmsans.woff",
+      "sha256": "d137b1c03916ead1adf9d604a6a020f4716a5a367fb09cc53e645f412922a173"
+    },
+    {
+      "path": "public/fonts/b3-artistic/syne-OFL.txt",
+      "sha256": "cc43cdce6f91c57989af8459341c276655e34224e954fa69c2ad700831a742d8"
+    },
+    {
+      "path": "public/fonts/b3-artistic/syne.woff",
+      "sha256": "db4c864d91aaa1b709d97cafebf862a28b7893747b030885436454cbe7813301"
+    },
+    {
+      "path": "src/components/composition/ArtisticImage.astro",
+      "sha256": "848b14cafb6d5adecfd37d1d055a09b1ab2bb4a1595d2de3b0bde8799f1a1906"
+    },
+    {
+      "path": "src/components/composition/ArtisticPages.astro",
+      "sha256": "6cc17fabef0c11c28b4f115ec9037a62e3548f64e73ad4c0841ac794b3858a49"
+    },
+    {
+      "path": "src/components/composition/ArtisticVideo.astro",
+      "sha256": "bca43ce8d48d06ac0f99295f74270dc67ab67ba377f4f78f409331e0e089e628"
+    },
+    {
+      "path": "src/components/composition/CatalogueSelection.astro",
+      "sha256": "de1f126bb9302a7120b3a87ee2acca41ff61f48e4e66867d9e122453ad8e8843"
+    },
+    {
+      "path": "src/components/composition/DishDetail.astro",
+      "sha256": "02d0deb3efbf3d7623d4020dc3ab0f44895a29e3744e049c7f6719daf16f18e7"
+    },
+    {
+      "path": "src/components/composition/MenuCollection.astro",
+      "sha256": "1095776d1ee2ad2b3c65a51bc6e8b4b5afe535c94eae9176eb901af9193ee206"
+    },
+    {
+      "path": "src/components/composition/SupplementalImage.astro",
+      "sha256": "ca65e464cafc6d98dfbd1876bcf38d698b46161b4bc78e0396a250eba0d4ea01"
+    },
+    {
+      "path": "src/design/artistic-direction.ts",
+      "sha256": "58ccd101f44fa090ac4f9fc362bd785a96de337291a26d36bb0a66d8932f5751"
+    },
+    {
+      "path": "src/design/artistic-ember.css",
+      "sha256": "98dc189eca3cbe4e0a3c9e31aa224a74a20b39cdca690bbf1005c47ab0ddf85a"
+    },
+    {
+      "path": "src/design/artistic-film.js",
+      "sha256": "d07d0f28ef31a9432e7d892d57c8d8d0d72c054b76308f25512527ad6abf9a2f"
+    },
+    {
+      "path": "src/design/artistic-plate.css",
+      "sha256": "f0565240e019bf9eafcdebc536660c549119e35d90544a925cb79fcd471263ed"
+    },
+    {
+      "path": "src/design/catalogue-client.js",
+      "sha256": "f23e441f28173bbe81207b078ad685f5a5b983bc4ea3866b1656e23469a11928"
+    },
+    {
+      "path": "src/design/catalogue.css",
+      "sha256": "e07db240732333c2d268779acc8832427acdbf90ea954c81c8bc81d65c748bdd"
+    },
+    {
+      "path": "src/design/dish-detail.css",
+      "sha256": "ca5dcc051efeaefbe16946f9ce0ab76620c3cd7a213cc0cf98435357182aab7e"
+    },
+    {
+      "path": "src/design/dish-routes.ts",
+      "sha256": "4eccea678d0649f8f5195b258ad5f2afae852a61ee8853becb979da46634fbf0"
+    },
+    {
+      "path": "src/design/menu-carta.css",
+      "sha256": "25b53d32ed4a818e49e325d0ddb90ed1c566416aa24965befebcf439eac18921"
+    },
+    {
+      "path": "src/design/restaurant-catalogue.ts",
+      "sha256": "a8afc132011242a921a9e0aa72257ac172799ff62e6051489123ac6fb5a31e26"
+    },
+    {
+      "path": "src/media/artistic-restaurant.ts",
+      "sha256": "25ed2a9d24d06600eb8166e4b147d5aefd0e0a163d2b24ef9864eb25400c7f21"
+    },
+    {
+      "path": "src/media/dish-media.ts",
+      "sha256": "04120aab9e2c6186446cc58bb729f3f0780313b012e017f1ffdc74409559a2fa"
+    },
+    {
+      "path": "src/media/optional-restaurant.ts",
+      "sha256": "35db836715eec84917aba3587cb49a7c5cf0d1e459054f29ccb5e7e5a1d32128"
+    },
+    {
+      "path": "src/pages/b3/[candidate]/carta/[dish].astro",
+      "sha256": "517d1b85d80d8006afe530f3ab4a37f3932289aa6297aad959bd82cb49921384"
+    },
+    {
+      "path": "tests/artistic-restaurant.test.ts",
+      "sha256": "76db3b7c303292f51b3c0830d99a98b5119ac1c56f8f9f84af139e414e57a76d"
+    },
+    {
+      "path": "tests/dish-flow.test.ts",
+      "sha256": "67da83a0f9f3f944716477edcc46e45bd1f025f04551cc40fd3e6750d53c591e"
+    },
+    {
+      "path": "tests/optional-restaurant.test.ts",
+      "sha256": "0cf641b45abd5fa386a1a7600feed2df577b3210d7b4f40bcdd558ef42e39506"
+    },
+    {
+      "path": "tests/restaurant-catalogue.test.ts",
+      "sha256": "51a91fc5ab584ab091647e7aed7398c3d04f85fb2f27347acdc0693a65c2f52d"
+    },
+    {
+      "path": "src/components/composition/CommunitySections.astro",
+      "sha256": "b2dbdfa7414bd1f41da71fba6aa157f17994dcb283235627084224cdb65d1ddb"
+    },
+    {
+      "path": "src/components/composition/ExperienceComposition.astro",
+      "sha256": "0376178b28e754081161f79c890f11d588e377d74e064169f362c466b5514c8f"
+    },
+    {
+      "path": "src/components/composition/ExperienceNavigation.astro",
+      "sha256": "32d0ac9c40fd562155d41e677d453d230f4efe2f8fd4443e6767e75008d28cc8"
+    },
+    {
+      "path": "src/components/composition/PreviewIntent.astro",
+      "sha256": "acefba4de8e516223b567d525c30cf483c6cba668d8edc8154bbe5bf32911bdc"
+    },
+    {
+      "path": "src/design/experience-refinement.css",
+      "sha256": "cd6736398062f32d2482757b108078ae242a3aa53b133d6ad2444da8a2fa6616"
+    },
+    {
+      "path": "src/media/composition-media.ts",
+      "sha256": "5da72097b2281bbbfb2fed8547206c6db520fd3294adf77ae51fe311ebd63d40"
+    },
+    {
+      "path": "src/pages/b3/[candidate]/[page].astro",
+      "sha256": "b19b5a642119d9b0882be84e9fda0dec44126e90a0305b342497fb51652cf730"
+    }
+  ],
+  "routes": [
+    {
+      "path": "b1/catalogo/index.html",
+      "sha256": "a881e106247dffb929553c38485b7f99c93b28179157dcbb8884691deeb35bbe"
+    },
+    {
+      "path": "b1/conflicto/index.html",
+      "sha256": "fc789b082f28c1d3f63103a4a544856abb4a8d6d9ebe18f395397df326688019"
+    },
+    {
+      "path": "b1/ferreteria/index.html",
+      "sha256": "c7475567b0e2fc7c6d7cdb9f7e87432fb96c90044f6c5fc2e816e59caab5cc14"
+    },
+    {
+      "path": "b1/gimnasio/index.html",
+      "sha256": "227eef4f05704922f0c8f6eab24e806ccc9cde29d90660415a0305b36205e7c3"
+    },
+    {
+      "path": "b1/hibrido/index.html",
+      "sha256": "c0db40a7b1718dcb450ade0d63574a8cec3ff3185e79aaad531f797613a977b9"
+    },
+    {
+      "path": "b1/hibrido-descripcion/index.html",
+      "sha256": "f7c65bbdd029987b9478eb73703211edc30a1bd7456edf9c28b50d7b9da4ae7f"
+    },
+    {
+      "path": "b1/index.html",
+      "sha256": "e347ee6bb7dce41e343e3c57d1037e2f22ac58b3879d78ae464cb9494eee6dde"
+    },
+    {
+      "path": "b1/insuficiente/index.html",
+      "sha256": "9bc044b6c7037975089dbd9c7d0052ce1c01eee5efa844ebb8ada696b2822bd3"
+    },
+    {
+      "path": "b1/objetivo-explicito/index.html",
+      "sha256": "ed8b612757e1f202ab26bfa831b97bfd1c894f9cc8a13b250e316629e1955493"
+    },
+    {
+      "path": "b1/recurso-no-inspeccionado/index.html",
+      "sha256": "f6c8f9f3ae749370a058d98e6c8d3f7361aaeaa92a53eb2ffd086c6a73677582"
+    },
+    {
+      "path": "b1/reserva-enlace/index.html",
+      "sha256": "b0b5a089f26a5084a69635cf6da41c2aec6b5d66f68dc771cde172e18cfee5fe"
+    },
+    {
+      "path": "b1/restaurante/index.html",
+      "sha256": "c7ff2e325dd69a7f169bb92ce310ff45334d0c52f3eee5fae32e94b2b78ff380"
+    },
+    {
+      "path": "b1/revision/appointment_service/index.html",
+      "sha256": "098e4fa4c1c44538e55b6887456aa1467cdd95b71b1a592ba9bbcafd816ecb77"
+    },
+    {
+      "path": "b1/revision/education_programs/index.html",
+      "sha256": "119a35ef6dcf9f7e4ed205842e33c317e971e4022d16d67ce8de7856bbbeaf34"
+    },
+    {
+      "path": "b1/revision/events_and_entertainment/index.html",
+      "sha256": "4900f4db3573175098ae17882a20abd7bf763a12c7c6aef70cf62b066c13f69f"
+    },
+    {
+      "path": "b1/revision/field_service_and_quote/index.html",
+      "sha256": "79caebc6c058f6734cc6e9f1b2c4ac3f5f9c0978e44b32e92413146fc76ec202"
+    },
+    {
+      "path": "b1/revision/food_hospitality/index.html",
+      "sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf"
+    },
+    {
+      "path": "b1/revision/index.html",
+      "sha256": "c076b4e64fc57e3e491c9753bce31e0abe99afa56362fb95c55bfb8531545737"
+    },
+    {
+      "path": "b1/revision/industrial_b2b/index.html",
+      "sha256": "b8d0c61f906b8c25f964a7dd2f3e95bd1701a12d2ab8afc9d0fa6fdcf5507400"
+    },
+    {
+      "path": "b1/revision/lodging/index.html",
+      "sha256": "d6003e845e7aa077ef520ff3005a2b4ed7f2a765e3c24061595568883fd07c37"
+    },
+    {
+      "path": "b1/revision/membership_and_classes/index.html",
+      "sha256": "7d4760984879c53a788901ac7e1e3110ac3489a2d651367e3281685a42fb6200"
+    },
+    {
+      "path": "b1/revision/product_retail/index.html",
+      "sha256": "a4b507a92ad8debba07ef8d9d7c1bf6aa9560a993034a0d2f44c88078301112d"
+    },
+    {
+      "path": "b1/revision/professional_advisory/index.html",
+      "sha256": "866c4871d4c756b01bd3d1de41abcc39a729c9a43ff47430cf9456f4c742c7ea"
+    },
+    {
+      "path": "b1/revision/property_and_spaces/index.html",
+      "sha256": "58a930a73a6e6ece4e968f6db400aaaa8ae4dd07496d422847c3f28f986fa5df"
+    },
+    {
+      "path": "b1/revision/regulated_services/index.html",
+      "sha256": "f81da79a140665e751be04f5cb6b79866fd884cb9419aaa45f75d3c176bd932d"
+    },
+    {
+      "path": "b1/revision/transport_and_logistics/index.html",
+      "sha256": "4ae3636c4c93ec2eafd02005b5e51afb9ecdd596909721c065449770bd7f1d9c"
+    },
+    {
+      "path": "b1/revision/vehicle_service/index.html",
+      "sha256": "ec8316dbddb86444a3a7d5c0af318017eb7bdd4c15f6e288a7dab23574992d64"
+    },
+    {
+      "path": "b1/sucursales/index.html",
+      "sha256": "5e1e2177b515656f58d46d4d8e8e2407361e69ad6c8c7f2b2372a56cd8f4eb13"
+    },
+    {
+      "path": "b2/corpus/index.html",
+      "sha256": "74b71f8004ad77e2a7c3054ab63ffab61fae0f621645b6f27a9c99ae2af176a9"
+    },
+    {
+      "path": "b2/demo/index.html",
+      "sha256": "0dc6573963eded0389784fa4b58b3c8ec2100df98c4b4fd760fb5c7abb14245a"
+    },
+    {
+      "path": "b2/index.html",
+      "sha256": "8395781f43b81dbc5db39eeba515348b5b82bfe80d57a3a5557312c1f9067241"
+    },
+    {
+      "path": "b2/pilot/index.html",
+      "sha256": "dcdb5503f120bdde5bc081748cc59645fea45de6c977d09d3d7efcfd08ded216"
+    },
+    {
+      "path": "b2/providers/index.html",
+      "sha256": "a0d15697415a0e713700f535c39690045e99ff94e162f07befe801f8fb7516fb"
+    },
+    {
+      "path": "b3/candidate-01/carta/albondigas-tomate/index.html",
+      "sha256": "2b4621e495ec35541a12b41421faeb7bb7b47e737fb5571f76aef8b599b6c23c"
+    },
+    {
+      "path": "b3/candidate-01/carta/arroz-mariscos/index.html",
+      "sha256": "d0be5e451329e34ab370c39df0307420fea640fee809b881fa1335c36144f9c3"
+    },
+    {
+      "path": "b3/candidate-01/carta/arroz-pollo/index.html",
+      "sha256": "e13850b6b3bf24ee65640782c7ee73532ce91670e8eb157392d150a34228bab2"
+    },
+    {
+      "path": "b3/candidate-01/carta/arroz-verduras/index.html",
+      "sha256": "6c75134c40986d93d49e3c69f665e2b8c9b4a3394fa1847e9cca51230500c31c"
+    },
+    {
+      "path": "b3/candidate-01/carta/berenjenas-asadas/index.html",
+      "sha256": "b0d81f2e58b2b39e0c093837082e2dfc9d26d713956a5a7942c04b85e56f835a"
+    },
+    {
+      "path": "b3/candidate-01/carta/brownie-helado/index.html",
+      "sha256": "9f43f1e1b750f01a127e1d16aa5bb8bfb8a066bb5f1d0bb6207c706c98b4bee6"
+    },
+    {
+      "path": "b3/candidate-01/carta/bruschetta-tomate/index.html",
+      "sha256": "5abdfb319343e7b3a750b60f965d2f3eea88239cea2078f648463ce724e6683b"
+    },
+    {
+      "path": "b3/candidate-01/carta/burrata-tomates/index.html",
+      "sha256": "3e349bb3e5b8afbebe44fb29040585fba13d0fb9e2c78e03fcca93131b73e744"
+    },
+    {
+      "path": "b3/candidate-01/carta/calzone-espinacas/index.html",
+      "sha256": "18d44533af8118bd0c4d9d5b3effb48870229a1b3978a9afdd1ddd577369be82"
+    },
+    {
+      "path": "b3/candidate-01/carta/carpaccio-remolacha/index.html",
+      "sha256": "be88e737b4e71894c7643eeef76005c77256c4a5325609d4714190f8abf13207"
+    },
+    {
+      "path": "b3/candidate-01/carta/crema-calabaza/index.html",
+      "sha256": "bdb1374de940ce84f10f2a2cabb9ef79461b887b5cbac4b7742dce8192687a34"
+    },
+    {
+      "path": "b3/candidate-01/carta/croquetas-setas/index.html",
+      "sha256": "6c2f5dbc4249a33bd7321266d8dac6aec49b179493824fa8c698460ad9e18a73"
+    },
+    {
+      "path": "b3/candidate-01/carta/dessert/index.html",
+      "sha256": "28e25d9103e2d9cde6099068c051750c958d057cfb972ea868a2eb5e7b0493ea"
+    },
+    {
+      "path": "b3/candidate-01/carta/ensalada-caprese/index.html",
+      "sha256": "948d31c399c2f2ec096739b8e2729a6063a584bd3f26177cab0ef1445e491b01"
+    },
+    {
+      "path": "b3/candidate-01/carta/ensalada-mediterranea/index.html",
+      "sha256": "52f7ca90cba5580b962a8ea050ddb44ec166b2453dd5f01d7bfee9cc7e0ecaad"
+    },
+    {
+      "path": "b3/candidate-01/carta/ensalada-pera/index.html",
+      "sha256": "69efcf24889ef0c9a3b753530c5a98e6c65c67de70a564479489e5a256d275c9"
+    },
+    {
+      "path": "b3/candidate-01/carta/ensalada-quinoa/index.html",
+      "sha256": "2fceb776a765f5b2e8f7da1b547b6b68901df8eabc2399b1139291be59f652f2"
+    },
+    {
+      "path": "b3/candidate-01/carta/focaccia-romero/index.html",
+      "sha256": "fe15f866777dbd3e3fb7429cb0f739640b8f172d5d45dea609f34f8ee5accd43"
+    },
+    {
+      "path": "b3/candidate-01/carta/fruta-temporada/index.html",
+      "sha256": "514deccb28e2e5de2aca6f7c40652922bab696953ead27de4ca9523c4b1394a5"
+    },
+    {
+      "path": "b3/candidate-01/carta/gnocchi-pesto/index.html",
+      "sha256": "7f10756627e9d321857f2682963a59fbf45766ec82e3ee59efbedec6de2ef633"
+    },
+    {
+      "path": "b3/candidate-01/carta/hummus-pan/index.html",
+      "sha256": "698fb291796a8cafec5745ebd3c37a841eee750993bc3455cfe25e063fc36c70"
+    },
+    {
+      "path": "b3/candidate-01/carta/index.html",
+      "sha256": "aefc70f35de576210d7197a8459dc6e9efea06b2888a1675c445ecc29cc8a105"
+    },
+    {
+      "path": "b3/candidate-01/carta/lomo-pimienta/index.html",
+      "sha256": "c80e156eeedb07fda80561ba5b9e7f8cc8c3561f5efec8346cb6f46832993942"
+    },
+    {
+      "path": "b3/candidate-01/carta/panna-cotta/index.html",
+      "sha256": "305bd30b88a47979b0ebac0c708a06a6117c803d157eea3fe3491a821dd494f6"
+    },
+    {
+      "path": "b3/candidate-01/carta/pasta/index.html",
+      "sha256": "abc7adf8562e450040e4986a4f00d66d9bc358fa14b4dd23c7e0a4c23fe7cbc1"
+    },
+    {
+      "path": "b3/candidate-01/carta/patatas-bravas/index.html",
+      "sha256": "3fcf77b3e4e3ebba8e9233151dcb53d394c39cc2aa934183078eb9f3c4aaec06"
+    },
+    {
+      "path": "b3/candidate-01/carta/pescado-horno/index.html",
+      "sha256": "d3b9f4747194453a931cfe8bfbb0e3668ca5701822debfb7c4f4a3b3b984de0a"
+    },
+    {
+      "path": "b3/candidate-01/carta/pizza/index.html",
+      "sha256": "8c9f99c4841350535e7e9eaca79cdbb9d95e4fed4d093b9089c9799e9911d67b"
+    },
+    {
+      "path": "b3/candidate-01/carta/pizza-cuatro-quesos/index.html",
+      "sha256": "88b4c5d1c368f6f5d80e3cd40a7cf314ceb152812a25ee746f3627319321616e"
+    },
+    {
+      "path": "b3/candidate-01/carta/pizza-huerta/index.html",
+      "sha256": "449f771e0e8f1594eca11edccb63d9bcb40b5bf7bb096458d525db91cd3be8f0"
+    },
+    {
+      "path": "b3/candidate-01/carta/pizza-margarita/index.html",
+      "sha256": "819566d841283e049bc8a8108ce1991b2e79b0c656ed1acd16d8738de819bd4f"
+    },
+    {
+      "path": "b3/candidate-01/carta/pollo-hierbas/index.html",
+      "sha256": "e89bb441d9cad81d9c905cd6f859341f50509b222dbdb7d97bd74af7e6cad8ff"
+    },
+    {
+      "path": "b3/candidate-01/carta/ravioli-ricotta/index.html",
+      "sha256": "ebedb74eef2c88fbede0c597a2569a4c69424d5fdf03680ca8a28905d5b3d8cc"
+    },
+    {
+      "path": "b3/candidate-01/carta/risotto-limon/index.html",
+      "sha256": "6171d7fb30e05e3074a0a9dce38c07a12dc23911384858a48510baa1650e37b6"
+    },
+    {
+      "path": "b3/candidate-01/carta/risotto-setas/index.html",
+      "sha256": "4609e257ae555ff67a2b2e7665b7e35ffd3a04e21792b767ad968e257c9dd552"
+    },
+    {
+      "path": "b3/candidate-01/carta/salad/index.html",
+      "sha256": "12e07a02129b016079e653e1da559db8aa1b4bcb378cbf7a6982e61ed81b9c95"
+    },
+    {
+      "path": "b3/candidate-01/carta/salmon-limon/index.html",
+      "sha256": "e1d1f06ca6ba061d4732a40d0e3d2dff3d205b2dffe4223ffef6794d092c652a"
+    },
+    {
+      "path": "b3/candidate-01/carta/spaghetti-pomodoro/index.html",
+      "sha256": "49cc21d8f035a55c67da20bf4619bd46c5b7b1fce8f673cbf97a6d9dc3247cf0"
+    },
+    {
+      "path": "b3/candidate-01/carta/tabla-quesos/index.html",
+      "sha256": "2421a67f9b436f6ea38ac29c2fc687371a826a095e2700425d96fbaa89d458cc"
+    },
+    {
+      "path": "b3/candidate-01/carta/tagliatelle-setas/index.html",
+      "sha256": "20164a198b164e816e5d5df1e71f2347a40b43040a2846e83eda04bd72461593"
+    },
+    {
+      "path": "b3/candidate-01/carta/tarta-limon/index.html",
+      "sha256": "3323e1c78d4d6d5c7ecef6cce90c11d7433bd90730d3eafcccbdc617b54bac8b"
+    },
+    {
+      "path": "b3/candidate-01/contacto/index.html",
+      "sha256": "de6de3add857359c24ff166381df77d2057849e8268d70fc35e3a74d0ff30783"
+    },
+    {
+      "path": "b3/candidate-01/creditos/index.html",
+      "sha256": "555586af102fbccedf30e6f94264bdf33cd82c753f0502111e8f58e24e961eeb"
+    },
+    {
+      "path": "b3/candidate-01/diario/index.html",
+      "sha256": "7933d7cc61e5851eb257bc100425e1755273e827c3a7217549f5fcbd5a13419e"
+    },
+    {
+      "path": "b3/candidate-01/historia/index.html",
+      "sha256": "96a66db243396522b320fce8c028d9ac9cc0f44aac536dec315a1ba7126dcf39"
+    },
+    {
+      "path": "b3/candidate-01/index.html",
+      "sha256": "bd6ab35bbf566e91e8e4bd0342298d5400e7ec191ec9cb93e533ae13448cf182"
+    },
+    {
+      "path": "b3/candidate-01/opiniones/index.html",
+      "sha256": "e2ef45fce824ad141564cf6658d5f20ae9595b4f27c721c5c33027d055549ce8"
+    },
+    {
+      "path": "b3/candidate-01/pedidos/index.html",
+      "sha256": "b3891195e98ee2fa79907a0858fbde26c9e358a0fe2ea066268dc1873d4b5743"
+    },
+    {
+      "path": "b3/candidate-01/preguntas/index.html",
+      "sha256": "110b458d3111d4d05c0999778d0e036f64710e207ec54fbaf050cb5f1919ea1b"
+    },
+    {
+      "path": "b3/candidate-01/reservas/index.html",
+      "sha256": "ae8dba8249c7ca3deb26cb23182ce4a6877ddb70c902bcc1ce7264bd2b8b054d"
+    },
+    {
+      "path": "b3/candidate-01/visita/index.html",
+      "sha256": "b313c8e1d046cce3c088039d8dfbd5f4a1ac6d5a954ebd4c2ede1255af7d7814"
+    },
+    {
+      "path": "b3/candidate-02/carta/albondigas-tomate/index.html",
+      "sha256": "03fb7c6be0ab7e877c262d686f98b101c20860f250e7054c03c49dc3507481c9"
+    },
+    {
+      "path": "b3/candidate-02/carta/arroz-mariscos/index.html",
+      "sha256": "88a470f1481a2bb6e98d17151e676463460aee6045c22eb8d29c4a3281bbb900"
+    },
+    {
+      "path": "b3/candidate-02/carta/arroz-pollo/index.html",
+      "sha256": "5c5fd52776b3bc3e0f6774ca5cbc965c48db197cb7aca3688403c556bf26ae91"
+    },
+    {
+      "path": "b3/candidate-02/carta/arroz-verduras/index.html",
+      "sha256": "bc526a6e75a54daeb3ad562bd795ff99131fe19009727caeb8c9f117996c844b"
+    },
+    {
+      "path": "b3/candidate-02/carta/berenjenas-asadas/index.html",
+      "sha256": "93ec62e37da68fa6e05bcc165d011adc90234766df6b862878ee6f8b2b903edd"
+    },
+    {
+      "path": "b3/candidate-02/carta/brownie-helado/index.html",
+      "sha256": "c57b63965aed79503c75d3d57bb935b97768d06fd42bc511d9721d0e7f87fa91"
+    },
+    {
+      "path": "b3/candidate-02/carta/bruschetta-tomate/index.html",
+      "sha256": "10afcf779b547ab195227699ee228bf990eae00243fd0fe59c1de76f89f9aba4"
+    },
+    {
+      "path": "b3/candidate-02/carta/burrata-tomates/index.html",
+      "sha256": "9d113aa425c3728184ef2c30ffa3391397bd8f470e3202f2192d003df85a1c11"
+    },
+    {
+      "path": "b3/candidate-02/carta/calzone-espinacas/index.html",
+      "sha256": "84af633c4eedc779653d25838942bc525ed935420b9c3be5b451b2bddf7b4131"
+    },
+    {
+      "path": "b3/candidate-02/carta/carpaccio-remolacha/index.html",
+      "sha256": "f349e43c05669f2f7b2ea6fad9d7db8ce41354b994d8d6c08bd4a2f8d1539dbb"
+    },
+    {
+      "path": "b3/candidate-02/carta/crema-calabaza/index.html",
+      "sha256": "bfe67eabdcba44522a71277b02ed5820b99b01eb5b893e577285d748cf878633"
+    },
+    {
+      "path": "b3/candidate-02/carta/croquetas-setas/index.html",
+      "sha256": "c2c5093d71127b152a24d89332faa1ed3b0b88acead1506331a0c197a0d93b97"
+    },
+    {
+      "path": "b3/candidate-02/carta/dessert/index.html",
+      "sha256": "4891a1ba58eb37f07d5ba27da5055d898c00271d678fd6df01e28876fd302355"
+    },
+    {
+      "path": "b3/candidate-02/carta/ensalada-caprese/index.html",
+      "sha256": "255b17e3233caeec040e61397450f2cede1423dd29ceb57687913cc30279dd58"
+    },
+    {
+      "path": "b3/candidate-02/carta/ensalada-mediterranea/index.html",
+      "sha256": "5ef94b6650c806d921dcccb025e6cf539f5dd38b33755a05f7ace19ede74b685"
+    },
+    {
+      "path": "b3/candidate-02/carta/ensalada-pera/index.html",
+      "sha256": "e90d0d1a0667dde5557d3d1b31104a57dd8ca7309da2fa9238a6b0821d9297ba"
+    },
+    {
+      "path": "b3/candidate-02/carta/ensalada-quinoa/index.html",
+      "sha256": "07b854415bd15ff52ede14de5052d8f801c6dcc04a72003b6c4eacf7684bac20"
+    },
+    {
+      "path": "b3/candidate-02/carta/focaccia-romero/index.html",
+      "sha256": "34e15c0bfca20abd10b53cf078f9ad3d6c13c1cca6ab48e3ed19deb2a9bc2830"
+    },
+    {
+      "path": "b3/candidate-02/carta/fruta-temporada/index.html",
+      "sha256": "494c93cc792efc0a3c3ce1b7ee1f255e5327249ed270f3ed35e88db72a405b7e"
+    },
+    {
+      "path": "b3/candidate-02/carta/gnocchi-pesto/index.html",
+      "sha256": "0b54bfb677c499eb4e9df115f614df17611169bb66eec80f452a3aeab061c55d"
+    },
+    {
+      "path": "b3/candidate-02/carta/hummus-pan/index.html",
+      "sha256": "6ec7863379f397ce98123ee80aa93935ee4f08ae392086d65cc5133d9fa20d0f"
+    },
+    {
+      "path": "b3/candidate-02/carta/index.html",
+      "sha256": "53cb8960970bb3c0bcfab6590f9e6e4085191352ea3ddc6515363b92eabc5f6b"
+    },
+    {
+      "path": "b3/candidate-02/carta/lomo-pimienta/index.html",
+      "sha256": "3fb7fcd710682960d75de7c468452f9beef97ffd20b6b8247e60b70717757cef"
+    },
+    {
+      "path": "b3/candidate-02/carta/panna-cotta/index.html",
+      "sha256": "5bd9e3186d72e06e6fd799700fc21544eec1ee3f9d0a07986cd879cfd75f82a2"
+    },
+    {
+      "path": "b3/candidate-02/carta/pasta/index.html",
+      "sha256": "357530495d5b3a2e6f3d5b2c569dccdc5588b6dbc54790e5506728f981393d6d"
+    },
+    {
+      "path": "b3/candidate-02/carta/patatas-bravas/index.html",
+      "sha256": "8811a1843f78968a84d134d6c1f8754eec87233ae1542ebb6a67420411774f4b"
+    },
+    {
+      "path": "b3/candidate-02/carta/pescado-horno/index.html",
+      "sha256": "7e3d277c1d81312f52b85d7273a9fa46f8bb2f57219d73f7ef9b492dd34c3c68"
+    },
+    {
+      "path": "b3/candidate-02/carta/pizza/index.html",
+      "sha256": "4de0fc6bb99f9cf710e04f8d3751e07bb6fc74f72cf33fe90a64f426064a0bd5"
+    },
+    {
+      "path": "b3/candidate-02/carta/pizza-cuatro-quesos/index.html",
+      "sha256": "4d1dce5d70384c60ae1ddf487b896151dbcddb51223fb02556be3133145c9d7a"
+    },
+    {
+      "path": "b3/candidate-02/carta/pizza-huerta/index.html",
+      "sha256": "d4f8c16d75b65395745a1935f6a70b2f0ae9e2808d772dcd46351bd924ac1e89"
+    },
+    {
+      "path": "b3/candidate-02/carta/pizza-margarita/index.html",
+      "sha256": "1d0c2fb40ab6e005b03f493857caac4c4668e7afa3a23190d100883f9467fc33"
+    },
+    {
+      "path": "b3/candidate-02/carta/pollo-hierbas/index.html",
+      "sha256": "a6569d9d5523fc4e8255194906425c12d18abeac3628bbe8804bbca6adab121f"
+    },
+    {
+      "path": "b3/candidate-02/carta/ravioli-ricotta/index.html",
+      "sha256": "f7e16f1b1dc1456f97064036c9e9c4bbf9806c4c7d83aadb43155082c4d49269"
+    },
+    {
+      "path": "b3/candidate-02/carta/risotto-limon/index.html",
+      "sha256": "e9b83c22ae75991c8014574d5c8646b24d2fe85df9ea794ef24e336f51193783"
+    },
+    {
+      "path": "b3/candidate-02/carta/risotto-setas/index.html",
+      "sha256": "2008acdd97b541f78d1d2cea3f1d78d202cbba5fc9eec830ae2ffd86178bf043"
+    },
+    {
+      "path": "b3/candidate-02/carta/salad/index.html",
+      "sha256": "55f25ed6c3552905c24181d846a1d910dfea5df9c62b80289343c6db908a9cce"
+    },
+    {
+      "path": "b3/candidate-02/carta/salmon-limon/index.html",
+      "sha256": "ff72fd2a5e0dffda0ced22f3da79197b8346014f1db9d3a59d7f757473f571bc"
+    },
+    {
+      "path": "b3/candidate-02/carta/spaghetti-pomodoro/index.html",
+      "sha256": "330a6202cca1c95dac53cb051f58855c0f30ef444e823d8221c0d1c0adea3502"
+    },
+    {
+      "path": "b3/candidate-02/carta/tabla-quesos/index.html",
+      "sha256": "b0661f51cf708142262a0e0c4b81d6405f2012db6b8f6adaa2cdb69669e30d59"
+    },
+    {
+      "path": "b3/candidate-02/carta/tagliatelle-setas/index.html",
+      "sha256": "388c38b2b3c07cea5fa7900caba167adf962229477aa84a327a25d2efff24749"
+    },
+    {
+      "path": "b3/candidate-02/carta/tarta-limon/index.html",
+      "sha256": "24d19827a74dd972812ea22c0e97376db2183c7e8dc39d8537ea43d68446d20b"
+    },
+    {
+      "path": "b3/candidate-02/contacto/index.html",
+      "sha256": "aec23b917170781543b7bb30297be7b98f630f9acc6338f975c1c7bd88ec9bf2"
+    },
+    {
+      "path": "b3/candidate-02/creditos/index.html",
+      "sha256": "587a6679ed216396af0a6e63d91de6ca626925adf1f7b9d75eaac3aafb8a8259"
+    },
+    {
+      "path": "b3/candidate-02/diario/index.html",
+      "sha256": "706ba4e3b4b0decc5aa2668133db61639e7d9da397a0b2954e0d53c5a8e19378"
+    },
+    {
+      "path": "b3/candidate-02/historia/index.html",
+      "sha256": "aa2c4463f2cb27608ee07894d5adcd814322ec1a05feb23b749acf2ca680057a"
+    },
+    {
+      "path": "b3/candidate-02/index.html",
+      "sha256": "9f71f90d474ed8ad13a4616caa7f1dcbdf5cfac4f0869b60610946ab5eca50bf"
+    },
+    {
+      "path": "b3/candidate-02/opiniones/index.html",
+      "sha256": "0940cccf833134c6307b8702b917d295ba5caa264d8595f7923ca07ecb7d6aa5"
+    },
+    {
+      "path": "b3/candidate-02/pedidos/index.html",
+      "sha256": "4d3289af1cb4e96a440b9e897b76afb77a6a4fac74626e2509757a333061231d"
+    },
+    {
+      "path": "b3/candidate-02/preguntas/index.html",
+      "sha256": "28c667ed8f896f9dcf6e2d5513aa771c3a95ef7519114330326b721d5164374e"
+    },
+    {
+      "path": "b3/candidate-02/reservas/index.html",
+      "sha256": "4d1da38c52dee0181f514f4ac9045daa6eb16862937f017de4a7d36982099a7a"
+    },
+    {
+      "path": "b3/candidate-02/visita/index.html",
+      "sha256": "f7e3d28e1e1e642983bd37dc4d38332b72ff669c0d09c68a980b645407bfdb0d"
+    },
+    {
+      "path": "b3/candidate-03/carta/albondigas-tomate/index.html",
+      "sha256": "0b7f5cec3167cede1123e282980fe7f8f50747c10a4b94d2518e0f5a6cec50d6"
+    },
+    {
+      "path": "b3/candidate-03/carta/arroz-mariscos/index.html",
+      "sha256": "f757622d487034ead3f09c92445477623c589a3ea0cd7f4018d0c004a31a68b3"
+    },
+    {
+      "path": "b3/candidate-03/carta/arroz-pollo/index.html",
+      "sha256": "5393b893b65c0d484ba1db044c91781a9d477935e371be072e5e347262522f40"
+    },
+    {
+      "path": "b3/candidate-03/carta/arroz-verduras/index.html",
+      "sha256": "d9d9c799905b54adcb8ac2ed5dca25554f679446f89242e70463e31c268ebd7f"
+    },
+    {
+      "path": "b3/candidate-03/carta/berenjenas-asadas/index.html",
+      "sha256": "0f65c83578ae233520cd3ee99e257c6edd9682d3daa5ca645724c40782cb6ac5"
+    },
+    {
+      "path": "b3/candidate-03/carta/brownie-helado/index.html",
+      "sha256": "1080b60fbceeaca33d0425c9698044fb1c6837f2114fdd124d763dd34a467242"
+    },
+    {
+      "path": "b3/candidate-03/carta/bruschetta-tomate/index.html",
+      "sha256": "c5d1cdc97b8b995efd7f2afed28f92fe3403c282f3ce7e1bd4c2670ab5e051d1"
+    },
+    {
+      "path": "b3/candidate-03/carta/burrata-tomates/index.html",
+      "sha256": "d217fadeb205ee4a81f4d37fdd663b53f8477251733d47105eca8c94b063dbed"
+    },
+    {
+      "path": "b3/candidate-03/carta/calzone-espinacas/index.html",
+      "sha256": "95f50b500063e07e42c51e6a823cde4d88280c9814faed27027adce672527524"
+    },
+    {
+      "path": "b3/candidate-03/carta/carpaccio-remolacha/index.html",
+      "sha256": "317eebcc240c184a77baff4c8d83840466af2988d18cb81293781fcc1d53d51d"
+    },
+    {
+      "path": "b3/candidate-03/carta/crema-calabaza/index.html",
+      "sha256": "09322a801ef1345214bf9e196ad3ba74a1c95e43acfa26295c109854aa2d26da"
+    },
+    {
+      "path": "b3/candidate-03/carta/croquetas-setas/index.html",
+      "sha256": "f9ded5f2132e4426f4c228a0745f6e971273bd6eaea3fb9f9af3378dacf7f16a"
+    },
+    {
+      "path": "b3/candidate-03/carta/dessert/index.html",
+      "sha256": "b8d31378e58e66f99f62ac798b59bc039518237bd9ec31de934e8d78524768a4"
+    },
+    {
+      "path": "b3/candidate-03/carta/ensalada-caprese/index.html",
+      "sha256": "89d35be30a9ec5d15c1a75cf14b65fd95514f1e40c8f1ab9db75245f320779a6"
+    },
+    {
+      "path": "b3/candidate-03/carta/ensalada-mediterranea/index.html",
+      "sha256": "4fe79d6af4fe7dc08d46eaf99112d0d4d8638edce114dc63562f4d945f3cf672"
+    },
+    {
+      "path": "b3/candidate-03/carta/ensalada-pera/index.html",
+      "sha256": "63a5ce8a33df8d0dcfd6bd4b03d075011e6f1d64097ff197d21ad8178c6f2bc7"
+    },
+    {
+      "path": "b3/candidate-03/carta/ensalada-quinoa/index.html",
+      "sha256": "e7d41eb7abc685559931a13f58c5289ebf59b9e710d3bb4bbe40f354c0713027"
+    },
+    {
+      "path": "b3/candidate-03/carta/focaccia-romero/index.html",
+      "sha256": "3414bfdad3596092bcdb7ba9e86f3c4480c961cc87f880351510dccb47e74502"
+    },
+    {
+      "path": "b3/candidate-03/carta/fruta-temporada/index.html",
+      "sha256": "f17f434cdbcb981ef5a23d9d8d4f78e5bd96acb58eb3443465cbf53bb81543ae"
+    },
+    {
+      "path": "b3/candidate-03/carta/gnocchi-pesto/index.html",
+      "sha256": "4262946c7534dce2824f5a9a9e7cff57013856750759c15c6c6fd4d7a921558a"
+    },
+    {
+      "path": "b3/candidate-03/carta/hummus-pan/index.html",
+      "sha256": "ab49bb9d5a7f62792968e4c61e12fd0792de093f41aed488cb621f33a284efac"
+    },
+    {
+      "path": "b3/candidate-03/carta/index.html",
+      "sha256": "6f77127e3f71e5c4f1e786c8ad4abbd866b85555f449e9787a22219f8ffc9c33"
+    },
+    {
+      "path": "b3/candidate-03/carta/lomo-pimienta/index.html",
+      "sha256": "928d183f4f4da86054846d9eccc55a93658b0b0f5b914fde822658c33916116c"
+    },
+    {
+      "path": "b3/candidate-03/carta/panna-cotta/index.html",
+      "sha256": "8f80eb8fe44c688caf0f30935a195282ff86b89ae2f1bdf132633061129250d8"
+    },
+    {
+      "path": "b3/candidate-03/carta/pasta/index.html",
+      "sha256": "661ff6069e9b5ce76882eefc3fae7d88920265c70079cca521593561edf2a643"
+    },
+    {
+      "path": "b3/candidate-03/carta/patatas-bravas/index.html",
+      "sha256": "d3bfc04e4aa05c449c3f76314768add251a288adf9a8d6dd4fd18ef6e04e4338"
+    },
+    {
+      "path": "b3/candidate-03/carta/pescado-horno/index.html",
+      "sha256": "c6a18edfff6684673563c81fc8abd34c52ff8b804419da2d2a6f1be20737c3b9"
+    },
+    {
+      "path": "b3/candidate-03/carta/pizza/index.html",
+      "sha256": "62ec20d0400c6f1b54f3d7f2b0a013145aba87b0123588842a2fcdbc2d49ceb8"
+    },
+    {
+      "path": "b3/candidate-03/carta/pizza-cuatro-quesos/index.html",
+      "sha256": "746dbc2275a110b447d784b900b8c364e953e715227fb349b39b01cc064d7313"
+    },
+    {
+      "path": "b3/candidate-03/carta/pizza-huerta/index.html",
+      "sha256": "29ce64e6a076441d9f250e8958ff2dced55126b7ab8d56d238d61715230f1f49"
+    },
+    {
+      "path": "b3/candidate-03/carta/pizza-margarita/index.html",
+      "sha256": "58e5cb3958aac4794b6f3fb458c8c62faeb827cd2486707d1703ecfb48eccde7"
+    },
+    {
+      "path": "b3/candidate-03/carta/pollo-hierbas/index.html",
+      "sha256": "4c9b34f0116c8052510748fd4c0cc328926fff06e1b8d3fb1a4f8d8060a45091"
+    },
+    {
+      "path": "b3/candidate-03/carta/ravioli-ricotta/index.html",
+      "sha256": "a1d1189ed0a441cdc4396d8694afcbffe103343953269f0232dce23b852a8453"
+    },
+    {
+      "path": "b3/candidate-03/carta/risotto-limon/index.html",
+      "sha256": "6ff001c5747865ee6802d36cca3d04b98b278773478e93fffc934b3327066765"
+    },
+    {
+      "path": "b3/candidate-03/carta/risotto-setas/index.html",
+      "sha256": "db303705130ac01dcee9faf1880317ec1733a0b3c721f36d0dc56503b61db5ca"
+    },
+    {
+      "path": "b3/candidate-03/carta/salad/index.html",
+      "sha256": "7d8e6399682fbd4ec6ad6d40b3081e057d9801efc8bc9a23130468e596143872"
+    },
+    {
+      "path": "b3/candidate-03/carta/salmon-limon/index.html",
+      "sha256": "a03f9e1d5dda39adc8ceccf0d4c49c4b50f8a0c422b8b30b8a6ca4a0275a69b3"
+    },
+    {
+      "path": "b3/candidate-03/carta/spaghetti-pomodoro/index.html",
+      "sha256": "fa3fdeeb93950d6f9794bbd6f5725dca2f1ebe60de05e2912d196997710cd4a6"
+    },
+    {
+      "path": "b3/candidate-03/carta/tabla-quesos/index.html",
+      "sha256": "0f52f12d533aa24aca841b1c56cb127c4329db7f98b0cd37d0d280d3b999bd5f"
+    },
+    {
+      "path": "b3/candidate-03/carta/tagliatelle-setas/index.html",
+      "sha256": "9d26cf60003d15afe7cd1ac50bc6fbcd4c9fb38572d92b7a9df9e2b8663359e8"
+    },
+    {
+      "path": "b3/candidate-03/carta/tarta-limon/index.html",
+      "sha256": "7cb7afdfa47571ea2af44230db709975ff1cfe57e85703cb312cc3d0780e9a77"
+    },
+    {
+      "path": "b3/candidate-03/contacto/index.html",
+      "sha256": "97fa9b6a9ad913ca0ce9016fa2940167c8b3da0881ba0be78baebf41939b87b5"
+    },
+    {
+      "path": "b3/candidate-03/creditos/index.html",
+      "sha256": "89a7bd28aae89ceed1b75151e8b325af12f160d7786eaec00c1f931878465c6e"
+    },
+    {
+      "path": "b3/candidate-03/diario/index.html",
+      "sha256": "38d6ba768702b579cba01e485d7ffc02780d40d12fa4e24d5d58a9a234b1cc18"
+    },
+    {
+      "path": "b3/candidate-03/historia/index.html",
+      "sha256": "bb75b54efa83c80474f541d0dd04581d4162c21f7b3bdbc0323dea7810bc2464"
+    },
+    {
+      "path": "b3/candidate-03/index.html",
+      "sha256": "9838f5fa1b611e1fb0d8c84e32bc5424f81c570239e720367e8227161af54100"
+    },
+    {
+      "path": "b3/candidate-03/opiniones/index.html",
+      "sha256": "06d59c4e168aa9535769ad676aa08c2d7b81fbae41c0d227b9a170ddf4860e54"
+    },
+    {
+      "path": "b3/candidate-03/pedidos/index.html",
+      "sha256": "1304d76152007ca03e1636b44a861839629c1b8aa03e44f097ad2407f29ce716"
+    },
+    {
+      "path": "b3/candidate-03/preguntas/index.html",
+      "sha256": "25ac7d9be6bd80eb476245d41fae7c459e3f88ae39db6de3f782190c5b9e8901"
+    },
+    {
+      "path": "b3/candidate-03/reservas/index.html",
+      "sha256": "f022755ed3bd7f7f837d24c3e7362fbf4cb4423e1dd1413ce07f684a3686c954"
+    },
+    {
+      "path": "b3/candidate-03/visita/index.html",
+      "sha256": "dafaf902a1513a654d3812304c4af2a4d7e46a94e6a54c03f91e7e0491885ab1"
+    },
+    {
+      "path": "b3/candidate-04/carta/albondigas-tomate/index.html",
+      "sha256": "3d983654114c7ee6a1b45f3d151cd92c4aaa643c10fb78d747ee949d15e0fdc2"
+    },
+    {
+      "path": "b3/candidate-04/carta/arroz-mariscos/index.html",
+      "sha256": "da55f1bef9adac9d4005745dbfb6739ec22658a1fb55e8d66e6d0e4f14f8226c"
+    },
+    {
+      "path": "b3/candidate-04/carta/arroz-pollo/index.html",
+      "sha256": "883fba28342991819c40e9ff6558d89cb582d8c1f2234b6372c6828f21e8ae43"
+    },
+    {
+      "path": "b3/candidate-04/carta/arroz-verduras/index.html",
+      "sha256": "abe661ff3e4b21ae6bce334d1d614080c53dca1793bba995b0b4e9b661eaacaa"
+    },
+    {
+      "path": "b3/candidate-04/carta/berenjenas-asadas/index.html",
+      "sha256": "0ef876e3a8800620efd0c54ee642679645832a21ac0a3a9519e02cce5772ec9d"
+    },
+    {
+      "path": "b3/candidate-04/carta/brownie-helado/index.html",
+      "sha256": "0fb6bdd2d4de4197a265cb5f6a2043cc1966868245a1392349aa2d9d4b09ac91"
+    },
+    {
+      "path": "b3/candidate-04/carta/bruschetta-tomate/index.html",
+      "sha256": "4854ccd9fc5518a3defc8f141e07c3c41c6826c451920f3a0ec459cf5e06e641"
+    },
+    {
+      "path": "b3/candidate-04/carta/burrata-tomates/index.html",
+      "sha256": "3a9e31498e2c9c68939de34f26f29682681cccf0dc212068fc83aff33dc5267e"
+    },
+    {
+      "path": "b3/candidate-04/carta/calzone-espinacas/index.html",
+      "sha256": "0bbc3e5d4b7acd43cfe49d7ba567701db708c1de6eabbbd1a76d57fc447e6662"
+    },
+    {
+      "path": "b3/candidate-04/carta/carpaccio-remolacha/index.html",
+      "sha256": "c34a0e34d52a3288ca9f6b824f9f508f48ceebda7fe01202d9274f0974e45cb9"
+    },
+    {
+      "path": "b3/candidate-04/carta/crema-calabaza/index.html",
+      "sha256": "de5d163f69e90839d9c6a46f16f744b26b53af76b40124ab9fef21e6fa81c601"
+    },
+    {
+      "path": "b3/candidate-04/carta/croquetas-setas/index.html",
+      "sha256": "c15c24da485e14b144032ba0b96f747cfd08b1788a5c5b29a97741af855fa627"
+    },
+    {
+      "path": "b3/candidate-04/carta/dessert/index.html",
+      "sha256": "99b600ec16db83673959158222668271d43722c4056e71c1235147454b749c8e"
+    },
+    {
+      "path": "b3/candidate-04/carta/ensalada-caprese/index.html",
+      "sha256": "4d3155eaee64f91707188e9ad136e6d55a87661ac1b37fb6567af68dc5e0d5f9"
+    },
+    {
+      "path": "b3/candidate-04/carta/ensalada-mediterranea/index.html",
+      "sha256": "09add3a00cec3f51027ab4a3274d805d0a48ca4d1ef8d63a7e70da335ce45bfa"
+    },
+    {
+      "path": "b3/candidate-04/carta/ensalada-pera/index.html",
+      "sha256": "529ad1437cb8b2a04bd74034d1e62310c4e9b907e2cc7717aacc58b5e768c852"
+    },
+    {
+      "path": "b3/candidate-04/carta/ensalada-quinoa/index.html",
+      "sha256": "cddae52e5a958f05072b2d42a8858067e6b0f9cc92569c88a1bcc1c769d74e75"
+    },
+    {
+      "path": "b3/candidate-04/carta/focaccia-romero/index.html",
+      "sha256": "e0b327e10a3a7cd9ed0e76f65b1e73dd2970145d277b87d1107ae9e3abc537d4"
+    },
+    {
+      "path": "b3/candidate-04/carta/fruta-temporada/index.html",
+      "sha256": "4d2804df73828d7cb0dd32b07ddde743ca3aab90a97c9db5a061c5c3413c524a"
+    },
+    {
+      "path": "b3/candidate-04/carta/gnocchi-pesto/index.html",
+      "sha256": "34218135a1fcf82ec51d3136f866ae0907599aa97589ffb8357a2394fa85f7b3"
+    },
+    {
+      "path": "b3/candidate-04/carta/hummus-pan/index.html",
+      "sha256": "af9e2a1fbdeb06233bfa45a11497263da0ba908a9a431b235a55304a1f5e2d24"
+    },
+    {
+      "path": "b3/candidate-04/carta/index.html",
+      "sha256": "d7e25a03e7061ce01f6c8acfc1f598552f9cf1ea3eceab26c118d38e25e25fce"
+    },
+    {
+      "path": "b3/candidate-04/carta/lomo-pimienta/index.html",
+      "sha256": "e8c528bd5e3e0897d81a497ac7b74d270f746ea3fbaa5ccc29292c5d631e61a7"
+    },
+    {
+      "path": "b3/candidate-04/carta/panna-cotta/index.html",
+      "sha256": "4a277e3cf4d05f4c5b38d5b0eb5e0cc1a6cf73fe43ecc7abd717515452cdd370"
+    },
+    {
+      "path": "b3/candidate-04/carta/pasta/index.html",
+      "sha256": "edac9e713cd91206c3e7746a94a833e6cbe7a792f27588caf10b6d5e0f0a8a0f"
+    },
+    {
+      "path": "b3/candidate-04/carta/patatas-bravas/index.html",
+      "sha256": "9564a0cc779681e17034e3351bfd1a9ec52ad04c51d943f8187cffe0e21eb8d4"
+    },
+    {
+      "path": "b3/candidate-04/carta/pescado-horno/index.html",
+      "sha256": "98a6409c0482d45e92acd0415dbaab87ef5089ab6b87b71b6478c7a28bcb6be5"
+    },
+    {
+      "path": "b3/candidate-04/carta/pizza/index.html",
+      "sha256": "9de67571ff45df6b0aa666481eaf58e5c3b6a1ea6e1e163da3f6faab0b499c37"
+    },
+    {
+      "path": "b3/candidate-04/carta/pizza-cuatro-quesos/index.html",
+      "sha256": "fa4d0fbdcc1706e6e1611f86fb505fadc46e22f059bc756cdf5aade8f9d5e822"
+    },
+    {
+      "path": "b3/candidate-04/carta/pizza-huerta/index.html",
+      "sha256": "97ad08e6e42bdc130bf0baf5043583aef1c36844d00d24398e3c214cfe37da26"
+    },
+    {
+      "path": "b3/candidate-04/carta/pizza-margarita/index.html",
+      "sha256": "8d67776e6d9b302739fe3a67e52a13336427cc24ee794e7112795a26fbcd3647"
+    },
+    {
+      "path": "b3/candidate-04/carta/pollo-hierbas/index.html",
+      "sha256": "b115774d19f63aff5fb5d6994c6a0e6d46054c364c02e839aaaa2a423d69e29c"
+    },
+    {
+      "path": "b3/candidate-04/carta/ravioli-ricotta/index.html",
+      "sha256": "7e956f03fbbcb05c4884a8cc8c23f402d72babd1e2820680138cb2ad945258f9"
+    },
+    {
+      "path": "b3/candidate-04/carta/risotto-limon/index.html",
+      "sha256": "814363d94a4e91fdc6ee3a422356ad24cd6fb9fe9d68554d6a79996298509b10"
+    },
+    {
+      "path": "b3/candidate-04/carta/risotto-setas/index.html",
+      "sha256": "771076df01e06d6eead3b92bd3f036b03176d8aac034c035260c75bde8384f95"
+    },
+    {
+      "path": "b3/candidate-04/carta/salad/index.html",
+      "sha256": "9b46efec329c641102d4e18886abca87fec1f96812b1f32cac4c316645c2dd54"
+    },
+    {
+      "path": "b3/candidate-04/carta/salmon-limon/index.html",
+      "sha256": "b4d047a01f5ea290a2b5d856d54f2538d678a129b8cc4761b463ff3aa45144b3"
+    },
+    {
+      "path": "b3/candidate-04/carta/spaghetti-pomodoro/index.html",
+      "sha256": "c612934dbb7d4b1c3886cb3f787eca56d640ae81b6a6c2a13664eb47f0296bea"
+    },
+    {
+      "path": "b3/candidate-04/carta/tabla-quesos/index.html",
+      "sha256": "becd30853a09548d7aef19075ecb8c46d946c7dc149bb978fcefd25125e7109b"
+    },
+    {
+      "path": "b3/candidate-04/carta/tagliatelle-setas/index.html",
+      "sha256": "06e9f9ad4bf3aeb6e621f09c6909bf63d47e604a26fa4f37e916bc552ece1902"
+    },
+    {
+      "path": "b3/candidate-04/carta/tarta-limon/index.html",
+      "sha256": "56c2322cd4cf77d1bb2f051e4b468d19130411242169a3600ffbc741ce2ad440"
+    },
+    {
+      "path": "b3/candidate-04/contacto/index.html",
+      "sha256": "c01e970cbf0fcd3675e44e555cc011beae94a8caf01f09ff2578ab079861daaf"
+    },
+    {
+      "path": "b3/candidate-04/creditos/index.html",
+      "sha256": "25b50f9891c8ba545692670776dcf5e1ac9bd3f46219c4c4515a043ec8420c06"
+    },
+    {
+      "path": "b3/candidate-04/diario/index.html",
+      "sha256": "57b4f142fa23823f20325a4c95f037c07c532c45d8aa1438fc0218ff67c7b492"
+    },
+    {
+      "path": "b3/candidate-04/historia/index.html",
+      "sha256": "0240fddaa5b7f3e249120219a237e4442ff0b4a96b0f05d4ba0b1fab0aa0c8c5"
+    },
+    {
+      "path": "b3/candidate-04/index.html",
+      "sha256": "d1408a083ea762658994aff9ac073bc3d57d9e17570fbef5d7e656f8a0c128cc"
+    },
+    {
+      "path": "b3/candidate-04/opiniones/index.html",
+      "sha256": "d5b6998d452fc021b70c60eb7a5d89addf4ed6f8f411ff047491d15c0265cd24"
+    },
+    {
+      "path": "b3/candidate-04/pedidos/index.html",
+      "sha256": "840c2a63886227b3d981c924ea2665fa630a10297d33a25be36165ca14b8bb0e"
+    },
+    {
+      "path": "b3/candidate-04/preguntas/index.html",
+      "sha256": "6441eb8ebc6d5590ceaa4590aae7417f82cf504332ba7ab54a780ea43d5163c6"
+    },
+    {
+      "path": "b3/candidate-04/reservas/index.html",
+      "sha256": "e6543aeb15cfd6e8865d2aa77977f993a19e8721bc1d90bdb723fe4f61bf3419"
+    },
+    {
+      "path": "b3/candidate-04/visita/index.html",
+      "sha256": "598b75a3415fd537637c36fc49d47f5873b7f71695d2b4b0dba5362a137c4eb6"
+    },
+    {
+      "path": "b3/index.html",
+      "sha256": "369dab7b959b6577bd64f4ac7ba469f356a7a322cbc67d849d9de3cc55af7290"
+    },
+    {
+      "path": "h3-media-pilot/index.html",
+      "sha256": "584f76e853db29faa1617456ed00b7ef5b5ac0c9488470441a4648729a24c0e5"
+    },
+    {
+      "path": "h4/editorial/index.html",
+      "sha256": "352db30994f7feca5632b1c313bded8f17703564f039ef0ba663bcb34c8a7a0c"
+    },
+    {
+      "path": "h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "022d1caf93af4cdef358f1145945f8a6197bdf1c8b4bc1ef595638705c4741a9"
+    },
+    {
+      "path": "h4/index.html",
+      "sha256": "fc5a25d5b9ba4c8a0649c742904e05122a6ec53bda8a88bdef2da750cf1b4e54"
+    },
+    {
+      "path": "h4/rail/index.html",
+      "sha256": "0f0cb061f12d8d0481f077cbba5d8fff895907b90d9d5c3ac5da13915f58bd59"
+    },
+    {
+      "path": "h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "ab873d71df2913ad22ea949ac3fd525d0983121dd84433e87a52b90cc8773771"
+    },
+    {
+      "path": "h4/split/index.html",
+      "sha256": "b96ca68fdbd92850b60d47f40723975dd07e01550df7a0603fb2ec701cf36e2a"
+    },
+    {
+      "path": "h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "1b0db25ca8b168f77f90be3acc7887ba155e4b8d46d94e8f850f937e951f3a12"
+    },
+    {
+      "path": "h5/candidate-01/index.html",
+      "sha256": "68d6aa3108a3d993c4f0402d2a4f1c093a19101dbb063a576118d4d3c6e2665d"
+    },
+    {
+      "path": "h5/candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "d057331c44d5a0fe606bfbe2f451c2276110af06518b14ba2f7c97fcbd58c35b"
+    },
+    {
+      "path": "h5/candidate-02/index.html",
+      "sha256": "d6851f80ffe3f8d7465827953ce195db3d0eba9bf66ab4b42397adad79f8f0ac"
+    },
+    {
+      "path": "h5/candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "b2a253531b01304646ad9c68cd15b1efaa65abdaf74c69d43b1251db652fbe3f"
+    },
+    {
+      "path": "h5/candidate-04/index.html",
+      "sha256": "38e84c30e1ce1e40d546a830d9c6a3e318a1685a60cf6575a6234d7b10d41591"
+    },
+    {
+      "path": "h5/candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "0c80aa99b7bbd2ec73d76d9d0b2655b42f05917f3b56412d3c66c59456522f2d"
+    },
+    {
+      "path": "h5/candidate-05/index.html",
+      "sha256": "c42f5d6412c3bbc3fae0731a4e07d527b2f54eff6b1bd8acd5141a642519a8c6"
+    },
+    {
+      "path": "h5/candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "f19958d1f20b6f6fd12f33b6baab17590a5b08fab6b96a848d7300c00e7efcea"
+    },
+    {
+      "path": "h5/index.html",
+      "sha256": "936c08e152fd1e00af8610ded647c388f0249a4c658f73f65bdae8321429ce72"
+    },
+    {
+      "path": "h6/compare/pair-01/desktop/identity/index.html",
+      "sha256": "3ecce2e883ecdf9079b6f80a818558d225e27cc676a7ff091a600ed6f82af9b9"
+    },
+    {
+      "path": "h6/compare/pair-01/desktop/offering/index.html",
+      "sha256": "9788cba5f2ecd76302fae3e595ddbcfde91f020f5325d246c39fe7b2de9ebd7d"
+    },
+    {
+      "path": "h6/compare/pair-01/mobile/identity/index.html",
+      "sha256": "7a9441feeac2cfa5c11a94286c12be33ab1453348d412dc9e87436e6869453b0"
+    },
+    {
+      "path": "h6/compare/pair-01/mobile/offering/index.html",
+      "sha256": "4392b344332e33a1507b226f97f1d92e3f630ed3f2c7b39f60de06cafc31cf11"
+    },
+    {
+      "path": "h6/compare/pair-02/desktop/identity/index.html",
+      "sha256": "2c9c601b847f697987e2dd8c68cbb8177efff446312c91a7bde67fddbde45668"
+    },
+    {
+      "path": "h6/compare/pair-02/desktop/offering/index.html",
+      "sha256": "311d64ec8359f771bc12897d97e06cef2df659031761dae18e9f597b22fe38f0"
+    },
+    {
+      "path": "h6/compare/pair-02/mobile/identity/index.html",
+      "sha256": "8d8c2fb04def7399738e9236e1eac1f3d594eee458a27a2376e3f63094209243"
+    },
+    {
+      "path": "h6/compare/pair-02/mobile/offering/index.html",
+      "sha256": "1edb4ebf258cf4893e2bcd9570640cf0482107f900130dc71a00ebf408a26aba"
+    },
+    {
+      "path": "h6/compare/pair-03/desktop/identity/index.html",
+      "sha256": "1bf576e13202300728b675ca42e7480cf62c7eeb6371a33ca6955ab04bdeb3da"
+    },
+    {
+      "path": "h6/compare/pair-03/desktop/offering/index.html",
+      "sha256": "bf11052c154ed706faa39c2779c285f19d7394a83ae90f5f51fc1e50e27ed416"
+    },
+    {
+      "path": "h6/compare/pair-03/mobile/identity/index.html",
+      "sha256": "988ab24ed9ec11071639069fea37fde0b767823aa0a0fad99f75dcecabb07d07"
+    },
+    {
+      "path": "h6/compare/pair-03/mobile/offering/index.html",
+      "sha256": "21d28dbd5a57ceac98eeb9c6fe52a3214472f9157f4497901f7b37f4ea881b05"
+    },
+    {
+      "path": "h6/compare/pair-04/desktop/identity/index.html",
+      "sha256": "eb64fda6c80ad244b67d5e470bd73ae80ada4b5f4ce407507c3a37ce92144ec8"
+    },
+    {
+      "path": "h6/compare/pair-04/desktop/offering/index.html",
+      "sha256": "b179f0c41ba1f8f3386052db86209531acfdc338902e5d7d64b98662c189eb8a"
+    },
+    {
+      "path": "h6/compare/pair-04/mobile/identity/index.html",
+      "sha256": "3e5e63a28b32aee16e40308401345d1d73b555c31fa09d9c89c1844b2277e682"
+    },
+    {
+      "path": "h6/compare/pair-04/mobile/offering/index.html",
+      "sha256": "4caa6b32ee6de61deafe2ae4e54bad6b404bcaf70d5179f7170d27b22a370d58"
+    },
+    {
+      "path": "h6/compare/pair-05/desktop/identity/index.html",
+      "sha256": "dcbfd8caf0b0bf91ccf9699c5de91bd42dd52a8f01dbeddb31c320618158918c"
+    },
+    {
+      "path": "h6/compare/pair-05/desktop/offering/index.html",
+      "sha256": "df6d6caf1e6e1c98f205774aecb27c6f1b4b7c537d6cc6586e389b0232b6c311"
+    },
+    {
+      "path": "h6/compare/pair-05/mobile/identity/index.html",
+      "sha256": "c560b8cd98da862577d8e08e7acbebfb99c78552ededafa0ae01326bf5f1bba4"
+    },
+    {
+      "path": "h6/compare/pair-05/mobile/offering/index.html",
+      "sha256": "0c5cab748139134cabec04dbd8e1c46faafdbb64900c1b622cfbdd1e2166e719"
+    },
+    {
+      "path": "h6/compare/pair-06/desktop/identity/index.html",
+      "sha256": "c94d6783b3bedbd0108d32afcab1020c48d7f65c2fefdfc4ed423f3b083f2cd0"
+    },
+    {
+      "path": "h6/compare/pair-06/desktop/offering/index.html",
+      "sha256": "7e2320ca9f2dd70ef96680a9ef895c15309e7096d68692de6a305885769d00f6"
+    },
+    {
+      "path": "h6/compare/pair-06/mobile/identity/index.html",
+      "sha256": "153d5417480efd436fcc4f9788b4d005e764498087832b1208b11db9e1df5f40"
+    },
+    {
+      "path": "h6/compare/pair-06/mobile/offering/index.html",
+      "sha256": "e11ac8045a0cceae8be33ef98d04d124f00ec513be56b19280851fe8748e54ff"
+    },
+    {
+      "path": "h6/final-candidate-01/index.html",
+      "sha256": "993225c5c69072b7a27c01615114df3e45669af4e83e76189cf274f2f5930af8"
+    },
+    {
+      "path": "h6/final-candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "eb17641b462009e334db55464ee6ce78ac1b51bb2a3ac31bb4148456f5a9a312"
+    },
+    {
+      "path": "h6/final-candidate-02/index.html",
+      "sha256": "fe2c2e185e3891e3001d209a22ca9791fd69d3edcc1fceb161ad92b7020ab238"
+    },
+    {
+      "path": "h6/final-candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "0b9273a23afad562a581128b6a6f90366b9368244ee15d55a217d6a351e136d7"
+    },
+    {
+      "path": "h6/final-candidate-04/index.html",
+      "sha256": "0a197833e91b22d7f3af9d95b836d6648668e63e52fdc93e60d7f8fc4120d735"
+    },
+    {
+      "path": "h6/final-candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "4b7cdfb6c84cec5eba9e70b791d7b24a8f2ecccd0f4f56fc9b4f4694b4778d58"
+    },
+    {
+      "path": "h6/final-candidate-05/index.html",
+      "sha256": "8e6b77ed928a5508db764d520c7b7362908a28264ee02b5abb49afc96c6ef0af"
+    },
+    {
+      "path": "h6/final-candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "3e4260092b634d873738bc6934da8237186e408d2f1fc73f52786cfdf94343e0"
+    },
+    {
+      "path": "h6/index.html",
+      "sha256": "c08732da0a1f60ce6620a07edc54486d04b816e5ed62aa40b07dd8e6043bc361"
+    },
+    {
+      "path": "h6/repair-after/index.html",
+      "sha256": "b3d50e783cf581ab23970dab7e2132e90b866b71dbf7bde6e378fd22fdd5600b"
+    },
+    {
+      "path": "h6/repair-after/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "8b302f671e7fea56ae24bf723b383522616c9b125b3253df3632074d03493816"
+    },
+    {
+      "path": "h6/repair-before/index.html",
+      "sha256": "1d441d5fd836887eb51787317fa2147f59ba592c5c23aaf5673c86aaf4a43355"
+    },
+    {
+      "path": "h6/repair-before/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "f1297b7ae81bc6de1cdb9408edcaac3bd82b329139ec1a70ec6e45d58f156dd5"
+    },
+    {
+      "path": "h6/rollback-restored/index.html",
+      "sha256": "09b72af21da42de3b811e24235f97fce92177298df774130a717ec148462829d"
+    },
+    {
+      "path": "h6/rollback-restored/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "ba3f04f22739bce9ee59153be1aa95944a96638683348c4580e493b68fbf1ac6"
+    },
+    {
+      "path": "h6/worse-after/index.html",
+      "sha256": "777cb52cdafd1e78363842bc189a2b3e3b087a2ce0df3e83efc55a842d1c6661"
+    },
+    {
+      "path": "h6/worse-after/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "73deeda68afbdb236da8fca327e5d29949a1373bbd3bbed028af460b1601eb0b"
+    },
+    {
+      "path": "h7/dentista-candidate-01/equipo/index.html",
+      "sha256": "a74d2c817af07d71cb7abe77c6377288ab3ba997298e9f1897c4b766fb739399"
+    },
+    {
+      "path": "h7/dentista-candidate-01/index.html",
+      "sha256": "a47668f0961a873b5b0669c2d870b86b4b49ecaa8a1b733fb333af4790c41fb7"
+    },
+    {
+      "path": "h7/dentista-candidate-01/servicios/index.html",
+      "sha256": "1d07db2a2d097174011176acd770242cbbe6761514570299e582709b2b520d69"
+    },
+    {
+      "path": "h7/dentista-candidate-02/equipo/index.html",
+      "sha256": "1afd63c7c0554e1cddf4a116567e5f5699f1d29fe7c4f25abf648e587d71574a"
+    },
+    {
+      "path": "h7/dentista-candidate-02/index.html",
+      "sha256": "494b41d061f095a6273330598e5409cfd0ba414b47e4930115e7da476be823d5"
+    },
+    {
+      "path": "h7/dentista-candidate-02/servicios/index.html",
+      "sha256": "21fbd5be9ee23577510286491dd401e3373ec571d536c5154b0cad8190cbca53"
+    },
+    {
+      "path": "h7/hibrido-candidate-01/catalogo/index.html",
+      "sha256": "de6d266db5d747de001a6d246e9b46da669bfd88723d66d394bc3c07137b1c99"
+    },
+    {
+      "path": "h7/hibrido-candidate-01/clases/index.html",
+      "sha256": "ca6f7396b220e4351a9149fb1f11d4637d6491d3d2c334f0562ec1e6237b7338"
+    },
+    {
+      "path": "h7/hibrido-candidate-01/index.html",
+      "sha256": "f26dab512f49393b057a284fd82573a9f6d9ee439a5ea3c22c008c9ec6ae7999"
+    },
+    {
+      "path": "h7/hibrido-candidate-01/membresias/index.html",
+      "sha256": "d07ed263f33fc253db3f264d86783f5926414706b538996962d88dcae4077783"
+    },
+    {
+      "path": "h7/hibrido-candidate-02/catalogo/index.html",
+      "sha256": "05d2d99eeba10d909df40ac755efce0ba96adf2bf48c2681536c075507639c53"
+    },
+    {
+      "path": "h7/hibrido-candidate-02/clases/index.html",
+      "sha256": "25d3472e3e2b7b18198b8a663d90ec9e09445de5c404d2762ff61b1b696048bb"
+    },
+    {
+      "path": "h7/hibrido-candidate-02/index.html",
+      "sha256": "d0a33299777f1773980c48e8aab28ce7446aba01d4c66b7f22cd5b6e49f9b9d1"
+    },
+    {
+      "path": "h7/hibrido-candidate-02/membresias/index.html",
+      "sha256": "25f5a7fa94ce248200ba3d8fc1110c9f39892a45ee9058a14803be8b1bd457f6"
+    },
+    {
+      "path": "h7/hotel-candidate-01/comodidades/index.html",
+      "sha256": "6f623566bc132f1ea6b61f3be78e644a4a2efbe6afa2b9c074db1b723ae01319"
+    },
+    {
+      "path": "h7/hotel-candidate-01/habitaciones/index.html",
+      "sha256": "d18772e6263978c5450b2e33e348196292eee45cf3f42298fb256fc6f3991ef4"
+    },
+    {
+      "path": "h7/hotel-candidate-01/index.html",
+      "sha256": "206cb4cb42f7cb59ea474e8d471da3b7222d583ab95a6af803ba2f4fc9e5f634"
+    },
+    {
+      "path": "h7/hotel-candidate-02/comodidades/index.html",
+      "sha256": "5764b3739be0579e27ea815f87bc153adc5a5a5dc45e5665266ecdf089dfeb69"
+    },
+    {
+      "path": "h7/hotel-candidate-02/habitaciones/index.html",
+      "sha256": "a0ad489f32588cc6aa49601bc8449c78c44a83b4cd3f62cc52f882156bdadb5a"
+    },
+    {
+      "path": "h7/hotel-candidate-02/index.html",
+      "sha256": "bf14bc032a93aac86f6980d228afa00cf5ba2a0291a7af0aca088c7edc7d0113"
+    },
+    {
+      "path": "h7/index.html",
+      "sha256": "ec4f4eb2c4dbb826762f67ae3644728dd11746d71d1a48f5d95f137a52272ef2"
+    },
+    {
+      "path": "h7/media-unknown-candidate-01/index.html",
+      "sha256": "4649ff9b024a7646ba5154523ce577632d071058f7fd94bd3218485cde734ce4"
+    },
+    {
+      "path": "h7/media-unknown-candidate-01/servicios/index.html",
+      "sha256": "a123f14bab1ace784f308154c34bf5f1fc67248a01524b07b659ddc8914b6c25"
+    },
+    {
+      "path": "h7/media-unknown-candidate-02/index.html",
+      "sha256": "27f95d33a48b12de34d910490edce987873e5860f9631a2fa420053bd22c9c16"
+    },
+    {
+      "path": "h7/media-unknown-candidate-02/servicios/index.html",
+      "sha256": "19f44b5d47747720e86e0a0670d25c7ab33a2d632358d858f9a04215b384c4a1"
+    },
+    {
+      "path": "h7/servicio-candidate-01/cobertura/index.html",
+      "sha256": "bdf3a0e6320b302801b862f14d91a284a5cae5ff1bc5b73a731305372a549e51"
+    },
+    {
+      "path": "h7/servicio-candidate-01/index.html",
+      "sha256": "0918c55523a60f58e27ea1e2cc76f7739e68a09dcf4ea1a4702dad0fb95ae4cc"
+    },
+    {
+      "path": "h7/servicio-candidate-01/servicios/index.html",
+      "sha256": "47eb75912f947b7b55d5e694b366ae9b6f8223b062b1473632fddba9ee9537f3"
+    },
+    {
+      "path": "h7/servicio-candidate-02/cobertura/index.html",
+      "sha256": "e04e7352976834cd76e017fac60afb5b395d0661a5b3dc0623c3f13ef6448df2"
+    },
+    {
+      "path": "h7/servicio-candidate-02/index.html",
+      "sha256": "540dcd3ac9585e12242eb0db91697f67e56a84b56e5d01b6a396d4b07b1ab4c8"
+    },
+    {
+      "path": "h7/servicio-candidate-02/servicios/index.html",
+      "sha256": "2f100bb9697c1a621737ef6d6a866512a55141aaafe6ebf5e66b7d3b0522f47e"
+    },
+    {
+      "path": "index.html",
+      "sha256": "c5008c6747b8de68a36b5316db51178f00ebed46912001ff3477b4c04a11fd15"
+    }
+  ],
+  "scope": "Explicit reviewed accepted4engine/40dish baseline, not unrelated main work; no credentials or API caches"
+}

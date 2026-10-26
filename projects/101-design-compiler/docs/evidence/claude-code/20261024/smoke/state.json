@@ -1,0 +1,126 @@
+{
+  "id": "restaurant-analysis-smoke",
+  "mode": "analysis",
+  "base": "24c4301c2a36fc5a023d3cd695030afc13a47f09",
+  "worktree": "C:\\Users\\gabri\\101-design-compiler\\.tools\\claude-worktrees\\restaurant-analysis-smoke",
+  "limits": {
+    "maxCalls": 4,
+    "maxTurns": 8,
+    "timeoutMs": 180000,
+    "maxBudgetUsdPerCall": 0.5,
+    "maxBudgetUsdTotal": 2,
+    "model": "sonnet"
+  },
+  "sessionId": "97f9d17e-6de6-411f-bdd6-ac22759328f4",
+  "calls": [
+    {
+      "index": 1,
+      "startedAt": "2026-10-25T03:26:25.661Z",
+      "resume": null,
+      "budgetReservationUsd": 0.5,
+      "status": "responded",
+      "cliVersion": "2.1.308 (Claude Code)",
+      "finishedAt": "2026-10-25T03:26:45.243Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "sessionId": "97f9d17e-6de6-411f-bdd6-ac22759328f4",
+      "sameSession": true,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 8503,
+        "cache_read_input_tokens": 3232,
+        "output_tokens": 2049,
+        "output_tokens_details": {
+          "thinking_tokens": 687
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 8503,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "global",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 2049,
+            "cache_read_input_tokens": 3232,
+            "cache_creation_input_tokens": 8503,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 8503
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "estimatedCostUsd": 0.0548292,
+      "numTurns": 1,
+      "durationMs": 17338,
+      "permissionDenials": [],
+      "error": null,
+      "changedFiles": ""
+    },
+    {
+      "index": 2,
+      "startedAt": "2026-10-25T03:27:05.250Z",
+      "resume": "97f9d17e-6de6-411f-bdd6-ac22759328f4",
+      "budgetReservationUsd": 0.5,
+      "status": "responded",
+      "cliVersion": "2.1.308 (Claude Code)",
+      "finishedAt": "2026-10-25T03:27:30.032Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "sessionId": "97f9d17e-6de6-411f-bdd6-ac22759328f4",
+      "sameSession": true,
+      "usage": {
+        "input_tokens": 8,
+        "cache_creation_input_tokens": 8973,
+        "cache_read_input_tokens": 63987,
+        "output_tokens": 3205,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 8973,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "global",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 1741,
+            "cache_read_input_tokens": 19878,
+            "cache_creation_input_tokens": 830,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 830
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "estimatedCostUsd": 0.1291859,
+      "numTurns": 10,
+      "durationMs": 23108,
+      "permissionDenials": [],
+      "error": null,
+      "changedFiles": ""
+    }
+  ],
+  "reservedUsd": 1,
+  "status": "responded",
+  "createdAt": "2026-10-25T03:26:24.479Z"
+}

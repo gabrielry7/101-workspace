@@ -1,0 +1,937 @@
+{
+  "pass": true,
+  "rows": [
+    {
+      "n": "01",
+      "index": true,
+      "group": {
+        "hash": "#cat-carnes-pescados",
+        "top": 112.25
+      },
+      "detail": {
+        "id": "fruta-temporada",
+        "fields": 4,
+        "related": 3
+      },
+      "selected": {
+        "count": "1 platos elegidos",
+        "mirror": "1 platos elegidos",
+        "closed": true
+      },
+      "opened": true,
+      "clear": "0 platos elegidos"
+    },
+    {
+      "n": "02",
+      "index": true,
+      "group": {
+        "hash": "#cat-carnes-pescados",
+        "top": 113.46875
+      },
+      "detail": {
+        "id": "fruta-temporada",
+        "fields": 4,
+        "related": 3
+      },
+      "selected": {
+        "count": "1 platos elegidos",
+        "mirror": "1 platos elegidos",
+        "closed": true
+      },
+      "opened": true,
+      "clear": "0 platos elegidos"
+    },
+    {
+      "n": "03",
+      "index": true,
+      "group": {
+        "hash": "#cat-carnes-pescados",
+        "top": 124.46875
+      },
+      "detail": {
+        "id": "fruta-temporada",
+        "fields": 4,
+        "related": 3
+      },
+      "selected": {
+        "count": "1 platos elegidos",
+        "mirror": "1 platos elegidos",
+        "closed": true
+      },
+      "opened": true,
+      "clear": "0 platos elegidos"
+    },
+    {
+      "n": "04",
+      "index": true,
+      "group": {
+        "hash": "#cat-carnes-pescados",
+        "top": 96.71875
+      },
+      "detail": {
+        "id": "fruta-temporada",
+        "fields": 4,
+        "related": 3
+      },
+      "selected": {
+        "count": "1 platos elegidos",
+        "mirror": "1 platos elegidos",
+        "closed": true
+      },
+      "opened": true,
+      "clear": "0 platos elegidos"
+    }
+  ],
+  "previews": [
+    {
+      "route": "/b3/candidate-01/carta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/pedidos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/bruschetta-tomate/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/crema-calabaza/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/carpaccio-remolacha/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/croquetas-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/burrata-tomates/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/tabla-quesos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/focaccia-romero/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/hummus-pan/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/berenjenas-asadas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/patatas-bravas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/pizza/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/pizza-margarita/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/pizza-cuatro-quesos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/pizza-huerta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/calzone-espinacas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/pasta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/tagliatelle-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/ravioli-ricotta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/spaghetti-pomodoro/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/gnocchi-pesto/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/risotto-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/arroz-mariscos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/arroz-verduras/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/risotto-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/arroz-pollo/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/pollo-hierbas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/salmon-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/lomo-pimienta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/pescado-horno/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/albondigas-tomate/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/salad/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/ensalada-mediterranea/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/ensalada-pera/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/ensalada-quinoa/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/ensalada-caprese/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/dessert/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/panna-cotta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/tarta-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/brownie-helado/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-01/carta/fruta-temporada/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/pedidos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/bruschetta-tomate/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/crema-calabaza/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/carpaccio-remolacha/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/croquetas-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/burrata-tomates/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/tabla-quesos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/focaccia-romero/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/hummus-pan/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/berenjenas-asadas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/patatas-bravas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/pizza/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/pizza-margarita/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/pizza-cuatro-quesos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/pizza-huerta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/calzone-espinacas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/pasta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/tagliatelle-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/ravioli-ricotta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/spaghetti-pomodoro/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/gnocchi-pesto/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/risotto-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/arroz-mariscos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/arroz-verduras/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/risotto-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/arroz-pollo/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/pollo-hierbas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/salmon-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/lomo-pimienta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/pescado-horno/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/albondigas-tomate/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/salad/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/ensalada-mediterranea/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/ensalada-pera/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/ensalada-quinoa/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/ensalada-caprese/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/dessert/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/panna-cotta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/tarta-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/brownie-helado/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-02/carta/fruta-temporada/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/pedidos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/bruschetta-tomate/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/crema-calabaza/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/carpaccio-remolacha/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/croquetas-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/burrata-tomates/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/tabla-quesos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/focaccia-romero/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/hummus-pan/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/berenjenas-asadas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/patatas-bravas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/pizza/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/pizza-margarita/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/pizza-cuatro-quesos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/pizza-huerta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/calzone-espinacas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/pasta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/tagliatelle-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/ravioli-ricotta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/spaghetti-pomodoro/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/gnocchi-pesto/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/risotto-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/arroz-mariscos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/arroz-verduras/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/risotto-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/arroz-pollo/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/pollo-hierbas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/salmon-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/lomo-pimienta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/pescado-horno/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/albondigas-tomate/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/salad/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/ensalada-mediterranea/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/ensalada-pera/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/ensalada-quinoa/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/ensalada-caprese/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/dessert/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/panna-cotta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/tarta-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/brownie-helado/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-03/carta/fruta-temporada/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/pedidos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/bruschetta-tomate/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/crema-calabaza/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/carpaccio-remolacha/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/croquetas-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/burrata-tomates/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/tabla-quesos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/focaccia-romero/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/hummus-pan/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/berenjenas-asadas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/patatas-bravas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/pizza/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/pizza-margarita/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/pizza-cuatro-quesos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/pizza-huerta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/calzone-espinacas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/pasta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/tagliatelle-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/ravioli-ricotta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/spaghetti-pomodoro/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/gnocchi-pesto/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/risotto-setas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/arroz-mariscos/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/arroz-verduras/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/risotto-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/arroz-pollo/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/pollo-hierbas/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/salmon-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/lomo-pimienta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/pescado-horno/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/albondigas-tomate/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/salad/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/ensalada-mediterranea/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/ensalada-pera/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/ensalada-quinoa/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/ensalada-caprese/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/dessert/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/panna-cotta/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/tarta-limon/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/brownie-helado/",
+      "status": 200,
+      "finalBytes": true
+    },
+    {
+      "route": "/b3/candidate-04/carta/fruta-temporada/",
+      "status": 200,
+      "finalBytes": true
+    }
+  ],
+  "invalid": [
+    {
+      "route": "/b3/candidate-05/carta/pizza/",
+      "status": 404
+    },
+    {
+      "route": "/b3/candidate-01/carta/no-existe/",
+      "status": 404
+    }
+  ]
+}

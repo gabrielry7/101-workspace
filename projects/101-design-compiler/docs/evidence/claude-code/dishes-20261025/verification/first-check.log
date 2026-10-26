@@ -1,0 +1,22 @@
+
+> 101-design-compiler@0.0.0 check
+> astro check && tsc --noEmit
+
+13:33:12 [vite] Re-optimizing dependencies because vite config has changed
+13:33:13 [types] Generated 1.13s
+13:33:13 [check] Getting diagnostics for Astro files in C:\Users\gabri\101-design-compiler\.tools\claude-worktrees\restaurant-dishes-20261025...
+[96msrc/components/composition/ExperienceComposition.astro[0m:[93m46[0m:[93m4[0m - [91merror[0m[90m ts(2375): [0mType '{ root: string; name: any; kind: string; parentKind: string | undefined; }' is not assignable to type 'IntrinsicAttributes & Props' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Type '{ root: string; name: any; kind: string; parentKind: string | undefined; }' is not assignable to type 'Props' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Types of property 'parentKind' are incompatible.
+      Type 'string | undefined' is not assignable to type 'string'.
+        Type 'undefined' is not assignable to type 'string'.
+
+[7m46[0m   <ExperienceNavigation root={p.root} name={name.text} kind={pageKind} parentKind={offering?'collection':undefined}/>
+[7m  [0m [91m   ~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (322 files): 
+- 1 error
+- 0 warnings
+- 0 hints
+
+

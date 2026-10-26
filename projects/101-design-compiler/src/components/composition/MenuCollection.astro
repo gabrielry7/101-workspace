@@ -1,0 +1,54 @@
+---
+// Traditional carta for the collection page only: grouped rows, aligned prices, real links to each dish page.
+// Same semantic OfferingCollection contract as ContextualModule (fact ids/scopes, offering ids, search text, tools);
+// ingredients, allergens, calories and currency live on the dish page.
+import type {ModuleView,BoundFact} from '../../composition/content.ts';
+import {dishRoute} from '../../design/dish-routes.ts';
+import type {RestaurantCatalogue} from '../../design/restaurant-catalogue.ts';
+import ContextualImage from './ContextualImage.astro';
+interface Props{module:ModuleView;root:string;presentation:any;layout:'ledger'|'front-page'|'frames'|'plate';catalogue?:RestaurantCatalogue;mode?:'browse'|'select';photos?:{handle:any;at:string;route:string;creditsHref:string;bindings:Record<string,{slot:string;label:string}>}}
+const {module:m,root,presentation,layout,catalogue,mode='browse',photos}=Astro.props;
+const thumb=(id:string)=>photos?.bindings[id];
+const fold=(s:string)=>s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
+const searchKinds=['offering_name','offering_category','offering_ingredients'];
+const title=presentation.module_headings[m.id];
+const details=['offering_ingredients','offering_allergens','offering_calories','currency'];
+const get=(facts:BoundFact[],kind:string)=>facts.find(f=>f.kind===kind);
+const anchors:Record<string,string>=presentation.anchors;
+const offerings=[...m.offerings].sort((a,b)=>presentation.offering_order.indexOf(a.id)-presentation.offering_order.indexOf(b.id));
+---
+{catalogue?<section id={anchors[m.id]??m.id} class="cat-menu" data-cat-menu data-cat-mode={mode} data-menu-layout={layout} data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page} aria-labelledby={`${m.id}-title`}>
+ <h2 class="cat-title" id={`${m.id}-title`}>{title}</h2>
+ <p class="cat-total">{catalogue.offering_order.length} platos de ejemplo en {catalogue.groups.length} categorías.{photos&&' Las miniaturas son imágenes ilustrativas de ingredientes o presentación; no muestran la receta exacta.'}{mode==='select'&&<> <a class="cat-jump" href="#cat-seleccion">Ver mi selección</a></>}</p>
+ <details class="cat-index" data-cat-index><summary>Ir a una categoría</summary><nav class="cat-nav" aria-label="Categorías de la carta"><ul>{catalogue.groups.map(g=><li><a href={`#cat-${g.id}`} data-cat-link={g.id}>{g.label}</a></li>)}</ul></nav></details>
+ <div class="cat-tools" data-cat-tools role="search" aria-label="Buscar en la carta" hidden>
+  <label class="cat-field-search">Buscar en la carta<input type="search" data-cat-search placeholder="Plato o ingrediente" autocomplete="off" enterkeyhint="search"/></label>
+  <label class="cat-field-filter">Categoría<select data-cat-filter><option value="">Toda la carta</option>{catalogue.groups.map(g=><option value={g.id}>{g.label}</option>)}</select></label>
+  <button type="button" class="cat-reset" data-cat-reset>Quitar filtros</button>
+  <p class="cat-count" role="status" data-cat-count>{catalogue.offering_order.length} platos de ejemplo</p>
+ </div>
+ <div class="cat-groups">{catalogue.groups.map(g=><section class="cat-group" id={`cat-${g.id}`} data-cat-section={g.id} aria-labelledby={`cat-${g.id}-title`}>
+  <h3 class="cat-group-title" id={`cat-${g.id}-title`}>{g.label}</h3>
+  {photos&&catalogue.groups.indexOf(g)%2===0&&thumb(g.offering_ids[0]!)&&<div class="cat-band"><ContextualImage handle={photos.handle} at={photos.at} route={photos.route} slot={thumb(g.offering_ids[0]!)!.slot} creditMode="linked" creditsHref={photos.creditsHref} cover sizes="(min-width: 900px) 48vw, calc(100vw - 40px)"/></div>}
+  <ul class="cat-list">{g.offering_ids.map(id=>{const o=m.offerings.find(x=>x.id===id)!,name=get(o.facts,'offering_name')!,price=get(o.facts,'price')!,href=dishRoute(root,o.id);return <li class="cat-row" data-cat-row data-cat-group={g.id} data-offering-id={o.id} data-offering-scope={o.scope_id} data-cat-search={fold(o.facts.filter(f=>searchKinds.includes(f.kind)||!details.includes(f.kind)&&!['price'].includes(f.kind)).map(f=>f.text).join(' '))}>
+   {thumb(o.id)&&<div class="cat-thumb" title={thumb(o.id)!.label}><ContextualImage handle={photos!.handle} at={photos!.at} route={photos!.route} slot={thumb(o.id)!.slot} creditMode="linked" creditsHref={photos!.creditsHref} cover decorative sizes="72px"/></div>}
+   <div class="cat-head"><h4 class="cat-name" data-fact-id={name.id} data-fact-scope={name.scope_id}><a href={href}>{name.text}</a></h4><span class="cat-leader" aria-hidden="true"></span><span class="cat-price" data-fact-id={price.id} data-fact-scope={price.scope_id}>{price.text}</span></div>
+   <div class="cat-desc">{o.facts.filter(f=>!details.includes(f.kind)&&!['offering_name','offering_category','price'].includes(f.kind)).map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div>
+   <div class="cat-actions">{mode==='select'&&<button type="button" class="cat-add" data-demo-add={name.text} aria-label={`Añadir ${name.text} a una selección de ejemplo`} hidden>Añadir</button>}<a class="cat-open" href={href} aria-label={`Ver plato: ${name.text}`}>Ver plato</a></div>
+  </li>;})}</ul>
+ </section>)}</div>
+ <div class="cat-empty" data-cat-empty hidden><p>No hay platos que coincidan con tu búsqueda.</p><button type="button" class="cat-reset" data-cat-reset>Ver los {catalogue.offering_order.length} platos</button></div>
+ <p class="cat-note">{catalogue.disclosure}</p>
+ {mode==='select'&&<><p class="cat-sr" role="status" data-cat-announce></p><div class="cat-toast" data-cat-toast hidden><span data-cat-toast-text></span><a href="#cat-seleccion">Ver mi selección</a></div></>}
+ {mode==='select'&&<noscript><p class="cat-note">La carta y los detalles funcionan sin JavaScript. Elegir platos para la selección local necesita JavaScript.</p></noscript>}
+</section>:<section id={anchors[m.id]??m.id} class:list={['semantic-v2',`module-${m.capability_id}`,'menu-carta']} data-menu-layout={layout} data-module-id={m.id} data-component={m.component} data-scope-id={m.scope_id} data-required={String(m.required)} data-semantic-page={m.page} aria-labelledby={`${m.id}-title`}>
+ <h2 class="menu-title" id={`${m.id}-title`}>{title}</h2>
+ <div class="collection-tools" data-menu-tools hidden><label>Buscar en la carta<input type="search" data-menu-search placeholder="¿Qué te apetece?" autocomplete="off"/></label><label>Categoría<select data-menu-category><option value="">Toda la carta</option>{m.offerings.map(o=><option value={o.id}>{get(o.facts,'offering_category')?.text}</option>)}</select></label><p role="status" data-menu-count>4 platos de ejemplo</p></div>
+ <div class="contextual-collection">{offerings.map(o=>{const category=get(o.facts,'offering_category')!,name=get(o.facts,'offering_name')!,price=get(o.facts,'price')!,href=dishRoute(root,o.id);return <article class="menu-dish" data-offering-id={o.id} data-offering-scope={o.scope_id} data-search={o.facts.map(f=>f.text).join(' ')}>
+  <h3 class="menu-category" data-fact-id={category.id} data-fact-scope={category.scope_id}>{category.text}</h3>
+  <div class="menu-head"><h4 class="menu-name" data-fact-id={name.id} data-fact-scope={name.scope_id}><a href={href}>{name.text}</a></h4><span class="menu-leader" aria-hidden="true"></span><span class="menu-price" data-fact-id={price.id} data-fact-scope={price.scope_id}>{price.text}</span></div>
+  <div class="menu-desc">{o.facts.filter(f=>!details.includes(f.kind)&&!['offering_name','offering_category','price'].includes(f.kind)).map(f=><p data-fact-id={f.id} data-fact-scope={f.scope_id}>{f.text}</p>)}</div>
+  <a class="menu-open" href={href} aria-label={`Ver plato: ${name.text}`}>Ver plato</a>
+ </article>;})}</div>
+ <p class="menu-note">Recetas, precios y fotografías son ilustrativos y ficticios.</p>
+</section>}

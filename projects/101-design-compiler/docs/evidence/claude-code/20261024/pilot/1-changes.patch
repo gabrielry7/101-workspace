@@ -1,0 +1,47 @@
+diff --git a/src/design/experience-refinement.css b/src/design/experience-refinement.css
+index 77ef3f5..6bf4303 100644
+--- a/src/design/experience-refinement.css
++++ b/src/design/experience-refinement.css
+@@ -6,6 +6,42 @@
+ .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);margin:0;padding-top:0}
+ .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.contextual-photo{grid-column:1;grid-row:1}
+ .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.item-copy{grid-column:2;grid-row:1;display:block;padding:0}
++/* Immersive / Journal home: one lead story, three supporting stories; DOM order is unchanged. */
++.depth-experience.experience-Immersive.page-home.home-Journal .experience-overview{padding-block:clamp(3rem,6.5vw,6.5rem)}
++.depth-experience.experience-Immersive.page-home.home-Journal .community-journal{padding-block:clamp(3.5rem,6.5vw,6.5rem)}
++.depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1) .journal-copy>p:last-of-type{font-size:1.05rem;line-height:1.65;max-width:46ch}
++.depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1) .journal-copy h3{font-size:clamp(2rem,3.4vw,3.6rem);line-height:1.08;letter-spacing:-.02em}
++@media(min-width:1101px){
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:2.5rem 3rem;align-items:start}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1){grid-column:1/8;grid-row:1/4}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1) .contextual-photo{aspect-ratio:1/1}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(n+2){grid-column:8/-1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:1.5rem;padding-top:2.5rem;border-top:1px solid var(--line)}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(2){grid-row:1;padding-top:0;border-top:0}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(3){grid-row:2}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(4){grid-row:3}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(n+2) .contextual-photo{aspect-ratio:1/1}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(n+2) .journal-copy{padding-top:0}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(n+2) .journal-copy h3{font-size:clamp(1.4rem,1.9vw,2rem)}
++}
++@media(min-width:761px) and (max-width:1100px){
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:3rem 1.5rem;align-items:start}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:2rem;align-items:end;padding-bottom:1rem}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1) .contextual-photo{aspect-ratio:4/3}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1) .journal-copy{padding-top:0}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(n+2) .contextual-photo{aspect-ratio:4/5}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(n+2) .journal-copy h3{font-size:clamp(1.3rem,2.6vw,1.6rem)}
++}
++@media(max-width:760px){
++ .depth-experience.experience-Immersive.page-home.home-Journal .experience-overview{padding-block:3.5rem}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-grid{gap:2.5rem 1rem}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1),.depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(4){grid-column:1/-1}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1) .contextual-photo{aspect-ratio:4/3}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(4) .contextual-photo{aspect-ratio:16/10}
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(1) .journal-copy h3{font-size:2.2rem}
++}
++@media(max-width:380px){
++ .depth-experience.experience-Immersive.page-home.home-Journal .journal-entry:nth-child(n){grid-column:auto}
++}
+ @media(max-width:760px){
+  .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item{grid-template-columns:1fr}
+  .depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.contextual-photo,.depth-experience.page-collection .contextual-collection[data-collection-state=filtered] .collection-item>.item-copy{grid-column:1;grid-row:auto}

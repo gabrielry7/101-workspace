@@ -1,0 +1,22 @@
+---
+// Example reference point with explicit-click actions only. No request leaves the page until the visitor asks.
+import {exampleLocation as p,mapUrls} from '../../design/location-example.ts';
+const u=mapUrls(p);
+---
+<section class="location-panel" data-location data-lat={p.latitude} data-lon={p.longitude} data-embed={u.embed} aria-labelledby="loc-title">
+ <div class="loc-card">
+  <p class="loc-flag">Punto de ejemplo; no es una sede real de La Mesa</p>
+  <h2 id="loc-title">{p.label}</h2>
+  <p class="loc-address">{p.address}</p>
+  <p class="loc-note">{p.disclosure} Los datos del local (dirección, horarios) siguen siendo ficticios y se muestran más abajo.</p>
+  <div class="loc-actions">
+   <a class="loc-btn" href={u.map} target="_blank" rel="noopener noreferrer">Abrir en Google Maps <span aria-hidden="true">↗</span></a>
+   <a class="loc-btn" href={u.directions} target="_blank" rel="noopener noreferrer">Cómo llegar (Google Maps) <span aria-hidden="true">↗</span></a>
+   <button type="button" class="loc-btn" data-map-load data-js-only hidden>Mostrar mapa aquí</button>
+   <button type="button" class="loc-btn" data-distance data-js-only hidden>Calcular distancia desde mi ubicación</button>
+  </div>
+  <p class="loc-privacy">Tu ubicación sólo se pide cuando pulsas el botón, se usa en tu navegador y no se guarda ni se envía. Al abrir Google Maps o mostrar el mapa se contacta con ese servicio.</p>
+  <p class="loc-distance" role="status" aria-live="polite" data-distance-out></p>
+ </div>
+ <div class="loc-map" data-map-frame><p class="loc-map-empty">El mapa de OpenStreetMap se carga sólo cuando pulsas «Mostrar mapa aquí».</p><p class="loc-attribution" data-map-attribution hidden>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">colaboradores de OpenStreetMap</a> · punto de ejemplo</p></div>
+</section>

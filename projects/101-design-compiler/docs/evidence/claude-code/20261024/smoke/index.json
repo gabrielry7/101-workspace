@@ -1,0 +1,94 @@
+{
+  "id": "restaurant-analysis-smoke",
+  "status": "responded",
+  "sessionId": "97f9d17e-6de6-411f-bdd6-ac22759328f4",
+  "exchanges": [
+    {
+      "index": 1,
+      "sessionId": "97f9d17e-6de6-411f-bdd6-ac22759328f4",
+      "resumedFrom": null,
+      "success": true,
+      "reportedSessionCostUsd": 0.0548292,
+      "incrementalEstimatedCostUsd": 0.0548292,
+      "numTurns": 1
+    },
+    {
+      "index": 2,
+      "sessionId": "97f9d17e-6de6-411f-bdd6-ac22759328f4",
+      "resumedFrom": "97f9d17e-6de6-411f-bdd6-ac22759328f4",
+      "success": true,
+      "reportedSessionCostUsd": 0.1291859,
+      "incrementalEstimatedCostUsd": 0.0743567,
+      "numTurns": 10
+    }
+  ],
+  "files": [
+    {
+      "path": "task.json",
+      "bytes": 711,
+      "sha256": "389c221ec4279cfa16cec290c31e3add94a5b4e3f649b0e1ef58318496186123"
+    },
+    {
+      "path": "state.json",
+      "bytes": 3695,
+      "sha256": "dc9c4af07bc41e6acf83eac7136c10e0dd98377141395cf92ea71c383efe86db"
+    },
+    {
+      "path": "attachments.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "1-prompt.txt",
+      "bytes": 14066,
+      "sha256": "79cca007eacd0fab8ec0c691f9795a12dfd6cf393f69bb83c1845be02942b84e"
+    },
+    {
+      "path": "1-stdout.json",
+      "bytes": 5514,
+      "sha256": "9783edcf74643f590f4145098b862b1ed74ec38e6a80ed8eb4856d7eba996432"
+    },
+    {
+      "path": "1-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "1-changes.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "1-status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2-prompt.txt",
+      "bytes": 1365,
+      "sha256": "da8546d554d1b1f80042116723b5a2f3c99fb5d6a48e3f15d259d63343b1a32e"
+    },
+    {
+      "path": "2-stdout.json",
+      "bytes": 6515,
+      "sha256": "1a7c0ca99de8c93ecb19296f1bd6acf94fd02ba3c5c4b9d9ac92bdda850d2ac1"
+    },
+    {
+      "path": "2-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2-changes.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2-status.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "source": "Actual installed Claude Code CLI process stdout, not transport test fixtures",
+  "exportedAt": "2026-10-25T03:40:49.807Z"
+}

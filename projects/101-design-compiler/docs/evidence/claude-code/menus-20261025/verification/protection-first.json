@@ -1,0 +1,1212 @@
+{
+  "pass": true,
+  "changed": [
+    {
+      "path": "b3/candidate-01/carta/index.html",
+      "sha256": "37411978c2c6d9ae5300d32223369344dc5d122b6e88ec0f9f0c32bbff2d8afe",
+      "actual": "e8b21885af0c0e9d5f315837cc0ae11d353809930cc4a81f57dde50fd1bc3574",
+      "unchanged": false,
+      "allowed": true
+    },
+    {
+      "path": "b3/candidate-02/carta/index.html",
+      "sha256": "b9029a406f358599cb95175b2cf585e7b8f792af8bec5d57cb26b67e4cf20f60",
+      "actual": "0b2364e2b93cfc162cb53adb977961f5738586ba9e7d6308d2c4f719a12bf448",
+      "unchanged": false,
+      "allowed": true
+    },
+    {
+      "path": "b3/candidate-03/carta/index.html",
+      "sha256": "d354c53f31209b9274511be50d5892d2ae79be4407a3cf252f540e413c911426",
+      "actual": "bc9972e87f443122d82b14c3ae3e144790d25159053cadd94354bc314acb1b72",
+      "unchanged": false,
+      "allowed": true
+    },
+    {
+      "path": "b3/candidate-04/carta/index.html",
+      "sha256": "1975529c4bb3c12a04233f74cf007c18e8c2d52afa7c1a3b637f869d54200543",
+      "actual": "4a4c42cd5b29d417d3303a0aaf2be71abd6d41f0eaf783ceb20b1b6afd47c34b",
+      "unchanged": false,
+      "allowed": true
+    }
+  ],
+  "protectedUnchanged": 164,
+  "rows": [
+    {
+      "path": "b1/catalogo/index.html",
+      "sha256": "a881e106247dffb929553c38485b7f99c93b28179157dcbb8884691deeb35bbe",
+      "actual": "a881e106247dffb929553c38485b7f99c93b28179157dcbb8884691deeb35bbe",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/conflicto/index.html",
+      "sha256": "fc789b082f28c1d3f63103a4a544856abb4a8d6d9ebe18f395397df326688019",
+      "actual": "fc789b082f28c1d3f63103a4a544856abb4a8d6d9ebe18f395397df326688019",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/ferreteria/index.html",
+      "sha256": "c7475567b0e2fc7c6d7cdb9f7e87432fb96c90044f6c5fc2e816e59caab5cc14",
+      "actual": "c7475567b0e2fc7c6d7cdb9f7e87432fb96c90044f6c5fc2e816e59caab5cc14",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/gimnasio/index.html",
+      "sha256": "227eef4f05704922f0c8f6eab24e806ccc9cde29d90660415a0305b36205e7c3",
+      "actual": "227eef4f05704922f0c8f6eab24e806ccc9cde29d90660415a0305b36205e7c3",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/hibrido/index.html",
+      "sha256": "c0db40a7b1718dcb450ade0d63574a8cec3ff3185e79aaad531f797613a977b9",
+      "actual": "c0db40a7b1718dcb450ade0d63574a8cec3ff3185e79aaad531f797613a977b9",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/hibrido-descripcion/index.html",
+      "sha256": "f7c65bbdd029987b9478eb73703211edc30a1bd7456edf9c28b50d7b9da4ae7f",
+      "actual": "f7c65bbdd029987b9478eb73703211edc30a1bd7456edf9c28b50d7b9da4ae7f",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/index.html",
+      "sha256": "e347ee6bb7dce41e343e3c57d1037e2f22ac58b3879d78ae464cb9494eee6dde",
+      "actual": "e347ee6bb7dce41e343e3c57d1037e2f22ac58b3879d78ae464cb9494eee6dde",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/insuficiente/index.html",
+      "sha256": "9bc044b6c7037975089dbd9c7d0052ce1c01eee5efa844ebb8ada696b2822bd3",
+      "actual": "9bc044b6c7037975089dbd9c7d0052ce1c01eee5efa844ebb8ada696b2822bd3",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/objetivo-explicito/index.html",
+      "sha256": "ed8b612757e1f202ab26bfa831b97bfd1c894f9cc8a13b250e316629e1955493",
+      "actual": "ed8b612757e1f202ab26bfa831b97bfd1c894f9cc8a13b250e316629e1955493",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/recurso-no-inspeccionado/index.html",
+      "sha256": "f6c8f9f3ae749370a058d98e6c8d3f7361aaeaa92a53eb2ffd086c6a73677582",
+      "actual": "f6c8f9f3ae749370a058d98e6c8d3f7361aaeaa92a53eb2ffd086c6a73677582",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/reserva-enlace/index.html",
+      "sha256": "b0b5a089f26a5084a69635cf6da41c2aec6b5d66f68dc771cde172e18cfee5fe",
+      "actual": "b0b5a089f26a5084a69635cf6da41c2aec6b5d66f68dc771cde172e18cfee5fe",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/restaurante/index.html",
+      "sha256": "c7ff2e325dd69a7f169bb92ce310ff45334d0c52f3eee5fae32e94b2b78ff380",
+      "actual": "c7ff2e325dd69a7f169bb92ce310ff45334d0c52f3eee5fae32e94b2b78ff380",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/appointment_service/index.html",
+      "sha256": "098e4fa4c1c44538e55b6887456aa1467cdd95b71b1a592ba9bbcafd816ecb77",
+      "actual": "098e4fa4c1c44538e55b6887456aa1467cdd95b71b1a592ba9bbcafd816ecb77",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/education_programs/index.html",
+      "sha256": "119a35ef6dcf9f7e4ed205842e33c317e971e4022d16d67ce8de7856bbbeaf34",
+      "actual": "119a35ef6dcf9f7e4ed205842e33c317e971e4022d16d67ce8de7856bbbeaf34",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/events_and_entertainment/index.html",
+      "sha256": "4900f4db3573175098ae17882a20abd7bf763a12c7c6aef70cf62b066c13f69f",
+      "actual": "4900f4db3573175098ae17882a20abd7bf763a12c7c6aef70cf62b066c13f69f",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/field_service_and_quote/index.html",
+      "sha256": "79caebc6c058f6734cc6e9f1b2c4ac3f5f9c0978e44b32e92413146fc76ec202",
+      "actual": "79caebc6c058f6734cc6e9f1b2c4ac3f5f9c0978e44b32e92413146fc76ec202",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/food_hospitality/index.html",
+      "sha256": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf",
+      "actual": "a0338628984bd6d232547f7ceb3f0638cbeadde20647e0474e127d0ba590afaf",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/index.html",
+      "sha256": "c076b4e64fc57e3e491c9753bce31e0abe99afa56362fb95c55bfb8531545737",
+      "actual": "c076b4e64fc57e3e491c9753bce31e0abe99afa56362fb95c55bfb8531545737",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/industrial_b2b/index.html",
+      "sha256": "b8d0c61f906b8c25f964a7dd2f3e95bd1701a12d2ab8afc9d0fa6fdcf5507400",
+      "actual": "b8d0c61f906b8c25f964a7dd2f3e95bd1701a12d2ab8afc9d0fa6fdcf5507400",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/lodging/index.html",
+      "sha256": "d6003e845e7aa077ef520ff3005a2b4ed7f2a765e3c24061595568883fd07c37",
+      "actual": "d6003e845e7aa077ef520ff3005a2b4ed7f2a765e3c24061595568883fd07c37",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/membership_and_classes/index.html",
+      "sha256": "7d4760984879c53a788901ac7e1e3110ac3489a2d651367e3281685a42fb6200",
+      "actual": "7d4760984879c53a788901ac7e1e3110ac3489a2d651367e3281685a42fb6200",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/product_retail/index.html",
+      "sha256": "a4b507a92ad8debba07ef8d9d7c1bf6aa9560a993034a0d2f44c88078301112d",
+      "actual": "a4b507a92ad8debba07ef8d9d7c1bf6aa9560a993034a0d2f44c88078301112d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/professional_advisory/index.html",
+      "sha256": "866c4871d4c756b01bd3d1de41abcc39a729c9a43ff47430cf9456f4c742c7ea",
+      "actual": "866c4871d4c756b01bd3d1de41abcc39a729c9a43ff47430cf9456f4c742c7ea",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/property_and_spaces/index.html",
+      "sha256": "58a930a73a6e6ece4e968f6db400aaaa8ae4dd07496d422847c3f28f986fa5df",
+      "actual": "58a930a73a6e6ece4e968f6db400aaaa8ae4dd07496d422847c3f28f986fa5df",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/regulated_services/index.html",
+      "sha256": "f81da79a140665e751be04f5cb6b79866fd884cb9419aaa45f75d3c176bd932d",
+      "actual": "f81da79a140665e751be04f5cb6b79866fd884cb9419aaa45f75d3c176bd932d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/transport_and_logistics/index.html",
+      "sha256": "4ae3636c4c93ec2eafd02005b5e51afb9ecdd596909721c065449770bd7f1d9c",
+      "actual": "4ae3636c4c93ec2eafd02005b5e51afb9ecdd596909721c065449770bd7f1d9c",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/revision/vehicle_service/index.html",
+      "sha256": "ec8316dbddb86444a3a7d5c0af318017eb7bdd4c15f6e288a7dab23574992d64",
+      "actual": "ec8316dbddb86444a3a7d5c0af318017eb7bdd4c15f6e288a7dab23574992d64",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b1/sucursales/index.html",
+      "sha256": "5e1e2177b515656f58d46d4d8e8e2407361e69ad6c8c7f2b2372a56cd8f4eb13",
+      "actual": "5e1e2177b515656f58d46d4d8e8e2407361e69ad6c8c7f2b2372a56cd8f4eb13",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b2/corpus/index.html",
+      "sha256": "74b71f8004ad77e2a7c3054ab63ffab61fae0f621645b6f27a9c99ae2af176a9",
+      "actual": "74b71f8004ad77e2a7c3054ab63ffab61fae0f621645b6f27a9c99ae2af176a9",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b2/demo/index.html",
+      "sha256": "0dc6573963eded0389784fa4b58b3c8ec2100df98c4b4fd760fb5c7abb14245a",
+      "actual": "0dc6573963eded0389784fa4b58b3c8ec2100df98c4b4fd760fb5c7abb14245a",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b2/index.html",
+      "sha256": "8395781f43b81dbc5db39eeba515348b5b82bfe80d57a3a5557312c1f9067241",
+      "actual": "8395781f43b81dbc5db39eeba515348b5b82bfe80d57a3a5557312c1f9067241",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b2/pilot/index.html",
+      "sha256": "dcdb5503f120bdde5bc081748cc59645fea45de6c977d09d3d7efcfd08ded216",
+      "actual": "dcdb5503f120bdde5bc081748cc59645fea45de6c977d09d3d7efcfd08ded216",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b2/providers/index.html",
+      "sha256": "a0d15697415a0e713700f535c39690045e99ff94e162f07befe801f8fb7516fb",
+      "actual": "a0d15697415a0e713700f535c39690045e99ff94e162f07befe801f8fb7516fb",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/carta/index.html",
+      "sha256": "37411978c2c6d9ae5300d32223369344dc5d122b6e88ec0f9f0c32bbff2d8afe",
+      "actual": "e8b21885af0c0e9d5f315837cc0ae11d353809930cc4a81f57dde50fd1bc3574",
+      "unchanged": false,
+      "allowed": true
+    },
+    {
+      "path": "b3/candidate-01/contacto/index.html",
+      "sha256": "de6de3add857359c24ff166381df77d2057849e8268d70fc35e3a74d0ff30783",
+      "actual": "de6de3add857359c24ff166381df77d2057849e8268d70fc35e3a74d0ff30783",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/creditos/index.html",
+      "sha256": "555586af102fbccedf30e6f94264bdf33cd82c753f0502111e8f58e24e961eeb",
+      "actual": "555586af102fbccedf30e6f94264bdf33cd82c753f0502111e8f58e24e961eeb",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/diario/index.html",
+      "sha256": "7933d7cc61e5851eb257bc100425e1755273e827c3a7217549f5fcbd5a13419e",
+      "actual": "7933d7cc61e5851eb257bc100425e1755273e827c3a7217549f5fcbd5a13419e",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/historia/index.html",
+      "sha256": "96a66db243396522b320fce8c028d9ac9cc0f44aac536dec315a1ba7126dcf39",
+      "actual": "96a66db243396522b320fce8c028d9ac9cc0f44aac536dec315a1ba7126dcf39",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/index.html",
+      "sha256": "bd6ab35bbf566e91e8e4bd0342298d5400e7ec191ec9cb93e533ae13448cf182",
+      "actual": "bd6ab35bbf566e91e8e4bd0342298d5400e7ec191ec9cb93e533ae13448cf182",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/opiniones/index.html",
+      "sha256": "e2ef45fce824ad141564cf6658d5f20ae9595b4f27c721c5c33027d055549ce8",
+      "actual": "e2ef45fce824ad141564cf6658d5f20ae9595b4f27c721c5c33027d055549ce8",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/pedidos/index.html",
+      "sha256": "2d913811061e7eb2a226d84b60a0153d7a2ced86c834cedf6c960ee2c4c39a8d",
+      "actual": "2d913811061e7eb2a226d84b60a0153d7a2ced86c834cedf6c960ee2c4c39a8d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/preguntas/index.html",
+      "sha256": "110b458d3111d4d05c0999778d0e036f64710e207ec54fbaf050cb5f1919ea1b",
+      "actual": "110b458d3111d4d05c0999778d0e036f64710e207ec54fbaf050cb5f1919ea1b",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/reservas/index.html",
+      "sha256": "ae8dba8249c7ca3deb26cb23182ce4a6877ddb70c902bcc1ce7264bd2b8b054d",
+      "actual": "ae8dba8249c7ca3deb26cb23182ce4a6877ddb70c902bcc1ce7264bd2b8b054d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-01/visita/index.html",
+      "sha256": "b313c8e1d046cce3c088039d8dfbd5f4a1ac6d5a954ebd4c2ede1255af7d7814",
+      "actual": "b313c8e1d046cce3c088039d8dfbd5f4a1ac6d5a954ebd4c2ede1255af7d7814",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/carta/index.html",
+      "sha256": "b9029a406f358599cb95175b2cf585e7b8f792af8bec5d57cb26b67e4cf20f60",
+      "actual": "0b2364e2b93cfc162cb53adb977961f5738586ba9e7d6308d2c4f719a12bf448",
+      "unchanged": false,
+      "allowed": true
+    },
+    {
+      "path": "b3/candidate-02/contacto/index.html",
+      "sha256": "aec23b917170781543b7bb30297be7b98f630f9acc6338f975c1c7bd88ec9bf2",
+      "actual": "aec23b917170781543b7bb30297be7b98f630f9acc6338f975c1c7bd88ec9bf2",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/creditos/index.html",
+      "sha256": "587a6679ed216396af0a6e63d91de6ca626925adf1f7b9d75eaac3aafb8a8259",
+      "actual": "587a6679ed216396af0a6e63d91de6ca626925adf1f7b9d75eaac3aafb8a8259",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/diario/index.html",
+      "sha256": "706ba4e3b4b0decc5aa2668133db61639e7d9da397a0b2954e0d53c5a8e19378",
+      "actual": "706ba4e3b4b0decc5aa2668133db61639e7d9da397a0b2954e0d53c5a8e19378",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/historia/index.html",
+      "sha256": "aa2c4463f2cb27608ee07894d5adcd814322ec1a05feb23b749acf2ca680057a",
+      "actual": "aa2c4463f2cb27608ee07894d5adcd814322ec1a05feb23b749acf2ca680057a",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/index.html",
+      "sha256": "9f71f90d474ed8ad13a4616caa7f1dcbdf5cfac4f0869b60610946ab5eca50bf",
+      "actual": "9f71f90d474ed8ad13a4616caa7f1dcbdf5cfac4f0869b60610946ab5eca50bf",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/opiniones/index.html",
+      "sha256": "0940cccf833134c6307b8702b917d295ba5caa264d8595f7923ca07ecb7d6aa5",
+      "actual": "0940cccf833134c6307b8702b917d295ba5caa264d8595f7923ca07ecb7d6aa5",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/pedidos/index.html",
+      "sha256": "52abdce95d7eaa55e2654c24ce3d48faa9a44c2d27a0586e472dada6ff787918",
+      "actual": "52abdce95d7eaa55e2654c24ce3d48faa9a44c2d27a0586e472dada6ff787918",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/preguntas/index.html",
+      "sha256": "28c667ed8f896f9dcf6e2d5513aa771c3a95ef7519114330326b721d5164374e",
+      "actual": "28c667ed8f896f9dcf6e2d5513aa771c3a95ef7519114330326b721d5164374e",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/reservas/index.html",
+      "sha256": "4d1da38c52dee0181f514f4ac9045daa6eb16862937f017de4a7d36982099a7a",
+      "actual": "4d1da38c52dee0181f514f4ac9045daa6eb16862937f017de4a7d36982099a7a",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-02/visita/index.html",
+      "sha256": "f7e3d28e1e1e642983bd37dc4d38332b72ff669c0d09c68a980b645407bfdb0d",
+      "actual": "f7e3d28e1e1e642983bd37dc4d38332b72ff669c0d09c68a980b645407bfdb0d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/carta/index.html",
+      "sha256": "d354c53f31209b9274511be50d5892d2ae79be4407a3cf252f540e413c911426",
+      "actual": "bc9972e87f443122d82b14c3ae3e144790d25159053cadd94354bc314acb1b72",
+      "unchanged": false,
+      "allowed": true
+    },
+    {
+      "path": "b3/candidate-03/contacto/index.html",
+      "sha256": "97fa9b6a9ad913ca0ce9016fa2940167c8b3da0881ba0be78baebf41939b87b5",
+      "actual": "97fa9b6a9ad913ca0ce9016fa2940167c8b3da0881ba0be78baebf41939b87b5",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/creditos/index.html",
+      "sha256": "89a7bd28aae89ceed1b75151e8b325af12f160d7786eaec00c1f931878465c6e",
+      "actual": "89a7bd28aae89ceed1b75151e8b325af12f160d7786eaec00c1f931878465c6e",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/diario/index.html",
+      "sha256": "38d6ba768702b579cba01e485d7ffc02780d40d12fa4e24d5d58a9a234b1cc18",
+      "actual": "38d6ba768702b579cba01e485d7ffc02780d40d12fa4e24d5d58a9a234b1cc18",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/historia/index.html",
+      "sha256": "bb75b54efa83c80474f541d0dd04581d4162c21f7b3bdbc0323dea7810bc2464",
+      "actual": "bb75b54efa83c80474f541d0dd04581d4162c21f7b3bdbc0323dea7810bc2464",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/index.html",
+      "sha256": "9838f5fa1b611e1fb0d8c84e32bc5424f81c570239e720367e8227161af54100",
+      "actual": "9838f5fa1b611e1fb0d8c84e32bc5424f81c570239e720367e8227161af54100",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/opiniones/index.html",
+      "sha256": "06d59c4e168aa9535769ad676aa08c2d7b81fbae41c0d227b9a170ddf4860e54",
+      "actual": "06d59c4e168aa9535769ad676aa08c2d7b81fbae41c0d227b9a170ddf4860e54",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/pedidos/index.html",
+      "sha256": "032ff0f2c293ce6aa521d317a5550ce02edfc6f140a2e373435777d570a26aed",
+      "actual": "032ff0f2c293ce6aa521d317a5550ce02edfc6f140a2e373435777d570a26aed",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/preguntas/index.html",
+      "sha256": "25ac7d9be6bd80eb476245d41fae7c459e3f88ae39db6de3f782190c5b9e8901",
+      "actual": "25ac7d9be6bd80eb476245d41fae7c459e3f88ae39db6de3f782190c5b9e8901",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/reservas/index.html",
+      "sha256": "f022755ed3bd7f7f837d24c3e7362fbf4cb4423e1dd1413ce07f684a3686c954",
+      "actual": "f022755ed3bd7f7f837d24c3e7362fbf4cb4423e1dd1413ce07f684a3686c954",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-03/visita/index.html",
+      "sha256": "dafaf902a1513a654d3812304c4af2a4d7e46a94e6a54c03f91e7e0491885ab1",
+      "actual": "dafaf902a1513a654d3812304c4af2a4d7e46a94e6a54c03f91e7e0491885ab1",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/carta/index.html",
+      "sha256": "1975529c4bb3c12a04233f74cf007c18e8c2d52afa7c1a3b637f869d54200543",
+      "actual": "4a4c42cd5b29d417d3303a0aaf2be71abd6d41f0eaf783ceb20b1b6afd47c34b",
+      "unchanged": false,
+      "allowed": true
+    },
+    {
+      "path": "b3/candidate-04/contacto/index.html",
+      "sha256": "c01e970cbf0fcd3675e44e555cc011beae94a8caf01f09ff2578ab079861daaf",
+      "actual": "c01e970cbf0fcd3675e44e555cc011beae94a8caf01f09ff2578ab079861daaf",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/creditos/index.html",
+      "sha256": "25b50f9891c8ba545692670776dcf5e1ac9bd3f46219c4c4515a043ec8420c06",
+      "actual": "25b50f9891c8ba545692670776dcf5e1ac9bd3f46219c4c4515a043ec8420c06",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/diario/index.html",
+      "sha256": "57b4f142fa23823f20325a4c95f037c07c532c45d8aa1438fc0218ff67c7b492",
+      "actual": "57b4f142fa23823f20325a4c95f037c07c532c45d8aa1438fc0218ff67c7b492",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/historia/index.html",
+      "sha256": "0240fddaa5b7f3e249120219a237e4442ff0b4a96b0f05d4ba0b1fab0aa0c8c5",
+      "actual": "0240fddaa5b7f3e249120219a237e4442ff0b4a96b0f05d4ba0b1fab0aa0c8c5",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/index.html",
+      "sha256": "d1408a083ea762658994aff9ac073bc3d57d9e17570fbef5d7e656f8a0c128cc",
+      "actual": "d1408a083ea762658994aff9ac073bc3d57d9e17570fbef5d7e656f8a0c128cc",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/opiniones/index.html",
+      "sha256": "d5b6998d452fc021b70c60eb7a5d89addf4ed6f8f411ff047491d15c0265cd24",
+      "actual": "d5b6998d452fc021b70c60eb7a5d89addf4ed6f8f411ff047491d15c0265cd24",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/pedidos/index.html",
+      "sha256": "b8c4187ad822e1802f417d9eb48b01452e98b8aa03819235d79d3a2b3074dd6f",
+      "actual": "b8c4187ad822e1802f417d9eb48b01452e98b8aa03819235d79d3a2b3074dd6f",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/preguntas/index.html",
+      "sha256": "6441eb8ebc6d5590ceaa4590aae7417f82cf504332ba7ab54a780ea43d5163c6",
+      "actual": "6441eb8ebc6d5590ceaa4590aae7417f82cf504332ba7ab54a780ea43d5163c6",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/reservas/index.html",
+      "sha256": "e6543aeb15cfd6e8865d2aa77977f993a19e8721bc1d90bdb723fe4f61bf3419",
+      "actual": "e6543aeb15cfd6e8865d2aa77977f993a19e8721bc1d90bdb723fe4f61bf3419",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/candidate-04/visita/index.html",
+      "sha256": "598b75a3415fd537637c36fc49d47f5873b7f71695d2b4b0dba5362a137c4eb6",
+      "actual": "598b75a3415fd537637c36fc49d47f5873b7f71695d2b4b0dba5362a137c4eb6",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "b3/index.html",
+      "sha256": "369dab7b959b6577bd64f4ac7ba469f356a7a322cbc67d849d9de3cc55af7290",
+      "actual": "369dab7b959b6577bd64f4ac7ba469f356a7a322cbc67d849d9de3cc55af7290",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h3-media-pilot/index.html",
+      "sha256": "584f76e853db29faa1617456ed00b7ef5b5ac0c9488470441a4648729a24c0e5",
+      "actual": "584f76e853db29faa1617456ed00b7ef5b5ac0c9488470441a4648729a24c0e5",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h4/editorial/index.html",
+      "sha256": "352db30994f7feca5632b1c313bded8f17703564f039ef0ba663bcb34c8a7a0c",
+      "actual": "352db30994f7feca5632b1c313bded8f17703564f039ef0ba663bcb34c8a7a0c",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h4/editorial/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "022d1caf93af4cdef358f1145945f8a6197bdf1c8b4bc1ef595638705c4741a9",
+      "actual": "022d1caf93af4cdef358f1145945f8a6197bdf1c8b4bc1ef595638705c4741a9",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h4/index.html",
+      "sha256": "fc5a25d5b9ba4c8a0649c742904e05122a6ec53bda8a88bdef2da750cf1b4e54",
+      "actual": "fc5a25d5b9ba4c8a0649c742904e05122a6ec53bda8a88bdef2da750cf1b4e54",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h4/rail/index.html",
+      "sha256": "0f0cb061f12d8d0481f077cbba5d8fff895907b90d9d5c3ac5da13915f58bd59",
+      "actual": "0f0cb061f12d8d0481f077cbba5d8fff895907b90d9d5c3ac5da13915f58bd59",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h4/rail/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "ab873d71df2913ad22ea949ac3fd525d0983121dd84433e87a52b90cc8773771",
+      "actual": "ab873d71df2913ad22ea949ac3fd525d0983121dd84433e87a52b90cc8773771",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h4/split/index.html",
+      "sha256": "b96ca68fdbd92850b60d47f40723975dd07e01550df7a0603fb2ec701cf36e2a",
+      "actual": "b96ca68fdbd92850b60d47f40723975dd07e01550df7a0603fb2ec701cf36e2a",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h4/split/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "1b0db25ca8b168f77f90be3acc7887ba155e4b8d46d94e8f850f937e951f3a12",
+      "actual": "1b0db25ca8b168f77f90be3acc7887ba155e4b8d46d94e8f850f937e951f3a12",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/candidate-01/index.html",
+      "sha256": "68d6aa3108a3d993c4f0402d2a4f1c093a19101dbb063a576118d4d3c6e2665d",
+      "actual": "68d6aa3108a3d993c4f0402d2a4f1c093a19101dbb063a576118d4d3c6e2665d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "d057331c44d5a0fe606bfbe2f451c2276110af06518b14ba2f7c97fcbd58c35b",
+      "actual": "d057331c44d5a0fe606bfbe2f451c2276110af06518b14ba2f7c97fcbd58c35b",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/candidate-02/index.html",
+      "sha256": "d6851f80ffe3f8d7465827953ce195db3d0eba9bf66ab4b42397adad79f8f0ac",
+      "actual": "d6851f80ffe3f8d7465827953ce195db3d0eba9bf66ab4b42397adad79f8f0ac",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "b2a253531b01304646ad9c68cd15b1efaa65abdaf74c69d43b1251db652fbe3f",
+      "actual": "b2a253531b01304646ad9c68cd15b1efaa65abdaf74c69d43b1251db652fbe3f",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/candidate-04/index.html",
+      "sha256": "38e84c30e1ce1e40d546a830d9c6a3e318a1685a60cf6575a6234d7b10d41591",
+      "actual": "38e84c30e1ce1e40d546a830d9c6a3e318a1685a60cf6575a6234d7b10d41591",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "0c80aa99b7bbd2ec73d76d9d0b2655b42f05917f3b56412d3c66c59456522f2d",
+      "actual": "0c80aa99b7bbd2ec73d76d9d0b2655b42f05917f3b56412d3c66c59456522f2d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/candidate-05/index.html",
+      "sha256": "c42f5d6412c3bbc3fae0731a4e07d527b2f54eff6b1bd8acd5141a642519a8c6",
+      "actual": "c42f5d6412c3bbc3fae0731a4e07d527b2f54eff6b1bd8acd5141a642519a8c6",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "f19958d1f20b6f6fd12f33b6baab17590a5b08fab6b96a848d7300c00e7efcea",
+      "actual": "f19958d1f20b6f6fd12f33b6baab17590a5b08fab6b96a848d7300c00e7efcea",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h5/index.html",
+      "sha256": "936c08e152fd1e00af8610ded647c388f0249a4c658f73f65bdae8321429ce72",
+      "actual": "936c08e152fd1e00af8610ded647c388f0249a4c658f73f65bdae8321429ce72",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-01/desktop/identity/index.html",
+      "sha256": "3ecce2e883ecdf9079b6f80a818558d225e27cc676a7ff091a600ed6f82af9b9",
+      "actual": "3ecce2e883ecdf9079b6f80a818558d225e27cc676a7ff091a600ed6f82af9b9",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-01/desktop/offering/index.html",
+      "sha256": "9788cba5f2ecd76302fae3e595ddbcfde91f020f5325d246c39fe7b2de9ebd7d",
+      "actual": "9788cba5f2ecd76302fae3e595ddbcfde91f020f5325d246c39fe7b2de9ebd7d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-01/mobile/identity/index.html",
+      "sha256": "7a9441feeac2cfa5c11a94286c12be33ab1453348d412dc9e87436e6869453b0",
+      "actual": "7a9441feeac2cfa5c11a94286c12be33ab1453348d412dc9e87436e6869453b0",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-01/mobile/offering/index.html",
+      "sha256": "4392b344332e33a1507b226f97f1d92e3f630ed3f2c7b39f60de06cafc31cf11",
+      "actual": "4392b344332e33a1507b226f97f1d92e3f630ed3f2c7b39f60de06cafc31cf11",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-02/desktop/identity/index.html",
+      "sha256": "2c9c601b847f697987e2dd8c68cbb8177efff446312c91a7bde67fddbde45668",
+      "actual": "2c9c601b847f697987e2dd8c68cbb8177efff446312c91a7bde67fddbde45668",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-02/desktop/offering/index.html",
+      "sha256": "311d64ec8359f771bc12897d97e06cef2df659031761dae18e9f597b22fe38f0",
+      "actual": "311d64ec8359f771bc12897d97e06cef2df659031761dae18e9f597b22fe38f0",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-02/mobile/identity/index.html",
+      "sha256": "8d8c2fb04def7399738e9236e1eac1f3d594eee458a27a2376e3f63094209243",
+      "actual": "8d8c2fb04def7399738e9236e1eac1f3d594eee458a27a2376e3f63094209243",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-02/mobile/offering/index.html",
+      "sha256": "1edb4ebf258cf4893e2bcd9570640cf0482107f900130dc71a00ebf408a26aba",
+      "actual": "1edb4ebf258cf4893e2bcd9570640cf0482107f900130dc71a00ebf408a26aba",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-03/desktop/identity/index.html",
+      "sha256": "1bf576e13202300728b675ca42e7480cf62c7eeb6371a33ca6955ab04bdeb3da",
+      "actual": "1bf576e13202300728b675ca42e7480cf62c7eeb6371a33ca6955ab04bdeb3da",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-03/desktop/offering/index.html",
+      "sha256": "bf11052c154ed706faa39c2779c285f19d7394a83ae90f5f51fc1e50e27ed416",
+      "actual": "bf11052c154ed706faa39c2779c285f19d7394a83ae90f5f51fc1e50e27ed416",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-03/mobile/identity/index.html",
+      "sha256": "988ab24ed9ec11071639069fea37fde0b767823aa0a0fad99f75dcecabb07d07",
+      "actual": "988ab24ed9ec11071639069fea37fde0b767823aa0a0fad99f75dcecabb07d07",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-03/mobile/offering/index.html",
+      "sha256": "21d28dbd5a57ceac98eeb9c6fe52a3214472f9157f4497901f7b37f4ea881b05",
+      "actual": "21d28dbd5a57ceac98eeb9c6fe52a3214472f9157f4497901f7b37f4ea881b05",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-04/desktop/identity/index.html",
+      "sha256": "eb64fda6c80ad244b67d5e470bd73ae80ada4b5f4ce407507c3a37ce92144ec8",
+      "actual": "eb64fda6c80ad244b67d5e470bd73ae80ada4b5f4ce407507c3a37ce92144ec8",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-04/desktop/offering/index.html",
+      "sha256": "b179f0c41ba1f8f3386052db86209531acfdc338902e5d7d64b98662c189eb8a",
+      "actual": "b179f0c41ba1f8f3386052db86209531acfdc338902e5d7d64b98662c189eb8a",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-04/mobile/identity/index.html",
+      "sha256": "3e5e63a28b32aee16e40308401345d1d73b555c31fa09d9c89c1844b2277e682",
+      "actual": "3e5e63a28b32aee16e40308401345d1d73b555c31fa09d9c89c1844b2277e682",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-04/mobile/offering/index.html",
+      "sha256": "4caa6b32ee6de61deafe2ae4e54bad6b404bcaf70d5179f7170d27b22a370d58",
+      "actual": "4caa6b32ee6de61deafe2ae4e54bad6b404bcaf70d5179f7170d27b22a370d58",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-05/desktop/identity/index.html",
+      "sha256": "dcbfd8caf0b0bf91ccf9699c5de91bd42dd52a8f01dbeddb31c320618158918c",
+      "actual": "dcbfd8caf0b0bf91ccf9699c5de91bd42dd52a8f01dbeddb31c320618158918c",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-05/desktop/offering/index.html",
+      "sha256": "df6d6caf1e6e1c98f205774aecb27c6f1b4b7c537d6cc6586e389b0232b6c311",
+      "actual": "df6d6caf1e6e1c98f205774aecb27c6f1b4b7c537d6cc6586e389b0232b6c311",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-05/mobile/identity/index.html",
+      "sha256": "c560b8cd98da862577d8e08e7acbebfb99c78552ededafa0ae01326bf5f1bba4",
+      "actual": "c560b8cd98da862577d8e08e7acbebfb99c78552ededafa0ae01326bf5f1bba4",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-05/mobile/offering/index.html",
+      "sha256": "0c5cab748139134cabec04dbd8e1c46faafdbb64900c1b622cfbdd1e2166e719",
+      "actual": "0c5cab748139134cabec04dbd8e1c46faafdbb64900c1b622cfbdd1e2166e719",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-06/desktop/identity/index.html",
+      "sha256": "c94d6783b3bedbd0108d32afcab1020c48d7f65c2fefdfc4ed423f3b083f2cd0",
+      "actual": "c94d6783b3bedbd0108d32afcab1020c48d7f65c2fefdfc4ed423f3b083f2cd0",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-06/desktop/offering/index.html",
+      "sha256": "7e2320ca9f2dd70ef96680a9ef895c15309e7096d68692de6a305885769d00f6",
+      "actual": "7e2320ca9f2dd70ef96680a9ef895c15309e7096d68692de6a305885769d00f6",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-06/mobile/identity/index.html",
+      "sha256": "153d5417480efd436fcc4f9788b4d005e764498087832b1208b11db9e1df5f40",
+      "actual": "153d5417480efd436fcc4f9788b4d005e764498087832b1208b11db9e1df5f40",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/compare/pair-06/mobile/offering/index.html",
+      "sha256": "e11ac8045a0cceae8be33ef98d04d124f00ec513be56b19280851fe8748e54ff",
+      "actual": "e11ac8045a0cceae8be33ef98d04d124f00ec513be56b19280851fe8748e54ff",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/final-candidate-01/index.html",
+      "sha256": "993225c5c69072b7a27c01615114df3e45669af4e83e76189cf274f2f5930af8",
+      "actual": "993225c5c69072b7a27c01615114df3e45669af4e83e76189cf274f2f5930af8",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/final-candidate-01/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "eb17641b462009e334db55464ee6ce78ac1b51bb2a3ac31bb4148456f5a9a312",
+      "actual": "eb17641b462009e334db55464ee6ce78ac1b51bb2a3ac31bb4148456f5a9a312",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/final-candidate-02/index.html",
+      "sha256": "fe2c2e185e3891e3001d209a22ca9791fd69d3edcc1fceb161ad92b7020ab238",
+      "actual": "fe2c2e185e3891e3001d209a22ca9791fd69d3edcc1fceb161ad92b7020ab238",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/final-candidate-02/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "0b9273a23afad562a581128b6a6f90366b9368244ee15d55a217d6a351e136d7",
+      "actual": "0b9273a23afad562a581128b6a6f90366b9368244ee15d55a217d6a351e136d7",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/final-candidate-04/index.html",
+      "sha256": "0a197833e91b22d7f3af9d95b836d6648668e63e52fdc93e60d7f8fc4120d735",
+      "actual": "0a197833e91b22d7f3af9d95b836d6648668e63e52fdc93e60d7f8fc4120d735",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/final-candidate-04/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "4b7cdfb6c84cec5eba9e70b791d7b24a8f2ecccd0f4f56fc9b4f4694b4778d58",
+      "actual": "4b7cdfb6c84cec5eba9e70b791d7b24a8f2ecccd0f4f56fc9b4f4694b4778d58",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/final-candidate-05/index.html",
+      "sha256": "8e6b77ed928a5508db764d520c7b7362908a28264ee02b5abb49afc96c6ef0af",
+      "actual": "8e6b77ed928a5508db764d520c7b7362908a28264ee02b5abb49afc96c6ef0af",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/final-candidate-05/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "3e4260092b634d873738bc6934da8237186e408d2f1fc73f52786cfdf94343e0",
+      "actual": "3e4260092b634d873738bc6934da8237186e408d2f1fc73f52786cfdf94343e0",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/index.html",
+      "sha256": "c08732da0a1f60ce6620a07edc54486d04b816e5ed62aa40b07dd8e6043bc361",
+      "actual": "c08732da0a1f60ce6620a07edc54486d04b816e5ed62aa40b07dd8e6043bc361",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/repair-after/index.html",
+      "sha256": "b3d50e783cf581ab23970dab7e2132e90b866b71dbf7bde6e378fd22fdd5600b",
+      "actual": "b3d50e783cf581ab23970dab7e2132e90b866b71dbf7bde6e378fd22fdd5600b",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/repair-after/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "8b302f671e7fea56ae24bf723b383522616c9b125b3253df3632074d03493816",
+      "actual": "8b302f671e7fea56ae24bf723b383522616c9b125b3253df3632074d03493816",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/repair-before/index.html",
+      "sha256": "1d441d5fd836887eb51787317fa2147f59ba592c5c23aaf5673c86aaf4a43355",
+      "actual": "1d441d5fd836887eb51787317fa2147f59ba592c5c23aaf5673c86aaf4a43355",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/repair-before/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "f1297b7ae81bc6de1cdb9408edcaac3bd82b329139ec1a70ec6e45d58f156dd5",
+      "actual": "f1297b7ae81bc6de1cdb9408edcaac3bd82b329139ec1a70ec6e45d58f156dd5",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/rollback-restored/index.html",
+      "sha256": "09b72af21da42de3b811e24235f97fce92177298df774130a717ec148462829d",
+      "actual": "09b72af21da42de3b811e24235f97fce92177298df774130a717ec148462829d",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/rollback-restored/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "ba3f04f22739bce9ee59153be1aa95944a96638683348c4580e493b68fbf1ac6",
+      "actual": "ba3f04f22739bce9ee59153be1aa95944a96638683348c4580e493b68fbf1ac6",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/worse-after/index.html",
+      "sha256": "777cb52cdafd1e78363842bc189a2b3e3b087a2ce0df3e83efc55a842d1c6661",
+      "actual": "777cb52cdafd1e78363842bc189a2b3e3b087a2ce0df3e83efc55a842d1c6661",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h6/worse-after/sedes/s-051d544b94ae77ae0d73a35b/menu/index.html",
+      "sha256": "73deeda68afbdb236da8fca327e5d29949a1373bbd3bbed028af460b1601eb0b",
+      "actual": "73deeda68afbdb236da8fca327e5d29949a1373bbd3bbed028af460b1601eb0b",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/dentista-candidate-01/equipo/index.html",
+      "sha256": "a74d2c817af07d71cb7abe77c6377288ab3ba997298e9f1897c4b766fb739399",
+      "actual": "a74d2c817af07d71cb7abe77c6377288ab3ba997298e9f1897c4b766fb739399",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/dentista-candidate-01/index.html",
+      "sha256": "a47668f0961a873b5b0669c2d870b86b4b49ecaa8a1b733fb333af4790c41fb7",
+      "actual": "a47668f0961a873b5b0669c2d870b86b4b49ecaa8a1b733fb333af4790c41fb7",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/dentista-candidate-01/servicios/index.html",
+      "sha256": "1d07db2a2d097174011176acd770242cbbe6761514570299e582709b2b520d69",
+      "actual": "1d07db2a2d097174011176acd770242cbbe6761514570299e582709b2b520d69",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/dentista-candidate-02/equipo/index.html",
+      "sha256": "1afd63c7c0554e1cddf4a116567e5f5699f1d29fe7c4f25abf648e587d71574a",
+      "actual": "1afd63c7c0554e1cddf4a116567e5f5699f1d29fe7c4f25abf648e587d71574a",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/dentista-candidate-02/index.html",
+      "sha256": "494b41d061f095a6273330598e5409cfd0ba414b47e4930115e7da476be823d5",
+      "actual": "494b41d061f095a6273330598e5409cfd0ba414b47e4930115e7da476be823d5",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/dentista-candidate-02/servicios/index.html",
+      "sha256": "21fbd5be9ee23577510286491dd401e3373ec571d536c5154b0cad8190cbca53",
+      "actual": "21fbd5be9ee23577510286491dd401e3373ec571d536c5154b0cad8190cbca53",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hibrido-candidate-01/catalogo/index.html",
+      "sha256": "de6d266db5d747de001a6d246e9b46da669bfd88723d66d394bc3c07137b1c99",
+      "actual": "de6d266db5d747de001a6d246e9b46da669bfd88723d66d394bc3c07137b1c99",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hibrido-candidate-01/clases/index.html",
+      "sha256": "ca6f7396b220e4351a9149fb1f11d4637d6491d3d2c334f0562ec1e6237b7338",
+      "actual": "ca6f7396b220e4351a9149fb1f11d4637d6491d3d2c334f0562ec1e6237b7338",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hibrido-candidate-01/index.html",
+      "sha256": "f26dab512f49393b057a284fd82573a9f6d9ee439a5ea3c22c008c9ec6ae7999",
+      "actual": "f26dab512f49393b057a284fd82573a9f6d9ee439a5ea3c22c008c9ec6ae7999",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hibrido-candidate-01/membresias/index.html",
+      "sha256": "d07ed263f33fc253db3f264d86783f5926414706b538996962d88dcae4077783",
+      "actual": "d07ed263f33fc253db3f264d86783f5926414706b538996962d88dcae4077783",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hibrido-candidate-02/catalogo/index.html",
+      "sha256": "05d2d99eeba10d909df40ac755efce0ba96adf2bf48c2681536c075507639c53",
+      "actual": "05d2d99eeba10d909df40ac755efce0ba96adf2bf48c2681536c075507639c53",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hibrido-candidate-02/clases/index.html",
+      "sha256": "25d3472e3e2b7b18198b8a663d90ec9e09445de5c404d2762ff61b1b696048bb",
+      "actual": "25d3472e3e2b7b18198b8a663d90ec9e09445de5c404d2762ff61b1b696048bb",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hibrido-candidate-02/index.html",
+      "sha256": "d0a33299777f1773980c48e8aab28ce7446aba01d4c66b7f22cd5b6e49f9b9d1",
+      "actual": "d0a33299777f1773980c48e8aab28ce7446aba01d4c66b7f22cd5b6e49f9b9d1",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hibrido-candidate-02/membresias/index.html",
+      "sha256": "25f5a7fa94ce248200ba3d8fc1110c9f39892a45ee9058a14803be8b1bd457f6",
+      "actual": "25f5a7fa94ce248200ba3d8fc1110c9f39892a45ee9058a14803be8b1bd457f6",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hotel-candidate-01/comodidades/index.html",
+      "sha256": "6f623566bc132f1ea6b61f3be78e644a4a2efbe6afa2b9c074db1b723ae01319",
+      "actual": "6f623566bc132f1ea6b61f3be78e644a4a2efbe6afa2b9c074db1b723ae01319",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hotel-candidate-01/habitaciones/index.html",
+      "sha256": "d18772e6263978c5450b2e33e348196292eee45cf3f42298fb256fc6f3991ef4",
+      "actual": "d18772e6263978c5450b2e33e348196292eee45cf3f42298fb256fc6f3991ef4",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hotel-candidate-01/index.html",
+      "sha256": "206cb4cb42f7cb59ea474e8d471da3b7222d583ab95a6af803ba2f4fc9e5f634",
+      "actual": "206cb4cb42f7cb59ea474e8d471da3b7222d583ab95a6af803ba2f4fc9e5f634",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hotel-candidate-02/comodidades/index.html",
+      "sha256": "5764b3739be0579e27ea815f87bc153adc5a5a5dc45e5665266ecdf089dfeb69",
+      "actual": "5764b3739be0579e27ea815f87bc153adc5a5a5dc45e5665266ecdf089dfeb69",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hotel-candidate-02/habitaciones/index.html",
+      "sha256": "a0ad489f32588cc6aa49601bc8449c78c44a83b4cd3f62cc52f882156bdadb5a",
+      "actual": "a0ad489f32588cc6aa49601bc8449c78c44a83b4cd3f62cc52f882156bdadb5a",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/hotel-candidate-02/index.html",
+      "sha256": "bf14bc032a93aac86f6980d228afa00cf5ba2a0291a7af0aca088c7edc7d0113",
+      "actual": "bf14bc032a93aac86f6980d228afa00cf5ba2a0291a7af0aca088c7edc7d0113",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/index.html",
+      "sha256": "ec4f4eb2c4dbb826762f67ae3644728dd11746d71d1a48f5d95f137a52272ef2",
+      "actual": "ec4f4eb2c4dbb826762f67ae3644728dd11746d71d1a48f5d95f137a52272ef2",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/media-unknown-candidate-01/index.html",
+      "sha256": "4649ff9b024a7646ba5154523ce577632d071058f7fd94bd3218485cde734ce4",
+      "actual": "4649ff9b024a7646ba5154523ce577632d071058f7fd94bd3218485cde734ce4",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/media-unknown-candidate-01/servicios/index.html",
+      "sha256": "a123f14bab1ace784f308154c34bf5f1fc67248a01524b07b659ddc8914b6c25",
+      "actual": "a123f14bab1ace784f308154c34bf5f1fc67248a01524b07b659ddc8914b6c25",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/media-unknown-candidate-02/index.html",
+      "sha256": "27f95d33a48b12de34d910490edce987873e5860f9631a2fa420053bd22c9c16",
+      "actual": "27f95d33a48b12de34d910490edce987873e5860f9631a2fa420053bd22c9c16",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/media-unknown-candidate-02/servicios/index.html",
+      "sha256": "19f44b5d47747720e86e0a0670d25c7ab33a2d632358d858f9a04215b384c4a1",
+      "actual": "19f44b5d47747720e86e0a0670d25c7ab33a2d632358d858f9a04215b384c4a1",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/servicio-candidate-01/cobertura/index.html",
+      "sha256": "bdf3a0e6320b302801b862f14d91a284a5cae5ff1bc5b73a731305372a549e51",
+      "actual": "bdf3a0e6320b302801b862f14d91a284a5cae5ff1bc5b73a731305372a549e51",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/servicio-candidate-01/index.html",
+      "sha256": "0918c55523a60f58e27ea1e2cc76f7739e68a09dcf4ea1a4702dad0fb95ae4cc",
+      "actual": "0918c55523a60f58e27ea1e2cc76f7739e68a09dcf4ea1a4702dad0fb95ae4cc",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/servicio-candidate-01/servicios/index.html",
+      "sha256": "47eb75912f947b7b55d5e694b366ae9b6f8223b062b1473632fddba9ee9537f3",
+      "actual": "47eb75912f947b7b55d5e694b366ae9b6f8223b062b1473632fddba9ee9537f3",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/servicio-candidate-02/cobertura/index.html",
+      "sha256": "e04e7352976834cd76e017fac60afb5b395d0661a5b3dc0623c3f13ef6448df2",
+      "actual": "e04e7352976834cd76e017fac60afb5b395d0661a5b3dc0623c3f13ef6448df2",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/servicio-candidate-02/index.html",
+      "sha256": "540dcd3ac9585e12242eb0db91697f67e56a84b56e5d01b6a396d4b07b1ab4c8",
+      "actual": "540dcd3ac9585e12242eb0db91697f67e56a84b56e5d01b6a396d4b07b1ab4c8",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "h7/servicio-candidate-02/servicios/index.html",
+      "sha256": "2f100bb9697c1a621737ef6d6a866512a55141aaafe6ebf5e66b7d3b0522f47e",
+      "actual": "2f100bb9697c1a621737ef6d6a866512a55141aaafe6ebf5e66b7d3b0522f47e",
+      "unchanged": true,
+      "allowed": false
+    },
+    {
+      "path": "index.html",
+      "sha256": "c5008c6747b8de68a36b5316db51178f00ebed46912001ff3477b4c04a11fd15",
+      "actual": "c5008c6747b8de68a36b5316db51178f00ebed46912001ff3477b4c04a11fd15",
+      "unchanged": true,
+      "allowed": false
+    }
+  ]
+}

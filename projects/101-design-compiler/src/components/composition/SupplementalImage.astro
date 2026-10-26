@@ -1,0 +1,10 @@
+---
+import {optionalRestaurantImage} from '../../media/optional-restaurant.ts';
+interface Props{id:number;route:string;creditsHref:string;class?:string}
+const {id,route,creditsHref,class:className}=Astro.props;
+if(creditsHref!==route.replace(/[^/]+\/$/,'')+'creditos/')throw Error('OPTIONAL_CREDIT_ROUTE_MISMATCH');
+const {assets,uses,review_sha256}=await optionalRestaurantImage(id,route),a=assets[0]!;
+---
+<figure class:list={['contextual-photo','media-cover','supplemental-photo',className]} data-supplement-id={id} data-supplement-review={review_sha256} data-supplement-usage={uses.map(u=>u.id).join(' ')} data-credit-href={creditsHref}>
+ <picture><source type="image/webp" srcset={assets.map(a=>`${a.uri} ${a.inspection.width}w`).join(', ')} sizes="(min-width: 1000px) 640px, (min-width: 761px) 50vw, calc(100vw - 40px)"/><img src={a.uri} width={a.inspection.width!} height={a.inspection.height!} alt={`${a.inspection.subject}. Imagen ilustrativa de stock; no representa el negocio ni sus productos reales.`} loading="lazy" decoding="async"/></picture>
+</figure>

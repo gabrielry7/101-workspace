@@ -1,0 +1,40 @@
+{
+  "id": "restaurant-dishes-20261025",
+  "mode": "implement",
+  "prompt": "NEW USER DIRECTION: 'Sabems que me gustaria mas como si fuera una carta normal y cuando le das a cada plato uno puede ver toda la informacion ya en una pagina e incluso si se puede un video de el plato, ingredientes, calorias etc etc.' Execute a traditional menu-to-dish-detail flow across all four approved worlds. The user now wants a NORMAL, easy-to-scan restaurant menu: grouped dish names, brief descriptions, aligned prices, clear real links; opening a dish goes to ITS OWN PAGE with full information, photograph and optional relevant video. Do not retain the huge photo cards, filmstrip, lead-story grid or centered one-card-per-screen menu. Distinct brand typography/palette may remain, but scanning usability and traditional menu density now win. Existing four homes/nav/footer/other pages stay approved.\n\nFIRST EXCHANGE IS PLANNING ONLY: inspect selected accepted source and own screenshots, report the concrete UX/implementation plan, do not edit yet. New worktree starts committed HEAD, lacking the accepted uncommitted Claude artistic+menu version. Reviewed selected accepted snapshots under .tools/claude-code/dish-resources-20261025/accepted/ are the current truth. Codex will deliberately stage them and the reviewed scoped media extension after this first response. No credentials/API responses/unrelated user work are delegated.\n\nArchitecture owned by Codex: extend the existing shared ExperienceComposition with an optional selected offering prop; add /src/pages/b3/[candidate]/carta/[dish].astro for 16 static detail routes. Use shared DishDetail.astro and conditional raw dish CSS in the same Astro renderer, not a new renderer/pipeline/framework/service. Existing page enum/contracts remain frozen. New detail route can pass the existing collection page descriptor plus offering and explicit derived route. Codex will supply a validated dish-route helper and a NEW strictly pinned media companion with usages for these 16 exact new paths, own loader/handle, extending compositionMedia to admit the verified handle; ContextualImage can therefore keep doing the existing gate checks. Do not bypass gates or use direct assets from old route permissions. The four menu pages change; other164 pre-existing outputs must be byte-identical, including pedidos and credits. New media inline credits avoid changing old credits pages. No new client dependency.\n\nContent: only four existing bound fictional dishes, prices, categories, descriptions, ingredients/allergens/calories/currency. All details move from list disclosures to the individual dish page, using original facts/ids/scopes; no nutrition calculation, health claims, real availability, recipe additions or invented details. Menu shows name, price, brief bound description, category and 'Ver plato' link to root/carta/<offering-id>/; no huge photos or details accordion on list. Keep search/category/count contracts and empty states; tools progressively enhanced as before. The detail page includes one dish H1, name/category/price/description, large honest stock photo, ingredients, allergens, calories with the supplied fictional wording, optional manual video, return-to-carta, direct existing pedidos/?plato=<id> link, and sensible next/previous dishes or other dishes. Full dish reading/navigation must work with JS off. Strong keyboard focus, 44px links/controls, 360px readable without overflow. Native video controls/preload=none, no autoplay/loop/audio or upfront video download, and useful static photograph. No unnecessary popup/modal, no checkout/backend.\n\nVideo: existing reviewed silent pizza clip149678 is available. Codex is evaluating three new bounded Pixabay search results for pasta/salad/cake. Videos are illustrative stock, NOT proof of this exact fictional recipe; label plainly. Don't add unrelated atmospheric fire/pot clips as if showing the dish. Only use media actually staged/admitted; you can choose no video on a dish when unsuitable. Codex handles acquisition, full decode, visual review, scoped evidence/rights, hashes and technical verification.\n\nApproved worlds:01 WhiteInk/Georgia warm bone+terracotta;02 Masthead/Vermilion condensed type;03 Brasa/EmberReel warm black+orange/Syne and desktop left rail;04 Herbario/PlateStudy paper/plum/Bodoni Moda+DM Sans. Inherit these worlds for both list and detail, no identity exercise or design-system rewrite. This is a precise user-specified local flow extension; no concept chooser/extra approval needed. The historical LUCA/Osip menu research from the prior turn supports traditional rows/clear price alignment. User has authorized private visual reference analysis, not publication/copying brands/assets/content. Current screenshots are our admitted fictional stock only.\n\nReturn your direct plan, source changes and risks, with no edits in this first exchange. Codex will stage helpers and send implementation feedback in this same session.",
+  "context": [
+    "AGENTS.md",
+    ".tools/claude-code/dish-resources-20261025/accepted/src/components/composition/ExperienceComposition.astro",
+    ".tools/claude-code/dish-resources-20261025/accepted/src/components/composition/ArtisticPages.astro",
+    ".tools/claude-code/dish-resources-20261025/accepted/src/components/composition/MenuCollection.astro",
+    ".tools/claude-code/dish-resources-20261025/accepted/src/design/menu-carta.css",
+    "src/components/composition/ContextualModule.astro",
+    "src/components/composition/ContextualImage.astro",
+    "src/components/composition/ExperienceNavigation.astro",
+    "src/pages/b3/[candidate]/[page].astro",
+    "src/media/composition-media.ts",
+    ".tools/claude-code/menu-resources-20261025/research.md",
+    ".agents/skills/impeccable/reference/craft-floor.md"
+  ],
+  "attachments": [
+    "docs/evidence/claude-code/menus-20261025/captures/01-mobile-sheet.png",
+    "docs/evidence/claude-code/menus-20261025/captures/02-desktop-sheet.png",
+    "docs/evidence/claude-code/menus-20261025/captures/03-mobile-sheet.png",
+    "docs/evidence/claude-code/menus-20261025/captures/04-desktop-sheet.png"
+  ],
+  "attachmentAuthorization": "User explicitly requests continuing these accepted designs and has authorized giving visual references to Claude. Own current screenshots contain admitted illustrative Pixabay stock and fictional content. Private scoped design analysis only; no credentials, training, embedding or general reuse.",
+  "criteria": [
+    "Traditional scannable menu lists across all four identities, links open real per-dish pages",
+    "16 static dish pages preserve bound ingredients/allergens/calories/prices and media gates",
+    "Only four existing menu pages change; other164 existing HTML outputs unchanged",
+    "Manual relevant illustrative video where genuinely admitted; no fake video or exact-recipe claim",
+    "Actual same-session feedback and independent Codex build/tests/browser/review, no merge or push"
+  ],
+  "limits": {
+    "maxCalls": 4,
+    "maxTurns": 60,
+    "timeoutMs": 720000,
+    "maxBudgetUsdPerCall": 3,
+    "maxBudgetUsdTotal": 12
+  }
+}

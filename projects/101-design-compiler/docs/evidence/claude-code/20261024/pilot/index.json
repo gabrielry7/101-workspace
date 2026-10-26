@@ -1,0 +1,94 @@
+{
+  "id": "restaurant-journal-pilot-01",
+  "status": "responded",
+  "sessionId": "da67f25f-35f7-4aaa-a0e5-03be21a29129",
+  "exchanges": [
+    {
+      "index": 1,
+      "sessionId": "da67f25f-35f7-4aaa-a0e5-03be21a29129",
+      "resumedFrom": null,
+      "success": true,
+      "reportedSessionCostUsd": 0.19872310000000004,
+      "incrementalEstimatedCostUsd": 0.19872310000000004,
+      "numTurns": 11
+    },
+    {
+      "index": 2,
+      "sessionId": "da67f25f-35f7-4aaa-a0e5-03be21a29129",
+      "resumedFrom": "da67f25f-35f7-4aaa-a0e5-03be21a29129",
+      "success": true,
+      "reportedSessionCostUsd": 0.2863916,
+      "incrementalEstimatedCostUsd": 0.08766849999999998,
+      "numTurns": 8
+    }
+  ],
+  "files": [
+    {
+      "path": "task.json",
+      "bytes": 3124,
+      "sha256": "2c906934daae1d96849bae7e1afa6d33f31e7140ceffa768523049b8830fd347"
+    },
+    {
+      "path": "state.json",
+      "bytes": 3811,
+      "sha256": "c140bdc1cc2ce9acaa59dc0ff3a2b1a17f1862e24118b1097232d25d1e706b6f"
+    },
+    {
+      "path": "attachments.json",
+      "bytes": 1204,
+      "sha256": "b5c1fc488435432876b347fe157e2c019fe5a08afcc773e0077b4843d96ab04d"
+    },
+    {
+      "path": "1-prompt.txt",
+      "bytes": 45120,
+      "sha256": "fbf4d415a5ac7071318b04e2e0a9fac49d8186a34ab46c7c05b8d58eeb670a02"
+    },
+    {
+      "path": "1-stdout.json",
+      "bytes": 4320,
+      "sha256": "58daf43e0f581c4c08c1feec6846c7c09081154a71dab63418d83747d7380d1a"
+    },
+    {
+      "path": "1-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "1-changes.patch",
+      "bytes": 5225,
+      "sha256": "040b1b4da197caaf4b935e8279b7a8b504f97561b4671917d271b7f9fe8fd37b"
+    },
+    {
+      "path": "1-status.txt",
+      "bytes": 40,
+      "sha256": "cd2404acab9eb4c23c27476b87e39ae2f9e70d53679b72aeb310d497e0119710"
+    },
+    {
+      "path": "2-prompt.txt",
+      "bytes": 1950,
+      "sha256": "3ed61eb716d7ed4a8633bd30a98d263ca4f99f7f26635d98c641ff58e9905220"
+    },
+    {
+      "path": "2-stdout.json",
+      "bytes": 4008,
+      "sha256": "c74b7ac1c590865f32aeee3f2a8fed8e2a6e8c5140406b3aff50aaa825b02665"
+    },
+    {
+      "path": "2-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "2-changes.patch",
+      "bytes": 5704,
+      "sha256": "16f37935d7ac2c780137e2f652e085319b8ca4a062b984a15b624902b67681a9"
+    },
+    {
+      "path": "2-status.txt",
+      "bytes": 40,
+      "sha256": "cd2404acab9eb4c23c27476b87e39ae2f9e70d53679b72aeb310d497e0119710"
+    }
+  ],
+  "source": "Actual installed Claude Code CLI process stdout, not transport test fixtures",
+  "exportedAt": "2026-10-25T03:40:49.977Z"
+}

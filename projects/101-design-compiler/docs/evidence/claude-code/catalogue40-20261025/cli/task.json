@@ -1,0 +1,41 @@
+{
+  "id": "restaurant-catalogue40-20261025",
+  "mode": "implement",
+  "prompt": "User: \"Haz de cuenta que no solo son 4 platos sino que son 40 platos.\" Continue the accepted traditional menu -> individual dish flow in all4approved worlds, now with40distinct fictional offerings,8categories×5. Codex will supply36new properly labeled synthetic entries while preserving all facts of the original4. This is NOT an identity redesign: fix scale/usability, not a new creative concept. All40need real dish pages and working add-to-selection demo (160dish pages across4profiles). Group headings once per category, category navigation, useful accent-insensitive search/category filtering/count/empty/reset. Do not repeat a heading before every one of40rows or render39sibling links on each detail. Related dishes bounded3, favor same category; return to the relevant menu group. Menu and selection should remain usable with40entries on360px and keyboard, and all static content/links work without JS.\nFIRST EXCHANGE: plan only, no edits. New worktree starts at committed HEAD; actual accepted uncommitted snapshot is .tools/claude-code/catalogue40-resources-20261025/accepted/. Codex will explicitly stage reviewed files, media and data helper, then send implementation feedback in same session. No secrets, API caches or unrelated user files delegated.\nArchitecture: preserve sealed upstream scenario4-offering fixture and historical loaders/registries. Codex owns a separate40-item SYNTHETIC demo catalogue with validation and derived ModuleView. loadRestaurantCatalogue(baseLab) will return {...baseLab,catalogue:{module,offering_order,groups,sha256}}; baseLab.scenario remains immutable with its genuine base hash. ExperienceComposition can select catalogue.module when catalogue exists and expose separate data-catalogue-sha256, not pretend original hash covers new items. Existing shared Astro components/routes only, no generator/pipeline/framework/service. Codex supplies data/helper/types, route ID expansion and narrow media adapter fixes.\nScope: four cartas,four pedidos,160dish pages. Other160 pre-existing pages and existing JS assets must remain byte-identical. Do not change shared contextual/depth/refinement clients or original shared CSS. New conditional plain-JS module via ?url on catalogue routes is fine. Use DIFFERENT catalogue-specific search/tools/category/count selectors so legacy menu listener doesn't fight real grouped category filtering. Existing legacy client can keep nav/Escape/selection button/query behavior. Reuse data-demo-add for order buttons. Catalogue selection renders the shared text menu variant with add buttons, not old ContextualModule that expects a photo for every dish.\nMedia: keep existing precisely admitted photos/videos only on original4. Do NOT borrow their route permissions, use pizza images as risotto, fake36clips, or download bulk media. New36details gracefully use authored text/ingredient facts without empty photo/video columns. Original4 retain gated media and manual native video. Codex will make media route validation depend on its original16 registered routes, independent of40valid IDs; manifest pins and rights gates stay intact.\nEight group IDs:al-horno,principales,del-jardin,algo-dulce,entradas,carnes-pescados,arroces,para-compartir. Native category anchors and proper category heading semantics; groups hide when zero visible matches; clear empty feedback; counts accurate. All40full original/demo descriptions retained, fields ingredients/allergens/calories/currency labeled with synthetic caveats. No claims of real venue, nutrition or availability.\nFixed worlds01bone/terracotta/Georgia,02vermilion/condensed,03black/ember/Syne desktop rail,04paper/plum/Bodoni+DM Sans. Preserve responsive type fix, body>=14px, contrast>=4.5,44px controls, native/no-JS fallback, reduced motion, media gates/disclosures/credits.\nReturn concrete scoped implementation plan and risks; no edits until feedback.",
+  "context": [
+    "AGENTS.md",
+    ".tools/claude-code/catalogue40-resources-20261025/accepted/src/components/composition/ExperienceComposition.astro",
+    ".tools/claude-code/catalogue40-resources-20261025/accepted/src/components/composition/ArtisticPages.astro",
+    ".tools/claude-code/catalogue40-resources-20261025/accepted/src/components/composition/MenuCollection.astro",
+    ".tools/claude-code/catalogue40-resources-20261025/accepted/src/components/composition/DishDetail.astro",
+    ".tools/claude-code/catalogue40-resources-20261025/accepted/src/design/menu-carta.css",
+    ".tools/claude-code/catalogue40-resources-20261025/accepted/src/design/dish-detail.css",
+    ".tools/claude-code/catalogue40-resources-20261025/accepted/src/design/dish-routes.ts",
+    "src/components/composition/ContextualModule.astro",
+    "src/design/contextual-client.ts",
+    "src/design/experience-client.ts",
+    "src/design/experience-refinement-client.ts",
+    "src/pages/b3/[candidate]/[page].astro",
+    ".agents/skills/impeccable/reference/craft-floor.md"
+  ],
+  "attachments": [
+    "docs/evidence/claude-code/dishes-20261025/captures/01-menu-mobile-sheet.png",
+    "docs/evidence/claude-code/dishes-20261025/captures/03-menu-mobile-sheet.png",
+    "docs/evidence/claude-code/dishes-20261025/captures/01-pasta-desktop-sheet.png"
+  ],
+  "attachmentAuthorization": "Own accepted fictional-stock screenshots, user-authorized continuing Claude design iteration. Private scoped design analysis only, no external restaurant asset copying, credentials, training or embedding.",
+  "criteria": [
+    "40unique offerings grouped8×5,160working dish pages",
+    "All40selection/query flow works; category/search/reset/no-JS/keyboard on mobile",
+    "Preserve original4facts and admitted media; new36clearly synthetic, media optional without false binding",
+    "Keep existing shared Astro renderer and protect160unrelated old pages/assets",
+    "Real Claude CLI plan, feedback implementation, actual Codex tests/build/browser/review"
+  ],
+  "limits": {
+    "maxCalls": 4,
+    "maxTurns": 60,
+    "timeoutMs": 720000,
+    "maxBudgetUsdPerCall": 3,
+    "maxBudgetUsdTotal": 12
+  }
+}

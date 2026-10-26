@@ -1,0 +1,6 @@
+---
+import type {ExperienceFeatures} from '../../design/depth-experience-contracts.ts';
+interface Props{features:ExperienceFeatures;root:string;mode:'visit'|'request'}
+const {features:f,root,mode}=Astro.props;
+---
+<aside class="visit-preparation" data-feature={mode==='visit'?'visit-preparation':'groups-preview'}><h2>{mode==='visit'?'Antes de venir':'Reservas para grupos'}</h2><p>{mode==='visit'?f.visit_prompt:f.events_prompt}</p><a class="text-link" href={`${root}${mode==='visit'?'preguntas':'contacto'}/`}>{mode==='visit'?'Preguntas frecuentes':'Ir a contacto (canales de ejemplo)'}<span aria-hidden="true">↗</span></a></aside>

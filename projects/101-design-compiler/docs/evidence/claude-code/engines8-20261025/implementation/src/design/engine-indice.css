@@ -1,0 +1,39 @@
+/* 08 Índice — artistic typographic index. Grey-bone, charcoal-green, electric lime; extra-wide Syne over DM Sans. */
+@font-face{font-family:'Syne';src:url(/fonts/b3-artistic/syne.woff) format('woff');font-weight:400 800;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(/fonts/b3-artistic/dmsans.woff) format('woff');font-weight:100 1000;font-style:normal;font-display:swap}
+.depth-experience.engine-indice{--paper:#e9ece4;--ink:#101410;--muted:#444b44;--line:#bfc5b8;--control:#6a7367;--accent:#3a5200;--accent-text:#3a5200;--mark:#c6f432;--action:#101410;--on-action:#c6f432;--surface:#dde2d4;--focus:#101410;--footer-bg:#101410;--footer-ink:#e9ece4;--footer-muted:#c5ccbd;--display:'Syne',system-ui,sans-serif;font-family:'DM Sans',system-ui,sans-serif}
+.engine-indice :is(h1,h2,.footer-wordmark){font-family:'Syne',system-ui,sans-serif;font-weight:800;letter-spacing:-.02em}
+.engine-indice .exp-brand{font-family:'Syne',system-ui,sans-serif;font-weight:800}
+.engine-indice h3{font-family:'DM Sans',system-ui,sans-serif;font-weight:700}
+.engine-indice .ix-intro{padding:clamp(2rem,6vw,5rem) var(--pad) clamp(1.5rem,3vw,2.5rem)}
+.engine-indice .ix-intro h1{margin:0;font-size:clamp(1.875rem,6vw,4.25rem);line-height:1.02;text-transform:uppercase}
+.engine-indice .ix-intro .hero-tagline{max-width:36ch;margin:1.25rem 0 0;font-size:1.25rem;line-height:1.4;color:var(--muted)}
+.engine-indice .ix-index{padding-inline:0;padding-top:0}
+.engine-indice .ix-index h2{position:absolute;width:1px;height:1px;margin:-1px;overflow:clip;clip:rect(0 0 0 0);white-space:nowrap}
+.engine-indice .ix-list{margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.engine-indice .ix-item{display:grid;grid-template-columns:minmax(0,1fr) clamp(5rem,16vw,12rem);align-items:center;gap:1rem;padding:.5rem var(--pad);border-bottom:2px solid var(--ink)}
+.engine-indice .ix-word{display:flex;flex-direction:column;justify-content:center;min-height:44px;min-width:0;font:800 clamp(1.375rem,4.6vw,3.5rem)/1.05 'Syne',system-ui,sans-serif;letter-spacing:-.02em;color:var(--ink);text-decoration:none;overflow-wrap:break-word}
+.engine-indice .ix-count{font:500 .9375rem/1.4 'DM Sans',system-ui,sans-serif;letter-spacing:0;color:var(--muted)}
+.engine-indice .ix-photo{aspect-ratio:4/3}
+.engine-indice .ix-photo img{filter:grayscale(1)}
+.engine-indice .ix-item:is(:hover,:focus-within){background:var(--mark)}
+.engine-indice .ix-item:is(:hover,:focus-within) .ix-count{color:var(--ink)}
+.engine-indice .ix-item:is(:hover,:focus-within) .ix-photo img{filter:none}
+.engine-indice .ix-index .eg-note{padding-inline:var(--pad)}
+.engine-indice .page-intro.eg-head{border-bottom:2px solid var(--ink)}
+.engine-indice .page-intro.eg-head h1{font-size:clamp(1.875rem,6vw,4rem);line-height:1.05;text-transform:uppercase;background:linear-gradient(transparent 62%,var(--mark) 62%);display:inline}
+.engine-indice .eg-price{font-weight:700}
+/* carta: Syne category headings under a lime marker, plain DM Sans rows */
+.engine-indice .cat-menu .cat-group-title{display:inline-block;padding:.15rem .5rem;margin-bottom:.25rem;font:800 clamp(1.125rem,2.6vw,1.5rem)/1.2 'Syne',system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--ink);background:var(--mark);border:0}
+.engine-indice .cat-menu .cat-group{border-top:2px solid var(--ink);padding-top:.75rem}
+.engine-indice .cat-menu[data-menu-layout] .cat-name{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:1.1875rem}
+.engine-indice .cat-menu[data-menu-layout] .cat-price{font-family:'DM Sans',system-ui,sans-serif;font-weight:800;font-size:1.0625rem}
+.engine-indice .cat-menu .cat-leader{border-bottom-style:solid;border-bottom-width:1px;border-color:var(--ink)}
+/* Syne is ~0.9em per letter: heading sizes follow the real column (container units) with a floor that still fits the longest word */
+.engine-indice :is(.house-note,.section-heading){container-type:inline-size}
+.engine-indice :is(.house-note,.section-heading) h2{font-size:clamp(1.375rem,9cqi,4.5rem);line-height:1.1;max-width:none;overflow-wrap:normal;word-break:normal;hyphens:none}
+.engine-indice .cat-selection .selection-preview h2{font-size:clamp(1rem,6cqi,2rem)}
+.engine-indice.page-dish .dish-page .dish-head{container-type:inline-size}
+.depth-experience.engine-indice.page-dish .dish-page .dish-head .dish-name{font-size:clamp(1.25rem,7cqi,3.25rem);line-height:1.1;overflow-wrap:normal;word-break:normal;hyphens:none}
+@media(prefers-reduced-motion:reduce){.engine-indice .ix-photo img{transition:none}}
+@media(max-width:480px){.engine-indice .ix-item{grid-template-columns:minmax(0,1fr) 4.5rem}}

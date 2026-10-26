@@ -1,0 +1,21 @@
+{
+  "htmlPages": 168,
+  "afterHtmlPages": 168,
+  "markupIdenticalExcludingCss": true,
+  "changedMarkup": [],
+  "scriptFiles": 1,
+  "mediaFiles": 13,
+  "jsAndMediaPayloadByteIdentical": true,
+  "changedAssets": [],
+  "beforeExternalCssBytes": 4294,
+  "afterExternalCssBytes": 4294,
+  "targetHtmlBytesBefore": 75921,
+  "targetHtmlBytesAfter": 80390,
+  "targetInlineCssBytesBefore": 58517,
+  "targetInlineCssBytesAfter": 62986,
+  "limits": [
+    "HTML normalization removes inline CSS and normalizes stylesheet hashed URLs only; all other markup, copy, bindings and scripts remain compared",
+    "Media comparison covers payload formats, not copied Git metadata line endings",
+    "Build totals, not network transfer or Core Web Vitals"
+  ]
+}

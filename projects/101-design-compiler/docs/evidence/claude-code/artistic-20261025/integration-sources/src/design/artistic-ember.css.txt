@@ -1,0 +1,201 @@
+/* BRASA / EmberReel — a night kitchen: black field, one ember, a left rail, wide Syne, one fire. Emitted only on candidate-03. */
+@font-face{font-family:'Syne';src:url(/fonts/b3-artistic/syne.woff) format('woff');font-weight:400 800;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(/fonts/b3-artistic/dmsans.woff) format('woff');font-weight:100 1000;font-style:normal;font-display:swap}
+@view-transition{navigation:auto}
+@media(prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+.artistic-site.art-EmberReel{--paper:#0b0908;--ink:#efe6d8;--muted:#b3a898;--line:#3a322b;--accent:#ff6a2b;--accent-text:#ff6a2b;--mark:#ff6a2b;--action:#ff6a2b;--on-action:#0b0908;--surface:#15110f;--surface-2:#1d1713;--control:#8a7d6e;--focus:#ff6a2b;--footer-bg:#050403;--footer-ink:#efe6d8;--footer-muted:#b3a898;--display:'Syne','Arial Black',Arial,sans-serif;--rail:92px;--gutter:clamp(1.25rem,4vw,4rem);font-family:'DM Sans',Arial,sans-serif;color-scheme:dark;background:var(--paper);color:var(--ink);font-synthesis:none;overflow-x:clip}
+.art-EmberReel :is(h1,h2,h3){font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.96;letter-spacing:-.015em;overflow-wrap:break-word}
+.art-EmberReel h2{font-size:clamp(1.9rem,4.6vw,4.6rem)}
+@media(max-width:760px){.art-EmberReel :is(h1,h2,h3){text-transform:none;line-height:1}.art-EmberReel h2{font-size:clamp(1.7rem,8.4vw,2.6rem)}.art-EmberReel h3{font-size:clamp(1.3rem,6vw,1.9rem)}}
+.art-EmberReel h3{font-size:clamp(1.3rem,2.5vw,2.3rem)}
+.art-EmberReel em{font-style:normal;color:var(--accent)}
+.art-EmberReel .eyebrow,.art-EmberReel .kicker{font-weight:700;letter-spacing:.16em;color:var(--accent-text)}
+.art-EmberReel .art-photo img{filter:contrast(1.04) saturate(.92)}
+.art-EmberReel .contextual-photo,.art-EmberReel .art-photo{background:var(--surface)}
+.art-EmberReel .art-cap{position:absolute;left:0;bottom:0;margin:0;padding:.5rem .9rem;background:var(--paper);color:var(--ink);font-size:.875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;max-width:none}
+
+/* ---- Chrome: a fixed left rail on wide screens, a plain bar otherwise ---- */
+.art-EmberReel .depth-header{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
+.art-EmberReel .exp-brand{font:800 1.2rem/1 var(--display);text-transform:uppercase;letter-spacing:.04em}
+.art-EmberReel .quick-nav a{font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.875rem}
+.art-EmberReel .depth-navigation>summary{border-color:var(--ink);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.875rem}
+.art-EmberReel .depth-navigation nav{background:var(--surface);color:var(--ink);box-shadow:none;border-block:1px solid var(--line)}
+.art-EmberReel .navigation-heading>p:last-child{font:800 clamp(2rem,4vw,4rem)/.95 var(--display);text-transform:uppercase}
+.art-EmberReel .navigation-groups a{font:700 1.05rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.03em;border-color:var(--line)}
+.art-EmberReel .navigation-groups a:hover{background:var(--surface-2)}
+.art-EmberReel .quick-nav a[href$="reservas/"]{color:var(--on-action)}
+.art-EmberReel .depth-breadcrumb{padding-top:1.5rem}
+@media(min-width:1025px){
+ .art-EmberReel{padding-left:var(--rail)}
+ .art-EmberReel .depth-header{position:fixed;inset:0 auto 0 0;width:var(--rail);height:100svh;min-height:0;flex-direction:column;justify-content:flex-start;align-items:center;gap:1.25rem;padding:1.25rem 0;border:0;border-right:1px solid var(--line);overflow-y:auto;overflow-x:hidden;z-index:60}
+ .art-EmberReel .exp-brand{writing-mode:vertical-rl;transform:rotate(180deg);min-width:44px;min-height:104px;justify-content:center;font-size:1.3rem}
+ .art-EmberReel .quick-nav{flex-direction:column;gap:1rem;margin:auto 0}
+ .art-EmberReel .quick-nav a{writing-mode:vertical-rl;transform:rotate(180deg);min-width:44px;justify-content:center}
+ .art-EmberReel .quick-nav a[href$="reservas/"]{padding:1rem 0}
+ .art-EmberReel .depth-navigation{margin:0;align-self:stretch;padding-inline:.4rem}
+ .art-EmberReel .depth-navigation>summary{flex-direction:column;gap:.1rem;justify-content:center;width:100%;min-width:0;padding:.5rem 0;text-align:center;font-size:.875rem}
+ .art-EmberReel .depth-navigation nav{position:fixed;inset:0 0 0 var(--rail);max-height:none;height:100svh;padding:clamp(3rem,9vh,7rem) var(--gutter);align-content:start;border:0;border-left:1px solid var(--line)}
+}
+
+/* ---- Home: hero ---- */
+.art-EmberReel .art-hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);min-height:100svh}
+.art-EmberReel .art-hero-copy{display:flex;flex-direction:column;justify-content:flex-end;gap:1.5rem;padding:clamp(2rem,5vw,5rem) var(--gutter) clamp(2.5rem,5vw,4.5rem);position:relative;z-index:2}
+.art-EmberReel .art-hero h1{font-size:7vw;line-height:.88;word-spacing:10em;text-transform:uppercase;color:var(--ink)}
+.art-EmberReel .art-hero .hero-tagline{font-family:'DM Sans',Arial,sans-serif;font-size:clamp(1.15rem,1.7vw,1.5rem);line-height:1.4!important;margin:0!important;max-width:24ch!important;color:var(--muted)}
+.art-EmberReel .art-hero .hero-entry-links{flex-direction:column;align-items:stretch;gap:.75rem;padding:0;border:0;max-width:22rem}
+.art-EmberReel .art-hero .hero-entry-links a{min-height:52px;padding:0 1.1rem;border:1px solid var(--ink);font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:.875rem;text-decoration:none}
+.art-EmberReel .art-hero .hero-entry-links a:first-child{background:var(--action);border-color:var(--action);color:var(--on-action)}
+.art-EmberReel .art-hero .hero-entry-links a:hover{background:var(--ink);color:var(--paper)}
+/* film: crop and magnify to remove the stove frame; poster stays until play */
+.art-EmberReel .art-film{position:relative;overflow:hidden;background:#000;isolation:isolate;min-height:22rem}
+.art-EmberReel .art-film .art-film-poster{position:absolute;inset:0;margin:0;aspect-ratio:auto;transition:opacity .6s}
+.art-EmberReel .art-film picture,.art-EmberReel .art-film img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.art-EmberReel .art-film img,.art-EmberReel .art-film video{transform:scale(1.34);transform-origin:50% 52%;filter:none}
+.art-EmberReel .art-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.art-EmberReel .art-film[data-art-film-state=playing] video{opacity:1}
+.art-EmberReel .art-film[data-art-film-state=playing] .art-film-poster{opacity:0}
+.art-EmberReel [data-art-film-toggle]{position:absolute;right:1.25rem;bottom:1.25rem;z-index:3;min-height:44px;min-width:44px;padding:0 1.25rem;border:1px solid var(--ink);background:#0b0908;color:var(--ink);font-weight:700;font-size:.875rem;letter-spacing:.1em;text-transform:uppercase}
+.art-EmberReel [data-art-film-toggle]:hover{background:var(--ink);color:var(--paper)}
+.art-EmberReel [data-art-film-status]{position:absolute;right:1.25rem;bottom:4.5rem;z-index:3;max-width:22rem;font-size:.875rem;color:var(--ink);background:rgb(11 9 8 / .82);padding:0 .5rem}
+.art-EmberReel [data-art-film-status]:empty{display:none}
+.art-EmberReel .art-hero-film .art-film-poster,.art-EmberReel .art-hero-film video{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26%);mask-image:linear-gradient(90deg,transparent 0,#000 26%)}
+@media(max-width:1024px){
+ .art-EmberReel .art-hero{grid-template-columns:1fr;min-height:0}
+ .art-EmberReel .art-hero-film{order:-1;height:clamp(11rem,28svh,16rem);min-height:0}
+ .art-EmberReel .art-hero-film .art-film-poster,.art-EmberReel .art-hero-film video{-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 30%);mask-image:linear-gradient(0deg,transparent 0,#000 30%)}
+ .art-EmberReel .art-hero-copy{padding-top:1.5rem;gap:1.1rem}
+ .art-EmberReel .art-hero h1{font-size:min(17vw,5.2rem)}
+ .art-EmberReel .art-hero .hero-entry-links{max-width:none}
+}
+
+/* ---- Home: collage, features, band ---- */
+.art-EmberReel .art-collage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(.75rem,2vw,2rem);padding:clamp(3rem,8vw,8rem) var(--gutter)}
+.art-EmberReel .art-shot{position:relative;min-width:0}
+.art-EmberReel .art-shot .art-photo{height:100%}
+.art-EmberReel .art-shot-a{grid-column:1/8;grid-row:1}
+.art-EmberReel .art-shot-a .art-photo{aspect-ratio:3/2}
+.art-EmberReel .art-shot-b{grid-column:9/13;grid-row:1/3}
+.art-EmberReel .art-shot-b .art-photo{aspect-ratio:auto}
+.art-EmberReel .art-shot-c{grid-column:3/8;grid-row:2;margin-top:clamp(-5rem,-5vw,-1rem);z-index:2}
+.art-EmberReel .art-shot-c .art-photo{aspect-ratio:16/10;outline:12px solid var(--paper)}
+.art-EmberReel .experience-overview{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,6vw,6rem);padding:clamp(3rem,8vw,8rem) var(--gutter);border:0;align-items:start}
+.art-EmberReel .house-note h2{font-size:clamp(2.2rem,5vw,5.2rem);max-width:none;margin-bottom:1.5rem}
+.art-EmberReel .house-note>p:not(.eyebrow){color:var(--muted);font-size:1.0625rem}
+.art-EmberReel .route-directory>a{grid-template-columns:3rem minmax(0,1fr) auto;padding:1.5rem 0;border-color:var(--line)}
+.art-EmberReel .route-directory h3{font-size:clamp(1.5rem,2.8vw,2.6rem)}
+.art-EmberReel .route-directory>a:hover h3,.art-EmberReel .route-directory>a:focus-visible h3{color:var(--accent)}
+.art-EmberReel .directory-number{font:800 1rem var(--display);color:var(--accent)}
+.art-EmberReel .art-band{padding:0 0 clamp(2rem,5vw,4rem)}
+.art-EmberReel .art-band-photo{aspect-ratio:21/9}
+.art-EmberReel .art-word{font:800 calc((100vw - 2*var(--gutter))/12.2)/.85 var(--display);text-transform:uppercase;color:var(--accent);white-space:nowrap;max-width:none;margin:clamp(1rem,3vw,2.5rem) 0 0;padding:0 var(--gutter);overflow:hidden}
+.art-EmberReel .community-journal,.art-EmberReel .community-reviews,.art-EmberReel .community-contact{padding:clamp(3.5rem,8vw,8rem) var(--gutter)}
+.art-EmberReel .community-heading h2{font-size:clamp(2.2rem,5.6vw,5.8rem)}
+.art-EmberReel .community-heading p{color:var(--muted)}
+.art-EmberReel .editorial-disclosure{color:var(--muted)}
+.art-EmberReel .text-link{border-bottom:2px solid var(--accent)}
+
+/* ---- Journal: a list of large titles, each with its photograph ---- */
+/* Small screens: a plain stacked row (number, photo, full-width copy). The 3-column row is wide-screen only. */
+.art-EmberReel .journal-grid{display:block;max-width:none;border-top:1px solid var(--line)}
+.art-EmberReel .journal-entry{display:block;margin:0;padding:2rem 0;border:0;border-bottom:1px solid var(--line)}
+.art-EmberReel .journal-number{display:block;font:800 1rem var(--display);color:var(--accent);margin-bottom:.75rem}
+.art-EmberReel .journal-entry .contextual-photo{aspect-ratio:4/3;width:100%;border:0;border-radius:0;outline:0;margin-bottom:1.25rem}
+.art-EmberReel .journal-copy{display:block;padding:0;max-width:none;width:100%}
+.art-EmberReel .journal-copy h3{font-size:clamp(1.5rem,3.6vw,3.6rem);letter-spacing:-.01em}
+.art-EmberReel .journal-copy>p:last-child{color:var(--muted)}
+@media(min-width:761px){
+ .art-EmberReel .journal-entry,.art-EmberReel.page-journal .journal-grid[data-journal-layout] .journal-entry:nth-child(n){display:grid;grid-template-columns:3.5rem minmax(0,1fr) minmax(0,14rem);gap:1rem clamp(1rem,3vw,3rem);align-items:start;grid-column:auto;width:auto;margin:0;padding:2rem 0;border:0;border-bottom:1px solid var(--line)}
+ .art-EmberReel .journal-number{grid-column:1;grid-row:1;margin:0;padding-top:.4rem}
+ .art-EmberReel .journal-entry .contextual-photo,.art-EmberReel.page-journal .journal-grid[data-journal-layout] .journal-entry:nth-child(n) .contextual-photo{grid-column:3;grid-row:1;aspect-ratio:4/3;width:100%;border:0;border-radius:0;outline:0;margin:0}
+ .art-EmberReel .journal-copy,.art-EmberReel.page-journal .journal-grid[data-journal-layout] .journal-entry:nth-child(n) .journal-copy{grid-column:2;grid-row:1;padding:0;max-width:none;display:block}
+ .art-EmberReel .journal-copy h3,.art-EmberReel.page-journal .journal-grid[data-journal-layout] .journal-entry:nth-child(n) .journal-copy h3{font-size:clamp(1.6rem,3.6vw,3.6rem);letter-spacing:-.01em}
+ .art-EmberReel.page-journal .journal-grid[data-journal-layout] .journal-entry:nth-child(n) .journal-reading{grid-column:auto;margin-top:1.25rem}
+}
+.art-EmberReel.page-journal .journal-grid[data-journal-layout]{display:block;max-width:none;width:100%;margin:0;gap:0}
+.art-EmberReel .journal-reading[open]{background:var(--surface)}
+.art-EmberReel .journal-tools,.art-EmberReel .collection-tools{background:var(--surface);border-color:var(--line);border-top-color:var(--accent)}
+
+/* ---- Reviews: one voice per row ---- */
+.art-EmberReel .review-grid,.art-EmberReel.page-reviews .review-grid{grid-template-columns:1fr;gap:0}
+.art-EmberReel .review-card,.art-EmberReel.page-reviews .review-card:is(:first-child,:not(:first-child)){padding:clamp(2rem,5vw,4.5rem) 0;border:0;border-top:1px solid var(--line);grid-column:auto}
+.art-EmberReel .quote-mark{display:none}
+.art-EmberReel .review-card blockquote,.art-EmberReel.page-reviews .review-card:is(:first-child,:not(:first-child)) blockquote{font:600 clamp(1.5rem,3.6vw,3.6rem)/1.12 var(--display);letter-spacing:-.01em;max-width:24ch;margin-bottom:1.5rem}
+.art-EmberReel .review-byline>span{font:800 1rem var(--display);color:var(--accent)}
+.art-EmberReel .review-label{border-color:var(--control);color:var(--muted)}
+
+/* ---- Contact: the single ember plane ---- */
+.art-EmberReel .community-contact{background:var(--accent);color:#0b0908;--ink:#0b0908;--muted:#2a1608;--line:#0b0908;--control:#0b0908;--accent-text:#0b0908;--focus:#0b0908;--mark:#0b0908}
+.art-EmberReel .community-contact h2,.art-EmberReel .community-contact em{color:#0b0908}
+.art-EmberReel .community-contact .eyebrow{color:#0b0908}
+.art-EmberReel .community-contact .demo-contact-details .eyebrow{color:#ff6a2b}
+.art-EmberReel .community-contact .demo-contact-details p{color:#efe6d8}
+.art-EmberReel .community-contact .demo-contact-details #contact-demo-notice,.art-EmberReel .community-contact .demo-contact-details>p:last-child{color:#b3a898}
+.art-EmberReel .community-contact .community-contact-link{background:#0b0908;color:#efe6d8;border:1px solid #0b0908;min-height:56px;font:800 1rem var(--display);text-transform:uppercase;letter-spacing:.06em}
+.art-EmberReel .community-contact .demo-contact-details{--ink:#efe6d8;--muted:#b3a898;--line:#3a322b;--control:#8a7d6e;--accent-text:#ff6a2b;--focus:#ff6a2b;--mark:#ff6a2b;background:#0b0908;color:#efe6d8;border-top:4px solid #ff6a2b}
+.art-EmberReel .community-contact .demo-contact-details button{background:#0b0908;color:var(--muted)}
+.art-EmberReel .community-contact .social-state{color:#0b0908}
+.art-EmberReel .community-contact .text-link{border-bottom-color:#0b0908}
+.art-EmberReel .community-contact .contact-shortcuts a{font:800 1.1rem var(--display);text-transform:uppercase}
+
+/* ---- Interior heads ---- */
+.art-EmberReel .art-head,.art-EmberReel.page-credits .page-intro{padding:clamp(2.5rem,7vw,6.5rem) 0 clamp(2rem,4vw,3.5rem);margin:0 0 clamp(2rem,4vw,3.5rem);border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr);gap:2rem;max-width:none}
+.art-EmberReel .art-head.has-image{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:end}
+.art-EmberReel .art-head h1,.art-EmberReel.page-credits .page-intro h1{font-size:clamp(2rem,6vw,6.2rem);line-height:.92;letter-spacing:-.02em;margin:0 0 1.25rem}
+@media(max-width:760px){.art-EmberReel .art-head h1,.art-EmberReel.page-credits .page-intro h1{font-size:clamp(2rem,9.6vw,3.2rem);line-height:1}}
+.art-EmberReel .art-head p:not(.eyebrow),.art-EmberReel.page-credits .page-intro>p:not(.eyebrow){color:var(--muted);font-size:1.0625rem;max-width:46ch;margin:0}
+.art-EmberReel.page-credits .page-intro:has(>p:not(.eyebrow)){display:grid;grid-template-columns:minmax(0,1fr)}
+.art-EmberReel.page-credits .page-intro:has(>p:not(.eyebrow))>*{grid-column:1;grid-row:auto}
+.art-EmberReel .art-head-image{aspect-ratio:16/10}
+.art-EmberReel .art-head-image.is-wide{aspect-ratio:16/10}
+@media(max-width:760px){.art-EmberReel .art-head.has-image{grid-template-columns:1fr}}
+
+/* ---- Carta: tall rows, photograph and name alternating ---- */
+.art-EmberReel.page-collection .contextual-collection{display:block}
+.art-EmberReel.page-collection .collection-item{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(1.5rem,4vw,4rem);align-items:end;margin:0;padding:clamp(2rem,5vw,4rem) 0;border-top:1px solid var(--line)}
+.art-EmberReel.page-collection .collection-item:nth-child(even){grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+.art-EmberReel.page-collection .collection-item:nth-child(even)>.contextual-photo{order:2}
+.art-EmberReel.page-collection .collection-item .contextual-photo{aspect-ratio:16/10}
+.art-EmberReel .item-copy{padding:0}
+.art-EmberReel .item-title{display:block;border-color:var(--line)}
+.art-EmberReel .item-title h3{font-size:clamp(1.6rem,3.4vw,3.3rem);margin-bottom:1rem}
+.art-EmberReel .item-price{display:inline-block;border-color:var(--accent);color:var(--accent)}
+.art-EmberReel .dish-detail{background:var(--surface)}
+.art-EmberReel .demo-add{border:1px solid var(--accent);color:var(--on-action);background:var(--accent);font-weight:700;letter-spacing:.04em}
+@media(max-width:760px){.art-EmberReel.page-collection .collection-item,.art-EmberReel.page-collection .collection-item:nth-child(even){grid-template-columns:1fr}.art-EmberReel.page-collection .collection-item:nth-child(even)>.contextual-photo{order:0}}
+/* Selection: stack the ticket above the list before the dish column gets squeezed */
+.art-EmberReel.page-selection .item-title h3{font-size:clamp(1.3rem,2vw,1.9rem);margin-bottom:.5rem}
+@media(max-width:1100px){.art-EmberReel .order-layout{grid-template-columns:minmax(0,1fr);gap:2rem}.art-EmberReel .selection-preview{position:static;grid-row:1}}
+
+/* ---- Selección, reservas ---- */
+.art-EmberReel .selection-preview,.art-EmberReel .request-panel{background:var(--surface);border:0;border-top:4px solid var(--accent)}
+.art-EmberReel .selection-count{font:800 2rem/1.1 var(--display);text-transform:uppercase}
+.art-EmberReel .preview-intent h2{margin-top:.5rem}
+.art-EmberReel .request-scene{aspect-ratio:3/2}
+.art-EmberReel .table-map button{background:var(--paper)}
+.art-EmberReel .visit-preparation{background:var(--surface);border-color:var(--line)}
+
+/* ---- Historia: image first, text laid across it ---- */
+.art-EmberReel .art-story{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(.75rem,2vw,2rem)}
+.art-EmberReel .art-story-main{grid-column:1/10;grid-row:1;aspect-ratio:16/9}
+.art-EmberReel .art-story .module-about{grid-column:4/13;grid-row:2;background:var(--paper);padding:clamp(1.5rem,4vw,3.5rem) 0 0 clamp(1.5rem,4vw,3.5rem);margin-top:clamp(-7rem,-7vw,-1rem);position:relative}
+.art-EmberReel .module-about .fact-copy{columns:2 18rem;column-gap:clamp(2rem,4vw,4rem)}
+.art-EmberReel .module-about .fact-copy p{max-width:none;break-inside:avoid;margin-bottom:1.25rem}
+.art-EmberReel .module-about .fact-copy .lead{column-span:all;font:700 clamp(1.4rem,2.6vw,2.4rem)/1.2 var(--display);margin-bottom:2rem}
+.art-EmberReel .art-story-inset{grid-column:8/13;grid-row:3;aspect-ratio:4/3;margin-top:clamp(2rem,5vw,5rem)}
+@media(max-width:760px){.art-EmberReel .art-story-main,.art-EmberReel .art-story .module-about,.art-EmberReel .art-story-inset{grid-column:1/-1;grid-row:auto;margin-top:2rem;padding-left:0}.art-EmberReel .art-story-main{margin-top:0}}
+
+/* ---- Visita, preguntas ---- */
+.art-EmberReel .visit-layout section{background:var(--surface);border-top:3px solid var(--accent)}
+.art-EmberReel .visit-layout section:first-child{background:transparent;border-top-color:var(--ink)}
+.art-EmberReel .visit-layout .fact-copy p{font-variant-numeric:tabular-nums}
+.art-EmberReel .module-faqs summary{font:700 clamp(1.15rem,2vw,1.6rem)/1.2 var(--display);text-transform:uppercase;letter-spacing:.01em}
+.art-EmberReel .module-faqs details[open]{background:var(--surface)}
+
+/* ---- Creditos, footer ---- */
+.art-EmberReel .credit-list a{text-decoration-color:var(--accent)}
+.art-EmberReel .experience-scope{background:var(--surface)}
+.art-EmberReel .exp-footer{padding-block:clamp(3rem,7vw,6rem)}
+.art-EmberReel .footer-wordmark{font:800 clamp(3rem,9vw,9rem)/.9 var(--display);text-transform:uppercase;letter-spacing:-.03em}
+.art-EmberReel .footer-links a{font-weight:600;letter-spacing:.04em}
+@media(min-width:1025px){.art-EmberReel .art-word{font-size:calc((100vw - var(--rail) - 2*var(--gutter))/12.2)}}
+@media(prefers-reduced-motion:reduce){.art-EmberReel .art-film .art-film-poster,.art-EmberReel .art-film video{transition:none}}

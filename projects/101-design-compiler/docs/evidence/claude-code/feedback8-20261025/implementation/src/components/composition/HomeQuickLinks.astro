@@ -1,0 +1,11 @@
+---
+// Direct, useful entry links for the home of every engine. Labels come from the shared presentation map.
+import {richExperiencePages} from '../../design/rich-experience-contracts.ts';
+import {experienceRoute} from '../../design/experience-contracts.ts';
+import {publicLabel} from '../../design/nav-labels.ts';
+interface Props{root:string}
+const {root}=Astro.props;
+const items=[['collection','Cuarenta platos en ocho categorías'],['request','Elige día y personas'],['visit','Cómo llegar y horarios'],['story','Quiénes somos'],['faq','Respuestas antes de venir'],['journal','Novedades y relatos'],['contact','Vías de contacto']] as const;
+const href=(k:string)=>experienceRoute(root,richExperiencePages.find(p=>p.kind===k)! as any);
+---
+<nav class="quick-links" aria-label="Accesos principales" data-feature="quick-links"><ul>{items.map(([k,d],i)=><li class:list={[i<3&&'is-primary']}><a href={href(k)} data-directory-kind={k}><span class="ql-name">{publicLabel(k)}</span><span class="ql-desc">{d}</span><span class="ql-arrow" aria-hidden="true">→</span></a></li>)}</ul></nav>

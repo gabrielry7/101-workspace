@@ -1,0 +1,40 @@
+/* 07 Cartel duotono — artistic. Indigo and coral duotone photographs on newsprint; Instrument Serif over DM Sans. */
+@font-face{font-family:'Instrument Serif';src:url(/fonts/feedback8/instrumentserif.woff) format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(/fonts/b3-artistic/dmsans.woff) format('woff');font-weight:100 1000;font-style:normal;font-display:swap}
+.depth-experience.engine-riso{--paper:#f2ece0;--ink:#1a1740;--muted:#46427a;--line:#c9bfa8;--control:#5a5790;--accent:#2b2a8c;--accent-text:#2b2a8c;--mark:#ff6b57;--action:#2b2a8c;--on-action:#fff;--surface:#e6dcc9;--focus:#2b2a8c;--footer-bg:#1a1740;--footer-ink:#f2ece0;--footer-muted:#d6d3f0;--display:'Instrument Serif',Georgia,serif;font-family:'DM Sans',system-ui,sans-serif;background:var(--paper)}
+.engine-riso :is(h1,h2,.footer-wordmark,.exp-brand){font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:0;color:var(--accent-text)}
+.engine-riso h3{font-family:'DM Sans',system-ui,sans-serif;font-weight:700}
+.engine-riso .exp-footer :is(h2,.footer-wordmark){color:var(--footer-ink)}
+.engine-riso .exp-header{background:var(--paper);border-bottom:3px solid var(--accent)}
+/* duotone: grayscale photo multiplied on coral, indigo lifted into the shadows */
+.engine-riso .rs-photo,.engine-riso .rs-panel .eg-media{isolation:isolate;background:var(--mark)}
+.engine-riso .rs-photo img{filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
+.engine-riso .rs-photo::after{content:"";position:absolute;inset:0;background:var(--accent);mix-blend-mode:lighten;pointer-events:none}
+.engine-riso .rs-tri{position:relative;border-bottom:3px solid var(--accent)}
+.engine-riso .rs-panels{display:grid;grid-template-columns:3fr 2fr 3fr;gap:0;margin:0;padding:0;list-style:none;height:min(78svh,44rem)}
+.engine-riso .rs-panel{min-width:0;height:100%}
+.engine-riso .rs-panel .eg-media,.engine-riso .rs-panel .rs-photo{height:100%}
+.engine-riso .rs-panel:nth-child(2) .rs-photo{background:var(--accent)}
+.engine-riso .rs-panel:nth-child(2) .rs-photo::after{background:var(--mark)}
+.engine-riso .rs-caption{position:absolute;left:var(--pad);bottom:var(--pad);z-index:2;max-width:min(32rem,calc(100% - 2*var(--pad)));padding:clamp(1rem,3vw,1.75rem);background:var(--paper);border:3px solid var(--accent)}
+.engine-riso .rs-caption h1{margin:0;font-size:clamp(2.25rem,5.5vw,3.75rem);line-height:1}
+.engine-riso .rs-caption .hero-tagline{margin:.75rem 0 0;font-size:1.125rem;line-height:1.45;color:var(--ink)}
+.engine-riso .rs-gallery ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.75rem,2vw,1.5rem);align-items:start;margin:0;padding:clamp(2rem,5vw,4rem) var(--pad);list-style:none}
+.engine-riso .rs-g .rs-photo{aspect-ratio:3/4}
+.engine-riso .rs-g-2{margin-top:2.5rem}.engine-riso .rs-g-3{margin-top:1rem}.engine-riso .rs-g-4{margin-top:3.5rem}
+.engine-riso .quick-links a{border-top-color:var(--accent);border-top-width:2px}
+.engine-riso .quick-links .is-primary a{background:var(--mark);color:var(--ink);border-color:var(--ink)}
+.engine-riso .community-reviews{background:var(--accent);color:#fff;padding-inline:var(--pad)}
+.engine-riso .community-reviews :is(h2,.editorial-disclosure,.review-label,p,blockquote,.text-link){color:#fff}
+.engine-riso .review-card blockquote{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.2}
+.engine-riso .eg-price{color:var(--accent-text);font-weight:700}
+.engine-riso .int-head{border-bottom:3px solid var(--accent)}
+.engine-riso .int-head h1{font-size:clamp(2.75rem,7vw,5rem)}
+.engine-riso .cat-menu .cat-group-title{padding:.5rem .9rem;font:400 clamp(1.5rem,3vw,2rem)/1.15 'Instrument Serif',Georgia,serif;letter-spacing:0;text-transform:none;color:#fff;background:var(--accent);border:0}
+.engine-riso .cat-menu .cat-name{font-family:'DM Sans',system-ui,sans-serif;font-weight:700;font-size:1.1875rem}
+@media(max-width:760px){
+ .engine-riso .rs-panels{grid-template-columns:1fr 1fr;height:auto}
+ .engine-riso .rs-panel:nth-child(1){grid-column:1/-1;height:16rem}.engine-riso .rs-panel:nth-child(n+2){height:12rem}
+ .engine-riso .rs-caption{position:static;max-width:none;margin:0;border-width:3px 0 0}
+ .engine-riso .rs-gallery ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
