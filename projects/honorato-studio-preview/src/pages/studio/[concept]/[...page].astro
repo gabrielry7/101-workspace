@@ -1,0 +1,11 @@
+---
+import candidates from '../../../data/studio-candidates.json';
+import data from '../../../data/studio.json';
+import StudioPage from '../../../studio/StudioPage.astro';
+export function getStaticPaths(){return candidates.flatMap(candidate=>[
+ {params:{concept:candidate.id,page:undefined},props:{candidate,kind:'home'}},
+ {params:{concept:candidate.id,page:'carta'},props:{candidate,kind:'menu'}},
+ ...data.catalog.map(product=>({params:{concept:candidate.id,page:'producto/'+product.id},props:{candidate,kind:'detail',product}}))]);}
+const props=Astro.props;
+---
+<StudioPage {...props}/>

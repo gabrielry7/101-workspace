@@ -1,0 +1,5 @@
+/* Pass 2: findings from actual rendered evidence. Original generations retained. */
+.dentro-del-obrador .obr-work figure img{height:auto}
+.dentro-del-obrador .detail-page h1,.dentro-del-obrador .detail-page h2{font-family:var(--obr-serif);font-weight:400}
+.dentro-del-obrador .detail-page h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1}
+.carta-abierta .detail-page .contact-button{background:#fff9f1;color:#8c1028;border:1px solid #fff9f1;text-decoration:none}

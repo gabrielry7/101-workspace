@@ -1,0 +1,13 @@
+---
+import data from '../data/studio.json';
+const {root,active='home'}=Astro.props;
+const links=[{href:root,label:'Inicio',id:'home'},{href:root+'carta/',label:'La carta',id:'menu'},{href:root+'#visita',label:'Visítanos',id:'visit'}];
+---
+<header class="studio-nav"><a class="brand" href={root}><img src={data.logo.uri} alt="" width="42" height="42"/>Honorato</a><nav aria-label="Principal">{links.map(l=><a href={l.href} aria-current={active===l.id?'page':undefined}>{l.label}</a>)}</nav><details data-studio-nav><summary aria-label="Abrir navegación"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></summary><nav aria-label="Principal móvil">{links.map(l=><a href={l.href}>{l.label}</a>)}</nav></details></header>
+<script>
+// Adapted from Gabo's native details navigation: Escape, outside click, focus return.
+const menus=document.querySelectorAll<HTMLDetailsElement>('[data-studio-nav]');
+document.addEventListener('keydown',e=>{if(e.key==='Escape')for(const m of menus)if(m.open){m.open=false;m.querySelector('summary')?.focus()}});
+document.addEventListener('click',e=>{for(const m of menus)if(m.open&&e.target instanceof Node&&!m.contains(e.target))m.open=false});
+menus.forEach(m=>m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>m.open=false)));
+</script>

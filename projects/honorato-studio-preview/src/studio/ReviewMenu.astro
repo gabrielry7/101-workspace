@@ -1,0 +1,14 @@
+---
+// Adapted Gabo MenuCollection data-cat contract; no synthetic RestaurantCatalogue builder.
+import data from '../data/studio.json';
+import client from './catalogue-client.js?url';
+const {root}=Astro.props;
+const fold=(s:string)=>s.normalize('NFD').replace(/\p{M}/gu,'').toLowerCase();
+---
+<section class="cat-menu" data-cat-menu data-cat-mode="browse" aria-label="Productos de Honorato">
+<p class="catalog-note">Una selección de productos publicados por Honorato. Consulta precios y disponibilidad directamente con la panadería.</p>
+<details class="cat-index" data-cat-index><summary>Explorar por categoría</summary><nav aria-label="Categorías de productos">{data.groups.map(g=><a href={`#cat-${g.id}`} data-cat-link={g.id}>{g.label}</a>)}</nav></details>
+<div class="cat-tools" data-cat-tools hidden role="search" aria-label="Buscar productos"><label>¿Qué te provoca?<input type="search" data-cat-search placeholder="Pan, babka, chocolate…" autocomplete="off"/></label><label>Categoría<select data-cat-filter><option value="">Todo</option>{data.groups.map(g=><option value={g.id}>{g.label}</option>)}</select></label><button type="button" data-cat-reset>Quitar filtros</button><p role="status" data-cat-count>{data.catalog.length} productos</p></div>
+<div class="cat-groups">{data.groups.map(g=><section id={`cat-${g.id}`} data-cat-section={g.id} class="cat-group"><h2>{g.label}</h2><ul>{data.catalog.filter(p=>p.group===g.id).map(p=><li data-cat-row data-cat-group={g.id} data-cat-search={fold(p.name+' '+g.label)} data-evidence-id={p.source_id}><a href={`${root}producto/${p.id}/`}><span>{p.name}</span><span class="cat-view">Conocer <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></a></li>)}</ul></section>)}</div>
+<div data-cat-empty hidden><p>No encontramos ese producto. Prueba otro nombre o vuelve a ver la selección completa.</p><button data-cat-reset>Ver todos los productos</button></div>
+</section><script type="module" src={client}></script>

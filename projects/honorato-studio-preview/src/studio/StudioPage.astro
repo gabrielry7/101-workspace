@@ -1,0 +1,24 @@
+---
+import data from '../data/studio.json';
+import Navigation from './Navigation.astro';
+import ReviewMenu from './ReviewMenu.astro';
+import shared from './shared.css?raw';
+import behavior from './behavior.css?raw';
+import revisions from './revisions.css?raw';
+interface Props{candidate:any;kind:'home'|'menu'|'detail';product?:any}
+const {candidate:c,kind,product}=Astro.props;
+const root=`/studio/${c.id}/`;
+const replace=(html:string)=>html.replaceAll('{{ROOT}}',root);
+const reviewedCSS=c.css+'\n'+revisions;
+const asset=(id:string)=>data.assets.find(a=>a.id===id);
+const photo=product?.asset_id?asset(product.asset_id):null;
+const call=data.actions.find(a=>a.id==='call')!;
+const group=product?data.groups.find(g=>g.id===product.group):null;
+---
+<!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex,nofollow"/><meta name="candidate-sha256" content={c.source_sha256}/><title>{product?.name|| (kind==='menu'?'La carta':'Honorato · Panadería perezosa')}</title><style is:inline set:html={shared}></style><style is:inline set:html={reviewedCSS}></style><style is:inline set:html={behavior}></style></head><body class:list={['studio-site',c.id,`page-${kind}`]}>
+<a class="skip-link" href="#contenido">Saltar al contenido</a><aside class="studio-note">Propuesta privada de Honorato · <a href="/studio/">Volver a los conceptos</a></aside>
+<Navigation root={root} active={kind==='menu'?'menu':'home'}/>
+<main id="contenido">{kind==='home'?<Fragment set:html={replace(c.home_html)}/>:kind==='menu'?<div class="menu-page"><Fragment set:html={replace(c.menu_intro_html)}/><ReviewMenu root={root}/></div>:<article class="detail-page"><a href={`${root}carta/#cat-${product.group}`}>Volver a {group?.label.toLowerCase()}</a><h1>{product.name}</h1><div class:list={['detail-grid',!photo&&'is-text']}>
+{photo&&<figure><img src={photo.uri} alt={photo.alt} width={photo.width} height={photo.height}/><figcaption class="source-caption">{photo.alt}</figcaption></figure>}<div class="detail-text">{product.caption&&product.caption.trim()!==product.name&&<figure class="product-words"><figcaption>Así lo presenta Honorato</figcaption><blockquote>{product.caption}</blockquote></figure>}<p>Un producto que Honorato ha compartido en sus publicaciones.</p><p>Consulta con la panadería el precio y la disponibilidad antes de ir.</p><a class="contact-button" href={call.href}>Consultar con Honorato</a><details><summary>Ver publicación de origen</summary><p class="source-caption">{product.published_at?'Publicado: '+String(product.published_at).slice(0,10):'Fuente: catálogo publicado por Honorato.'}</p><a href={product.source_url} target="_blank" rel="noopener noreferrer">Abrir la fuente en Instagram</a></details></div></div><section class="related"><h2>También puedes explorar</h2>{data.catalog.filter(p=>p.group===product.group&&p.id!==product.id).slice(0,3).map(p=><a href={`${root}producto/${p.id}/`}>{p.name}</a>)}</section></article>}</main>
+<footer class="studio-footer"><p>Honorato · Panadería perezosa.</p><nav aria-label="Enlaces de contacto">{data.actions.map(a=><a href={a.href} target={a.href.startsWith('http')?'_blank':undefined} rel="noopener noreferrer">{a.label}</a>)}</nav><p>Fotografías y productos del archivo de Honorato. Esta propuesta no recibe pedidos ni reservas. Precios, horarios y disponibilidad por confirmar.</p><details><summary>Créditos y alcance de esta propuesta</summary><p>Material conservado para revisión privada. Derechos de publicación pendientes; símbolo reconstruido del perfil, aún sin aprobación del negocio.</p>{[...new Set(data.assets.map(a=>a.source_url))].map(url=><p><a href={url}>Publicación fotográfica original</a></p>)}</details></footer>
+</body></html>

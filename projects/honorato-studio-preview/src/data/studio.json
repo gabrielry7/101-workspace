@@ -1,0 +1,854 @@
+{
+  "schema_version": "101-studio-source-review-v1",
+  "business_id": "b47585db-9441-4f59-9797-76e338529010",
+  "location_id": "14b737a2-9446-47bb-9821-95b4ef528e5f",
+  "publication_allowed": false,
+  "claims": [
+    {
+      "id": "name",
+      "value": "Honorato Bakehouse",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "unassessed_source_assertion",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "address",
+      "value": "Ciudadela Complex, Edificio 57-58, Rionegro, Llano Grande, Rionegro, Antioquia",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "unassessed_source_assertion",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "phone",
+      "value": "+57 312 7753689",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "unassessed_source_assertion",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "rating",
+      "value": "4.8",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "unassessed_source_assertion",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "review-count",
+      "value": "51",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "unassessed_source_assertion",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "hours-0",
+      "value": "lunes: 10:30–17:30",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "conflicting_source_hours",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "hours-1",
+      "value": "martes: 10:30–17:30",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "conflicting_source_hours",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "hours-2",
+      "value": "miércoles: 10:30–17:30",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "conflicting_source_hours",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "hours-3",
+      "value": "jueves: 10:30–17:30",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "conflicting_source_hours",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "hours-4",
+      "value": "viernes: 10:30–17:30",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "conflicting_source_hours",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "hours-5",
+      "value": "sábado: 9:00–14:00",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "conflicting_source_hours",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "hours-6",
+      "value": "domingo: Cerrado",
+      "state": "observed_material",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "conflicting_source_hours",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "headline",
+      "value": "Panadería perezosa.",
+      "state": "observed_material",
+      "source_refs": [
+        "83e1f6e95c184dedbb03525cace4415d"
+      ],
+      "uncertainty": "unassessed_source_assertion",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "description",
+      "value": "Hacemos pocas cosas, pero todo sabe rico.",
+      "state": "observed_material",
+      "source_refs": [
+        "83e1f6e95c184dedbb03525cace4415d"
+      ],
+      "uncertainty": "unassessed_source_assertion",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "profile-hours",
+      "value": "lun-vie 10a5.30 / sáb 9a2 / dom&fest cerrados",
+      "state": "observed_material",
+      "source_refs": [
+        "83e1f6e95c184dedbb03525cace4415d"
+      ],
+      "uncertainty": "conflicting_source_hours",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "review-0",
+      "value": "Great bakery. Everything is baked from scratch and fresh. Comparable to a bakery in Paris. Highly recommended. I wish they have stores…",
+      "state": "observed_material",
+      "source_refs": [
+        "places/ChIJ_4kqR3CfRo4RhPRffXJsiRk/reviews/Ci9DQUlRQUNvZENodHljRjlvT21KNFZrWldURVU1YzFwZlFtVlVNbHBoYVZGYVduYxAB"
+      ],
+      "uncertainty": "source_opinion_not_business_fact",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "review-1",
+      "value": "Excellent surprise. Perfect pain au chocolate, delicious cinnamon buns, great chocolate chip cookies, excellent sourdough pan de Campo and also sourdough with…",
+      "state": "observed_material",
+      "source_refs": [
+        "places/ChIJ_4kqR3CfRo4RhPRffXJsiRk/reviews/Ci9DQUlRQUNvZENodHljRjlvT2tNd2VpMUViRmhRVm5FNU9FcEhabk5GZUhGNFdWRRAB"
+      ],
+      "uncertainty": "source_opinion_not_business_fact",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "review-2",
+      "value": "Best bakery in Medellin/llanogrande. Top quality bread, friendly service and great location. The cinnamon bun and cardamom bun are the best! You…",
+      "state": "observed_material",
+      "source_refs": [
+        "places/ChIJ_4kqR3CfRo4RhPRffXJsiRk/reviews/ChdDSUhNMG9nS0VJQ0FnTURJekttTl9RRRAB"
+      ],
+      "uncertainty": "source_opinion_not_business_fact",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "review-3",
+      "value": "I had the best cinnamon roll of my life here and it smells like fresh baked bread 100% of the time. So…",
+      "state": "observed_material",
+      "source_refs": [
+        "places/ChIJ_4kqR3CfRo4RhPRffXJsiRk/reviews/ChdDSUhNMG9nS0VJQ0FnSUQ5LThQdnpRRRAB"
+      ],
+      "uncertainty": "source_opinion_not_business_fact",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "review-4",
+      "value": "Honorato Bakehouse delivered on everything: excellent sourdough bread, an outstanding tarta vasca, and friendly, efficient service.",
+      "state": "observed_material",
+      "source_refs": [
+        "places/ChIJ_4kqR3CfRo4RhPRffXJsiRk/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xsc2FFbEhUMXBFUVRaQ2VFdEZjbXBvVEVOdlEwRRAB"
+      ],
+      "uncertainty": "source_opinion_not_business_fact",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    }
+  ],
+  "actions": [
+    {
+      "id": "call",
+      "label": "Llamar",
+      "href": "tel:+573127753689",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "capability": "observed_telephone_not_tested"
+    },
+    {
+      "id": "directions",
+      "label": "Cómo llegar",
+      "href": "https://www.google.com/maps/search/?api=1&query=Honorato%20Bakehouse&query_place_id=ChIJ_4kqR3CfRo4RhPRffXJsiRk",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "capability": "external_listing"
+    },
+    {
+      "id": "instagram",
+      "label": "Ver Instagram",
+      "href": "https://www.instagram.com/honoratobakehouse/",
+      "source_refs": [
+        "83e1f6e95c184dedbb03525cace4415d"
+      ],
+      "capability": "external_profile"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "hours-conflict",
+      "value": "Google y el sitio muestran 10:30 entre semana; el perfil de Instagram, 10:00. Confirmar antes de visitar.",
+      "state": "unknown_conflicting",
+      "source_refs": [
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk",
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk",
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk",
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk",
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk",
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk",
+        "ChIJ_4kqR3CfRo4RhPRffXJsiRk"
+      ],
+      "uncertainty": "Do not choose a current opening time",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "booking",
+      "value": "No verified reservation, payment, form or WhatsApp backend.",
+      "state": "unknown_conflicting",
+      "source_refs": [],
+      "uncertainty": "Only existing source links and observed telephone can be offered",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    }
+  ],
+  "logo": {
+    "uri": "/media/ad367276527f5346a19071969ac0560da3f4642a1e896f9cc7289f58d81d3eb8.svg",
+    "sha256": "ad367276527f5346a19071969ac0560da3f4642a1e896f9cc7289f58d81d3eb8",
+    "source_receipt_sha256": "d8c8b2752ca18ed02a20e4033c4a3cd3e5213be9c7a081c4093b20e3aa0dcf64",
+    "kind": "reconstructed_profile_illustration",
+    "human_validated": false,
+    "public_use_allowed": false
+  },
+  "assets": [
+    {
+      "id": "oven",
+      "uri": "/studio-media/oven.webp",
+      "alt": "Miches dentro del horno",
+      "role": "product",
+      "source_asset_id": "post:4011516079922826267:5:image",
+      "source_url": "https://www.instagram.com/p/DerxJ7qkUwb/",
+      "original_sha256": "e6e3500bc13a7d0e10a0fd2bfa896cf237596a9451eafd5ce9a9217c53bdfb72",
+      "sha256": "eefbb25d8985c62f8199093ba29ebff75142251f43ac5fc1f44c0a7c3c383e73",
+      "original_size": [
+        4032,
+        3024
+      ],
+      "width": 1800,
+      "height": 1350,
+      "published_at": "2026-10-19T17:13:23+00:00",
+      "observed_at": "2026-10-24T04:20:25.313227+00:00",
+      "product_binding": "miche",
+      "binding_status": "caption_supported",
+      "transform": "resize to max1800, WebP quality86; no generative editing",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "proofing",
+      "uri": "/studio-media/proofing.webp",
+      "alt": "Masas de Miche en cestas de fermentación",
+      "role": "process",
+      "source_asset_id": "post:4011516079922826267:1:image",
+      "source_url": "https://www.instagram.com/p/DerxJ7qkUwb/",
+      "original_sha256": "5e14a738d0dc14e50b58ba938559d3edb2fa6af87ba8700d1321ef5e60fd4066",
+      "sha256": "4af3ecdcd6ff22e10225ed3f17f4f0b703420e21c3e4a8c7f62309c7a763ace4",
+      "original_size": [
+        4032,
+        3024
+      ],
+      "width": 1800,
+      "height": 1350,
+      "published_at": "2026-10-19T17:13:23+00:00",
+      "observed_at": "2026-10-24T04:20:25.313227+00:00",
+      "product_binding": "miche",
+      "binding_status": "caption_supported",
+      "transform": "resize to max1800, WebP quality86; no generative editing",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "people",
+      "uri": "/studio-media/people.webp",
+      "alt": "Personas con delantales de Honorato en el obrador",
+      "role": "people",
+      "source_asset_id": "post:3981709807707074916:2:image",
+      "source_url": "https://www.instagram.com/p/DdB3_lfEbFk/",
+      "original_sha256": "c5cf794ccf3e3dd6a7cdef578685d285d59e122feaa6c20dfc59ecef497da347",
+      "sha256": "0131a5496d7f664b1cd09ca3e40410dfd8f9b88d3cca667974163906eac4bc8e",
+      "original_size": [
+        3410,
+        2541
+      ],
+      "width": 1800,
+      "height": 1341,
+      "published_at": "2026-09-08T14:13:39+00:00",
+      "observed_at": "2026-10-24T04:20:36.595813+00:00",
+      "product_binding": null,
+      "binding_status": "category_or_process_only",
+      "transform": "resize to max1800, WebP quality86; no generative editing",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "pastries",
+      "uri": "/studio-media/pastries.webp",
+      "alt": "Bandejas de croissants y galletas",
+      "role": "category",
+      "source_asset_id": "post:3894967147038871030:7:image",
+      "source_url": "https://www.instagram.com/p/DYNs_vbEY32/",
+      "original_sha256": "6eadcb0afbf289c5c3bc74276f4d5d5c63f84f62e846628065c1c030f8ef8809",
+      "sha256": "7876e0a71c350a911f0419560d3b87d62fdbef334083d1baca9fca1426da2fc7",
+      "original_size": [
+        3072,
+        4096
+      ],
+      "width": 1350,
+      "height": 1800,
+      "published_at": "2026-05-11T21:51:28+00:00",
+      "observed_at": "2026-10-24T04:23:34.895158+00:00",
+      "product_binding": null,
+      "binding_status": "category_or_process_only",
+      "transform": "resize to max1800, WebP quality86; no generative editing",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "hands",
+      "uri": "/studio-media/hands.webp",
+      "alt": "Manos trabajando masa sobre la mesa",
+      "role": "process",
+      "source_asset_id": "post:3894967147038871030:14:image",
+      "source_url": "https://www.instagram.com/p/DYNs_vbEY32/",
+      "original_sha256": "33bfcc7261a53dd3786cd415e426764e567568d989b49617ac73b1416bff8091",
+      "sha256": "0f0a70c445d01a5689dc8211000a2036c9342b3de40814c5bddee2b86f2e2758",
+      "original_size": [
+        3072,
+        4096
+      ],
+      "width": 1350,
+      "height": 1800,
+      "published_at": "2026-05-11T21:51:28+00:00",
+      "observed_at": "2026-10-24T04:23:34.895158+00:00",
+      "product_binding": null,
+      "binding_status": "category_or_process_only",
+      "transform": "resize to max1800, WebP quality86; no generative editing",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "dessert",
+      "uri": "/studio-media/dessert.webp",
+      "alt": "Una tarta pequeña en papel de horno",
+      "role": "category",
+      "source_asset_id": "post:3894967147038871030:17:image",
+      "source_url": "https://www.instagram.com/p/DYNs_vbEY32/",
+      "original_sha256": "20c586763bb307c98e3b9d71d5c124b382b9c3bed2011c6af82b84a2cabea235",
+      "sha256": "2c3a49d997aff648ab38659ebd201040571d65baae6156345738b5cb1da8c256",
+      "original_size": [
+        3072,
+        4096
+      ],
+      "width": 1350,
+      "height": 1800,
+      "published_at": "2026-05-11T21:51:28+00:00",
+      "observed_at": "2026-10-24T04:23:34.895158+00:00",
+      "product_binding": null,
+      "binding_status": "category_or_process_only",
+      "transform": "resize to max1800, WebP quality86; no generative editing",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "bun",
+      "uri": "/studio-media/bun.webp",
+      "alt": "Bollo con semillas junto a una bolsa de Honorato",
+      "role": "category",
+      "source_asset_id": "post:3894967147038871030:18:image",
+      "source_url": "https://www.instagram.com/p/DYNs_vbEY32/",
+      "original_sha256": "c13b18ad6a1da1b527b8365bccf67330e2baeba0dac6533ca9404aaa32cf3f0a",
+      "sha256": "9dd5b2b7c48ca2e318775d95c3c9a0eb1d5646453ae0633da878a4a90f924b8c",
+      "original_size": [
+        3072,
+        4096
+      ],
+      "width": 1350,
+      "height": 1800,
+      "published_at": "2026-05-11T21:51:28+00:00",
+      "observed_at": "2026-10-24T04:23:34.895158+00:00",
+      "product_binding": null,
+      "binding_status": "category_or_process_only",
+      "transform": "resize to max1800, WebP quality86; no generative editing",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    },
+    {
+      "id": "loaf",
+      "uri": "/studio-media/loaf.webp",
+      "alt": "Pan con semillas en un molde",
+      "role": "category",
+      "source_asset_id": "post:3894967147038871030:3:image",
+      "source_url": "https://www.instagram.com/p/DYNs_vbEY32/",
+      "original_sha256": "49e8ee477bfb3fcd2102ff50a26df45129d097413db3d4c4dcc5e0d67f41c9e1",
+      "sha256": "49d1b9b4c15271373856731ebeeb4645090b006933eec6fcfb47cb17a43e3d81",
+      "original_size": [
+        3072,
+        4096
+      ],
+      "width": 1350,
+      "height": 1800,
+      "published_at": "2026-05-11T21:51:28+00:00",
+      "observed_at": "2026-10-24T04:23:34.895158+00:00",
+      "product_binding": null,
+      "binding_status": "category_or_process_only",
+      "transform": "resize to max1800, WebP quality86; no generative editing",
+      "permitted_use": "LOCAL_REVIEW_ONLY"
+    }
+  ],
+  "catalog": [
+    {
+      "id": "campo",
+      "name": "Pan de Campo (hogaza)",
+      "group": "panes",
+      "source_id": "instagram:post:3803450757769939489",
+      "source_url": "https://www.instagram.com/p/DTIklAJkUoh/",
+      "published_at": "2026-01-05T15:24:44+00:00",
+      "observed_at": "2026-10-24T04:26:01.223019+00:00",
+      "caption": "Pan de Campo (hogaza)\nRecuerda siempre darle un poco de cariño al pan: caliéntalo en hornito, sartén o parrilla de arepas, embadúrnalo de mantequilla real y échale una pizca de sal marina y sentirás que estás probando pan por primera vez en tu vida.",
+      "caption_sha256": "79fb0e271ea6eb1ea3ef68a3bc5af59c7989f6ce854dab1504834bf5463df668",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "miche",
+      "name": "Miche",
+      "group": "panes",
+      "source_id": "instagram:post:4011516079922826267",
+      "source_url": "https://www.instagram.com/p/DerxJ7qkUwb/",
+      "published_at": "2026-10-19T17:13:23+00:00",
+      "observed_at": "2026-10-24T04:20:25.313227+00:00",
+      "caption": "Miche",
+      "caption_sha256": "bfd705fcc247a9a152933f856ce0c989c8946fe4da72eefc0d62b58b8d33d170",
+      "price": null,
+      "availability": null,
+      "asset_id": "oven",
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "nuez",
+      "name": "Molde de nuez de nogal",
+      "group": "panes",
+      "source_id": "instagram:post:3804831171759687815",
+      "source_url": "https://www.instagram.com/p/DTNecq3EciH/",
+      "published_at": "2026-01-07T13:07:22+00:00",
+      "observed_at": "2026-10-24T04:26:00.860119+00:00",
+      "caption": "Molde de nuez de nogal\n\nRecuerda siempre darle un poco de cariño al pan: caliéntalo en hornito, sartén o parrilla de arepas, embadúrnalo de mantequilla real y échale una pizca de sal marina y sentirás que estás probando pan por primera vez en tu vida.",
+      "caption_sha256": "e5d9c02bede300ee9de1cbb0c892fa1c27cf29f07b0d77a83b361df8cf331eb0",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "rugbrod",
+      "name": "Rugbrod",
+      "group": "panes",
+      "source_id": "instagram:post:3841213240525818812",
+      "source_url": "https://www.instagram.com/p/DVOuxc0EYu8/",
+      "published_at": "2026-02-26T17:54:23+00:00",
+      "observed_at": "2026-10-24T04:25:35.827933+00:00",
+      "caption": "Rugbrod (molde de centeno con semillas) \n\nRecuerda siempre darle un poco de cariño al pan: caliéntalo en hornito, sartén o parrilla de arepas, embadúrnalo de mantequilla real y échale una pizca de sal marina y sentirás que estás probando pan por primera vez en tu vida.",
+      "caption_sha256": "c9039687a0e25efdf54dbd7fe9bc418ce544e0ddbb0e225985edd817abd18a9b",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "focaccia",
+      "name": "Focaccia natural",
+      "group": "panes",
+      "source_id": "instagram:post:3854990435425550684",
+      "source_url": "https://www.instagram.com/p/DV_rWBcEYFc/",
+      "published_at": "2026-03-17T18:32:18+00:00",
+      "observed_at": "2026-10-24T04:25:18.828398+00:00",
+      "caption": "Focaccia natural.\nRecuerda siempre darle un poco de cariño al pan: caliéntalo en hornito, sartén o parrilla de arepas.",
+      "caption_sha256": "41b03e4da22c4073a52f1c66925ddec17b45863c5b1323d5bcdc7188eb98601c",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "croissant-jamon",
+      "name": "Croissant de jamón ahumado artesanal",
+      "group": "hojaldres",
+      "source_id": "instagram:post:3818888115193492297",
+      "source_url": "https://www.instagram.com/p/DT_aoHnEbNJ/",
+      "published_at": "2026-01-26T22:37:08+00:00",
+      "observed_at": "2026-10-24T04:25:50.532288+00:00",
+      "caption": "Croissant de jamón ahumado artesanal\n\nRecuerda siempre darle un poco de cariño al pan: caliéntalo en hornito (¡a baja temperatura!).",
+      "caption_sha256": "26f2503bd890e6652f193ede332e75fb7974bd2a6548b98157d5cbee907580fe",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "pain-chocolat",
+      "name": "Pain au chocolat",
+      "group": "hojaldres",
+      "source_id": "instagram:post:3820805378259627809",
+      "source_url": "https://www.instagram.com/p/DUGOj9_ES8h/",
+      "published_at": "2026-01-29T14:08:27+00:00",
+      "observed_at": "2026-10-24T04:25:47.149012+00:00",
+      "caption": "Pain au chocolat\n\nUn complemento obligado!\n\nRecuerda siempre darle un poco de cariño al pan: caliéntalo en hornitos (¡a baja temperatura!).",
+      "caption_sha256": "476ff183b4c92d1c8a3f76783032afc231911c55689f1a6c7abe471d7558dbfd",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "babka",
+      "name": "Babka",
+      "group": "hojaldres",
+      "source_id": "instagram:post:3849124492421967947",
+      "source_url": "https://www.instagram.com/p/DVq1lUTETBL/",
+      "published_at": "2026-03-09T15:52:33+00:00",
+      "observed_at": "2026-10-24T04:25:29.647810+00:00",
+      "caption": "Babka (brioche trenzado con mantequilla dulce de cacao)\n\nRecuerda siempre darle un poco de cariño al pan: caliéntalo en hornito (¡a baja temperatura!).",
+      "caption_sha256": "bf493c08579528e2b56916825eba96cbafd3bd735d3f1508654faefe797e9bb1",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "galleta",
+      "name": "Galleta melcochuda de chocolate",
+      "group": "dulces",
+      "source_id": "instagram:post:3811302937180864222",
+      "source_url": "https://www.instagram.com/p/DTkd9QGEX7e/",
+      "published_at": "2026-01-16T11:25:37+00:00",
+      "observed_at": "2026-10-24T04:25:52.989366+00:00",
+      "caption": "Galleta melcochuda de chocolate \n\nRecuerda siempre darle un poco de cariño: caliéntala en hornito (¡a baja temperatura!).",
+      "caption_sha256": "f42e6e65495fb08538888b5e520abd54205c21ea583573d7e65d6c30f6ed6500",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "tarta-mini",
+      "name": "Tarta vasca mini",
+      "group": "dulces",
+      "source_id": "instagram:post:3814341975081041626",
+      "source_url": "https://www.instagram.com/p/DTvQ9EskT7a/",
+      "published_at": "2026-01-20T16:03:38+00:00",
+      "observed_at": "2026-10-24T04:25:51.188671+00:00",
+      "caption": "Tarta vasca mini, un espectáculo!",
+      "caption_sha256": "9cdbe1c953185c5267730bf77c39ae22c593c278f5fad4e62a61eef37e71e48b",
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "croissant-mantequilla",
+      "name": "Croissant de mantequilla",
+      "group": "hojaldres",
+      "source_id": "catalog:982df87cacc614447dedbe3cfaaf3cd9235c0eac239446b1ec7faa160a68f21b",
+      "source_url": "https://www.instagram.com/honoratobakehouse/",
+      "observations": [
+        {
+          "business_id": "b47585db-9441-4f59-9797-76e338529010",
+          "location_id": "14b737a2-9446-47bb-9821-95b4ef528e5f",
+          "kind": "product",
+          "value": "Croissant de mantequilla",
+          "source": "owned_social",
+          "source_ref": "2e5a7d099cc04a6a5112a242f0b8a3887af20b70517f15bf731890b3c3dd6a7e;url:https://www.instagram.com/stories/honoratobakehouse/3815685886336695536/;ocr:2e5a7d099cc04a6a5112a242f0b8a3887af20b70517f15bf731890b3c3dd6a7e;regions:0",
+          "source_group": "instagram:45867113264",
+          "excerpt": "Croissant de mantequilla",
+          "observed_at": "2026-10-26 20:03:15.777848+00:00",
+          "evidence_class": "ocr_catalog_title_candidate",
+          "relationship_verified": false,
+          "explicit": false,
+          "stance": "supports",
+          "provider_role": null,
+          "event_type": null,
+          "sentiment": null,
+          "temporal_status": "current_availability_unknown",
+          "branch_scope": null,
+          "model_provider": null,
+          "model_name": null,
+          "prompt_version": null,
+          "category_context": [],
+          "published_at": "2026-01-22 12:33:44+00:00",
+          "source_locator": "ocr:2e5a7d099cc04a6a5112a242f0b8a3887af20b70517f15bf731890b3c3dd6a7e/regions:0",
+          "artifact_sha256": "94db87159a3ed329805129cdca8bdedd952a61f18504377206dd19196704c935",
+          "attributes": {
+            "availability": "unknown",
+            "needs_review": true,
+            "human_validated": false,
+            "source_regions": [
+              {
+                "legibility": "readable",
+                "region": {
+                  "bottom": 0.128125,
+                  "left": 0.09444444444444444,
+                  "right": 0.837037037037037,
+                  "top": 0.08802083333333334
+                },
+                "text": "Croissant de mantequilla",
+                "uncertainty": "automatic_ocr_unverified"
+              }
+            ],
+            "card_text": "Croissant de mantequilla\nClásico de clásicos. Con nuestro\ncroissant no buscamos exhibir nuestro\nvirtuosismo técnico: no nos importa si\ntiene o no 720 capas perfectamente\nlaminadas, o si quedó la foto increíble del\npanal de abejas. Sí nos importan dos\ncosas: que tenga mucho sabor y mucha\ntextura hojaldrada (ligera y crocante).\nIngredientes: harina de trigo blanca y fortificada, agua,\nmantequilla, azúcar, sal, masa vieja fermentada (después\nde cada amasado, guardamos un trozo de la masa para\nleudar la siguiente tanda), levadura fresca (1.8%)."
+          }
+        },
+        {
+          "business_id": "b47585db-9441-4f59-9797-76e338529010",
+          "location_id": "14b737a2-9446-47bb-9821-95b4ef528e5f",
+          "kind": "product",
+          "value": "Croissant de mantequilla",
+          "source": "owned_social",
+          "source_ref": "670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6;url:https://www.instagram.com/stories/honoratobakehouse/3899527297857337705/;ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6;regions:31,32",
+          "source_group": "instagram:45867113264",
+          "excerpt": "Croissant de mantequilla | 9,4",
+          "observed_at": "2026-10-26 20:23:20.073851+00:00",
+          "evidence_class": "ocr_menu_row_candidate",
+          "relationship_verified": false,
+          "explicit": false,
+          "stance": "supports",
+          "provider_role": null,
+          "event_type": null,
+          "sentiment": null,
+          "temporal_status": "current_availability_unknown",
+          "branch_scope": null,
+          "model_provider": null,
+          "model_name": null,
+          "prompt_version": null,
+          "category_context": [],
+          "published_at": "2026-05-18 04:51:37+00:00",
+          "source_locator": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:31,32",
+          "artifact_sha256": "fcf57b0c0bf403e91f914320c42e3b8c0f9dd48af19fe6b3c2cb400d7916b5f0",
+          "attributes": {
+            "price_verbatim": "9,4",
+            "currency": null,
+            "price_scale": null,
+            "availability": "unknown",
+            "needs_review": true,
+            "human_validated": false,
+            "source_regions": [
+              {
+                "legibility": "readable",
+                "region": {
+                  "bottom": 0.5609375,
+                  "left": 0.11851851851851852,
+                  "right": 0.3712962962962963,
+                  "top": 0.5484375
+                },
+                "text": "Croissant de mantequilla",
+                "uncertainty": "automatic_ocr_unverified"
+              },
+              {
+                "legibility": "readable",
+                "region": {
+                  "bottom": 0.5619791666666667,
+                  "left": 0.6407407407407407,
+                  "right": 0.6805555555555556,
+                  "top": 0.5473958333333333
+                },
+                "text": "9,4",
+                "uncertainty": "automatic_ocr_unverified"
+              }
+            ]
+          }
+        }
+      ],
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    },
+    {
+      "id": "bun-ajonjoli",
+      "name": "Bun dulce de ajonjolí",
+      "group": "hojaldres",
+      "source_id": "catalog:18014dfc9a44be1565c5a4bae3d1a817fce49eaddae033187f7af49be56c4c8d",
+      "source_url": "https://www.instagram.com/honoratobakehouse/",
+      "observations": [
+        {
+          "business_id": "b47585db-9441-4f59-9797-76e338529010",
+          "location_id": "14b737a2-9446-47bb-9821-95b4ef528e5f",
+          "kind": "product",
+          "value": "Bun dulce de ajonjolí",
+          "source": "owned_social",
+          "source_ref": "18b2d1f5260035123515f5de1e30939c264289866875c56a83d351a1bcfa17d2;url:https://www.instagram.com/stories/honoratobakehouse/3870768475795254763/;ocr:18b2d1f5260035123515f5de1e30939c264289866875c56a83d351a1bcfa17d2;regions:0",
+          "source_group": "instagram:45867113264",
+          "excerpt": "Bun dulce de ajonjolí",
+          "observed_at": "2026-10-26 20:21:25.887255+00:00",
+          "evidence_class": "ocr_catalog_title_candidate",
+          "relationship_verified": false,
+          "explicit": false,
+          "stance": "supports",
+          "provider_role": null,
+          "event_type": null,
+          "sentiment": null,
+          "temporal_status": "current_availability_unknown",
+          "branch_scope": null,
+          "model_provider": null,
+          "model_name": null,
+          "prompt_version": null,
+          "category_context": [],
+          "published_at": "2026-04-08 12:33:01+00:00",
+          "source_locator": "ocr:18b2d1f5260035123515f5de1e30939c264289866875c56a83d351a1bcfa17d2/regions:0",
+          "artifact_sha256": "fcf6a95a0112093712e962d32e677c16c4721d3e5c29e31ae27642dea0936698",
+          "attributes": {
+            "availability": "unknown",
+            "needs_review": true,
+            "human_validated": false,
+            "source_regions": [
+              {
+                "legibility": "readable",
+                "region": {
+                  "bottom": 0.10364583333333334,
+                  "left": 0.09259259259259259,
+                  "right": 0.7277777777777777,
+                  "top": 0.06197916666666667
+                },
+                "text": "Bun dulce de ajonjolí",
+                "uncertainty": "automatic_ocr_unverified"
+              }
+            ],
+            "card_text": "Bun dulce de ajonjolí\nUn día estábamos a punto de formar los\npanecillos de cardamomo y nos dimos\ncuenta que no teníamos cardamomo,\nimprovisamos un poco y agregamos\nsemillas tostadas de ajonjolí negro: y\nentonces nació el bun dulce ajonjolí.\nMuchas veces asociado con sabores\nsalados, el ajonjolí combina increíblemente\nbien con el azúcar para crear un sabor\nsuave y balanceado.\nIngredientes: harina de trigo blanca y fortificada,\nmantequilla, huevos frescos de pastoreo, leche entera,\nazúcar, sal, masamadre (fermento natural de trigo y\nagua), levadura fresca (0.5%), semillas de ajonjolí blanco\ny negro."
+          }
+        }
+      ],
+      "price": null,
+      "availability": null,
+      "asset_id": null,
+      "status": "observed_material",
+      "publication_allowed": false
+    }
+  ],
+  "groups": [
+    {
+      "id": "panes",
+      "label": "Panes",
+      "classification": "proposed_navigation_group_not_business_taxonomy"
+    },
+    {
+      "id": "hojaldres",
+      "label": "Hojaldres y bollos",
+      "classification": "proposed_navigation_group_not_business_taxonomy"
+    },
+    {
+      "id": "dulces",
+      "label": "Dulces",
+      "classification": "proposed_navigation_group_not_business_taxonomy"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "/studio-fonts/familjengrotesk.woff",
+      "sha256": "8a8745b18f7d01ee94bfa11026c581af7f89647605eb1a02ae0738648ead94bb",
+      "source_revision": "d47576481ee60c0711e8d656e3c8824c66028a24",
+      "source_path": "feedback8/familjengrotesk.woff",
+      "license": "SIL OFL; adjacent license retained"
+    },
+    {
+      "file": "/studio-fonts/familjengrotesk-OFL.txt",
+      "sha256": "9708dd560d1f8aa1f006461aa447a31fda7b9aff662d152837654a388e0eb2ee",
+      "source_revision": "d47576481ee60c0711e8d656e3c8824c66028a24",
+      "source_path": "feedback8/familjengrotesk-OFL.txt",
+      "license": "SIL OFL; adjacent license retained"
+    },
+    {
+      "file": "/studio-fonts/archivo.woff",
+      "sha256": "4615c55cc86ea311fd95e5deffd0d9486f319361fe1cd1aba6dbf5b21deb18b5",
+      "source_revision": "d47576481ee60c0711e8d656e3c8824c66028a24",
+      "source_path": "feedback8/archivo.woff",
+      "license": "SIL OFL; adjacent license retained"
+    },
+    {
+      "file": "/studio-fonts/archivo-OFL.txt",
+      "sha256": "108b4e57c9c796d3d38d0428ca7ee39de47ad93187302718d9b2d8864b9b716b",
+      "source_revision": "d47576481ee60c0711e8d656e3c8824c66028a24",
+      "source_path": "feedback8/archivo-OFL.txt",
+      "license": "SIL OFL; adjacent license retained"
+    },
+    {
+      "file": "/studio-fonts/bodonimoda.woff",
+      "sha256": "3ac63a7baa08bb7af148929baf5288b31bc2b3c3a14763ab0ca6541b8ab33ae3",
+      "source_revision": "d47576481ee60c0711e8d656e3c8824c66028a24",
+      "source_path": "b3-artistic/bodonimoda.woff",
+      "license": "SIL OFL; adjacent license retained"
+    },
+    {
+      "file": "/studio-fonts/bodonimoda-OFL.txt",
+      "sha256": "931dfe2e0cd3c9443295f5c1d754b8a8403bf060df50c1d5900267ade83d0046",
+      "source_revision": "d47576481ee60c0711e8d656e3c8824c66028a24",
+      "source_path": "b3-artistic/bodonimoda-OFL.txt",
+      "license": "SIL OFL; adjacent license retained"
+    }
+  ],
+  "audience_hypothesis": "Nearby visitors deciding what to try and how to visit; no customer research claimed",
+  "catalog_scope": "Observed products across retained posts; not a current complete menu; no availability or price claims",
+  "photo_policy": "Exact product image only when source caption supports identity; other imagery remains category/process. No invented associations."
+}

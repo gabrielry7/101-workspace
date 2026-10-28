@@ -1,0 +1,15 @@
+{
+  "name": "@101/gabo-review",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4335",
+    "build": "astro build && node seal.mjs",
+    "preview": "node serve.mjs",
+    "verify": "node serve.mjs --verify"
+  },
+  "dependencies": {
+    "astro": "7.3.7",
+    "zod": "4.6.7"
+  }
+}

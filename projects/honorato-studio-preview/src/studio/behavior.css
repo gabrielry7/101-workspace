@@ -1,0 +1,7 @@
+/* Functional invariants survive creator styling; the composition stays free. */
+.studio-site .studio-nav .brand img{width:44px;height:44px;max-width:44px;max-height:44px;object-fit:contain;background:#fffaf3;padding:3px}
+.studio-site .studio-nav details nav{background:var(--paper,#fffaf3);color:var(--ink,#282522)}
+.studio-site .studio-nav details nav a{color:var(--ink,#282522);min-height:44px}
+.studio-site .studio-nav summary{min-width:44px;justify-items:center}
+@media(max-width:700px){.studio-site .studio-nav>nav{display:none}.studio-site .studio-nav details{display:block}.studio-site .studio-nav{flex-wrap:nowrap}.studio-site .studio-nav details[open] nav{position:absolute;right:0;top:100%;padding:1rem;display:flex;flex-direction:column;align-items:stretch;min-width:220px;z-index:50}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.studio-site *,.studio-site *::before,.studio-site *::after{animation:none!important;transition-duration:0s!important}}
