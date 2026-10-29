@@ -691,3 +691,46 @@ class PaymentNotificationInbox(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     processed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     __table_args__ = (UniqueConstraint("provider", "event_id", name="uq_payment_notification_provider_event"),)
+
+
+class FinancialOperation(Base):
+    __tablename__ = "restaurant_financial_operations"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    order_id: Mapped[str] = mapped_column(ForeignKey("restaurant_orders.id"), index=True)
+    kind: Mapped[str] = mapped_column(String(20))
+    dedupe_key: Mapped[str] = mapped_column(String(240), unique=True)
+    actor_id: Mapped[str] = mapped_column(String(128))
+    reason: Mapped[str] = mapped_column(String(500))
+    request_json: Mapped[str] = mapped_column(Text)
+    state: Mapped[str] = mapped_column(String(32), default="pending", index=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    lease_token: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    next_attempt_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    result_json: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
+
+
+class FinancialAudit(Base):
+    __tablename__ = "restaurant_financial_audit"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    order_id: Mapped[str] = mapped_column(ForeignKey("restaurant_orders.id"), index=True)
+    operation_id: Mapped[str | None] = mapped_column(ForeignKey("restaurant_financial_operations.id"), nullable=True)
+    actor_id: Mapped[str] = mapped_column(String(128))
+    action: Mapped[str] = mapped_column(String(80))
+    reason: Mapped[str] = mapped_column(String(500))
+    evidence_json: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class LoyaltyRefundDebt(Base):
+    __tablename__ = "restaurant_loyalty_refund_debts"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    order_id: Mapped[str] = mapped_column(ForeignKey("restaurant_orders.id"), unique=True)
+    account_id: Mapped[str] = mapped_column(ForeignKey("restaurant_loyalty_accounts.id"), index=True)
+    remaining_points: Mapped[int] = mapped_column(Integer)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    __table_args__ = (CheckConstraint("remaining_points >= 0", name="ck_refund_debt_nonnegative"),)

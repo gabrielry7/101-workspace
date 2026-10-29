@@ -536,3 +536,13 @@ class ErrorResponse(BaseModel):
     """Both request-validation details and domain error strings are part of the API."""
     detail: str | list[dict]
     request_id: str | None = None
+
+
+class FinancialActionRequest(StrictModel):
+    idempotency_key: str = Field(min_length=1, max_length=100)
+    reason: str = Field(min_length=1, max_length=500)
+
+
+class FinancialResolutionRequest(StrictModel):
+    operation_id: str = Field(min_length=1, max_length=36)
+    reason: str = Field(min_length=1, max_length=500)

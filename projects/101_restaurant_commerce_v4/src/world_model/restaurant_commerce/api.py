@@ -52,6 +52,8 @@ from .payments import (
 )
 from .reliability import ProviderExecutor
 from .schemas import (
+    FinancialActionRequest,
+    FinancialResolutionRequest,
     ErrorResponse,
     AutomationRuleCreateIn,
     AutomationRuleOut,
@@ -132,6 +134,8 @@ def create_app(
     public_access_secret: str | None = None,
     webhook_secrets: dict[str, str] | None = None,
     payment_providers: dict[str, PaymentProvider] | None = None,
+    financial_providers: dict | None = None,
+    financial_authenticator=None,
     delivery_providers: dict[str, DeliveryProvider] | None = None,
     event_sink: EventSink | None = None,
     rate_limit_per_minute: int = 120,
@@ -167,6 +171,8 @@ def create_app(
     production = environment == "production"
     demo_mode = (not production) if demo_mode is None else demo_mode
     auto_init_schema = (not production) if auto_init_schema is None else auto_init_schema
+    if production and financial_providers:
+        raise RuntimeError("M3b financial execution is controlled-only; production is gated")
     if production and seed:
         raise RuntimeError("Demo seed data is forbidden in production")
     if production and demo_mode:
@@ -223,7 +229,7 @@ def create_app(
             stop, thread = start_recovery(SessionLocal, interval_seconds=payment_recovery_interval_seconds,
                 service_options={"payment_providers": payment_providers, "delivery_providers": delivery_providers,
                     "event_sink": event_sink, "provider_executor": provider_executor,
-                    "payment_lease_seconds": payment_lease_seconds})
+                    "payment_lease_seconds": payment_lease_seconds, "financial_providers": financial_providers})
         try:
             yield
         finally:
@@ -231,7 +237,7 @@ def create_app(
                 stop.set()
                 thread.join(timeout=5)
 
-    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.6.0",
+    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.7.0",
                   responses={status: {"model": ErrorResponse} for status in
                              (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
@@ -314,6 +320,7 @@ def create_app(
         if (
             (path.startswith("/api/restaurants/") and request.method == "POST")
             or path.startswith("/api/operator/")
+            or path.startswith("/api/finance/")
             or path.startswith("/api/webhooks/")
             or path.startswith("/api/orders/")
         ):
@@ -332,6 +339,7 @@ def create_app(
         return RestaurantCommerceService(
             session,
             payment_providers=payment_providers,
+            financial_providers=financial_providers,
             delivery_providers=delivery_providers,
             event_sink=event_sink,
             provider_executor=provider_executor,
@@ -822,6 +830,39 @@ def create_app(
     @app.get("/api/operator/restaurants/{business_id}/payment-reconciliation", dependencies=[Depends(require_operator)])
     def payment_reconciliation(business_id: str, service: RestaurantCommerceService = Depends(get_service)):
         return service.list_payment_reconciliation(business_id)
+
+    def financial_authority(permission):
+        def dependency(business_id: str, x_101_financial_token: str | None = Header(default=None)):
+            from .financial_auth import FinancialPrincipal
+            principal = financial_authenticator(x_101_financial_token) if financial_authenticator and x_101_financial_token else None
+            if not isinstance(principal, FinancialPrincipal) or not principal.permits(business_id, permission):
+                raise HTTPException(status_code=403, detail="Named financial permission for this business is required")
+            return principal
+        return dependency
+
+    @app.get("/api/finance/restaurants/{business_id}/orders/{order_id}")
+    def financial_history(business_id: str, order_id: str,
+                          principal=Depends(financial_authority("finance.read")),
+                          service: RestaurantCommerceService = Depends(get_service)):
+        return service.financial_history(business_id, order_id, principal)
+
+    @app.post("/api/finance/restaurants/{business_id}/orders/{order_id}/lookup")
+    def financial_lookup(business_id: str, order_id: str, body: FinancialActionRequest,
+                         principal=Depends(financial_authority("finance.lookup")),
+                         service: RestaurantCommerceService = Depends(get_service)):
+        return service.request_financial_operation(business_id, order_id, "lookup", body.idempotency_key, body.reason, principal)
+
+    @app.post("/api/finance/restaurants/{business_id}/orders/{order_id}/refund")
+    def financial_refund(business_id: str, order_id: str, body: FinancialActionRequest,
+                         principal=Depends(financial_authority("finance.refund")),
+                         service: RestaurantCommerceService = Depends(get_service)):
+        return service.request_financial_operation(business_id, order_id, "refund", body.idempotency_key, body.reason, principal)
+
+    @app.post("/api/finance/restaurants/{business_id}/orders/{order_id}/resolve/{reconciliation_id}")
+    def financial_resolve(business_id: str, order_id: str, reconciliation_id: str, body: FinancialResolutionRequest,
+                         principal=Depends(financial_authority("finance.resolve")),
+                         service: RestaurantCommerceService = Depends(get_service)):
+        return service.resolve_financial_review(business_id, order_id, reconciliation_id, body.operation_id, body.reason, principal)
 
     @app.post("/api/operator/payments/recover", dependencies=[Depends(require_operator)])
     def recover_payments(limit: int = Query(default=25, ge=1, le=100), service: RestaurantCommerceService = Depends(get_service)):

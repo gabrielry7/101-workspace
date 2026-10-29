@@ -29,6 +29,38 @@ class ControlledPayment:
         return PaymentCheckout(**response.json())
 
 
+class ControlledFinancial:
+    name = "simulated"
+    controlled = True
+    supports_idempotent_refund = True
+
+    def _call(self, route, kwargs, model):
+        response = httpx.post(
+            config()["provider_url"] + "/financial/" + route,
+            json=kwargs,
+            timeout=4,
+            trust_env=False,
+        )
+        response.raise_for_status()
+        body = response.json()
+        return model(**body) if body is not None else None
+
+    def lookup_payment(self, **kwargs):
+        from world_model.restaurant_commerce.financial_providers import PaymentObservation
+
+        return self._call("lookup-payment", kwargs, PaymentObservation)
+
+    def lookup_refund(self, **kwargs):
+        from world_model.restaurant_commerce.financial_providers import RefundObservation
+
+        return self._call("lookup-refund", kwargs, RefundObservation)
+
+    def refund(self, **kwargs):
+        from world_model.restaurant_commerce.financial_providers import RefundObservation
+
+        return self._call("refund", kwargs, RefundObservation)
+
+
 class ControlledDelivery(SimulatedDeliveryProvider):
     def quote(self, **kwargs):
         self._record("quote", kwargs)
@@ -64,6 +96,16 @@ class ControlledEvents:
 
 def application():
     c = config()
+    from datetime import timedelta
+    from world_model.restaurant_commerce.financial_auth import FinancialPrincipal
+    from world_model.restaurant_commerce.models import utcnow
+
+    actor = FinancialPrincipal(
+        "synthetic:finance-alice",
+        frozenset({c["business_ids"][0]}),
+        frozenset({"finance.read", "finance.lookup", "finance.refund", "finance.resolve"}),
+        utcnow() + timedelta(hours=8),
+    )
     app = create_app(
         database_url=c["database_url"],
         operator_token=c["operator_token"],
@@ -73,6 +115,8 @@ def application():
         demo_mode=True,
         auto_init_schema=False,
         payment_providers={"simulated": ControlledPayment()},
+        financial_providers={"simulated": ControlledFinancial()},
+        financial_authenticator=lambda token: actor if token == c.get("financial_token") else None,
         delivery_providers={"simulated_delivery": ControlledDelivery()},
         event_sink=ControlledEvents(),
         rate_limit_per_minute=c.get("rate_limit_per_minute", 100000),

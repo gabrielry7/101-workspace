@@ -4,12 +4,12 @@ import argparse
 import os
 
 from .db import make_engine
-from .migrations import upgrade_payment_durability
+from .migrations import upgrade_payment_durability, upgrade_financial_resolution
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["upgrade-payments"])
+    parser.add_argument("command", choices=["upgrade-payments", "upgrade-finance"])
     parser.add_argument(
         "--offline",
         action="store_true",
@@ -27,11 +27,14 @@ def main():
         )
     engine = make_engine(url)
     try:
-        upgrade_payment_durability(engine)
+        if args.command == "upgrade-finance":
+            upgrade_financial_resolution(engine)
+        else:
+            upgrade_payment_durability(engine)
     finally:
         engine.dispose()
     print(
-        "Payment durability schema upgraded. Historical orders were not backfilled into payment intents."
+        "Requested schema upgrade completed. Historical financial authority was not fabricated."
     )
 
 

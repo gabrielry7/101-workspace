@@ -91,5 +91,58 @@ async function refreshAll() {
   try { await Promise.all([loadOrders(),loadReservations(),loadReconciliation()]); }
   finally { refreshing = false; }
 }
-bind({refreshAll}); start(() => { refreshAll(); setInterval(refreshAll,5000); });
+const financeResult = $('financeResult');
+let financeVersion = 0, financeBusy = false;
+for (const input of [business, $('financeToken'), $('financeOrder')]) input.addEventListener('input', () => {
+  ++financeVersion; financeResult.textContent = 'Consultar para cargar el historial de este pedido.';
+});
+const financeRoot = () => `/api/finance/restaurants/${path(business.value)}/orders/${path($('financeOrder').value.trim())}`;
+async function financeAPI(url, body) {
+  const version = financeVersion;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  try {
+    const response = await fetch(url, {method:body ? 'POST':'GET', signal:controller.signal,
+      headers:{'Content-Type':'application/json','X-101-Financial-Token':$('financeToken').value},
+      ...(body ? {body:JSON.stringify(body)} : {})});
+    const data = await response.json();
+    if(version !== financeVersion){const e=new Error('La selección cambió');e.stale=true;throw e;}
+    if(!response.ok)throw new Error(typeof data.detail==='string'?data.detail:`HTTP ${response.status}`);
+    return data;
+  } finally {clearTimeout(timeout);}
+}
+const financeStates={pending:'Pendiente',processing:'En proceso',unknown:'Sin confirmación; consultar nuevamente',succeeded:'Confirmado por el proveedor',failed:'Rechazado por el proveedor',review_required:'Requiere investigación'};
+async function renderFinance() {
+  const data=await financeAPI(financeRoot());
+  const operations=data.operations || [];
+  replace(financeResult, [h('p',{},'Una solicitud pendiente no confirma una devolución.'),
+    ...operations.map(o=>card(h('strong',{},o.kind==='refund'?'Devolución completa':'Consulta de pago'),
+      h('p',{},financeStates[o.state] || o.state),meta('Responsable: '+o.actor_id),meta(o.reason),
+      meta(o.result ? JSON.stringify(o.result) : 'Sin evidencia de resultado'))),
+    ...((data.reviews||[]).filter(r=>r.status==='open').map(r=>card(meta('Revisión: '+r.reason),
+      ...operations.filter(o=>o.state==='succeeded').slice(-3).map(o=>button('Resolver con evidencia '+o.id.slice(0,8),async()=>{
+        const reason=$('financeReason').value.trim();if(!reason)throw new Error('Escribe el motivo de la resolución.');
+        await financeAPI(financeRoot()+'/resolve/'+path(r.id),{operation_id:o.id,reason});await renderFinance();await loadReconciliation();
+      }))))),
+    h('h3',{},'Historial de acciones'),...(data.audit||[]).map(a=>card(meta(new Date(a.created_at).toLocaleString()),
+      h('div',{},a.actor_id+' · '+a.action),meta(a.reason),meta(JSON.stringify(a.evidence))))]);
+}
+async function financeAction(kind) {
+  if(financeBusy)return;financeBusy=true;
+  const version=financeVersion;
+  try {
+    if(!$('financeOrder').value.trim() || !$('financeToken').value)throw new Error('Indica el pedido y la credencial financiera.');
+    if(kind){
+      const reason=$('financeReason').value.trim();if(!reason)throw new Error('Escribe el motivo.');
+      if(kind==='refund'&&!confirm('¿Solicitar una devolución completa? Si se interrumpe, consulta el historial antes de volver a intentar.'))return;
+      if(!window.crypto || !crypto.getRandomValues)throw new Error('Este navegador no permite una solicitud segura.');
+      const bytes=new Uint8Array(24);crypto.getRandomValues(bytes);
+      await financeAPI(financeRoot()+'/'+kind,{idempotency_key:Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join(''),reason});
+    }
+    await renderFinance();
+  } catch(error){if(!error.stale && version===financeVersion)financeResult.textContent=error.name==='AbortError'?'Respuesta no recibida. Consulta el historial: la operación puede continuar.':error.message;}
+  finally {financeBusy=false;}
+}
+const financeHistory=()=>financeAction(null), financeLookup=()=>financeAction('lookup'), financeRefund=()=>financeAction('refund');
+bind({refreshAll,financeHistory,financeLookup,financeRefund}); start(() => { refreshAll(); setInterval(refreshAll,5000); });
 })();

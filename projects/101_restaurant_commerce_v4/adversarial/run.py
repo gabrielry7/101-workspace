@@ -253,6 +253,7 @@ def _setup(run_dir):
         "database_url": f"postgresql+psycopg://{os.getlogin() if False else __import__('getpass').getuser()}@127.0.0.1:{pg}/commerce_test",
         "business_ids": ["demo-restaurant-bogota", "synthetic-business-b"],
         "operator_token": secrets.token_hex(32),
+        "financial_token": secrets.token_hex(32),
         "access_secret": secrets.token_hex(32),
         "webhook_secrets": {
             "simulated": secrets.token_hex(32),

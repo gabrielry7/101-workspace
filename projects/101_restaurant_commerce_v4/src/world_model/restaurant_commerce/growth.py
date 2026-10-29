@@ -15,6 +15,7 @@ from .models import (
     Customer,
     LoyaltyAccount,
     LoyaltyLedgerEntry,
+    LoyaltyRefundDebt,
     LoyaltyProgram,
     Order,
     OutboundMessage,
@@ -175,6 +176,8 @@ class RestaurantGrowthService:
         if subtotal < reward.minimum_order_minor:
             raise ValidationError("Order does not meet the reward minimum")
         account = self.ensure_account(business_id, customer_id)
+        if self.session.scalar(select(LoyaltyRefundDebt.id).where(LoyaltyRefundDebt.account_id == account.id, LoyaltyRefundDebt.remaining_points > 0).limit(1)):
+            raise ValidationError("Loyalty refund debt must be settled before reward redemption")
         if account.available_points < reward.points_cost:
             raise ValidationError("Not enough loyalty points")
         return min(reward.discount_minor, subtotal), reward.name
@@ -186,6 +189,8 @@ class RestaurantGrowthService:
         if not reward or reward.business_id != business_id or not reward.enabled:
             raise ValidationError("Reward is unavailable")
         account = self.ensure_account(business_id, customer_id, for_update=True)
+        if self.session.scalar(select(LoyaltyRefundDebt.id).where(LoyaltyRefundDebt.account_id == account.id, LoyaltyRefundDebt.remaining_points > 0).limit(1)):
+            raise ValidationError("Loyalty refund debt must be settled before reward redemption")
         if account.available_points < reward.points_cost:
             raise ValidationError("Not enough loyalty points")
         if order.subtotal_minor < reward.minimum_order_minor:
@@ -260,6 +265,7 @@ class RestaurantGrowthService:
         account = self.ensure_account(order.business_id, order.customer_id, for_update=True)
         account.available_points += points
         account.lifetime_earned_points += points
+        self._settle_refund_debt(account, order.id, "earning")
         self.session.add(
             LoyaltyLedgerEntry(
                 account_id=account.id,
@@ -270,6 +276,50 @@ class RestaurantGrowthService:
             )
         )
         return points
+
+    def _settle_refund_debt(self, account, order_id, source):
+        debts = self.session.scalars(select(LoyaltyRefundDebt).where(
+            LoyaltyRefundDebt.account_id == account.id, LoyaltyRefundDebt.remaining_points > 0
+        ).order_by(LoyaltyRefundDebt.created_at).with_for_update()).all()
+        for debt in debts:
+            paid = min(account.available_points, debt.remaining_points)
+            if not paid:
+                break
+            account.available_points -= paid
+            debt.remaining_points -= paid
+            self.session.add(LoyaltyLedgerEntry(account_id=account.id, order_id=order_id,
+                delta_points=-paid, reason="refund.debt_repaid",
+                idempotency_key=f"debt-repay:{source}:{order_id}:{debt.id}"))
+
+    def compensate_full_refund(self, order):
+        if not order.customer_id:
+            return
+        account = self.ensure_account(order.business_id, order.customer_id, for_update=True)
+        key = f"order-refund:{order.id}"
+        if self.session.scalar(select(LoyaltyLedgerEntry.id).where(LoyaltyLedgerEntry.idempotency_key == key)):
+            return
+        credit = 0
+        redemption = self.session.scalar(select(RewardRedemption).where(RewardRedemption.order_id == order.id))
+        if redemption and redemption.status in {"reserved", "applied"}:
+            credit = redemption.points_spent
+            account.available_points += credit
+            account.lifetime_redeemed_points -= credit
+            redemption.status, redemption.released_at = "released", utcnow()
+        promotion = self.session.scalar(select(PromotionRedemption).where(PromotionRedemption.order_id == order.id))
+        if promotion and promotion.status in {"reserved", "applied"}:
+            promotion.status, promotion.released_at = "released", utcnow()
+        earned = self.session.scalar(select(LoyaltyLedgerEntry).where(
+            LoyaltyLedgerEntry.idempotency_key == f"order-complete:{order.id}"))
+        points = earned.delta_points if earned else 0
+        recovered = min(points, account.available_points)
+        account.available_points -= recovered
+        account.lifetime_earned_points -= points
+        if recovered < points:
+            self.session.add(LoyaltyRefundDebt(order_id=order.id, account_id=account.id,
+                                              remaining_points=points-recovered))
+        self.session.add(LoyaltyLedgerEntry(account_id=account.id, order_id=order.id,
+            delta_points=credit-recovered, reason="order.refunded", idempotency_key=key))
+        self._settle_refund_debt(account, order.id, "refund-credit")
 
     # ------------------------------------------------------------------
     # Promotions

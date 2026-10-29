@@ -107,3 +107,37 @@ def upgrade_payment_durability(engine: Engine) -> None:
                 table.create(connection, checkfirst=True)
         if not payment_durability_columns_present(connection):
             raise RuntimeError("Payment durability schema verification failed")
+
+
+FINANCIAL_TABLES = frozenset({"restaurant_financial_operations", "restaurant_financial_audit", "restaurant_loyalty_refund_debts"})
+
+
+def financial_columns_present(connection):
+    from .models import Base
+    inspector = inspect(connection)
+    present = set(inspector.get_table_names())
+    return FINANCIAL_TABLES.issubset(present) and all(
+        set(Base.metadata.tables[name].columns.keys()).issubset(
+            {c["name"] for c in inspector.get_columns(name)}) for name in FINANCIAL_TABLES)
+
+
+def upgrade_financial_resolution(engine):
+    """Explicit additive M3a -> M3b upgrade; preserves all historical state."""
+    from .models import Base
+    if engine.dialect.name not in {"sqlite", "postgresql"}:
+        raise RuntimeError("Financial upgrade supports SQLite and PostgreSQL only")
+    with engine.begin() as connection:
+        if engine.dialect.name == "sqlite":
+            connection.exec_driver_sql("BEGIN IMMEDIATE")
+        if not payment_durability_columns_present(connection):
+            raise RuntimeError("M3b requires the completed M3a offline upgrade")
+        inspector = inspect(connection)
+        for name in FINANCIAL_TABLES & set(inspector.get_table_names()):
+            if not set(Base.metadata.tables[name].columns.keys()).issubset(
+                {c["name"] for c in inspector.get_columns(name)}):
+                raise RuntimeError("Incomplete financial schema; restore or repair offline")
+        for table in Base.metadata.sorted_tables:
+            if table.name in FINANCIAL_TABLES:
+                table.create(connection, checkfirst=True)
+        if not financial_columns_present(connection):
+            raise RuntimeError("Financial schema verification failed")

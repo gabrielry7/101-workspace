@@ -58,6 +58,7 @@ from .models import (
     OrderItemModifier,
     Payment,
     PaymentIntent,
+    FinancialOperation,
     PaymentReconciliation,
     Promotion,
     Reservation,
@@ -126,7 +127,10 @@ def _aware_utc(value: datetime) -> datetime:
 from .payment_workflow import PaymentWorkflowMixin
 
 
-class RestaurantCommerceService(PaymentWorkflowMixin):
+from .financial_workflow import FinancialWorkflowMixin
+
+
+class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
     def __init__(
         self,
         session: Session,
@@ -138,10 +142,12 @@ class RestaurantCommerceService(PaymentWorkflowMixin):
         storefront_cache: TTLCache[StorefrontOut] | None = None,
         verified_customer_id: str | None = None,
         payment_lease_seconds: int = 30,
+        financial_providers: dict | None = None,
         payment_retry_seconds: float = 2.0,
     ) -> None:
         # Server-side identity adapter only. Never populated from request JSON/phone.
         self.payment_lease_seconds = payment_lease_seconds
+        self.financial_providers = financial_providers or {}
         self.payment_retry_seconds = payment_retry_seconds
         self.verified_customer_id = verified_customer_id
         self.session = session
@@ -1475,6 +1481,8 @@ class RestaurantCommerceService(PaymentWorkflowMixin):
         if target == PaymentStatus.PAID and order.status != OrderStatus.CANCELLED.value:
             growth.finalize_reward(order.id)
             growth.finalize_promotion(order.id)
+        elif target == PaymentStatus.REFUNDED:
+            growth.compensate_full_refund(order)
         elif target == PaymentStatus.FAILED:
             growth.release_reward(order.id)
             growth.release_promotion(order.id)
@@ -1513,6 +1521,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin):
         payments = order.payments
         deferred_payment = any(p.provider == "cash_at_pickup" for p in payments)
         if target in {OrderStatus.ACCEPTED, OrderStatus.PREPARING, OrderStatus.READY, OrderStatus.COMPLETED}:
+            if self.session.scalar(select(FinancialOperation.id).where(FinancialOperation.order_id == order.id,
+                    FinancialOperation.kind == "refund").limit(1)):
+                raise InvalidTransitionError("An order with a refund intent cannot advance fulfillment")
             if self.session.scalar(select(PaymentReconciliation.id).where(PaymentReconciliation.order_id == order.id,
                     PaymentReconciliation.status == "open").limit(1)):
                 raise InvalidTransitionError("Payment reconciliation is required before fulfillment")
