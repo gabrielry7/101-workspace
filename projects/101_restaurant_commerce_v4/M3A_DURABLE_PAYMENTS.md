@@ -9,7 +9,9 @@ scoped staff login or production deployment/restore.
 Checkout validates the customer, cart, price, discounts and delivery quote before
 committing anything. One transaction then stores the immutable order/items/contact,
 reserved benefits/quote, completed idempotency binding and `PaymentIntent`. Only
-then may the provider be called. Invalid local requests still roll back completely.
+then may the provider be called. If another worker owns that intent, checkout
+returns the same pending order and capability; clients read status until its
+payment is ready. Pending acceptance is not successful payment. Invalid local requests still roll back completely.
 A malformed or missing provider reply no longer deletes the order.
 
 Every attempt uses the original order ID, amount, currency, contact input and

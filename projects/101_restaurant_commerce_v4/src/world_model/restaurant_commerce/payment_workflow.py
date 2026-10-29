@@ -158,6 +158,12 @@ class PaymentWorkflowMixin:
         ).rowcount
         if not claimed:
             self.session.rollback()
+            if not background:
+                # Another request/recovery worker owns this same durable intent.
+                # Return its truthful pending/ready state, never a false conflict
+                # or a second provider attempt. The caller already checked replay
+                # authority and the immutable request fingerprint.
+                return self.order_out(order_id)
             raise IdempotencyConflictError(
                 "Checkout is processing; recover the existing order shortly"
             )

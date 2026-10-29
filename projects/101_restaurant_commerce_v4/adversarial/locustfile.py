@@ -91,6 +91,27 @@ class Customer(HttpUser):
             if response.status_code != 200 or response.json().get("id") != oid:
                 response.failure("replay mismatch")
                 return
+        # A recovery worker can own the same intent before the request handler.
+        # Pending is a successful durable acceptance, not payment readiness.
+        deadline = time.monotonic() + 10
+        while not order.get("payments"):
+            with self.client.get(
+                "/api/orders/" + oid,
+                headers={"X-101-Order-Token": token},
+                name="checkout-pending-status",
+                catch_response=True,
+            ) as response:
+                if response.status_code != 200:
+                    return
+                order = response.json()
+                if order.get("id") != oid or order.get("reconciliation_required"):
+                    response.failure("pending checkout identity/reconciliation failure")
+                    return
+                if not order.get("payments") and time.monotonic() >= deadline:
+                    response.failure("pending checkout did not become ready within10s")
+                    return
+            if not order.get("payments"):
+                time.sleep(0.1)
         with self.client.post(
             "/api/payments/simulated/"
             + order["payments"][0]["provider_reference"]

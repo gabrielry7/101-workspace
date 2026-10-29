@@ -552,3 +552,75 @@ def test_removed_adapter_enters_review_without_starving_recovery(factory):
             session.scalar(select(PaymentReconciliation)).reason
             == "provider_unavailable"
         )
+
+
+def test_busy_intent_returns_original_pending_order_without_second_provider_call(factory):
+    pending = []
+
+    class ConcurrentReplay(SimulatedPaymentProvider):
+        calls = 0
+
+        def create_checkout(self, **kw):
+            self.calls += 1
+            with factory() as other:
+                replay = RestaurantCommerceService(
+                    other, payment_providers={"simulated": self}
+                ).create_order(DEMO_BUSINESS_ID, req)
+                assert replay.id == kw["order_id"]
+                assert replay.checkout_state == "processing"
+                assert replay.payments == []
+                pending.append(replay)
+            return super().create_checkout(**kw)
+
+    provider = ConcurrentReplay()
+    with factory() as session:
+        service = RestaurantCommerceService(
+            session, payment_providers={"simulated": provider}
+        )
+        req = request(service)
+        result = service.create_order(DEMO_BUSINESS_ID, req)
+        assert result.id == pending[0].id
+        assert result.checkout_state == "ready" and len(result.payments) == 1
+        assert provider.calls == 1
+        assert len(list(session.scalars(select(Order)))) == 1
+
+
+def test_pending_checkout_api_returns_usable_order_capability(tmp_path):
+    pending = []
+
+    class ConcurrentReplay(SimulatedPaymentProvider):
+        calls = 0
+
+        def create_checkout(self, **kw):
+            self.calls += 1
+            response = client.post(endpoint, json=body)
+            assert response.status_code == 200
+            order = response.json()
+            assert order["id"] == kw["order_id"]
+            assert order["checkout_state"] == "processing" and not order["payments"]
+            assert order["access_token"]
+            status = client.get(
+                "/api/orders/" + order["id"],
+                headers={"X-101-Order-Token": order["access_token"]},
+            )
+            assert status.status_code == 200 and status.json()["id"] == order["id"]
+            pending.append(order)
+            return super().create_checkout(**kw)
+
+    provider = ConcurrentReplay()
+    app = create_app(
+        database_url=f"sqlite:///{tmp_path / 'pending.db'}",
+        seed=True,
+        payment_providers={"simulated": provider},
+        payment_recovery_enabled=False,
+    )
+    endpoint = "/api/restaurants/" + DEMO_BUSINESS_ID + "/orders"
+    with TestClient(app) as client:
+        with app.state.session_factory() as session:
+            body = request(RestaurantCommerceService(session)).model_dump(mode="json")
+        response = client.post(endpoint, json=body)
+        assert response.status_code == 200
+        order = response.json()
+        assert order["id"] == pending[0]["id"]
+        assert order["checkout_state"] == "ready" and len(order["payments"]) == 1
+        assert provider.calls == 1
