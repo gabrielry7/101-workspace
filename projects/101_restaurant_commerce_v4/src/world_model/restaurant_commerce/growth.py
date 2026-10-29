@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+import re
 import json
 
 from sqlalchemy import func, select
@@ -524,6 +525,10 @@ class RestaurantGrowthService:
         message = self.session.get(OutboundMessage, message_id)
         if not message:
             raise NotFoundError("Outbound message not found")
+        if message.purpose not in {"marketing", "service_followup"}:
+            raise ValidationError("Unsupported message purpose")
+        if not re.fullmatch(r"\+?[0-9]{5,15}", message.destination or ""):
+            raise ValidationError("Message recipient requires a canonical phone")
         if message.channel != "whatsapp":
             raise ValidationError("Only WhatsApp composer handoff is supported")
         if message.status not in {"queued", "handed_off"}:

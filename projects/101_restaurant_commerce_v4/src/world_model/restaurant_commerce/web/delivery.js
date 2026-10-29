@@ -2,12 +2,19 @@
 (() => {
 const {$, node: h, replace, safeURL, bind, start, money, path} = window.CommerceUI;
 const business = $('business'), token = $('token');
+let scopeVersion = 0;
+for (const input of [business, token]) input.addEventListener('input', () => {
+  ++scopeVersion;
+  for (const id of ['rows']) $(id).textContent = 'Actualizar para cargar este negocio.';
+});
 const endpoint = tail => `/api/operator/restaurants/${path(business.value)}/${tail}`;
 async function api(url, options = {}) {
+  const version = scopeVersion;
   const response = await fetch(url, {...options, headers: {
     'X-101-Operator-Token': token.value, 'Content-Type': 'application/json'
   }});
   const data = await response.json();
+  if (version !== scopeVersion) { const error = new Error('La selección cambió'); error.stale = true; throw error; }
   if (!response.ok) throw new Error(data.detail || `HTTP ${response.status}`);
   return data;
 }
@@ -16,7 +23,7 @@ const meta = text => h('div', {className: 'meta'}, text);
 const button = (label, action) => h('button', {onClick: async event => {
   const el = event.currentTarget;
   el.disabled = true;
-  try { await action(); } catch (error) { alert(error.message); }
+  try { await action(); } catch (error) { if (!error.stale) alert(error.message); }
   finally { el.disabled = false; }
 }}, label);
 
@@ -51,7 +58,7 @@ async function loadAll() {
             (d.tracking_url ? meta('Enlace de tracking no autorizado.') : null))),
         h('div',{className:'actions'},actions));
     }) : h('p',{},'Sin entregas.'));
-  } catch(error) { rows.textContent = error.message; }
+  } catch(error) { if (!error.stale) rows.textContent = error.message; }
   finally { refreshing = false; }
 }
 bind({loadAll}); start(() => { loadAll(); setInterval(loadAll,5000); });

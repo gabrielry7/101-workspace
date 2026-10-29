@@ -78,6 +78,7 @@ from .payments import (
     WompiPaymentProvider,
 )
 from .schemas import (
+    normalize_customer_phone,
     CartItemIn,
     DeliveryAddressIn,
     DeliveryOut,
@@ -109,12 +110,10 @@ def _public_code(prefix: str) -> str:
 
 
 def _normalize_phone(phone: str) -> str:
-    phone = phone.strip()
-    prefix = "+" if phone.startswith("+") else ""
-    digits = "".join(ch for ch in phone if ch.isdigit())
-    if len(digits) < 5:
-        raise ValidationError("A valid customer phone is required")
-    return prefix + digits
+    try:
+        return normalize_customer_phone(phone)
+    except ValueError as exc:
+        raise ValidationError(str(exc)) from exc
 
 
 def _aware_utc(value: datetime) -> datetime:

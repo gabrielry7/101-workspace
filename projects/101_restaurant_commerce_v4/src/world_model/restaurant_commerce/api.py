@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import logging
 import os
 import re
@@ -11,8 +12,9 @@ from uuid import uuid4
 from urllib.parse import urlsplit
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.gzip import GZipMiddleware
-from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, Response
 from pydantic import ValidationError as PydanticValidationError
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session
@@ -203,7 +205,7 @@ def create_app(
         if value and provider not in configured_webhook_secrets:
             configured_webhook_secrets[provider] = value
 
-    app = FastAPI(title="101 Restaurant Commerce", version="0.5.0")
+    app = FastAPI(title="101 Restaurant Commerce", version="0.5.1")
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
     app.add_middleware(MaxBodySizeMiddleware, max_bytes=max_body_bytes)
     app.state.engine = engine
@@ -323,6 +325,15 @@ def create_app(
             version=order.access_token_version
         ):
             raise HTTPException(status_code=401, detail="Missing or invalid order access token")
+
+    @app.exception_handler(RequestValidationError)
+    async def request_validation_handler(_, exc: RequestValidationError):
+        # Do not echo credentials/PII, non-finite numbers or invalid Unicode from
+        # hostile input into the error encoder. ASCII escaping also protects loc.
+        errors = [{key: value for key, value in error.items()
+                   if key in {"type", "loc", "msg"}} for error in exc.errors()]
+        return Response(json.dumps({"detail": errors}, ensure_ascii=True),
+                        status_code=422, media_type="application/json")
 
     @app.exception_handler(NotFoundError)
     async def not_found_handler(_, exc: NotFoundError):

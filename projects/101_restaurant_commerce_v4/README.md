@@ -247,3 +247,26 @@ columns on rollback. Do not roll back publicly to code accepting the old unsafe
 customer/replay flows. PostgreSQL migration/concurrency proof remains M3; this
 upgrade deliberately refuses other database dialects. No existing runtime database
 was upgraded during implementation.
+
+## M1/M2 adversarial corrections (0.5.1)
+
+Offline attack tests reproduced and corrected stale food/delivery quotes, duplicate
+checkout/reservation submissions, lost-response retries within an open page,
+stalled policy startup, and staff responses surviving a business/token change.
+Pending submissions retain their exact body/key and freeze edits until resolved;
+confirmed rejections release the form. UUID creation has a cryptographic fallback.
+**Reload/closed-tab recovery is still absent and remains a real-money release gate.**
+
+Malformed validation inputs now return safe422 responses without echoing input.
+Phone input accepts ASCII digits, an optional leading plus, spaces, parentheses,
+periods and hyphens; canonical output contains5–15digits. Ambiguous Unicode digits,
+letters and extensions are rejected. Historical noncanonical outbox recipients
+and unsupported message purposes fail closed instead of changing the destination.
+
+SQLite's savepoint hook now starts a real outer transaction when the driver has
+not done so, so rejected requests cannot commit guest profiles or orphaned retry
+claims. Previously orphaned claims are not automatically deleted: staff must inspect
+provider and database evidence before recovery. There are no schema changes in0.5.1;
+the explicit0.5.0 upgrade remains required for older databases. PostgreSQL and
+provider-commit crash recovery remain unproven. Tests are synthetic and do not
+establish low-end-device or older-browser support.

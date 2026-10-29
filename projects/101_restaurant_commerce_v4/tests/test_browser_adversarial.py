@@ -1,0 +1,238 @@
+"""Delay/reorder/drop responses in a real browser, with all traffic intercepted."""
+
+import json
+
+from test_browser_security import (
+    browser as browser,  # noqa: PLC0414 - pytest fixture re-export
+)
+from test_browser_security import playwright
+from test_browser_security import (
+    site as site,  # noqa: PLC0414 - pytest fixture re-export
+)
+
+ROOT = "/api/restaurants/demo-restaurant-bogota"
+
+
+def add_item(page):
+    page.goto("https://commerce.test/")
+    page.locator("#menu article").filter(has_text="Papas").get_by_role("button").click()
+    page.get_by_role("button", name="Quitar", exact=True).wait_for()
+
+
+def hold(page, url):
+    routes = []
+    page.route("**" + url, lambda route: routes.append(route))
+    return routes
+
+
+def pump(page, routes, n=1):
+    for _ in range(50):
+        if len(routes) >= n:
+            return
+        page.wait_for_timeout(20)
+    assert len(routes) >= n
+
+
+def test_late_food_quote_cannot_resurrect_empty_cart(site):
+    page, _, _, _, errors, external = site
+    pending = hold(page, ROOT + "/orders/quote")
+    add_item(page)
+    pump(page, pending)
+    page.get_by_role("button", name="Quitar", exact=True).click()
+    pending[0].fulfill(json={"total_minor": 99999, "subtotal_minor": 99999})
+    page.wait_for_timeout(150)
+    assert "999" not in page.locator("#cartTotal").inner_text()
+    assert not errors and not external
+
+
+def test_old_delivery_quote_cannot_authorize_new_address(site):
+    page, _, _, requests, errors, external = site
+    pending = hold(page, ROOT + "/delivery/quote")
+    add_item(page)
+    page.locator("#deliveryBtn").click()
+    page.locator("#dAddress").fill("Address A")
+    page.locator("#dLat").fill("4.6697")
+    page.locator("#dLng").fill("-74.0549")
+    page.get_by_role("button", name="Cotizar domicilio", exact=True).click()
+    pump(page, pending)
+    page.locator("#dAddress").fill("Address B")
+    pending[0].fulfill(
+        json={"id": "quote-for-A", "fee_minor": 5000, "distance_meters": 1000}
+    )
+    page.locator("#cName").fill("Synthetic")
+    page.locator("#cPhone").fill("3005550101")
+    page.locator("#checkoutButton").click()
+    playwright.expect(page.locator("#notice")).to_contain_text("Cotiza el domicilio")
+    assert not any(
+        method == "POST" and path == ROOT + "/orders" for method, path, _ in requests
+    )
+    assert not errors and not external
+
+
+def test_duplicate_click_and_lost_response_reuse_original_intent(site):
+    page, client, _, _, errors, external = site
+    pending = hold(page, ROOT + "/orders")
+    add_item(page)
+    page.locator("#cName").fill("Synthetic")
+    page.locator("#cPhone").fill("3005550101")
+    # Native clicks exercise synchronous handler re-entry without Playwright's disabled-button wait.
+    page.locator("#checkoutButton").evaluate("(el)=>{el.click();el.click()}")
+    pump(page, pending)
+    page.wait_for_timeout(100)
+    assert len(pending) == 1
+    first = json.loads(pending[0].request.post_data)
+    # Server commits; network loses the response. Retry must recover the same order.
+    response = client.post(ROOT + "/orders", json=first)
+    assert response.status_code == 200
+    pending[0].abort("failed")
+    playwright.expect(page.locator("#checkoutButton")).to_be_enabled()
+    page.locator("#checkoutButton").click()
+    pump(page, pending, 2)
+    second = json.loads(pending[1].request.post_data)
+    assert first == second
+    replay = client.post(ROOT + "/orders", json=second)
+    assert replay.status_code == 200 and replay.json()["id"] == response.json()["id"]
+    pending[1].fulfill(status=200, json=replay.json())
+    playwright.expect(page.locator("#notice")).to_contain_text("recibido")
+    assert not errors and not external
+
+
+def test_reservation_duplicate_click_uses_one_request_and_retries_same_key(site):
+    from datetime import UTC, datetime, timedelta
+
+    page, _, _, _, errors, external = site
+    pending = hold(page, ROOT + "/reservations")
+    page.goto("https://commerce.test/")
+    page.get_by_role("button", name="Reservar", exact=True).click()
+    page.locator("#rName").fill("Synthetic")
+    page.locator("#rPhone").fill("3005550101")
+    page.locator("#rDate").fill(
+        (datetime.now(UTC) + timedelta(days=3))
+        .replace(hour=12, minute=0, second=0, microsecond=0)
+        .strftime("%Y-%m-%dT%H:%M")
+    )
+    button = page.locator('[data-click="reserve"]')
+    button.evaluate("(el)=>{el.click();el.click()}")
+    pump(page, pending)
+    page.wait_for_timeout(100)
+    assert len(pending) == 1
+    first = json.loads(pending[0].request.post_data)
+    assert first["idempotency_key"]
+    pending[0].abort("failed")
+    playwright.expect(button).to_be_enabled()
+    button.click()
+    pump(page, pending, 2)
+    assert json.loads(pending[1].request.post_data) == first
+    pending[1].fulfill(status=200, json={"public_code": "SYNTHETIC", "party_size": 2})
+    playwright.expect(page.locator("#notice")).to_contain_text("SYNTHETIC")
+    assert not errors and not external
+
+
+def test_policy_timeout_loads_ui_and_late_policy_cannot_reopen_navigation(site):
+    page, _, _, _, errors, external = site
+    pending = hold(page, "/api/browser-policy")
+    page.goto("https://commerce.test/")
+    page.locator("#menu article").first.wait_for(timeout=6000)
+    assert (
+        page.evaluate("CommerceUI.safeURL('https://unexpected.test/pay', 'checkout')")
+        is None
+    )
+    pending[0].fulfill(
+        json={
+            "demo_mode": False,
+            "checkout_origins": ["https://unexpected.test"],
+            "tracking_origins": [],
+        }
+    )
+    page.wait_for_timeout(100)
+    assert (
+        page.evaluate("CommerceUI.safeURL('https://unexpected.test/pay', 'checkout')")
+        is None
+    )
+    assert not errors and not external
+
+
+def test_reordered_food_quotes_keep_latest_result(site):
+    page, _, _, _, errors, external = site
+    pending = hold(page, ROOT + "/orders/quote")
+    add_item(page)
+    pump(page, pending)
+    page.locator("#promoCode").fill("NEW")
+    pump(page, pending, 2)
+    pending[1].fulfill(json={"total_minor": 1000, "subtotal_minor": 1000})
+    page.wait_for_timeout(50)
+    latest = page.locator("#cartTotal").inner_text()
+    pending[0].fulfill(json={"total_minor": 99999, "subtotal_minor": 99999})
+    page.wait_for_timeout(100)
+    assert page.locator("#cartTotal").inner_text() == latest
+    assert not errors and not external
+
+
+def test_checkout_without_uuid_or_browser_storage(site):
+    page, _, _, _, errors, external = site
+    page.add_init_script("""Object.defineProperty(crypto,'randomUUID',{value:undefined});
+      for(const name of ['localStorage','sessionStorage'])Object.defineProperty(window,name,{get(){throw new DOMException('denied','SecurityError')}});""")
+    add_item(page)
+    page.locator("#cName").fill("Synthetic")
+    page.locator("#cPhone").fill("3005550101")
+    page.locator("#checkoutButton").click()
+    playwright.expect(page.locator("#notice")).to_contain_text("recibido")
+    assert not errors and not external
+
+
+def test_staff_business_change_discards_old_response_and_actions(site):
+    from test_browser_security import order
+
+    page, client, _, _, errors, external = site
+    original = order(client)
+    assert (
+        client.post(
+            "/api/payments/simulated/"
+            + original["payments"][0]["provider_reference"]
+            + "/complete"
+        ).status_code
+        == 200
+    )
+    url = "/api/operator/restaurants/demo-restaurant-bogota/orders"
+    old = client.get(url, headers={"X-101-Operator-Token": "dev-operator"}).json()
+    pending = hold(page, url)
+    page.goto("https://commerce.test/admin")
+    pump(page, pending)
+    page.locator("#business").fill("other-business")
+    pending[0].fulfill(json=old)
+    page.wait_for_timeout(150)
+    assert original["public_code"] not in page.locator("#orders").inner_text()
+    assert page.get_by_role("button", name="accepted", exact=True).count() == 0
+    assert not errors and not external
+
+
+def test_payment_completion_rejection_does_not_create_second_order(site):
+    page, _, _, requests, errors, external = site
+    completed = []
+
+    def complete(route):
+        completed.append(route.request.url)
+        if len(completed) == 1:
+            route.fulfill(status=422, json={"detail": "Synthetic completion rejection"})
+        else:
+            route.fallback()
+
+    page.route("**/api/payments/simulated/*/complete", complete)
+    add_item(page)
+    page.locator("#cName").fill("Synthetic")
+    page.locator("#cPhone").fill("3005550101")
+    page.locator("#checkoutButton").click()
+    playwright.expect(page.locator("#notice")).to_contain_text(
+        "Synthetic completion rejection"
+    )
+    playwright.expect(page.locator("#cName")).to_be_disabled()
+    page.locator("#checkoutButton").click()
+    playwright.expect(page.locator("#notice")).to_contain_text("recibido")
+    orders = [
+        json.loads(body)
+        for method, url, body in requests
+        if method == "POST" and url == ROOT + "/orders"
+    ]
+    assert len(orders) == 2 and orders[0] == orders[1]
+    assert completed[0] == completed[1]
+    assert not errors and not external

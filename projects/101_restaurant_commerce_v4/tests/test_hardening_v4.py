@@ -573,8 +573,11 @@ def test_concurrent_identical_order_calls_provider_once(tmp_path):
     with ThreadPoolExecutor(max_workers=8) as pool:
         results = list(pool.map(submit, range(8)))
 
-    assert sum(kind == "ok" for kind, _ in results) == 1
-    assert sum(kind == "conflict" for kind, _ in results) == 7
+    # Requests that wait for the first transaction may safely replay its result.
+    # The invariant is one resource/provider call, not seven mandatory conflicts.
+    successful_ids = {order_id for kind, order_id in results if kind == "ok"}
+    assert len(successful_ids) == 1
+    assert all(kind in {"ok", "conflict"} for kind, _ in results)
     assert provider.calls == 1
     with Sessions() as s:
         assert s.scalar(select(Order).where(Order.idempotency_key == "CONCURRENT-SAME")) is not None

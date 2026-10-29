@@ -48,11 +48,18 @@ window.CommerceUI = (() => {
     });
   }
   async function start(run) {
+    let timer;
     try {
-      const response = await fetch('/api/browser-policy');
-      if (!response.ok) throw new Error('policy unavailable');
-      policy = await response.json();
+      policy = await Promise.race([
+        (async () => {
+          const response = await fetch('/api/browser-policy');
+          if (!response.ok) throw new Error('policy unavailable');
+          return await response.json();
+        })(),
+        new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('policy timeout')), 3000); })
+      ]);
     } catch (_) { /* Fail closed for external navigation; local UI still works. */ }
+    finally { clearTimeout(timer); }
     run();
   }
   const money = n => new Intl.NumberFormat('es-CO', {

@@ -36,6 +36,15 @@ def make_engine(database_url: str | None = None) -> Engine:
             cursor.execute("PRAGMA temp_store=MEMORY")
             cursor.close()
 
+        @event.listens_for(engine, "savepoint")
+        def _sqlite_savepoint_outer_transaction(connection, _name):
+            # sqlite3 legacy transaction control does not BEGIN for SAVEPOINT.
+            # Releasing an outermost savepoint would commit a claim even when the
+            # request subsequently rolls back. Preserve the caller's transaction.
+            driver = connection.connection.driver_connection
+            if not driver.in_transaction:
+                connection.exec_driver_sql("BEGIN")
+
     return engine
 
 

@@ -1,9 +1,22 @@
 from __future__ import annotations
 
+import re
 from datetime import datetime
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+
+def normalize_customer_phone(value: str) -> str:
+    # One representation for API, identity matching and composer destinations.
+    # Reject letters/extensions/Unicode digits instead of silently changing recipient.
+    value = value.strip()
+    if not re.fullmatch(r"\+?[0-9 () .-]+", value):
+        raise ValueError("phone must use ASCII digits and optional formatting separators")
+    digits = "".join(ch for ch in value if ch in "0123456789")
+    if not 5 <= len(digits) <= 15:
+        raise ValueError("phone must contain between 5 and 15 digits")
+    return ("+" if value.startswith("+") else "") + digits
 
 
 class StrictModel(BaseModel):
@@ -150,9 +163,7 @@ class CustomerIn(StrictModel):
     @field_validator("phone")
     @classmethod
     def phone_must_contain_digits(cls, value: str) -> str:
-        if sum(ch.isdigit() for ch in value) < 5:
-            raise ValueError("phone must contain at least 5 digits")
-        return value
+        return normalize_customer_phone(value)
 
 
 class CreateOrderRequest(StrictModel):
