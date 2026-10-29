@@ -80,7 +80,8 @@ async function loadReconciliation() {
     replace($('reconciliation'), rows.length ? rows.map(r => card(
       h('strong', {}, 'Revisión de pago'), meta('Pedido: ' + r.order_id),
       meta(Object.prototype.hasOwnProperty.call(reviewReasons, r.reason) ? reviewReasons[r.reason] : 'Verificar el pago con el proveedor'), meta(new Date(r.created_at).toLocaleString()),
-      h('p', {}, 'Verifica el pago con el proveedor antes de realizar cualquier cobro o devolución. Esta alerta no confirma una devolución.')
+      h('p', {}, 'Verifica el pago con el proveedor antes de realizar cualquier cobro o devolución. Esta alerta no confirma una devolución.'),
+      button('Abrir resolución',async()=>{$('financeOrder').value=r.order_id;++financeVersion;await financeHistory();})
     )) : h('p', {}, 'Sin revisiones pendientes.'));
   } catch (error) { if (!error.stale) $('reconciliation').textContent = error.message; }
 }
@@ -112,20 +113,35 @@ async function financeAPI(url, body) {
   } finally {clearTimeout(timeout);}
 }
 const financeStates={pending:'Pendiente',processing:'En proceso',unknown:'Sin confirmación; consultar nuevamente',succeeded:'Confirmado por el proveedor',failed:'Rechazado por el proveedor',withdrawn:'Solicitud retirada tras rechazo confirmado',review_required:'Requiere investigación'};
+function evidenceView(value) {
+  if(!value)return meta('Sin evidencia de resultado');
+  const e=value.provider_evidence || value;
+  return h('div',{},
+    typeof e.amount_minor==='number'?meta('Importe: '+money(e.amount_minor)):null,
+    typeof e.provider_reference==='string'?meta('Referencia de pago: '+e.provider_reference):null,
+    typeof e.refund_reference==='string'?meta('Referencia de devolución: '+e.refund_reference):null,
+    typeof e.evidence_id==='string'?meta('Comprobante del proveedor: '+e.evidence_id):null,
+    typeof e.query_started_at==='string'?meta('Consulta iniciada: '+new Date(e.query_started_at).toLocaleString()):null,
+    e.error?meta('Aún no hay confirmación verificable. Consulta el historial antes de volver a intentar.'):null);
+}
+const financialActions={'refund.requested':'Devolución solicitada','refund.succeeded':'Devolución confirmada',
+  'refund.unknown':'Devolución sin confirmar','refund.failed':'Devolución rechazada','refund.review_required':'Devolución en revisión',
+  'lookup.requested':'Consulta de pago solicitada','lookup.succeeded':'Pago verificado','lookup.unknown':'Pago sin confirmar',
+  'lookup.review_required':'Pago en revisión','reconciliation.resolved':'Revisión resuelta','reconciliation.updated':'Nueva evidencia para revisión'};
 async function renderFinance() {
   const data=await financeAPI(financeRoot());
   const operations=data.operations || [];
   replace(financeResult, [h('p',{},'Una solicitud pendiente no confirma una devolución.'),
     ...operations.map(o=>card(h('strong',{},o.kind==='refund'?'Devolución completa':'Consulta de pago'),
       h('p',{},financeStates[o.state] || o.state),meta('Responsable: '+o.actor_id),meta(o.reason),
-      meta(o.result ? JSON.stringify(o.result) : 'Sin evidencia de resultado'))),
-    ...((data.reviews||[]).filter(r=>r.status==='open').map(r=>card(meta('Revisión: '+r.reason),
+      evidenceView(o.result))),
+    ...((data.reviews||[]).filter(r=>r.status==='open').map(r=>card(meta('Revisión financiera pendiente'),
       ...operations.filter(o=>o.state==='succeeded'||o.state==='failed').slice(-3).map(o=>button('Resolver con evidencia '+o.id.slice(0,8),async()=>{
         const reason=$('financeReason').value.trim();if(!reason)throw new Error('Escribe el motivo de la resolución.');
         await financeAPI(financeRoot()+'/resolve/'+path(r.id),{operation_id:o.id,reason});await renderFinance();await loadReconciliation();
       }))))),
     h('h3',{},'Historial de acciones'),...(data.audit||[]).map(a=>card(meta(new Date(a.created_at).toLocaleString()),
-      h('div',{},a.actor_id+' · '+a.action),meta(a.reason),meta(JSON.stringify(a.evidence))))]);
+      h('div',{},a.actor_id+' · '+(financialActions[a.action]||'Actualización financiera')),meta(a.reason),evidenceView(a.evidence)))]);
 }
 async function financeAction(kind) {
   if(financeBusy)return;financeBusy=true;

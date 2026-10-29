@@ -8,11 +8,12 @@ import signal
 import sys
 import time
 from datetime import UTC, datetime
+from importlib.metadata import version
 from pathlib import Path
 from uuid import uuid4
 
 import httpx
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import expect, sync_playwright
 from run import process, stop, wait_http, write
 
 p = argparse.ArgumentParser()
@@ -177,14 +178,16 @@ try:
         page.locator("#financeOrder").fill(browser_order["id"])
         page.locator("#financeReason").fill("Controlled browser refund")
         page.get_by_role("button", name="Solicitar devolución completa", exact=True).click()
-        page.wait_for_function(
-            "document.querySelector('#financeResult').textContent.includes('Confirmado por el proveedor')"
+        expect(page.locator("#financeResult")).to_contain_text(
+            "Confirmado por el proveedor", timeout=15000
         )
+        page.get_by_role("button", name="Resolver con evidencia").click()
+        expect(page.locator("#financeResult")).to_contain_text("Revisión resuelta", timeout=15000)
         assert len(effects(browser_order)) == 1 and not errors
         page.screenshot(path=str(a.output / "financial-mobile.png"), full_page=True)
         page.reload()
         assert page.locator("#financeToken").input_value() == ""
-        assert page.evaluate("Object.keys(localStorage).length") == 0
+        assert page.evaluate("() => Object.keys(localStorage).length") == 0
         browser.close()
     record(
         "mobile financial UI and reload credential containment", browser_cases=1, provider_effects=1
@@ -201,6 +204,11 @@ finally:
         a.output / "receipt.json",
         {
             "command": [sys.executable, *sys.argv],
+            "versions": {
+                "python": sys.version,
+                "httpx": version("httpx"),
+                "playwright": version("playwright"),
+            },
             "revision": c["revision"],
             "wheel_sha256": c["wheel_sha256"],
             "target": c["base_url"],

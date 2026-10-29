@@ -2,7 +2,7 @@
 
 import pytest
 from sqlalchemy import inspect
-from world_model.restaurant_commerce.db import make_engine, init_schema, database_ready
+from world_model.restaurant_commerce.db import database_ready, init_schema, make_engine
 from world_model.restaurant_commerce.migrations import (
     FINANCIAL_TABLES,
     upgrade_financial_resolution,

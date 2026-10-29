@@ -6,17 +6,14 @@ from datetime import timedelta
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import select
-
-from test_payment_durability_m3 import factory as shared_factory, request
-
-
-@pytest.fixture
-def factory(tmp_path):
-    yield from shared_factory.__wrapped__(tmp_path)
-
-
+from test_payment_durability_m3 import factory as shared_factory
+from test_payment_durability_m3 import request
 from world_model.restaurant_commerce.api import create_app
-from world_model.restaurant_commerce.errors import InvalidTransitionError, PaymentError
+from world_model.restaurant_commerce.errors import (
+    InvalidTransitionError,
+    PaymentError,
+    ValidationError,
+)
 from world_model.restaurant_commerce.financial_auth import FinancialPrincipal
 from world_model.restaurant_commerce.financial_providers import (
     PaymentObservation,
@@ -35,6 +32,11 @@ from world_model.restaurant_commerce.models import (
 from world_model.restaurant_commerce.payments import SimulatedPaymentProvider
 from world_model.restaurant_commerce.seed import DEMO_BUSINESS_ID as BID
 from world_model.restaurant_commerce.service import RestaurantCommerceService
+
+
+@pytest.fixture
+def factory(tmp_path):
+    yield from shared_factory.__wrapped__(tmp_path)
 
 
 def principal(**overrides):
@@ -222,7 +224,7 @@ def test_unknown_lookup_cannot_resolve_review(factory):
         BID, order.id, "lookup", "lookup-key", "Missing provider evidence", principal()
     )
     row = svc.list_payment_reconciliation(BID)[0]
-    with pytest.raises(Exception):
+    with pytest.raises(ValidationError):
         svc.resolve_financial_review(BID, order.id, row["id"], result["id"], "Close", principal())
     assert row["status"] == "open"
     session.close()
@@ -548,12 +550,12 @@ def test_stale_refund_worker_cannot_finalize_local_state(factory):
 
 
 def test_populated_m3a_upgrade_preserves_order_and_payment(factory):
-    from world_model.restaurant_commerce.models import Base, Payment
+    from world_model.restaurant_commerce.db import database_ready
     from world_model.restaurant_commerce.migrations import (
         FINANCIAL_TABLES,
         upgrade_financial_resolution,
     )
-    from world_model.restaurant_commerce.db import database_ready
+    from world_model.restaurant_commerce.models import Base, Payment
 
     session, svc, provider, order = setup(factory)
     engine = session.get_bind()
@@ -580,4 +582,46 @@ def test_refund_hold_prevents_courier_dispatch(factory):
     refund(svc, order)
     with pytest.raises(InvalidTransitionError, match="Refund intent prevents delivery dispatch"):
         svc.dispatch_delivery(order.id)
+    session.close()
+
+
+def test_future_completed_order_repays_refund_debt_with_ledger(factory):
+    session, svc, provider, order = setup(factory)
+    customer_id = session.get(Order, order.id).customer_id
+    account = LoyaltyAccount(
+        business_id=BID, customer_id=customer_id, available_points=2, lifetime_earned_points=10
+    )
+    session.add(account)
+    session.flush()
+    session.add(
+        LoyaltyLedgerEntry(
+            account_id=account.id,
+            order_id=order.id,
+            delta_points=10,
+            reason="order.completed",
+            idempotency_key="order-complete:" + order.id,
+        )
+    )
+    session.commit()
+    refund(svc, order)
+    svc.verified_customer_id = customer_id
+    next_order = svc.create_order(BID, request(svc))
+    for status in ["accepted", "preparing", "ready", "completed"]:
+        svc.transition_order(next_order.id, status)
+    session.refresh(account)
+    earned = session.scalar(
+        select(LoyaltyLedgerEntry).where(
+            LoyaltyLedgerEntry.idempotency_key == "order-complete:" + next_order.id
+        )
+    )
+    debt = session.scalar(select(LoyaltyRefundDebt))
+    repaid = min(8, earned.delta_points)
+    assert debt.remaining_points == 8 - repaid
+    assert account.available_points == earned.delta_points - repaid
+    assert (
+        session.scalar(
+            select(LoyaltyLedgerEntry).where(LoyaltyLedgerEntry.reason == "refund.debt_repaid")
+        ).delta_points
+        == -repaid
+    )
     session.close()

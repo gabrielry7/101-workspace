@@ -1,3 +1,5 @@
+Current controlled financial milestone: version **0.7.0**, [M3b contracts and offline upgrade](M3B_FINANCIAL_RESOLUTION.md). Real-money operation remains gated.
+
 # 101 Restaurant Commerce V4 — Reliability Release
 
 **Current release0.6.0:** [M3a durable payments, recovery, reconciliation and offline upgrade](M3A_DURABLE_PAYMENTS.md). Real-money use remains gated. The V4/M1/M2 sections below retain historical context.
