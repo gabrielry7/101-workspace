@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 from typing import Iterator
 from uuid import uuid4
+from urllib.parse import urlsplit
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
 from fastapi.middleware.gzip import GZipMiddleware
@@ -127,7 +128,28 @@ def create_app(
     max_body_bytes: int = 1_048_576,
     storefront_cache_ttl_seconds: float = 15.0,
     auto_init_schema: bool | None = None,
+    checkout_url_origins: tuple[str, ...] = (),
+    tracking_url_origins: tuple[str, ...] = (),
 ) -> FastAPI:
+    def validated_origins(origins: tuple[str, ...]) -> list[str]:
+        result = []
+        for origin in origins:
+            parsed = urlsplit(origin)
+            if (parsed.scheme != "https" or not parsed.hostname or parsed.username
+                    or parsed.password or parsed.path not in ("", "/")
+                    or parsed.query or parsed.fragment or "\\" in origin
+                    or any(ord(c) <= 32 or ord(c) == 127 for c in origin)):
+                raise ValueError("Browser URL policy requires HTTPS origins without credentials or paths")
+            # Reject invalid ports and canonicalize the default HTTPS port.
+            port = parsed.port
+            host = parsed.hostname.encode("idna").decode("ascii")
+            if ":" in host:
+                host = f"[{host}]"
+            result.append(f"https://{host}" + (f":{port}" if port is not None and port != 443 else ""))
+        return result
+
+    browser_policy = {"checkout_origins": validated_origins(checkout_url_origins),
+                      "tracking_origins": validated_origins(tracking_url_origins)}
     environment = (environment or os.getenv("COMMERCE_ENV", "development")).lower()
     production = environment == "production"
     demo_mode = (not production) if demo_mode is None else demo_mode
@@ -246,9 +268,9 @@ def create_app(
         response.headers["Referrer-Policy"] = "no-referrer"
         response.headers["Permissions-Policy"] = "geolocation=(self), camera=(), microphone=()"
         response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; "
+            "default-src 'self'; base-uri 'none'; frame-ancestors 'none'; "
             "object-src 'none'; img-src 'self' data: https:; "
-            "script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; "
+            "script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; "
             "connect-src 'self'"
         )
         if production:
@@ -323,6 +345,17 @@ def create_app(
         if not database_ready(engine):
             return JSONResponse({"status": "not_ready", "database": "down"}, status_code=503)
         return {"status": "ready", "database": "ok"}
+
+    @app.get("/api/browser-policy")
+    def browser_url_policy():
+        return {**browser_policy, "demo_mode": demo_mode}
+
+    @app.get("/assets/{filename}")
+    def browser_script(filename: str):
+        if filename not in {"shared.js", "index.js", "admin.js", "delivery.js", "growth.js"}:
+            raise HTTPException(status_code=404, detail="Asset not found")
+        return FileResponse(WEB_DIR / filename, media_type="text/javascript",
+                            headers={"Cache-Control": "no-cache"})
 
     @app.get("/")
     def storefront_page():

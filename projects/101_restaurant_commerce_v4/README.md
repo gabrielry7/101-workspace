@@ -153,3 +153,41 @@ V4 is substantially harder to break than V3, but the phrase “military reliable
 - external security review / dependency scanning in CI
 
 No external provider call is required to run or test this bundle.
+
+## Frontend security boundary (M1)
+
+The four pages use packaged external JavaScript, explicit event listeners and DOM
+text nodes for API values. Do not reintroduce `innerHTML`, interpolated event
+attributes, or executable string handlers. Scripts are served by a fixed asset
+allowlist with a strict script CSP; inline styles remain permitted for the
+existing design. The request-body limiter preserves the ASGI disconnect channel
+once its buffered body is consumed, including when serving files.
+
+Checkout and tracking destinations fail closed by default. Configure exact HTTPS
+origins through `create_app(checkout_url_origins=(...), tracking_url_origins=(...))`
+only after verifying the provider contract. `/api/browser-policy` exposes this
+non-secret policy; do not derive it from customer/API response data. Only the
+specific simulator paths are allowed locally in demo mode. Real provider adapters
+remain unimplemented. These settings do not certify an integration or bypass
+server-side payment verification.
+
+Run browser regressions as a required release check (they are an optional install
+extra so backend-only environments can still run unit tests):
+
+```sh
+python -m pip install -e '.[test,browser]'
+python -m playwright install chromium
+PYTHONPATH=src python -m pytest -q
+```
+
+For an installed system browser, set `COMMERCE_BROWSER_EXECUTABLE=/usr/bin/chromium`.
+Set `COMMERCE_BROWSER_ARTIFACTS` to a temporary folder for layout screenshots.
+Tests intercept all browser traffic and use isolated SQLite and simulated
+providers. Repeat the new tests against a built wheel installed in a clean target
+with that target on `PYTHONPATH`; this checks JS package inclusion and actual
+asset serving. The historical79 tests alone did not exercise the browser boundary.
+
+This milestone does not fix the remaining audited financial, customer identity,
+consent, staff-login or recovery flaws. In particular, checkout still generates a
+new intent on each attempt and the manual WhatsApp UI still marks a composer
+handoff as sent. Do not enable public real-money use on the basis of M1.

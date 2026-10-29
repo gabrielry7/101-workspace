@@ -91,7 +91,9 @@ class MaxBodySizeMiddleware:
         async def replay_receive() -> Message:
             nonlocal delivered
             if delivered:
-                return {"type": "http.request", "body": b"", "more_body": False}
+                # The body is complete. Preserve the server's disconnect channel;
+                # synthesizing endless requests spins FileResponse listeners.
+                return await receive()
             delivered = True
             return {"type": "http.request", "body": payload, "more_body": False}
 
