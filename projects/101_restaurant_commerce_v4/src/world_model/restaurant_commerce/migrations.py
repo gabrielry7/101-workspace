@@ -141,3 +141,37 @@ def upgrade_financial_resolution(engine):
                 table.create(connection, checkfirst=True)
         if not financial_columns_present(connection):
             raise RuntimeError("Financial schema verification failed")
+
+
+STAFF_TABLES = frozenset({"restaurant_staff_accounts", "restaurant_staff_memberships", "restaurant_staff_sessions", "restaurant_staff_login_windows", "restaurant_staff_audit"})
+
+
+def staff_columns_present(connection):
+    from .models import Base
+    inspector = inspect(connection)
+    present = set(inspector.get_table_names())
+    return STAFF_TABLES.issubset(present) and all(
+        set(Base.metadata.tables[name].columns.keys()).issubset(
+            {c["name"] for c in inspector.get_columns(name)}) for name in STAFF_TABLES)
+
+
+def upgrade_staff(engine):
+    """Offline additive M3b -> M4 upgrade. No implicit staff or memberships."""
+    from .models import Base
+    if engine.dialect.name not in {"sqlite", "postgresql"}:
+        raise RuntimeError("Staff upgrade supports SQLite and PostgreSQL only")
+    with engine.begin() as connection:
+        if engine.dialect.name == "sqlite":
+            connection.exec_driver_sql("BEGIN IMMEDIATE")
+        if not financial_columns_present(connection) or not payment_durability_columns_present(connection):
+            raise RuntimeError("M4 requires completed M3b schema")
+        inspector = inspect(connection)
+        for name in STAFF_TABLES & set(inspector.get_table_names()):
+            if not set(Base.metadata.tables[name].columns.keys()).issubset(
+                {c["name"] for c in inspector.get_columns(name)}):
+                raise RuntimeError("Incomplete staff schema; restore or repair offline")
+        for table in Base.metadata.sorted_tables:
+            if table.name in STAFF_TABLES:
+                table.create(connection, checkfirst=True)
+        if not staff_columns_present(connection):
+            raise RuntimeError("Staff schema verification failed")

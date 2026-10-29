@@ -1,3 +1,4 @@
+from staff_helpers import staff_headers
 """M1 regression proof against real FastAPI responses; no external provider traffic.
 
 Run with browser extra installed and COMMERCE_BROWSER_EXECUTABLE=/usr/bin/chromium
@@ -31,7 +32,9 @@ def site(tmp_path, browser):
                      checkout_url_origins=('https://checkout.example.test',),
                      tracking_url_origins=('https://tracking.example.test',))
     with TestClient(app) as client:
+        staff_headers(client)
         context = browser.new_context()
+        context.add_cookies([{'name':'commerce_staff','value':client.cookies['commerce_staff'],'url':'http://commerce.test','httpOnly':True,'sameSite':'Strict'}])
         page = context.new_page()
         overrides, requests, errors, external = {}, [], [], []
         page.on('pageerror', lambda error: errors.append(str(error)))
@@ -46,7 +49,7 @@ def site(tmp_path, browser):
             if parsed.path in overrides:
                 body = overrides[parsed.path]
                 return r.fulfill(status=200, json=body)
-            headers = {k: v for k, v in req.headers.items() if k in ('content-type', 'x-101-operator-token', 'x-101-order-token')}
+            headers = {k: v for k, v in req.headers.items() if k in ('content-type', 'cookie', 'x-101-csrf', 'x-101-login', 'x-101-order-token')}
             response = client.request(req.method, path, content=req.post_data_buffer, headers=headers)
             # httpx has decoded gzip; do not forward stale content encoding/length.
             hdr = {k: v for k, v in response.headers.items() if k not in ('content-encoding','content-length')}
@@ -255,7 +258,7 @@ def test_real_delivery_controls_and_growth_plan(site):
     assert quote.status_code==200,quote.text
     o=order(client,fulfillment_type='delivery',delivery_quote_id=quote.json()['id'])
     assert client.post(f'/api/payments/simulated/{o["payments"][0]["provider_reference"]}/complete').status_code==200
-    headers={'X-101-Operator-Token':'dev-operator'}
+    headers=staff_headers(client)
     for status in ['accepted','preparing','ready']:
         assert client.patch('/api/operator/orders/'+o['id'],json={'status':status},headers=headers).status_code==200
     page.goto('https://commerce.test/delivery')

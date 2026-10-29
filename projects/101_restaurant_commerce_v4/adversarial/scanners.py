@@ -533,19 +533,11 @@ def zap_scan(rec, config):
             booleanInScope="true",
         )
         api("core", "action", "setMode", mode="standard")
-        token = config["operator_token"]
-        api(
-            "replacer",
-            "action",
-            "addRule",
-            description="synthetic-operator",
-            enabled="true",
-            matchType="REQ_HEADER",
-            matchRegex="false",
-            matchString="X-101-Operator-Token",
-            replacement=token,
-            url=re.escape(base) + r"/.*",
-        )
+        token = config["single_staff_headers"]["Cookie"]
+        for header, value in config["single_staff_headers"].items():
+            api("replacer", "action", "addRule", description="synthetic-staff-"+header,
+                enabled="true", matchType="REQ_HEADER", matchRegex="false",
+                matchString=header, replacement=value, url=re.escape(base)+r"/.*")
         business = config["business_ids"][0]
         status, store = fetch(base + f"/api/restaurants/{business}/storefront")
         assert status == 200
@@ -794,7 +786,7 @@ def zap_scan(rec, config):
         dump(
             rec.output / "zap-api-calls.json",
             redact_native(
-                calls, [config.get("operator_token"), locals().get("customer_token")]
+                calls, [*config["single_staff_headers"].values(), locals().get("customer_token")]
             ),
         )
     if (rec.output / "INTERRUPTED.json").exists():

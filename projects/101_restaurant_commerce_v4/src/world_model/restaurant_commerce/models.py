@@ -734,3 +734,49 @@ class LoyaltyRefundDebt(Base):
     remaining_points: Mapped[int] = mapped_column(Integer)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     __table_args__ = (CheckConstraint("remaining_points >= 0", name="ck_refund_debt_nonnegative"),)
+
+
+class StaffAccount(Base):
+    __tablename__ = "restaurant_staff_accounts"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    username: Mapped[str] = mapped_column(String(120), unique=True)
+    password_hash: Mapped[str] = mapped_column(String(240))
+    active: Mapped[bool] = mapped_column(Boolean, default=True)
+    platform_admin: Mapped[bool] = mapped_column(Boolean, default=False)
+    auth_version: Mapped[int] = mapped_column(Integer, default=1)
+
+
+class StaffMembership(Base):
+    __tablename__ = "restaurant_staff_memberships"
+    account_id: Mapped[str] = mapped_column(ForeignKey("restaurant_staff_accounts.id"), primary_key=True)
+    business_id: Mapped[str] = mapped_column(ForeignKey("restaurant_commerce_profiles.business_id"), primary_key=True)
+    role: Mapped[str] = mapped_column(String(24))
+    __table_args__ = (CheckConstraint("role IN ('viewer','operator','finance','manager')", name="ck_staff_role"),)
+
+
+class StaffSession(Base):
+    __tablename__ = "restaurant_staff_sessions"
+    token_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
+    account_id: Mapped[str] = mapped_column(ForeignKey("restaurant_staff_accounts.id"), index=True)
+    auth_version: Mapped[int] = mapped_column(Integer)
+    csrf: Mapped[str] = mapped_column(String(64))
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    last_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    revoked: Mapped[bool] = mapped_column(Boolean, default=False)
+
+
+class StaffLoginWindow(Base):
+    __tablename__ = "restaurant_staff_login_windows"
+    key: Mapped[str] = mapped_column(String(64), primary_key=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+
+
+class StaffAudit(Base):
+    __tablename__ = "restaurant_staff_audit"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    actor_id: Mapped[str] = mapped_column(String(36), index=True)
+    business_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    action: Mapped[str] = mapped_column(String(120))
+    resource: Mapped[str] = mapped_column(String(200))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

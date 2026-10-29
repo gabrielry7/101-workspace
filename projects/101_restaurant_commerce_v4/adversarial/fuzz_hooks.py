@@ -24,7 +24,7 @@ def before_call(ctx, case, kwargs):
     if c["fuzz_profile"] == "staff":
         case.headers = {
             **(case.headers or {}),
-            "X-101-Operator-Token": c["operator_token"],
+            **c["single_staff_headers"],
         }
     if c["fuzz_profile"] == "customer":
         case.headers = {

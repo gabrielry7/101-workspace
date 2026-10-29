@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from staff_helpers import staff_headers
+
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -279,7 +281,7 @@ def test_live_provider_boundaries_fail_closed():
 def test_delivery_api_flow(engine):
     app = create_app(engine=engine, seed=False, operator_token="token")
     client = TestClient(app)
-    headers = {"X-101-Operator-Token": "token"}
+    headers = staff_headers(client)
 
     quote_r = client.post(
         f"/api/restaurants/{DEMO_BUSINESS_ID}/delivery/quote",

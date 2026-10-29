@@ -1,6 +1,6 @@
 // spec: specs/adversarial.md
 // seed: tests/seed.spec.ts
-import {test,expect,prepare,root,body,create,orderVisible,businesses,business,operatorHeaders,unique,phone} from './fixtures';
+import {test,expect,prepare,root,body,create,orderVisible,businesses,business,operatorHeaders,dualHeaders,unique,phone} from './fixtures';
 
 test('successful live customer order is retrievable and visible to staff',async({page,request})=>{
   await prepare(page,request);
@@ -96,7 +96,8 @@ test('denied browser storage and missing randomUUID preserve checkout',async({pa
 test('switching businesses discards delayed authorized staff response',async({page,request})=>{
   expect(businesses.length,'Two real seed businesses are required').toBeGreaterThan(1);
   const oldOrder=await create(request);let release!:()=>void;let fetched=false;const gate=new Promise<void>(r=>release=r);
-  await page.goto('/admin');await page.locator('#token').fill(operatorHeaders['X-101-Operator-Token']);
+  await page.context().addCookies([{name:'commerce_staff',value:dualHeaders.Cookie.split('=')[1],url:(await import('./fixtures')).origin,httpOnly:true,sameSite:'Strict'}]);
+  await page.goto('/admin');await expect(page.locator('#staffStatus')).toContainText('synthetic.dual');
   await page.route('**/api/operator/restaurants/'+business+'/orders',async route=>{const response=await route.fetch({maxRedirects:0});expect(response.status()).toBe(200);fetched=true;await gate;await route.fulfill({response});});
   await page.getByRole('button',{name:'Actualizar',exact:true}).click();await expect.poll(()=>fetched).toBeTruthy();await page.locator('#business').fill(businesses[1]);release();await page.waitForTimeout(200);
   await expect(page.locator('#orders')).not.toContainText(oldOrder.public_code);
@@ -109,6 +110,39 @@ test('staff authority must be scoped to one business',async({request},testInfo)=
   expect(businesses.length).toBeGreaterThan(1);
   const own=await request.get('/api/operator/restaurants/'+business+'/orders',{headers:operatorHeaders});expect(own.status()).toBe(200);
   const other=await request.get('/api/operator/restaurants/'+businesses[1]+'/orders',{headers:operatorHeaders});
-  await testInfo.attach('staff-scope-evidence.json',{body:Buffer.from(JSON.stringify({own_status:own.status(),other_business_status:other.status(),authority_model:'Existing global operator token; no per-business identity model is implemented'})),contentType:'application/json'});
-  expect(other.status(),'Global operator token has no tenant scope; missing feature must remain FAIL').toBe(403);
+  await testInfo.attach('staff-scope-evidence.json',{body:Buffer.from(JSON.stringify({own_status:own.status(),other_business_status:other.status(),authority_model:'HTTP-issued named staff session with one explicit membership'})),contentType:'application/json'});
+  expect(other.status(),'Single-business staff must not access another business').toBe(403);
+});
+
+test('named staff login survives reload without browser storage; logout removes access',async({page})=>{
+  const {config}=await import('./fixtures');
+  await page.addInitScript(()=>{for(const name of ['localStorage','sessionStorage'])Object.defineProperty(window,name,{get(){throw new DOMException('blocked','SecurityError')}});});
+  await page.goto('/admin');
+  await page.locator('#staffUsername').fill('synthetic.single');
+  await page.locator('#staffPassword').fill(config.staff_password);
+  await page.getByRole('button',{name:'Iniciar sesión',exact:true}).click();
+  await expect(page.locator('#staffStatus')).toContainText('synthetic.single');
+  await page.reload();
+  await expect(page.locator('#staffStatus')).toContainText('synthetic.single');
+  expect(await page.locator('#staffPassword').inputValue()).toBe('');
+  expect(await page.evaluate(()=>document.cookie)).not.toContain('commerce_staff');
+  await page.getByRole('button',{name:'Cerrar sesión',exact:true}).click();
+  await expect(page.locator('#staffLogin')).toBeVisible();
+  await expect(page.locator('#orders')).toContainText('Actualizar para cargar datos autorizados.');
+  await page.reload();
+  await expect(page.locator('#staffLogin')).toBeVisible();
+});
+
+test('delayed session restore cannot republish staff after logout',async({page})=>{
+  const {config}=await import('./fixtures');
+  await page.context().addCookies([{name:'commerce_staff',value:config.single_staff_headers.Cookie.split('=')[1],url:(await import('./fixtures')).origin,httpOnly:true,sameSite:'Strict'}]);
+  await page.goto('/admin');await expect(page.locator('#staffStatus')).toContainText('synthetic.single');
+  let release!:()=>void;const gate=new Promise<void>(r=>release=r);let fetched=false;
+  await page.route('**/api/staff/me',async route=>{const response=await route.fetch();expect(response.status()).toBe(200);fetched=true;await gate;await route.fulfill({response});});
+  await page.evaluate(()=>document.dispatchEvent(new Event('visibilitychange')));
+  await expect.poll(()=>fetched).toBeTruthy();
+  await page.getByRole('button',{name:'Cerrar sesión',exact:true}).click();
+  await expect(page.locator('#staffLogin')).toBeVisible();release();
+  await page.waitForTimeout(250);
+  await expect(page.locator('#staffStatus')).not.toContainText('synthetic.single');
 });

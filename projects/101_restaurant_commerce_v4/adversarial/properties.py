@@ -52,7 +52,7 @@ def cfg():
 def http(method, path, *, operator=False, headers=None, **kwargs):
     merged = dict(headers or {})
     if operator:
-        merged["X-101-Operator-Token"] = cfg()["operator_token"]
+        merged.update(cfg()["single_staff_headers"])
     started = time.monotonic()
     response = httpx.request(
         method,

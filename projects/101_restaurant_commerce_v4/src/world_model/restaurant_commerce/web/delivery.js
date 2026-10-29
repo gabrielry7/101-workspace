@@ -1,18 +1,16 @@
 "use strict";
 (() => {
 const {$, node: h, replace, safeURL, bind, start, money, path} = window.CommerceUI;
-const business = $('business'), token = $('token');
+const business = $('business');
 let scopeVersion = 0;
-for (const input of [business, token]) input.addEventListener('input', () => {
+for (const input of [business]) input.addEventListener('input', () => {
   ++scopeVersion;
   for (const id of ['rows']) $(id).textContent = 'Actualizar para cargar este negocio.';
 });
 const endpoint = tail => `/api/operator/restaurants/${path(business.value)}/${tail}`;
 async function api(url, options = {}) {
   const version = scopeVersion;
-  const response = await fetch(url, {...options, headers: {
-    'X-101-Operator-Token': token.value, 'Content-Type': 'application/json'
-  }});
+  const response = await window.CommerceStaff.request(url, options);
   const data = await response.json();
   if (version !== scopeVersion) { const error = new Error('La selección cambió'); error.stale = true; throw error; }
   if (!response.ok) throw new Error(data.detail || `HTTP ${response.status}`);
@@ -61,5 +59,6 @@ async function loadAll() {
   } catch(error) { if (!error.stale) rows.textContent = error.message; }
   finally { refreshing = false; }
 }
-bind({loadAll}); start(() => { loadAll(); setInterval(loadAll,5000); });
+window.addEventListener('staffchange', event => { ++scopeVersion; for(const id of ['rows']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) loadAll(); });
+bind({loadAll}); start(() => { window.CommerceStaff.ready.then(loadAll); setInterval(loadAll,5000); });
 })();

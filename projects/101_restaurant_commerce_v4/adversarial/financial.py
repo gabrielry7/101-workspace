@@ -30,7 +30,7 @@ start = datetime.now(UTC).isoformat()
 results = []
 error = None
 h = httpx.Client(base_url=c["base_url"], trust_env=False, timeout=15)
-headers = {"X-101-Financial-Token": c["financial_token"]}
+headers = c["single_staff_headers"]
 root = "/api/finance/restaurants/" + c["business_ids"][0] + "/orders/"
 env = {
     **os.environ,
@@ -101,16 +101,16 @@ def record(name, **counts):
 
 try:
     order = create()
-    for head, bid in [
-        ({"X-101-Operator-Token": c["operator_token"]}, c["business_ids"][0]),
-        (headers, c["business_ids"][1]),
+    for head, bid, expected in [
+        ({"X-101-Operator-Token": c["operator_token"]}, c["business_ids"][0], 401),
+        (headers, c["business_ids"][1], 403),
     ]:
         url = "/api/finance/restaurants/" + bid + "/orders/" + order["id"] + "/refund"
         assert (
             h.post(
                 url, json={"idempotency_key": "denied", "reason": "Denied case"}, headers=head
             ).status_code
-            == 403
+            == expected
         )
     assert not effects(order)
     record("legacy token and wrong business denied", requests=2)
@@ -174,7 +174,10 @@ try:
         page.on("pageerror", lambda e: errors.append(str(e)))
         page.on("dialog", lambda d: d.accept())
         page.goto(c["base_url"] + "/admin")
-        page.locator("#financeToken").fill(c["financial_token"])
+        page.locator("#staffUsername").fill("synthetic.single")
+        page.locator("#staffPassword").fill(c["staff_password"])
+        page.get_by_role("button",name="Iniciar sesión",exact=True).click()
+        expect(page.locator("#staffStatus")).to_contain_text("synthetic.single")
         page.locator("#financeOrder").fill(browser_order["id"])
         page.locator("#financeReason").fill("Controlled browser refund")
         page.get_by_role("button", name="Solicitar devolución completa", exact=True).click()
@@ -186,7 +189,7 @@ try:
         assert len(effects(browser_order)) == 1 and not errors
         page.screenshot(path=str(a.output / "financial-mobile.png"), full_page=True)
         page.reload()
-        assert page.locator("#financeToken").input_value() == ""
+        assert page.locator("#staffPassword").input_value() == ""
         assert page.evaluate("() => Object.keys(localStorage).length") == 0
         browser.close()
     record(

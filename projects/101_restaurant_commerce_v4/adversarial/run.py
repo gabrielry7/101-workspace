@@ -218,6 +218,12 @@ def seed(c):
                 )
             )
         s.commit()
+        from world_model.restaurant_commerce.staff import provision
+        from world_model.restaurant_commerce.models import StaffMembership
+        for name in ("single", "dual"):
+            actor=provision(s, "synthetic."+name, c["staff_password"], c["business_ids"][0], "manager", actor="test-harness")
+            if name=="dual":
+                s.add(StaffMembership(account_id=actor.id,business_id=c["business_ids"][1],role="manager"));s.commit()
         c["customer_ids"] = customer_ids
         write(
             Path(c["run_dir"]) / "database-proof.json",
@@ -226,7 +232,7 @@ def seed(c):
                 "database": s.scalar(text("SELECT current_database()")),
                 "port": s.scalar(text("SHOW port")),
                 "businesses": c["business_ids"],
-                "staff_identity_gap": "No staff table or memberships; global token only",
+                "staff_identity_model": "Named single- and dual-business staff; real HTTP-issued sessions",
                 "workers": "2 Uvicorn processes, each with a lifespan recovery thread; database leases coordinate work",
             },
         )
@@ -254,6 +260,7 @@ def _setup(run_dir):
         "business_ids": ["demo-restaurant-bogota", "synthetic-business-b"],
         "operator_token": secrets.token_hex(32),
         "financial_token": secrets.token_hex(32),
+        "staff_password": secrets.token_hex(24),
         "access_secret": secrets.token_hex(32),
         "webhook_secrets": {
             "simulated": secrets.token_hex(32),
@@ -409,6 +416,13 @@ def _setup(run_dir):
         env,
     )
     wait_http(c["base_url"] + "/ready")
+    import httpx
+    for name in ("single", "dual"):
+        with httpx.Client(base_url=c["base_url"],trust_env=False) as staff_client:
+            staff_client.post("/api/staff/login",json={"username":"synthetic."+name,"password":c["staff_password"]},headers={"X-101-Login":"1"}).raise_for_status()
+            me=staff_client.get("/api/staff/me");me.raise_for_status()
+            c[name+"_staff_headers"]={"Cookie":"commerce_staff="+staff_client.cookies["commerce_staff"],"X-101-CSRF":me.json()["csrf"]}
+    write(run_dir / "config.json",c)
     from world_model.restaurant_commerce import api
 
     write(
@@ -482,7 +496,7 @@ def baseline(c):
             h.patch(
                 "/api/operator/orders/" + order["id"],
                 json={"status": state},
-                headers={"X-101-Operator-Token": c["operator_token"]},
+                headers=c["single_staff_headers"],
             ).raise_for_status()
         status = h.get(
             "/api/orders/" + order["id"],

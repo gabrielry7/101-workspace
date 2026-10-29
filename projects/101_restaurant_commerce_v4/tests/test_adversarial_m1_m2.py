@@ -6,7 +6,8 @@ from datetime import UTC, datetime, timedelta
 
 import pytest
 from sqlalchemy import func, select
-from test_customer_safety_m2 import BUSINESS, HEADERS, ROOT, payload
+from test_customer_safety_m2 import BUSINESS, ROOT, payload
+from staff_helpers import staff_headers
 from test_customer_safety_m2 import (
     env as env,  # noqa: PLC0414 - pytest fixture re-export
 )
@@ -99,7 +100,7 @@ def test_unrecognized_message_purpose_fails_closed(env, purpose):
         mid = message.id
     assert (
         client.post(
-            "/api/operator/outbox/" + mid + "/handoff", headers=HEADERS
+            "/api/operator/outbox/" + mid + "/handoff", headers=staff_headers(client)
         ).status_code
         == 422
     )

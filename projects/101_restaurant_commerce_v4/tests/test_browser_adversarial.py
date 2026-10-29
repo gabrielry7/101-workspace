@@ -1,3 +1,4 @@
+from staff_helpers import staff_headers
 """Delay/reorder/drop responses in a real browser, with all traffic intercepted."""
 
 import json
@@ -198,7 +199,7 @@ def test_staff_business_change_discards_old_response_and_actions(site):
         == 200
     )
     url = "/api/operator/restaurants/demo-restaurant-bogota/orders"
-    old = client.get(url, headers={"X-101-Operator-Token": "dev-operator"}).json()
+    old = client.get(url, headers=staff_headers(client)).json()
     pending = hold(page, url)
     page.goto("https://commerce.test/admin")
     pump(page, pending)
@@ -279,7 +280,7 @@ def test_reload_recovers_original_order_without_persisting_contact(site):
     assert len(pending) == 1
     staff = client.get(
         ROOT.replace("/api/restaurants", "/api/operator/restaurants") + "/orders",
-        headers={"X-101-Operator-Token": "dev-operator"},
+        headers=staff_headers(client),
     ).json()
     assert len(staff) == 1 and staff[0]["id"] == original["id"]
     assert any(
@@ -458,7 +459,7 @@ def test_exact_retry_of_cancelled_paid_order_never_pays_or_claims_success(site):
     cancelled = client.patch(
         "/api/operator/orders/" + original["id"],
         json={"status": "cancelled"},
-        headers={"X-101-Operator-Token": "dev-operator"},
+        headers=staff_headers(client),
     )
     assert cancelled.status_code == 200, cancelled.text
     paid = client.post(
@@ -499,14 +500,14 @@ def test_cancellation_during_payment_completion_has_no_success_notice(site):
     def late_payment(route):
         orders = client.get(
             "/api/operator/restaurants/demo-restaurant-bogota/orders",
-            headers={"X-101-Operator-Token": "dev-operator"},
+            headers=staff_headers(client),
         ).json()
         assert len(orders) == 1
         current = orders[0]
         cancelled = client.patch(
             "/api/operator/orders/" + current["id"],
             json={"status": "cancelled"},
-            headers={"X-101-Operator-Token": "dev-operator"},
+            headers=staff_headers(client),
         )
         assert cancelled.status_code == 200, cancelled.text
         paid = client.post(

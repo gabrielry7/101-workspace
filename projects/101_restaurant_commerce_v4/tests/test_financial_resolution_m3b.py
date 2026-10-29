@@ -304,56 +304,37 @@ def test_refund_reverses_earned_points_once_with_explicit_debt(factory):
 
 
 def test_financial_authority_legacy_wrong_business_expired_revoked(tmp_path):
+    from staff_helpers import staff_headers
+    from world_model.restaurant_commerce.models import StaffSession
     provider = Controlled()
-    active = {
-        "valid": principal(),
-        "expired": principal(expires_at=utcnow() - timedelta(seconds=1)),
-        "viewer": principal(permissions=frozenset({"finance.read"})),
-    }
-    app = create_app(
-        database_url=f"sqlite:///{tmp_path / 'auth.db'}",
-        seed=True,
-        payment_recovery_enabled=False,
-        payment_providers={"simulated": provider},
-        financial_providers={"simulated": provider},
-        financial_authenticator=active.get,
-    )
+    app = create_app(database_url=f"sqlite:///{tmp_path / 'auth.db'}", seed=True,
+                     payment_recovery_enabled=False, payment_providers={"simulated": provider},
+                     financial_providers={"simulated": provider})
     with TestClient(app) as client:
         with app.state.session_factory() as session:
             body = request(RestaurantCommerceService(session)).model_dump(mode="json")
         order = client.post("/api/restaurants/" + BID + "/orders", json=body).json()
         url = "/api/finance/restaurants/" + BID + "/orders/" + order["id"] + "/refund"
         body = {"idempotency_key": "refund-key", "reason": "Customer refund"}
-        for token in ["dev-operator", "expired", "viewer", "missing"]:
-            assert (
-                client.post(
-                    url,
-                    json=body,
-                    headers={
-                        "X-101-Financial-Token": token,
-                        "X-101-Operator-Token": "dev-operator",
-                    },
-                ).status_code
-                == 403
-            )
-        assert (
-            client.post(
-                url.replace(BID, "other-business"),
-                json=body,
-                headers={"X-101-Financial-Token": "valid"},
-            ).status_code
-            == 403
-        )
-        assert provider.effects == 0
-        response = client.post(url, json=body, headers={"X-101-Financial-Token": "valid"})
-        assert response.status_code == 200, response.text
-        assert response.json()["state"] == "succeeded"
-        active.clear()
-        assert (
-            client.post(url, json=body, headers={"X-101-Financial-Token": "valid"}).status_code
-            == 403
-        )
-        assert provider.effects == 1
+        assert client.post(url,json=body,headers={"X-101-Operator-Token":"dev-operator",
+                                                "X-101-Financial-Token":"valid"}).status_code==401
+        viewer=staff_headers(client,role="viewer",name="test.viewer")
+        assert client.post(url,json=body,headers=viewer).status_code==403
+        valid=staff_headers(client)
+        assert client.post(url.replace(BID,"other-business"),json=body,headers=valid).status_code==403
+        assert provider.effects==0
+        response=client.post(url,json=body,headers=valid)
+        assert response.status_code==200, response.text
+        assert response.json()["state"]=="succeeded"
+        with app.state.session_factory() as session:
+            for row in session.scalars(select(StaffSession)):
+                row.expires_at=utcnow()-timedelta(seconds=1)
+            session.commit()
+        assert client.post(url,json=body,headers=valid).status_code==401
+        client.cookies.clear()
+        valid=staff_headers(client)
+        assert client.post("/api/staff/logout-all",headers=valid).status_code==200
+        assert client.post(url,json=body,headers=valid).status_code==401
 
 
 def test_paid_lookup_cannot_clear_uncertain_refund_hold(factory):

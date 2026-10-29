@@ -1,3 +1,4 @@
+from staff_helpers import staff_headers
 """Minimized regressions discovered with live PostgreSQL and generated requests."""
 
 import hashlib
@@ -60,7 +61,7 @@ def test_storage_integer_overflow_is_validation_error(client, field):
     r = client.post(
         "/api/operator/restaurants/demo-restaurant-bogota/rewards",
         json=body,
-        headers={"X-101-Operator-Token": "dev-operator"},
+        headers=staff_headers(client),
     )
     assert r.status_code == 422
 

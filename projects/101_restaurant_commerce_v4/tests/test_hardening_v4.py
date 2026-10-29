@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from staff_helpers import staff_headers
+
 import json
 from datetime import datetime, timedelta, timezone
 from threading import Lock
@@ -126,10 +128,10 @@ def delivery_order(service: RestaurantCommerceService, *, idem="delivery-v4"):
 
 
 def test_production_requires_strong_secrets(engine):
-    with pytest.raises(RuntimeError, match="OPERATOR_TOKEN"):
+    with pytest.raises(RuntimeError, match="PUBLIC_ACCESS_SECRET"):
         create_app(engine=engine, environment="production")
     with pytest.raises(RuntimeError, match="at least 32"):
-        create_app(engine=engine, environment="production", operator_token="short")
+        create_app(engine=engine, environment="production", public_access_secret="short")
     with pytest.raises(RuntimeError, match="PUBLIC_ACCESS_SECRET"):
         create_app(engine=engine, environment="production", operator_token="x" * 32)
     app = create_app(
@@ -536,7 +538,7 @@ def test_metrics_endpoint_is_operator_only(engine):
     client = TestClient(app)
     client.get("/health")
     assert client.get("/api/operator/metrics").status_code == 401
-    r = client.get("/api/operator/metrics", headers={"X-101-Operator-Token": "metrics-secret"})
+    r = client.get("/api/operator/metrics", headers=staff_headers(client, platform_admin=True))
     assert r.status_code == 200
     body = r.json()
     assert "http" in body and "provider_circuits" in body and "storefront_cache_entries" in body

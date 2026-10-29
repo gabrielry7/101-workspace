@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from staff_helpers import staff_headers
+
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -233,7 +235,7 @@ def test_operator_growth_api_is_protected_and_operational(session):
 
     denied = client.get(f"/api/operator/restaurants/{DEMO_BUSINESS_ID}/analytics")
     assert denied.status_code == 401
-    headers = {"X-101-Operator-Token": "secret"}
+    headers = staff_headers(client)
     ok = client.get(f"/api/operator/restaurants/{DEMO_BUSINESS_ID}/analytics", headers=headers)
     assert ok.status_code == 200
     assert ok.json()["completed_orders"] == 0

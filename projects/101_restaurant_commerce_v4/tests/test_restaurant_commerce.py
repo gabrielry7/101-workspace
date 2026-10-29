@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from staff_helpers import staff_headers
+
 from datetime import datetime, timedelta, timezone
 
 import pytest
@@ -282,7 +284,7 @@ def test_api_public_and_operator_paths(engine):
     assert denied.status_code == 401
     allowed = client.get(
         f"/api/operator/restaurants/{DEMO_BUSINESS_ID}/orders",
-        headers={"X-101-Operator-Token": "secret"},
+        headers=staff_headers(client),
     )
     assert allowed.status_code == 200
 

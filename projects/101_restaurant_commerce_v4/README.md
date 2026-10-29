@@ -1,3 +1,7 @@
+# Staff access update (0.8.0)
+
+See [M4 staff setup and authorization](M4_STAFF_ACCESS.md). Legacy operator and financial tokens no longer authorize requests. Upgrade existing databases offline and provision named staff before using operator pages. Real money remains gated.
+
 Current controlled financial milestone: version **0.7.0**, [M3b contracts and offline upgrade](M3B_FINANCIAL_RESOLUTION.md). Real-money operation remains gated.
 
 # 101 Restaurant Commerce V4 — Reliability Release

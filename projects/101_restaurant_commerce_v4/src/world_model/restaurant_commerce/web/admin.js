@@ -1,18 +1,16 @@
 "use strict";
 (() => {
 const {$, node: h, replace, safeURL, bind, start, money, path} = window.CommerceUI;
-const business = $('business'), token = $('token');
+const business = $('business');
 let scopeVersion = 0;
-for (const input of [business, token]) input.addEventListener('input', () => {
+for (const input of [business]) input.addEventListener('input', () => {
   ++scopeVersion;
   for (const id of ['orders', 'reservations', 'reconciliation']) $(id).textContent = 'Actualizar para cargar este negocio.';
 });
 const endpoint = tail => `/api/operator/restaurants/${path(business.value)}/${tail}`;
 async function api(url, options = {}) {
   const version = scopeVersion;
-  const response = await fetch(url, {...options, headers: {
-    'X-101-Operator-Token': token.value, 'Content-Type': 'application/json'
-  }});
+  const response = await window.CommerceStaff.request(url, options);
   const data = await response.json();
   if (version !== scopeVersion) { const error = new Error('La selección cambió'); error.stale = true; throw error; }
   if (!response.ok) throw new Error(data.detail || `HTTP ${response.status}`);
@@ -94,7 +92,7 @@ async function refreshAll() {
 }
 const financeResult = $('financeResult');
 let financeVersion = 0, financeBusy = false;
-for (const input of [business, $('financeToken'), $('financeOrder')]) input.addEventListener('input', () => {
+for (const input of [business, $('financeOrder')]) input.addEventListener('input', () => {
   ++financeVersion; financeResult.textContent = 'Consultar para cargar el historial de este pedido.';
 });
 const financeRoot = () => `/api/finance/restaurants/${path(business.value)}/orders/${path($('financeOrder').value.trim())}`;
@@ -103,8 +101,8 @@ async function financeAPI(url, body) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 15000);
   try {
-    const response = await fetch(url, {method:body ? 'POST':'GET', signal:controller.signal,
-      headers:{'Content-Type':'application/json','X-101-Financial-Token':$('financeToken').value},
+    const response = await window.CommerceStaff.request(url, {method:body ? 'POST':'GET', signal:controller.signal,
+      headers:{'Content-Type':'application/json'},
       ...(body ? {body:JSON.stringify(body)} : {})});
     const data = await response.json();
     if(version !== financeVersion){const e=new Error('La selección cambió');e.stale=true;throw e;}
@@ -147,7 +145,7 @@ async function financeAction(kind) {
   if(financeBusy)return;financeBusy=true;
   const version=financeVersion;
   try {
-    if(!$('financeOrder').value.trim() || !$('financeToken').value)throw new Error('Indica el pedido y la credencial financiera.');
+    if(!$('financeOrder').value.trim())throw new Error('Indica el pedido.');
     if(kind){
       const reason=$('financeReason').value.trim();if(!reason)throw new Error('Escribe el motivo.');
       if(kind==='refund'&&!confirm('¿Solicitar una devolución completa? Si se interrumpe, consulta el historial antes de volver a intentar.'))return;
@@ -160,5 +158,6 @@ async function financeAction(kind) {
   finally {financeBusy=false;}
 }
 const financeHistory=()=>financeAction(null), financeLookup=()=>financeAction('lookup'), financeRefund=()=>financeAction('refund');
-bind({refreshAll,financeHistory,financeLookup,financeRefund}); start(() => { refreshAll(); setInterval(refreshAll,5000); });
+window.addEventListener('staffchange', event => { ++scopeVersion; ++financeVersion; $('financeOrder').value=''; for(const id of ['orders', 'reservations', 'reconciliation', 'financeResult']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) refreshAll(); });
+bind({refreshAll,financeHistory,financeLookup,financeRefund}); start(() => { window.CommerceStaff.ready.then(refreshAll); setInterval(refreshAll,5000); });
 })();

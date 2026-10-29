@@ -41,7 +41,9 @@ from .errors import (
 )
 from .events import EventSink, NullEventSink
 from .growth import RestaurantGrowthService
-from .models import Order
+from .models import Order, Delivery, Reservation, OutboundMessage, StaffAudit
+from . import staff
+from .staff_routes import register_staff_routes
 from .notifications import format_order_message, format_reservation_message, whatsapp_click_to_chat_url
 from .observability import MetricsRegistry
 from .payments import (
@@ -87,7 +89,6 @@ from .schemas import (
 from .security import (
     FixedWindowRateLimiter,
     MaxBodySizeMiddleware,
-    secure_compare,
     sign_resource,
     RESOURCE_TOKEN_TTL_SECONDS,
     verify_resource_token,
@@ -171,6 +172,8 @@ def create_app(
     production = environment == "production"
     demo_mode = (not production) if demo_mode is None else demo_mode
     auto_init_schema = (not production) if auto_init_schema is None else auto_init_schema
+    if financial_authenticator is not None:
+        raise RuntimeError("External financial token authority was removed; use named staff sessions")
     if production and financial_providers:
         raise RuntimeError("M3b financial execution is controlled-only; production is gated")
     if production and seed:
@@ -178,13 +181,8 @@ def create_app(
     if production and demo_mode:
         raise RuntimeError("Demo mode is forbidden in production")
 
-    token = operator_token or os.getenv("COMMERCE_OPERATOR_TOKEN")
-    if not token:
-        if production:
-            raise RuntimeError("COMMERCE_OPERATOR_TOKEN is required in production")
-        token = "dev-operator"
-    if production and (len(token) < 32 or token == "dev-operator"):
-        raise RuntimeError("Production operator token must be at least 32 characters and non-default")
+    # Retained argument only for caller migration; it never grants authority.
+    token = operator_token or os.getenv("COMMERCE_OPERATOR_TOKEN") or "dev-operator"
 
     access_secret = public_access_secret or os.getenv("COMMERCE_PUBLIC_ACCESS_SECRET")
     if not access_secret:
@@ -237,7 +235,7 @@ def create_app(
                 stop.set()
                 thread.join(timeout=5)
 
-    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.7.0",
+    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.8.0",
                   responses={status: {"model": ErrorResponse} for status in
                              (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
@@ -320,6 +318,7 @@ def create_app(
         if (
             (path.startswith("/api/restaurants/") and request.method == "POST")
             or path.startswith("/api/operator/")
+            or path.startswith("/api/staff/")
             or path.startswith("/api/finance/")
             or path.startswith("/api/webhooks/")
             or path.startswith("/api/orders/")
@@ -350,9 +349,64 @@ def create_app(
     def get_growth(session: Session = Depends(get_session)) -> RestaurantGrowthService:
         return RestaurantGrowthService(session)
 
-    def require_operator(x_101_operator_token: str | None = Header(default=None)) -> None:
-        if not secure_compare(token, x_101_operator_token):
-            raise HTTPException(status_code=401, detail="Missing or invalid operator token")
+    staff_cookie = "__Host-commerce_staff" if production else staff.COOKIE
+    register_staff_routes(app, get_session, staff_cookie, production)
+
+    def scoped_staff(request, session, business_id, permission):
+        account, auth_session = staff.authenticate(session, request.cookies.get(staff_cookie))
+        staff.csrf_check(request, auth_session)
+        principal = staff.authority(session, account, auth_session, business_id, permission)
+        action = request.scope["endpoint"].__name__
+        resource = str(request.path_params.get("order_id") or request.path_params.get("delivery_id")
+                       or request.path_params.get("reservation_id") or request.path_params.get("message_id")
+                       or business_id or "platform")[:200]
+        if request.method not in {"GET", "HEAD", "OPTIONS"}:
+            session.add(StaffAudit(actor_id=account.id, business_id=business_id,
+                                  action=action+".authorized", resource=resource))
+            session.commit()
+        # Service methods own their commits. Capture actor in EACH same transaction,
+        # including commits made before a later provider failure; rollback rolls audit back.
+        from sqlalchemy import event
+        def audit_commit(current):
+            current.add(StaffAudit(actor_id=account.id, business_id=business_id,
+                                   action=action+".commit", resource=resource))
+        event.listen(session, "before_commit", audit_commit)
+        return principal
+
+    def require_operator(request: Request, session: Session = Depends(get_session)):
+        # Authenticate before resolving IDs, to avoid an unauthenticated existence oracle.
+        staff.authenticate(session, request.cookies.get(staff_cookie))
+        business_id = request.path_params.get("business_id")
+        if not business_id:
+            for key, model in (("order_id", Order), ("reservation_id", Reservation),
+                               ("delivery_id", Delivery), ("message_id", OutboundMessage)):
+                if key in request.path_params:
+                    obj = session.get(model, request.path_params[key])
+                    if isinstance(obj, Delivery):
+                        obj = session.get(Order, obj.order_id)
+                    if obj is None:
+                        raise HTTPException(404, "Resource not found")
+                    business_id = obj.business_id
+                    break
+        name = request.scope["endpoint"].__name__
+        permissions = {
+            "operator_orders": "operations.read", "operator_deliveries": "operations.read",
+            "operator_reservations": "operations.read", "operator_order_status": "operations.write",
+            "operator_dispatch_delivery": "operations.write", "operator_cancel_delivery": "operations.write",
+            "operator_delivery_status": "operations.write", "operator_reservation_status": "operations.write",
+            "revoke_order_access": "operations.write", "order_whatsapp": "contact.read",
+            "reservation_whatsapp": "contact.read", "loyalty_account": "growth.read",
+            "rewards": "growth.read", "promotions": "growth.read", "automations": "growth.read",
+            "outbox": "growth.read", "analytics": "growth.read", "create_reward": "growth.write",
+            "create_promotion": "growth.write", "create_automation": "growth.write",
+            "plan_winback": "growth.write", "handoff_outbox": "growth.write", "mark_outbox_sent": "growth.write",
+            "payment_reconciliation": "finance.read",
+            "drain_events": "platform", "recover_payments": "platform", "operator_metrics": "platform",
+        }
+        permission = permissions.get(name)
+        if permission is None:
+            raise HTTPException(403, "Route has no staff permission policy")
+        return scoped_staff(request, session, business_id, permission)
 
     def require_order_access(
         order_id: str,
@@ -410,7 +464,7 @@ def create_app(
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"shared.js", "index.js", "admin.js", "delivery.js", "growth.js"}:
+        if filename not in {"shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js"}:
             raise HTTPException(status_code=404, detail="Asset not found")
         return FileResponse(WEB_DIR / filename, media_type="text/javascript",
                             headers={"Cache-Control": "no-cache"})
@@ -832,12 +886,8 @@ def create_app(
         return service.list_payment_reconciliation(business_id)
 
     def financial_authority(permission):
-        def dependency(business_id: str, x_101_financial_token: str | None = Header(default=None)):
-            from .financial_auth import FinancialPrincipal
-            principal = financial_authenticator(x_101_financial_token) if financial_authenticator and x_101_financial_token else None
-            if not isinstance(principal, FinancialPrincipal) or not principal.permits(business_id, permission):
-                raise HTTPException(status_code=403, detail="Named financial permission for this business is required")
-            return principal
+        def dependency(request: Request, business_id: str, session: Session = Depends(get_session)):
+            return scoped_staff(request, session, business_id, permission)
         return dependency
 
     @app.get("/api/finance/restaurants/{business_id}/orders/{order_id}")

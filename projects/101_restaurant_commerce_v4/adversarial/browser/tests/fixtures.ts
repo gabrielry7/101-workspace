@@ -7,7 +7,8 @@ if(!['127.0.0.1','localhost','[::1]'].includes(new URL(origin).hostname))throw n
 export const businesses:string[]=config.business_ids || ['demo-restaurant-bogota'];
 export const business=businesses[0];
 export const root=(id=business)=>`/api/restaurants/${encodeURIComponent(id)}`;
-export const operatorHeaders={'X-101-Operator-Token':config.operator_token};
+export const operatorHeaders=config.single_staff_headers;
+export const dualHeaders=config.dual_staff_headers;
 export const unique=()=>crypto.randomUUID();
 export const phone=()=>`30${String(crypto.randomInt(10000000,99999999))}`;
 export const test=base.extend({

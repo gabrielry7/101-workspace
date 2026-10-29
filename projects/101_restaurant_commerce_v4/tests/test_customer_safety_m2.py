@@ -26,7 +26,7 @@ from world_model.restaurant_commerce.service import RestaurantCommerceService
 
 BUSINESS = "demo-restaurant-bogota"
 ROOT = f"/api/restaurants/{BUSINESS}"
-HEADERS = {"X-101-Operator-Token": "test-operator"}
+from staff_helpers import staff_headers
 
 
 @pytest.fixture
@@ -166,7 +166,7 @@ def test_guest_contact_snapshot_never_mutates_or_discloses_existing_profile(
             c.patch(
                 "/api/operator/orders/" + o["id"],
                 json={"status": status},
-                headers=HEADERS,
+                headers=staff_headers(c),
             ).status_code
             == 200
         )
@@ -281,7 +281,7 @@ def test_capability_expiry_wrong_scope_revocation_and_no_replay_renewal(env):
         assert c.get(url, headers={"X-101-Order-Token": token}).status_code == 401
     revoke = "/api/operator/orders/" + o["id"] + "/access/revoke"
     assert c.post(revoke).status_code == 401
-    assert c.post(revoke, headers=HEADERS).status_code == 200
+    assert c.post(revoke, headers=staff_headers(c)).status_code == 200
     assert (
         c.get(url, headers={"X-101-Order-Token": o["access_token"]}).status_code == 401
     )
@@ -313,15 +313,15 @@ def test_outbox_handoff_rechecks_consent_and_never_claims_sent(env):
         mid = msg.id
     url = "/api/operator/outbox/" + mid
     assert c.post(url + "/handoff").status_code == 401
-    first = c.post(url + "/handoff", headers=HEADERS)
+    first = c.post(url + "/handoff", headers=staff_headers(c))
     assert first.status_code == 200, first.text
     assert first.json()["status"] == "handed_off" and first.json()["sent_at"] is None
-    assert c.post(url + "/handoff", headers=HEADERS).json()["status"] == "handed_off"
-    assert c.patch(url + "/sent", headers=HEADERS, json={}).status_code == 409
+    assert c.post(url + "/handoff", headers=staff_headers(c)).json()["status"] == "handed_off"
+    assert c.patch(url + "/sent", headers=staff_headers(c), json={}).status_code == 409
     with app.state.session_factory() as s:
         s.get(Customer, victim).marketing_opt_in = False
         s.commit()
-    assert c.post(url + "/handoff", headers=HEADERS).status_code == 422
+    assert c.post(url + "/handoff", headers=staff_headers(c)).status_code == 422
     with app.state.session_factory() as s:
         msg = s.get(OutboundMessage, mid)
         assert msg.status == "suppressed" and msg.sent_at is None
@@ -393,7 +393,7 @@ def test_historical_consent_flags_do_not_authorize_handoff(env):
         s.commit()
         mid = msg.id
     assert (
-        c.post("/api/operator/outbox/" + mid + "/handoff", headers=HEADERS).status_code
+        c.post("/api/operator/outbox/" + mid + "/handoff", headers=staff_headers(c)).status_code
         == 422
     )
     with app.state.session_factory() as s:
@@ -433,7 +433,7 @@ def test_handoff_rejects_stale_or_unsupported_message_context(env, change):
         session.add(msg)
         session.commit()
         mid = msg.id
-    response = c.post("/api/operator/outbox/" + mid + "/handoff", headers=HEADERS)
-    assert response.status_code == 422
+    response = c.post("/api/operator/outbox/" + mid + "/handoff", headers=staff_headers(c))
+    assert response.status_code == (403 if change == "business" else 422)
     with app.state.session_factory() as session:
         assert session.get(OutboundMessage, mid).sent_at is None
