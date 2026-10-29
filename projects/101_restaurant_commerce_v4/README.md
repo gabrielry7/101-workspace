@@ -2,7 +2,7 @@
 
 See [M4 staff setup and authorization](M4_STAFF_ACCESS.md). Legacy operator and financial tokens no longer authorize requests. Upgrade existing databases offline and provision named staff before using operator pages. Real money remains gated.
 
-Current controlled financial milestone: version **0.7.0**, [M3b contracts and offline upgrade](M3B_FINANCIAL_RESOLUTION.md). Real-money operation remains gated.
+Previous controlled financial milestone: version **0.7.0**, [M3b contracts and offline upgrade](M3B_FINANCIAL_RESOLUTION.md). Real-money operation remains gated.
 
 # 101 Restaurant Commerce V4 — Reliability Release
 
@@ -79,7 +79,7 @@ A failed event sink cannot roll back an accepted order. Outbox workers use a dat
 
 Production startup fails closed without strong secrets.
 
-- operator bearer token uses constant-time comparison
+- named staff sessions check current business membership, role and revocation
 - public order/tracking reads require an HMAC capability token
 - production cannot enable demo mode or seed demo data
 - demo payment-completion endpoint is absent in production
@@ -137,7 +137,7 @@ Health           http://127.0.0.1:8787/health
 Readiness        http://127.0.0.1:8787/ready
 ```
 
-Development operator token defaults to `dev-operator`. Production refuses that token.
+Staff pages require a provisioned named account in development and production. Follow [M4 setup](M4_STAFF_ACCESS.md); no default staff password exists.
 
 ## Run verification
 

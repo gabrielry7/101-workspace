@@ -31,9 +31,9 @@ No provider credentials, real messages, purchases or model calls are needed.
 it. Native raw reports can also contain synthetic data. Commit curated/redacted
 summaries, not run directories or caches.
 
-The current application has a global operator token, no staff memberships/customer
-login and no independent background worker. The suite does not invent those
-features. WhatsApp is a consent-checked handoff, not a messaging adapter. Email
+The application has named staff accounts, business memberships and HTTP-issued
+sessions. The harness seeds separate single- and dual-business identities and runs
+two workers with durable recovery loops. Customer login remains absent. WhatsApp is a consent-checked handoff, not a messaging adapter. Email
 sending is absent. Payment/delivery/event seams use controlled network services
 whose SQLite ledger survives application restarts. Demo mode is intentionally
 on, rate limiting raised for load tests; this is not production-configuration
@@ -60,7 +60,7 @@ qualification. Production guards are covered by the existing regression suite.
 - Toxiproxy: DB latency/reset/recovery, provider latency/reset, acceptance followed
   by lost reply, and killing both application workers after simulated payment
   success before local completion. Provider ledger compared with real DB rows.
-- ZAP: bounded active API/web HTTP scan, real customer-capability/staff-token
+- ZAP: bounded active API/web HTTP scan, real customer-capability/staff-session
   contexts, protected200 reach proof, OpenAPI import, native active request counts.
   External-callback and unsupported browser rules excluded and listed. Scan budget
   exhaustion/unsupported rules/export failure remain PARTIAL.
@@ -98,3 +98,5 @@ cluster. It never removes unrelated resources or deletes run data.
 Real-money release stays gated on durable financial intent/reconciliation, scoped
 staff/customer authentication, durable browser retry recovery, migrations and
 recovery qualification. A successful scanner does not override these contracts.
+
+M4 focused acceptance: `./adversarial/run.sh --run-dir /tmp/101-commerce-runs/m4 --layers baseline,financial,browser,properties`. The retained staff-isolation test now exercises a real single-business session and must pass. `config.json` also contains synthetic staff passwords/session headers; never publish it or raw login traces.

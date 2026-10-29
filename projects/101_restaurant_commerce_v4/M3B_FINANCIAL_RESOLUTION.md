@@ -5,12 +5,10 @@ real-money operation remains gated. `create_app` refuses financial-provider
 configuration in production. The global operator token grants no authority on
 `/api/finance/` routes.
 
-The host supplies `financial_authenticator(token) -> FinancialPrincipal | None`.
-A principal has a server-derived actor ID, business scopes, explicit permissions
-(`finance.read`, `finance.lookup`, `finance.refund`, `finance.resolve`) and aware
-expiry. Resolve revocation on each request. No default financial principal exists.
-The disposable harness supplies synthetic credentials; this is not staff login,
-credential provisioning, membership management or a production session system.
+M4 supersedes the original host token resolver with named staff sessions and current
+business membership. See [staff setup](M4_STAFF_ACCESS.md). Financial principals still
+carry actor ID, business scope, explicit permissions and expiry; the API now derives
+them from the staff session. The old `financial_authenticator` argument is rejected.
 
 Financial adapters declare `controlled=True` and implement lookup by original
 checkout key/reference, refund lookup, and full refund. Provider IO must have bounded
@@ -45,7 +43,7 @@ a second refund authorization after withdrawal is not implemented in this milest
 The staff page uses a separate password input for financial credentials, kept only
 in memory. It offers lookup, full refund, history and evidence-bound resolution.
 It displays pending/unknown states honestly and instructs staff to inspect history
-when a response is lost. Reload requires re-entering authority; no financial token
+when a response is lost. Reload restores a valid staff session through its HttpOnly cookie; no financial token
 is persisted in browser storage.
 
 ## Offline upgrade

@@ -38,7 +38,17 @@ def client(factory):
         )
         s.commit()
         engine = s.get_bind()
-    with TestClient(create_app(engine=engine, payment_recovery_enabled=False)) as c:
+    from test_financial_resolution_m3b import Controlled
+
+    provider = Controlled()
+    provider.unknown = True
+    with TestClient(
+        create_app(
+            engine=engine,
+            payment_recovery_enabled=False,
+            financial_providers={"simulated": provider},
+        )
+    ) as c:
         yield c
 
 
@@ -350,7 +360,9 @@ def test_foreign_delivery_reservation_and_message_ids_denied(client):
     with client.app.state.session_factory() as s:
         svc = RestaurantCommerceService(s)
         _, order = delivery_order(svc, idem="scope-delivery")
-        delivery_id = order.delivery.id
+        from world_model.restaurant_commerce.models import Delivery
+
+        delivery_id = s.scalar(select(Delivery.id).where(Delivery.order_id == order.id))
         s.get(Order, order.id).business_id = "other"
         reservation = svc.create_reservation(
             BID,
@@ -358,7 +370,9 @@ def test_foreign_delivery_reservation_and_message_ids_denied(client):
                 {
                     "customer": {"name": "Synthetic", "phone": "3005550777"},
                     "party_size": 2,
-                    "starts_at": (datetime.now(UTC) + timedelta(days=1)).isoformat(),
+                    "starts_at": (datetime.now(UTC) + timedelta(days=1))
+                    .replace(hour=17, minute=0, second=0, microsecond=0)
+                    .isoformat(),
                 }
             ),
         )
