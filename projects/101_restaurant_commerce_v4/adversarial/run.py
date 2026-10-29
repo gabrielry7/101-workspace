@@ -227,7 +227,7 @@ def seed(c):
                 "port": s.scalar(text("SHOW port")),
                 "businesses": c["business_ids"],
                 "staff_identity_gap": "No staff table or memberships; global token only",
-                "workers": "2 Uvicorn processes; no separate application worker exists",
+                "workers": "2 Uvicorn processes, each with a lifespan recovery thread; database leases coordinate work",
             },
         )
     eng.dispose()
@@ -505,6 +505,8 @@ def baseline(c):
         os.environ,
         PYTHONPATH=c["installed"],
         COMMERCE_BROWSER_EXECUTABLE="/usr/bin/chromium",
+        COMMERCE_PAYMENT_TEST_DATABASE_URL=c["database_url"],
+        COMMERCE_MIGRATION_TEST_DATABASE_URL=c["database_url"],
     )
     return command(
         c,
