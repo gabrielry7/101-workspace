@@ -1,0 +1,60 @@
+[
+  {
+    "name": "planner_setup_page",
+    "arguments": {
+      "seedFile": "tests/seed.spec.ts"
+    }
+  },
+  {
+    "name": "browser_snapshot",
+    "arguments": {}
+  },
+  {
+    "name": "planner_save_plan",
+    "arguments": {
+      "overview": "Real 101 commerce application on disposable PostgreSQL. Native browser scenarios exercise actual HTTP, delayed or dropped real responses, operator capability boundaries and missing recovery features. No external destinations or mocked API bodies.",
+      "name": "101 live adversarial browser plan",
+      "fileName": "specs/official-agent-plan.md",
+      "suites": [
+        {
+          "name": "Live catalog and adversarial checkout",
+          "seedFile": "tests/seed.spec.ts",
+          "tests": [
+            {
+              "name": "catalog cart text remains available",
+              "file": "tests/agent-catalog.spec.ts",
+              "steps": [
+                {
+                  "perform": "Open the live seeded catalog",
+                  "expect": [
+                    "The application renders available products from its actual API"
+                  ]
+                },
+                {
+                  "perform": "Click Agregar for Papas de la casa",
+                  "expect": [
+                    "Cart contains the product",
+                    "No order has been submitted"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "failure and permission scenarios",
+              "file": "tests/reliability.spec.ts",
+              "steps": [
+                {
+                  "perform": "Execute the eleven exact live failure/permission scenarios in specs/adversarial.md, plus the seed catalog readiness check",
+                  "expect": [
+                    "No duplicates, stale destinations, unauthorized business access or lost durable intent",
+                    "Missing recovery and staff isolation stay failures rather than skipped tests"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
