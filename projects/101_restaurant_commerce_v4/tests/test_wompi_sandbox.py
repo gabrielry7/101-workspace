@@ -379,3 +379,35 @@ def test_cross_business_provider_binding_rejects_order(factory):
             svc.create_order(DEMO_BUSINESS_ID, req)
         session.rollback()
         assert session.scalar(select(func.count()).select_from(Order)) == 1
+
+
+def test_demo_requires_public_return_url_and_preserves_it(tmp_path):
+    import json
+
+    from world_model.restaurant_commerce.wompi_sandbox_demo import application
+
+    path = tmp_path / "keys.json"
+    path.write_text(
+        json.dumps(
+            {
+                "WOMPI_PUBLIC_KEY": KEYS.public,
+                "WOMPI_PRIVATE_KEY": KEYS.private,
+                "WOMPI_EVENTS_SECRET": KEYS.events,
+                "WOMPI_INTEGRITY_SECRET": KEYS.integrity,
+            }
+        )
+    )
+    path.chmod(0o600)
+    target = tmp_path / "demo"
+    with pytest.raises(ValueError, match="public HTTPS"):
+        application(target, path, 8876)
+    for invalid in ("http://example.test/", "https://localhost/", "https://127.0.0.1/"):
+        with pytest.raises(ValueError, match="public HTTPS"):
+            application(target, path, 8876, return_url=invalid)
+    assert not target.exists()
+    app = application(target, path, 8876, return_url="https://sandbox.example.test/")
+    assert app.state.payment_providers[NAME].return_url == "https://sandbox.example.test/"
+    app.state.engine.dispose()
+    resumed = application(target, path, 8876, resume=True)
+    assert resumed.state.payment_providers[NAME].return_url == "https://sandbox.example.test/"
+    resumed.state.engine.dispose()

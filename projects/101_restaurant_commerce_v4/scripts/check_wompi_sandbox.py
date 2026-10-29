@@ -76,6 +76,7 @@ def main():
             str(args.keys_file),
             "--port",
             str(port),
+            "--api-only",
         ]
         child = subprocess.Popen(command, stdout=log, stderr=log)
         try:

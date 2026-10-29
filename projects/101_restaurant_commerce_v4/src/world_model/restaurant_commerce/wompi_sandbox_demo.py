@@ -15,15 +15,33 @@ from .seed import DEMO_BUSINESS_ID, seed_demo
 from .wompi_sandbox import NAME, SandboxKeys, WompiSandboxProvider
 
 
-def application(run_dir: Path, keys_path: Path, port: int, *, resume=False):
+def application(
+    run_dir: Path, keys_path: Path, port: int, *, resume=False, return_url=None, api_only=False
+):
     keys = SandboxKeys.load(keys_path)
+    if not resume and not return_url and not api_only:
+        raise ValueError(
+            "Hosted checkout requires --return-url with a public HTTPS origin; "
+            "use --api-only only for protocol tests"
+        )
+    if return_url:
+        from urllib.parse import urlsplit
+
+        parsed = urlsplit(return_url)
+        if parsed.scheme != "https" or parsed.hostname in {"localhost", "127.0.0.1", "::1"}:
+            raise ValueError("Wompi hosted checkout requires a public HTTPS return URL")
     if resume:
         config = json.loads((run_dir / "local-config.json").read_text())
         if config["port"] != port:
             raise ValueError("Resume must use the original port to preserve browser recovery")
     else:
         run_dir.mkdir(mode=0o700, parents=True, exist_ok=False)
-        config = {"port": port, "access_secret": secrets.token_hex(32)}
+        config = {
+            "port": port,
+            "access_secret": secrets.token_hex(32),
+            "return_url": return_url or f"http://127.0.0.1:{port}/",
+            "api_only": api_only,
+        }
         fd = os.open(run_dir / "local-config.json", os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
         with os.fdopen(fd, "w") as stream:
             json.dump(config, stream)
@@ -38,7 +56,9 @@ def application(run_dir: Path, keys_path: Path, port: int, *, resume=False):
             profile.delivery_enabled = False
             session.commit()
     adapter = WompiSandboxProvider(
-        keys, business_id=DEMO_BUSINESS_ID, return_url=f"http://127.0.0.1:{port}/"
+        keys,
+        business_id=DEMO_BUSINESS_ID,
+        return_url=config.get("return_url", f"http://127.0.0.1:{port}/"),
     )
     return create_app(
         engine=engine,
@@ -61,8 +81,23 @@ def main():
     )
     parser.add_argument("--port", type=int, default=8876)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument(
+        "--return-url", help="Public HTTPS storefront origin, for example a temporary test tunnel"
+    )
+    parser.add_argument(
+        "--api-only",
+        action="store_true",
+        help="Protocol tests only; loopback return URLs cannot load Wompi hosted checkout",
+    )
     args = parser.parse_args()
-    app = application(args.run_dir, args.keys_file, args.port, resume=args.resume)
+    app = application(
+        args.run_dir,
+        args.keys_file,
+        args.port,
+        resume=args.resume,
+        return_url=args.return_url,
+        api_only=args.api_only,
+    )
     uvicorn.run(app, host="127.0.0.1", port=args.port, access_log=False)
 
 

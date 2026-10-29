@@ -6,20 +6,29 @@ execution or M3b financial-provider eligibility is enabled by this change.
 
 ## Start a private test storefront
 
-Install the project with its normal dependencies, then run:
+Wompi's hosted page returned HTTP403 with loopback return URLs during execution;
+the same signed checkout loaded with a public return URL. Do not use localhost as
+the hosted return URL. For a disposable test, start an official Cloudflare Quick
+Tunnel (no account needed), then use its HTTPS origin:
 
 ```bash
+cloudflared tunnel --url http://127.0.0.1:8876
 python -m world_model.restaurant_commerce.wompi_sandbox_demo \
-  --run-dir /tmp/101-wompi-demo --port 8876
+  --run-dir /tmp/101-wompi-demo --port 8876 \
+  --return-url https://YOUR-TEMPORARY-HOST.trycloudflare.com/
 ```
 
-Open `http://127.0.0.1:8876/`. This creates synthetic restaurant data in a **new**
-private directory. It loads test keys from
-`~/.config/101-world-model/wompi-sandbox/credentials.json`. Use a fresh directory
-for a separate run; add `--resume` with the original directory/port to test restart.
-It binds loopback only, provides no default staff accounts, sends no application
-messages, and never modifies an existing commerce database. Keep the same browser
-origin for recovery. Use only Wompi's documented fake cards and synthetic contacts.
+Open that **same HTTPS origin**, so browser recovery remains on the same origin
+through checkout and return. Anyone with the temporary URL can access this
+synthetic test app; stop its tunnel and app after testing. No real customer data.
+The demo requires a new private directory and loads test keys from
+`~/.config/101-world-model/wompi-sandbox/credentials.json`. It provisions no staff
+accounts and modifies no existing database. `--resume` with the original directory
+and port retains the fixed return URL; it does not change an old payment URL when
+a tunnel hostname changes. Use a new run for a new hostname.
+
+`--api-only` permits loopback return URLs solely for the bounded protocol smoke;
+it does not qualify hosted navigation. [Quick Tunnel documentation](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/).
 
 The normal storefront submits an immutable local order, then follows a signed
 hosted checkout URL. Card entry belongs to Wompi. Local contact data, recovery
