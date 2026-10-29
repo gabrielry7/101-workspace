@@ -46,7 +46,7 @@ def test_late_food_quote_cannot_resurrect_empty_cart(site):
 
 
 def test_old_delivery_quote_cannot_authorize_new_address(site):
-    page, _, _, requests, errors, external = site
+    page, client, _, requests, errors, external = site
     pending = hold(page, ROOT + "/delivery/quote")
     add_item(page)
     page.locator("#deliveryBtn").click()
@@ -56,9 +56,13 @@ def test_old_delivery_quote_cannot_authorize_new_address(site):
     page.get_by_role("button", name="Cotizar domicilio", exact=True).click()
     pump(page, pending)
     page.locator("#dAddress").fill("Address B")
-    pending[0].fulfill(
-        json={"id": "quote-for-A", "fee_minor": 5000, "distance_meters": 1000}
+    # Persist a genuine quote: accepting the stale response would now create
+    # a real synthetic delivery order to A, not merely submit an invalid ID.
+    quoted = client.post(
+        ROOT + "/delivery/quote", json=json.loads(pending[0].request.post_data)
     )
+    assert quoted.status_code == 200, quoted.text
+    pending[0].fulfill(json=quoted.json())
     page.locator("#cName").fill("Synthetic")
     page.locator("#cPhone").fill("3005550101")
     page.locator("#checkoutButton").click()
