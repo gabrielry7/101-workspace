@@ -22,6 +22,24 @@ def normalize_customer_phone(value: str) -> str:
 class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
+    @field_validator("*")
+    @classmethod
+    def reject_nul_text(cls, value):
+        # PostgreSQL text cannot represent NUL; inspect list elements too (IDs).
+        def check(item):
+            if isinstance(item, str) and "\x00" in item:
+                raise ValueError("NUL characters are not permitted")
+            if isinstance(item, (list, tuple)):
+                for child in item:
+                    check(child)
+            if isinstance(item, dict):
+                for key, child in item.items():
+                    check(key)
+                    check(child)
+        check(value)
+        return value
+
+
 
 class DeliveryAddressIn(StrictModel):
     address_line: str = Field(min_length=3, max_length=500)
@@ -364,13 +382,13 @@ class PromotionCreateIn(StrictModel):
     code: str = Field(min_length=2, max_length=80)
     name: str = Field(min_length=2, max_length=200)
     discount_type: Literal["fixed", "percent"] = "fixed"
-    value: int = Field(gt=0)
-    minimum_order_minor: int = Field(default=0, ge=0)
-    maximum_discount_minor: int | None = Field(default=None, ge=0)
+    value: int = Field(gt=0, le=2147483647)
+    minimum_order_minor: int = Field(default=0, ge=0, le=2147483647)
+    maximum_discount_minor: int | None = Field(default=None, ge=0, le=2147483647)
     starts_at: datetime | None = None
     ends_at: datetime | None = None
-    per_customer_limit: int | None = Field(default=None, ge=1)
-    total_redemption_limit: int | None = Field(default=None, ge=1)
+    per_customer_limit: int | None = Field(default=None, ge=1, le=2147483647)
+    total_redemption_limit: int | None = Field(default=None, ge=1, le=2147483647)
 
 
 class PromotionOut(StrictModel):
@@ -392,9 +410,9 @@ class PromotionOut(StrictModel):
 class RewardCreateIn(StrictModel):
     name: str = Field(min_length=2, max_length=200)
     description: str | None = Field(default=None, max_length=1000)
-    points_cost: int = Field(gt=0)
-    discount_minor: int = Field(gt=0)
-    minimum_order_minor: int = Field(default=0, ge=0)
+    points_cost: int = Field(gt=0, le=2147483647)
+    discount_minor: int = Field(gt=0, le=2147483647)
+    minimum_order_minor: int = Field(default=0, ge=0, le=2147483647)
 
 
 class AutomationRuleCreateIn(StrictModel):
@@ -471,7 +489,7 @@ class PaymentWebhookIn(StrictModel):
     event_id: str = Field(min_length=1, max_length=200)
     provider_reference: str = Field(min_length=1, max_length=160)
     status: str = Field(min_length=2, max_length=32)
-    amount_minor: int = Field(ge=0)
+    amount_minor: int = Field(ge=0, le=2147483647)
     currency: str = Field(min_length=3, max_length=3, pattern=r"^[A-Za-z]{3}$")
 
 
@@ -494,3 +512,9 @@ class CommerceCapabilityOut(StrictModel):
     analytics_endpoint: str | None = None
     delivery_quote_endpoint: str | None = None
     delivery_tracking_endpoint_template: str | None = None
+
+
+class ErrorResponse(BaseModel):
+    """Both request-validation details and domain error strings are part of the API."""
+    detail: str | list[dict]
+    request_id: str | None = None

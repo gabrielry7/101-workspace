@@ -51,6 +51,7 @@ from .payments import (
 )
 from .reliability import ProviderExecutor
 from .schemas import (
+    ErrorResponse,
     AutomationRuleCreateIn,
     AutomationRuleOut,
     CommerceCapabilityOut,
@@ -205,7 +206,9 @@ def create_app(
         if value and provider not in configured_webhook_secrets:
             configured_webhook_secrets[provider] = value
 
-    app = FastAPI(title="101 Restaurant Commerce", version="0.5.1")
+    app = FastAPI(title="101 Restaurant Commerce", version="0.5.2",
+                  responses={status: {"model": ErrorResponse} for status in
+                             (400, 401, 403, 404, 409, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
     app.add_middleware(MaxBodySizeMiddleware, max_bytes=max_body_bytes)
     app.state.engine = engine
@@ -230,6 +233,9 @@ def create_app(
             request_id = uuid4().hex
         started = time.perf_counter()
         path = request.url.path
+        if "\x00" in path or any("\x00" in value or "\x00" in key
+                                 for key, value in request.query_params.multi_items()):
+            return _json_error(400, "NUL characters are not permitted")
         client_ip = request.client.host if request.client else "unknown"
         is_public_mutation = (
             request.method in {"POST", "PATCH", "PUT", "DELETE"}
@@ -501,7 +507,7 @@ def create_app(
         try:
             payload = PaymentWebhookIn.model_validate_json(body)
         except PydanticValidationError as exc:
-            raise HTTPException(status_code=422, detail=exc.errors()) from exc
+            raise RequestValidationError(exc.errors()) from exc
         return service.apply_payment_status(
             payload.provider_reference,
             payload.status,
@@ -528,7 +534,7 @@ def create_app(
         try:
             payload = DeliveryWebhookIn.model_validate_json(body)
         except PydanticValidationError as exc:
-            raise HTTPException(status_code=422, detail=exc.errors()) from exc
+            raise RequestValidationError(exc.errors()) from exc
         return service.apply_delivery_status(
             payload.provider_delivery_reference,
             payload.status,
