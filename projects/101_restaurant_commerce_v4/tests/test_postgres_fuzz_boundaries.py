@@ -120,3 +120,9 @@ def test_domain_validation_matches_documented_error_schema(client):
     assert spec["paths"]["/api/restaurants/{business_id}/orders"]["post"]["responses"][
         "422"
     ]["content"]["application/json"]["schema"]["$ref"].endswith("/ErrorResponse")
+
+    ready = spec["paths"]["/ready"]["get"]["responses"]["503"]["content"][
+        "application/json"
+    ]["schema"]
+    assert ready["type"] == "object"
+    assert ready["additionalProperties"] == {"type": "string"}

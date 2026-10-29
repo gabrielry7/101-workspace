@@ -364,7 +364,7 @@ def create_app(
     def health() -> dict[str, str]:
         return {"status": "ok"}
 
-    @app.get("/ready")
+    @app.get("/ready", responses={503: {"model": dict[str, str]}})
     def ready():
         if not database_ready(engine):
             return JSONResponse({"status": "not_ready", "database": "down"}, status_code=503)
