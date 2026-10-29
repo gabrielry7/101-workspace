@@ -4,10 +4,15 @@ from pathlib import Path
 
 from sqlalchemy import create_engine, event, inspect, text
 from sqlalchemy.engine import Engine
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
+from .migrations import (
+    CUSTOMER_SAFETY_COLUMNS,
+    PAYMENT_DURABILITY_TABLES,
+    payment_durability_columns_present,
+)
 from .models import Base
-from .migrations import CUSTOMER_SAFETY_COLUMNS
 
 
 def make_engine(database_url: str | None = None) -> Engine:
@@ -26,6 +31,7 @@ def make_engine(database_url: str | None = None) -> Engine:
     )
 
     if is_sqlite:
+
         @event.listens_for(engine, "connect")
         def _sqlite_pragmas(dbapi_connection, _connection_record):  # type: ignore[no-untyped-def]
             cursor = dbapi_connection.cursor()
@@ -49,9 +55,16 @@ def make_engine(database_url: str | None = None) -> Engine:
 
 
 def init_schema(engine: Engine) -> None:
+    existing = set(inspect(engine).get_table_names())
+    if existing.intersection(Base.metadata.tables) and not database_ready(engine):
+        raise RuntimeError(
+            "Commerce schema requires an explicit offline upgrade before startup"
+        )
     Base.metadata.create_all(engine)
     if not database_ready(engine):
-        raise RuntimeError("Commerce schema requires an explicit offline upgrade before startup")
+        raise RuntimeError(
+            "Commerce schema requires an explicit offline upgrade before startup"
+        )
 
 
 def session_factory(engine: Engine) -> sessionmaker[Session]:
@@ -63,29 +76,39 @@ def session_factory(engine: Engine) -> sessionmaker[Session]:
     )
 
 
-CORE_TABLES = frozenset({
-    "restaurant_commerce_profiles",
-    "restaurant_customers",
-    "restaurant_orders",
-    "restaurant_payments",
-    "restaurant_reservations",
-    "restaurant_idempotency_records",
-    "restaurant_event_outbox",
-    "restaurant_webhook_receipts",
-})
+CORE_TABLES = (
+    frozenset(
+        {
+            "restaurant_commerce_profiles",
+            "restaurant_customers",
+            "restaurant_orders",
+            "restaurant_payments",
+            "restaurant_reservations",
+            "restaurant_idempotency_records",
+            "restaurant_event_outbox",
+            "restaurant_webhook_receipts",
+        }
+    )
+    | PAYMENT_DURABILITY_TABLES
+)
 
 
 def database_ready(engine: Engine, *, require_schema: bool = True) -> bool:
     try:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
-        if require_schema:
-            tables = set(inspect(engine).get_table_names())
-            if not CORE_TABLES.issubset(tables):
-                return False
-            for table, columns in CUSTOMER_SAFETY_COLUMNS.items():
-                if not set(columns).issubset({c["name"] for c in inspect(engine).get_columns(table)}):
+            if require_schema:
+                inspector = inspect(connection)
+                tables = set(inspector.get_table_names())
+                if not CORE_TABLES.issubset(tables):
+                    return False
+                for table, columns in CUSTOMER_SAFETY_COLUMNS.items():
+                    if not set(columns).issubset(
+                        {c["name"] for c in inspector.get_columns(table)}
+                    ):
+                        return False
+                if not payment_durability_columns_present(connection):
                     return False
         return True
-    except Exception:
+    except (SQLAlchemyError, OSError):
         return False

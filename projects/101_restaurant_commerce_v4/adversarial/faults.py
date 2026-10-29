@@ -110,6 +110,15 @@ def create(data):
     )
 
 
+def retry_create(data):
+    deadline = time.monotonic() + 20
+    while True:
+        response = create(data)
+        if response.status_code not in {409, 503} or time.monotonic() >= deadline:
+            return response
+        time.sleep(0.2)
+
+
 def effects(data):
     return [
         e
@@ -200,13 +209,14 @@ try:
     r = create(data)
     before = rows(data)
     clear("provider")
-    retry = create(data)
+    retry = retry_create(data)
     record(
         "provider reset and retry",
         r.status_code == 503
         and retry.status_code == 200
-        and not before
-        and len(rows(data)) == 1,
+        and len(before) == 1
+        and len(rows(data)) == 1
+        and before[0]["id"] == rows(data)[0]["id"],
         status=r.status_code,
         retry_status=retry.status_code,
         rows_before=before,
@@ -219,7 +229,7 @@ try:
     before = rows(data)
     remote = effects(data)
     request("POST", c["provider_direct_url"] + "/control", json={"mode": "normal"})
-    retry = create(data)
+    retry = retry_create(data)
     after = rows(data)
     record(
         "provider accepted but reply timed out",
@@ -232,7 +242,7 @@ try:
         rows_before=before,
         rows_after=after,
         effects=remote,
-        required="durable local intent before provider call; current missing intent is FAIL",
+        required="durable local intent before provider call; same provider and local identity after recovery",
     )
     request(
         "POST",
@@ -256,13 +266,23 @@ try:
     before = rows(data)
     request("POST", c["provider_direct_url"] + "/control", json={"mode": "normal"})
     restart()
-    retry = create(data)
+    deadline = time.monotonic() + 20
+    recovered_without_retry = False
+    while time.monotonic() < deadline:
+        recovered = rows(data)
+        if recovered and recovered[0]["payment_status"] == "paid":
+            recovered_without_retry = True
+            break
+        time.sleep(0.2)
+    retry = retry_create(data)
     after = rows(data)
     record(
         "worker killed after simulated payment success",
         bool(before)
+        and recovered_without_retry
         and retry.status_code == 200
-        and remote[0]["order_id"] == after[0]["id"],
+        and remote[0]["order_id"] == before[0]["id"] == after[0]["id"],
+        recovered_without_customer_retry=recovered_without_retry,
         request_failure=failure,
         rows_before=before,
         rows_after=after,

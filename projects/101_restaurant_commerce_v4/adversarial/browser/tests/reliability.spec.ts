@@ -50,13 +50,17 @@ test('reload after committed lost response must recover same order',async({page,
     else await route.continue();
   });
   const customer=await prepare(page,request);await page.locator('#checkoutButton').click();
-  await expect(page.locator('#notice')).toContainText('Reintenta');await page.reload();
-  // Repeat the customer's same purchase after the interrupted page is gone.
-  await prepare(page,request,customer.name,customer.tel);
-  const waiting=page.waitForResponse(r=>new URL(r.url()).pathname===root()+'/orders');
-  await page.locator('#checkoutButton').click();const response=await waiting;expect(response.status()).toBe(200);const second=await response.json();
-  await testInfo.attach('reload-order-evidence.json',{body:Buffer.from(JSON.stringify({first_order:first.id,second_order:second.id,first_key:submitted[0].idempotency_key,second_key:submitted[1].idempotency_key})),contentType:'application/json'});
-  expect(second.id,'Reload must retain original intent; a new key is a release failure').toBe(first.id);
+  await expect(page.locator('#notice')).toContainText('Reintenta');
+  const saved=await page.evaluate(()=>Object.entries(localStorage).find(([key])=>key.startsWith('101.checkout.v1:'))?.[1]);
+  expect(saved).toBeTruthy();expect(saved).not.toContain(customer.name);expect(saved).not.toContain(customer.tel);
+  const recovery=page.waitForResponse(r=>new URL(r.url()).pathname===root()+'/orders/recover');
+  await page.reload();const response=await recovery;expect(response.status()).toBe(200);const second=await response.json();
+  await expect(page.locator('#checkoutRecovery')).toContainText(first.public_code);
+  // Recovery is a read of the original durable intent, never a second order submission.
+  expect(submitted.length).toBe(1);expect(second.id).toBe(first.id);
+  await expect(page.locator('#cName')).toHaveValue('');
+  await testInfo.attach('reload-order-evidence.json',{body:Buffer.from(JSON.stringify({first_order:first.id,recovered_order:second.id,order_posts:submitted.length,stored_keys:Object.keys(JSON.parse(saved!))})),contentType:'application/json'});
+  await orderVisible(request,second);
 });
 
 test('offline submission then reconnect retries the same intent',async({page,context,request})=>{

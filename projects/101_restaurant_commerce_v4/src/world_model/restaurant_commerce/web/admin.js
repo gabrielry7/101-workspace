@@ -5,7 +5,7 @@ const business = $('business'), token = $('token');
 let scopeVersion = 0;
 for (const input of [business, token]) input.addEventListener('input', () => {
   ++scopeVersion;
-  for (const id of ['orders', 'reservations']) $(id).textContent = 'Actualizar para cargar este negocio.';
+  for (const id of ['orders', 'reservations', 'reconciliation']) $(id).textContent = 'Actualizar para cargar este negocio.';
 });
 const endpoint = tail => `/api/operator/restaurants/${path(business.value)}/${tail}`;
 async function api(url, options = {}) {
@@ -39,8 +39,10 @@ async function loadOrders() {
       h('div', {}, o.items.map(i => h('div', {}, i.quantity, ' × ', i.name))),
       h('p', {className:'total'}, money(o.total_minor)),
       meta(`${o.fulfillment_type} · Pago: ${o.payment_status} · ${new Date(o.created_at).toLocaleString()}`),
+      o.reconciliation_required ? h('p', {role:'alert'}, 'Pago requiere revisión. No confirmar ni cobrar de nuevo.') : null,
+      o.checkout_state && o.checkout_state !== 'ready' ? meta('Pago pendiente de confirmación: ' + o.checkout_state) : null,
       o.delivery ? meta(`Delivery: ${o.delivery.status} · ${money(o.delivery_fee_minor)}`) : null,
-      h('div', {className:'actions'}, (Object.prototype.hasOwnProperty.call(next, o.status) ? next[o.status] : []).map(s =>
+      h('div', {className:'actions'}, (!o.reconciliation_required && Object.prototype.hasOwnProperty.call(next, o.status) ? next[o.status] : []).map(s =>
         button(s, async () => {
           await api(`/api/operator/orders/${path(o.id)}`, {method:'PATCH', body:JSON.stringify({status:s})});
           await loadOrders();
@@ -63,11 +65,30 @@ async function loadReservations() {
     )) : h('p', {}, 'Sin reservas.'));
   } catch (error) { if (!error.stale) reservations.textContent = error.message; }
 }
+const reviewReasons = {
+  paid_after_cancellation:'Pago recibido después de cancelar',
+  contradictory_payment_notification:'El proveedor reportó estados incompatibles',
+  invalid_provider_response:'Respuesta de pago no verificable',
+  provider_reference_conflict:'Referencia de pago asociada a otro pedido',
+  provider_replay_not_supported:'Pago sin confirmación; consultar al proveedor',
+  cancelled_checkout_unknown:'Pedido cancelado con pago por confirmar',
+  invalid_payment_notification:'Notificación de pago no válida'
+};
+async function loadReconciliation() {
+  try {
+    const rows = await api(endpoint('payment-reconciliation'));
+    replace($('reconciliation'), rows.length ? rows.map(r => card(
+      h('strong', {}, 'Revisión de pago'), meta('Pedido: ' + r.order_id),
+      meta(Object.prototype.hasOwnProperty.call(reviewReasons, r.reason) ? reviewReasons[r.reason] : 'Verificar el pago con el proveedor'), meta(new Date(r.created_at).toLocaleString()),
+      h('p', {}, 'Verifica el pago con el proveedor antes de realizar cualquier cobro o devolución. Esta alerta no confirma una devolución.')
+    )) : h('p', {}, 'Sin revisiones pendientes.'));
+  } catch (error) { if (!error.stale) $('reconciliation').textContent = error.message; }
+}
 let refreshing = false;
 async function refreshAll() {
   if (refreshing) return;
   refreshing = true;
-  try { await Promise.all([loadOrders(),loadReservations()]); }
+  try { await Promise.all([loadOrders(),loadReservations(),loadReconciliation()]); }
   finally { refreshing = false; }
 }
 bind({refreshAll}); start(() => { refreshAll(); setInterval(refreshAll,5000); });

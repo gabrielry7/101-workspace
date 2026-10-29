@@ -22,7 +22,7 @@ dialog{border:0;border-radius:20px;max-width:520px;width:calc(100% - 30px);paddi
 <div class="tabs"><button data-click="showOrder">Pedir</button><button class="secondary" data-click="showReservation">Reservar</button></div><div id="notice"></div><div id="menu"></div>
 <div id="reservationPanel" class="hidden"><h2 class="section-title">Reserva una mesa</h2><div class="item" style="display:block"><input id="rName" placeholder="Nombre"><input id="rPhone" placeholder="WhatsApp / teléfono"><input id="rDate" type="datetime-local"><input id="rParty" type="number" min="1" value="2"><textarea id="rNotes" placeholder="Nota (opcional)"></textarea><label class="option"><input id="rWhatsappOptIn" type="checkbox"><span>Solicitar actualizaciones por WhatsApp para esta reserva</span></label><button data-click="reserve">Solicitar reserva</button></div></div>
 </section>
-<aside class="cart" id="cart"><h2>Tu pedido</h2>
+<aside class="cart" id="cart"><h2>Tu pedido</h2><div id="checkoutRecovery" aria-live="polite"></div>
 <div id="fulfillmentChooser" class="pill"><button id="pickupBtn" data-click="pickup">Recoger</button><button id="deliveryBtn" class="off" data-click="delivery">Domicilio</button></div>
 <div id="cartRows"><p class="muted">Todavía no has agregado nada.</p></div>
 <div class="line"><span>Comida</span><span id="foodTotal">$0</span></div><div class="line hidden" id="deliveryLine"><span>Domicilio</span><span id="deliveryFee">—</span></div><div class="line hidden" id="discountLine"><span>Descuento</span><span id="discountTotal">$0</span></div><div class="total"><span>Total</span><span id="cartTotal">$0</span></div>

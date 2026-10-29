@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from contextlib import asynccontextmanager
 import logging
 import os
 import re
@@ -92,6 +93,9 @@ from .security import (
 )
 from .seed import DEMO_BUSINESS_ID, seed_demo
 from .service import RestaurantCommerceService
+from .payment_workflow import CheckoutRecoveryExpired
+from .recovery import start_recovery
+from .schemas import RecoverOrderRequest, PaymentNotificationAccepted
 
 WEB_DIR = Path(__file__).with_name("web")
 logger = logging.getLogger("101.restaurant_commerce")
@@ -134,6 +138,9 @@ def create_app(
     max_body_bytes: int = 1_048_576,
     storefront_cache_ttl_seconds: float = 15.0,
     auto_init_schema: bool | None = None,
+    payment_recovery_enabled: bool = True,
+    payment_recovery_interval_seconds: float = 1.0,
+    payment_lease_seconds: int = 30,
     checkout_url_origins: tuple[str, ...] = (),
     tracking_url_origins: tuple[str, ...] = (),
 ) -> FastAPI:
@@ -206,9 +213,27 @@ def create_app(
         if value and provider not in configured_webhook_secrets:
             configured_webhook_secrets[provider] = value
 
-    app = FastAPI(title="101 Restaurant Commerce", version="0.5.2",
+    if payment_recovery_interval_seconds <= 0 or payment_lease_seconds < 1:
+        raise ValueError("Recovery interval/lease must be positive")
+
+    @asynccontextmanager
+    async def lifespan(_app):
+        stop = thread = None
+        if payment_recovery_enabled:
+            stop, thread = start_recovery(SessionLocal, interval_seconds=payment_recovery_interval_seconds,
+                service_options={"payment_providers": payment_providers, "delivery_providers": delivery_providers,
+                    "event_sink": event_sink, "provider_executor": provider_executor,
+                    "payment_lease_seconds": payment_lease_seconds})
+        try:
+            yield
+        finally:
+            if stop:
+                stop.set()
+                thread.join(timeout=5)
+
+    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.6.0",
                   responses={status: {"model": ErrorResponse} for status in
-                             (400, 401, 403, 404, 409, 413, 422, 429, 500, 503)})
+                             (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
     app.add_middleware(MaxBodySizeMiddleware, max_bytes=max_body_bytes)
     app.state.engine = engine
@@ -311,6 +336,7 @@ def create_app(
             event_sink=event_sink,
             provider_executor=provider_executor,
             storefront_cache=storefront_cache,
+            payment_lease_seconds=payment_lease_seconds,
         )
 
     def get_growth(session: Session = Depends(get_session)) -> RestaurantGrowthService:
@@ -440,6 +466,9 @@ def create_app(
         # Authenticated integrations should use a dedicated server-side boundary.
         request = request.model_copy(update={"source_channel": "web", "external_source_ref": None})
         order = service.create_order(business_id, request)
+        return with_order_access(order)
+
+    def with_order_access(order):
         created_at = order.created_at
         if created_at.tzinfo is None:
             created_at = created_at.replace(tzinfo=timezone.utc)
@@ -448,6 +477,15 @@ def create_app(
             raise HTTPException(status_code=409, detail="Order access window has expired; contact staff")
         return order.model_copy(update={"access_token": sign_resource(
             access_secret, kind="order", resource_id=order.id, expires_at=expires_at)})
+
+    @app.post("/api/restaurants/{business_id}/orders/recover", response_model=OrderOut)
+    def recover_order(business_id: str, request: RecoverOrderRequest,
+                      service: RestaurantCommerceService = Depends(get_service)):
+        try:
+            order = service.recover_order(business_id, request.idempotency_key, request.recovery_secret)
+        except CheckoutRecoveryExpired as exc:
+            raise HTTPException(status_code=410, detail=str(exc)) from exc
+        return with_order_access(order)
 
     @app.post("/api/operator/orders/{order_id}/access/revoke", dependencies=[Depends(require_operator)])
     def revoke_order_access(order_id: str, service: RestaurantCommerceService = Depends(get_service)):
@@ -491,7 +529,8 @@ def create_app(
             "customer": request.customer.model_copy(update={"consent_source": "web_reservation:commerce-consent-v1"})})
         return service.create_reservation(business_id, request)
 
-    @app.post("/api/webhooks/payments/{provider}", response_model=OrderOut)
+    @app.post("/api/webhooks/payments/{provider}", response_model=OrderOut,
+              responses={202: {"model": PaymentNotificationAccepted}})
     async def payment_webhook(
         provider: str,
         request: Request,
@@ -508,15 +547,10 @@ def create_app(
             payload = PaymentWebhookIn.model_validate_json(body)
         except PydanticValidationError as exc:
             raise RequestValidationError(exc.errors()) from exc
-        return service.apply_payment_status(
-            payload.provider_reference,
-            payload.status,
-            provider=provider,
-            event_id=payload.event_id,
-            amount_minor=payload.amount_minor,
-            currency=payload.currency,
-            raw_event_json=body.decode("utf-8", errors="replace"),
-        )
+        result = service.receive_payment_notification(provider, payload)
+        if isinstance(result, PaymentNotificationAccepted):
+            return JSONResponse(status_code=202, content=result.model_dump(mode="json"))
+        return result
 
     @app.post("/api/webhooks/deliveries/{provider}", response_model=DeliveryOut)
     async def delivery_webhook(
@@ -784,6 +818,14 @@ def create_app(
         service: RestaurantCommerceService = Depends(get_service),
     ):
         return service.drain_event_outbox(limit=limit)
+
+    @app.get("/api/operator/restaurants/{business_id}/payment-reconciliation", dependencies=[Depends(require_operator)])
+    def payment_reconciliation(business_id: str, service: RestaurantCommerceService = Depends(get_service)):
+        return service.list_payment_reconciliation(business_id)
+
+    @app.post("/api/operator/payments/recover", dependencies=[Depends(require_operator)])
+    def recover_payments(limit: int = Query(default=25, ge=1, le=100), service: RestaurantCommerceService = Depends(get_service)):
+        return service.recover_payments(limit=limit)
 
     @app.get("/api/operator/metrics", dependencies=[Depends(require_operator)])
     def operator_metrics():

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from typing import Any
 from uuid import uuid4
 
 from sqlalchemy import (
@@ -635,3 +634,60 @@ class WebhookReceipt(Base):
         Index("ix_restaurant_webhook_received", "received_at"),
     )
 
+
+
+class PaymentIntent(Base):
+    """Immutable checkout inputs; persisted before crossing the provider boundary."""
+
+    __tablename__ = "restaurant_payment_intents"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    order_id: Mapped[str] = mapped_column(ForeignKey("restaurant_orders.id", ondelete="CASCADE"), unique=True)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    provider: Mapped[str] = mapped_column(String(40))
+    provider_idempotency_key: Mapped[str] = mapped_column(String(240), unique=True)
+    request_json: Mapped[str] = mapped_column(Text)
+    state: Mapped[str] = mapped_column(String(32), default="pending", index=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    lease_token: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    next_attempt_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_error: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    recovery_secret_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
+    __table_args__ = (
+        CheckConstraint("attempts >= 0", name="ck_payment_intent_attempts"),
+        CheckConstraint("state IN ('pending','processing','unknown','ready','review_required','cancelled')", name="ck_payment_intent_state"),
+        Index("ix_payment_intent_recovery", "state", "next_attempt_at", "lease_until"),
+    )
+
+
+class PaymentReconciliation(Base):
+    """An unresolved financial fact, never a fabricated refund or completed action."""
+
+    __tablename__ = "restaurant_payment_reconciliations"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    order_id: Mapped[str] = mapped_column(ForeignKey("restaurant_orders.id", ondelete="CASCADE"), index=True)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    reason: Mapped[str] = mapped_column(String(80))
+    status: Mapped[str] = mapped_column(String(24), default="open")
+    evidence_json: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    __table_args__ = (UniqueConstraint("order_id", "reason", name="uq_payment_reconciliation_order_reason"),)
+
+
+class PaymentNotificationInbox(Base):
+    """Authenticated notifications survive arrival before checkout finalization."""
+
+    __tablename__ = "restaurant_payment_notification_inbox"
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    provider: Mapped[str] = mapped_column(String(64))
+    event_id: Mapped[str] = mapped_column(String(200))
+    provider_reference: Mapped[str] = mapped_column(String(160), index=True)
+    payload_sha256: Mapped[str] = mapped_column(String(64))
+    payload_json: Mapped[str] = mapped_column(Text)
+    state: Mapped[str] = mapped_column(String(24), default="pending", index=True)
+    last_error: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    processed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    __table_args__ = (UniqueConstraint("provider", "event_id", name="uq_payment_notification_provider_event"),)

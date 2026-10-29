@@ -27,8 +27,13 @@ class StrictModel(BaseModel):
     def reject_nul_text(cls, value):
         # PostgreSQL text cannot represent NUL; inspect list elements too (IDs).
         def check(item):
-            if isinstance(item, str) and "\x00" in item:
-                raise ValueError("NUL characters are not permitted")
+            if isinstance(item, str):
+                if "\x00" in item:
+                    raise ValueError("NUL characters are not permitted")
+                try:
+                    item.encode("utf-8", errors="strict")
+                except UnicodeEncodeError as exc:
+                    raise ValueError("Text must contain valid Unicode scalar values") from exc
             if isinstance(item, (list, tuple)):
                 for child in item:
                     check(child)
@@ -185,6 +190,7 @@ class CustomerIn(StrictModel):
 
 
 class CreateOrderRequest(StrictModel):
+    recovery_secret: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
     customer: CustomerIn
     items: list[CartItemIn] = Field(min_length=1, max_length=100)
     fulfillment_type: Literal["pickup", "delivery"] = "pickup"
@@ -197,6 +203,16 @@ class CreateOrderRequest(StrictModel):
     idempotency_key: str | None = Field(default=None, min_length=1, max_length=120)
     promo_code: str | None = Field(default=None, max_length=80)
     reward_id: str | None = None
+
+
+class RecoverOrderRequest(StrictModel):
+    idempotency_key: str = Field(min_length=1, max_length=120)
+    recovery_secret: str = Field(pattern=r"^[a-f0-9]{64}$")
+
+
+class PaymentNotificationAccepted(StrictModel):
+    notification_id: str
+    status: str = "awaiting_payment_binding"
 
 
 class CreateReservationRequest(StrictModel):
@@ -312,6 +328,8 @@ class PaymentOut(StrictModel):
 
 
 class OrderOut(StrictModel):
+    checkout_state: str | None = None
+    reconciliation_required: bool = False
     id: str
     public_code: str
     business_id: str

@@ -1,5 +1,7 @@
 # 101 Restaurant Commerce V4 — Reliability Release
 
+**Current release0.6.0:** [M3a durable payments, recovery, reconciliation and offline upgrade](M3A_DURABLE_PAYMENTS.md). Real-money use remains gated. The V4/M1/M2 sections below retain historical context.
+
 V4 is the V1/V2/V3 restaurant-commerce stack after a dedicated adversarial hardening pass.
 It deliberately adds very little product surface. The work is concentrated on **correctness under retries, concurrency, malformed input, provider failure, webhook replay, state corruption, event-sink failure, abusive traffic, and hot-path latency**.
 
@@ -27,7 +29,7 @@ V4  break it → make failure explicit → make retries safe → make reads fast
 - DB-backed request idempotency ledger with canonical request fingerprints
 - same key + same request safely replays the existing resource
 - same key + different request is a conflict
-- concurrent duplicate order submissions produce only one external payment checkout
+- concurrent duplicate submissions share one durable order/intent; supported provider retries retain the same immutable idempotency key
 - deterministic provider idempotency keys are passed to payment/courier boundaries
 - optimistic version columns protect mutable commerce rows from lost updates
 - customer/account/message creation converges through DB uniqueness rather than check-then-insert assumptions
@@ -248,7 +250,9 @@ customer/replay flows. PostgreSQL migration/concurrency proof remains M3; this
 upgrade deliberately refuses other database dialects. No existing runtime database
 was upgraded during implementation.
 
-## M1/M2 adversarial corrections (0.5.1)
+## M1/M2 adversarial corrections (0.5.1, historical checkpoint)
+
+The reload/payment/PostgreSQL gaps below are the pre-M3a state; see the current M3a contract above.
 
 Offline attack tests reproduced and corrected stale food/delivery quotes, duplicate
 checkout/reservation submissions, lost-response retries within an open page,

@@ -369,11 +369,20 @@ def test_cancel_then_paid_requires_reconciliation_obligation():
     paid = webhook(order)
     assert paid.status_code == 200, paid.text
     got = read_order(order)
-    # This is a release requirement, not a claim that M2 implemented it.
-    assert not (got["status"] == "cancelled" and got["payment_status"] == "paid"), (
-        "Known M3 gap: late payment leaves cancelled/paid without a surfaced reconciliation obligation",
-        got["id"],
+    assert got["status"] == "cancelled" and got["payment_status"] == "paid"
+    assert got["reconciliation_required"], (
+        "Paid/cancelled must surface a durable obligation"
     )
+    path = f"/api/operator/restaurants/{business()}/payment-reconciliation"
+    response = http("GET", path, operator=True)
+    assert response.status_code == 200
+    obligations = [r for r in response.json() if r["order_id"] == got["id"]]
+    assert (
+        len(obligations) == 1 and obligations[0]["reason"] == "paid_after_cancellation"
+    )
+    assert webhook(order).status_code == 200
+    repeated = http("GET", path, operator=True)
+    assert len([r for r in repeated.json() if r["order_id"] == got["id"]]) == 1
 
 
 def main():

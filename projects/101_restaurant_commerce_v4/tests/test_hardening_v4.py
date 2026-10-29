@@ -288,7 +288,13 @@ def test_untrusted_payment_provider_output_is_validated(session, bad):
     req = request(svc, idem=f"bad-{bad}").model_copy(update={"payment_provider": "bad"})
     with pytest.raises(PaymentError):
         svc.create_order(DEMO_BUSINESS_ID, req)
-    assert session.scalar(select(Order).where(Order.idempotency_key == f"bad-{bad}")) is None
+    from world_model.restaurant_commerce.models import PaymentIntent, PaymentReconciliation
+    order = session.scalar(select(Order).where(Order.idempotency_key == f"bad-{bad}"))
+    assert order is not None  # The intent must survive an untrusted external result.
+    intent = session.scalar(select(PaymentIntent).where(PaymentIntent.order_id == order.id))
+    assert intent.state == "review_required"
+    assert session.scalar(select(Payment).where(Payment.order_id == order.id)) is None
+    assert session.scalar(select(PaymentReconciliation).where(PaymentReconciliation.order_id == order.id)) is not None
 
 
 def test_provider_executor_retries_only_explicit_retryable_errors():

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 import json
+import hashlib
 import secrets
 from typing import Iterable
 
@@ -52,15 +53,15 @@ from .models import (
     MenuCategory,
     MenuItem,
     ModifierGroup,
-    ModifierOption,
     Order,
     OrderItem,
     OrderItemModifier,
     Payment,
+    PaymentIntent,
+    PaymentReconciliation,
     Promotion,
     Reservation,
     RestaurantCommerceProfile,
-    WebhookReceipt,
     utcnow,
 )
 from .reliability import (
@@ -122,7 +123,10 @@ def _aware_utc(value: datetime) -> datetime:
     return value.astimezone(timezone.utc)
 
 
-class RestaurantCommerceService:
+from .payment_workflow import PaymentWorkflowMixin
+
+
+class RestaurantCommerceService(PaymentWorkflowMixin):
     def __init__(
         self,
         session: Session,
@@ -133,8 +137,12 @@ class RestaurantCommerceService:
         provider_executor: ProviderExecutor | None = None,
         storefront_cache: TTLCache[StorefrontOut] | None = None,
         verified_customer_id: str | None = None,
+        payment_lease_seconds: int = 30,
+        payment_retry_seconds: float = 2.0,
     ) -> None:
         # Server-side identity adapter only. Never populated from request JSON/phone.
+        self.payment_lease_seconds = payment_lease_seconds
+        self.payment_retry_seconds = payment_retry_seconds
         self.verified_customer_id = verified_customer_id
         self.session = session
         self.payment_providers: dict[str, PaymentProvider] = payment_providers or {
@@ -1175,6 +1183,8 @@ class RestaurantCommerceService:
     # Orders
     # ------------------------------------------------------------------
     def create_order(self, business_id: str, request: CreateOrderRequest) -> OrderOut:
+        if request.recovery_secret and not request.idempotency_key:
+            raise ValidationError("Recovery requires an idempotency key")
         verified = self._verified_customer(business_id, request.customer.phone)
         if request.reward_id and verified is None:
             raise ValidationError("Verified customer required for loyalty redemption")
@@ -1201,7 +1211,10 @@ class RestaurantCommerceService:
         claim = None
         if request.idempotency_key:
             scope = f"order.create:{business_id}"
-            fingerprint = request_fingerprint({"request": request.model_dump(mode="json"), "verified_customer_id": self.verified_customer_id})
+            request_data = request.model_dump(mode="json")
+            if request.recovery_secret is None:
+                request_data.pop("recovery_secret")  # Preserve old M2 fingerprint bindings.
+            fingerprint = request_fingerprint({"request": request_data, "verified_customer_id": self.verified_customer_id})
             ledger_row = self.session.scalar(
                 select(IdempotencyRecord).where(
                     IdempotencyRecord.scope == scope,
@@ -1228,7 +1241,7 @@ class RestaurantCommerceService:
                 existing = self.session.get(Order, claim.entity_id)
                 if not existing or not existing.customer_snapshot_json or existing.access_token_version:
                     raise IdempotencyConflictError("Order replay requires an active original binding")
-                return self.order_out(claim.entity_id)
+                return self.process_payment_intent(claim.entity_id)
 
         delivery_quote = None
         if fulfillment == FulfillmentType.DELIVERY:
@@ -1262,7 +1275,7 @@ class RestaurantCommerceService:
                 f"Payment provider {request.payment_provider!r} is not enabled for this restaurant"
             )
         provider = self.payment_providers.get(request.payment_provider)
-        if not provider:
+        if not provider or provider.name != request.payment_provider:
             raise ValidationError(f"Unsupported payment provider: {request.payment_provider}")
 
         delivery_fee = delivery_quote.fee_minor if delivery_quote else 0
@@ -1352,76 +1365,22 @@ class RestaurantCommerceService:
                 )
 
         provider_idempotency_key = f"checkout:{business_id}:{request.idempotency_key or order.id}"
-        try:
-            checkout = self.provider_executor.call(
-                provider.name,
-                "create_checkout",
-                lambda: provider.create_checkout(
-                    order_id=order.id,
-                    public_code=order.public_code,
-                    amount_minor=order.total_minor,
-                    currency=order.currency,
-                    customer_email=request.customer.email,
-                    idempotency_key=provider_idempotency_key,
-                ),
-            )
-        except (PaymentError, ProviderCircuitOpenError):
-            self.session.rollback()
-            raise
-        except Exception as exc:
-            self.session.rollback()
-            raise PaymentError(f"Payment checkout failed via {provider.name}") from exc
-
-        if checkout.provider != provider.name:
-            self.session.rollback()
-            raise PaymentError("Payment provider identity mismatch")
-        if not checkout.provider_reference.strip():
-            self.session.rollback()
-            raise PaymentError("Payment provider returned an empty reference")
-        if checkout.amount_minor != order.total_minor or checkout.currency != order.currency:
-            self.session.rollback()
-            raise PaymentError("Payment provider returned amount/currency that does not match the order")
-        try:
-            checkout_status = PaymentStatus(checkout.status.lower())
-        except ValueError as exc:
-            self.session.rollback()
-            raise PaymentError(f"Payment provider returned unsupported status: {checkout.status}") from exc
-        if checkout_status in {PaymentStatus.FAILED, PaymentStatus.REFUNDED}:
-            self.session.rollback()
-            raise PaymentError(f"Payment checkout was created in invalid status: {checkout_status.value}")
-
-        order.payment_status = checkout_status.value
-        if checkout_status == PaymentStatus.PAID or checkout.order_may_proceed:
-            order.status = OrderStatus.PLACED.value
-
-        payment = Payment(
-            order_id=order.id,
-            provider=checkout.provider,
-            provider_reference=checkout.provider_reference,
-            status=checkout_status.value,
-            amount_minor=checkout.amount_minor,
-            currency=checkout.currency,
-            checkout_url=checkout.checkout_url,
-        )
-        self.session.add(payment)
-
+        self.session.add(PaymentIntent(
+            order_id=order.id, business_id=business_id, provider=provider.name,
+            provider_idempotency_key=provider_idempotency_key,
+            request_json=json.dumps({"order_id": order.id, "public_code": order.public_code,
+                "amount_minor": order.total_minor, "currency": order.currency,
+                "customer_email": request.customer.email, "idempotency_key": provider_idempotency_key}, sort_keys=True),
+            recovery_secret_hash=(hashlib.sha256(request.recovery_secret.encode()).hexdigest()
+                                  if request.recovery_secret else None),
+        ))
         if claim:
             complete_idempotency(self.session, claim.record_id, entity_id=order.id)
-
-        self._commit_event(
-            kind="order.created",
-            business_id=business_id,
-            entity_id=order.id,
-            payload={
-                "public_code": order.public_code,
-                "total_minor": order.total_minor,
-                "fulfillment_type": fulfillment.value,
-                "delivery_fee_minor": delivery_fee,
-                "payment_provider": payment.provider,
-            },
-            dedupe_key=f"order-created:{order.id}",
-        )
-        return self.order_out(order.id)
+        # Local intent, immutable values, reservations and replay binding are atomic.
+        # No provider or event sink is called before this commit.
+        order_id = order.id
+        self._commit()
+        return self.process_payment_intent(order_id)
 
     def apply_payment_status(
         self,
@@ -1434,7 +1393,7 @@ class RestaurantCommerceService:
         currency: str | None = None,
         raw_event_json: str | None = None,
     ) -> OrderOut:
-        payment = self.session.scalar(select(Payment).where(Payment.provider_reference == provider_reference))
+        payment = self.session.scalar(select(Payment).where(Payment.provider_reference == provider_reference).with_for_update().execution_options(populate_existing=True))
         if not payment:
             raise NotFoundError("Payment not found")
         if provider and payment.provider != provider:
@@ -1451,6 +1410,9 @@ class RestaurantCommerceService:
         except ValueError as exc:
             raise ValidationError(f"Unsupported payment status: {status}") from exc
 
+        order = self.session.scalar(select(Order).where(Order.id == payment.order_id).with_for_update().execution_options(populate_existing=True))
+        if not order:
+            raise NotFoundError("Order not found for payment")
         receipt = None
         if event_id:
             receipt_provider = provider or payment.provider
@@ -1464,14 +1426,28 @@ class RestaurantCommerceService:
                 self.session, provider=receipt_provider, event_id=event_id, fingerprint=fingerprint
             )
             if not acquired:
+                if current == PaymentStatus.PAID and order.status == OrderStatus.CANCELLED.value:
+                    self._reconciliation(order, "paid_after_cancellation", {"provider_reference": provider_reference, "event_id": event_id})
+                self._commit()  # Repair current inconsistency without treating an old paid event as new.
                 return self.order_out(payment.order_id)
 
+        if (target == PaymentStatus.PAID and order.status == OrderStatus.CANCELLED.value
+                and (current == target or target in PAYMENT_TRANSITIONS[current])):
+            self._reconciliation(order, "paid_after_cancellation", {"provider_reference": provider_reference, "event_id": event_id})
         if current == target:
             if receipt:
                 receipt.processed_at = utcnow()
-                self._commit()
+            self._commit()
             return self.order_out(payment.order_id)
         if target not in PAYMENT_TRANSITIONS[current]:
+            if event_id:
+                self._reconciliation(order, "contradictory_payment_notification", {
+                    "provider_reference": provider_reference, "stored_status": current.value,
+                    "reported_status": target.value, "event_id": event_id})
+                if receipt:
+                    receipt.processed_at = utcnow()
+                self._commit()
+                return self.order_out(payment.order_id)
             raise InvalidTransitionError(
                 f"Cannot transition payment from {current.value} to {target.value}"
             )
@@ -1496,7 +1472,7 @@ class RestaurantCommerceService:
                 )
 
         growth = RestaurantGrowthService(self.session)
-        if target == PaymentStatus.PAID:
+        if target == PaymentStatus.PAID and order.status != OrderStatus.CANCELLED.value:
             growth.finalize_reward(order.id)
             growth.finalize_promotion(order.id)
         elif target == PaymentStatus.FAILED:
@@ -1537,6 +1513,9 @@ class RestaurantCommerceService:
         payments = order.payments
         deferred_payment = any(p.provider == "cash_at_pickup" for p in payments)
         if target in {OrderStatus.ACCEPTED, OrderStatus.PREPARING, OrderStatus.READY, OrderStatus.COMPLETED}:
+            if self.session.scalar(select(PaymentReconciliation.id).where(PaymentReconciliation.order_id == order.id,
+                    PaymentReconciliation.status == "open").limit(1)):
+                raise InvalidTransitionError("Payment reconciliation is required before fulfillment")
             if order.payment_status != PaymentStatus.PAID.value and not deferred_payment:
                 raise InvalidTransitionError("Order cannot advance before payment is confirmed")
 
@@ -1600,7 +1579,12 @@ class RestaurantCommerceService:
         return self.order_out(order.id)
 
     def _order_to_out(self, order: Order) -> OrderOut:
+        intent_state = self.session.scalar(select(PaymentIntent.state).where(PaymentIntent.order_id == order.id))
+        needs_review = self.session.scalar(select(PaymentReconciliation.id).where(
+            PaymentReconciliation.order_id == order.id, PaymentReconciliation.status == "open").limit(1)) is not None
         return OrderOut(
+            checkout_state=intent_state,
+            reconciliation_required=needs_review,
             id=order.id,
             public_code=order.public_code,
             business_id=order.business_id,

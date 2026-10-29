@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Protocol
-from uuid import uuid4
 
 from .errors import PaymentError
 
@@ -20,6 +19,8 @@ class PaymentCheckout:
 
 class PaymentProvider(Protocol):
     name: str
+    # True only when the adapter guarantees replay of the same immutable checkout.
+    supports_idempotent_checkout: bool
 
     def create_checkout(
         self,
@@ -37,6 +38,7 @@ class SimulatedPaymentProvider:
     """Deterministic local provider. It never makes network calls."""
 
     name = "simulated"
+    supports_idempotent_checkout = True
 
     def create_checkout(
         self,
@@ -61,6 +63,7 @@ class SimulatedPaymentProvider:
 
 class CashAtPickupPaymentProvider:
     name = "cash_at_pickup"
+    supports_idempotent_checkout = True
 
     def create_checkout(
         self,
@@ -92,6 +95,7 @@ class WompiPaymentProvider:
     """
 
     name = "wompi"
+    supports_idempotent_checkout = False
 
     def __init__(self, *, configured: bool = False) -> None:
         self.configured = configured

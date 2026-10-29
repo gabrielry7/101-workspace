@@ -6,6 +6,115 @@ const itemDialog = document.getElementById("itemDialog");
 const qs=new URLSearchParams(location.search),businessId=qs.get('business_id')||'demo-restaurant-bogota';let store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
 let noticeTimer, foodGeneration=0, deliveryGeneration=0;
 let checkoutBusy=false, checkoutIntent=null, reservationBusy=false, reservationIntent=null;
+const recoveryStorageKey='101.checkout.v1:'+businessId, recoveryTtlMs=24*60*60*1000;
+let recoveryRecord=null, recoveryState='idle', recoveredOrder=null, recoveryBusy=false, recoveryStorageAvailable=true;
+function readPendingCheckout(){
+  try {
+    const raw=localStorage.getItem(recoveryStorageKey);
+    if(!raw)return;
+    let record;try {record=JSON.parse(raw);}catch {recoveryState='invalid';return;}
+    if(!record||typeof record!=='object'){recoveryState='invalid';return;}
+    if(record.version!==1||record.business_id!==businessId||!/^[a-f0-9]{32}$/.test(record.idempotency_key)||!/^[a-f0-9]{64}$/.test(record.recovery_secret)||!Number.isFinite(record.created_at)){
+      recoveryState='invalid';return;
+    }
+    recoveryRecord=record;
+    recoveryState=record.created_at>Date.now()||Date.now()-record.created_at>=recoveryTtlMs?'expired':'checking';
+  } catch {recoveryStorageAvailable=false;}
+}
+function persistRecovery(){
+  if(!recoveryRecord)return;
+  try {localStorage.setItem(recoveryStorageKey,JSON.stringify(recoveryRecord));}
+  catch {recoveryStorageAvailable=false;}
+}
+function clearRecovery(){
+  recoveryRecord=null;recoveredOrder=null;recoveryState='idle';
+  try {localStorage.removeItem(recoveryStorageKey);}catch {recoveryStorageAvailable=false;}
+  replace($('checkoutRecovery'));
+}
+function newRecovery(){
+  const bytes=new Uint8Array(32);crypto.getRandomValues(bytes);
+  recoveryRecord={version:1,business_id:businessId,idempotency_key:intentKey(),
+    recovery_secret:Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join(''),created_at:Date.now()};
+  persistRecovery();renderRecovery();return recoveryRecord;
+}
+function recoveryAction(label,callback,disabled=false){return h('button',{className:'secondary','data-recovery-action':'true',disabled,onClick:callback},label);}
+function renderRecovery(){
+  const root=$('checkoutRecovery');replace(root);
+  if(recoveryState==='idle'){
+    if(!recoveryStorageAvailable)root.append(h('p',{className:'notice',role:'status'},'Este navegador no permite recuperar el pedido después de recargar. Mantén esta página abierta hasta confirmar el resultado.'));
+    return;
+  }
+  const panel=h('div',{className:'notice',role:'status'});
+  if(recoveryState==='found'&&recoveredOrder){
+    panel.append(h('strong',{},'Pedido #'+recoveredOrder.public_code),h('p',{},'Total: '+money(recoveredOrder.total_minor)));
+    if(recoveredOrder.reconciliation_required||recoveredOrder.checkout_state==='review_required'){
+      panel.append(h('p',{},'El restaurante debe revisar este pago. No vuelvas a pagar ni hagas otro pedido para resolverlo.'));
+    } else if(!recoveredOrder.payments?.length||['pending','processing','unknown'].includes(recoveredOrder.checkout_state)){
+      panel.append(h('p',{},'Tu solicitud está guardada. Estamos confirmando el pago; todavía no podemos confirmar el pedido.'));
+    } else if(recoveredOrder.payment_status==='paid'){
+      panel.append(h('p',{},'Pago confirmado. Estado del pedido: '+recoveredOrder.status));
+    } else {
+      panel.append(h('p',{},'Estado del pedido: '+recoveredOrder.status+'. Pago: '+recoveredOrder.payment_status));
+      if(!['cancelled','completed'].includes(recoveredOrder.status)&&!['failed','refunded'].includes(recoveredOrder.payment_status))panel.append(recoveryAction('Continuar con el pago',continueRecoveredPayment,recoveryBusy));
+    }
+    panel.append(recoveryAction('Actualizar estado',recoverCheckout,recoveryBusy));
+    if(canStartAnotherOrder())panel.append(recoveryAction('Hacer otro pedido',startAnotherOrder,recoveryBusy));
+  } else if(recoveryState==='absent'){
+    panel.append(h('p',{},'No encontramos un pedido guardado para esta solicitud. Completa de nuevo tus datos; conservaremos la misma referencia para evitar duplicados.'));
+  } else if(['expired','invalid'].includes(recoveryState)){
+    panel.append(h('p',{},'No podemos recuperar con seguridad la solicitud anterior. Contacta al restaurante para comprobarla antes de volver a pedir.'));
+    if(recoveryState==='expired')panel.append(recoveryAction('Iniciar una compra diferente',startDifferentPurchase));
+  } else {
+    panel.append(h('p',{},recoveryBusy?'Buscando tu pedido anterior…':'No pudimos comprobar tu pedido anterior. No hemos enviado otro pedido.'));
+    if(!recoveryBusy)panel.append(recoveryAction('Reintentar consulta',recoverCheckout));
+  }
+  if(!recoveryStorageAvailable)panel.append(h('p',{},'Este navegador no permite guardar la recuperación. Mantén esta página abierta y conserva la referencia del pedido.'));
+  root.append(panel);
+}
+function updateCheckoutControls(){
+  const recovering=['checking','uncertain','expired','invalid','found'].includes(recoveryState)&&!checkoutIntent;
+  lockInputs(checkoutFields,checkoutBusy||recovering||!!checkoutIntent);
+  $('checkoutButton').disabled=checkoutBusy||recoveryBusy||['expired','invalid'].includes(recoveryState);
+  $('checkoutButton').textContent=recovering?'Consultar pedido anterior':fulfillment==='delivery'?'Pedir a domicilio':'Hacer pedido para recoger';
+}
+async function recoverCheckout(){
+  if(!recoveryRecord||recoveryBusy||['expired','invalid'].includes(recoveryState))return;
+  recoveryBusy=true;recoveryState='checking';renderRecovery();updateCheckoutControls();
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
+  try {
+    const order=await api(`/api/restaurants/${path(businessId)}/orders/recover`,{method:'POST',signal:controller.signal,body:JSON.stringify({idempotency_key:recoveryRecord.idempotency_key,recovery_secret:recoveryRecord.recovery_secret})});
+    if(!order.id||order.business_id!==businessId)throw new Error('Respuesta de recuperación inválida');
+    recoveredOrder=order;checkoutIntent=null;recoveryState='found';
+  } catch(e){
+    recoveryState=e.status===404?'absent':e.status===410?'expired':'uncertain';
+  } finally {clearTimeout(timer);recoveryBusy=false;renderRecovery();updateCheckoutControls();}
+}
+function canStartAnotherOrder(){return recoveredOrder&&!recoveredOrder.reconciliation_required&&recoveredOrder.checkout_state!=='review_required'&&(['paid','refunded','failed'].includes(recoveredOrder.payment_status)||recoveredOrder.status==='cancelled');}
+function startDifferentPurchase(){
+  if(recoveryState!=='expired'||!window.confirm('Esto inicia una compra diferente. No cancela, confirma ni resuelve el pedido anterior. ¿Quieres continuar con una compra diferente?'))return;
+  clearRecovery();checkoutIntent=null;cart=[];foodQuote=null;deliveryQuote=null;++deliveryGeneration;renderCart();updateCheckoutControls();
+}
+function startAnotherOrder(){
+  if(!canStartAnotherOrder())return;
+  clearRecovery();checkoutIntent=null;cart=[];foodQuote=null;deliveryQuote=null;++deliveryGeneration;renderCart();updateCheckoutControls();
+}
+async function continueRecoveredPayment(){
+  if(!recoveredOrder||recoveryBusy||recoveredOrder.reconciliation_required||recoveredOrder.checkout_state==='review_required'||['cancelled','completed'].includes(recoveredOrder.status)||['failed','refunded'].includes(recoveredOrder.payment_status))return;
+  recoveryBusy=true;renderRecovery();updateCheckoutControls();
+  try {
+    const payment=recoveredOrder.payments?.[0];
+    if(!payment)throw new Error('El pago aún está pendiente de confirmación.');
+    if(payment.provider==='simulated'){
+      const paid=await api(`/api/payments/simulated/${path(payment.provider_reference)}/complete`,{method:'POST'});
+      recoveredOrder={...recoveredOrder,...paid};
+    } else if(payment.checkout_url){
+      const url=safeURL(payment.checkout_url,'checkout');
+      if(!url)throw new Error('Enlace de pago no autorizado. Contacta al restaurante.');
+      window.location.assign(url);
+    } else notice('El restaurante te indicará cómo continuar con el pago.');
+  } catch(e){notice(e.message,'error');}
+  finally {recoveryBusy=false;renderRecovery();updateCheckoutControls();}
+}
 function lockInputs(selector, locked) {
   document.querySelectorAll(selector).forEach(el=>{
     if(locked){if(!el.disabled){el.dataset.intentLocked='true';el.disabled=true;}}
@@ -23,7 +132,7 @@ function notice(msg,type='success') {
   noticeTimer=setTimeout(()=>replace($('notice')),7000);
 }
 async function api(url,opts={}){const r=await fetch(url,{headers:{'Content-Type':'application/json',...(opts.headers||{})},...opts});let d={};try{d=await r.json()}catch{}if(!r.ok){const e=new Error(d.detail||`HTTP ${r.status}`);e.status=r.status;throw e}return d}
-async function load(){try{store=await api(`/api/restaurants/${path(businessId)}/storefront`);$('restaurantName').textContent=store.display_name;document.title=`${store.display_name} · Pedido directo`;$('pickupInstructions').textContent=store.pickup_instructions||'';if(!store.delivery_enabled)$('deliveryBtn').disabled=true;if(!store.pickup_enabled&&store.delivery_enabled)setFulfillment('delivery');renderMenu()}catch(e){notice(e.message,'error')}}
+async function load(){try{store=await api(`/api/restaurants/${path(businessId)}/storefront`);$('restaurantName').textContent=store.display_name;document.title=`${store.display_name} · Pedido directo`;$('pickupInstructions').textContent=store.pickup_instructions||'';if(!store.delivery_enabled)$('deliveryBtn').disabled=true;if(!store.pickup_enabled&&store.delivery_enabled)setFulfillment('delivery');renderMenu()}catch(e){notice(e.message,'error')}finally{if(recoveryState==='checking')await recoverCheckout();else{renderRecovery();updateCheckoutControls();}}}
 function renderMenu() {
   const root=$('menu'); replace(root);
   for(const menu of store.menus) for(const cat of menu.categories) {
@@ -87,37 +196,45 @@ async function quoteDelivery(){
     $('deliveryQuoteText').textContent=`Domicilio ${money(deliveryQuote.fee_minor)} · aprox. ${Math.round((deliveryQuote.distance_meters||0)/100)/10} km · cotización temporal`;renderTotals();
   } catch(e){if(generation===deliveryGeneration)notice(e.message,'error')}
 }
-const checkoutFields='#cart input, #cart textarea, #cart button:not(#checkoutButton), #menu button';
+const checkoutFields='#cart input, #cart textarea, #cart button:not(#checkoutButton):not([data-recovery-action]), #menu button';
+function checkoutNeedsStatusOnly(order){return order.reconciliation_required||['cancelled','completed'].includes(order.status)||['failed','refunded'].includes(order.payment_status)||!order.payments?.length||['pending','processing','unknown','review_required'].includes(order.checkout_state);}
+function showKnownOrder(order){
+  recoveredOrder=order;recoveryState='found';checkoutIntent=null;clearTimeout(noticeTimer);replace($('notice'));renderRecovery();
+}
 async function checkout(){
-  if(checkoutBusy)return;
+  if(checkoutBusy||recoveryBusy)return;
+  if(!checkoutIntent&&['checking','uncertain','expired','invalid','found'].includes(recoveryState)){await recoverCheckout();return;}
   if(!store)return notice('Espera a que cargue el menú.','error');
   if(!checkoutIntent){
     if(!cart.length)return notice('Agrega algo al pedido.','error');
     const name=$('cName').value.trim(),phone=$('cPhone').value.trim();
     if(!name||!phone)return notice('Necesitamos tu nombre y teléfono.','error');
     if(fulfillment==='delivery'&&!deliveryQuote)return notice('Cotiza el domicilio antes de continuar.','error');
-    checkoutIntent={customer:{name,phone,email:$('cEmail').value.trim()||null,whatsapp_opt_in:$('whatsappOptIn').checked,marketing_opt_in:$('marketingOptIn').checked,consent_source:'web_checkout'},items:cartPayload(),fulfillment_type:fulfillment,delivery_quote_id:fulfillment==='delivery'?deliveryQuote.id:null,notes:$('cNotes').value.trim()||null,payment_provider:store.payment_provider,promo_code:$('promoCode').value.trim()||null,idempotency_key:intentKey()};
+    let recovery;
+    try {recovery=recoveryRecord||newRecovery();}catch {return notice('Tu navegador no permite crear una referencia segura. Contacta al restaurante.','error');}
+    checkoutIntent={customer:{name,phone,email:$('cEmail').value.trim()||null,whatsapp_opt_in:$('whatsappOptIn').checked,marketing_opt_in:$('marketingOptIn').checked,consent_source:'web_checkout'},items:cartPayload(),fulfillment_type:fulfillment,delivery_quote_id:fulfillment==='delivery'?deliveryQuote.id:null,notes:$('cNotes').value.trim()||null,payment_provider:store.payment_provider,promo_code:$('promoCode').value.trim()||null,idempotency_key:recovery.idempotency_key,recovery_secret:recovery.recovery_secret};
   }
   let orderAccepted=false;
   checkoutBusy=true;$('checkoutButton').disabled=true;lockInputs(checkoutFields,true);
   try {
-    const order=await api(`/api/restaurants/${path(businessId)}/orders`,{method:'POST',body:JSON.stringify(checkoutIntent)});
+    let order=await api(`/api/restaurants/${path(businessId)}/orders`,{method:'POST',body:JSON.stringify(checkoutIntent)});
     orderAccepted=true;
     // Keep the same intent through payment-navigation/completion failures too.
-    if(store.payment_provider==='simulated')await api(`/api/payments/simulated/${path(order.payments[0].provider_reference)}/complete`,{method:'POST'});
+    if(checkoutNeedsStatusOnly(order)){showKnownOrder(order);return;}
+    if(store.payment_provider==='simulated'){const paid=await api(`/api/payments/simulated/${path(order.payments[0].provider_reference)}/complete`,{method:'POST'});order={...order,...paid};}
     else if(order.payments[0]?.checkout_url){
       const url=safeURL(order.payments[0].checkout_url,'checkout');
       if(!url)throw new Error('Enlace de pago no autorizado. Conserva la referencia del pedido: '+order.public_code);
       window.location.assign(url);return;
     }
-    checkoutIntent=null;cart=[];foodQuote=null;deliveryQuote=null;++deliveryGeneration;renderCart();$('promoCode').value='';
+    if(checkoutNeedsStatusOnly(order)){showKnownOrder(order);return;}
+    recoveredOrder=order;recoveryState='found';checkoutIntent=null;cart=[];foodQuote=null;deliveryQuote=null;++deliveryGeneration;renderCart();$('promoCode').value='';renderRecovery();
     notice(`Pedido #${order.public_code} recibido. ${order.fulfillment_type==='delivery'?`Domicilio: ${money(order.delivery_fee_minor)}. `:'Recogida en restaurante. '}${store.payment_provider==='simulated'?'Pago demo aprobado.':'Continúa con el pago indicado.'}`);
   } catch(e){
-    if(!orderAccepted&&(e.status===422||e.status===404))checkoutIntent=null;
-    notice(e.message+(checkoutIntent?' No pudimos confirmar el pedido. Reintenta aquí sin recargar; conservamos la misma solicitud.':''),'error');
+    if(!orderAccepted&&(e.status===422||e.status===404)){checkoutIntent=null;clearRecovery();}
+    notice(e.message+(checkoutIntent?' No pudimos confirmar el pedido. Reintenta aquí; conservamos la misma solicitud.'+(recoveryStorageAvailable?'':' No recargues: este navegador no permite guardar la recuperación.') :''),'error');
   } finally {
-    checkoutBusy=false;$('checkoutButton').disabled=false;
-    if(!checkoutIntent)lockInputs(checkoutFields,false);
+    checkoutBusy=false;updateCheckoutControls();
   }
 }
 function showReservation(){$('menu').classList.add('hidden');$('reservationPanel').classList.remove('hidden')}function showOrder(){$('menu').classList.remove('hidden');$('reservationPanel').classList.add('hidden')}async function reserve(){
@@ -141,5 +258,5 @@ function showReservation(){$('menu').classList.add('hidden');$('reservationPanel
 bind({viewCart:()=>$('cart').scrollIntoView(),showOrder,showReservation,reserve,
   pickup:()=>setFulfillment('pickup'),delivery:()=>setFulfillment('delivery'),
   invalidateDeliveryQuote,useLocation,demoAddress,quoteDelivery,quoteCart,checkout,closeItem,addConfiguredItem});
-start(load);
+start(async()=>{readPendingCheckout();await load();});
 })();

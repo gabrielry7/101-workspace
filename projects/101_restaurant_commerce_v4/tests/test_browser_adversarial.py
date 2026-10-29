@@ -240,3 +240,294 @@ def test_payment_completion_rejection_does_not_create_second_order(site):
     assert len(orders) == 2 and orders[0] == orders[1]
     assert completed[0] == completed[1]
     assert not errors and not external
+
+
+def test_reload_recovers_original_order_without_persisting_contact(site):
+    page, client, _, requests, errors, external = site
+    pending = hold(page, ROOT + "/orders")
+    add_item(page)
+    page.locator("#cName").fill("Recovery private name")
+    page.locator("#cPhone").fill("3005550101")
+    page.locator("#cEmail").fill("private@example.test")
+    page.locator("#checkoutButton").click()
+    pump(page, pending)
+    payload = json.loads(pending[0].request.post_data)
+    committed = client.post(ROOT + "/orders", json=payload)
+    assert committed.status_code == 200, committed.text
+    original = committed.json()
+    pending[0].abort("failed")
+    playwright.expect(page.locator("#notice")).to_contain_text("Reintenta")
+    stored = page.evaluate(
+        "localStorage.getItem('101.checkout.v1:demo-restaurant-bogota')"
+    )
+    assert "Recovery private name" not in stored
+    assert "3005550101" not in stored and "private@example.test" not in stored
+    assert set(json.loads(stored)) == {
+        "version",
+        "business_id",
+        "idempotency_key",
+        "recovery_secret",
+        "created_at",
+    }
+    page.reload()
+    playwright.expect(page.locator("#checkoutRecovery")).to_contain_text(
+        original["public_code"]
+    )
+    playwright.expect(page.locator("#cName")).to_have_value("")
+    # Page-level interception catches any accidental new order POST after reload.
+    page.wait_for_timeout(100)
+    assert len(pending) == 1
+    staff = client.get(
+        ROOT.replace("/api/restaurants", "/api/operator/restaurants") + "/orders",
+        headers={"X-101-Operator-Token": "dev-operator"},
+    ).json()
+    assert len(staff) == 1 and staff[0]["id"] == original["id"]
+    assert any(
+        method == "POST" and url == ROOT + "/orders/recover"
+        for method, url, _ in requests
+    )
+    assert not errors and not external
+
+
+def test_unknown_recovery_response_never_submits_new_order(site):
+    page, _, _, requests, errors, external = site
+    record = {
+        "version": 1,
+        "business_id": "demo-restaurant-bogota",
+        "idempotency_key": "a" * 32,
+        "recovery_secret": "b" * 64,
+    }
+    page.add_init_script(
+        "localStorage.setItem('101.checkout.v1:demo-restaurant-bogota',JSON.stringify({..."
+        + json.dumps(record)
+        + ",created_at:Date.now()}))"
+    )
+    page.route(
+        "**" + ROOT + "/orders/recover",
+        lambda route: route.fulfill(status=503, json={"detail": "Unavailable"}),
+    )
+    page.goto("https://commerce.test/")
+    playwright.expect(page.locator("#checkoutRecovery")).to_contain_text(
+        "No hemos enviado otro pedido"
+    )
+    playwright.expect(page.locator("#cName")).to_be_disabled()
+    page.locator("#checkoutButton").click()
+    playwright.expect(page.locator("#checkoutRecovery")).to_contain_text(
+        "No hemos enviado otro pedido"
+    )
+    assert not any(
+        method == "POST" and url == ROOT + "/orders" for method, url, _ in requests
+    )
+    assert (
+        json.loads(
+            page.evaluate(
+                "localStorage.getItem('101.checkout.v1:demo-restaurant-bogota')"
+            )
+        )["idempotency_key"]
+        == "a" * 32
+    )
+    assert not errors and not external
+
+
+def test_recovery_not_found_reuses_original_reference(site):
+    page, _, _, _, errors, external = site
+    record = {
+        "version": 1,
+        "business_id": "demo-restaurant-bogota",
+        "idempotency_key": "c" * 32,
+        "recovery_secret": "d" * 64,
+    }
+    page.add_init_script(
+        "localStorage.setItem('101.checkout.v1:demo-restaurant-bogota',JSON.stringify({..."
+        + json.dumps(record)
+        + ",created_at:Date.now()}))"
+    )
+    page.route(
+        "**" + ROOT + "/orders/recover",
+        lambda route: route.fulfill(status=404, json={"detail": "Not found"}),
+    )
+    pending = hold(page, ROOT + "/orders")
+    add_item(page)
+    page.locator("#cName").fill("Synthetic")
+    page.locator("#cPhone").fill("3005550101")
+    page.locator("#checkoutButton").click()
+    pump(page, pending)
+    payload = json.loads(pending[0].request.post_data)
+    assert payload["idempotency_key"] == record["idempotency_key"]
+    assert payload["recovery_secret"] == record["recovery_secret"]
+    pending[0].abort("failed")
+    assert not errors and not external
+
+
+def test_expired_recovery_does_not_silently_start_over(site):
+    page, _, _, requests, errors, external = site
+    page.add_init_script("""localStorage.setItem('101.checkout.v1:demo-restaurant-bogota',JSON.stringify({
+      version:1,business_id:'demo-restaurant-bogota',idempotency_key:'e'.repeat(32),
+      recovery_secret:'f'.repeat(64),created_at:Date.now()-86400001}));""")
+    page.goto("https://commerce.test/")
+    playwright.expect(page.locator("#checkoutRecovery")).to_contain_text(
+        "Contacta al restaurante"
+    )
+    playwright.expect(page.locator("#checkoutButton")).to_be_disabled()
+    page.once("dialog", lambda dialog: dialog.dismiss())
+    page.get_by_role("button", name="Iniciar una compra diferente", exact=True).click()
+    playwright.expect(page.locator("#checkoutButton")).to_be_disabled()
+    assert page.evaluate(
+        "localStorage.getItem('101.checkout.v1:demo-restaurant-bogota')"
+    )
+    page.once("dialog", lambda dialog: dialog.accept())
+    page.get_by_role("button", name="Iniciar una compra diferente", exact=True).click()
+    playwright.expect(page.locator("#checkoutButton")).to_be_enabled()
+    assert (
+        page.evaluate("localStorage.getItem('101.checkout.v1:demo-restaurant-bogota')")
+        is None
+    )
+    assert not any(
+        method == "POST" and url == ROOT + "/orders" for method, url, _ in requests
+    )
+    assert not errors and not external
+
+
+def test_recovery_review_never_claims_payment_success_or_offers_payment(site):
+    page, _, _, requests, errors, external = site
+    page.add_init_script("""localStorage.setItem('101.checkout.v1:demo-restaurant-bogota',JSON.stringify({
+      version:1,business_id:'demo-restaurant-bogota',idempotency_key:'a'.repeat(32),
+      recovery_secret:'b'.repeat(64),created_at:Date.now()}));""")
+    page.route(
+        "**" + ROOT + "/orders/recover",
+        lambda route: route.fulfill(
+            json={
+                "id": "synthetic-review",
+                "business_id": "demo-restaurant-bogota",
+                "public_code": "REVIEW",
+                "total_minor": 11900,
+                "status": "cancelled",
+                "payment_status": "paid",
+                "checkout_state": "ready",
+                "reconciliation_required": True,
+                "payments": [
+                    {"provider": "simulated", "provider_reference": "sim_review"}
+                ],
+            }
+        ),
+    )
+    page.goto("https://commerce.test/")
+    playwright.expect(page.locator("#checkoutRecovery")).to_contain_text(
+        "El restaurante debe revisar este pago"
+    )
+    assert "Pago confirmado" not in page.locator("#checkoutRecovery").inner_text()
+    assert (
+        page.get_by_role("button", name="Continuar con el pago", exact=True).count()
+        == 0
+    )
+    assert page.get_by_role("button", name="Hacer otro pedido", exact=True).count() == 0
+    assert not any(
+        method == "POST" and url.endswith("/complete") for method, url, _ in requests
+    )
+    assert not errors and not external
+
+
+def test_missing_secure_randomness_prevents_unsafe_checkout(site):
+    page, _, _, requests, errors, external = site
+    page.add_init_script(
+        "Object.defineProperty(crypto,'getRandomValues',{value:undefined});"
+    )
+    add_item(page)
+    page.locator("#cName").fill("Synthetic")
+    page.locator("#cPhone").fill("3005550101")
+    page.locator("#checkoutButton").click()
+    playwright.expect(page.locator("#notice")).to_contain_text("referencia segura")
+    assert not any(
+        method == "POST" and url == ROOT + "/orders" for method, url, _ in requests
+    )
+    assert not errors and not external
+
+
+def test_exact_retry_of_cancelled_paid_order_never_pays_or_claims_success(site):
+    page, client, _, requests, errors, external = site
+    pending = hold(page, ROOT + "/orders")
+    add_item(page)
+    page.locator("#cName").fill("Synthetic late payment")
+    page.locator("#cPhone").fill("3005550101")
+    page.locator("#checkoutButton").click()
+    pump(page, pending)
+    payload = json.loads(pending[0].request.post_data)
+    created = client.post(ROOT + "/orders", json=payload)
+    assert created.status_code == 200, created.text
+    original = created.json()
+    cancelled = client.patch(
+        "/api/operator/orders/" + original["id"],
+        json={"status": "cancelled"},
+        headers={"X-101-Operator-Token": "dev-operator"},
+    )
+    assert cancelled.status_code == 200, cancelled.text
+    paid = client.post(
+        "/api/payments/simulated/"
+        + original["payments"][0]["provider_reference"]
+        + "/complete"
+    )
+    assert paid.status_code == 200, paid.text
+    assert paid.json()["reconciliation_required"] is True
+    pending[0].abort("failed")
+    playwright.expect(page.locator("#notice")).to_contain_text("Reintenta")
+    page.locator("#checkoutButton").click()
+    pump(page, pending, 2)
+    assert json.loads(pending[1].request.post_data) == payload
+    replay = client.post(ROOT + "/orders", json=payload)
+    assert replay.status_code == 200, replay.text
+    assert replay.json()["id"] == original["id"]
+    pending[1].fulfill(json=replay.json())
+    playwright.expect(page.locator("#checkoutRecovery")).to_contain_text(
+        "El restaurante debe revisar este pago"
+    )
+    assert "recibido" not in page.locator("#notice").inner_text()
+    assert "Pago demo aprobado" not in page.locator("#notice").inner_text()
+    assert not any(
+        method == "POST" and url.endswith("/complete") for method, url, _ in requests
+    )
+    assert (
+        page.get_by_role("button", name="Continuar con el pago", exact=True).count()
+        == 0
+    )
+    assert not errors and not external
+
+
+def test_cancellation_during_payment_completion_has_no_success_notice(site):
+    page, client, _, _, errors, external = site
+    observed = []
+
+    def late_payment(route):
+        orders = client.get(
+            "/api/operator/restaurants/demo-restaurant-bogota/orders",
+            headers={"X-101-Operator-Token": "dev-operator"},
+        ).json()
+        assert len(orders) == 1
+        current = orders[0]
+        cancelled = client.patch(
+            "/api/operator/orders/" + current["id"],
+            json={"status": "cancelled"},
+            headers={"X-101-Operator-Token": "dev-operator"},
+        )
+        assert cancelled.status_code == 200, cancelled.text
+        paid = client.post(
+            "/api/payments/simulated/"
+            + current["payments"][0]["provider_reference"]
+            + "/complete"
+        )
+        assert paid.status_code == 200, paid.text
+        assert paid.json()["reconciliation_required"] is True
+        observed.append(paid.json()["id"])
+        route.fulfill(json=paid.json())
+
+    page.route("**/api/payments/simulated/*/complete", late_payment)
+    add_item(page)
+    page.locator("#cName").fill("Synthetic concurrent cancellation")
+    page.locator("#cPhone").fill("3005550101")
+    page.locator("#checkoutButton").click()
+    playwright.expect(page.locator("#checkoutRecovery")).to_contain_text(
+        "El restaurante debe revisar este pago"
+    )
+    assert len(observed) == 1
+    assert "recibido" not in page.locator("#notice").inner_text()
+    assert "Pago demo aprobado" not in page.locator("#notice").inner_text()
+    assert not errors and not external

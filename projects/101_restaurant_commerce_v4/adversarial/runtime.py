@@ -18,6 +18,7 @@ def config():
 
 class ControlledPayment:
     name = "simulated"
+    supports_idempotent_checkout = True
 
     def create_checkout(self, **kwargs):
         c = config()
@@ -75,6 +76,7 @@ def application():
         delivery_providers={"simulated_delivery": ControlledDelivery()},
         event_sink=ControlledEvents(),
         rate_limit_per_minute=c.get("rate_limit_per_minute", 100000),
+        payment_lease_seconds=c.get("payment_lease_seconds", 5),
     )
     # Harness proof only: no additional application authority or login endpoints.
     return app
