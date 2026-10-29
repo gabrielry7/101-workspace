@@ -8,7 +8,12 @@ from datetime import UTC, datetime, timedelta
 from sqlalchemy import func, or_, select, update
 from sqlalchemy.exc import IntegrityError
 
-from .errors import IdempotencyConflictError, NotFoundError, PaymentError, ValidationError
+from .errors import (
+    IdempotencyConflictError,
+    NotFoundError,
+    PaymentError,
+    ValidationError,
+)
 from .financial_auth import FinancialPrincipal
 from .models import (
     FinancialAudit,

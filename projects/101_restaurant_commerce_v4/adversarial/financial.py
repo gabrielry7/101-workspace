@@ -192,7 +192,7 @@ try:
     record(
         "mobile financial UI and reload credential containment", browser_cases=1, provider_effects=1
     )
-except Exception as exc:
+except Exception as exc:  # noqa: BLE001 - retain a failure receipt for any runner error.
     error = type(exc).__name__ + ": " + str(exc)
     error = error.replace(c["financial_token"], "<redacted>").replace(
         c["operator_token"], "<redacted>"

@@ -8,6 +8,7 @@ from fastapi.testclient import TestClient
 from sqlalchemy import select
 from test_payment_durability_m3 import factory as shared_factory
 from test_payment_durability_m3 import request
+
 from world_model.restaurant_commerce.api import create_app
 from world_model.restaurant_commerce.errors import (
     InvalidTransitionError,
@@ -231,7 +232,7 @@ def test_unknown_lookup_cannot_resolve_review(factory):
 
 
 def test_resolution_audited_and_later_contradiction_reopens(factory):
-    session, svc, provider, order = setup(factory)
+    session, svc, _provider, order = setup(factory)
     result = refund(svc, order)
     row = svc.list_payment_reconciliation(BID)[0]
     assert (
@@ -264,7 +265,7 @@ def test_resolution_audited_and_later_contradiction_reopens(factory):
 
 
 def test_refund_reverses_earned_points_once_with_explicit_debt(factory):
-    session, svc, provider, order = setup(factory)
+    session, svc, _provider, order = setup(factory)
     row = session.get(Order, order.id)
     account = LoyaltyAccount(
         business_id=BID, customer_id=row.customer_id, available_points=2, lifetime_earned_points=10
@@ -418,7 +419,6 @@ def test_external_refund_during_lookup_does_not_dispatch_second_refund(factory):
                 amount_minor=order.total_minor,
                 currency=order.currency,
             )
-        return None
 
     provider.lookup_refund = lookup
     result = refund(svc, order)
@@ -469,7 +469,7 @@ def test_signed_external_refund_compensates_applied_benefits_once(factory):
         RewardRedemption,
     )
 
-    session, svc, provider, order = setup(factory)
+    session, svc, _provider, order = setup(factory)
     row = session.get(Order, order.id)
     account = LoyaltyAccount(
         business_id=BID,
@@ -557,7 +557,7 @@ def test_populated_m3a_upgrade_preserves_order_and_payment(factory):
     )
     from world_model.restaurant_commerce.models import Base, Payment
 
-    session, svc, provider, order = setup(factory)
+    session, _svc, _provider, order = setup(factory)
     engine = session.get_bind()
     session.close()
     for table in reversed(Base.metadata.sorted_tables):
@@ -586,7 +586,7 @@ def test_refund_hold_prevents_courier_dispatch(factory):
 
 
 def test_future_completed_order_repays_refund_debt_with_ledger(factory):
-    session, svc, provider, order = setup(factory)
+    session, svc, _provider, order = setup(factory)
     customer_id = session.get(Order, order.id).customer_id
     account = LoyaltyAccount(
         business_id=BID, customer_id=customer_id, available_points=2, lifetime_earned_points=10
