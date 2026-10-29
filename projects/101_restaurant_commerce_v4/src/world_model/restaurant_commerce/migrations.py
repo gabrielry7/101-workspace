@@ -175,3 +175,20 @@ def upgrade_staff(engine):
                 table.create(connection, checkfirst=True)
         if not staff_columns_present(connection):
             raise RuntimeError("Staff schema verification failed")
+
+
+def upgrade_wompi_sandbox(engine):
+    """Add sandbox lookup jobs offline; no payment or staff data changes."""
+    from .models import WompiSandboxLookup
+    with engine.begin() as connection:
+        if engine.dialect.name == "sqlite":
+            connection.exec_driver_sql("BEGIN IMMEDIATE")
+        if not staff_columns_present(connection):
+            raise RuntimeError("Sandbox requires the M4 staff schema")
+        table = WompiSandboxLookup.__table__
+        inspector = inspect(connection)
+        if table.name in inspector.get_table_names() and not set(table.columns.keys()).issubset(
+            {c["name"] for c in inspector.get_columns(table.name)}
+        ):
+            raise RuntimeError("Incomplete sandbox schema; repair offline")
+        table.create(connection, checkfirst=True)

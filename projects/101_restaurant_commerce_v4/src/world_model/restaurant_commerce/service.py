@@ -1287,6 +1287,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         if not provider or provider.name != request.payment_provider:
             raise ValidationError(f"Unsupported payment provider: {request.payment_provider}")
 
+        if getattr(provider, "business_id", business_id) != business_id:
+            raise ValidationError("Payment merchant is not configured for this business")
+
         delivery_fee = delivery_quote.fee_minor if delivery_quote else 0
         order = Order(
             public_code=_public_code("O"),

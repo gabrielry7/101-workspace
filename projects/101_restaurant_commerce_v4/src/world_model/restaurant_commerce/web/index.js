@@ -5,6 +5,7 @@ const {node: h, replace, safeURL, bind, start, path} = window.CommerceUI;
 const itemDialog = document.getElementById("itemDialog");
 const qs=new URLSearchParams(location.search),businessId=qs.get('business_id')||'demo-restaurant-bogota';let store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
 let noticeTimer, foodGeneration=0, deliveryGeneration=0;
+const returnHint=qs.get('id'); let wompiReturnId=returnHint&&/^[A-Za-z0-9_-]{1,100}$/.test(returnHint)?returnHint:null;
 let checkoutBusy=false, checkoutIntent=null, reservationBusy=false, reservationIntent=null;
 const recoveryStorageKey='101.checkout.v1:'+businessId, recoveryTtlMs=24*60*60*1000;
 let recoveryRecord=null, recoveryState='idle', recoveredOrder=null, recoveryBusy=false, recoveryStorageAvailable=true;
@@ -41,6 +42,7 @@ function recoveryAction(label,callback,disabled=false){return h('button',{classN
 function renderRecovery(){
   const root=$('checkoutRecovery');replace(root);
   if(recoveryState==='idle'){
+    if(wompiReturnId)root.append(h('p',{className:'notice',role:'status'},'Volviste del pago, pero no tenemos la recuperación guardada. Contacta al restaurante; no vuelvas a pagar.'));
     if(!recoveryStorageAvailable)root.append(h('p',{className:'notice',role:'status'},'Este navegador no permite recuperar el pedido después de recargar. Mantén esta página abierta hasta confirmar el resultado.'));
     return;
   }
@@ -55,7 +57,7 @@ function renderRecovery(){
       panel.append(h('p',{},'Pago confirmado. Estado del pedido: '+recoveredOrder.status));
     } else {
       panel.append(h('p',{},'Estado del pedido: '+recoveredOrder.status+'. Pago: '+recoveredOrder.payment_status));
-      if(!['cancelled','completed'].includes(recoveredOrder.status)&&!['failed','refunded'].includes(recoveredOrder.payment_status))panel.append(recoveryAction('Continuar con el pago',continueRecoveredPayment,recoveryBusy));
+      if(!wompiReturnId&&!['cancelled','completed'].includes(recoveredOrder.status)&&!['failed','refunded'].includes(recoveredOrder.payment_status))panel.append(recoveryAction('Continuar con el pago',continueRecoveredPayment,recoveryBusy));
     }
     panel.append(recoveryAction('Actualizar estado',recoverCheckout,recoveryBusy));
     if(canStartAnotherOrder())panel.append(recoveryAction('Hacer otro pedido',startAnotherOrder,recoveryBusy));
@@ -74,7 +76,7 @@ function renderRecovery(){
 function updateCheckoutControls(){
   const recovering=['checking','uncertain','expired','invalid','found'].includes(recoveryState)&&!checkoutIntent;
   lockInputs(checkoutFields,checkoutBusy||recovering||!!checkoutIntent);
-  $('checkoutButton').disabled=checkoutBusy||recoveryBusy||['expired','invalid'].includes(recoveryState);
+  $('checkoutButton').disabled=!!(wompiReturnId&&!recoveryRecord)||checkoutBusy||recoveryBusy||['expired','invalid'].includes(recoveryState);
   $('checkoutButton').textContent=recovering?'Consultar pedido anterior':fulfillment==='delivery'?'Pedir a domicilio':'Hacer pedido para recoger';
 }
 async function recoverCheckout(){
@@ -82,7 +84,7 @@ async function recoverCheckout(){
   recoveryBusy=true;recoveryState='checking';renderRecovery();updateCheckoutControls();
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
   try {
-    const order=await api(`/api/restaurants/${path(businessId)}/orders/recover`,{method:'POST',signal:controller.signal,body:JSON.stringify({idempotency_key:recoveryRecord.idempotency_key,recovery_secret:recoveryRecord.recovery_secret})});
+    const order=await api(`/api/restaurants/${path(businessId)}/orders/recover`,{method:'POST',signal:controller.signal,body:JSON.stringify({idempotency_key:recoveryRecord.idempotency_key,recovery_secret:recoveryRecord.recovery_secret,...(wompiReturnId?{wompi_transaction_id:wompiReturnId}:{})})});
     if(!order.id||order.business_id!==businessId)throw new Error('Respuesta de recuperación inválida');
     recoveredOrder=order;checkoutIntent=null;recoveryState='found';
   } catch(e){
@@ -90,16 +92,17 @@ async function recoverCheckout(){
   } finally {clearTimeout(timer);recoveryBusy=false;renderRecovery();updateCheckoutControls();}
 }
 function canStartAnotherOrder(){return recoveredOrder&&!recoveredOrder.reconciliation_required&&recoveredOrder.checkout_state!=='review_required'&&(['paid','refunded','failed'].includes(recoveredOrder.payment_status)||recoveredOrder.status==='cancelled');}
+function clearPaymentReturn(){wompiReturnId=null;const url=new URL(location.href);url.searchParams.delete('id');history.replaceState(null,'',url);}
 function startDifferentPurchase(){
   if(recoveryState!=='expired'||!window.confirm('Esto inicia una compra diferente. No cancela, confirma ni resuelve el pedido anterior. ¿Quieres continuar con una compra diferente?'))return;
-  clearRecovery();checkoutIntent=null;cart=[];foodQuote=null;deliveryQuote=null;++deliveryGeneration;renderCart();updateCheckoutControls();
+  clearPaymentReturn();clearRecovery();checkoutIntent=null;cart=[];foodQuote=null;deliveryQuote=null;++deliveryGeneration;renderCart();updateCheckoutControls();
 }
 function startAnotherOrder(){
   if(!canStartAnotherOrder())return;
-  clearRecovery();checkoutIntent=null;cart=[];foodQuote=null;deliveryQuote=null;++deliveryGeneration;renderCart();updateCheckoutControls();
+  clearPaymentReturn();clearRecovery();checkoutIntent=null;cart=[];foodQuote=null;deliveryQuote=null;++deliveryGeneration;renderCart();updateCheckoutControls();
 }
 async function continueRecoveredPayment(){
-  if(!recoveredOrder||recoveryBusy||recoveredOrder.reconciliation_required||recoveredOrder.checkout_state==='review_required'||['cancelled','completed'].includes(recoveredOrder.status)||['failed','refunded'].includes(recoveredOrder.payment_status))return;
+  if(wompiReturnId||!recoveredOrder||recoveryBusy||recoveredOrder.reconciliation_required||recoveredOrder.checkout_state==='review_required'||['cancelled','completed'].includes(recoveredOrder.status)||['failed','refunded'].includes(recoveredOrder.payment_status))return;
   recoveryBusy=true;renderRecovery();updateCheckoutControls();
   try {
     const payment=recoveredOrder.payments?.[0];
@@ -108,6 +111,7 @@ async function continueRecoveredPayment(){
       const paid=await api(`/api/payments/simulated/${path(payment.provider_reference)}/complete`,{method:'POST'});
       recoveredOrder={...recoveredOrder,...paid};
     } else if(payment.checkout_url){
+      if(!recoveryStorageAvailable)throw new Error('No podemos guardar la recuperación. Contacta al restaurante antes de pagar.');
       const url=safeURL(payment.checkout_url,'checkout');
       if(!url)throw new Error('Enlace de pago no autorizado. Contacta al restaurante.');
       window.location.assign(url);
@@ -202,6 +206,7 @@ function showKnownOrder(order){
   recoveredOrder=order;recoveryState='found';checkoutIntent=null;clearTimeout(noticeTimer);replace($('notice'));renderRecovery();
 }
 async function checkout(){
+  if(wompiReturnId&&!recoveryRecord)return notice('Contacta al restaurante para recuperar el pago anterior.','error');
   if(checkoutBusy||recoveryBusy)return;
   if(!checkoutIntent&&['checking','uncertain','expired','invalid','found'].includes(recoveryState)){await recoverCheckout();return;}
   if(!store)return notice('Espera a que cargue el menú.','error');
@@ -223,6 +228,7 @@ async function checkout(){
     if(checkoutNeedsStatusOnly(order)){showKnownOrder(order);return;}
     if(store.payment_provider==='simulated'){const paid=await api(`/api/payments/simulated/${path(order.payments[0].provider_reference)}/complete`,{method:'POST'});order={...order,...paid};}
     else if(order.payments[0]?.checkout_url){
+      if(!recoveryStorageAvailable)throw new Error('No podemos guardar la recuperación en este navegador. Conserva la referencia '+order.public_code+' y contacta al restaurante antes de pagar.');
       const url=safeURL(order.payments[0].checkout_url,'checkout');
       if(!url)throw new Error('Enlace de pago no autorizado. Conserva la referencia del pedido: '+order.public_code);
       window.location.assign(url);return;

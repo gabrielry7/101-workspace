@@ -532,3 +532,36 @@ def test_cancellation_during_payment_completion_has_no_success_notice(site):
     assert "recibido" not in page.locator("#notice").inner_text()
     assert "Pago demo aprobado" not in page.locator("#notice").inner_text()
     assert not errors and not external
+
+
+def test_wompi_return_without_storage_blocks_accidental_new_purchase(site):
+    page, _, _, requests, errors, external = site
+    page.goto('https://commerce.test/?id=synthetic-return&status=APPROVED')
+    playwright.expect(page.locator('#checkoutRecovery')).to_contain_text('no vuelvas a pagar')
+    playwright.expect(page.locator('#checkoutButton')).to_be_disabled()
+    assert not any(method == 'POST' and url == ROOT + '/orders' for method, url, _ in requests)
+    assert 'Pago confirmado' not in page.locator('#checkoutRecovery').inner_text()
+    assert not errors and not external
+
+
+def test_new_purchase_clears_previous_wompi_return_hint(site):
+    page, _, _, requests, errors, external = site
+    page.add_init_script("""localStorage.setItem('101.checkout.v1:demo-restaurant-bogota',JSON.stringify({
+      version:1,business_id:'demo-restaurant-bogota',idempotency_key:'a'.repeat(32),
+      recovery_secret:'b'.repeat(64),created_at:Date.now()}));""")
+    recovery_bodies = []
+    def recovered(route):
+        recovery_bodies.append(json.loads(route.request.post_data))
+        route.fulfill(json={'id':'first-order','business_id':'demo-restaurant-bogota',
+                            'public_code':'FIRST','total_minor':11900,'status':'placed',
+                            'payment_status':'paid','checkout_state':'ready',
+                            'reconciliation_required':False,'payments':[{'provider':'wompi_sandbox'}]})
+    page.route('**' + ROOT + '/orders/recover', recovered)
+    page.goto('https://commerce.test/?id=old-transaction')
+    playwright.expect(page.locator('#checkoutRecovery')).to_contain_text('Pago confirmado')
+    assert recovery_bodies[0]['wompi_transaction_id'] == 'old-transaction'
+    page.get_by_role('button', name='Hacer otro pedido', exact=True).click()
+    assert 'id=' not in page.url
+    playwright.expect(page.locator('#checkoutButton')).to_be_enabled()
+    assert 'Volviste del pago' not in page.locator('#checkoutRecovery').inner_text()
+    assert not errors and not external

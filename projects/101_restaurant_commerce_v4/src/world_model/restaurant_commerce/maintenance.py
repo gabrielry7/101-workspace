@@ -4,12 +4,12 @@ import argparse
 import os
 
 from .db import make_engine
-from .migrations import upgrade_payment_durability, upgrade_financial_resolution, upgrade_staff
+from .migrations import upgrade_payment_durability, upgrade_financial_resolution, upgrade_staff, upgrade_wompi_sandbox
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["upgrade-payments", "upgrade-finance", "upgrade-staff"])
+    parser.add_argument("command", choices=["upgrade-payments", "upgrade-finance", "upgrade-staff", "upgrade-wompi-sandbox"])
     parser.add_argument(
         "--offline",
         action="store_true",
@@ -27,7 +27,9 @@ def main():
         )
     engine = make_engine(url)
     try:
-        if args.command == "upgrade-staff":
+        if args.command == "upgrade-wompi-sandbox":
+            upgrade_wompi_sandbox(engine)
+        elif args.command == "upgrade-staff":
             upgrade_staff(engine)
         elif args.command == "upgrade-finance":
             upgrade_financial_resolution(engine)

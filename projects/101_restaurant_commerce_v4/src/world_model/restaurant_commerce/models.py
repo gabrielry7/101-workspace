@@ -780,3 +780,20 @@ class StaffAudit(Base):
     action: Mapped[str] = mapped_column(String(120))
     resource: Mapped[str] = mapped_column(String(200))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class WompiSandboxLookup(Base):
+    """Durable untrusted transaction-ID hints; only verified lookup settles money."""
+    __tablename__ = "restaurant_wompi_sandbox_lookups"
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    transaction_id: Mapped[str] = mapped_column(String(100), index=True)
+    expected_order_id: Mapped[str | None] = mapped_column(String(36), nullable=True)
+    order_id: Mapped[str | None] = mapped_column(ForeignKey("restaurant_orders.id"), nullable=True, index=True)
+    state: Mapped[str] = mapped_column(String(24), default="pending", index=True)
+    attempts: Mapped[int] = mapped_column(Integer, default=0)
+    next_attempt_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    lease_token: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_error: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    result_json: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

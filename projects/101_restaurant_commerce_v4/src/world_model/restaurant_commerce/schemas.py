@@ -206,6 +206,7 @@ class CreateOrderRequest(StrictModel):
 
 
 class RecoverOrderRequest(StrictModel):
+    wompi_transaction_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{1,100}$")
     idempotency_key: str = Field(min_length=1, max_length=120)
     recovery_secret: str = Field(pattern=r"^[a-f0-9]{64}$")
 

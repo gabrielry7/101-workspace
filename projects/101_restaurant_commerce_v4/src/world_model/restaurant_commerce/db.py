@@ -63,7 +63,10 @@ def init_schema(engine: Engine) -> None:
         raise RuntimeError(
             "Commerce schema requires an explicit offline upgrade before startup"
         )
-    Base.metadata.create_all(engine)
+    # Existing installations opt into sandbox state only through offline maintenance.
+    tables = [t for t in Base.metadata.sorted_tables
+              if not existing or t.name != "restaurant_wompi_sandbox_lookups"]
+    Base.metadata.create_all(engine, tables=tables)
     if not database_ready(engine):
         raise RuntimeError(
             "Commerce schema requires an explicit offline upgrade before startup"

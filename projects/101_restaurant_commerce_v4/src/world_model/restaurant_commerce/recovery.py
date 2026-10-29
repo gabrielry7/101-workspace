@@ -17,6 +17,8 @@ def start_recovery(session_factory, *, interval_seconds, service_options):
                 with session_factory() as session:
                     service = RestaurantCommerceService(session, **service_options)
                     service.recover_payments(limit=25)
+                    from .wompi_workflow import recover
+                    recover(service, limit=5)
                     service.recover_financial_operations(limit=25)
                     service.drain_event_outbox(limit=25)
             except Exception as exc:  # noqa: BLE001 - next cycle retries; no exception text/PII in log

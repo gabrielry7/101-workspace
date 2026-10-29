@@ -136,6 +136,7 @@ def create_app(
     webhook_secrets: dict[str, str] | None = None,
     payment_providers: dict[str, PaymentProvider] | None = None,
     financial_providers: dict | None = None,
+    wompi_sandbox=None,
     financial_authenticator=None,
     delivery_providers: dict[str, DeliveryProvider] | None = None,
     event_sink: EventSink | None = None,
@@ -174,6 +175,14 @@ def create_app(
     auto_init_schema = (not production) if auto_init_schema is None else auto_init_schema
     if financial_authenticator is not None:
         raise RuntimeError("External financial token authority was removed; use named staff sessions")
+    if wompi_sandbox is not None:
+        from .wompi_sandbox import CHECKOUT_ORIGIN, NAME, WompiSandboxProvider
+        if production or not isinstance(wompi_sandbox, WompiSandboxProvider):
+            raise RuntimeError("Wompi sandbox is forbidden in production")
+        payment_providers = {**(payment_providers or {}), NAME: wompi_sandbox}
+        browser_policy["checkout_origins"] = list(set(browser_policy["checkout_origins"] + [CHECKOUT_ORIGIN]))
+    if production and any(getattr(p, "sandbox_only", False) for p in (payment_providers or {}).values()):
+        raise RuntimeError("Sandbox payment providers are forbidden in production")
     if production and financial_providers:
         raise RuntimeError("M3b financial execution is controlled-only; production is gated")
     if production and seed:
@@ -195,6 +204,14 @@ def create_app(
     engine = engine or make_engine(database_url)
     if auto_init_schema:
         init_schema(engine)
+    if wompi_sandbox is not None:
+        from sqlalchemy import inspect
+        from .models import WompiSandboxLookup
+        inspector = inspect(engine)
+        table = WompiSandboxLookup.__table__
+        if (table.name not in inspector.get_table_names() or not set(table.columns.keys()).issubset(
+                {c["name"] for c in inspector.get_columns(table.name)})):
+            raise RuntimeError("Run explicit offline upgrade-wompi-sandbox before enabling sandbox")
     SessionLocal = session_factory(engine)
 
     if seed:
@@ -235,7 +252,7 @@ def create_app(
                 stop.set()
                 thread.join(timeout=5)
 
-    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.8.0",
+    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.9.0",
                   responses={status: {"model": ErrorResponse} for status in
                              (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
@@ -460,7 +477,7 @@ def create_app(
 
     @app.get("/api/browser-policy")
     def browser_url_policy():
-        return {**browser_policy, "demo_mode": demo_mode}
+        return {**browser_policy, "demo_mode": demo_mode, "wompi_sandbox": wompi_sandbox is not None}
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
@@ -547,6 +564,11 @@ def create_app(
             order = service.recover_order(business_id, request.idempotency_key, request.recovery_secret)
         except CheckoutRecoveryExpired as exc:
             raise HTTPException(status_code=410, detail=str(exc)) from exc
+        if request.wompi_transaction_id:
+            from .wompi_workflow import enqueue, process
+            key = enqueue(service, request.wompi_transaction_id, order.id)
+            process(service, key)
+            order = service.order_out(order.id)
         return with_order_access(order)
 
     @app.post("/api/operator/orders/{order_id}/access/revoke", dependencies=[Depends(require_operator)])
@@ -590,6 +612,18 @@ def create_app(
         request = request.model_copy(update={"source_channel": "web", "external_source_ref": None,
             "customer": request.customer.model_copy(update={"consent_source": "web_reservation:commerce-consent-v1"})})
         return service.create_reservation(business_id, request)
+
+    @app.post("/api/webhooks/payments/wompi_sandbox")
+    def wompi_sandbox_webhook(payload: dict, service: RestaurantCommerceService = Depends(get_service)):
+        if wompi_sandbox is None:
+            raise HTTPException(status_code=404, detail="Sandbox webhook not configured")
+        try:
+            transaction_id = wompi_sandbox.verify_event(payload)
+        except ValueError:
+            raise HTTPException(status_code=401, detail="Invalid sandbox event") from None
+        from .wompi_workflow import enqueue
+        enqueue(service, transaction_id, event_key=payload["signature"]["checksum"].lower())
+        return {"status": "accepted"}
 
     @app.post("/api/webhooks/payments/{provider}", response_model=OrderOut,
               responses={202: {"model": PaymentNotificationAccepted}})
