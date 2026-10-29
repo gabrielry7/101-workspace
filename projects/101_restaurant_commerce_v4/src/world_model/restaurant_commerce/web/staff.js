@@ -17,7 +17,11 @@
   async function boundedFetch(url,options={}) {
     const controller=new AbortController();
     const timer=setTimeout(()=>controller.abort(),15000);
-    try{return await fetch(url,{...options,signal:options.signal || controller.signal});}
+    try{
+      const response=await fetch(url,{...options,signal:options.signal || controller.signal});
+      const data=await response.json();
+      return {ok:response.ok,status:response.status,json:async()=>data};
+    }
     finally{clearTimeout(timer);}
   }
   async function restore() {

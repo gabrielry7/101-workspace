@@ -69,3 +69,8 @@ show old data until its next poll, visibility refresh or protected request.
 Remaining: MFA/SSO and self-service recovery/invitations, broader security scanner
 qualification, production backup/restore and old/low-memory device verification.
 Real-money use and production financial providers remain gated.
+
+The 15-second general staff deadline includes reading the JSON body, not just
+response headers. The live browser regression preserves the real HTTP response and
+injects a stalled body reader that reacts to AbortSignal. Logout tests issue their
+own sessions so they cannot revoke credentials needed by later property tests.

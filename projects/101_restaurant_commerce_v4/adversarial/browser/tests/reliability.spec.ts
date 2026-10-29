@@ -135,7 +135,8 @@ test('named staff login survives reload without browser storage; logout removes 
 
 test('delayed session restore cannot republish staff after logout',async({page})=>{
   const {config}=await import('./fixtures');
-  await page.context().addCookies([{name:'commerce_staff',value:config.single_staff_headers.Cookie.split('=')[1],url:(await import('./fixtures')).origin,httpOnly:true,sameSite:'Strict'}]);
+  const login=await page.request.post('/api/staff/login',{data:{username:'synthetic.single',password:config.staff_password},headers:{'X-101-Login':'1'}});
+  expect(login.status()).toBe(200); // This logout test owns its session; never revoke a shared harness credential.
   await page.goto('/admin');await expect(page.locator('#staffStatus')).toContainText('synthetic.single');
   let release!:()=>void;const gate=new Promise<void>(r=>release=r);let fetched=false;
   await page.route('**/api/staff/me',async route=>{const response=await route.fetch();expect(response.status()).toBe(200);fetched=true;await gate;await route.fulfill({response});});
@@ -145,4 +146,26 @@ test('delayed session restore cannot republish staff after logout',async({page})
   await expect(page.locator('#staffLogin')).toBeVisible();release();
   await page.waitForTimeout(250);
   await expect(page.locator('#staffStatus')).not.toContainText('synthetic.single');
+});
+
+test('staff session deadline includes a stalled response body',async({page})=>{
+  const {config}=await import('./fixtures');
+  const login=await page.request.post('/api/staff/login',{data:{username:'synthetic.single',password:config.staff_password},headers:{'X-101-Login':'1'}});
+  expect(login.status()).toBe(200);
+  await page.addInitScript(()=>{
+    const original=window.fetch;
+    window.fetch=async(url,options={})=>{
+      const response=await original(url,options);
+      if(String(url)==='/api/staff/me'){
+        const json=response.json.bind(response);
+        response.json=async()=>{await json();return new Promise((_resolve,reject)=>{
+          options.signal!.addEventListener('abort',()=>reject(new DOMException('Controlled stalled body','AbortError')),{once:true});
+        });};
+      }
+      return response;
+    };
+  });
+  await page.goto('/admin');
+  await expect(page.locator('#staffStatus')).toContainText('Sin conexión',{timeout:20000});
+  await expect(page.locator('#staffLogin')).toBeVisible();
 });
