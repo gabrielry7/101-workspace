@@ -111,7 +111,7 @@ async function financeAPI(url, body) {
     return data;
   } finally {clearTimeout(timeout);}
 }
-const financeStates={pending:'Pendiente',processing:'En proceso',unknown:'Sin confirmación; consultar nuevamente',succeeded:'Confirmado por el proveedor',failed:'Rechazado por el proveedor',review_required:'Requiere investigación'};
+const financeStates={pending:'Pendiente',processing:'En proceso',unknown:'Sin confirmación; consultar nuevamente',succeeded:'Confirmado por el proveedor',failed:'Rechazado por el proveedor',withdrawn:'Solicitud retirada tras rechazo confirmado',review_required:'Requiere investigación'};
 async function renderFinance() {
   const data=await financeAPI(financeRoot());
   const operations=data.operations || [];
@@ -120,7 +120,7 @@ async function renderFinance() {
       h('p',{},financeStates[o.state] || o.state),meta('Responsable: '+o.actor_id),meta(o.reason),
       meta(o.result ? JSON.stringify(o.result) : 'Sin evidencia de resultado'))),
     ...((data.reviews||[]).filter(r=>r.status==='open').map(r=>card(meta('Revisión: '+r.reason),
-      ...operations.filter(o=>o.state==='succeeded').slice(-3).map(o=>button('Resolver con evidencia '+o.id.slice(0,8),async()=>{
+      ...operations.filter(o=>o.state==='succeeded'||o.state==='failed').slice(-3).map(o=>button('Resolver con evidencia '+o.id.slice(0,8),async()=>{
         const reason=$('financeReason').value.trim();if(!reason)throw new Error('Escribe el motivo de la resolución.');
         await financeAPI(financeRoot()+'/resolve/'+path(r.id),{operation_id:o.id,reason});await renderFinance();await loadReconciliation();
       }))))),

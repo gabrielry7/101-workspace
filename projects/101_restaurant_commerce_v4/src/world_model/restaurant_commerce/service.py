@@ -871,12 +871,15 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
     def dispatch_delivery(self, order_id: str) -> DeliveryOut:
         stmt = (
             select(Order)
-            .where(Order.id == order_id)
+            .where(Order.id == order_id).with_for_update()
             .options(selectinload(Order.customer), selectinload(Order.delivery).selectinload(Delivery.quote))
         )
         order = self.session.scalar(stmt)
         if not order:
             raise NotFoundError("Order not found")
+        if self.session.scalar(select(FinancialOperation.id).where(FinancialOperation.order_id == order.id,
+                FinancialOperation.kind == "refund", FinancialOperation.state != "withdrawn").limit(1)):
+            raise InvalidTransitionError("Refund intent prevents delivery dispatch")
         if order.fulfillment_type != FulfillmentType.DELIVERY.value or not order.delivery:
             raise ValidationError("Order is not a delivery order")
         if order.payment_status != PaymentStatus.PAID.value:
@@ -1522,7 +1525,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         deferred_payment = any(p.provider == "cash_at_pickup" for p in payments)
         if target in {OrderStatus.ACCEPTED, OrderStatus.PREPARING, OrderStatus.READY, OrderStatus.COMPLETED}:
             if self.session.scalar(select(FinancialOperation.id).where(FinancialOperation.order_id == order.id,
-                    FinancialOperation.kind == "refund").limit(1)):
+                    FinancialOperation.kind == "refund", FinancialOperation.state != "withdrawn").limit(1)):
                 raise InvalidTransitionError("An order with a refund intent cannot advance fulfillment")
             if self.session.scalar(select(PaymentReconciliation.id).where(PaymentReconciliation.order_id == order.id,
                     PaymentReconciliation.status == "open").limit(1)):

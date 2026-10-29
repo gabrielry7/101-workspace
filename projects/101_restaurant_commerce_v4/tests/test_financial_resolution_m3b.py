@@ -401,3 +401,183 @@ def test_slow_old_lookup_cannot_resolve_new_provider_contradiction(factory):
             BID, order.id, contradiction["id"], result["id"], "Old observation", principal()
         )
     session.close()
+
+
+def test_external_refund_during_lookup_does_not_dispatch_second_refund(factory):
+    session, svc, provider, order = setup(factory)
+
+    def lookup(**kwargs):
+        with factory() as other:
+            RestaurantCommerceService(other).apply_payment_status(
+                order.payments[0].provider_reference,
+                "refunded",
+                provider="simulated",
+                event_id="external-refund",
+                amount_minor=order.total_minor,
+                currency=order.currency,
+            )
+        return None
+
+    provider.lookup_refund = lookup
+    result = refund(svc, order)
+    assert result["state"] == "review_required"
+    assert provider.calls == provider.effects == 0
+    assert svc.order_out(order.id).payment_status == "refunded"
+    session.close()
+
+
+def test_confirmed_no_effect_failed_refund_can_be_withdrawn_with_audit(factory):
+    session, svc, provider, order = setup(factory)
+
+    def declined(**kw):
+        return RefundObservation(
+            kw["order_id"],
+            kw["provider_reference"],
+            kw["amount_minor"],
+            kw["currency"],
+            "failed",
+            "declined-proof",
+            "declined-ref",
+        )
+
+    provider.refund = declined
+    result = refund(svc, order)
+    assert result["state"] == "failed"
+    row = svc.list_payment_reconciliation(BID)[0]
+    svc.resolve_financial_review(
+        BID,
+        order.id,
+        row["id"],
+        result["id"],
+        "Withdraw declined request; no money moved",
+        principal(),
+    )
+    assert session.get(FinancialOperation, result["id"]).state == "withdrawn"
+    assert svc.transition_order(order.id, "accepted").status == "accepted"
+    assert refund(svc, order)["state"] == "withdrawn"
+    assert provider.effects == 0
+    session.close()
+
+
+def test_signed_external_refund_compensates_applied_benefits_once(factory):
+    from world_model.restaurant_commerce.models import (
+        Promotion,
+        PromotionRedemption,
+        RewardDefinition,
+        RewardRedemption,
+    )
+
+    session, svc, provider, order = setup(factory)
+    row = session.get(Order, order.id)
+    account = LoyaltyAccount(
+        business_id=BID,
+        customer_id=row.customer_id,
+        available_points=10,
+        lifetime_redeemed_points=5,
+    )
+    reward = RewardDefinition(
+        business_id=BID, name="Synthetic reward", points_cost=5, discount_minor=100
+    )
+    promo = Promotion(business_id=BID, code="M3B", name="Synthetic promotion", value=100)
+    session.add_all([account, reward, promo])
+    session.flush()
+    redemption = RewardRedemption(
+        business_id=BID,
+        customer_id=row.customer_id,
+        reward_id=reward.id,
+        order_id=row.id,
+        points_spent=5,
+        discount_minor=100,
+        status="applied",
+    )
+    promotion = PromotionRedemption(
+        business_id=BID,
+        customer_id=row.customer_id,
+        promotion_id=promo.id,
+        order_id=row.id,
+        discount_minor=100,
+        status="applied",
+    )
+    session.add_all([redemption, promotion])
+    session.commit()
+    for event in ["refund-external", "refund-external", "refund-external-repeat"]:
+        svc.apply_payment_status(
+            order.payments[0].provider_reference,
+            "refunded",
+            provider="simulated",
+            event_id=event,
+            amount_minor=order.total_minor,
+            currency=order.currency,
+        )
+    session.refresh(account)
+    assert account.available_points == 15 and account.lifetime_redeemed_points == 0
+    assert redemption.status == promotion.status == "released"
+    assert (
+        len(
+            list(
+                session.scalars(
+                    select(LoyaltyLedgerEntry).where(LoyaltyLedgerEntry.reason == "order.refunded")
+                )
+            )
+        )
+        == 1
+    )
+    session.close()
+
+
+def test_stale_refund_worker_cannot_finalize_local_state(factory):
+    from sqlalchemy import update
+
+    session, svc, provider, order = setup(factory)
+
+    def takeover():
+        with factory() as other:
+            other.execute(
+                update(FinancialOperation)
+                .where(FinancialOperation.order_id == order.id)
+                .values(lease_token="new-owner", state="review_required")
+            )
+            other.commit()
+
+    provider.callback = takeover
+    result = refund(svc, order)
+    assert result["state"] == "review_required"
+    assert svc.order_out(order.id).payment_status == "paid"
+    assert provider.effects == 1
+    session.close()
+
+
+def test_populated_m3a_upgrade_preserves_order_and_payment(factory):
+    from world_model.restaurant_commerce.models import Base, Payment
+    from world_model.restaurant_commerce.migrations import (
+        FINANCIAL_TABLES,
+        upgrade_financial_resolution,
+    )
+    from world_model.restaurant_commerce.db import database_ready
+
+    session, svc, provider, order = setup(factory)
+    engine = session.get_bind()
+    session.close()
+    for table in reversed(Base.metadata.sorted_tables):
+        if table.name in FINANCIAL_TABLES:
+            table.drop(engine)
+    assert not database_ready(engine)
+    upgrade_financial_resolution(engine)
+    upgrade_financial_resolution(engine)
+    assert database_ready(engine)
+    with factory() as s:
+        assert s.get(Order, order.id).payment_status == "paid"
+        assert (
+            s.scalar(select(Payment).where(Payment.order_id == order.id)).provider_reference
+            == order.payments[0].provider_reference
+        )
+        assert not list(s.scalars(select(FinancialOperation)))
+
+
+def test_refund_hold_prevents_courier_dispatch(factory):
+    session, svc, provider, order = setup(factory)
+    provider.lose_refund = True
+    refund(svc, order)
+    with pytest.raises(InvalidTransitionError, match="Refund intent prevents delivery dispatch"):
+        svc.dispatch_delivery(order.id)
+    session.close()

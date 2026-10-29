@@ -530,6 +530,7 @@ def validate_layers(value):
     names = value.split(",")
     allowed = {
         "baseline",
+        "financial",
         "browser",
         "properties",
         "schemathesis",
@@ -548,7 +549,7 @@ def main():
     p.add_argument("--config", type=Path)
     p.add_argument(
         "--layers",
-        default="baseline,browser,properties,schemathesis,locust,faults,scanners",
+        default="baseline,financial,browser,properties,schemathesis,locust,faults,scanners",
     )
     p.add_argument("--keep", action="store_true")
     p.add_argument("--cleanup", action="store_true")
@@ -585,6 +586,7 @@ def main():
                         "Baseline failed; inspect evidence before starting negative layers"
                     )
             elif layer in {
+                "financial",
                 "browser",
                 "properties",
                 "scanners",
@@ -593,6 +595,7 @@ def main():
                 "faults",
             }:
                 script = {
+                    "financial": "financial.py",
                     "browser": "browser_runner.py",
                     "properties": "properties.py",
                     "scanners": "scanners.py",

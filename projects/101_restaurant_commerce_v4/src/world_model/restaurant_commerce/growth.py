@@ -247,6 +247,8 @@ class RestaurantGrowthService:
             )
         )
 
+        self._settle_refund_debt(account, order_id, "reward-release")
+
     def award_completed_order(self, order: Order) -> int:
         if not order.customer_snapshot_json or not json.loads(order.customer_snapshot_json).get("identity_verified"):
             return 0

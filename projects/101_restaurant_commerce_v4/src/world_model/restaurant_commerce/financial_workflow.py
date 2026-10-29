@@ -232,7 +232,7 @@ class FinancialWorkflowMixin:
         op = self.session.get(FinancialOperation, operation_id)
         if not op:
             raise NotFoundError("Financial operation not found")
-        if op.state in {"succeeded", "failed", "review_required"}:
+        if op.state in {"succeeded", "failed", "review_required", "withdrawn"}:
             return self._operation_out(op)
         now, token = utcnow(), secrets.token_hex(24)
         claimed = self.session.execute(
@@ -281,6 +281,23 @@ class FinancialWorkflowMixin:
                     provider_key = "refund:" + operation_id
                     result = provider.lookup_refund(idempotency_key=provider_key)
                     if result is None:
+                        payment = self.session.scalar(
+                            select(Payment)
+                            .where(Payment.order_id == request["order_id"])
+                            .execution_options(populate_existing=True)
+                        )
+                        paid = payment is not None and payment.status == "paid"
+                        self.session.rollback()
+                        if not paid:
+                            return self._finish_financial(
+                                operation_id,
+                                token,
+                                "review_required",
+                                {
+                                    "error": "payment_changed_before_refund",
+                                    "query_started_at": query_started_at,
+                                },
+                            )
                         if (
                             attempts > 1
                             and getattr(provider, "supports_idempotent_refund", False) is not True
@@ -473,16 +490,24 @@ class FinancialWorkflowMixin:
         if not row or not op or op.order_id != order_id:
             raise NotFoundError("Resolution evidence not found")
         evidence = json.loads(op.result_json or "{}")
-        if not reason.strip() or len(reason) > 500 or op.state != "succeeded":
+        withdrawal = (
+            op.kind == "refund"
+            and op.state in {"failed", "withdrawn"}
+            and evidence.get("status") == "failed"
+            and row.reason == "refund_in_progress"
+        )
+        if not reason.strip() or len(reason) > 500 or (op.state != "succeeded" and not withdrawal):
             raise ValidationError("Confirmed provider evidence and a reason are required")
         # A pending checkout or a cancelled+paid order cannot be wished away.
-        confirmed = "refunded" if op.kind == "refund" else evidence.get("status")
+        confirmed = (
+            "paid" if withdrawal else "refunded" if op.kind == "refund" else evidence.get("status")
+        )
         refund = self.session.scalar(
             select(FinancialOperation).where(
                 FinancialOperation.order_id == order_id, FinancialOperation.kind == "refund"
             )
         )
-        if refund and (refund.state != "succeeded" or confirmed != "refunded"):
+        if refund and confirmed != "refunded" and not withdrawal:
             raise PaymentError("Refund must be confirmed before its financial hold can be resolved")
         if (
             confirmed not in {"paid", "failed", "refunded"}
@@ -500,6 +525,8 @@ class FinancialWorkflowMixin:
         if op_time < row_time:
             raise PaymentError("Provider evidence predates this review; obtain a new lookup")
         if row.status == "open":
+            if withdrawal:
+                op.state = "withdrawn"
             row.status = "resolved"
             self._financial_audit(
                 order,
