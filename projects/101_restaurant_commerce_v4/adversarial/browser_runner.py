@@ -224,7 +224,7 @@ def main():
         "agent_runs": agent_runs,
         "coverage_gaps": [
             "No customer login exists; capability reads are exercised instead",
-            "No distinct staff identities or per-business token scope exists; failure retained",
+            "Named staff sessions and business isolation exercised; MFA and physical-device qualification remain absent",
             "Physical low-end/older-browser coverage not claimed",
         ],
     }

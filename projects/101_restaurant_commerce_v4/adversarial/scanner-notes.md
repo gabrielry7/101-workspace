@@ -23,7 +23,7 @@ vulnerability databases can change; preserve reports and source hash inventories
 
 ZAP imports the live OpenAPI specification, seeds all four existing web pages,
 and proves successful staff-token and order-capability access before scanning.
-The application has no distinct staff principals or full customer login; the
+M4 has named, scoped staff sessions but no full customer login; the
 suite does not simulate those missing features into existence. Active attacks
 use an explicit HTTP rule list, a loopback context, two threads, LOW strength,
 one minute per rule and five minutes overall. External callback, DOM-browser,

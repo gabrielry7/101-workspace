@@ -99,7 +99,7 @@ def summarize(config):
         "layers": layers,
         "limits": [
             "Synthetic providers; no live money or messages",
-            "Customer login, scoped staff identities, standalone worker absent",
+            "Customer login and standalone supervised worker deployment absent; scoped staff sessions are implemented",
             "Local budgets do not qualify production capacity or physical old devices",
             "Original attachment unavailable; budgets documented in README",
         ],

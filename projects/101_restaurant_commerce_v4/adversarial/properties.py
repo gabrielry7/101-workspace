@@ -433,7 +433,7 @@ def main():
                 else "UNASSESSED",
                 "counts": counts,
                 "limits": [
-                    "Only configured global staff authority exists; scoped staff/customer login absent",
+                    "Named staff session used; exhaustive role/race combinations and customer login are outside these bounded properties",
                     "Generated sequences bounded to30 examples per main property and10 actions; not exhaustive",
                     "No real money or external providers; controlled services only",
                 ],
