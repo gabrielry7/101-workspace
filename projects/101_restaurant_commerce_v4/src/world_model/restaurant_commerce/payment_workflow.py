@@ -110,7 +110,6 @@ class PaymentWorkflowMixin:
         order = self.session.get(Order, intent.order_id)
         created = intent.created_at
         if created.tzinfo is None:
-
             created = created.replace(tzinfo=UTC)
         if (
             order.access_token_version
@@ -132,10 +131,6 @@ class PaymentWorkflowMixin:
                 "Checkout requires staff review; do not submit a new order"
             )
         provider = self.payment_providers.get(intent.provider)
-        if provider is None:
-            raise PaymentError(
-                "Payment provider unavailable; durable checkout retained"
-            )
         now = utcnow()
         token = secrets.token_hex(24)
         conditions = [
@@ -173,6 +168,11 @@ class PaymentWorkflowMixin:
         )
         order = self.session.get(Order, order_id)
         request = json.loads(intent.request_json)
+        if provider is None:
+            self._unknown_intent(order_id, token, "provider_unavailable", review=True)
+            raise PaymentError(
+                "Payment provider unavailable; durable checkout requires review"
+            )
         # Never initiate a new checkout for an already cancelled order. Without a
         # provider lookup contract an uncertain cancelled attempt needs human review.
         if order.status == OrderStatus.CANCELLED.value:

@@ -508,3 +508,47 @@ def test_invalid_unicode_does_not_leave_durable_intent(tmp_path, field):
                 session.scalar(select(Order)) is None
                 and session.scalar(select(PaymentIntent)) is None
             )
+
+
+def test_cancellation_during_provider_call_preserves_paid_review(factory):
+    class CancelDuringCall(SimulatedPaymentProvider):
+        def create_checkout(self, **kw):
+            with factory() as other:
+                RestaurantCommerceService(other).transition_order(
+                    kw["order_id"], "cancelled"
+                )
+            return replace(super().create_checkout(**kw), status="paid")
+
+    with factory() as session:
+        svc = RestaurantCommerceService(
+            session, payment_providers={"simulated": CancelDuringCall()}
+        )
+        order = svc.create_order(DEMO_BUSINESS_ID, request(svc))
+        assert order.status == "cancelled" and order.payment_status == "paid"
+        assert order.reconciliation_required and order.checkout_state == "ready"
+        assert len(list(session.scalars(select(PaymentReconciliation)))) == 1
+
+
+def test_removed_adapter_enters_review_without_starving_recovery(factory):
+    from world_model.restaurant_commerce.payments import CashAtPickupPaymentProvider
+
+    with factory() as session:
+        svc = RestaurantCommerceService(
+            session, payment_providers={"simulated": LostReply()}
+        )
+        with pytest.raises(PaymentError):
+            svc.create_order(DEMO_BUSINESS_ID, request(svc))
+        intent = session.scalar(select(PaymentIntent))
+        intent.next_attempt_at = utcnow() - timedelta(seconds=1)
+        session.commit()
+        recovered = RestaurantCommerceService(
+            session, payment_providers={"cash_at_pickup": CashAtPickupPaymentProvider()}
+        )
+        assert recovered.recover_payments()["deferred"] == 1
+        assert recovered.recover_payments()["examined"] == 0
+        session.expire_all()
+        assert session.scalar(select(PaymentIntent)).state == "review_required"
+        assert (
+            session.scalar(select(PaymentReconciliation)).reason
+            == "provider_unavailable"
+        )

@@ -782,7 +782,11 @@ def zap_scan(rec, config):
             proc.wait(timeout=15)
         except subprocess.TimeoutExpired:
             proc.terminate()
-            proc.wait(timeout=5)
+            try:
+                proc.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                proc.wait(timeout=5)
         row["exit_code"] = proc.returncode
         row["ended_at"] = utc()
         rec.save()
