@@ -19,13 +19,31 @@ def secure_compare(expected: str, supplied: str | None) -> bool:
     return compare_digest(expected.encode("utf-8"), supplied.encode("utf-8"))
 
 
-def sign_resource(secret: str, *, kind: str, resource_id: str) -> str:
-    msg = f"{kind}:{resource_id}".encode("utf-8")
-    return hmac.new(secret.encode("utf-8"), msg, hashlib.sha256).hexdigest()
+RESOURCE_TOKEN_TTL_SECONDS = 7 * 24 * 60 * 60
 
 
-def verify_resource_token(secret: str, token: str | None, *, kind: str, resource_id: str) -> bool:
-    return secure_compare(sign_resource(secret, kind=kind, resource_id=resource_id), token)
+def sign_resource(secret: str, *, kind: str, resource_id: str, version: int = 0,
+                  expires_at: int | None = None) -> str:
+    expires_at = int(time.time()) + RESOURCE_TOKEN_TTL_SECONDS if expires_at is None else expires_at
+    msg = f"v2:{kind}:{resource_id}:{version}:{expires_at}".encode("utf-8")
+    signature = hmac.new(secret.encode("utf-8"), msg, hashlib.sha256).hexdigest()
+    return f"v2.{expires_at}.{signature}"
+
+
+def verify_resource_token(secret: str, token: str | None, *, kind: str,
+                          resource_id: str, version: int = 0) -> bool:
+    if not token or len(token) > 128:
+        return False
+    try:
+        prefix, expiry, signature = token.split(".")
+        expires_at = int(expiry)
+    except (ValueError, TypeError):
+        return False
+    if prefix != "v2" or expires_at <= int(time.time()):
+        return False
+    expected = sign_resource(secret, kind=kind, resource_id=resource_id,
+                             version=version, expires_at=expires_at)
+    return secure_compare(expected, token)
 
 
 def sign_webhook(secret: str, body: bytes) -> str:

@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 
 from world_model.restaurant_commerce.db import init_schema, make_engine
 from world_model.restaurant_commerce.growth import RestaurantGrowthService
+from world_model.restaurant_commerce.models import Customer
 from world_model.restaurant_commerce.schemas import (
     CartItemIn,
     CreateOrderRequest,
@@ -43,7 +44,11 @@ def main() -> None:
         init_schema(engine)
         with Session(engine) as session:
             seed_demo(session)
-            service = RestaurantCommerceService(session)
+            # Explicit verified-identity fixture, not proof of real phone verification.
+            customer = Customer(business_id=DEMO_BUSINESS_ID, phone="+573005550101", name="Cliente V3")
+            session.add(customer)
+            session.flush()
+            service = RestaurantCommerceService(session, verified_customer_id=customer.id)
             growth = RestaurantGrowthService(session)
 
             delivery_quote = service.create_delivery_quote(
@@ -102,7 +107,6 @@ def main() -> None:
             assert analytics.net_revenue_minor == expected_total
 
             # Customer lookup for loyalty proof.
-            from world_model.restaurant_commerce.models import Customer
             from sqlalchemy import select
             customer = session.scalar(select(Customer).where(Customer.business_id == DEMO_BUSINESS_ID))
             loyalty = growth.loyalty_account(DEMO_BUSINESS_ID, customer.id)

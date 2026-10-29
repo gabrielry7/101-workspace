@@ -57,6 +57,7 @@ from .models import (
     OrderItem,
     OrderItemModifier,
     Payment,
+    Promotion,
     Reservation,
     RestaurantCommerceProfile,
     WebhookReceipt,
@@ -132,7 +133,10 @@ class RestaurantCommerceService:
         event_sink: EventSink | None = None,
         provider_executor: ProviderExecutor | None = None,
         storefront_cache: TTLCache[StorefrontOut] | None = None,
+        verified_customer_id: str | None = None,
     ) -> None:
+        # Server-side identity adapter only. Never populated from request JSON/phone.
+        self.verified_customer_id = verified_customer_id
         self.session = session
         self.payment_providers: dict[str, PaymentProvider] = payment_providers or {
             "simulated": SimulatedPaymentProvider(),
@@ -147,6 +151,42 @@ class RestaurantCommerceService:
         self.event_sink = event_sink or NullEventSink()
         self.provider_executor = provider_executor or ProviderExecutor()
         self.storefront_cache = storefront_cache
+
+    def _verified_customer(self, business_id: str, phone: str | None) -> Customer | None:
+        if self.verified_customer_id is None:
+            return None
+        customer = self.session.get(Customer, self.verified_customer_id)
+        if (not customer or customer.business_id != business_id or not phone
+                or customer.phone != _normalize_phone(phone)):
+            raise ValidationError("Verified customer does not match this request")
+        return customer
+
+    def _snapshot(self, business_id: str, request) -> str:
+        return json.dumps({
+            "name": request.customer.name, "phone": _normalize_phone(request.customer.phone),
+            "email": request.customer.email,
+            "identity_verified": self._verified_customer(business_id, request.customer.phone) is not None,
+            "whatsapp_requested": request.customer.whatsapp_opt_in is True,
+            "marketing_requested": request.customer.marketing_opt_in is True,
+            "source": request.customer.consent_source,
+            "policy_version": "commerce-consent-v1", "recorded_at": utcnow().isoformat(),
+        }, ensure_ascii=False, sort_keys=True)
+
+    @staticmethod
+    def _contact(row) -> dict:
+        if row.customer_snapshot_json:
+            return json.loads(row.customer_snapshot_json)
+        # Historical staff display only; public replay of unbound old rows is denied.
+        return {"name": row.customer.name, "phone": row.customer.phone,
+                "identity_verified": False}
+
+    def revoke_order_access(self, order_id: str) -> None:
+        order = self.session.get(Order, order_id)
+        if not order:
+            raise NotFoundError("Order not found")
+        order.access_token_version += 1
+        self._commit_event(kind="order.access_revoked", business_id=order.business_id,
+                           entity_id=order.id, payload={"version": order.access_token_version})
 
     def _commit_event(
         self,
@@ -412,6 +452,9 @@ class RestaurantCommerceService:
         customer_phone: str | None = None,
         reward_id: str | None = None,
     ) -> QuoteResponse:
+        verified = self._verified_customer(business_id, customer_phone)
+        if reward_id and verified is None:
+            raise ValidationError("Verified customer required for loyalty redemption")
         profile = self.session.get(RestaurantCommerceProfile, business_id)
         if not profile:
             raise NotFoundError(f"Restaurant commerce profile not found: {business_id}")
@@ -513,13 +556,7 @@ class RestaurantCommerceService:
                 )
             )
 
-        customer_id = None
-        if customer_phone:
-            normalized_phone = _normalize_phone(customer_phone)
-            customer = self.session.scalar(
-                select(Customer).where(Customer.business_id == business_id, Customer.phone == normalized_phone)
-            )
-            customer_id = customer.id if customer else None
+        customer_id = verified.id if verified else None
         discounts = RestaurantGrowthService(self.session).preview_discounts(
             business_id,
             subtotal=subtotal,
@@ -544,6 +581,7 @@ class RestaurantCommerceService:
         whatsapp_opt_in: bool | None = None, marketing_opt_in: bool | None = None,
         consent_source: str | None = None,
     ) -> Customer:
+        verified = self._verified_customer(business_id, phone)
         phone = _normalize_phone(phone)
         stmt = select(Customer).where(Customer.business_id == business_id, Customer.phone == phone)
         customer = self.session.scalar(stmt)
@@ -551,11 +589,11 @@ class RestaurantCommerceService:
         if not customer:
             candidate = Customer(
                 business_id=business_id, phone=phone, name=name, email=email,
-                whatsapp_opt_in=bool(whatsapp_opt_in),
-                whatsapp_opt_in_at=utcnow() if whatsapp_opt_in else None,
-                marketing_opt_in=bool(marketing_opt_in),
-                marketing_opt_in_at=utcnow() if marketing_opt_in else None,
-                marketing_opt_in_source=consent_source if marketing_opt_in else None,
+                whatsapp_opt_in=False,
+                whatsapp_opt_in_at=None,
+                marketing_opt_in=False,
+                marketing_opt_in_at=None,
+                marketing_opt_in_source=None,
             )
             try:
                 with self.session.begin_nested():
@@ -569,6 +607,12 @@ class RestaurantCommerceService:
                 if not customer:
                     raise ConcurrencyConflictError("Concurrent customer creation could not be reconciled")
 
+        if verified is None:
+            return customer
+        if whatsapp_opt_in is not None:
+            customer.whatsapp_verified_at = utcnow() if whatsapp_opt_in else None
+        if marketing_opt_in is not None:
+            customer.marketing_verified_at = utcnow() if marketing_opt_in else None
         customer.name = name or customer.name
         if email:
             customer.email = email
@@ -876,8 +920,8 @@ class RestaurantCommerceService:
                     fee_minor=delivery.fee_minor,
                     provider_quote_reference=delivery.quote.provider_quote_reference,
                     prep_minutes=order.prep_minutes,
-                    customer_name=order.customer.name or "Cliente",
-                    customer_phone=order.customer.phone,
+                    customer_name=self._contact(order)["name"] or "Cliente",
+                    customer_phone=self._contact(order)["phone"],
                     idempotency_key=provider_idempotency_key,
                 ),
             )
@@ -1042,7 +1086,7 @@ class RestaurantCommerceService:
             order.status = OrderStatus.COMPLETED.value
             order.completed_at = completed_at
             customer = self.session.get(Customer, order.customer_id)
-            if customer:
+            if customer and self._contact(order)["identity_verified"]:
                 customer.last_order_at = completed_at
             growth = RestaurantGrowthService(self.session)
             growth.finalize_reward(order.id)
@@ -1132,6 +1176,15 @@ class RestaurantCommerceService:
     # Orders
     # ------------------------------------------------------------------
     def create_order(self, business_id: str, request: CreateOrderRequest) -> OrderOut:
+        verified = self._verified_customer(business_id, request.customer.phone)
+        if request.reward_id and verified is None:
+            raise ValidationError("Verified customer required for loyalty redemption")
+        if request.promo_code and verified is None:
+            promotion = self.session.scalar(select(Promotion).where(
+                Promotion.business_id == business_id,
+                Promotion.code == request.promo_code.strip().upper()))
+            if promotion and promotion.per_customer_limit is not None:
+                raise ValidationError("Verified customer required for customer-limited promotions")
         profile = self.session.get(RestaurantCommerceProfile, business_id)
         if not profile:
             raise NotFoundError(f"Restaurant commerce profile not found: {business_id}")
@@ -1149,7 +1202,7 @@ class RestaurantCommerceService:
         claim = None
         if request.idempotency_key:
             scope = f"order.create:{business_id}"
-            fingerprint = request_fingerprint(request.model_dump(mode="json"))
+            fingerprint = request_fingerprint({"request": request.model_dump(mode="json"), "verified_customer_id": self.verified_customer_id})
             ledger_row = self.session.scalar(
                 select(IdempotencyRecord).where(
                     IdempotencyRecord.scope == scope,
@@ -1166,13 +1219,16 @@ class RestaurantCommerceService:
                     )
                 )
                 if legacy:
-                    return self.order_out(legacy.id)
+                    raise IdempotencyConflictError("Legacy request cannot be replayed without a verified binding")
             claim = acquire_idempotency(
                 self.session, scope=scope, key=request.idempotency_key, fingerprint=fingerprint
             )
             if not claim.acquired:
                 if not claim.entity_id:
                     raise IdempotencyConflictError("Idempotent order request is not complete")
+                existing = self.session.get(Order, claim.entity_id)
+                if not existing or not existing.customer_snapshot_json or existing.access_token_version:
+                    raise IdempotencyConflictError("Order replay requires an active original binding")
                 return self.order_out(claim.entity_id)
 
         delivery_quote = None
@@ -1215,6 +1271,7 @@ class RestaurantCommerceService:
             public_code=_public_code("O"),
             business_id=business_id,
             customer_id=customer.id,
+            customer_snapshot_json=self._snapshot(business_id, request),
             status=OrderStatus.AWAITING_PAYMENT.value,
             fulfillment_type=fulfillment.value,
             payment_status=PaymentStatus.PENDING.value,
@@ -1521,7 +1578,7 @@ class RestaurantCommerceService:
                 order.payment_status = PaymentStatus.PAID.value
             order.completed_at = now
             customer = self.session.get(Customer, order.customer_id)
-            if customer:
+            if customer and self._contact(order)["identity_verified"]:
                 customer.last_order_at = now
             growth = RestaurantGrowthService(self.session)
             growth.finalize_reward(order.id)
@@ -1566,8 +1623,8 @@ class RestaurantCommerceService:
             source_channel=order.source_channel,
             external_source_ref=order.external_source_ref,
             created_at=order.created_at,
-            customer_name=order.customer.name,
-            customer_phone=order.customer.phone,
+            customer_name=self._contact(order)["name"],
+            customer_phone=self._contact(order)["phone"],
             items=[
                 OrderItemOut(
                     name=item.name_snapshot,
@@ -1665,11 +1722,14 @@ class RestaurantCommerceService:
                 self.session,
                 scope=f"reservation.create:{business_id}",
                 key=request.idempotency_key,
-                fingerprint=request_fingerprint(request.model_dump(mode="json")),
+                fingerprint=request_fingerprint({"request": request.model_dump(mode="json"), "verified_customer_id": self.verified_customer_id}),
             )
             if not claim.acquired:
                 if not claim.entity_id:
                     raise IdempotencyConflictError("Idempotent reservation request is not complete")
+                existing = self.session.get(Reservation, claim.entity_id)
+                if not existing or not existing.customer_snapshot_json:
+                    raise IdempotencyConflictError("Reservation replay requires an original binding")
                 return self.reservation_out(claim.entity_id)
 
         customer = self._upsert_customer(
@@ -1685,6 +1745,7 @@ class RestaurantCommerceService:
             public_code=_public_code("R"),
             business_id=business_id,
             customer_id=customer.id,
+            customer_snapshot_json=self._snapshot(business_id, request),
             starts_at=starts_at,
             party_size=request.party_size,
             status=ReservationStatus.REQUESTED.value,
@@ -1716,8 +1777,8 @@ class RestaurantCommerceService:
             notes=reservation.notes,
             source_channel=reservation.source_channel,
             external_source_ref=reservation.external_source_ref,
-            customer_name=reservation.customer.name,
-            customer_phone=reservation.customer.phone,
+            customer_name=self._contact(reservation)["name"],
+            customer_phone=self._contact(reservation)["phone"],
             created_at=reservation.created_at,
         )
 

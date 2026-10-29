@@ -43,15 +43,15 @@ async function loadOutbox() {
   replace($('outbox'), rows.length ? rows.map(m => card(
     h('strong',{className:m.status === 'queued' ? 'queued' : 'suppressed'},m.status),' · ',m.message_kind,
     h('div',{},m.body),meta(`${m.destination} · ${new Date(m.scheduled_at).toLocaleString()}${m.suppression_reason ? ' · '+m.suppression_reason : ''}`),
-    m.status === 'queued' ? button('Abrir WhatsApp', () => openWA(m)) : null
+    ['queued','handed_off'].includes(m.status) ? button('Abrir WhatsApp', () => openWA(m)) : null
   )) : h('p',{},'Outbox vacío.'));
 }
 async function openWA(message) {
-  const phone = String(message.destination).replace(/\D/g,'');
+  // Recheck recipient/consent at the server before exposing a composer link.
+  const authorized = await api(`/api/operator/outbox/${path(message.id)}/handoff`, {method:'POST'});
+  const phone = String(authorized.destination).replace(/\D/g,'');
   if (!phone) throw new Error('Destino inválido');
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message.body)}`,'_blank','noopener,noreferrer');
-  // Existing manual-send semantics retained here; receipt correctness is milestone M2.
-  await api(`/api/operator/outbox/${path(message.id)}/sent`, {method:'PATCH',body:'{}'});
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(authorized.body)}`,'_blank','noopener,noreferrer');
   await loadOutbox();
 }
 async function planWinback() { await api(endpoint('winback/plan'),{method:'POST',body:JSON.stringify({limit:100})}); await refreshAll(); }

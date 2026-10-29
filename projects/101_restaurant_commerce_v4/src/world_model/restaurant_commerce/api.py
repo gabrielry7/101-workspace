@@ -5,6 +5,7 @@ import os
 import re
 import time
 from pathlib import Path
+from datetime import timezone
 from typing import Iterator
 from uuid import uuid4
 from urllib.parse import urlsplit
@@ -37,6 +38,7 @@ from .errors import (
 )
 from .events import EventSink, NullEventSink
 from .growth import RestaurantGrowthService
+from .models import Order
 from .notifications import format_order_message, format_reservation_message, whatsapp_click_to_chat_url
 from .observability import MetricsRegistry
 from .payments import (
@@ -81,6 +83,7 @@ from .security import (
     MaxBodySizeMiddleware,
     secure_compare,
     sign_resource,
+    RESOURCE_TOKEN_TTL_SECONDS,
     verify_resource_token,
     verify_webhook,
 )
@@ -200,7 +203,7 @@ def create_app(
         if value and provider not in configured_webhook_secrets:
             configured_webhook_secrets[provider] = value
 
-    app = FastAPI(title="101 Restaurant Commerce", version="0.4.0")
+    app = FastAPI(title="101 Restaurant Commerce", version="0.5.0")
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
     app.add_middleware(MaxBodySizeMiddleware, max_bytes=max_body_bytes)
     app.state.engine = engine
@@ -276,7 +279,8 @@ def create_app(
         if production:
             response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         if (
-            path.startswith("/api/operator/")
+            (path.startswith("/api/restaurants/") and request.method == "POST")
+            or path.startswith("/api/operator/")
             or path.startswith("/api/webhooks/")
             or path.startswith("/api/orders/")
         ):
@@ -311,9 +315,12 @@ def create_app(
     def require_order_access(
         order_id: str,
         x_101_order_token: str | None = Header(default=None),
+        session: Session = Depends(get_session),
     ) -> None:
-        if not verify_resource_token(
-            access_secret, x_101_order_token, kind="order", resource_id=order_id
+        order = session.get(Order, order_id)
+        if not order or not order.customer_snapshot_json or not verify_resource_token(
+            access_secret, x_101_order_token, kind="order", resource_id=order_id,
+            version=order.access_token_version
         ):
             raise HTTPException(status_code=401, detail="Missing or invalid order access token")
 
@@ -410,13 +417,25 @@ def create_app(
         request: CreateOrderRequest,
         service: RestaurantCommerceService = Depends(get_service),
     ):
+        request = request.model_copy(update={"customer": request.customer.model_copy(
+            update={"consent_source": "web_checkout:commerce-consent-v1"})})
         # Public browser traffic cannot self-assert acquisition/channel attribution.
         # Authenticated integrations should use a dedicated server-side boundary.
         request = request.model_copy(update={"source_channel": "web", "external_source_ref": None})
         order = service.create_order(business_id, request)
-        return order.model_copy(
-            update={"access_token": sign_resource(access_secret, kind="order", resource_id=order.id)}
-        )
+        created_at = order.created_at
+        if created_at.tzinfo is None:
+            created_at = created_at.replace(tzinfo=timezone.utc)
+        expires_at = int(created_at.timestamp()) + RESOURCE_TOKEN_TTL_SECONDS
+        if expires_at <= int(time.time()):
+            raise HTTPException(status_code=409, detail="Order access window has expired; contact staff")
+        return order.model_copy(update={"access_token": sign_resource(
+            access_secret, kind="order", resource_id=order.id, expires_at=expires_at)})
+
+    @app.post("/api/operator/orders/{order_id}/access/revoke", dependencies=[Depends(require_operator)])
+    def revoke_order_access(order_id: str, service: RestaurantCommerceService = Depends(get_service)):
+        service.revoke_order_access(order_id)
+        return {"status": "revoked"}
 
     @app.get(
         "/api/orders/{order_id}",
@@ -451,6 +470,8 @@ def create_app(
         service: RestaurantCommerceService = Depends(get_service),
     ):
         request = request.model_copy(update={"source_channel": "web", "external_source_ref": None})
+        request = request.model_copy(update={"source_channel": "web", "external_source_ref": None,
+            "customer": request.customer.model_copy(update={"consent_source": "web_reservation:commerce-consent-v1"})})
         return service.create_reservation(business_id, request)
 
     @app.post("/api/webhooks/payments/{provider}", response_model=OrderOut)
@@ -714,6 +735,11 @@ def create_app(
     ):
         return growth.list_outbox(business_id, status=status)
 
+    @app.post("/api/operator/outbox/{message_id}/handoff", response_model=OutboundMessageOut,
+              dependencies=[Depends(require_operator)])
+    def handoff_outbox(message_id: str, growth: RestaurantGrowthService = Depends(get_growth)):
+        return growth.mark_handoff(message_id)
+
     @app.patch(
         "/api/operator/outbox/{message_id}/sent",
         response_model=OutboundMessageOut,
@@ -724,7 +750,8 @@ def create_app(
         request: MarkMessageSentIn,
         growth: RestaurantGrowthService = Depends(get_growth),
     ):
-        return growth.mark_sent(message_id, sent_at=request.sent_at)
+        # No provider delivery integration exists yet. Manual clicks are not receipts.
+        raise HTTPException(status_code=409, detail="Verified provider send receipt required")
 
     @app.get(
         "/api/operator/restaurants/{business_id}/analytics",

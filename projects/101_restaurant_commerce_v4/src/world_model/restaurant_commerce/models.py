@@ -169,6 +169,8 @@ class Customer(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
     last_order_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    whatsapp_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    marketing_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     whatsapp_opt_in: Mapped[bool] = mapped_column(Boolean, default=False)
     whatsapp_opt_in_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     marketing_opt_in: Mapped[bool] = mapped_column(Boolean, default=False)
@@ -187,6 +189,8 @@ class Order(Base):
     __tablename__ = "restaurant_orders"
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    customer_snapshot_json: Mapped[str | None] = mapped_column(Text, nullable=True)
+    access_token_version: Mapped[int] = mapped_column(Integer, default=0, server_default="0", nullable=False)
     public_code: Mapped[str] = mapped_column(String(16), unique=True, index=True)
     business_id: Mapped[str] = mapped_column(String(64), index=True)
     customer_id: Mapped[str] = mapped_column(ForeignKey("restaurant_customers.id", ondelete="RESTRICT"), index=True)
@@ -387,6 +391,7 @@ class Reservation(Base):
     __tablename__ = "restaurant_reservations"
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    customer_snapshot_json: Mapped[str | None] = mapped_column(Text, nullable=True)
     public_code: Mapped[str] = mapped_column(String(16), unique=True, index=True)
     business_id: Mapped[str] = mapped_column(String(64), index=True)
     customer_id: Mapped[str] = mapped_column(ForeignKey("restaurant_customers.id", ondelete="RESTRICT"), index=True)

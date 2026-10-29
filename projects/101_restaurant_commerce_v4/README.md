@@ -188,6 +188,62 @@ with that target on `PYTHONPATH`; this checks JS package inclusion and actual
 asset serving. The historical79 tests alone did not exercise the browser boundary.
 
 This milestone does not fix the remaining audited financial, customer identity,
-consent, staff-login or recovery flaws. In particular, checkout still generates a
-new intent on each attempt and the manual WhatsApp UI still marks a composer
-handoff as sent. Do not enable public real-money use on the basis of M1.
+consent, staff-login or recovery flaws. M2 below supersedes the identity, consent and message-handoff portion of this historical caveat. Checkout still needs stable intent/reload recovery. Do not enable public real-money use on the basis of these milestones.
+
+## M2 customer safety (0.5.0)
+
+Public orders/reservations are guest requests. A phone number identifies a contact
+claim, not authority over a customer account. Guests cannot change an existing
+profile or its consent, redeem loyalty, consume customer-limited promotions, earn
+account loyalty or trigger account automations. Order/reservation responses and
+courier dispatch use immutable submitted contact snapshots, not a mutable account
+name. General promotion quotes do not consult another customer's usage history.
+
+The service's `verified_customer_id` constructor argument is an **internal trusted
+adapter boundary**, not a new login mechanism. An authenticated adapter must prove
+the customer's identity before passing it. The service checks business and phone
+scope. No public API accepts or derives this authority from request data. Existing
+unit/reality-demo fixtures explicitly construct verified identities; those are
+not phone-verification integration evidence. Actual customer login/verification
+remains future work.
+
+Consent requests retain source, policy version, server timestamp and verification
+state in the contact snapshot. Guest requests do not authorize account marketing.
+Reservation WhatsApp selection starts unchecked; public marketing is disabled
+until account verification. Historical consent flags remain intact but cannot
+permit queued messages without explicit verified-consent timestamps. Verified
+server callers may record consent/revocation; guest input cannot do so.
+
+The outbox `/handoff` action rechecks current verified consent, recipient, channel,
+status and due time before preparing a WhatsApp composer. It records `handed_off`,
+never `sent` or `delivered`. Popup blocking/closing cannot create send evidence.
+The old `/sent` endpoint and service method fail closed until a genuine send-receipt
+adapter exists. This is not a WhatsApp sending integration.
+
+Order capabilities are versioned, expire seven days from original order creation,
+and are invalidated by the operator-only `/api/operator/orders/{id}/access/revoke`
+action. Exact checkout replay cannot extend the expiry or undo revocation. Old
+unexpiring tokens and unbound historical replays are rejected. Staff must assist
+with expired/legacy orders; no self-service identity recovery is claimed yet.
+
+### Existing database upgrade
+
+Startup/readiness detects missing M2 columns. It does **not** infer historical
+consent or run the upgrade automatically. Stop writers and verify a backup first.
+For an offline SQLite copy, use the explicit idempotent function:
+
+```python
+from world_model.restaurant_commerce.db import make_engine, database_ready
+from world_model.restaurant_commerce.migrations import upgrade_customer_safety
+engine = make_engine("sqlite:////absolute/path/to/offline-copy.db")
+upgrade_customer_safety(engine)
+assert database_ready(engine)
+```
+
+This adds nullable order/reservation contact snapshots, a zero-default order-access
+version, and nullable WhatsApp/marketing verification timestamps. Existing rows
+are preserved; historical snapshots/verification remain unknown. Keep the additive
+columns on rollback. Do not roll back publicly to code accepting the old unsafe
+customer/replay flows. PostgreSQL migration/concurrency proof remains M3; this
+upgrade deliberately refuses other database dialects. No existing runtime database
+was upgraded during implementation.

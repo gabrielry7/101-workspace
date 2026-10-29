@@ -161,6 +161,7 @@ def test_growth_text_and_quoted_message_arguments(site):
     overrides[base+'promotions']=[{'code':PAYLOAD,'name':PAYLOAD,'discount_type':'fixed','value':100,'minimum_order_minor':0}]
     overrides[base+'rewards']=[{'name':PAYLOAD,'description':PAYLOAD,'points_cost':10,'discount_minor':100}]
     overrides[base+'outbox']=[{'id':'message','status':'queued','message_kind':PAYLOAD,'body':PAYLOAD,'destination':'3005550101','scheduled_at':'2026-10-29T12:00:00Z','suppression_reason':PAYLOAD}]
+    overrides['/api/operator/outbox/message/handoff']=overrides[base+'outbox'][0]
     page.goto('https://commerce.test/growth')
     page.get_by_role('button',name='Abrir WhatsApp').wait_for()
     for id in ['promos','rewards','outbox']: assert PAYLOAD in page.locator('#'+id).inner_text()
@@ -169,6 +170,7 @@ def test_growth_text_and_quoted_message_arguments(site):
     page.evaluate('window.open=(...args)=>{window.openArgs=args;return null}')
     page.on('dialog',lambda dialog:dialog.dismiss())
     page.get_by_role('button',name='Abrir WhatsApp').click()
+    playwright.expect(page.get_by_role('button',name='Abrir WhatsApp')).to_be_enabled()
     assert page.evaluate('window.openArgs[0]').startswith('https://wa.me/3005550101?text=')
     assert page.evaluate('window.openArgs[2]')=='noopener,noreferrer'
     assert_safe(page,errors,external)
@@ -266,4 +268,56 @@ def test_real_delivery_controls_and_growth_plan(site):
     page.get_by_role('button',name='Planear win-back').click()
     playwright.expect(page.locator('#metrics')).to_contain_text('Pedidos completos')
     assert any(method=='POST' and path.endswith('/winback/plan') for method,path,_ in requests)
+    assert_safe(page,errors,external)
+
+
+def test_reservation_checkbox_records_only_explicit_request(site):
+    from world_model.restaurant_commerce.models import Reservation, Customer
+    from sqlalchemy import select
+    import json
+    page,client,_,requests,errors,external=site
+    page.goto('https://commerce.test/')
+    page.get_by_role('button',name='Reservar',exact=True).click()
+    assert not page.locator('#rWhatsappOptIn').is_checked()
+    for opted,phone in [(False,'3007770001'),(True,'3007770002')]:
+        page.locator('#rName').fill('Consent fixture');page.locator('#rPhone').fill(phone)
+        when=(datetime.now()+timedelta(days=2)).replace(hour=12,minute=0,second=0,microsecond=0)
+        page.locator('#rDate').fill(when.strftime('%Y-%m-%dT%H:%M'))
+        page.locator('#rWhatsappOptIn').set_checked(opted)
+        with page.expect_response(lambda r:r.url.endswith('/reservations') and r.request.method=='POST') as response:
+            page.get_by_role('button',name='Solicitar reserva').click()
+        assert response.value.status==200
+        body=response.value.json()
+        with client.app.state.session_factory() as session:
+            row=session.get(Reservation,body['id']);snap=json.loads(row.customer_snapshot_json)
+            assert snap['whatsapp_requested'] is opted
+            assert not session.get(Customer,row.customer_id).whatsapp_opt_in
+    assert_safe(page,errors,external)
+
+
+def test_real_composer_handoff_never_sends_and_checks_revocation(site):
+    from world_model.restaurant_commerce.models import Customer, OutboundMessage
+    page,client,_,requests,errors,external=site
+    with client.app.state.session_factory() as session:
+        customer=Customer(business_id='demo-restaurant-bogota',phone='3007770011',name='Consent fixture',whatsapp_opt_in=True,marketing_opt_in=True,whatsapp_verified_at=datetime.now(timezone.utc),marketing_verified_at=datetime.now(timezone.utc))
+        session.add(customer);session.flush()
+        message=OutboundMessage(business_id=customer.business_id,customer_id=customer.id,purpose='marketing',message_kind='winback',
+            destination=customer.phone,body=PAYLOAD,scheduled_at=datetime.now(timezone.utc)-timedelta(minutes=1),dedupe_key='browser-handoff')
+        session.add(message);session.commit();mid=message.id;cid=customer.id
+    page.goto('https://commerce.test/growth')
+    page.get_by_role('button',name='Abrir WhatsApp').wait_for()
+    page.evaluate('window.open=(...args)=>{window.openArgs=args;return null}')
+    page.get_by_role('button',name='Abrir WhatsApp').click()
+    playwright.expect(page.locator('#outbox')).to_contain_text('handed_off')
+    assert page.evaluate('window.openArgs[0]').startswith('https://wa.me/3007770011?text=')
+    assert not any(path.endswith('/sent') for _,path,_ in requests)
+    with client.app.state.session_factory() as session:
+        row=session.get(OutboundMessage,mid);assert row.status=='handed_off' and row.sent_at is None
+        session.get(Customer,cid).marketing_opt_in=False;session.commit()
+    page.evaluate('window.openArgs=null')
+    page.on('dialog',lambda dialog:dialog.dismiss())
+    with page.expect_response(lambda r:r.url.endswith('/handoff')) as response:
+        page.get_by_role('button',name='Abrir WhatsApp').click()
+    assert response.value.status==422
+    assert page.evaluate('window.openArgs===null')
     assert_safe(page,errors,external)

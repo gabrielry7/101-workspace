@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import json
+from tempfile import TemporaryDirectory
 
 from sqlalchemy import select
 
@@ -37,15 +38,18 @@ def complete(service: RestaurantCommerceService, order):
 
 
 def main() -> None:
-    db = Path("/tmp/101-restaurant-commerce-v2-reality.db")
-    if db.exists():
-        db.unlink()
+    temporary = TemporaryDirectory(prefix="101-commerce-v2-")
+    db = Path(temporary.name) / "reality.db"
     engine = make_engine(f"sqlite:///{db}")
     init_schema(engine)
     Session = session_factory(engine)
     with Session() as session:
         seed_demo(session)
-        commerce = RestaurantCommerceService(session)
+        # Explicit verified-identity fixture; no public endpoint grants this authority.
+        ana_fixture = Customer(business_id=DEMO_BUSINESS_ID, phone="+573001111111", name="Ana")
+        session.add(ana_fixture)
+        session.flush()
+        commerce = RestaurantCommerceService(session, verified_customer_id=ana_fixture.id)
         growth = RestaurantGrowthService(session)
 
         first = complete(commerce, commerce.create_order(
@@ -85,6 +89,10 @@ def main() -> None:
         ))
         after_second = growth.loyalty_account(DEMO_BUSINESS_ID, customer_id)
 
+        quiet_fixture = Customer(business_id=DEMO_BUSINESS_ID, phone="+573002222222", name="Luis")
+        session.add(quiet_fixture)
+        session.flush()
+        commerce = RestaurantCommerceService(session, verified_customer_id=quiet_fixture.id)
         quiet = complete(commerce, commerce.create_order(
             DEMO_BUSINESS_ID,
             CreateOrderRequest(

@@ -61,6 +61,13 @@ def cart(service: RestaurantCommerceService):
 
 
 def place(service: RestaurantCommerceService, *, phone="3001111111", promo=None, reward=None, opt_in=True):
+    customer = service.session.scalar(select(Customer).where(
+        Customer.business_id == DEMO_BUSINESS_ID, Customer.phone == phone))
+    if customer is None:
+        customer = Customer(business_id=DEMO_BUSINESS_ID, phone=phone, name="Cliente")
+        service.session.add(customer)
+        service.session.flush()
+    service.verified_customer_id = customer.id  # authenticated adapter fixture, never request data
     return service.create_order(
         DEMO_BUSINESS_ID,
         CreateOrderRequest(
@@ -191,6 +198,7 @@ def test_winback_requires_marketing_consent_and_dedupes(session):
     quiet = pay_and_complete(service, place(service, phone="3007777777", opt_in=False))
     quiet_customer = session.get(Customer, session.get(Order, quiet.id).customer_id)
     quiet_customer.whatsapp_opt_in = True
+    quiet_customer.whatsapp_verified_at = datetime.now(timezone.utc)  # verified fixture consent
     quiet_customer.marketing_opt_in = False
     quiet_customer.last_order_at = datetime.now(timezone.utc) - timedelta(days=60)
     session.commit()

@@ -169,7 +169,7 @@ def test_public_order_and_tracking_require_capability_token(engine):
     assert created.status_code == 200, created.text
     body = created.json()
     token = body["access_token"]
-    assert token and len(token) == 64
+    assert token and token.startswith("v2.")
     order_id = body["id"]
     assert client.get(f"/api/orders/{order_id}").status_code == 401
     assert client.get(f"/api/orders/{order_id}", headers={"X-101-Order-Token": "wrong"}).status_code == 401

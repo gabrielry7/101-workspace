@@ -242,6 +242,8 @@ class RestaurantGrowthService:
         )
 
     def award_completed_order(self, order: Order) -> int:
+        if not order.customer_snapshot_json or not json.loads(order.customer_snapshot_json).get("identity_verified"):
+            return 0
         program = self.ensure_program(order.business_id)
         if not program.enabled or program.spend_minor_per_point <= 0:
             return 0
@@ -408,6 +410,8 @@ class RestaurantGrowthService:
         )
 
     def queue_order_completed_automations(self, order: Order) -> list[OutboundMessage]:
+        if not order.customer_snapshot_json or not json.loads(order.customer_snapshot_json).get("identity_verified"):
+            return []
         profile = self.session.get(RestaurantCommerceProfile, order.business_id)
         if not profile or not profile.marketing_automation_enabled or not profile.review_requests_enabled:
             return []
@@ -476,9 +480,9 @@ class RestaurantGrowthService:
         now = _utc(now)
         status = "queued"
         suppression = None
-        if rule.channel == "whatsapp" and not customer.whatsapp_opt_in:
+        if rule.channel == "whatsapp" and (not customer.whatsapp_opt_in or not customer.whatsapp_verified_at):
             status, suppression = "suppressed", "WHATSAPP_OPT_IN_REQUIRED"
-        elif rule.purpose == "marketing" and not customer.marketing_opt_in:
+        elif rule.purpose == "marketing" and (not customer.marketing_opt_in or not customer.marketing_verified_at):
             status, suppression = "suppressed", "MARKETING_OPT_IN_REQUIRED"
         candidate = OutboundMessage(
             business_id=rule.business_id,
@@ -516,16 +520,32 @@ class RestaurantGrowthService:
         rows = self.session.scalars(stmt.order_by(OutboundMessage.scheduled_at.asc()).limit(limit)).all()
         return [self._message_out(m) for m in rows]
 
-    def mark_sent(self, message_id: str, *, sent_at: datetime | None = None) -> OutboundMessageOut:
+    def mark_handoff(self, message_id: str) -> OutboundMessageOut:
         message = self.session.get(OutboundMessage, message_id)
         if not message:
             raise NotFoundError("Outbound message not found")
-        if message.status == "suppressed":
-            raise ValidationError("Suppressed message cannot be marked sent")
-        message.status = "sent"
-        message.sent_at = _utc(sent_at)
+        if message.channel != "whatsapp":
+            raise ValidationError("Only WhatsApp composer handoff is supported")
+        if message.status not in {"queued", "handed_off"}:
+            raise ValidationError("Message is not eligible for composer handoff")
+        customer = self.session.get(Customer, message.customer_id)
+        if (not customer or customer.business_id != message.business_id
+                or message.destination != customer.phone or not customer.whatsapp_opt_in
+                or not customer.whatsapp_verified_at
+                or (message.purpose == "marketing" and (not customer.marketing_opt_in or not customer.marketing_verified_at))):
+            message.status = "suppressed"
+            message.suppression_reason = "CONSENT_OR_RECIPIENT_CHANGED"
+            self.session.commit()
+            raise ValidationError("Current consent does not permit this handoff")
+        if message.scheduled_at and _utc(message.scheduled_at) > _utc():
+            raise ValidationError("Message is not due yet")
+        message.status = "handed_off"
+        # sent_at stays null: a composer link is not a provider send receipt.
         self.session.commit()
         return self._message_out(message)
+
+    def mark_sent(self, message_id: str, *, sent_at: datetime | None = None) -> OutboundMessageOut:
+        raise ValidationError("Verified provider send receipt required; no send adapter is enabled")
 
     def _message_out(self, m: OutboundMessage) -> OutboundMessageOut:
         return OutboundMessageOut(

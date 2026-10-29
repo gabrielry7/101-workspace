@@ -7,6 +7,7 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
 from .models import Base
+from .migrations import CUSTOMER_SAFETY_COLUMNS
 
 
 def make_engine(database_url: str | None = None) -> Engine:
@@ -40,6 +41,8 @@ def make_engine(database_url: str | None = None) -> Engine:
 
 def init_schema(engine: Engine) -> None:
     Base.metadata.create_all(engine)
+    if not database_ready(engine):
+        raise RuntimeError("Commerce schema requires an explicit offline upgrade before startup")
 
 
 def session_factory(engine: Engine) -> sessionmaker[Session]:
@@ -71,6 +74,9 @@ def database_ready(engine: Engine, *, require_schema: bool = True) -> bool:
             tables = set(inspect(engine).get_table_names())
             if not CORE_TABLES.issubset(tables):
                 return False
+            for table, columns in CUSTOMER_SAFETY_COLUMNS.items():
+                if not set(columns).issubset({c["name"] for c in inspect(engine).get_columns(table)}):
+                    return False
         return True
     except Exception:
         return False
