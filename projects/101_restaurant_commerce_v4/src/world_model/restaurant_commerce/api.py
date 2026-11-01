@@ -206,12 +206,12 @@ def create_app(
         init_schema(engine)
     if wompi_sandbox is not None:
         from sqlalchemy import inspect
-        from .models import WompiSandboxLookup
+        from .models import WompiSandboxDiscovery, WompiSandboxLookup
         inspector = inspect(engine)
-        table = WompiSandboxLookup.__table__
-        if (table.name not in inspector.get_table_names() or not set(table.columns.keys()).issubset(
-                {c["name"] for c in inspector.get_columns(table.name)})):
-            raise RuntimeError("Run explicit offline upgrade-wompi-sandbox before enabling sandbox")
+        for table in (WompiSandboxLookup.__table__, WompiSandboxDiscovery.__table__):
+            if (table.name not in inspector.get_table_names() or not set(table.columns.keys()).issubset(
+                    {c["name"] for c in inspector.get_columns(table.name)})):
+                raise RuntimeError("Run explicit offline upgrade-wompi-sandbox before enabling sandbox")
     SessionLocal = session_factory(engine)
 
     if seed:

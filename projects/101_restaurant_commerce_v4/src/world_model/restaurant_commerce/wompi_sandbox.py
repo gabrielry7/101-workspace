@@ -134,7 +134,7 @@ class WompiSandboxProvider:
             NAME, reference, amount_minor, currency, "pending", CHECKOUT_ORIGIN + "/p/?" + query
         )
 
-    def _get(self, path):
+    def _get(self, path, *, listing=False):
         # Fixed origin, no redirects/proxies, no provider error bodies in logs.
         try:
             with httpx.Client(
@@ -158,10 +158,14 @@ class WompiSandboxProvider:
                         if len(data) > 262144:
                             raise PaymentError("Sandbox lookup response exceeded limit")
             body = json.loads(data)
-            if not isinstance(body, dict) or not isinstance(body.get("data"), dict):
+            if not isinstance(body, dict) or not isinstance(
+                body.get("data"), list if listing else dict
+            ):
                 raise PaymentError("Invalid sandbox response envelope")
+            if listing and body.get("meta") not in (None, {}):
+                raise PaymentError("Unqualified sandbox pagination metadata")
             return body["data"]
-        except (httpx.HTTPError, ValueError, UnicodeError):
+        except (httpx.HTTPError, ValueError, UnicodeError, RecursionError):
             raise PaymentError("Sandbox lookup unavailable or invalid") from None
 
     def merchant(self):
@@ -169,6 +173,29 @@ class WompiSandboxProvider:
         if result.get("public_key") != self.keys.public:
             raise PaymentError("Sandbox merchant key mismatch")
         return result
+
+    def transactions_for_order(self, order_id):
+        """Listing is untrusted discovery only, never authority for settlement.
+
+        Empty lists do not establish that payment failed. Saturated or changed
+        response shapes require review instead of assuming complete history.
+        """
+        reference = self.reference(order_id)
+        rows = self._get("/transactions?" + urlencode({"reference": reference}), listing=True)
+        if len(rows) >= 20:
+            raise ValueError("Sandbox reference result requires manual review")
+        ids = []
+        for row in rows:
+            if (
+                not isinstance(row, dict)
+                or row.get("reference") != reference
+                or not isinstance(row.get("id"), str)
+                or not IDENTIFIER.fullmatch(row["id"])
+            ):
+                raise ValueError("Sandbox reference result mismatch")
+            if row["id"] not in ids:
+                ids.append(row["id"])
+        return ids
 
     def transaction(self, transaction_id):
         if not isinstance(transaction_id, str) or not IDENTIFIER.fullmatch(transaction_id):
@@ -200,7 +227,10 @@ class WompiSandboxProvider:
             "reference": reference,
             "amount_minor": cents // 100,
             "currency": "COP",
-            "status": STATUS.get(data.get("status"), "review_required"),
+            "status": "review_required"
+            if data.get("refunds")
+            else STATUS.get(data.get("status"), "review_required"),
+            "refunds_observed": bool(data.get("refunds")),
         }
 
     def verify_event(self, event):

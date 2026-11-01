@@ -16,7 +16,7 @@ from .wompi_sandbox import NAME, SandboxKeys, WompiSandboxProvider
 
 
 def application(
-    run_dir: Path, keys_path: Path, port: int, *, resume=False, return_url=None, api_only=False
+    run_dir: Path, keys_path: Path, port: int, *, resume=False, return_url=None, api_only=False, receiver_config=None
 ):
     keys = SandboxKeys.load(keys_path)
     if not resume and not return_url and not api_only:
@@ -60,6 +60,9 @@ def application(
         business_id=DEMO_BUSINESS_ID,
         return_url=config.get("return_url", f"http://127.0.0.1:{port}/"),
     )
+    if receiver_config:
+        from .wompi_receiver import SandboxReceiver
+        adapter.receiver = SandboxReceiver.load(receiver_config)
     return create_app(
         engine=engine,
         auto_init_schema=False,
@@ -81,6 +84,7 @@ def main():
     )
     parser.add_argument("--port", type=int, default=8876)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--receiver-config", type=Path, help="Private HTTPS sandbox inbox configuration")
     parser.add_argument(
         "--return-url", help="Public HTTPS storefront origin, for example a temporary test tunnel"
     )
@@ -97,6 +101,7 @@ def main():
         resume=args.resume,
         return_url=args.return_url,
         api_only=args.api_only,
+        receiver_config=args.receiver_config,
     )
     uvicorn.run(app, host="127.0.0.1", port=args.port, access_log=False)
 

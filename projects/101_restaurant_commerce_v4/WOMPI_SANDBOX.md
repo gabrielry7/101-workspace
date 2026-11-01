@@ -1,4 +1,4 @@
-# Wompi sandbox integration (0.9.0)
+# Wompi sandbox integration (0.9.1)
 
 Only `wompi_sandbox` is implemented. The old `wompi` production adapter stays
 fail-closed. Production app startup rejects sandbox providers. No remote refund
@@ -87,15 +87,16 @@ COMMERCE_DATABASE_URL=... python -m world_model.restaurant_commerce.maintenance 
   upgrade-wompi-sandbox --offline
 ```
 
-Requires completed M4 schema. The upgrade adds only
-`restaurant_wompi_sandbox_lookups`; it does not provision staff or change payments.
-Fresh disposable databases include the table. Existing production databases were
+Requires completed M4 schema. The upgrade creates `restaurant_wompi_sandbox_discovery` and adds the
+`single_attempt` column to earlier sandbox lookup tables. It preserves existing
+lookup jobs and payment data; running it twice is safe. Fresh disposable databases
+include both sandbox tables. Existing production databases were
 not upgraded during implementation.
 
 ## Remaining qualification
 
 Public HTTPS callback delivery and actual events-secret verification, hosted card
-submission/return across supported devices, provider duplicate-reference behavior,
+submission/return across supported devices, concurrent provider duplicate-reference behavior,
 refund lookup/idempotency and staff financial resolution for this remote adapter
 remain separate work. Broad scanners, production restore and physical old-device
 qualification remain open. Passing sandbox tests does not authorize real money.
@@ -105,3 +106,92 @@ Protocol sources: [keys/environments](https://docs.wompi.co/docs/colombia/ambien
 [native events](https://docs.wompi.co/docs/colombia/eventos/),
 [transactions](https://docs.wompi.co/docs/colombia/transacciones/),
 [test fixtures](https://docs.wompi.co/docs/colombia/datos-de-prueba-en-sandbox/).
+
+
+## No-return recovery and repeatable qualification
+
+The existing recovery worker now discovers transactions by the immutable order
+reference after a 60-second grace period. A list result only supplies IDs: each
+ID receives an independent authenticated lookup that checks merchant, business,
+order, amount and currency before using the existing payment inbox. Empty lists
+never mean declined. Discovery continues across pending, failed and paid local
+states for up to 48 hours/60 bounded passes, with backoff capped at one hour.
+This is a sandbox safety net, not a production reconciliation schedule or proof
+of complete provider pagination. Saturated lists (20 or more) or unknown metadata
+fail closed. New observations preserve old failed/exhausted jobs for audit.
+
+Each discovery pass retains transaction hints atomically, then the bounded normal
+lookup queue handles them. A discovery observation has one lookup attempt; the
+next discovery pass can refresh it. Native events/customer returns retain the
+12-attempt lookup policy. Expired/stolen leases cannot apply stale results.
+Exhausted bound jobs, immutable amount conflicts, contradictory final statuses,
+multiple approvals and externally observed refunds create visible reconciliation
+holds. An observed refund never invents local refund accounting or loyalty
+compensation. Resolving Wompi financial holds still needs the qualified remote
+financial adapter; legacy controlled-provider resolution is not enabled for it.
+
+Install test dependencies in an isolated Python environment and local receiver
+runtime (`npm install --prefix sandbox_receiver`). PostgreSQL tools and Chromium
+must be on PATH. The workspace's retained toolchain already contains these.
+
+```bash
+python scripts/qualify_wompi_sandbox.py --run-dir /tmp/wompi-qualification-NEW
+```
+
+This one command builds/installs a wheel, runs the complete tests, Wompi cases on
+a fresh local PostgreSQL cluster, and receiver tests in real Workers/Miniflare
+with D1. It retains native logs, JUnit, command receipts, versions and wheel hash;
+it stops only its own database. Use a short workspace run path for evidence that
+must survive reboot. A fresh run directory is mandatory. No zero-test or skipped
+suite is reported as passed.
+
+Remote opt-in, bounded to 12 direct Wompi POSTs per protocol run:
+
+```bash
+python scripts/qualify_wompi_sandbox.py --run-dir /tmp/wompi-remote-NEW \
+  --layers tests,postgres,receiver,remote,hosted --execute-sandbox \
+  --cloudflared /path/to/verified/cloudflared
+```
+
+The hosted test uses a temporary accountless tunnel, never the permanent Events
+URL, and stops it afterward. It caps transaction submissions at one and tests the
+provider's actual return button, narrow viewport, CPU throttling, reload and
+reconnection. This does not certify physical older phones or all browsers.
+
+The protocol edge test kills the app before the fake payment and verifies
+background recovery without delivering a transaction ID or callback. Its tamper
+probe uses a fresh unused reference so duplicate-reference validation cannot mask
+signature validation. Refund probes are separate provider-contract checks and do
+not enable refunds in commerce. `--payment-edges-only` on
+`scripts/check_wompi_sandbox.py --edge-cases` explicitly omits those refund writes
+and records PARTIAL coverage, rather than silently passing them.
+
+**Known remote refund failure:** on 2026-10-30, `test_scenario: "declined"` yielded
+PENDING and later APPROVED. A 2026-11-01 sandbox GET confirmed APPROVED with
+`is_sandbox: false` and `sandbox_test_scenario: null`. Requests used test keys,
+the fixed sandbox host and a fake-card transaction. No production endpoint was
+called; the contradictory flag does not establish a real-money movement. Do not
+trust the simulator's requested outcome or enable remote refunds until this
+contract is resolved. Retain failing results when rerunning; do not substitute a
+mocked pass. [Documented refund scenarios](https://docs.wompi.co/docs/colombia/reembolsos-sandbox/).
+
+## Optional durable HTTPS receiver
+
+`sandbox_receiver/` contains a sandbox-only Workers/D1 receiver and executable
+runtime tests. **It is not deployed.** Provisioning is conditional on a confirmed
+Free plan and the user's $0 budget. The connected account's billing read returned
+403; account usage-model settings alone do not establish that plan.
+
+The receiver verifies the native signature, rejects production/stale/malformed
+events, persists only signed financial fields, and acknowledges only after the
+D1 insert. Consumption/ack require a separate 256-bit reader token. Replayed
+receipts cannot resurrect an acknowledged event. The Python consumer verifies
+the event again and commits its local lookup job before acknowledging remotely;
+lost acknowledgements replay safely. It keeps independent reference recovery
+working while the receiver is unavailable.
+
+After a verified deployment, a private mode0600 JSON file with `url` (HTTPS
+origin) and `token` (64 hexadecimal characters) can be passed to the demo as
+`--receiver-config /private/path.json` on each start/resume. Secrets belong in
+Worker secret bindings, never repository config. An Events URL is supplied only
+after deployment and readiness verification; leave the dashboard unset for now.

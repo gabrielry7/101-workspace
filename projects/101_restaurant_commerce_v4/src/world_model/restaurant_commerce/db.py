@@ -65,7 +65,7 @@ def init_schema(engine: Engine) -> None:
         )
     # Existing installations opt into sandbox state only through offline maintenance.
     tables = [t for t in Base.metadata.sorted_tables
-              if not existing or t.name != "restaurant_wompi_sandbox_lookups"]
+              if not existing or t.name not in {"restaurant_wompi_sandbox_lookups", "restaurant_wompi_sandbox_discovery"}]
     Base.metadata.create_all(engine, tables=tables)
     if not database_ready(engine):
         raise RuntimeError(

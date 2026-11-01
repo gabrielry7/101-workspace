@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "world-model-restaurant-commerce"
-version = "0.9.0"
+version = "0.9.1"
 description = "Hardened restaurant direct commerce, delivery, loyalty and retention runtime for 101 / UnoCeroUno"
 requires-python = ">=3.11"
 dependencies = [
@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest>=8.0", "httpx>=0.27"]
+test = ["pytest>=8.0", "httpx>=0.27", "hypothesis>=6.100"]
 browser = ["playwright>=1.40"]
 
 [tool.setuptools.packages.find]

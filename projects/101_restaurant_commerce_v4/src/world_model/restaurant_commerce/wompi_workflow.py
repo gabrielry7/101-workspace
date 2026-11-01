@@ -81,9 +81,12 @@ def process(service, key):
     session.expire_all()
     row = session.get(WompiSandboxLookup, key)
     transaction_id, expected, attempts = row.transaction_id, row.expected_order_id, row.attempts
+    single_attempt = row.single_attempt
     session.rollback()
     result, error, state = None, None, "pending"
     try:
+        if attempts > (1 if single_attempt else 12):
+            raise PaymentError("Sandbox lookup budget exhausted after interrupted claim")
         result = adapter.transaction(transaction_id)
         if expected and result["order_id"] != expected:
             raise ValueError("Wrong order")
@@ -132,15 +135,31 @@ def process(service, key):
             or payment.currency != result["currency"]
         ):
             row.state, row.last_error = "review_required", "immutable_payment_mismatch"
+            if (
+                payment
+                and order
+                and payment.order_id == order.id
+                and order.business_id == adapter.business_id
+            ):
+                service._reconciliation(
+                    order,
+                    "wompi_payment_mismatch",
+                    {
+                        "transaction_id": transaction_id,
+                        "reason": row.last_error,
+                    },
+                )
         else:
             row.order_id = order.id
             row.result_json = json.dumps(result, sort_keys=True)
             if result["status"] == "review_required" or (
-                result["status"] == "pending" and attempts >= 12
+                result["status"] == "pending" and attempts >= 12 and not single_attempt
             ):
                 row.state = "review_required"
                 row.last_error = (
-                    "unsupported_provider_status"
+                    "provider_refund_observed"
+                    if result.get("refunds_observed")
+                    else "unsupported_provider_status"
                     if result["status"] == "review_required"
                     else "pending_attempt_budget_exhausted"
                 )
@@ -171,7 +190,11 @@ def process(service, key):
                             "provider_reference": result["reference"],
                         },
                     )
-            row.state = "pending" if result["status"] == "pending" else "processed"
+            row.state = (
+                ("observed" if single_attempt else "pending")
+                if result["status"] == "pending"
+                else "processed"
+            )
             # Job completion and the normalized inbox receipt are persisted together;
             # the existing inbox worker can finish settlement after interruption.
             service.receive_payment_notification(
@@ -185,14 +208,38 @@ def process(service, key):
                 ),
             )
             return
+    if single_attempt and row.state == "pending":
+        row.state = "observed"  # Next bounded discovery pass obtains fresh evidence.
     if attempts >= 12 and row.state == "pending":
         row.state, row.last_error = "review_required", error or "lookup_attempt_budget_exhausted"
+        # Only an authenticated order binding may create a financial hold here.
+        # Untrusted arbitrary webhook IDs must not hold someone else's order.
+        if expected:
+            order = session.get(Order, expected)
+            if order and order.business_id == adapter.business_id:
+                service._reconciliation(
+                    order,
+                    "wompi_lookup_exhausted",
+                    {
+                        "transaction_id": transaction_id,
+                        "reason": row.last_error,
+                    },
+                )
     service._commit()
 
 
 def recover(service, limit=10):
     if NAME not in service.payment_providers:
         return 0  # Old installations do not query this optional sandbox table.
+    receiver = getattr(service.payment_providers[NAME], "receiver", None)
+    if receiver is not None:
+        try:
+            receiver.drain(service)
+        except PaymentError:
+            service.session.rollback()  # Reference discovery remains independent.
+    from .wompi_discovery import recover as discover
+
+    discovered = discover(service, limit=min(limit, 5))
     now = utcnow()
     ids = list(
         service.session.scalars(
@@ -213,4 +260,4 @@ def recover(service, limit=10):
             process(service, key)
         except Exception:  # rollback + durable retry, no provider/credential contents in logs
             service.session.rollback()
-    return len(ids)
+    return len(ids) + discovered

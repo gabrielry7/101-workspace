@@ -179,16 +179,24 @@ def upgrade_staff(engine):
 
 def upgrade_wompi_sandbox(engine):
     """Add sandbox lookup jobs offline; no payment or staff data changes."""
-    from .models import WompiSandboxLookup
+    from .models import WompiSandboxDiscovery, WompiSandboxLookup
     with engine.begin() as connection:
         if engine.dialect.name == "sqlite":
             connection.exec_driver_sql("BEGIN IMMEDIATE")
         if not staff_columns_present(connection):
             raise RuntimeError("Sandbox requires the M4 staff schema")
-        table = WompiSandboxLookup.__table__
         inspector = inspect(connection)
-        if table.name in inspector.get_table_names() and not set(table.columns.keys()).issubset(
-            {c["name"] for c in inspector.get_columns(table.name)}
-        ):
-            raise RuntimeError("Incomplete sandbox schema; repair offline")
-        table.create(connection, checkfirst=True)
+        old = WompiSandboxLookup.__tablename__
+        if old in inspector.get_table_names() and "single_attempt" not in {
+            c["name"] for c in inspector.get_columns(old)
+        }:
+            connection.exec_driver_sql(
+                f"ALTER TABLE {old} ADD COLUMN single_attempt BOOLEAN NOT NULL DEFAULT FALSE"
+            )
+        for table in (WompiSandboxLookup.__table__, WompiSandboxDiscovery.__table__):
+            inspector = inspect(connection)
+            if table.name in inspector.get_table_names() and not set(table.columns.keys()).issubset(
+                {c["name"] for c in inspector.get_columns(table.name)}
+            ):
+                raise RuntimeError("Incomplete sandbox schema; repair offline")
+            table.create(connection, checkfirst=True)
