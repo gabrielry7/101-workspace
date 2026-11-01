@@ -317,6 +317,14 @@ def main():
                         fresh_order = fresh.json()
                         fresh_payment = fresh_order["payments"][0]
                         fresh_query = parse_qs(urlsplit(fresh_payment["checkout_url"]).query)
+                        merchant = provider("GET", "/merchants/" + keys.public, public=True)
+                        duplicate["acceptance_token"] = merchant["presigned_acceptance"][
+                            "acceptance_token"
+                        ]
+                        if merchant.get("presigned_personal_data_auth"):
+                            duplicate["accept_personal_auth"] = merchant[
+                                "presigned_personal_data_auth"
+                            ]["acceptance_token"]
                         bad = provider(
                             "POST",
                             "/transactions",
