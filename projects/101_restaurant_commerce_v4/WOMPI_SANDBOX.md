@@ -229,3 +229,38 @@ disposable demo with its original port, `--resume`, and `--receiver-config` to
 drain it before the next isolated probe. Do not delete or manually acknowledge
 unconsumed receipts to make the empty-inbox precondition pass. Keep the real-money
 and refund gates closed; the prior refund-simulator contradiction remains open.
+
+
+## Audited financial inspection (0.9.2)
+
+Sandbox startup now registers read-only Wompi financial lookup through the existing
+named-staff M4 API. A scoped finance/manager user can open an order's financial
+history, consult its payment, or inspect a numeric refund ID. Parent transaction,
+merchant, order, amount and currency must match. Reported refund status is evidence,
+not a locally confirmed refund or permission to compensate loyalty.
+
+**Refund submission remains disabled.** The retained sandbox refund disagrees with
+the published simulator scenario/environment contract; recovery after a lost refund
+POST is not established. No refund POST implementation is enabled by this release.
+The UI explains the gate, and the backend rejects attempts before creating an
+intent. Retained refund operations also cannot send writes. There is no switch to
+bypass this qualification requirement.
+
+Refund contradictions create durable review holds. Ordinary paid lookups cannot
+clear them, including legacy holds refreshed by later generic provider evidence.
+Wompi reads have bounded retry/backoff (six attempts), atomic due-time claims and
+one background financial operation per recovery pass, after native payment intake.
+This is not a recovery-latency SLO; one operation can still involve two10-second
+reads. No new schema migration is introduced; prior explicit upgrades still apply.
+
+Run offline package/browser and disposable PostgreSQL acceptance with:
+
+```sh
+python scripts/qualify_wompi_sandbox.py --run-dir /tmp/finance-NEW \
+  --layers tests,postgres --financial
+```
+
+The optional `scripts/check_wompi_financial.py --help` probe uses a disposable copy
+of a retained synthetic run, real staff HTTP/mobile-browser checks and bounded
+sandbox GETs. It never creates a provider payment or refund. Its private source
+snapshots are deliberately excluded from Git; preserve those locally for replay.

@@ -1,6 +1,7 @@
 """Durable controlled-provider lookup/refund and evidence-bound resolution."""
 
 import json
+import re
 import secrets
 from dataclasses import asdict
 from datetime import UTC, datetime, timedelta
@@ -31,6 +32,14 @@ def _json(value):
 
 
 class FinancialWorkflowMixin:
+    @staticmethod
+    def _refund_evidence_review(row):
+        # Preserve holds created before the dedicated refund-evidence reason existed.
+        return row.reason == "refund_evidence_review" or (
+            row.reason == "wompi_provider_review"
+            and json.loads(row.evidence_json).get("reason") == "provider_refund_observed"
+        )
+
     def _financial_order(self, business_id, order_id, principal, permission):
         if not isinstance(principal, FinancialPrincipal) or not principal.permits(
             business_id, permission
@@ -55,7 +64,16 @@ class FinancialWorkflowMixin:
         )
 
     def financial_history(self, business_id, order_id, principal):
-        self._financial_order(business_id, order_id, principal, "finance.read")
+        order = self._financial_order(business_id, order_id, principal, "finance.read")
+        intent = self.session.scalar(
+            select(PaymentIntent).where(PaymentIntent.order_id == order_id)
+        )
+        provider = self.financial_providers.get(intent.provider) if intent else None
+        available = bool(
+            provider
+            and getattr(provider, "controlled", False) is True
+            and getattr(provider, "business_id", business_id) == business_id
+        )
         operations = self.session.scalars(
             select(FinancialOperation)
             .where(FinancialOperation.order_id == order_id)
@@ -67,9 +85,30 @@ class FinancialWorkflowMixin:
             .order_by(FinancialAudit.created_at)
         ).all()
         return {
+            "capabilities": {
+                "lookup": available and principal.permits(business_id, "finance.lookup"),
+                "inspect_refund": available
+                and callable(getattr(provider, "inspect_refund", None))
+                and principal.permits(business_id, "finance.lookup"),
+                "refund": available
+                and getattr(provider, "refund_enabled", False) is True
+                and order.payment_status == "paid"
+                and principal.permits(business_id, "finance.refund"),
+                "refund_block_reason": getattr(
+                    provider, "refund_block_reason", "refund_unavailable"
+                )
+                if available
+                else "financial_provider_unavailable",
+            },
             "operations": [self._operation_out(o) for o in operations],
             "reviews": [
-                {"id": r.id, "reason": r.reason, "status": r.status}
+                {
+                    "id": r.id,
+                    "reason": r.reason,
+                    "status": r.status,
+                    "resolvable": not self._refund_evidence_review(r)
+                    or (available and getattr(provider, "refund_enabled", False) is True),
+                }
                 for r in self.session.scalars(
                     select(PaymentReconciliation).where(PaymentReconciliation.order_id == order_id)
                 )
@@ -101,10 +140,18 @@ class FinancialWorkflowMixin:
             "created_at": op.created_at,
         }
 
-    def request_financial_operation(self, business_id, order_id, kind, key, reason, principal):
+    def request_financial_operation(
+        self, business_id, order_id, kind, key, reason, principal, *, refund_reference=None
+    ):
         if kind not in {"lookup", "refund"}:
             raise ValidationError("Unsupported financial operation")
         order = self._financial_order(business_id, order_id, principal, "finance." + kind)
+        if refund_reference is not None and (
+            kind != "lookup"
+            or not isinstance(refund_reference, str)
+            or not re.fullmatch(r"[1-9][0-9]{0,19}", refund_reference)
+        ):
+            raise ValidationError("A numeric refund reference is supported only for lookup")
         if not reason.strip() or len(reason) > 500 or not key or len(key) > 100:
             raise ValidationError("A bounded reason and idempotency key are required")
         # A full refund can have only one intent, regardless of clicks or client keys.
@@ -113,7 +160,10 @@ class FinancialWorkflowMixin:
             select(FinancialOperation).where(FinancialOperation.dedupe_key == dedupe)
         )
         if existing:
-            if existing.order_id != order_id:
+            if (
+                existing.order_id != order_id
+                or json.loads(existing.request_json).get("refund_reference") != refund_reference
+            ):
                 raise IdempotencyConflictError("Financial key belongs to another order")
             return self.process_financial_operation(existing.id)
         payment = self.session.scalar(
@@ -141,10 +191,15 @@ class FinancialWorkflowMixin:
             not provider
             or provider.name != intent.provider
             or getattr(provider, "controlled", False) is not True
+            or getattr(provider, "business_id", business_id) != business_id
         ):
             raise PaymentError(
                 "Controlled financial provider is not configured; live actions are disabled"
             )
+        if kind == "refund" and getattr(provider, "refund_enabled", False) is not True:
+            raise PaymentError("Refund submission is disabled; inspect provider evidence instead")
+        if refund_reference is not None and not callable(getattr(provider, "inspect_refund", None)):
+            raise PaymentError("Refund inspection is not supported by this provider")
         if kind == "refund" and (not payment or payment.status != "paid"):
             raise PaymentError("Only a confirmed paid payment can be refunded")
         lease = intent.lease_until
@@ -164,6 +219,7 @@ class FinancialWorkflowMixin:
             "amount_minor": order.total_minor,
             "currency": order.currency,
             "checkout_key": intent.provider_idempotency_key,
+            "refund_reference": refund_reference,
         }
         op = FinancialOperation(
             business_id=business_id,
@@ -191,7 +247,11 @@ class FinancialWorkflowMixin:
             op = self.session.scalar(
                 select(FinancialOperation).where(FinancialOperation.dedupe_key == dedupe)
             )
-            if not op or op.order_id != order_id:
+            if (
+                not op
+                or op.order_id != order_id
+                or json.loads(op.request_json).get("refund_reference") != refund_reference
+            ):
                 raise IdempotencyConflictError("Concurrent financial request conflict") from None
         return self.process_financial_operation(op.id)
 
@@ -224,7 +284,7 @@ class FinancialWorkflowMixin:
         allowed = (
             {"succeeded", "pending", "failed"}
             if kind == "refund"
-            else {"paid", "pending", "failed", "refunded"}
+            else {"paid", "pending", "failed", "refunded", "review_required"}
         )
         if data["status"] not in allowed or (
             kind == "refund" and not isinstance(data.get("refund_reference"), str)
@@ -239,12 +299,28 @@ class FinancialWorkflowMixin:
             raise NotFoundError("Financial operation not found")
         if op.state in {"succeeded", "failed", "review_required", "withdrawn"}:
             return self._operation_out(op)
+        configured = self.financial_providers.get(json.loads(op.request_json)["provider"])
+        delay = getattr(configured, "retry_delay_seconds", 0)
+        due = op.next_attempt_at
+        if (
+            delay
+            and op.attempts
+            and due
+            and (due.replace(tzinfo=UTC) if due.tzinfo is None else due) > utcnow()
+        ):
+            return self._operation_out(op)
         now, token = utcnow(), secrets.token_hex(24)
         claimed = self.session.execute(
             update(FinancialOperation)
             .where(
                 FinancialOperation.id == op.id,
                 FinancialOperation.state.in_(["pending", "unknown", "processing"]),
+                or_(
+                    not bool(delay),
+                    FinancialOperation.attempts == 0,
+                    FinancialOperation.next_attempt_at.is_(None),
+                    FinancialOperation.next_attempt_at <= now,
+                ),
                 or_(
                     FinancialOperation.lease_until.is_(None), FinancialOperation.lease_until <= now
                 ),
@@ -264,6 +340,7 @@ class FinancialWorkflowMixin:
         self.session.expire_all()
         op = self.session.get(FinancialOperation, operation_id)
         request, kind, attempts = json.loads(op.request_json), op.kind, op.attempts
+        business_id = op.business_id
         provider = self.financial_providers.get(request["provider"])
         self.session.rollback()  # No DB transaction across provider IO.
         query_started_at = utcnow().isoformat()
@@ -273,15 +350,27 @@ class FinancialWorkflowMixin:
                 not provider
                 or provider.name != request["provider"]
                 or getattr(provider, "controlled", False) is not True
+                or getattr(provider, "business_id", business_id) != business_id
             ):
                 state = "review_required"
+            elif attempts > getattr(provider, "max_financial_attempts", 100):
+                state, data = "review_required", {"error": "financial_attempt_budget_exhausted"}
+            elif kind == "refund" and getattr(provider, "refund_enabled", False) is not True:
+                state, data = "review_required", {"error": "refund_submission_disabled"}
             else:
                 if kind == "lookup":
-                    result = provider.lookup_payment(
-                        order_id=request["order_id"],
-                        idempotency_key=request["checkout_key"],
-                        provider_reference=request["provider_reference"],
-                    )
+                    if request.get("refund_reference"):
+                        result = provider.inspect_refund(
+                            order_id=request["order_id"],
+                            provider_reference=request["provider_reference"],
+                            refund_reference=request["refund_reference"],
+                        )
+                    else:
+                        result = provider.lookup_payment(
+                            order_id=request["order_id"],
+                            idempotency_key=request["checkout_key"],
+                            provider_reference=request["provider_reference"],
+                        )
                 else:
                     provider_key = "refund:" + operation_id
                     result = provider.lookup_refund(idempotency_key=provider_key)
@@ -323,7 +412,9 @@ class FinancialWorkflowMixin:
                 if result is not None:
                     data = self._validate_observation(result, request, kind)
                     state = (
-                        "unknown"
+                        "review_required"
+                        if data["status"] == "review_required"
+                        else "unknown"
                         if data["status"] == "pending"
                         else "failed"
                         if kind == "refund" and data["status"] == "failed"
@@ -336,9 +427,16 @@ class FinancialWorkflowMixin:
         except Exception as exc:  # noqa: BLE001 - provider uncertainty; retain only exception type.
             data = {"error": type(exc).__name__}
         data["query_started_at"] = query_started_at
+        if state == "unknown" and attempts >= getattr(provider, "max_financial_attempts", 100):
+            state, data["error"] = "review_required", "financial_attempt_budget_exhausted"
         return self._finish_financial(operation_id, token, state, data)
 
     def _finish_financial(self, operation_id, token, state, data):
+        current = self.session.get(FinancialOperation, operation_id)
+        adapter = self.financial_providers.get(json.loads(current.request_json)["provider"])
+        delay = max(
+            2, min(300, getattr(adapter, "retry_delay_seconds", 0) * 2 ** min(current.attempts, 6))
+        )
         # Fence before staging any monetary, benefit, audit or hold changes.
         changed = self.session.execute(
             update(FinancialOperation)
@@ -352,7 +450,7 @@ class FinancialWorkflowMixin:
                 result_json=_json(data),
                 lease_token=None,
                 lease_until=None,
-                next_attempt_at=utcnow() + timedelta(seconds=2),
+                next_attempt_at=utcnow() + timedelta(seconds=delay),
             ),
             execution_options={"synchronize_session": False},
         ).rowcount
@@ -374,6 +472,11 @@ class FinancialWorkflowMixin:
             .with_for_update()
             .execution_options(populate_existing=True)
         )
+        if state == "review_required" and (
+            data.get("refund_reference")
+            or data.get("review_reason") == "refund_evidence_requires_review"
+        ):
+            self._reconciliation(order, "refund_evidence_review", {**data, "operation_id": op.id})
         if state == "succeeded":
             target = "refunded" if op.kind == "refund" else data["status"]
             if payment and (
@@ -465,12 +568,22 @@ class FinancialWorkflowMixin:
                 .limit(limit)
             )
         )
+        dispatched, per_provider = 0, {}
         for operation_id in ids:
+            op = self.session.get(FinancialOperation, operation_id)
+            provider_name = json.loads(op.request_json)["provider"]
+            adapter = self.financial_providers.get(provider_name)
+            if per_provider.get(provider_name, 0) >= getattr(
+                adapter, "max_recovery_operations", limit
+            ):
+                continue
+            per_provider[provider_name] = per_provider.get(provider_name, 0) + 1
+            dispatched += 1
             try:
                 self.process_financial_operation(operation_id)
             except Exception:  # noqa: BLE001 - rollback and retry expired durable lease.
                 self.session.rollback()
-        return len(ids)
+        return dispatched
 
     def resolve_financial_review(
         self, business_id, order_id, reconciliation_id, operation_id, reason, principal
@@ -507,6 +620,11 @@ class FinancialWorkflowMixin:
         confirmed = (
             "paid" if withdrawal else "refunded" if op.kind == "refund" else evidence.get("status")
         )
+        adapter = self.financial_providers.get(json.loads(op.request_json)["provider"])
+        if self._refund_evidence_review(row) and (
+            confirmed != "refunded" or getattr(adapter, "refund_enabled", False) is not True
+        ):
+            raise PaymentError("Unresolved refund evidence requires qualified refund confirmation")
         refund = self.session.scalar(
             select(FinancialOperation).where(
                 FinancialOperation.order_id == order_id, FinancialOperation.kind == "refund"

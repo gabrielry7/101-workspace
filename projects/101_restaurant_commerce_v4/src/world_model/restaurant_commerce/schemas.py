@@ -542,6 +542,7 @@ class ErrorResponse(BaseModel):
 class FinancialActionRequest(StrictModel):
     idempotency_key: str = Field(min_length=1, max_length=100)
     reason: str = Field(min_length=1, max_length=500)
+    refund_reference: str | None = Field(default=None, pattern=r"^[1-9][0-9]{0,19}$")
 
 
 class FinancialResolutionRequest(StrictModel):

@@ -449,6 +449,10 @@ def test_external_refund_evidence_holds_without_inventing_local_refund(factory):
         state = svc.order_out(order.id)
         assert state.payment_status == "paid"  # No fabricated refund accounting.
         assert state.reconciliation_required
+        assert any(
+            review["reason"] == "refund_evidence_review"
+            for review in svc.list_payment_reconciliation(adapter.business_id)
+        )
         assert (
             svc.list_payment_reconciliation(adapter.business_id)[0]["reason"]
             == "wompi_provider_review"

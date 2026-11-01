@@ -42,6 +42,13 @@ class PaymentWorkflowMixin:
             )
         )
         if row is not None:
+            if (
+                row.status == "open"
+                and row.reason != "refund_evidence_review"
+                and self._refund_evidence_review(row)
+            ):
+                # Retain legacy refund provenance before refreshing a generic hold.
+                self._reconciliation(order, "refund_evidence_review", json.loads(row.evidence_json))
             if row.status != "open" or json.loads(row.evidence_json) != evidence:
                 self._financial_audit(order, "system:provider", "reconciliation.updated", reason,
                     {"previous_evidence": json.loads(row.evidence_json), "new_evidence": evidence})

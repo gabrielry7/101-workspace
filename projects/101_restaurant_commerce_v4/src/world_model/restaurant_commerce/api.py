@@ -180,6 +180,9 @@ def create_app(
         if production or not isinstance(wompi_sandbox, WompiSandboxProvider):
             raise RuntimeError("Wompi sandbox is forbidden in production")
         payment_providers = {**(payment_providers or {}), NAME: wompi_sandbox}
+        from .wompi_financial import WompiSandboxFinancialProvider
+        # This adapter has no refund POST implementation; financial writes remain gated.
+        financial_providers = {**(financial_providers or {}), NAME: WompiSandboxFinancialProvider(wompi_sandbox)}
         browser_policy["checkout_origins"] = list(set(browser_policy["checkout_origins"] + [CHECKOUT_ORIGIN]))
     if production and any(getattr(p, "sandbox_only", False) for p in (payment_providers or {}).values()):
         raise RuntimeError("Sandbox payment providers are forbidden in production")
@@ -934,13 +937,13 @@ def create_app(
     def financial_lookup(business_id: str, order_id: str, body: FinancialActionRequest,
                          principal=Depends(financial_authority("finance.lookup")),
                          service: RestaurantCommerceService = Depends(get_service)):
-        return service.request_financial_operation(business_id, order_id, "lookup", body.idempotency_key, body.reason, principal)
+        return service.request_financial_operation(business_id, order_id, "lookup", body.idempotency_key, body.reason, principal, refund_reference=body.refund_reference)
 
     @app.post("/api/finance/restaurants/{business_id}/orders/{order_id}/refund")
     def financial_refund(business_id: str, order_id: str, body: FinancialActionRequest,
                          principal=Depends(financial_authority("finance.refund")),
                          service: RestaurantCommerceService = Depends(get_service)):
-        return service.request_financial_operation(business_id, order_id, "refund", body.idempotency_key, body.reason, principal)
+        return service.request_financial_operation(business_id, order_id, "refund", body.idempotency_key, body.reason, principal, refund_reference=body.refund_reference)
 
     @app.post("/api/finance/restaurants/{business_id}/orders/{order_id}/resolve/{reconciliation_id}")
     def financial_resolve(business_id: str, order_id: str, reconciliation_id: str, body: FinancialResolutionRequest,

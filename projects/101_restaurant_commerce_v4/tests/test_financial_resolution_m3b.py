@@ -54,6 +54,7 @@ def principal(**overrides):
 
 class Controlled(SimulatedPaymentProvider):
     controlled = True
+    refund_enabled = True
     supports_idempotent_refund = True
 
     def __init__(self):

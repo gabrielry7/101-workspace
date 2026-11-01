@@ -30,6 +30,11 @@ def main():
     parser.add_argument("--layers", default="tests,postgres,receiver")
     parser.add_argument("--execute-sandbox", action="store_true")
     parser.add_argument("--cloudflared", type=Path)
+    parser.add_argument(
+        "--financial",
+        action="store_true",
+        help="Also execute financial contract tests in the PostgreSQL layer",
+    )
     args = parser.parse_args()
     layers = args.layers.split(",")
     if not layers or set(layers) - {"tests", "postgres", "receiver", "remote", "hosted"}:
@@ -56,7 +61,8 @@ def main():
         },
         "layers": {},
         "gaps": [
-            "Native remote webhook requires configured stable HTTPS receiver.",
+            "Offline layers do not exercise native webhook delivery; "
+            "see separate native qualification.",
             "Real-money operation remains disabled.",
         ],
     }
@@ -177,6 +183,10 @@ def main():
                     if layer == "tests"
                     else ["tests/test_wompi_sandbox.py", "tests/test_wompi_adversarial.py"]
                 )
+                if layer == "postgres" and args.financial:
+                    test_paths.extend(
+                        ["tests/test_financial_resolution_m3b.py", "tests/test_wompi_financial.py"]
+                    )
                 xml = root / (layer + ".xml")
                 code = command(
                     c,

@@ -171,6 +171,12 @@ def process(service, key):
                         "reason": row.last_error,
                     },
                 )
+                if result.get("refunds_observed"):
+                    service._reconciliation(
+                        order,
+                        "refund_evidence_review",
+                        {"transaction_id": transaction_id, "reason": row.last_error},
+                    )
                 service._commit()
                 return
             if result["status"] == "paid":

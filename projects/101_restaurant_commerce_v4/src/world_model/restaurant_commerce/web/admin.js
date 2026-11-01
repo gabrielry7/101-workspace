@@ -64,6 +64,7 @@ async function loadReservations() {
   } catch (error) { if (!error.stale) reservations.textContent = error.message; }
 }
 const reviewReasons = {
+  refund_evidence_review:'Devolución sin verificar: no habilitar la entrega ni devolver de nuevo',
   paid_after_cancellation:'Pago recibido después de cancelar',
   contradictory_payment_notification:'El proveedor reportó estados incompatibles',
   invalid_provider_response:'Respuesta de pago no verificable',
@@ -92,7 +93,15 @@ async function refreshAll() {
 }
 const financeResult = $('financeResult');
 let financeVersion = 0, financeBusy = false;
+let financeCapabilities = null;
+function resetFinanceCapabilities() {
+  financeCapabilities=null;
+  $('financeRefundButton').disabled=true; $('financeInspectButton').disabled=true;
+  $('financeRefundReference').value='';
+  $('financeAvailability').textContent='Consulta el historial para cargar los permisos y acciones disponibles.';
+}
 for (const input of [business, $('financeOrder')]) input.addEventListener('input', () => {
+  resetFinanceCapabilities();
   ++financeVersion; financeResult.textContent = 'Consultar para cargar el historial de este pedido.';
 });
 const financeRoot = () => `/api/finance/restaurants/${path(business.value)}/orders/${path($('financeOrder').value.trim())}`;
@@ -111,6 +120,7 @@ async function financeAPI(url, body) {
   } finally {clearTimeout(timeout);}
 }
 const financeStates={pending:'Pendiente',processing:'En proceso',unknown:'Sin confirmación; consultar nuevamente',succeeded:'Confirmado por el proveedor',failed:'Rechazado por el proveedor',withdrawn:'Solicitud retirada tras rechazo confirmado',review_required:'Requiere investigación'};
+const financialReviewReasons={refund_environment_unverified:'El proveedor no identifica el reembolso como Sandbox. Requiere aclaración.',refund_amount_mismatch:'El importe devuelto no coincide con el pago completo.',wompi_refund_contract_unverified:'Reembolsos Wompi deshabilitados: el contrato del proveedor sigue sin verificarse.',refund_evidence_requires_review:'El proveedor registra una devolución que requiere inspección.',unsupported_provider_status:'Estado del proveedor sin soporte; requiere investigación.'};
 function evidenceView(value) {
   if(!value)return meta('Sin evidencia de resultado');
   const e=value.provider_evidence || value;
@@ -118,6 +128,9 @@ function evidenceView(value) {
     typeof e.amount_minor==='number'?meta('Importe: '+money(e.amount_minor)):null,
     typeof e.provider_reference==='string'?meta('Referencia de pago: '+e.provider_reference):null,
     typeof e.refund_reference==='string'?meta('Referencia de devolución: '+e.refund_reference):null,
+    typeof e.refund_amount_minor==='number'?meta('Importe de devolución reportado: '+money(e.refund_amount_minor)):null,
+    typeof e.refund_status==='string'?meta('Estado reportado por Wompi: '+e.refund_status+' (no confirma devolución en este sistema)'):null,
+    e.review_reason?meta(financialReviewReasons[e.review_reason]||'Evidencia pendiente de revisión.'):null,
     typeof e.evidence_id==='string'?meta('Comprobante del proveedor: '+e.evidence_id):null,
     typeof e.query_started_at==='string'?meta('Consulta iniciada: '+new Date(e.query_started_at).toLocaleString()):null,
     e.error?meta('Aún no hay confirmación verificable. Consulta el historial antes de volver a intentar.'):null);
@@ -126,18 +139,30 @@ const financialActions={'refund.requested':'Devolución solicitada','refund.succ
   'refund.unknown':'Devolución sin confirmar','refund.failed':'Devolución rechazada','refund.review_required':'Devolución en revisión',
   'lookup.requested':'Consulta de pago solicitada','lookup.succeeded':'Pago verificado','lookup.unknown':'Pago sin confirmar',
   'lookup.review_required':'Pago en revisión','reconciliation.resolved':'Revisión resuelta','reconciliation.updated':'Nueva evidencia para revisión'};
+function financialReviewCard(review, operations) {
+  if(review.resolvable===false)return card(meta('Revisión financiera pendiente'),
+    meta('La evidencia de devolución sigue sin verificarse. Una consulta de pago normal no resuelve esta revisión.'));
+  const choices=operations.filter(o=>o.state==='succeeded'||o.state==='failed').slice(-3);
+  return card(meta('Revisión financiera pendiente'), ...choices.map(o=>button('Resolver con evidencia '+o.id.slice(0,8),async()=>{
+    const reason=$('financeReason').value.trim();
+    if(!reason)throw new Error('Escribe el motivo de la resolución.');
+    await financeAPI(financeRoot()+'/resolve/'+path(review.id),{operation_id:o.id,reason});
+    await renderFinance();await loadReconciliation();
+  })));
+}
 async function renderFinance() {
   const data=await financeAPI(financeRoot());
+  financeCapabilities=data.capabilities || {};
+  $('financeRefundButton').disabled=financeCapabilities.refund!==true;
+  $('financeInspectButton').disabled=financeCapabilities.inspect_refund!==true;
+  $('financeAvailability').textContent=financeCapabilities.refund===true?'Devolución completa disponible según tus permisos.':
+    financeCapabilities.refund_block_reason==='wompi_refund_contract_unverified'?financialReviewReasons.wompi_refund_contract_unverified:'Devolución no disponible para este pedido o tus permisos.';
   const operations=data.operations || [];
   replace(financeResult, [h('p',{},'Una solicitud pendiente no confirma una devolución.'),
     ...operations.map(o=>card(h('strong',{},o.kind==='refund'?'Devolución completa':'Consulta de pago'),
       h('p',{},financeStates[o.state] || o.state),meta('Responsable: '+o.actor_id),meta(o.reason),
       evidenceView(o.result))),
-    ...((data.reviews||[]).filter(r=>r.status==='open').map(r=>card(meta('Revisión financiera pendiente'),
-      ...operations.filter(o=>o.state==='succeeded'||o.state==='failed').slice(-3).map(o=>button('Resolver con evidencia '+o.id.slice(0,8),async()=>{
-        const reason=$('financeReason').value.trim();if(!reason)throw new Error('Escribe el motivo de la resolución.');
-        await financeAPI(financeRoot()+'/resolve/'+path(r.id),{operation_id:o.id,reason});await renderFinance();await loadReconciliation();
-      }))))),
+    ...(data.reviews||[]).filter(r=>r.status==='open').map(r=>financialReviewCard(r,operations)),
     h('h3',{},'Historial de acciones'),...(data.audit||[]).map(a=>card(meta(new Date(a.created_at).toLocaleString()),
       h('div',{},a.actor_id+' · '+(financialActions[a.action]||'Actualización financiera')),meta(a.reason),evidenceView(a.evidence)))]);
 }
@@ -149,15 +174,19 @@ async function financeAction(kind) {
     if(kind){
       const reason=$('financeReason').value.trim();if(!reason)throw new Error('Escribe el motivo.');
       if(kind==='refund'&&!confirm('¿Solicitar una devolución completa? Si se interrumpe, consulta el historial antes de volver a intentar.'))return;
+      const reference=$('financeRefundReference').value.trim();
+      if(kind==='inspect'&&(!financeCapabilities?.inspect_refund || !/^[1-9][0-9]{0,19}$/.test(reference)))throw new Error('Consulta el historial e indica un ID numérico de devolución válido.');
       if(!window.crypto || !crypto.getRandomValues)throw new Error('Este navegador no permite una solicitud segura.');
       const bytes=new Uint8Array(24);crypto.getRandomValues(bytes);
-      await financeAPI(financeRoot()+'/'+kind,{idempotency_key:Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join(''),reason});
+      await financeAPI(financeRoot()+'/'+(kind==='inspect'?'lookup':kind),{idempotency_key:Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join(''),reason,
+        ...(kind==='inspect'?{refund_reference:reference}:{})});
     }
     await renderFinance();
   } catch(error){if(!error.stale && version===financeVersion)financeResult.textContent=error.name==='AbortError'?'Respuesta no recibida. Consulta el historial: la operación puede continuar.':error.message;}
   finally {financeBusy=false;}
 }
 const financeHistory=()=>financeAction(null), financeLookup=()=>financeAction('lookup'), financeRefund=()=>financeAction('refund');
-window.addEventListener('staffchange', event => { ++scopeVersion; ++financeVersion; $('financeOrder').value=''; for(const id of ['orders', 'reservations', 'reconciliation', 'financeResult']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) refreshAll(); });
-bind({refreshAll,financeHistory,financeLookup,financeRefund}); start(() => { window.CommerceStaff.ready.then(refreshAll); setInterval(refreshAll,5000); });
+const financeInspect=()=>financeAction('inspect');
+window.addEventListener('staffchange', event => { ++scopeVersion; ++financeVersion; resetFinanceCapabilities(); $('financeOrder').value=''; for(const id of ['orders', 'reservations', 'reconciliation', 'financeResult']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) refreshAll(); });
+bind({refreshAll,financeHistory,financeLookup,financeRefund,financeInspect}); start(() => { window.CommerceStaff.ready.then(refreshAll); setInterval(refreshAll,5000); });
 })();

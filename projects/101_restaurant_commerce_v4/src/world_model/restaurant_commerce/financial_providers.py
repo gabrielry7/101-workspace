@@ -16,6 +16,11 @@ class PaymentObservation:
     currency: str
     status: str
     evidence_id: str
+    review_reason: str | None = None
+    refund_reference: str | None = None
+    refund_amount_minor: int | None = None
+    refund_status: str | None = None
+    refund_sandbox: bool | None = None
 
 
 @dataclass(frozen=True)
@@ -33,6 +38,7 @@ class FinancialProvider(Protocol):
     name: str
     controlled: bool
     supports_idempotent_refund: bool
+    refund_enabled: bool
 
     def lookup_payment(
         self, *, order_id: str, idempotency_key: str, provider_reference: str | None

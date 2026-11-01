@@ -32,6 +32,7 @@ class ControlledPayment:
 class ControlledFinancial:
     name = "simulated"
     controlled = True
+    refund_enabled = True
     supports_idempotent_refund = True
 
     def _call(self, route, kwargs, model):
