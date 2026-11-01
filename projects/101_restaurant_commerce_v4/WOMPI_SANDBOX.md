@@ -199,8 +199,12 @@ Worker secret bindings, never repository config. This machine's configuration is
 
 Set the **sandbox** URL de Eventos to
 `https://101-wompi-sandbox-receiver.reader-101.workers.dev/events` and save it.
-The deployed receiver's signed-fixture checks pass; actual Wompi-native delivery
-has not yet been qualified. Repeat the bounded receiver checks with:
+The deployed receiver's signed-fixture checks pass. Actual Wompi-native delivery
+was qualified on2026-11-01: an approved callback arrived with commerce terminated
+in7.02seconds, and restart recovered the same paid order in15.43seconds with one
+payment. A declined callback retained across shutdown was consumed on a second
+restart without duplicating the payment. These are measured individual sandbox
+scenarios, not production/load certification. Repeat the bounded receiver checks with:
 
 ```sh
 python scripts/check_wompi_receiver.py --run-dir /tmp/receiver-NEW --execute-sandbox
@@ -220,3 +224,8 @@ restarts the app, and requires the checksum-bound job to be processed and remote
 acknowledged with one payment record. Reference polling alone cannot pass this
 acceptance check. Empty inbox required at startup; no invented callbacks. The
 probe retains private runtime evidence and stops only its own application.
+A late callback may arrive after the test process stops: resume that same
+disposable demo with its original port, `--resume`, and `--receiver-config` to
+drain it before the next isolated probe. Do not delete or manually acknowledge
+unconsumed receipts to make the empty-inbox precondition pass. Keep the real-money
+and refund gates closed; the prior refund-simulator contradiction remains open.

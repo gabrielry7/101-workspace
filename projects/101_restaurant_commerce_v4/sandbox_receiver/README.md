@@ -42,8 +42,11 @@ Deployed checks also pass for eight concurrent duplicate receipts, signature and
 auth rejection, privacy, durable local enqueue, lost acknowledgement and replay.
 Run `python scripts/check_wompi_receiver.py --run-dir /tmp/receiver-NEW
 --execute-sandbox` from the project root with its dependencies installed. This is
-a signed synthetic fixture; actual Wompi delivery still requires saving the URL
-in the sandbox dashboard and executing the native callback test.
+a signed synthetic fixture. On2026-11-01 the native callback test also passed
+after the user saved the sandbox Events URL: approval persisted while commerce
+was stopped and settled after restart; a late declined receipt also survived
+shutdown and was consumed on the next start. Real-money and refund release gates
+remain closed. See `WOMPI_SANDBOX.md` for the bounded native rerun command.
 
 The local pinned runtime tests retain compatibility date 2026-10-29. An attempt
 to run the deployed 2026-11-01 date locally was rejected before tests started:
