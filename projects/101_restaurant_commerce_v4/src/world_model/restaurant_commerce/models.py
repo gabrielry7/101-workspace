@@ -811,3 +811,19 @@ class WompiSandboxDiscovery(Base):
     lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     last_error: Mapped[str | None] = mapped_column(String(120), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class PickupPolicy(Base):
+    __tablename__ = "restaurant_pickup_policies"
+    business_id: Mapped[str] = mapped_column(ForeignKey("restaurant_commerce_profiles.business_id"), primary_key=True)
+    policy_json: Mapped[str] = mapped_column(Text)
+    version: Mapped[int] = mapped_column(Integer, default=1, nullable=False)
+    __mapper_args__ = {"version_id_col": version}
+
+
+class ItemStock(Base):
+    __tablename__ = "restaurant_item_stock"
+    item_id: Mapped[str] = mapped_column(ForeignKey("restaurant_menu_items.id"), primary_key=True)
+    remaining: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    version: Mapped[int] = mapped_column(Integer, default=1, nullable=False)
+    __table_args__ = (CheckConstraint("remaining IS NULL OR remaining >= 0", name="ck_stock_nonnegative"),)

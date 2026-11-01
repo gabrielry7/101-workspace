@@ -91,13 +91,13 @@ def test_public_input_to_staff_render_and_actions(site):
         'customer': {'name': PAYLOAD, 'phone': '3005550102'}, 'starts_at': when.isoformat(), 'party_size': 2})
     assert r.status_code == 200, r.text
     page.goto('https://commerce.test/admin')
-    page.get_by_role('button', name='accepted', exact=True).wait_for()
+    page.get_by_role('button', name='Aceptar', exact=True).wait_for()
     assert PAYLOAD in page.locator('#orders').inner_text()
     assert PAYLOAD in page.locator('#reservations').inner_text()
     assert_safe(page, errors, external)
     assert not any(method == 'PATCH' for method, _, _ in requests)
-    page.get_by_role('button', name='accepted', exact=True).click()
-    page.get_by_role('button', name='preparing', exact=True).wait_for()
+    page.get_by_role('button', name='Aceptar', exact=True).click()
+    page.get_by_role('button', name='Preparar', exact=True).wait_for()
     page.get_by_role('button', name='Confirmar', exact=True).click()
     playwright.expect(page.locator("#reservations .status")).to_have_text("confirmed")
     assert_safe(page, errors, external)
@@ -283,6 +283,10 @@ def test_reservation_checkbox_records_only_explicit_request(site):
     page.get_by_role('button',name='Reservar',exact=True).click()
     assert not page.locator('#rWhatsappOptIn').is_checked()
     for opted,phone in [(False,'3007770001'),(True,'3007770002')]:
+        if opted:
+            page.once('dialog', lambda dialog: dialog.accept())
+            page.locator('#newReservation').click()
+            assert not page.locator('#rWhatsappOptIn').is_checked()
         page.locator('#rName').fill('Consent fixture');page.locator('#rPhone').fill(phone)
         when=(datetime.now()+timedelta(days=2)).replace(hour=12,minute=0,second=0,microsecond=0)
         page.locator('#rDate').fill(when.strftime('%Y-%m-%dT%H:%M'))

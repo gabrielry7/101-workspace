@@ -200,3 +200,37 @@ def upgrade_wompi_sandbox(engine):
             ):
                 raise RuntimeError("Incomplete sandbox schema; repair offline")
             table.create(connection, checkfirst=True)
+
+
+OPERATIONS_TABLES = frozenset({"restaurant_pickup_policies", "restaurant_item_stock"})
+
+
+def operations_columns_present(connection):
+    from .models import Base
+    inspector = inspect(connection)
+    return OPERATIONS_TABLES.issubset(inspector.get_table_names()) and all(
+        set(Base.metadata.tables[name].columns.keys()).issubset(
+            {c["name"] for c in inspector.get_columns(name)}
+        ) for name in OPERATIONS_TABLES
+    )
+
+
+def upgrade_operations(engine):
+    """Offline additive M5 upgrade. No invented hours, capacity or stock."""
+    from .models import Base
+    if engine.dialect.name not in {"sqlite", "postgresql"}:
+        raise RuntimeError("Operations upgrade supports SQLite and PostgreSQL only")
+    with engine.begin() as connection:
+        if engine.dialect.name == "sqlite":
+            connection.exec_driver_sql("BEGIN IMMEDIATE")
+        if not staff_columns_present(connection):
+            raise RuntimeError("M5 requires the M4 staff schema")
+        inspector = inspect(connection)
+        for name in OPERATIONS_TABLES & set(inspector.get_table_names()):
+            if not set(Base.metadata.tables[name].columns.keys()).issubset(
+                {c["name"] for c in inspector.get_columns(name)}
+            ):
+                raise RuntimeError("Incomplete operations schema; repair offline")
+        for table in Base.metadata.sorted_tables:
+            if table.name in OPERATIONS_TABLES:
+                table.create(connection, checkfirst=True)

@@ -47,24 +47,58 @@ window.CommerceUI = (() => {
       });
     });
   }
-  async function start(run) {
-    let timer;
-    try {
-      policy = await Promise.race([
-        (async () => {
-          const response = await fetch('/api/browser-policy');
-          if (!response.ok) throw new Error('policy unavailable');
-          return await response.json();
-        })(),
-        new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('policy timeout')), 3000); })
-      ]);
-    } catch (_) { /* Fail closed for external navigation; local UI still works. */ }
-    finally { clearTimeout(timer); }
-    run();
+  let lastSuccess = null;
+  const unconfirmed=new Set();
+  function connection(state, message) {
+    const banner=$('networkStatus'); if(!banner)return;
+    banner.hidden=false; banner.dataset.state=navigator.onLine===false?'offline':state;
+    banner.textContent=navigator.onLine===false?'Sin conexión. Los datos pueden estar desactualizados; no se enviarán acciones automáticamente.':message;
   }
+  async function request(url,options={}) {
+    const controller=new AbortController(), outer=options.signal;
+    const abort=()=>controller.abort();
+    if(outer){if(outer.aborted)abort();else outer.addEventListener('abort',abort,{once:true});}
+    const timer=setTimeout(abort,options.timeout || 15000);
+    try {
+      const response=await fetch(url,{...options,signal:controller.signal,cache:'no-store'});
+      const data=await response.json();
+      if(response.ok){unconfirmed.delete(url);lastSuccess=Date.now();connection(unconfirmed.size?'stale':'fresh',unconfirmed.size?'Hay consultas o acciones sin confirmar. Revisa los avisos de cada sección antes de actuar.':'Servidor accesible · última respuesta '+new Date(lastSuccess).toLocaleTimeString('es-CO'));}
+      else {if(response.status>=500)unconfirmed.add(url);connection('stale','No se pudo actualizar. Conservamos los últimos datos; revisa antes de actuar.');}
+      return {ok:response.ok,status:response.status,json:async()=>data};
+    } catch(error){unconfirmed.add(url);connection('stale','No llegó la respuesta. Conserva esta página y consulta el estado antes de reintentar.');throw error;}
+    finally{clearTimeout(timer);if(outer)outer.removeEventListener('abort',abort);}
+  }
+  function poll(run,{interval=15000,active=()=>true}={}) {
+    let timer=null,busy=false,queued=false,failures=0,stopped=false;
+    function schedule(){clearTimeout(timer);if(!stopped)timer=setTimeout(tick,Math.min(60000,interval*Math.pow(2,failures)));}
+    async function tick(){
+      clearTimeout(timer);
+      if(stopped)return;
+      if(busy){queued=true;return;}
+      if(document.hidden||navigator.onLine===false||!active()){schedule();return;}
+      busy=true;queued=false;
+      try{const result=await run();failures=result===false?Math.min(3,failures+1):0;}
+      catch(_){failures=Math.min(3,failures+1);}
+      finally{busy=false;if(queued){queued=false;timer=setTimeout(tick,0);}else schedule();}
+    }
+    const resume=()=>{if(!document.hidden && navigator.onLine!==false)tick();};
+    document.addEventListener('visibilitychange',resume);window.addEventListener('online',resume);
+    schedule();return {refresh:tick,stop:()=>{stopped=true;clearTimeout(timer);document.removeEventListener('visibilitychange',resume);window.removeEventListener('online',resume);}};
+  }
+  window.addEventListener('offline',()=>connection('offline',''));
+  window.addEventListener('online',()=>connection('stale','Conexión disponible. Verificando el estado…'));
+  async function start(run) {
+    if(window.CommerceSupported===false)return;
+    try{const response=await request('/api/browser-policy',{timeout:3000});if(response.ok)policy=await response.json();}
+    catch(_){/* Fail closed for external navigation; the catalog still loads. */}
+    const badge=$('demoBadge');if(badge)badge.hidden=!(policy.demo_mode||policy.wompi_sandbox);
+    const demo=$('demoAddressButton');if(demo)demo.hidden=!policy.demo_mode;
+    await run();const boot=$('bootNotice');if(boot)boot.hidden=true;
+  }
+  const dateTime=(value,zone='America/Bogota')=>new Intl.DateTimeFormat('es-CO',{timeZone:zone,month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(value));
   const money = n => new Intl.NumberFormat('es-CO', {
     style: 'currency', currency: 'COP', maximumFractionDigits: 0
   }).format(Number(n) || 0);
   const path = value => encodeURIComponent(String(value));
-  return {$, node, replace, safeURL, bind, start, money, path};
+  return {$, node, replace, safeURL, bind, start, money, path, request, poll, dateTime, connection};
 })();

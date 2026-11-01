@@ -200,7 +200,14 @@ def test_roles_and_bare_order_ids_audit(client):
         )
 
 
-def test_login_throttled_and_no_account_oracle(client):
+def test_login_throttled_and_no_account_oracle(client, monkeypatch):
+    from types import SimpleNamespace
+    from world_model.restaurant_commerce import staff
+
+    # This contract is per aligned minute. Keep requests in that window instead
+    # of making the assertion depend on the wall clock during password hashing.
+    clock = [1800000000.0]
+    monkeypatch.setattr(staff, "time", SimpleNamespace(time=lambda: clock[0]))
     for i in range(5):
         r = client.post(
             "/api/staff/login",
@@ -224,6 +231,12 @@ def test_login_throttled_and_no_account_oracle(client):
         ).status_code
         == 403
     )
+    clock[0] += 60
+    assert client.post(
+        "/api/staff/login",
+        json={"username": "unknown.user", "password": PASSWORD},
+        headers={"X-101-Login": "1"},
+    ).status_code == 401  # A new aligned minute has a new bounded allowance.
 
 
 def test_populated_upgrade_preserves_orders_and_never_creates_staff(factory):

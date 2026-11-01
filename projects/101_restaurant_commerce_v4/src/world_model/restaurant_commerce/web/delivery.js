@@ -1,5 +1,6 @@
 "use strict";
 (() => {
+if(window.CommerceSupported===false)return;
 const {$, node: h, replace, safeURL, bind, start, money, path} = window.CommerceUI;
 const business = $('business');
 let scopeVersion = 0;
@@ -60,5 +61,5 @@ async function loadAll() {
   finally { refreshing = false; }
 }
 window.addEventListener('staffchange', event => { ++scopeVersion; for(const id of ['rows']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) loadAll(); });
-bind({loadAll}); start(() => { window.CommerceStaff.ready.then(loadAll); setInterval(loadAll,5000); });
+const refresh=window.CommerceUI.poll(loadAll,{active:()=>!!window.CommerceStaff.identity()});bind({loadAll:refresh.refresh});start(()=>window.CommerceStaff.ready.then(refresh.refresh));
 })();

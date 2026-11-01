@@ -130,7 +130,10 @@ from .payment_workflow import PaymentWorkflowMixin
 from .financial_workflow import FinancialWorkflowMixin
 
 
-class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
+from .operations import OperationsMixin
+
+
+class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, OperationsMixin):
     def __init__(
         self,
         session: Session,
@@ -350,6 +353,8 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         if not profile:
             raise NotFoundError(f"Restaurant commerce profile not found: {business_id}")
 
+        from .models import ItemStock
+        stocks = dict(self.session.execute(select(ItemStock.item_id, ItemStock.remaining).join(MenuItem).join(MenuCategory).join(Menu).where(Menu.business_id == business_id)).all())
         menus: list[MenuOut] = []
         for menu in sorted(profile.menus, key=lambda x: x.display_order):
             if not menu.enabled:
@@ -391,7 +396,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
                             base_price_minor=item.base_price_minor,
                             currency=item.currency,
                             image_url=item.image_url,
-                            available=not item.sold_out,
+                            available=not item.sold_out and stocks.get(item.id) != 0,
                             modifier_groups=groups,
                         )
                     )
@@ -432,7 +437,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         profile = self.session.get(RestaurantCommerceProfile, business_id)
         if not profile:
             raise NotFoundError(f"Restaurant commerce profile not found: {business_id}")
+        from urllib.parse import quote as url_quote
         return CommerceCapabilityOut(
+            storefront_url="/r/" + url_quote(profile.slug, safe=""),
             business_id=business_id,
             ordering_enabled=profile.ordering_enabled,
             payment_provider=profile.payment_provider,
@@ -1197,30 +1204,17 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         verified = self._verified_customer(business_id, request.customer.phone)
         if request.reward_id and verified is None:
             raise ValidationError("Verified customer required for loyalty redemption")
-        if request.promo_code and verified is None:
-            promotion = self.session.scalar(select(Promotion).where(
-                Promotion.business_id == business_id,
-                Promotion.code == request.promo_code.strip().upper()))
-            if promotion and promotion.per_customer_limit is not None:
-                raise ValidationError("Verified customer required for customer-limited promotions")
         profile = self.session.get(RestaurantCommerceProfile, business_id)
         if not profile:
             raise NotFoundError(f"Restaurant commerce profile not found: {business_id}")
-        if not profile.ordering_enabled:
-            raise ValidationError("Direct ordering is disabled")
-        try:
-            fulfillment = FulfillmentType(request.fulfillment_type)
-        except ValueError as exc:
-            raise ValidationError(f"Unsupported fulfillment type: {request.fulfillment_type}") from exc
-        if fulfillment == FulfillmentType.PICKUP and not profile.pickup_enabled:
-            raise ValidationError("Direct pickup ordering is disabled")
-        if fulfillment == FulfillmentType.DELIVERY and not profile.delivery_enabled:
-            raise ValidationError("Direct delivery ordering is disabled")
-
         claim = None
         if request.idempotency_key:
             scope = f"order.create:{business_id}"
             request_data = request.model_dump(mode="json")
+            if request.quote_token is None:
+                request_data.pop("quote_token")
+            if request.expected_total_minor is None:
+                request_data.pop("expected_total_minor")  # Preserve pre-M5 retry fingerprints.
             if request.recovery_secret is None:
                 request_data.pop("recovery_secret")  # Preserve old M2 fingerprint bindings.
             fingerprint = request_fingerprint({"request": request_data, "verified_customer_id": self.verified_customer_id})
@@ -1252,6 +1246,23 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
                     raise IdempotencyConflictError("Order replay requires an active original binding")
                 return self.process_payment_intent(claim.entity_id)
 
+        if request.promo_code and verified is None:
+            promotion = self.session.scalar(select(Promotion).where(
+                Promotion.business_id == business_id,
+                Promotion.code == request.promo_code.strip().upper()))
+            if promotion and promotion.per_customer_limit is not None:
+                raise ValidationError("Verified customer required for customer-limited promotions")
+        if not profile.ordering_enabled:
+            raise ValidationError("Direct ordering is disabled")
+        try:
+            fulfillment = FulfillmentType(request.fulfillment_type)
+        except ValueError as exc:
+            raise ValidationError(f"Unsupported fulfillment type: {request.fulfillment_type}") from exc
+        if fulfillment == FulfillmentType.PICKUP and not profile.pickup_enabled:
+            raise ValidationError("Direct pickup ordering is disabled")
+        if fulfillment == FulfillmentType.DELIVERY and not profile.delivery_enabled:
+            raise ValidationError("Direct delivery ordering is disabled")
+
         delivery_quote = None
         if fulfillment == FulfillmentType.DELIVERY:
             delivery_quote = self._validate_delivery_quote(business_id, request.delivery_quote_id)
@@ -1274,6 +1285,8 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
             customer_phone=customer.phone,
             reward_id=request.reward_id,
         )
+        if request.quote_token and not getattr(self, "quote_validator", lambda *args: False)(business_id, request, quote.total_minor):
+            raise ValidationError("La cotización venció o cambió. Revisa el total y confirma de nuevo.")
         growth = RestaurantGrowthService(self.session)
 
         if request.payment_provider == "cash_at_pickup":
@@ -1291,6 +1304,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
             raise ValidationError("Payment merchant is not configured for this business")
 
         delivery_fee = delivery_quote.fee_minor if delivery_quote else 0
+        if request.expected_total_minor is not None and request.expected_total_minor != quote.total_minor + delivery_fee:
+            raise ValidationError("El precio cambió. Actualiza y confirma el nuevo total antes de pedir.")
+        self.allocate_pickup_and_stock(profile, request)
         order = Order(
             public_code=_public_code("O"),
             business_id=business_id,
@@ -1309,7 +1325,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
             delivery_fee_minor=delivery_fee,
             total_minor=quote.total_minor + delivery_fee,
             prep_minutes=profile.default_prep_minutes,
-            requested_pickup_at=request.requested_pickup_at,
+            requested_pickup_at=_aware_utc(request.requested_pickup_at) if request.requested_pickup_at else None,
             notes=request.notes,
             source_channel=request.source_channel,
             external_source_ref=request.external_source_ref,
@@ -1505,7 +1521,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         )
         return self.order_out(order.id)
 
-    def transition_order(self, order_id: str, new_status: str) -> OrderOut:
+    def transition_order(self, order_id: str, new_status: str, *, expected_version=None, reason=None) -> OrderOut:
         order = self.session.scalar(
             select(Order)
             .where(Order.id == order_id)
@@ -1519,6 +1535,8 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         except ValueError as exc:
             raise ValidationError(f"Unknown order status: {new_status}") from exc
 
+        if expected_version is not None and order.version != expected_version:
+            raise IdempotencyConflictError("El pedido cambió. Actualiza antes de decidir de nuevo.")
         if current == target:
             return self.order_out(order.id)
         if target not in ORDER_TRANSITIONS[current]:
@@ -1590,7 +1608,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
             business_id=order.business_id,
             entity_id=order.id,
             occurred_at=now,
-            payload={"from": current.value, "to": target.value},
+            payload={"from": current.value, "to": target.value, "reason": reason},
             dedupe_key=f"order-transition:{order.id}:{current.value}:{target.value}",
         )
         return self.order_out(order.id)
@@ -1600,6 +1618,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         needs_review = self.session.scalar(select(PaymentReconciliation.id).where(
             PaymentReconciliation.order_id == order.id, PaymentReconciliation.status == "open").limit(1)) is not None
         return OrderOut(
+            version=order.version,
             checkout_state=intent_state,
             reconciliation_required=needs_review,
             id=order.id,
@@ -1684,15 +1703,17 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
             raise NotFoundError("Order not found")
         return self._order_to_out(order)
 
-    def list_orders(self, business_id: str, *, status: str | None = None, limit: int = 100) -> list[OrderOut]:
+    def list_orders(self, business_id: str, *, status: str | None = None, limit: int = 100, offset: int = 0, active: bool = False) -> list[OrderOut]:
         stmt = self._orders_stmt().where(Order.business_id == business_id)
+        if active:
+            stmt = stmt.where(Order.status.notin_(["completed", "cancelled"]))
         if status:
             try:
                 OrderStatus(status)
             except ValueError as exc:
                 raise ValidationError(f"Unknown order status: {status}") from exc
             stmt = stmt.where(Order.status == status)
-        stmt = stmt.order_by(Order.created_at.desc()).limit(min(max(limit, 1), 500))
+        stmt = stmt.order_by(Order.created_at.desc(), Order.id).offset(max(0, offset)).limit(min(max(limit, 1), 500))
         orders = self.session.scalars(stmt).all()
         return [self._order_to_out(order) for order in orders]
 
@@ -1703,19 +1724,6 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
         profile = self.session.get(RestaurantCommerceProfile, business_id)
         if not profile:
             raise NotFoundError(f"Restaurant commerce profile not found: {business_id}")
-        if not profile.accepts_reservations:
-            raise ValidationError("Reservations are disabled")
-        if profile.max_party_size and request.party_size > profile.max_party_size:
-            raise ValidationError(f"Party exceeds configured maximum of {profile.max_party_size}")
-
-        starts_at = _aware_utc(request.starts_at)
-        if starts_at <= datetime.now(timezone.utc):
-            raise ValidationError("Reservation must be in the future")
-        if starts_at.minute % profile.reservation_slot_minutes != 0 or starts_at.second != 0:
-            raise ValidationError(
-                f"Reservation time must align to {profile.reservation_slot_minutes}-minute slots"
-            )
-
         claim = None
         if request.idempotency_key:
             claim = acquire_idempotency(
@@ -1731,6 +1739,19 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin):
                 if not existing or not existing.customer_snapshot_json:
                     raise IdempotencyConflictError("Reservation replay requires an original binding")
                 return self.reservation_out(claim.entity_id)
+
+        if not profile.accepts_reservations:
+            raise ValidationError("Reservations are disabled")
+        if profile.max_party_size and request.party_size > profile.max_party_size:
+            raise ValidationError(f"Party exceeds configured maximum of {profile.max_party_size}")
+
+        starts_at = _aware_utc(request.starts_at)
+        if starts_at <= datetime.now(timezone.utc):
+            raise ValidationError("Reservation must be in the future")
+        if starts_at.minute % profile.reservation_slot_minutes != 0 or starts_at.second != 0:
+            raise ValidationError(
+                f"Reservation time must align to {profile.reservation_slot_minutes}-minute slots"
+            )
 
         customer = self._upsert_customer(
             business_id,

@@ -28,7 +28,7 @@ ROLES = {
     "viewer": READ,
     "operator": READ | OPERATE,
     "finance": READ | FINANCE,
-    "manager": READ | OPERATE | FINANCE | {"growth.write"},
+    "manager": READ | OPERATE | FINANCE | {"growth.write", "settings.write"},
 }
 
 

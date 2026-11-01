@@ -1,5 +1,6 @@
 "use strict";
 (() => {
+if(window.CommerceSupported===false)return;
 const {$, node: h, replace, safeURL, bind, start, money, path} = window.CommerceUI;
 const business = $('business');
 let scopeVersion = 0;

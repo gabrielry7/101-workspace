@@ -7,7 +7,7 @@ import os
 import re
 import time
 from pathlib import Path
-from datetime import timezone
+from datetime import datetime, timezone
 from typing import Iterator
 from uuid import uuid4
 from urllib.parse import urlsplit
@@ -355,7 +355,7 @@ def create_app(
                 raise
 
     def get_service(session: Session = Depends(get_session)) -> RestaurantCommerceService:
-        return RestaurantCommerceService(
+        service = RestaurantCommerceService(
             session,
             payment_providers=payment_providers,
             financial_providers=financial_providers,
@@ -365,6 +365,10 @@ def create_app(
             storefront_cache=storefront_cache,
             payment_lease_seconds=payment_lease_seconds,
         )
+        from .operations import quote_binding
+        service.quote_validator = lambda business, request, total: verify_resource_token(
+            access_secret, request.quote_token, kind="quote", resource_id=quote_binding(business, request, total))
+        return service
 
     def get_growth(session: Session = Depends(get_session)) -> RestaurantGrowthService:
         return RestaurantGrowthService(session)
@@ -410,7 +414,9 @@ def create_app(
                     break
         name = request.scope["endpoint"].__name__
         permissions = {
-            "operator_orders": "operations.read", "operator_deliveries": "operations.read",
+            "operator_orders": "operations.read", "operator_order_detail": "operations.read",
+            "operations_settings": "operations.read", "save_operations_settings": "settings.write",
+            "save_item_stock": "settings.write", "daily_finance": "finance.read", "operator_deliveries": "operations.read",
             "operator_reservations": "operations.read", "operator_order_status": "operations.write",
             "operator_dispatch_delivery": "operations.write", "operator_cancel_delivery": "operations.write",
             "operator_delivery_status": "operations.write", "operator_reservation_status": "operations.write",
@@ -478,20 +484,33 @@ def create_app(
             return JSONResponse({"status": "not_ready", "database": "down"}, status_code=503)
         return {"status": "ready", "database": "ok"}
 
+    from .operations import register_operations
+    register_operations(app, get_service, require_operator)
+
     @app.get("/api/browser-policy")
     def browser_url_policy():
         return {**browser_policy, "demo_mode": demo_mode, "wompi_sandbox": wompi_sandbox is not None}
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js"}:
+        if filename not in {"shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "operations.js"}:
             raise HTTPException(status_code=404, detail="Asset not found")
-        return FileResponse(WEB_DIR / filename, media_type="text/javascript",
+        return FileResponse(WEB_DIR / filename, media_type="text/css" if filename.endswith(".css") else "text/javascript",
                             headers={"Cache-Control": "no-cache"})
 
     @app.get("/")
     def storefront_page():
         return FileResponse(WEB_DIR / "index.html")
+
+    @app.get("/r/{slug}")
+    def merchant_storefront(slug: str, session: Session = Depends(get_session)):
+        from sqlalchemy import select
+        from urllib.parse import quote as url_quote
+        from .models import RestaurantCommerceProfile
+        profile = session.scalar(select(RestaurantCommerceProfile).where(RestaurantCommerceProfile.slug == slug))
+        if profile is None:
+            raise HTTPException(404, "Restaurante no encontrado")
+        return RedirectResponse("/?business_id=" + url_quote(profile.business_id, safe=""), status_code=307)
 
     @app.get("/admin")
     def admin_page():
@@ -520,13 +539,15 @@ def create_app(
 
     @app.post("/api/restaurants/{business_id}/orders/quote", response_model=QuoteResponse)
     def quote(business_id: str, request: QuoteRequest, service: RestaurantCommerceService = Depends(get_service)):
-        return service.quote(
-            business_id,
-            request.items,
-            promo_code=request.promo_code,
-            customer_phone=request.customer_phone,
-            reward_id=request.reward_id,
+        result = service.quote(
+            business_id, request.items, promo_code=request.promo_code,
+            customer_phone=request.customer_phone, reward_id=request.reward_id,
         )
+        from .operations import quote_binding
+        expiry = int(time.time()) + 120
+        return result.model_copy(update={"quote_token": sign_resource(access_secret, kind="quote",
+            resource_id=quote_binding(business_id, request, result.total_minor), expires_at=expiry),
+            "expires_at": datetime.fromtimestamp(expiry, timezone.utc)})
 
     @app.post("/api/restaurants/{business_id}/delivery/quote", response_model=DeliveryQuoteOut)
     def delivery_quote(
@@ -685,9 +706,12 @@ def create_app(
     def operator_orders(
         business_id: str,
         status: str | None = Query(default=None),
+        offset: int = Query(default=0, ge=0, le=100000),
+        limit: int = Query(default=50, ge=1, le=100),
+        active: bool = Query(default=False),
         service: RestaurantCommerceService = Depends(get_service),
     ):
-        return service.list_orders(business_id, status=status)
+        return service.list_orders(business_id, status=status, limit=limit, offset=offset, active=active)
 
     @app.patch(
         "/api/operator/orders/{order_id}",
@@ -699,7 +723,7 @@ def create_app(
         patch: OrderStatusPatch,
         service: RestaurantCommerceService = Depends(get_service),
     ):
-        return service.transition_order(order_id, patch.status)
+        return service.transition_order(order_id, patch.status, expected_version=patch.expected_version, reason=patch.reason)
 
     @app.get(
         "/api/operator/restaurants/{business_id}/deliveries",

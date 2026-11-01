@@ -35,6 +35,11 @@ def main():
         action="store_true",
         help="Also execute financial contract tests in the PostgreSQL layer",
     )
+    parser.add_argument(
+        "--operations",
+        action="store_true",
+        help="Include M5 pickup/stock PostgreSQL and browser artifacts",
+    )
     args = parser.parse_args()
     layers = args.layers.split(",")
     if not layers or set(layers) - {"tests", "postgres", "receiver", "remote", "hosted"}:
@@ -55,6 +60,11 @@ def main():
         ).splitlines(),
         "base_url": "disposable-loopback-only",
         "start_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "source_sha256": {
+            str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in sorted((ROOT / "src").rglob("*"))
+            if p.is_file() and "__pycache__" not in str(p)
+        },
         "versions": {
             n: importlib.metadata.version(n)
             for n in ("pytest", "hypothesis", "sqlalchemy", "httpx")
@@ -69,6 +79,8 @@ def main():
     env = dict(os.environ)
     env["COMMERCE_BROWSER_EXECUTABLE"] = env.get("COMMERCE_BROWSER_EXECUTABLE", "/usr/bin/chromium")
     env.pop("COMMERCE_PAYMENT_TEST_DATABASE_URL", None)
+    if args.operations:
+        env["COMMERCE_M5_ARTIFACTS"] = str(root / "browser")
     started = False
     try:
         for name, cmd in [
@@ -186,6 +198,14 @@ def main():
                 if layer == "postgres" and args.financial:
                     test_paths.extend(
                         ["tests/test_financial_resolution_m3b.py", "tests/test_wompi_financial.py"]
+                    )
+                if layer == "postgres" and args.operations:
+                    test_paths.extend(
+                        [
+                            "tests/test_operations_m5.py",
+                            "tests/test_payment_durability_m3.py",
+                            "tests/test_staff_m4.py",
+                        ]
                     )
                 xml = root / (layer + ".xml")
                 code = command(

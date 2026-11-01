@@ -167,6 +167,8 @@ class DiscountOut(StrictModel):
 
 
 class QuoteResponse(StrictModel):
+    quote_token: str | None = None
+    expires_at: datetime | None = None
     business_id: str
     currency: str
     subtotal_minor: int
@@ -190,6 +192,8 @@ class CustomerIn(StrictModel):
 
 
 class CreateOrderRequest(StrictModel):
+    quote_token: str | None = Field(default=None, max_length=128)
+    expected_total_minor: int | None = Field(default=None, ge=0)
     recovery_secret: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
     customer: CustomerIn
     items: list[CartItemIn] = Field(min_length=1, max_length=100)
@@ -227,6 +231,8 @@ class CreateReservationRequest(StrictModel):
 
 
 class OrderStatusPatch(StrictModel):
+    expected_version: int | None = Field(default=None, ge=1)
+    reason: str | None = Field(default=None, min_length=1, max_length=500)
     status: str = Field(min_length=2, max_length=32, pattern=r"^[a-z_]+$")
 
 
@@ -329,6 +335,7 @@ class PaymentOut(StrictModel):
 
 
 class OrderOut(StrictModel):
+    version: int = 1
     checkout_state: str | None = None
     reconciliation_required: bool = False
     id: str
@@ -513,6 +520,7 @@ class PaymentWebhookIn(StrictModel):
 
 
 class CommerceCapabilityOut(StrictModel):
+    storefront_url: str | None = None
     business_id: str
     ordering_enabled: bool
     payment_provider: str

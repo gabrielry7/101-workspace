@@ -1,3 +1,7 @@
+# Customer and staff frontend (0.10.0)
+
+See [M5 frontend, resilience, qualification and offline upgrade](M5_FRONTEND.md). This is the current release; historical milestone notes follow. Real-money operation and unqualified Wompi refund submission remain gated.
+
 # Staff access update (0.8.0)
 
 See [M4 staff setup and authorization](M4_STAFF_ACCESS.md). Legacy operator and financial tokens no longer authorize requests. Upgrade existing databases offline and provision named staff before using operator pages. Real money remains gated.

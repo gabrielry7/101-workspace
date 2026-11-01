@@ -14,16 +14,7 @@
     }
     window.dispatchEvent(new CustomEvent('staffchange', {detail:{authenticated:!!value}}));
   }
-  async function boundedFetch(url,options={}) {
-    const controller=new AbortController();
-    const timer=setTimeout(()=>controller.abort(),15000);
-    try{
-      const response=await fetch(url,{...options,signal:options.signal || controller.signal});
-      const data=await response.json();
-      return {ok:response.ok,status:response.status,json:async()=>data};
-    }
-    finally{clearTimeout(timer);}
-  }
+  const boundedFetch=window.CommerceUI.request;
   async function restore() {
     const version=generation;
     try {
@@ -62,5 +53,5 @@
   $('staffLogoutAll').addEventListener('click',()=>logout(true));
   window.addEventListener('pageshow',event=>{if(event.persisted){publish(null);restore();}});
   document.addEventListener('visibilitychange',()=>{if(!document.hidden && identity)restore();});
-  window.CommerceStaff={request,ready};
+  window.CommerceStaff={request,ready, identity:()=>identity};
 })();

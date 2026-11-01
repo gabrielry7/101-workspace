@@ -1,10 +1,21 @@
 "use strict";
 (() => {
+if(window.CommerceSupported===false)return;
 const {$, node: h, replace, safeURL, bind, start, money, path} = window.CommerceUI;
 const business = $('business');
-let scopeVersion = 0;
+function publicMenu(){ $('publicMenuLink').href='/?business_id='+path(business.value); }
+business.addEventListener('input',publicMenu);window.addEventListener('staffchange',publicMenu);
+let merchantTimezone='America/Bogota', metadataBusiness=null, queueReading=false, queueQueued=false;
+let scopeVersion = 0, queueGeneration=0, reservationGeneration=0, reviewGeneration=0, queueOffset=0, lastRows=[];
+const pendingActions=new Set();
+const labels={awaiting_payment:'Esperando pago',placed:'Recibido',accepted:'Aceptado',preparing:'En preparación',ready:'Listo',completed:'Entregado',cancelled:'Cancelado'};
+const actions={accepted:'Aceptar',preparing:'Preparar',ready:'Marcar listo',completed:'Entregar',cancelled:'Cancelar'};
+const paidLabels={pending:'Por confirmar',paid:'Pagado',unpaid:'Sin pagar',failed:'No aprobado',refunded:'Devuelto'};
+const stamp=value=>window.CommerceUI.dateTime(value,merchantTimezone);
+function actionMessage(text){$('staffActionStatus').hidden=false;$('staffActionStatus').textContent=text;}
+
 for (const input of [business]) input.addEventListener('input', () => {
-  ++scopeVersion;
+  ++scopeVersion;++queueGeneration;++reservationGeneration;++reviewGeneration;queueOffset=0;lastRows=[];
   for (const id of ['orders', 'reservations', 'reconciliation']) $(id).textContent = 'Actualizar para cargar este negocio.';
 });
 const endpoint = tail => `/api/operator/restaurants/${path(business.value)}/${tail}`;
@@ -28,40 +39,60 @@ const button = (label, action) => h('button', {onClick: async event => {
 const orders = $('orders'), reservations = $('reservations');
 const next = {placed:['accepted','cancelled'], accepted:['preparing','cancelled'],
   preparing:['ready','cancelled'], ready:['completed','cancelled']};
-async function loadOrders() {
-  try {
-    const rows = await api(endpoint('orders'));
-    replace(orders, rows.length ? rows.map(o => card(
-      h('div', {className:'status'}, o.status),
-      h('h3', {}, '#', o.public_code, ' · ', o.customer_name || o.customer_phone),
-      h('div', {}, o.items.map(i => h('div', {}, i.quantity, ' × ', i.name))),
-      h('p', {className:'total'}, money(o.total_minor)),
-      meta(`${o.fulfillment_type} · Pago: ${o.payment_status} · ${new Date(o.created_at).toLocaleString()}`),
-      o.reconciliation_required ? h('p', {role:'alert'}, 'Pago requiere revisión. No confirmar ni cobrar de nuevo.') : null,
-      o.checkout_state && o.checkout_state !== 'ready' ? meta('Pago pendiente de confirmación: ' + o.checkout_state) : null,
-      o.delivery ? meta(`Delivery: ${o.delivery.status} · ${money(o.delivery_fee_minor)}`) : null,
-      h('div', {className:'actions'}, (!o.reconciliation_required && Object.prototype.hasOwnProperty.call(next, o.status) ? next[o.status] : []).map(s =>
-        button(s, async () => {
-          await api(`/api/operator/orders/${path(o.id)}`, {method:'PATCH', body:JSON.stringify({status:s})});
-          await loadOrders();
-        })))
-    )) : h('p', {}, 'Sin pedidos.'));
-  } catch (error) { if (!error.stale) orders.textContent = error.message; }
+function renderOrders(rows){
+  const query=$('queueSearch').value.trim().toLocaleLowerCase('es'),payment=$('paymentFilter').value;
+  const shown=rows.filter(o=>(payment==='all'||o.payment_status===payment)&&(!query||[o.public_code,o.customer_name||''].join(' ').toLocaleLowerCase('es').includes(query)));
+  $('queueCount').textContent=shown.length+' visibles · página '+(queueOffset/50+1)+' · máximo 50 por página';
+  $('queuePrev').disabled=queueOffset===0;$('queueNext').disabled=rows.length<50;
+  replace(orders, shown.length?shown.map(o=>card(
+    h('div',{className:'order-top'},h('span',{className:'status'},labels[o.status]||o.status),h('span',{className:'tag'},paidLabels[o.payment_status]||o.payment_status)),
+    h('h3',{},'#'+o.public_code+' · '+(o.customer_name||o.customer_phone)),
+    h('div',{className:'order-items'},...o.items.map(i=>h('div',{},i.quantity+' × '+i.name))),
+    h('p',{className:'total'},money(o.total_minor)),
+    meta((o.fulfillment_type==='pickup'?'Recogida':'Domicilio')+' · recibido '+stamp(o.created_at)),
+    o.requested_pickup_at?meta('Hora de recogida: '+stamp(o.requested_pickup_at)):meta('Hora de recogida por confirmar'),
+    o.reconciliation_required?h('p',{role:'alert'},'Pago requiere revisión. No confirmar ni cobrar de nuevo.'):null,
+    h('details',{},h('summary',{},'Detalle y contacto'),h('p',{},o.customer_phone),o.notes?h('p',{},o.notes):null,...o.items.map(i=>h('p',{},i.quantity+' × '+i.name+' · '+money(i.line_total_minor)+(i.modifiers.length?' · '+i.modifiers.map(m=>m.option_name).join(', '):''))),meta('Versión '+o.version)),
+    h('div',{className:'actions'},...(!o.reconciliation_required&&next[o.status]?next[o.status]:[]).map(status=>h('button',{disabled:pendingActions.has(o.id),onClick:()=>transition(o,status)},actions[status])),button('Ver pago',async()=>{$('financeOrder').value=o.id;++financeVersion;await financeHistory();$('financialSection').scrollIntoView();}))
+  )):h('p',{className:'empty'},'Sin pedidos con estos filtros.'));
+}
+async function transition(order,status){
+  if(pendingActions.has(order.id)||navigator.onLine===false)return actionMessage('Sin conexión o acción en curso. Actualiza antes de continuar.');
+  let reason='Cambio de estado desde operación';
+  if(status==='cancelled'){reason=prompt('Motivo de cancelación');if(!reason?.trim())return;}
+  if(status==='completed'&&order.payments.some(p=>p.provider==='cash_at_pickup')&&!confirm('Confirma que recibiste '+money(order.total_minor)+' en efectivo y entregaste el pedido.'))return;
+  if(status==='completed'&&order.payments.some(p=>p.provider==='cash_at_pickup'))reason='Personal confirma cobro en efectivo y entrega';
+  pendingActions.add(order.id);++queueGeneration;renderOrders(lastRows);
+  try{await api(`/api/operator/orders/${path(order.id)}`,{method:'PATCH',body:JSON.stringify({status,expected_version:order.version,reason})});actionMessage('Cambio guardado.');}
+  catch(error){if(!error.stale)actionMessage(error.message+' No repetimos la acción. Consulta el estado actualizado.');}
+  finally{pendingActions.delete(order.id);await loadOrders();}
+}
+async function loadOrders(){
+  if(queueReading){queueQueued=true;return false;}
+  queueReading=true;
+  const generation=++queueGeneration, filter=$('queueFilter').value;
+  try{
+    const rows=await api(endpoint('orders')+'?limit=50&offset='+queueOffset+(filter==='active'?'&active=true':filter==='all'?'':'&status='+path(filter)));
+    if(generation!==queueGeneration)return false;lastRows=rows;renderOrders(rows);return true;
+  }catch(error){if(!error.stale&&generation===queueGeneration)actionMessage('No se pudo actualizar la cola. Los pedidos visibles pueden estar desactualizados.');return false;}
+  finally{queueReading=false;if(queueQueued){queueQueued=false;setTimeout(loadOrders,0);}}
 }
 async function loadReservations() {
+  const generation=++reservationGeneration;
   try {
-    const rows = await api(endpoint('reservations'));
+    const rows = await api(endpoint('reservations'));if(generation!==reservationGeneration)return false;
     replace(reservations, rows.length ? rows.map(r => card(
       h('div', {className:'status'}, r.status), h('h3', {}, '#', r.public_code),
       h('div', {}, r.customer_name || r.customer_phone), h('div', {}, r.party_size, ' personas'),
-      meta(new Date(r.starts_at).toLocaleString()),
+      meta(stamp(r.starts_at)),
       h('div', {className:'actions'}, [['Confirmar','confirmed'],['Cancelar','cancelled']].map(([label,status]) =>
         button(label, async () => {
           await api(`/api/operator/reservations/${path(r.id)}`, {method:'PATCH', body:JSON.stringify({status})});
           await loadReservations();
         })))
     )) : h('p', {}, 'Sin reservas.'));
-  } catch (error) { if (!error.stale) reservations.textContent = error.message; }
+    return true;
+  } catch (error) { if (!error.stale)actionMessage('No se pudieron actualizar las reservas.');return false; }
 }
 const reviewReasons = {
   refund_evidence_review:'Devolución sin verificar: no habilitar la entrega ni devolver de nuevo',
@@ -74,21 +105,24 @@ const reviewReasons = {
   invalid_payment_notification:'Notificación de pago no válida'
 };
 async function loadReconciliation() {
+  const generation=++reviewGeneration;
   try {
-    const rows = await api(endpoint('payment-reconciliation'));
+    const rows = await api(endpoint('payment-reconciliation'));if(generation!==reviewGeneration)return false;
     replace($('reconciliation'), rows.length ? rows.map(r => card(
       h('strong', {}, 'Revisión de pago'), meta('Pedido: ' + r.order_id),
-      meta(Object.prototype.hasOwnProperty.call(reviewReasons, r.reason) ? reviewReasons[r.reason] : 'Verificar el pago con el proveedor'), meta(new Date(r.created_at).toLocaleString()),
+      meta(Object.prototype.hasOwnProperty.call(reviewReasons, r.reason) ? reviewReasons[r.reason] : 'Verificar el pago con el proveedor'), meta(stamp(r.created_at)),
       h('p', {}, 'Verifica el pago con el proveedor antes de realizar cualquier cobro o devolución. Esta alerta no confirma una devolución.'),
       button('Abrir resolución',async()=>{$('financeOrder').value=r.order_id;++financeVersion;await financeHistory();})
     )) : h('p', {}, 'Sin revisiones pendientes.'));
-  } catch (error) { if (!error.stale) $('reconciliation').textContent = error.message; }
+    return true;
+  } catch (error) { if (!error.stale)actionMessage('No se pudieron actualizar las revisiones de pago.');return false; }
 }
 let refreshing = false;
 async function refreshAll() {
   if (refreshing) return;
   refreshing = true;
-  try { await Promise.all([loadOrders(),loadReservations(),loadReconciliation()]); }
+  try { if(metadataBusiness!==business.value){const selected=business.value;const profile=await api(`/api/restaurants/${path(selected)}/storefront`);merchantTimezone=profile.timezone;metadataBusiness=selected;}const results=[];for(const load of [loadOrders,loadReservations,loadReconciliation])results.push(await load());return results.every(Boolean); }
+  catch(error){if(!error.stale)actionMessage('No se pudo verificar la operación del negocio.');return false;}
   finally { refreshing = false; }
 }
 const financeResult = $('financeResult');
@@ -187,6 +221,11 @@ async function financeAction(kind) {
 }
 const financeHistory=()=>financeAction(null), financeLookup=()=>financeAction('lookup'), financeRefund=()=>financeAction('refund');
 const financeInspect=()=>financeAction('inspect');
-window.addEventListener('staffchange', event => { ++scopeVersion; ++financeVersion; resetFinanceCapabilities(); $('financeOrder').value=''; for(const id of ['orders', 'reservations', 'reconciliation', 'financeResult']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) refreshAll(); });
-bind({refreshAll,financeHistory,financeLookup,financeRefund,financeInspect}); start(() => { window.CommerceStaff.ready.then(refreshAll); setInterval(refreshAll,5000); });
+window.addEventListener('staffchange', event => { ++scopeVersion;++queueGeneration;++reservationGeneration;++reviewGeneration;queueOffset=0;lastRows=[]; ++financeVersion; resetFinanceCapabilities(); $('financeOrder').value=''; for(const id of ['orders', 'reservations', 'reconciliation', 'financeResult']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) refreshAll(); });
+const queuePoll=window.CommerceUI.poll(refreshAll,{active:()=>!!window.CommerceStaff.identity(),interval:15000});
+$('queueFilter').addEventListener('change',()=>{queueOffset=0;loadOrders();});
+for(const id of ['paymentFilter','queueSearch'])$(id).addEventListener('input',()=>renderOrders(lastRows));
+$('queuePrev').addEventListener('click',()=>{queueOffset=Math.max(0,queueOffset-50);loadOrders();});
+$('queueNext').addEventListener('click',()=>{queueOffset+=50;loadOrders();});
+bind({refreshAll:queuePoll.refresh,financeHistory,financeLookup,financeRefund,financeInspect});start(()=>window.CommerceStaff.ready.then(queuePoll.refresh));
 })();

@@ -81,6 +81,7 @@ def test_duplicate_click_and_lost_response_reuse_original_intent(site):
     page.locator("#cName").fill("Synthetic")
     page.locator("#cPhone").fill("3005550101")
     # Native clicks exercise synchronous handler re-entry without Playwright's disabled-button wait.
+    playwright.expect(page.locator("#checkoutButton")).to_be_enabled()
     page.locator("#checkoutButton").evaluate("(el)=>{el.click();el.click()}")
     pump(page, pending)
     page.wait_for_timeout(100)
@@ -162,6 +163,7 @@ def test_reordered_food_quotes_keep_latest_result(site):
     pending = hold(page, ROOT + "/orders/quote")
     add_item(page)
     pump(page, pending)
+    page.get_by_text("Agregar nota o código promocional", exact=True).click()
     page.locator("#promoCode").fill("NEW")
     pump(page, pending, 2)
     pending[1].fulfill(json={"total_minor": 1000, "subtotal_minor": 1000})
@@ -173,15 +175,16 @@ def test_reordered_food_quotes_keep_latest_result(site):
     assert not errors and not external
 
 
-def test_checkout_without_uuid_or_browser_storage(site):
-    page, _, _, _, errors, external = site
+def test_checkout_without_storage_stops_before_submission(site):
+    page, _, _, requests, errors, external = site
     page.add_init_script("""Object.defineProperty(crypto,'randomUUID',{value:undefined});
       for(const name of ['localStorage','sessionStorage'])Object.defineProperty(window,name,{get(){throw new DOMException('denied','SecurityError')}});""")
     add_item(page)
     page.locator("#cName").fill("Synthetic")
     page.locator("#cPhone").fill("3005550101")
     page.locator("#checkoutButton").click()
-    playwright.expect(page.locator("#notice")).to_contain_text("recibido")
+    playwright.expect(page.locator("#notice")).to_contain_text("No se envió un pedido")
+    assert not any(method == "POST" and url == ROOT + "/orders" for method,url,_ in requests)
     assert not errors and not external
 
 
@@ -200,14 +203,14 @@ def test_staff_business_change_discards_old_response_and_actions(site):
     )
     url = "/api/operator/restaurants/demo-restaurant-bogota/orders"
     old = client.get(url, headers=staff_headers(client)).json()
-    pending = hold(page, url)
+    pending = hold(page, url + "?*")
     page.goto("https://commerce.test/admin")
     pump(page, pending)
     page.locator("#business").fill("other-business")
     pending[0].fulfill(json=old)
     page.wait_for_timeout(150)
     assert original["public_code"] not in page.locator("#orders").inner_text()
-    assert page.get_by_role("button", name="accepted", exact=True).count() == 0
+    assert page.get_by_role("button", name="Aceptar", exact=True).count() == 0
     assert not errors and not external
 
 

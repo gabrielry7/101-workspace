@@ -8,7 +8,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
 from .migrations import (
-    STAFF_TABLES, staff_columns_present,
+    STAFF_TABLES, staff_columns_present, OPERATIONS_TABLES, operations_columns_present,
     CUSTOMER_SAFETY_COLUMNS,
     FINANCIAL_TABLES,
     financial_columns_present,
@@ -95,7 +95,7 @@ CORE_TABLES = (
             "restaurant_webhook_receipts",
         }
     )
-    | PAYMENT_DURABILITY_TABLES | FINANCIAL_TABLES | STAFF_TABLES
+    | PAYMENT_DURABILITY_TABLES | FINANCIAL_TABLES | STAFF_TABLES | OPERATIONS_TABLES
 )
 
 
@@ -113,7 +113,7 @@ def database_ready(engine: Engine, *, require_schema: bool = True) -> bool:
                         {c["name"] for c in inspector.get_columns(table)}
                     ):
                         return False
-                if not payment_durability_columns_present(connection) or not financial_columns_present(connection) or not staff_columns_present(connection):
+                if not payment_durability_columns_present(connection) or not financial_columns_present(connection) or not staff_columns_present(connection) or not operations_columns_present(connection):
                     return False
         return True
     except (SQLAlchemyError, OSError):
