@@ -12,6 +12,7 @@ import json
 import os
 import secrets
 import socket
+import sqlite3
 import subprocess
 import sys
 import time
@@ -38,6 +39,11 @@ def main():
     )
     parser.add_argument("--execute-sandbox", action="store_true", required=True)
     parser.add_argument(
+        "--receiver-config",
+        type=Path,
+        help="Qualify native delivery while commerce is stopped; requires --edge-cases",
+    )
+    parser.add_argument(
         "--edge-cases",
         action="store_true",
         help="Bounded crash/no-return, duplicate-reference, signature and refund contract probes",
@@ -50,7 +56,18 @@ def main():
     args = parser.parse_args()
     if args.payment_edges_only and not args.edge_cases:
         parser.error("--payment-edges-only requires --edge-cases")
+    if args.receiver_config and not args.edge_cases:
+        parser.error("--receiver-config requires --edge-cases")
     keys = SandboxKeys.load(args.keys_file)
+    receiver = None
+    if args.receiver_config:
+        from world_model.restaurant_commerce.wompi_receiver import SandboxReceiver
+
+        receiver = SandboxReceiver.load(args.receiver_config)
+        assert receiver.url == "https://101-wompi-sandbox-receiver.reader-101.workers.dev"
+        assert receiver.request("GET", "/private/events")["events"] == [], (
+            "Inbox must be empty before isolated native qualification"
+        )
     args.run_dir.mkdir(mode=0o700, parents=True, exist_ok=False)
     with socket.socket() as sock:
         sock.bind(("127.0.0.1", 0))
@@ -66,10 +83,12 @@ def main():
         "start_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "target": API,
         "artifact_code_sha256": digest,
+        "script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         "execution": "PARTIAL",
         "outcome": "UNASSESSED",
         "remote_posts": 0,
         "remote_gets": 0,
+        "receiver_reads": 0,
         "gaps": [],
         "failed_checks": [],
         "checks": [],
@@ -83,6 +102,9 @@ def main():
     }
     if args.edge_cases:
         report["command"].append("--edge-cases")
+    if receiver:
+        report["command"].extend(["--receiver-config", str(args.receiver_config)])
+        report["receiver_reads"] = 1
     if args.payment_edges_only:
         report["command"].append("--payment-edges-only")
         report["gaps"].append("Refund contract probes not executed in payment-only run")
@@ -99,6 +121,8 @@ def main():
             str(port),
             "--api-only",
         ]
+        if receiver:
+            command.extend(["--receiver-config", str(args.receiver_config)])
         child = subprocess.Popen(command, stdout=log, stderr=log)
         try:
             with httpx.Client(timeout=15, follow_redirects=False, trust_env=False) as client:
@@ -227,6 +251,35 @@ def main():
                         check_started = time.monotonic()
                     tx = provider("POST", "/transactions", payment)
                     if args.edge_cases and scenario == "approved":
+                        native = None
+                        if receiver:
+                            # App is terminated: only a genuine Wompi delivery can
+                            # put this newly created transaction in the remote inbox.
+                            for _ in range(90):
+                                report["receiver_reads"] += 1
+                                receipts = receiver.request("GET", "/private/events")["events"]
+                                native = next(
+                                    (
+                                        r
+                                        for r in receipts
+                                        if r["event"]["data"]["transaction"]["id"] == tx["id"]
+                                        and r["event"]["data"]["transaction"]["status"]
+                                        == "APPROVED"
+                                    ),
+                                    None,
+                                )
+                                if native:
+                                    break
+                                time.sleep(2)
+                            assert native, "No approved native Wompi callback within 180 seconds"
+                            report["native_callback"] = {
+                                "transaction_id": tx["id"],
+                                "receipt_id": native["id"],
+                                "event": native["event"],
+                                "app_process_stopped": child.poll() is not None,
+                                "arrival_seconds": round(time.monotonic() - check_started, 2),
+                                "synthetic_event_submitted": False,
+                            }
                         child = subprocess.Popen(command + ["--resume"], stdout=log, stderr=log)
                         for _ in range(100):
                             try:
@@ -235,8 +288,8 @@ def main():
                             except httpx.HTTPError:
                                 pass
                             time.sleep(0.1)
-                        # No transaction ID or native callback is delivered to commerce.
-                        # A real wall-clock wait exercises the normal 60s polling delay.
+                        # No browser transaction hint. Without a receiver, this
+                        # exercises normal reference discovery after 60 seconds.
                         recovered = None
                         for _ in range(90):
                             response = client.post(base + route + "/orders/recover", json=recovery)
@@ -247,12 +300,40 @@ def main():
                             time.sleep(1)
                         assert recovered and recovered["id"] == order["id"]
                         assert recovered["payment_status"] == "paid"
+                        if receiver:
+                            native_key = hashlib.sha256(
+                                f"event:{tx['id']}:{native['id']}".encode()
+                            ).hexdigest()
+                            with sqlite3.connect(args.run_dir / "app" / "sandbox.db") as db:
+                                row = db.execute(
+                                    "SELECT state,order_id,result_json "
+                                    "FROM restaurant_wompi_sandbox_lookups WHERE id=?",
+                                    (native_key,),
+                                ).fetchone()
+                                assert row and row[0] == "processed" and row[1] == order["id"]
+                                assert json.loads(row[2])["status"] == "paid"
+                                assert (
+                                    db.execute(
+                                        "SELECT COUNT(*) FROM restaurant_payments WHERE order_id=?",
+                                        (order["id"],),
+                                    ).fetchone()[0]
+                                    == 1
+                                )
+                            report["receiver_reads"] += 1
+                            assert not any(
+                                r["id"] == native["id"]
+                                for r in receiver.request("GET", "/private/events")["events"]
+                            )
+                            report["native_callback"]["durable_lookup_processed"] = True
+                            report["native_callback"]["remote_acknowledged"] = True
+                            report["native_callback"]["one_local_payment"] = True
                         report["checks"].append(
                             {
                                 "scenario": "process_killed_before_provider_success_no_return",
                                 "outcome": "PASS",
                                 "recovery_seconds": round(time.monotonic() - check_started, 2),
                                 "transaction_hint_sent": False,
+                                "native_webhook_verified": bool(receiver),
                             }
                         )
                     private_json(

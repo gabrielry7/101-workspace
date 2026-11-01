@@ -1,8 +1,10 @@
 # Wompi sandbox receipt receiver
 
-Built and tested locally; not deployed. Creating persistent resources requires
-confirmed Cloudflare Workers Free plan and the user's $0 ceiling. No account,
-plan, domain, production Worker or existing database should be changed implicitly.
+Deployed 2026-11-01 after the user confirmed Workers Free ($0 current plan) and
+explicitly authorized the two sandbox secret uploads. The dedicated endpoint is
+`https://101-wompi-sandbox-receiver.reader-101.workers.dev/events` and D1 database
+is `101-wompi-sandbox-receipts`. Existing account plan and reader-101 resources
+were not changed. Stay on Free; quota exhaustion must fail, never trigger an upgrade.
 
 `worker.mjs` is an ES module with D1 binding `DB`, secret bindings `EVENTS_SECRET`
 (test-events key only) and `READER_TOKEN` (random 64-hex capability). Use a dedicated
@@ -36,5 +38,14 @@ exercise actual Workers crypto and D1: receipt persistence, replay, privacy,
 authentication, forged/production/stale/oversized events and storage failure.
 No failure is repaired by skipping a test. Python consumer tests exercise commit
 before remote acknowledgement, lost acknowledgements and independent discovery.
-Actual Wompi→HTTPS→D1→commerce delivery remains unverified until deployment and
-manual Events URL configuration.
+Deployed checks also pass for eight concurrent duplicate receipts, signature and
+auth rejection, privacy, durable local enqueue, lost acknowledgement and replay.
+Run `python scripts/check_wompi_receiver.py --run-dir /tmp/receiver-NEW
+--execute-sandbox` from the project root with its dependencies installed. This is
+a signed synthetic fixture; actual Wompi delivery still requires saving the URL
+in the sandbox dashboard and executing the native callback test.
+
+The local pinned runtime tests retain compatibility date 2026-10-29. An attempt
+to run the deployed 2026-11-01 date locally was rejected before tests started:
+installed workerd supports only through 2026-10-30. The real deployed tests pass
+on 2026-11-01; do not describe the local suite as the same runtime configuration.

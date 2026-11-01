@@ -178,9 +178,10 @@ mocked pass. [Documented refund scenarios](https://docs.wompi.co/docs/colombia/r
 ## Optional durable HTTPS receiver
 
 `sandbox_receiver/` contains a sandbox-only Workers/D1 receiver and executable
-runtime tests. **It is not deployed.** Provisioning is conditional on a confirmed
-Free plan and the user's $0 budget. The connected account's billing read returned
-403; account usage-model settings alone do not establish that plan.
+runtime tests. **Deployed 2026-11-01 on the confirmed Workers Free plan ($0).**
+The user supplied the Current plan screenshot and explicitly authorized storing
+the sandbox Events secret and separate reader token in encrypted Worker secrets.
+No private payment key was uploaded; no account upgrade or existing-site change.
 
 The receiver verifies the native signature, rejects production/stale/malformed
 events, persists only signed financial fields, and acknowledges only after the
@@ -190,8 +191,32 @@ the event again and commits its local lookup job before acknowledging remotely;
 lost acknowledgements replay safely. It keeps independent reference recovery
 working while the receiver is unavailable.
 
-After a verified deployment, a private mode0600 JSON file with `url` (HTTPS
+After this verified deployment, a private mode0600 JSON file with `url` (HTTPS
 origin) and `token` (64 hexadecimal characters) can be passed to the demo as
 `--receiver-config /private/path.json` on each start/resume. Secrets belong in
-Worker secret bindings, never repository config. An Events URL is supplied only
-after deployment and readiness verification; leave the dashboard unset for now.
+Worker secret bindings, never repository config. This machine's configuration is
+`/home/t/.config/101-world-model/wompi-sandbox/receiver.json`.
+
+Set the **sandbox** URL de Eventos to
+`https://101-wompi-sandbox-receiver.reader-101.workers.dev/events` and save it.
+The deployed receiver's signed-fixture checks pass; actual Wompi-native delivery
+has not yet been qualified. Repeat the bounded receiver checks with:
+
+```sh
+python scripts/check_wompi_receiver.py --run-dir /tmp/receiver-NEW --execute-sandbox
+```
+
+After saving the sandbox dashboard URL, qualify native delivery during a process
+outage with the existing payment probe (refund writes remain excluded):
+
+```sh
+python scripts/check_wompi_sandbox.py --run-dir /tmp/native-webhook-NEW \
+  --execute-sandbox --edge-cases --payment-edges-only \
+  --receiver-config /home/t/.config/101-world-model/wompi-sandbox/receiver.json
+```
+
+This mode waits for an actual approved native event while commerce is terminated,
+restarts the app, and requires the checksum-bound job to be processed and remotely
+acknowledged with one payment record. Reference polling alone cannot pass this
+acceptance check. Empty inbox required at startup; no invented callbacks. The
+probe retains private runtime evidence and stops only its own application.
