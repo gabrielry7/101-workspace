@@ -573,6 +573,7 @@ def baseline(c):
                 "tests",
                 "adversarial/test_runner_safety.py",
                 "adversarial/test_load_contract.py",
+                "adversarial/test_provider_storage.py",
                 "adversarial/test_fixture_state.py",
                 "-q",
                 "--junitxml=" + str(Path(c["run_dir"]) / "existing-tests.xml"),

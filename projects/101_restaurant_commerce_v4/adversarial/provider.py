@@ -4,6 +4,7 @@ import json
 import os
 import sqlite3
 import time
+from contextlib import contextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -11,7 +12,22 @@ from fastapi import FastAPI
 c = json.loads(Path(os.environ["COMMERCE_TEST_CONFIG"]).read_text())
 db = Path(c["run_dir"]) / "provider.sqlite"
 app = FastAPI()
-with sqlite3.connect(db) as s:
+
+
+@contextmanager
+def ledger(*, timeout=5):
+    connection = sqlite3.connect(db, timeout=timeout)
+    try:
+        # Preserve durable commits; readers must not block ledger writers.
+        connection.execute("PRAGMA synchronous=FULL")
+        with connection:
+            yield connection
+    finally:
+        connection.close()
+
+
+with ledger() as s:
+    s.execute("PRAGMA journal_mode=WAL")
     s.execute(
         "CREATE TABLE IF NOT EXISTS effects (key TEXT PRIMARY KEY, order_id TEXT, body TEXT, response TEXT, calls INTEGER DEFAULT 1)"
     )
@@ -29,14 +45,14 @@ def health():
 def control(body: dict):
     mode = body.get("mode", "normal")
     assert mode in {"normal", "paid", "hold_after_success", "delay", "refund_delay"}
-    with sqlite3.connect(db) as s:
+    with ledger() as s:
         s.execute("UPDATE control SET mode=? WHERE id=1", (mode,))
     return {"mode": mode}
 
 
 @app.post("/checkouts")
 def checkout(body: dict):
-    with sqlite3.connect(db, timeout=15) as s:
+    with ledger(timeout=15) as s:
         mode = s.execute("SELECT mode FROM control WHERE id=1").fetchone()[0]
         response = {
             "provider": "simulated",
@@ -58,7 +74,7 @@ def checkout(body: dict):
         time.sleep(6)
     if mode == "hold_after_success":
         for _ in range(300):
-            with sqlite3.connect(db) as s:
+            with ledger() as s:
                 mode = s.execute("SELECT mode FROM control WHERE id=1").fetchone()[0]
             if mode != "hold_after_success":
                 break
@@ -68,21 +84,21 @@ def checkout(body: dict):
 
 @app.post("/events")
 def events(body: dict):
-    with sqlite3.connect(db) as s:
+    with ledger() as s:
         s.execute("INSERT INTO records VALUES (?,?)", ("event", json.dumps(body)))
     return {"received": True}
 
 
 @app.post("/delivery/{kind}")
 def delivery(kind: str, body: dict):
-    with sqlite3.connect(db) as s:
+    with ledger() as s:
         s.execute("INSERT INTO records VALUES (?,?)", ("delivery:" + kind, json.dumps(body)))
     return {"received": True}
 
 
 @app.get("/records")
 def records():
-    with sqlite3.connect(db) as s:
+    with ledger() as s:
         effects = [
             {
                 "key": r[0],
@@ -104,7 +120,7 @@ def records():
 
 
 # Independent provider-side refund ledger: never inferred from local app status.
-with sqlite3.connect(db) as s:
+with ledger() as s:
     s.execute(
         "CREATE TABLE IF NOT EXISTS refunds (key TEXT PRIMARY KEY, order_id TEXT, response TEXT)"
     )
@@ -112,7 +128,7 @@ with sqlite3.connect(db) as s:
 
 @app.post("/financial/lookup-payment")
 def financial_lookup(body: dict):
-    with sqlite3.connect(db) as s:
+    with ledger() as s:
         row = s.execute(
             "SELECT order_id,response FROM effects WHERE key=?", (body["idempotency_key"],)
         ).fetchone()
@@ -131,7 +147,7 @@ def financial_lookup(body: dict):
 
 @app.post("/financial/lookup-refund")
 def financial_lookup_refund(body: dict):
-    with sqlite3.connect(db) as s:
+    with ledger() as s:
         row = s.execute(
             "SELECT response FROM refunds WHERE key=?", (body["idempotency_key"],)
         ).fetchone()
@@ -142,7 +158,7 @@ def financial_lookup_refund(body: dict):
 def financial_refund(body: dict):
     from fastapi import HTTPException
 
-    with sqlite3.connect(db) as s:
+    with ledger() as s:
         s.execute("BEGIN IMMEDIATE")
         prior = s.execute(
             "SELECT response FROM refunds WHERE key=?", (body["idempotency_key"],)
@@ -181,7 +197,7 @@ def financial_refund(body: dict):
 
 @app.get("/financial/records")
 def financial_records():
-    with sqlite3.connect(db) as s:
+    with ledger() as s:
         return [
             dict(key=r[0], order_id=r[1], response=json.loads(r[2]))
             for r in s.execute("SELECT key,order_id,response FROM refunds")
