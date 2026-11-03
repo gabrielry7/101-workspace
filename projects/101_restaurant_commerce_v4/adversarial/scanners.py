@@ -138,7 +138,7 @@ def bootstrap(rec, layers):
         assets.append(
             (
                 "trivy",
-                "https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy "
+                "https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy"
                 "_0.76.1_Linux-64bit.tar.gz",
                 "c7cbe3137fb8a48a17574bede3dd6beb16742d1e9772929940fc90082c39d9c0",
                 "tar",
@@ -149,7 +149,7 @@ def bootstrap(rec, layers):
             assets.append(
                 (
                     "zap",
-                    "https://github.com/zaproxy/zaproxy/releases/download/v2.17.0/ZAP_ "
+                    "https://github.com/zaproxy/zaproxy/releases/download/v2.17.0/ZAP_"
                     "2.17.0_Crossplatform.zip",
                     "94c8f767b1c2e94f0db66b3ae56514d5e3f5a728ee1b6c798e0c8fe2d61fbff0",
                     "zip",
@@ -159,8 +159,8 @@ def bootstrap(rec, layers):
             assets.append(
                 (
                     "java",
-                    "https://github.com/adoptium/temurin17- "
-                    "binaries/releases/download/jdk-17.0.21%2B9/OpenJDK17U- "
+                    "https://github.com/adoptium/temurin17-"
+                    "binaries/releases/download/jdk-17.0.21%2B9/OpenJDK17U-"
                     "jre_x64_linux_hotspot_17.0.21_9.tar.gz",
                     "9f41bf88c7900c7097444a1bdeb84146ae692bc08842490ab098063c74bf9a8a",
                     "tar",
