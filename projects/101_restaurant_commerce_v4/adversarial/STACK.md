@@ -15,6 +15,7 @@ COMMERCE_TOOLCHAIN=/path/to/test-tools \
   --native-tools /path/to/native-tools
 ```
 
+The wrapper selects installed Chromium unless `COMMERCE_BROWSER_EXECUTABLE` is set.
 Run `adversarial/run.sh` once to bootstrap that Python tool environment if absent.
 `security/check.py` prepares pinned native security tools, rules and runtime wheels.
 The combined command runs the existing adversarial journeys, then the deployment

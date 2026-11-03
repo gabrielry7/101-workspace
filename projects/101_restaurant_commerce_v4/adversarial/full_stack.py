@@ -23,6 +23,11 @@ def main():
     args.output.mkdir(mode=0o700, parents=True, exist_ok=False)
     records = []
     env = dict(os.environ)
+    if not env.get("COMMERCE_BROWSER_EXECUTABLE"):
+        browser = shutil.which("chromium")
+        if not browser:
+            p.error("Install Chromium or set COMMERCE_BROWSER_EXECUTABLE")
+        env["COMMERCE_BROWSER_EXECUTABLE"] = browser
     # Existing run.sh installs the current requirements, not a stale environment.
     commands = [
         (

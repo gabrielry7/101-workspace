@@ -855,6 +855,19 @@ def zap_scan(rec, config):
                 calls, [*config["single_staff_headers"].values(), locals().get("customer_token")]
             ),
         )
+    native_log = (rec.output / "zap-daemon.log").read_text(errors="replace")
+    result["native_log_errors"] = len(re.findall(r"\] ERROR\s", native_log))
+    result["json_body_parse_warnings"] = native_log.count("Failed to parse the request body")
+    if result["json_body_parse_warnings"]:
+        result["coverage_gaps"].append(
+            "Native JSON-body parser warnings occurred on imported requests; "
+            "these requests do not establish valid structured-body attack coverage. "
+            "Inspect the retained private daemon log for affected routes."
+        )
+    if result["native_log_errors"]:
+        result["execution"] = "PARTIAL"
+        if result.get("outcome") != "FAIL":
+            result["outcome"] = "UNASSESSED"
     if (rec.output / "INTERRUPTED.json").exists():
         result.update(json.loads((rec.output / "INTERRUPTED.json").read_text()))
     return result
