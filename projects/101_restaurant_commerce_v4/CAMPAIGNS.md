@@ -141,6 +141,10 @@ instance to exercise the same contracts there. Browser evidence defaults to
 `/tmp/101-campaign-browser`; override with `CAMPAIGN_BROWSER_EVIDENCE`.
 The existing `security/run.py`/`security/check.py` release gate applies to the
 installed artifact. Earlier `eff0812` qualification does not cover this extension.
+The enlarged full suite exceeded the previous ten-minute runner limit without
+finishing. The runner now defaults to a bounded 30-minute test allowance; use
+`--test-timeout-seconds` (60–3600) when needed. A timeout still fails qualification
+and never substitutes partial results for completed tests.
 
 ## Activation and next milestone
 

@@ -33,7 +33,11 @@ def main():
     p.add_argument("--rules-dir", required=True)
     p.add_argument("--trivy-cache", required=True)
     p.add_argument("--layers", default="tests,static,zap")
+    p.add_argument("--test-timeout-seconds", type=int, default=1800,
+                   help="Bounded full-suite wall-clock allowance (60–3600 seconds)")
     a = p.parse_args()
+    if not 60 <= a.test_timeout_seconds <= 3600:
+        p.error("--test-timeout-seconds must be between 60 and 3600")
     run = Run(a.run_dir)
     layers, findings = {}, []
     scanners.TOOLCHAIN = Path(a.tool_root).resolve()
@@ -289,7 +293,7 @@ def main():
                         "--junitxml=" + str(run.evidence / "tests.xml"),
                     ],
                     env=env,
-                    timeout=600,
+                    timeout=a.test_timeout_seconds,
                 )
             except Exception as exc:
                 layers["tests"] = {
