@@ -6,7 +6,6 @@ from dataclasses import asdict
 from pathlib import Path
 
 import httpx
-
 from world_model.restaurant_commerce.api import create_app
 from world_model.restaurant_commerce.deliveries import SimulatedDeliveryProvider
 from world_model.restaurant_commerce.payments import PaymentCheckout
@@ -105,6 +104,8 @@ def application():
         environment="development",
         demo_mode=True,
         auto_init_schema=False,
+        payment_recovery_enabled=False,
+        provider_recovery_enabled=False,
         payment_providers={"simulated": ControlledPayment()},
         financial_providers={"simulated": ControlledFinancial()},
         delivery_providers={"simulated_delivery": ControlledDelivery()},
@@ -114,3 +115,40 @@ def application():
     )
     # Harness proof only: no additional application authority or login endpoints.
     return app
+
+
+def recover():
+    """Run the installed recovery implementation in an independently owned process."""
+    import signal
+
+    from world_model.restaurant_commerce.db import make_engine, session_factory
+    from world_model.restaurant_commerce.recovery import start_recovery
+
+    c = config()
+    engine = make_engine(c["database_url"])
+    stop, thread = start_recovery(
+        session_factory(engine),
+        interval_seconds=1,
+        service_options={
+            "payment_providers": {"simulated": ControlledPayment()},
+            "financial_providers": {"simulated": ControlledFinancial()},
+            "delivery_providers": {"simulated_delivery": ControlledDelivery()},
+            "event_sink": ControlledEvents(),
+            "payment_lease_seconds": c.get("payment_lease_seconds", 5),
+        },
+    )
+
+    def halt(*_):
+        stop.set()
+
+    signal.signal(signal.SIGTERM, halt)
+    signal.signal(signal.SIGINT, halt)
+    while not stop.wait(0.2):
+        if not thread.is_alive():
+            raise RuntimeError("Recovery thread exited unexpectedly")
+    thread.join(timeout=5)
+    engine.dispose()
+
+
+if __name__ == "__main__":
+    recover()

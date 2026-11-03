@@ -51,6 +51,6 @@ export async function create(request:APIRequestContext,id=business){
 export async function orderVisible(request:APIRequestContext,order:any){
   const r=await request.get('/api/orders/'+order.id,{headers:{'X-101-Order-Token':order.access_token}});
   expect(r.status()).toBe(200);expect((await r.json()).id).toBe(order.id);
-  const staff=await request.get('/api/operator/restaurants/'+encodeURIComponent(business)+'/orders?limit=500',{headers:operatorHeaders});
+  const staff=await request.get('/api/operator/restaurants/'+encodeURIComponent(business)+'/orders?limit=100',{headers:operatorHeaders});
   expect(staff.status()).toBe(200);expect((await staff.json()).some((o:any)=>o.id===order.id)).toBeTruthy();
 }

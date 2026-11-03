@@ -26,8 +26,7 @@ failure = None
 api_port, db_proxy, provider_proxy = port(), port(), port()
 env = dict(os.environ, COMMERCE_TEST_CONFIG=str(a.config), PYTHONPATH=c["installed"])
 toxi = str(
-    Path(os.environ.get("COMMERCE_TOOLCHAIN", "/tmp/101-commerce-toolchain"))
-    / "toxiproxy-server"
+    Path(os.environ.get("COMMERCE_TOOLCHAIN", "/tmp/101-commerce-toolchain")) / "toxiproxy-server"
 )
 process(c, "toxiproxy", [toxi, "-host", "127.0.0.1", "-port", api_port], env)
 tox = f"http://127.0.0.1:{api_port}"
@@ -135,7 +134,8 @@ def rows(data):
                 dict(r)
                 for r in conn.execute(
                     text(
-                        "SELECT id,status,payment_status FROM restaurant_orders WHERE idempotency_key=:key"
+                        "SELECT id,status,payment_status FROM restaurant_orders WHERE "
+                        "idempotency_key=:key"
                     ),
                     {"key": data["idempotency_key"]},
                 ).mappings()
@@ -159,22 +159,18 @@ def record(name, ok, **kw):
 original_db = c["database_url"]
 original_provider = c["provider_url"]
 proxy("postgres", f"127.0.0.1:{db_proxy}", f"127.0.0.1:{c['pg_port']}")
-proxy(
-    "provider", f"127.0.0.1:{provider_proxy}", c["provider_direct_url"].split("://")[1]
-)
-c["database_url"] = original_db.replace(
-    ":" + str(c["pg_port"]) + "/", ":" + str(db_proxy) + "/"
-)
+proxy("provider", f"127.0.0.1:{provider_proxy}", c["provider_direct_url"].split("://")[1])
+c["database_url"] = original_db.replace(":" + str(c["pg_port"]) + "/", ":" + str(db_proxy) + "/")
 c["provider_url"] = f"http://127.0.0.1:{provider_proxy}"
 try:
     restart()
-    toxic("postgres", "latency", {"latency": 200, "jitter": 0})
+    toxic("postgres", "latency", {"latency": 500, "jitter": 0})
     t = time.monotonic()
     r = request("GET", c["base_url"] + "/ready")
     elapsed = time.monotonic() - t
     record(
         "database latency",
-        r.status_code == 200 and elapsed >= 0.19,
+        r.status_code == 200 and elapsed >= 0.49,
         status=r.status_code,
         seconds=elapsed,
     )
@@ -190,14 +186,14 @@ try:
     recovery_started = time.monotonic()
     wait_http(c["base_url"] + "/ready")
     record("database recovery", True, seconds=time.monotonic() - recovery_started)
-    toxic("provider", "latency", {"latency": 250, "jitter": 0})
+    toxic("provider", "latency", {"latency": 500, "jitter": 0})
     data = body("latency")
     t = time.monotonic()
     r = create(data)
     elapsed = time.monotonic() - t
     record(
         "provider latency",
-        r.status_code == 200 and elapsed >= 0.24,
+        r.status_code == 200 and elapsed >= 0.49,
         status=r.status_code,
         seconds=elapsed,
         rows=rows(data),
@@ -223,6 +219,29 @@ try:
         rows_after=rows(data),
         effects=effects(data),
     )
+    toxic("provider", "timeout", {"timeout": 5000})
+    data = body("tcp-timeout-5s")
+    started = time.monotonic()
+    r = create(data)
+    elapsed = time.monotonic() - started
+    before = rows(data)
+    clear("provider")
+    retry = retry_create(data)
+    after = rows(data)
+    record(
+        "provider five-second TCP timeout and recovery",
+        elapsed >= 3.9
+        and retry.status_code == 200
+        and len(before) == len(after) == 1
+        and before[0]["id"] == after[0]["id"],
+        status=r.status_code,
+        retry_status=retry.status_code,
+        seconds=elapsed,
+        rows_before=before,
+        rows_after=after,
+        effects=effects(data),
+        toxic_timeout_ms=5000,
+    )
     request("POST", c["provider_direct_url"] + "/control", json={"mode": "delay"})
     data = body("timeout")
     r = create(data)
@@ -242,7 +261,10 @@ try:
         rows_before=before,
         rows_after=after,
         effects=remote,
-        required="durable local intent before provider call; same provider and local identity after recovery",
+        required=(
+            "durable local intent before provider call; same provider and "
+            "local identity after recovery"
+        ),
     )
     request(
         "POST",
@@ -258,6 +280,7 @@ try:
                 break
             time.sleep(0.03)
         assert remote, "provider acceptance barrier was not reached"
+        os.killpg(c["processes"]["recovery"]["pid"], signal.SIGKILL)
         os.killpg(c["processes"]["application"]["pid"], signal.SIGKILL)
         try:
             pending.result(timeout=15)
@@ -307,17 +330,19 @@ finally:
             "target": c["base_url"],
             "start": start,
             "end": datetime.now(UTC).isoformat(),
-            "exit_code": int(
-                len(results) != 7 or any(r["outcome"] == "FAIL" for r in results)
+            "exit_code": int(len(results) != 8 or any(r["outcome"] == "FAIL" for r in results)),
+            "execution": "COMPLETE" if len(results) == 8 else "PARTIAL",
+            "outcome": (
+                "FAIL"
+                if any(r["outcome"] == "FAIL" for r in results)
+                else "PASS"
+                if len(results) == 8
+                else "UNASSESSED"
             ),
-            "execution": "COMPLETE" if len(results) == 7 else "PARTIAL",
-            "outcome": "FAIL"
-            if any(r["outcome"] == "FAIL" for r in results)
-            else "PASS",
             "scenario_count": len(results),
             "results": results,
         },
     )
 
-if len(results) != 7 or any(r["outcome"] == "FAIL" for r in results):
+if len(results) != 8 or any(r["outcome"] == "FAIL" for r in results):
     raise SystemExit(1)

@@ -442,3 +442,39 @@ def test_server_price_change_requires_confirmation_and_discount_breakdown(live):
     with app.state.session_factory() as session:
         assert session.scalar(select(Order)).total_minor == 11900
     assert count(app) == 1
+
+
+def test_manual_refresh_queues_behind_session_restore(live):
+    page, _, _, _, _ = live
+    held = []
+    orders = []
+
+    def delay_first_reconciliation(route):
+        if not held:
+            response = route.fetch()
+            assert response.status == 200
+            held.append((route, response))
+        else:
+            route.continue_()
+
+    page.route("**/payment-reconciliation", delay_first_reconciliation)
+    page.on(
+        "request",
+        lambda request: (
+            orders.append(request.url) if request.url.split("?")[0].endswith("/orders") else None
+        ),
+    )
+    login(page)
+    for _ in range(100):
+        if held:
+            break
+        page.wait_for_timeout(20)
+    assert held and len(orders) == 1
+    page.get_by_role("button", name="Actualizar", exact=True).click()
+    held[0][0].fulfill(response=held[0][1])
+    # Must honor the click promptly, rather than waiting for the15s periodic poll.
+    for _ in range(100):
+        if len(orders) >= 2:
+            break
+        page.wait_for_timeout(20)
+    assert len(orders) == 2

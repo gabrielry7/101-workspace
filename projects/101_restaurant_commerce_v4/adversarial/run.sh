@@ -13,4 +13,10 @@ fi
 uv pip install --python "$COMMERCE_TOOLCHAIN/venv/bin/python" -r adversarial/requirements-tools.txt
 "$COMMERCE_TOOLCHAIN/venv/bin/python" -m ensurepip --upgrade >/dev/null
 "$COMMERCE_TOOLCHAIN/venv/bin/python" adversarial/bootstrap.py
+if [ -z "${COMMERCE_AXE_PATH:-}" ]; then
+  export COMMERCE_AXE_PATH="$COMMERCE_TOOLCHAIN/browser/node_modules/axe-core/axe.min.js"
+  if [ ! -f "$COMMERCE_AXE_PATH" ]; then
+    npm install --prefix "$COMMERCE_TOOLCHAIN/browser" --ignore-scripts --no-audit --no-fund axe-core@4.10.2
+  fi
+fi
 exec "$COMMERCE_TOOLCHAIN/venv/bin/python" adversarial/run.py "$@"

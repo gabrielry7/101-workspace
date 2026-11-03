@@ -19,6 +19,8 @@ def summarize(config):
     layers = {}
     for name, filename in {
         "financial": "financial/receipt.json",
+        "authorization": "authorization/receipt.json",
+        "races": "races/receipt.json",
         "browser": "browser/summary.json",
         "properties": "properties/receipt.json",
         "schemathesis": "schemathesis/summary.json",

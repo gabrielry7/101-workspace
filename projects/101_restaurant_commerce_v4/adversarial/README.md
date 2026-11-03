@@ -1,3 +1,6 @@
+> Current combined stack, load budgets and runtime limitations: [STACK.md](STACK.md).
+> Historical budgets and release-gap statements below describe the earlier harness.
+
 # Repeatable local adversarial execution
 
 From the commerce project directory:

@@ -221,7 +221,7 @@ async function financeAction(kind) {
 }
 const financeHistory=()=>financeAction(null), financeLookup=()=>financeAction('lookup'), financeRefund=()=>financeAction('refund');
 const financeInspect=()=>financeAction('inspect');
-window.addEventListener('staffchange', event => { ++scopeVersion;++queueGeneration;++reservationGeneration;++reviewGeneration;queueOffset=0;lastRows=[]; ++financeVersion; resetFinanceCapabilities(); $('financeOrder').value=''; for(const id of ['orders', 'reservations', 'reconciliation', 'financeResult']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) refreshAll(); });
+window.addEventListener('staffchange', event => { ++scopeVersion;++queueGeneration;++reservationGeneration;++reviewGeneration;queueOffset=0;lastRows=[]; ++financeVersion; resetFinanceCapabilities(); $('financeOrder').value=''; for(const id of ['orders', 'reservations', 'reconciliation', 'financeResult']) $(id).textContent='Actualizar para cargar datos autorizados.'; if(event.detail.authenticated) queuePoll.refresh(); });
 const queuePoll=window.CommerceUI.poll(refreshAll,{active:()=>!!window.CommerceStaff.identity(),interval:15000});
 $('queueFilter').addEventListener('change',()=>{queueOffset=0;loadOrders();});
 for(const id of ['paymentFilter','queueSearch'])$(id).addEventListener('input',()=>renderOrders(lastRows));

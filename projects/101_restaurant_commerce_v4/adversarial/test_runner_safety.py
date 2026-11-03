@@ -88,3 +88,17 @@ def test_timeout_kills_term_resistant_descendant(tmp_path):
     else:
         os.kill(pid, 9)
         pytest.fail("Owned descendant survived command timeout")
+
+
+def test_cleanup_uses_restarted_owned_process_records(tmp_path, monkeypatch):
+    (tmp_path / ".commerce-test-run").touch()
+    stale = {"run_dir": str(tmp_path), "processes": {"application": {"pid": 10}}}
+    current = {
+        "run_dir": str(tmp_path),
+        "processes": {"application": {"pid": 20}, "recovery": {"pid": 21}},
+    }
+    (tmp_path / "config.json").write_text(json.dumps(current))
+    stopped = []
+    monkeypatch.setattr(run, "stop", lambda c, name: stopped.append(c["processes"][name]["pid"]))
+    run.cleanup(stale)
+    assert stopped == [20, 21]

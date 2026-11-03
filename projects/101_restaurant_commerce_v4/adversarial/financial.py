@@ -133,6 +133,7 @@ try:
         while not effects(killed) and time.monotonic() < deadline:
             time.sleep(0.05)
         assert len(effects(killed)) == 1
+        os.killpg(c["processes"]["recovery"]["pid"], signal.SIGKILL)
         os.killpg(c["processes"]["application"]["pid"], signal.SIGKILL)
         try:
             future.result(timeout=15)
@@ -179,6 +180,9 @@ try:
         page.get_by_role("button",name="Iniciar sesión",exact=True).click()
         expect(page.locator("#staffStatus")).to_contain_text("synthetic.single")
         page.locator("#financeOrder").fill(browser_order["id"])
+        expect(page.locator("#financeRefundButton")).to_be_disabled()
+        page.locator('[data-click="financeHistory"]').click()
+        expect(page.locator("#financeRefundButton")).to_be_enabled()
         page.locator("#financeReason").fill("Controlled browser refund")
         page.get_by_role("button", name="Solicitar devolución completa", exact=True).click()
         expect(page.locator("#financeResult")).to_contain_text(

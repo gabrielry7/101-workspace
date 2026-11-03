@@ -37,9 +37,7 @@ def command(c, name, args, timeout=180, env=None, cwd=ROOT):
     start = now()
     output = Path(c["run_dir"]) / (name + ".log")
     if output.exists():
-        raise RuntimeError(
-            "Refusing to overwrite prior command evidence: " + str(output)
-        )
+        raise RuntimeError("Refusing to overwrite prior command evidence: " + str(output))
     code = None
     redacted = [
         str(a)
@@ -114,10 +112,14 @@ def process(c, name, args, env):
         "start_ticks": Path(f"/proc/{p.pid}/stat").read_text().split()[21],
     }
     write(Path(c["run_dir"]) / "config.json", c)
+    if name == "application":
+        process(c, "recovery", [c["python"], ROOT / "adversarial/runtime.py"], env)
     return p
 
 
 def stop(c, name):
+    if name == "application":
+        stop(c, "recovery")
     item = c.get("processes", {}).get(name)
     if not item:
         return
@@ -153,7 +155,6 @@ def wait_http(url):
 def seed(c):
     sys.path.insert(0, c["installed"])
     from sqlalchemy import text
-
     from world_model.restaurant_commerce.db import (
         init_schema,
         make_engine,
@@ -218,12 +219,25 @@ def seed(c):
                 )
             )
         s.commit()
-        from world_model.restaurant_commerce.staff import provision
         from world_model.restaurant_commerce.models import StaffMembership
+        from world_model.restaurant_commerce.staff import provision
+
         for name in ("single", "dual"):
-            actor=provision(s, "synthetic."+name, c["staff_password"], c["business_ids"][0], "manager", actor="test-harness")
-            if name=="dual":
-                s.add(StaffMembership(account_id=actor.id,business_id=c["business_ids"][1],role="manager"));s.commit()
+            actor = provision(
+                s,
+                "synthetic." + name,
+                c["staff_password"],
+                c["business_ids"][0],
+                "manager",
+                actor="test-harness",
+            )
+            if name == "dual":
+                s.add(
+                    StaffMembership(
+                        account_id=actor.id, business_id=c["business_ids"][1], role="manager"
+                    )
+                )
+                s.commit()
         c["customer_ids"] = customer_ids
         write(
             Path(c["run_dir"]) / "database-proof.json",
@@ -232,17 +246,20 @@ def seed(c):
                 "database": s.scalar(text("SELECT current_database()")),
                 "port": s.scalar(text("SHOW port")),
                 "businesses": c["business_ids"],
-                "staff_identity_model": "Named single- and dual-business staff; real HTTP-issued sessions",
-                "workers": "2 Uvicorn processes, each with a lifespan recovery thread; database leases coordinate work",
+                "staff_identity_model": (
+                    "Named single- and dual-business staff; real HTTP-issued sessions"
+                ),
+                "workers": (
+                    "2 Uvicorn API processes with embedded recovery disabled; "
+                    "separate installed recovery runner process"
+                ),
             },
         )
     eng.dispose()
 
 
 def _setup(run_dir):
-    (run_dir / ".commerce-test-run").write_text(
-        "owned disposable commerce verification run\n"
-    )
+    (run_dir / ".commerce-test-run").write_text("owned disposable commerce verification run\n")
     pg, app, provider = port(), port(), port()
     c = {
         "run_dir": str(run_dir),
@@ -256,7 +273,9 @@ def _setup(run_dir):
         "provider_direct_url": f"http://127.0.0.1:{provider}",
         "app_port": app,
         "pg_port": pg,
-        "database_url": f"postgresql+psycopg://{os.getlogin() if False else __import__('getpass').getuser()}@127.0.0.1:{pg}/commerce_test",
+        "database_url": (
+            f"postgresql+psycopg://{__import__('getpass').getuser()}@127.0.0.1:{pg}/commerce_test"
+        ),
         "business_ids": ["demo-restaurant-bogota", "synthetic-business-b"],
         "operator_token": secrets.token_hex(32),
         "financial_token": secrets.token_hex(32),
@@ -277,19 +296,14 @@ def _setup(run_dir):
         for p in (ROOT / folder).rglob("*")
         if p.is_file()
         and p.suffix in {".py", ".js", ".ts", ".json", ".toml", ".sh", ".txt", ".md"}
-        and not any(
-            x in p.parts
-            for x in ["node_modules", "__pycache__", ".cache", "test-results"]
-        )
+        and not any(x in p.parts for x in ["node_modules", "__pycache__", ".cache", "test-results"])
     }
     write(run_dir / "source-inventory.json", inventory)
     write(
         run_dir / "git-state.json",
         {
             "revision": c["revision"],
-            "status": subprocess.check_output(
-                ["git", "status", "--short"], cwd=ROOT, text=True
-            ),
+            "status": subprocess.check_output(["git", "status", "--short"], cwd=ROOT, text=True),
         },
     )
     assert (
@@ -417,12 +431,21 @@ def _setup(run_dir):
     )
     wait_http(c["base_url"] + "/ready")
     import httpx
+
     for name in ("single", "dual"):
-        with httpx.Client(base_url=c["base_url"],trust_env=False) as staff_client:
-            staff_client.post("/api/staff/login",json={"username":"synthetic."+name,"password":c["staff_password"]},headers={"X-101-Login":"1"}).raise_for_status()
-            me=staff_client.get("/api/staff/me");me.raise_for_status()
-            c[name+"_staff_headers"]={"Cookie":"commerce_staff="+staff_client.cookies["commerce_staff"],"X-101-CSRF":me.json()["csrf"]}
-    write(run_dir / "config.json",c)
+        with httpx.Client(base_url=c["base_url"], trust_env=False) as staff_client:
+            staff_client.post(
+                "/api/staff/login",
+                json={"username": "synthetic." + name, "password": c["staff_password"]},
+                headers={"X-101-Login": "1"},
+            ).raise_for_status()
+            me = staff_client.get("/api/staff/me")
+            me.raise_for_status()
+            c[name + "_staff_headers"] = {
+                "Cookie": "commerce_staff=" + staff_client.cookies["commerce_staff"],
+                "X-101-CSRF": me.json()["csrf"],
+            }
+    write(run_dir / "config.json", c)
     from world_model.restaurant_commerce import api
 
     write(
@@ -453,6 +476,14 @@ def setup(run_dir):
 
 
 def cleanup(c):
+    # Fault layers replace owned process IDs in the private config. The parent
+    # must not use its stale pre-restart snapshot or leak the replacement worker.
+    recorded = Path(c["run_dir"]) / "config.json"
+    if recorded.exists():
+        latest = json.loads(recorded.read_text())
+        if Path(latest["run_dir"]).resolve() != Path(c["run_dir"]).resolve():
+            raise RuntimeError("Cleanup config changed its owned run directory")
+        c = latest
     if not (Path(c["run_dir"]) / ".commerce-test-run").exists():
         raise RuntimeError("Refusing cleanup without owned run marker")
     for name in list(c.get("processes", {})):
@@ -466,7 +497,7 @@ def cleanup(c):
     # Retain artifacts/data for inspection; never delete outside this run.
 
 
-def baseline(c):
+def baseline_journey(c):
     import httpx
 
     with httpx.Client(base_url=c["base_url"], trust_env=False, timeout=15) as h:
@@ -488,9 +519,7 @@ def baseline(c):
         r.raise_for_status()
         order = r.json()
         h.post(
-            "/api/payments/simulated/"
-            + order["payments"][0]["provider_reference"]
-            + "/complete"
+            "/api/payments/simulated/" + order["payments"][0]["provider_reference"] + "/complete"
         ).raise_for_status()
         for state in ["accepted", "preparing", "ready", "completed"]:
             h.patch(
@@ -516,28 +545,82 @@ def baseline(c):
         )
         write(Path(c["run_dir"]) / "openapi.json", h.get("/openapi.json").json())
     write(Path(c["run_dir"]) / "config.json", c)
+
+
+def baseline(c):
+    baseline_journey(c)
     env = dict(
         os.environ,
         PYTHONPATH=c["installed"],
         COMMERCE_BROWSER_EXECUTABLE="/usr/bin/chromium",
+        COMMERCE_TEST_CONFIG=str(Path(c["run_dir"]) / "config.json"),
+        COMMERCE_M5_ARTIFACTS=str(Path(c["run_dir"]) / "m5-browser"),
+        COMMERCE_BROWSER_ARTIFACTS=str(Path(c["run_dir"]) / "security-browser"),
         COMMERCE_PAYMENT_TEST_DATABASE_URL=c["database_url"],
         COMMERCE_MIGRATION_TEST_DATABASE_URL=c["database_url"],
     )
-    return command(
-        c,
-        "existing-tests",
-        [
-            PYTHON,
-            "-m",
-            "pytest",
-            "tests",
-            "adversarial/test_runner_safety.py",
-            "-q",
-            "--junitxml=" + str(Path(c["run_dir"]) / "existing-tests.xml"),
-        ],
-        timeout=360,
-        env=env,
-    )
+    # Pytest creates its own applications; keep PostgreSQL, release idle HTTP memory.
+    stop(c, "application")
+    stop(c, "provider")
+    try:
+        return command(
+            c,
+            "existing-tests",
+            [
+                PYTHON,
+                "-m",
+                "pytest",
+                "tests",
+                "adversarial/test_runner_safety.py",
+                "adversarial/test_load_contract.py",
+                "adversarial/test_fixture_state.py",
+                "-q",
+                "--junitxml=" + str(Path(c["run_dir"]) / "existing-tests.xml"),
+            ],
+            timeout=1800,
+            env=env,
+        )
+    finally:
+        runtime_env = dict(
+            os.environ,
+            COMMERCE_TEST_CONFIG=str(Path(c["run_dir"]) / "config.json"),
+            PYTHONPATH=c["installed"],
+        )
+        process(
+            c,
+            "provider",
+            [
+                PYTHON,
+                "-m",
+                "uvicorn",
+                "provider:app",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                c["provider_direct_url"].rsplit(":", 1)[1],
+            ],
+            runtime_env,
+        )
+        wait_http(c["provider_direct_url"] + "/health")
+        process(
+            c,
+            "application",
+            [
+                PYTHON,
+                "-m",
+                "uvicorn",
+                "runtime:application",
+                "--factory",
+                "--host",
+                "127.0.0.1",
+                "--port",
+                c["app_port"],
+                "--workers",
+                "2",
+            ],
+            runtime_env,
+        )
+        wait_http(c["base_url"] + "/ready")
 
 
 def validate_layers(value):
@@ -545,6 +628,8 @@ def validate_layers(value):
     allowed = {
         "baseline",
         "financial",
+        "races",
+        "authorization",
         "browser",
         "properties",
         "schemathesis",
@@ -563,7 +648,7 @@ def main():
     p.add_argument("--config", type=Path)
     p.add_argument(
         "--layers",
-        default="baseline,financial,browser,properties,schemathesis,locust,faults,scanners",
+        default="baseline,financial,authorization,races,browser,properties,schemathesis,locust,faults,scanners",
     )
     p.add_argument("--keep", action="store_true")
     p.add_argument("--cleanup", action="store_true")
@@ -572,10 +657,7 @@ def main():
     c = (
         json.loads(a.config.read_text())
         if a.config
-        else setup(
-            a.run_dir
-            or Path("/tmp/101-commerce-runs") / ("run-" + str(int(time.time())))
-        )
+        else setup(a.run_dir or Path("/tmp/101-commerce-runs") / ("run-" + str(int(time.time()))))
     )
     from urllib.parse import urlsplit
 
@@ -601,6 +683,8 @@ def main():
                     )
             elif layer in {
                 "financial",
+                "races",
+                "authorization",
                 "browser",
                 "properties",
                 "scanners",
@@ -610,6 +694,8 @@ def main():
             }:
                 script = {
                     "financial": "financial.py",
+                    "races": "races.py",
+                    "authorization": "authorization.py",
                     "browser": "browser_runner.py",
                     "properties": "properties.py",
                     "scanners": "scanners.py",
@@ -638,7 +724,10 @@ def main():
                 "revision": c["revision"],
                 "layers": a.layers.split(","),
                 "nonzero_layers": failures,
-                "note": "Per-layer native receipts determine coverage and outcome; nonzero known release gaps remain failures.",
+                "note": (
+                    "Per-layer native receipts determine coverage and outcome; "
+                    "nonzero known release gaps remain failures."
+                ),
             },
         )
         print("Evidence:", c["run_dir"], flush=True)

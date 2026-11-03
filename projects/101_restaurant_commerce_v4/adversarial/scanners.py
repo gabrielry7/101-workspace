@@ -216,6 +216,7 @@ def semgrep(rec, source):
         for root in targets
         for p in ([root] if root.is_file() else root.rglob("*"))
         if p.is_file() and p.suffix in {".py", ".js", ".mjs"}
+        and "node_modules" not in p.parts
     }
     dump(rec.output / "semgrep-source-inventory.json", inventory)
     rec.run("semgrep-version", [str(binary), "--version"], 30, env)
@@ -225,6 +226,8 @@ def semgrep(rec, source):
         [
             str(binary),
             "scan",
+            "--jobs",
+            "1",
             *[
                 x
                 for rule in rec.config.get(
@@ -483,6 +486,10 @@ def zap_scan(rec, config):
         "autoupdate.downloadNewRelease=false",
         "-config",
         "connection.timeoutInSecs=5",
+        "-config",
+        "oast.callback.localaddr=127.0.0.1",
+        "-config",
+        "oast.callback.remoteaddr=127.0.0.1",
     ]
     api_base = f"http://127.0.0.1:{port}"
     calls = []

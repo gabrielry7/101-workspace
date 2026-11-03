@@ -12,7 +12,7 @@ test('successful live customer order is retrievable and visible to staff',async(
 test('double clicks while real response is delayed send one checkout',async({page,request})=>{
   let posts=0;let captured:any;
   await page.route('**'+root()+'/orders',async route=>{posts++;const response=await route.fetch({maxRedirects:0});captured=await response.json();await new Promise(r=>setTimeout(r,350));await route.fulfill({response});});
-  await prepare(page,request);await page.locator('#checkoutButton').evaluate((e:HTMLButtonElement)=>{e.click();e.click();});
+  await prepare(page,request);await expect(page.locator('#checkoutButton')).toBeEnabled();await page.locator('#checkoutButton').evaluate((e:HTMLButtonElement)=>{e.click();e.click();});
   await expect.poll(()=>captured?.id).toBeTruthy();await expect(page.locator('#checkoutButton')).toBeEnabled();
   expect(posts).toBe(1);await orderVisible(request,captured);
 });
@@ -63,20 +63,27 @@ test('reload after committed lost response must recover same order',async({page,
   await orderVisible(request,second);
 });
 
-test('offline submission then reconnect retries the same intent',async({page,context,request})=>{
-  await prepare(page,request);const bodies:any[]=[];
+test('offline checkout does not submit automatically after reconnect',async({page,context,request})=>{
+  await prepare(page,request);await expect(page.locator('#checkoutButton')).toBeEnabled();
+  const bodies:any[]=[];
   page.on('request',r=>{if(new URL(r.url()).pathname===root()+'/orders')bodies.push(r.postDataJSON());});
-  await context.setOffline(true);await page.locator('#checkoutButton').click();await expect(page.locator('#notice')).toContainText('Reintenta');
-  await context.setOffline(false);
-  const waiting=page.waitForResponse(r=>new URL(r.url()).pathname===root()+'/orders');await page.locator('#checkoutButton').click();
-  const response=await waiting;expect(response.status()).toBe(200);expect(bodies.length).toBe(2);expect(bodies[1]).toEqual(bodies[0]);await orderVisible(request,await response.json());
+  await context.setOffline(true);await expect(page.locator('#networkStatus')).toContainText('Sin conexión');
+  await page.locator('#checkoutButton').evaluate((e:HTMLButtonElement)=>e.click());
+  await page.waitForTimeout(200);expect(bodies).toHaveLength(0);
+  await context.setOffline(false);await page.reload();
+  await expect(page.getByRole('button',{name:'Quitar',exact:true})).toBeVisible();
+  await page.waitForTimeout(300);expect(bodies).toHaveLength(0);
+  await page.locator('#cName').fill('Reconnect synthetic');await page.locator('#cPhone').fill(phone());
+  const waiting=page.waitForResponse(r=>new URL(r.url()).pathname===root()+'/orders');
+  await page.locator('#checkoutButton').click();const response=await waiting;
+  expect(response.status()).toBe(200);expect(bodies).toHaveLength(1);await orderVisible(request,await response.json());
 });
 
 test('stale real food quote cannot resurrect an empty cart',async({page,request})=>{
   let release!:()=>void;let fetched=false;const gate=new Promise<void>(r=>release=r);
   await page.route('**'+root()+'/orders/quote',async route=>{const response=await route.fetch({maxRedirects:0});fetched=true;await gate;await route.fulfill({response});});
   await prepare(page,request);await expect.poll(()=>fetched).toBeTruthy();await page.getByRole('button',{name:'Quitar',exact:true}).click();release();
-  await page.waitForTimeout(200);expect((await page.locator('#cartTotal').innerText()).replace(/\D/g,'')).toBe('0');
+  await page.waitForTimeout(200);await expect(page.locator('#cartTotal')).toHaveText('—');await expect(page.locator('#cartRows .cart-row')).toHaveCount(0);let posts=0;page.on('request',r=>{if(new URL(r.url()).pathname===root()+'/orders')posts++;});await page.locator('#checkoutButton').click();expect(posts).toBe(0);await expect(page.locator('#cartRows .cart-row')).toHaveCount(0);
 });
 
 test('changed address rejects delayed genuine delivery quote',async({page,request})=>{
@@ -88,20 +95,23 @@ test('changed address rejects delayed genuine delivery quote',async({page,reques
   await page.locator('#checkoutButton').click();await expect(page.locator('#notice')).toContainText('Cotiza el domicilio');expect(orderPosts).toBe(0);
 });
 
-test('denied browser storage and missing randomUUID preserve checkout',async({page,request})=>{
+test('denied browser storage fails closed before any checkout',async({page,request})=>{
   await page.addInitScript(()=>{for(const name of ['localStorage','sessionStorage'])Object.defineProperty(window,name,{get(){throw new DOMException('blocked','SecurityError')}});Object.defineProperty(crypto,'randomUUID',{value:undefined});});
-  await prepare(page,request);const waiting=page.waitForResponse(r=>new URL(r.url()).pathname===root()+'/orders');await page.locator('#checkoutButton').click();const response=await waiting;expect(response.status()).toBe(200);await orderVisible(request,await response.json());
+  let posts=0;page.on('request',r=>{if(new URL(r.url()).pathname===root()+'/orders')posts++;});
+  await prepare(page,request);await page.locator('#checkoutButton').click();
+  await expect(page.locator('#notice')).toContainText('No se envió un pedido');expect(posts).toBe(0);
 });
 
 test('switching businesses discards delayed authorized staff response',async({page,request})=>{
   expect(businesses.length,'Two real seed businesses are required').toBeGreaterThan(1);
   const oldOrder=await create(request);let release!:()=>void;let fetched=false;const gate=new Promise<void>(r=>release=r);
   await page.context().addCookies([{name:'commerce_staff',value:dualHeaders.Cookie.split('=')[1],url:(await import('./fixtures')).origin,httpOnly:true,sameSite:'Strict'}]);
-  await page.goto('/admin');await expect(page.locator('#staffStatus')).toContainText('synthetic.dual');
-  await page.route('**/api/operator/restaurants/'+business+'/orders',async route=>{const response=await route.fetch({maxRedirects:0});expect(response.status()).toBe(200);fetched=true;await gate;await route.fulfill({response});});
+  await page.goto('/admin');await expect(page.locator('#staffStatus')).toContainText('synthetic.dual');await expect(page.locator('#orders')).toContainText(oldOrder.public_code);
+  const orderRoute=new RegExp('/api/operator/restaurants/'+business+'/orders(?:\\?.*)?$');
+  await page.route(orderRoute,async route=>{const response=await route.fetch({maxRedirects:0});expect(response.status()).toBe(200);fetched=true;await gate;await route.fulfill({response});});
   await page.getByRole('button',{name:'Actualizar',exact:true}).click();await expect.poll(()=>fetched).toBeTruthy();await page.locator('#business').fill(businesses[1]);release();await page.waitForTimeout(200);
   await expect(page.locator('#orders')).not.toContainText(oldOrder.public_code);
-  await page.unroute('**/api/operator/restaurants/'+business+'/orders');
+  await page.unroute(orderRoute);
   const fresh=page.waitForResponse(r=>new URL(r.url()).pathname==='/api/operator/restaurants/'+businesses[1]+'/orders'&&r.status()===200);
   await page.getByRole('button',{name:'Actualizar',exact:true}).click();await fresh;
 });

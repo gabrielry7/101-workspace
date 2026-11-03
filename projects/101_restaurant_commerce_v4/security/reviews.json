@@ -14,9 +14,19 @@
     {
       "layer": "semgrep",
       "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "adversarial/full_stack.py",
+      "severity": "ERROR",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only orchestrator invokes fixed owned runner paths with list argv and no shell. CLI-selected output/cache paths are data arguments; application requests cannot select executable code. USD0 model block is explicit.",
+      "expires_at": "2026-12-03T00:00:00+00:00",
+      "fingerprint": "14c8b5704bbd709ae4dc750e70ee5026468b45a26d337d4d1b33e2877ea2a76d"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
       "path": "adversarial/fuzz.py",
       "severity": "ERROR",
-      "fingerprint": "92901599e99c4d3cc0ff3accf055293306bbd0132041974768f873a1e621287b",
+      "fingerprint": "aeb7a647e77b192f50b04155b1aaa80bf3662409cb48c2ca25140c17f151e607",
       "owner": "101 commerce engineering",
       "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
       "expires_at": "2026-12-03T00:00:00+00:00"
@@ -26,7 +36,7 @@
       "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
       "path": "adversarial/fuzz.py",
       "severity": "ERROR",
-      "fingerprint": "7e36d8b64a3c794f5e14e3c67239cc09ab4915dac9f7dc12954adc6e93245631",
+      "fingerprint": "a697b7ddc2cebb612165aec76c1144f652042853a06ef11f47d4c973fce98d11",
       "owner": "101 commerce engineering",
       "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
       "expires_at": "2026-12-03T00:00:00+00:00"
@@ -36,7 +46,7 @@
       "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
       "path": "adversarial/load.py",
       "severity": "ERROR",
-      "fingerprint": "e01aaa3033a1c7e505ab09d5cbba92630ec51bbb733ea56c95fd84e2ea83d777",
+      "fingerprint": "00a10f013c6c036b408b58f24e0b32f396b77e1f491f3d37d41e8fa78fb12301",
       "owner": "101 commerce engineering",
       "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
       "expires_at": "2026-12-03T00:00:00+00:00"
@@ -46,7 +56,17 @@
       "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
       "path": "adversarial/load.py",
       "severity": "ERROR",
-      "fingerprint": "6905342351fbabd157ca08198edd4c3e2162d21c60d24ccf4c9e616509e8db14",
+      "fingerprint": "00a10f013c6c036b408b58f24e0b32f396b77e1f491f3d37d41e8fa78fb12301",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "adversarial/load.py",
+      "severity": "ERROR",
+      "fingerprint": "c698506c50cd1aec20d9690dd274ad69069636180379f2bb71ba4f4e63bd6a50",
       "owner": "101 commerce engineering",
       "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
       "expires_at": "2026-12-03T00:00:00+00:00"
@@ -56,9 +76,9 @@
       "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
       "path": "adversarial/scanners.py",
       "severity": "WARNING",
-      "fingerprint": "7faa859eaaa2561d5e32b985abd17c71e6d4fa59367b691fb174fb76774ef79b",
+      "fingerprint": "df44b56f9c350aa418f140f9a1591b373c5700e154b712ffb11fcd4d82d6a188",
       "owner": "101 commerce engineering",
-      "reason": "HTTP helper belongs to operator-run scanner tooling, not the application API. M6b zap_scan rejects non-loopback targets before calls and constructs the local ZAP API URL itself. Operator test configuration is trusted.",
+      "reason": "Bootstrap URL comes only from three module-literal HTTPS release assets. Pinned SHA256 verified before unpacking; no request-controlled destination.",
       "expires_at": "2026-12-03T00:00:00+00:00"
     },
     {
@@ -66,7 +86,7 @@
       "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
       "path": "adversarial/scanners.py",
       "severity": "WARNING",
-      "fingerprint": "2aa989f1537cab4012deaaf32f7018ba6097f336fc0df57df8c105dafe34028a",
+      "fingerprint": "c8388c4802b89eed0f7da5c447d71a34b88e2b9ffc61c82820c2900201d53938",
       "owner": "101 commerce engineering",
       "reason": "Bootstrap URL comes only from three module-literal HTTPS release assets. Pinned SHA256 verified before unpacking; no request-controlled destination.",
       "expires_at": "2026-12-03T00:00:00+00:00"
@@ -76,7 +96,7 @@
       "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
       "path": "adversarial/scanners.py",
       "severity": "ERROR",
-      "fingerprint": "6694d9e6926a31fcbafb8a5c91009c87f18ac202c9cba303b398ca6d21b7a314",
+      "fingerprint": "e8f02d49b6383747d2f962a054901bed24e71499fadcbd6e528aa28ec4241906",
       "owner": "101 commerce engineering",
       "reason": "Command is a fixed argument list for task-owned pinned Java/ZAP, bound to loopback. Trusted operator tool paths, no shell and no HTTP-selected executable.",
       "expires_at": "2026-12-03T00:00:00+00:00"
@@ -98,7 +118,7 @@
       "severity": "ERROR",
       "fingerprint": "d3e06062a988e846c3028fbbd80d15723b88faee905c167a7045caddcd2485cf",
       "owner": "101 commerce engineering",
-      "reason": "Operator explicitly chooses a local cloudflared executable and its SHA256 is recorded. Trusted CLI executable selection, list argv, no shell. This remote sandbox probe is not invoked by M6b.",
+      "reason": "Operator-only sandbox qualification uses the current Python and fixed script/module, separate argv and no shell. Operator paths/local ports cannot select code via HTTP. M6b does not invoke these live sandbox probes.",
       "expires_at": "2026-12-03T00:00:00+00:00"
     },
     {
@@ -130,6 +150,16 @@
       "owner": "101 commerce engineering",
       "reason": "Operator-only sandbox qualification uses the current Python and fixed script/module, separate argv and no shell. Operator paths/local ports cannot select code via HTTP. M6b does not invoke these live sandbox probes.",
       "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "scripts/qualify_operations_m6.py",
+      "severity": "ERROR",
+      "owner": "101 commerce engineering",
+      "reason": "Offline disposable deployment rehearsal invokes the current Python and a helper whose complete code is a fixed source literal. Site, release and port arguments come from the owned rehearsal setup; no HTTP-controlled command or shell is used.",
+      "expires_at": "2026-12-03T00:00:00+00:00",
+      "fingerprint": "c9990ee3ab3a00f5717883a8ef06ccef352038e90e52ec0a1c7a199182cc1719"
     },
     {
       "layer": "semgrep",
