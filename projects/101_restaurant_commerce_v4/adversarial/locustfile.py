@@ -68,6 +68,9 @@ class Customer(HttpUser):
             else "3005550200"
         )
 
+        slots = c.get("load_pickup_slots", [])
+        self.pickup_at = slots[uuid.uuid4().int % len(slots)] if slots else None
+
     @task(3)
     def browse(self):
         self.client.get(root + "/storefront", name="storefront")
@@ -84,6 +87,8 @@ class Customer(HttpUser):
             "items": c["cart"],
             "idempotency_key": key,
         }
+        if self.pickup_at:
+            body["requested_pickup_at"] = self.pickup_at
         global retry_attempts
         order = None
         retried = False

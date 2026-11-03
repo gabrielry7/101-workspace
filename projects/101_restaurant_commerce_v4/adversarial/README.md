@@ -103,3 +103,10 @@ staff/customer authentication, durable browser retry recovery, migrations and
 recovery qualification. A successful scanner does not override these contracts.
 
 M4 focused acceptance: `./adversarial/run.sh --run-dir /tmp/101-commerce-runs/m4 --layers baseline,financial,browser,properties`. The retained staff-isolation test now exercises a real single-business session and must pass. `config.json` also contains synthetic staff passwords/session headers; never publish it or raw login traces.
+
+## Supported inventory/capacity performance
+
+See [capacity contracts](../CAPACITY_PROFILES.md) for quantity-untracked, finite
+stock and scheduled pickup semantics, deterministic PostgreSQL concurrency tests,
+and `profile_benchmark.py` for paired old/new 30/100-user measurements. Appointment
+resource allocation and automatic product restocking remain separate capabilities.

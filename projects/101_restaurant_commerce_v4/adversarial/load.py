@@ -59,6 +59,11 @@ for name, users, spawn, seconds in profiles:
             "items": c["cart"],
             "customer": {"name": "Load preflight", "phone": "3005550201"},
             "idempotency_key": "preflight-" + uuid.uuid4().hex,
+            **(
+                {"requested_pickup_at": c["load_pickup_slots"][0]}
+                if c.get("load_pickup_slots")
+                else {}
+            ),
         },
         timeout=15,
         trust_env=False,
@@ -115,7 +120,9 @@ for name, users, spawn, seconds in profiles:
             deadline = time.monotonic() + seconds + 60
             samples = []
             roots = [row["pid"] for row in c.get("processes", {}).values()]
-            pg_pid = Path(c["run_dir"]) / "pgdata/postmaster.pid"
+            pg_pid = Path(
+                c.get("database_pid_path", str(Path(c["run_dir"]) / "pgdata/postmaster.pid"))
+            )
             if pg_pid.exists():
                 roots.append(int(pg_pid.read_text().splitlines()[0]))
             while child.poll() is None:
@@ -215,7 +222,8 @@ for name, users, spawn, seconds in profiles:
         "database_audit": audit,
         "limits": [
             "conservative local budgets; attachment budgets unavailable",
-            "fresh unique intent per journey; seeded load item has unlimited stock",
+            "fresh unique intent per journey; capacity profile: "
+            + c.get("load_capacity_profile", "untracked"),
             "synthetic provider and host-local network, not production capacity",
         ],
     }

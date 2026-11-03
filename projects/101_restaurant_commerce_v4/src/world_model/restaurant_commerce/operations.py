@@ -165,7 +165,16 @@ class OperationsMixin:
         }
 
     def save_operations_settings(self, business_id, body, principal):
-        profile = self._ops_profile(business_id)
+        # A profile always exists, even before the first policy row. Lock it first
+        # so first-time pause/scheduling changes cannot race an admitted checkout.
+        profile = self.session.scalar(
+            select(RestaurantCommerceProfile)
+            .where(RestaurantCommerceProfile.business_id == business_id)
+            .with_for_update()
+            .execution_options(populate_existing=True)
+        )
+        if profile is None:
+            raise NotFoundError("Restaurante no encontrado")
         row = self.session.scalar(
             select(PickupPolicy)
             .where(PickupPolicy.business_id == business_id)
@@ -208,7 +217,8 @@ class OperationsMixin:
             .join(MenuCategory)
             .join(Menu)
             .where(Menu.business_id == business_id, MenuItem.id == item_id)
-            .with_for_update()
+            .with_for_update(of=MenuItem)
+            .execution_options(populate_existing=True)
         )
         if not item:
             raise NotFoundError("Producto no encontrado en este negocio")
@@ -252,17 +262,40 @@ class OperationsMixin:
         return self.operations_settings(business_id)
 
     def allocate_pickup_and_stock(self, profile, request):
-        # Lock one merchant policy before counting slots. Both policy edits and order
-        # allocation use this lock; no provider IO occurs before this transaction commits.
+        # Readers may admit independent orders concurrently. Staff edits take the
+        # conflicting exclusive profile/item locks; retain these until local commit.
+        profile = self.session.scalar(
+            select(RestaurantCommerceProfile)
+            .where(RestaurantCommerceProfile.business_id == profile.business_id)
+            .with_for_update(read=True)
+            .execution_options(populate_existing=True)
+        )
+        if not profile or not profile.ordering_enabled:
+            raise ValidationError("Los pedidos están pausados")
+        if request.fulfillment_type == "pickup" and not profile.pickup_enabled:
+            raise ValidationError("La recogida no está disponible")
         policy = self.session.scalar(
             select(PickupPolicy)
             .where(PickupPolicy.business_id == profile.business_id)
-            .with_for_update()
+            .with_for_update(read=True)
             .execution_options(populate_existing=True)
         )
         if policy and not json.loads(policy.policy_json)["ordering_enabled"]:
             raise ValidationError("Los pedidos están pausados")
         if request.fulfillment_type == "pickup":
+            requested = request.requested_pickup_at
+            scheduled = bool(policy and json.loads(policy.policy_json)["scheduled"])
+            if scheduled and requested and self.session.get_bind().dialect.name == "postgresql":
+                # Serialize only one business/UTC slot, not all merchant orders.
+                # Hash collisions can only add contention, never bypass capacity.
+                key = json.dumps(
+                    ["pickup-slot-v1", profile.business_id, aware(requested).isoformat()],
+                    separators=(",", ":"),
+                )
+                lock_id = int.from_bytes(
+                    hashlib.sha256(key.encode()).digest()[:8], "big", signed=True
+                )
+                self.session.execute(select(func.pg_advisory_xact_lock(lock_id)))
             slots = self.pickup_slots(profile.business_id)
             requested = request.requested_pickup_at
             if requested and (requested.tzinfo is None or aware(requested) <= utcnow()):
@@ -287,7 +320,7 @@ class OperationsMixin:
             item = self.session.scalar(
                 select(MenuItem)
                 .where(MenuItem.id == item_id)
-                .with_for_update()
+                .with_for_update(read=True, of=MenuItem)
                 .execution_options(populate_existing=True)
             )
             if not item or item.sold_out or not item.enabled:
@@ -348,12 +381,20 @@ class OperationsMixin:
                 PaymentReconciliation.status == "open",
             )
         )
-        from .refunds import PaymentRefund
         from .models import Payment
-        partial = self.session.scalar(select(func.coalesce(func.sum(PaymentRefund.amount_minor), 0))
-            .join(Payment, Payment.id == PaymentRefund.payment_id).join(Order, Order.id == Payment.order_id)
-            .where(Order.business_id == business_id, Order.created_at >= begin, Order.created_at < end,
-                   Payment.status == 'paid'))
+        from .refunds import PaymentRefund
+
+        partial = self.session.scalar(
+            select(func.coalesce(func.sum(PaymentRefund.amount_minor), 0))
+            .join(Payment, Payment.id == PaymentRefund.payment_id)
+            .join(Order, Order.id == Payment.order_id)
+            .where(
+                Order.business_id == business_id,
+                Order.created_at >= begin,
+                Order.created_at < end,
+                Payment.status == "paid",
+            )
+        )
         return {
             "date": day.isoformat(),
             "timezone": profile.timezone,
