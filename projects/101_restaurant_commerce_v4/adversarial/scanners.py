@@ -490,6 +490,10 @@ def zap_scan(rec, config):
         "oast.callback.localaddr=127.0.0.1",
         "-config",
         "oast.callback.remoteaddr=127.0.0.1",
+        "-config",
+        "extensions.extension(0).name=ExtensionClientIntegration",
+        "-config",
+        "extensions.extension(0).enabled=false",
     ]
     api_base = f"http://127.0.0.1:{port}"
     calls = []
@@ -720,7 +724,9 @@ def zap_scan(rec, config):
         result["disabled_external_callback_rules"] = external_rules
         result["coverage_gaps"].append(
             "Focused HTTP rule set: DOM browser rules, external callbacks, unrelated "
-            "database engines and other rule families excluded; exact IDs retained."
+            "database engines and other rule families excluded; exact IDs retained. "
+            "Unused browser client integration is disabled; Firefox profile creation "
+            "is not required for these HTTP rules."
         )
         focus_customer = config.get("zap_focus_customer", False)
         scan_url = base + ("/api/orders/" + order["id"] if focus_customer else "/")

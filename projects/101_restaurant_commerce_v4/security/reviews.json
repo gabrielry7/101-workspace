@@ -66,7 +66,7 @@
       "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
       "path": "adversarial/scanners.py",
       "severity": "WARNING",
-      "fingerprint": "bbb85fe99150819c7e55f437c15190d68ffc9101cc65f2686077d1791fe2361e",
+      "fingerprint": "346c1407208414bf0573692dd4c0bda9101fee507df659892e9cd0426978ee30",
       "owner": "101 commerce engineering",
       "reason": "Bootstrap URL comes only from three module-literal HTTPS release assets. Pinned SHA256 verified before unpacking; no request-controlled destination.",
       "expires_at": "2026-12-03T00:00:00+00:00"
@@ -76,7 +76,7 @@
       "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
       "path": "adversarial/scanners.py",
       "severity": "WARNING",
-      "fingerprint": "c25220b653428869f5118652e45471d120d3b1d8f23e9b85a5e11732ee7bfb56",
+      "fingerprint": "bf0a8feb3f98a2061376b0747bef1beea590ca3ca4701edf211ed0ab13ed908b",
       "owner": "101 commerce engineering",
       "reason": "Bootstrap URL comes only from three module-literal HTTPS release assets. Pinned SHA256 verified before unpacking; no request-controlled destination.",
       "expires_at": "2026-12-03T00:00:00+00:00"
@@ -86,7 +86,7 @@
       "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
       "path": "adversarial/scanners.py",
       "severity": "ERROR",
-      "fingerprint": "d17c19b658316abbb33d24e1beb6ad2064cef308d919710bd481e3528acec9c6",
+      "fingerprint": "144df6460ac7ee784420d93999c6adb6e619c90a06a8738f109dab4b3a449a02",
       "owner": "101 commerce engineering",
       "reason": "Command is a fixed argument list for task-owned pinned Java/ZAP, bound to loopback. Trusted operator tool paths, no shell and no HTTP-selected executable.",
       "expires_at": "2026-12-03T00:00:00+00:00"
