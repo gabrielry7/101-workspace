@@ -1,9 +1,10 @@
 """Collect native receipts without turning tool exit codes into unsupported passes."""
 
 import json
-import xml.etree.ElementTree as ET
 from datetime import datetime
 from pathlib import Path
+
+import defusedxml.ElementTree as ET
 
 
 def native(path):
@@ -99,7 +100,7 @@ def summarize(config):
         "layers": layers,
         "limits": [
             "Synthetic providers; no live money or messages",
-            "Customer login and standalone supervised worker deployment absent; scoped staff sessions are implemented",
+            "Customer login absent; scoped staff sessions and M6 local workers implemented",
             "Local budgets do not qualify production capacity or physical old devices",
             "Original attachment unavailable; budgets documented in README",
         ],

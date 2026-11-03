@@ -11,3 +11,5 @@ fieldset{min-width:0;max-width:100%;border:1px solid var(--line);border-radius:1
 /* Connection state replaces a reserved slot instead of moving the page twice. */
 .connection-slot{position:relative;min-height:82px}.connection-slot .network-banner{position:absolute;inset:0;overflow:auto}.connection-slot #bootNotice{z-index:1}.categories{min-height:44px}#menu{min-height:200px}#demoBadge[hidden]{display:inline-flex!important;visibility:hidden}.brand{min-height:50px}
 @media(min-width:768px){.connection-slot{min-height:42px}}
+
+.close-item{float:right}

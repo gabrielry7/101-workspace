@@ -145,6 +145,7 @@ def create_app(
     storefront_cache_ttl_seconds: float = 15.0,
     auto_init_schema: bool | None = None,
     payment_recovery_enabled: bool = True,
+    provider_recovery_enabled: bool = True,
     payment_recovery_interval_seconds: float = 1.0,
     payment_lease_seconds: int = 30,
     checkout_url_origins: tuple[str, ...] = (),
@@ -255,7 +256,7 @@ def create_app(
                 stop.set()
                 thread.join(timeout=5)
 
-    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.11.0",
+    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.12.0",
                   responses={status: {"model": ErrorResponse} for status in
                              (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
@@ -307,20 +308,18 @@ def create_app(
         try:
             response = await call_next(request)
         except Exception:
-            elapsed_ms = (time.perf_counter() - started) * 1000
-            metrics.record_request(request.method, path, 500, elapsed_ms)
             logger.exception(
                 "Unhandled restaurant commerce request failure",
-                extra={"request_id": request_id, "method": request.method, "path": path},
+                extra={"request_id": request_id, "method": request.method,
+                       "route": getattr(request.scope.get("route"), "path", "unmatched")},
             )
             response = JSONResponse(
                 {"detail": "Internal server error", "request_id": request_id}, status_code=500
             )
         elapsed_ms = (time.perf_counter() - started) * 1000
         route_obj = request.scope.get("route")
-        route = getattr(route_obj, "path", path)
-        if response.status_code != 500 or not isinstance(response, JSONResponse):
-            metrics.record_request(request.method, route, response.status_code, elapsed_ms)
+        route = getattr(route_obj, "path", "unmatched")
+        metrics.record_request(request.method, route, response.status_code, elapsed_ms)
         response.headers["X-Request-ID"] = request_id
         response.headers["X-Process-Time-Ms"] = f"{elapsed_ms:.3f}"
         response.headers["X-Content-Type-Options"] = "nosniff"
@@ -329,8 +328,8 @@ def create_app(
         response.headers["Permissions-Policy"] = "geolocation=(self), camera=(), microphone=()"
         response.headers["Content-Security-Policy"] = (
             "default-src 'self'; base-uri 'none'; frame-ancestors 'none'; "
-            "object-src 'none'; img-src 'self' data: https:; "
-            "script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; "
+            "object-src 'none'; img-src 'self' data:; form-action 'self'; "
+            "script-src 'self'; script-src-attr 'none'; style-src 'self'; "
             "connect-src 'self'"
         )
         if production:
@@ -493,7 +492,7 @@ def create_app(
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "operations.js"}:
+        if filename not in {"shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
             raise HTTPException(status_code=404, detail="Asset not found")
         return FileResponse(WEB_DIR / filename, media_type="text/css" if filename.endswith(".css") else "text/javascript",
                             headers={"Cache-Control": "no-cache"})
@@ -584,6 +583,8 @@ def create_app(
     @app.post("/api/restaurants/{business_id}/orders/recover", response_model=OrderOut)
     def recover_order(business_id: str, request: RecoverOrderRequest,
                       service: RestaurantCommerceService = Depends(get_service)):
+        if request.wompi_transaction_id and not provider_recovery_enabled:
+            raise HTTPException(503, "Provider recovery is disabled in this deployment")
         try:
             order = service.recover_order(business_id, request.idempotency_key, request.recovery_secret)
         except CheckoutRecoveryExpired as exc:

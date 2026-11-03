@@ -57,7 +57,7 @@ def verify(directory, expected, *, bundle_only=False):
     return manifest
 
 
-def pack(wheel, wheelhouse, output, revision):
+def pack(wheel, wheelhouse, output, revision, runtime_source=None):
     output = Path(output)
     output.mkdir(mode=0o700, parents=True, exist_ok=False)
     deps = output / "wheels"
@@ -91,8 +91,9 @@ def pack(wheel, wheelhouse, output, revision):
         + "\n"
     )
     (output / "requirements.lock").write_text(lock)
+    runtime_source = Path(runtime_source) if runtime_source else ROOT / "deployment"
     for name in ["runtime.py", "database.py"]:
-        shutil.copy2(ROOT / "deployment" / name, output / name)
+        shutil.copy2(runtime_source / name, output / name)
     files = {
         str(p.relative_to(output)): digest(p) for p in sorted(output.rglob("*")) if p.is_file()
     }
@@ -116,6 +117,9 @@ def install(bundle, expected, site):
         or platform.machine() != "x86_64"
     ):
         raise ValueError("Unqualified Python/platform")
+    installers = list(Path(bundle).glob("wheels/pip-*.whl"))
+    if len(installers) != 1:
+        raise ValueError("Release requires exactly one hash-verified pip wheel")
     site = private_dir(site)
     releases = private_dir(site / "releases")
     target = releases / expected[:20]
@@ -123,14 +127,19 @@ def install(bundle, expected, site):
         raise ValueError("Release already exists; do not mutate it")
     shutil.copytree(bundle, target)
     subprocess.run(
-        [sys.executable, "-m", "venv", str(target / "venv")], check=True, capture_output=True
+        [sys.executable, "-m", "venv", "--without-pip", str(target / "venv")],
+        check=True,
+        capture_output=True,
     )
     python = str(target / "venv/bin/python")
     result = subprocess.run(
         [
             python,
-            "-m",
-            "pip",
+            "-B",
+            "-c",
+            "import runpy,sys; sys.path.insert(0,sys.argv.pop(1)); "
+            "runpy.run_module('pip',run_name='__main__')",
+            str(target / "wheels" / installers[0].name),
             "--isolated",
             "install",
             "--no-index",
@@ -406,6 +415,10 @@ def main():
     packer.add_argument("--wheelhouse", required=True)
     packer.add_argument("--output", required=True)
     packer.add_argument("--revision", required=True)
+    packer.add_argument(
+        "--runtime-source",
+        help="Explicit matching historical deployment modules for rollback qualification",
+    )
     installer = s.add_parser("install")
     installer.add_argument("--bundle", required=True)
     installer.add_argument("--manifest-sha256", required=True)
@@ -421,7 +434,15 @@ def main():
     stopper.add_argument("--site", required=True)
     a = p.parse_args()
     if a.action == "pack":
-        print(json.dumps({"manifest_sha256": pack(a.wheel, a.wheelhouse, a.output, a.revision)}))
+        print(
+            json.dumps(
+                {
+                    "manifest_sha256": pack(
+                        a.wheel, a.wheelhouse, a.output, a.revision, a.runtime_source
+                    )
+                }
+            )
+        )
     elif a.action == "install":
         print(json.dumps({"release": install(a.bundle, a.manifest_sha256, a.site)}))
     elif a.action == "stop":

@@ -1,0 +1,155 @@
+{
+  "format": 1,
+  "reviews": [
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "path": "adversarial/bootstrap.py",
+      "severity": "WARNING",
+      "fingerprint": "a8cb6aafc45fb523665b0d75b5adee61dc8953a0261ebc0428cc1360b7d284d0",
+      "owner": "101 commerce engineering",
+      "reason": "Fixed HTTPS GitHub release URL; pinned SHA256 verified before use. No request-controlled URL.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "adversarial/fuzz.py",
+      "severity": "ERROR",
+      "fingerprint": "92901599e99c4d3cc0ff3accf055293306bbd0132041974768f873a1e621287b",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "adversarial/fuzz.py",
+      "severity": "ERROR",
+      "fingerprint": "7e36d8b64a3c794f5e14e3c67239cc09ab4915dac9f7dc12954adc6e93245631",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "adversarial/load.py",
+      "severity": "ERROR",
+      "fingerprint": "e01aaa3033a1c7e505ab09d5cbba92630ec51bbb733ea56c95fd84e2ea83d777",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "adversarial/load.py",
+      "severity": "ERROR",
+      "fingerprint": "6905342351fbabd157ca08198edd4c3e2162d21c60d24ccf4c9e616509e8db14",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only qualification invokes fixed Schemathesis/Locust beside the chosen Python interpreter, with list argv and no shell. Version probe uses the same executable. No application request can select executable or code.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "path": "adversarial/scanners.py",
+      "severity": "WARNING",
+      "fingerprint": "7faa859eaaa2561d5e32b985abd17c71e6d4fa59367b691fb174fb76774ef79b",
+      "owner": "101 commerce engineering",
+      "reason": "HTTP helper belongs to operator-run scanner tooling, not the application API. M6b zap_scan rejects non-loopback targets before calls and constructs the local ZAP API URL itself. Operator test configuration is trusted.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "path": "adversarial/scanners.py",
+      "severity": "WARNING",
+      "fingerprint": "2aa989f1537cab4012deaaf32f7018ba6097f336fc0df57df8c105dafe34028a",
+      "owner": "101 commerce engineering",
+      "reason": "Bootstrap URL comes only from three module-literal HTTPS release assets. Pinned SHA256 verified before unpacking; no request-controlled destination.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "adversarial/scanners.py",
+      "severity": "ERROR",
+      "fingerprint": "6694d9e6926a31fcbafb8a5c91009c87f18ac202c9cba303b398ca6d21b7a314",
+      "owner": "101 commerce engineering",
+      "reason": "Command is a fixed argument list for task-owned pinned Java/ZAP, bound to loopback. Trusted operator tool paths, no shell and no HTTP-selected executable.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "scripts/check_wompi_financial.py",
+      "severity": "ERROR",
+      "fingerprint": "e3b17c16299dcfab708e7a363d367fce170b67486b27136cfcfcf6585611ac39",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only sandbox qualification uses the current Python and fixed script/module, separate argv and no shell. Operator paths/local ports cannot select code via HTTP. M6b does not invoke these live sandbox probes.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "scripts/check_wompi_hosted.py",
+      "severity": "ERROR",
+      "fingerprint": "d3e06062a988e846c3028fbbd80d15723b88faee905c167a7045caddcd2485cf",
+      "owner": "101 commerce engineering",
+      "reason": "Operator explicitly chooses a local cloudflared executable and its SHA256 is recorded. Trusted CLI executable selection, list argv, no shell. This remote sandbox probe is not invoked by M6b.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "scripts/check_wompi_hosted.py",
+      "severity": "ERROR",
+      "fingerprint": "036745aca8a3285d10f3a6c6d8c284a82796a5139300ee158e34315bbf45047b",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only sandbox qualification uses the current Python and fixed script/module, separate argv and no shell. Operator paths/local ports cannot select code via HTTP. M6b does not invoke these live sandbox probes.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "scripts/check_wompi_sandbox.py",
+      "severity": "ERROR",
+      "fingerprint": "fce0ae13746c050d71dbbe1ac6ab4a4dc77dacf9b7c04c8aeadd62a83d3d01f5",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only sandbox qualification uses the current Python and fixed script/module, separate argv and no shell. Operator paths/local ports cannot select code via HTTP. M6b does not invoke these live sandbox probes.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args",
+      "path": "scripts/check_wompi_sandbox.py",
+      "severity": "ERROR",
+      "fingerprint": "d2e31c0d63cb10f5221e2987f10fe48b56b9d89adc0adbf8336cfd2f6d7b65b9",
+      "owner": "101 commerce engineering",
+      "reason": "Operator-only sandbox qualification uses the current Python and fixed script/module, separate argv and no shell. Operator paths/local ports cannot select code via HTTP. M6b does not invoke these live sandbox probes.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected",
+      "path": "security/check.py",
+      "severity": "WARNING",
+      "fingerprint": "c9b3e504f04facec70a1a09e5cdc773028edfec6ef85b18110663f3a2594d413",
+      "owner": "101 commerce engineering",
+      "reason": "HTTPS rule URL uses a fixed Semgrep origin and checked-in pack names; SHA256 must match the checked lock before use. Not exposed as an HTTP service or arbitrary URL input.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "semgrep",
+      "rule": "python.sqlalchemy.security.audit.avoid-sqlalchemy-text.avoid-sqlalchemy-text",
+      "path": "src/world_model/restaurant_commerce/migrations.py",
+      "severity": "ERROR",
+      "fingerprint": "2a27e7abf0f56f83b7e846bb37f1f58ff65de11ee7913ac9cbddf4a1aecbb7a8",
+      "owner": "101 commerce engineering",
+      "reason": "Offline SQLite DDL interpolates only module-literal CUSTOMER_SAFETY_COLUMNS identifiers/declarations, not request or stored values. Full-file fingerprint binds those constants and control flow.",
+      "expires_at": "2026-12-03T00:00:00+00:00"
+    }
+  ]
+}

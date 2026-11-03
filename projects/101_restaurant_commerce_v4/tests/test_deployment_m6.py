@@ -349,3 +349,28 @@ def test_bundle_extras_rejected_before_install(tmp_path):
     with pytest.raises(ValueError):
         release.install(bundle, sha, tmp_path / "site")
     assert not (tmp_path / "site").exists()
+
+
+def test_bundle_without_locked_installer_rejected_before_environment_creation(tmp_path):
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "release_installer_test",
+        Path(__file__).resolve().parents[1] / "scripts/commerce_release.py",
+    )
+    release = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(release)
+    bundle = runtime.private_dir(tmp_path / "bundle")
+
+    runtime.write_json(
+        bundle / "manifest.json",
+        {
+            "format": 1,
+            "files": {},
+            "python_version": list(sys.version_info[:3]),
+            "platform": "linux-x86_64",
+        },
+    )
+    with pytest.raises(ValueError, match="hash-verified pip wheel"):
+        release.install(bundle, release.digest(bundle / "manifest.json"), tmp_path / "site")
+    assert not (tmp_path / "site").exists()

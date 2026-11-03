@@ -16,8 +16,9 @@ import socket
 import subprocess
 import sys
 import time
-import xml.etree.ElementTree as ET
 from pathlib import Path
+
+import defusedxml.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "adversarial"))

@@ -208,6 +208,7 @@ def application(data, release):
         seed=False,
         auto_init_schema=False,
         payment_recovery_enabled=False,
+        provider_recovery_enabled=False,
         public_access_secret=data["public_access_secret"],
         **options(data),
     )
@@ -238,15 +239,6 @@ def application(data, release):
                 {"detail": "Restore quarantine: writes are paused pending verification"},
                 status_code=503,
             )
-        if not data["allow_writes"] and request.url.path.endswith("/orders/recover"):
-            try:
-                body = await request.json()
-            except (ValueError, UnicodeDecodeError):
-                body = None
-            if isinstance(body, dict) and body.get("wompi_transaction_id"):
-                return JSONResponse(
-                    {"detail": "Provider recovery is disabled in quarantine"}, status_code=503
-                )
         return await call_next(request)
 
     return app

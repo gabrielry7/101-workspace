@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import asyncio
+import math
 import hashlib
 import hmac
 import time
@@ -63,7 +65,11 @@ class MaxBodySizeMiddleware:
     transaction before the limit is discovered.
     """
 
-    def __init__(self, app: ASGIApp, max_bytes: int = 1_048_576) -> None:
+    def __init__(self, app: ASGIApp, max_bytes: int = 1_048_576,
+                 body_timeout_seconds: float = 30.0) -> None:
+        if not math.isfinite(body_timeout_seconds) or body_timeout_seconds <= 0:
+            raise ValueError("Request body deadline must be finite and positive")
+        self.body_timeout_seconds = body_timeout_seconds
         self.app = app
         self.max_bytes = max(1, max_bytes)
 
@@ -89,8 +95,14 @@ class MaxBodySizeMiddleware:
         chunks: list[bytes] = []
         seen = 0
         more = True
+        deadline = time.monotonic() + self.body_timeout_seconds
         while more:
-            message = await receive()
+            try:
+                message = await asyncio.wait_for(receive(), timeout=max(0, deadline - time.monotonic()))
+            except TimeoutError:
+                await JSONResponse({"detail": "Request body deadline exceeded"}, status_code=408,
+                                   headers={"Connection": "close"})(scope, receive, send)
+                return
             if message["type"] == "http.disconnect":
                 return
             if message["type"] != "http.request":

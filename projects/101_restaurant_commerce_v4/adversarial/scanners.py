@@ -138,7 +138,8 @@ def bootstrap(rec, layers):
         assets.append(
             (
                 "trivy",
-                "https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_Linux-64bit.tar.gz",
+                "https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy "
+                "_0.76.1_Linux-64bit.tar.gz",
                 "c7cbe3137fb8a48a17574bede3dd6beb16742d1e9772929940fc90082c39d9c0",
                 "tar",
             )
@@ -148,7 +149,8 @@ def bootstrap(rec, layers):
             assets.append(
                 (
                     "zap",
-                    "https://github.com/zaproxy/zaproxy/releases/download/v2.17.0/ZAP_2.17.0_Crossplatform.zip",
+                    "https://github.com/zaproxy/zaproxy/releases/download/v2.17.0/ZAP_ "
+                    "2.17.0_Crossplatform.zip",
                     "94c8f767b1c2e94f0db66b3ae56514d5e3f5a728ee1b6c798e0c8fe2d61fbff0",
                     "zip",
                 )
@@ -157,7 +159,9 @@ def bootstrap(rec, layers):
             assets.append(
                 (
                     "java",
-                    "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.21%2B9/OpenJDK17U-jre_x64_linux_hotspot_17.0.21_9.tar.gz",
+                    "https://github.com/adoptium/temurin17- "
+                    "binaries/releases/download/jdk-17.0.21%2B9/OpenJDK17U- "
+                    "jre_x64_linux_hotspot_17.0.21_9.tar.gz",
                     "9f41bf88c7900c7097444a1bdeb84146ae692bc08842490ab098063c74bf9a8a",
                     "tar",
                 )
@@ -192,16 +196,26 @@ def bootstrap(rec, layers):
 
 
 def semgrep(rec, source):
-    binary = TOOLCHAIN / "semgrep-venv/bin/semgrep"
+    binary = Path(rec.config.get("semgrep_binary", TOOLCHAIN / "semgrep-venv/bin/semgrep"))
     env = {
         **os.environ,
         "SEMGREP_SEND_METRICS": "off",
         "SEMGREP_ENABLE_VERSION_CHECK": "0",
     }
+    targets = [
+        source / "src",
+        source / "deployment",
+        source / "scripts",
+        source / "security",
+        source / "adversarial",
+        source / "sandbox_receiver/worker.mjs",
+    ]
+    targets = [p for p in targets if p.exists()]
     inventory = {
         str(p.relative_to(source)): hashlib.sha256(p.read_bytes()).hexdigest()
-        for p in (source / "src").rglob("*")
-        if p.is_file() and p.suffix in {".py", ".js", ".html"}
+        for root in targets
+        for p in ([root] if root.is_file() else root.rglob("*"))
+        if p.is_file() and p.suffix in {".py", ".js", ".mjs"}
     }
     dump(rec.output / "semgrep-source-inventory.json", inventory)
     rec.run("semgrep-version", [str(binary), "--version"], 30, env)
@@ -211,19 +225,21 @@ def semgrep(rec, source):
         [
             str(binary),
             "scan",
-            "--config",
-            "p/python",
-            "--config",
-            "p/javascript",
-            "--config",
-            "p/security-audit",
+            *[
+                x
+                for rule in rec.config.get(
+                    "semgrep_rules", ["p/python", "p/javascript", "p/security-audit"]
+                )
+                for x in ["--config", str(rule)]
+            ],
+            "--no-rewrite-rule-ids",
             "--metrics",
             "off",
             "--disable-version-check",
             "--json",
             "--output",
             str(report),
-            str(source / "src"),
+            *[str(p) for p in targets],
         ],
         180,
         env,
@@ -237,11 +253,13 @@ def semgrep(rec, source):
         }
     data = json.loads(report.read_text())
     findings = data.get("results", [])
+    actual = {str(Path(p).resolve()) for p in data.get("paths", {}).get("scanned", [])}
+    missing = [p for p in inventory if str((source / p).resolve()) not in actual]
     errors = data.get("errors", [])
     scanned = len(data.get("paths", {}).get("scanned", []))
     return {
         "execution": "COMPLETE"
-        if run["exit_code"] == 0 and not errors and scanned
+        if run["exit_code"] == 0 and not errors and scanned and not missing
         else "PARTIAL",
         "outcome": "FAIL"
         if findings
@@ -249,6 +267,7 @@ def semgrep(rec, source):
         "native_findings": len(findings),
         "native_errors": len(errors),
         "files_scanned": scanned,
+        "missing_source_files": missing,
         "findings": [
             {
                 "rule": x["check_id"],
@@ -259,7 +278,8 @@ def semgrep(rec, source):
             for x in findings
         ],
         "coverage_gaps": [
-            "Community Edition intrafile analysis; no claim of authenticated business-logic verification."
+            "Community Edition intrafile analysis; no claim of authenticated business- "
+            "logic verification."
         ],
     }
 
@@ -296,6 +316,8 @@ def trivy(rec, source, config):
                 "--skip-dirs",
                 "build",
                 "--skip-dirs",
+                "node_modules",
+                "--skip-dirs",
                 ".venv",
                 str(target),
             ],
@@ -306,7 +328,13 @@ def trivy(rec, source, config):
     deps.mkdir(exist_ok=True)
     freeze = rec.run(
         "runtime-pip-freeze",
-        [config.get("python", "python"), "-m", "pip", "freeze", "--exclude-editable"],
+        [
+            config.get("python", "python"),
+            "-c",
+            "from importlib.metadata import distributions; "
+            "print(chr(10).join(sorted(d.metadata['Name']+'=='+d.version for d in "
+            "distributions())))",
+        ],
         45,
     )
     shutil.copyfile(rec.output / "runtime-pip-freeze.log", deps / "requirements.txt")
@@ -368,10 +396,11 @@ def trivy(rec, source, config):
         runs["container"] = {
             "execution": "BLOCKED",
             "outcome": "UNASSESSED",
-            "blocker": "No built application container archive supplied; runtime availability recorded below. Filesystem scan is not container scan.",
-            "runtime_paths": {
-                name: shutil.which(name) for name in ["docker", "podman", "buildah"]
-            },
+            "blocker": (
+                "No built application container archive supplied; runtime availability "
+                "recorded below. Filesystem scan is not container scan."
+            ),
+            "runtime_paths": {name: shutil.which(name) for name in ["docker", "podman", "buildah"]},
         }
     return runs
 
@@ -401,7 +430,10 @@ def trivy_result(report, row):
         "packages": sum(len(x.get("Packages", []) or []) for x in results),
         "native_report": report.name,
         "coverage_gaps": [
-            "No finding targets/recognized configuration manifests in native report; zero findings does not establish configuration coverage. Secret scanning ran over the requested source tree, but native output supplies no clean-file count."
+            "No finding targets/recognized configuration manifests in native report; "
+            "zero findings does not establish configuration coverage. Secret scanning "
+            "ran over the requested source tree, but native output supplies no clean- "
+            "file count."
         ]
         if not results
         else [],
@@ -456,15 +488,11 @@ def zap_scan(rec, config):
     calls = []
 
     def api(component, kind, operation, **kwargs):
-        url = (
-            f"{api_base}/JSON/{component}/{kind}/{operation}/?"
-            + urllib.parse.urlencode(kwargs)
-        )
+        url = f"{api_base}/JSON/{component}/{kind}/{operation}/?" + urllib.parse.urlencode(kwargs)
         status, result = fetch(url, timeout=30)
         # Do not persist synthetic auth tokens in command receipts.
         safe = {
-            k: ("<redacted>" if k in {"replacement", "request"} else v)
-            for k, v in kwargs.items()
+            k: ("<redacted>" if k in {"replacement", "request"} else v) for k, v in kwargs.items()
         }
         calls.append(
             {
@@ -498,7 +526,8 @@ def zap_scan(rec, config):
         "execution": "PARTIAL",
         "outcome": "UNASSESSED",
         "coverage_gaps": [
-            "Global staff token only; no real staff principals or customer login exist. Customer capability token is exercised.",
+            "Real scoped staff session and order-capability access; full customer "
+            "login is not implemented.",
             "Bounded low-strength active scan; not exhaustive penetration testing.",
         ],
     }
@@ -515,9 +544,9 @@ def zap_scan(rec, config):
         else:
             raise RuntimeError("ZAP startup timeout")
         result["version"] = version
-        context = api(
-            "context", "action", "newContext", contextName="commerce-disposable"
-        )["contextId"]
+        context = api("context", "action", "newContext", contextName="commerce-disposable")[
+            "contextId"
+        ]
         api(
             "context",
             "action",
@@ -535,9 +564,18 @@ def zap_scan(rec, config):
         api("core", "action", "setMode", mode="standard")
         token = config["single_staff_headers"]["Cookie"]
         for header, value in config["single_staff_headers"].items():
-            api("replacer", "action", "addRule", description="synthetic-staff-"+header,
-                enabled="true", matchType="REQ_HEADER", matchRegex="false",
-                matchString=header, replacement=value, url=re.escape(base)+r"/.*")
+            api(
+                "replacer",
+                "action",
+                "addRule",
+                description="synthetic-staff-" + header,
+                enabled="true",
+                matchType="REQ_HEADER",
+                matchRegex="false",
+                matchString=header,
+                replacement=value,
+                url=re.escape(base) + r"/.*",
+            )
         business = config["business_ids"][0]
         status, store = fetch(base + f"/api/restaurants/{business}/storefront")
         assert status == 200
@@ -581,41 +619,49 @@ def zap_scan(rec, config):
         reached = []
         for path in seeds:
             raw = f"GET {path} HTTP/1.1\r\nHost: {urllib.parse.urlsplit(base).netloc}\r\n\r\n"
-            response = api(
-                "core", "action", "sendRequest", request=raw, followRedirects="false"
-            )
+            response = api("core", "action", "sendRequest", request=raw, followRedirects="false")
             for message in response.get("sendRequest", []):
                 reached.append(
                     {
                         "path": path,
-                        "response_status": message.get("responseHeader", "").split(
-                            "\r\n"
-                        )[0],
+                        "response_status": message.get("responseHeader", "").split("\r\n")[0],
                     }
                 )
         dump(rec.output / "zap-auth-reached.json", reached)
         if not any(
-            "/api/operator/" in r["path"] and "200" in r["response_status"]
-            for r in reached
+            "/api/operator/" in r["path"] and "200" in r["response_status"] for r in reached
         ):
             raise RuntimeError("No authenticated staff200 reached")
-        if not any(
-            "/api/orders/" in r["path"] and "200" in r["response_status"]
-            for r in reached
-        ):
+        if not any("/api/orders/" in r["path"] and "200" in r["response_status"] for r in reached):
             raise RuntimeError("No authenticated customer capability200 reached")
-        # Import the actual live contract. Native importer result is retained.
+        # Retain the actual contract; omit session-changing routes from active attack scope.
+        # Otherwise generated logout requests invalidate the tested principal mid-scan.
+        spec_status, spec = fetch(base + "/openapi.json")
+        assert spec_status == 200
+        dump(rec.output / "actual-openapi.json", spec)
+        excluded = [p for p in spec["paths"] if p.startswith("/api/staff/")]
+        selected_spec = {
+            **spec,
+            "paths": {p: v for p, v in spec["paths"].items() if p not in excluded},
+        }
+        selected_spec["servers"] = [{"url": base}]
+        spec_path = rec.output / "selected-openapi.json"
+        dump(spec_path, selected_spec)
+        result["excluded_session_routes"] = excluded
+        api("ascan", "action", "excludeFromScan", regex=re.escape(base) + r"/api/staff/.*")
+        # Session routes have separate real-session/CSRF/revocation regressions.
+        # Native importer result is retained.
         result["openapi_import"] = api(
             "openapi",
             "action",
-            "importUrl",
-            url=base + "/openapi.json",
+            "importFile",
+            file=str(spec_path.resolve()),
             hostOverride=base,
             contextId=context,
         )
         api("ascan", "action", "setOptionThreadPerHost", Integer=2)
-        api("ascan", "action", "setOptionMaxRuleDurationInMins", Integer=1)
-        api("ascan", "action", "setOptionMaxScanDurationInMins", Integer=5)
+        api("ascan", "action", "setOptionMaxRuleDurationInMins", Integer=3)
+        api("ascan", "action", "setOptionMaxScanDurationInMins", Integer=12)
 
         for policy in api("ascan", "view", "policies").get("policies", []):
             api(
@@ -625,9 +671,7 @@ def zap_scan(rec, config):
                 id=policy["id"],
                 attackStrength="LOW",
             )
-        result["context"] = api(
-            "context", "view", "context", contextName="commerce-disposable"
-        )
+        result["context"] = api("context", "view", "context", contextName="commerce-disposable")
         scanners = api("ascan", "view", "scanners").get("scanners", [])
         external_rules = [
             x["id"]
@@ -668,7 +712,8 @@ def zap_scan(rec, config):
         result["selected_http_rule_ids"] = selected
         result["disabled_external_callback_rules"] = external_rules
         result["coverage_gaps"].append(
-            "Focused HTTP rule set: DOM browser rules, external callbacks, unrelated database engines and other rule families excluded; exact IDs retained."
+            "Focused HTTP rule set: DOM browser rules, external callbacks, unrelated "
+            "database engines and other rule families excluded; exact IDs retained."
         )
         focus_customer = config.get("zap_focus_customer", False)
         scan_url = base + ("/api/orders/" + order["id"] if focus_customer else "/")
@@ -685,56 +730,49 @@ def zap_scan(rec, config):
         )["scan"]
         result["scan_id"] = scan
         scan_started = time.monotonic()
-        deadline = scan_started + 360
+        deadline = scan_started + 780
         while time.monotonic() < deadline:
             state = api("ascan", "view", "status", scanId=scan)
             if state.get("status") == "100":
                 break
             time.sleep(2)
         else:
-            raise RuntimeError(
-                "Active scan did not complete within360s; no success claim"
-            )
+            raise RuntimeError("Active scan did not complete within780s; no success claim")
         result["scan_status"] = 100
         result["active_seconds"] = time.monotonic() - scan_started
-        result["budget_exhausted"] = result["active_seconds"] >= 295
+        result["budget_exhausted"] = result["active_seconds"] >= 715
         ids = api("ascan", "view", "messagesIds", scanId=scan)
         dump(rec.output / "zap-active-message-ids.json", ids)
-        total = int(
-            api("core", "view", "numberOfMessages", baseurl=base)["numberOfMessages"]
-        )
+        total = int(api("core", "view", "numberOfMessages", baseurl=base)["numberOfMessages"])
         messages = {"messages": []}
         headers = []
-        for offset in range(0, min(total, 10000), 100):
-            batch = api(
-                "core", "view", "messages", baseurl=base, start=offset, count=100
-            ).get("messages", [])
+        for offset in range(0, min(total, 50000), 100):
+            batch = api("core", "view", "messages", baseurl=base, start=offset, count=100).get(
+                "messages", []
+            )
             headers.extend(
-                {
-                    key: msg.get(key)
-                    for key in ["id", "requestHeader", "responseHeader", "rtt"]
-                }
+                {key: msg.get(key) for key in ["id", "requestHeader", "responseHeader", "rtt"]}
                 for msg in batch
             )
             if offset < 2000:
                 messages["messages"].extend(batch)
         result["total_http_history_messages"] = total
         result["history_export_limit"] = 2000
-        result["header_export_limit"] = 10000
+        result["header_export_limit"] = 50000
         result["exported_header_count"] = len(headers)
         result["protected_counts_are_lower_bounds"] = len(headers) < total
         dump(
             rec.output / "zap-all-message-headers.json",
-            redact_native(headers, [token, customer_token]),
+            redact_native(headers, [*config["single_staff_headers"].values(), customer_token]),
         )
         dump(
             rec.output / "zap-messages.json",
-            redact_native(messages, [token, customer_token]),
+            redact_native(messages, [*config["single_staff_headers"].values(), customer_token]),
         )
         alerts = api("core", "view", "alerts", baseurl=base, start=0, count=10000)
         dump(
             rec.output / "zap-alerts.json",
-            redact_native(alerts, [token, customer_token]),
+            redact_native(alerts, [*config["single_staff_headers"].values(), customer_token]),
         )
         count = len(ids.get("messagesIds", []))
         result["active_request_count"] = count
@@ -751,18 +789,39 @@ def zap_scan(rec, config):
                 ("customer", "/api/orders/"),
             ]
         }
-        dump(
-            rec.output / "zap-active-progress.json",
-            api("ascan", "view", "scanProgress", scanId=scan),
+        progress = api("ascan", "view", "scanProgress", scanId=scan)
+        dump(rec.output / "zap-active-progress.json", progress)
+
+        def plugins(value):
+            if isinstance(value, dict):
+                if "Plugin" in value:
+                    yield value["Plugin"]
+                for v in value.values():
+                    yield from plugins(v)
+            elif isinstance(value, list):
+                for v in value:
+                    yield from plugins(v)
+
+        completed = {p[1] for p in plugins(progress) if len(p) >= 4 and p[3] == "Complete"}
+        result["completed_rule_ids"] = sorted(completed)
+        result["incomplete_rule_ids"] = sorted(set(selected) - completed)
+        required = ["customer"] if focus_customer else ["staff", "customer"]
+        result["active_auth_coverage_complete"] = all(
+            result["active_protected_success_counts"][kind] > 0 for kind in required
         )
+
         result["alerts"] = len(alerts.get("alerts", []))
         result["http_messages"] = len(messages.get("messages", []))
         result["execution"] = (
-            "COMPLETE" if count > 0 and not result["budget_exhausted"] else "PARTIAL"
+            "COMPLETE"
+            if count > 0
+            and not result["budget_exhausted"]
+            and not result["incomplete_rule_ids"]
+            and result["active_auth_coverage_complete"]
+            and not result["protected_counts_are_lower_bounds"]
+            else "PARTIAL"
         )
-        result["outcome"] = (
-            "FAIL" if result["alerts"] else ("PASS" if count > 0 else "UNASSESSED")
-        )
+        result["outcome"] = "FAIL" if result["alerts"] else ("PASS" if count > 0 else "UNASSESSED")
     except Exception as exc:  # noqa: BLE001 - record layer failure and continue independent scans
         result["blocker"] = str(exc)
     finally:
@@ -825,7 +884,10 @@ def main():
     summary["strix"] = {
         "execution": "BLOCKED",
         "outcome": "UNASSESSED",
-        "blocker": "No authorized model budget/config supplied. No model call made; do not claim a completed assessment.",
+        "blocker": (
+            "No authorized model budget/config supplied. No model call made; "
+            "do not claim a completed assessment."
+        ),
         "docker_runtime": shutil.which("docker"),
         "strix_executable": shutil.which("strix"),
     }

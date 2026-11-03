@@ -42,9 +42,12 @@ class Run:
     def command(self, name, args, *, env=None, cwd=ROOT, expected=0, timeout=180):
         start = runtime.utc()
         stamp = time.monotonic()
-        result = subprocess.run(
-            [str(a) for a in args], cwd=cwd, env=env, capture_output=True, timeout=timeout
-        )
+        try:
+            result = subprocess.run(
+                [str(a) for a in args], cwd=cwd, env=env, capture_output=True, timeout=timeout
+            )
+        except subprocess.TimeoutExpired as exc:
+            result = subprocess.CompletedProcess(args, 124, exc.stdout or b"", exc.stderr or b"")
         # These commands contain paths and synthetic identifiers, never credentials.
         (self.evidence / (name + ".log")).write_bytes(result.stdout + result.stderr)
         entry = {
@@ -141,7 +144,7 @@ def main():
     parser.add_argument("--run-dir", required=True)
     parser.add_argument("--wheelhouse", required=True)
     parser.add_argument("--previous-wheel")
-    parser.add_argument("--previous-revision", default="58629356fe5b9a6291ffe1745ecdd7525e490ee5")
+    parser.add_argument("--previous-revision", default="3dda53ae134d831ac5f36b2ec78ed351f1e2ecd2")
     args = parser.parse_args()
     run = Run(args.run_dir)
     cluster = run.path / "postgres"
@@ -174,26 +177,27 @@ def main():
                 ],
             )
             wheel = next(wheelout.glob("*.whl"))
+            # Keep a previous application paired with its own deployment API contract.
+            oldsrc = run.path / "previous-source"
+            oldsrc.mkdir()
+            archive = run.path / "previous.tar"
+            run.command(
+                "previous-archive",
+                [
+                    "git",
+                    "archive",
+                    "--format=tar",
+                    "-o",
+                    archive,
+                    args.previous_revision + ":projects/101_restaurant_commerce_v4",
+                ],
+                cwd=ROOT.parents[1],
+            )
+            with tarfile.open(archive) as tar:
+                tar.extractall(oldsrc, filter="data")
             if args.previous_wheel:
                 oldwheel = Path(args.previous_wheel).resolve()
             else:
-                oldsrc = run.path / "previous-source"
-                oldsrc.mkdir()
-                archive = run.path / "previous.tar"
-                run.command(
-                    "previous-archive",
-                    [
-                        "git",
-                        "archive",
-                        "--format=tar",
-                        "-o",
-                        archive,
-                        args.previous_revision + ":projects/101_restaurant_commerce_v4",
-                    ],
-                    cwd=ROOT.parents[1],
-                )
-                with tarfile.open(archive) as tar:
-                    tar.extractall(oldsrc, filter="data")
                 oldout = run.path / "previous-build"
                 run.command(
                     "previous-build",
@@ -231,6 +235,8 @@ def main():
                             bundle,
                             "--revision",
                             rev,
+                            "--runtime-source",
+                            (oldsrc if label == "old" else ROOT) / "deployment",
                         ],
                     )
                 )
@@ -466,7 +472,10 @@ def main():
         with run.scenario("upgrade_activate_new_artifact"):
             record = release.activate(site, new, sourcepath, webport)
             assert client.get("/deployment").json()["release"] == new
-            assert client.get("/openapi.json").json()["info"]["version"] == "0.11.0"
+            assert (
+                client.get("/openapi.json").json()["info"]["version"]
+                == json.loads((target / "manifest.json").read_text())["application_version"]
+            )
             later = checkout("m6-after-deploy")
             recovery_body = {"idempotency_key": "m6-before-deploy", "recovery_secret": "a" * 64}
             recover_route = f"/api/restaurants/{BID}/orders/recover"
@@ -762,7 +771,7 @@ def main():
                 env=env,
                 timeout=240,
             )
-            import xml.etree.ElementTree as ET
+            import defusedxml.ElementTree as ET
 
             suite = ET.parse(run.evidence / "postgres-tests.xml").getroot().find("testsuite")
             assert int(suite.attrib["tests"]) > 0 and int(suite.attrib["skipped"]) == 0

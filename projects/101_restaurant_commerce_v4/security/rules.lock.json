@@ -1,0 +1,20 @@
+{
+  "semgrep_version": "1.182.1",
+  "packs": [
+    {
+      "name": "python",
+      "url": "https://semgrep.dev/c/p/python",
+      "sha256": "de5bc79d074c3b4146338a0bf95830406f169bd91ac590a2f1ef111f162e23f5"
+    },
+    {
+      "name": "javascript",
+      "url": "https://semgrep.dev/c/p/javascript",
+      "sha256": "98c30ae17a2cc160a68800963d5fdabe989ddb2e59b9588063b493b25972a3f1"
+    },
+    {
+      "name": "security-audit",
+      "url": "https://semgrep.dev/c/p/security-audit",
+      "sha256": "83d7cde9157b3c79cc5cfaea26e7bd2ba9c740f2ba07635ad475b2585556c32d"
+    }
+  ]
+}

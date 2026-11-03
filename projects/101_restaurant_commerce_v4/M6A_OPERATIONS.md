@@ -27,7 +27,7 @@ machine. Remote Wompi receiver health is explicitly unassessed here.
 
 Requirements: Linux x86_64, CPython **3.12.14**, host libpq and PostgreSQL tools
 (`initdb`, `pg_ctl`, `createdb`, `pg_dump`, `pg_restore`); a Python test environment
-with pytest and Hypothesis; the retained M5 Git revision. The checked runtime lock
+with pytest and Hypothesis; the retained M6a Git revision. The checked runtime lock
 pins the actual Linux/CPython wheels, including psycopg. OS packages and interpreter
 are external prerequisites, not a container image or hermetic OS build.
 
@@ -48,14 +48,17 @@ From this project, the complete test/cleanup command on the current machine is:
   --wheelhouse /tmp/commerce-m6-wheelhouse
 ```
 
-The run directory **must not exist**. It builds both current and retained M5 wheels,
+The run directory **must not exist**. It builds both current and retained M6a wheels,
 installs clean offline hash-locked environments, launches its own PostgreSQL and
 HTTP/worker/monitor processes, executes positive and failure scenarios, runs
 retained PostgreSQL tests, saves native evidence and stops only its own processes.
 It does not delete retained evidence or private data. `evidence/` contains commands,
 times, results and hashes. Database archives, configs, cookies and event payloads
 remain private elsewhere in the run directory; do not publish the whole directory.
-`--previous-wheel` can select an already retained M5 wheel instead of rebuilding it.
+`--previous-wheel` can select a retained wheel compatible with `--previous-revision`.
+The older application is paired with that revision's deployment modules, not the
+new runtime API. Both rebuilt bundles use the current hash-locked installer; this
+rehearses application rollback, not a downgrade of the security-patched installer.
 
 The test cluster uses local trust authentication and synthetic records. It is not
 suitable for a shared host with untrusted local users. Run as an ordinary dedicated
