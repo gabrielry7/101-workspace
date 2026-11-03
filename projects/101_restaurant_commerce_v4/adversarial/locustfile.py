@@ -61,6 +61,13 @@ def finish(environment, **kw):
 class Customer(HttpUser):
     wait_time = between(0.2, 0.5)
 
+    def on_start(self):
+        self.phone = (
+            "3" + str(uuid.uuid4().int % 1000000000).zfill(9)
+            if c.get("distinct_customers")
+            else "3005550200"
+        )
+
     @task(3)
     def browse(self):
         self.client.get(root + "/storefront", name="storefront")
@@ -73,7 +80,7 @@ class Customer(HttpUser):
     def checkout(self):
         key = "load-" + profile + "-" + uuid.uuid4().hex
         body = {
-            "customer": {"name": "Load synthetic", "phone": "3005550200"},
+            "customer": {"name": "Load synthetic", "phone": self.phone},
             "items": c["cart"],
             "idempotency_key": key,
         }

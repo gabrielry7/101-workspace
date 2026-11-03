@@ -114,6 +114,9 @@ def application():
         payment_lease_seconds=c.get("payment_lease_seconds", 5),
     )
     # Harness proof only: no additional application authority or login endpoints.
+    if c.get("timing_enabled"):
+        from timing import install
+        return install(app, str(Path(c["run_dir"]) / "timing"))
     return app
 
 

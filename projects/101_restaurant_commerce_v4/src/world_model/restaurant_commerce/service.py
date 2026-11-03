@@ -108,7 +108,7 @@ from .schemas import (
 
 
 def _public_code(prefix: str) -> str:
-    return f"{prefix}{secrets.token_hex(3).upper()}"
+    return f"{prefix}{secrets.token_hex(5).upper()}"
 
 
 def _normalize_phone(phone: str) -> str:
@@ -1198,6 +1198,27 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
     # ------------------------------------------------------------------
     # Orders
     # ------------------------------------------------------------------
+    def _insert_with_public_code(self, entity, prefix: str) -> None:
+        """Retry only public-code uniqueness conflicts, preserving outer reservations."""
+        table = entity.__tablename__
+        for attempt in range(5):
+            try:
+                with self.session.begin_nested():
+                    self.session.add(entity)
+                    self.session.flush()
+                return
+            except IntegrityError as exc:
+                constraint = getattr(getattr(exc.orig, "diag", None), "constraint_name", None)
+                collision = constraint == f"ix_{table}_public_code" or (
+                    self.session.bind.dialect.name == "sqlite"
+                    and str(exc.orig) == f"UNIQUE constraint failed: {table}.public_code"
+                )
+                if not collision:
+                    raise
+                if attempt == 4:
+                    raise ConcurrencyConflictError("Public code allocation unavailable; retry checkout") from exc
+                entity.public_code = _public_code(prefix)
+
     def create_order(self, business_id: str, request: CreateOrderRequest) -> OrderOut:
         if request.recovery_secret and not request.idempotency_key:
             raise ValidationError("Recovery requires an idempotency key")
@@ -1331,8 +1352,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             external_source_ref=request.external_source_ref,
             idempotency_key=request.idempotency_key,
         )
-        self.session.add(order)
-        self.session.flush()
+        self._insert_with_public_code(order, "O")
 
         if delivery_quote:
             if delivery_quote.currency != order.currency:
@@ -1777,8 +1797,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             source_channel=request.source_channel,
             external_source_ref=request.external_source_ref,
         )
-        self.session.add(reservation)
-        self.session.flush()
+        self._insert_with_public_code(reservation, "R")
         if claim:
             complete_idempotency(self.session, claim.record_id, entity_id=reservation.id)
         self._commit_event(
