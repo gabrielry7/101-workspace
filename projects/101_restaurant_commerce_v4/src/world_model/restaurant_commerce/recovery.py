@@ -8,7 +8,7 @@ from .service import RestaurantCommerceService
 logger = logging.getLogger("101.restaurant_commerce.recovery")
 
 
-def start_recovery(session_factory, *, interval_seconds, service_options):
+def start_recovery(session_factory, *, interval_seconds, service_options, campaign_options=None):
     stop = Event()
 
     def run():
@@ -21,6 +21,12 @@ def start_recovery(session_factory, *, interval_seconds, service_options):
                     from .wompi_workflow import recover
                     recover(service, limit=5)
                     service.recover_financial_operations(limit=25)
+                if campaign_options:
+                    from .campaigns import dispatch
+                    from .models import utcnow
+                    dispatch(session_factory, campaign_options.get("integrations", {}),
+                        now=campaign_options.get("clock", utcnow)(),
+                        base_url=campaign_options.get("base_url", "http://127.0.0.1:8799"))
             except Exception as exc:  # noqa: BLE001 - next cycle retries; no exception text/PII in log
                 logger.warning("Payment recovery deferred (%s)", type(exc).__name__)
 

@@ -348,6 +348,12 @@ class OperationsMixin:
                 PaymentReconciliation.status == "open",
             )
         )
+        from .refunds import PaymentRefund
+        from .models import Payment
+        partial = self.session.scalar(select(func.coalesce(func.sum(PaymentRefund.amount_minor), 0))
+            .join(Payment, Payment.id == PaymentRefund.payment_id).join(Order, Order.id == Payment.order_id)
+            .where(Order.business_id == business_id, Order.created_at >= begin, Order.created_at < end,
+                   Payment.status == 'paid'))
         return {
             "date": day.isoformat(),
             "timezone": profile.timezone,
@@ -355,7 +361,8 @@ class OperationsMixin:
             "orders": count,
             "gross_minor": gross,
             "confirmed_full_refunds_minor": refunds,
-            "known_balance_minor": gross - refunds,
+            "confirmed_partial_refunds_minor": partial,
+            "known_balance_minor": gross - refunds - partial,
             "provider_fees_minor": None,
             "settled_net_minor": None,
             "open_reviews_all_dates": holds,

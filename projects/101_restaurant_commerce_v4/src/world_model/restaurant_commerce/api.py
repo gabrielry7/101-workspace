@@ -150,6 +150,7 @@ def create_app(
     payment_lease_seconds: int = 30,
     checkout_url_origins: tuple[str, ...] = (),
     tracking_url_origins: tuple[str, ...] = (),
+    campaign_options: dict | None = None,
 ) -> FastAPI:
     def validated_origins(origins: tuple[str, ...]) -> list[str]:
         result = []
@@ -170,6 +171,7 @@ def create_app(
 
     browser_policy = {"checkout_origins": validated_origins(checkout_url_origins),
                       "tracking_origins": validated_origins(tracking_url_origins)}
+    campaign_options = campaign_options or {}
     environment = (environment or os.getenv("COMMERCE_ENV", "development")).lower()
     production = environment == "production"
     demo_mode = (not production) if demo_mode is None else demo_mode
@@ -248,7 +250,8 @@ def create_app(
             stop, thread = start_recovery(SessionLocal, interval_seconds=payment_recovery_interval_seconds,
                 service_options={"payment_providers": payment_providers, "delivery_providers": delivery_providers,
                     "event_sink": event_sink, "provider_executor": provider_executor,
-                    "payment_lease_seconds": payment_lease_seconds, "financial_providers": financial_providers})
+                    "payment_lease_seconds": payment_lease_seconds, "financial_providers": financial_providers},
+                campaign_options=campaign_options)
         try:
             yield
         finally:
@@ -256,7 +259,7 @@ def create_app(
                 stop.set()
                 thread.join(timeout=5)
 
-    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.12.0",
+    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.13.0",
                   responses={status: {"model": ErrorResponse} for status in
                              (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
@@ -332,6 +335,10 @@ def create_app(
             "script-src 'self'; script-src-attr 'none'; style-src 'self'; "
             "connect-src 'self'"
         )
+        if request.scope.get("endpoint") and request.scope["endpoint"].__name__ == "campaign_email_preview":
+            # Escaped email renderer only; no scripts, remote images or form actions.
+            response.headers["X-Frame-Options"] = "SAMEORIGIN"
+            response.headers["Content-Security-Policy"] = "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; frame-ancestors 'self'; base-uri 'none'; form-action 'none'; sandbox allow-same-origin"
         if production:
             response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         if (
@@ -483,6 +490,9 @@ def create_app(
             return JSONResponse({"status": "not_ready", "database": "down"}, status_code=503)
         return {"status": "ready", "database": "ok"}
 
+    from .campaign_routes import register as register_campaigns
+    register_campaigns(app, get_session, scoped_staff, campaign_options, demo_mode)
+
     from .operations import register_operations
     register_operations(app, get_service, require_operator)
 
@@ -492,9 +502,9 @@ def create_app(
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
+        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "campaigns.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
             raise HTTPException(status_code=404, detail="Asset not found")
-        return FileResponse(WEB_DIR / filename, media_type="text/css" if filename.endswith(".css") else "text/javascript",
+        return FileResponse(WEB_DIR / filename, media_type="image/png" if filename.endswith(".png") else "text/css" if filename.endswith(".css") else "text/javascript",
                             headers={"Cache-Control": "no-cache"})
 
     @app.get("/")
@@ -560,6 +570,7 @@ def create_app(
     def create_order(
         business_id: str,
         request: CreateOrderRequest,
+        http_request: Request,
         service: RestaurantCommerceService = Depends(get_service),
     ):
         request = request.model_copy(update={"customer": request.customer.model_copy(
@@ -567,6 +578,13 @@ def create_app(
         # Public browser traffic cannot self-assert acquisition/channel attribution.
         # Authenticated integrations should use a dedicated server-side boundary.
         request = request.model_copy(update={"source_channel": "web", "external_source_ref": None})
+        from .models import utcnow
+        from .campaigns import checkout_context, digest as campaign_digest
+        context = checkout_context(service.session, business_id,
+            http_request.cookies.get("campaign_visit_" + campaign_digest(business_id)[:16]),
+            campaign_options.get("clock", utcnow)(), demo_mode=demo_mode)
+        if context:
+            request = request.model_copy(update=context)
         order = service.create_order(business_id, request)
         return with_order_access(order)
 

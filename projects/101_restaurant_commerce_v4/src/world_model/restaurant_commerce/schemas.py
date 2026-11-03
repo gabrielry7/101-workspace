@@ -512,6 +512,8 @@ class GrowthAnalyticsOut(StrictModel):
 
 
 class PaymentWebhookIn(StrictModel):
+    refund_reference: str | None = Field(default=None, min_length=1, max_length=200)
+    refund_amount_minor: int | None = Field(default=None, gt=0, le=2147483647)
     event_id: str = Field(min_length=1, max_length=200)
     provider_reference: str = Field(min_length=1, max_length=160)
     status: str = Field(min_length=2, max_length=32)

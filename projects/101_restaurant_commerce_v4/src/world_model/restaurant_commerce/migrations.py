@@ -234,3 +234,14 @@ def upgrade_operations(engine):
         for table in Base.metadata.sorted_tables:
             if table.name in OPERATIONS_TABLES:
                 table.create(connection, checkfirst=True)
+
+
+def upgrade_campaigns(engine):
+    """Additive offline migration. No historical consent or attribution inferred."""
+    from . import campaign_models, refunds
+    from .models import Base
+    tables = [table for name, table in Base.metadata.tables.items()
+              if name.startswith('restaurant_campaign_') or name in {
+                  'restaurant_campaigns', 'restaurant_contact_permissions',
+                  'restaurant_permission_evidence', 'restaurant_payment_refunds'}]
+    Base.metadata.create_all(engine, tables=tables)

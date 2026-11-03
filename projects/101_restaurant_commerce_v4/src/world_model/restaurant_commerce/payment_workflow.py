@@ -401,7 +401,8 @@ class PaymentWorkflowMixin:
         return result
 
     def receive_payment_notification(self, provider, payload: PaymentWebhookIn):
-        body = payload.model_dump(mode="json")
+        # Additive optional refund fields must not change historical callback identity.
+        body = payload.model_dump(mode="json", exclude_none=True)
         fingerprint = request_fingerprint(body)
         row = self.session.scalar(
             select(PaymentNotificationInbox).where(
@@ -445,15 +446,19 @@ class PaymentWorkflowMixin:
     def _process_payment_notification(self, row_id):
         row = self.session.get(PaymentNotificationInbox, row_id)
         body = json.loads(row.payload_json)
-        result = self.apply_payment_status(
-            body["provider_reference"],
-            body["status"],
-            provider=row.provider,
-            event_id=row.event_id,
-            amount_minor=body["amount_minor"],
-            currency=body["currency"],
-            raw_event_json=row.payload_json,
-        )
+        if body['status'] == 'partially_refunded':
+            from .refunds import record_refund
+            result = record_refund(self, row.provider, body, row.payload_json)
+        else:
+            result = self.apply_payment_status(
+                body["provider_reference"],
+                body["status"],
+                provider=row.provider,
+                event_id=row.event_id,
+                amount_minor=body["amount_minor"],
+                currency=body["currency"],
+                raw_event_json=row.payload_json,
+            )
         row = self.session.get(PaymentNotificationInbox, row_id)
         row.state = "processed"
         row.processed_at = utcnow()

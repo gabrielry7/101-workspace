@@ -1404,6 +1404,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         ))
         if claim:
             complete_idempotency(self.session, claim.record_id, entity_id=order.id)
+        from .campaigns import attach_order_credit
+        self.session.flush()
+        attach_order_credit(self.session, order)
         # Local intent, immutable values, reservations and replay binding are atomic.
         # No provider or event sink is called before this commit.
         order_id = order.id

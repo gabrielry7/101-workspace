@@ -146,9 +146,9 @@
       "rule": "python.sqlalchemy.security.audit.avoid-sqlalchemy-text.avoid-sqlalchemy-text",
       "path": "src/world_model/restaurant_commerce/migrations.py",
       "severity": "ERROR",
-      "fingerprint": "2a27e7abf0f56f83b7e846bb37f1f58ff65de11ee7913ac9cbddf4a1aecbb7a8",
+      "fingerprint": "fe3fbc907bccac4c597a262ad18c85d18ffdc7ae757ceabffe722166adfc9019",
       "owner": "101 commerce engineering",
-      "reason": "Offline SQLite DDL interpolates only module-literal CUSTOMER_SAFETY_COLUMNS identifiers/declarations, not request or stored values. Full-file fingerprint binds those constants and control flow.",
+      "reason": "Offline SQLite DDL interpolates only module-literal CUSTOMER_SAFETY_COLUMNS identifiers/declarations, not request or stored values. Full-file fingerprint binds those constants and control flow. Campaign extension adds only fixed SQLAlchemy table metadata with create_all; original fixed-column DDL remains unchanged.",
       "expires_at": "2026-12-03T00:00:00+00:00"
     }
   ]

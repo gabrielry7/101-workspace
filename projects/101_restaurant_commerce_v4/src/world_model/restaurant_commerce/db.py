@@ -16,6 +16,7 @@ from .migrations import (
     payment_durability_columns_present,
 )
 from .models import Base
+from . import campaign_models, refunds  # register additive metadata
 
 
 def make_engine(database_url: str | None = None) -> Engine:
@@ -96,6 +97,8 @@ CORE_TABLES = (
         }
     )
     | PAYMENT_DURABILITY_TABLES | FINANCIAL_TABLES | STAFF_TABLES | OPERATIONS_TABLES
+    | frozenset(t for t in Base.metadata.tables if t.startswith("restaurant_campaign")
+                or t in {"restaurant_contact_permissions", "restaurant_permission_evidence", "restaurant_payment_refunds"})
 )
 
 
