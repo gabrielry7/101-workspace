@@ -1,9 +1,11 @@
-# Loyalty experimentation — stages 1 and 2
+# Loyalty experimentation — stages 1–3
 
 Implemented: a staff-authorized configuration foundation for multiple loyalty
 strategies, immutable published versions and separately versioned experiments.
 Stage 2 adds deterministic points/fixed-value rule previews against published versions.
-Existing points, checkout, refunds, promotions and baseline benefits are unchanged.
+Stage 3 adds controlled versioned execution through the existing checkout, wallet and
+financial workflows. Ordinary baseline benefits remain; new orders can add an exact
+published strategy under the synthetic execution gate described below.
 
 The complete design and staged acceptance criteria live in the shared repository:
 `/home/t/101-world-model/docs/commerce-audit/LOYALTY_EXPERIMENTATION_PLAN.md`.
@@ -33,9 +35,10 @@ the environment. Enabled startup/readiness requires the complete configuration
 schema. Disable the flag to remove the configuration routes without deleting history.
 Partial or damaged schemas still fail readiness; disabling the flag is not a repair.
 
-**There is no reward execution, experimental enrollment or analytics activation in
-this stage.** Attempts to enter `active` fail. Publishing only records reviewed
-rules. All capabilities report `execution_enabled: false`.
+**Public reward execution, experimental enrollment and analytics activation remain
+disabled.** Attempts to enter `active` fail. Publishing only records reviewed rules.
+Public capabilities continue to report `execution_enabled: false`; the Stage-3
+transaction adapter is deliberately available only to trusted synthetic callers.
 
 ## Staff API
 
@@ -235,3 +238,122 @@ SQLite schema-freshness readiness test. Isolated candidate and unchanged canonic
 reruns both passed; the final PostgreSQL readiness suite passed. The original failure
 is retained in the parent evidence directory, with no timeout/assertion changes.
 Its cause is not established, and these results do not establish production latency.
+
+
+## Stage 3: controlled execution and financial history
+
+Installation is explicit, including for fresh databases. After the configuration
+upgrade, stop writers, back up the database and run:
+
+```sh
+python -m world_model.restaurant_commerce.maintenance upgrade-loyalty-execution --offline
+```
+
+This adds seven execution tables and retention triggers on snapshots, lot movements,
+execution events, refund allocations, the existing points ledger and confirmed refund
+observations. Lot origin, cost and expiry cannot change; balances remain projections.
+Partial schemas or altered/missing guards fail readiness and repeat upgrade. No old
+points are converted into invented versioned lots. `reconcile` reports any existing
+ledger discrepancy and the unattributed legacy balance separately.
+
+A trusted service caller may pass `loyalty_execution=ExecutionSelection(version_id,
+redeem_reward=False, enabled=True, price_basis="synthetic_tax_exclusive")` to
+`RestaurantCommerceService`, alongside a verified customer ID. The enable switch
+is false by default. Only simulated payment checkout is admitted. Neither request
+JSON, contact matching, configuration publication nor a staff cookie selects an
+execution version. Current order prices have no tax decomposition: the explicit
+synthetic price assertion is **not** a production tax adapter. Customer authentication,
+real economics, assignment and the remaining release stages are still pilot gates.
+
+The server prices the cart, checks eligibility and currency, allocates existing
+promotion discounts by largest remainder with stable line-index ties, and evaluates
+the frozen strategy. Checkout rechecks the wallet and strategy status under locks,
+then atomically stores the result and original order-item IDs, reserves cost budgets,
+debits any reward, and creates the existing payment intent. A changed selection
+conflicts with the original idempotency binding. New reservations cannot use paused
+programs; already-pinned orders continue their original terms. Version edits never
+change old orders or reset strategy budgets. A disabled internal RewardDefinition
+connects versioned fixed rewards to existing RewardRedemption records; ordinary
+checkout cannot select that bridge as an enabled legacy reward.
+
+All points share the existing business/customer wallet. New incremental earning is
+attributed to versioned lots; ordinary baseline earning is retained and its actual
+checkout-time settings are captured separately. Point lots are consumed by earliest
+expiry, then lot ID, before unattributed legacy points. Legacy reward reservations,
+releases, refunds and debt repayments also consume/restore these lots. There is no
+second spendable balance. Completion works through the payment, cash-pickup legacy,
+and delivery consumers. The controlled new-version selector itself remains limited
+to simulated payments.
+
+Existing-order writers acquire Payment → Order → execution state → account →
+strategy/budget → lots/debt as needed. Newly inserted checkout rows precede the account
+lock. Locked projection reads refresh SQLAlchemy's identity map; retaining an old
+Python object does not retain an old spendable balance. The account and budget
+revision columns additionally fence conflicting SQLite writers. Callers own commits;
+no loyalty helper sends providers a request. Existing optimistic contact conflicts
+may require a full transaction retry with the same checkout idempotency key.
+
+### Cost budgets, expiration and reconciliation
+
+Campaign and customer caps apply across all versions of one strategy. Reservation
+uses conservative **gross issuance cost** (points × explicit positive cost estimate)
+plus the current fixed discount. Payment applies the discount cost; fulfillment
+commits the actual issued-point estimate and releases unused reservation. Cancellation
+releases uncommitted cost. Refunds and expiration do not replenish committed campaign
+budgets. This deliberately conservative cap is not an accounting profit calculation;
+analytics must not subtract a discount again after using already-discounted revenue.
+All amounts use integer minor units, with bounded points and basis points.
+
+`loyalty_wallet.expire_due_accounts(session, at=..., limit=...)` is the bounded,
+idempotent maintenance consumer; the caller commits. Reserved points are already
+outside available lots and do not expire underneath an unresolved payment. Returns
+preserve original expiry: already-expired returns create paired restoration/expiry
+history rather than new usable points. Refunds count already-expired source points
+as retired, so a customer is not charged twice. `reconcile(session, account)` checks
+wallet versus ledger, lot movements versus lot balances, unattributed legacy points,
+and outstanding lot cost (gross and probability-weighted estimates). It reports
+unknown legacy valuation, rather than estimating it from today's rules. Outstanding
+budget reservations must be monitored alongside available-lot liability.
+
+### Partial refunds and review
+
+The existing authenticated simulated-provider notification accepts
+`status="partially_refunded"`, a unique `refund_reference`, `refund_amount_minor`,
+and optional `loyalty_allocation={"lines": {"ORDER_ITEM_ID": MINOR_UNITS},
+"delivery_fee_minor": MINOR_UNITS}`. Allocation is **paid consideration**, not a
+claim of physical product return. It must sum exactly to the confirmed amount;
+cumulative line and delivery allocations cannot exceed original paid amounts.
+Foreign lines, negative/fractional amounts and conflicting allocation retries fail.
+Real-provider partial-refund normalization remains unqualified.
+
+An unallocated confirmed partial refund remains durable and visible. It holds that
+order's new earnings and blocks further reward redemption for the customer; it does
+not invent a product allocation. Existing financial-role/CSRF authorization protects
+`POST /api/finance/restaurants/{business_id}/loyalty-refunds/{refund_id}/allocation`.
+The body is the allocation above. The actor, allocation and committed-action audit
+are retained. Repeating the same resolution is safe; changing an allocation requires
+a future correction contract, not editing history. A full confirmed refund is
+unambiguous and compensates even if previous partial allocations remain unknown.
+
+Entitlement is recomputed cumulatively from original rules and remaining paid eligible
+spending. Minimum qualification uses retained **pre-reward** spending; each line's
+reward discount is retired proportionally using cumulative integer floor. Points
+restore proportionally to eligible refunded paid consideration, with full-refund
+remainder correction. Monotone prefixes of original lot consumption avoid rounding
+changes across refund chunks and preserve each returned point's original expiry.
+Spent earning reversals create the existing refund debt; later credits repay it.
+Gross issued, reversed, restored and retired counters remain distinct. Missing
+allocation resolved after completion can release held earnings exactly once.
+
+### Stage 3 acceptance
+
+`tests/test_loyalty_execution.py` exercises the real checkout/fulfillment/refund
+consumers, version edits and shared caps, SQL retention, populated upgrade, partial
+refund allocation and financial authorization, spent-point debt, expired returns,
+projection refresh, and PostgreSQL races for redemption, campaign exhaustion,
+completion versus refund, and expiration versus cancellation. Run against disposable
+SQLite and PostgreSQL using the existing `COMMERCE_PAYMENT_TEST_DATABASE_URL` fixture.
+Ordinary growth, identity, finance, delivery, payment/capacity and readiness tests
+remain required consumers. Test fixtures use synthetic customers and local providers.
+Stages 4–7 (assignment, simulator, staff configuration UI and ITT profit reporting)
+remain separate delivery stages. No winner or behavioral lift is claimed.

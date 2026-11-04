@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 import re
 import json
+import hashlib
 
 from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
@@ -92,7 +93,7 @@ class RestaurantGrowthService:
             LoyaltyAccount.customer_id == customer_id,
         )
         if for_update:
-            stmt = stmt.with_for_update()
+            stmt = stmt.with_for_update().execution_options(populate_existing=True)
         account = self.session.scalar(stmt)
         if account:
             return account
@@ -189,6 +190,12 @@ class RestaurantGrowthService:
         if not reward or reward.business_id != business_id or not reward.enabled:
             raise ValidationError("Reward is unavailable")
         account = self.ensure_account(business_id, customer_id, for_update=True)
+        from .loyalty_wallet import expire
+        from .loyalty_execution_migrations import installed
+        from .loyalty_execution import pending_refunds
+        expire(self.session, account)
+        if installed(self.session) and pending_refunds(self.session, account):
+            raise ValidationError("Refund allocation review required before redemption")
         if self.session.scalar(select(LoyaltyRefundDebt.id).where(LoyaltyRefundDebt.account_id == account.id, LoyaltyRefundDebt.remaining_points > 0).limit(1)):
             raise ValidationError("Loyalty refund debt must be settled before reward redemption")
         if account.available_points < reward.points_cost:
@@ -219,16 +226,28 @@ class RestaurantGrowthService:
                 idempotency_key=f"reward-reserve:{redemption.id}",
             )
         )
+        self.session.flush()
+        from .loyalty_wallet import consume
+        ledger = self.session.scalar(select(LoyaltyLedgerEntry).where(LoyaltyLedgerEntry.idempotency_key == f"reward-reserve:{redemption.id}"))
+        consume(self.session, account, ledger, reward.points_cost)
         return redemption
 
     def finalize_reward(self, order_id: str) -> None:
-        redemption = self.session.scalar(select(RewardRedemption).where(RewardRedemption.order_id == order_id))
+        from .loyalty_execution import lifecycle
+        order = self.session.get(Order, order_id)
+        if order and lifecycle(self, order, "apply"):
+            return
+        redemption = self.session.scalar(select(RewardRedemption).where(RewardRedemption.order_id == order_id).execution_options(populate_existing=True))
         if redemption and redemption.status == "reserved":
             redemption.status = "applied"
             redemption.applied_at = utcnow()
 
     def release_reward(self, order_id: str) -> None:
-        redemption = self.session.scalar(select(RewardRedemption).where(RewardRedemption.order_id == order_id))
+        from .loyalty_execution import lifecycle
+        order = self.session.get(Order, order_id)
+        if order and lifecycle(self, order, "release"):
+            return
+        redemption = self.session.scalar(select(RewardRedemption).where(RewardRedemption.order_id == order_id).execution_options(populate_existing=True))
         if not redemption or redemption.status != "reserved":
             return
         account = self.ensure_account(redemption.business_id, redemption.customer_id, for_update=True)
@@ -247,9 +266,16 @@ class RestaurantGrowthService:
             )
         )
 
+        self.session.flush()
+        from .loyalty_wallet import restore
+        ledger = self.session.scalar(select(LoyaltyLedgerEntry).where(LoyaltyLedgerEntry.idempotency_key == f"reward-release:{redemption.id}"))
+        restore(self.session, account, ledger, f"reward-reserve:{redemption.id}", 0, redemption.points_spent)
         self._settle_refund_debt(account, order_id, "reward-release")
 
     def award_completed_order(self, order: Order) -> int:
+        from .loyalty_execution import lifecycle
+        if lifecycle(self, order, "earn"):
+            return 0
         if not order.customer_snapshot_json or not json.loads(order.customer_snapshot_json).get("identity_verified"):
             return 0
         program = self.ensure_program(order.business_id)
@@ -282,18 +308,25 @@ class RestaurantGrowthService:
     def _settle_refund_debt(self, account, order_id, source):
         debts = self.session.scalars(select(LoyaltyRefundDebt).where(
             LoyaltyRefundDebt.account_id == account.id, LoyaltyRefundDebt.remaining_points > 0
-        ).order_by(LoyaltyRefundDebt.created_at).with_for_update()).all()
+        ).order_by(LoyaltyRefundDebt.created_at).with_for_update().execution_options(populate_existing=True)).all()
         for debt in debts:
             paid = min(account.available_points, debt.remaining_points)
             if not paid:
                 break
             account.available_points -= paid
             debt.remaining_points -= paid
-            self.session.add(LoyaltyLedgerEntry(account_id=account.id, order_id=order_id,
-                delta_points=-paid, reason="refund.debt_repaid",
-                idempotency_key=f"debt-repay:{source}:{order_id}:{debt.id}"))
+            from .loyalty_wallet import entry, consume
+            key = f"debt-repay:{source}:{order_id}:{debt.id}"
+            if len(key) > 160:
+                key = "debt-repay:v1:" + hashlib.sha256(key.encode()).hexdigest()
+            ledger = entry(self.session, account, order_id=order_id, points=-paid,
+                reason="refund.debt_repaid", key=key)
+            consume(self.session, account, ledger, paid)
 
     def compensate_full_refund(self, order):
+        from .loyalty_execution import compensate
+        if compensate(self, order, full=True):
+            return
         if not order.customer_id:
             return
         account = self.ensure_account(order.business_id, order.customer_id, for_update=True)
@@ -301,7 +334,7 @@ class RestaurantGrowthService:
         if self.session.scalar(select(LoyaltyLedgerEntry.id).where(LoyaltyLedgerEntry.idempotency_key == key)):
             return
         credit = 0
-        redemption = self.session.scalar(select(RewardRedemption).where(RewardRedemption.order_id == order.id))
+        redemption = self.session.scalar(select(RewardRedemption).where(RewardRedemption.order_id == order.id).execution_options(populate_existing=True))
         if redemption and redemption.status in {"reserved", "applied"}:
             credit = redemption.points_spent
             account.available_points += credit
@@ -310,6 +343,11 @@ class RestaurantGrowthService:
         promotion = self.session.scalar(select(PromotionRedemption).where(PromotionRedemption.order_id == order.id))
         if promotion and promotion.status in {"reserved", "applied"}:
             promotion.status, promotion.released_at = "released", utcnow()
+        from .loyalty_wallet import entry, restore, consume
+        if credit:
+            credited = entry(self.session, account, key=key + ":credit", reason="refund.reward_credit",
+                             points=credit, order_id=order.id)
+            restore(self.session, account, credited, f"reward-reserve:{redemption.id}", 0, credit)
         earned = self.session.scalar(select(LoyaltyLedgerEntry).where(
             LoyaltyLedgerEntry.idempotency_key == f"order-complete:{order.id}"))
         points = earned.delta_points if earned else 0
@@ -319,8 +357,8 @@ class RestaurantGrowthService:
         if recovered < points:
             self.session.add(LoyaltyRefundDebt(order_id=order.id, account_id=account.id,
                                               remaining_points=points-recovered))
-        self.session.add(LoyaltyLedgerEntry(account_id=account.id, order_id=order.id,
-            delta_points=credit-recovered, reason="order.refunded", idempotency_key=key))
+        ledger = entry(self.session, account, key=key, reason="order.refunded", points=-recovered, order_id=order.id)
+        consume(self.session, account, ledger, recovered)
         self._settle_refund_debt(account, order.id, "refund-credit")
 
     # ------------------------------------------------------------------

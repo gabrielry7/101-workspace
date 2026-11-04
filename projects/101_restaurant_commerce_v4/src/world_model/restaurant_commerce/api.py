@@ -99,7 +99,7 @@ from .seed import DEMO_BUSINESS_ID, seed_demo
 from .service import RestaurantCommerceService
 from .payment_workflow import CheckoutRecoveryExpired
 from .recovery import start_recovery
-from .schemas import RecoverOrderRequest, PaymentNotificationAccepted
+from .schemas import RecoverOrderRequest, PaymentNotificationAccepted, LoyaltyRefundAllocationIn
 
 WEB_DIR = Path(__file__).with_name("web")
 logger = logging.getLogger("101.restaurant_commerce")
@@ -273,7 +273,7 @@ def create_app(
                 stop.set()
                 thread.join(timeout=5)
 
-    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.13.0",
+    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.16.0",
                   responses={status: {"model": ErrorResponse} for status in
                              (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
@@ -1017,6 +1017,21 @@ def create_app(
                          principal=Depends(financial_authority("finance.resolve")),
                          service: RestaurantCommerceService = Depends(get_service)):
         return service.resolve_financial_review(business_id, order_id, reconciliation_id, body.operation_id, body.reason, principal)
+
+    @app.post("/api/finance/restaurants/{business_id}/loyalty-refunds/{refund_id}/allocation")
+    def loyalty_resolve_refund(business_id: str, refund_id: str, body: LoyaltyRefundAllocationIn,
+                              principal=Depends(financial_authority("finance.resolve")),
+                              service: RestaurantCommerceService = Depends(get_service)):
+        from .loyalty_execution import resolve_refund_allocation
+        from .loyalty_execution_migrations import installed
+        if not installed(service.session):
+            raise HTTPException(status_code=409, detail="Loyalty execution schema is not installed")
+        resolve_refund_allocation(service, refund_id, body.model_dump(), business_id=business_id,
+                                  actor=principal.actor_id)
+        service._commit_event(kind="loyalty.refund_allocated", business_id=business_id,
+                              entity_id=refund_id, payload={"actor_id": principal.actor_id},
+                              dedupe_key="loyalty-refund-allocation:" + refund_id)
+        return {"refund_id": refund_id, "allocation_recorded": True}
 
     @app.post("/api/operator/payments/recover", dependencies=[Depends(require_operator)])
     def recover_payments(limit: int = Query(default=25, ge=1, le=100), service: RestaurantCommerceService = Depends(get_service)):

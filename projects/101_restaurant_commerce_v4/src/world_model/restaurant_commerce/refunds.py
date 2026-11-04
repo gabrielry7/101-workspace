@@ -5,7 +5,7 @@ campaign action can establish money. Provider refund submission remains unchange
 """
 from sqlalchemy import ForeignKey, String, Integer, Text, UniqueConstraint, CheckConstraint, select, func
 from sqlalchemy.orm import Mapped, mapped_column
-from .models import Base, Payment, new_id
+from .models import Base, Order, Payment, new_id
 from .errors import PaymentError, NotFoundError, IdempotencyConflictError
 
 
@@ -43,15 +43,30 @@ def record_refund(service, provider, body, evidence):
     if existing:
         if existing.payment_id != payment.id or existing.amount_minor != amount:
             raise IdempotencyConflictError('Refund reference reused with different values')
+        if body.get('loyalty_allocation') is not None:
+            import json
+            from .loyalty_execution_models import LoyaltyRefundAllocation
+            from .loyalty_execution_migrations import installed
+            allocation = session.get(LoyaltyRefundAllocation, existing.id) if installed(session) else None
+            if allocation is None or json.loads(allocation.document) != body['loyalty_allocation']:
+                raise IdempotencyConflictError('Refund allocation differs; use financial review')
         return service.order_out(payment.order_id)
     if payment.status not in {'paid','refunded'}: raise NotFoundError('Refund awaits confirmed payment')
     total = refunded_total(session, payment)
     if total + amount > payment.amount_minor: raise PaymentError('Refund exceeds captured payment')
     # Payment optimistic version fences concurrent SQLite writers as well as PG lock.
     payment.version += 1
-    session.add(PaymentRefund(payment_id=payment.id, provider=provider, reference=reference,
-        amount_minor=amount, evidence_json=evidence))
+    refund = PaymentRefund(payment_id=payment.id, provider=provider, reference=reference,
+        amount_minor=amount, evidence_json=evidence)
+    session.add(refund)
     session.flush()
+    order = session.scalar(select(Order).where(Order.id == payment.order_id).with_for_update().execution_options(populate_existing=True))
+    from .loyalty_execution import allocate_refund, compensate
+    from .growth import RestaurantGrowthService
+    if body.get('loyalty_allocation') is not None:
+        allocate_refund(session, order, refund, body['loyalty_allocation'], actor='provider:' + provider)
+    if total + amount < payment.amount_minor:
+        compensate(RestaurantGrowthService(session), order)
     if total + amount == payment.amount_minor:
         return service.apply_payment_status(payment.provider_reference, 'refunded', provider=provider,
             event_id=body['event_id'], amount_minor=payment.amount_minor, currency=payment.currency, raw_event_json=evidence)
