@@ -33,7 +33,7 @@ python3 -m venv .venv-campaign
 .venv-campaign/bin/pip install -e '.[test,browser,campaign-sms]'
 CAMPAIGN_PYTHON=$PWD/.venv-campaign/bin/python \
   scripts/run_campaign_demo.sh --sms --whatsapp --db /tmp/101-sms-demo.db --port 8802
-# In another terminal; creates one more synthetic campaign/order per run:
+# In another terminal; run once against that fresh synthetic database:
 .venv-campaign/bin/python scripts/campaign_rehearsal.py --channel sms \
   --url http://127.0.0.1:8802 --output /tmp/101-sms-rehearsal.json
 ```
@@ -48,7 +48,9 @@ zero live totals. Expected order24900COP, refund5000COP, net19900COP. These inte
 amounts use the canonical commerce COP accounting convention, not a second total.
 Fixtures, including Honorato branding, products, contacts, route, RNE and prices,
 are labelled synthetic. No real delivery or provider connection is established.
-The rehearsal's preserved database must not be overwritten when restarting.
+The rehearsal requires a fresh fixture because prior sends/withdrawals consume
+eligibility. To repeat it, choose a new database filename and an unused port.
+Preserve the previous database; ordinary app restarts keep its outcomes and opt-outs.
 
 ```bash
 TMPDIR=/tmp/101-sms-ui COMMERCE_BROWSER_EXECUTABLE=/usr/bin/chromium PYTHONPATH=src \
