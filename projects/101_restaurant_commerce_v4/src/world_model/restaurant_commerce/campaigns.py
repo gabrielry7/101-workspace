@@ -57,6 +57,8 @@ class Draft(StrictModel):
     budget_microusd: int = Field(ge=0, le=100_000_000)
     # An existing commerce promotion may be associated; no discount engine here.
     promotion_code: str | None = Field(default=None, max_length=80)
+    whatsapp_template_id: str | None = Field(default=None, max_length=36)
+    whatsapp_parameters: list[str] = Field(default_factory=list, max_length=5)
 
     @model_validator(mode='after')
     def window(self):
@@ -64,6 +66,8 @@ class Draft(StrictModel):
             raise ValueError('An explicit timezone and positive window are required')
         if len(set(self.customer_ids)) != len(self.customer_ids):
             raise ValueError('Duplicate audience member')
+        if any(not 1 <= len(p) <= 500 for p in self.whatsapp_parameters):
+            raise ValueError('WhatsApp parameters must contain 1–500 characters')
         return self
 
 
@@ -157,10 +161,13 @@ def eligibility(session, business, customer, document, now, *, expected_destinat
         CampaignJob.business_id == business, or_(CampaignJob.customer_id == customer.id, CampaignJob.destination == (destination or '!missing')),
         CampaignJob.scope == scope, CampaignJob.id != (exclude_job or ''),
         CampaignJob.claimed_at > now - timedelta(hours=config.get('frequency_hours', 24)),
-        CampaignJob.state.in_(['sending','accepted','unknown','delivered','bounced','complaint'])))
+        CampaignJob.state.in_(['sending','accepted','unknown','delivered','read','failed','bounced','complaint'])))
     if recent: reasons.append('shared_contact_limit')
-    if channel != 'email': reasons.append(channel + '_unconfigured')
-    if document['sender'] != config.get('sender'): reasons.append('sender_unconfigured_or_changed')
+    if channel == 'whatsapp':
+        from . import whatsapp
+        reasons.extend(whatsapp.eligibility(session,business,customer,document,now,exclude_job))
+    elif channel != 'email': reasons.append(channel + '_unconfigured')
+    elif document['sender'] != config.get('sender'): reasons.append('sender_unconfigured_or_changed')
     if scope != 'test':
         review = config.get('legal_review', {})
         if not review.get('source') or not review.get('expires_at') or date(review['expires_at']) <= now:
@@ -201,6 +208,10 @@ def save_draft(session, business, draft, now, campaign_id=None):
         'unit_cost_microusd': 0 if draft.scope == 'test' else config.get('unit_cost_microusd'),
         'attribution_window_days': 7, 'policy_version': 'co-marketing-v1',
         'audience_rule': 'explicit-existing-customers-v1'})
+    if draft.channel == 'whatsapp' and draft.whatsapp_template_id:
+        from . import whatsapp
+        doc['whatsapp'] = whatsapp.snapshot(session,business,draft.whatsapp_template_id,draft.whatsapp_parameters)
+        doc['provider'] = 'simulated_whatsapp' if draft.scope == 'test' else 'whatsapp_cloud'
     for recipient in recipients:
         result = eligibility(session, business, session.get(Customer, recipient['id']), doc,
                              draft.scheduled_at, expected_destination=recipient['destination'])
@@ -230,11 +241,17 @@ def preview(session, business, campaign_id, now):
         rows.append({**recipient, **result})
     allowed = sum(r['status'] == 'allowed' for r in rows)
     cost = doc['unit_cost_microusd']
+    email = render(doc, next((r for r in doc['recipients'] if r.get('snapshot_eligible')), doc['recipients'][0]), '#preview-ordering-link', '#preview-unsubscribe')
+    if doc.get('whatsapp'):
+        from . import whatsapp
+        from html import escape
+        wa = whatsapp.render(doc,doc['recipients'][0],'preview')
+        email = {'html':'<!doctype html><html lang="es"><meta charset="utf-8"><body><h1>WhatsApp · simulación</h1><p>'+escape(wa['text']).replace('\n','<br>')+'</p><p>Ver la carta · Dejar de recibir</p></body></html>', 'text':wa['text'], 'subject':doc['whatsapp']['definition']['name']}
     return {'id': campaign.id, 'state': campaign.state, 'revision_id': revision.id, 'digest': revision.digest,
         'document': doc, 'audience': rows, 'eligible': allowed, 'excluded': len(rows)-allowed,
         'estimated_cost_microusd': None if cost is None else allowed * cost,
         'cost_currency': 'USD', 'simulation_clock': now.isoformat(),
-        'email': render(doc, next((r for r in doc['recipients'] if r.get('snapshot_eligible')), doc['recipients'][0]), '#preview-ordering-link', '#preview-unsubscribe'),
+        'email': email,
         'approved': session.get(CampaignApproval, revision.id) is not None}
 
 
@@ -248,7 +265,12 @@ def approve(session, business, campaign_id, expected_digest, actor, now):
     if revision.digest != expected_digest or digest(revision.document) != expected_digest:
         raise HTTPException(409, 'preview_changed')
     if doc['scope'] != 'test': raise HTTPException(409, 'live_send_disabled')
-    if doc['channel'] != 'email': raise HTTPException(409, doc['channel'] + '_unconfigured')
+    if doc['channel'] not in {'email','whatsapp'} or (doc['channel']=='whatsapp' and not doc.get('whatsapp')):
+        raise HTTPException(409, doc['channel'] + '_unconfigured')
+    if doc['channel']=='whatsapp':
+        from . import whatsapp
+        reasons=whatsapp.eligibility(session,business,session.get(Customer,doc['recipients'][0]['id']),doc,date(doc['scheduled_at']),None)
+        if reasons: raise HTTPException(409, ','.join(reasons))
     if date(doc['expires_at']) <= now: raise HTTPException(409, 'campaign_expired')
     cost = doc['unit_cost_microusd']
     if cost is None or cost * len(doc['recipients']) > doc['budget_microusd']:
@@ -339,6 +361,8 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
             if not adapter or adapter.validate(): reason = reason or 'provider_unconfigured'
             elif job.scope == 'test' and adapter.capabilities.get('network') is not False:
                 reason = reason or 'simulation_network_transport_forbidden'
+            if doc.get('whatsapp') and adapter and (getattr(adapter,'phone_id',None)!=doc['whatsapp']['sender']['phone_id'] or getattr(adapter,'waba_id',None)!=doc['whatsapp']['sender']['waba_id']):
+                reason = reason or 'whatsapp_integration_binding_changed'
             result = eligibility(session, job.business_id, session.get(Customer, job.customer_id), doc, now,
                 expected_destination=job.destination, exclude_job=job.id)
             if result['status'] != 'allowed': reason = reason or ','.join(result['reasons'])
@@ -351,6 +375,10 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
             unsub = base_url + '/campaign-unsubscribe/' + job.unsubscribe_token
             email = render(doc, recipient, base_url + '/campaign-link/' + job.tracking_token, unsub)
             message = Message(job.id, doc['sender'], job.destination, email['subject'], email['html'], email['text'], unsub)
+            if doc.get('whatsapp'):
+                from . import whatsapp
+                wa=whatsapp.render(doc,recipient,job.tracking_token)
+                message=Message(job.id,doc['sender'],job.destination,'','',wa['text'],unsub,wa['template'])
             job.state, job.claimed_at, job.attempts = 'sending', now, job.attempts + 1
             session.add(CampaignAttempt(job_id=job.id, state='sending', evidence_json=canonical({'attempt':job.attempts})))
             session.commit()  # Dispatch boundary: later cancellation cannot recall this attempt.
@@ -363,6 +391,11 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
             if job.state in {'sending','unknown'}:
                 job.state, job.provider_id, job.reason = outcome.state, outcome.message_id, outcome.reason
                 if outcome.state == 'accepted': job.submitted_at = now
+                if job.channel=='whatsapp' and outcome.reason=='whatsapp_opt_out':
+                    from . import whatsapp
+                    convo=whatsapp.conversation(session,job.business_id,job.scope,message.sender,job.destination)
+                    convo.opted_out=True
+                    whatsapp.opt_out(session,job.business_id,job.scope,job.destination,now,'provider-submission:'+job.id)
                 if outcome.state == 'retryable':
                     job.state = 'queued' if job.attempts < 3 else 'failed'
                     job.due_at = now + timedelta(seconds=30 * 2 ** job.attempts)
@@ -370,16 +403,20 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
                 evidence_json=canonical({'message_id':outcome.message_id,'reason':outcome.reason})))
             session.commit()
         processed += 1
-    return {'processed': processed, 'mode':'test', 'real_provider_calls':0}
+    from . import whatsapp
+    replies=whatsapp.dispatch_replies(sessions,integrations,now,business)
+    return {'processed': processed, 'replies_processed':replies, 'mode':'test', 'real_provider_calls':0}
 
 
-def ingest_event(session, integration, event, now):
+def ingest_event(session, integration, event, now, *, commit=True):
+    session.execute(update(CampaignSettings).where(CampaignSettings.business_id==integration['business_id'])
+        .values(dispatch_version=CampaignSettings.dispatch_version+1))
     job = session.get(CampaignJob, event.get('key'))
     if not job or job.business_id != integration['business_id'] or job.scope != integration['scope'] or job.provider != integration['adapter'].name:
         raise HTTPException(404, 'Delivery not found for authenticated integration')
     if not job.attempts or job.state == 'skipped': raise HTTPException(409, 'delivery_not_submitted')
     if job.provider_id and job.provider_id != event.get('message_id'): raise HTTPException(409, 'provider_message_mismatch')
-    if event.get('kind') not in {'accepted','delivered','bounced','complaint','rejected','delayed','unsubscribe'}:
+    if event.get('kind') not in {'accepted','delivered','read','failed','bounced','complaint','rejected','delayed','unsubscribe'}:
         raise HTTPException(422, 'unsupported_event')
     key = digest(integration['adapter'].name + ':' + job.business_id + ':' + str(event['id']))
     existing = session.get(CampaignEvent, key)
@@ -397,16 +434,17 @@ def ingest_event(session, integration, event, now):
     if existing.evidence_json != evidence: raise HTTPException(409, 'event_identity_conflict')
     kinds = set(session.scalars(select(CampaignEvent.kind).where(CampaignEvent.job_id == job.id)))
     # Preserve history; derive projection independent of arrival order.
-    for status in ('complaint','bounced','delivered','rejected','accepted'):
+    for status in ('complaint','bounced','read','delivered','failed','rejected','accepted'):
         if status in kinds:
             job.state = status
             break
     job.provider_id = event['message_id']
-    if kinds & {'accepted','delivered','bounced','complaint'}: job.submitted_at = job.submitted_at or now
+    if kinds & {'accepted','delivered','read','failed','bounced','complaint'}: job.submitted_at = job.submitted_at or now
     if kinds & {'bounced','complaint','unsubscribe'}:
         set_permission(session, job.business_id, job.customer_id, channel=job.channel, scope=job.scope,
             state='suppressed', source='authenticated:' + key, reason=event['kind'], now=now)
-    session.commit()
+    if commit: session.commit()
+    else: session.flush()
     return {'duplicate':False}
 
 
@@ -422,7 +460,7 @@ def unsubscribe(session, token, now):
 
 def visit(session, token, now, user_agent):
     job = session.scalar(select(CampaignJob).where(CampaignJob.tracking_token == token))
-    if not job or job.state not in {'accepted','delivered','unknown','complaint','bounced'}:
+    if not job or job.state not in {'accepted','delivered','read','unknown','complaint','bounced'}:
         raise HTTPException(404, 'Link not found')
     doc = json.loads(session.get(CampaignRevision, job.revision_id).document)
     if date(doc['expires_at']) <= now: raise HTTPException(410, 'Campaign expired')
@@ -468,14 +506,14 @@ def report(session, business, campaign_id, scope):
     for job in jobs: states[job.state] = states.get(job.state, 0)+1
     events = list(session.scalars(select(CampaignEvent).where(CampaignEvent.job_id.in_([j.id for j in jobs]))))
     accepted = {j.id for j in jobs if j.submitted_at is not None}
-    delivered = {e.job_id for e in events if e.kind == 'delivered'}
+    delivered = {e.job_id for e in events if e.kind in {'delivered','read'}}
     return {'scope':scope,'states':states,'queued':states.get('queued',0),'provider_accepted':len(accepted),
-        'provider_reported_delivery':len(delivered),'receipt_missing':len(accepted-delivered),
+        'provider_reported_delivery':len(delivered),'receipt_missing':len(accepted-{e.job_id for e in events if e.kind in {'delivered','read','failed','bounced','rejected','complaint'}}),
         'unknown':states.get('unknown',0),'tracked_visits':len(visits),'scanner_visits':sum(v.scanner for v in visits),
         'paid_orders':paid_orders,'captured_revenue':captured,'refunds':refunded,'net_revenue':captured-refunded,
         'currency':session.get(RestaurantCommerceProfile, business).currency,'accounting':'Whole COP pesos; order total includes discounts and delivery; no second discount subtraction.',
         'delivery_cost_microusd':0 if scope == 'test' else None,'cost_currency':'USD','orders':credited,
-        'read_signals':'unavailable','profit':None,
+        'read_signals':len({e.job_id for e in events if e.kind=='read'}) if any(j.channel=='whatsapp' for j in jobs) else 'unavailable','profit':None,
         'limitations':['Attributed sales, not incremental lift.','Clicks may be scanners or forwarded links; identity is not established.',
                        'Seven-day browser context; cross-device and offline coverage incomplete.']}
 
