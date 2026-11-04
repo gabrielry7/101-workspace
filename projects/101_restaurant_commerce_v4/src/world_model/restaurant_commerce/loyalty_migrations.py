@@ -6,16 +6,22 @@ from .loyalty_models import LOYALTY_TABLES, POSTGRES_PROTECTIONS, SQLITE_PROTECT
 from .models import Base
 
 
-def configuration_schema_ready(connection, *, required=False, known_tables=None):
+def configuration_schema_ready(
+    connection,
+    *,
+    required=False,
+    known_tables=None,
+    tables=LOYALTY_TABLES,
+    sqlite_protections=SQLITE_PROTECTIONS,
+    postgres_protections=POSTGRES_PROTECTIONS,
+):
     inspector = inspect(connection)
-    present = (
-        set(inspector.get_table_names() if known_tables is None else known_tables) & LOYALTY_TABLES
-    )
+    present = set(inspector.get_table_names() if known_tables is None else known_tables) & tables
     if not present:
         return not required
-    if present != LOYALTY_TABLES:
+    if present != tables:
         return False
-    names = sorted(LOYALTY_TABLES)
+    names = sorted(tables)
     columns = inspector.get_multi_columns(filter_names=names)
     uniques = inspector.get_multi_unique_constraints(filter_names=names)
     primary_keys = inspector.get_multi_pk_constraint(filter_names=names)
@@ -70,7 +76,7 @@ def configuration_schema_ready(connection, *, required=False, known_tables=None)
         )
         return all(
             normalize(triggers.get(name, "")) == normalize(sql)
-            for name, sql in SQLITE_PROTECTIONS.items()
+            for name, sql in sqlite_protections.items()
         )
     if connection.dialect.name == "postgresql":
         rows = connection.execute(
@@ -82,7 +88,7 @@ def configuration_schema_ready(connection, *, required=False, known_tables=None)
             )
         ).all()
         triggers = {row[0]: row[1:] for row in rows}
-        for name, (table, body, trigger_type) in POSTGRES_PROTECTIONS.items():
+        for name, (table, body, trigger_type) in postgres_protections.items():
             actual = triggers.get(name)
             if actual is None or actual[:3] != (table, "O", trigger_type):
                 return False

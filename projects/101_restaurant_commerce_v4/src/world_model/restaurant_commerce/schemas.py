@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from datetime import datetime
-from typing import Literal
+from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -511,7 +511,13 @@ class GrowthAnalyticsOut(StrictModel):
     channel_order_counts: dict[str, int]
 
 
+class LoyaltyRefundAllocationIn(StrictModel):
+    lines: dict[str, Annotated[int, Field(strict=True, ge=0, le=2147483647)]] = Field(max_length=100)
+    delivery_fee_minor: int = Field(strict=True, ge=0, le=2147483647)
+
+
 class PaymentWebhookIn(StrictModel):
+    loyalty_allocation: LoyaltyRefundAllocationIn | None = None
     refund_reference: str | None = Field(default=None, min_length=1, max_length=200)
     refund_amount_minor: int | None = Field(default=None, gt=0, le=2147483647)
     event_id: str = Field(min_length=1, max_length=200)

@@ -9,7 +9,8 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
 from . import campaign_models, loyalty_models, refunds  # noqa: F401 - register additive metadata
-from .loyalty_migrations import configuration_schema_ready
+from .loyalty_execution_migrations import loyalty_schema_ready
+from .loyalty_execution_models import EXECUTION_TABLES
 from .loyalty_models import LOYALTY_TABLES
 from .migrations import (
     CUSTOMER_SAFETY_COLUMNS,
@@ -68,11 +69,14 @@ def init_schema(engine: Engine) -> None:
     tables = [
         t
         for t in Base.metadata.sorted_tables
-        if not existing
-        or t.name
-        not in (
-            {"restaurant_wompi_sandbox_lookups", "restaurant_wompi_sandbox_discovery"}
-            | LOYALTY_TABLES
+        if t.name not in EXECUTION_TABLES
+        and (
+            not existing
+            or t.name
+            not in (
+                {"restaurant_wompi_sandbox_lookups", "restaurant_wompi_sandbox_discovery"}
+                | LOYALTY_TABLES
+            )
         )
     ]
     Base.metadata.create_all(engine, tables=tables)
@@ -152,7 +156,7 @@ def database_ready(
             if require_schema:
                 inspector = inspect(connection)
                 tables = set(inspector.get_table_names())
-                if not configuration_schema_ready(
+                if not loyalty_schema_ready(
                     connection, required=require_loyalty, known_tables=tables
                 ):
                     return False

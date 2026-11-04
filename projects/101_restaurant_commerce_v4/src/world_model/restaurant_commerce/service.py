@@ -147,8 +147,10 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         payment_lease_seconds: int = 30,
         financial_providers: dict | None = None,
         payment_retry_seconds: float = 2.0,
+        loyalty_execution=None,
     ) -> None:
         # Server-side identity adapter only. Never populated from request JSON/phone.
+        self.loyalty_execution = loyalty_execution
         self.payment_lease_seconds = payment_lease_seconds
         self.financial_providers = financial_providers or {}
         self.payment_retry_seconds = payment_retry_seconds
@@ -182,6 +184,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             "name": request.customer.name, "phone": _normalize_phone(request.customer.phone),
             "email": request.customer.email,
             "identity_verified": self._verified_customer(business_id, request.customer.phone) is not None,
+            **({"loyalty_execution_version": self.loyalty_execution.version_id} if self.loyalty_execution else {}),
             "whatsapp_requested": request.customer.whatsapp_opt_in is True,
             "marketing_requested": request.customer.marketing_opt_in is True,
             "source": request.customer.consent_source,
@@ -584,6 +587,16 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             customer_id=customer_id,
             reward_id=reward_id,
         )
+        if self.loyalty_execution is not None:
+            from .loyalty_execution import calculate
+            if reward_id or verified is None:
+                raise ValidationError("Versioned rewards require verified identity and a single reward selection")
+            version, rules, account, result = calculate(self, business_id, quoted_items, discounts.promotion_discount_minor)
+            if rules.currency != profile.currency:
+                raise ValidationError("Reward currency does not match checkout")
+            discounts.reward_discount_minor = result.redemption.discount_minor
+            discounts.reward_name = rules.name if result.redemption.discount_minor else None
+            discounts.total_discount_minor += result.redemption.discount_minor
         return QuoteResponse(
             business_id=business_id,
             currency=profile.currency,
@@ -1072,6 +1085,8 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             raise NotFoundError("Delivery not found")
         if provider and provider != delivery.provider:
             raise ValidationError("Delivery provider does not match provider reference")
+        self._lock_order_money(delivery.order_id)
+        self.session.refresh(delivery)
 
         receipt = None
         if event_id:
@@ -1220,6 +1235,11 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                 entity.public_code = _public_code(prefix)
 
     def create_order(self, business_id: str, request: CreateOrderRequest) -> OrderOut:
+        if self.loyalty_execution is not None:
+            from .loyalty_execution import selected
+            selected(self)
+            if request.payment_provider != "simulated":
+                raise ValidationError("Versioned execution is qualified only for simulated payments")
         if request.recovery_secret and not request.idempotency_key:
             raise ValidationError("Recovery requires an idempotency key")
         verified = self._verified_customer(business_id, request.customer.phone)
@@ -1238,7 +1258,11 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                 request_data.pop("expected_total_minor")  # Preserve pre-M5 retry fingerprints.
             if request.recovery_secret is None:
                 request_data.pop("recovery_secret")  # Preserve old M2 fingerprint bindings.
-            fingerprint = request_fingerprint({"request": request_data, "verified_customer_id": self.verified_customer_id})
+            fingerprint_data = {"request": request_data, "verified_customer_id": self.verified_customer_id}
+            if self.loyalty_execution is not None:
+                from dataclasses import asdict
+                fingerprint_data["loyalty_execution"] = asdict(self.loyalty_execution)
+            fingerprint = request_fingerprint(fingerprint_data)
             ledger_row = self.session.scalar(
                 select(IdempotencyRecord).where(
                     IdempotencyRecord.scope == scope,
@@ -1389,6 +1413,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             business_id=business_id, customer_id=customer.id, reward_id=request.reward_id, order=order
         )
 
+        loyalty_order_items = []
         for quoted in quote.items:
             order_item = OrderItem(
                 order_id=order.id,
@@ -1401,6 +1426,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             )
             self.session.add(order_item)
             self.session.flush()
+            loyalty_order_items.append(order_item)
             for modifier in quoted.modifiers:
                 self.session.add(
                     OrderItemModifier(
@@ -1412,6 +1438,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                     )
                 )
 
+        if self.loyalty_execution is not None:
+            from .loyalty_execution import reserve
+            reserve(self, order, quote, loyalty_order_items)
         provider_idempotency_key = f"checkout:{business_id}:{request.idempotency_key or order.id}"
         self.session.add(PaymentIntent(
             order_id=order.id, business_id=business_id, provider=provider.name,
@@ -1544,7 +1573,14 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         )
         return self.order_out(order.id)
 
+    def _lock_order_money(self, order_id):
+        self.session.scalars(select(Payment).where(Payment.order_id == order_id).order_by(Payment.id)
+            .with_for_update().execution_options(populate_existing=True)).all()
+        return self.session.scalar(select(Order).where(Order.id == order_id).with_for_update()
+            .execution_options(populate_existing=True))
+
     def transition_order(self, order_id: str, new_status: str, *, expected_version=None, reason=None) -> OrderOut:
+        self._lock_order_money(order_id)
         order = self.session.scalar(
             select(Order)
             .where(Order.id == order_id)
