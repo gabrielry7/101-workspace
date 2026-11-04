@@ -88,7 +88,8 @@ def test_campaign_preview_preserves_styles_and_blocks_unlisted_css(live):
     campaign = f.call("POST", f.campaign_root, body)
     response = page.goto(f.config["base_url"] + f.campaign_root + "/" + campaign["id"] + "/email")
     policy = response.headers["content-security-policy"]
-    assert "'unsafe-inline'" not in policy and "'sha256-" in policy
+    assert "'unsafe-inline'" not in policy and "'unsafe-hashes'" not in policy
+    assert "'nonce-" in policy and "style-src-attr 'none'" in policy
     assert "default-src 'none'" in policy
     expect(page.locator("h1")).to_have_text(PAYLOAD)
     assert page.locator("h1 img, h1 script").count() == 0
