@@ -388,7 +388,7 @@ class ReservationOut(StrictModel):
 class CustomerSummaryOut(StrictModel):
     id: str
     name: str | None
-    phone: str
+    phone: str | None
     email: str | None
     order_count: int
     lifetime_value_minor: int

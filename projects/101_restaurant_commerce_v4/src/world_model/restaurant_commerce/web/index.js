@@ -170,6 +170,7 @@ async function api(url,opts={}){
 async function load(){
   try{
     store=await api(`/api/restaurants/${path(businessId)}/storefront`);
+    api(`/api/customer/signup/${path(businessId)}`).then(data=>{const link=$('customerSignup');if(data.available){link.href='/join/'+path(businessId)+'?source=website';link.hidden=false;}}).catch(()=>{});
     $('restaurantName').textContent=store.display_name;document.title=`${store.display_name} · Pedido directo`;
     $('restaurantMeta').textContent='Pedido directo · '+store.timezone;
     $('pickupInstructions').textContent=store.pickup_instructions||'';

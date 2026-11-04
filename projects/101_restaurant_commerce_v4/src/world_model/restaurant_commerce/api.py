@@ -153,6 +153,7 @@ def create_app(
     checkout_url_origins: tuple[str, ...] = (),
     tracking_url_origins: tuple[str, ...] = (),
     campaign_options: dict | None = None,
+    signup_options: dict | None = None,
     loyalty_configuration_enabled: bool | None = None,
 ) -> FastAPI:
     def validated_origins(origins: tuple[str, ...]) -> list[str]:
@@ -513,6 +514,9 @@ def create_app(
             {"status": "ready", "database": "ok"}, headers={"Cache-Control": "no-store"}
         )
 
+    from .customer_signup_routes import register as register_signup
+    register_signup(app, get_session, scoped_staff, signup_options, demo_mode, production)
+
     from .campaign_routes import register as register_campaigns
     register_campaigns(app, get_session, scoped_staff, campaign_options, demo_mode)
     if loyalty_configuration_enabled:
@@ -530,7 +534,7 @@ def create_app(
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
+        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "signup.js", "signup-owner.js", "signup.css", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
             raise HTTPException(status_code=404, detail="Asset not found")
         return FileResponse(WEB_DIR / filename, media_type="image/png" if filename.endswith(".png") else "text/css" if filename.endswith(".css") else "text/javascript",
                             headers={"Cache-Control": "no-cache"})

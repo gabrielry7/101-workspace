@@ -162,7 +162,7 @@ class Customer(Base):
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
     business_id: Mapped[str] = mapped_column(String(64), index=True)
-    phone: Mapped[str] = mapped_column(String(40))
+    phone: Mapped[str | None] = mapped_column(String(40), nullable=True)
     name: Mapped[str | None] = mapped_column(String(200), nullable=True)
     email: Mapped[str | None] = mapped_column(String(320), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

@@ -521,6 +521,8 @@ class RestaurantGrowthService:
             status, suppression = "suppressed", "WHATSAPP_OPT_IN_REQUIRED"
         elif rule.purpose == "marketing" and (not customer.marketing_opt_in or not customer.marketing_verified_at):
             status, suppression = "suppressed", "MARKETING_OPT_IN_REQUIRED"
+        if not customer.phone:
+            status, suppression = "suppressed", "CONTACT_PHONE_REQUIRED"
         candidate = OutboundMessage(
             business_id=rule.business_id,
             customer_id=customer.id,
@@ -529,7 +531,7 @@ class RestaurantGrowthService:
             channel=rule.channel,
             purpose=rule.purpose,
             message_kind=message_kind,
-            destination=customer.phone,
+            destination=customer.phone or "",
             body=_render(rule.template_text, values),
             scheduled_at=now + timedelta(minutes=rule.delay_minutes),
             status=status,
