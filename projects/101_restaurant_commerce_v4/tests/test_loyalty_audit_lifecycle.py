@@ -2,8 +2,12 @@
 
 import pytest
 from test_loyalty_assignment import checkout, enroll, req
-from test_loyalty_assignment import cohort as cohort
-from test_loyalty_assignment import factory as factory
+from test_loyalty_assignment import (
+    cohort as cohort,  # noqa: PLC0414 - pytest fixture re-export
+)
+from test_loyalty_assignment import (
+    factory as factory,  # noqa: PLC0414 - pytest fixture re-export
+)
 from test_loyalty_configuration import document, experiment, publish
 
 from world_model.restaurant_commerce.loyalty_config import LoyaltyConfigurationService

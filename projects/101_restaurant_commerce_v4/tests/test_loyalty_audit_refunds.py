@@ -6,8 +6,12 @@ import pytest
 from sqlalchemy import func, select
 from test_growth_v2 import pay_and_complete
 from test_loyalty_execution import balance, fixed_version, refund, service
-from test_loyalty_execution import configured as configured
-from test_loyalty_execution import factory as factory
+from test_loyalty_execution import (
+    configured as configured,  # noqa: PLC0414 - pytest fixture re-export
+)
+from test_loyalty_execution import (
+    factory as factory,  # noqa: PLC0414 - pytest fixture re-export
+)
 from test_payment_durability_m3 import request
 
 from world_model.restaurant_commerce.growth import RestaurantGrowthService

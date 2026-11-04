@@ -5,8 +5,10 @@ from datetime import timedelta
 import pytest
 from sqlalchemy import func, select
 from test_campaigns import approved, dispatch, report
-from test_campaigns import env as env
-from test_campaigns import factory as factory
+from test_campaigns import env as env  # noqa: PLC0414 - pytest fixture re-export
+from test_campaigns import (
+    factory as factory,  # noqa: PLC0414 - pytest fixture re-export
+)
 
 from world_model.restaurant_commerce import campaigns as c
 from world_model.restaurant_commerce.campaign_demo import BUSINESS, CLOCK

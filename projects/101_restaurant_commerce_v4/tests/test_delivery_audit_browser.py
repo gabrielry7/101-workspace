@@ -3,9 +3,13 @@
 from uuid import uuid4
 
 from staff_helpers import staff_headers
-from test_browser_security import browser as browser
+from test_browser_security import (
+    browser as browser,  # noqa: PLC0414 - pytest fixture re-export
+)
 from test_browser_security import cart, playwright
-from test_browser_security import site as site
+from test_browser_security import (
+    site as site,  # noqa: PLC0414 - pytest fixture re-export
+)
 
 ROOT = "/api/restaurants/demo-restaurant-bogota"
 OP = "/api/operator/restaurants/demo-restaurant-bogota"
