@@ -34,12 +34,19 @@ def register(app, get_session, scoped_staff):
             "execution_enabled": False,
             "assignment_enabled": False,
             "analytics_enabled": False,
-            "stage": "controlled_transactions",
+            "stage": "controlled_assignment",
+            "controlled_assignment_available": True,
             "controlled_execution_available": True,
             "preview_enabled": True,
             "calculation_version": CALCULATION_VERSION,
             "preview_rule_types": ["points_earning", "fixed_value_redemption"],
         }
+
+    @app.get(root + "/experiments/{resource_id}/enrollment", dependencies=[Depends(read)])
+    def loyalty_enrollment_summary(business_id: str, resource_id: str,
+                                   session: Session = Depends(get_session)):
+        from .loyalty_assignment import assignment_summary
+        return assignment_summary(session, business_id, resource_id)
 
     @app.post(
         root + "/programs/{resource_id}/versions/{version_id}/preview",

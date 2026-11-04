@@ -72,16 +72,31 @@ def execution_schema_ready(connection, *, required=False, known_tables=None):
 
 
 def loyalty_schema_ready(connection, *, required=False, known_tables):
-    """One bulk reflection/guard query for both optional loyalty schema stages."""
-    if not set(known_tables) & EXECUTION_TABLES:
+    """One bulk reflection/guard query for all installed optional loyalty stages."""
+    from .loyalty_assignment_migrations import (
+        SQLITE as assignment_sqlite,
+        POSTGRES as assignment_postgres,
+    )
+    from .loyalty_assignment_models import ASSIGNMENT_TABLES
+
+    has_assignment = bool(set(known_tables) & ASSIGNMENT_TABLES)
+    if not set(known_tables) & EXECUTION_TABLES and not has_assignment:
         return configuration_schema_ready(connection, required=required, known_tables=known_tables)
     return configuration_schema_ready(
         connection,
         required=True,
         known_tables=known_tables,
-        tables=LOYALTY_TABLES | EXECUTION_TABLES,
-        sqlite_protections={**SQLITE_PROTECTIONS, **SQLITE},
-        postgres_protections={**POSTGRES_PROTECTIONS, **POSTGRES},
+        tables=LOYALTY_TABLES | EXECUTION_TABLES | (ASSIGNMENT_TABLES if has_assignment else set()),
+        sqlite_protections={
+            **SQLITE_PROTECTIONS,
+            **SQLITE,
+            **(assignment_sqlite if has_assignment else {}),
+        },
+        postgres_protections={
+            **POSTGRES_PROTECTIONS,
+            **POSTGRES,
+            **(assignment_postgres if has_assignment else {}),
+        },
     )
 
 
