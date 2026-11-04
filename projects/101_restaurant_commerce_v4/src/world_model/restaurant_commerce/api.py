@@ -151,6 +151,7 @@ def create_app(
     checkout_url_origins: tuple[str, ...] = (),
     tracking_url_origins: tuple[str, ...] = (),
     campaign_options: dict | None = None,
+    loyalty_configuration_enabled: bool | None = None,
 ) -> FastAPI:
     def validated_origins(origins: tuple[str, ...]) -> list[str]:
         result = []
@@ -172,6 +173,11 @@ def create_app(
     browser_policy = {"checkout_origins": validated_origins(checkout_url_origins),
                       "tracking_origins": validated_origins(tracking_url_origins)}
     campaign_options = campaign_options or {}
+    if loyalty_configuration_enabled is None:
+        loyalty_flag = os.getenv("COMMERCE_LOYALTY_CONFIGURATION_ENABLED", "0")
+        if loyalty_flag not in {"0", "1"}:
+            raise RuntimeError("COMMERCE_LOYALTY_CONFIGURATION_ENABLED must be 0 or 1")
+        loyalty_configuration_enabled = loyalty_flag == "1"
     environment = (environment or os.getenv("COMMERCE_ENV", "development")).lower()
     production = environment == "production"
     demo_mode = (not production) if demo_mode is None else demo_mode
@@ -486,12 +492,17 @@ def create_app(
 
     @app.get("/ready", responses={503: {"model": dict[str, str]}})
     def ready():
-        if not database_ready(engine):
+        if not database_ready(engine, require_loyalty=loyalty_configuration_enabled):
             return JSONResponse({"status": "not_ready", "database": "down"}, status_code=503)
         return {"status": "ready", "database": "ok"}
 
     from .campaign_routes import register as register_campaigns
     register_campaigns(app, get_session, scoped_staff, campaign_options, demo_mode)
+    if loyalty_configuration_enabled:
+        if not database_ready(engine, require_loyalty=True):
+            raise RuntimeError("Loyalty configuration requires the explicit offline upgrade")
+        from .loyalty_routes import register as register_loyalty
+        register_loyalty(app, get_session, scoped_staff)
 
     from .operations import register_operations
     register_operations(app, get_service, require_operator)
