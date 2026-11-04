@@ -230,8 +230,16 @@ def main():
                         "attributes": attributes,
                     },
                 ).raise_for_status()
+                fault_started = time.monotonic()
                 try:
                     phase(name, 503)
+                    if kind == "timeout":
+                        # Exercise the actual TCP timeout, not only early removal.
+                        time.sleep(max(0, 5.5 - (time.monotonic() - fault_started)))
+                        phase(name + "_after_full_timeout", 503)
+                    report.setdefault("fault_durations", {})[name] = (
+                        time.monotonic() - fault_started
+                    )
                 finally:
                     control.delete("/proxies/pg/toxics/fault").raise_for_status()
                 recover(name + "_recovery")

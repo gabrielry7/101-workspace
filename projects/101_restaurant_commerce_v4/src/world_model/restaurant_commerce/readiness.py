@@ -33,12 +33,17 @@ class ReadinessProbe:
                 future: Future = Future()
                 deadline = time.monotonic() + self.timeout
                 self._flight = future, deadline
-                threading.Thread(
+                thread = threading.Thread(
                     target=self._run,
                     args=(future, deadline),
                     name="commerce-readiness",
                     daemon=True,
-                ).start()
+                )
+                try:
+                    thread.start()
+                except RuntimeError:
+                    future.set_result(False)
+                    return False
             future, deadline = self._flight
         remaining = deadline - time.monotonic()
         if remaining <= 0:

@@ -219,3 +219,14 @@ def test_postgres_statement_execution_is_cancelled(factory):
     finally:
         event.remove(engine, "before_cursor_execute", sleep_query)
     assert database_ready(engine)
+
+
+def test_thread_resource_exhaustion_fails_closed(monkeypatch):
+    def unavailable(_self):
+        raise RuntimeError("cannot start new thread")
+
+    with monkeypatch.context() as patch:
+        patch.setattr(threading.Thread, "start", unavailable)
+        probe = ReadinessProbe(lambda _: True)
+        assert not asyncio.run(probe.ready())
+    assert asyncio.run(probe.ready())
