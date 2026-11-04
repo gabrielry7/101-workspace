@@ -151,6 +151,10 @@ def main():
                     "POST " + ALLOCATION: {"ids": aids, "body": abody},
                 }
                 write(args.output / "config.json", c)
+                # Prove both fixtures and an allocation replay work before ZAP imports them.
+                f.call("POST", PREVIEW.format(**ids), body)
+                f.call("POST", ALLOCATION.format(**aids), abody)
+                f.call("POST", ALLOCATION.format(**aids), abody)
                 scanners.TOOLCHAIN = args.scanner_tools
                 rec = scanners.Recorder(args.output / "private-zap", c)
                 zap = scanners.zap_scan(rec, c)
