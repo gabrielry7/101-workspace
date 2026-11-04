@@ -234,7 +234,8 @@ def simulate(scenario: SimulationScenario) -> SimulationResult:
         if isinstance(contribution, OrderContributions):
             warnings.append("supplied_order_margin_extrapolated_not_causal")
         if baseline_cost + operating == 0:
-            status, needed, required = "covered_at_zero_lift", Fraction(0), Fraction(0)
+            status, needed = "covered_at_zero_lift", Fraction(0)
+            required = Fraction(0) if sales else None
         elif not sales:
             status, needed, required = "zero_baseline", None, None
         elif effective <= 0:

@@ -578,9 +578,9 @@ Responses retain the input scenario, SHA256 scenario digest, calculation version
 The result can inform an experiment design; Stage 7 must establish realized effects
 using the original randomized cohorts and complete contribution-cost coverage.
 
-Stage-5 installed-wheel qualification (2026-11-04 UTC): **151 checks passed**
-(149 SQLite and two PostgreSQL consumers), with no failures or skips. This includes
-38 simulator cases, hand-calculated examples, exact break-even/property checks,
+Stage-5 installed-wheel qualification (2026-11-04 UTC): **152 checks passed**
+(150 SQLite and two PostgreSQL consumers), with no failures or skips. This includes
+39 simulator cases, hand-calculated examples, exact break-even/property checks,
 fixed versus variable issuance, zero/negative margins, zero sales, no lift, full
 redemption, large-integer serialization, sensitivity equivalence and strict inputs.
 The actual staff endpoint proves flag/tenant/role/CSRF behavior and no order,
@@ -588,4 +588,7 @@ wallet, ledger or configuration-audit writes; existing configuration, rule previ
 growth, customer protection and assignment diagnostics remain compatible. All 81
 packaged source/asset files match the tested checkout. New-file Ruff, affected-module
 undefined-name checks and whitespace pass. Evidence is retained in shared
-`data/loyalty-verification/stage5-20261104/release/` (wheel manifest and final JUnit/logs).
+`data/loyalty-verification/stage5-20261104/final-release/` (wheel manifest and final JUnit/logs).
+The earlier candidate is retained under `release/`. Final zero-sales review adds an
+explicit regression: zero costs can already cover break-even, but percentage lift
+remains undefined when baseline sales are zero.

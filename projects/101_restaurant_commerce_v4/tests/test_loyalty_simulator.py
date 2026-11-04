@@ -355,3 +355,11 @@ def test_equivalent_variable_models_and_redemption_monotonicity(probability, lif
     assert int(full.estimated_incremental_contribution_profit_minor) <= int(
         proportional.estimated_incremental_contribution_profit_minor
     )
+
+
+def test_zero_baseline_and_zero_cost_do_not_invent_a_percentage():
+    projection = run(customer_count=0, operating_cost_minor=0).projection
+    assert projection.break_even.status == "covered_at_zero_lift"
+    assert projection.break_even.incremental_sales_minor == "0"
+    assert projection.break_even.required_lift_percent is None
+    assert "zero_baseline_sales" in projection.warnings
