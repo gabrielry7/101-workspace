@@ -31,6 +31,9 @@ def register(app, get_session, scoped_staff, options, demo_mode):
     def write(business_id: str, request: Request, session: Session = Depends(get_session)):
         return scoped_staff(request, session, business_id, 'growth.write')
 
+    from .whatsapp_routes import register as register_whatsapp
+    register_whatsapp(app,get_session,read,write,integrations,now,demo_mode)
+
     root = '/api/operator/restaurants/{business_id}/campaigns'
 
     @app.get('/campaigns')
@@ -41,10 +44,10 @@ def register(app, get_session, scoped_staff, options, demo_mode):
     def campaign_list(business_id: str, session: Session = Depends(get_session)):
         cfg = c.settings(session, business_id)
         return {'campaigns':[{'id':row.id,'state':row.state} for row in session.scalars(select(Campaign).where(Campaign.business_id == business_id))],
-                'channels':{'email':'simulation_only','whatsapp':'unconfigured','sms':'unconfigured'},
+                'channels':{'email':'simulation_only','whatsapp':__import__(__package__+'.whatsapp',fromlist=['readiness']).readiness(session,business_id,now())['state'],'sms':'unconfigured'},
                 'live_send_enabled':False,'scope':cfg.scope,'paused':cfg.paused,'clock':now().isoformat(),
                 'sender':json.loads(cfg.config_json).get('sender'),
-                'customers':[{'id':x.id,'name':x.name,'email':x.email} for x in session.scalars(select(Customer).where(Customer.business_id == business_id).limit(500))]}
+                'customers':[{'id':x.id,'name':x.name,'email':x.email,'phone':x.phone} for x in session.scalars(select(Customer).where(Customer.business_id == business_id).limit(500))]}
 
     @app.post(root, dependencies=[Depends(write)])
     def campaign_create(business_id: str, payload: c.Draft, session: Session = Depends(get_session)):
@@ -149,7 +152,7 @@ def register(app, get_session, scoped_staff, options, demo_mode):
             count = 0
             for job in list(session.scalars(select(CampaignJob).where(CampaignJob.business_id == business_id,
                 CampaignJob.revision_id.in_(revisions), CampaignJob.scope == 'test', CampaignJob.state == 'accepted'))):
-                integration = next(v for v in integrations.values() if v['business_id'] == business_id and v['scope'] == 'test')
+                integration = next(v for v in integrations.values() if v['business_id'] == business_id and v['scope'] == 'test' and v['adapter'].name == job.provider)
                 adapter = integration['adapter']
                 if adapter.capabilities.get('network'): raise HTTPException(409, 'Fake transport required')
                 body = c.canonical({'id':'demo-delivery:'+job.id,'key':job.id,'message_id':job.provider_id,

@@ -125,3 +125,68 @@ class CampaignOrderCredit(Base):
     visit_id: Mapped[str | None] = mapped_column(ForeignKey('restaurant_campaign_visits.id'), nullable=True)
     rule: Mapped[str] = mapped_column(String(64))
     scope: Mapped[str] = mapped_column(String(24))
+
+
+class WhatsAppSender(Base):
+    __tablename__ = 'restaurant_campaign_whatsapp_senders'
+    phone_id: Mapped[str] = mapped_column(String(100), unique=True)
+    business_id: Mapped[str] = mapped_column(ForeignKey('restaurant_commerce_profiles.business_id'), primary_key=True)
+    scope: Mapped[str] = mapped_column(String(24))
+    document: Mapped[str] = mapped_column(Text)
+    updated_at: Mapped[object] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class WhatsAppTemplate(Base):
+    __tablename__ = 'restaurant_campaign_whatsapp_templates'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    business_id: Mapped[str] = mapped_column(ForeignKey('restaurant_commerce_profiles.business_id'), index=True)
+    provider_id: Mapped[str] = mapped_column(String(100))
+    language: Mapped[str] = mapped_column(String(20))
+    document: Mapped[str] = mapped_column(Text)
+    digest: Mapped[str] = mapped_column(String(64))
+    status: Mapped[str] = mapped_column(String(32))
+    status_at: Mapped[object] = mapped_column(DateTime(timezone=True))
+    __table_args__ = (UniqueConstraint('business_id', 'provider_id', 'language'),)
+
+
+class WhatsAppConversation(Base):
+    # Transport conversation only; never a second customer record or identity proof.
+    __tablename__ = 'restaurant_campaign_whatsapp_conversations'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    business_id: Mapped[str] = mapped_column(ForeignKey('restaurant_commerce_profiles.business_id'), index=True)
+    scope: Mapped[str] = mapped_column(String(24))
+    phone_id: Mapped[str] = mapped_column(String(100))
+    destination: Mapped[str] = mapped_column(String(20))
+    last_inbound_at: Mapped[object | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    opted_out: Mapped[bool] = mapped_column(Boolean, default=False)
+    assigned_to: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    state: Mapped[str] = mapped_column(String(24), default='waiting_for_customer')
+    __table_args__ = (UniqueConstraint('business_id', 'scope', 'phone_id', 'destination'),)
+
+
+class WhatsAppEvidence(Base):
+    __tablename__ = 'restaurant_campaign_whatsapp_evidence'
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    scope: Mapped[str] = mapped_column(String(24))
+    conversation_id: Mapped[str | None] = mapped_column(ForeignKey('restaurant_campaign_whatsapp_conversations.id'), nullable=True)
+    kind: Mapped[str] = mapped_column(String(32))
+    document: Mapped[str] = mapped_column(Text)
+    raw_sha256: Mapped[str] = mapped_column(String(64))
+    provider_at: Mapped[object] = mapped_column(DateTime(timezone=True))
+    received_at: Mapped[object] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class WhatsAppReply(Base):
+    __tablename__ = 'restaurant_campaign_whatsapp_replies'
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    conversation_id: Mapped[str] = mapped_column(ForeignKey('restaurant_campaign_whatsapp_conversations.id'))
+    body: Mapped[str] = mapped_column(Text)
+    actor: Mapped[str] = mapped_column(String(128))
+    sender_digest: Mapped[str] = mapped_column(String(64))
+    state: Mapped[str] = mapped_column(String(24), default='queued')
+    reason: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    provider_id: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    claimed_at: Mapped[object | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[object] = mapped_column(DateTime(timezone=True), default=utcnow)

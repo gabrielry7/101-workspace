@@ -26,6 +26,7 @@ class Message:
     html: str
     text: str
     unsubscribe_url: str
+    template: dict | None = None
 
 
 class Transport(Protocol):
