@@ -73,3 +73,13 @@ Only loopback synthetic services are allowed. It stops its owned processes on ex
 Config files contain synthetic credentials: keep them private. Native receipts and
 sanitized summaries are evidence; the presence of this command is not a test pass.
 Shared-host/tmpfs results do not establish production capacity or storage durability.
+
+P05 adds optional `--profiles scheduled` for focused paired qualification. P07
+operation targets live in `adversarial/latency_contract.py` and are saved before
+execution. Correctness and latency outcomes are separate; unmet revised latency
+targets produce a nonzero benchmark exit even when every order is correct.
+The harness uses a short **5-second payment lease** by default; the application
+uses30seconds. Set `--payment-lease-seconds 30` for that application default, and
+retain the chosen value when comparing builds. A short-lease stress run does not
+qualify production settings. Targeted admission now validates/counts one requested
+slot through the same calendar rules; public seven-day calendar output is retained.

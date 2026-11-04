@@ -14,6 +14,7 @@ from pathlib import Path
 
 import psutil
 import run
+from latency_contract import TARGETS, assess
 from load_contract import validate_target
 from measure import restart, sample
 from sqlalchemy import create_engine, select, text
@@ -27,7 +28,23 @@ def main():
     parser.add_argument(
         "--config", type=Path, help="Reuse only an owned local disposable environment"
     )
+    parser.add_argument(
+        "--profiles",
+        nargs="+",
+        choices=("untracked", "finite", "scheduled"),
+        default=["untracked", "finite", "scheduled"],
+    )
+    parser.add_argument(
+        "--payment-lease-seconds",
+        type=int,
+        default=5,
+        help="Stress harness default 5; application default is 30",
+    )
     args = parser.parse_args()
+    if not 1 <= args.payment_lease_seconds <= 300:
+        parser.error("Payment lease must be 1..300 seconds")
+    if len(set(args.profiles)) != len(args.profiles):
+        parser.error("Profiles must be unique")
     if not args.baseline_wheel.is_file():
         parser.error("Baseline wheel must exist")
     args.output.mkdir(parents=True, exist_ok=False)
@@ -89,7 +106,7 @@ def main():
         conditions = [
             (p, label, rep)
             for rep in (1, 2)
-            for p in ("untracked", "finite", "scheduled")
+            for p in args.profiles
             for label in (("old", "new") if rep == 1 else ("new", "old"))
         ]
         phases = [["warmup", 2, 2, 10], ["normal", 30, 10, 30], ["spike", 100, 20, 45]]
@@ -99,6 +116,8 @@ def main():
                 "start": run.now(),
                 "conditions": conditions,
                 "phases": phases,
+                "latency_targets_ms": TARGETS,
+                "payment_lease_seconds": args.payment_lease_seconds,
                 "artifacts": {
                     k: {"wheel": str(w), "sha256": hashlib.sha256(w.read_bytes()).hexdigest()}
                     for k, w in wheels.items()
@@ -144,6 +163,7 @@ def main():
                 distinct_customers=True,
                 load_profiles=phases,
                 load_capacity_profile=profile,
+                payment_lease_seconds=args.payment_lease_seconds,
                 load_pickup_slots=[],
                 revision=parent["revision"]
                 + ":"
@@ -274,6 +294,7 @@ def main():
             ) and max_slot <= 500
             result = {
                 "condition": name,
+                "artifact": label,
                 "start": started,
                 "end": run.now(),
                 "exit_code": code,
@@ -286,12 +307,20 @@ def main():
                 if code == 0 and correct and not errors and not sampler.is_alive()
                 else "FAIL",
             }
+            result["latency_gates"] = [
+                {"phase": receipt["profile"], **assess(receipt)}
+                for receipt in json.loads((out / "load/summary.json").read_text())
+            ]
             results.append(result)
             run.write(args.output / "execution.json", results)
             print("END", name, result["outcome"], flush=True)
             eng.dispose()
         admin.dispose()
-        if len(results) != len(conditions) or any(r["outcome"] != "PASS" for r in results):
+        if len(results) != len(conditions) or any(
+            r["outcome"] != "PASS"
+            or (r["artifact"] == "new" and any(g["outcome"] == "FAIL" for g in r["latency_gates"]))
+            for r in results
+        ):
             raise SystemExit(1)
     finally:
         run.cleanup(parent)

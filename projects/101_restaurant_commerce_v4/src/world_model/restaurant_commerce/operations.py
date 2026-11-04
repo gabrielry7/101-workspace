@@ -78,7 +78,7 @@ class OperationsMixin:
             raise NotFoundError("Restaurante no encontrado")
         return profile
 
-    def pickup_slots(self, business_id, *, now=None):
+    def pickup_slots(self, business_id, *, now=None, requested_at=None):
         profile = self._ops_profile(business_id)
         row = self.session.get(PickupPolicy, business_id)
         result = {
@@ -94,27 +94,41 @@ class OperationsMixin:
         now = aware(now or utcnow())
         zone = ZoneInfo(profile.timezone)
         today = now.astimezone(zone).date()
-        counts = dict(
-            self.session.execute(
-                select(Order.requested_pickup_at, func.count())
-                .where(
-                    Order.business_id == business_id,
-                    Order.status != "cancelled",
-                    Order.requested_pickup_at >= now,
-                )
-                .group_by(Order.requested_pickup_at)
-            ).all()
+        days = range(7)
+        minutes = range(policy["opens"], policy["closes"], policy["slot_minutes"])
+        target = None
+        if requested_at is not None:
+            if requested_at.tzinfo is None:
+                return result
+            target = aware(requested_at)
+            local_target = target.astimezone(zone)
+            day_offset = (local_target.date() - today).days
+            minute = local_target.hour * 60 + local_target.minute
+            if not 0 <= day_offset < 7 or minute not in minutes:
+                return result
+            # Admission needs one candidate, not the entire seven-day calendar.
+            # The common loop below retains DST/fold, lead-time and closure rules.
+            days, minutes = (day_offset,), (minute,)
+        count_query = select(Order.requested_pickup_at, func.count()).where(
+            Order.business_id == business_id,
+            Order.status != "cancelled",
+            Order.requested_pickup_at >= now,
         )
+        if target is not None:
+            count_query = count_query.where(Order.requested_pickup_at == target)
+        counts = dict(self.session.execute(count_query.group_by(Order.requested_pickup_at)).all())
         counts = {aware(k): v for k, v in counts.items()}
         if not profile.ordering_enabled or not profile.pickup_enabled:
             return result
-        for n in range(7):
+        for n in days:
             day = today + timedelta(days=n)
             if day.weekday() not in policy["weekdays"] or day.isoformat() in policy["closed_dates"]:
                 continue
-            for minute in range(policy["opens"], policy["closes"], policy["slot_minutes"]):
+            for minute in minutes:
                 local = datetime.combine(day, time(), zone) + timedelta(minutes=minute)
                 instant = local.astimezone(UTC)
+                if target is not None and instant != target:
+                    continue
                 # Reject nonexistent wall-clock times around DST transitions.
                 if instant.astimezone(zone).replace(tzinfo=None) != local.replace(tzinfo=None):
                     continue
@@ -296,7 +310,11 @@ class OperationsMixin:
                     hashlib.sha256(key.encode()).digest()[:8], "big", signed=True
                 )
                 self.session.execute(select(func.pg_advisory_xact_lock(lock_id)))
-            slots = self.pickup_slots(profile.business_id)
+            slots = (
+                self.pickup_slots(profile.business_id, requested_at=requested)
+                if scheduled and requested
+                else {"scheduled": scheduled, "slots": []}
+            )
             requested = request.requested_pickup_at
             if requested and (requested.tzinfo is None or aware(requested) <= utcnow()):
                 raise ValidationError("Selecciona una hora futura con zona horaria")
