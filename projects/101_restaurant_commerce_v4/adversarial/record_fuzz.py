@@ -90,6 +90,7 @@ def invoke(records, method, path, case, label, bind_evidence=False):
         "label": label,
         "status": response.status_code,
         "state_unchanged": before == after,
+        "protected_tables": records.invariant_tables,
         "bound_evidence": bind_evidence,
         "expected_missing_evidence": expected_missing_evidence,
         "expected_missing_audience": expected_missing_audience,

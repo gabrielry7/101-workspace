@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 from uuid import uuid4
 
 import httpx
-from sqlalchemy import create_engine, select
+from sqlalchemy import create_engine, inspect, select
 from sqlalchemy.orm import Session
 from world_model.restaurant_commerce.campaign_models import CampaignSettings
 from world_model.restaurant_commerce.models import (
@@ -36,6 +36,7 @@ class Fixtures:
         self.headers = config["single_staff_headers"]
         self.http = httpx.Client(base_url=config["base_url"], trust_env=False, timeout=15)
         self.engine = create_engine(config["database_url"])
+        self.installed_tables = set(inspect(self.engine).get_table_names())
         self.campaign_root = f"/api/operator/restaurants/{self.business}/campaigns"
         with Session(self.engine) as session:
             for i, business in enumerate(config["business_ids"]):
@@ -226,9 +227,15 @@ class Fixtures:
         ]
         # Stage3 legacy-wallet/refund consumers can write these tables even when
         # experiment selection is disabled. Include them in rejection invariants.
-        names = sorted(set(names) | {
-            n for n in Base.metadata.tables if n.startswith("restaurant_loyalty_")
-        })
+        names = sorted(
+            set(names)
+            | {
+                n
+                for n in Base.metadata.tables
+                if n.startswith("restaurant_loyalty_") and n in self.installed_tables
+            }
+        )
+        self.invariant_tables = names
         result = {}
         with self.engine.connect() as conn:
             for name in names:

@@ -67,6 +67,9 @@ def run_records(config, config_path, output):
         "end": datetime.now(UTC).isoformat(),
         "exit_code": code,
         "requests": len(rows),
+        "protected_tables": sorted(
+            {name for row in rows for name in row.get("protected_tables", [])}
+        ),
         "operations": operations,
         "excluded_optional_routes": [p for p in spec["paths"] if "/loyalty-refunds/" in p],
         "gaps": [
