@@ -1,4 +1,4 @@
-# Loyalty experimentation — stages 1–4
+# Loyalty experimentation — stages 1–5
 
 Implemented: a staff-authorized configuration foundation for multiple loyalty
 strategies, immutable published versions and separately versioned experiments.
@@ -8,6 +8,7 @@ financial workflows. Ordinary baseline benefits remain; new orders can add an ex
 published strategy under the synthetic execution gate described below.
 Stage 4 independently enrolls verified customers into permanent randomized cohorts
 and routes synthetic checkout through those assignments.
+Stage 5 adds a read-only financial simulator with explicit assumptions and sensitivity.
 
 The complete design and staged acceptance criteria live in the shared repository:
 `/home/t/101-world-model/docs/commerce-audit/LOYALTY_EXPERIMENTATION_PLAN.md`.
@@ -54,6 +55,7 @@ resource, revision, digest and actor in the same mutation transaction.
 | Method and suffix | Action |
 | --- | --- |
 | GET `/capabilities` | Reports optional configuration/preview and controlled adapter availability; public execution stays off |
+| POST `/simulator` | Calculate hypothetical economics without saving or activating a program |
 | GET `/experiments/{id}/enrollment` | Descriptive assignment, exposure and ledger diagnostics; requires the offline assignment upgrade |
 | GET/POST `/programs` or `/experiments` | List or create a draft |
 | GET/PUT `/{kind}/{id}` | Inspect history or edit draft with expected revision |
@@ -359,7 +361,7 @@ completion versus refund, and expiration versus cancellation. Run against dispos
 SQLite and PostgreSQL using the existing `COMMERCE_PAYMENT_TEST_DATABASE_URL` fixture.
 Ordinary growth, identity, finance, delivery, payment/capacity and readiness tests
 remain required consumers. Test fixtures use synthetic customers and local providers.
-Stages 5–7 (simulator, staff configuration UI and ITT profit reporting)
+Stages 6–7 (staff configuration UI and ITT profit reporting)
 remain separate delivery stages. No winner or behavioral lift is claimed.
 
 
@@ -467,3 +469,123 @@ focused undefined-name checks on affected modules and whitespace checks pass.
 Evidence: shared `data/loyalty-verification/stage4-20261104/release/`, including the
 wheel/hash manifest and `final/installed-{sqlite,postgresql}.{txt,xml}`. The existing
 Starlette/httpx deprecation warning remains; no dependency was added or changed.
+
+
+## Stage 5: financial simulator API
+
+`POST /api/operator/restaurants/{business_id}/loyalty-config/simulator` uses the
+existing configuration flag, tenant-scoped `growth.read` permission and staff CSRF
+protection. It is available to authorized viewers as a nonpersistent calculation.
+No new schema, execution enablement, enrollment, wallet operation or provider call
+is involved. The staff console that will call this API remains Stage 6.
+
+Example request (illustrative minor-unit amounts, not recommended reward rates):
+
+```json
+{
+  "currency": "COP",
+  "horizon_days": 90,
+  "average_order_value_minor": 10000,
+  "purchases_per_customer": "2",
+  "customer_count": 1000,
+  "contribution": {"type": "margin", "contribution_margin_bps": 3000},
+  "reward": {
+    "type": "proportional",
+    "reward_value_bps": 200,
+    "fulfillment_cost_bps": 200
+  },
+  "expected_redemption_bps": 5000,
+  "operating_cost_minor": 100000,
+  "assumed_purchase_lift_bps": 1000,
+  "sensitivity": {"redemption_bps": [2500, 5000, 10000], "lift_bps": [0, 500, 1000]}
+}
+```
+
+Basis points are integers: 1000 means 10%. Frequencies accept decimal strings
+with at most six decimal places, or integer JSON values; floating-point JSON values,
+booleans, scientific notation, nonfinite values and unknown fields are rejected.
+The horizon is a declaration, not an instruction to multiply or annualize inputs.
+All amounts use the same declared currency. AOV must be net of tax, refunds and
+existing benefits, **before** the incremental experimental reward. Contribution
+must likewise be before the new reward and program operating costs.
+
+Contribution can alternatively be supplied as
+`{"type":"order_contributions","source_reference":"cost-sheet-v1","orders":[
+{"revenue_minor":10000,"contribution_minor":3000}]}`.
+The calculator derives the revenue-weighted rate, sum(contribution)/sum(revenue),
+and explicitly labels its extrapolation. Negative contributions are supported;
+aggregate revenue must be positive and order contribution cannot exceed revenue.
+These are caller-supplied observations, not authenticated outcome data or a causal
+estimate. No customer/order identifiers are looked up or implicitly linked.
+
+Three distinct reward models are supported:
+
+- `proportional`: face value and fulfillment cost as basis points of sales.
+- `per_purchase`: `reward_value_minor`, `fulfillment_cost_minor` and decimal-string
+  `rewards_per_purchase`. For example `"0.2"` models an expected one reward per five
+  purchases; it does not implement a customer-level buy-five eligibility counter.
+- `fixed_issuance`: `reward_value_minor`, `fulfillment_cost_minor` and integer
+  `issued_rewards`. This count stays fixed even if purchase frequency changes.
+
+Fulfillment cost is the full economic cost when a reward is redeemed; a discount or
+credit normally costs its face value. A product's supplied cost can differ from its
+face value. Zero-cost assumptions for positive reward value produce a warning.
+Redemption probability applies to eventual reward use. Expected reward cost is
+neither immediate cash outflow nor accounting liability. Operating cost is fixed
+for the supplied horizon. Only incremental costs belong in this input; baseline
+costs already included in contribution must not be subtracted again.
+
+With baseline orders O = customers × frequency, sales S = O × AOV, contribution
+rate m, assumed purchase lift L, expected variable reward-cost rate c and expected
+fixed reward cost F, the model calculates:
+
+```text
+projected sales = S × (1 + L)
+expected reward cost = S × (1 + L) × c + F
+incremental contribution profit = S × L × m − expected reward cost − operating cost
+break-even extra sales = (S × c + F + operating cost) / (m − c)
+```
+
+The last expression applies when baseline sales and the effective incremental
+margin are positive. A fixed issuance pool has c = 0; a per-purchase model derives
+c from cost per purchase / AOV. Zero baseline sales give an undefined percentage
+lift, and nonpositive effective margin with positive costs gives no finite
+break-even. If costs at zero lift are zero, the scenario is already at break-even;
+that does not mean it earns positive profit. Negative lift down to -100% is supported.
+AOV, customer count and marginal contribution rate remain constant as frequency
+changes. Budget caps, eligibility, per-order rounding/floors and behavior are not
+inferred from published program configuration.
+
+The example above yields baseline sales 20,000,000, projected sales 22,000,000,
+expected reward cost 220,000 and estimated incremental profit 280,000 minor units.
+At zero lift the program costs 300,000 including operations; extra sales contribute
+29% after variable rewards. Break-even is therefore 1,034,483 extra minor units
+(rounded upward), requiring 5.172414% lift (rounded upward). This is an algebraic
+scenario, not observed improvement.
+
+The pure `loyalty_simulator.simulate` function uses exact rational arithmetic.
+Outputs round only once: monetary aggregates use integer minor-unit **strings**
+so large totals survive JSON/browser parsing exactly; percentages and expected
+order counts use six-place decimal strings. Half values round away from zero.
+Break-even sales and lift round upward; profitability is evaluated before rounding.
+Inputs retain safe-integer bounds, observed-order lists are capped at 1,000 and
+sensitivity axes at nine values each (81 cells). Each cell includes full costs,
+profit, break-even status and warnings under its declared lift/redemption pair.
+
+Responses retain the input scenario, SHA256 scenario digest, calculation version
+`loyalty-economics-v1`, rounding/assumption statements, `lift_is_assumed: true` and
+`causal_effect_estimated: false`. No experiment winner or optimal reward is selected.
+The result can inform an experiment design; Stage 7 must establish realized effects
+using the original randomized cohorts and complete contribution-cost coverage.
+
+Stage-5 installed-wheel qualification (2026-11-04 UTC): **151 checks passed**
+(149 SQLite and two PostgreSQL consumers), with no failures or skips. This includes
+38 simulator cases, hand-calculated examples, exact break-even/property checks,
+fixed versus variable issuance, zero/negative margins, zero sales, no lift, full
+redemption, large-integer serialization, sensitivity equivalence and strict inputs.
+The actual staff endpoint proves flag/tenant/role/CSRF behavior and no order,
+wallet, ledger or configuration-audit writes; existing configuration, rule previews,
+growth, customer protection and assignment diagnostics remain compatible. All 81
+packaged source/asset files match the tested checkout. New-file Ruff, affected-module
+undefined-name checks and whitespace pass. Evidence is retained in shared
+`data/loyalty-verification/stage5-20261104/release/` (wheel manifest and final JUnit/logs).
