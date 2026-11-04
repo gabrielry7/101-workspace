@@ -7,7 +7,7 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
-from . import campaign_models, refunds  # noqa: F401 - register additive metadata
+from . import campaign_models, refunds, loyalty_models  # noqa: F401 - register additive metadata
 from .migrations import (
     CUSTOMER_SAFETY_COLUMNS,
     FINANCIAL_TABLES,
@@ -16,6 +16,8 @@ from .migrations import (
     STAFF_TABLES,
 )
 from .models import Base
+from .loyalty_models import LOYALTY_TABLES
+from .loyalty_migrations import configuration_schema_ready
 
 
 def make_engine(database_url: str | None = None) -> Engine:
@@ -66,7 +68,7 @@ def init_schema(engine: Engine) -> None:
         t
         for t in Base.metadata.sorted_tables
         if not existing
-        or t.name not in {"restaurant_wompi_sandbox_lookups", "restaurant_wompi_sandbox_discovery"}
+        or t.name not in ({"restaurant_wompi_sandbox_lookups", "restaurant_wompi_sandbox_discovery"} | LOYALTY_TABLES)
     ]
     Base.metadata.create_all(engine, tables=tables)
     if not database_ready(engine):
@@ -113,13 +115,15 @@ CORE_TABLES = (
 )
 
 
-def database_ready(engine: Engine, *, require_schema: bool = True) -> bool:
+def database_ready(engine: Engine, *, require_schema: bool = True, require_loyalty: bool = False) -> bool:
     try:
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
             if require_schema:
                 inspector = inspect(connection)
                 tables = set(inspector.get_table_names())
+                if not configuration_schema_ready(connection, required=require_loyalty, known_tables=tables):
+                    return False
                 if not CORE_TABLES.issubset(tables):
                     return False
                 expected = {
