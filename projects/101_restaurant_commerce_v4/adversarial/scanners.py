@@ -822,6 +822,14 @@ def zap_scan(rec, config):
         result["budget_exhausted"] = result["active_seconds"] >= 715
         ids = api("ascan", "view", "messagesIds", scanId=scan)
         dump(rec.output / "zap-active-message-ids.json", ids)
+        progress = api("ascan", "view", "scanProgress", scanId=scan)
+        dump(rec.output / "zap-active-progress.json", progress)
+        alerts = api("core", "view", "alerts", baseurl=base, start=0, count=10000)
+        dump(
+            rec.output / "zap-alerts.json",
+            redact_native(alerts, [*config["single_staff_headers"].values(), customer_token]),
+        )
+        result["active_request_count"] = len(ids.get("messagesIds", []))
         total = int(api("core", "view", "numberOfMessages", baseurl=base)["numberOfMessages"])
         messages = {"messages": []}
         headers = []
@@ -833,10 +841,10 @@ def zap_scan(rec, config):
         active_id_set = {str(x) for x in ids.get("messagesIds", [])}
         body_truncations = []
         export_started = time.monotonic()
-        for offset in range(0, min(total, 50000), 10):
+        for offset in range(0, min(total, 50000), 50):
             if time.monotonic() - export_started > 240:
                 raise RuntimeError("Native history export exceeded240s; incomplete evidence")
-            batch = api("core", "view", "messages", baseurl=base, start=offset, count=10).get(
+            batch = api("core", "view", "messages", baseurl=base, start=offset, count=50).get(
                 "messages", []
             )
             for message in batch:
@@ -915,11 +923,6 @@ def zap_scan(rec, config):
             rec.output / "zap-messages.json",
             redact_native(messages, [*config["single_staff_headers"].values(), customer_token]),
         )
-        alerts = api("core", "view", "alerts", baseurl=base, start=0, count=10000)
-        dump(
-            rec.output / "zap-alerts.json",
-            redact_native(alerts, [*config["single_staff_headers"].values(), customer_token]),
-        )
         count = len(ids.get("messagesIds", []))
         result["active_request_count"] = count
         active_ids = {str(x) for x in ids.get("messagesIds", [])}
@@ -935,8 +938,6 @@ def zap_scan(rec, config):
                 ("customer", "/api/orders/"),
             ]
         }
-        progress = api("ascan", "view", "scanProgress", scanId=scan)
-        dump(rec.output / "zap-active-progress.json", progress)
 
         def plugins(value):
             if isinstance(value, dict):
