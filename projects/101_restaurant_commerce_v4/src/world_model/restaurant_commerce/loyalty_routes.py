@@ -6,6 +6,8 @@ from fastapi import Depends, Request
 from sqlalchemy.orm import Session
 
 from .loyalty_config import LoyaltyConfigurationService
+from .loyalty_preview import PublishedRulePreview, preview_published_rules
+from .loyalty_rules import CALCULATION_VERSION, PreviewScenario
 from .loyalty_schemas import (
     ExperimentCreate,
     ExperimentEdit,
@@ -32,8 +34,25 @@ def register(app, get_session, scoped_staff):
             "execution_enabled": False,
             "assignment_enabled": False,
             "analytics_enabled": False,
-            "stage": "configuration_foundation",
+            "stage": "rule_previews",
+            "preview_enabled": True,
+            "calculation_version": CALCULATION_VERSION,
+            "preview_rule_types": ["points_earning", "fixed_value_redemption"],
         }
+
+    @app.post(
+        root + "/programs/{resource_id}/versions/{version_id}/preview",
+        response_model=PublishedRulePreview,
+        dependencies=[Depends(read)],
+    )
+    def loyalty_preview_program(
+        business_id: str,
+        resource_id: str,
+        version_id: str,
+        payload: PreviewScenario,
+        session: Session = Depends(get_session),
+    ):
+        return preview_published_rules(session, business_id, resource_id, version_id, payload)
 
     # Explicit request models keep OpenAPI and validation contracts inspectable.
     @app.post(root + "/programs")

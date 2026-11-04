@@ -1,4 +1,4 @@
-"""Closed, versioned documents; executable rules are introduced in the next stage."""
+"""Closed, versioned documents shared by configuration and rule previews."""
 
 from datetime import datetime
 from typing import Annotated, Literal
