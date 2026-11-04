@@ -57,8 +57,14 @@ def f():
 def invoke(f, path, body, *, headers=None, method="POST", expected=None, unchanged=False, label=""):
     before = f.snapshot()
     started = time.monotonic()
+    request_headers = {
+        **(f.headers if headers is None else headers),
+        "Content-Type": "application/json",
+    }
+    # Send escaped Unicode bytes: httpx's json= refuses lone surrogates locally,
+    # which would otherwise test the client serializer rather than our server.
     response = f.http.request(
-        method, path, headers=f.headers if headers is None else headers, json=body
+        method, path, headers=request_headers, content=json.dumps(body, ensure_ascii=True).encode()
     )
     after = f.snapshot()
     with OUTPUT.open("a") as out:
