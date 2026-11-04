@@ -182,3 +182,11 @@ not verified delivery. It has no reliable transmission timestamp. Before live
 multi-channel activation, connect that operational history to contact-limit review
 or disable the legacy marketing handoff path; do not count it as a provider receipt.
 The present shared frequency check spans the new campaign channel contracts.
+
+
+## WhatsApp extension
+
+The official WhatsApp transport, template snapshots, authenticated callback/inbox
+and opt-out path now reuse this lifecycle. See [WHATSAPP.md](WHATSAPP.md) for
+configuration, supported template shapes, synthetic browser proof and activation
+limits. SMS remains unconfigured; real sending remains disabled.
