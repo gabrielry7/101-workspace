@@ -352,7 +352,10 @@ def create_app(
         if request.scope.get("endpoint") and request.scope["endpoint"].__name__ == "campaign_email_preview":
             # Escaped email renderer only; no scripts, remote images or form actions.
             response.headers["X-Frame-Options"] = "SAMEORIGIN"
-            response.headers["Content-Security-Policy"] = "default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; frame-ancestors 'self'; base-uri 'none'; form-action 'none'; sandbox allow-same-origin"
+            response.headers["Content-Security-Policy"] = getattr(
+                request.state, "campaign_preview_csp",
+                "default-src 'none'; frame-ancestors 'self'; sandbox",
+            )
         if production:
             response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         if (

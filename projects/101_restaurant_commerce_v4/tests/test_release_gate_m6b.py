@@ -54,6 +54,10 @@ def proof():
         packages=20, installed_inventory_match=True, database_updated_at="2026-11-02T20:00:00Z"
     )
     value["zap"].update(
+        json_body_parse_warnings=0,
+        native_log_errors=0,
+        server_error_count=0,
+        structured_body_coverage_complete=True,
         active_request_count=7000,
         completed_rule_ids=RULES,
         incomplete_rule_ids=[],
@@ -99,6 +103,10 @@ def test_missing_layer_never_passes(proof, layer):
         ("dependencies", "database_updated_at", "2026-12-20T00:00:00Z"),
         ("dependencies", "database_updated_at", None),
         ("secrets_config", "config_targets", 0),
+        ("zap", "json_body_parse_warnings", 1),
+        ("zap", "native_log_errors", 1),
+        ("zap", "server_error_count", 1),
+        ("zap", "structured_body_coverage_complete", False),
         ("zap", "active_request_count", 0),
         ("zap", "completed_rule_ids", ["6"]),
         ("zap", "incomplete_rule_ids", ["6"]),

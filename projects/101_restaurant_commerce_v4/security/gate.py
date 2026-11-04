@@ -125,6 +125,13 @@ def verdict(layers, findings, reviews, now=None):
         failures.append("zap: active authenticated staff/customer coverage absent")
     if zap.get("budget_exhausted", True) or zap.get("protected_counts_are_lower_bounds", True):
         failures.append("zap: time budget/export limit prevents complete assessment")
+    if (
+        zap.get("json_body_parse_warnings") != 0
+        or zap.get("native_log_errors") != 0
+        or zap.get("server_error_count") != 0
+        or zap.get("structured_body_coverage_complete") is not True
+    ):
+        failures.append("zap: structured-body parsing/active mutation proof incomplete")
     accepted, blocked = [], []
     for item in findings:
         if item["severity"] == "INFORMATIONAL":

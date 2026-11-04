@@ -451,3 +451,24 @@ def test_pre_upgrade_payment_callback_can_be_replayed_after_refund_schema_extens
         row.payload_sha256=request_fingerprint(historical);s.commit()
     assert payment_event(env,order,status='paid',event='legacy-payment').status_code==200
     assert report(env,p)['paid_orders']==1
+
+
+@pytest.mark.parametrize('method',['POST','PUT'])
+@pytest.mark.parametrize('field',['customer_ids','sender','subject','promotion_code'])
+def test_campaign_nul_rejected_without_partial_writes(env,method,field):
+    value=draft(env)
+    campaign=create(env,value)
+    if field=='subject': value['content']['subject']='before\x00after'
+    elif field=='customer_ids': value[field]=['invalid\x00customer']
+    else: value[field]='before\x00after'
+    from sqlalchemy import func
+    from world_model.restaurant_commerce.campaign_models import Campaign,CampaignRevision
+    def counts():
+        with env.factory() as session:
+            return (session.scalar(select(func.count()).select_from(Campaign)),
+                    session.scalar(select(func.count()).select_from(CampaignRevision)))
+    before=counts()
+    response=env.client.request(method,ROOT+('/'+campaign['id'] if method=='PUT' else ''),
+                                json=value,headers=env.headers)
+    assert response.status_code==422
+    assert counts()==before

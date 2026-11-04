@@ -10,6 +10,7 @@ from pathlib import Path
 
 import httpx
 from fixture_state import business_inputs
+from record_runner import run_records
 
 p = argparse.ArgumentParser()
 p.add_argument("--config", type=Path, required=True)
@@ -141,7 +142,7 @@ for profile, pattern, seconds in [
             "gaps": [
                 "customer capability only; no login/session feature",
                 "opaque IDs bound via hooks; unknown delivery/message IDs can return404",
-                "only server-error/schema checks enabled; authorization/business invariants tested separately",
+                "Broad server-error/schema checks; fresh-record state checks run separately below.",
             ],
         }
         (out / "receipt.json").write_text(json.dumps(receipt, indent=2))
@@ -165,5 +166,12 @@ print(
     )
 )
 
-if any(r["outcome"] != "PASS" or r["execution"] != "COMPLETE" for r in receipts):
+# Broad schema exploration cannot qualify opaque routes on 404 responses alone.
+# Require the companion fresh-record suite, including real finance operations.
+
+with business_inputs(c, a.config):
+    record_result = run_records(c, a.config, a.output / "real-records")
+if record_result["outcome"] != "PASS" or any(
+    r["outcome"] != "PASS" or r["execution"] != "COMPLETE" for r in receipts
+):
     raise SystemExit(1)

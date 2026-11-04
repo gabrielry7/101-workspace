@@ -61,8 +61,12 @@ def register(app, get_session, scoped_staff, options, demo_mode):
         return c.preview(session, business_id, campaign_id, now())
 
     @app.get(root + '/{campaign_id}/email', dependencies=[Depends(read)])
-    def campaign_email_preview(business_id: str, campaign_id: str, session: Session = Depends(get_session)):
-        return HTMLResponse(c.preview(session, business_id, campaign_id, now())['email']['html'])
+    def campaign_email_preview(business_id: str, campaign_id: str, request: Request,
+                               session: Session = Depends(get_session)):
+        from .campaign_preview_security import preview_csp
+        rendered = c.preview(session, business_id, campaign_id, now())['email']['html']
+        request.state.campaign_preview_csp = preview_csp(rendered)
+        return HTMLResponse(rendered)
 
     @app.put(root + '/{campaign_id}', dependencies=[Depends(write)])
     def campaign_edit(business_id: str, campaign_id: str, payload: c.Draft, session: Session = Depends(get_session)):

@@ -110,3 +110,47 @@ See [capacity contracts](../CAPACITY_PROFILES.md) for quantity-untracked, finite
 stock and scheduled pickup semantics, deterministic PostgreSQL concurrency tests,
 and `profile_benchmark.py` for paired old/new 30/100-user measurements. Appointment
 resource allocation and automatic product restocking remain separate capabilities.
+
+## S01/S02 structured security coverage
+
+With the existing pinned toolchain and Java/ZAP installed, run from this project:
+
+```sh
+COMMERCE_TOOLCHAIN=/path/to/python-toolchain \
+  /path/to/python-toolchain/venv/bin/python adversarial/security_coverage.py \
+  --output /tmp/commerce-security-new-run \
+  --scanner-tools /path/to/scanner-tools
+```
+
+The output directory must be new. Scanner tools contains `java/*/bin/java` and
+`zap/*/zap-*.jar`; Python toolchain contains `venv/bin/python`. This builds and
+installs a fresh wheel, seeds two businesses on owned PostgreSQL with a controlled
+local financial provider, verifies a successful checkout, and runs regressions,
+real-backend Chromium stored-payload/preview checks, Schemathesis-generated cases
+against real records, authorization/refund-replay invariants, and authenticated ZAP.
+It stops its services and retains evidence; it never loads payment credentials.
+
+Read `qualification.json` alongside native JUnit, per-operation `records/summary.json`,
+`authorization.json`, `zap-review.json`, and `private-zap/result.json`. The current
+record slice covers campaign, delivery, outbox and financial operations, with one
+valid setup per operation and up to eight generated cases per operation. Manual
+`sent` deliberately rejects409 without a provider receipt. Missing body references
+may deliberately return404, but every operation must separately reach its known
+success (or that explicit409). Rejected requests are compared against protected
+PostgreSQL rows. Generation is bounded without automatic shrinking; exact failing
+bodies/query values are retained for reproduction.
+
+The main `fuzz.py` entry point also requires this real-record slice after its broad
+public/staff/customer profiles. The latter retain their own narrower coverage claims.
+ZAP preserves actual OpenAPI separately from its import copy, binds real campaign
+records and nested JSON bodies, and requires active nested-body mutations and both
+staff/customer authenticated successes. Parser warnings, server500s, scanner errors,
+missing coverage or an exhausted budget prevent qualification. Session-changing
+routes are excluded from the active scan and checked independently.
+
+The same 16 bounded HTTP rules remain selected; this does not qualify every ZAP
+rule, optional loyalty-experiment APIs, complete customer login, external providers,
+long-running load, or other browser engines. Low-confidence stored-JSON alerts stay
+visible and require an exact, expiring review bound to current rendering source;
+a new renderer invalidates that review. Do not publish configs, browser contexts,
+ZAP sessions, private database files or synthetic credentials.

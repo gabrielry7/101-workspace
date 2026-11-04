@@ -170,6 +170,36 @@
       "owner": "101 commerce engineering",
       "reason": "Offline SQLite DDL interpolates only module-literal CUSTOMER_SAFETY_COLUMNS identifiers/declarations, not request or stored values. Full-file fingerprint binds those constants and control flow. Campaign extension adds only fixed SQLAlchemy table metadata with create_all; original fixed-column DDL remains unchanged.",
       "expires_at": "2026-12-03T00:00:00+00:00"
+    },
+    {
+      "layer": "zap",
+      "rule": "40014",
+      "path": "/api/operator/restaurants/demo-restaurant-bogota/automations",
+      "severity": "LOW",
+      "fingerprint": "3a5ef0e28efd622fa805fb25b9d5930e2f2b87d8f3dfa2232d2caa2f475f229f",
+      "owner": "101 commerce engineering",
+      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review.",
+      "expires_at": "2026-12-04T00:00:00Z"
+    },
+    {
+      "layer": "zap",
+      "rule": "40014",
+      "path": "/api/operator/restaurants/demo-restaurant-bogota/automations",
+      "severity": "LOW",
+      "fingerprint": "f4c61bda53fa08ccf0b9596c71105b7924a90516dafdf17951d11588d8f92a19",
+      "owner": "101 commerce engineering",
+      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review.",
+      "expires_at": "2026-12-04T00:00:00Z"
+    },
+    {
+      "layer": "zap",
+      "rule": "40014",
+      "path": "/api/operator/restaurants/demo-restaurant-bogota/rewards",
+      "severity": "LOW",
+      "fingerprint": "3a5ef0e28efd622fa805fb25b9d5930e2f2b87d8f3dfa2232d2caa2f475f229f",
+      "owner": "101 commerce engineering",
+      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review.",
+      "expires_at": "2026-12-04T00:00:00Z"
     }
   ]
 }

@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from sqlalchemy import select, update, func, or_
 from fastapi import HTTPException
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import ConfigDict, Field, field_validator, model_validator
 from typing import Literal
 from .models import Customer, Order, Payment, RestaurantCommerceProfile, utcnow
 from .campaign_models import (CampaignSettings, ContactPermission, PermissionEvidence, Campaign,
@@ -15,6 +15,7 @@ from .campaign_models import (CampaignSettings, ContactPermission, PermissionEvi
 from .campaign_email import render, VERSION
 from .campaign_delivery import Message, Submission
 from .staff import aware
+from .schemas import StrictModel
 
 
 def canonical(value):
@@ -29,8 +30,8 @@ def date(value):
     return aware(datetime.fromisoformat(value.replace('Z', '+00:00')))
 
 
-class Copy(BaseModel):
-    model_config = ConfigDict(extra='forbid')
+class Copy(StrictModel):
+    model_config = ConfigDict(extra='forbid', str_strip_whitespace=False)
     subject: str = Field(min_length=1, max_length=180)
     title: str = Field(min_length=1, max_length=180)
     body: str = Field(min_length=1, max_length=4000)
@@ -44,8 +45,8 @@ class Copy(BaseModel):
         return v
 
 
-class Draft(BaseModel):
-    model_config = ConfigDict(extra='forbid')
+class Draft(StrictModel):
+    model_config = ConfigDict(extra='forbid', str_strip_whitespace=False)
     channel: Literal['email', 'whatsapp', 'sms'] = 'email'
     sender: str = Field(min_length=3, max_length=320)
     content: Copy

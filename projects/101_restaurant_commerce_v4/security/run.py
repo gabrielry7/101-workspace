@@ -33,8 +33,12 @@ def main():
     p.add_argument("--rules-dir", required=True)
     p.add_argument("--trivy-cache", required=True)
     p.add_argument("--layers", default="tests,static,zap")
-    p.add_argument("--test-timeout-seconds", type=int, default=1800,
-                   help="Bounded full-suite wall-clock allowance (60–3600 seconds)")
+    p.add_argument(
+        "--test-timeout-seconds",
+        type=int,
+        default=1800,
+        help="Bounded full-suite wall-clock allowance (60–3600 seconds)",
+    )
     a = p.parse_args()
     if not 60 <= a.test_timeout_seconds <= 3600:
         p.error("--test-timeout-seconds must be between 60 and 3600")
@@ -265,6 +269,25 @@ def main():
             "checks": len(checks),
             "names": checks,
         }
+        # Real tenant-scoped campaign fixtures are required for structured-body scanning.
+        from sqlalchemy import select
+        from world_model.restaurant_commerce.models import Customer
+
+        spec["database_url"] = cfg["database_url"]
+        spec["customer_ids"] = []
+        with sessions() as session:
+            for index, business in enumerate(spec["business_ids"]):
+                customer = session.scalar(select(Customer).where(Customer.business_id == business))
+                if customer is None:
+                    customer = Customer(
+                        business_id=business,
+                        phone=f"300555090{index}",
+                        name="Synthetic scanner customer",
+                    )
+                    session.add(customer)
+                    session.flush()
+                spec["customer_ids"].append(customer.id)
+            session.commit()
         runtime.write_json(run.path / "private-scanner-config.json", spec)
         save(run.evidence / "layers.json", layers)
         if "tests" in a.layers.split(","):
@@ -427,22 +450,9 @@ def main():
                 layers["zap"] = scanners.zap_scan(rec, spec)
                 native = json.loads((rec.output / "zap-alerts.json").read_text())
                 for f in native.get("alerts", []):
-                    evidence = json.dumps(
-                        {
-                            k: f.get(k)
-                            for k in ["alertRef", "name", "risk", "confidence", "param", "evidence"]
-                        },
-                        sort_keys=True,
-                    )
-                    findings.append(
-                        finding(
-                            f.get("alertRef", f["pluginId"]),
-                            f["url"].replace(spec["base_url"], ""),
-                            evidence,
-                            f["risk"].upper(),
-                            "zap",
-                        )
-                    )
+                    from alert_review import zap_finding
+
+                    findings.append(zap_finding(f, spec["base_url"], ROOT))
             except Exception as exc:
                 layers["zap"] = {
                     "execution": "PARTIAL",

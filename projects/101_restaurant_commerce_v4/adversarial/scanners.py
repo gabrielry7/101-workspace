@@ -215,8 +215,7 @@ def semgrep(rec, source):
         str(p.relative_to(source)): hashlib.sha256(p.read_bytes()).hexdigest()
         for root in targets
         for p in ([root] if root.is_file() else root.rglob("*"))
-        if p.is_file() and p.suffix in {".py", ".js", ".mjs"}
-        and "node_modules" not in p.parts
+        if p.is_file() and p.suffix in {".py", ".js", ".mjs"} and "node_modules" not in p.parts
     }
     dump(rec.output / "semgrep-source-inventory.json", inventory)
     rec.run("semgrep-version", [str(binary), "--version"], 30, env)
@@ -650,16 +649,58 @@ def zap_scan(rec, config):
         spec_status, spec = fetch(base + "/openapi.json")
         assert spec_status == 200
         dump(rec.output / "actual-openapi.json", spec)
-        excluded = [p for p in spec["paths"] if p.startswith("/api/staff/")]
+        excluded = [
+            p for p in spec["paths"] if p.startswith("/api/staff/") or p.endswith("/access/revoke")
+        ]
         selected_spec = {
             **spec,
             "paths": {p: v for p, v in spec["paths"].items() if p not in excluded},
         }
+        from scanner_contract import prepared_spec
+
+        operation_fixtures = config.get("zap_operation_fixtures", {})
+        if not operation_fixtures and config.get("database_url") and config.get("customer_ids"):
+            from security_fixtures import Fixtures
+
+            fixture_builder = Fixtures(config)
+            try:
+                for path, methods in selected_spec["paths"].items():
+                    if "/campaigns" not in path:
+                        continue
+                    for method in methods:
+                        if method not in {"get", "post", "put", "patch"}:
+                            continue
+                        params, value = fixture_builder.prepare(method.upper(), path)
+                        operation_fixtures[method.upper() + " " + path] = {
+                            "ids": params,
+                            "body": value,
+                        }
+            finally:
+                fixture_builder.close()
+        selected_spec, import_coverage = prepared_spec(
+            selected_spec,
+            operation_fixtures,
+            {
+                "business_id": business,
+                "order_id": order["id"],
+                "customer_id": (config.get("customer_ids") or ["synthetic-unbound-id"])[0],
+                "provider_reference": order["payments"][0]["provider_reference"],
+                "provider": "simulated",
+                "slug": store.get("slug", "synthetic"),
+            },
+        )
+        dump(rec.output / "zap-import-coverage.json", import_coverage)
         selected_spec["servers"] = [{"url": base}]
         spec_path = rec.output / "selected-openapi.json"
         dump(spec_path, selected_spec)
         result["excluded_session_routes"] = excluded
         api("ascan", "action", "excludeFromScan", regex=re.escape(base) + r"/api/staff/.*")
+        api(
+            "ascan",
+            "action",
+            "excludeFromScan",
+            regex=re.escape(base) + r"/api/operator/orders/.*/access/revoke",
+        )
         # Session routes have separate real-session/CSRF/revocation regressions.
         # Native importer result is retained.
         result["openapi_import"] = api(
@@ -670,6 +711,31 @@ def zap_scan(rec, config):
             hostOverride=base,
             contextId=context,
         )
+        # Explicit valid nested campaign bodies are independent of importer heuristics.
+        structured_targets = {}
+        for key, fixture in operation_fixtures.items():
+            method, template = key.split(" ", 1)
+            if method not in {"POST", "PUT"} or not template.endswith(
+                ("/campaigns", "/{campaign_id}")
+            ):
+                continue
+            path = template.format(**fixture["ids"])
+            encoded = json.dumps(fixture["body"], ensure_ascii=True)
+            raw = (
+                f"{method} {path} HTTP/1.1\r\nHost: {urllib.parse.urlsplit(base).netloc}\r\n"
+                f"Content-Type: application/json\r\n"
+                f"Content-Length: {len(encoded.encode())}\r\n\r\n{encoded}"
+            )
+            response = api("core", "action", "sendRequest", request=raw, followRedirects="false")
+            if not any(
+                " 200 " in m.get("responseHeader", "").split("\r\n")[0]
+                for m in response.get("sendRequest", [])
+            ):
+                raise RuntimeError(
+                    "Valid structured campaign seed did not reach business logic: " + key
+                )
+            structured_targets[method + " " + path] = fixture["body"]
+        result["structured_seed_successes"] = len(structured_targets)
         api("ascan", "action", "setOptionThreadPerHost", Integer=2)
         api("ascan", "action", "setOptionMaxRuleDurationInMins", Integer=3)
         api("ascan", "action", "setOptionMaxScanDurationInMins", Integer=12)
@@ -759,16 +825,62 @@ def zap_scan(rec, config):
         total = int(api("core", "view", "numberOfMessages", baseurl=base)["numberOfMessages"])
         messages = {"messages": []}
         headers = []
+        server_errors = []
+        structured = {
+            key: {"active_json": 0, "nested_mutations": 0, "statuses": {}}
+            for key in structured_targets
+        }
+        active_id_set = {str(x) for x in ids.get("messagesIds", [])}
         for offset in range(0, min(total, 50000), 100):
             batch = api("core", "view", "messages", baseurl=base, start=offset, count=100).get(
                 "messages", []
             )
+            for message in batch:
+                if re.search(r" 5\d\d ", message.get("responseHeader", "").split("\r\n")[0]):
+                    server_errors.append(message)
+                if str(message.get("id")) not in active_id_set:
+                    continue
+                first = message.get("requestHeader", "").split("\r\n")[0].split(" ")
+                if len(first) < 2:
+                    continue
+                target = first[0] + " " + urllib.parse.urlsplit(first[1]).path
+                if target not in structured:
+                    continue
+                try:
+                    payload = json.loads(message.get("requestBody", ""))
+                except (ValueError, TypeError):
+                    continue
+                coverage_row = structured[target]
+                coverage_row["active_json"] += 1
+                if isinstance(payload, dict) and isinstance(payload.get("content"), dict):
+                    coverage_row["nested_mutations"] += int(
+                        payload["content"] != structured_targets[target]["content"]
+                    )
+                status_line = message.get("responseHeader", "").split("\r\n")[0]
+                status_code = status_line.split(" ")[1] if " " in status_line else "missing"
+                coverage_row["statuses"][status_code] = (
+                    coverage_row["statuses"].get(status_code, 0) + 1
+                )
             headers.extend(
                 {key: msg.get(key) for key in ["id", "requestHeader", "responseHeader", "rtt"]}
                 for msg in batch
             )
             if offset < 2000:
                 messages["messages"].extend(batch)
+        dump(
+            rec.output / "zap-server-errors.json",
+            redact_native(
+                server_errors, [*config["single_staff_headers"].values(), customer_token]
+            ),
+        )
+        result["server_error_count"] = len(server_errors)
+        result["structured_body_coverage"] = structured
+        result["structured_body_coverage_complete"] = len(structured) >= 2 and all(
+            r["active_json"] > 0
+            and r["nested_mutations"] > 0
+            and any(k in {"200", "409", "422"} for k in r["statuses"])
+            for r in structured.values()
+        )
         result["total_http_history_messages"] = total
         result["history_export_limit"] = 2000
         result["header_export_limit"] = 50000
@@ -870,7 +982,12 @@ def zap_scan(rec, config):
             "these requests do not establish valid structured-body attack coverage. "
             "Inspect the retained private daemon log for affected routes."
         )
-    if result["native_log_errors"]:
+    if (
+        result["native_log_errors"]
+        or result.get("server_error_count", 0)
+        or result["json_body_parse_warnings"]
+        or not result.get("structured_body_coverage_complete", False)
+    ):
         result["execution"] = "PARTIAL"
         if result.get("outcome") != "FAIL":
             result["outcome"] = "UNASSESSED"
