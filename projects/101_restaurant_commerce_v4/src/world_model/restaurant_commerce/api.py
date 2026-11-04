@@ -21,6 +21,7 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session
 
 from .cache import TTLCache
+from .readiness import ReadinessProbe
 from .db import database_ready, init_schema, make_engine, session_factory
 from .deliveries import (
     DeliveryProvider,
@@ -249,6 +250,12 @@ def create_app(
     if payment_recovery_interval_seconds <= 0 or payment_lease_seconds < 1:
         raise ValueError("Recovery interval/lease must be positive")
 
+    readiness = ReadinessProbe(
+        lambda deadline: database_ready(
+            engine, require_loyalty=loyalty_configuration_enabled, deadline=deadline
+        )
+    )
+
     @asynccontextmanager
     async def lifespan(_app):
         stop = thread = None
@@ -261,6 +268,7 @@ def create_app(
         try:
             yield
         finally:
+            readiness.close()
             if stop:
                 stop.set()
                 thread.join(timeout=5)
@@ -487,14 +495,19 @@ def create_app(
         app.add_exception_handler(exc_type, dependency_handler)
 
     @app.get("/health")
-    def health() -> dict[str, str]:
+    async def health() -> dict[str, str]:
         return {"status": "ok"}
 
     @app.get("/ready", responses={503: {"model": dict[str, str]}})
-    def ready():
-        if not database_ready(engine, require_loyalty=loyalty_configuration_enabled):
-            return JSONResponse({"status": "not_ready", "database": "down"}, status_code=503)
-        return {"status": "ready", "database": "ok"}
+    async def ready():
+        if not await readiness.ready():
+            return JSONResponse(
+                {"status": "not_ready", "database": "down"}, status_code=503,
+                headers={"Cache-Control": "no-store"},
+            )
+        return JSONResponse(
+            {"status": "ready", "database": "ok"}, headers={"Cache-Control": "no-store"}
+        )
 
     from .campaign_routes import register as register_campaigns
     register_campaigns(app, get_session, scoped_staff, campaign_options, demo_mode)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import time
 from pathlib import Path
 
 from sqlalchemy import create_engine, event, inspect, text
@@ -7,7 +8,9 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session, sessionmaker
 
-from . import campaign_models, refunds, loyalty_models  # noqa: F401 - register additive metadata
+from . import campaign_models, loyalty_models, refunds  # noqa: F401 - register additive metadata
+from .loyalty_migrations import configuration_schema_ready
+from .loyalty_models import LOYALTY_TABLES
 from .migrations import (
     CUSTOMER_SAFETY_COLUMNS,
     FINANCIAL_TABLES,
@@ -16,8 +19,6 @@ from .migrations import (
     STAFF_TABLES,
 )
 from .models import Base
-from .loyalty_models import LOYALTY_TABLES
-from .loyalty_migrations import configuration_schema_ready
 
 
 def make_engine(database_url: str | None = None) -> Engine:
@@ -68,7 +69,11 @@ def init_schema(engine: Engine) -> None:
         t
         for t in Base.metadata.sorted_tables
         if not existing
-        or t.name not in ({"restaurant_wompi_sandbox_lookups", "restaurant_wompi_sandbox_discovery"} | LOYALTY_TABLES)
+        or t.name
+        not in (
+            {"restaurant_wompi_sandbox_lookups", "restaurant_wompi_sandbox_discovery"}
+            | LOYALTY_TABLES
+        )
     ]
     Base.metadata.create_all(engine, tables=tables)
     if not database_ready(engine):
@@ -115,14 +120,41 @@ CORE_TABLES = (
 )
 
 
-def database_ready(engine: Engine, *, require_schema: bool = True, require_loyalty: bool = False) -> bool:
+def database_ready(
+    engine: Engine,
+    *,
+    require_schema: bool = True,
+    require_loyalty: bool = False,
+    deadline: float | None = None,
+) -> bool:
     try:
         with engine.connect() as connection:
+            if deadline is not None:
+
+                def before_query(*_args):
+                    if time.monotonic() >= deadline:
+                        raise SQLAlchemyError("Readiness deadline exceeded")
+
+                # Connection-local listener: no global event/pool mutation. Closed
+                # Connection objects and their listeners are not reused by the pool.
+                event.listen(connection, "before_cursor_execute", before_query)
+                before_query()
+                if connection.dialect.name == "postgresql":
+                    budget_ms = max(1, int((deadline - time.monotonic()) * 1000))
+                    connection.execute(
+                        text(
+                            "SELECT set_config('statement_timeout', :budget, true), "
+                            "set_config('lock_timeout', :budget, true)"
+                        ),
+                        {"budget": str(budget_ms)},
+                    )
             connection.execute(text("SELECT 1"))
             if require_schema:
                 inspector = inspect(connection)
                 tables = set(inspector.get_table_names())
-                if not configuration_schema_ready(connection, required=require_loyalty, known_tables=tables):
+                if not configuration_schema_ready(
+                    connection, required=require_loyalty, known_tables=tables
+                ):
                     return False
                 if not CORE_TABLES.issubset(tables):
                     return False

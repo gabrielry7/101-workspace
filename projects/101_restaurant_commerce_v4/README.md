@@ -284,3 +284,43 @@ provider and database evidence before recovery. There are no schema changes in0.
 the explicit0.5.0 upgrade remains required for older databases. PostgreSQL and
 provider-commit crash recovery remain unproven. Tests are synthetic and do not
 establish low-end-device or older-browser support.
+
+### Bounded operational probes (P02/P03)
+
+Use `GET /health` for process liveness. It performs no database work and does not
+use the synchronous endpoint worker pool. Use `GET /ready` for traffic admission:
+200 means a fresh dependency/schema check succeeded; 503 means not ready. Do not
+restart a healthy process solely because readiness fails during a database outage.
+Both readiness responses carry `Cache-Control: no-store`.
+
+Readiness has a one-second application deadline and coalesces concurrent requests
+into at most one in-flight probe per API process. It uses the actual application
+pool/search path, so pool exhaustion is not hidden by a separate probe connection.
+Full required-table/column checks and installed loyalty schema/trigger safeguards
+remain enabled. There is no cached successful readiness result. PostgreSQL probe
+statement/lock timeouts are transaction-local and do not alter checkout settings.
+
+A response deadline cannot forcibly terminate every driver/network/pool wait.
+While an expired probe remains blocked, further probes return 503 quickly; they do
+not launch additional threads. Once that call finishes, a new check can establish
+readiness. Process shutdown does not join a stuck probe. Unbounded network
+blackholes, CPU/event-loop starvation and production failover still need separate
+qualification. Keep deployment probe timeouts above the application's one-second
+deadline (for example 2 seconds), and use readiness for routing, not restart policy.
+Startup migrations/validation are separate from these HTTP probes.
+
+Repeat the disposable PostgreSQL + Toxiproxy qualification with the existing free
+local toolchain (new output directory required):
+
+```bash
+COMMERCE_TOOLCHAIN=/path/to/commerce-toolchain \
+  /path/to/commerce-toolchain/venv/bin/python \
+  adversarial/readiness_qualification.py --output /tmp/commerce-readiness-new-run
+```
+
+It builds and installs a wheel, runs PostgreSQL/SQLite consumer regressions, and
+measures real HTTP liveness/readiness during 500 ms latency, TCP resets, five-second
+connection timeouts, database stop/restart and broken column/loyalty guards. It
+records native logs, JUnit and timing evidence and stops only its owned services.
+The generated private `config.json` contains synthetic credentials: do not publish
+it. No production data, live providers or paid services are used.
