@@ -9,6 +9,7 @@ from pathlib import Path
 import httpx
 from load_contract import validate_target
 from run import command
+from scanner_contract import record_operations
 
 
 def run_records(config, config_path, output):
@@ -16,16 +17,7 @@ def run_records(config, config_path, output):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     spec = httpx.get(config["base_url"] + "/openapi.json", trust_env=False).json()
-    required = [
-        method.upper() + " " + path
-        for path, item in spec["paths"].items()
-        for method in item
-        if method in {"get", "post", "put", "patch"}
-        if "/campaigns" in path
-        or "/finance/" in path
-        or "{delivery_id}" in path
-        or "{message_id}" in path
-    ]
+    required = [method + " " + path for method, path in record_operations(spec)]
     env = dict(
         os.environ,
         PYTHONPATH=config["installed"] + os.pathsep + str(Path(__file__).parent),
@@ -76,10 +68,12 @@ def run_records(config, config_path, output):
         "exit_code": code,
         "requests": len(rows),
         "operations": operations,
+        "excluded_optional_routes": [p for p in spec["paths"] if "/loyalty-refunds/" in p],
         "gaps": [
             "Body/query generation plus explicit valid-record examples; not exhaustive sequences.",
             "Manual sent endpoint intentionally rejects409; no delivery receipt fabricated.",
-            "Optional loyalty configuration is disabled; preview routes are not covered.",
+            "Optional loyalty configuration is disabled; preview and loyalty-refund allocation "
+            "routes are not covered.",
         ],
     }
     (output / "summary.json").write_text(json.dumps(result, indent=2) + "\n")

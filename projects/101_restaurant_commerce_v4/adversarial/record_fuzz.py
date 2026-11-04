@@ -14,6 +14,7 @@ import schemathesis
 from hypothesis import HealthCheck, Phase, given, settings
 from hypothesis import strategies as st
 from load_contract import validate_target
+from scanner_contract import record_operations
 from schemathesis.checks import not_a_server_error
 from schemathesis.specs.openapi.checks import response_schema_conformance
 from security_fixtures import Fixtures
@@ -25,18 +26,7 @@ CONFIG_PATH = Path(os.environ["COMMERCE_RECORD_CONFIG"])
 CONFIG = json.loads(CONFIG_PATH.read_text())
 validate_target(CONFIG, CONFIG_PATH)
 SCHEMA = schemathesis.openapi.from_url(CONFIG["base_url"] + "/openapi.json")
-PATHS = [
-    (method.upper(), path)
-    for path, item in SCHEMA.raw_schema["paths"].items()
-    for method in item
-    if method in {"get", "post", "put", "patch"}
-    if (
-        "/campaigns" in path
-        or "/finance/" in path
-        or "{delivery_id}" in path
-        or "{message_id}" in path
-    )
-]
+PATHS = record_operations(SCHEMA.raw_schema)
 OUTPUT = Path(os.environ["COMMERCE_RECORD_OUTPUT"])
 
 

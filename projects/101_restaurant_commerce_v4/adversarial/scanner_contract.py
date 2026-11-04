@@ -89,3 +89,18 @@ def prepared_spec(spec, fixtures, common_ids):
                 }
             )
     return selected, coverage
+
+
+def record_operations(spec):
+    """S02's original route families; optional experiment allocation is separate."""
+    return [
+        (method.upper(), path)
+        for path, item in spec["paths"].items()
+        for method in item
+        if method in {"get", "post", "put", "patch"}
+        if "/loyalty-refunds/" not in path
+        if "/campaigns" in path
+        or "/finance/" in path
+        or "{delivery_id}" in path
+        or "{message_id}" in path
+    ]
