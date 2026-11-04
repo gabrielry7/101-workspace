@@ -81,6 +81,15 @@ class WhatsAppCloudTransport:
             'templates_complete': not bool(data.get('paging', {}).get('next')),
             'allowance': 'requires_current_account_review'}
 
+    def account_readiness(self):
+        observation=self.readiness()
+        response=self.client.get(f'https://graph.facebook.com/{self.version}/{self.waba_id}/phone_numbers',
+            headers={'Authorization':'Bearer '+self.token},params={'fields':'id','limit':100})
+        response.raise_for_status();data=response.json()
+        observation['phone_waba_binding_verified']=any(p.get('id')==self.phone_id for p in data['data'])
+        observation['phone_catalogue_complete']=not bool(data.get('paging',{}).get('next'))
+        return observation
+
     def challenge(self, mode, supplied, challenge):
         if mode != 'subscribe' or not self.verify_token or not hmac.compare_digest(supplied or '', self.verify_token):
             raise ValueError('invalid_verification_token')

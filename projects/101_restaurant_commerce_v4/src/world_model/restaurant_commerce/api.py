@@ -530,7 +530,7 @@ def create_app(
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "campaigns.js", "whatsapp.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
+        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
             raise HTTPException(status_code=404, detail="Asset not found")
         return FileResponse(WEB_DIR / filename, media_type="image/png" if filename.endswith(".png") else "text/css" if filename.endswith(".css") else "text/javascript",
                             headers={"Cache-Control": "no-cache"})

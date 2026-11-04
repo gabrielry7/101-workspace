@@ -11,7 +11,7 @@ from pydantic import ConfigDict, Field, field_validator, model_validator
 from typing import Literal
 from .models import Customer, Order, Payment, RestaurantCommerceProfile, utcnow
 from .campaign_models import (CampaignSettings, ContactPermission, PermissionEvidence, Campaign,
-    CampaignRevision, CampaignApproval, CampaignJob, CampaignAttempt, CampaignEvent, CampaignVisit, CampaignOrderCredit)
+    CampaignRevision, CampaignApproval, CampaignJob, CampaignAttempt, CampaignEvent, CampaignVisit, CampaignOrderCredit, SmsSender)
 from .campaign_email import render, VERSION
 from .campaign_delivery import Message, Submission
 from .staff import aware
@@ -166,7 +166,9 @@ def eligibility(session, business, customer, document, now, *, expected_destinat
     if channel == 'whatsapp':
         from . import whatsapp
         reasons.extend(whatsapp.eligibility(session,business,customer,document,now,exclude_job))
-    elif channel != 'email': reasons.append(channel + '_unconfigured')
+    elif channel == 'sms':
+        from . import sms
+        reasons.extend(sms.eligibility(session,business,customer,document,now,exclude_job))
     elif document['sender'] != config.get('sender'): reasons.append('sender_unconfigured_or_changed')
     if scope != 'test':
         review = config.get('legal_review', {})
@@ -212,6 +214,17 @@ def save_draft(session, business, draft, now, campaign_id=None):
         from . import whatsapp
         doc['whatsapp'] = whatsapp.snapshot(session,business,draft.whatsapp_template_id,draft.whatsapp_parameters)
         doc['provider'] = 'simulated_whatsapp' if draft.scope == 'test' else 'whatsapp_cloud'
+    if draft.channel == 'sms' and session.get(SmsSender,business):
+        from . import sms
+        doc['sms']=sms.snapshot(session,business)
+        doc['provider']='simulated_sms' if draft.scope=='test' else 'twilio_sms'
+        for recipient in recipients:
+            try:
+                estimate=sms.render(doc,recipient,'x'*43,'x'*43)
+            except ValueError: raise HTTPException(422,'sms_invalid_content') from None
+            recipient['sms_segments']=estimate['segments'];recipient['sms_encoding']=estimate['encoding']
+            rate=doc['sms']['unit_cost_microusd']
+            recipient['sms_cost_microusd']=None if rate is None else rate*estimate['segments']
     for recipient in recipients:
         result = eligibility(session, business, session.get(Customer, recipient['id']), doc,
                              draft.scheduled_at, expected_destination=recipient['destination'])
@@ -225,6 +238,12 @@ def save_draft(session, business, draft, now, campaign_id=None):
     campaign.revision_id, campaign.state = revision.id, 'draft'
     session.commit()
     return preview(session, business, campaign.id, now)
+
+
+def estimated_cost(doc, recipients=None):
+    rows=doc['recipients'] if recipients is None else recipients
+    costs=[r.get('sms_cost_microusd') if doc.get('sms') else doc['unit_cost_microusd'] for r in rows]
+    return None if any(v is None for v in costs) else sum(costs)
 
 
 def preview(session, business, campaign_id, now):
@@ -247,9 +266,17 @@ def preview(session, business, campaign_id, now):
         from html import escape
         wa = whatsapp.render(doc,doc['recipients'][0],'preview')
         email = {'html':'<!doctype html><html lang="es"><meta charset="utf-8"><body><h1>WhatsApp · simulación</h1><p>'+escape(wa['text']).replace('\n','<br>')+'</p><p>Ver la carta · Dejar de recibir</p></body></html>', 'text':wa['text'], 'subject':doc['whatsapp']['definition']['name']}
+    if doc.get('sms'):
+        from . import sms
+        from html import escape
+        rendered=sms.render(doc,next((r for r in doc['recipients'] if r.get('snapshot_eligible')),doc['recipients'][0]),'x'*43,'x'*43)
+        email={'html':'<!doctype html><html lang="es"><meta charset="utf-8"><body><h1>SMS · simulación</h1><p>'+escape(rendered['text']).replace('\n','<br>')+'</p><p>'+str(rendered['segments'])+' segmentos · '+rendered['encoding']+'</p></body></html>',
+            'text':rendered['text'],'subject':'SMS'}
+    if doc['channel']=='sms' and not doc.get('sms'):
+        email={'html':'<!doctype html><html lang="es"><meta charset="utf-8"><body><h1>SMS sin configurar</h1><p>Configura una ruta antes de aprobar.</p></body></html>', 'text':'SMS sin configurar', 'subject':'SMS'}
     return {'id': campaign.id, 'state': campaign.state, 'revision_id': revision.id, 'digest': revision.digest,
         'document': doc, 'audience': rows, 'eligible': allowed, 'excluded': len(rows)-allowed,
-        'estimated_cost_microusd': None if cost is None else allowed * cost,
+        'estimated_cost_microusd': estimated_cost(doc,[r for r in rows if r['status']=='allowed']),
         'cost_currency': 'USD', 'simulation_clock': now.isoformat(),
         'email': email,
         'approved': session.get(CampaignApproval, revision.id) is not None}
@@ -265,15 +292,21 @@ def approve(session, business, campaign_id, expected_digest, actor, now):
     if revision.digest != expected_digest or digest(revision.document) != expected_digest:
         raise HTTPException(409, 'preview_changed')
     if doc['scope'] != 'test': raise HTTPException(409, 'live_send_disabled')
-    if doc['channel'] not in {'email','whatsapp'} or (doc['channel']=='whatsapp' and not doc.get('whatsapp')):
+    if doc['channel'] not in {'email','whatsapp','sms'} or (doc['channel']=='whatsapp' and not doc.get('whatsapp')):
         raise HTTPException(409, doc['channel'] + '_unconfigured')
     if doc['channel']=='whatsapp':
         from . import whatsapp
         reasons=whatsapp.eligibility(session,business,session.get(Customer,doc['recipients'][0]['id']),doc,date(doc['scheduled_at']),None)
         if reasons: raise HTTPException(409, ','.join(reasons))
+    if doc['channel']=='sms':
+        from . import sms
+        if not doc.get('sms'):raise HTTPException(409,'sms_unconfigured')
+        recipient=next((r for r in doc['recipients'] if r.get('snapshot_eligible')),doc['recipients'][0])
+        reasons=sms.eligibility(session,business,session.get(Customer,recipient['id']),doc,date(doc['scheduled_at']),None)
+        if reasons:raise HTTPException(409, ','.join(reasons))
     if date(doc['expires_at']) <= now: raise HTTPException(409, 'campaign_expired')
-    cost = doc['unit_cost_microusd']
-    if cost is None or cost * len(doc['recipients']) > doc['budget_microusd']:
+    cost = estimated_cost(doc)
+    if cost is None or cost > doc['budget_microusd']:
         raise HTTPException(409, 'budget_exceeded_or_unknown')
     if not session.get(CampaignApproval, revision.id):
         session.add(CampaignApproval(revision_id=revision.id, actor_id=actor, digest=expected_digest, scope=doc['scope']))
@@ -354,7 +387,7 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
             elif job.scope != 'test': reason = 'global_live_send_disabled'
             elif date(doc['expires_at']) <= now: reason = 'campaign_expired'
             elif date(doc['scheduled_at']) > now: reason = 'schedule_not_due'
-            elif doc['unit_cost_microusd'] is None or doc['unit_cost_microusd'] * len(doc['recipients']) > doc['budget_microusd']:
+            elif estimated_cost(doc) is None or estimated_cost(doc) > doc['budget_microusd']:
                 reason = 'budget_exceeded_or_unknown'
             adapter = next((v['adapter'] for v in integrations.values() if v['business_id'] == job.business_id
                 and v['scope'] == job.scope and v['adapter'].name == job.provider), None)
@@ -363,6 +396,8 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
                 reason = reason or 'simulation_network_transport_forbidden'
             if doc.get('whatsapp') and adapter and (getattr(adapter,'phone_id',None)!=doc['whatsapp']['sender']['phone_id'] or getattr(adapter,'waba_id',None)!=doc['whatsapp']['sender']['waba_id']):
                 reason = reason or 'whatsapp_integration_binding_changed'
+            if doc.get('sms') and adapter and (getattr(adapter,'account_sid',None)!=doc['sms']['account_sid'] or getattr(adapter,'sender',None)!=doc['sender']):
+                reason = reason or 'sms_integration_binding_changed'
             result = eligibility(session, job.business_id, session.get(Customer, job.customer_id), doc, now,
                 expected_destination=job.destination, exclude_job=job.id)
             if result['status'] != 'allowed': reason = reason or ','.join(result['reasons'])
@@ -379,6 +414,10 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
                 from . import whatsapp
                 wa=whatsapp.render(doc,recipient,job.tracking_token)
                 message=Message(job.id,doc['sender'],job.destination,'','',wa['text'],unsub,wa['template'])
+            if doc.get('sms'):
+                from . import sms
+                text=sms.render(doc,recipient,job.tracking_token,job.unsubscribe_token)['text']
+                message=Message(job.id,doc['sender'],job.destination,'','',text,unsub)
             job.state, job.claimed_at, job.attempts = 'sending', now, job.attempts + 1
             session.add(CampaignAttempt(job_id=job.id, state='sending', evidence_json=canonical({'attempt':job.attempts})))
             session.commit()  # Dispatch boundary: later cancellation cannot recall this attempt.
@@ -396,6 +435,9 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
                     convo=whatsapp.conversation(session,job.business_id,job.scope,message.sender,job.destination)
                     convo.opted_out=True
                     whatsapp.opt_out(session,job.business_id,job.scope,job.destination,now,'provider-submission:'+job.id)
+                if job.channel=='sms' and outcome.reason=='sms_opt_out':
+                    from . import sms
+                    sms.opt_out(session,job.business_id,job.scope,job.destination,'provider-submission:'+job.id,now)
                 if outcome.state == 'retryable':
                     job.state = 'queued' if job.attempts < 3 else 'failed'
                     job.due_at = now + timedelta(seconds=30 * 2 ** job.attempts)

@@ -326,7 +326,7 @@ def dispatch_replies(sessions,integrations,now,business=None):
     return len(ids)
 
 
-def sync_provider(session,business,adapter,now):
+def sync_provider(session,business,adapter,now,observation=None):
     """Explicit provider read, retaining only supported exact template definitions.
 
     Does not establish account allowance, legal eligibility or live activation.
@@ -336,7 +336,7 @@ def sync_provider(session,business,adapter,now):
     if not sender or adapter.name!='whatsapp_cloud' or adapter.phone_id!=sender['phone_id'] or adapter.waba_id!=sender['waba_id']:
         raise HTTPException(409,'whatsapp_integration_binding_changed')
     if c.settings(session,business).scope=='test': raise HTTPException(409,'real_provider_evidence_cannot_enter_simulation')
-    observation=adapter.readiness()
+    observation=observation if observation is not None else adapter.readiness()
     if observation['phone'].get('id')!=sender['phone_id']: raise HTTPException(409,'provider_phone_mismatch')
     if not observation['templates_complete']: raise HTTPException(409,'provider_template_catalogue_incomplete')
     lock(session,business)
@@ -373,6 +373,7 @@ def sync_provider(session,business,adapter,now):
         row.status_at=now
     for row in session.scalars(select(WhatsAppTemplate).where(WhatsAppTemplate.business_id==business)):
         if (row.provider_id,row.language) not in observed: row.status='MISSING';row.status_at=now
+    sender['provider_account_binding']=observation.get('phone_waba_binding_verified') is True
     sender['provider_observed_at']=now.isoformat()
     sender['provider_phone']=observation['phone']
     sender['provider_allowance']='requires_current_account_review'

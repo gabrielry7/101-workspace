@@ -131,3 +131,12 @@ account allowance evidence, recipient marketing permission and legal/RNE/holiday
 controls. Check actual provider callbacks and native delivery separately from the
 synthetic tests. Global live/provider-test dispatch remains disabled in this
 milestone, including staff replies. No fallback to SMS/email is configured.
+
+
+The SMS milestone adds an explicit account-readiness probe at
+`POST /api/operator/restaurants/{business}/campaigns/provider-readiness/whatsapp/probe`.
+It checks phone membership in the configured WABA and completeness of the phone
+and template catalogues before retaining the observation. Page loads do not probe.
+This observation cannot establish allowance, pricing or live callback readiness.
+The shared one-recipient provider-test review packet freezes the proposed test,
+but is never a campaign approval or a permission to send. See [SMS.md](SMS.md).
