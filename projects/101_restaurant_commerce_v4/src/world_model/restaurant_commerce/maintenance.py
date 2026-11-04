@@ -4,6 +4,7 @@ import argparse
 import os
 
 from .db import make_engine
+from .loyalty_assignment_migrations import upgrade_loyalty_assignment
 from .loyalty_execution_migrations import upgrade_loyalty_execution
 from .loyalty_migrations import upgrade_loyalty_configuration
 from .migrations import upgrade_payment_durability, upgrade_financial_resolution, upgrade_staff, upgrade_wompi_sandbox, upgrade_operations, upgrade_campaigns
@@ -11,7 +12,7 @@ from .migrations import upgrade_payment_durability, upgrade_financial_resolution
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["upgrade-loyalty-execution", "upgrade-loyalty-config", "upgrade-campaigns", "upgrade-payments", "upgrade-finance", "upgrade-staff", "upgrade-wompi-sandbox", "upgrade-operations"])
+    parser.add_argument("command", choices=["upgrade-loyalty-assignment", "upgrade-loyalty-execution", "upgrade-loyalty-config", "upgrade-campaigns", "upgrade-payments", "upgrade-finance", "upgrade-staff", "upgrade-wompi-sandbox", "upgrade-operations"])
     parser.add_argument(
         "--offline",
         action="store_true",
@@ -29,7 +30,9 @@ def main():
         )
     engine = make_engine(url)
     try:
-        if args.command == "upgrade-loyalty-execution":
+        if args.command == "upgrade-loyalty-assignment":
+            upgrade_loyalty_assignment(engine)
+        elif args.command == "upgrade-loyalty-execution":
             upgrade_loyalty_execution(engine)
         elif args.command == "upgrade-loyalty-config":
             upgrade_loyalty_configuration(engine)

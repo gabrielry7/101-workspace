@@ -47,8 +47,8 @@ class ExecutionSelection:
     price_basis: str | None = None
 
 
-def selected(service):
-    selection = service.loyalty_execution
+def selected(service, selection=None):
+    selection = selection if selection is not None else service.loyalty_execution
     if selection is not None:
         if not selection.enabled or selection.price_basis != "synthetic_tax_exclusive":
             raise ValidationError(
@@ -103,8 +103,18 @@ def pending_refunds(session, account):
     )
 
 
-def calculate(service, business_id, items, promotion_minor, *, lock=False):
-    selection = selected(service)
+def calculate(
+    service,
+    business_id,
+    items,
+    promotion_minor,
+    *,
+    lock=False,
+    selection=None,
+    allow_historical=False,
+    strict=True,
+):
+    selection = selected(service, selection)
     from .growth import RestaurantGrowthService
 
     growth = RestaurantGrowthService(service.session)
@@ -122,7 +132,7 @@ def calculate(service, business_id, items, promotion_minor, *, lock=False):
         .where(LoyaltyStrategy.id == version.strategy_id)
         .execution_options(populate_existing=True)
     )
-    if strategy.state != "published":
+    if strategy.state not in ({"published", "draft"} if allow_historical else {"published"}):
         raise ValidationError("Program is paused or unavailable for new orders")
     document = StrategyDocument.model_validate_json(version.document)
     if document.earning and document.estimated_cost_per_point_minor <= 0:
@@ -144,7 +154,9 @@ def calculate(service, business_id, items, promotion_minor, *, lock=False):
         )
     )
     if selection.redeem_reward and pending_refunds(service.session, account):
-        raise ValidationError("Refund allocation review required before redemption")
+        if strict:
+            raise ValidationError("Refund allocation review required before redemption")
+        debts = max(debts, 1)
     weights = {str(i): item.line_total_minor for i, item in enumerate(items)}
     promotions = allocate_discount(promotion_minor, weights)
     scenario = PreviewScenario(
@@ -166,14 +178,14 @@ def calculate(service, business_id, items, promotion_minor, *, lock=False):
         ],
     )
     result = evaluate_rules(document, scenario)
-    if not result.supported or not result.eligible_by_rules:
+    if strict and (not result.supported or not result.eligible_by_rules):
         raise ValidationError("Program cannot execute: " + ", ".join(result.reasons))
-    if selection.redeem_reward and not result.redemption.eligible_by_rules:
+    if strict and selection.redeem_reward and not result.redemption.eligible_by_rules:
         raise ValidationError("Reward cannot execute: " + ", ".join(result.redemption.reasons))
     return version, document, account, result
 
 
-def budgets(session, version, customer_id, *, require_published=False):
+def budgets(session, version, customer_id, *, require_published=False, allow_historical=False):
     # Serializes creation plus all-version caps. Always account -> strategy -> buckets.
     strategy = session.scalar(
         select(LoyaltyStrategy)
@@ -181,7 +193,9 @@ def budgets(session, version, customer_id, *, require_published=False):
         .with_for_update()
         .execution_options(populate_existing=True)
     )
-    if require_published and strategy.state != "published":
+    if require_published and strategy.state not in (
+        {"published", "draft"} if allow_historical else {"published"}
+    ):
         raise ValidationError("Program paused before reservation")
     result = []
     for scope in ("*", customer_id):
@@ -212,9 +226,15 @@ def event(session, snapshot, ledger, **details):
     )
 
 
-def reserve(service, order, quote, order_items):
+def reserve(service, order, quote, order_items, *, selection=None, allow_historical=False):
     version, document, account, result = calculate(
-        service, order.business_id, quote.items, order.promotion_discount_minor, lock=True
+        service,
+        order.business_id,
+        quote.items,
+        order.promotion_discount_minor,
+        lock=True,
+        selection=selection,
+        allow_historical=allow_historical,
     )
     if (
         result.redemption.discount_minor != order.reward_discount_minor
@@ -229,8 +249,19 @@ def reserve(service, order, quote, order_items):
         result.earning.points * document.estimated_cost_per_point_minor
         + result.redemption.discount_minor
     )
+    locked_budgets = budgets(
+        service.session,
+        version,
+        order.customer_id,
+        require_published=True,
+        allow_historical=allow_historical,
+    )
+    if allow_historical:
+        from .loyalty_assignment_checkout import validate_reservation
+
+        validate_reservation(service)
     for bucket, cap in zip(
-        budgets(service.session, version, order.customer_id, require_published=True),
+        locked_budgets,
         (document.campaign_budget_minor, document.per_customer_budget_minor),
         strict=True,
     ):
@@ -240,7 +271,7 @@ def reserve(service, order, quote, order_items):
     payload = {
         "calculation": result.model_dump(mode="json"),
         "version_digest": version.digest,
-        "price_basis": service.loyalty_execution.price_basis,
+        "price_basis": (selection or service.loyalty_execution).price_basis,
         "baseline": {
             "enabled": baseline.enabled,
             "spend_minor_per_point": baseline.spend_minor_per_point,
