@@ -831,8 +831,12 @@ def zap_scan(rec, config):
             for key in structured_targets
         }
         active_id_set = {str(x) for x in ids.get("messagesIds", [])}
-        for offset in range(0, min(total, 50000), 100):
-            batch = api("core", "view", "messages", baseurl=base, start=offset, count=100).get(
+        body_truncations = []
+        export_started = time.monotonic()
+        for offset in range(0, min(total, 50000), 10):
+            if time.monotonic() - export_started > 240:
+                raise RuntimeError("Native history export exceeded240s; incomplete evidence")
+            batch = api("core", "view", "messages", baseurl=base, start=offset, count=10).get(
                 "messages", []
             )
             for message in batch:
@@ -865,8 +869,23 @@ def zap_scan(rec, config):
                 {key: msg.get(key) for key in ["id", "requestHeader", "responseHeader", "rtt"]}
                 for msg in batch
             )
-            if offset < 2000:
-                messages["messages"].extend(batch)
+            if offset < 200:
+                for message in batch:
+                    retained = dict(message)
+                    body = retained.get("responseBody", "")
+                    if len(body.encode()) > 16384:
+                        body_truncations.append(
+                            {
+                                "id": message["id"],
+                                "bytes": len(body.encode()),
+                                "sha256": hashlib.sha256(body.encode()).hexdigest(),
+                            }
+                        )
+                        retained["responseBody"] = (
+                            body[:4096] + "<TRUNCATED: see zap-body-truncations.json>"
+                        )
+                    messages["messages"].append(retained)
+        dump(rec.output / "zap-body-truncations.json", body_truncations)
         dump(
             rec.output / "zap-server-errors.json",
             redact_native(
@@ -882,7 +901,9 @@ def zap_scan(rec, config):
             for r in structured.values()
         )
         result["total_http_history_messages"] = total
-        result["history_export_limit"] = 2000
+        result["history_export_limit"] = 200
+        result["response_body_truncations"] = len(body_truncations)
+        result["history_export_seconds"] = time.monotonic() - export_started
         result["header_export_limit"] = 50000
         result["exported_header_count"] = len(headers)
         result["protected_counts_are_lower_bounds"] = len(headers) < total
