@@ -87,12 +87,14 @@ def main():
         )
         for name, files, budget in [
             ("loyalty-live", ["adversarial/test_loyalty_security_live.py"], 240),
+            ("browser-security", ["adversarial/security_browser.py"], 90),
             (
                 "regressions",
                 [
                     "tests/test_zap_policy.py",
                     "tests/test_loyalty_security_validation.py",
                     "tests/test_loyalty_execution.py",
+                    "tests/test_loyalty_assignment.py",
                     "tests/test_loyalty_rules.py",
                     "tests/test_loyalty_configuration.py",
                     "tests/test_scanner_contract.py",

@@ -176,30 +176,30 @@
       "rule": "40014",
       "path": "/api/operator/restaurants/demo-restaurant-bogota/automations",
       "severity": "LOW",
-      "fingerprint": "dae4e5b1bbc9f3483906dd80a34a8d64b6ea2d802866abb7753d48dae52bb65c",
+      "fingerprint": "9e7e2fe3bbd505a477c94c6492fa216039a8146378e0106241e421db02668127",
       "owner": "101 commerce engineering",
       "expires_at": "2026-12-04T00:00:00Z",
-      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review. Re-reviewed stage3 API/growth diff: financial lifecycle changes do not change these JSON/text consumers. Combined-build qualification must rerun the browser regressions."
+      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review. Re-reviewed stage3 API/growth diff: financial lifecycle changes do not change these JSON/text consumers. Combined-build qualification must rerun the browser regressions. S03 re-review: API delta is solely version 0.16.0 to 0.17.0; rendering owners unchanged. Integrated live sink retest required. Expiry unchanged."
     },
     {
       "layer": "zap",
       "rule": "40014",
       "path": "/api/operator/restaurants/demo-restaurant-bogota/automations",
       "severity": "LOW",
-      "fingerprint": "ede276b35b2c85af3ad4d039e0181cd8b0ea3908a6c4adbae16674f1d8d63092",
+      "fingerprint": "d629e55c3a085126a6764926d058d9240677ca6e314552bbb2fb47d96c8b4df6",
       "owner": "101 commerce engineering",
       "expires_at": "2026-12-04T00:00:00Z",
-      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review. Re-reviewed stage3 API/growth diff: financial lifecycle changes do not change these JSON/text consumers. Combined-build qualification must rerun the browser regressions."
+      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review. Re-reviewed stage3 API/growth diff: financial lifecycle changes do not change these JSON/text consumers. Combined-build qualification must rerun the browser regressions. S03 re-review: API delta is solely version 0.16.0 to 0.17.0; rendering owners unchanged. Integrated live sink retest required. Expiry unchanged."
     },
     {
       "layer": "zap",
       "rule": "40014",
       "path": "/api/operator/restaurants/demo-restaurant-bogota/rewards",
       "severity": "LOW",
-      "fingerprint": "dae4e5b1bbc9f3483906dd80a34a8d64b6ea2d802866abb7753d48dae52bb65c",
+      "fingerprint": "9e7e2fe3bbd505a477c94c6492fa216039a8146378e0106241e421db02668127",
       "owner": "101 commerce engineering",
       "expires_at": "2026-12-04T00:00:00Z",
-      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review. Re-reviewed stage3 API/growth diff: financial lifecycle changes do not change these JSON/text consumers. Combined-build qualification must rerun the browser regressions."
+      "reason": "ZAP low-confidence stored payload in application/json, not demonstrated executable HTML. S01/S02 live PostgreSQL/Chromium regression stores script/image payloads in rewards and automations, verifies JSON+nosniff and actual growth reward/outbox text rendering with no executable nodes or execution. Automation values have no current HTML renderer; outbound text consumer is covered. Review applies only to exact finding and hashed current API/growth/shared render owners; future consumers require new review. Re-reviewed stage3 API/growth diff: financial lifecycle changes do not change these JSON/text consumers. Combined-build qualification must rerun the browser regressions. S03 re-review: API delta is solely version 0.16.0 to 0.17.0; rendering owners unchanged. Integrated live sink retest required. Expiry unchanged."
     }
   ]
 }
