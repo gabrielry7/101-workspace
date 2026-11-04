@@ -17,6 +17,9 @@ from load_contract import validate_target
 from schemathesis.checks import not_a_server_error
 from schemathesis.specs.openapi.checks import response_schema_conformance
 from security_fixtures import Fixtures
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+from world_model.restaurant_commerce.models import Promotion
 
 CONFIG_PATH = Path(os.environ["COMMERCE_RECORD_CONFIG"])
 CONFIG = json.loads(CONFIG_PATH.read_text())
@@ -68,6 +71,24 @@ def invoke(records, method, path, case, label, bind_evidence=False):
         and isinstance(case.body, dict)
         and case.body.get("operation_id") != valid_body["operation_id"]
     )
+    expected_missing_promotion = False
+    if label == "generated" and "/campaigns" in path and isinstance(case.body, dict):
+        code = case.body.get("promotion_code")
+        if isinstance(code, str) and code and "\x00" not in code:
+            try:
+                code.encode("utf-8")
+            except UnicodeEncodeError:
+                pass  # The application's strict validator must reject invalid Unicode.
+            else:
+                with Session(records.engine) as session:
+                    expected_missing_promotion = (
+                        session.scalar(
+                            select(Promotion.id).where(
+                                Promotion.business_id == records.business, Promotion.code == code
+                            )
+                        )
+                        is None
+                    )
     case.headers = records.headers
     case.cookies = {}
     before = records.snapshot()
@@ -82,6 +103,7 @@ def invoke(records, method, path, case, label, bind_evidence=False):
         "bound_evidence": bind_evidence,
         "expected_missing_evidence": expected_missing_evidence,
         "expected_missing_audience": expected_missing_audience,
+        "expected_missing_promotion": expected_missing_promotion,
         "request_body": case.body if case.body is not schemathesis.core.NOT_SET else None,
         "query": case.query,
         "path_parameters": case.path_parameters,
@@ -99,9 +121,9 @@ def invoke(records, method, path, case, label, bind_evidence=False):
         )
     assert response.status_code not in {401, 403}, "Fixture authentication failed"
     if response.status_code == 404:
-        assert expected_missing_evidence or expected_missing_audience, (
-            "Fixture failed to reach scoped records"
-        )
+        assert (
+            expected_missing_evidence or expected_missing_audience or expected_missing_promotion
+        ), "Fixture failed to reach scoped records"
     case.validate_response(response, checks=[not_a_server_error, response_schema_conformance])
     if response.status_code >= 400:
         assert before == after, "Rejected request changed protected financial/campaign state"
