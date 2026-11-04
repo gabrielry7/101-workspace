@@ -84,8 +84,6 @@ def test_unbound_ids_are_explicit_not_empty_or_claimed_as_covered():
 
 
 def test_new_finance_routes_require_fixtures_but_optional_allocation_is_explicit():
-    from scanner_contract import record_operations
-
     paths = {
         "/api/finance/orders/{order_id}/new-action": {"post": {}},
         "/api/finance/restaurants/{business_id}/loyalty-refunds/{refund_id}/allocation": {
@@ -93,7 +91,7 @@ def test_new_finance_routes_require_fixtures_but_optional_allocation_is_explicit
         },
         "/api/operator/deliveries/{delivery_id}/status": {"patch": {}},
     }
-    assert record_operations({"paths": paths}) == [
+    assert module.record_operations({"paths": paths}) == [
         ("POST", "/api/finance/orders/{order_id}/new-action"),
         ("PATCH", "/api/operator/deliveries/{delivery_id}/status"),
     ]

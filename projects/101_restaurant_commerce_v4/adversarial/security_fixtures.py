@@ -224,6 +224,11 @@ class Fixtures:
             "restaurant_contact_permissions",
             "restaurant_permission_evidence",
         ]
+        # Stage3 legacy-wallet/refund consumers can write these tables even when
+        # experiment selection is disabled. Include them in rejection invariants.
+        names = sorted(set(names) | {
+            n for n in Base.metadata.tables if n.startswith("restaurant_loyalty_")
+        })
         result = {}
         with self.engine.connect() as conn:
             for name in names:
