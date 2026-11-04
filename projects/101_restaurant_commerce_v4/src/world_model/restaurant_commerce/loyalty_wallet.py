@@ -55,10 +55,10 @@ def consume(session, account, ledger, points, *, preferred_order=None):
     # Remainder is pre-execution points with unknown provenance/expiry.
 
 
-def restore(session, account, ledger, source_key, old_target, new_target, *, at=None):
+def restore(session, account, ledger, source_key, old_target, new_target, *, at=None, retire=True):
     """Restore a monotone prefix of original consumption; expired lots stay expired."""
     if not installed(session) or new_target <= old_target:
-        return
+        return set(), {}
     original = session.scalar(select(Ledger).where(Ledger.idempotency_key == source_key))
     if original is None or original.account_id != account.id:
         raise ValidationError("Original redemption ledger is missing")
@@ -70,6 +70,8 @@ def restore(session, account, ledger, source_key, old_target, new_target, *, at=
     offset = 0
     expired = 0
     expired_movements = []
+    expired_sources = set()
+    valid_returns = {}
     at = aware(at or utcnow())
     for movement in movements:
         size = -movement.delta_points
@@ -86,9 +88,11 @@ def restore(session, account, ledger, source_key, old_target, new_target, *, at=
         if lot.expires_at and aware(lot.expires_at) <= at:
             expired += amount
             lot.expired_points += amount
+            expired_sources.add(lot.order_id)
             expired_movements.append((lot.id, amount, movement.ordinal))
         else:
             lot.available_points += amount
+            valid_returns.setdefault(lot.order_id, {})[lot.id] = amount
         session.add(
             Movement(
                 lot_id=lot.id, ledger_id=ledger.id, delta_points=amount, ordinal=movement.ordinal
@@ -111,6 +115,10 @@ def restore(session, account, ledger, source_key, old_target, new_target, *, at=
                 )
             )
     session.flush()
+    if retire and (expired_sources or valid_returns):
+        from .loyalty_retirement import retire_sources
+        retire_sources(session, account, expired_sources, ledger, valid_returns)
+    return expired_sources, valid_returns
 
 
 def expire(session, account, *, at=None):

@@ -174,3 +174,33 @@ synthetic adapters. Concurrent scanner/security and WhatsApp branches owned by
 [repair-loop guidance](https://developers.openai.com/cookbook/examples/codex/build_iterative_repair_loops_with_codex)
 and [CLI review documentation](https://learn.chatgpt.com/docs/codex/cli) were consulted;
 this report uses executed reproductions and does not claim a `/review` command ran.
+
+## Repair results
+
+Review was committed separately as `71bbb36` before application edits.
+`6a6d351` repairs A1/A5; `ad7fcba` repairs A6. Each has an executable regression
+that failed against the baseline and passed after the repair. A6's actual Chromium
+case creates51 newer pickup orders, verifies the old delivery is outside the order
+page, then dispatches it through the screen. Delivery data now carries its scoped
+order summary, eliminating the mismatched finite-list join.
+
+A2–A4 repairs reuse existing order/account locks, immutable ledger/events and lot
+movements. They freeze the baseline earning policy, retain cumulative refund
+assessment, hold unknown policy/allocation, expire before recovery, and unwind
+source-specific debt/recovery with original provenance. Additional read-only review
+found the A4 problem also occurs when returned points have **not expired yet**:
+later earnings repaid the source debt, but their replacement incorrectly inherited
+the refunded source's expiry. A separately retained failing regression now covers
+this before-expiry case too. No database migration or new dependency is required.
+
+Historical limitations: an older baseline partial refund without an established
+policy stays held; an untraceable old hashed repayment stays in authenticated
+notification history for financial review. Tests cover those explicit outcomes;
+the repairs do not guess missing provenance. These restrictions are detailed in
+`LOYALTY_EXPERIMENTATION.md`.
+
+Intermediate candidate failures (a missing import and test-fixture assumptions)
+were retained and corrected; they are not counted as passing verification. The
+workspace-disk baseline passed117 PostgreSQL checks. SQLite passed288 before a
+browser navigation timeout/stall; it was interrupted and is not a full-suite pass.
+Final artifact qualification results follow after the remaining runs.

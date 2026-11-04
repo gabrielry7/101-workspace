@@ -185,10 +185,15 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
 
     def _snapshot(self, business_id: str, request, *, order=False) -> str:
         selection = (self.loyalty_execution or (self._assignment_choice.selection if self._assignment_choice else None)) if order else None
+        from .loyalty_baseline import policy as baseline_policy
+        verified = self._verified_customer(business_id, request.customer.phone) is not None
+        baseline = ({"baseline_policy": baseline_policy(RestaurantGrowthService(self.session).ensure_program(business_id))}
+                    if order and verified and not selection else {})
         return json.dumps({
+            **baseline,
             "name": request.customer.name, "phone": _normalize_phone(request.customer.phone),
             "email": request.customer.email,
-            "identity_verified": self._verified_customer(business_id, request.customer.phone) is not None,
+            "identity_verified": verified,
             **({"loyalty_execution_version": selection.version_id} if selection else {}),
             "whatsapp_requested": request.customer.whatsapp_opt_in is True,
             "marketing_requested": request.customer.marketing_opt_in is True,

@@ -1034,9 +1034,6 @@ def create_app(
                               principal=Depends(financial_authority("finance.resolve")),
                               service: RestaurantCommerceService = Depends(get_service)):
         from .loyalty_execution import resolve_refund_allocation
-        from .loyalty_execution_migrations import installed
-        if not installed(service.session):
-            raise HTTPException(status_code=409, detail="Loyalty execution schema is not installed")
         resolve_refund_allocation(service, refund_id, body.model_dump(), business_id=business_id,
                                   actor=principal.actor_id)
         service._commit_event(kind="loyalty.refund_allocated", business_id=business_id,

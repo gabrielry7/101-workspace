@@ -84,6 +84,11 @@ def state_for(session, order):
 
 
 def pending_refunds(session, account):
+    from .loyalty_baseline import pending
+    if pending(session, account):
+        return True
+    if not installed(session):
+        return False
     return (
         session.scalar(
             select(PaymentRefund.id)
@@ -567,6 +572,7 @@ def compensate(growth, order, *, full=False):
     session = growth.session
     snapshot, state, data = found
     account = growth.ensure_account(order.business_id, order.customer_id, for_update=True)
+    expire(session, account)
     remaining = remaining_spend(session, order, data, full=full)
     if remaining is None:
         return True  # Durable confirmed refund remains visible, no invented allocation.
@@ -601,7 +607,9 @@ def compensate(growth, order, *, full=False):
     expired_source = session.scalar(
         select(func.coalesce(func.sum(Lot.expired_points), 0)).where(Lot.order_id == order.id)
     )
-    retired = min(reverse, max(0, expired_source - state.retired_reversal_points))
+    from .loyalty_retirement import external_expired_retired
+    retired = min(reverse, max(0, expired_source - state.retired_reversal_points
+                               - external_expired_retired(session, order.id)))
     reversed_total = reverse + reverse_base
     recoverable = reversed_total - retired
     recovered = min(recoverable, account.available_points)
@@ -662,7 +670,8 @@ def compensate(growth, order, *, full=False):
 
 def resolve_refund_allocation(service, refund_id, allocation, *, business_id, actor):
     """Trusted financial-owner adapter; callers must authorize actor and own commit."""
-    refund = service.session.get(PaymentRefund, refund_id)
+    session = service.session
+    refund = session.get(PaymentRefund, refund_id)
     if not refund:
         raise ValidationError("Confirmed refund not found")
     payment = service.session.scalar(
@@ -677,8 +686,20 @@ def resolve_refund_allocation(service, refund_id, allocation, *, business_id, ac
         .with_for_update()
         .execution_options(populate_existing=True)
     )
-    if order.business_id != business_id or not actor or not marked(order):
+    if order.business_id != business_id or not actor:
         raise ValidationError("Refund allocation scope or actor invalid")
+    if not marked(order):
+        from .loyalty_baseline import allocate, compensate as baseline_compensate, earn
+        from .growth import RestaurantGrowthService
+        allocate(session, order, refund, allocation, actor=actor)
+        growth = RestaurantGrowthService(session)
+        baseline_compensate(growth, order, full=payment.status == "refunded")
+        if order.status == "completed":
+            earn(growth, order)
+        session.flush()
+        return True
+    if not installed(session):
+        raise ValidationError("Offline loyalty execution upgrade required")
     allocate_refund(service.session, order, refund, allocation, actor=actor)
     from .growth import RestaurantGrowthService
 

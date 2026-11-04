@@ -4,7 +4,10 @@ from datetime import timedelta
 
 import pytest
 from sqlalchemy import func, select
-from test_campaigns import approved, dispatch, env, factory, report
+from test_campaigns import approved, dispatch, report
+from test_campaigns import env as env
+from test_campaigns import factory as factory
+
 from world_model.restaurant_commerce import campaigns as c
 from world_model.restaurant_commerce.campaign_demo import BUSINESS, CLOCK
 from world_model.restaurant_commerce.models import Order, Payment
@@ -14,14 +17,23 @@ from world_model.restaurant_commerce.models import Order, Payment
 def test_attributed_checkout_retry_uses_original_attribution(env, cookie_change):
     preview = approved(env)
     dispatch(env)
-    job = next(j for j in report(env, preview)["deliveries"] if j["state"] == "accepted")
-    assert env.client.get(job["tracking_url"], follow_redirects=False).status_code == 303
+    job = next(
+        j for j in report(env, preview)["deliveries"] if j["state"] == "accepted"
+    )
+    assert (
+        env.client.get(job["tracking_url"], follow_redirects=False).status_code == 303
+    )
     root = "/api/restaurants/" + BUSINESS
-    item = env.client.get(root + "/storefront").json()["menus"][0]["categories"][0]["items"][0]
-    body = {"customer": {"phone": "+573005550100", "name": "Synthetic"},
-            "items": [{"menu_item_id": item["id"], "quantity": 1}],
-            "payment_provider": "simulated", "idempotency_key": "audit-cookie-replay",
-            "recovery_secret": "a" * 64}
+    item = env.client.get(root + "/storefront").json()["menus"][0]["categories"][0][
+        "items"
+    ][0]
+    body = {
+        "customer": {"phone": "+573005550100", "name": "Synthetic"},
+        "items": [{"menu_item_id": item["id"], "quantity": 1}],
+        "payment_provider": "simulated",
+        "idempotency_key": "audit-cookie-replay",
+        "recovery_secret": "a" * 64,
+    }
     first = env.client.post(root + "/orders", json=body)
     assert first.status_code == 200, first.text
     cookie = "campaign_visit_" + c.digest(BUSINESS)[:16]

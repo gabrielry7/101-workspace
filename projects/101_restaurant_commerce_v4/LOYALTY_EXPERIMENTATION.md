@@ -60,7 +60,7 @@ resource, revision, digest and actor in the same mutation transaction.
 | GET/POST `/programs` or `/experiments` | List or create a draft |
 | GET/PUT `/{kind}/{id}` | Inspect history or edit draft with expected revision |
 | POST `/{kind}/{id}/publish` | Publish the exact reviewed revision and SHA256 digest |
-| POST `/{kind}/{id}/state` | Pause a published definition or archive it |
+| POST `/{kind}/{id}/state` | Pause a definition with published history or archive it |
 | POST `/programs/{id}/versions/{version_id}/preview` | Evaluate a hypothetical cart using that exact published version |
 
 Create bodies contain `request_key` and `document`. Retrying the same creation key
@@ -71,7 +71,8 @@ Edit bodies contain `expected_revision` and `document`. Publish bodies contain
 the working revision and creates a distinct permanent version ID. Retrying the
 original publish returns that same version, including after subsequent draft edits.
 A stale revision or digest conflicts. Concurrent writes cannot silently overwrite
-one another. Editing creates a new draft while retaining all published versions.
+one another. Editing retains all published versions and creates a new proposal;
+an existing operational pause is preserved.
 Archived definitions cannot be edited; archiving does not delete published history.
 
 Example points document (illustrative amounts only):
@@ -592,3 +593,47 @@ undefined-name checks and whitespace pass. Evidence is retained in shared
 The earlier candidate is retained under `release/`. Final zero-sales review adds an
 explicit regression: zero costs can already cover break-even, but percentage lift
 remains undefined when baseline sales are zero.
+
+## Reliability and refund contract (101-033)
+
+Operational pause survives draft edits and publication. A definition with published
+history can be paused even while its current proposal is a draft. Neither editing
+nor publishing resumes execution; activation remains gated.
+
+Verified ordinary/control orders now capture `baseline-paid-food-v1` in their
+existing customer snapshot. This freezes the baseline enabled flag and earning
+rate at checkout. Cumulative refunds constrain both future earning and previously
+issued points, using compensating entries in the existing ledger. Reward-point
+restoration uses cumulative paid-food proportions, with the full-refund remainder
+returned exactly once. The original policy and mutable `baseline_refund_state`
+are separate fields; the whole customer snapshot is **not database-immutable**.
+Order locking/version fencing protects this projection. No new schema is required.
+
+Pickup refunds reduce paid food directly. Partial delivery refunds require an
+explicit food/fee allocation. The existing finance-authorized allocation endpoint
+also accepts baseline orders without installing the experimental schema. Its line
+IDs must belong to the order; baseline earning uses total paid food, so it does not
+invent line-level tax or promotion allocations. Allocation evidence is retained
+with its actor and cannot be revised through the service. Missing historical earning
+policy or unknown delivery allocation holds redemption; the system does not borrow
+today's rate. A historical order with no refund may establish its policy at first
+completion, explicitly marked as such. Historical partial-refund policy gaps require
+financial investigation or full-refund compensation rather than fabricated backfill.
+
+Expire due lots under the account lock before recovering or repaying refund debt.
+Returning a grant from an already-refunded order retires that source's assessed
+clawback, whether the returned points have expired yet or not. It first reduces
+that source's outstanding debt, then restores previously recovered value newest-first
+with its original lot provenance/expiry. Cross-order retirement uses immutable
+execution events; it does not acquire another order/state lock after the account.
+Later compensation distinguishes retired expired points from retired valid returns.
+
+Older hashed debt repayments without attributable execution events cannot be
+safely reconstructed. Such a callback retains its authenticated payload in the
+payment inbox; draining marks it for financial review and leaves canonical refund
+compensation unapplied. This is a documented historical-data limitation, not an
+automatically resolved refund. Current writers attach repayment provenance.
+
+The review findings, reproduction conditions and verification limits are retained
+in [the reliability audit](LOYALTY_RELIABILITY_AUDIT.md). Stage 6 and live activation
+remain outside these repairs.

@@ -48,7 +48,13 @@ def record_refund(service, provider, body, evidence):
             from .loyalty_execution_models import LoyaltyRefundAllocation
             from .loyalty_execution_migrations import installed
             allocation = session.get(LoyaltyRefundAllocation, existing.id) if installed(session) else None
-            if allocation is None or json.loads(allocation.document) != body['loyalty_allocation']:
+            if allocation is not None:
+                document = json.loads(allocation.document)
+            else:
+                from .loyalty_baseline import allocation_for
+                baseline = allocation_for(session.get(Order, payment.order_id), existing.id)
+                document = baseline['document'] if baseline else None
+            if document != body['loyalty_allocation']:
                 raise IdempotencyConflictError('Refund allocation differs; use financial review')
         return service.order_out(payment.order_id)
     if payment.status not in {'paid','refunded'}: raise NotFoundError('Refund awaits confirmed payment')
@@ -61,12 +67,15 @@ def record_refund(service, provider, body, evidence):
     session.add(refund)
     session.flush()
     order = session.scalar(select(Order).where(Order.id == payment.order_id).with_for_update().execution_options(populate_existing=True))
-    from .loyalty_execution import allocate_refund, compensate
+    from .loyalty_execution import allocate_refund, compensate, marked
+    from .loyalty_baseline import allocate, compensate as baseline_compensate
     from .growth import RestaurantGrowthService
     if body.get('loyalty_allocation') is not None:
-        allocate_refund(session, order, refund, body['loyalty_allocation'], actor='provider:' + provider)
+        (allocate_refund if marked(order) else allocate)(session, order, refund, body['loyalty_allocation'], actor='provider:' + provider)
     if total + amount < payment.amount_minor:
-        compensate(RestaurantGrowthService(session), order)
+        growth = RestaurantGrowthService(session)
+        if not compensate(growth, order):
+            baseline_compensate(growth, order)
     if total + amount == payment.amount_minor:
         return service.apply_payment_status(payment.provider_reference, 'refunded', provider=provider,
             event_id=body['event_id'], amount_minor=payment.amount_minor, currency=payment.currency, raw_event_json=evidence)
