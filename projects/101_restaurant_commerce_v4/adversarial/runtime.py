@@ -104,6 +104,7 @@ def application():
         environment="development",
         demo_mode=True,
         auto_init_schema=False,
+        loyalty_configuration_enabled=c.get("loyalty_configuration_enabled", False),
         payment_recovery_enabled=False,
         provider_recovery_enabled=False,
         payment_providers={"simulated": ControlledPayment()},
@@ -116,6 +117,7 @@ def application():
     # Harness proof only: no additional application authority or login endpoints.
     if c.get("timing_enabled"):
         from timing import install
+
         return install(app, str(Path(c["run_dir"]) / "timing"))
     return app
 

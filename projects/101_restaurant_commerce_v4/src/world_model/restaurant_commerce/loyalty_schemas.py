@@ -3,11 +3,13 @@
 from datetime import datetime
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import Field, model_validator
+
+from .schemas import StrictModel
 
 
-class Strict(BaseModel):
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+class Strict(StrictModel):
+    """Use the shared recursive NUL/Unicode guard before database or JSON consumers."""
 
 
 Money = Annotated[int, Field(strict=True, ge=0, le=2**53 - 1)]

@@ -650,7 +650,15 @@ def zap_scan(rec, config):
         assert spec_status == 200
         dump(rec.output / "actual-openapi.json", spec)
         excluded = [
-            p for p in spec["paths"] if p.startswith("/api/staff/") or p.endswith("/access/revoke")
+            p
+            for p in spec["paths"]
+            if p.startswith("/api/staff/")
+            or p.endswith("/access/revoke")
+            or (
+                config.get("zap_expanded_policy")
+                and "/loyalty-config/" in p
+                and not p.endswith("/preview")
+            )
         ]
         selected_spec = {
             **spec,
@@ -659,7 +667,7 @@ def zap_scan(rec, config):
         from scanner_contract import prepared_spec
 
         operation_fixtures = config.get("zap_operation_fixtures", {})
-        if not operation_fixtures and config.get("database_url") and config.get("customer_ids"):
+        if config.get("database_url") and config.get("customer_ids"):
             from security_fixtures import Fixtures
 
             fixture_builder = Fixtures(config)
@@ -716,7 +724,7 @@ def zap_scan(rec, config):
         for key, fixture in operation_fixtures.items():
             method, template = key.split(" ", 1)
             if method not in {"POST", "PUT"} or not template.endswith(
-                ("/campaigns", "/{campaign_id}")
+                ("/campaigns", "/{campaign_id}", "/preview", "/allocation")
             ):
                 continue
             path = template.format(**fixture["ids"])
@@ -766,24 +774,11 @@ def zap_scan(rec, config):
                 ]
             )
         ]
-        selected = [
-            "6",
-            "7",
-            "40009",
-            "40012",
-            "40014",
-            "40016",
-            "40017",
-            "40018",
-            "40022",
-            "90019",
-            "90020",
-            "90035",
-            "40003",
-            "40008",
-            "40034",
-            "10058",
-        ]
+        from zap_policy import policy
+
+        mapped_policy = policy(scanners, expanded=config.get("zap_expanded_policy", False))
+        dump(rec.output / "zap-policy-coverage.json", mapped_policy)
+        selected = mapped_policy["selected"]
         api("ascan", "action", "disableAllScanners")
         api("ascan", "action", "enableScanners", ids=",".join(selected))
         result["selected_http_rule_ids"] = selected
@@ -864,9 +859,14 @@ def zap_scan(rec, config):
                     continue
                 coverage_row = structured[target]
                 coverage_row["active_json"] += 1
-                if isinstance(payload, dict) and isinstance(payload.get("content"), dict):
+                if isinstance(payload, dict):
+                    nested_keys = [
+                        k
+                        for k, v in structured_targets[target].items()
+                        if isinstance(v, (dict, list))
+                    ]
                     coverage_row["nested_mutations"] += int(
-                        payload["content"] != structured_targets[target]["content"]
+                        any(payload.get(k) != structured_targets[target][k] for k in nested_keys)
                     )
                 status_line = message.get("responseHeader", "").split("\r\n")[0]
                 status_code = status_line.split(" ")[1] if " " in status_line else "missing"
@@ -950,6 +950,10 @@ def zap_scan(rec, config):
                     yield from plugins(v)
 
         completed = {p[1] for p in plugins(progress) if len(p) >= 4 and p[3] == "Complete"}
+        from zap_policy import execution_coverage
+
+        result["rule_execution_coverage"] = execution_coverage(progress, selected)
+        dump(rec.output / "zap-rule-execution.json", result["rule_execution_coverage"])
         result["completed_rule_ids"] = sorted(completed)
         result["incomplete_rule_ids"] = sorted(set(selected) - completed)
         required = ["customer"] if focus_customer else ["staff", "customer"]
