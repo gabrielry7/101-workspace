@@ -189,4 +189,4 @@ The present shared frequency check spans the new campaign channel contracts.
 The official WhatsApp transport, template snapshots, authenticated callback/inbox
 and opt-out path now reuse this lifecycle. See [WHATSAPP.md](WHATSAPP.md) for
 configuration, supported template shapes, synthetic browser proof and activation
-limits. SMS remains unconfigured; real sending remains disabled.
+limits. SMS now uses the same lifecycle; see [SMS.md](SMS.md). Real sending remains disabled.

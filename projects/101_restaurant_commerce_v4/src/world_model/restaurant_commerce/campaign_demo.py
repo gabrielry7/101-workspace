@@ -73,6 +73,7 @@ def main():
     parser.add_argument('--db', default='/tmp/101-campaign-demo.db')
     parser.add_argument('--port', type=int, default=8799)
     parser.add_argument('--worker', action='store_true', help='Run existing recovery worker automatically; otherwise use screen simulation button')
+    parser.add_argument('--sms',action='store_true',help='Enable explicit synthetic SMS route fixture')
     parser.add_argument('--whatsapp',action='store_true',help='Enable explicit synthetic WhatsApp account/template fixture')
     args = parser.parse_args()
     import uvicorn
@@ -80,6 +81,9 @@ def main():
     if args.whatsapp:
         with app.state.session_factory() as session:
             app.state.campaign_options['integrations']['honorato-whatsapp-test']=enable_whatsapp_demo(session,origin=f'http://127.0.0.1:{args.port}')
+    if args.sms:
+        with app.state.session_factory() as session:
+            app.state.campaign_options['integrations']['honorato-sms-test']=enable_sms_demo(session,origin=f'http://127.0.0.1:{args.port}')
     print(f'TEST ONLY: http://127.0.0.1:{args.port}/campaigns; user campaign.manager; password: {PASSWORD}')
     print('Fixed simulation clock:',CLOCK.isoformat(),'; contacts, catalog, permissions and RNE are synthetic.')
     uvicorn.run(app,host='127.0.0.1',port=args.port,access_log=False)
@@ -107,5 +111,24 @@ def enable_whatsapp_demo(session, *, origin='http://127.0.0.1:8801'):
                     source='synthetic explicit WhatsApp permission',reason=permission.reason,registry=json.loads(permission.registry_json),now=CLOCK)
         session.commit()
     return {'business_id':BUSINESS,'scope':'test','adapter':FakeWhatsAppTransport()}
+
+def enable_sms_demo(session, *, origin='http://127.0.0.1:8802'):
+    import regex  # campaign-sms extra; fail before starting an incomplete demo
+    from twilio.request_validator import RequestValidator
+    from . import sms
+    from .campaign_models import SmsSender,ContactPermission
+    from .sms_delivery import FakeSmsTransport
+    if not session.get(SmsSender,BUSINESS):
+        sms.configure(session,BUSINESS,sms.SenderInput(account_sid='AC'+'1'*32,sender='+15555550199',
+            route='international_long_code',link_origin=origin,status='READY',inbound_supported=True,
+            delivery_receipts='available',max_segments=10,unit_cost_microusd=0,
+            source='synthetic route and price; not Twilio verification',expires_at='2026-11-10T00:00:00Z'),CLOCK)
+        for customer in session.scalars(select(Customer).where(Customer.business_id==BUSINESS)):
+            permission=session.scalar(select(ContactPermission).where(ContactPermission.customer_id==customer.id,ContactPermission.channel=='email'))
+            if permission:
+                set_permission(session,BUSINESS,customer.id,channel='sms',scope='test',state=permission.state,
+                    source='synthetic explicit SMS permission',reason=permission.reason,registry=json.loads(permission.registry_json),now=CLOCK)
+        session.commit()
+    return {'business_id':BUSINESS,'scope':'test','adapter':FakeSmsTransport(origin=origin)}
 
 if __name__ == '__main__': main()

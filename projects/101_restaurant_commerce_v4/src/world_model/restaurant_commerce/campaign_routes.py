@@ -34,7 +34,41 @@ def register(app, get_session, scoped_staff, options, demo_mode):
     from .whatsapp_routes import register as register_whatsapp
     register_whatsapp(app,get_session,read,write,integrations,now,demo_mode)
 
+    from .sms_routes import register as register_sms
+    register_sms(app,get_session,read,write,integrations,now,demo_mode)
+
     root = '/api/operator/restaurants/{business_id}/campaigns'
+
+    from . import provider_readiness as readiness
+
+    @app.get(root+'/provider-readiness',dependencies=[Depends(read)])
+    def provider_readiness(business_id:str,session:Session=Depends(get_session)):
+        return readiness.readiness(session,business_id,integrations,now())
+
+    @app.post(root+'/provider-readiness/whatsapp/probe',dependencies=[Depends(write)])
+    def provider_probe(business_id:str,session:Session=Depends(get_session)):
+        from . import whatsapp
+        cfg=c.settings(session,business_id)
+        if cfg.scope=='test':raise HTTPException(409,'real_provider_evidence_cannot_enter_simulation')
+        integration=next((v for v in integrations.values() if v['business_id']==business_id and v['scope']==cfg.scope and v['adapter'].name=='whatsapp_cloud'),None)
+        if not integration:raise HTTPException(409,'real_provider_unconfigured')
+        adapter=integration['adapter'];sender=whatsapp.sender_document(session,business_id)
+        if not sender or sender['phone_id']!=adapter.phone_id or sender['waba_id']!=adapter.waba_id:raise HTTPException(409,'whatsapp_integration_binding_changed')
+        if adapter.validate():raise HTTPException(409,'provider_configuration_incomplete')
+        try:observation=adapter.account_readiness()
+        except Exception:raise HTTPException(502,'provider_readiness_probe_failed') from None
+        if observation.get('phone_waba_binding_verified') is not True or observation.get('phone_catalogue_complete') is not True:
+            raise HTTPException(409,'provider_account_binding_incomplete')
+        whatsapp.sync_provider(session,business_id,adapter,now(),observation=observation)
+        return readiness.readiness(session,business_id,integrations,now())
+
+    @app.post(root+'/provider-test-reviews')
+    def prepare_provider_test(business_id:str,payload:readiness.TestReviewInput,principal=Depends(write),session:Session=Depends(get_session)):
+        return readiness.prepare_test(session,business_id,payload,principal.actor_id,integrations,now())
+
+    @app.get(root+'/provider-test-reviews/{review_id}',dependencies=[Depends(read)])
+    def get_provider_test(business_id:str,review_id:str,session:Session=Depends(get_session)):
+        return readiness.review(session,business_id,review_id,now())
 
     @app.get('/campaigns')
     def campaign_page():
@@ -44,7 +78,7 @@ def register(app, get_session, scoped_staff, options, demo_mode):
     def campaign_list(business_id: str, session: Session = Depends(get_session)):
         cfg = c.settings(session, business_id)
         return {'campaigns':[{'id':row.id,'state':row.state} for row in session.scalars(select(Campaign).where(Campaign.business_id == business_id))],
-                'channels':{'email':'simulation_only','whatsapp':__import__(__package__+'.whatsapp',fromlist=['readiness']).readiness(session,business_id,now())['state'],'sms':'unconfigured'},
+                'channels':{'email':'simulation_only','whatsapp':__import__(__package__+'.whatsapp',fromlist=['readiness']).readiness(session,business_id,now())['state'],'sms':__import__(__package__+'.sms',fromlist=['readiness']).readiness(session,business_id)['state']},
                 'live_send_enabled':False,'scope':cfg.scope,'paused':cfg.paused,'clock':now().isoformat(),
                 'sender':json.loads(cfg.config_json).get('sender'),
                 'customers':[{'id':x.id,'name':x.name,'email':x.email,'phone':x.phone} for x in session.scalars(select(Customer).where(Customer.business_id == business_id).limit(500))]}
@@ -93,6 +127,8 @@ def register(app, get_session, scoped_staff, options, demo_mode):
         if scope not in {'test','provider_test','live'}: raise HTTPException(422, 'Invalid scope')
         result = c.report(session, business_id, campaign_id, scope)
         revisions = select(CampaignRevision.id).where(CampaignRevision.campaign_id == campaign_id)
+        from . import sms
+        result['sms']=sms.report_details(session,business_id,campaign_id,scope)
         result['deliveries'] = [{'id':j.id,'customer_id':j.customer_id,'state':j.state,'reason':j.reason,
             'message_id':j.provider_id,'tracking_url':'/campaign-link/'+j.tracking_token,
             'unsubscribe_url':'/campaign-unsubscribe/'+j.unsubscribe_token} for j in session.scalars(select(CampaignJob).where(

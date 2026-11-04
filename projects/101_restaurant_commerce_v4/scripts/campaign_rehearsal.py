@@ -13,7 +13,7 @@ import httpx
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--url',default='http://127.0.0.1:8799')
-    parser.add_argument('--channel',choices=['email','whatsapp'],default='email')
+    parser.add_argument('--channel',choices=['email','whatsapp','sms'],default='email')
     parser.add_argument('--output',default='/tmp/101-campaign-rehearsal.json')
     args=parser.parse_args()
     parsed=urlsplit(args.url)
@@ -40,8 +40,9 @@ def main():
             template=next(t for t in configuration['templates'] if t['name']=='honorato_demo')
             draft.update(channel='whatsapp',sender='10100000001',whatsapp_template_id=template['id'],
                 whatsapp_parameters=['{name}','Invitación ficticia, solo demostración.'])
+        if args.channel=='sms':draft.update(channel='sms',sender='+15555550199')
         campaign=request('POST',root,json=draft,headers=headers).json()
-        if campaign['eligible']!=(3 if args.channel=='whatsapp' else 2):raise RuntimeError('Use a fresh demo database with the requested channel enabled')
+        if campaign['eligible']!=(3 if args.channel in {'whatsapp','sms'} else 2):raise RuntimeError('Use a fresh demo database with the requested channel enabled')
         path=root+'/'+campaign['id']
         for action in ('approve','schedule'):
             request('POST',path+'/'+action,json={'digest':campaign['digest']},headers=headers)
@@ -56,6 +57,8 @@ def main():
                     conversation=request('GET',wa_root+'/conversations').json()['conversations'][0]
                     request('POST',wa_root+'/conversations/'+conversation['id']+'/reply',
                         json={'body':'El equipo te ayuda con esta prueba.','request_key':secrets.token_hex(16)},headers=headers)
+        elif args.channel=='sms':
+            request('POST','/api/operator/restaurants/'+business+'/sms/simulate-inbound',json={'customer_id':withdrawal['id'],'text':'BAJA'},headers=headers)
         else:
             request('POST',pending['unsubscribe_url'])
         request('POST',root+'/simulate/dispatch',headers=headers)
@@ -76,6 +79,16 @@ def main():
                 request('POST','/api/whatsapp-hooks/honorato-whatsapp-test',content=event,
                     headers={'X-Hub-Signature-256':signature})
             assert request('GET',wa_root+'/conversations').json()['conversations'][0]['replies'][0]['state']=='skipped'
+        elif args.channel=='sms':
+            from twilio.request_validator import RequestValidator
+            from urllib.parse import urlencode
+            recipient=next(x for x in data['customers'] if x['id']==job['customer_id'])
+            callback='/api/sms-hooks/honorato-sms-test/status?key='+job['id']
+            for kind in ('delivered','sent','delivered'):
+                fields={'AccountSid':'AC'+'1'*32,'MessageSid':job['message_id'],'From':'+15555550199',
+                    'To':recipient['phone'],'MessageStatus':kind}
+                signature=RequestValidator('synthetic-sms-callback-secret').compute_signature(args.url+callback,fields)
+                request('POST',callback,content=urlencode(fields),headers={'Content-Type':'application/x-www-form-urlencoded','X-Twilio-Signature':signature})
         else:
             event=json.dumps({'id':'rehearsal-delivery','key':job['id'],'message_id':job['message_id'],
                 'kind':'delivered','at':data['clock']},sort_keys=True).encode()

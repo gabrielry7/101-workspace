@@ -190,3 +190,45 @@ class WhatsAppReply(Base):
     provider_id: Mapped[str | None] = mapped_column(String(200), nullable=True)
     claimed_at: Mapped[object | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[object] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class SmsSender(Base):
+    __tablename__ = 'restaurant_campaign_sms_senders'
+    business_id: Mapped[str] = mapped_column(ForeignKey('restaurant_commerce_profiles.business_id'), primary_key=True)
+    binding_key: Mapped[str] = mapped_column(String(64), unique=True)
+    scope: Mapped[str] = mapped_column(String(24))
+    document: Mapped[str] = mapped_column(Text)
+    updated_at: Mapped[object] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class SmsEvidence(Base):
+    __tablename__ = 'restaurant_campaign_sms_evidence'
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    scope: Mapped[str] = mapped_column(String(24))
+    job_id: Mapped[str | None] = mapped_column(ForeignKey('restaurant_campaign_jobs.id'), nullable=True)
+    kind: Mapped[str] = mapped_column(String(24))
+    document: Mapped[str] = mapped_column(Text)
+    raw_sha256: Mapped[str] = mapped_column(String(64))
+    received_at: Mapped[object] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class SmsSuppression(Base):
+    __tablename__ = 'restaurant_campaign_sms_suppressions'
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    scope: Mapped[str] = mapped_column(String(24))
+    destination: Mapped[str] = mapped_column(String(20))
+    source: Mapped[str] = mapped_column(String(200))
+    at: Mapped[object] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class ProviderTestReview(Base):
+    __tablename__ = 'restaurant_campaign_provider_test_reviews'
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_id)
+    business_id: Mapped[str] = mapped_column(String(64), index=True)
+    revision_id: Mapped[str] = mapped_column(ForeignKey('restaurant_campaign_revisions.id'))
+    actor: Mapped[str] = mapped_column(String(128))
+    digest: Mapped[str] = mapped_column(String(64))
+    document: Mapped[str] = mapped_column(Text)
+    created_at: Mapped[object] = mapped_column(DateTime(timezone=True), default=utcnow)
