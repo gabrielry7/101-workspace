@@ -17,6 +17,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, Response
 from pydantic import ValidationError as PydanticValidationError
+from sqlalchemy import select
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session
 
@@ -607,9 +608,16 @@ def create_app(
         request = request.model_copy(update={"source_channel": "web", "external_source_ref": None})
         from .models import utcnow
         from .campaigns import checkout_context, digest as campaign_digest
-        context = checkout_context(service.session, business_id,
-            http_request.cookies.get("campaign_visit_" + campaign_digest(business_id)[:16]),
-            campaign_options.get("clock", utcnow)(), demo_mode=demo_mode)
+        # Attribution is server-owned and frozen on first creation. A retry still
+        # passes the original payload/secret fingerprint checks in create_order.
+        existing = service.session.scalar(select(Order).where(
+            Order.business_id == business_id, Order.idempotency_key == request.idempotency_key
+        )) if request.idempotency_key else None
+        context = ({"source_channel": existing.source_channel,
+                    "external_source_ref": existing.external_source_ref} if existing else
+            checkout_context(service.session, business_id,
+                http_request.cookies.get("campaign_visit_" + campaign_digest(business_id)[:16]),
+                campaign_options.get("clock", utcnow)(), demo_mode=demo_mode))
         if context:
             request = request.model_copy(update=context)
         order = service.create_order(business_id, request)

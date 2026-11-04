@@ -211,7 +211,8 @@ class LoyaltyConfigurationService:
             raise ValidationError("Archived configuration cannot be edited")
         self._validate_references(kind, business_id, request.document)
         row.draft_json = canonical(request.document)
-        row.state = "draft"
+        if row.state != "paused":
+            row.state = "draft"
         row.revision += 1
         self._audit(row, kind + ".edited")
         self._commit()
@@ -237,8 +238,8 @@ class LoyaltyConfigurationService:
             }
         if row.revision != request.expected_revision or digest(row.draft_json) != request.digest:
             raise ConcurrencyConflictError("Review is stale; reload the exact draft")
-        if row.state != "draft":
-            raise ValidationError("Only a draft can be published")
+        if row.state not in {"draft", "paused"}:
+            raise ValidationError("Only a draft or paused proposal can be published")
         document = schema.model_validate_json(row.draft_json)
         self._validate_references(kind, business_id, document)
         fields = {
@@ -263,7 +264,8 @@ class LoyaltyConfigurationService:
                         **variant.model_dump(),
                     )
                 )
-        row.state = "published"
+        if row.state != "paused":
+            row.state = "published"
         row.revision += 1
         self._audit(row, kind + ".published")
         self._commit()
@@ -279,8 +281,12 @@ class LoyaltyConfigurationService:
             )
         if row.state == "archived":
             raise ValidationError("Archived configuration is terminal")
-        if request.state == "paused" and row.state != "published":
-            raise ValidationError("Only a published configuration can be paused")
+        if request.state == "paused":
+            _, version_model, _, parent = KINDS[kind]
+            if self.session.scalar(select(version_model.id).where(
+                getattr(version_model, parent) == row.id
+            ).limit(1)) is None:
+                raise ValidationError("Only a configuration with published history can be paused")
         row.state = request.state
         row.revision += 1
         self._audit(row, kind + "." + request.state)
