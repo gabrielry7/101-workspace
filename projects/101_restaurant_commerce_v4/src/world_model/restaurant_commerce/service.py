@@ -831,6 +831,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
     def _delivery_to_out(self, delivery: Delivery) -> DeliveryOut:
         return DeliveryOut(
             id=delivery.id,
+            order_public_code=delivery.order.public_code,
+            order_status=delivery.order.status,
+            order_payment_status=delivery.order.payment_status,
             order_id=delivery.order_id,
             quote_id=delivery.quote_id,
             provider=delivery.provider,
@@ -887,7 +890,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         )
 
     def list_deliveries(self, business_id: str, *, status: str | None = None, limit: int = 100) -> list[DeliveryOut]:
-        stmt = select(Delivery).join(Order, Delivery.order_id == Order.id).where(Order.business_id == business_id)
+        stmt = select(Delivery).join(Order, Delivery.order_id == Order.id).where(Order.business_id == business_id).options(selectinload(Delivery.order))
         if status:
             try:
                 DeliveryStatus(status)

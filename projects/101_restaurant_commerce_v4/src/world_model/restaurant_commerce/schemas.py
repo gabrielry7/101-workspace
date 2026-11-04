@@ -87,6 +87,9 @@ class DeliveryTrackingOut(StrictModel):
 
 class DeliveryOut(StrictModel):
     id: str
+    order_public_code: str
+    order_status: str
+    order_payment_status: str
     order_id: str
     quote_id: str
     provider: str

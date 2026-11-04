@@ -138,7 +138,7 @@ def test_delivery_fields_urls_and_action_closures(site):
     page, _, overrides, requests, errors, external=site
     id="id'\"/><img src=x onerror=window.auditXss=true>"
     overrides['/api/operator/restaurants/demo-restaurant-bogota/orders']=[{'id':id,'public_code':PAYLOAD,'status':'accepted','payment_status':PAYLOAD}]
-    d={'id':id,'order_id':id,'status':'quoted','destination_address':PAYLOAD,'destination_city':PAYLOAD,
+    d={'id':id,'order_id':id,'order_public_code':PAYLOAD,'order_status':'accepted','order_payment_status':'paid','status':'quoted','destination_address':PAYLOAD,'destination_city':PAYLOAD,
        'provider':PAYLOAD,'fee_minor':100,'courier_name':PAYLOAD,'provider_delivery_reference':PAYLOAD,
        'tracking_url':'javascript:window.auditXss=true'}
     overrides['/api/operator/restaurants/demo-restaurant-bogota/deliveries']=[d]

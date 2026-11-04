@@ -32,12 +32,11 @@ async function loadAll() {
   if (refreshing) return;
   refreshing = true;
   try {
-    const [deliveries, orders] = await Promise.all([api(endpoint('deliveries')),api(endpoint('orders'))]);
-    const byID = new Map(orders.map(o => [o.id,o]));
+    const deliveries = await api(endpoint('deliveries'));
     replace(rows, deliveries.length ? deliveries.map(d => {
-      const o = byID.get(d.order_id), actions = [];
+      const o = {id:d.order_id, public_code:d.order_public_code, status:d.order_status, payment_status:d.order_payment_status}, actions = [];
       const perform = async (url, method, body) => { await api(url,{method,body}); await loadAll(); };
-      if (d.status === 'quoted' && o && ['accepted','preparing','ready'].includes(o.status))
+      if (d.status === 'quoted' && o.payment_status === 'paid' && ['accepted','preparing','ready'].includes(o.status))
         actions.push(button('Despachar courier', () => perform(`/api/operator/orders/${path(o.id)}/delivery/dispatch`,'POST')));
       if (d.status === 'courier_assigned' || d.status === 'picked_up') {
         const status = d.status === 'courier_assigned' ? 'picked_up' : 'delivered';
