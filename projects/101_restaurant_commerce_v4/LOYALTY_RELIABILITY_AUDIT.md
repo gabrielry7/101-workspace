@@ -136,7 +136,7 @@ staff session/CSRF/tenant checks; ordinary and incremental points/redemption →
 expiration/refund/debt; configuration draft/review/publish/pause → frozen variants →
 independent enrollment/overlap/exposure → assigned checkout; simulator inputs,
 exact arithmetic and sensitivity. Existing campaign attribution and delivery screens
-were followed where they consume these flows. The Stage6 UI and Stage7 causal
+were followed where they consume these flows. The Stage 6 UI and Stage7 causal
 analytics do not yet exist and are not implied by API/service tests.
 
 Read-only build checks completed: offline wheel build, pip dependency compatibility,
@@ -203,4 +203,53 @@ Intermediate candidate failures (a missing import and test-fixture assumptions)
 were retained and corrected; they are not counted as passing verification. The
 workspace-disk baseline passed117 PostgreSQL checks. SQLite passed288 before a
 browser navigation timeout/stall; it was interrupted and is not a full-suite pass.
-Final artifact qualification results follow after the remaining runs.
+Final artifact qualification is recorded below.
+
+### Completed qualification and integration boundary
+
+The 0.19.1 installed artifact at `5c86d76` passed the scoped qualification:
+
+- **370 SQLite cases covered:**291 successful cases were retained when the user
+  interrupted the run; the saved collection had 370 selected cases. The last
+  completed boundary case and all 79 remaining cases were rerun: 80 passed. The
+  collection/resume receipt records the exact boundary and avoids double-counting.
+  This is combined coverage across two runs, not a claimed uninterrupted suite.
+- **140 PostgreSQL cases passed**, including concurrent refund/source restoration,
+  completion/partial-refund, redemptions, budget enforcement, assignment and existing
+  payment durability. The owned disposable cluster was stopped; native log retained.
+- **43 Chromium cases passed** in fresh processes. Earlier shared-browser stalls
+  and interrupted traces remain retained. Five URL-bearing parameter IDs initially
+  failed collection because the verification runner normalized slashes; the runner
+  was corrected and all five cases passed. These were not application failures.
+- Offline wheel build, dependency compatibility, Python compilation and all 10
+  JavaScript syntax checks passed. All 87 packaged source/assets matched the checkout.
+  New implementation/regression files pass full isolated Ruff; whole-repository
+  lint remains unclean (345 isolated-rule findings, 1325 inherited-rule findings on
+  this merged artifact). No configured type checker was available.
+
+While qualification ran, canonical commerce advanced independently to the SMS
+release `96be0b5`. Merge `4d8ad6c` preserves that release and the audit repairs as
+**0.20.1**. Its 93 packaged source/assets match the checkout, including 23 unchanged
+qualified loyalty/financial core files. Offline build, dependency compatibility,
+compilation and all 11 JavaScript syntax checks pass. The repairs introduce no new
+dependency; the concurrent SMS release's declared dependencies are preserved.
+Newly merged campaign/checkout consumers are checked separately below. The scoped
+advisory review above is not an exhaustive audit of the concurrent SMS subsystem.
+
+Native evidence is retained in the shared workspace at
+`data/loyalty-verification/audit-20261104/`: original baseline/reproduction logs,
+`final-release/` (SQLite resume receipt, PostgreSQL JUnit, per-case browser JUnit,
+package parity and lint), and `integrated-release/` (the merged artifact and checks).
+No live provider calls, production migration, reward activation or Stage 6 work was
+performed. The code-quality audit does not supersede the separately owned full
+security/load/release gates.
+
+The merged 0.20.1 artifact passed **32 backend checks** (two PostgreSQL-only
+cases deliberately excluded here because the identical financial core already
+passed its 140-case PostgreSQL run) and **four actual Chromium flows**: delivery,
+email campaigns, WhatsApp and SMS. These exercise original checkout attribution,
+partial refunds, finance authorization, identity holds and the newly merged
+channel consumers. All 93 packaged files match source. Whole-repository Ruff still
+reports 393 isolated-rule and 1734 inherited-rule findings on this final merged
+checkout; the newly authored repair modules and regression files pass isolated
+Ruff. Compilation and JavaScript syntax checks are not presented as type checking.
