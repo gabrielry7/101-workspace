@@ -1,4 +1,4 @@
-# Loyalty experimentation — stages 1–3
+# Loyalty experimentation — stages 1–4
 
 Implemented: a staff-authorized configuration foundation for multiple loyalty
 strategies, immutable published versions and separately versioned experiments.
@@ -6,6 +6,8 @@ Stage 2 adds deterministic points/fixed-value rule previews against published ve
 Stage 3 adds controlled versioned execution through the existing checkout, wallet and
 financial workflows. Ordinary baseline benefits remain; new orders can add an exact
 published strategy under the synthetic execution gate described below.
+Stage 4 independently enrolls verified customers into permanent randomized cohorts
+and routes synthetic checkout through those assignments.
 
 The complete design and staged acceptance criteria live in the shared repository:
 `/home/t/101-world-model/docs/commerce-audit/LOYALTY_EXPERIMENTATION_PLAN.md`.
@@ -51,7 +53,8 @@ resource, revision, digest and actor in the same mutation transaction.
 
 | Method and suffix | Action |
 | --- | --- |
-| GET `/capabilities` | Explicitly reports configuration-only capability |
+| GET `/capabilities` | Reports optional configuration/preview and controlled adapter availability; public execution stays off |
+| GET `/experiments/{id}/enrollment` | Descriptive assignment, exposure and ledger diagnostics; requires the offline assignment upgrade |
 | GET/POST `/programs` or `/experiments` | List or create a draft |
 | GET/PUT `/{kind}/{id}` | Inspect history or edit draft with expected revision |
 | POST `/{kind}/{id}/publish` | Publish the exact reviewed revision and SHA256 digest |
@@ -97,7 +100,8 @@ integer basis-point allocations total 10,000. Exactly one control has a null
 `strategy_version_id`; treatment variants pin existing published strategy versions
 in the same business/currency. Existing benefits must be preserved. Explicit overlap
 requires a reason. The published experiment stores a random salt and assignment
-algorithm version for later enrollment; it does not assign customers yet.
+algorithm version. Publishing does not enroll customers; the controlled Stage-4
+adapter below is the separate enrollment boundary.
 
 Published rule documents, experiment versions, variants and configuration audit
 rows reject UPDATE/DELETE at the database level, including raw SQL. Foreign keys
@@ -263,7 +267,7 @@ is false by default. Only simulated payment checkout is admitted. Neither reques
 JSON, contact matching, configuration publication nor a staff cookie selects an
 execution version. Current order prices have no tax decomposition: the explicit
 synthetic price assertion is **not** a production tax adapter. Customer authentication,
-real economics, assignment and the remaining release stages are still pilot gates.
+real economics and the remaining release stages are still pilot gates.
 
 The server prices the cart, checks eligibility and currency, allocates existing
 promotion discounts by largest remainder with stable line-index ties, and evaluates
@@ -285,7 +289,7 @@ second spendable balance. Completion works through the payment, cash-pickup lega
 and delivery consumers. The controlled new-version selector itself remains limited
 to simulated payments.
 
-Existing-order writers acquire Payment → Order → execution state → account →
+Existing verified-order writers acquire Payment → Order → Customer → execution state → account →
 strategy/budget → lots/debt as needed. Newly inserted checkout rows precede the account
 lock. Locked projection reads refresh SQLAlchemy's identity map; retaining an old
 Python object does not retain an old spendable balance. The account and budget
@@ -355,5 +359,111 @@ completion versus refund, and expiration versus cancellation. Run against dispos
 SQLite and PostgreSQL using the existing `COMMERCE_PAYMENT_TEST_DATABASE_URL` fixture.
 Ordinary growth, identity, finance, delivery, payment/capacity and readiness tests
 remain required consumers. Test fixtures use synthetic customers and local providers.
-Stages 4–7 (assignment, simulator, staff configuration UI and ITT profit reporting)
+Stages 5–7 (simulator, staff configuration UI and ITT profit reporting)
 remain separate delivery stages. No winner or behavioral lift is claimed.
+
+
+## Stage 4: controlled randomized assignment
+
+After the configuration and execution upgrades, stop writers and back up the
+selected database before the optional offline upgrade:
+
+```sh
+python -m world_model.restaurant_commerce.maintenance upgrade-loyalty-assignment --offline
+```
+
+The six new tables retain eligibility decisions, one experiment run, assignments,
+allowed-overlap evidence, exposure receipts and order bindings. All reject
+UPDATE/DELETE, with scope guards for run/version, customer, variant and order links.
+Fresh startup does not silently install these tables. Repeating a completed upgrade
+is safe; missing/altered guards and partial schemas require repair. Old orders,
+customers, wallet balances and cohorts are not backfilled or fabricated.
+
+A trusted adapter constructs `LoyaltyAssignmentService(session, actor_id,
+enabled=True, mode="synthetic")` and calls `enroll(business_id, version_id,
+verified_customer_id=..., identity_evidence_ref=..., request_key=...)`. The caller
+commits or rolls back the whole transaction. Enrollment needs no order or wallet.
+The identity reference records the trusted verification source; submitted telephone
+numbers, public JSON and staff cookies do not authenticate a customer. Missing
+verified identity produces a retained ineligible decision. Foreign-customer IDs fail.
+Customer allowlists are supported; order/product-dependent enrollment eligibility
+is explicitly unsupported, so buying cannot silently become a condition of randomization.
+Cart eligibility is evaluated later by the assigned program.
+
+The first successful enrollment freezes one published experiment version for the
+run. Its salt, published variant order and integer basis-point allocations determine
+SHA256 assignment (`sha256-v1`): hash UTF-8 compact JSON
+`["101-loyalty-assignment","sha256-v1",salt,experiment_version_id,business_id,customer_id]`,
+interpret the full digest as a big-endian integer, take modulo 10,000, then select
+its cumulative allocation interval. The assignment is persisted and unique per
+business/experiment/customer. Independent repeated enrollment returns the original
+eligibility decision and assignment, even after a configuration edit, pause or end.
+Another version cannot replace the run for newly enrolled customers; create a new
+experiment for a new allocation protocol. Allocations are probabilities, not quotas.
+
+Customer → Experiment locks serialize enrollment, checkout selection and overlap
+checks. Time is assessed after lock waits; reward reservation rechecks the offer
+window after wallet/budget waits. Each customer has an assignment-relative observation
+window plus carryover protection. Control assignments hold the same exclusion lease.
+Within an exclusion group, overlapping experiments require **both** frozen policies
+to allow overlap; retained pairs surface a contamination warning. Different exclusion
+groups intentionally do not exclude each other, so operators must group interfering
+offers consistently. Pausing does not release an exclusion lease or erase a cohort.
+
+A controlled checkout caller supplies `loyalty_experiment=AssignmentCheckout(
+experiment_id, redeem_reward=False, enabled=True,
+price_basis="synthetic_tax_exclusive")` alongside trusted `verified_customer_id`.
+Manual version selection and assignment selection are mutually exclusive. Only
+simulated payments are qualified; no public enrollment/selection/activation API is
+added. Checkout never enrolls or rerandomizes. Every contextual order retains its
+assignment or an explicit unverified/not-enrolled outcome, including control orders.
+Treatment execution pins the original strategy version and the existing Stage-3
+snapshot, ledger, financial compensation and liability history.
+
+Baseline earning and requested existing rewards remain available. An existing reward
+request takes priority over experimental redemption. Paused/archived programs or
+experiments, expired windows, ineligible carts and already-exhausted budgets fall
+back to ordinary checkout and record the reason. Insufficient experimental redemption
+can still allow eligible earning. Corruption fails rather than silently relabeling a
+customer as control. A budget/offer change while waiting for authoritative reservation
+locks may reject the transaction and require a refreshed quote; it cannot overdraw.
+Draft edits do not deactivate a previously assigned published version; pause/archive
+is the explicit operational stop. Original order retries resolve before current
+assignment lookup, preserving their original financial terms after later enrollment,
+pause or edits. Expected-total/quote-token protections remain in force.
+
+Exposure is separate: after actually rendering an assigned surface, a trusted
+adapter calls `record_exposure(..., verified_customer_id=..., request_key=...,
+kind="offer_surface_rendered" | "control_surface_rendered", surface=...,
+source_ref=...)`. Source receipts are idempotent; the kind must match the assignment.
+Late or paused exposures remain observable with warnings. Enrollment, quoting and
+purchasing never invent exposure. Actual issuance, reservation, application and refund
+usage stay in the existing ledger, joined through immutable order bindings.
+
+The staff enrollment endpoint requires existing `growth.read`, tenant scope and the
+configuration feature flag. It reports assigned counts (including nonbuyers), exact
+expected-allocation fractions, explicit exposures, bound orders, ledger activity and
+allowed-overlap warnings. These are descriptive diagnostics, not a sample-ratio
+significance test, profit estimate or winner declaration. Future ITT reporting must
+use **all original assignments** and all verified outcomes in the chosen window,
+including ordinary orders without this checkout context. Contact-only orders cannot
+be attributed to randomized identities. Identity coverage, contribution-cost coverage,
+observation maturity and confidence intervals remain Stage-7 responsibilities.
+
+`tests/test_loyalty_assignment.py` retains replay/restart, no-purchase enrollment,
+control/baseline/refund, fixed redemption, version edits, explicit exposure, bilateral
+overlap/carryover, raw-SQL scope/immutability, HTTP authorization/flag and PostgreSQL
+race regressions. The lock-wait time regression and quote-to-reservation isolation
+case preserve concrete review findings. No live customer enrollment, provider call,
+production migration or experimentally established behavioral lift is claimed.
+
+Stage-4 installed-wheel qualification (2026-11-04 UTC): **316 checks passed**:
+199 SQLite cases and 117 PostgreSQL cases, no failures or skips. The SQLite run
+explicitly deselects ten PostgreSQL-oriented cases; assignment/ledger races and
+installed-schema query bounds execute on PostgreSQL. All 80 packaged source/asset
+files match the tested checkout. Coverage includes existing identity, financial,
+delivery, payment, capacity and bounded-readiness consumers. Full Ruff on new files,
+focused undefined-name checks on affected modules and whitespace checks pass.
+Evidence: shared `data/loyalty-verification/stage4-20261104/release/`, including the
+wheel/hash manifest and `final/installed-{sqlite,postgresql}.{txt,xml}`. The existing
+Starlette/httpx deprecation warning remains; no dependency was added or changed.

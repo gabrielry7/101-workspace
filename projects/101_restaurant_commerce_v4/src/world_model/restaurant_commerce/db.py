@@ -11,6 +11,7 @@ from sqlalchemy.orm import Session, sessionmaker
 from . import campaign_models, loyalty_models, refunds  # noqa: F401 - register additive metadata
 from .loyalty_execution_migrations import loyalty_schema_ready
 from .loyalty_execution_models import EXECUTION_TABLES
+from .loyalty_assignment_models import ASSIGNMENT_TABLES
 from .loyalty_models import LOYALTY_TABLES
 from .migrations import (
     CUSTOMER_SAFETY_COLUMNS,
@@ -69,7 +70,7 @@ def init_schema(engine: Engine) -> None:
     tables = [
         t
         for t in Base.metadata.sorted_tables
-        if t.name not in EXECUTION_TABLES
+        if t.name not in (EXECUTION_TABLES | ASSIGNMENT_TABLES)
         and (
             not existing
             or t.name

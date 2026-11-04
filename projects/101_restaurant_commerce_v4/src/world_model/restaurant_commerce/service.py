@@ -148,9 +148,13 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         financial_providers: dict | None = None,
         payment_retry_seconds: float = 2.0,
         loyalty_execution=None,
+        loyalty_experiment=None,
     ) -> None:
         # Server-side identity adapter only. Never populated from request JSON/phone.
         self.loyalty_execution = loyalty_execution
+        self.loyalty_experiment = loyalty_experiment
+        self._assignment_plan = None
+        self._assignment_choice = None
         self.payment_lease_seconds = payment_lease_seconds
         self.financial_providers = financial_providers or {}
         self.payment_retry_seconds = payment_retry_seconds
@@ -179,12 +183,13 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             raise ValidationError("Verified customer does not match this request")
         return customer
 
-    def _snapshot(self, business_id: str, request) -> str:
+    def _snapshot(self, business_id: str, request, *, order=False) -> str:
+        selection = (self.loyalty_execution or (self._assignment_choice.selection if self._assignment_choice else None)) if order else None
         return json.dumps({
             "name": request.customer.name, "phone": _normalize_phone(request.customer.phone),
             "email": request.customer.email,
             "identity_verified": self._verified_customer(business_id, request.customer.phone) is not None,
-            **({"loyalty_execution_version": self.loyalty_execution.version_id} if self.loyalty_execution else {}),
+            **({"loyalty_execution_version": selection.version_id} if selection else {}),
             "whatsapp_requested": request.customer.whatsapp_opt_in is True,
             "marketing_requested": request.customer.marketing_opt_in is True,
             "source": request.customer.consent_source,
@@ -597,6 +602,10 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             discounts.reward_discount_minor = result.redemption.discount_minor
             discounts.reward_name = rules.name if result.redemption.discount_minor else None
             discounts.total_discount_minor += result.redemption.discount_minor
+        elif self.loyalty_experiment is not None:
+            from .loyalty_assignment_checkout import quote_choice
+            self._assignment_choice = quote_choice(self, business_id, quoted_items, discounts,
+                                                    currency=profile.currency, reward_id=reward_id)
         return QuoteResponse(
             business_id=business_id,
             currency=profile.currency,
@@ -1235,6 +1244,18 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                 entity.public_code = _public_code(prefix)
 
     def create_order(self, business_id: str, request: CreateOrderRequest) -> OrderOut:
+        self._assignment_plan = self._assignment_choice = None
+        try:
+            return self._create_order(business_id, request)
+        finally:
+            self._assignment_plan = self._assignment_choice = None
+
+    def _create_order(self, business_id: str, request: CreateOrderRequest) -> OrderOut:
+        if self.loyalty_experiment is not None:
+            from .loyalty_assignment_checkout import validate_context
+            validate_context(self)
+            if request.payment_provider != "simulated":
+                raise ValidationError("Assignment checkout is qualified only for simulated payments")
         if self.loyalty_execution is not None:
             from .loyalty_execution import selected
             selected(self)
@@ -1262,6 +1283,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             if self.loyalty_execution is not None:
                 from dataclasses import asdict
                 fingerprint_data["loyalty_execution"] = asdict(self.loyalty_execution)
+            if self.loyalty_experiment is not None:
+                from dataclasses import asdict
+                fingerprint_data["loyalty_experiment"] = asdict(self.loyalty_experiment)
             fingerprint = request_fingerprint(fingerprint_data)
             ledger_row = self.session.scalar(
                 select(IdempotencyRecord).where(
@@ -1291,6 +1315,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                     raise IdempotencyConflictError("Order replay requires an active original binding")
                 return self.process_payment_intent(claim.entity_id)
 
+        if self.loyalty_experiment is not None:
+            from .loyalty_assignment_checkout import prepare_checkout
+            self._assignment_plan = prepare_checkout(self, business_id, lock=True)
         if request.promo_code and verified is None:
             promotion = self.session.scalar(select(Promotion).where(
                 Promotion.business_id == business_id,
@@ -1356,7 +1383,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             public_code=_public_code("O"),
             business_id=business_id,
             customer_id=customer.id,
-            customer_snapshot_json=self._snapshot(business_id, request),
+            customer_snapshot_json=self._snapshot(business_id, request, order=True),
             status=OrderStatus.AWAITING_PAYMENT.value,
             fulfillment_type=fulfillment.value,
             payment_status=PaymentStatus.PENDING.value,
@@ -1441,6 +1468,13 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         if self.loyalty_execution is not None:
             from .loyalty_execution import reserve
             reserve(self, order, quote, loyalty_order_items)
+        elif self._assignment_choice and self._assignment_choice.selection:
+            from .loyalty_execution import reserve
+            reserve(self, order, quote, loyalty_order_items,
+                    selection=self._assignment_choice.selection, allow_historical=True)
+        if self.loyalty_experiment is not None:
+            from .loyalty_assignment_checkout import bind_order
+            bind_order(self, order)
         provider_idempotency_key = f"checkout:{business_id}:{request.idempotency_key or order.id}"
         self.session.add(PaymentIntent(
             order_id=order.id, business_id=business_id, provider=provider.name,
@@ -1576,8 +1610,14 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
     def _lock_order_money(self, order_id):
         self.session.scalars(select(Payment).where(Payment.order_id == order_id).order_by(Payment.id)
             .with_for_update().execution_options(populate_existing=True)).all()
-        return self.session.scalar(select(Order).where(Order.id == order_id).with_for_update()
+        order = self.session.scalar(select(Order).where(Order.id == order_id).with_for_update()
             .execution_options(populate_existing=True))
+        if order and self._contact(order).get("identity_verified"):
+            # Completion updates last_order_at. Take this lock before the wallet,
+            # matching enrollment/checkout and avoiding Customer <-> account cycles.
+            self.session.scalar(select(Customer).where(Customer.id == order.customer_id)
+                .with_for_update().execution_options(populate_existing=True))
+        return order
 
     def transition_order(self, order_id: str, new_status: str, *, expected_version=None, reason=None) -> OrderOut:
         self._lock_order_money(order_id)
