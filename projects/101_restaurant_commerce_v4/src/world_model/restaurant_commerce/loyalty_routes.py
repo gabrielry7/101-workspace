@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from .loyalty_config import LoyaltyConfigurationService
 from .loyalty_preview import PublishedRulePreview, preview_published_rules
 from .loyalty_rules import CALCULATION_VERSION, PreviewScenario
+from .loyalty_simulator import SIMULATION_VERSION, SimulationResult, SimulationScenario, simulate
 from .loyalty_schemas import (
     ExperimentCreate,
     ExperimentEdit,
@@ -34,13 +35,20 @@ def register(app, get_session, scoped_staff):
             "execution_enabled": False,
             "assignment_enabled": False,
             "analytics_enabled": False,
-            "stage": "controlled_assignment",
+            "stage": "financial_simulator",
+            "simulator_enabled": True,
+            "simulation_version": SIMULATION_VERSION,
             "controlled_assignment_available": True,
             "controlled_execution_available": True,
             "preview_enabled": True,
             "calculation_version": CALCULATION_VERSION,
             "preview_rule_types": ["points_earning", "fixed_value_redemption"],
         }
+
+    @app.post(root + "/simulator", response_model=SimulationResult, dependencies=[Depends(read)])
+    def loyalty_simulator(business_id: str, payload: SimulationScenario):
+        # Scoped staff permission is resolved before this pure, nonpersistent calculation.
+        return simulate(payload)
 
     @app.get(root + "/experiments/{resource_id}/enrollment", dependencies=[Depends(read)])
     def loyalty_enrollment_summary(business_id: str, resource_id: str,

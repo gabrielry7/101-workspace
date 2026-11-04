@@ -273,7 +273,7 @@ def create_app(
                 stop.set()
                 thread.join(timeout=5)
 
-    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.17.0",
+    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.18.1",
                   responses={status: {"model": ErrorResponse} for status in
                              (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)

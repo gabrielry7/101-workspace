@@ -34,6 +34,16 @@ CAMPAIGN_PYTHON=.venv/bin/python scripts/run_campaign_demo.sh \
   --whatsapp --db /tmp/101-whatsapp-fresh.db --port 8801
 ```
 
+For the complete repeatable HTTP rehearsal against that fresh database:
+
+```bash
+python scripts/campaign_rehearsal.py --channel whatsapp --url http://127.0.0.1:8801 \
+  --output /tmp/101-whatsapp-rehearsal.json
+```
+
+This asserts duplicate/reordered receipts, withdrawal blocking both pending jobs,
+cross-business denial, tampered links and the canonical partial refund.
+
 Open `/campaigns` for channel selection and `/whatsapp` for sender configuration,
 template status and staff replies. Test login: `campaign.manager`; passphrase:
 `synthetic campaign demonstration only`. The existing email demo remains the
