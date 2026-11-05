@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "world-model-restaurant-commerce"
-version = "0.22.0"
+version = "0.23.0"
 description = "Hardened restaurant direct commerce, delivery, loyalty and retention runtime for 101 / UnoCeroUno"
 requires-python = ">=3.11"
 dependencies = [
@@ -28,7 +28,7 @@ browser = ["playwright>=1.40"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-"world_model.restaurant_commerce" = ["web/*.html", "web/*.js", "web/*.css", "web/*.png"]
+"world_model.restaurant_commerce" = ["web/*.html", "web/*.js", "web/*.css", "web/*.png", "web/workspace/index.html", "web/workspace/*.txt", "web/workspace/assets/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

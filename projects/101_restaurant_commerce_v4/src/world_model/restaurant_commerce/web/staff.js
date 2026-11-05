@@ -1,7 +1,7 @@
 "use strict";
 (() => {
   const $ = id => document.getElementById(id);
-  let identity = null, generation = 0;
+  let identity = null, generation = 0, requestedBusinessApplied = false;
   const status = $('staffStatus'), form = $('staffLogin');
   function publish(value) {
     identity = value; ++generation;
@@ -10,8 +10,12 @@
     const list = $('staffBusinesses'); list.replaceChildren();
     if (value) {
       for (const b of value.businesses) { const o=document.createElement('option');o.value=b.business_id;o.label=b.name+' · '+b.role;list.append(o); }
+      const requested=new URLSearchParams(location.search).get('business_id');
+      if (!requestedBusinessApplied && requested && value.businesses.some(b=>b.business_id===requested)) $('business').value=requested;
+      requestedBusinessApplied = true;
       if (!value.businesses.some(b=>b.business_id===$('business').value)) $('business').value=value.businesses[0]?.business_id || '';
     }
+    if ($('customerWorkspace') && value) $('customerWorkspace').href='/workspace/customers?business='+encodeURIComponent($('business').value);
     window.dispatchEvent(new CustomEvent('staffchange', {detail:{authenticated:!!value}}));
   }
   const boundedFetch=window.CommerceUI.request;

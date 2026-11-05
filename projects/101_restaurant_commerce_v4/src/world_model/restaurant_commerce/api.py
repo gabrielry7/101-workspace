@@ -361,7 +361,7 @@ def create_app(
             "script-src 'self'; script-src-attr 'none'; style-src 'self'; "
             "connect-src 'self'"
         )
-        if request.scope.get("endpoint") and request.scope["endpoint"].__name__ == "campaign_email_preview":
+        if getattr(request.scope.get("endpoint"), "__name__", None) == "campaign_email_preview":
             # Escaped email renderer only; no scripts, remote images or form actions.
             response.headers["X-Frame-Options"] = "SAMEORIGIN"
             response.headers["Content-Security-Policy"] = getattr(
@@ -524,6 +524,8 @@ def create_app(
             {"status": "ready", "database": "ok"}, headers={"Cache-Control": "no-store"}
         )
 
+    from .customer_workspace import register as register_workspace
+    register_workspace(app, get_session, scoped_staff)
     from .customer_signup_routes import register as register_signup
     register_connections(app, get_session, scoped_staff, connections_runtime, staff_cookie, production)
     register_signup(app, get_session, scoped_staff, signup_options, demo_mode, production)

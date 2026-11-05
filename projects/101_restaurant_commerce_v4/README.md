@@ -324,3 +324,9 @@ connection timeouts, database stop/restart and broken column/loyalty guards. It
 records native logs, JUnit and timing evidence and stops only its owned services.
 The generated private `config.json` contains synthetic credentials: do not publish
 it. No production data, live providers or paid services are used.
+
+
+## Customer workspace
+
+The custom shared shell and customer directory are available at `/workspace/customers`.
+See [CUSTOMER_WORKSPACE.md](CUSTOMER_WORKSPACE.md) for the local demo, existing-module integration, tests and reproducible 10,000-customer performance measurement.

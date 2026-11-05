@@ -60,7 +60,7 @@ def register_staff_routes(app, get_session, cookie_name, production):
     def me(auth=Depends(identity), session: Session = Depends(get_session)):
         account, row = auth
         memberships = session.execute(
-            select(StaffMembership, RestaurantCommerceProfile.display_name)
+            select(StaffMembership, RestaurantCommerceProfile.display_name, RestaurantCommerceProfile.slug)
             .join(
                 RestaurantCommerceProfile,
                 StaffMembership.business_id == RestaurantCommerceProfile.business_id,
@@ -77,10 +77,11 @@ def register_staff_routes(app, get_session, cookie_name, production):
                 {
                     "business_id": m.business_id,
                     "name": name,
+                    "slug": slug,
                     "role": m.role,
                     "permissions": sorted(staff.ROLES[m.role]),
                 }
-                for m, name in memberships
+                for m, name, slug in memberships
             ],
         }
 
