@@ -27,8 +27,13 @@ actual commerce consumer imports these tokens into its production build.
 - Names and navigation15px, labels/contact14px, secondary details12px. Mobile
   primary text14px minimum; narrow ancillary badges may be11px. Main title30px,
   mobile27px. Data uses tabular numerals. Never shrink all text to fit a design.
-- Warm neutral canvas, white working surfaces, charcoal primary text, darker
-  gray-violet secondary text. Violet marks selection and key series, not every item.
+- **Superseded color direction (2026-11-05): no gray-on-gray and no gray canvas.**
+  The user explicitly rejected the existing neutral background treatment. Prefer
+  clear surface/text contrast and deliberate color. Five pairings are under review
+  in the shared repository at `docs/product-design/color-pairings/index.html`.
+  No replacement has been selected yet. Current `tokens.css` colors are legacy
+  implementation pending selection; they are not the approved future direction.
+  This proposal stage does not silently restyle existing consumers.
 - Green/amber/red express statuses with written labels; color alone is insufficient.
   White surfaces and existing measured role colors target WCAG AA. Recheck actual
   computed contrast after changes; inherited screenshots are not fresh evidence.
