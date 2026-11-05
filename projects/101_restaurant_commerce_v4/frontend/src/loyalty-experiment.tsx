@@ -38,6 +38,7 @@ const newExperiment = (currency: string, version: string): Experiment => ({
   primary_metric: "incremental_contribution_profit_per_randomized_customer",
   assignment_algorithm: "sha256-v1",
   analysis_plan: "",
+  analysis_protocol: null,
 });
 
 export function ExperimentEditor({
@@ -397,6 +398,108 @@ export function ExperimentEditor({
             asignado, incluidas las personas que no compren. La asignación
             original se conserva al cambiar reglas.
           </p>
+          <label className="loyalty-check">
+            <input
+              type="checkbox"
+              checked={!!doc.analysis_protocol}
+              onChange={(e) =>
+                change({
+                  analysis_protocol: e.target.checked
+                    ? {
+                        method: "welch_bonferroni_v1",
+                        confidence_bps: 9500,
+                        minimum_customers_per_arm: 100,
+                        sample_size_rationale: "",
+                        readout_at: new Date(
+                          new Date(doc.enrollment_end).getTime() +
+                            doc.observation_days * 86400000,
+                        ).toISOString(),
+                      }
+                    : null,
+                })
+              }
+            />
+            Definir evaluación estadística antes de asignar clientes
+          </label>
+          {doc.analysis_protocol && (
+            <>
+              <Field
+                label="Fecha acordada para evaluar"
+                hint="Debe permitir el seguimiento completo de la última persona inscrita."
+              >
+                <input
+                  type="datetime-local"
+                  value={localDate(doc.analysis_protocol.readout_at)}
+                  required
+                  onChange={(e) =>
+                    change({
+                      analysis_protocol: {
+                        ...doc.analysis_protocol!,
+                        readout_at: utcDate(e.target.value) || "",
+                      },
+                    })
+                  }
+                />
+              </Field>
+              <NumberField
+                label="Mínimo previsto de clientes por grupo"
+                min={30}
+                max={10000000}
+                value={doc.analysis_protocol.minimum_customers_per_arm}
+                onChange={(n) =>
+                  change({
+                    analysis_protocol: {
+                      ...doc.analysis_protocol!,
+                      minimum_customers_per_arm: n,
+                    },
+                  })
+                }
+              />
+              <Field label="Confianza conjunta">
+                <select
+                  value={doc.analysis_protocol.confidence_bps}
+                  onChange={(e) =>
+                    change({
+                      analysis_protocol: {
+                        ...doc.analysis_protocol!,
+                        confidence_bps: Number(e.target.value) as
+                          9000 | 9500 | 9900,
+                      },
+                    })
+                  }
+                >
+                  <option value={9000}>90 %</option>
+                  <option value={9500}>95 %</option>
+                  <option value={9900}>99 %</option>
+                </select>
+              </Field>
+              <Field
+                label="Justificación del tamaño de muestra"
+                hint="Documenta el efecto de interés y la variación esperada o el cálculo de potencia. El mínimo declarado no garantiza potencia."
+              >
+                <textarea
+                  minLength={20}
+                  maxLength={2000}
+                  required
+                  value={doc.analysis_protocol.sample_size_rationale}
+                  onChange={(e) =>
+                    change({
+                      analysis_protocol: {
+                        ...doc.analysis_protocol!,
+                        sample_size_rationale: e.target.value,
+                      },
+                    })
+                  }
+                />
+              </Field>
+              <p className="loyalty-hint">
+                Comparaciones Welch por cliente, con ajuste Bonferroni entre
+                ofertas y control. Se conserva este plan en la versión
+                publicada. Cambiarlo después no altera el experimento que ya
+                empezó.
+              </p>
+            </>
+          )}
         </fieldset>
       </fieldset>
       <div className="loyalty-actions">

@@ -5,6 +5,7 @@ import { api, date, endpoint, Failure, Loading, useResource } from "./ui";
 import { ProgramEditor } from "./loyalty-program";
 import { ExperimentEditor } from "./loyalty-experiment";
 import { Economics } from "./loyalty-economics";
+import { LoyaltyResults } from "./loyalty-results";
 import {
   CommandState,
   money,
@@ -79,6 +80,7 @@ const tabNames: Record<string, string> = {
   experiments: "Experimentos",
   economics: "Calculadora",
   exposure: "Saldos y costos",
+  results: "Resultados",
 };
 const holdLabels: Record<string, string> = {
   historical_policy_missing: "Falta la política original",
@@ -123,6 +125,7 @@ export function LoyaltyWorkspace({
     currency: string;
     configuration_enabled: boolean;
     execution_enabled: boolean;
+    analytics_enabled: boolean;
   }>(`${root}/capabilities`);
   const selected = params.get("loyaltyId"),
     edit = params.get("loyaltyEdit") === "1",
@@ -252,7 +255,17 @@ export function LoyaltyWorkspace({
             <span className="badge">Preparación</span> Las ofertas adicionales
             todavía no están activadas. Publicar conserva las reglas revisadas.
           </p>
-          {tab === "exposure" && overview.error ? (
+          {tab === "results" ? (
+            <LoyaltyResults
+              key={business}
+              root={root}
+              csrf={csrf}
+              enabled={capabilities.data.analytics_enabled}
+              canFinance={permissions.includes("finance.resolve")}
+              selected={selected}
+              navigate={navigate}
+            />
+          ) : tab === "exposure" && overview.error ? (
             <Failure message={overview.error} retry={overview.retry} />
           ) : tab === "exposure" && !overview.data ? (
             <Loading />
@@ -877,6 +890,14 @@ function DefinitionSummary({
             <div>
               <dt>Plan de evaluación</dt>
               <dd>{doc.analysis_plan}</dd>
+            </div>
+            <div>
+              <dt>Evaluación estadística</dt>
+              <dd>
+                {doc.analysis_protocol
+                  ? `Lectura: ${date(doc.analysis_protocol.readout_at)} · mínimo ${doc.analysis_protocol.minimum_customers_per_arm} por grupo · confianza conjunta ${doc.analysis_protocol.confidence_bps / 100}% · Welch / Bonferroni. ${doc.analysis_protocol.sample_size_rationale}`
+                  : "Sin protocolo estructurado; resultados descriptivos."}
+              </dd>
             </div>
           </>
         )}

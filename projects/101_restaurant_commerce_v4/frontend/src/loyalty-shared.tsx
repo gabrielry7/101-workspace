@@ -1,4 +1,12 @@
-import { useEffect, useRef, useState, useId, cloneElement, isValidElement, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useId,
+  cloneElement,
+  isValidElement,
+  type ReactNode,
+} from "react";
 import { api, ApiError } from "./ui";
 
 export type Eligibility = {
@@ -60,6 +68,13 @@ export type Experiment = {
   primary_metric: "incremental_contribution_profit_per_randomized_customer";
   assignment_algorithm: "sha256-v1";
   analysis_plan: string;
+  analysis_protocol?: null | {
+    method: "welch_bonferroni_v1";
+    confidence_bps: 9000 | 9500 | 9900;
+    minimum_customers_per_arm: number;
+    sample_size_rationale: string;
+    readout_at: string;
+  };
 };
 export type Resource<T = Program | Experiment> = {
   id: string;
@@ -365,6 +380,7 @@ export function useCommand(csrf: string) {
     error,
     uncertain,
     alive,
+    hasPending: () => pending.current !== null,
     fail: (s: string) => setError(s),
   };
 }

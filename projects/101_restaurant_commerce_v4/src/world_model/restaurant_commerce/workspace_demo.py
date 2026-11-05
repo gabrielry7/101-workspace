@@ -68,6 +68,7 @@ def app_for_demo(
     *,
     engine=None,
     loyalty_configuration_enabled=False,
+    loyalty_analytics_enabled=False,
     size=80,
 ):
     # Compose the existing fixture owners with their explicit fake transports.
@@ -92,6 +93,7 @@ def app_for_demo(
         database_url=database_url,
         engine=engine,
         loyalty_configuration_enabled=loyalty_configuration_enabled,
+        loyalty_analytics_enabled=loyalty_analytics_enabled,
         demo_mode=True,
         environment="development",
         payment_recovery_enabled=False,

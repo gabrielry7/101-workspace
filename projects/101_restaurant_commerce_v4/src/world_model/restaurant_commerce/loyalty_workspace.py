@@ -8,7 +8,6 @@ import json
 from collections import defaultdict
 
 from sqlalchemy import func, select
-from sqlalchemy.orm import Session
 
 from .loyalty_baseline import data
 from .loyalty_execution_migrations import installed
@@ -24,23 +23,15 @@ from .models import (
     utcnow,
 )
 from .refunds import PaymentRefund
+from .loyalty_read_snapshot import committed_snapshot
 
 
 def overview(session, business_id):
     # Authorization has already read through the request session. Use a separate
     # committed read snapshot so PostgreSQL READ COMMITTED and sqlite3's legacy
     # SELECT behavior cannot mix balances from different earning/refund commits.
-    engine = session.get_bind()
-    with engine.connect() as connection:
-        if connection.dialect.name == "postgresql":
-            connection = connection.execution_options(isolation_level="REPEATABLE READ")
-        with connection.begin():
-            if connection.dialect.name == "sqlite":
-                connection.exec_driver_sql("BEGIN")
-            elif connection.dialect.name == "postgresql":
-                connection.exec_driver_sql("SET TRANSACTION READ ONLY")
-            with Session(bind=connection, autoflush=False) as snapshot:
-                return _overview(snapshot, business_id)
+    with committed_snapshot(session) as snapshot:
+        return _overview(snapshot, business_id)
 
 
 def _overview(session, business_id):

@@ -21,7 +21,7 @@ from .schemas import CreateOrderRequest
 from .service import RestaurantCommerceService
 
 
-def app_for_demo(database_url, origin="http://127.0.0.1:8810", size=80):
+def app_for_demo(database_url, origin="http://127.0.0.1:8810", size=80, *, analytics_enabled=False):
     from datetime import timedelta
 
     engine = make_engine(database_url)
@@ -29,12 +29,16 @@ def app_for_demo(database_url, origin="http://127.0.0.1:8810", size=80):
     upgrade_loyalty_configuration(engine)
     upgrade_loyalty_execution(engine)
     upgrade_loyalty_assignment(engine)
+    if analytics_enabled:
+        from .loyalty_measurement_migrations import upgrade_loyalty_measurement
+        upgrade_loyalty_measurement(engine)
     # Extend the shared local app: one login, campaign transports and commerce fixtures.
     app = workspace_app(
         database_url,
         origin,
         engine=engine,
         loyalty_configuration_enabled=True,
+        loyalty_analytics_enabled=analytics_enabled,
         size=size,
     )
     with app.state.session_factory() as session:

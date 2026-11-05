@@ -1,13 +1,15 @@
 """Closed, versioned documents shared by configuration and rule previews."""
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import Field, model_validator
+
+from .schemas import StrictModel
 
 
-class Strict(BaseModel):
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+class Strict(StrictModel):
+    pass
 
 
 Money = Annotated[int, Field(strict=True, ge=0, le=2**53 - 1)]
@@ -143,6 +145,15 @@ class Variant(Strict):
     strategy_version_id: str | None = Field(default=None, min_length=1, max_length=36)
 
 
+class AnalysisProtocol(Strict):
+    method: Literal["welch_bonferroni_v1"] = "welch_bonferroni_v1"
+    confidence_bps: Literal[9000, 9500, 9900] = 9500
+    minimum_customers_per_arm: Annotated[int, Field(strict=True, ge=30, le=10000000)] = 100
+    sample_size_rationale: str = Field(min_length=20, max_length=2000)
+    readout_at: datetime
+    # This threshold is a declared planning choice, not a guarantee of power.
+
+
 class ExperimentDocument(Strict):
     schema_version: Literal[1] = 1
     name: str = Field(min_length=1, max_length=200)
@@ -163,6 +174,7 @@ class ExperimentDocument(Strict):
     )
     assignment_algorithm: Literal["sha256-v1"] = "sha256-v1"
     analysis_plan: str = Field(min_length=20, max_length=10000)
+    analysis_protocol: AnalysisProtocol | None = None
 
     @model_validator(mode="after")
     def valid(self):
@@ -175,6 +187,14 @@ class ExperimentDocument(Strict):
             raise ValueError("Variant names must be unique")
         if self.allow_overlap and not (self.overlap_reason or "").strip():
             raise ValueError("Overlap requires an explicit reason")
+        if self.analysis_protocol:
+            readout = self.analysis_protocol.readout_at
+            try:
+                earliest_readout = self.enrollment_end + timedelta(days=self.observation_days)
+            except OverflowError as exc:
+                raise ValueError("Observation window exceeds the supported calendar") from exc
+            if readout.utcoffset() is None or readout < earliest_readout:
+                raise ValueError("Readout must follow complete enrollment and observation")
         return self
 
 

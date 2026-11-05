@@ -24,7 +24,7 @@ from .loyalty_simulator import (
 )
 
 
-def register(app, get_session, scoped_staff):
+def register(app, get_session, scoped_staff, *, analytics_enabled=False):
     def read(
         business_id: str, request: Request, session: Session = Depends(get_session)
     ):
@@ -36,6 +36,9 @@ def register(app, get_session, scoped_staff):
         return scoped_staff(request, session, business_id, "growth.write")
 
     root = "/api/operator/restaurants/{business_id}/loyalty-config"
+    if analytics_enabled:
+        from .loyalty_analytics_routes import register as register_analytics
+        register_analytics(app, get_session, scoped_staff)
 
     @app.get(root + "/overview", dependencies=[Depends(read)])
     def loyalty_overview(business_id: str, session: Session = Depends(get_session)):
@@ -52,8 +55,8 @@ def register(app, get_session, scoped_staff):
             "configuration_enabled": True,
             "execution_enabled": False,
             "assignment_enabled": False,
-            "analytics_enabled": False,
-            "stage": "administration_console",
+            "analytics_enabled": analytics_enabled,
+            "stage": "profit_analytics" if analytics_enabled else "administration_console",
             "simulator_enabled": True,
             "simulation_version": SIMULATION_VERSION,
             "controlled_assignment_available": True,

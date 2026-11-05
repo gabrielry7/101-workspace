@@ -156,6 +156,7 @@ def create_app(
     signup_options: dict | None = None,
     connections_runtime=None,
     loyalty_configuration_enabled: bool | None = None,
+    loyalty_analytics_enabled: bool | None = None,
 ) -> FastAPI:
     def validated_origins(origins: tuple[str, ...]) -> list[str]:
         result = []
@@ -185,6 +186,18 @@ def create_app(
         if loyalty_flag not in {"0", "1"}:
             raise RuntimeError("COMMERCE_LOYALTY_CONFIGURATION_ENABLED must be 0 or 1")
         loyalty_configuration_enabled = loyalty_flag == "1"
+    if loyalty_analytics_enabled is None:
+        analytics_flag = os.getenv("COMMERCE_LOYALTY_ANALYTICS_ENABLED", "0")
+        if analytics_flag not in {"0", "1"}:
+            raise RuntimeError("COMMERCE_LOYALTY_ANALYTICS_ENABLED must be 0 or 1")
+        loyalty_analytics_enabled = analytics_flag == "1"
+    if loyalty_analytics_enabled:
+        if not loyalty_configuration_enabled:
+            raise RuntimeError("Loyalty analytics requires configuration enabled")
+        try:
+            from scipy.stats import t as _analytics_t  # noqa: F401
+        except ImportError as exc:
+            raise RuntimeError("Install the loyalty-analytics extra before enabling analytics") from exc
     environment = (environment or os.getenv("COMMERCE_ENV", "development")).lower()
     production = environment == "production"
     demo_mode = (not production) if demo_mode is None else demo_mode
@@ -258,7 +271,7 @@ def create_app(
 
     readiness = ReadinessProbe(
         lambda deadline: database_ready(
-            engine, require_loyalty=loyalty_configuration_enabled, deadline=deadline
+            engine, require_loyalty=loyalty_configuration_enabled, require_measurement=loyalty_analytics_enabled, deadline=deadline
         )
     )
 
@@ -537,10 +550,10 @@ def create_app(
     from .campaign_routes import register as register_campaigns
     register_campaigns(app, get_session, scoped_staff, campaign_options, demo_mode)
     if loyalty_configuration_enabled:
-        if not database_ready(engine, require_loyalty=True):
+        if not database_ready(engine, require_loyalty=True, require_measurement=loyalty_analytics_enabled):
             raise RuntimeError("Loyalty configuration requires the explicit offline upgrade")
         from .loyalty_routes import register as register_loyalty
-        register_loyalty(app, get_session, scoped_staff)
+        register_loyalty(app, get_session, scoped_staff, analytics_enabled=loyalty_analytics_enabled)
 
     from .operations import register_operations
     register_operations(app, get_service, require_operator)

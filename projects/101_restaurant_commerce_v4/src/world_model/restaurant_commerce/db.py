@@ -13,6 +13,7 @@ from .loyalty_execution_migrations import loyalty_schema_ready
 from .loyalty_execution_models import EXECUTION_TABLES
 from .loyalty_assignment_models import ASSIGNMENT_TABLES
 from .loyalty_models import LOYALTY_TABLES
+from .loyalty_measurement_models import MEASUREMENT_TABLES
 from .migrations import (
     CUSTOMER_SAFETY_COLUMNS,
     FINANCIAL_TABLES,
@@ -72,7 +73,7 @@ def init_schema(engine: Engine) -> None:
     tables = [
         t
         for t in Base.metadata.sorted_tables
-        if t.name not in (EXECUTION_TABLES | ASSIGNMENT_TABLES)
+        if t.name not in (EXECUTION_TABLES | ASSIGNMENT_TABLES | MEASUREMENT_TABLES)
         and (not existing or t.name not in (SIGNUP_TABLES | CONNECTION_TABLES))
         and (
             not existing
@@ -133,6 +134,7 @@ def database_ready(
     *,
     require_schema: bool = True,
     require_loyalty: bool = False,
+    require_measurement: bool = False,
     deadline: float | None = None,
 ) -> bool:
     try:
@@ -160,6 +162,9 @@ def database_ready(
             if require_schema:
                 inspector = inspect(connection)
                 tables = set(inspector.get_table_names())
+                from .loyalty_measurement_migrations import measurement_schema_ready
+                if not measurement_schema_ready(connection, required=require_measurement, known_tables=tables):
+                    return False
                 if not loyalty_schema_ready(
                     connection, required=require_loyalty, known_tables=tables
                 ):

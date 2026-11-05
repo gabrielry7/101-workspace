@@ -513,6 +513,57 @@
 .loyalty-directory-actions .loyalty-entry {
   margin: 0;
 }
+.loyalty-results {
+  display: grid;
+  gap: 24px;
+}
+.loyalty-result-picker {
+  max-width: 640px;
+}
+.loyalty-result-warnings {
+  display: grid;
+  gap: 10px;
+  padding-left: 22px;
+  line-height: 1.6;
+}
+.loyalty-results summary {
+  cursor: pointer;
+  font-weight: 650;
+  min-height: 44px;
+  align-content: center;
+}
+.loyalty-results .loyalty-hint {
+  display: block;
+  margin-top: 6px;
+}
+.loyalty-results .loyalty-section {
+  margin: 0;
+  min-width: 0;
+}
+.loyalty-results .loyalty-table-wrap {
+  margin-top: 16px;
+}
+.loyalty-results .loyalty-section .button {
+  margin-top: 10px;
+}
+.loyalty-results .loyalty-metrics {
+  margin: 0;
+}
+.loyalty-cost-fields {
+  display: grid;
+  gap: 18px;
+  border: 0;
+  padding: 0;
+  margin: 24px 0;
+}
+.loyalty-results .loyalty-hint {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .loyalty-tabs a:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
 @media (max-width: 640px) {
   .loyalty-directory-actions {
     width: 100%;
