@@ -26,6 +26,7 @@
   flex-wrap: wrap;
 }
 .loyalty-title-row h1 {
+  font-size: var(--wm-title);
   margin: 5px 0 8px;
 }
 .loyalty-title-row h2 {
@@ -488,4 +489,32 @@
 }
 .loyalty-page .badge {
   font-size: var(--wm-caption);
+}
+
+@media (max-width: 640px) {
+  .loyalty-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 14px;
+    overflow: visible;
+  }
+  .loyalty-tabs a {
+    padding: 8px 2px;
+    min-height: 46px;
+  }
+}
+
+.loyalty-directory-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.loyalty-directory-actions .loyalty-entry {
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .loyalty-directory-actions {
+    width: 100%;
+  }
 }

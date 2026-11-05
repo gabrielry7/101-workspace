@@ -314,3 +314,40 @@ def test_viewer_missing_feature_and_retry_states(site):
     page.reload()
     page.get_by_role("heading", name="Fidelización aún no está habilitada").wait_for()
     assert page.get_by_role("button", name="Crear programa", exact=True).count() == 0
+
+
+def test_expired_session_cannot_save_or_replay_draft(site):
+    page, app, _ = site
+    login(page)
+    before = tally(app, LoyaltyStrategy)
+    page.get_by_role("button", name="Crear programa", exact=True).click()
+    page.get_by_label("Nombre", exact=True).fill("No guardar con sesión terminada")
+    identity = page.request.get("/api/staff/me").json()
+    assert (
+        page.request.post(
+            "/api/staff/logout", headers={"X-101-CSRF": identity["csrf"]}
+        ).status
+        == 200
+    )
+    page.get_by_role("button", name="Guardar borrador", exact=True).click()
+    page.get_by_label("Usuario", exact=True).wait_for()
+    assert tally(app, LoyaltyStrategy) == before
+
+
+def test_mobile_financial_columns_and_no_hidden_view_reads(site):
+    page, app, _ = site
+    requests = []
+    page.on("request", lambda r: requests.append(r.url))
+    login(page)
+    assert not any("/loyalty-config/overview" in u for u in requests)
+    assert not any("/loyalty-config/experiments" in u for u in requests)
+    page.get_by_role("link", name="Saldos y costos", exact=True).click()
+    page.get_by_role("heading", name="Movimientos recientes").wait_for()
+    before = tally(app, LoyaltyLedgerEntry)
+    for width in [320, 390, 768, 1440]:
+        page.set_viewport_size({"width": width, "height": 900})
+        assert page.evaluate("document.documentElement.scrollWidth<=innerWidth")
+        assert page.locator(".loyalty-table-wrap th").evaluate_all(
+            "nodes=>nodes.every(n=>getComputedStyle(n).display==='table-cell')"
+        )
+    assert tally(app, LoyaltyLedgerEntry) == before

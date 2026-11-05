@@ -652,33 +652,41 @@ function App() {
           />
         ) : (
           <div className="page">
-            <div className="loyalty-entry">
-              <a
-                href={`?business=${encodeURIComponent(bid)}&view=loyalty`}
-                onClick={(e) => {
-                  if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
-                    e.preventDefault();
-                    navigate(
-                      { view: "loyalty", customer: null, loyaltyId: null },
-                      true,
-                    );
-                  }
-                }}
-              >
-                Fidelización <ArrowRight size={15} />
-              </a>
-            </div>
             <section className="page-heading">
               <div>
                 <span className="eyebrow">CONOCE A QUIENES VUELVEN</span>
                 <h1>Clientes</h1>
                 <p>Cada visita empieza con una persona.</p>
               </div>
-              <button className="button primary" onClick={() => setQr(true)}>
-                <QrCode size={17} />
-                Invitar clientes
-                <ArrowRight size={16} />
-              </button>
+              <div className="loyalty-directory-actions">
+                <div className="loyalty-entry">
+                  <a
+                    className="button secondary"
+                    href={`?business=${encodeURIComponent(bid)}&view=loyalty`}
+                    onClick={(e) => {
+                      if (
+                        !e.metaKey &&
+                        !e.ctrlKey &&
+                        !e.shiftKey &&
+                        !e.altKey
+                      ) {
+                        e.preventDefault();
+                        navigate(
+                          { view: "loyalty", customer: null, loyaltyId: null },
+                          true,
+                        );
+                      }
+                    }}
+                  >
+                    Fidelización <ArrowRight size={15} />
+                  </a>
+                </div>
+                <button className="button primary" onClick={() => setQr(true)}>
+                  <QrCode size={17} />
+                  Invitar clientes
+                  <ArrowRight size={16} />
+                </button>
+              </div>
             </section>
             <div className="overview">
               <div className="overview-stat">

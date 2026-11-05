@@ -256,3 +256,46 @@ def test_historical_notification_review_remains_visible_without_confirmed_refund
         )
         assert result["financial_reviews"]["is_confirmed_refund"] is False
         assert result["refund_holds"]["items"] == []
+
+
+def test_review_labels_pin_historical_selection_and_reject_foreign_version(factory):
+    from world_model.restaurant_commerce.loyalty_schemas import StrategyEdit
+
+    with factory() as s:
+        c = Customer(
+            business_id=BID,
+            name=None,
+            email="selected@example.test",
+            phone="3005550177",
+        )
+        s.add(c)
+        s.commit()
+        config = LoyaltyConfigurationService(s, "test")
+        original = create(config, eligibility={"customer_ids": [c.id]})
+        version = publish(config, original)["version_id"]
+        current = config.get("programs", BID, original["id"])
+        doc = {
+            **current["document"],
+            "eligibility": {**current["document"]["eligibility"], "customer_ids": []},
+        }
+        config.edit(
+            "programs",
+            BID,
+            original["id"],
+            StrategyEdit(expected_revision=current["revision"], document=doc),
+        )
+        assert eligibility_labels(
+            s, BID, "programs", original["id"], version_id=version
+        )["customers"] == ["selected@example.test"]
+        assert eligibility_labels(s, BID, "programs", original["id"])["customers"] == []
+        with pytest.raises(ConcurrencyConflictError):
+            eligibility_labels(
+                s,
+                BID,
+                "programs",
+                original["id"],
+                expected_revision=current["revision"],
+            )
+        other = create(config, key="another")
+        with pytest.raises(NotFoundError):
+            eligibility_labels(s, BID, "programs", other["id"], version_id=version)

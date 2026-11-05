@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, useId, cloneElement, isValidElement, type ReactNode } from "react";
 import { api, ApiError } from "./ui";
 
 export type Eligibility = {
@@ -167,11 +167,25 @@ export function Field({
   children: ReactNode;
   hint?: string;
 }) {
+  const id = useId(),
+    labelId = id + "-label",
+    hintId = id + "-hint";
+  const control = isValidElement<{
+    id?: string;
+    "aria-labelledby"?: string;
+    "aria-describedby"?: string;
+  }>(children)
+    ? cloneElement(children, {
+        id,
+        "aria-labelledby": labelId,
+        "aria-describedby": hint ? hintId : undefined,
+      })
+    : children;
   return (
-    <label className="loyalty-field">
-      <span>{label}</span>
-      {children}
-      {hint && <small>{hint}</small>}
+    <label className="loyalty-field" htmlFor={id}>
+      <span id={labelId}>{label}</span>
+      {control}
+      {hint && <small id={hintId}>{hint}</small>}
     </label>
   );
 }
