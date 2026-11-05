@@ -16,7 +16,6 @@ from test_browser_security import playwright
 from test_loyalty_analytics import analytics as analytics  # noqa: PLC0414
 from test_loyalty_analytics import factory as factory  # noqa: PLC0414
 from test_loyalty_analytics import write_cost
-
 from world_model.restaurant_commerce.api import create_app
 from world_model.restaurant_commerce.loyalty_measurement_models import (
     LoyaltyFinancialEvidence,
@@ -144,10 +143,16 @@ def count(app, model):
 
 def capture(page, name):
     page.evaluate("document.fonts.ready")
-    page.screenshot(path=str(OUT / (name + ".png")), full_page=True)
+    # Keep fixed dialogs in the actual viewport rather than resizing the page
+    # underneath the modal during a full-document screenshot.
+    page.screenshot(
+        path=str(OUT / (name + ".png")),
+        full_page=not page.get_by_role("dialog").is_visible(),
+    )
     page.evaluate(AXE.read_text())
     violations = page.evaluate(
-        "async()=> (await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations"
+        "async()=> (await axe.run(document,{runOnly:{type:'tag',"
+        "values:['wcag2a','wcag2aa','wcag21aa']}})).violations"
     )
     (OUT / (name + "-axe.json")).write_text(json.dumps(violations, indent=2))
     measurements = page.evaluate(
@@ -231,7 +236,10 @@ def test_complete_itt_interval_nonbuyers_csv_and_mobile(site):
         json.dumps(
             {
                 "milliseconds": samples,
-                "profile": "local Chromium,390x844,no network/CPU throttle;warm shell;60synthetic assigned customers;result picker ready,not report completed",
+                "profile": (
+                    "local Chromium,390x844,no network/CPU throttle;warm shell;"
+                    "60synthetic assigned customers;result picker ready,not report completed"
+                ),
             },
             indent=2,
         )
@@ -319,7 +327,10 @@ def test_stale_cost_requires_explicit_reload_and_phone_history(site):
     box = dialog.bounding_box()
     assert box and box["x"] >= 0 and box["x"] + box["width"] <= 390
     dialog.get_by_label("Costos variables (COP)", exact=True).fill("2223")
-    dialog.get_by_role("button", name="Guardar evidencia", exact=True).click()
+    save = dialog.get_by_role("button", name="Guardar evidencia", exact=True)
+    save.scroll_into_view_if_needed()
+    capture(page, "cost-history-mobile-bottom")
+    save.click()
     playwright.expect(dialog).not_to_be_visible()
 
 
@@ -396,7 +407,8 @@ def test_structured_readout_is_reviewed_and_published_without_activation(site):
         data["program_version"]
     )
     page.get_by_label("Plan de evaluación", exact=True).fill(
-        "Comparar ganancias durante el seguimiento original y conservar a todos los clientes asignados."
+        "Comparar ganancias durante el seguimiento original "
+        "y conservar a todos los clientes asignados."
     )
     page.get_by_label(
         "Definir evaluación estadística antes de asignar clientes", exact=True
