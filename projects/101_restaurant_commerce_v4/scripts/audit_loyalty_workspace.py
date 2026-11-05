@@ -6,8 +6,8 @@ Use the explicit synthetic loyalty fixture. No provider or reward writes.
 import argparse
 import json
 import time
-from urllib.parse import urlsplit
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from playwright.sync_api import sync_playwright
 
@@ -55,7 +55,7 @@ with sync_playwright() as p:
         page.screenshot(path=str(out / (name + ".png")), full_page=True)
         page.evaluate(axe)
         results[name] = (
-            page.evaluate("""async()=>{const rgba=s=>{const m=s.match(/^rgba?\(([^)]+)\)$/);if(!m)return null;const a=m[1].split(',').map(Number);return [a[0],a[1],a[2],a.length===4?a[3]:1]};const blend=(a,b)=>a.slice(0,3).map((v,i)=>v*a[3]+b[i]*(1-a[3]));const lum=c=>{const v=c.map(n=>{n/=255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4});return .2126*v[0]+.7152*v[1]+.0722*v[2]};const contrast=e=>{let layers=[];for(let p=e;p;p=p.parentElement){const c=getComputedStyle(p);if(c.backgroundImage!=='none'||Number(c.opacity)!==1)return null;let v=rgba(c.backgroundColor);if(!v)return null;layers.push(v)}let bg=[255,255,255];layers.reverse().forEach(c=>bg=blend(c,bg));const fg=rgba(getComputedStyle(e).color);if(!fg)return null;const a=lum(blend(fg,bg)),b=lum(bg);return Number(((Math.max(a,b)+.05)/(Math.min(a,b)+.05)).toFixed(3))};return ({width:innerWidth,height:innerHeight,overflow:document.documentElement.scrollWidth>innerWidth,
+            page.evaluate(r"""async()=>{const rgba=s=>{const m=s.match(/^rgba?\(([^)]+)\)$/);if(!m)return null;const a=m[1].split(',').map(Number);return [a[0],a[1],a[2],a.length===4?a[3]:1]};const blend=(a,b)=>a.slice(0,3).map((v,i)=>v*a[3]+b[i]*(1-a[3]));const lum=c=>{const v=c.map(n=>{n/=255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4});return .2126*v[0]+.7152*v[1]+.0722*v[2]};const contrast=e=>{let layers=[];for(let p=e;p;p=p.parentElement){const c=getComputedStyle(p);if(c.backgroundImage!=='none'||Number(c.opacity)!==1)return null;let v=rgba(c.backgroundColor);if(!v)return null;layers.push(v)}let bg=[255,255,255];layers.reverse().forEach(c=>bg=blend(c,bg));const fg=rgba(getComputedStyle(e).color);if(!fg)return null;const a=lum(blend(fg,bg)),b=lum(bg);return Number(((Math.max(a,b)+.05)/(Math.min(a,b)+.05)).toFixed(3))};return ({width:innerWidth,height:innerHeight,overflow:document.documentElement.scrollWidth>innerWidth,
           violations:(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))})),
           roles:['.loyalty-page h1','.loyalty-field','.loyalty-table-wrap td','.loyalty-table-wrap th','.loyalty-metrics strong','.loyalty-section','.loyalty-tabs a'].map(s=>{let e=document.querySelector(s);if(!e)return null;let c=getComputedStyle(e),r=e.getBoundingClientRect();return {selector:s,font:c.fontSize,color:c.color,background:c.backgroundColor,radius:c.borderRadius,width:r.width,height:r.height,solid_contrast:contrast(e)}}).filter(Boolean)})}""")
         )

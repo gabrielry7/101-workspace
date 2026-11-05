@@ -148,6 +148,7 @@ def test_create_lost_reply_retry_and_reviewed_publication(site):
     page.get_by_role("button", name="Revisar y publicar", exact=True).click()
     dialog = page.get_by_role("dialog")
     playwright.expect(dialog).to_contain_text("Mateo Restrepo")
+    page.screenshot(path=str(OUT / "publication-review.png"), full_page=True)
     versions = tally(app, LoyaltyStrategyVersion)
     dialog.get_by_role("button", name="Publicar esta versión", exact=True).evaluate(
         "(b)=>{b.click();b.click()}"
@@ -285,6 +286,7 @@ def test_conflict_reload_and_late_mutation_cannot_switch_business(site):
     assert "business=" + OTHER in page.url
     assert "Respuesta tardía" not in page.locator("main").inner_text()
     assert not page.get_by_label("Nombre", exact=True).count()
+    page.screenshot(path=str(OUT / "empty-business.png"), full_page=True)
 
 
 def test_viewer_missing_feature_and_retry_states(site):
@@ -302,6 +304,7 @@ def test_viewer_missing_feature_and_retry_states(site):
     )
     page.reload()
     page.get_by_role("heading", name="No se pudo cargar").wait_for()
+    page.screenshot(path=str(OUT / "read-retry.png"), full_page=True)
     page.unroute("**/loyalty-config/programs")
     page.get_by_role("button", name="Reintentar", exact=True).click()
     page.get_by_role(
