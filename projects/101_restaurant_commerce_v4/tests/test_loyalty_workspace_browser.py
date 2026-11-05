@@ -149,6 +149,14 @@ def test_create_lost_reply_retry_and_reviewed_publication(site):
     dialog = page.get_by_role("dialog")
     playwright.expect(dialog).to_contain_text("Mateo Restrepo")
     page.screenshot(path=str(OUT / "publication-review.png"), full_page=True)
+    page.set_viewport_size({"width": 390, "height": 844})
+    box = dialog.bounding_box()
+    assert box and box["x"] >= 0 and box["x"] + box["width"] <= 390
+    assert box["y"] >= 0 and box["y"] + box["height"] <= 844
+    page.keyboard.press("Tab")
+    assert dialog.evaluate("node=>node.contains(document.activeElement)")
+    page.screenshot(path=str(OUT / "publication-review-mobile.png"), full_page=True)
+    page.set_viewport_size({"width": 1440, "height": 1000})
     versions = tally(app, LoyaltyStrategyVersion)
     dialog.get_by_role("button", name="Publicar esta versión", exact=True).evaluate(
         "(b)=>{b.click();b.click()}"
