@@ -112,3 +112,23 @@ Working before/after evidence: shared `docs/product-design/sales-workspace-revie
 5. Keep one current identity. Supersede prior choices explicitly; do not fork a new
    visual language for each feature. Other dashboards adopt updates deliberately,
    with their own consumer checks; do not silently restyle unrelated public sites.
+
+
+## Loyalty configuration adoption
+
+Clientes → Fidelización reuses the shell, scoped navigation, buttons, badges,
+resource reads and Base UI dialog behavior. New compositions live in commerce
+`frontend/src/loyalty*.tsx` and `loyalty.css`; they consume this package's colors,
+caption/label/body type and surface geometry. No separate loyalty palette exists.
+
+Reusable form bones are owned by `loyalty-shared.tsx`: field, exact-money input,
+percentage/integer controls and pending-command feedback. Program, experiment and
+economics forms are their actual consumers. Geometry remains in the composition
+CSS, identity roles in these tokens, and action authority in existing server APIs.
+
+Working tables preserve every meaningful column; directory-specific icon-column
+widths and mobile hiding rules must not leak into financial tables. Constrained
+tables scroll within their own focusable region. Read-only financial copy separates
+recorded balances, historical cost estimates, unknown cost and general review.
+Simulations retain explicit assumptions; a hypothetical lift is never a success
+claim. Publication review shows named participants/products and pinned versions.

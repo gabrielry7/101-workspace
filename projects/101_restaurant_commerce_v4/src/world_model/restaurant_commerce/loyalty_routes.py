@@ -2,13 +2,12 @@
 
 # FastAPI resolves these dependency defaults per request.
 # ruff: noqa: B008
-from fastapi import Depends, Request
+from fastapi import Depends, Query, Request
 from sqlalchemy.orm import Session
 
 from .loyalty_config import LoyaltyConfigurationService
 from .loyalty_preview import PublishedRulePreview, preview_published_rules
 from .loyalty_rules import CALCULATION_VERSION, PreviewScenario
-from .loyalty_simulator import SIMULATION_VERSION, SimulationResult, SimulationScenario, simulate
 from .loyalty_schemas import (
     ExperimentCreate,
     ExperimentEdit,
@@ -17,25 +16,44 @@ from .loyalty_schemas import (
     StrategyEdit,
     Transition,
 )
+from .loyalty_simulator import (
+    SIMULATION_VERSION,
+    SimulationResult,
+    SimulationScenario,
+    simulate,
+)
 
 
 def register(app, get_session, scoped_staff):
-    def read(business_id: str, request: Request, session: Session = Depends(get_session)):
+    def read(
+        business_id: str, request: Request, session: Session = Depends(get_session)
+    ):
         return scoped_staff(request, session, business_id, "growth.read")
 
-    def write(business_id: str, request: Request, session: Session = Depends(get_session)):
+    def write(
+        business_id: str, request: Request, session: Session = Depends(get_session)
+    ):
         return scoped_staff(request, session, business_id, "growth.write")
 
     root = "/api/operator/restaurants/{business_id}/loyalty-config"
 
+    @app.get(root + "/overview", dependencies=[Depends(read)])
+    def loyalty_overview(business_id: str, session: Session = Depends(get_session)):
+        from .loyalty_workspace import overview
+
+        return overview(session, business_id)
+
     @app.get(root + "/capabilities", dependencies=[Depends(read)])
-    def loyalty_capabilities():
+    def loyalty_capabilities(business_id: str, session: Session = Depends(get_session)):
+        from .models import RestaurantCommerceProfile
+
         return {
+            "currency": session.get(RestaurantCommerceProfile, business_id).currency,
             "configuration_enabled": True,
             "execution_enabled": False,
             "assignment_enabled": False,
             "analytics_enabled": False,
-            "stage": "financial_simulator",
+            "stage": "administration_console",
             "simulator_enabled": True,
             "simulation_version": SIMULATION_VERSION,
             "controlled_assignment_available": True,
@@ -45,15 +63,23 @@ def register(app, get_session, scoped_staff):
             "preview_rule_types": ["points_earning", "fixed_value_redemption"],
         }
 
-    @app.post(root + "/simulator", response_model=SimulationResult, dependencies=[Depends(read)])
+    @app.post(
+        root + "/simulator",
+        response_model=SimulationResult,
+        dependencies=[Depends(read)],
+    )
     def loyalty_simulator(business_id: str, payload: SimulationScenario):
         # Scoped staff permission is resolved before this pure, nonpersistent calculation.
         return simulate(payload)
 
-    @app.get(root + "/experiments/{resource_id}/enrollment", dependencies=[Depends(read)])
-    def loyalty_enrollment_summary(business_id: str, resource_id: str,
-                                   session: Session = Depends(get_session)):
+    @app.get(
+        root + "/experiments/{resource_id}/enrollment", dependencies=[Depends(read)]
+    )
+    def loyalty_enrollment_summary(
+        business_id: str, resource_id: str, session: Session = Depends(get_session)
+    ):
         from .loyalty_assignment import assignment_summary
+
         return assignment_summary(session, business_id, resource_id)
 
     @app.post(
@@ -68,7 +94,9 @@ def register(app, get_session, scoped_staff):
         payload: PreviewScenario,
         session: Session = Depends(get_session),
     ):
-        return preview_published_rules(session, business_id, resource_id, version_id, payload)
+        return preview_published_rules(
+            session, business_id, resource_id, version_id, payload
+        )
 
     # Explicit request models keep OpenAPI and validation contracts inspectable.
     @app.post(root + "/programs")
@@ -121,9 +149,31 @@ def register(app, get_session, scoped_staff):
     def common(kind):
         @app.get(root + "/" + kind, name="loyalty_list_" + kind)
         def listing(
-            business_id: str, principal=Depends(read), session: Session = Depends(get_session)
+            business_id: str,
+            principal=Depends(read),
+            session: Session = Depends(get_session),
         ):
-            return LoyaltyConfigurationService(session, principal.actor_id).list(kind, business_id)
+            return LoyaltyConfigurationService(session, principal.actor_id).list(
+                kind, business_id
+            )
+
+        @app.get(
+            root + "/" + kind + "/{resource_id}/eligibility",
+            name="loyalty_labels_" + kind,
+        )
+        def labels(
+            business_id: str,
+            resource_id: str,
+            version_id: str | None = None,
+            expected_revision: int | None = Query(default=None, ge=1),
+            principal=Depends(read),
+            session: Session = Depends(get_session),
+        ):
+            from .loyalty_workspace import eligibility_labels
+
+            return eligibility_labels(
+                session, business_id, kind, resource_id, version_id, expected_revision
+            )
 
         @app.get(root + "/" + kind + "/{resource_id}", name="loyalty_get_" + kind)
         def detail(
@@ -136,7 +186,9 @@ def register(app, get_session, scoped_staff):
                 kind, business_id, resource_id
             )
 
-        @app.post(root + "/" + kind + "/{resource_id}/publish", name="loyalty_publish_" + kind)
+        @app.post(
+            root + "/" + kind + "/{resource_id}/publish", name="loyalty_publish_" + kind
+        )
         def publish(
             business_id: str,
             resource_id: str,
@@ -148,7 +200,9 @@ def register(app, get_session, scoped_staff):
                 kind, business_id, resource_id, payload
             )
 
-        @app.post(root + "/" + kind + "/{resource_id}/state", name="loyalty_state_" + kind)
+        @app.post(
+            root + "/" + kind + "/{resource_id}/state", name="loyalty_state_" + kind
+        )
         def state(
             business_id: str,
             resource_id: str,

@@ -5,9 +5,30 @@
   "source": "tokens.css",
   "references": "/home/t/101-world-model/docs/product-design/references/2026-11-05/manifest.json",
   "decisions": [
-    {"date":"2026-11-05","source":"user references and direction","decision":"Fast, precise, useful. One restrained shell; avoid decorative administrative heroes and mandatory assistants."},
-    {"date":"2026-11-05","source":"user readability review","decision":"Larger readable text, darker secondary copy, shorter headers; visually inspect every render against saved references and refine."},
-    {"date":"2026-11-05","source":"user living identity instruction","decision":"Update this same identity and tokens with future requested design changes; reuse across 101 dashboards instead of copied themes."},
-    {"date":"2026-11-05","source":"user Inicio and analytics request","decision":"Plain task labels, compact results, direct attention links and factual activity. Demo web analytics is explicitly fictional and separate from received business data."}
+    {
+      "date": "2026-11-05",
+      "source": "user references and direction",
+      "decision": "Fast, precise, useful. One restrained shell; avoid decorative administrative heroes and mandatory assistants."
+    },
+    {
+      "date": "2026-11-05",
+      "source": "user readability review",
+      "decision": "Larger readable text, darker secondary copy, shorter headers; visually inspect every render against saved references and refine."
+    },
+    {
+      "date": "2026-11-05",
+      "source": "user living identity instruction",
+      "decision": "Update this same identity and tokens with future requested design changes; reuse across 101 dashboards instead of copied themes."
+    },
+    {
+      "date": "2026-11-05",
+      "source": "user Inicio and analytics request",
+      "decision": "Plain task labels, compact results, direct attention links and factual activity. Demo web analytics is explicitly fictional and separate from received business data."
+    },
+    {
+      "date": "2026-11-05",
+      "source": "authorized Stage6 implementation and rendered review",
+      "decision": "Adopt shared identity for Clientes → Fidelización; extract exact-money/form controls, preserve financial table columns, and distinguish configuration, assumptions, historical cost and unresolved evidence. This records implementation behavior, not a new brand approval."
+    }
   ]
 }

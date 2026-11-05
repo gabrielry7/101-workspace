@@ -44,6 +44,7 @@ import {
   type Customer,
 } from "./ui";
 import { SalesWorkspace } from "./sales";
+import { LoyaltyWorkspace } from "./loyalty";
 
 type Business = {
   business_id: string;
@@ -235,7 +236,8 @@ function App() {
     identity?.businesses.find((b) => b.business_id === requested) ||
     (!requested ? identity?.businesses[0] : undefined);
   const bid = business?.business_id || "";
-  const selected = params.get("customer");
+  const loyalty = screen === "customers" && params.get("view") === "loyalty";
+  const selected = loyalty ? null : params.get("customer");
   const kind = params.get("kind") || "all";
   const offset = Math.max(0, Number(params.get("offset")) || 0);
   const query = params.get("q") || "";
@@ -254,15 +256,15 @@ function App() {
     setParams(p);
   }
   useEffect(() => {
-    if (screen !== "customers" || search === query) return;
+    if (screen !== "customers" || loyalty || search === query) return;
     const timer = setTimeout(
       () => navigate({ q: search.trim(), offset: null, customer: null }),
       180,
     );
     return () => clearTimeout(timer);
-  }, [search, query, screen]);
+  }, [search, query, screen, loyalty]);
   const list = useResource<Listing>(
-    bid && screen === "customers"
+    bid && screen === "customers" && !loyalty
       ? `${endpoint(bid)}/customers?q=${encodeURIComponent(query)}&kind=${encodeURIComponent(kind)}&offset=${offset}&limit=25`
       : null,
   );
@@ -347,6 +349,9 @@ function App() {
                       customer: null,
                       order: null,
                       status: null,
+                      loyaltyId: null,
+                      loyaltyEdit: null,
+                      loyaltyVersion: null,
                     });
                   }}
                 >
@@ -533,8 +538,14 @@ function App() {
             params={params}
             navigate={navigate}
           />
+        ) : loyalty ? (
+          <LoyaltyWorkspace key={bid} business={bid} permissions={business.permissions}
+            csrf={identity.csrf} params={params} navigate={navigate}/>
         ) : (
           <div className="page">
+            <div className="loyalty-entry"><a href={`?business=${encodeURIComponent(bid)}&view=loyalty`}
+              onClick={e=>{if(!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey){e.preventDefault();navigate({view:'loyalty',customer:null,loyaltyId:null},true);}}}>
+              Fidelización <ArrowRight size={15}/></a></div>
             <section className="page-heading">
               <div>
                 <span className="eyebrow">CONOCE A QUIENES VUELVEN</span>

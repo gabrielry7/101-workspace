@@ -637,3 +637,65 @@ automatically resolved refund. Current writers attach repayment provenance.
 The review findings, reproduction conditions and verification limits are retained
 in [the reliability audit](LOYALTY_RELIABILITY_AUDIT.md). Stage 6 and live activation
 remain outside these repairs.
+
+## Stage 6 — operator configuration and economics
+
+The shared101workspace adds **Clientes → Fidelización**, at
+`/workspace/customers?view=loyalty`. It uses the existing login, business context
+and permissions. Programs, experiments, calculator and balances/costs are scoped
+child views. Hidden views do not load their data. The current configuration flag
+still controls the API; the console explains an unavailable deployment.
+
+Operators can create/edit points earning and fixed-value discounts, dates,
+eligibility, product exclusions, expiration, redemption limits, cost assumptions,
+campaign/customer budgets and promotion stacking. Existing future reward types
+retain their documents and historical versions. Publication retains the exact
+reviewed revision/digest; editing a proposal never reassigns customers or resumes
+a paused definition. Archiving retains history and is confirmed explicitly.
+
+Experiment forms select immutable published versions, exactly one control and
+allocations totaling100%, enrollment dates, observation/carryover windows, selected
+customers, exclusion groups, overlap rationale and an analysis plan. Existing
+benefits remain preserved. Available enrollment diagnostics remain descriptive;
+configuration publication does not activate offers or enroll real customers.
+Stage7 contribution-profit inference remains a separate release.
+
+The calculator consumes the existing exact simulator, including percentage,
+per-purchase and fixed-issuance costs, contribution margin or supplied order-level
+contribution, operating cost, explicit redemption/lift assumptions and sensitivity.
+Monetary strings are formatted through BigInt; inputs convert decimal text to
+integer units without binary-float currency calculations. Changed assumptions mark
+old output stale. No assumed lift is labeled as a measured effect.
+
+New read endpoints, under the same `loyalty-config` root:
+
+- `GET /overview`: committed read snapshot of account totals, historical lot cost
+  grouped by currency, due expiration, unattributed balances, campaign budget usage,
+  recent ledger, allocation holds and a separate general financial-review queue.
+- `GET /{programs|experiments}/{id}/eligibility`: scoped participant/product names
+  for the saved revision or immutable `version_id`; stale revision and foreign IDs
+  cannot silently become a different review.
+
+Neither endpoint creates accounts, expires points, reconciles or writes rewards.
+The overview uses a separate read transaction: repeatable-read/read-only on
+PostgreSQL and explicit BEGIN on SQLite, so concurrent earning cannot mix totals
+from different commits. Lifetime/account point aggregates and money use integer
+strings. Due lots are shown separately rather than silently expired by a GET.
+Unattributed cost stays unknown. Only campaign `'*'` budget buckets are summed;
+committed issuance cost is not added to outstanding lot cost as a second total.
+Multi-currency program budget history is explicitly unvalued when ambiguous.
+
+The hold list scans at most100recent partially-refunded orders and labels truncation;
+it is not an exhaustive financial total. Open general financial reconciliations are
+shown separately without inventing confirmed refund amounts. Recent ledger is
+limited20entries. No new schema or dependency is introduced.
+
+Mutation guards preserve creation keys and exact pending payloads after lost
+responses, reconcile matching saved edits, honor optimistic revisions and prevent
+late responses from navigating a different business. Read-only roles can inspect
+and calculate; publication/editing/pause/archive require existing `growth.write`.
+
+A loopback-only synthetic fixture is available via
+`python -m world_model.restaurant_commerce.loyalty_workspace_demo --db PATH --port 8816`.
+It reuses canonical services, creates no provider calls, and preserves operator
+changes on restart. All example contacts, orders and values are fictitious.

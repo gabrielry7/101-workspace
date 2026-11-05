@@ -95,6 +95,7 @@ export function useResource<T>(key: string | null) {
     key: string | null;
     data?: T;
     error?: string;
+    status?: number;
   }>({ key: null });
   const [retry, bump] = useState(0);
   useEffect(() => {
@@ -103,13 +104,14 @@ export function useResource<T>(key: string | null) {
     api<T>(key, { signal: abort.signal })
       .then((data) => set({ key, data }))
       .catch((e) => {
-        if (!abort.signal.aborted) set({ key, error: e.message });
+        if (!abort.signal.aborted) set({ key, error: e.message, status: e.status });
       });
     return () => abort.abort();
   }, [key, retry]);
   return {
     data: state.key === key ? state.data : undefined,
     error: state.key === key ? state.error : undefined,
+    status: state.key === key ? state.status : undefined,
     retry: () => {
       set({ key: null });
       bump((v) => v + 1);
