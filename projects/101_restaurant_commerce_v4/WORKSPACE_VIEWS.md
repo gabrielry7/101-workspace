@@ -96,3 +96,17 @@ existing `security/qualification_plugin.py`.
 Next: review the visible compositions with the owner; replace the analytics fixture
 with an explicitly scoped website-measurement source when authorized. Keep channel
 readiness/live provider tests separate from this dashboard delivery.
+
+## Combined loyalty preview
+
+For all implemented areas together, use the existing loyalty fixture as an extension
+of the shared app (same temporary101/101login, Campaigns transport, signup and Sales):
+
+```sh
+PYTHONPATH=src python -m world_model.restaurant_commerce.loyalty_workspace_demo --db /tmp/101-workspace-demo.db --port 8806
+```
+
+Open Inicio or `/workspace/customers?view=loyalty`. This applies existing loyalty
+migrations to the local fixture and seeds synthetic examples once; restarts preserve
+operator edits. Configuration is enabled here; execution, assignment and Stage7
+analytics remain disabled. The normal production startup is unchanged.

@@ -62,7 +62,14 @@ def seed_workspace(session):
             schedule(session, BUSINESS, result["id"], result["digest"], CLOCK)
 
 
-def app_for_demo(database_url, origin="http://127.0.0.1:8809"):
+def app_for_demo(
+    database_url,
+    origin="http://127.0.0.1:8809",
+    *,
+    engine=None,
+    loyalty_configuration_enabled=False,
+    size=80,
+):
     # Compose the existing fixture owners with their explicit fake transports.
     # The signup-only demo deliberately has no campaign integration configured.
     options = {
@@ -83,6 +90,8 @@ def app_for_demo(database_url, origin="http://127.0.0.1:8809"):
     }
     app = create_app(
         database_url=database_url,
+        engine=engine,
+        loyalty_configuration_enabled=loyalty_configuration_enabled,
         demo_mode=True,
         environment="development",
         payment_recovery_enabled=False,
@@ -103,7 +112,7 @@ def app_for_demo(database_url, origin="http://127.0.0.1:8809"):
     app.state.workspace_demo_login = ("campaign.manager", PASSWORD)
     with app.state.session_factory() as s:
         seed_campaign_demo(s)
-        seed(s, 80)
+        seed(s, size)
         seed_sales(s)
         seed_workspace(s)
     return app

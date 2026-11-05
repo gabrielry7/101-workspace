@@ -5,10 +5,8 @@ from pathlib import Path
 
 from sqlalchemy import select
 
-from .api import create_app
-from .campaign_demo import BUSINESS, PASSWORD, seed_campaign_demo
-from .customer_signup_delivery import FakePhoneVerifier
-from .customer_workspace_demo import seed as seed_customers
+from .workspace_demo import app_for_demo as workspace_app
+from .campaign_demo import BUSINESS
 from .db import init_schema, make_engine
 from .loyalty_assignment import LoyaltyAssignmentService
 from .loyalty_assignment_migrations import upgrade_loyalty_assignment
@@ -31,25 +29,15 @@ def app_for_demo(database_url, origin="http://127.0.0.1:8810", size=80):
     upgrade_loyalty_configuration(engine)
     upgrade_loyalty_execution(engine)
     upgrade_loyalty_assignment(engine)
-    app = create_app(
+    # Extend the shared local app: one login, campaign transports and commerce fixtures.
+    app = workspace_app(
+        database_url,
+        origin,
         engine=engine,
-        demo_mode=True,
-        environment="development",
-        payment_recovery_enabled=False,
         loyalty_configuration_enabled=True,
-        signup_options={
-            "mode": "test",
-            "public_origin": origin,
-            "adapters": {
-                "phone": FakePhoneVerifier(),
-                "email": FakePhoneVerifier("synthetic-email-only"),
-            },
-            "allowed_regions": ["CO", "US", "MX", "ES"],
-        },
+        size=size,
     )
     with app.state.session_factory() as session:
-        seed_campaign_demo(session)
-        seed_customers(session, size)
         if session.scalar(
             select(LoyaltyStrategy.id).where(
                 LoyaltyStrategy.business_id == BUSINESS,
@@ -196,7 +184,7 @@ def main():
     origin = f"http://127.0.0.1:{args.port}"
     app = app_for_demo("sqlite:///" + str(Path(args.db).resolve()), origin)
     print("LOCAL FICTITIOUS DEMO:", origin + "/workspace/customers?view=loyalty")
-    print("campaign.manager /", PASSWORD)
+    print("101 / 101 (temporary local demo login)")
     uvicorn.run(app, host="127.0.0.1", port=args.port, access_log=False)
 
 
