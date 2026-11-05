@@ -3,7 +3,8 @@ import "./color-preview.css";
 
 const pairings = [
   ["original", "Actual · comparar"],
-  ["gray-white", "Gris + blanco"],
+  ["gray-white", "Blanco sobre gris"],
+  ["white-gray", "Gris sobre blanco"],
   ["ink", "Blanco + tinta"],
   ["cobalt", "Blanco + cobalto"],
   ["violet", "Blanco + violeta"],

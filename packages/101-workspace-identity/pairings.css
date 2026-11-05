@@ -66,3 +66,15 @@
   --wm-danger-soft: #421d1d;
   color-scheme: dark;
 }
+
+:root[data-workspace-pairing="white-gray"] {
+  --wm-canvas: #ffffff;
+  --wm-surface: #e6e7eb;
+  --wm-sidebar: #e6e7eb;
+  --wm-ink: #151515;
+  --wm-secondary: #36363b;
+  --wm-line: #c5c6ce;
+  --wm-accent: #5731c5;
+  --wm-accent-soft: #f3efff;
+  --wm-chart-secondary: #aa8ae8;
+}

@@ -31,7 +31,7 @@ actual commerce consumer imports these tokens into its production build.
   gray-on-gray is not.** Avoid muddy surface layering and faint text on similar
   backgrounds. Use distinct white working surfaces, deliberate accent roles and
   readable secondary text. This supersedes the earlier overbroad “no gray canvas”.
-  `pairings.css` contains six review candidates, including gray + white. The actual
+  `pairings.css` contains seven review candidates, including gray + white. The actual
   demo workspace exposes a local “Vista de color” selector across its existing
   workflows. None is the permanent default yet; “Actual · comparar” restores the
   original tokens. Public merchant branding stays separate.
@@ -183,3 +183,8 @@ controls mounting; the query string/local storage cannot enable it in ordinary
 mode. Storage failures fall back to the current rendering. Use `?pairing=cobalt`
 or `?pairing=gray-white` for direct review links. Other pairings: ink, violet,
 forest, lime. The control does not change public checkout or branded email previews.
+
+Comparison delivery: show several actual-app renders together with direct links.
+Name surface order explicitly: white panels on gray (`gray-white`) and gray panels
+on white (`white-gray`). A hidden selector or one example alone is insufficient
+for comparing options. This is a review preference, not selection of a default.
