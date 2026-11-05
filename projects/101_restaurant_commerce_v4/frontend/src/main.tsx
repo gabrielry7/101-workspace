@@ -10,7 +10,6 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  CircleHelp,
   Copy,
   ExternalLink,
   Globe2,
@@ -29,6 +28,22 @@ import {
   X,
 } from "lucide-react";
 import "./style.css";
+import "./readability.css";
+import {
+  api,
+  endpoint,
+  date,
+  amount,
+  count,
+  label,
+  source,
+  Avatar,
+  useResource,
+  Failure,
+  Loading,
+  type Customer,
+} from "./ui";
+import { SalesWorkspace } from "./sales";
 
 type Business = {
   business_id: string;
@@ -38,16 +53,6 @@ type Business = {
   permissions: string[];
 };
 type Identity = { username: string; csrf: string; businesses: Business[] };
-type Customer = {
-  id: string;
-  name: string | null;
-  email: string | null;
-  phone: string | null;
-  created_at: string;
-  last_order_at: string | null;
-  registered: boolean;
-  source: string | null;
-};
 type Listing = {
   items: Customer[];
   count: number;
@@ -99,125 +104,6 @@ type Signup = {
   available: boolean;
   mode: string;
 };
-class ApiError extends Error {
-  constructor(public status: number) {
-    super(
-      status === 401
-        ? "Tu sesión terminó. Vuelve a entrar."
-        : status === 403
-          ? "No tienes acceso a este negocio."
-          : "No pudimos cargar la información. Inténtalo de nuevo.",
-    );
-  }
-}
-async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
-  const r = await fetch(path, { credentials: "same-origin", ...init });
-  if (!r.ok) {
-    if (r.status === 401) window.dispatchEvent(new Event("session-expired"));
-    throw new ApiError(r.status);
-  }
-  return r.json();
-}
-const endpoint = (business: string) =>
-  `/api/operator/restaurants/${encodeURIComponent(business)}`;
-const dateFormatter = new Intl.DateTimeFormat("es-CO", {
-  day: "numeric",
-  month: "short",
-  year: "numeric",
-  timeZone: "America/Bogota",
-});
-const date = (value: string | null) =>
-  value ? dateFormatter.format(new Date(value)) : "—";
-const amount = (n: number, currency: string) =>
-  new Intl.NumberFormat("es-CO", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: currency === "COP" ? 0 : 2,
-  }).format(currency === "COP" ? n : n / 100);
-const countFormatter = new Intl.NumberFormat("es-CO");
-const count = (n: number) => countFormatter.format(n);
-const initials = (name: string | null) =>
-  name
-    ? name
-        .trim()
-        .split(/\s+/)
-        .slice(0, 2)
-        .map((x) => x[0])
-        .join("")
-        .toUpperCase()
-    : "?";
-const label = (c: Customer) => c.name || c.email || c.phone || "Sin nombre";
-const source = (value: string | null) =>
-  ({ qr: "Código QR", website: "Sitio web", direct: "Enlace directo" })[
-    value || ""
-  ] || "Contacto existente";
-function Avatar({
-  customer,
-  large = false,
-}: {
-  customer: Customer;
-  large?: boolean;
-}) {
-  const hue =
-    Array.from(customer.id).reduce((n, c) => n + c.charCodeAt(0), 0) % 5;
-  return (
-    <span
-      className={`avatar tone-${hue} ${large ? "large" : ""}`}
-      aria-hidden="true"
-    >
-      {initials(customer.name)}
-    </span>
-  );
-}
-function useResource<T>(key: string | null) {
-  const [state, set] = useState<{
-    key: string | null;
-    data?: T;
-    error?: string;
-  }>({ key: null });
-  const [retry, bump] = useState(0);
-  useEffect(() => {
-    if (!key) return;
-    const abort = new AbortController();
-    api<T>(key, { signal: abort.signal })
-      .then((data) => set({ key, data }))
-      .catch((e) => {
-        if (!abort.signal.aborted) set({ key, error: e.message });
-      });
-    return () => abort.abort();
-  }, [key, retry]);
-  return {
-    data: state.key === key ? state.data : undefined,
-    error: state.key === key ? state.error : undefined,
-    retry: () => {
-      set({ key: null });
-      bump((v) => v + 1);
-    },
-  };
-}
-function Failure({ message, retry }: { message: string; retry: () => void }) {
-  return (
-    <div className="state error" role="alert">
-      <CircleHelp />
-      <h3>No se pudo cargar</h3>
-      <p>{message}</p>
-      <button className="button secondary" onClick={retry}>
-        Reintentar
-      </button>
-    </div>
-  );
-}
-function Loading() {
-  return (
-    <div className="loading" role="status" aria-label="Cargando clientes">
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
-    </div>
-  );
-}
 function Login({ onLogin }: { onLogin: (id: Identity) => void }) {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -294,6 +180,11 @@ function App() {
   const [params, setParams] = useState(
     () => new URLSearchParams(location.search),
   );
+  const [screen, setScreen] = useState(
+    location.pathname.endsWith("/sales") ? "sales" : "customers",
+  );
+  const routeMemory = useRef<Record<string, string>>({});
+  const routeScroll = useRef<Record<string, number>>({});
   const [menu, setMenu] = useState(false);
   const [qr, setQr] = useState(false);
   const [policy, setPolicy] = useState<{ demo_mode: boolean }>();
@@ -317,6 +208,7 @@ function App() {
       .then(setPolicy)
       .catch(() => {});
     const pop = () => {
+      setScreen(location.pathname.endsWith("/sales") ? "sales" : "customers");
       setParams(new URLSearchParams(location.search));
       setSearch(new URLSearchParams(location.search).get("q") || "");
     };
@@ -357,20 +249,20 @@ function App() {
     history[push ? "pushState" : "replaceState"](
       { customerWorkspace: true },
       "",
-      `/workspace/customers${p.size ? "?" + p : ""}`,
+      `/workspace/${screen}${p.size ? "?" + p : ""}`,
     );
     setParams(p);
   }
   useEffect(() => {
-    if (search === query) return;
+    if (screen !== "customers" || search === query) return;
     const timer = setTimeout(
       () => navigate({ q: search.trim(), offset: null, customer: null }),
       180,
     );
     return () => clearTimeout(timer);
-  }, [search, query]);
+  }, [search, query, screen]);
   const list = useResource<Listing>(
-    bid
+    bid && screen === "customers"
       ? `${endpoint(bid)}/customers?q=${encodeURIComponent(query)}&kind=${encodeURIComponent(kind)}&offset=${offset}&limit=25`
       : null,
   );
@@ -383,6 +275,13 @@ function App() {
     }
     previousCustomer.current = selected;
   }, [selected]);
+  useEffect(() => {
+    if (screen === "customers" && list.data)
+      requestAnimationFrame(() => {
+        if (listRef.current)
+          listRef.current.scrollTop = routeScroll.current[bid + screen] || 0;
+      });
+  }, [screen, bid]);
   function selectCustomer(e: React.MouseEvent<HTMLAnchorElement>, id: string) {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
@@ -396,6 +295,22 @@ function App() {
   }
   const legacy = (path: string) =>
     `${path}?business_id=${encodeURIComponent(bid)}`;
+  function goScreen(e: React.MouseEvent<HTMLAnchorElement>, target: string) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    routeMemory.current[bid + screen] = location.search;
+    if (screen === "customers")
+      routeScroll.current[bid + screen] = listRef.current?.scrollTop || 0;
+    const targetParams = new URLSearchParams(
+      routeMemory.current[bid + target] || "",
+    );
+    targetParams.set("business", bid);
+    history.pushState({}, "", `/workspace/${target}?${targetParams}`);
+    setParams(targetParams);
+    setSearch(targetParams.get("q") || "");
+    setScreen(target);
+    setMenu(false);
+  }
   function nav() {
     return (
       <>
@@ -430,6 +345,8 @@ function App() {
                       kind: null,
                       offset: null,
                       customer: null,
+                      order: null,
+                      status: null,
                     });
                   }}
                 >
@@ -448,24 +365,25 @@ function App() {
         </div>
         <nav aria-label="Principal">
           <span className="nav-caption">ESPACIO DE TRABAJO</span>
-          <a href={legacy("/admin")}>
+          <a
+            href={`/workspace/sales?business=${bid}`}
+            className={screen === "sales" ? "active" : ""}
+            aria-current={screen === "sales" ? "page" : undefined}
+            onClick={(e) => goScreen(e, "sales")}
+          >
             <ShoppingBag />
             Ventas
             <ExternalLink className="nav-external" />
           </a>
           <a
-            className="active"
-            aria-current="page"
+            className={screen === "customers" ? "active" : ""}
+            aria-current={screen === "customers" ? "page" : undefined}
             href={`/workspace/customers?business=${bid}`}
-            onClick={(e) => {
-              e.preventDefault();
-              setMenu(false);
-              navigate({ customer: null });
-            }}
+            onClick={(e) => goScreen(e, "customers")}
           >
             <Users />
             Clientes
-            <span className="active-dot" />
+            {screen === "customers" && <span className="active-dot" />}
           </a>
           <a href={legacy("/campaigns")}>
             <Megaphone />
@@ -573,7 +491,9 @@ function App() {
   return (
     <div className="workspace">
       <aside className="sidebar">{nav()}</aside>
-      <main className={`main ${selected ? "has-detail" : ""}`}>
+      <main
+        className={`main ${selected && screen === "customers" ? "has-detail" : ""}`}
+      >
         <header className="topbar">
           <button
             className="icon-button mobile-menu"
@@ -583,8 +503,12 @@ function App() {
             <Menu />
           </button>
           <div className="breadcrumb">
-            <Users size={16} />
-            <span>Clientes</span>
+            {screen === "sales" ? (
+              <ShoppingBag size={16} />
+            ) : (
+              <Users size={16} />
+            )}
+            <span>{screen === "sales" ? "Ventas" : "Clientes"}</span>
           </div>
           <div className="topbar-right">
             {policy?.demo_mode && (
@@ -596,280 +520,298 @@ function App() {
             <span className="version-label">HECHO PARA TU DÍA A DÍA</span>
           </div>
         </header>
-        <div className="page">
-          <section className="page-heading">
-            <div>
-              <span className="eyebrow">CONOCE A QUIENES VUELVEN</span>
-              <h1>Tu gente.</h1>
-              <p>Cada visita empieza con una persona.</p>
-            </div>
-            <button className="button primary" onClick={() => setQr(true)}>
-              <QrCode size={17} />
-              Invitar clientes
-              <ArrowRight size={16} />
-            </button>
-          </section>
-          <div className="overview">
-            <div className="overview-stat">
-              <span>Clientes en tu negocio</span>
-              <strong>
-                {list.data ? count(list.data.total) : "—"}
-                <Users size={21} />
-              </strong>
-              <small>Todos tus contactos, en un lugar</small>
-            </div>
-            <div className="overview-stat">
-              <span>Registros verificados</span>
-              <strong>
-                {list.data?.registered != null
-                  ? count(list.data.registered)
-                  : "—"}
-                <Check size={21} />
-              </strong>
-              <small>Se unieron con teléfono o correo</small>
-            </div>
-            <button className="invite-tile" onClick={() => setQr(true)}>
-              <span className="tile-qr">
-                <QrCode size={34} strokeWidth={1.6} />
-              </span>
-              <span>
-                <strong>
-                  Un escaneo.
-                  <br />
-                  Una nueva conexión.
-                </strong>
-                <small>
-                  Comparte tu código QR <ArrowUp />
-                </small>
-              </span>
-            </button>
-          </div>
-          <section
-            className="customer-surface"
-            aria-label="Directorio de clientes"
-          >
-            <div className="surface-heading">
-              <h2>
-                Directorio{" "}
-                <span>{list.data ? count(list.data.count) : "…"}</span>
-              </h2>
-              <span className="quiet">Ordenado por registro más reciente</span>
-            </div>
-            <div className="toolbar">
-              <div className="tabs" aria-label="Filtrar clientes">
-                {[
-                  ["all", "Todos"],
-                  ["registered", "Registrados"],
-                ].map(([value, text]) => (
-                  <button
-                    key={value}
-                    className={kind === value ? "selected" : ""}
-                    aria-pressed={kind === value}
-                    onClick={() =>
-                      navigate({
-                        kind: value === "all" ? null : value,
-                        offset: null,
-                        customer: null,
-                      })
-                    }
-                  >
-                    {text}
-                  </button>
-                ))}
+        {screen === "sales" ? (
+          <SalesWorkspace
+            key={bid}
+            rememberScroll={(value) => {
+              routeScroll.current[bid + "sales"] = value;
+            }}
+            initialScroll={routeScroll.current[bid + "sales"] || 0}
+            business={bid}
+            permissions={business.permissions}
+            csrf={identity.csrf}
+            params={params}
+            navigate={navigate}
+          />
+        ) : (
+          <div className="page">
+            <section className="page-heading">
+              <div>
+                <span className="eyebrow">CONOCE A QUIENES VUELVEN</span>
+                <h1>Clientes</h1>
+                <p>Cada visita empieza con una persona.</p>
               </div>
-              <div className="search-controls">
-                <label className="search">
-                  <Search size={17} />
-                  <input
-                    type="search"
-                    placeholder="Buscar nombre, correo o teléfono"
-                    aria-label="Buscar clientes"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                  />
-                  {search && (
+              <button className="button primary" onClick={() => setQr(true)}>
+                <QrCode size={17} />
+                Invitar clientes
+                <ArrowRight size={16} />
+              </button>
+            </section>
+            <div className="overview">
+              <div className="overview-stat">
+                <span>Clientes en tu negocio</span>
+                <strong>
+                  {list.data ? count(list.data.total) : "—"}
+                  <Users size={21} />
+                </strong>
+                <small>Todos tus contactos, en un lugar</small>
+              </div>
+              <div className="overview-stat">
+                <span>Registros verificados</span>
+                <strong>
+                  {list.data?.registered != null
+                    ? count(list.data.registered)
+                    : "—"}
+                  <Check size={21} />
+                </strong>
+                <small>Se unieron con teléfono o correo</small>
+              </div>
+              <button className="invite-tile" onClick={() => setQr(true)}>
+                <span className="tile-qr">
+                  <QrCode size={34} strokeWidth={1.6} />
+                </span>
+                <span>
+                  <strong>
+                    Un escaneo.
+                    <br />
+                    Una nueva conexión.
+                  </strong>
+                  <small>
+                    Comparte tu código QR <ArrowUp />
+                  </small>
+                </span>
+              </button>
+            </div>
+            <section
+              className="customer-surface"
+              aria-label="Directorio de clientes"
+            >
+              <div className="surface-heading">
+                <h2>
+                  Directorio{" "}
+                  <span>{list.data ? count(list.data.count) : "…"}</span>
+                </h2>
+                <span className="quiet">
+                  Ordenado por registro más reciente
+                </span>
+              </div>
+              <div className="toolbar">
+                <div className="tabs" aria-label="Filtrar clientes">
+                  {[
+                    ["all", "Todos"],
+                    ["registered", "Registrados"],
+                  ].map(([value, text]) => (
                     <button
-                      aria-label="Limpiar búsqueda"
+                      key={value}
+                      className={kind === value ? "selected" : ""}
+                      aria-pressed={kind === value}
+                      onClick={() =>
+                        navigate({
+                          kind: value === "all" ? null : value,
+                          offset: null,
+                          customer: null,
+                        })
+                      }
+                    >
+                      {text}
+                    </button>
+                  ))}
+                </div>
+                <div className="search-controls">
+                  <label className="search">
+                    <Search size={17} />
+                    <input
+                      type="search"
+                      placeholder="Buscar nombre, correo o teléfono"
+                      aria-label="Buscar clientes"
+                      value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                    />
+                    {search && (
+                      <button
+                        aria-label="Limpiar búsqueda"
+                        onClick={() => {
+                          setSearch("");
+                          navigate({ q: null, offset: null });
+                        }}
+                      >
+                        <X size={15} />
+                      </button>
+                    )}
+                  </label>
+                  <label className="filter">
+                    <SlidersHorizontal size={16} />
+                    <span className="sr-only">Filtrar por contacto</span>
+                    <select
+                      aria-label="Filtrar por contacto"
+                      value={["phone", "email"].includes(kind) ? kind : "all"}
+                      onChange={(e) =>
+                        navigate({
+                          kind:
+                            e.target.value === "all" ? null : e.target.value,
+                          offset: null,
+                          customer: null,
+                        })
+                      }
+                    >
+                      <option value="all">Contacto</option>
+                      <option value="email">Con correo</option>
+                      <option value="phone">Con teléfono</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div
+                className="list-scroll"
+                ref={listRef}
+                data-testid="customer-list"
+              >
+                {list.error ? (
+                  <Failure message={list.error} retry={list.retry} />
+                ) : !list.data ? (
+                  <Loading />
+                ) : list.data.count === 0 ? (
+                  <div className="state">
+                    <div className="empty-icon">
+                      <Users size={26} />
+                    </div>
+                    <h3>
+                      {query
+                        ? "Nadie por aquí con ese nombre"
+                        : "Todo empieza con el primer cliente"}
+                    </h3>
+                    <p>
+                      {query
+                        ? "Prueba con otro nombre, correo o teléfono."
+                        : "Comparte tu enlace o QR para invitar a tu gente."}
+                    </p>
+                    <button
+                      className="button secondary"
                       onClick={() => {
-                        setSearch("");
-                        navigate({ q: null, offset: null });
+                        if (query) {
+                          setSearch("");
+                          navigate({ q: null, offset: null });
+                        } else if (kind !== "all") {
+                          navigate({ kind: null, offset: null });
+                        } else setQr(true);
                       }}
                     >
-                      <X size={15} />
+                      {query
+                        ? "Limpiar búsqueda"
+                        : kind !== "all"
+                          ? "Ver todos"
+                          : "Compartir QR"}
                     </button>
-                  )}
-                </label>
-                <label className="filter">
-                  <SlidersHorizontal size={16} />
-                  <span className="sr-only">Filtrar por contacto</span>
-                  <select
-                    aria-label="Filtrar por contacto"
-                    value={["phone", "email"].includes(kind) ? kind : "all"}
-                    onChange={(e) =>
+                  </div>
+                ) : (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Cliente</th>
+                        <th>Contacto</th>
+                        <th>Registro</th>
+                        <th>Desde</th>
+                        <th>
+                          <span className="sr-only">Abrir</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {list.data.items.map((c) => (
+                        <tr
+                          key={c.id}
+                          className={selected === c.id ? "current" : ""}
+                        >
+                          <td>
+                            <a
+                              className="customer-link"
+                              href={`?${new URLSearchParams({ ...Object.fromEntries(params), business: bid, customer: c.id })}`}
+                              onClick={(e) => selectCustomer(e, c.id)}
+                            >
+                              <Avatar customer={c} />
+                              <span>
+                                <strong>{label(c)}</strong>
+                                <small>
+                                  {c.name
+                                    ? c.email ||
+                                      c.phone ||
+                                      "Sin datos de contacto"
+                                    : "Nombre pendiente"}
+                                </small>
+                              </span>
+                            </a>
+                          </td>
+                          <td>
+                            <div className="contact-cell">
+                              <span>{c.email || "Sin correo"}</span>
+                              <small>{c.phone || "Sin teléfono"}</small>
+                            </div>
+                          </td>
+                          <td>
+                            <span
+                              className={`badge ${c.registered ? "verified" : ""}`}
+                            >
+                              {c.registered ? (
+                                <>
+                                  <Check size={12} />
+                                  Verificado
+                                </>
+                              ) : (
+                                "Sin registro"
+                              )}
+                            </span>
+                          </td>
+                          <td className="date-cell">{date(c.created_at)}</td>
+                          <td>
+                            <ChevronRight size={16} className="row-chevron" />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+              <footer className="table-footer">
+                <span aria-live="polite">
+                  {list.data
+                    ? `${list.data.count ? offset + 1 : 0}–${Math.min(offset + 25, list.data.count)} de ${count(list.data.count)} clientes`
+                    : "Cargando…"}
+                </span>
+                <div>
+                  <button
+                    className="icon-button"
+                    aria-label="Página anterior"
+                    disabled={!offset || !list.data}
+                    onClick={() =>
                       navigate({
-                        kind: e.target.value === "all" ? null : e.target.value,
-                        offset: null,
+                        offset: String(Math.max(0, offset - 25)),
                         customer: null,
                       })
                     }
                   >
-                    <option value="all">Contacto</option>
-                    <option value="email">Con correo</option>
-                    <option value="phone">Con teléfono</option>
-                  </select>
-                </label>
-              </div>
-            </div>
-            <div
-              className="list-scroll"
-              ref={listRef}
-              data-testid="customer-list"
-            >
-              {list.error ? (
-                <Failure message={list.error} retry={list.retry} />
-              ) : !list.data ? (
-                <Loading />
-              ) : list.data.count === 0 ? (
-                <div className="state">
-                  <div className="empty-icon">
-                    <Users size={26} />
-                  </div>
-                  <h3>
-                    {query
-                      ? "Nadie por aquí con ese nombre"
-                      : "Todo empieza con el primer cliente"}
-                  </h3>
-                  <p>
-                    {query
-                      ? "Prueba con otro nombre, correo o teléfono."
-                      : "Comparte tu enlace o QR para invitar a tu gente."}
-                  </p>
+                    <ChevronLeft size={17} />
+                  </button>
+                  <span>Página {Math.floor(offset / 25) + 1}</span>
                   <button
-                    className="button secondary"
-                    onClick={() => {
-                      if (query) {
-                        setSearch("");
-                        navigate({ q: null, offset: null });
-                      } else if (kind !== "all") {
-                        navigate({ kind: null, offset: null });
-                      } else setQr(true);
-                    }}
+                    className="icon-button"
+                    aria-label="Página siguiente"
+                    disabled={!list.data || offset + 25 >= list.data.count}
+                    onClick={() =>
+                      navigate({ offset: String(offset + 25), customer: null })
+                    }
                   >
-                    {query
-                      ? "Limpiar búsqueda"
-                      : kind !== "all"
-                        ? "Ver todos"
-                        : "Compartir QR"}
+                    <ChevronRight size={17} />
                   </button>
                 </div>
-              ) : (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Cliente</th>
-                      <th>Contacto</th>
-                      <th>Registro</th>
-                      <th>Desde</th>
-                      <th>
-                        <span className="sr-only">Abrir</span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {list.data.items.map((c) => (
-                      <tr
-                        key={c.id}
-                        className={selected === c.id ? "current" : ""}
-                      >
-                        <td>
-                          <a
-                            className="customer-link"
-                            href={`?${new URLSearchParams({ ...Object.fromEntries(params), business: bid, customer: c.id })}`}
-                            onClick={(e) => selectCustomer(e, c.id)}
-                          >
-                            <Avatar customer={c} />
-                            <span>
-                              <strong>{label(c)}</strong>
-                              <small>
-                                {c.name
-                                  ? c.email ||
-                                    c.phone ||
-                                    "Sin datos de contacto"
-                                  : "Nombre pendiente"}
-                              </small>
-                            </span>
-                          </a>
-                        </td>
-                        <td>
-                          <div className="contact-cell">
-                            <span>{c.email || "Sin correo"}</span>
-                            <small>{c.phone || "Sin teléfono"}</small>
-                          </div>
-                        </td>
-                        <td>
-                          <span
-                            className={`badge ${c.registered ? "verified" : ""}`}
-                          >
-                            {c.registered ? (
-                              <>
-                                <Check size={12} />
-                                Verificado
-                              </>
-                            ) : (
-                              "Sin registro"
-                            )}
-                          </span>
-                        </td>
-                        <td className="date-cell">{date(c.created_at)}</td>
-                        <td>
-                          <ChevronRight size={16} className="row-chevron" />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
-            </div>
-            <footer className="table-footer">
-              <span aria-live="polite">
-                {list.data
-                  ? `${list.data.count ? offset + 1 : 0}–${Math.min(offset + 25, list.data.count)} de ${count(list.data.count)} clientes`
-                  : "Cargando…"}
-              </span>
-              <div>
-                <button
-                  className="icon-button"
-                  aria-label="Página anterior"
-                  disabled={!offset || !list.data}
-                  onClick={() =>
-                    navigate({
-                      offset: String(Math.max(0, offset - 25)),
-                      customer: null,
-                    })
-                  }
-                >
-                  <ChevronLeft size={17} />
-                </button>
-                <span>Página {Math.floor(offset / 25) + 1}</span>
-                <button
-                  className="icon-button"
-                  aria-label="Página siguiente"
-                  disabled={!list.data || offset + 25 >= list.data.count}
-                  onClick={() =>
-                    navigate({ offset: String(offset + 25), customer: null })
-                  }
-                >
-                  <ChevronRight size={17} />
-                </button>
-              </div>
+              </footer>
+            </section>
+            <footer className="page-footer">
+              <span>Las relaciones se construyen, visita a visita.</span>
+              <span className="footer-mark">101</span>
             </footer>
-          </section>
-          <footer className="page-footer">
-            <span>Las relaciones se construyen, visita a visita.</span>
-            <span className="footer-mark">101</span>
-          </footer>
-        </div>
-        {selected && (
+          </div>
+        )}
+        {selected && screen === "customers" && (
           <CustomerDetail
             key={`${bid}:${selected}`}
             business={bid}

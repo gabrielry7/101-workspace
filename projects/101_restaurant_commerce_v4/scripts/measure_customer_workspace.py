@@ -15,13 +15,19 @@ from playwright.sync_api import sync_playwright
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--url", default="http://127.0.0.1:8807")
+parser.add_argument("--area", choices=["customers", "sales"], default="customers")
 parser.add_argument("--out", default="/tmp/101-customer-evidence/performance.json")
 parser.add_argument("--chromium", default="/usr/bin/chromium")
 args = parser.parse_args()
 if not args.url.startswith("http://127.0.0.1:"):
     parser.error("Only the explicit local demo is supported")
 init = """window.lab={lcp:0,cls:0};new PerformanceObserver(l=>{for(const e of l.getEntries())window.lab.lcp=e.startTime}).observe({type:'largest-contentful-paint',buffered:true});new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.lab.cls+=e.value}).observe({type:'layout-shift',buffered:true});new MutationObserver(()=>{if(!window.lab.useful&&document.querySelector('tbody tr')){requestAnimationFrame(()=>{if(!window.lab.useful)window.lab.useful=performance.now()})}if(window.lab.click&&document.querySelector('.detail h2')&&!window.lab.detail)window.lab.detail=performance.now()-window.lab.click;if(window.lab.back&&!document.querySelector('.detail')&&!window.lab.restored)requestAnimationFrame(()=>window.lab.restored=performance.now()-window.lab.back)}).observe(document,{childList:true,subtree:true});document.addEventListener('click',e=>{if(e.target.closest('.customer-link')){window.lab.click=performance.now();requestAnimationFrame(()=>requestAnimationFrame(()=>window.lab.feedback=performance.now()-window.lab.click))}if(e.target.closest('[aria-label="Cerrar detalle"]'))window.lab.back=performance.now()},true);"""
+if args.area == "sales":
+    init = init.replace(".customer-link", ".sale-link").replace(
+        "Cerrar detalle", "Cerrar pedido"
+    )
 result = {
+    "area": args.area,
     "profile": {
         "viewport": [390, 844],
         "cpu_slowdown": 4,
@@ -30,7 +36,7 @@ result = {
         "upload_bits_sec": 750000,
         "cache": "empty new context per run",
         "auth": "pre-established, excluded",
-        "finish": "first painted customer row; separately browser LCP",
+        "finish": "first painted directory row; separately browser LCP",
         "machine": platform.platform(),
     },
     "runs": [],
@@ -72,7 +78,7 @@ with sync_playwright() as p:
             },
         )
         page.add_init_script(init)
-        page.goto(args.url + "/workspace/customers")
+        page.goto(args.url + "/workspace/" + args.area)
         page.locator("tbody tr").first.wait_for()
         page.evaluate("document.fonts.ready")
         page.wait_for_timeout(500)
@@ -80,11 +86,17 @@ with sync_playwright() as p:
         assert first["useful"] > 0
         result["dataset_label"] = page.locator(
             ".overview-stat strong"
+            if args.area == "customers"
+            else ".sales-summary strong"
         ).first.inner_text()
-        page.locator(".customer-link").first.click()
+        page.locator(
+            ".customer-link" if args.area == "customers" else ".sale-link"
+        ).first.click()
         page.locator(".detail h2").wait_for()
         page.wait_for_timeout(50)
-        page.get_by_label("Cerrar detalle").click()
+        page.get_by_label(
+            "Cerrar detalle" if args.area == "customers" else "Cerrar pedido"
+        ).click()
         page.locator(".detail").wait_for(state="detached")
         page.wait_for_timeout(50)
         result["runs"].append(page.evaluate("window.lab"))

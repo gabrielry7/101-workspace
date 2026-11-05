@@ -120,8 +120,9 @@ the world-model review evidence alongside the optimized run.
 
 ## Remaining product work
 
-Review this slice's appearance and behavior before adopting it across Sales and
-Campaigns. Their existing routes remain operational. Home and cross-functional
+The user reviewed this slice and requested better readability. Version0.24.0
+implements that iteration and the shared [Sales workflow](SALES_WORKSPACE.md).
+Campaigns is next; its existing route remains operational. Home and cross-functional
 Reports are deferred; we do not relabel the legacy growth page as the new Reports.
 Campaign results stay with campaigns and sales with Sales. Presence has explicit
 Website and Google destinations; Social is marked upcoming. No command palette,

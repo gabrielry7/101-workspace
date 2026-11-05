@@ -526,6 +526,8 @@ def create_app(
 
     from .customer_workspace import register as register_workspace
     register_workspace(app, get_session, scoped_staff)
+    from .sales_workspace import register as register_sales
+    register_sales(app, get_session, scoped_staff)
     from .customer_signup_routes import register as register_signup
     register_connections(app, get_session, scoped_staff, connections_runtime, staff_cookie, production)
     register_signup(app, get_session, scoped_staff, signup_options, demo_mode, production)

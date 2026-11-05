@@ -204,7 +204,8 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
     @staticmethod
     def _contact(row) -> dict:
         if row.customer_snapshot_json:
-            return json.loads(row.customer_snapshot_json)
+            return {"name": None, "phone": "", "identity_verified": False,
+                    **json.loads(row.customer_snapshot_json)}
         # Historical staff display only; public replay of unbound old rows is denied.
         return {"name": row.customer.name, "phone": row.customer.phone,
                 "identity_verified": False}
@@ -1627,25 +1628,13 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                 .with_for_update().execution_options(populate_existing=True))
         return order
 
-    def transition_order(self, order_id: str, new_status: str, *, expected_version=None, reason=None) -> OrderOut:
-        self._lock_order_money(order_id)
-        order = self.session.scalar(
-            select(Order)
-            .where(Order.id == order_id)
-            .options(selectinload(Order.payments), selectinload(Order.delivery))
-        )
-        if not order:
-            raise NotFoundError("Order not found")
-        try:
-            current = OrderStatus(order.status)
-            target = OrderStatus(new_status)
-        except ValueError as exc:
-            raise ValidationError(f"Unknown order status: {new_status}") from exc
+    def validate_order_transition(self, order, new_status):
+        """Read-only shared eligibility for operator preview and locked mutation.
 
-        if expected_version is not None and order.version != expected_version:
-            raise IdempotencyConflictError("El pedido cambió. Actualiza antes de decidir de nuevo.")
-        if current == target:
-            return self.order_out(order.id)
+        This is advisory until transition_order rechecks it under the money locks.
+        """
+        current = OrderStatus(order.status)
+        target = OrderStatus(new_status)
         if target not in ORDER_TRANSITIONS[current]:
             raise InvalidTransitionError(f"Cannot transition order from {current.value} to {target.value}")
 
@@ -1675,12 +1664,33 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                     raise InvalidTransitionError("Order cannot be cancelled after courier pickup")
                 if delivery.provider_delivery_reference and delivery_status not in {DeliveryStatus.CANCELLED, DeliveryStatus.FAILED}:
                     raise InvalidTransitionError("Cancel the dispatched delivery before cancelling the order")
-                if delivery_status == DeliveryStatus.QUOTED:
-                    self._record_delivery_status(
-                        delivery,
-                        DeliveryStatus.CANCELLED.value,
-                        dedupe_key=f"order-cancel:{delivery.id}",
-                    )
+        return deferred_payment
+
+    def transition_order(self, order_id: str, new_status: str, *, expected_version=None, reason=None) -> OrderOut:
+        self._lock_order_money(order_id)
+        order = self.session.scalar(
+            select(Order)
+            .where(Order.id == order_id)
+            .options(selectinload(Order.payments), selectinload(Order.delivery))
+        )
+        if not order:
+            raise NotFoundError("Order not found")
+        try:
+            current = OrderStatus(order.status)
+            target = OrderStatus(new_status)
+        except ValueError as exc:
+            raise ValidationError(f"Unknown order status: {new_status}") from exc
+
+        if expected_version is not None and order.version != expected_version:
+            raise IdempotencyConflictError("El pedido cambió. Actualiza antes de decidir de nuevo.")
+        if current == target:
+            return self.order_out(order.id)
+        deferred_payment = self.validate_order_transition(order, new_status)
+        payments = order.payments
+        delivery = order.delivery
+        if target == OrderStatus.CANCELLED and delivery and delivery.status == DeliveryStatus.QUOTED.value:
+            self._record_delivery_status(delivery, DeliveryStatus.CANCELLED.value,
+                                         dedupe_key=f"order-cancel:{delivery.id}")
 
         now = utcnow()
         order.status = target.value

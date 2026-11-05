@@ -272,6 +272,7 @@ def register(app, get_session, scoped_staff):
 
     @app.get("/workspace")
     @app.get("/workspace/customers")
+    @app.get("/workspace/sales")
     def workspace_page():
         return FileResponse(web / "index.html", headers={"Cache-Control": "no-store"})
 
