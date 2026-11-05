@@ -154,6 +154,7 @@ def create_app(
     tracking_url_origins: tuple[str, ...] = (),
     campaign_options: dict | None = None,
     signup_options: dict | None = None,
+    connections_runtime=None,
     loyalty_configuration_enabled: bool | None = None,
 ) -> FastAPI:
     def validated_origins(origins: tuple[str, ...]) -> list[str]:
@@ -175,6 +176,9 @@ def create_app(
 
     browser_policy = {"checkout_origins": validated_origins(checkout_url_origins),
                       "tracking_origins": validated_origins(tracking_url_origins)}
+    from .connections import from_environment, start_worker
+    from .connection_routes import register_connections
+    connections_runtime = connections_runtime or from_environment()
     campaign_options = campaign_options or {}
     if loyalty_configuration_enabled is None:
         loyalty_flag = os.getenv("COMMERCE_LOYALTY_CONFIGURATION_ENABLED", "0")
@@ -260,6 +264,9 @@ def create_app(
 
     @asynccontextmanager
     async def lifespan(_app):
+        connection_stop = connection_thread = None
+        if connections_runtime and connections_runtime.worker:
+            connection_stop, connection_thread = start_worker(SessionLocal, connections_runtime)
         stop = thread = None
         if payment_recovery_enabled:
             stop, thread = start_recovery(SessionLocal, interval_seconds=payment_recovery_interval_seconds,
@@ -271,6 +278,9 @@ def create_app(
             yield
         finally:
             readiness.close()
+            if connection_stop:
+                connection_stop.set()
+                connection_thread.join(timeout=5)
             if stop:
                 stop.set()
                 thread.join(timeout=5)
@@ -515,6 +525,7 @@ def create_app(
         )
 
     from .customer_signup_routes import register as register_signup
+    register_connections(app, get_session, scoped_staff, connections_runtime, staff_cookie, production)
     register_signup(app, get_session, scoped_staff, signup_options, demo_mode, production)
 
     from .campaign_routes import register as register_campaigns
@@ -534,7 +545,7 @@ def create_app(
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "signup.js", "signup-owner.js", "signup.css", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
+        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "connections.js", "connections-consent.js", "connections-callback.js", "connections.css", "signup.js", "signup-owner.js", "signup.css", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
             raise HTTPException(status_code=404, detail="Asset not found")
         return FileResponse(WEB_DIR / filename, media_type="image/png" if filename.endswith(".png") else "text/css" if filename.endswith(".css") else "text/javascript",
                             headers={"Cache-Control": "no-cache"})

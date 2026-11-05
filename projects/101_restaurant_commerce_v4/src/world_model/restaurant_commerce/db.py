@@ -21,6 +21,7 @@ from .migrations import (
     STAFF_TABLES,
 )
 from .customer_signup_models import TABLES as SIGNUP_TABLES
+from .connection_models import TABLES as CONNECTION_TABLES
 from .models import Base
 
 
@@ -72,7 +73,7 @@ def init_schema(engine: Engine) -> None:
         t
         for t in Base.metadata.sorted_tables
         if t.name not in (EXECUTION_TABLES | ASSIGNMENT_TABLES)
-        and (not existing or t.name not in SIGNUP_TABLES)
+        and (not existing or t.name not in (SIGNUP_TABLES | CONNECTION_TABLES))
         and (
             not existing
             or t.name
