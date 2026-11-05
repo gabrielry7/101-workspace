@@ -1,0 +1,252 @@
+@import "../../../../packages/101-workspace-identity/pairings.css";
+.color-preview-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 32px;
+  border-bottom: 1px solid var(--wm-line);
+  background: var(--wm-surface);
+  color: var(--wm-ink);
+  font-size: 13px;
+}
+.color-preview-bar label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 650;
+}
+.color-preview-bar select {
+  min-height: 38px;
+  max-width: 220px;
+  padding: 6px 10px;
+  border: 1px solid var(--wm-line);
+  border-radius: 7px;
+  background: var(--wm-surface);
+  color: var(--wm-ink);
+}
+.color-preview-bar > span {
+  color: var(--wm-secondary);
+  font-size: 12px;
+}
+/* Existing app bones consume semantic roles; no data/action contracts change. */
+:root[data-workspace-pairing] .sidebar,
+:root[data-workspace-pairing] .mobile-sidebar {
+  background: var(--wm-sidebar);
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing]
+  :is(
+    .result-strip,
+    .date-context,
+    .topbar,
+    .business,
+    .overview,
+    .customer-surface,
+    .detail,
+    .detail-header,
+    .qr-dialog,
+    .sales-surface,
+    .sale-dialog,
+    .period-picker select,
+    .period-picker input,
+    .loyalty-dialog,
+    .color-preview-bar
+  ) {
+  background: var(--wm-surface);
+  color: var(--wm-ink);
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing]
+  :is(
+    .search,
+    .filter,
+    .secondary,
+    .form-fields input:not([type="checkbox"]),
+    .form-fields textarea,
+    .link-label input,
+    .tabs button.selected
+  ) {
+  background: var(--wm-surface);
+  color: var(--wm-ink);
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing]
+  :is(
+    .business select,
+    .search input,
+    .filter select,
+    .contact-cell > span,
+    .breadcrumb,
+    .tabs button,
+    .surface-heading h2 span
+  ) {
+  color: var(--wm-ink);
+}
+:root[data-workspace-pairing]
+  :is(
+    .contact-cell > small,
+    .date-cell,
+    .customer-link small,
+    .detail small,
+    .contact-details,
+    .membership-note,
+    .detail-note,
+    .back-link,
+    .section-title,
+    .permission small,
+    .order small,
+    .qr-dialog > p,
+    .qr-dialog .test-note,
+    .link-label,
+    .wordmark span,
+    .account small,
+    .nav-caption,
+    .topbar .demo-badge,
+    .table-footer,
+    .muted
+  ) {
+  color: var(--wm-secondary);
+}
+:root[data-workspace-pairing]
+  :is(nav > a, .nav-bottom > a, summary, .presence a, .presence span) {
+  color: var(--wm-ink);
+}
+:root[data-workspace-pairing] :is(nav > a.active, .primary) {
+  background: var(--wm-accent);
+  color: var(--wm-on-accent);
+  border-color: var(--wm-accent);
+}
+:root[data-workspace-pairing] .primary:hover:not(:disabled) {
+  background: var(--wm-accent);
+  filter: brightness(0.92);
+}
+:root[data-workspace-pairing]
+  :is(
+    .business-icon,
+    .invite-tile,
+    .tile-qr,
+    .demo-notice,
+    .channel-icon,
+    .campaign-scheduled,
+    .qr-business
+  ) {
+  background: var(--wm-accent-soft);
+  color: var(--wm-accent);
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing] :is(.active-dot, .demo-dot) {
+  background: currentColor;
+}
+:root[data-workspace-pairing] :is(th, .tabs) {
+  background: var(--wm-surface);
+  color: var(--wm-secondary);
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing]
+  :is(
+    td,
+    .table-footer,
+    .account,
+    .presence > div,
+    .permission,
+    .order,
+    .detail-header
+  ) {
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing]
+  :is(
+    tbody tr:hover,
+    tbody tr.current,
+    .attention-row:hover,
+    .campaign-row:hover,
+    .secondary:hover,
+    nav > a:not(.active):hover,
+    .nav-bottom > a:hover
+  ) {
+  background: var(--wm-hover);
+}
+:root[data-workspace-pairing]
+  :is(
+    .tabs button.selected,
+    .back-link,
+    .attention-row > svg,
+    .activity-icon.campaign
+  ) {
+  color: var(--wm-accent);
+}
+:root[data-workspace-pairing] .tabs button.selected {
+  box-shadow: inset 0 -2px var(--wm-accent);
+}
+:root[data-workspace-pairing]
+  .badge:not(.verified):not(.withdrawn):not(.sale-state) {
+  color: var(--wm-secondary);
+  background: var(--wm-surface);
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing] .badge.verified {
+  color: var(--wm-success);
+  background: var(--wm-success-soft);
+}
+:root[data-workspace-pairing] .badge.withdrawn {
+  color: var(--wm-danger);
+  background: var(--wm-danger-soft);
+}
+:root[data-workspace-pairing] .state :is(h3, p) {
+  color: var(--wm-secondary);
+}
+:root[data-workspace-pairing] .state-icon {
+  color: var(--wm-accent);
+  background: var(--wm-accent-soft);
+}
+:root[data-workspace-pairing]
+  :is(.review-check, .exclusions, .signup-source, .money) {
+  background: var(--wm-surface);
+}
+@media (max-width: 700px) {
+  .color-preview-bar {
+    padding: 8px 16px;
+  }
+  .color-preview-bar > span {
+    display: none;
+  }
+  .color-preview-bar label {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+:root[data-workspace-pairing] :is(.identity-note, .kind-campaign) {
+  color: var(--wm-accent);
+  background: var(--wm-accent-soft);
+}
+:root[data-workspace-pairing] .legacy-link {
+  color: var(--wm-secondary);
+}
+:root[data-workspace-pairing] :is(.detail-top, .sales-summary, .action-dialog) {
+  background: var(--wm-surface);
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing] .membership-note {
+  background: var(--wm-accent-soft);
+}
+:root[data-workspace-pairing] :is(.eyebrow, .copy-button, .sale-link > span) {
+  color: var(--wm-secondary);
+}
+:root[data-workspace-pairing] .section-title h3 {
+  color: var(--wm-ink);
+}
+:root[data-workspace-pairing] .source-bar {
+  background: var(--wm-accent-soft);
+}
+:root[data-workspace-pairing] .qr-card {
+  background: var(--wm-accent-soft);
+  border-color: var(--wm-line);
+}
+:root[data-workspace-pairing] .qr-card :is(strong, span) {
+  color: var(--wm-accent);
+}
+:root[data-workspace-pairing] :is(input, textarea)::placeholder {
+  color: var(--wm-secondary);
+  opacity: 1;
+}

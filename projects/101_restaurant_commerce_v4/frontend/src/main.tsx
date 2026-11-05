@@ -55,6 +55,7 @@ import {
   periodQuery,
 } from "./workspace-views";
 import { CampaignView } from "./campaign-workspace";
+import { ColorPreview } from "./color-preview";
 const screenFromPath = () => {
   const path = location.pathname.split("/").pop() || "home";
   return ["sales", "customers", "campaigns", "analytics", "identity"].includes(
@@ -333,7 +334,7 @@ function App() {
       routeMemory.current[bid + target] || "",
     );
     targetParams.set("business", bid);
-    for (const k of ["date_from", "date_to"]) {
+    for (const k of ["date_from", "date_to", "pairing"]) {
       const v = params.get(k);
       if (v) targetParams.set(k, v);
       else targetParams.delete(k);
@@ -598,6 +599,7 @@ function App() {
             <span className="version-label">HECHO PARA TU DÍA A DÍA</span>
           </div>
         </header>
+        {policy?.demo_mode && <ColorPreview />}
         {["sales", "customers"].includes(screen) && params.get("date_from") && (
           <div className="date-context">
             {params.get("date_from")} — {params.get("date_to")} · por fecha de

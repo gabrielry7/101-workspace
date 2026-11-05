@@ -1,1 +1,16 @@
-{"name":"@101/workspace-identity","version":"0.1.0","private":true,"description":"101 Workspace living product identity and framework-independent CSS tokens","files":["tokens.css","IDENTITY.md","decisions.json"],"exports":{"./tokens.css":"./tokens.css"}}
+{
+  "name": "@101/workspace-identity",
+  "version": "0.1.0",
+  "private": true,
+  "description": "101 Workspace living product identity and framework-independent CSS tokens",
+  "files": [
+    "tokens.css",
+    "IDENTITY.md",
+    "decisions.json",
+    "pairings.css"
+  ],
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./pairings.css": "./pairings.css"
+  }
+}
