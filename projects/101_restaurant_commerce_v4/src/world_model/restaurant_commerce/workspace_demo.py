@@ -99,6 +99,8 @@ def app_for_demo(database_url, origin="http://127.0.0.1:8809"):
         },
     )
     app.state.campaign_options = options
+    # Temporary local-review shortcut; remove this assignment to retire 101/101.
+    app.state.workspace_demo_login = ("campaign.manager", PASSWORD)
     with app.state.session_factory() as s:
         seed_campaign_demo(s)
         seed(s, 80)
@@ -120,8 +122,7 @@ def main():
     print(
         "TEST ONLY",
         f"http://127.0.0.1:{args.port}/workspace/home",
-        "campaign.manager /",
-        PASSWORD,
+        "101 / 101 (temporary local demo login)",
     )
     uvicorn.run(app, host="127.0.0.1", port=args.port, access_log=False)
 

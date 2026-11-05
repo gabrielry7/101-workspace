@@ -16,7 +16,10 @@ npm --prefix frontend run build
 PYTHONPATH=src python -m world_model.restaurant_commerce.workspace_demo --db /tmp/101-workspace-demo.db --port 8809
 ```
 
-Open `/workspace/home`. Demo-only login: `campaign.manager` /
+Open `/workspace/home`. Temporary shortcut: **101 / 101**. This aliases the
+existing demo manager session only in `workspace_demo.app_for_demo`; remove its
+`workspace_demo_login` assignment to retire the shortcut. No account is added and
+normal application startup does not enable it. Original demo-only login: `campaign.manager` /
 `synthetic campaign demonstration only`. `sales.viewer` uses the same fictitious
 password and cannot change campaigns. All customers, orders and payments here are
 fixtures. The campaign clock is fixed to November3,2026,10:00 in Bogotá; the calendar
