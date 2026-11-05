@@ -95,7 +95,9 @@ def analytics(factory, monkeypatch):
                 observation_days=30,
                 exclusion_group=group,
                 analysis_protocol={
-                    "sample_size_rationale": "Synthetic design validates customer-level comparisons.",
+                    "sample_size_rationale": (
+                        "Synthetic design validates customer-level comparisons."
+                    ),
                     "minimum_customers_per_arm": 30,
                     "readout_at": clock + timedelta(days=31),
                 }
