@@ -362,6 +362,25 @@ def test_financial_review_is_order_scoped_and_preserves_unavailability(analytics
         assert "financial_review_open" in result["warnings"]
 
 
+def test_pending_checkout_with_open_financial_review_is_not_zero_profit(analytics):
+    data = analytics()
+    target = next(r for r in data["rows"] if not r["order_id"])
+    with data["factory"]() as s:
+        before = report(s, BID, data["experiment_id"])
+        assert next(a for a in before["arms"] if a["variant_id"] == target["variant_id"])["profit_per_assigned_minor"] is not None
+        svc = RestaurantCommerceService(s, verified_customer_id=target["customer_id"])
+        req = request(svc); req.customer.phone = s.get(Customer, target["customer_id"]).phone
+        pending = svc.create_order(BID, req)
+        assert pending.payment_status != "paid"
+        s.add(PaymentReconciliation(order_id=pending.id, business_id=BID, reason="provider_timeout", status="open", evidence_json="{}")); s.commit()
+        result = report(s, BID, data["experiment_id"])
+        arm = next(a for a in result["arms"] if a["variant_id"] == target["variant_id"])
+        assert arm["assigned_customers"] == 4
+        assert arm["profit_per_assigned_minor"] is None
+        assert "financial_review_open" in result["warnings"]
+        assert "unresolved_order_at_window" in result["warnings"]
+
+
 def test_evidence_retry_conflict_and_immutable_history(analytics):
     data = analytics()
     oid = next(r["order_id"] for r in data["rows"] if r["order_id"])

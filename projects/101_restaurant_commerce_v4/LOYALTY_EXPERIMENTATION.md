@@ -727,7 +727,8 @@ purchases must be initiated after assignment and completed within that interval.
 Completed purchases remain in frequency after later refunds; current confirmed
 refunds reduce their net receipts and invalidate old cost evidence. Canceled orders
 also require cost evidence, including unpaid cash orders with preparation/waste.
-Unresolved accepted/paid orders make contribution unavailable. Pre-assignment
+Unresolved accepted/paid orders and open financial reviews (including pending
+checkouts without a confirmed capture) make contribution unavailable. Pre-assignment
 checkouts cannot become new outcomes simply by completing after randomization.
 
 Each arm uses its entire original randomized denominator. Missing/stale costs make

@@ -124,6 +124,7 @@ def _report(session, business_id, experiment_id):
             fact["gross_receipts_minor"] > 0
             or order.completed_at is not None
             or order.status == "cancelled"
+            or "financial_review_open" in fact["flags"]
         )
         if has_finance:
             coverage["observed_financial_orders"] += 1
@@ -163,6 +164,8 @@ def _report(session, business_id, experiment_id):
         if not completed_in_window and not cancelled_financial:
             if has_finance or order.accepted_at is not None:
                 unknown[a.id].add("unresolved_order_at_window")
+            if "financial_review_open" in fact["flags"]:
+                unknown[a.id].add("financial_review_open")
             continue
         financial_orders[a.id].append(order)
         providers.update(fact["providers"])
