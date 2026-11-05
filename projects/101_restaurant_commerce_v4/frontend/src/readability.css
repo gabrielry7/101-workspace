@@ -1,12 +1,12 @@
 /* Shared visual roles. These alter presentation only, never source data/actions. */
 :root {
-  --text-body: 15px;
-  --text-label: 14px;
-  --text-caption: 12px;
-  --text-secondary: #5f5968;
-  --workspace-gap: 24px;
-  --control-height: 44px;
-  --workspace-width: 1560px;
+  --text-body: var(--wm-body);
+  --text-label: var(--wm-label);
+  --text-caption: var(--wm-caption);
+  --text-secondary: var(--wm-secondary);
+  --workspace-gap: var(--wm-gap);
+  --control-height: var(--wm-control);
+  --workspace-width: var(--wm-width);
 }
 .page {
   max-width: var(--workspace-width);

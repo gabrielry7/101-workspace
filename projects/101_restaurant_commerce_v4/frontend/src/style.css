@@ -1,3 +1,4 @@
+@import "../../../../packages/101-workspace-identity/tokens.css";
 @font-face {
   font-family: "Manrope Variable";
   font-style: normal;
@@ -7,17 +8,17 @@
     format("woff2");
 }
 :root {
-  font-family: "Manrope Variable", Arial, sans-serif;
+  font-family: var(--wm-font);
   font-synthesis: none;
-  color: #27272b;
-  background: #f7f7f5;
+  color: var(--wm-ink);
+  background: var(--wm-canvas);
   font-size: 14px;
-  --muted: #68636e;
-  --line: #eae9e7;
-  --violet: #6947d7;
+  --muted: var(--wm-secondary);
+  --line: var(--wm-line);
+  --violet: var(--wm-accent);
   --ink: #26252a;
-  --surface: #fff;
-  --radius: 12px;
+  --surface: var(--wm-surface);
+  --radius: var(--wm-radius);
 }
 * {
   box-sizing: border-box;
