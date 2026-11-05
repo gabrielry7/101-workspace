@@ -26,6 +26,7 @@ import {
   Loading,
 } from "./ui";
 import "./sales.css";
+import { periodQuery } from "./workspace-views";
 
 type Row = {
   id: string;
@@ -178,7 +179,7 @@ export function SalesWorkspace({
     return () => clearTimeout(timer);
   }, [search, query]);
   const list = useResource<Listing>(
-    `${endpoint(business)}/sales?q=${encodeURIComponent(query)}&status=${status}&offset=${offset}&limit=25`,
+    `${endpoint(business)}/sales?q=${encodeURIComponent(query)}&status=${status}&offset=${offset}&limit=25&${periodQuery(params)}`,
   );
   useEffect(() => {
     if (!selected && previousSelected.current) {
@@ -238,7 +239,7 @@ export function SalesWorkspace({
           <div>
             <span>
               <Clock3 size={17} />
-              Pagos por revisar
+              Pagos por revisar · actuales
             </span>
             <strong>{list.data ? count(list.data.review_count) : "—"}</strong>
           </div>

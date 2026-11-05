@@ -1,6 +1,6 @@
 # 101 Workspace — living product identity
 
-Version0.1.0 · Owner: this package. Applies to 101 operating dashboards, including
+Version 0.1.0 · Owner: this package. Applies to 101 operating dashboards, including
 merchant and appropriate internal tools. It does not replace Honorato's public
 brand, customer-facing website or other businesses' identities.
 
@@ -112,3 +112,30 @@ Working before/after evidence: shared `docs/product-design/sales-workspace-revie
 5. Keep one current identity. Supersede prior choices explicitly; do not fork a new
    visual language for each feature. Other dashboards adopt updates deliberately,
    with their own consumer checks; do not silently restyle unrelated public sites.
+
+## Current consumers and extracted compositions (2026-11-05)
+
+The live sample sheet is `/workspace/identity`. It uses the same CSS loaded by
+Customers, Sales, Inicio, Campaigns and the analytics example. No separate mock theme.
+
+| Logical piece | Reuse / owner | Editable presentation, retained behavior |
+| --- | --- | --- |
+| Navigation, business context, button/input/badge | Reused: `frontend/src/main.tsx`, `style.css`, `readability.css`, `ui.tsx` | Token type/color/geometry; session and business access remain authoritative |
+| Heading and period picker | New extracted: `workspace-views.tsx` (`PageHeading`, `PeriodPicker`) | Typography/spacing; one inclusive Bogotá date contract, carried into working lists |
+| Working surfaces, metric strip, attention/activity rows | New compositions: `workspace-views.tsx`, `workspace-views.css` | Surface radius/fill, typography and spacing independent of read-only canonical projections |
+| Chart, sources and daily table | New: `AnalyticsView` | Chart role colors and geometry; explicit deterministic fixture, never reported as business activity |
+| Campaign copy/review/audience/results | New composition: `campaign-workspace.tsx` over existing `campaign_routes.py` | Shared surfaces/controls; existing immutable revision, permission, outbox and payment attribution contracts |
+| Email content preview | Reused: existing email renderer and authenticated preview endpoint | Separate merchant brand; shared workspace identity does not rewrite the email brand |
+
+Inicio shows at most six recent records; current attention is explicitly separate
+from the selected results period. Campaign results cover the entire campaign and
+say so. Post-scheduling eligibility is labelled current, distinct from approval
+and historical delivery. Working lists use creation dates. Historical customer totals and current
+payment-review counts retain those explicit meanings under a list date filter.
+Charts have visible scale/date labels and an accessible daily table. Simulation
+acceptance is labelled as acceptance by the simulator; delivery remains separate.
+
+Browser verification changes `--wm-accent` and `--wm-radius` in the actual analytics
+consumer, checks computed paint/geometry, and verifies its numbers stay unchanged.
+This is a concrete reuse proof, not a claim that every legacy style is tokenized.
+Rendered review and measurements: shared `docs/product-design/workspace-views-review.md`.

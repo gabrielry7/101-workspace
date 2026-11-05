@@ -12,13 +12,19 @@ from .refunds import refunded_total
 from .service import RestaurantCommerceService
 
 
-def listing(session, business, q="", status="active", offset=0, limit=25):
+def listing(
+    session, business, q="", status="active", offset=0, limit=25, selected=None
+):
     service = RestaurantCommerceService(session)
-    base = select(Order).where(Order.business_id == business)
+    from .workspace_period import clauses
+
+    base = select(Order).where(
+        Order.business_id == business, *clauses(Order.created_at, selected)
+    )
     counts = dict(
         session.execute(
             select(Order.status, func.count())
-            .where(Order.business_id == business)
+            .where(Order.business_id == business, *clauses(Order.created_at, selected))
             .group_by(Order.status)
         ).all()
     )
@@ -154,6 +160,8 @@ def register(app, get_session, scoped_staff):
     def sales(
         business_id: str,
         q: str = Query("", max_length=80),
+        date_from: str | None = None,
+        date_to: str | None = None,
         status: Literal[
             "active",
             "all",
@@ -169,7 +177,17 @@ def register(app, get_session, scoped_staff):
         limit: int = Query(25, ge=1, le=100),
         session: Session = Depends(get_session),
     ):
-        return listing(session, business_id, q.strip(), status, offset, limit)
+        from .workspace_period import period
+
+        return listing(
+            session,
+            business_id,
+            q.strip(),
+            status,
+            offset,
+            limit,
+            period(date_from, date_to),
+        )
 
     @app.get(root + "/{order_id}", dependencies=[Depends(read)])
     def sale(business_id: str, order_id: str, session: Session = Depends(get_session)):
