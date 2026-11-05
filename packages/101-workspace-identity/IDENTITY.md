@@ -27,13 +27,14 @@ actual commerce consumer imports these tokens into its production build.
 - Names and navigation15px, labels/contact14px, secondary details12px. Mobile
   primary text14px minimum; narrow ancillary badges may be11px. Main title30px,
   mobile27px. Data uses tabular numerals. Never shrink all text to fit a design.
-- **Superseded color direction (2026-11-05): no gray-on-gray and no gray canvas.**
-  The user explicitly rejected the existing neutral background treatment. Prefer
-  clear surface/text contrast and deliberate color. Five pairings are under review
-  in the shared repository at `docs/product-design/color-pairings/index.html`.
-  No replacement has been selected yet. Current `tokens.css` colors are legacy
-  implementation pending selection; they are not the approved future direction.
-  This proposal stage does not silently restyle existing consumers.
+- **Current color direction (2026-11-05, clarified): gray + white is welcome;
+  gray-on-gray is not.** Avoid muddy surface layering and faint text on similar
+  backgrounds. Use distinct white working surfaces, deliberate accent roles and
+  readable secondary text. This supersedes the earlier overbroad “no gray canvas”.
+  `pairings.css` contains six review candidates, including gray + white. The actual
+  demo workspace exposes a local “Vista de color” selector across its existing
+  workflows. None is the permanent default yet; “Actual · comparar” restores the
+  original tokens. Public merchant branding stays separate.
 - Green/amber/red express statuses with written labels; color alone is insufficient.
   White surfaces and existing measured role colors target WCAG AA. Recheck actual
   computed contrast after changes; inherited screenshots are not fresh evidence.
@@ -170,3 +171,15 @@ Rendered iterations and measured roles: shared
 financial columns on phones through internal scrolling rather than directory
 column-hiding rules.
 
+
+## Actual-app color review (2026-11-05)
+
+`frontend/src/color-preview.tsx` is a new demo-only review control. Existing shell,
+customer list/detail/QR, campaign editor/report, sales and loyalty components remain
+owned by their existing modules. `frontend/src/color-preview.css` maps their visual
+roles into shared `pairings.css`; geometry, evidence and actions are unchanged.
+Candidates are browser-local, not business configuration. The explicit demo policy
+controls mounting; the query string/local storage cannot enable it in ordinary
+mode. Storage failures fall back to the current rendering. Use `?pairing=cobalt`
+or `?pairing=gray-white` for direct review links. Other pairings: ink, violet,
+forest, lime. The control does not change public checkout or branded email previews.

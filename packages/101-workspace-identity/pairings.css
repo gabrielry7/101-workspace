@@ -1,0 +1,68 @@
+/* Review candidates, activated only by the demo's local color selector. */
+:root[data-workspace-pairing] {
+  --wm-canvas: #ffffff;
+  --wm-surface: #ffffff;
+  --wm-sidebar: #ffffff;
+  --wm-ink: #151515;
+  --wm-secondary: #454545;
+  --wm-line: #d9d9df;
+  --wm-accent: #2146f3;
+  --wm-accent-soft: #edf0ff;
+  --wm-on-accent: #ffffff;
+  --wm-chart-primary: var(--wm-accent);
+  --wm-chart-secondary: #8296ff;
+  --wm-chart-fill: var(--wm-accent-soft);
+  --wm-hover: var(--wm-accent-soft);
+  --wm-success: #285f38;
+  --wm-warning: #725016;
+  --wm-danger: #8f3434;
+  --ink: var(--wm-ink);
+  color-scheme: light;
+}
+:root[data-workspace-pairing="gray-white"] {
+  --wm-canvas: #e6e7eb;
+  --wm-sidebar: #ffffff;
+  --wm-accent: #5731c5;
+  --wm-accent-soft: #eee8ff;
+  --wm-chart-secondary: #aa8ae8;
+}
+:root[data-workspace-pairing="ink"] {
+  --wm-accent: #171717;
+  --wm-accent-soft: #f0f0f0;
+  --wm-chart-secondary: #707070;
+}
+:root[data-workspace-pairing="violet"] {
+  --wm-accent: #6b29ff;
+  --wm-accent-soft: #f0e8ff;
+  --wm-chart-secondary: #b28af2;
+}
+:root[data-workspace-pairing="forest"] {
+  --wm-canvas: #fff5df;
+  --wm-sidebar: #fffdf7;
+  --wm-surface: #fffdf7;
+  --wm-ink: #153e32;
+  --wm-secondary: #3c594b;
+  --wm-line: #c9d0bd;
+  --wm-accent: #134b3b;
+  --wm-accent-soft: #e6efdf;
+  --wm-chart-secondary: #79a084;
+}
+:root[data-workspace-pairing="lime"] {
+  --wm-canvas: #080808;
+  --wm-sidebar: #080808;
+  --wm-surface: #080808;
+  --wm-ink: #ffffff;
+  --wm-secondary: #d4d4c8;
+  --wm-line: #53554a;
+  --wm-accent: #dcff00;
+  --wm-accent-soft: #242c05;
+  --wm-on-accent: #080808;
+  --wm-chart-secondary: #92ac30;
+  --wm-success: #b9e8b9;
+  --wm-success-soft: #18321c;
+  --wm-warning: #f8da88;
+  --wm-warning-soft: #362b0e;
+  --wm-danger: #ffbdbd;
+  --wm-danger-soft: #421d1d;
+  color-scheme: dark;
+}
