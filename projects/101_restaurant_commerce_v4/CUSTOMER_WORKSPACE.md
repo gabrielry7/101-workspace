@@ -81,6 +81,11 @@ COMMERCE_PAYMENT_TEST_DATABASE_URL=postgresql+psycopg://USER@127.0.0.1:55446/pos
   PYTHONPATH=src python -m pytest tests/test_customer_workspace.py
 ```
 
+With frontend dev dependencies installed, run
+`python scripts/audit_customer_workspace.py --url http://127.0.0.1:8806 --out /tmp/101-customer-accessibility`
+for the actual directory, detail, QR and mobile WCAG A/AA automated checks.
+This supplements keyboard and visual review; it is not a complete accessibility certification.
+
 The browser suite exercises real HTTP, deep links/reload, query/scroll/focus
 restoration, phone-sized layout, keyboard entry/escape, empty/error/retry,
 PNG/SVG downloads, email signup returning to the same directory, multiple
