@@ -32,7 +32,9 @@ def tables(session):
     return set(inspect(session.get_bind()).get_table_names())
 
 
-def customer_list(session, business, q="", kind="all", offset=0, limit=25):
+def customer_list(
+    session, business, q="", kind="all", offset=0, limit=25, selected=None
+):
     installed = tables(session)
     membership_ready = CustomerMembership.__tablename__ in installed
     member = select(CustomerMembership.customer_id).where(
@@ -49,6 +51,9 @@ def customer_list(session, business, q="", kind="all", offset=0, limit=25):
         if membership_ready
         else None
     )
+    from .workspace_period import clauses
+
+    base = base.where(*clauses(Customer.created_at, selected))
     if q:
         # Treat %, _ and backslashes as ordinary search text, not SQL wildcards.
         term = (
@@ -255,12 +260,24 @@ def register(app, get_session, scoped_staff):
     def customers(
         business_id: str,
         q: str = Query("", max_length=120),
+        date_from: str | None = None,
+        date_to: str | None = None,
         kind: Literal["all", "registered", "email", "phone"] = "all",
         offset: int = Query(0, ge=0, le=1000000),
         limit: int = Query(25, ge=1, le=100),
         session: Session = Depends(get_session),
     ):
-        return customer_list(session, business_id, q.strip(), kind, offset, limit)
+        from .workspace_period import period
+
+        return customer_list(
+            session,
+            business_id,
+            q.strip(),
+            kind,
+            offset,
+            limit,
+            period(date_from, date_to),
+        )
 
     @app.get(root + "/{customer_id}", dependencies=[Depends(read)])
     def detail(
@@ -273,6 +290,10 @@ def register(app, get_session, scoped_staff):
     @app.get("/workspace")
     @app.get("/workspace/customers")
     @app.get("/workspace/sales")
+    @app.get("/workspace/home")
+    @app.get("/workspace/campaigns")
+    @app.get("/workspace/analytics")
+    @app.get("/workspace/identity")
     def workspace_page():
         return FileResponse(web / "index.html", headers={"Cache-Control": "no-store"})
 

@@ -19,7 +19,7 @@ from .models import (
 class LoginRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     username: str = Field(min_length=3, max_length=120)
-    password: str = Field(min_length=15, max_length=128)
+    password: str = Field(min_length=1, max_length=128)
 
 
 def register_staff_routes(app, get_session, cookie_name, production):
@@ -38,10 +38,21 @@ def register_staff_routes(app, get_session, cookie_name, production):
         staff.same_origin(request)
         if request.headers.get("x-101-login") != "1":
             raise HTTPException(403, "Same-origin login header required")
+        name, password = body.username, body.password
+        # Only an explicitly configured development fixture can offer a short alias.
+        # Normal authentication still verifies the existing account and issues its session.
+        alias = getattr(app.state, "workspace_demo_login", None)
+        if (
+            not production
+            and app.state.demo_mode
+            and alias
+            and (name, password) == ("101", "101")
+        ):
+            name, password = alias
         raw = staff.login(
             session,
-            body.username,
-            body.password,
+            name,
+            password,
             request.client.host if request.client else "unknown",
             request.cookies.get(cookie_name),
         )
@@ -60,7 +71,11 @@ def register_staff_routes(app, get_session, cookie_name, production):
     def me(auth=Depends(identity), session: Session = Depends(get_session)):
         account, row = auth
         memberships = session.execute(
-            select(StaffMembership, RestaurantCommerceProfile.display_name, RestaurantCommerceProfile.slug)
+            select(
+                StaffMembership,
+                RestaurantCommerceProfile.display_name,
+                RestaurantCommerceProfile.slug,
+            )
             .join(
                 RestaurantCommerceProfile,
                 StaffMembership.business_id == RestaurantCommerceProfile.business_id,

@@ -3,6 +3,9 @@ import { createRoot } from "react-dom/client";
 import { Dialog } from "@base-ui/react/dialog";
 import { CSPProvider } from "@base-ui/react/csp-provider";
 import {
+  House,
+  ChartNoAxesColumnIncreasing,
+  Palette,
   ArrowDownToLine,
   ArrowLeft,
   ArrowRight,
@@ -45,6 +48,29 @@ import {
 } from "./ui";
 import { SalesWorkspace } from "./sales";
 import { LoyaltyWorkspace } from "./loyalty";
+import {
+  HomeView,
+  AnalyticsView,
+  IdentityView,
+  periodQuery,
+} from "./workspace-views";
+import { CampaignView } from "./campaign-workspace";
+const screenFromPath = () => {
+  const path = location.pathname.split("/").pop() || "home";
+  return ["sales", "customers", "campaigns", "analytics", "identity"].includes(
+    path,
+  )
+    ? path
+    : "home";
+};
+const screenNames: Record<string, string> = {
+  home: "Inicio",
+  sales: "Ventas",
+  customers: "Clientes",
+  campaigns: "Campañas",
+  analytics: "Analítica web",
+  identity: "Identidad",
+};
 
 type Business = {
   business_id: string;
@@ -181,13 +207,13 @@ function App() {
   const [params, setParams] = useState(
     () => new URLSearchParams(location.search),
   );
-  const [screen, setScreen] = useState(
-    location.pathname.endsWith("/sales") ? "sales" : "customers",
-  );
+  const [screen, setScreen] = useState(screenFromPath());
   const routeMemory = useRef<Record<string, string>>({});
   const routeScroll = useRef<Record<string, number>>({});
   const [menu, setMenu] = useState(false);
-  const [qr, setQr] = useState(false);
+  const [qr, setQr] = useState(
+    new URLSearchParams(location.search).get("invite") === "1",
+  );
   const [policy, setPolicy] = useState<{ demo_mode: boolean }>();
   const [search, setSearch] = useState(params.get("q") || "");
   const scrollRef = useRef(0);
@@ -209,7 +235,7 @@ function App() {
       .then(setPolicy)
       .catch(() => {});
     const pop = () => {
-      setScreen(location.pathname.endsWith("/sales") ? "sales" : "customers");
+      setScreen(screenFromPath());
       setParams(new URLSearchParams(location.search));
       setSearch(new URLSearchParams(location.search).get("q") || "");
     };
@@ -265,7 +291,7 @@ function App() {
   }, [search, query, screen, loyalty]);
   const list = useResource<Listing>(
     bid && screen === "customers" && !loyalty
-      ? `${endpoint(bid)}/customers?q=${encodeURIComponent(query)}&kind=${encodeURIComponent(kind)}&offset=${offset}&limit=25`
+      ? `${endpoint(bid)}/customers?q=${encodeURIComponent(query)}&kind=${encodeURIComponent(kind)}&offset=${offset}&limit=25&${periodQuery(params)}`
       : null,
   );
   useEffect(() => {
@@ -307,6 +333,11 @@ function App() {
       routeMemory.current[bid + target] || "",
     );
     targetParams.set("business", bid);
+    for (const k of ["date_from", "date_to"]) {
+      const v = params.get(k);
+      if (v) targetParams.set(k, v);
+      else targetParams.delete(k);
+    }
     history.pushState({}, "", `/workspace/${target}?${targetParams}`);
     setParams(targetParams);
     setSearch(targetParams.get("q") || "");
@@ -318,8 +349,8 @@ function App() {
       <>
         <div className="brand">
           <a
-            href="/workspace/customers"
-            aria-label="101 Clientes"
+            href="/workspace/home"
+            aria-label="101 Inicio"
             className="wordmark"
           >
             101<span>workspace</span>
@@ -348,6 +379,8 @@ function App() {
                       offset: null,
                       customer: null,
                       order: null,
+                      campaign: null,
+                      state: null,
                       status: null,
                       loyaltyId: null,
                       loyaltyEdit: null,
@@ -371,6 +404,15 @@ function App() {
         <nav aria-label="Principal">
           <span className="nav-caption">ESPACIO DE TRABAJO</span>
           <a
+            href={`/workspace/home?business=${bid}`}
+            className={screen === "home" ? "active" : ""}
+            aria-current={screen === "home" ? "page" : undefined}
+            onClick={(e) => goScreen(e, "home")}
+          >
+            <House />
+            Inicio
+          </a>
+          <a
             href={`/workspace/sales?business=${bid}`}
             className={screen === "sales" ? "active" : ""}
             aria-current={screen === "sales" ? "page" : undefined}
@@ -390,10 +432,24 @@ function App() {
             Clientes
             {screen === "customers" && <span className="active-dot" />}
           </a>
-          <a href={legacy("/campaigns")}>
+          <a
+            href={`/workspace/campaigns?business=${bid}`}
+            className={screen === "campaigns" ? "active" : ""}
+            aria-current={screen === "campaigns" ? "page" : undefined}
+            onClick={(e) => goScreen(e, "campaigns")}
+          >
             <Megaphone />
             Campañas
             <ExternalLink className="nav-external" />
+          </a>
+          <a
+            href={`/workspace/analytics?business=${bid}`}
+            className={screen === "analytics" ? "active" : ""}
+            aria-current={screen === "analytics" ? "page" : undefined}
+            onClick={(e) => goScreen(e, "analytics")}
+          >
+            <ChartNoAxesColumnIncreasing />
+            Analítica web
           </a>
           <details className="presence">
             <summary>
@@ -414,6 +470,13 @@ function App() {
           </details>
         </nav>
         <div className="nav-bottom">
+          <a
+            href={`/workspace/identity?business=${bid}`}
+            onClick={(e) => goScreen(e, "identity")}
+          >
+            <Palette />
+            Identidad
+          </a>
           <a href={legacy("/connections")}>
             <Plug />
             Conexiones
@@ -483,6 +546,8 @@ function App() {
               navigate({
                 business: b.business_id,
                 customer: null,
+                order: null,
+                campaign: null,
                 q: null,
                 offset: null,
               })
@@ -508,12 +573,20 @@ function App() {
             <Menu />
           </button>
           <div className="breadcrumb">
-            {screen === "sales" ? (
+            {screen === "home" ? (
+              <House size={16} />
+            ) : screen === "sales" ? (
               <ShoppingBag size={16} />
+            ) : screen === "campaigns" ? (
+              <Megaphone size={16} />
+            ) : screen === "analytics" ? (
+              <ChartNoAxesColumnIncreasing size={16} />
+            ) : screen === "identity" ? (
+              <Palette size={16} />
             ) : (
               <Users size={16} />
             )}
-            <span>{screen === "sales" ? "Ventas" : "Clientes"}</span>
+            <span>{screenNames[screen]}</span>
           </div>
           <div className="topbar-right">
             {policy?.demo_mode && (
@@ -525,7 +598,37 @@ function App() {
             <span className="version-label">HECHO PARA TU DÍA A DÍA</span>
           </div>
         </header>
-        {screen === "sales" ? (
+        {["sales", "customers"].includes(screen) && params.get("date_from") && (
+          <div className="date-context">
+            {params.get("date_from")} — {params.get("date_to")} · por fecha de
+            creación{" "}
+            <button
+              className="back-link"
+              onClick={() =>
+                navigate({ date_from: null, date_to: null, offset: null })
+              }
+            >
+              Ver todas las fechas
+            </button>
+          </div>
+        )}
+        {screen === "home" ? (
+          <HomeView business={bid} params={params} navigate={navigate} />
+        ) : screen === "analytics" ? (
+          <AnalyticsView business={bid} params={params} navigate={navigate} />
+        ) : screen === "identity" ? (
+          <IdentityView />
+        ) : screen === "campaigns" ? (
+          <CampaignView
+            key={bid}
+            business={bid}
+            params={params}
+            navigate={navigate}
+            csrf={identity.csrf}
+            permissions={business.permissions}
+            demo={!!policy?.demo_mode}
+          />
+        ) : screen === "sales" ? (
           <SalesWorkspace
             key={bid}
             rememberScroll={(value) => {
@@ -539,13 +642,32 @@ function App() {
             navigate={navigate}
           />
         ) : loyalty ? (
-          <LoyaltyWorkspace key={bid} business={bid} permissions={business.permissions}
-            csrf={identity.csrf} params={params} navigate={navigate}/>
+          <LoyaltyWorkspace
+            key={bid}
+            business={bid}
+            permissions={business.permissions}
+            csrf={identity.csrf}
+            params={params}
+            navigate={navigate}
+          />
         ) : (
           <div className="page">
-            <div className="loyalty-entry"><a href={`?business=${encodeURIComponent(bid)}&view=loyalty`}
-              onClick={e=>{if(!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey){e.preventDefault();navigate({view:'loyalty',customer:null,loyaltyId:null},true);}}}>
-              Fidelización <ArrowRight size={15}/></a></div>
+            <div className="loyalty-entry">
+              <a
+                href={`?business=${encodeURIComponent(bid)}&view=loyalty`}
+                onClick={(e) => {
+                  if (!e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+                    e.preventDefault();
+                    navigate(
+                      { view: "loyalty", customer: null, loyaltyId: null },
+                      true,
+                    );
+                  }
+                }}
+              >
+                Fidelización <ArrowRight size={15} />
+              </a>
+            </div>
             <section className="page-heading">
               <div>
                 <span className="eyebrow">CONOCE A QUIENES VUELVEN</span>
@@ -565,7 +687,7 @@ function App() {
                   {list.data ? count(list.data.total) : "—"}
                   <Users size={21} />
                 </strong>
-                <small>Todos tus contactos, en un lugar</small>
+                <small>Total histórico de contactos</small>
               </div>
               <div className="overview-stat">
                 <span>Registros verificados</span>
@@ -575,7 +697,7 @@ function App() {
                     : "—"}
                   <Check size={21} />
                 </strong>
-                <small>Se unieron con teléfono o correo</small>
+                <small>Total histórico · teléfono o correo</small>
               </div>
               <button className="invite-tile" onClick={() => setQr(true)}>
                 <span className="tile-qr">
