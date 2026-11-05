@@ -3,10 +3,11 @@
 import hashlib
 import json
 from collections import defaultdict
+from datetime import UTC
 from typing import Annotated
 
 from pydantic import Field
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 
 from .errors import ConcurrencyConflictError, IdempotencyConflictError, NotFoundError
@@ -14,7 +15,14 @@ from .loyalty_assignment_models import LoyaltyAssignment, LoyaltyExperimentRun
 from .loyalty_execution_models import LoyaltyPointLot
 from .loyalty_measurement_models import LoyaltyFinancialEvidence
 from .loyalty_models import LoyaltyExperimentVariant
-from .models import LoyaltyLedgerEntry, Order, Payment, PaymentReconciliation
+from .models import (
+    LoyaltyAccount,
+    LoyaltyLedgerEntry,
+    Order,
+    Payment,
+    PaymentReconciliation,
+    RewardRedemption,
+)
 from .refunds import PaymentRefund
 from .schemas import StrictModel
 from .staff import aware
@@ -67,6 +75,40 @@ def order_facts(session, orders):
     """Bulk snapshot, including historical full refunds without partial rows."""
     orders = list(orders)
     payments, refunds, ledger, lots, reviews = (defaultdict(list) for _ in range(5))
+    # Baseline points have no origin lots. Redemption/restoration can alter an
+    # earlier accrual, so review that customer's prior costs conservatively.
+    # Ordinary earning alone does not invalidate every preceding purchase.
+    adjustments, applied = {}, {}
+    businesses = {o.business_id for o in orders}
+    for ids in batches({o.customer_id for o in orders}):
+        adjustments.update(
+            session.execute(
+                select(LoyaltyAccount.customer_id, func.count(LoyaltyLedgerEntry.id))
+                .join(
+                    LoyaltyLedgerEntry,
+                    LoyaltyLedgerEntry.account_id == LoyaltyAccount.id,
+                )
+                .where(
+                    LoyaltyAccount.customer_id.in_(ids),
+                    LoyaltyAccount.business_id.in_(businesses),
+                    LoyaltyLedgerEntry.reason.not_in(
+                        ["order.completed", "loyalty.earned"]
+                    ),
+                )
+                .group_by(LoyaltyAccount.customer_id)
+            ).all()
+        )
+        applied.update(
+            session.execute(
+                select(RewardRedemption.customer_id, func.count(RewardRedemption.id))
+                .where(
+                    RewardRedemption.customer_id.in_(ids),
+                    RewardRedemption.business_id.in_(businesses),
+                    RewardRedemption.applied_at.is_not(None),
+                )
+                .group_by(RewardRedemption.customer_id)
+            ).all()
+        )
     for ids in batches(o.id for o in orders):
         for row in session.scalars(select(Payment).where(Payment.order_id.in_(ids))):
             payments[row.order_id].append(row)
@@ -124,6 +166,11 @@ def order_facts(session, orders):
         if reviews[order.id]:
             flags.append("financial_review_open")
         document = {
+            "format": "loyalty-cost-facts-v1",
+            "customer_reward_revision": [
+                adjustments.get(order.customer_id, 0),
+                applied.get(order.customer_id, 0),
+            ],
             "order": [
                 order.id,
                 order.business_id,
@@ -134,8 +181,10 @@ def order_facts(session, orders):
                 order.total_minor,
                 order.reward_discount_minor,
                 verified(order),
-                aware(order.created_at).isoformat(),
-                aware(order.completed_at).isoformat() if order.completed_at else None,
+                aware(order.created_at).astimezone(UTC).isoformat(),
+                aware(order.completed_at).astimezone(UTC).isoformat()
+                if order.completed_at
+                else None,
             ],
             "payments": sorted(
                 [
@@ -190,7 +239,7 @@ def describe(row):
         "document": json.loads(row.document),
         "source_ref": row.source_ref,
         "actor_id": row.actor_id,
-        "recorded_at": aware(row.recorded_at).isoformat(),
+        "recorded_at": aware(row.recorded_at).astimezone(UTC).isoformat(),
         "financial_digest": row.financial_digest,
     }
 
@@ -201,8 +250,8 @@ def operating_digest(assignments, variant_id):
             [
                 a.id,
                 a.customer_id,
-                aware(a.assigned_at).isoformat(),
-                aware(a.evaluation_ends_at).isoformat(),
+                aware(a.assigned_at).astimezone(UTC).isoformat(),
+                aware(a.evaluation_ends_at).astimezone(UTC).isoformat(),
             ]
             for a in assignments
             if a.variant_id == variant_id

@@ -8,7 +8,7 @@ from uuid import uuid4
 import pytest
 from fastapi.testclient import TestClient
 from pydantic import ValidationError as SchemaError
-from sqlalchemy import func, select, text
+from sqlalchemy import event, func, inspect, select, text
 from sqlalchemy.exc import DBAPIError
 from staff_helpers import staff_headers
 from test_growth_v2 import pay_and_complete
@@ -335,6 +335,13 @@ def test_unverified_contact_match_does_not_enter_variant_revenue(analytics):
         ]
         assert after["coverage"]["unverified_financial_orders"] == 1
         assert "identity_coverage_incomplete" in after["warnings"]
+        assert "identity_unverified_outcome" in after["warnings"]
+        assert (
+            next(a for a in after["arms"] if a["variant_id"] == target["variant_id"])[
+                "profit_per_assigned_minor"
+            ]
+            is None
+        )
 
 
 def test_financial_review_is_order_scoped_and_preserves_unavailability(analytics):
@@ -443,6 +450,17 @@ def test_welch_known_result_large_offset_and_multiple_comparisons():
     wider = welch_interval(x, y, comparisons=3)
     assert int(wider["lower_minor"]) < 5 and int(wider["upper_minor"]) > 15
     assert welch_interval([0] * 40, [0] * 40) is None
+    from math import ceil, floor
+
+    from scipy.stats import ttest_ind
+
+    unequal_x, unequal_y = [0, 0, 2, 3, 5], [1, 10, 40]
+    reference = ttest_ind(unequal_x, unequal_y, equal_var=False).confidence_interval(
+        confidence_level=1 - 0.05 / 3
+    )
+    actual = welch_interval(unequal_x, unequal_y, comparisons=3)
+    assert int(actual["lower_minor"]) == floor(reference.low)
+    assert int(actual["upper_minor"]) == ceil(reference.high)
 
 
 def test_upgrade_repeatability_and_missing_guards(analytics):
@@ -756,3 +774,160 @@ def test_operating_evidence_invalidates_when_assignment_population_grows(analyti
             ]
             is not None
         )
+
+
+def test_report_snapshot_cannot_mix_concurrent_cost_revisions(analytics):
+    data = analytics()
+    engine = data["factory"].kw["bind"]
+    oid = next(r["order_id"] for r in data["rows"] if r["order_id"])
+    fired = []
+    with data["factory"]() as s:
+        before = report(s, BID, data["experiment_id"])
+
+        def update_after_orders(_conn, _cursor, statement, *_args):
+            if not fired and "FROM restaurant_orders" in statement:
+                fired.append(True)
+                with data["factory"]() as writer:
+                    write_cost(writer, oid, variable=1)
+
+        event.listen(engine, "after_cursor_execute", update_after_orders)
+        try:
+            during = report(s, BID, data["experiment_id"])
+        finally:
+            event.remove(engine, "after_cursor_execute", update_after_orders)
+        assert fired
+        assert during["data_revision"] == before["data_revision"]
+        assert during["arms"] == before["arms"]
+        assert (
+            report(s, BID, data["experiment_id"])["data_revision"]
+            != before["data_revision"]
+        )
+
+
+def test_baseline_redemption_reopens_accrual_review_and_discount_counts_once(analytics):
+    from world_model.restaurant_commerce.models import RewardDefinition
+
+    data = analytics()
+    target = next(r for r in data["rows"] if r["order_id"])
+    with data["factory"]() as s:
+        before = report(s, BID, data["experiment_id"])
+        old_cost = context(s, BID, "orders", target["order_id"])["latest"]["document"]
+        reward = RewardDefinition(
+            business_id=BID,
+            name="synthetic fixed discount",
+            points_cost=1,
+            discount_minor=1000,
+            minimum_order_minor=0,
+        )
+        s.add(reward)
+        s.commit()
+        svc = RestaurantCommerceService(s, verified_customer_id=target["customer_id"])
+        req = request(svc)
+        req.customer.phone = s.get(Customer, target["customer_id"]).phone
+        req.reward_id = reward.id
+        order = pay_and_complete(svc, svc.create_order(BID, req))
+        assert order.reward_discount_minor == 1000
+        write_cost(s, order.id, variable=500, reward=200)
+        pending = report(s, BID, data["experiment_id"])
+        assert pending["missing_orders"]["total"] == 1
+        assert pending["missing_orders"]["items"][0]["order_id"] == target["order_id"]
+        write_cost(
+            s,
+            target["order_id"],
+            variable=old_cost["variable_cost_minor"],
+            reward=old_cost["additional_reward_cost_minor"],
+        )
+        after = report(s, BID, data["experiment_id"])
+        original = next(
+            a for a in before["arms"] if a["variant_id"] == target["variant_id"]
+        )
+        current = next(
+            a for a in after["arms"] if a["variant_id"] == target["variant_id"]
+        )
+        assert Fraction(current["profit_per_assigned_minor"]) == Fraction(
+            original["profit_per_assigned_minor"]
+        ) + Fraction(order.total_minor - 700, 4)
+
+
+def test_measurement_requires_explicit_upgrade_and_optional_statistics(
+    factory, monkeypatch
+):
+    engine = factory.kw["bind"]
+    assert not inspect(engine).has_table(TABLE)
+    with pytest.raises(RuntimeError, match="offline upgrade"):
+        create_app(
+            engine=engine,
+            loyalty_configuration_enabled=True,
+            loyalty_analytics_enabled=True,
+        )
+    with monkeypatch.context() as m:
+        import sys
+
+        m.setitem(sys.modules, "scipy.stats", None)
+        create_app(
+            engine=engine,
+            loyalty_configuration_enabled=True,
+            loyalty_analytics_enabled=False,
+        )
+        with pytest.raises(RuntimeError, match="loyalty-analytics extra"):
+            create_app(
+                engine=engine,
+                loyalty_configuration_enabled=True,
+                loyalty_analytics_enabled=True,
+            )
+    monkeypatch.setenv("COMMERCE_LOYALTY_ANALYTICS_ENABLED", "yes")
+    with pytest.raises(RuntimeError, match="must be 0 or 1"):
+        create_app(engine=engine)
+
+
+def test_synthetic_demo_preserves_cost_corrections_on_restart(tmp_path):
+    from world_model.restaurant_commerce.campaign_demo import BUSINESS
+    from world_model.restaurant_commerce.loyalty_analytics_demo import app_for_demo
+    from world_model.restaurant_commerce.loyalty_models import LoyaltyExperiment
+
+    url = "sqlite:///" + str(tmp_path / "synthetic-analytics.db")
+    app = app_for_demo(url)
+    with app.state.session_factory() as s:
+        eid = s.scalar(
+            select(LoyaltyExperiment.id).where(
+                LoyaltyExperiment.request_key == "synthetic-profit-analysis-v1"
+            )
+        )
+        result = report(s, BUSINESS, eid)
+        assert result["assigned_customers"] == 40
+        assert result["mature_customers"] == 0
+        assert not result["primary_evaluation_complete"]
+        assert sum(a["nonbuyers"] for a in result["arms"]) >= 30
+        oid = result["cost_orders"]["items"][0]["order_id"]
+        current = context(s, BUSINESS, "orders", oid)
+        record(
+            s,
+            BUSINESS,
+            "orders",
+            oid,
+            OrderCosts(
+                request_key="synthetic-operator-correction",
+                expected_revision=current["latest"]["revision"],
+                financial_digest=current["financial_digest"],
+                source_ref="synthetic operator invoice",
+                includes_estimate=False,
+                variable_cost_minor=1234,
+                additional_reward_cost_minor=200,
+            ),
+            "synthetic-finance",
+        )
+        count = s.scalar(select(func.count()).select_from(LoyaltyFinancialEvidence))
+    again = app_for_demo(url)
+    with again.state.session_factory() as s:
+        assert (
+            s.scalar(select(func.count()).select_from(LoyaltyFinancialEvidence))
+            == count
+        )
+        assert (
+            context(s, BUSINESS, "orders", oid)["latest"]["document"][
+                "variable_cost_minor"
+            ]
+            == 1234
+        )
+    app.state.session_factory.kw["bind"].dispose()
+    again.state.session_factory.kw["bind"].dispose()

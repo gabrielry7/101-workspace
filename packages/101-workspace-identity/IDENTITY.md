@@ -172,6 +172,22 @@ financial columns on phones through internal scrolling rather than directory
 column-hiding rules.
 
 
+## Loyalty results adoption
+
+`loyalty-results.tsx` composes the existing scoped shell, resource/command helpers,
+Base UI dialogs, exact money controls and table surfaces. Its new comparison bone
+keeps effect and confidence interval together in a responsive definition list;
+the primary uncertainty must remain visible on phones. Wider financial tables
+retain every column in their own scroll region. New geometry lives in
+`loyalty.css`; colors/type/surfaces consume this same package. No palette is chosen
+by this analytics release; the existing color-review candidates remain available.
+
+Nonbuyers are counted explicitly; missing cost is not zero. Provisional results,
+measured/simulated receipts, estimated cost and suppressed intervals are named in
+ordinary language. Financial retry feedback uses the existing persistent-command
+guard and preserves uncertain requests. Rendered review/measurements are in shared
+`docs/product-design/loyalty-analytics-review.md`.
+
 ## Actual-app color review (2026-11-05)
 
 `frontend/src/color-preview.tsx` is a new demo-only review control. Existing shell,

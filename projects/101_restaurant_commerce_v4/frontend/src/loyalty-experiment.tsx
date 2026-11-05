@@ -410,10 +410,12 @@ export function ExperimentEditor({
                         confidence_bps: 9500,
                         minimum_customers_per_arm: 100,
                         sample_size_rationale: "",
-                        readout_at: new Date(
-                          new Date(doc.enrollment_end).getTime() +
-                            doc.observation_days * 86400000,
-                        ).toISOString(),
+                        readout_at: doc.enrollment_end
+                          ? new Date(
+                              new Date(doc.enrollment_end).getTime() +
+                                doc.observation_days * 86400000,
+                            ).toISOString()
+                          : "",
                       }
                     : null,
                 })

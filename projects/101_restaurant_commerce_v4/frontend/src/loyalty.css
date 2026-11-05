@@ -549,6 +549,37 @@
 .loyalty-results .loyalty-metrics {
   margin: 0;
 }
+.loyalty-comparison {
+  border-top: 1px solid var(--wm-line);
+  padding-top: 18px;
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(0, 3fr);
+  gap: 20px;
+}
+.loyalty-comparison h4 {
+  margin: 0;
+  font-size: var(--wm-body);
+}
+.loyalty-comparison dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 20px;
+}
+.loyalty-comparison dt {
+  color: var(--wm-secondary);
+  font-size: var(--wm-caption);
+  margin-bottom: 8px;
+}
+.loyalty-comparison dd {
+  margin: 0;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+.loyalty-results details.loyalty-section:not([open]) {
+  padding: 10px 18px;
+}
 .loyalty-cost-fields {
   display: grid;
   gap: 18px;
@@ -560,6 +591,17 @@
   overflow-wrap: anywhere;
 }
 @media (max-width: 640px) {
+  .loyalty-comparison,
+  .loyalty-comparison dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .loyalty-results .loyalty-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .loyalty-results .loyalty-metrics > div:last-child {
+    grid-column: 1 / -1;
+  }
   .loyalty-tabs a:last-child:nth-child(odd) {
     grid-column: 1 / -1;
   }

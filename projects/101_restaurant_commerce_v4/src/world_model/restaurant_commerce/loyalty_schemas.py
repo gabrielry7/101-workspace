@@ -151,7 +151,6 @@ class AnalysisProtocol(Strict):
     minimum_customers_per_arm: Annotated[int, Field(strict=True, ge=30, le=10000000)] = 100
     sample_size_rationale: str = Field(min_length=20, max_length=2000)
     readout_at: datetime
-    # This threshold is a declared planning choice, not a guarantee of power.
 
 
 class ExperimentDocument(Strict):

@@ -353,7 +353,10 @@ export function useCommand(csrf: string) {
               : status === 422
                 ? "Revisa las reglas, los límites y las fechas del formulario."
                 : e.message
-            : (e as Error).message,
+            : e instanceof TypeError &&
+                /fetch|network|load failed/i.test(e.message)
+              ? "No pudimos confirmar la respuesta. Conservamos tu solicitud para verificarla."
+              : (e as Error).message,
         );
         const unknown = !status || status >= 500;
         setUncertain(unknown);

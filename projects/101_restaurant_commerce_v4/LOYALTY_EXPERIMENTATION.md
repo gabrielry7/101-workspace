@@ -1,4 +1,4 @@
-# Loyalty experimentation — stages 1–6
+# Loyalty experimentation — stages 1–7
 
 Implemented: a staff-authorized configuration foundation for multiple loyalty
 strategies, immutable published versions and separately versioned experiments.
@@ -11,6 +11,8 @@ and routes synthetic checkout through those assignments.
 Stage 5 adds a read-only financial simulator with explicit assumptions and sensitivity.
 Stage 6 adds the scoped operator workspace for programs, experiments, publication
 review, economics and passive balance/cost monitoring.
+Stage 7 adds original-assignment profit reports, source-bound cost evidence,
+customer-level uncertainty, measurement warnings and CSV exports.
 
 The complete design and staged acceptance criteria live in the shared repository:
 `/home/t/101-world-model/docs/commerce-audit/LOYALTY_EXPERIMENTATION_PLAN.md`.
@@ -199,7 +201,7 @@ refund debt or configuration history. No new dependency or schema migration is a
 
 ## Remaining stages
 
-Stage 7 intent-to-treat contribution-profit reporting remains pending. Version-pinned
+Stage 7 intent-to-treat contribution-profit reporting is implemented below. Version-pinned
 execution/refunds, persistent assignment, simulator and staff configuration screens
 are implemented under the staged gates documented below. Customer authentication,
 cost provenance and statistical analysis details remain prerequisites for a pilot.
@@ -707,3 +709,159 @@ wheel and installed-file parity is retained with the release evidence. Existing
 Customers, Sales and Campaigns browser consumers are included. Rendered iterations,
 role measurements and timing limits live in shared
 `docs/product-design/loyalty-workspace-review.md`.
+
+## Stage 7 — original-assignment contribution profit
+
+The **Resultados** view under Clientes → Fidelización consumes the frozen experiment
+run, original assignments and verified order identity snapshots. It includes every
+assigned customer, including people with no orders, exposure or redemption. The
+run's original version/window/protocol remain unchanged after new publications.
+Verified ordinary purchases without a reward/assignment checkout binding count.
+Guest contact matches do not establish identity; their coverage is reported separately.
+An unverified contact match to an assigned customer's ID also makes that person's
+contribution unknown; it cannot certify a missing outcome as zero. “Nonbuyer” means
+no verified qualifying purchase observed, not proof of no purchases elsewhere.
+
+Primary follow-up is `[assigned_at, evaluation_ends_at)`. Qualifying completed
+purchases must be initiated after assignment and completed within that interval.
+Completed purchases remain in frequency after later refunds; current confirmed
+refunds reduce their net receipts and invalidate old cost evidence. Canceled orders
+also require cost evidence, including unpaid cash orders with preparation/waste.
+Unresolved accepted/paid orders make contribution unavailable. Pre-assignment
+checkouts cannot become new outcomes simply by completing after randomization.
+
+Each arm uses its entire original randomized denominator. Missing/stale costs make
+its profit unknown, rather than deleting the customer/order or replacing the cost
+with zero. 30/60/90-day second-purchase rates mean at least two post-assignment
+completed purchases. Their denominators explicitly include all assignments mature
+for that particular period, including nonbuyers. They are descriptive secondary
+measures, separate from the fixed primary window.
+
+### Explicit deployment
+
+Core checkout does not require SciPy. The optional analytics engine and test extra
+declare `scipy>=1.14,<2`; the statistics library supplies Student-t quantiles and
+allocation diagnostics rather than a bespoke distribution implementation. Install
+`.[loyalty-analytics]`, stop writers, back up the database and explicitly run:
+
+```sh
+python -m world_model.restaurant_commerce.maintenance upgrade-loyalty-measurement --offline
+```
+
+This one-table upgrade requires the prior configuration, execution and assignment
+upgrades. It is repeatable, preserves populated commerce and installs scope/revision
+and UPDATE/DELETE/replacement guards. Startup does not invent cost records or add
+the optional table. Readiness verifies its complete protections when present.
+
+Set both `COMMERCE_LOYALTY_CONFIGURATION_ENABLED=1` and
+`COMMERCE_LOYALTY_ANALYTICS_ENABLED=1` (strict0/1 flags). Analytics defaults off;
+enabling it requires the schema and optional dependency. It does not enable order
+execution, enrollment, public customer authentication or real-provider rewards.
+
+### Financial evidence, not inferred margins
+
+The current order schema has no authoritative ingredient/fulfillment/fee accounting.
+The new append-only `restaurant_loyalty_financial_evidence` is an observation history,
+not a parallel customer/order/accounting authority. It records source reference,
+actor, time, request digest, financial digest, revision and superseded observation.
+
+Order costs explicitly supply signed integer `variable_cost_minor` (ingredients,
+preparation, delivery, fees and pass-through tax deductions, net of recoveries) and
+`additional_reward_cost_minor`. The latter covers actual non-discount fulfillment
+plus recognized expected outstanding costs of habitual and additional rewards,
+net of corrections. Discounts are already in captured net receipts and are not
+subtracted again. A required `includes_estimate` declaration distinguishes estimated
+costs; the source remains a financial staff assertion, not independently verified truth.
+
+Per-customer contribution is the sum of canonical confirmed net receipts minus those
+two cost inputs, less an equal share of the arm's declared full-experiment operating
+cost. Operating evidence is required even for explicit zero and covers the original
+variant population; new enrollment invalidates the old population digest. The full
+operating amount is allocated over every assigned person, including nonbuyers.
+Orderless reward activity without attributable cost makes affected profit unknown.
+
+Financial fingerprints include the canonical order, captured/refunded payments,
+confirmed partial refunds, open reconciliations and cost-relevant ledger/lot state.
+Because baseline points have no origin lots, customer redemption/restoration
+activity also reopens prior cost reviews conservatively; ordinary earning alone
+does not. This lets finance release an earlier accrual rather than count its future
+reward cost again after the actual discount is realized. Signed additional costs
+can record these reversals. No historical baseline provenance is invented.
+Changes require a new cost review. A concurrent stale correction conflicts; identical
+requests replay one observation. UTC normalization makes SQLite/PostgreSQL replay
+responses and fingerprints independent of session timezone. Historical observations
+are never edited/deleted; a correction supersedes the prior version.
+
+Expected pending cost from experimental order lots is shown separately. It excludes
+unvalued baseline history and is not added to declared accrual cost a second time.
+Budget commitments likewise are not additional profit costs. Monetary sums and
+variances use integers/Fraction/Decimal; API money and fractional means are strings.
+The browser uses BigInt for monetary display/rounding. No float-money aggregation.
+
+### Protocol, uncertainty and warnings
+
+New experiment documents may freeze `analysis_protocol`: method
+`welch_bonferroni_v1`, family confidence90/95/99%, minimum customers per arm (at
+least30), a sample-size/power rationale and a readout after enrollment plus full
+follow-up. The declared minimum is not a guarantee of statistical power. An existing
+version without this structure remains descriptive; later publication cannot add
+a protocol retroactively to the frozen run.
+
+The effect is treatment minus control mean contribution profit per original customer.
+Welch variance/degrees of freedom use exact customer-level rational quantities;
+SciPy supplies the dimensionless t critical value. Bounds round outward to integer
+minor units. Bonferroni covers every planned treatment/control contrast, not repeated
+looks or all pairwise treatment comparisons. Intervals are approximate and conditional
+on supplied costs; they do not model uncertainty of estimated costs, untracked channels
+or nonrandom assignment. See the primary [NIST Welch reference](https://www.itl.nist.gov/div898/handbook/prc/section3/prc312.htm)
+and [SciPy documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html).
+
+Intervals are suppressed for incomplete follow-up/open enrollment/early readout,
+insufficient arm sizes, missing/late protocol, missing/stale financial evidence,
+unresolved payments/orders, mixed currencies/payment simulation modes, incomplete
+identity coverage, contamination or allocation imbalance/unavailable diagnostic.
+Allocation checks require expected cells of at least5 and flag p<0.001. A zero
+observed variance does not produce a misleading zero-width population interval.
+No customer is dropped for any warning and no winner is automatically declared.
+
+Contamination inspects other customer assignments across exclusion groups and
+protection windows, plus off-protocol order rewards; it does not rely solely on
+recorded overlap rows. Exposure counts use original follow-up; late receipts and
+their warnings remain separate. Issuance and actual applied redemption are descriptive.
+Report duration, original window, maturity and provider simulation mode are explicit.
+
+### API and exports
+
+Under the existing `loyalty-config` root, with analytics enabled:
+
+- `GET /experiments/{id}/report` and `/report.csv`: scoped `growth.read`, coherent
+  committed read snapshots, as-of/configuration/data revision stamps, aggregate CSV
+  with formula-safe variant names. A CSV is a newly generated current reading.
+- `GET /analytics/orders/{id}` and `/analytics/variants/{id}`: current financial
+  fingerprint, latest evidence and at most20 historical revisions.
+- `POST` to the same two evidence routes: `finance.resolve` and CSRF; body includes
+  request key, expected revision, financial digest, source, estimate declaration and
+  costs. Author identity comes from the staff session, never the request body.
+
+GET/CSV never enrolls, earns, redeems, expires, reconciles or creates accounts. Cost
+evidence changes only measurement history and staff audit, not payment/order/wallet
+state. Report math uses all eligible data; the actionable order-cost list is bounded
+to100 and labels truncation. Existing configuration lists remain unpaginated.
+The API's `net_revenue_minor` fields currently mean confirmed receipts after refunds;
+the UI labels them net receipts. Orders have no tax decomposition. Pass-through
+deductions must be covered by supplied costs for contribution; no accounting revenue
+or tax breakdown is inferred from gross receipts.
+
+`PaymentRefund` has no universal historical event timestamp. Reports therefore use
+current confirmed refunds for original-window orders and expose
+`historical_financial_cutoff_available: false`; no historical financial as-of API
+fabricates earlier knowledge. Preserve each CSV with its actual as-of/data revision.
+
+The separate loopback fixture `python -m world_model.restaurant_commerce.loyalty_analytics_demo
+--db PATH --port 8831` uses the combined workspace, simulated commerce and clearly
+synthetic cost assumptions. Its real-time follow-up is incomplete. Matured/known-effect
+cohorts and later refunds are exercised by tests with explicit synthetic clocks.
+Demo restart preserves operator cost corrections. No provider spending or activation.
+
+Rendered proof and final qualification live in shared
+`docs/product-design/loyalty-analytics-review.md`.

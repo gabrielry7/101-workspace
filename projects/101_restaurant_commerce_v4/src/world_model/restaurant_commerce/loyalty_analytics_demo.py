@@ -97,7 +97,7 @@ def app_for_demo(database_url, origin="http://127.0.0.1:8831"):
             )
             s.commit()
             variants.add(enrolled["assignment"]["variant_id"])
-            if i % 4:
+            if i % 4 or not customer.phone:
                 continue
             svc = RestaurantCommerceService(s, verified_customer_id=customer.id)
             item = next(

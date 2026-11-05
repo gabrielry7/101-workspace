@@ -84,7 +84,9 @@ def _report(session, business_id, experiment_id):
         warnings.add("experiment_not_enrolled")
     if not protocol:
         warnings.add("analysis_protocol_missing")
-    if protocol and any(aware(a.assigned_at) < aware(version.published_at) for a in assignments):
+    if protocol and any(
+        aware(a.assigned_at) < aware(version.published_at) for a in assignments
+    ):
         warnings.add("analysis_protocol_late")
     start = min((aware(a.assigned_at) for a in assignments), default=now)
     last_end = max(
@@ -131,6 +133,17 @@ def _report(session, business_id, experiment_id):
                 else "unverified_financial_orders"
             ] += 1
         a = by_customer.get(order.customer_id)
+        if (
+            a
+            and not verified(order)
+            and has_finance
+            and aware(a.assigned_at)
+            <= aware(order.created_at)
+            < aware(a.evaluation_ends_at)
+        ):
+            # A contact match is not attribution proof, but it also cannot certify
+            # this assigned person's missing financial outcome as a known zero.
+            unknown[a.id].add("identity_unverified_outcome")
         if (
             not a
             or not verified(order)
@@ -457,6 +470,7 @@ def _report(session, business_id, experiment_id):
         "allocation_diagnostic_unavailable",
         "mixed_simulated_and_other_payments",
         "identity_coverage_incomplete",
+        "identity_unverified_outcome",
         "financial_review_open",
         "unresolved_order_at_window",
         "currency_mismatch",
@@ -539,11 +553,13 @@ def _report(session, business_id, experiment_id):
         "currency": doc["currency"],
         "run_exists": run is not None,
         "primary_metric": doc["primary_metric"],
+        "nonbuyer_definition": "no_verified_qualifying_purchase_observed",
         "observation_days": days,
         "analysis_protocol": protocol,
         "enrollment_start": doc["enrollment_start"],
         "enrollment_end": doc["enrollment_end"],
         "first_assignment_at": start.isoformat() if assignments else None,
+        "elapsed_days": max(0, (now - start).days) if assignments else None,
         "assigned_customers": total,
         "mature_customers": sum(a["mature_customers"] for a in arms),
         "arms": arms,
@@ -555,6 +571,14 @@ def _report(session, business_id, experiment_id):
         "exposures_outside_followup": late_exposures,
         "financial_scope": "current_confirmed_refunds_for_orders_in_original_followup",
         "uncertainty_scope": "customer_variation_conditional_on_supplied_costs",
+        "payment_mode": "no_receipts"
+        if not providers
+        else "simulated"
+        if providers == {"simulated"}
+        else "mixed"
+        if "simulated" in providers
+        else "recorded",
+        "outstanding_cost_scope": "experimental_order_lots_only",
         "cost_basis": "net_receipts_less_variable_and_additional_loyalty_accrual_costs_v1",
         "historical_financial_cutoff_available": False,
         "automatic_winner": None,

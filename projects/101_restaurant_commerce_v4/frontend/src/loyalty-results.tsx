@@ -69,6 +69,11 @@ type Comparison = {
   suppression_reasons: string[];
 };
 type Result = {
+  enrollment_start: string;
+  enrollment_end: string;
+  first_assignment_at: string | null;
+  elapsed_days: number | null;
+  payment_mode: "no_receipts" | "simulated" | "mixed" | "recorded";
   name: string;
   currency: string;
   as_of: string;
@@ -99,6 +104,8 @@ type Result = {
 };
 
 const warningLabels: Record<string, string> = {
+  identity_unverified_outcome:
+    "Hay pedidos de contacto coincidente sin identidad verificada. No se atribuyen y la ganancia del grupo queda pendiente de evidencia.",
   analysis_protocol_late:
     "El plan quedó registrado después de una asignación; la evaluación requiere revisión.",
   observed_channels_only:
@@ -274,6 +281,16 @@ export function LoyaltyResults({
           <div className="loyalty-title-row">
             <div>
               <h3>{data.name}</h3>
+              <span className="badge">
+                {
+                  {
+                    simulated: "Pagos simulados",
+                    mixed: "Pagos mixtos, revisar",
+                    recorded: "Cobros registrados",
+                    no_receipts: "Sin cobros observados",
+                  }[data.payment_mode]
+                }
+              </span>
               <p>
                 Seguimiento de {data.observation_days} días por cliente · datos
                 al {date(data.as_of)}
@@ -323,65 +340,21 @@ export function LoyaltyResults({
               expresan incertidumbre; no seleccionan una oferta automáticamente.
             </p>
             <div
-              className="loyalty-table-wrap"
+              className="loyalty-comparisons"
               role="region"
-              tabIndex={0}
               aria-label="Comparaciones con el control"
             >
-              <table>
-                <thead>
-                  <tr>
-                    <th>Oferta</th>
-                    <th>Diferencia por cliente</th>
-                    <th>Intervalo de confianza</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.comparisons.map((c) => (
-                    <tr key={c.variant_id}>
-                      <td>
-                        {
-                          data.arms.find((a) => a.variant_id === c.variant_id)
-                            ?.name
-                        }
-                      </td>
-                      <td>
-                        {meanMoney(
-                          c.incremental_profit_per_assigned_minor,
-                          data.currency,
-                        )}
-                      </td>
-                      <td>
-                        {c.confidence_interval ? (
-                          <>
-                            {money(
-                              c.confidence_interval.lower_minor,
-                              data.currency,
-                            )}{" "}
-                            a{" "}
-                            {money(
-                              c.confidence_interval.upper_minor,
-                              data.currency,
-                            )}
-                            <small className="loyalty-hint">
-                              Confianza conjunta{" "}
-                              {c.confidence_interval.family_confidence_bps /
-                                100}
-                              % · {c.confidence_interval.comparisons}{" "}
-                              comparación(es)
-                            </small>
-                          </>
-                        ) : (
-                          <details>
-                            <summary>No disponible</summary>
-                            <WarningList codes={c.suppression_reasons} />
-                          </details>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {data.comparisons.map((c) => (
+                <ComparisonResult
+                  key={c.variant_id}
+                  comparison={c}
+                  name={
+                    data.arms.find((a) => a.variant_id === c.variant_id)
+                      ?.name || "Oferta"
+                  }
+                  currency={data.currency}
+                />
+              ))}
             </div>
           </section>
           <details className="loyalty-section loyalty-result-notes">
@@ -406,9 +379,9 @@ export function LoyaltyResults({
                 <thead>
                   <tr>
                     <th>Grupo</th>
-                    <th>Asignados / sin compras</th>
+                    <th>Asignados / sin compras verificadas</th>
                     <th>Compras por cliente</th>
-                    <th>Ingreso neto por cliente</th>
+                    <th>Cobro neto por cliente</th>
                     <th>Ganancia por cliente</th>
                   </tr>
                 </thead>
@@ -439,7 +412,7 @@ export function LoyaltyResults({
                         {(a.missing_contribution_customers > 0 ||
                           a.missing_operating_cost) && (
                           <small className="loyalty-hint">
-                            Costos incompletos
+                            Evidencia incompleta
                           </small>
                         )}
                       </td>
@@ -513,7 +486,7 @@ export function LoyaltyResults({
                     <th>Grupo</th>
                     <th>Personas expuestas</th>
                     <th>Puntos emitidos / canjeados</th>
-                    <th>Costo pendiente estimado</th>
+                    <th>Costo pendiente de puntos adicionales</th>
                     <th>Costo operativo</th>
                   </tr>
                 </thead>
@@ -532,14 +505,15 @@ export function LoyaltyResults({
                         )}
                         <small className="loyalty-hint">
                           Estimación por lotes; no se suma otra vez a la
-                          ganancia
+                          ganancia. Los beneficios habituales sin lotes de costo
+                          quedan sin valorar en esta columna.
                         </small>
                       </td>
                       <td>
                         {a.operating_cost_minor === null
                           ? "Sin evidencia vigente"
                           : money(a.operating_cost_minor, data.currency)}
-                        {canFinance && (
+                        {canFinance && a.assigned_customers > 0 && (
                           <button
                             className="button secondary"
                             onClick={() =>
@@ -639,6 +613,15 @@ export function LoyaltyResults({
           <details className="loyalty-section">
             <summary>Criterios y procedencia</summary>
             <p>
+              Inscripción: {date(data.enrollment_start)} a{" "}
+              {date(data.enrollment_end)}.{" "}
+              {data.elapsed_days === null
+                ? "Sin asignaciones todavía."
+                : `Han transcurrido ${data.elapsed_days} días desde la primera asignación.`}{" "}
+              Cada persona conserva su seguimiento original de{" "}
+              {data.observation_days} días.
+            </p>
+            <p>
               Solo se atribuyen pedidos con identidad verificada, iniciados y
               completados dentro del seguimiento original, y cancelaciones con
               costos. Los pedidos de contacto sin verificar quedan fuera de los
@@ -698,6 +681,51 @@ export function LoyaltyResults({
         />
       )}
     </section>
+  );
+}
+
+function ComparisonResult({
+  comparison: c,
+  name,
+  currency,
+}: {
+  comparison: Comparison;
+  name: string;
+  currency: string;
+}) {
+  return (
+    <div className="loyalty-comparison">
+      <h4>{name}</h4>
+      <dl>
+        <div>
+          <dt>Diferencia por cliente</dt>
+          <dd>
+            {meanMoney(c.incremental_profit_per_assigned_minor, currency)}
+          </dd>
+        </div>
+        <div className="loyalty-confidence">
+          <dt>Intervalo de confianza</dt>
+          <dd>
+            {c.confidence_interval ? (
+              <>
+                {money(c.confidence_interval.lower_minor, currency)} a{" "}
+                {money(c.confidence_interval.upper_minor, currency)}
+                <small className="loyalty-hint">
+                  Confianza conjunta{" "}
+                  {c.confidence_interval.family_confidence_bps / 100}% ·{" "}
+                  {c.confidence_interval.comparisons} comparación(es)
+                </small>
+              </>
+            ) : (
+              <details>
+                <summary>No disponible</summary>
+                <WarningList codes={c.suppression_reasons} />
+              </details>
+            )}
+          </dd>
+        </div>
+      </dl>
+    </div>
   );
 }
 
@@ -853,7 +881,7 @@ function CostForm({
           <>
             <Field
               label={`Costos variables (${currency})`}
-              hint="Ingredientes, preparación, entrega y comisiones, después de recuperaciones. Excluye los costos adicionales de recompensas."
+              hint="Ingredientes, preparación, entrega, comisiones e impuestos trasladados, después de recuperaciones. Excluye los costos adicionales de recompensas."
             >
               <input
                 inputMode="decimal"
