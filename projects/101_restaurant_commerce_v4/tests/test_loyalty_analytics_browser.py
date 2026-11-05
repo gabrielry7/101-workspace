@@ -311,10 +311,16 @@ def test_stale_cost_requires_explicit_reload_and_phone_history(site):
     playwright.expect(
         dialog.get_by_label("Costos variables (COP)", exact=True)
     ).to_have_value("2222")
+    playwright.expect(
+        dialog.get_by_text("La versión cambió.", exact=False)
+    ).not_to_be_visible()
     page.set_viewport_size({"width": 390, "height": 844})
     capture(page, "cost-history-mobile")
     box = dialog.bounding_box()
     assert box and box["x"] >= 0 and box["x"] + box["width"] <= 390
+    dialog.get_by_label("Costos variables (COP)", exact=True).fill("2223")
+    dialog.get_by_role("button", name="Guardar evidencia", exact=True).click()
+    playwright.expect(dialog).not_to_be_visible()
 
 
 def test_viewer_readonly_failure_retry_and_missing_feature(site):

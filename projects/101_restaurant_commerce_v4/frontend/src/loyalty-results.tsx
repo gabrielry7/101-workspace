@@ -942,7 +942,10 @@ function CostForm({
           className="button secondary"
           type="button"
           disabled={command.busy || command.uncertain}
-          onClick={reload}
+          onClick={() => {
+            command.clearError();
+            reload();
+          }}
         >
           Recargar registros
         </button>

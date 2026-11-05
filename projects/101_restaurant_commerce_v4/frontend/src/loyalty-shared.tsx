@@ -384,6 +384,9 @@ export function useCommand(csrf: string) {
     uncertain,
     alive,
     hasPending: () => pending.current !== null,
+    clearError: () => {
+      if (!pending.current) setError("");
+    },
     fail: (s: string) => setError(s),
   };
 }
