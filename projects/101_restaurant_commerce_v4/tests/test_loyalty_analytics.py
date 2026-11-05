@@ -17,7 +17,6 @@ from test_loyalty_configuration import create, publish
 from test_loyalty_execution import refund
 from test_payment_durability_m3 import factory as factory  # noqa: PLC0414
 from test_payment_durability_m3 import request
-
 from world_model.restaurant_commerce.api import create_app
 from world_model.restaurant_commerce.db import database_ready
 from world_model.restaurant_commerce.errors import (
@@ -85,9 +84,9 @@ def analytics(factory, monkeypatch):
     def build(n=4, protocol=True, group="loyalty"):
         with factory() as s:
             cfg = LoyaltyConfigurationService(s, "synthetic")
-            vid = publish(
-                cfg, create(cfg, key=uuid4().hex, estimated_cost_per_point_minor=10)
-            )["version_id"]
+            vid = publish(cfg, create(cfg, key=uuid4().hex, estimated_cost_per_point_minor=10))[
+                "version_id"
+            ]
             ev = experiment_version(
                 s,
                 vid,
@@ -131,9 +130,7 @@ def analytics(factory, monkeypatch):
                     order = pay_and_complete(svc, svc.create_order(BID, req))
                     oid = order.id
                     profit = (3000 if arm == "control" else 6000) + i * 10
-                    write_cost(
-                        s, oid, variable=order.total_minor - profit - 200, reward=200
-                    )
+                    write_cost(s, oid, variable=order.total_minor - profit - 200, reward=200)
                 ids[arm].append(cid)
                 rows.append(
                     {
@@ -207,17 +204,11 @@ def test_known_effect_includes_nonbuyers_and_unbound_verified_orders(analytics):
             assert arm["purchase_frequency"] == "0.500000"
             assert arm["exposed_customers"] == 0
             assert arm["repeat_purchase"]["30"]["eligible_assigned"] == 4
-        assert (
-            result["comparisons"][0]["incremental_profit_per_assigned_minor"]
-            == "1500.000000"
-        )
+        assert result["comparisons"][0]["incremental_profit_per_assigned_minor"] == "1500.000000"
         assert result["comparisons"][0]["confidence_interval"] is None
         assert result["automatic_winner"] is None
         assert s.scalar(select(func.count()).select_from(LoyaltyLedgerEntry)) == before
-        assert (
-            report(s, BID, data["experiment_id"])["data_revision"]
-            == result["data_revision"]
-        )
+        assert report(s, BID, data["experiment_id"])["data_revision"] == result["data_revision"]
 
 
 def test_report_interval_uses_original_customer_units_and_planned_window(analytics):
@@ -258,9 +249,7 @@ def test_missing_costs_remain_missing_and_refund_invalidates_then_corrects(analy
             reward=previous["additional_reward_cost_minor"],
         )
         fixed = report(s, BID, data["experiment_id"])
-        fixed_arm = next(
-            a for a in fixed["arms"] if a["variant_id"] == target["variant_id"]
-        )
+        fixed_arm = next(a for a in fixed["arms"] if a["variant_id"] == target["variant_id"])
         assert (
             Fraction(fixed_arm["profit_per_assigned_minor"])
             == Fraction(
@@ -314,9 +303,7 @@ def test_immature_and_legacy_protocol_are_descriptive(analytics, monkeypatch):
         assert result["mature_customers"] == 0
         assert "incomplete_observation_windows" in result["warnings"]
         assert "analysis_protocol_missing" in result["warnings"]
-        assert all(
-            a["repeat_purchase"]["30"]["eligible_assigned"] == 0 for a in result["arms"]
-        )
+        assert all(a["repeat_purchase"]["30"]["eligible_assigned"] == 0 for a in result["arms"])
         assert result["comparisons"][0]["confidence_interval"] is None
 
 
@@ -367,12 +354,27 @@ def test_pending_checkout_with_open_financial_review_is_not_zero_profit(analytic
     target = next(r for r in data["rows"] if not r["order_id"])
     with data["factory"]() as s:
         before = report(s, BID, data["experiment_id"])
-        assert next(a for a in before["arms"] if a["variant_id"] == target["variant_id"])["profit_per_assigned_minor"] is not None
+        assert (
+            next(a for a in before["arms"] if a["variant_id"] == target["variant_id"])[
+                "profit_per_assigned_minor"
+            ]
+            is not None
+        )
         svc = RestaurantCommerceService(s, verified_customer_id=target["customer_id"])
-        req = request(svc); req.customer.phone = s.get(Customer, target["customer_id"]).phone
+        req = request(svc)
+        req.customer.phone = s.get(Customer, target["customer_id"]).phone
         pending = svc.create_order(BID, req)
         assert pending.payment_status != "paid"
-        s.add(PaymentReconciliation(order_id=pending.id, business_id=BID, reason="provider_timeout", status="open", evidence_json="{}")); s.commit()
+        s.add(
+            PaymentReconciliation(
+                order_id=pending.id,
+                business_id=BID,
+                reason="provider_timeout",
+                status="open",
+                evidence_json="{}",
+            )
+        )
+        s.commit()
         result = report(s, BID, data["experiment_id"])
         arm = next(a for a in result["arms"] if a["variant_id"] == target["variant_id"])
         assert arm["assigned_customers"] == 4
@@ -523,19 +525,13 @@ def test_api_roles_flags_tenant_scope_csv_and_no_wallet_writes(analytics):
             "additional_reward_cost_minor": 0,
         }
         assert (
-            client.post(
-                root + "/analytics/orders/" + oid, json=body, headers=headers
-            ).status_code
+            client.post(root + "/analytics/orders/" + oid, json=body, headers=headers).status_code
             == 403
         )
         headers = staff_headers(client, role="finance", name="analytics.finance")
+        assert client.post(root + "/analytics/orders/" + oid, json=body).status_code == 403
         assert (
-            client.post(root + "/analytics/orders/" + oid, json=body).status_code == 403
-        )
-        assert (
-            client.post(
-                root + "/analytics/orders/" + oid, json=body, headers=headers
-            ).status_code
+            client.post(root + "/analytics/orders/" + oid, json=body, headers=headers).status_code
             == 200
         )
         assert client.get(path.replace(BID, "other-business")).status_code == 403
@@ -616,10 +612,7 @@ def test_historical_full_refund_revises_receipts_and_preserves_expenses(analytic
         after = report(s, BID, data["experiment_id"])
         old = next(a for a in before["arms"] if a["variant_id"] == target["variant_id"])
         new = next(a for a in after["arms"] if a["variant_id"] == target["variant_id"])
-        assert (
-            int(new["net_revenue_minor"])
-            == int(old["net_revenue_minor"]) - order.total_minor
-        )
+        assert int(new["net_revenue_minor"]) == int(old["net_revenue_minor"]) - order.total_minor
         assert Fraction(new["profit_per_assigned_minor"]) == Fraction(
             old["profit_per_assigned_minor"]
         ) - Fraction(target["profit"] + 600, 4)
@@ -655,9 +648,7 @@ def test_cross_group_overlap_is_reported_without_dropping_customer(analytics):
     data = analytics()
     target = data["rows"][0]
     with data["factory"]() as s:
-        other = experiment_version(
-            s, data["program_version"], exclusion_group="other-promotion"
-        )
+        other = experiment_version(s, data["program_version"], exclusion_group="other-promotion")
         assert enroll(s, other, target["customer_id"])["eligible"]
         s.commit()
         result = report(s, BID, data["experiment_id"])
@@ -751,7 +742,8 @@ def test_sqlite_replace_cannot_rewrite_append_only_evidence(analytics):
         with pytest.raises(DBAPIError):
             s.execute(
                 text(
-                    f"INSERT OR REPLACE INTO {TABLE} ({','.join(columns)}) SELECT {','.join(values)} FROM {TABLE} WHERE id=:id"
+                    f"INSERT OR REPLACE INTO {TABLE} ({','.join(columns)}) "
+                    f"SELECT {','.join(values)} FROM {TABLE} WHERE id=:id"
                 ),
                 {"id": row.id},
             )
@@ -774,9 +766,7 @@ def test_operating_evidence_invalidates_when_assignment_population_grows(analyti
     data = analytics()
     with data["factory"]() as s:
         cid = str(uuid4())
-        s.add(
-            Customer(id=cid, business_id=BID, name="new nonbuyer", phone="3006999999")
-        )
+        s.add(Customer(id=cid, business_id=BID, name="new nonbuyer", phone="3006999999"))
         s.commit()
         added = enroll(s, data["version_id"], cid)["assignment"]
         s.commit()
@@ -817,10 +807,7 @@ def test_report_snapshot_cannot_mix_concurrent_cost_revisions(analytics):
         assert fired
         assert during["data_revision"] == before["data_revision"]
         assert during["arms"] == before["arms"]
-        assert (
-            report(s, BID, data["experiment_id"])["data_revision"]
-            != before["data_revision"]
-        )
+        assert report(s, BID, data["experiment_id"])["data_revision"] != before["data_revision"]
 
 
 def test_baseline_redemption_reopens_accrual_review_and_discount_counts_once(analytics):
@@ -857,20 +844,14 @@ def test_baseline_redemption_reopens_accrual_review_and_discount_counts_once(ana
             reward=old_cost["additional_reward_cost_minor"],
         )
         after = report(s, BID, data["experiment_id"])
-        original = next(
-            a for a in before["arms"] if a["variant_id"] == target["variant_id"]
-        )
-        current = next(
-            a for a in after["arms"] if a["variant_id"] == target["variant_id"]
-        )
+        original = next(a for a in before["arms"] if a["variant_id"] == target["variant_id"])
+        current = next(a for a in after["arms"] if a["variant_id"] == target["variant_id"])
         assert Fraction(current["profit_per_assigned_minor"]) == Fraction(
             original["profit_per_assigned_minor"]
         ) + Fraction(order.total_minor - 700, 4)
 
 
-def test_measurement_requires_explicit_upgrade_and_optional_statistics(
-    factory, monkeypatch
-):
+def test_measurement_requires_explicit_upgrade_and_optional_statistics(factory, monkeypatch):
     engine = factory.kw["bind"]
     assert not inspect(engine).has_table(TABLE)
     with pytest.raises(RuntimeError, match="offline upgrade"):
@@ -938,15 +919,9 @@ def test_synthetic_demo_preserves_cost_corrections_on_restart(tmp_path):
         count = s.scalar(select(func.count()).select_from(LoyaltyFinancialEvidence))
     again = app_for_demo(url)
     with again.state.session_factory() as s:
+        assert s.scalar(select(func.count()).select_from(LoyaltyFinancialEvidence)) == count
         assert (
-            s.scalar(select(func.count()).select_from(LoyaltyFinancialEvidence))
-            == count
-        )
-        assert (
-            context(s, BUSINESS, "orders", oid)["latest"]["document"][
-                "variable_cost_minor"
-            ]
-            == 1234
+            context(s, BUSINESS, "orders", oid)["latest"]["document"]["variable_cost_minor"] == 1234
         )
     app.state.session_factory.kw["bind"].dispose()
     again.state.session_factory.kw["bind"].dispose()
