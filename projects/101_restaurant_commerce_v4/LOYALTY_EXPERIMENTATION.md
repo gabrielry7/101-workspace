@@ -1,4 +1,4 @@
-# Loyalty experimentation — stages 1–5
+# Loyalty experimentation — stages 1–6
 
 Implemented: a staff-authorized configuration foundation for multiple loyalty
 strategies, immutable published versions and separately versioned experiments.
@@ -9,6 +9,8 @@ published strategy under the synthetic execution gate described below.
 Stage 4 independently enrolls verified customers into permanent randomized cohorts
 and routes synthetic checkout through those assignments.
 Stage 5 adds a read-only financial simulator with explicit assumptions and sensitivity.
+Stage 6 adds the scoped operator workspace for programs, experiments, publication
+review, economics and passive balance/cost monitoring.
 
 The complete design and staged acceptance criteria live in the shared repository:
 `/home/t/101-world-model/docs/commerce-audit/LOYALTY_EXPERIMENTATION_PLAN.md`.
@@ -197,10 +199,10 @@ refund debt or configuration history. No new dependency or schema migration is a
 
 ## Remaining stages
 
-Version-pinned order earning/redemption and partial refunds;
-persistent randomized enrollment; simulator; staff configuration screens; and
-intent-to-treat contribution-profit reporting remain pending. Customer authentication,
-cost provenance and statistical analysis details are prerequisites for a pilot.
+Stage 7 intent-to-treat contribution-profit reporting remains pending. Version-pinned
+execution/refunds, persistent assignment, simulator and staff configuration screens
+are implemented under the staged gates documented below. Customer authentication,
+cost provenance and statistical analysis details remain prerequisites for a pilot.
 Existing real-money gates remain in effect. No optimal reward or business uplift is
 claimed by configuration tests.
 
@@ -699,3 +701,9 @@ A loopback-only synthetic fixture is available via
 `python -m world_model.restaurant_commerce.loyalty_workspace_demo --db PATH --port 8816`.
 It reuses canonical services, creates no provider calls, and preserves operator
 changes on restart. All example contacts, orders and values are fictitious.
+
+The installed 0.26.0 artifact is qualified independently of the source tree; source,
+wheel and installed-file parity is retained with the release evidence. Existing
+Customers, Sales and Campaigns browser consumers are included. Rendered iterations,
+role measurements and timing limits live in shared
+`docs/product-design/loyalty-workspace-review.md`.

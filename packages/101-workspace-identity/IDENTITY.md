@@ -160,3 +160,8 @@ recorded balances, historical cost estimates, unknown cost and general review.
 Simulations retain explicit assumptions; a hypothetical lift is never a success
 claim. Publication review shows named participants/products and pinned versions.
 
+Rendered iterations and measured roles: shared
+`docs/product-design/loyalty-workspace-review.md`. Shared data tables retain all
+financial columns on phones through internal scrolling rather than directory
+column-hiding rules.
+
