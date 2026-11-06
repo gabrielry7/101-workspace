@@ -12,6 +12,7 @@ from world_model.restaurant_commerce.api import create_app
 parser=argparse.ArgumentParser()
 parser.add_argument('--db',required=True)
 parser.add_argument('--port',type=int,default=8832)
+parser.add_argument('--access-file',help='Private JSON access file required for a public temporary preview')
 args=parser.parse_args()
 engine=make_engine('sqlite:///'+str(Path(args.db).resolve()))
 init_schema(engine)
@@ -22,4 +23,7 @@ with session_factory(engine)() as session:
     seed_campaign_demo(session)
 app=create_app(engine=engine,demo_mode=True,payment_recovery_enabled=False)
 app.state.workspace_demo_login=("campaign.manager", PASSWORD)
+if args.access_file:
+    from world_model.restaurant_commerce.social_preview_access import PreviewAccess
+    app = PreviewAccess(app, args.access_file)
 uvicorn.run(app,host='127.0.0.1',port=args.port,access_log=False)
