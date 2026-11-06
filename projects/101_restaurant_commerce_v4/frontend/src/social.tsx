@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { endpoint } from './ui';
 import './social.css';
+import {InstagramPanel} from './social-instagram';
 type Pack = {id:string;revision:number;digest:string;approved:boolean;document:{caption:string;brief:any;fixture:boolean}};
 export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:string;demo:boolean}) {
  const root=endpoint(business)+'/social';
+ const [lastFile,setLastFile]=useState<File|null>(null);
+ const [progress,setProgress]=useState<number|null>(null),[library,setLibrary]=useState<any[]>([]);
  const [requestId,setRequestId]=useState(()=>crypto.randomUUID());
  const [packs,setPacks]=useState<{id:string;revision:number}[]>([]),[pack,setPack]=useState<Pack|null>(null);
  const [dirty,setDirty]=useState(false);
@@ -16,14 +19,23 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
   const data=await r.json(); if(!r.ok) throw new Error(typeof data.detail==='string'?data.detail:'Revisa los campos y vuelve a intentar.'); return data;
  }
  async function run(fn:()=>Promise<void>){setBusy(true);setError('');try{await fn()}catch(e){setError(String(e))}finally{setBusy(false)}}
- async function refresh(){setPacks((await request('')).packs)}
+ async function refresh(){setPacks((await request('')).packs);setLibrary((await request('/assets')).assets)}
  useEffect(()=>{void run(refresh)},[business]);
- function load(p:Pack){setDirty(false);setPack(p);const b=p.document.brief;setRequestId(b.request_id);setAsset(b.asset_id);setFacts(b.facts.map((f:any)=>f.text).join('\n\n'));setQuestion(b.question);setObjective(b.objective);setBrand(b.brand_direction);setExpiry(b.facts[0].valid_until.slice(0,10));setCrop(b.focal_x);setConfirmed(false);setReview(false)}
+ function load(p:Pack){setDirty(false);setPack(p);const b=p.document.brief;setRequestId(b.request_id||crypto.randomUUID());setAsset(b.asset_id);setFacts(b.facts.map((f:any)=>f.text).join('\n\n'));setQuestion(b.question);setObjective(b.objective);setBrand(b.brand_direction);setExpiry(b.facts[0].valid_until.slice(0,10));setCrop(b.focal_x);setConfirmed(false);setReview(false)}
  async function upload(file:File){
-  if(file.size>500000)throw new Error('Por ahora admite fotos JPEG o PNG de hasta 500 KB. Conserva el original; las cargas grandes están pendientes.');
+  setLastFile(file);setProgress(0);
+  if(file.size>12*1024*1024)throw new Error('La fotografía debe pesar menos de 12 MB.');
   if(!rights.trim()||!expiry)throw new Error('Indica el permiso de uso y su fecha de revisión.');
-  const bytes=new Uint8Array(await file.arrayBuffer());let binary='';for(const byte of bytes)binary+=String.fromCharCode(byte);
-  const result=await request('/assets','POST',{data_base64:btoa(binary),rights_statement:rights,expires_at:expiry+'T23:59:59Z',permitted_use:'production',fixture:demo});setAsset(result.id);
+  const buffer=await file.arrayBuffer();const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',buffer))).map(b=>b.toString(16).padStart(2,'0')).join('');
+  const key='social-upload:'+business+':'+hash+':'+expiry+':'+rights;
+  let id=localStorage.getItem(key),state:any=null;
+  if(id){try{state=await request('/uploads/'+id)}catch{localStorage.removeItem(key);id=null}}
+  if(!id){state=await request('/uploads','POST',{sha256:hash,total:file.size,rights_statement:rights,expires_at:expiry+'T23:59:59Z',permitted_use:'production',fixture:demo});id=state.id;localStorage.setItem(key,id!)}
+  if(!state.asset_id){
+   for(let offset=state.received;offset<file.size;){const part=new Uint8Array(buffer.slice(offset,offset+262144));let binary='';for(const byte of part)binary+=String.fromCharCode(byte);state=await request('/uploads/'+id,'PUT',{offset,data_base64:btoa(binary)});offset=state.received;setProgress(Math.round(offset/file.size*100));}
+   state=await request('/uploads/'+id+'/complete','POST');
+  }
+  setAsset(state.asset_id||state.id);localStorage.removeItem(key);setProgress(null);await refresh();
  }
  async function save(){
   const statements=facts.split('\n\n').filter(Boolean).map((text,i)=>({id:'fact_'+i,text,source:'Confirmación explícita en el espacio del negocio',valid_until:expiry+'T23:59:59Z'}));
@@ -31,7 +43,7 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
   setPack(await request('/packs'+(pack?'/'+pack.id:''),pack?'PUT':'POST',brief));setReview(false);setDirty(false);await refresh();
  }
  return <section className="social-workspace"><header><h1>Contenido para tus redes</h1><p>Prepara una fotografía y su texto. Revisa el resultado antes de descargarlo.</p></header>
- <p className="social-note">Primera versión · fotografía sin texto superpuesto. Instagram no está conectado aquí. Los resultados aún no están disponibles.</p>
+ <InstagramPanel business={business} csrf={csrf}/><p className="social-note">Fotografía protagonista y texto confirmado. Los resultados de esta publicación aparecerán después de publicarla y medirla.</p>
  {error&&<p role="alert">{error}</p>}
  <div className="social-grid"><form onChange={()=>setDirty(true)} onSubmit={e=>{e.preventDefault();void run(save)}}>
  <label>Trabajo guardado<select value={pack?.id||''} onChange={e=>{if(e.target.value)void run(async()=>load(await request('/packs/'+e.target.value)));else{setPack(null);setRequestId(crypto.randomUUID());setReview(false)}}}><option value="">Crear una publicación</option>{packs.map(p=><option key={p.id} value={p.id}>Publicación {p.id.slice(0,6)} · versión {p.revision}</option>)}</select></label>
@@ -42,7 +54,9 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
  <label>Revisar estos datos y el permiso de la foto antes de<input required type="date" value={expiry} onChange={e=>setExpiry(e.target.value)}/></label>
  <label>¿Cómo debe verse y sonar?<textarea required value={brand} onChange={e=>setBrand(e.target.value)}/></label>
  <label>Permiso para usar esta fotografía<input value={rights} onChange={e=>setRights(e.target.value)} placeholder="Es nuestra foto y autorizamos su uso en esta publicación"/></label>
- <label>Fotografía · mínimo 1080 × 1350, máximo 500 KB<input type="file" accept="image/jpeg,image/png" disabled={busy} onChange={e=>{const file=e.target.files?.[0];if(file)void run(()=>upload(file))}}/></label>
+ <label>Fotografía · mínimo 1080 × 1350, máximo 12 MB<input type="file" accept="image/jpeg,image/png" disabled={busy} onChange={e=>{const file=e.target.files?.[0];if(file)void run(()=>upload(file))}}/></label>
+ {progress!==null&&<><p role="status">Carga: {progress} %. Puedes continuar si se interrumpe.</p>{!busy&&lastFile&&<button type="button" className="button secondary" onClick={()=>void run(()=>upload(lastFile))}>Reintentar carga</button>}</>}
+ <label>O usa una fotografía guardada<select value={asset} onChange={e=>setAsset(e.target.value)}><option value="">Seleccionar fotografía</option>{library.filter(a=>a.permitted_use==='production').map(a=><option key={a.id} value={a.id}>{a.fixture?'Prueba · ':''}{a.width?`${a.width} × ${a.height} · `:''}{a.id.slice(0,8)}</option>)}</select></label>
  {asset&&<p>Fotografía recibida.</p>}
  <label>Encuadre horizontal<input type="range" min="0" max="1" step=".05" value={crop} onChange={e=>setCrop(Number(e.target.value))}/></label>
  <label className="social-check"><input type="checkbox" checked={confirmed} onChange={e=>setConfirmed(e.target.checked)}/>Confirmo que estas afirmaciones son actuales y correctas.</label>

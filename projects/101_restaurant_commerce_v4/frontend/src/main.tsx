@@ -55,6 +55,7 @@ import {
   periodQuery,
 } from "./workspace-views";
 import { CampaignView } from "./campaign-workspace";
+import { InstagramCallback } from "./social-instagram";
 import { SocialWorkspace } from "./social";
 import { ColorPreview } from "./color-preview";
 const screenFromPath = () => {
@@ -467,9 +468,7 @@ function App() {
                 <ExternalLink size={13} />
               </a>
               <a href={legacy("/connections")}>Google</a>
-              <span title="La conexión social todavía no está disponible">
-                Social <small>Próximamente</small>
-              </span>
+              <a href={`/workspace/social?business=${bid}`} onClick={(e) => goScreen(e, "social")}>Instagram</a>
             </div>
           </details>
         </nav>
@@ -1317,6 +1316,6 @@ function SignupDialog({
 }
 createRoot(document.getElementById("root")!).render(
   <CSPProvider disableStyleElements>
-    <App />
+    {location.pathname === "/connections/instagram/callback" ? <InstagramCallback /> : <App />}
   </CSPProvider>,
 );

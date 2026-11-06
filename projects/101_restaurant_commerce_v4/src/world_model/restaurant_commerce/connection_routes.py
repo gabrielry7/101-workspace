@@ -51,8 +51,9 @@ def register_connections(app, get_session, scoped_staff, runtime, staff_cookie, 
     @app.get(root)
     def connection_status(business_id: str, request: Request, session: Session = Depends(get_session)):
         scoped_staff(request, session, business_id, 'growth.read')
-        return {'google': c.document(session, business_id, runtime), 'others': [
-            {'provider': name, 'state': 'not_implemented'} for name in ['instagram', 'facebook', 'search_console', 'ga4', 'tiktok']],
+        from .instagram_routes import status as instagram_status
+        return {'google': c.document(session, business_id, runtime), 'instagram': instagram_status(session,business_id,getattr(app.state,'instagram',None)), 'others': [
+            {'provider': name, 'state': 'not_implemented'} for name in ['facebook', 'search_console', 'ga4', 'tiktok']],
             'whatsapp': {'state': 'configured_separately', 'url': '/campaigns'}}
 
     @app.post(root + '/google/authorize')

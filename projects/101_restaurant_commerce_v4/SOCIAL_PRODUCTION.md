@@ -1,5 +1,9 @@
 # Social production — initial working slice, 6 November 2026
 
+Historical slice at6e6d93b. The current [Instagram/intake extension](INSTAGRAM_CONNECTION.md)
+supersedes the500KB upload limit and absent connector below:12MB resumable intake and
+a tested connector are now implemented, with live Meta access still blocked.
+
 Implements part of the supplied 101 Social master plan inside the existing workspace.
 Stage 0/1 are **not complete**. Honorato is the selected pilot; the owner is identifying
 approved material and current facts. No real Honorato photo/fact has been approved

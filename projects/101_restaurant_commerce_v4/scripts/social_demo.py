@@ -4,6 +4,8 @@ from pathlib import Path
 import uvicorn
 from world_model.restaurant_commerce.db import make_engine, init_schema, session_factory
 from world_model.restaurant_commerce.social_production import upgrade
+from world_model.restaurant_commerce.social_uploads import upgrade as upgrade_uploads
+from world_model.restaurant_commerce.connection_models import upgrade_connections
 from world_model.restaurant_commerce.campaign_demo import seed_campaign_demo, PASSWORD
 from world_model.restaurant_commerce.api import create_app
 
@@ -14,8 +16,10 @@ args=parser.parse_args()
 engine=make_engine('sqlite:///'+str(Path(args.db).resolve()))
 init_schema(engine)
 upgrade(engine)
+upgrade_uploads(engine)
+upgrade_connections(engine)
 with session_factory(engine)() as session:
     seed_campaign_demo(session)
 app=create_app(engine=engine,demo_mode=True,payment_recovery_enabled=False)
 app.state.workspace_demo_login=("campaign.manager", PASSWORD)
-uvicorn.run(app,host='127.0.0.1',port=args.port)
+uvicorn.run(app,host='127.0.0.1',port=args.port,access_log=False)

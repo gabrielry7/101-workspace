@@ -199,9 +199,17 @@ def register(app, get_session, scoped_staff):
 
     @app.get(root, dependencies=[Depends(read)])
     def listing(business_id: str, session=Depends(get_session)):
+        from .instagram_routes import status as instagram_status
+        connection=instagram_status(session,business_id,getattr(app.state,'instagram',None))
+        snapshot=connection.get('snapshot')
+        baseline={'posts':None,'reach':None,'reason':'no_authorized_metrics_import'}
+        if snapshot:
+            baseline={**snapshot['baseline'],'posts':snapshot['coverage']['posts'],
+                      'coverage':snapshot['coverage'],'observed_at':snapshot['observed_at'],
+                      'account_id':snapshot['account_id'],'verification':connection['verification']}
         return {'packs':[{'id':p.id,'revision':p.revision} for p in session.scalars(select(Pack).where(Pack.business_id==business_id))],
-            'capabilities':{'instagram':'not_live_verified','generation':'deterministic_preview','publication':'manual_export_only'},
-            'baseline':{'posts':None,'reach':None,'reason':'no_authorized_metrics_import'}}
+            'capabilities':{'instagram':connection['state'],'generation':'deterministic_preview','publication':'manual_export_only'},
+            'baseline':baseline}
 
     @app.post(root+'/assets')
     def intake(business_id: str, payload: Intake, principal=Depends(write), session=Depends(get_session)):

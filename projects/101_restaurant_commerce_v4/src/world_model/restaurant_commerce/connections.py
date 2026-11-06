@@ -19,6 +19,7 @@ CACHE_TTL = timedelta(days=1)
 class ConnectionRuntime:
     def __init__(self, adapter, key, *, clock=utcnow, worker=True):
         self.adapter, self.mode, self.clock, self.worker = adapter, adapter.mode, clock, worker
+        self.provider = getattr(adapter, "provider", PROVIDER)
         self.cipher = Fernet(key)
 
     def seal(self, value):
@@ -48,7 +49,7 @@ def from_environment():
 
 def find(session, business, runtime):
     return session.scalar(select(Connection).where(Connection.business_id == business,
-        Connection.provider == PROVIDER, Connection.mode == runtime.mode))
+        Connection.provider == runtime.provider, Connection.mode == runtime.mode))
 
 
 def lock(session, connection_id):
@@ -62,7 +63,7 @@ def ensure(session, business, runtime):
     from sqlalchemy.dialects.sqlite import insert as sqlite_insert
     from sqlalchemy.dialects.postgresql import insert as pg_insert
     insert = pg_insert if session.bind.dialect.name == 'postgresql' else sqlite_insert
-    session.execute(insert(Connection).values(business_id=business, provider=PROVIDER, mode=runtime.mode,
+    session.execute(insert(Connection).values(business_id=business, provider=runtime.provider, mode=runtime.mode,
         state='disconnected', generation=0).on_conflict_do_nothing(index_elements=['business_id', 'provider', 'mode']))
     row = find(session, business, runtime)
     return lock(session, row.id)
@@ -107,7 +108,7 @@ def complete_authorization(factory, state, session_hash, runtime, authorize, *, 
         row = session.get(Connection, grant.connection_id)
         authorize(session, row.business_id)  # Existing staff authentication commits its heartbeat.
         row = lock(session, grant.connection_id)
-        if row.generation != grant.generation or row.mode != runtime.mode or row.state != 'authorizing':
+        if row.generation != grant.generation or row.mode != runtime.mode or row.provider != runtime.provider or row.state != 'authorizing':
             raise HTTPException(409, 'Authorization superseded')
         connection_id, generation = row.id, row.generation
         verifier = runtime.open(grant.verifier)['verifier']
@@ -192,7 +193,10 @@ def disconnect(session, business, runtime):
     secret = row.secret
     row.secret = row.assets = row.snapshot = row.selected = None
     row.assets_until = row.snapshot_until = row.last_success = row.next_sync = None
-    row.error = None
+    local_only=getattr(runtime.adapter, 'local_disconnect_only', False)
+    if local_only:
+        secret=None
+    row.error = 'revoke_in_instagram_settings' if local_only else None
     row.state = 'disconnecting' if secret else 'disconnected'
     session.execute(delete(Authorization).where(Authorization.connection_id == row.id))
     if secret:
@@ -207,35 +211,37 @@ def document(session, business, runtime):
         return {'provider': PROVIDER, 'mode': None, 'state': 'unconfigured', 'assets': [], 'snapshot': None}
     row = find(session, business, runtime)
     if not row:
-        return {'provider': PROVIDER, 'mode': runtime.mode, 'state': 'disconnected', 'assets': [], 'snapshot': None}
+        return {'provider': runtime.provider, 'mode': runtime.mode, 'state': 'disconnected', 'assets': [], 'snapshot': None}
     now = runtime.clock()
     # Expired content is never served even if the maintenance worker is stopped.
     assets = json.loads(row.assets) if row.assets and row.assets_until and aware(row.assets_until) > now else []
     snapshot = json.loads(row.snapshot) if row.snapshot and row.snapshot_until and aware(row.snapshot_until) > now else None
     job = session.get(Job, row.id)
-    return {'provider': PROVIDER, 'mode': row.mode, 'state': row.state, 'error': row.error,
+    return {'provider': runtime.provider, 'mode': row.mode, 'state': row.state, 'error': row.error,
             'selected': row.selected, 'assets': assets, 'snapshot': snapshot,
             'last_success': row.last_success, 'cache_expires_at': row.snapshot_until,
             'job': {'state': job.state, 'attempts': job.attempts} if job else None,
-            'capabilities': {'read_listing': True, 'read_reviews': True, 'read_metrics': True,
-                             'write_listing': False, 'reply_reviews': False}}
+            'capabilities': getattr(runtime.adapter, 'capabilities', {'read_listing': True, 'read_reviews': True, 'read_metrics': True,
+                             'write_listing': False, 'reply_reviews': False})}
 
 
 def maintenance(session, runtime):
     now = runtime.clock()
-    session.execute(delete(Authorization).where(Authorization.expires_at <= now))
-    session.execute(update(Connection).where(Connection.assets_until <= now).values(assets=None, assets_until=None))
-    session.execute(update(Connection).where(Connection.snapshot_until <= now).values(snapshot=None, snapshot_until=None))
-    session.execute(update(Connection).where(Connection.state == 'authorizing',
+    scope = (Connection.provider == runtime.provider) & (Connection.mode == runtime.mode)
+    ids = select(Connection.id).where(scope)
+    session.execute(delete(Authorization).where(Authorization.connection_id.in_(ids), Authorization.expires_at <= now))
+    session.execute(update(Connection).where(scope, Connection.assets_until <= now).values(assets=None, assets_until=None))
+    session.execute(update(Connection).where(scope, Connection.snapshot_until <= now).values(snapshot=None, snapshot_until=None))
+    session.execute(update(Connection).where(scope, Connection.state == 'authorizing',
         ~Connection.id.in_(select(Authorization.connection_id))).values(state='reconnect_required'))
-    session.execute(update(Connection).where(Connection.state == 'exchanging', Connection.next_sync <= now).values(state='reconnect_required'))
+    session.execute(update(Connection).where(scope, Connection.state == 'exchanging', Connection.next_sync <= now).values(state='reconnect_required'))
     # Expiring revocation material cannot live indefinitely after an outage.
-    for job in session.scalars(select(Job).where(Job.operation == 'revoke', Job.expires_at <= now)):
+    for job in session.scalars(select(Job).where(Job.connection_id.in_(ids), Job.operation == 'revoke', Job.expires_at <= now)):
         row = lock(session, job.connection_id)
         if row.generation == job.generation and row.state == 'disconnecting':
-            row.state, row.error = 'disconnected', 'revoke_in_google_account'
+            row.state, row.error = 'disconnected', 'revoke_in_provider_account' if runtime.provider != PROVIDER else 'revoke_in_google_account'
         session.delete(job)
-    for row in session.scalars(select(Connection).where(Connection.mode == runtime.mode,
+    for row in session.scalars(select(Connection).where(Connection.mode == runtime.mode, Connection.provider == runtime.provider,
             Connection.state.in_(['connected', 'partial']), Connection.next_sync <= now)):
         row = lock(session, row.id)
         if row.state not in {'connected', 'partial'} or not row.next_sync or aware(row.next_sync) > now:
@@ -250,7 +256,7 @@ def dispatch_one(factory, runtime):
     now = runtime.clock()
     with factory() as session:
         maintenance(session, runtime)
-        candidate = session.scalar(select(Job.connection_id).join(Connection).where(Connection.mode == runtime.mode,
+        candidate = session.scalar(select(Job.connection_id).join(Connection).where(Connection.mode == runtime.mode, Connection.provider == runtime.provider,
             Job.available_at <= now, or_(Job.state == 'pending', (Job.state == 'running') & (Job.lease_until <= now)))
             .order_by(Job.available_at).limit(1))
         if not candidate:
@@ -313,7 +319,7 @@ def dispatch_one(factory, runtime):
                 row.state = 'choose_location'
             else:
                 row.snapshot, row.snapshot_until = json.dumps(result), now + CACHE_TTL
-                row.last_success, row.next_sync = now, now + timedelta(hours=12)
+                row.last_success, row.next_sync = now, (now + timedelta(hours=12) if getattr(runtime.adapter, 'automatic_sync', True) else None)
                 row.state = 'partial' if result['errors'] else 'connected'
         session.commit()
     return True
