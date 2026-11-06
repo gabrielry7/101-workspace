@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-05",
+  "status": "PASS",
+  "bone": "footer.directory-watermark@0.1.0",
+  "browser": "Edg/156.0.4314.58",
+  "viewports": [
+    {
+      "width": 360,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 599,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 600,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 601,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 991,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 992,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 993,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    }
+  ],
+  "fallback": {
+    "overflow": false,
+    "parts": 130,
+    "motion": "none",
+    "clipped": []
+  },
+  "keyboard_native_link": "PASS",
+  "no_client_script": true,
+  "contract_tests": {
+    "passed": 4,
+    "failed": 0
+  },
+  "astro_check": {
+    "files": 410,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "visual_inspection": "Reviewed native screenshots at every listed width and fallback against supplied reference; no human approval claimed.",
+  "reference_media_committed": false,
+  "human_approval": "pending",
+  "limits": "Reference desktop only. Responsive reflow proposed. No original media redistributed."
+}

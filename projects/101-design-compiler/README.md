@@ -1,5 +1,9 @@
 # 101 Design Compiler · secciones reutilizables
 
+Footer solicitado: [caretta/08 como hueso sin piel](docs/bones/footer-caretta.md),
+vista local `/bones/footer-caretta/`. Cada espacio tiene etiqueta e identificador;
+la piel observada se documenta aparte. Versión 0.1.0 pendiente de revisión humana.
+
 Dirección vigente, 2026-11-05: construir páginas mediante **huesos de secciones**
 reutilizables y aplicar la **piel de cada marca**. Los huesos incluyen estructura,
 composición adaptable, scroll, movimiento e interacciones. La piel aporta fuentes,

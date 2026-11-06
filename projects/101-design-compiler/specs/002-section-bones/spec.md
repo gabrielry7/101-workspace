@@ -279,6 +279,11 @@ del respaldo y abrir el commit remoto de esta entrega.
 
 ## Contexto para la siguiente fase
 
+Actualización acotada del 2026-11-05: el usuario solicita incorporar caretta/08
+como footer sin diseño y con todas sus partes identificadas. Su implementación
+y verificación se siguen en [spec 003](../003-footer-caretta-bones/spec.md).
+El piloto de navegación/hero de esta spec sigue pendiente; no se declara completado.
+
 La correspondencia con los paquetes reales, las verificaciones del handoff y la
 migración del legado están en [el mapa de integración](../../docs/bones/integration.md).
 El contrato propuesto, con ejemplos de responsabilidades, está en

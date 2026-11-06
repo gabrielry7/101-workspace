@@ -1,0 +1,16 @@
+---
+import type { FooterEntry } from '../../bones/footer-caretta.ts';
+interface Props { item: FooterEntry }
+const { item } = Astro.props;
+---
+<span class="entry" data-footer-part={item.id} data-entry-state={item.state}>
+  {item.icon && <span class="icon-slot" data-footer-part={`${item.id}-icon`}>{item.icon}</span>}
+  {item.state === 'available'
+    ? <a data-footer-part={`${item.id}-text`} href={item.href}>{item.label}</a>
+    : <span data-footer-part={`${item.id}-text`}>{item.label}</span>}
+  {item.statusLabel && <span class="status" data-footer-part={`${item.id}-status`}>{item.statusLabel}</span>}
+</span>
+<style>
+  .entry { display: flex; align-items: baseline; flex-wrap: wrap; gap: .25rem .5rem; min-width: 0; }
+  .icon-slot, .status { font-size: .875em; }
+</style>
