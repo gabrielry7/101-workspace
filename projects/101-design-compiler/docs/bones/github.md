@@ -24,11 +24,15 @@ En un checkout nuevo, abrir `projects/101-design-compiler` como raíz del proyec
 Spec Kit guarda su puntero de feature por máquina; para seleccionar la spec vigente:
 
 ```powershell
-Set-Content -LiteralPath .specify/feature.json -Value '{"feature_directory":"specs/002-section-bones"}' -Encoding UTF8
+Set-Content -LiteralPath .specify/feature.json -Value '{"feature_directory":"specs/003-footer-caretta-bones"}' -Encoding UTF8
 ```
 
 Ese archivo está ignorado por diseño. Las plantillas, la constitución y la spec sí
 se versionan. Los comandos del proyecto se ejecutan desde esta subcarpeta.
+
+La feature activa posterior es el [Footer 001](footer-001.md), en la rama
+`codex/footer-caretta-bones-20261105`, derivada del esquema publicado en
+`46d375927fcc17d7812b04d415a524e6200c1500`. Spec 002 conserva el marco general.
 
 ## Regla para las próximas entregas
 

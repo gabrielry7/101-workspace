@@ -1,0 +1,19 @@
+---
+import type {FooterItemData} from '../../../bones/footer/contract.ts';
+interface Props {item: FooterItemData}
+const {item} = Astro.props;
+---
+{item.state === 'available' ? (
+  <a class="bf-item" data-footer-part="item" data-footer-item={item.id} data-101-action
+    href={item.href} target={item.newTab ? '_blank' : undefined}
+    rel={item.newTab ? 'noopener noreferrer' : undefined}>
+    <svg aria-hidden="true" class="bf-icon" viewBox="0 0 16 16"><rect x="3" y="3" width="10" height="10" rx="2"/><path d="M6 8h4m-2-2v4"/></svg>
+    <span>{item.label}</span>
+    {item.newTab && <span class="bf-sr-only"> (opens a new tab)</span>}
+  </a>
+) : (
+  <span class="bf-item bf-unavailable" data-footer-part="item" data-footer-item={item.id} role="link" aria-disabled="true">
+    <svg aria-hidden="true" class="bf-icon" viewBox="0 0 16 16"><rect x="3" y="3" width="10" height="10" rx="2"/><path d="M6 8h4"/></svg>
+    <span>{item.label}</span><span class="bf-soon">Soon</span>
+  </span>
+)}

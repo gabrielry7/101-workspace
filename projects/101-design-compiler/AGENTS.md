@@ -142,3 +142,24 @@ push, publish restricted media/data or push to Thomas's repository automatically
 The local standalone history differs from the GitHub monorepo: use a clean clone
 or worktree of the destination and transfer only reviewed task files. See
 `docs/bones/github.md`. Report any push failure explicitly instead of claiming delivery.
+
+## Active concrete family: footer extraction (2026-11-05)
+
+The user starts implementation with footers, using supplied references. Active
+feature: `specs/003-footer-caretta-bones`; framework spec 002 remains applicable.
+Reconstruct missing source into real Astro components, preserve composition and
+observed behavior, strip brand skin, and compare against the actual supplied
+capture. Never infer animation from a still. Mark proposed responsive behavior.
+
+Every bone records geometry and text/non-text/content/space measurements with
+denominators, viewport, time and limitations. Reuse Thomas's original
+component-preview owner for geometry, contrast, surfaces and 40x28 layout sampling;
+footer-specific text coverage uses exact line-box unions, not literal ink.
+Decorative backgrounds are not functional content; overlapping categories must
+not be presented as exclusive percentages. No metric is a human taste score.
+
+Private inspector modules are prepared under `.tools/footer-inspector`, never
+committed or placed in production public. `tooling/bones/build-preview.mjs` builds
+only the selected routes from byte-identical source copies with the existing Astro
+compiler for local verification. It is not a second renderer and does not waive
+legacy media gates. Actual customer markup contains no workshop instrumentation.

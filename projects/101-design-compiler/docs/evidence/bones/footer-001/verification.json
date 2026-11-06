@@ -1,0 +1,94 @@
+{
+  "schema": "101-footer-verification-v1",
+  "verified_at": "2026-11-06T03:59:42.944Z",
+  "browser": "Edg/156.0.4314.58",
+  "bone": "footer.directory-watermark@0.1.0",
+  "cases": [
+    {
+      "width": 1440,
+      "height": 806,
+      "groups": 4,
+      "soon": 5,
+      "overflow": false,
+      "broken_words": [],
+      "measurements": "measurements-1440.json"
+    },
+    {
+      "width": 768,
+      "height": 860,
+      "groups": 4,
+      "soon": 5,
+      "overflow": false,
+      "broken_words": [],
+      "measurements": "measurements-768.json"
+    },
+    {
+      "width": 991,
+      "height": 860,
+      "groups": 4,
+      "soon": 5,
+      "overflow": false,
+      "broken_words": [],
+      "measurements": "measurements-991.json"
+    },
+    {
+      "width": 992,
+      "height": 806,
+      "groups": 4,
+      "soon": 5,
+      "overflow": false,
+      "broken_words": [],
+      "measurements": "measurements-992.json"
+    },
+    {
+      "width": 993,
+      "height": 806,
+      "groups": 4,
+      "soon": 5,
+      "overflow": false,
+      "broken_words": [],
+      "measurements": "measurements-993.json"
+    },
+    {
+      "width": 600,
+      "height": 1420.75,
+      "groups": 4,
+      "soon": 5,
+      "overflow": false,
+      "broken_words": [],
+      "measurements": "measurements-600.json"
+    },
+    {
+      "width": 601,
+      "height": 860,
+      "groups": 4,
+      "soon": 5,
+      "overflow": false,
+      "broken_words": [],
+      "measurements": "measurements-601.json"
+    },
+    {
+      "width": 360,
+      "height": 1464.75,
+      "groups": 4,
+      "soon": 5,
+      "overflow": false,
+      "broken_words": [],
+      "measurements": "measurements-360.json"
+    }
+  ],
+  "checks": {
+    "font_fallback": true,
+    "reduced_motion": true,
+    "keyboard": true,
+    "no_js": true,
+    "cookie_event_contract": true,
+    "inspector_absence": true,
+    "operator_guides": true,
+    "customer_inspector_absent": true,
+    "page_exceptions": 0
+  },
+  "build_scope": "same Astro installation, byte-identical staged bones source; no alternate renderer",
+  "full_project_build": "blocked by preserved legacy B3 media package; no gates resealed",
+  "human_visual_approval": "pending"
+}

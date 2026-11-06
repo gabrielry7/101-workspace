@@ -88,6 +88,10 @@ Tras incorporar feedback, usar `$speckit-plan` y `$speckit-tasks` antes de
 implementar el piloto. La constitución no autoriza construir toda la biblioteca
 ni diseñar de nuevo las ocho bases en esta adopción.
 
+La primera extracción concreta que el usuario ha pedido es
+[spec 003 · Footer 001](../specs/003-footer-caretta-bones/spec.md), que adelanta
+footers como familia activa. El marco de secciones de spec 002 permanece vigente.
+
 La intención de obtener aproximadamente 90% de una web automáticamente se medirá
 en pilotos. No es un resultado demostrado ni una promesa para cualquier negocio.
 

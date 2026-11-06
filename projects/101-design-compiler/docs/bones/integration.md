@@ -102,6 +102,8 @@ repositorio y al release y restaurar sus entradas según su README.
 4. Comparar neutro/original/marca aplicada, verificar accesibilidad y contenido real,
    solicitar revisión visual de versiones concretas y medir esfuerzo manual.
 
-La entrega actual es documental y de reproducción del handoff, no ejecución de
-las tareas futuras. Ver [archivo anterior](../../old/README.md) y
+El handoff inicial y spec 002 fueron una entrega documental y de reproducción.
+La petición posterior del usuario da lugar al [Footer 001](footer-001.md),
+primer hueso implementado con medición y uso local del inspector compartido.
+El motor completo y las tareas nav/hero siguen pendientes. Ver [archivo anterior](../../old/README.md) y
 [flujo de GitHub](github.md).

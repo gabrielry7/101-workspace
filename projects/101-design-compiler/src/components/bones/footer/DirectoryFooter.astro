@@ -1,0 +1,71 @@
+---
+import FooterItem from './FooterItem.astro';
+import {FOOTER_BONE, parseFooterContent, type FooterContent} from '../../../bones/footer/contract.ts';
+import './footer.css';
+interface Props {content: FooterContent; cookieAction?: 'unbound' | 'event'}
+const {content: input, cookieAction = 'unbound'} = Astro.props;
+const content = parseFooterContent(input);
+---
+<footer class="bone-footer" data-footer-bone={FOOTER_BONE.id} data-footer-version={FOOTER_BONE.version}
+  aria-label={content.brand.name + ' footer'}>
+  <div class="bf-rails" aria-hidden="true"></div>
+  <div class="bf-transition" data-footer-part="transition">
+    <div class="bf-transition-space" data-footer-decoration aria-hidden="true"></div>
+    {content.assistants.length > 0 && <div class="bf-shell bf-assistants" data-footer-part="assistants">
+      <p>{content.assistantsLabel}</p>
+      <div class="bf-assistant-links">{content.assistants.map(item => (
+        <a href={item.href} target="_blank" rel="noopener noreferrer" class="bf-assistant"
+          aria-label={'Open this page in ' + item.label + ' (opens a new tab)'} title={item.label}
+          data-101-action data-footer-item={item.id}>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="5"/><path d="M10 2v3m0 10v3M2 10h3m10 0h3"/></svg>
+        </a>
+      ))}</div>
+    </div>}
+  </div>
+  <div class="bf-shell bf-directory" data-footer-part="directory">
+    <div class="bf-identity" data-footer-part="identity">
+      <span class="bf-brand-slot" data-footer-asset role="img" aria-label={content.brand.name}>{content.brand.name}</span>
+      <p class="bf-description">{content.brand.description}</p>
+      {content.backers.length > 0 && <div class="bf-backers" data-footer-part="backers">
+        <p>{content.brand.backersHeading}</p>
+        <div>{content.backers.map(item => (
+          <a href={item.href} target="_blank" rel="noopener noreferrer" data-footer-asset
+            aria-label={item.label + ' (opens a new tab)'}>{item.label}</a>
+        ))}</div>
+      </div>}
+    </div>
+    <nav class="bf-groups" aria-label="Footer directory">
+      {content.groups.map(group => <section class="bf-group" data-footer-part="group" aria-labelledby={'footer-' + group.id}>
+        <h2 id={'footer-' + group.id} data-footer-part="group-title">{group.label}</h2>
+        <ul>{group.items.map(item => <li><FooterItem item={item}/></li>)}</ul>
+      </section>)}
+    </nav>
+  </div>
+  <div class="bf-watermark" data-footer-part="watermark" data-footer-decoration
+    data-wordmark={content.brand.wordmark} aria-hidden="true"></div>
+  <div class="bf-legal" data-footer-part="legal">
+    <div class="bf-shell bf-legal-inner">
+      <p>{content.brand.copyright}</p>
+      <nav aria-label="Legal and contact">
+        {content.legal.slice(0,2).map(item => <a href={item.href} target={item.newTab ? '_blank' : undefined}
+          rel={item.newTab ? 'noopener noreferrer' : undefined} data-101-action>{item.label}
+          {item.newTab && <span class="bf-sr-only"> (opens a new tab)</span>}
+        </a>)}
+        <button type="button" data-footer-cookie data-bound={cookieAction === 'event'}
+          disabled={cookieAction === 'unbound'} aria-describedby={cookieAction === 'unbound' ? 'footer-cookie-state' : undefined}
+          title={cookieAction === 'unbound' ? 'Requires a connected consent manager' : undefined}>Cookie settings</button>
+        {cookieAction === 'unbound' && <span id="footer-cookie-state" class="bf-sr-only">Consent manager not connected in this reconstruction.</span>}
+        {content.legal.slice(2).map(item => <a href={item.href} target={item.newTab ? '_blank' : undefined}
+          rel={item.newTab ? 'noopener noreferrer' : undefined} data-101-action>{item.label}
+          {item.newTab && <span class="bf-sr-only"> (opens a new tab)</span>}
+        </a>)}
+      </nav>
+    </div>
+  </div>
+</footer>
+<script>
+  document.addEventListener('click', event => {
+    const button = event.target instanceof Element ? event.target.closest('[data-footer-cookie][data-bound="true"]') : null;
+    if (button) button.dispatchEvent(new CustomEvent('101:footer-cookie-settings', {bubbles: true, detail: {bone: 'footer.directory-watermark', version: '0.1.0'}}));
+  });
+</script>

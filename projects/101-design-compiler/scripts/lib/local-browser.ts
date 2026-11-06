@@ -14,7 +14,7 @@ export async function openLocalBrowser(outputDirectory='dist') {
       const file = resolve(root, `.${path.endsWith('/') ? `${path}index.html` : path}`), rel = relative(root,file);
       if (rel.startsWith('..') || isAbsolute(rel)) throw new Error('Outside dist');
       const bytes = await readFile(file);
-      response.setHeader('Content-Type', ({'.html':'text/html; charset=utf-8','.css':'text/css','.jpg':'image/jpeg'} as Record<string,string>)[extname(file)] ?? 'application/octet-stream');
+      response.setHeader('Content-Type', ({'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.svg':'image/svg+xml','.avif':'image/avif','.png':'image/png','.jpg':'image/jpeg'} as Record<string,string>)[extname(file)] ?? 'application/octet-stream');
       response.setHeader('Cache-Control','no-store'); response.end(bytes);
     } catch { response.statusCode = 404; response.end('Not found'); }
   });

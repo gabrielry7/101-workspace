@@ -7,6 +7,10 @@ colores, logotipo y tratamiento gráfico; datos y medios conservan su procedenci
 
 ## Empezar aquí
 
+**Primer hueso implementado:** [Footer 001 · Caretta, neutro y medido](docs/bones/footer-001.md).
+El usuario eligió comenzar por footers. Su [spec 003](specs/003-footer-caretta-bones/spec.md)
+es la feature activa; el marco general de secciones sigue en spec 002.
+
 1. [Spec 002: alcance, ejemplos de uso y aceptación](specs/002-section-bones/spec.md).
 2. [Esquema: huesos, comportamiento, piel y contenido](docs/bones/section-model.md).
 3. [Handoff de Tomás, dueños existentes y verificaciones](docs/bones/integration.md).
@@ -19,6 +23,7 @@ colores, logotipo y tratamiento gráfico; datos y medios conservan su procedenci
 
 | Entregado | Pendiente |
 | --- | --- |
+| Footer 001 reconstruido, taller, anatomía y mediciones por tamaño | Revisión visual del usuario y nuevas referencias de footers |
 | Especificación y separación de responsabilidades, constitución 2.0.0, respaldo verificado del legado y documentación conectada a GitHub | Plan y tareas del nuevo piloto, contratos ejecutables e integración del motor |
 | Handoff privado de Tomás restaurado: 44 entradas verificadas, 36 pruebas locales y build de 14 variantes de reseñas | Navegación/hero del nuevo modelo y comprobación de reutilización con clientes reales |
 
@@ -26,9 +31,13 @@ Las 14 variantes son de reseñas, no héroes. La biblioteca amplia y el objetivo
 aproximadamente 90% de una página automática siguen siendo metas por implementar
 y medir. No hay aprobación visual nueva ni publicación comercial en esta entrega.
 
-La primera implementación propuesta se limita a una navegación y dos huesos de
+La propuesta inicial de spec 002 se limita a una navegación y dos huesos de
 hero, utilizando las reseñas existentes como referencia de separación y taller.
 Puede ajustarse durante la revisión de la spec; no se generan 1.000 variantes.
+
+La petición posterior del usuario adelanta el footer caretta/08.
+La propuesta nav/hero permanece como trabajo futuro; no es un requisito previo
+para la extracción ya autorizada de footers.
 
 ## Código anterior y herramientas
 

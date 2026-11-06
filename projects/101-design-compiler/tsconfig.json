@@ -8,6 +8,7 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": [
     "dist",
+    "dist-footer-bones",
     "node_modules",
     ".tools",
     "docs/evidence/claude-code/**/source",

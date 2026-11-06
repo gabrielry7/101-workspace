@@ -1,0 +1,70 @@
+{
+  "feature": "003-footer-caretta-bones",
+  "bone": "footer.directory-watermark@0.1.0",
+  "unit_tests": {
+    "passed": 3,
+    "failed": 0,
+    "meaning": "contract failures and rectangle union clipping/overlap"
+  },
+  "typecheck": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0,
+    "command": "npm run check"
+  },
+  "scoped_astro_build": {
+    "passed": true,
+    "routes": 4,
+    "command": "node tooling/bones/build-preview.mjs",
+    "source": "byte-identical staged app source; existing Astro compiler"
+  },
+  "mechanical_design_detector": {
+    "findings": 0
+  },
+  "native_browser_receipt": "verification.json",
+  "full_app_build": {
+    "passed": false,
+    "blocker": "B3_MEDIA_BLOCKED:B3_PARENT_OR_EVIDENCE_BLOCKED",
+    "legacy_gates_changed": false
+  },
+  "canvas": {
+    "draft_id": "43c5cfe6-b15c-437e-b88e-bc8462629985",
+    "version": 2,
+    "preview": "https://p.superdesign.dev/draft/43c5cfe6-b15c-437e-b88e-bc8462629985",
+    "source": "static import of actual built footer; no AI generation credits"
+  },
+  "local_background_server": {
+    "started": false,
+    "reason": "automatic approval review rejected Start-Process; blocked by policy"
+  },
+  "human_visual_approval": "pending",
+  "source_sha256": {
+    "src/bones/footer/anatomy.ts": "119d8e7fc8391b5d64ccb349b453c1146e76a657069c05ad96e57b04629900bd",
+    "src/bones/footer/caretta.ts": "06a62d2f5eb470a5e69898814d4e561df0a790ed9e4ec65816e280170398e42a",
+    "src/bones/footer/contract.ts": "28f984637e21ce33f155e076048753e27385924edcd1430a0fb3cebfb2988e5e",
+    "src/bones/footer/measure.ts": "4f6c28308482a22e2487559920bddd4967a25d457c621ea818fd7cb1ccb6ba46",
+    "src/bones/footer/workshop.ts": "4a0ded730d83d26c61bdc5c3b47080d9b03fa2cea98fa80aaa8e2926f73546b7",
+    "src/components/bones/footer/DirectoryFooter.astro": "fb64e0728d1d9d1199302cf5ab4ef04d6597f4b8f278c66563e0ee49b7160559",
+    "src/components/bones/footer/footer.css": "c1dea72f9a4d521281dff7398b78a1e42a9fd447c2d2d01b31a3ffed60351551",
+    "src/components/bones/footer/FooterItem.astro": "7d0bc7dec1df196bdab5898759e073bf8aafd10aad5d2edc04d656b1ee894777",
+    "src/pages/bones/footers/index.astro": "ce8377b34141d6de25ff829f0be77ba1e78c98bf290e1292863d9422055cabdc",
+    "src/pages/bones/footers/caretta/event-instance.astro": "feb0df100927bc506252bbc6e80eb58181b8c7113cf3863b7ab9d8c37a486e31",
+    "src/pages/bones/footers/caretta/index.astro": "33215a21efcbc07809c09c12d5a2f9639a94491a58154f91b18609fd889fbb7a",
+    "src/pages/bones/footers/caretta/instance.astro": "35c6195f8eb61e91cf551979e3508ec809d6379b55d3cf203fc1b36d550c6df5",
+    "tooling/bones/build-preview.mjs": "7619f3767477ef411e3e7114c638f93756bcd1dc479dd8be37441707c8f216a1",
+    "tooling/bones/prepare-inspector.mjs": "d6febc18e8332717234aad9bef957b784c93b5b225cad6b07c3b589fd2609282"
+  },
+  "capture_sha256": {
+    "fallback-360.png": "c52edce40fb1bb6649bdbccbdcc834ccc7476888a77e1daf3fc68ef0484117a6",
+    "neutral-1440.png": "d66d3a7304c2134a0f40f371f83be893d7040c8bd4795c897e17729cacaebf20",
+    "neutral-360.png": "d1008ccaf1303a76d1cb5419f362ac482cb7c4f53e836114951286ead3539490",
+    "neutral-600.png": "b90a5a31d0478c21dba89ce0b940596a82f992e135fb33638a468f7beb325b56",
+    "neutral-601.png": "c95232fdc04cdf9bccc2850f319b3ce97f3f20983b059e4205e7b9f8d48ee1f4",
+    "neutral-768.png": "aada74510eacb235e62acaf9f5476dbcbf1e60fd001c08180c6b194082ce3dcf",
+    "neutral-991.png": "0fdfabc62dfcecf0b8fcba7619c30c4a07ca98c704d5a9c191d90edb93409a11",
+    "neutral-992.png": "d0e61d8b2b7db594ace10d29202257c51dbb45eb300c9655d9a7fb8c439959c6",
+    "neutral-993.png": "308a5be99dc0b1eedaeba49a512650368090598a9f610b91f27dbc5c59081468",
+    "responsive-contact-sheet.png": "fb50dc9d92c523d58f1cc5ba9e0b4fde252bfe6e55853afd1cd8b7777df51a01",
+    "workshop-1440.png": "c17b99140586bad437af0b1ef1bfc5924fcd1f8ca65b6b1ad16ff91568121ada"
+  }
+}

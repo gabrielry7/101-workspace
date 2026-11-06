@@ -1,0 +1,76 @@
+---
+import {existsSync} from 'node:fs';
+import {carettaFooter} from '../../../../bones/footer/caretta.ts';
+const reference = process.env['BONES_PREVIEW'] === '1' && existsSync('.tools/footer-reference/caretta.avif') ? '/__bone-references/caretta.avif' : carettaFooter.source.image;
+---
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Footer 001 · hueso Caretta | 101</title></head>
+<body>
+  <header class="wb-header"><a href="/bones/footers/">101 <span>/ Biblioteca de huesos</span></a><a href="https://www.regards.design/sections/caretta/08" target="_blank" rel="noopener noreferrer">Ver fuente ↗</a></header>
+  <main>
+    <div class="wb-heading"><div><h1>Un footer, sin su piel.</h1><p>Caretta / 08 · Directorio con marca recortada · <strong>Reconstruido, pendiente de revisión</strong></p></div><a href="instance/" target="_blank">Abrir sólo el componente ↗</a></div>
+    <p class="wb-description">Se conservan la composición y los estados. Se retiran gradiente, logos originales, fuentes de marca y acabado esmerilado. La adaptación móvil es una propuesta; la referencia recibida es de escritorio.</p>
+    <div class="wb-toolbar">
+      <div class="wb-tabs" role="group" aria-label="Vista"><button data-view-choice="neutral" aria-pressed="true">Hueso neutro</button><button data-view-choice="reference" aria-pressed="false">Referencia</button><button data-view-choice="compare" aria-pressed="false">Comparar</button></div>
+      <label>Ancho <select id="viewport-width"><option value="1440">1440 px · escritorio</option><option value="768">768 px · tablet</option><option value="360">360 px · móvil</option></select></label>
+      <button id="toggle-guides" aria-pressed="false">Ver anatomía</button><button id="refresh-measurements">Medir de nuevo</button><button id="download-measurements">Descargar JSON</button>
+    </div>
+    <div class="wb-layout">
+      <section id="preview-stage" data-view="neutral" aria-label="Comparación del footer">
+        <article class="neutral-panel"><div class="panel-label"><h2>Hueso neutro</h2><span id="frame-dimensions">1440 px</span></div><div class="frame-viewport"><iframe id="footer-frame" title="Hueso neutro del footer Caretta" src="instance/" width="1440" height="806"></iframe></div></article>
+        <article class="reference-panel"><div class="panel-label"><h2>Referencia suministrada</h2><span>1440 × 806 · 19 oct 2026</span></div><img src={reference} width="1440" height="806" alt="Footer original de Caretta: gradiente cálido, directorio y marca grande tras la barra legal."/></article>
+      </section>
+      <aside aria-label="Mediciones del footer">
+        <h2>Cómo se ocupa el espacio</h2><p class="measurement-scope">Sección completa · medidas en píxeles CSS</p>
+        <div class="wb-stats">
+          <div><span>Texto</span><strong id="metric-text">—</strong><small>Unión de cajas de líneas</small></div>
+          <div><span>Sin texto</span><strong id="metric-no-text">—</strong><small>Incluye controles y decoración</small></div>
+          <div><span>Ocupación funcional</span><strong id="metric-occupied">—</strong><small>Texto, controles y slots de logos</small></div>
+          <div><span>Espacio libre</span><strong id="metric-free">—</strong><small>Complemento de ocupación</small></div>
+        </div>
+        <p id="measurement-details" class="measurement-scope" aria-live="polite">Preparando la medición…</p>
+        <p class="wb-note">“Texto” mide cajas de líneas, no tinta literal. “Sin texto” no significa vacío. Las cifras dependen del contenido, la fuente y el tamaño.</p>
+        <details><summary>Controles, medios y decoración</summary><p id="secondary-metrics">—</p><p>No se suman como partes exclusivas: pueden solaparse.</p></details>
+        <details><summary>Inspector compartido de Tomás</summary><p id="shared-inspector-state">Comprobando disponibilidad local…</p><div id="shared-summary"></div></details>
+        <details><summary>Partes y procedencia</summary><div id="anatomy-list"></div><p>Composición reconstruida en Astro. Medidas y guías compartidas reutilizan component-preview; texto utiliza la extensión del footer.</p></details>
+        <details><summary>Acciones y límites</summary><p>Los destinos activos vienen del HTML público actual. Soon no navega. Los asistentes se abren sólo por decisión del visitante. Cookie settings requiere conectar un gestor de consentimiento.</p><p>La gran marca recortada y los logos son espacios gráficos; no se cuentan como texto funcional.</p></details>
+      </aside>
+    </div>
+    <p class="wb-bottom">footer.directory-watermark @ 0.1.0 · 1 hueso de footer · Sin aprobación visual humana todavía.</p>
+    <script id="measurement-report" type="application/json" is:inline>{}</script>
+  </main>
+  <script>import '../../../../bones/footer/workshop.ts';</script>
+</body></html>
+<style>
+  :global(*){box-sizing:border-box} :global(body){margin:0;background:#f7f7f5;color:#202120;font:14px/1.5 Arial,Helvetica,sans-serif}
+  :global(a){color:inherit;text-underline-offset:4px} :global(button),:global(select){font:inherit}
+  :global(button){cursor:pointer} :global(:focus-visible){outline:2px solid #242424;outline-offset:3px}
+  .wb-header{height:68px;padding:0 32px;border-bottom:1px solid #d7d8d5;display:flex;justify-content:space-between;align-items:center}
+  .wb-header a:first-child{text-decoration:none;font-weight:700;font-size:20px}.wb-header span{font-size:13px;font-weight:400;margin-left:10px}
+  main{max-width:1720px;margin:auto;padding:36px 32px}
+  .wb-heading{display:flex;justify-content:space-between;gap:20px;align-items:center}h1{font-size:34px;font-weight:500;line-height:1.15;letter-spacing:-.025em;margin:0 0 12px}
+  .wb-heading p{margin:0;color:#62645f;font-size:12px}.wb-heading strong{font-weight:400;color:#363832}.wb-heading>a{font-size:12px;white-space:nowrap}
+  .wb-description{max-width:850px;color:#5e605b;margin:20px 0 28px;font-size:13px}
+  .wb-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+  .wb-toolbar button,.wb-toolbar select{padding:9px 12px;border:1px solid #cdcfca;border-radius:5px;background:#fff;font-size:12px;min-height:38px}
+  .wb-tabs{display:flex;gap:3px;margin-right:auto}.wb-tabs button[aria-pressed=true]{background:#252723;color:#fff;border-color:#252723}
+  .wb-toolbar label{font-size:12px;display:flex;gap:8px;align-items:center}
+  .wb-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px;align-items:start}
+  #preview-stage{min-width:0;display:grid;gap:18px}#preview-stage[data-view=compare]{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #preview-stage[data-view=neutral] .reference-panel,#preview-stage[data-view=reference] .neutral-panel{display:none}
+  #preview-stage article{min-width:0;background:white;border:1px solid #d7d8d2}
+  .panel-label{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:40px;padding:10px 14px;border-bottom:1px solid #e3e4df}
+  .panel-label h2{font-size:12px;font-weight:600;margin:0}.panel-label span{font-size:10px;color:#676963}
+  .frame-viewport{position:relative;min-height:100px;overflow:hidden}iframe{border:0;display:block;position:absolute;top:0;left:0;transform-origin:top left;background:#fff}
+  .reference-panel img{display:block;width:100%;height:auto}
+  aside{padding:18px 0}aside>h2{font-size:17px;line-height:1.3;font-weight:500;margin:0 0 4px}.measurement-scope{font-size:11px;color:#6a6c66;margin:6px 0 16px}
+  .wb-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px;margin:24px 0}
+  .wb-stats span{display:block;font-size:11px;color:#5f615a}.wb-stats strong{display:block;font-size:28px;font-weight:500;letter-spacing:-.035em;margin:3px 0}
+  .wb-stats small{display:block;font-size:10px;color:#74766f;line-height:1.4}.wb-note{font-size:12px;line-height:1.6;color:#55574f}
+  details{border-top:1px solid #d9dbd4;padding:13px 0;font-size:12px}summary{cursor:pointer;font-weight:600}details p{color:#62645d;line-height:1.6}
+  :global(#anatomy-list button){display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #e6e7e3;background:none;padding:9px 0;font-size:12px}
+  .wb-bottom{font-size:11px;color:#6c6e67;margin-top:22px}
+  @media(max-width:1050px){.wb-layout{grid-template-columns:minmax(0,1fr)}aside{max-width:700px}.wb-stats{grid-template-columns:repeat(4,1fr)}#preview-stage[data-view=compare]{grid-template-columns:1fr}}
+  @media(max-width:600px){main{padding:26px 16px}.wb-header{padding:0 16px}.wb-header span{font-size:11px}.wb-heading{display:block}.wb-heading>a{display:inline-block;margin-top:14px}h1{font-size:28px}.wb-stats{grid-template-columns:1fr 1fr}.wb-tabs{width:100%}.wb-toolbar button{min-height:44px}.panel-label{flex-wrap:wrap}}
+</style>
