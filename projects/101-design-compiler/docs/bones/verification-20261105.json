@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-05",
+  "timezone": "America/Bogota",
+  "platform": "Windows",
+  "source_repository": "thomaspradae/101-world-model",
+  "source_commit": "6c0ed29940985bfb1789280c1972e47386775193",
+  "source_release": "review-bones-gabo-20261106",
+  "archive_sha256": "c5f534ce3b5f475516fc773f9f79c3eae3c666163bad74dd523d0554ed24ab41",
+  "node": "v26.7.0",
+  "immutable_inputs_verified": 44,
+  "tests": {
+    "passed": 36,
+    "failed": 0,
+    "files": [
+      "bones.test.ts",
+      "review-demo.test.ts",
+      "review-section.test.ts",
+      "panorama.test.ts",
+      "showcase.test.ts"
+    ]
+  },
+  "native_build": {
+    "passed": true,
+    "family": "reviews",
+    "variant_count": 14,
+    "network_calls": 0
+  },
+  "publication_allowed": false,
+  "not_rerun_locally": [
+    "Astro consumer",
+    "full native browser QA",
+    "human visual approval"
+  ],
+  "product_implementation_delivered": false
+}
