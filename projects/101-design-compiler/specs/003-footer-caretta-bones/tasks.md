@@ -4,7 +4,7 @@
 - [x] T002 (FR-004/005) Contrato validado y casos de URL/ID/estado/dato ausente.
 - [x] T003 (FR-002/003/005) Composición Astro y revisión con etiquetas por parte.
 - [x] T004 (FR-006/007) Navegador nativo, comparación con referencia y evidencia.
-- [ ] T005 (FR-008) Revisar archivos, commit/push aislados y comprobar remoto.
+- [x] T005 (FR-008) Revisar archivos, commit/push aislados y comprobar remoto.
 
 La comprobación previa spec/plan/tareas no detectó discrepancias de alcance.
 Convergencia T001–T004: 130 partes, siete regiones, 24 entradas de directorio y
@@ -16,3 +16,9 @@ desbordamiento horizontal. Enlace nativo activado por teclado con JS deshabilita
 Las capturas y comparación original/hueso son locales. [Recibo](../../docs/bones/footer-caretta-verification.json).
 Sin huecos técnicos conocidos dentro del alcance; aprobación humana y aplicar
 una piel real permanecen fuera de lo acreditado por estas pruebas.
+
+T005: diff de 13 archivos revisado, sin medios ni material privado. Commit
+`d93e34daa93bc4153363254cfbb6c1c6fc718736` subido a
+`gabrielry7/101-workspace`, rama `codex/footer-caretta-neutral-20261105`, y
+comprobado con la API de GitHub. No se fusionó ni desplegó. El worktree ajeno con
+otro borrador permanece intacto. Este cierre documental se versiona por separado.
