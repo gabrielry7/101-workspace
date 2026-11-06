@@ -1,0 +1,141 @@
+---
+import { littleAmpsBone as bone, littleAmpsContentSchema, type LittleAmpsContent } from '../../bones/footer-little-amps.ts';
+import Action from './LittleAmpsAction.astro';
+interface Props { content: LittleAmpsContent }
+const content = littleAmpsContentSchema.parse(Astro.props.content);
+---
+<footer class="social-rail-footer" data-section-bone={bone.id} data-bone-version={bone.version} aria-label="Footer con identidad, directorio y carril social">
+  <div class="main-panel" data-footer-part="main-panel">
+    <div class="identity" data-footer-part="identity">
+      <div class="logo-slot" data-slot-kind="brand-graphic"><Action part="brand-logo" item={content.logo} /></div>
+      <div class="contact" data-footer-part="contact">
+        <section data-footer-part="locations" aria-label={content.visitTitle}>
+          <h2 data-footer-part="visit-title">{content.visitTitle}</h2>
+          {content.addresses.map((address, i) => <p data-footer-part={`address-${i + 1}`}>{address}</p>)}
+        </section>
+        <div data-footer-part="channels">
+          <ul class="social-actions">{content.social.map((item, i) => <li><Action part={`social-${i + 1}`} item={item} /></li>)}</ul>
+          <p><Action part="email" item={content.email} /></p>
+        </div>
+      </div>
+    </div>
+    <nav class="menus" data-footer-part="menus" aria-label="Directorio del footer">
+      {content.menus.map((menu, g) => <section data-footer-part={`menu-${g + 1}`}>
+        <details open>
+          <summary data-footer-part={`menu-${g + 1}-toggle`}>
+            <span data-footer-part={`menu-${g + 1}-title`}>{menu.title}</span>
+            <svg data-footer-part={`menu-${g + 1}-caret`} viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" /></svg>
+          </summary>
+          <ul>{menu.items.map((item, i) => <li><Action part={`menu-${g + 1}-link-${i + 1}`} item={item} /></li>)}</ul>
+        </details>
+      </section>)}
+    </nav>
+    <div class="player-slot" data-footer-part="player" data-slot-kind="external-player">
+      <p>{content.player}</p>
+      <p>Embed del proveedor · carátula, metadatos, controles y lista de pistas.</p>
+      <p>Espacio sin conectar. No es una foto.</p>
+    </div>
+  </div>
+  <div class="social-band" data-footer-part="social-band" data-paused="false">
+    <div class="invitation">
+      <div class="follow-slot" data-slot-kind="illustrated-invitation"><Action part="follow-graphic" item={content.followGraphic} /></div>
+      <button type="button" class="pause" data-footer-part="gallery-pause" aria-pressed="false" hidden>Pausar tira</button>
+    </div>
+    <div class="gallery-window" data-footer-part="gallery-window" tabindex="0" role="region" aria-label="Once espacios de medios sociales; desplazar horizontalmente cuando estén en pausa">
+      <div class="gallery-track" data-footer-part="gallery-track">
+        <ol class="gallery-group">{content.gallery.map((label, i) => <li data-footer-part={`gallery-${i + 1}`} data-slot-kind="social-media">{label}</li>)}</ol>
+        <div class="gallery-group copies" aria-hidden="true" inert>{content.gallery.map(label => <div>{label}</div>)}</div>
+      </div>
+    </div>
+  </div>
+  <div class="legal" data-footer-part="legal">
+    <div class="copyright"><p data-footer-part="copyright">{content.copyright}</p><Action part="copyright-brand" item={content.copyrightBrand} /></div>
+    <Action part="credits" item={content.credits} />
+  </div>
+</footer>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-section-bone="footer.identity-menus-social-rail"]').forEach(footer => {
+    const menus = [...footer.querySelectorAll<HTMLDetailsElement>('.menus details')];
+    const desktop = matchMedia('(min-width: 1100px)');
+    menus.forEach(menu => menu.querySelector('summary')?.addEventListener('click', event => {
+      if (desktop.matches) { event.preventDefault(); return; }
+      if (!menu.open) menus.forEach(other => { if (other !== menu) other.open = false; });
+    }));
+    const restore = () => { menus.forEach(menu => {
+      menu.querySelector('summary')!.inert = desktop.matches;
+      if (desktop.matches) menu.open = true;
+    }); };
+    desktop.addEventListener('change', restore);
+    restore();
+    const band = footer.querySelector<HTMLElement>('.social-band')!;
+    const pause = footer.querySelector<HTMLButtonElement>('.pause')!;
+    band.dataset.enhanced = 'true'; pause.hidden = false;
+    pause.addEventListener('click', () => {
+      const paused = band.dataset.paused !== 'true';
+      band.dataset.paused = String(paused);
+      pause.setAttribute('aria-pressed', String(paused));
+      pause.textContent = paused ? 'Reanudar tira' : 'Pausar tira';
+    });
+  });
+</script>
+<style>
+  .social-rail-footer { --rail-tile: calc((100vw - 44px) / 5); --rail-gap: 1vw; font-family: initial; font-size: 1rem; line-height: 1.5; padding-top: 15px; word-break: normal; overflow-wrap: normal; hyphens: none; }
+  .social-rail-footer * { box-sizing: border-box; min-width: 0; }
+  .main-panel { margin-inline: 15px; padding: 30px; display: grid; gap: 30px; }
+  .identity { display: flex; flex-direction: column; justify-content: space-between; gap: 30px; }
+  .logo-slot { aspect-ratio: 385 / 156.675; width: 100%; display: grid; place-content: center; padding: 1rem; text-align: center; }
+  .contact { display: flex; flex-wrap: wrap; gap: 22px; justify-content: space-between; }
+  .contact > * { flex: 0 1 auto; }
+  h2, p { margin: 0; font-size: inherit; font-weight: normal; }
+  h2 { margin-bottom: 12px; }
+  ul, ol { list-style: none; margin: 0; padding: 0; }
+  .social-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .social-actions li { max-width: 8.5rem; }
+  .menus { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  summary { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  summary svg { flex: 0 0 16px; }
+  details[open] summary svg { transform: rotate(180deg); }
+  .menus ul { padding-block: 12px 24px; }
+  .menus li + li { margin-top: 4px; }
+  .player-slot { display: none; height: 380px; padding: 24px; align-content: center; gap: 20px; }
+  .social-band { display: flex; align-items: center; gap: 16px; padding: 20px 22px; }
+  .invitation { width: 45vw; flex: 0 0 45vw; }
+  .follow-slot { min-height: 92px; padding: 12px; display: grid; align-content: center; text-align: center; }
+  .pause { font: inherit; margin-top: 4px; min-height: 32px; max-width: 100%; }
+  .gallery-window { flex: 1; overflow-x: auto; overscroll-behavior-x: contain; }
+  .gallery-track { display: flex; width: max-content; }
+  .gallery-group { display: flex; gap: var(--rail-gap); padding-right: var(--rail-gap); flex-shrink: 0; }
+  .gallery-group > * { flex: 0 0 var(--rail-tile); width: var(--rail-tile); aspect-ratio: 1; padding: 8px; display: grid; place-content: center; text-align: center; }
+  .copies { display: none; }
+  .legal { display: flex; justify-content: space-between; align-items: baseline; gap: 16px 30px; padding: 11px 22px; flex-wrap: wrap; }
+  .copyright { display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+  @media (max-width: 768px) { .contact { flex-direction: column; } }
+  @media (min-width: 750px) { .social-rail-footer { --rail-tile: calc((100vw - 44px) / 15); } }
+  @media (min-width: 769px) { .invitation { width: 17vw; flex-basis: 17vw; } }
+  @media (min-width: 1100px) {
+    .main-panel { grid-template-columns: minmax(0, 1.5fr) minmax(0, 3fr); gap: 15px; }
+    .menus { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 20px; gap: 24px; }
+    .identity { min-height: 350px; }
+    .menus summary { pointer-events: none; min-height: 24px; }
+    .menus summary svg { display: none; }
+    .menus details::details-content { content-visibility: visible; }
+  }
+  @media (min-width: 1201px) {
+    .main-panel { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.9fr) minmax(390px, 1.55fr); gap: 30px; }
+    .player-slot { display: grid; }
+    .identity { min-height: 380px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .social-band[data-enhanced="true"][data-paused="false"] .gallery-window { overflow-x: hidden; }
+    .social-band[data-enhanced="true"][data-paused="false"] .copies { display: flex; }
+    .social-band[data-enhanced="true"][data-paused="false"] .gallery-track { animation: footer-rail 108.9s linear infinite; }
+    .social-band[data-enhanced="true"][data-paused="false"]:hover .gallery-track,
+    .social-band[data-enhanced="true"][data-paused="false"]:focus-within .gallery-track { animation-play-state: paused; }
+    .social-band[data-enhanced="true"][data-paused="false"]:focus-within .gallery-window { overflow-x: auto; }
+    .social-band:focus-within .gallery-track { animation: none !important; }
+    .social-band:focus-within .copies { display: none !important; }
+    @keyframes footer-rail { to { transform: translateX(-50%); } }
+  }
+  @media (prefers-reduced-motion: reduce), (forced-colors: active) { .pause { display: none; } .gallery-window { overflow-x: auto !important; } .gallery-track { animation: none !important; } .copies { display: none !important; } }
+</style>

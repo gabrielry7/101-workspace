@@ -1,0 +1,12 @@
+---
+import type { LittleAmpsAction } from '../../bones/footer-little-amps.ts';
+interface Props { item: LittleAmpsAction; part: string }
+const { item, part } = Astro.props;
+---
+{item.state === 'available'
+  ? <a data-footer-part={part} href={item.href}>{item.label}</a>
+  : <span data-footer-part={part} data-slot-state="unbound">{item.label}</span>}
+<style>
+  a, span { display: inline-block; max-width: 100%; word-break: normal; overflow-wrap: normal; hyphens: none; }
+  a { min-height: 24px; align-content: center; }
+</style>

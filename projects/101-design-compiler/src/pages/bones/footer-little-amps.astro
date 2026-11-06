@@ -1,0 +1,63 @@
+---
+import Footer from '../../components/bones/SocialRailFooter.astro';
+import { littleAmpsBone as bone, littleAmpsAnatomy, neutralLittleAmps, socialMediaBriefs } from '../../bones/footer-little-amps.ts';
+const parts = littleAmpsAnatomy();
+---
+<!doctype html>
+<html lang="es">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Little Amps · footer sin piel</title></head>
+  <body>
+    <header class="workshop">
+      <h1>Little Amps · footer sin piel</h1>
+      <p><code>{bone.id}@{bone.version}</code> · Reconstruido para revisión; aprobación humana pendiente.</p>
+      <p>Conserva estructura y comportamiento. Cada etiqueta marca qué contenido recibe ese lugar; los contornos sólo ayudan a revisar.</p>
+      <nav aria-label="Herramientas de revisión"><a href="#anatomy">Ver cada parte</a> · <a href="#media">Tipos de imágenes</a> · <a href="#skin">Piel retirada</a> · <a href={bone.source.gallery}>Referencia en Footr</a> · <a href={bone.source.official}>Sitio oficial</a></nav>
+      <details class="notes"><summary>Cómo leer esta extracción</summary>
+        <p>No hay fotos, logo, fuentes ni colores de Little Amps aplicados. El logo es una gráfica; la invitación social es un enlace gráfico; Spotify es un espacio de integración del proveedor. Los textos de dirección no son botones.</p>
+        <p>Los menús móviles empiezan abiertos. La tira conserva once medios y movimiento lineal; se añadió pausa accesible. Sin JavaScript o con movimiento reducido se puede recorrer manualmente. Los destinos están sin vincular.</p>
+        <p>Los umbrales de 750, 769, 1100 y 1201 px proceden del CSS oficial. Las dimensiones de las capturas de Footr son píxeles de imagen; no prueban el viewport CSS.</p>
+      </details>
+    </header>
+    <div class="anatomy-guides"><Footer content={neutralLittleAmps} /></div>
+    <main class="workshop">
+      <section id="anatomy">
+        <h2>Inventario completo de partes</h2>
+        <p>La referencia describe el original; no se reutiliza como contenido de otro negocio. Un hueco sin destino es texto, no un enlace ficticio.</p>
+        <dl>{parts.map(part => <div><dt><code>{part.id}</code> · {part.kind}</dt><dd><strong>{part.position}</strong><br />{part.purpose}<br />Referencia: {part.reference}<br />Responsable: {part.owner}</dd></div>)}</dl>
+      </section>
+      <section id="media">
+        <h2>Qué tipo de imagen va en cada espacio</h2>
+        <p>Once piezas independientes. No son once fotos genéricas: incluyen producto, local, personas, proceso y un cartel. Una foto documental de otro negocio no sirve como evidencia del cliente.</p>
+        <ol>{socialMediaBriefs.map((media, i) => <li><h3>Espacio {i + 1} · {media.label}</h3><p>{media.subject}. {media.crop}.</p><p><code>{media.file}</code> · {media.type} · caja cuadrada. Los originales quedan fuera del repositorio; reemplazos sujetos a permisos, ámbito, créditos e inspección.</p></li>)}</ol>
+      </section>
+      <section id="skin">
+        <h2>Piel retirada</h2>
+        <dl>
+          <div><dt>Color</dt><dd>Fondo naranja, panel beige, texto marrón y cierre marrón: retirados. La vista usa valores nativos y guías grises del taller.</dd></div>
+          <div><dt>Tipografía</dt><dd>Inclusive Sans en texto, Necto Mono en títulos de menú/etiquetas/legal y Little Amps para display. No se descargan. El logo es un SVG, no un título al que baste cambiarle la fuente.</dd></div>
+          <div><dt>Identidad gráfica</dt><dd>Wordmark con amplificador, cactus/taza y bocadillo: sustituidos por huecos. La gráfica de invitación sigue reservada a la izquierda del carril.</dd></div>
+          <div><dt>Superficies</dt><dd>Radios, bordes de marca, color de enlaces y tratamiento de hover: separados. No cambian las columnas, el orden ni la visibilidad del reproductor.</dd></div>
+          <div><dt>Proveedor</dt><dd>Carátula, título, autor, acciones, controles y pistas son internos a Spotify. El hueso reserva su caja; no recrea su interfaz ni reproduce audio.</dd></div>
+        </dl>
+      </section>
+    </main>
+  </body>
+</html>
+<style>
+  :global(body) { margin: 0; }
+  .workshop { margin: 24px; max-width: 90ch; line-height: 1.5; }
+  .workshop h1 { font-size: 1.75rem; }
+  .workshop h2 { margin-block: 48px 16px; }
+  .workshop h3 { font-size: 1.125rem; margin-bottom: 8px; }
+  .workshop code { white-space: normal; overflow-wrap: anywhere; }
+  .workshop dl > div { padding-block: 16px; border-bottom: 1px solid #ccc; }
+  .workshop dd { margin: 8px 0 0; }
+  .workshop ol { padding-left: 24px; }
+  .workshop li { padding-bottom: 16px; }
+  .notes { margin-top: 20px; }
+  .notes summary { cursor: pointer; }
+  .anatomy-guides :global([data-footer-part]) { outline: 1px dotted #aaa; outline-offset: -1px; }
+  .anatomy-guides :global([data-slot-kind]), .anatomy-guides :global(.gallery-group > *) { background: #f5f5f5; }
+  .anatomy-guides :global(.main-panel), .anatomy-guides :global(.legal) { border-block: 1px solid #aaa; }
+  .anatomy-guides :global(.logo-slot) { outline: 1px dotted #aaa; }
+</style>

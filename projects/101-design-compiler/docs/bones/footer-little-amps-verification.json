@@ -1,0 +1,563 @@
+{
+  "status": "PASS-scoped-footer",
+  "bone": {
+    "id": "footer.identity-menus-social-rail",
+    "version": "0.1.0",
+    "family": "footer",
+    "review": "pending-human-review",
+    "implementation": "reconstructed-from-public-reference",
+    "source": {
+      "gallery": "https://www.footer.design/sites/little-amps-coffee",
+      "official": "https://littleampscoffee.com/",
+      "inspectedAt": "2026-11-05",
+      "desktop": {
+        "width": 2048,
+        "height": 846
+      },
+      "mobile": {
+        "width": 786,
+        "height": 1618
+      },
+      "note": "Image pixels are capture dimensions, not confirmed CSS viewport widths."
+    },
+    "composition": {
+      "menuDesktopMin": 1100,
+      "playerDesktopMin": 1201,
+      "invitationWideMin": 769,
+      "gallerySmallMax": 749,
+      "galleryCount": 11,
+      "logoRatio": 2.457317073170732,
+      "playerHeight": 380
+    },
+    "behavior": {
+      "scroll": "normal-document-flow",
+      "menus": "initially-open-mobile-exclusive-on-activation",
+      "gallery": "linear-loop-with-pause-and-manual-scroll-fallback",
+      "pointer": "native",
+      "player": "unbound-provider-slot-no-network",
+      "noJavaScript": "native-details-and-manual-gallery"
+    },
+    "changesFromReference": [
+      "visible-pause-control",
+      "manual-scroll-without-motion",
+      "safe-text-reflow",
+      "no-provider-embed-loaded",
+      "native-details-without-duplicate-menu-content"
+    ],
+    "eligibility": {
+      "required": [
+        "brand-logo-slot",
+        "two-addresses",
+        "two-social-actions",
+        "email",
+        "two-menus-with-3-and-5-items",
+        "provider-player-slot",
+        "social-invitation-graphic",
+        "11-social-media-slots",
+        "copyright",
+        "credits"
+      ],
+      "missing": "reject-incomplete-content; placeholders permitted for workshop review only",
+      "media": "no-asset-binding-in-this-version; use existing media gates before client adaptation"
+    }
+  },
+  "verifiedAt": "2026-11-06T03:59:35.948Z",
+  "browser": "Edg/156.0.4314.58",
+  "parts": 50,
+  "socialMediaSlots": 11,
+  "viewportChecks": [
+    {
+      "width": 360,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 162,
+      "tileWidth": 63.1875,
+      "imageCount": 0
+    },
+    {
+      "width": 749,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 337.046875,
+      "tileWidth": 141.00003051757812,
+      "imageCount": 0
+    },
+    {
+      "width": 750,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 337.5,
+      "tileWidth": 47.0625,
+      "imageCount": 0
+    },
+    {
+      "width": 751,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 337.9375,
+      "tileWidth": 47.125,
+      "imageCount": 0
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 345.59375,
+      "tileWidth": 48.265625,
+      "imageCount": 0
+    },
+    {
+      "width": 769,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 130.71875,
+      "tileWidth": 48.328125,
+      "imageCount": 0
+    },
+    {
+      "width": 770,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 130.890625,
+      "tileWidth": 48.390625,
+      "imageCount": 0
+    },
+    {
+      "width": 1099,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 186.828125,
+      "tileWidth": 70.32814025878906,
+      "imageCount": 0
+    },
+    {
+      "width": 1100,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 2,
+      "menuColumns": 2,
+      "caretVisible": false,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 187,
+      "tileWidth": 70.390625,
+      "imageCount": 0
+    },
+    {
+      "width": 1101,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 2,
+      "menuColumns": 2,
+      "caretVisible": false,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 187.15625,
+      "tileWidth": 70.453125,
+      "imageCount": 0
+    },
+    {
+      "width": 1200,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 2,
+      "menuColumns": 2,
+      "caretVisible": false,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 204,
+      "tileWidth": 77.06251525878906,
+      "imageCount": 0
+    },
+    {
+      "width": 1201,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": true,
+      "panelColumns": 3,
+      "menuColumns": 2,
+      "caretVisible": false,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 204.15625,
+      "tileWidth": 77.125,
+      "imageCount": 0
+    },
+    {
+      "width": 1202,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": true,
+      "panelColumns": 3,
+      "menuColumns": 2,
+      "caretVisible": false,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 204.328125,
+      "tileWidth": 77.18751525878906,
+      "imageCount": 0
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": true,
+      "panelColumns": 3,
+      "menuColumns": 2,
+      "caretVisible": false,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 244.796875,
+      "tileWidth": 93.0625,
+      "imageCount": 0
+    },
+    {
+      "width": 2048,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": true,
+      "panelColumns": 3,
+      "menuColumns": 2,
+      "caretVisible": false,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "footer-rail",
+      "invitationWidth": 348.15625,
+      "tileWidth": 133.59375,
+      "imageCount": 0
+    }
+  ],
+  "fallbackChecks": [
+    {
+      "width": 360,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "none",
+      "invitationWidth": 162,
+      "tileWidth": 63.1875,
+      "imageCount": 0
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": false,
+      "panelColumns": 1,
+      "menuColumns": 1,
+      "caretVisible": true,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "none",
+      "invitationWidth": 345.59375,
+      "tileWidth": 48.265625,
+      "imageCount": 0
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "words": [],
+      "clipped": [],
+      "parts": 50,
+      "links": 0,
+      "mediaCount": 11,
+      "playerVisible": true,
+      "panelColumns": 3,
+      "menuColumns": 2,
+      "caretVisible": false,
+      "openMenus": [
+        true,
+        true
+      ],
+      "motion": "none",
+      "invitationWidth": 244.796875,
+      "tileWidth": 93.0625,
+      "imageCount": 0
+    }
+  ],
+  "keyboard": "PASS",
+  "mobileMenu": "PASS",
+  "noJavaScript": "PASS",
+  "forcedColors": "PASS",
+  "pauseResume": "PASS",
+  "nativeManualScroll": {
+    "left": 597,
+    "max": 597,
+    "animation": "none"
+  },
+  "externalRequests": [],
+  "localMimeResponseErrors": [],
+  "focusedContractTests": {
+    "total": 5,
+    "passed": 5
+  },
+  "cleanDestinationReproduction": {
+    "contractTests": "5/5 PASS",
+    "nativeAudit": "15 viewports / 50 parts PASS",
+    "referenceMediaRequired": false
+  },
+  "projectBuild": {
+    "status": "PASS",
+    "pages": 534
+  },
+  "projectCheck": {
+    "status": "PASS",
+    "astroErrors": 0,
+    "astroWarnings": 0,
+    "typescript": "PASS"
+  },
+  "projectTests": {
+    "total": 523,
+    "passed": 520,
+    "failed": 3,
+    "status": "FAIL-existing-lock-snapshots",
+    "scope": "tests/lock-files.test.ts",
+    "reason": "Prior FactCollection/contract changes diverge from archived source graph; historical locks were not resealed."
+  },
+  "visualInspection": {
+    "status": "performed-by-agent",
+    "humanApproval": "pending",
+    "includes": "mobile/tablet/desktop, both sides of breakpoints, Arial/reduced-motion, forced-colours",
+    "claim": "Technical and agent visual review do not grant human design approval."
+  },
+  "sourceEvidence": [
+    {
+      "localReference": "desktop.jpg",
+      "sha256": "911f4a5704464dce189ae3eea43b4139ba53b11124df2d81cd3ea33381c47c1c",
+      "redistributed": false
+    },
+    {
+      "localReference": "mobile.png",
+      "sha256": "ea3880698171f584bdde49fd15609102f1c818712491b1990401e18051daf901",
+      "redistributed": false
+    },
+    {
+      "localReference": "official.html",
+      "sha256": "8a37a704146a49c3c7adb04658cee0ba1b947c3e85cd07abdfb9005033d6d320",
+      "redistributed": false
+    },
+    {
+      "localReference": "footer.css",
+      "sha256": "e9d5ec0ba22881e661405d5e6810a72836ef3c536ad61b6a9023ece0bb3c4d04",
+      "redistributed": false
+    },
+    {
+      "localReference": "footer.js",
+      "sha256": "3ff74998ac775d92b3bd40292e5033005e65e7e38962ef8acd062e5a87006392",
+      "redistributed": false
+    },
+    {
+      "localReference": "custom.css",
+      "sha256": "c3d15efd4b03f5718c2d89b3588d47028f74bdf10e05d429bd34b79c328e5cd8",
+      "redistributed": false
+    }
+  ],
+  "neutralPreviews": [
+    {
+      "path": "docs/bones/footer-little-amps/desktop.png",
+      "sha256": "40a85cfc5926aeddd565736281d6a17ac3ebf8f8065b0fadd6d7aeda14e0ecd5",
+      "content": "own-neutral-render-only"
+    },
+    {
+      "path": "docs/bones/footer-little-amps/tablet.png",
+      "sha256": "1ce010711c2d533b2dafcf06437dfaa0098a92cc8d8ce038e9b3e64136038837",
+      "content": "own-neutral-render-only"
+    },
+    {
+      "path": "docs/bones/footer-little-amps/mobile.png",
+      "sha256": "90eed7d6d70022d52bea4dbe3e517708def3e5c540409935114bcd3a97dc44c1",
+      "content": "own-neutral-render-only"
+    }
+  ],
+  "reproduction": {
+    "command": "node --experimental-strip-types scripts/audit-footer-little-amps.ts",
+    "node": "24.21.0",
+    "route": "/bones/footer-little-amps/"
+  },
+  "delivery": {
+    "repository": "gabrielry7/101-workspace",
+    "branch": "codex/footer-little-amps-20261105",
+    "base": "46d375927fcc17d7812b04d415a524e6200c1500",
+    "directory": "projects/101-design-compiler",
+    "merge": false,
+    "deployment": false
+  },
+  "limits": [
+    "No image/iframe URL binding in this neutral version.",
+    "No provider integration.",
+    "Reference screenshots retained locally only.",
+    "No human approval inferred."
+  ]
+}
