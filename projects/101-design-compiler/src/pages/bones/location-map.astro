@@ -1,0 +1,94 @@
+---
+import Location from '../../components/bones/SingleBusinessLocation.astro';
+import { fixtureLocationInput } from '../../bones/location-map-fixture.ts';
+import { locationBone } from '../../bones/location-map.ts';
+import type { LocationVariant } from '../../bones/location-map.ts';
+interface Props { runtimeURL?: string | undefined; basemap?: Record<string, unknown> | undefined; originalURL?: string | undefined; }
+const { runtimeURL, basemap, originalURL } = Astro.props;
+const input = fixtureLocationInput();
+const neutral = { ...input, marker: { kind: 'pin' as const, reason: 'NEUTRAL_LOGO_SLOT' } };
+const variants: { id: LocationVariant; title: string; note: string }[] = [
+  { id: 'direct', title: 'Información al lado del mapa', note: 'Título arriba. Dirección y acciones a la izquierda; mapa a la derecha. Se apila a 620 px.' },
+  { id: 'map-led', title: 'El mapa como protagonista', note: 'Nombre y dirección forman una cabecera; el mapa ocupa todo el ancho debajo. Se apila a 720 px.' },
+  { id: 'editorial', title: 'Invitación y mapa', note: 'Título y dirección comparten una banda amplia; el mapa queda en una segunda banda. Se apila a 680 px.' },
+];
+---
+<!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Huesos de ubicación · un negocio en el mapa</title>
+{runtimeURL && <link rel="stylesheet" href={runtimeURL.replace(/\.js$/, '.css')}/>}
+</head><body>
+<main>
+  <header class="workshop-header"><h1>Huesos de ubicación</h1>
+    <p>Una sucursal. Ningún establecimiento alrededor. El logo ocupa el lugar del pin sin cambiar la ubicación.</p>
+    <p class="disclosure">Taller local · datos, calles y logo sintéticos. No representa un negocio real. Versión 0.1.0 pendiente de revisión humana.</p>
+    <nav aria-label="Vistas del taller"><a href="#comparison">Comparación</a><a href="#variants">Tres composiciones</a><a href="#states">Estados alternativos</a><a href="#anatomy">Partes del hueso</a></nav>
+  </header>
+  <section id="comparison" class="workshop-section"><h2>Del original a la marca</h2>
+    <p>La misma primitiva de mapas de Thomas. Compara su referencia, la estructura sin piel y una aplicación de prueba.</p>
+    {originalURL && <details><summary>Abrir original de Thomas con los mismos datos sintéticos</summary>
+      <iframe src={originalURL} title="Composición original de Thomas, con datos sintéticos" loading="lazy"></iframe>
+      <p>Referencia privada conservada; su marca no se convierte en contenido de otro negocio.</p>
+    </details>}
+    <div class="comparison">
+      <section><h3>Hueso neutro</h3><Location id="comparison-neutral" input={neutral} runtimeURL={runtimeURL} basemap={basemap}/></section>
+      <section><h3>Con piel y logo de prueba</h3><Location id="comparison-brand" input={input} skin="paper" runtimeURL={runtimeURL} basemap={basemap}/></section>
+    </div>
+    <div class="workshop-controls"><button type="button" data-workshop-skin="neutral">Piel neutra</button><button type="button" data-workshop-skin="paper">Piel clara</button><button type="button" data-workshop-skin="ink">Piel oscura</button><button type="button" data-workshop-pan>Desplazar mapa</button><button type="button" data-workshop-zoom>Acercar</button><button type="button" data-workshop-save>Guardar configuración</button><button type="button" data-workshop-restore>Restaurar</button></div>
+    <p data-workshop-status role="status">Los controles actúan sobre la vista de marca. El lugar permanece fijo.</p>
+  </section>
+  <section id="variants" class="workshop-section"><h2>Tres composiciones, un mismo mapa</h2><p>Recetas tomadas de las demos de Thomas. El neutro retira fuentes, colores y acabados de marca; conserva regiones, orden y funciones.</p>
+    {variants.map(variant => <article class="variant"><h3>{variant.title}</h3><p>{variant.note}</p>
+      <Location id={`variant-${variant.id}`} input={neutral} variant={variant.id} runtimeURL={runtimeURL} basemap={basemap}/>
+    </article>)}
+  </section>
+  <section id="states" class="workshop-section"><h2>Cuando falta algo</h2>
+    <details><summary>Logo no disponible: se conserva el pin</summary><Location id="state-no-logo" input={{...input, marker:{kind:'pin',reason:'LOGO_MISSING'}}} runtimeURL={runtimeURL} basemap={basemap}/></details>
+    <details><summary>Logo con error de carga: vuelve al pin</summary><Location id="state-broken-logo" input={{...input, marker:{...input.marker,url:'/unavailable-logo.svg'}}} runtimeURL={runtimeURL} basemap={basemap}/></details>
+    <details><summary>Sin coordenada comprobada: no se inventa un punto</summary><Location id="state-no-coordinate" input={{...input,location:{...input.location,coordinate:null}}} runtimeURL={runtimeURL} basemap={basemap}/></details>
+    <details><summary>Google necesita datos y configuración reales: alternativa sin llamadas externas</summary><Location id="state-google" input={input} provider="google_js" runtimeURL={runtimeURL}/></details>
+  </section>
+  <section id="anatomy" class="workshop-section"><h2>Qué pertenece a cada parte</h2><p>Las guías y este inventario sólo aparecen en el taller. La piel cambia colores y logo; los datos fijan el destino; el hueso conserva estructura y comportamiento.</p>
+    <label class="anatomy-toggle"><input type="checkbox" data-workshop-anatomy/> Mostrar límites de las partes</label>
+    <div class="table-scroll"><table><thead><tr><th>Parte</th><th>Función</th><th>Responsable</th></tr></thead><tbody>{locationBone.parts.map(part=><tr><td><code>{part[0]}</code></td><td>{part[1]}</td><td>{part[2]}</td></tr>)}</tbody></table></div>
+  </section>
+</main>
+{runtimeURL && <script type="module" src="/workshop.js" is:inline></script>}
+</body></html>
+<style>
+  :global(html) { scroll-behavior:auto; }
+  :global(body) { margin:0;background:#f5f5f3;color:#242424;font:16px/1.6 system-ui,sans-serif; }
+  :global(body *) { box-sizing:border-box; }
+  :global(::selection) { background:#333;color:#fff; }
+  main { max-width:1536px;margin:auto;padding:clamp(20px,4vw,64px); }
+  h1 { font-size:clamp(2rem,4vw,3.5rem);font-weight:500;letter-spacing:-.03em;line-height:1.15;margin:0 0 20px;text-wrap:balance; }
+  h2 { font-size:1.75rem;line-height:1.25;font-weight:500;margin:0 0 16px; }
+  h3 { font-size:1.2rem;font-weight:600;margin:0 0 12px; }
+  p { max-width:72ch;margin:0 0 16px; }
+  .disclosure { color:#555;font-size:.875rem; }
+  .workshop-header { max-width:100%;padding-bottom:40px; }
+  .workshop-header nav { display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:24px; }
+  a { color:inherit;text-underline-offset:4px;display:inline-flex;align-items:center;min-height:44px; }
+  button,summary,.anatomy-toggle { min-height:44px; }
+  button { font:inherit;min-height:44px;padding:8px 14px;background:#fff;color:#222;border:1px solid #888; }
+  button:hover { background:#eee; }
+  :is(button,a,summary,input):focus-visible { outline:3px solid #222;outline-offset:4px; }
+  .workshop-section { padding-block:40px;border-top:1px solid #bbb; }
+  .comparison { display:grid;grid-template-columns:1fr;gap:32px;margin-top:32px; }
+  .comparison>section { min-width:0; }
+  .comparison :global(.location-bone) { border:1px solid #bbb; }
+  .workshop-controls { display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 12px; }
+  .variant { margin:40px 0 56px; }
+  .variant :global(.location-bone) { border:1px solid #bbb; }
+  details { margin-block:16px;border-block-end:1px solid #bbb; }
+  summary { display:list-item;padding-block:12px;font-weight:500; }
+  iframe { display:block;width:100%;height:660px;border:1px solid #aaa;margin-bottom:16px;background:white; }
+  .table-scroll { overflow-x:auto;margin-top:20px; }
+  table { border-collapse:collapse;text-align:left;width:100%; }
+  th,td { border-bottom:1px solid #ccc;padding:12px 16px 12px 0;vertical-align:top; }
+  th { font-weight:600; }
+  code { font-size:.875rem; }
+  .anatomy-toggle { display:flex;align-items:center;gap:12px; }
+  :global(body[data-anatomy="true"] [data-location-part]) { outline:1px dashed #777;outline-offset:-1px; }
+  @media(min-width:1800px) { .comparison { grid-template-columns:1fr 1fr; } }
+  @media(forced-colors:active) { :global(body) { background:Canvas;color:CanvasText; }button { background:ButtonFace;color:ButtonText;border-color:ButtonText; } }
+</style>

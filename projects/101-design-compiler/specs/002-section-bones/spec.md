@@ -339,8 +339,9 @@ cero negocios ajenos y que las indicaciones corresponden a la misma sucursal.
 
 También se incorpora la familia de ubicación solicitada el 2026-11-05:
 [mapa sin establecimientos ajenos y logo de empresa como marcador](../../docs/bones/location-map.md),
-basado en `packages/location-map` de Tomás. Esta incorporación define requisitos
-y compatibilidad; implementación, integración del logo y Google configurable siguen pendientes.
+basado en `packages/location-map` de Tomás. La implementación acotada se sigue en
+[spec 005](../005-location-map-bones/spec.md): MapLibre y logo ejecutables, adaptador
+Google JS con prueba offline; configuración/revisión viva y aprobación humana pendientes.
 
 La correspondencia con los paquetes reales, las verificaciones del handoff y la
 migración del legado están en [el mapa de integración](../../docs/bones/integration.md).

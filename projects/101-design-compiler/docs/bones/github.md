@@ -46,6 +46,12 @@ sin incorporar otros cambios pendientes del checkout principal o de entregas ant
 
 ### Procedimiento
 
+Implementación de mapas: rama `codex/location-map-implementation-20261105`, desde
+`d8a9046126f73d20ec8623ee4391862b8589bfa8` de la entrega documental de mapas.
+Sólo fuentes propias, adaptadores, spec 005, pruebas, tooling y documentación.
+No se transfiere el checkout privado, el bundle, sus fuentes/medios originales ni
+capturas. Vista local en 127.0.0.1:8777; sin merge ni despliegue.
+
 1. Confirmar la rama de destino y el estado del checkout; preservar cambios ajenos.
 2. Trabajar con el ciclo SDD proporcional al cambio y revisar las diferencias finales.
 3. Preparar explícitamente sólo los archivos del alcance, comprobar el diff y

@@ -67,8 +67,9 @@ reactivarlos. Paleta y logo son piel/medios validados; coordenada y destino son 
 con evidencia. Cambiar logo no mueve el anclaje geográfico ni cambia el proveedor.
 
 El `google_embed` actual no permite controlar sus etiquetas o reemplazar el pin
-desde la página. La ficha distingue esa incompatibilidad de las extensiones pendientes
-del componente original; no declara implementada una integración configurable de Google.
+desde la página. El [piloto ejecutable de mapas](../../specs/005-location-map-bones/spec.md)
+usa la API nativa original y añade un adaptador Google JS; no declara verificado
+su estilo vivo sin configuración. La piel nunca se aplica como un logo fijo sobre el iframe.
 
 ### Correspondencia existente
 

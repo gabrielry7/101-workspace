@@ -17,10 +17,10 @@ colores, logotipo y tratamiento gráfico; datos y medios conservan su procedenci
 
 ## Estado real
 
-Familia añadida a los requisitos: [mapa de un solo negocio con su logo](docs/bones/location-map.md),
-reutilizando el componente de Tomás. Ubicación real y sin establecimientos ajenos;
-colores por marca. Logo e integración configurable de Google siguen pendientes de
-implementación y revisión; el iframe actual no ofrece esos controles.
+Familia implementada para revisión local: [mapa de un solo negocio con su logo](docs/bones/location-map.md),
+reutilizando la primitiva real de Tomás. Taller con tres composiciones neutras,
+logo/pin y colores de prueba. Google JS tiene adaptador y pruebas offline; su
+configuración/revisión viva siguen pendientes. Ver [spec 005](specs/005-location-map-bones/spec.md).
 
 | Entregado | Pendiente |
 | --- | --- |

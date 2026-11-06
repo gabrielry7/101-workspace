@@ -1,10 +1,10 @@
 # Familia de ubicación: un negocio y su logo sobre el mapa
 
-Dirección del usuario: 2026-11-05. Estado: requisitos incorporados a los huesos;
-integración y revisión visual pendientes. Esta ficha amplía la
+Dirección del usuario: 2026-11-05. Estado: implementación local de MapLibre y
+adaptador Google JS; verificación viva de Google y aprobación humana pendientes. Esta ficha amplía la
 [spec 002](../../specs/002-section-bones/spec.md), sin declarar completado su
-piloto de navegación/hero. ID propuesto: `location.single-business@0.1.0`;
-todavía no es una entrada ejecutable ni aprobada del catálogo.
+piloto de navegación/hero. ID ejecutable: `location.single-business@0.1.0`.
+Implementación y evidencia en [spec 005](../../specs/005-location-map-bones/spec.md).
 
 ## Resultado solicitado
 
@@ -41,10 +41,10 @@ Cambiar piel, zoom, proveedor o cargar una configuración no puede reactivarlos.
 El filtro debe aplicarse a todas las capas que puedan mostrar otros negocios,
 no limitarse a ocultar los marcadores propios de la aplicación.
 
-No crear otro renderer o servicio de mapas. Extender los dueños originales con
-interfaz versionada y mantener sus regresiones y sus permisos. El hook confiable
-`decorateMap` existente no constituye autorización para saltar restricciones de
-coordenadas ni una API pública de logo.
+El adaptador propio consume la API nativa y el hook `decorateMap` del dueño
+original intacto. El hook cambia únicamente el contenido del marcador real; no
+introduce otro MapLibre ni permite saltar restricciones de coordenadas.
+`bindLocationBone` evalúa el logo por los gates existentes antes de serializarlo.
 
 ## Hueso, piel y datos
 
@@ -70,14 +70,15 @@ si fuera texto HTML propio. La piel nunca elimina créditos ni vuelve ilegible e
 
 | Modalidad | Ocultar negocios alrededor | Logo anclado a coordenada | Elegibilidad para este hueso |
 | --- | --- | --- | --- |
-| MapLibre/PMTiles existente | Ya hay filtro `pois.mode: none` para el esquema de capas admitido | Extensión pendiente del marcador y de su inspección | Candidato con mapa base compatible y coordenadas de uso independiente |
+| MapLibre/PMTiles existente + adaptador de hueso | Política fija `none` y rechazo de reactivación | Logo/pin sobre el marcador real, con anclaje inspeccionable | Implementado con mapa base compatible y coordenadas de uso independiente |
 | `google_embed` existente | El iframe no ofrece ese control a la página contenedora | No admite sustituir su pin desde el padre | Incompatible con el resultado completo; conservar sólo como referencia aparte |
-| Google Maps JavaScript API | Permite ocultar POIs mediante estilos | Admite gráficos propios en Advanced Markers | Integración pendiente dentro del mismo paquete, con configuración y autorización de servicio aplicables |
+| Google Maps JavaScript API | Estilo cloud revisado, map ID y `clickableIcons: false` | AdvancedMarkerElement con logo y fallback | Adaptador implementado; configuración/revisión viva pendientes; pruebas offline identificadas |
 
 Google documenta [ocultar negocios](https://developers.google.com/maps/documentation/javascript/examples/hiding-features)
 y [marcadores con imágenes](https://developers.google.com/maps/documentation/javascript/advanced-markers/graphic-markers).
-La futura integración debe elegir una configuración de estilos compatible con
-el tipo de mapa y su map ID; no mezclar estilos cloud e incrustados incompatibles.
+La integración usa map ID y estilo cloud; rechaza DEMO_MAP_ID y no combina esa
+configuración con estilos incrustados incompatibles. La base de importación está
+en `tooling/bones/google-no-pois.style.json`; hay que publicarla y vincularla al map ID.
 La clave/configuración de un tercero no se reutiliza. Esta ficha no activa una
 cuenta, facturación ni llamadas de pago.
 
@@ -136,7 +137,43 @@ una respuesta simulada no prueba la supresión de etiquetas ni la ubicación viv
 Datos sintéticos se etiquetan; no se presentan como una ubicación comercial real.
 Pruebas de contrato y captura visual no equivalen a aprobación humana.
 
-## Alcance entregado y siguiente implementación
+## Implementación y reproducción
+
+El componente Astro está en `src/components/bones/SingleBusinessLocation.astro`.
+Sus tres variantes conservan la receta de las demos direct/map-led/editorial;
+piel neutra, papel y tinta son configuraciones del mismo componente. La API nativa
+original se compila con el adaptador propio sólo en un build privado bajo `.tools/`.
+El checkout original de Thomas no se modifica ni se copia al repositorio público.
+
+```powershell
+$env:PATH = "$PWD\.tools\node-v24.21.0-win-x64;$env:PATH"
+node tooling/bones/prepare-location-map.mjs
+node --experimental-strip-types --test tests/location-map.test.ts
+node --experimental-strip-types scripts/audit-location-map.ts
+node tooling/bones/serve-location-map.mjs
+```
+
+Abrir http://127.0.0.1:8777/. Incluye original privado con los mismos datos de
+prueba, hueso neutro, piel con logo, tres recetas, estados alternativos y anatomía.
+La demo no tiene destinos reales y lo indica; sus acciones son huecos deshabilitados.
+La comprobación de teclado con enlaces está en una ruta de prueba identificada.
+Guardar/restaurar conserva piel y zoom versionados en el navegador, sin editar hechos.
+
+En un consumidor autorizado: validar con el `locationInput`/`navigationLinks` del
+dueño mediante `bindLocationBone`, suministrar la evidencia del logo y pasar ese
+`input` al componente. El `runtimeURL` debe ser un bundle local preparado con el
+dueño, como el de este piloto; basemap/proveedor y configuración son explícitos.
+Sin runtime hay HTML útil y un estado comprensible. La página del taller no se
+incluye en una sección de cliente.
+
+Google exige opt-in `enabled: true`, clave web restringida fuera de Git, map ID
+propio y `styleReview` con map ID coincidente, `pois: none`, referencia y fecha.
+La clave web es visible al navegador por diseño de la API; no se guarda en reportes.
+Sin esos datos no se llama Google. Cambiar colores internos de Google requiere
+otro estilo cloud revisado; no se simula cambiando CSS del marco. No se ha realizado
+una prueba viva ni activado facturación.
+
+### Antecedente de verificación del dueño
 
 Verificación local de la base el 2026-11-05, Windows y Node 26.7.0:
 tras restaurar las dependencias fijadas con `npm ci --ignore-scripts`, se ejecutaron
@@ -147,13 +184,9 @@ y por invocar `python3`, alias no disponible en este entorno. No se alteró el
 código de Thomas para ocultar esas limitaciones. La primera ejecución, anterior a
 restaurar dependencias, también falló por `pmtiles` ausente.
 
-Esta comprobación confirma el contrato base de ocultación, no una integración
-del logo ni el comportamiento visual de un proveedor real. Al ser una entrega
-documental no se generó una nueva interfaz, build de aplicación ni aprobación visual.
+Esa ejecución corresponde a la entrega documental anterior. La implementación de
+spec 005 añade sus pruebas propias de medios, contrato, Google simulado y navegador
+MapLibre; el recibo de la versión registra el resultado sin redistribuir capturas privadas.
 
-Esta entrega registra la familia, responsabilidades, compatibilidad, alternativas y
-aceptación; **no cambia el código privado de Thomas ni implementa aún el logo o
-Google Maps JavaScript en el compiler**. El plan y las tareas de implementación
-deben ampliar esos dueños, versionar las capacidades nuevas, vincular medios por
-los gates actuales y verificar el comportamiento antes de presentar una adaptación.
-No incluye selector completo, nuevas composiciones masivas ni publicación web.
+Quedan fuera selector completo, composiciones masivas, identidad de un cliente real,
+prueba viva de Google sin configuración, publicación web y aprobación humana.

@@ -106,8 +106,10 @@ y no satisface ocultación de negocios ni sustitución del marcador desde el pad
 La [ficha de familia](location-map.md) incorpora la dirección: ubicación real de
 la sucursal, cero negocios alrededor, logo autorizado como marcador preferido y
 alternativas accesibles. Documenta los dueños, las capacidades por proveedor y la
-brecha para Google configurable. Sigue pendiente implementar y verificar esas
-extensiones; no se ha modificado ni publicado el paquete privado.
+brecha para Google configurable. La implementación está en
+[spec 005](../../specs/005-location-map-bones/spec.md): adaptador de la API nativa
+con `decorateMap`, marcador de logo y política fija sin POIs; Google JS requiere
+configuración y revisión viva. No se ha modificado ni publicado el paquete privado.
 
 ### Piloto general
 
