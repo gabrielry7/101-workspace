@@ -67,7 +67,7 @@ From the application directory, use its installed Python environment with `PYTHO
 - `npm run build --prefix frontend`
 - `python scripts/social_demo.py --db /tmp/social-demo.db --port 8833`
 
-The demo uses existing synthetic campaign-manager credentials defined in
+The local demo accepts `101` / `101` through the existing explicit demo alias, which authenticates the seeded campaign manager. Normal production authentication is unchanged. The underlying synthetic campaign-manager credentials are defined in
 `campaign_demo.py`, never real merchant credentials. Browser evidence is retained in
 World Model `artifacts/social-production-20261106`: synthetic uploaded fixture,
 editable exported package, desktop/mobile screenshots and repeatable browser script.
