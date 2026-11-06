@@ -39,7 +39,7 @@ Prueba independiente: medir y exportar sección completa con métodos/denominado
 
 - [x] T015 Ejecutar check, tests y build; inspeccionar capturas en `docs/bones/footer-001.md`.
 - [x] T016 Actualizar entrada, restricciones y siguiente trabajo en `README.md` y `AGENTS.md`.
-- [ ] T017 Revisar alcance y publicar commit/push; registrar SHA en el recibo local de entrega.
+- [x] T017 Revisar alcance y publicar commit/push; registrar SHA en el recibo local de entrega.
 
 ## Dependencies
 
