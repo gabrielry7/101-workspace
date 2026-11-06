@@ -58,6 +58,20 @@ especifica otro hueso.
 
 ## Encaje con la implementación de Tomás
 
+### Familia de ubicación incorporada (2026-11-05)
+
+La [ficha de mapas](location-map.md) aplica esta separación al componente existente
+de Tomás: un destino real por sucursal, ningún negocio ajeno en el mapa y logo propio
+como marcador preferido. Ocultar POIs es una regla del hueso; la piel no puede
+reactivarlos. Paleta y logo son piel/medios validados; coordenada y destino son datos
+con evidencia. Cambiar logo no mueve el anclaje geográfico ni cambia el proveedor.
+
+El `google_embed` actual no permite controlar sus etiquetas o reemplazar el pin
+desde la página. La ficha distingue esa incompatibilidad de las extensiones pendientes
+del componente original; no declara implementada una integración configurable de Google.
+
+### Correspondencia existente
+
 La palabra del producto **hueso** corresponde principalmente a su `chassis`, las
 recetas y el comportamiento. El directorio `site-runtime/src/bones` y el parámetro
 `bones` existentes representan **perfiles visuales**: forma, superficies, colores,

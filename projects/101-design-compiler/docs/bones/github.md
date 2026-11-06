@@ -32,6 +32,20 @@ se versionan. Los comandos del proyecto se ejecutan desde esta subcarpeta.
 
 ## Regla para las próximas entregas
 
+### Incorporación de mapas a los huesos (2026-11-05)
+
+Entrega documental acotada: familia de ubicación con un negocio real, ocultación
+de establecimientos ajenos, logo como marcador preferido y reutilización explícita
+de `packages/location-map` de Tomás. Se documentan la compatibilidad, las brechas y
+la aceptación; no se publica su paquete ni se presenta una integración implementada.
+
+Rama: `codex/location-map-bones-20261105`, desde
+`codex/footer-little-amps-20261105` en `c4de98188d787581b07ca406282b1b03b1eade45`.
+Transferencia exclusiva de los cambios de esta tarea a un clon limpio bajo `.tools/`;
+sin incorporar otros cambios pendientes del checkout principal o de entregas anteriores.
+
+### Procedimiento
+
 1. Confirmar la rama de destino y el estado del checkout; preservar cambios ajenos.
 2. Trabajar con el ciclo SDD proporcional al cambio y revisar las diferencias finales.
 3. Preparar explícitamente sólo los archivos del alcance, comprobar el diff y

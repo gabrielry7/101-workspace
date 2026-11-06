@@ -146,7 +146,40 @@ del respaldo y abrir el commit remoto de esta entrega.
 3. **Given** referencias o medios de uso privado, **When** se publica el esquema,
    **Then** permanecen fuera del repositorio público y se conserva sólo su referencia técnica permitida.
 
+### User Story 5 - Encontrar sólo el negocio en un mapa con su marca (Priority: P1)
+
+Como visitante, quiero reconocer el logo del negocio en su ubicación real y abrir
+indicaciones, sin que otros establecimientos compitan en el mapa de la página.
+
+**Why this priority**: Es la dirección explícita del usuario del 2026-11-05 para
+la familia de ubicación, tomando Tourist Home Cafe como referencia de limpieza.
+Se incorpora como requisito de familia, no como implementación ya terminada.
+
+**Independent Test**: Con ubicación comprobada y logo utilizable de una sucursal,
+abrir el mapa, desplazarlo, cambiar zoom y piel; comprobar un único marcador propio,
+cero negocios ajenos y que las indicaciones corresponden a la misma sucursal.
+
+**Acceptance Scenarios**:
+
+1. **Given** datos reales utilizables y logo autorizado, **When** se presenta la
+   sección, **Then** el logo sustituye al pin convencional en el punto comprobado,
+   no aparecen otros establecimientos y permanecen calles, créditos y direcciones.
+2. **Given** ese mapa, **When** se desplaza, cambia zoom, tamaño o piel, **Then**
+   el marcador conserva su anclaje, la política sin negocios y el mismo destino.
+3. **Given** logo ausente, denegado o fallido, **When** se carga la sección,
+   **Then** aparece el pin neutro accesible y se registra la alternativa sin cambiar lugar.
+4. **Given** coordenadas insuficientes o no elegibles, **When** se vincula la
+   sección, **Then** no se dibuja un punto presunto y se conservan dirección y
+   acciones que sí sean utilizables.
+5. **Given** el iframe de Google existente, **When** se evalúa para esta familia,
+   **Then** se informa que no permite controlar negocios ni sustituir su pin desde
+   la página; no se superpone un logo fijo ni se declara completo el resultado.
+
 ### Edge Cases
+
+- Mapas: un proveedor que no permite ocultar negocios ajenos y sustituir el pin
+  no satisface la familia solicitada; conservar dirección/indicaciones sin fingir
+  esas capacidades. Un logo no sustituye la evidencia de coordenadas reales.
 
 - Sin logotipo o fuentes confirmadas: registrar la ausencia y usar sólo alternativas
   declaradas; una fuente visualmente parecida no se declara la fuente oficial.
@@ -214,6 +247,21 @@ del respaldo y abrir el commit remoto de esta entrega.
 - **FR-020**: El estado DEBE separar esquema escrito, implementación, integración,
   verificación y aprobación humana. La cantidad de variantes y el avance automático
   DEBEN reportarse sólo con su familia y alcance medidos. (US4)
+- **FR-021**: La familia de ubicación DEBE representar sólo el negocio/sucursal
+  vinculado a coordenadas con evidencia y uso permitido; NO DEBE mostrar nombres,
+  iconos, marcadores o fichas de otros establecimientos. Pan, zoom, piel y recuperación
+  de configuración NO DEBEN reactivar esos negocios. Se conservan calles y contexto
+  útil. La política pertenece al hueso, no a una elección decorativa. (US5)
+- **FR-022**: El marcador DEBE poder usar el logo autorizado del negocio en lugar
+  del pin, conservar proporción y anclaje geográfico al mover o redimensionar el
+  mapa, y mantener nombre accesible y acción de indicaciones. Ausencia, fallo o
+  denegación del logo DEBE producir pin neutro con motivo registrado; ausencia de
+  coordenada utilizable NO DEBE producir un punto inventado. (US5)
+- **FR-023**: La familia DEBE reutilizar los dueños de `packages/location-map` de
+  Tomás, conservando evidencia, elegibilidad, gates de medios y alternativas.
+  Un proveedor sin control de POIs o marcador DEBE declararse incompatible; NO DEBE
+  simularse un logo fijo sobre un iframe móvil ni cambiar de proveedor saltando
+  restricciones de datos. Las capacidades pendientes NO DEBEN declararse integradas. (US5)
 
 ### Key Entities
 
@@ -261,7 +309,17 @@ del respaldo y abrir el commit remoto de esta entrega.
   alcance × 100, junto al tiempo manual y las exclusiones; no por líneas de código
   ni por porcentaje de pantalla. El 90% sigue siendo una meta a contrastar.
 
+- **SC-010**: En todos los casos de aceptación de la familia de ubicación, el mapa
+  compatible muestra cero establecimientos ajenos y un único destino comprobado;
+  usar logo, pin de alternativa o retirar un marcador inelegible produce el estado
+  documentado sin cambiar la sucursal. La comprobación incluye pan, zoom, resize,
+  restauración, piel y fallos; aprobación humana y verificación técnica se registran aparte.
+
 ## Assumptions
+
+- La familia de mapas añade los requisitos FR-021 a FR-023 por dirección del
+  usuario. Su [ficha](../../docs/bones/location-map.md) fija responsabilidades y
+  aceptación; no amplía automáticamente la implementación del piloto de hero.
 
 - Se conserva navegación y hero como primera familia nueva a partir de las conversaciones
   anteriores; las reseñas de Tomás aportan el ejemplo trabajado del modelo y taller.
@@ -278,6 +336,11 @@ del respaldo y abrir el commit remoto de esta entrega.
   y aprobación humana por versión. Un taller terminado no completa un sitio comercial.
 
 ## Contexto para la siguiente fase
+
+También se incorpora la familia de ubicación solicitada el 2026-11-05:
+[mapa sin establecimientos ajenos y logo de empresa como marcador](../../docs/bones/location-map.md),
+basado en `packages/location-map` de Tomás. Esta incorporación define requisitos
+y compatibilidad; implementación, integración del logo y Google configurable siguen pendientes.
 
 La correspondencia con los paquetes reales, las verificaciones del handoff y la
 migración del legado están en [el mapa de integración](../../docs/bones/integration.md).

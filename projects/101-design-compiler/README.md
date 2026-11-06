@@ -17,6 +17,11 @@ colores, logotipo y tratamiento gráfico; datos y medios conservan su procedenci
 
 ## Estado real
 
+Familia añadida a los requisitos: [mapa de un solo negocio con su logo](docs/bones/location-map.md),
+reutilizando el componente de Tomás. Ubicación real y sin establecimientos ajenos;
+colores por marca. Logo e integración configurable de Google siguen pendientes de
+implementación y revisión; el iframe actual no ofrece esos controles.
+
 | Entregado | Pendiente |
 | --- | --- |
 | Especificación y separación de responsabilidades, constitución 2.0.0, respaldo verificado del legado y documentación conectada a GitHub | Plan y tareas del nuevo piloto, contratos ejecutables e integración del motor |

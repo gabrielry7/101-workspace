@@ -94,6 +94,23 @@ repositorio y al release y restaurar sus entradas según su README.
 
 ## Ruta de trabajo siguiente
 
+### Familia de mapas solicitada el 2026-11-05
+
+Se inspeccionó también `packages/location-map` del mismo commit fijado:
+`@101/location-map@0.3.0`, contrato `101-location-map-v3`. Es el dueño a reutilizar,
+sin crear otro renderer. Sus contratos separan coordenadas, fuente, proveedor,
+colores y POIs; MapLibre usa `none` por defecto. El pin actual es SVG con etiqueta,
+sin entrada pública para logo. `google_embed` conserva el control interno de Google
+y no satisface ocultación de negocios ni sustitución del marcador desde el padre.
+
+La [ficha de familia](location-map.md) incorpora la dirección: ubicación real de
+la sucursal, cero negocios alrededor, logo autorizado como marcador preferido y
+alternativas accesibles. Documenta los dueños, las capacidades por proveedor y la
+brecha para Google configurable. Sigue pendiente implementar y verificar esas
+extensiones; no se ha modificado ni publicado el paquete privado.
+
+### Piloto general
+
 1. Recoger feedback sobre spec 002, el límite de una navegación/dos héroes y los
    umbrales propuestos; incorporar ajustes al mismo documento.
 2. Preparar `plan.md` con Spec Kit: adaptar contratos existentes, fijar compatibilidad
