@@ -291,6 +291,7 @@ def register(app, get_session, scoped_staff):
     @app.get("/workspace/customers")
     @app.get("/workspace/sales")
     @app.get("/workspace/home")
+    @app.get("/workspace/social")
     @app.get("/workspace/campaigns")
     @app.get("/workspace/analytics")
     @app.get("/workspace/identity")

@@ -547,6 +547,8 @@ def create_app(
     register_connections(app, get_session, scoped_staff, connections_runtime, staff_cookie, production)
     register_signup(app, get_session, scoped_staff, signup_options, demo_mode, production)
 
+    from .social_production import register as register_social
+    register_social(app, get_session, scoped_staff)
     from .campaign_routes import register as register_campaigns
     register_campaigns(app, get_session, scoped_staff, campaign_options, demo_mode)
     if loyalty_configuration_enabled:

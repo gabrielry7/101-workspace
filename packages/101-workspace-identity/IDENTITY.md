@@ -204,3 +204,7 @@ Comparison delivery: show several actual-app renders together with direct links.
 Name surface order explicitly: white panels on gray (`gray-white`) and gray panels
 on white (`white-gray`). A hidden selector or one example alone is insufficient
 for comparing options. This is a review preference, not selection of a default.
+
+## Social production slice · 2026-11-06
+
+`frontend/src/social.tsx` composes the existing workspace shell with a source/fact form and rendered-photo review. Geometry is owned by `social.css`; brand media remains separate from workspace styling. Preserve explicit missing-metric states, source permission, saved-version approval and visible deterministic-copy limits. Current slice is provisional pending real Honorato material and broader production controls.

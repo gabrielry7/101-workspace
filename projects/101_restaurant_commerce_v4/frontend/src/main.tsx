@@ -55,10 +55,11 @@ import {
   periodQuery,
 } from "./workspace-views";
 import { CampaignView } from "./campaign-workspace";
+import { SocialWorkspace } from "./social";
 import { ColorPreview } from "./color-preview";
 const screenFromPath = () => {
   const path = location.pathname.split("/").pop() || "home";
-  return ["sales", "customers", "campaigns", "analytics", "identity"].includes(
+  return ["sales", "customers", "campaigns", "analytics", "identity", "social"].includes(
     path,
   )
     ? path
@@ -69,6 +70,7 @@ const screenNames: Record<string, string> = {
   sales: "Ventas",
   customers: "Clientes",
   campaigns: "Campañas",
+  social: "Contenido",
   analytics: "Analítica web",
   identity: "Identidad",
 };
@@ -433,6 +435,7 @@ function App() {
             Clientes
             {screen === "customers" && <span className="active-dot" />}
           </a>
+          <a href={`/workspace/social?business=${bid}`} onClick={(e) => goScreen(e, "social")} className={screen === "social" ? "active" : ""}><Palette size={18} />Contenido</a>
           <a
             href={`/workspace/campaigns?business=${bid}`}
             className={screen === "campaigns" ? "active" : ""}
@@ -574,7 +577,7 @@ function App() {
             <Menu />
           </button>
           <div className="breadcrumb">
-            {screen === "home" ? (
+            {screen === "social" ? <Palette size={16} /> : screen === "home" ? (
               <House size={16} />
             ) : screen === "sales" ? (
               <ShoppingBag size={16} />
@@ -614,7 +617,7 @@ function App() {
             </button>
           </div>
         )}
-        {screen === "home" ? (
+        {screen === "social" ? (<SocialWorkspace key={bid} business={bid} csrf={identity.csrf} demo={!!policy?.demo_mode} />) : screen === "home" ? (
           <HomeView business={bid} params={params} navigate={navigate} />
         ) : screen === "analytics" ? (
           <AnalyticsView business={bid} params={params} navigate={navigate} />
