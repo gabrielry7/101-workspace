@@ -204,3 +204,11 @@ Comparison delivery: show several actual-app renders together with direct links.
 Name surface order explicitly: white panels on gray (`gray-white`) and gray panels
 on white (`white-gray`). A hidden selector or one example alone is insufficient
 for comparing options. This is a review preference, not selection of a default.
+
+## Provisioned analytics (2026-11-07)
+
+Canonical UUID businesses use the authorized reporting API with real/pending/error
+states. Reuse the shared PageHeading, PeriodPicker, result strip, tables and
+Failure/Loading components. Keep financial scope and order-cohort/refund timing
+visible; browser events never become financial records. Existing named demo
+businesses retain explicitly labeled sample charts. No new palette or chart tokens.
