@@ -100,6 +100,14 @@ function message(code: string, action?: string) {
     codeText[code] || action || "Revisa la configuración y vuelve a intentar."
   );
 }
+class AdminError extends Error {
+  constructor(
+    public status: number,
+    message: string,
+  ) {
+    super(message);
+  }
+}
 async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
   const response = await fetch("/api/101/" + path, {
     credentials: "same-origin",
@@ -109,7 +117,8 @@ async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
     if (response.status === 401)
       window.dispatchEvent(new Event("session-expired"));
     const body = await response.json().catch(() => ({}));
-    throw Error(
+    throw new AdminError(
+      response.status,
       response.status === 401
         ? "Tu sesión terminó. Vuelve a entrar."
         : response.status === 403
@@ -144,7 +153,11 @@ function useLive<T>(path: string | null, revision = 0) {
         if (!abort.signal.aborted)
           setState((old) => ({
             key: path,
-            data: old.key === path ? old.data : undefined,
+            data:
+              !(e instanceof AdminError && [401, 403].includes(e.status)) &&
+              old.key === path
+                ? old.data
+                : undefined,
             error: (e as Error).message,
           }));
       } finally {
