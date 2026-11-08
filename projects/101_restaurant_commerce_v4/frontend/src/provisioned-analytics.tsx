@@ -147,17 +147,39 @@ export function ProvisionedAnalytics(props: ViewProps) {
                         <th>
                           {dimension === "checkout_funnel"
                             ? "Visitantes"
-                            : "Valor"}
+                            : dimension === "performance"
+                              ? "LCP p75 (ms)"
+                              : "Valor"}
                         </th>
+                        {dimension === "performance" && <th>Muestras</th>}
                       </tr>
                     </thead>
                     <tbody>
                       {rows.map((r, i) => (
                         <tr key={i}>
                           <td>
-                            {String(r.x ?? r.value ?? r.name ?? "Sin detalle")}
+                            {String(
+                              r.x ??
+                                r.utm ??
+                                r.value ??
+                                r.name ??
+                                "Sin detalle",
+                            )}
                           </td>
-                          <td>{String(r.y ?? r.visitors ?? r.count ?? "—")}</td>
+                          <td>
+                            {String(
+                              dimension === "performance"
+                                ? (r.p75 ?? "—")
+                                : (r.y ??
+                                    r.views ??
+                                    r.visitors ??
+                                    r.count ??
+                                    "—"),
+                            )}
+                          </td>
+                          {dimension === "performance" && (
+                            <td>{String(r.count ?? "—")}</td>
+                          )}
                         </tr>
                       ))}
                     </tbody>

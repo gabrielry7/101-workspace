@@ -212,3 +212,21 @@ states. Reuse the shared PageHeading, PeriodPicker, result strip, tables and
 Failure/Loading components. Keep financial scope and order-cohort/refund timing
 visible; browser events never become financial records. Existing named demo
 businesses retain explicitly labeled sample charts. No new palette or chart tokens.
+
+## Internal business onboarding (2026-11-08)
+
+`frontend/src/onboarding.tsx` and `onboarding.css` add the internal Negocios
+composition. Reuse the existing shell, typography, working surfaces, buttons,
+resource states, Lucide icons and Base UI dialog/focus behavior. Reference2 informs
+navigation precision; reference7 informs compact operational grouping. No new theme.
+Directory rows, stage details and CSV intake are new compositions owned by that
+module. Their geometry remains editable separately from account/provisioning facts.
+
+Platform administrators can open this view without merchant memberships. That
+permission does not grant access to merchant orders, customers or analytics.
+Persist each submitted payload and request key before sending; uncertain requests
+stay visible and can be retried unchanged. Ready, pending external setup and
+suspended remain distinct written states. Show requested DNS records beside the
+pending domain. Suspension conserves existing records/resources. Phone layouts
+retain full names, domain instructions and44px controls without horizontal overflow.
+Actual render/measurement evidence lives in the shared provisioning demo review.

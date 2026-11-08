@@ -17,6 +17,7 @@ import {
   ExternalLink,
   Globe2,
   LogOut,
+  Layers as LayersIcon,
   Mail,
   Megaphone,
   Menu,
@@ -56,11 +57,17 @@ import {
 } from "./workspace-views";
 import { CampaignView } from "./campaign-workspace";
 import { ColorPreview } from "./color-preview";
+import { OnboardingView } from "./onboarding";
 const screenFromPath = () => {
   const path = location.pathname.split("/").pop() || "home";
-  return ["sales", "customers", "campaigns", "analytics", "identity"].includes(
-    path,
-  )
+  return [
+    "sales",
+    "customers",
+    "campaigns",
+    "analytics",
+    "identity",
+    "onboarding",
+  ].includes(path)
     ? path
     : "home";
 };
@@ -71,6 +78,7 @@ const screenNames: Record<string, string> = {
   campaigns: "Campañas",
   analytics: "Analítica web",
   identity: "Identidad",
+  onboarding: "Negocios",
 };
 
 type Business = {
@@ -80,7 +88,13 @@ type Business = {
   role: string;
   permissions: string[];
 };
-type Identity = { username: string; csrf: string; businesses: Business[] };
+type Identity = {
+  username: string;
+  csrf: string;
+  businesses: Business[];
+  platform_admin: boolean;
+  actor_id: string;
+};
 type Listing = {
   items: Customer[];
   count: number;
@@ -258,6 +272,16 @@ function App() {
       window.removeEventListener("session-expired", expire);
     };
   }, []);
+  useEffect(() => {
+    if (
+      identity?.platform_admin &&
+      !identity.businesses.length &&
+      screen !== "onboarding"
+    ) {
+      history.replaceState({}, "", "/workspace/onboarding" + location.search);
+      setScreen("onboarding");
+    }
+  }, [identity, screen]);
   const requested = params.get("business");
   const business =
     identity?.businesses.find((b) => b.business_id === requested) ||
@@ -397,92 +421,116 @@ function App() {
                 </select>
               </>
             ) : (
-              <strong>{business?.name || "Selecciona un negocio"}</strong>
+              <strong>
+                {business?.name ||
+                  (identity?.platform_admin
+                    ? "Administración 101"
+                    : "Selecciona un negocio")}
+              </strong>
             )}
-            <span>Espacio del negocio</span>
+            <span>
+              {business ? "Espacio del negocio" : "Gestión de negocios"}
+            </span>
           </div>
         </div>
-        <nav aria-label="Principal">
-          <span className="nav-caption">ESPACIO DE TRABAJO</span>
-          <a
-            href={`/workspace/home?business=${bid}`}
-            className={screen === "home" ? "active" : ""}
-            aria-current={screen === "home" ? "page" : undefined}
-            onClick={(e) => goScreen(e, "home")}
-          >
-            <House />
-            Inicio
-          </a>
-          <a
-            href={`/workspace/sales?business=${bid}`}
-            className={screen === "sales" ? "active" : ""}
-            aria-current={screen === "sales" ? "page" : undefined}
-            onClick={(e) => goScreen(e, "sales")}
-          >
-            <ShoppingBag />
-            Ventas
-            <ExternalLink className="nav-external" />
-          </a>
-          <a
-            className={screen === "customers" ? "active" : ""}
-            aria-current={screen === "customers" ? "page" : undefined}
-            href={`/workspace/customers?business=${bid}`}
-            onClick={(e) => goScreen(e, "customers")}
-          >
-            <Users />
-            Clientes
-            {screen === "customers" && <span className="active-dot" />}
-          </a>
-          <a
-            href={`/workspace/campaigns?business=${bid}`}
-            className={screen === "campaigns" ? "active" : ""}
-            aria-current={screen === "campaigns" ? "page" : undefined}
-            onClick={(e) => goScreen(e, "campaigns")}
-          >
-            <Megaphone />
-            Campañas
-            <ExternalLink className="nav-external" />
-          </a>
-          <a
-            href={`/workspace/analytics?business=${bid}`}
-            className={screen === "analytics" ? "active" : ""}
-            aria-current={screen === "analytics" ? "page" : undefined}
-            onClick={(e) => goScreen(e, "analytics")}
-          >
-            <ChartNoAxesColumnIncreasing />
-            Analítica web
-          </a>
-          <details className="presence">
-            <summary>
-              <Globe2 />
-              Presencia
-              <ChevronDown size={14} />
-            </summary>
-            <div>
-              <a href={`/r/${encodeURIComponent(business?.slug || bid)}`}>
-                Sitio web
-                <ExternalLink size={13} />
-              </a>
-              <a href={legacy("/connections")}>Google</a>
-              <span title="La conexión social todavía no está disponible">
-                Social <small>Próximamente</small>
-              </span>
-            </div>
-          </details>
-        </nav>
+        {business && (
+          <nav aria-label="Principal">
+            <span className="nav-caption">ESPACIO DE TRABAJO</span>
+            <a
+              href={`/workspace/home?business=${bid}`}
+              className={screen === "home" ? "active" : ""}
+              aria-current={screen === "home" ? "page" : undefined}
+              onClick={(e) => goScreen(e, "home")}
+            >
+              <House />
+              Inicio
+            </a>
+            <a
+              href={`/workspace/sales?business=${bid}`}
+              className={screen === "sales" ? "active" : ""}
+              aria-current={screen === "sales" ? "page" : undefined}
+              onClick={(e) => goScreen(e, "sales")}
+            >
+              <ShoppingBag />
+              Ventas
+              <ExternalLink className="nav-external" />
+            </a>
+            <a
+              className={screen === "customers" ? "active" : ""}
+              aria-current={screen === "customers" ? "page" : undefined}
+              href={`/workspace/customers?business=${bid}`}
+              onClick={(e) => goScreen(e, "customers")}
+            >
+              <Users />
+              Clientes
+              {screen === "customers" && <span className="active-dot" />}
+            </a>
+            <a
+              href={`/workspace/campaigns?business=${bid}`}
+              className={screen === "campaigns" ? "active" : ""}
+              aria-current={screen === "campaigns" ? "page" : undefined}
+              onClick={(e) => goScreen(e, "campaigns")}
+            >
+              <Megaphone />
+              Campañas
+              <ExternalLink className="nav-external" />
+            </a>
+            <a
+              href={`/workspace/analytics?business=${bid}`}
+              className={screen === "analytics" ? "active" : ""}
+              aria-current={screen === "analytics" ? "page" : undefined}
+              onClick={(e) => goScreen(e, "analytics")}
+            >
+              <ChartNoAxesColumnIncreasing />
+              Analítica web
+            </a>
+            <details className="presence">
+              <summary>
+                <Globe2 />
+                Presencia
+                <ChevronDown size={14} />
+              </summary>
+              <div>
+                <a href={`/r/${encodeURIComponent(business?.slug || bid)}`}>
+                  Sitio web
+                  <ExternalLink size={13} />
+                </a>
+                <a href={legacy("/connections")}>Google</a>
+                <span title="La conexión social todavía no está disponible">
+                  Social <small>Próximamente</small>
+                </span>
+              </div>
+            </details>
+          </nav>
+        )}
         <div className="nav-bottom">
-          <a
-            href={`/workspace/identity?business=${bid}`}
-            onClick={(e) => goScreen(e, "identity")}
-          >
-            <Palette />
-            Identidad
-          </a>
-          <a href={legacy("/connections")}>
-            <Plug />
-            Conexiones
-            <ExternalLink className="nav-external" />
-          </a>
+          {identity?.platform_admin && (
+            <a
+              href="/workspace/onboarding"
+              className={screen === "onboarding" ? "active" : ""}
+              aria-current={screen === "onboarding" ? "page" : undefined}
+              onClick={(e) => goScreen(e, "onboarding")}
+            >
+              <LayersIcon />
+              Negocios
+            </a>
+          )}
+          {business && (
+            <>
+              <a
+                href={`/workspace/identity?business=${bid}`}
+                onClick={(e) => goScreen(e, "identity")}
+              >
+                <Palette />
+                Identidad
+              </a>
+              <a href={legacy("/connections")}>
+                <Plug />
+                Conexiones
+                <ExternalLink className="nav-external" />
+              </a>
+            </>
+          )}
           <div className="account">
             <span className="account-avatar">
               {identity?.username.slice(0, 1).toUpperCase()}
@@ -490,7 +538,11 @@ function App() {
             <span>
               <strong>{identity?.username}</strong>
               <small>
-                {business?.role === "manager" ? "Administrador" : "Equipo"}
+                {identity?.platform_admin
+                  ? "Administrador 101"
+                  : business?.role === "manager"
+                    ? "Administrador"
+                    : "Equipo"}
               </small>
             </span>
             <button
@@ -534,7 +586,7 @@ function App() {
         }}
       />
     );
-  if (!business)
+  if (!business && screen !== "onboarding" && !identity.platform_admin)
     return (
       <div className="state">
         <h1>Este negocio no está disponible</h1>
@@ -582,6 +634,8 @@ function App() {
               <Megaphone size={16} />
             ) : screen === "analytics" ? (
               <ChartNoAxesColumnIncreasing size={16} />
+            ) : screen === "onboarding" ? (
+              <LayersIcon size={16} />
             ) : screen === "identity" ? (
               <Palette size={16} />
             ) : (
@@ -614,7 +668,22 @@ function App() {
             </button>
           </div>
         )}
-        {screen === "home" ? (
+        {screen === "onboarding" || (!business && identity.platform_admin) ? (
+          identity.platform_admin ? (
+            <OnboardingView
+              key={identity.actor_id}
+              csrf={identity.csrf}
+              actor={identity.actor_id}
+              params={params}
+              navigate={navigate}
+            />
+          ) : (
+            <div className="state">
+              <h1>Acceso restringido</h1>
+              <p>Solo un administrador de 101 puede gestionar negocios.</p>
+            </div>
+          )
+        ) : screen === "home" ? (
           <HomeView business={bid} params={params} navigate={navigate} />
         ) : screen === "analytics" ? (
           <AnalyticsView business={bid} params={params} navigate={navigate} />
@@ -627,7 +696,7 @@ function App() {
             params={params}
             navigate={navigate}
             csrf={identity.csrf}
-            permissions={business.permissions}
+            permissions={business?.permissions || []}
             demo={!!policy?.demo_mode}
           />
         ) : screen === "sales" ? (
@@ -638,7 +707,7 @@ function App() {
             }}
             initialScroll={routeScroll.current[bid + "sales"] || 0}
             business={bid}
-            permissions={business.permissions}
+            permissions={business?.permissions || []}
             csrf={identity.csrf}
             params={params}
             navigate={navigate}
@@ -647,7 +716,7 @@ function App() {
           <LoyaltyWorkspace
             key={bid}
             business={bid}
-            permissions={business.permissions}
+            permissions={business?.permissions || []}
             csrf={identity.csrf}
             params={params}
             navigate={navigate}

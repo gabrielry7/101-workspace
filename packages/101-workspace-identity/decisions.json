@@ -59,6 +59,11 @@
       "date": "2026-11-07",
       "source": "authorized multi-tenant provisioning implementation",
       "decision": "Provisioned canonical UUID businesses use real/pending/error analytics and separate authoritative commerce records through existing shared components; keep named demo analytics explicitly labeled. Preserve shared identity tokens."
+    },
+    {
+      "date": "2026-11-08",
+      "source": "authorized repeatable demo and internal onboarding implementation",
+      "decision": "Extend existing workspace to internal Negocios with zero-membership admin access, directory/stage details, single and bounded CSV intake, retained request keys and explicit domain pending states. Reuse identity and Base UI; no new palette or broader merchant permissions."
     }
   ]
 }
