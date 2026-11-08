@@ -79,6 +79,7 @@ function renderRecovery(){
     } else if(!recoveredOrder.payments?.length||['pending','processing','unknown'].includes(recoveredOrder.checkout_state)){
       panel.append(h('p',{},'Tu solicitud está guardada. Estamos confirmando el pago; todavía no podemos confirmar el pedido.'));
     } else if(recoveredOrder.payment_status==='paid'){
+      trackAnalytics('purchase',{currency:recoveredOrder.currency||store?.currency||'COP',value_minor:recoveredOrder.total_minor},'purchase:'+recoveredOrder.id);
       panel.append(h('p',{},'Pago confirmado. Estado del pedido: '+(statuses[recoveredOrder.status]||recoveredOrder.status)));
     } else {
       panel.append(h('p',{},'Estado del pedido: '+(statuses[recoveredOrder.status]||recoveredOrder.status)+'. Pago: '+(paymentStatuses[recoveredOrder.payment_status]||recoveredOrder.payment_status)));
@@ -193,9 +194,11 @@ function renderMenu() {
       h('div',{},h('button',{disabled:!item.available,onClick:()=>openItem(item)},!item.available?'Agotado':item.modifier_groups.length?'Elegir':'Agregar'))));
   }
 }
+function trackAnalytics(name,data,id){try{window.analytics101?.event(name,data,id);}catch(_){/* Analytics never blocks commerce. */}}
 function openItem(item) {
+  trackAnalytics('product_view',{product_id:String(item.id)},'view:'+intentKey());
   activeItem=item;
-  if(!item.modifier_groups.length){cart.push({item,quantity:1,selections:[]});renderCart();return;}
+  if(!item.modifier_groups.length){cart.push({item,quantity:1,selections:[]});trackAnalytics('add_to_cart',{product_id:String(item.id),quantity:1},'cart:'+intentKey());renderCart();return;}
   $('modalName').textContent=item.name; $('modalDescription').textContent=item.description||'';
   replace($('modifierGroups'),item.modifier_groups.map((g,index)=>h('div',{className:'modifier'},
     h('strong',{},g.name),' ',h('small',{},g.required?'(obligatorio)':''),
@@ -209,7 +212,7 @@ function openItem(item) {
 }
 function closeItem(){if(typeof itemDialog.close==='function') itemDialog.close();else itemDialog.removeAttribute('open');}
 
-function updateModalTotal(){let total=activeItem.base_price_minor;document.querySelectorAll('#modifierGroups input:checked').forEach(x=>total+=Number(x.dataset.price));$('modalTotal').textContent=money(total)}function addConfiguredItem(){const selections=[];for(const g of activeItem.modifier_groups){const ids=[...document.querySelectorAll('#modifierGroups input:checked')].filter(x=>x.dataset.group===String(g.id)).map(x=>x.value),min=Math.max(g.min_selections,g.required?1:0);if(ids.length<min)return notice(`Elige ${min} opción(es) en ${g.name}`,'error');if(ids.length>g.max_selections)return notice(`Máximo ${g.max_selections} opción(es) en ${g.name}`,'error');selections.push({group_id:g.id,option_ids:ids})}cart.push({item:activeItem,quantity:1,selections});closeItem();renderCart()}
+function updateModalTotal(){let total=activeItem.base_price_minor;document.querySelectorAll('#modifierGroups input:checked').forEach(x=>total+=Number(x.dataset.price));$('modalTotal').textContent=money(total)}function addConfiguredItem(){const selections=[];for(const g of activeItem.modifier_groups){const ids=[...document.querySelectorAll('#modifierGroups input:checked')].filter(x=>x.dataset.group===String(g.id)).map(x=>x.value),min=Math.max(g.min_selections,g.required?1:0);if(ids.length<min)return notice(`Elige ${min} opción(es) en ${g.name}`,'error');if(ids.length>g.max_selections)return notice(`Máximo ${g.max_selections} opción(es) en ${g.name}`,'error');selections.push({group_id:g.id,option_ids:ids})}cart.push({item:activeItem,quantity:1,selections});trackAnalytics('add_to_cart',{product_id:String(activeItem.id),quantity:1},'cart:'+intentKey());closeItem();renderCart()}
 function cartPayload(){return cart.map(x=>({menu_item_id:x.item.id,quantity:x.quantity,modifiers:x.selections}))}function renderCart(){
   saveDraft();++foodGeneration;foodQuote=null;renderTotals();
   const root=$('cartRows'),count=cart.reduce((a,x)=>a+x.quantity,0);
@@ -290,6 +293,7 @@ async function checkoutLocked(){
   let orderAccepted=false;
   checkoutBusy=true;$('checkoutButton').disabled=true;lockInputs(checkoutFields,true);
   try {
+    trackAnalytics('checkout_start',{},'checkout:'+checkoutIntent.idempotency_key);
     let order=await api(`/api/restaurants/${path(businessId)}/orders`,{method:'POST',body:JSON.stringify(checkoutIntent)});
     orderAccepted=true;
     // Keep the same intent through payment-navigation/completion failures too.

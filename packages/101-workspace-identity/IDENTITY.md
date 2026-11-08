@@ -213,3 +213,11 @@ Social connection/intake extension: the same content workspace now presents expl
 Instagram setup/authorization/import states and source-post coverage. Photo intake
 shows progress and an explicit retry action, with a scoped reusable asset selector.
 It retains the existing shell, buttons and white working surfaces; no new theme.
+
+## Provisioned analytics (2026-11-07)
+
+Canonical UUID businesses use the authorized reporting API with real/pending/error
+states. Reuse the shared PageHeading, PeriodPicker, result strip, tables and
+Failure/Loading components. Keep financial scope and order-cohort/refund timing
+visible; browser events never become financial records. Existing named demo
+businesses retain explicitly labeled sample charts. No new palette or chart tokens.

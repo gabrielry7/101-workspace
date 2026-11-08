@@ -1,0 +1,53 @@
+/* Reporting composition; color, type and surface roles remain shared workspace tokens. */
+.provisioned-analytics .analytics-report-control {
+  display: grid;
+  gap: 8px;
+  width: min(100%, 280px);
+  margin-bottom: 24px;
+  color: var(--wm-secondary);
+  font-size: 14px;
+}
+.provisioned-analytics .analytics-report-control select {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--wm-line);
+  border-radius: 8px;
+  background: var(--wm-surface);
+  color: var(--wm-ink);
+  font: inherit;
+}
+.provisioned-analytics .analytics-report {
+  padding: 24px;
+  margin-top: 24px;
+}
+.provisioned-analytics .analytics-report h2 {
+  margin-bottom: 12px;
+}
+.provisioned-analytics .analytics-report p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.provisioned-analytics .analytics-report p:last-child {
+  margin-bottom: 0;
+}
+.provisioned-analytics .table-wrap {
+  overflow-x: auto;
+}
+.provisioned-analytics table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.provisioned-analytics th,
+.provisioned-analytics td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--wm-line);
+  white-space: nowrap;
+  font-size: 14px;
+}
+@media (max-width: 600px) {
+  .provisioned-analytics .analytics-report {
+    padding: 16px;
+  }
+}

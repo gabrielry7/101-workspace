@@ -1,3 +1,4 @@
+import { ProvisionedAnalytics } from "./provisioned-analytics";
 import { useEffect, useState } from "react";
 import {
   ArrowRight,
@@ -334,6 +335,10 @@ export function HomeView(props: ViewProps) {
   );
 }
 export function AnalyticsView(props: ViewProps) {
+  return /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(props.business)
+    ? <ProvisionedAnalytics {...props} /> : <DemoAnalyticsView {...props} />;
+}
+function DemoAnalyticsView(props: ViewProps) {
   const p = currentPeriod(props.params);
   const [metric, setMetric] = useState<"sessions" | "views">("sessions");
   const start = new Date(p.from + "T12:00Z"),
