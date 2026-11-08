@@ -42,11 +42,16 @@ def upgrade(engine):
 
 
 def register(app,get_session,scoped_staff):
+    from .social_migrations import require_ready
     root='/api/operator/restaurants/{business_id}/social'
     def write(business_id:str,request:Request,session=Depends(get_session)):
-        return scoped_staff(request,session,business_id,'growth.write')
+        principal = scoped_staff(request,session,business_id,'growth.write')
+        require_ready(session)
+        return principal
     def read(business_id:str,request:Request,session=Depends(get_session)):
-        return scoped_staff(request,session,business_id,'growth.read')
+        principal = scoped_staff(request,session,business_id,'growth.read')
+        require_ready(session)
+        return principal
     def locked(session,business,identifier):
         owned(session,Upload,identifier,business)
         session.execute(update(Upload).where(Upload.id==identifier).values(total=Upload.total))
