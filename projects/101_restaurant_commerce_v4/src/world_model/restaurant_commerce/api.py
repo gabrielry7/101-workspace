@@ -155,6 +155,7 @@ def create_app(
     campaign_options: dict | None = None,
     signup_options: dict | None = None,
     connections_runtime=None,
+    instagram_runtime=None,
     loyalty_configuration_enabled: bool | None = None,
     loyalty_analytics_enabled: bool | None = None,
 ) -> FastAPI:
@@ -180,6 +181,8 @@ def create_app(
     from .connections import from_environment, start_worker
     from .connection_routes import register_connections
     connections_runtime = connections_runtime or from_environment()
+    from .connection_instagram import from_environment as instagram_from_environment
+    instagram_runtime = instagram_runtime or instagram_from_environment()
     campaign_options = campaign_options or {}
     if loyalty_configuration_enabled is None:
         loyalty_flag = os.getenv("COMMERCE_LOYALTY_CONFIGURATION_ENABLED", "0")
@@ -277,6 +280,9 @@ def create_app(
 
     @asynccontextmanager
     async def lifespan(_app):
+        instagram_stop = instagram_thread = None
+        if instagram_runtime and instagram_runtime.worker:
+            instagram_stop, instagram_thread = start_worker(SessionLocal, instagram_runtime)
         connection_stop = connection_thread = None
         if connections_runtime and connections_runtime.worker:
             connection_stop, connection_thread = start_worker(SessionLocal, connections_runtime)
@@ -291,6 +297,9 @@ def create_app(
             yield
         finally:
             readiness.close()
+            if instagram_stop:
+                instagram_stop.set()
+                instagram_thread.join(timeout=5)
             if connection_stop:
                 connection_stop.set()
                 connection_thread.join(timeout=5)
@@ -547,6 +556,12 @@ def create_app(
     register_connections(app, get_session, scoped_staff, connections_runtime, staff_cookie, production)
     register_signup(app, get_session, scoped_staff, signup_options, demo_mode, production)
 
+    from .instagram_routes import register as register_instagram
+    register_instagram(app, get_session, scoped_staff, instagram_runtime, staff_cookie, production)
+    from .social_production import register as register_social
+    register_social(app, get_session, scoped_staff)
+    from .social_uploads import register as register_uploads
+    register_uploads(app, get_session, scoped_staff)
     from .campaign_routes import register as register_campaigns
     register_campaigns(app, get_session, scoped_staff, campaign_options, demo_mode)
     if loyalty_configuration_enabled:
