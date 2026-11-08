@@ -120,9 +120,6 @@ svg {
   border-left: 1px solid #cececa;
   padding-left: 12px;
 }
-.brand {
-  padding: 0 14px 29px;
-}
 .business {
   display: flex;
   gap: 11px;
@@ -1674,9 +1671,6 @@ tbody tr.current {
     z-index: 50;
     padding: 29px 19px 20px;
     overflow-y: auto;
-  }
-  .mobile-nav .brand {
-    padding-bottom: 28px;
   }
   .mobile-nav nav > a,
   .mobile-nav summary,

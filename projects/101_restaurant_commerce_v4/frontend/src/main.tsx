@@ -376,15 +376,6 @@ function App() {
   function nav() {
     return (
       <>
-        <div className="brand">
-          <a
-            href="/workspace/home"
-            aria-label="101 Inicio"
-            className="wordmark"
-          >
-            101<span>workspace</span>
-          </a>
-        </div>
         <div className="business">
           <span className="business-icon">
             <ShoppingBag size={20} />

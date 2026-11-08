@@ -46,7 +46,7 @@ actual commerce consumer imports these tokens into its production build.
 
 ## Composition recipes
 
-Shell: persistent desktop sidebar, business identity, ordinary navigation, utilities
+Shell: persistent desktop sidebar starting with business identity, ordinary navigation, utilities
 at the bottom; phone drawer with keyboard/focus support. Single business needs no
 switcher. Main content max1560px,24–32px padding,16px on phones. Current reference
 implementation is `projects/101_restaurant_commerce_v4/frontend/src/main.tsx`.
@@ -254,3 +254,7 @@ headings, controls, navigation, dialogs, onboarding and legacy staff tools. Use
 Preserve monospace for code where functional. Merchant websites and customer creative
 outputs retain their separately approved brand typography. `typography.css` and its
 font asset here are the source; generated legacy/internal distributions retain the OFL.
+
+Sidebar direction (2026-11-08): remove the standalone “101 | workspace” branding
+row from desktop navigation and the phone drawer. Business identity comes first;
+keep the existing Inicio navigation action.
