@@ -443,3 +443,13 @@
     min-height: 44px;
   }
 }
+@media (max-width: 650px) {
+  .onboarding .icon-button,
+  .setup-dialog .icon-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .setup-detail .button {
+    font-size: 14px;
+  }
+}

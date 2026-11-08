@@ -51,3 +51,15 @@
     padding: 16px;
   }
 }
+/* Directory column widths/hiding rules must not alter reporting or financial facts. */
+.provisioned-analytics table {
+  table-layout: auto;
+}
+.provisioned-analytics table th,
+.provisioned-analytics table td {
+  width: auto;
+  display: table-cell;
+}
+.provisioned-analytics table.commercial-results {
+  min-width: 460px;
+}

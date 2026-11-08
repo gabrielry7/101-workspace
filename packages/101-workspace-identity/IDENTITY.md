@@ -239,3 +239,9 @@ suspended remain distinct written states. Show requested DNS records beside the
 pending domain. Suspension conserves existing records/resources. Phone layouts
 retain full names, domain instructions and44px controls without horizontal overflow.
 Actual render/measurement evidence lives in the shared provisioning demo review.
+
+Review refinement: onboarding icon targets are44px on phones, including close and
+pagination. The provisioned-analytics consumer resets inherited directory column
+widths/hiding with scoped table selectors; all financial columns remain table cells
+at every width, with a focusable internal scroll region when necessary. Do not let
+customer-directory geometry decide whether a financial value is visible.

@@ -208,8 +208,13 @@ export function ProvisionedAnalytics(props: ViewProps) {
                   clientes nuevos
                 </p>
                 {data.data.commerce.data?.money.length ? (
-                  <div className="table-wrap">
-                    <table>
+                  <div
+                    className="table-wrap"
+                    tabIndex={0}
+                    role="region"
+                    aria-label="Resultados del negocio por moneda y origen"
+                  >
+                    <table className="commercial-results">
                       <thead>
                         <tr>
                           <th>Origen</th>
