@@ -548,6 +548,8 @@ def create_app(
 
     from .customer_workspace import register as register_workspace
     register_workspace(app, get_session, scoped_staff)
+    from .monthly_reports import register as register_monthly
+    register_monthly(app, get_session, scoped_staff)
     from .sales_workspace import register as register_sales
     register_sales(app, get_session, scoped_staff)
     from .workspace_overview import register as register_overview

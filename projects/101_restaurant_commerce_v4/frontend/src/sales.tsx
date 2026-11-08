@@ -41,6 +41,7 @@ type Row = {
   customer_name: string | null;
 };
 type Listing = {
+  money: {scope:string;currency:string;net:number;paid_orders:number;refunds:number}[];
   items: Row[];
   count: number;
   counts: Record<string, number>;
@@ -179,7 +180,7 @@ export function SalesWorkspace({
     return () => clearTimeout(timer);
   }, [search, query]);
   const list = useResource<Listing>(
-    `${endpoint(business)}/sales?q=${encodeURIComponent(query)}&status=${status}&offset=${offset}&limit=25&${periodQuery(params)}`,
+    `${endpoint(business)}/sales?q=${encodeURIComponent(query)}&status=${status}&offset=${offset}&limit=25&${periodQuery(params)}&online_only=${params.get("online_only")||"false"}${params.get("currency")?"&currency="+encodeURIComponent(params.get("currency")!):""}`,
   );
   useEffect(() => {
     if (!selected && previousSelected.current) {
@@ -219,6 +220,7 @@ export function SalesWorkspace({
             Actualizar
           </button>
         </section>
+        {list.data?.money.filter(r=>r.scope==="provider").map(r=><section className="sales-summary" key={r.currency} aria-label="Ventas en línea"><div><span>Ventas en línea</span><strong>{amount(r.net,r.currency)}</strong></div><div><span>Pedidos pagados</span><strong>{r.paid_orders}</strong></div><div><span>Valor promedio por pedido</span><strong>{r.paid_orders?amount(Math.round(r.net/r.paid_orders),r.currency):"—"}</strong></div></section>)}
         <section className="sales-summary" aria-label="Estado de los pedidos">
           <div>
             <span>

@@ -258,3 +258,11 @@ font asset here are the source; generated legacy/internal distributions retain t
 Sidebar direction (2026-11-08): remove the standalone “101 | workspace” branding
 row from desktop navigation and the phone drawer. Business identity comes first;
 keep the existing Inicio navigation action.
+
+## Monthly reports
+
+Reportes reuses the workspace shell, controls, white surfaces and Inter. New monthly
+summary and PDF composition belong to commerce monthly-reports.tsx and
+monthly_report_pdf.py. Three primary figures, previous values and short source states;
+no generated headlines/advice. Saved snapshots supply both views. Unknown is an em
+placeholder, measured zero is numeric. Legacy sample charts never enter these reports.

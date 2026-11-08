@@ -5,7 +5,7 @@ from urllib.parse import urlencode
 from fastapi import Depends, Query, Request
 from sqlalchemy import select, func, inspect, case
 from sqlalchemy.orm import Session
-from .models import Customer, Order, Payment
+from .models import Customer, Order, Payment, RestaurantCommerceProfile
 from .campaign_models import Campaign, CampaignRevision
 from .connection_models import BusinessConnection
 from .refunds import PaymentRefund
@@ -73,51 +73,8 @@ def overview(session, business, selected):
     customers = select(Customer).where(
         Customer.business_id == business, *clauses(Customer.created_at, selected)
     )
-    refund = (
-        select(
-            PaymentRefund.payment_id,
-            func.sum(PaymentRefund.amount_minor).label("total"),
-        )
-        .group_by(PaymentRefund.payment_id)
-        .subquery()
-    )
-    scope = case(
-        (Payment.provider == "simulated", "test"),
-        (Payment.provider == "cash_at_pickup", "cash"),
-        else_="provider",
-    )
-    refunded = case(
-        (Payment.status == "refunded", Payment.amount_minor),
-        else_=func.coalesce(refund.c.total, 0),
-    )
-    rows = session.execute(
-        select(
-            Payment.currency,
-            scope.label("scope"),
-            func.sum(Payment.amount_minor).label("captured"),
-            func.sum(refunded).label("refunds"),
-            func.count(func.distinct(Payment.order_id)).label("paid_orders"),
-        )
-        .join(Order, Payment.order_id == Order.id)
-        .outerjoin(refund, refund.c.payment_id == Payment.id)
-        .where(
-            Order.business_id == business,
-            *clauses(Order.created_at, selected),
-            Payment.status.in_(["paid", "refunded"]),
-        )
-        .group_by(Payment.currency, scope)
-    ).all()
-    money = [
-        {
-            "currency": r.currency,
-            "scope": r.scope,
-            "captured": r.captured,
-            "refunds": r.refunds,
-            "net": r.captured - r.refunds,
-            "paid_orders": r.paid_orders,
-        }
-        for r in rows
-    ]
+    from .sales_metrics import money_totals
+    money = money_totals(session, business, selected)
     attention = []
     activity = []
     for o in session.scalars(
@@ -253,7 +210,7 @@ def register(app, get_session, scoped_staff):
         date_to: str | None = None,
         session: Session = Depends(get_session),
     ):
-        return overview(session, business_id, period(date_from, date_to, default=True))
+        return overview(session, business_id, period(date_from, date_to, default=True, timezone_name=session.get(RestaurantCommerceProfile, business_id).timezone))
 
     @app.get(root + "/campaigns", dependencies=[Depends(read)])
     def listing(

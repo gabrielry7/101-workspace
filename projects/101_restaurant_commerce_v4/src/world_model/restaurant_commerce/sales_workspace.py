@@ -5,7 +5,7 @@ from typing import Literal
 from fastapi import Depends, HTTPException, Query, Request
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
-from .models import Order, PaymentReconciliation
+from .models import Order, Payment, PaymentReconciliation
 from .enums import ORDER_TRANSITIONS, OrderStatus
 from .errors import InvalidTransitionError
 from .refunds import refunded_total
@@ -13,7 +13,7 @@ from .service import RestaurantCommerceService
 
 
 def listing(
-    session, business, q="", status="active", offset=0, limit=25, selected=None
+    session, business, q="", status="active", offset=0, limit=25, selected=None, online_only=False, currency=None
 ):
     service = RestaurantCommerceService(session)
     from .workspace_period import clauses
@@ -21,6 +21,10 @@ def listing(
     base = select(Order).where(
         Order.business_id == business, *clauses(Order.created_at, selected)
     )
+    if online_only:
+        paid = select(Payment.order_id).where(Payment.status.in_(["paid","refunded"]),Payment.provider.notin_(["simulated","cash_at_pickup"]))
+        if currency: paid = paid.where(Payment.currency==currency)
+        base=base.where(Order.id.in_(paid))
     counts = dict(
         session.execute(
             select(Order.status, func.count())
@@ -162,6 +166,8 @@ def register(app, get_session, scoped_staff):
         q: str = Query("", max_length=80),
         date_from: str | None = None,
         date_to: str | None = None,
+        online_only: bool = False,
+        currency: str | None = None,
         status: Literal[
             "active",
             "all",
@@ -178,16 +184,22 @@ def register(app, get_session, scoped_staff):
         session: Session = Depends(get_session),
     ):
         from .workspace_period import period
+        from .models import RestaurantCommerceProfile
+        from .sales_metrics import money_totals
 
-        return listing(
+        result = listing(
             session,
             business_id,
             q.strip(),
             status,
             offset,
             limit,
-            period(date_from, date_to),
+            period(date_from, date_to, timezone_name=session.get(RestaurantCommerceProfile, business_id).timezone),
+            online_only, currency,
         )
+
+        result["money"] = money_totals(session, business_id, period(date_from, date_to, timezone_name=session.get(RestaurantCommerceProfile, business_id).timezone))
+        return result
 
     @app.get(root + "/{order_id}", dependencies=[Depends(read)])
     def sale(business_id: str, order_id: str, session: Session = Depends(get_session)):

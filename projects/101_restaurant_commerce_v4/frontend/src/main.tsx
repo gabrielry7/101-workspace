@@ -1,3 +1,4 @@
+import { MonthlyReports } from "./monthly-reports";
 import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Dialog } from "@base-ui/react/dialog";
@@ -63,6 +64,7 @@ import { OnboardingView } from "./onboarding";
 const screenFromPath = () => {
   const path = location.pathname.split("/").pop() || "home";
   return [
+    "reports",
     "sales",
     "customers",
     "campaigns",
@@ -76,6 +78,7 @@ const screenFromPath = () => {
 };
 const screenNames: Record<string, string> = {
   home: "Inicio",
+  reports: "Reportes",
   sales: "Ventas",
   customers: "Clientes",
   campaigns: "Campañas",
@@ -479,6 +482,7 @@ function App() {
               <ChartNoAxesColumnIncreasing />
               Analítica web
             </a>
+            <a href={`/workspace/reports?business=${bid}`} className={screen === "reports" ? "active" : ""} onClick={(e) => goScreen(e, "reports")}><ChartNoAxesColumnIncreasing />Reportes</a>
             <details className="presence">
               <summary>
                 <Globe2 />
@@ -690,6 +694,8 @@ function App() {
             csrf={identity.csrf}
             demo={!!policy?.demo_mode}
           />
+        ) : screen === "reports" ? (
+          <MonthlyReports key={bid} business={bid} csrf={identity.csrf} />
         ) : screen === "home" ? (
           <HomeView business={bid} params={params} navigate={navigate} />
         ) : screen === "analytics" ? (

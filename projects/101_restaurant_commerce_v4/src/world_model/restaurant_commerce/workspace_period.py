@@ -7,11 +7,12 @@ from fastapi import HTTPException
 ZONE = ZoneInfo("America/Bogota")
 
 
-def period(date_from=None, date_to=None, *, default=False):
+def period(date_from=None, date_to=None, *, default=False, timezone_name="America/Bogota"):
+    zone = ZoneInfo(timezone_name)
     if not date_from and not date_to:
         if not default:
             return None
-        end = datetime.now(ZONE).date()
+        end = datetime.now(zone).date()
         start = end - timedelta(days=6)
     else:
         try:
@@ -24,8 +25,8 @@ def period(date_from=None, date_to=None, *, default=False):
     return {
         "from": start.isoformat(),
         "to": end.isoformat(),
-        "start": datetime.combine(start, time.min, ZONE).astimezone(timezone.utc),
-        "end": datetime.combine(end + timedelta(days=1), time.min, ZONE).astimezone(
+        "start": datetime.combine(start, time.min, zone).astimezone(timezone.utc),
+        "end": datetime.combine(end + timedelta(days=1), time.min, zone).astimezone(
             timezone.utc
         ),
     }

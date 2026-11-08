@@ -8,6 +8,7 @@ version = "0.28.0"
 description = "Hardened restaurant direct commerce, delivery, loyalty and retention runtime for 101 / UnoCeroUno"
 requires-python = ">=3.11"
 dependencies = [
+  "reportlab==5.1.0",
   "fastapi>=0.110",
   "uvicorn>=0.27",
   "sqlalchemy>=2.0",
@@ -21,7 +22,7 @@ dependencies = [
 
 [project.optional-dependencies]
 loyalty-analytics = ["scipy>=1.14,<2"]
-test = ["pytest>=8.0", "httpx>=0.27", "hypothesis>=6.100", "defusedxml==0.7.1", "boto3>=1.40", "cryptography>=44", "twilio==9.12.0", "regex==2026.9.29", "scipy>=1.14,<2"]
+test = ["pypdf>=6", "pytest>=8.0", "httpx>=0.27", "hypothesis>=6.100", "defusedxml==0.7.1", "boto3>=1.40", "cryptography>=44", "twilio==9.12.0", "regex==2026.9.29", "scipy>=1.14,<2"]
 campaign-sms = ["twilio==9.12.0", "regex==2026.9.29"]
 campaign-email = ["boto3>=1.40", "cryptography>=44"]
 browser = ["playwright>=1.40"]
@@ -30,7 +31,7 @@ browser = ["playwright>=1.40"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-"world_model.restaurant_commerce" = ["web/*.html", "web/*.js", "web/*.css", "web/*.png", "web/workspace/index.html", "web/workspace/*.txt", "web/workspace/assets/*"]
+"world_model.restaurant_commerce" = ["web/*.html", "web/*.js", "web/*.css", "web/*.png", "web/*.ttf", "web/workspace/index.html", "web/workspace/*.txt", "web/workspace/assets/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
