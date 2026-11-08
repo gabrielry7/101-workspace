@@ -613,7 +613,7 @@ export function IdentityView() {
         <dl className="identity-rules">
           <div>
             <dt>Tipografía</dt>
-            <dd>Manrope · nombres 15px · etiquetas 14px · detalle 12px</dd>
+            <dd>Inter · nombres 15px · etiquetas 14px · detalle 12px</dd>
           </div>
           <div>
             <dt>Espacio</dt>

@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("./inter-latin-wght-normal.woff2") format("woff2");
+}
+/* 101 Workspace identity 0.1.0. Shared source; update IDENTITY.md with decisions. */
+:root {
+  --wm-font: "Inter", Arial, sans-serif;
+  --wm-canvas: #f7f7f5;
+  --wm-surface: #ffffff;
+  --wm-sidebar: #f1f1ef;
+  --wm-ink: #27272b;
+  --wm-secondary: #5f5968;
+  --wm-line: #eae9e7;
+  --wm-accent: #6947d7;
+  --wm-accent-soft: #e8dffb;
+  --wm-success: #42714f;
+  --wm-success-soft: #edf5ee;
+  --wm-warning: #85611d;
+  --wm-warning-soft: #fff5df;
+  --wm-danger: #945a5a;
+  --wm-danger-soft: #faeeee;
+  --wm-body: 15px;
+  --wm-label: 14px;
+  --wm-caption: 12px;
+  --wm-title: 30px;
+  --wm-radius: 12px;
+  --wm-control: 44px;
+  --wm-gap: 24px;
+  --wm-width: 1560px;
+  --wm-motion: 140ms;
+  --wm-chart-primary: #6947d7;
+  --wm-chart-secondary: #b49bea;
+  --wm-chart-fill: #eee7fc;
+}
+
+body,h1,h2,h3,h4,h5,h6,button,input,select,textarea{font-family:var(--wm-font);font-synthesis:none}

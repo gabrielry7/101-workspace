@@ -74,6 +74,11 @@
       "date": "2026-11-08",
       "source": "authorized repeatable demo and internal onboarding implementation",
       "decision": "Extend existing workspace to internal Negocios with zero-membership admin access, directory/stage details, single and bounded CSV intake, retained request keys and explicit domain pending states. Reuse identity and Base UI; no new palette or broader merchant permissions."
+    },
+    {
+      "date": "2026-11-08",
+      "source": "user requests Inter across all 101 UIs",
+      "decision": "Use locally served Inter as the shared 101 UI typeface for body, headings and controls; preserve merchant-brand typography and functional monospace."
     }
   ]
 }

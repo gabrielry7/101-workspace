@@ -7,10 +7,14 @@
     "tokens.css",
     "IDENTITY.md",
     "decisions.json",
-    "pairings.css"
+    "pairings.css",
+    "typography.css",
+    "inter-latin-wght-normal.woff2",
+    "INTER-LICENSE.txt"
   ],
   "exports": {
     "./tokens.css": "./tokens.css",
-    "./pairings.css": "./pairings.css"
+    "./pairings.css": "./pairings.css",
+    "./typography.css": "./typography.css"
   }
 }

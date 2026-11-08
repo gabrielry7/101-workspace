@@ -22,8 +22,8 @@ in each dashboard, then map existing semantic variables to it. Do not paste a
 second color/type palette. `decisions.json` retains dated user direction. The
 actual commerce consumer imports these tokens into its production build.
 
-- Typeface: locally served Manrope Variable, regular500/body,600–650 emphasis.
-  Arial/system fallback. Retain OFL notice from the frontend font distribution.
+- Typeface: locally served Inter Variable, regular500/body,600–650 emphasis.
+  Arial/system fallback. Retain INTER-LICENSE.txt from the pinned Fontsource distribution.
 - Names and navigation15px, labels/contact14px, secondary details12px. Mobile
   primary text14px minimum; narrow ancillary badges may be11px. Main title30px,
   mobile27px. Data uses tabular numerals. Never shrink all text to fit a design.
@@ -245,3 +245,12 @@ pagination. The provisioned-analytics consumer resets inherited directory column
 widths/hiding with scoped table selectors; all financial columns remain table cells
 at every width, with a focusable internal scroll region when necessary. Do not let
 customer-directory geometry decide whether a financial value is visible.
+
+## Inter across 101 interfaces (2026-11-08)
+
+User-selected default: Inter for all 101 product and internal UI text, including
+headings, controls, navigation, dialogs, onboarding and legacy staff tools. Use
+`--wm-font` and the locally served variable font; no third-party font requests.
+Preserve monospace for code where functional. Merchant websites and customer creative
+outputs retain their separately approved brand typography. `typography.css` and its
+font asset here are the source; generated legacy/internal distributions retain the OFL.
