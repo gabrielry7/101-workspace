@@ -227,7 +227,8 @@ def build(session, business, month, currency, website_reader=None, request=None,
             dict(
                 activity=campaign_activity(session, business, span),
                 month=m,
-                start=span["start"].isoformat(), end=span["end"].isoformat(),
+                start=span["start"].isoformat(),
+                end=span["end"].isoformat(),
                 sales=financial(session, business, span, currency),
                 website=website,
                 campaigns=campaign_rows(session, business, span, currency),
@@ -333,14 +334,34 @@ def register(app, get_session, scoped_staff):
     ):
         from .loyalty_read_snapshot import committed_snapshot
 
+        profile = session.get(RestaurantCommerceProfile, business_id)
+        span = month_period(month, profile.timezone)
+        if month <= "0001-01":
+            raise HTTPException(422, "Mes fuera de rango")
+        spans = [span, month_period(previous(month), profile.timezone)]
+        session.commit()  # Release reads before provider authorization touches session activity.
+        reader = getattr(app.state, "monthly_website_reader", None)
+        website_data = {}
+        if reader:
+            for selected in spans:
+                try:
+                    value = reader(request, business_id, selected)
+                except HTTPException:
+                    raise
+                except Exception:
+                    value = {
+                        "status": "unavailable",
+                        "note": "Analítica web no disponible",
+                        "values": {},
+                    }
+                website_data[selected["from"]] = value
+
+        def cached_reader(request, business, selected):
+            return website_data[selected["from"]]
+
         with committed_snapshot(session) as snapshot:
             document = build(
-                snapshot,
-                business_id,
-                month,
-                currency,
-                getattr(app.state, "monthly_website_reader", None),
-                request,
+                snapshot, business_id, month, currency, cached_reader if reader else None, request
             )
         scoped_staff(request, session, business_id, "finance.read")
         scoped_staff(request, session, business_id, "growth.read")
