@@ -217,8 +217,11 @@ Google exige opt-in `enabled: true`, clave web restringida fuera de Git, map ID
 propio y `styleReview` con map ID coincidente, `pois: none`, referencia y fecha.
 La clave web es visible al navegador por diseño de la API; no se guarda en reportes.
 Sin esos datos no se llama Google. Cambiar colores internos de Google requiere
-otro estilo cloud revisado; no se simula cambiando CSS del marco. No se ha realizado
-una prueba viva ni activado facturación.
+otro estilo cloud revisado; no se simula cambiando CSS del marco. La entrega inicial
+no realizó una prueba viva ni activó facturación. El 2026-11-09 el usuario autorizó
+una prueba dedicada de hasta US$1 y se verificó Google real con Honorato; ver
+[configuración, límites y resultado](honorato-google.md). El taller sintético de
+8777 conserva su propósito y no inicia esa prueba por su cuenta.
 
 ### Antecedente de verificación del dueño
 

@@ -1,0 +1,75 @@
+{
+  "schema": "101-honorato-google-live-verification-v1",
+  "verified_on": "2026-11-09",
+  "feature": "007-honorato-google-live",
+  "bone": "location.single-business@0.2.0",
+  "component": "SingleBusinessLocation.astro",
+  "owner": "@101/location-map@0.3.0",
+  "owner_commit": "6c0ed29940985bfb1789280c1972e47386775193",
+  "provider": "google_js",
+  "cloud_readbacks": {
+    "dedicated_project_active": true,
+    "billing_linked": true,
+    "cloud_style_matches_source": true,
+    "own_map_id_with_roadmap_style_association": true,
+    "browser_key_api_target": "maps-backend.googleapis.com",
+    "browser_key_referrers": [
+      "http://127.0.0.1:8780",
+      "http://127.0.0.1:8780/*",
+      "http://localhost:8780",
+      "http://localhost:8780/*"
+    ],
+    "effective_daily_maps_quota": 10
+  },
+  "budget": {
+    "authorized_usd": 1,
+    "persistent_total_initialization_limit": 10,
+    "agent_initializations_reserved": 2,
+    "remaining_after_agent_verification": 8,
+    "usd_per_1000_assuming_no_free_tier": 7,
+    "ten_load_estimate_usd_before_tax": 0.07,
+    "pricing_source": "https://developers.google.com/maps/billing-and-pricing/pricing",
+    "actual_billed_cost": "not measured"
+  },
+  "browser": {
+    "version": "Chrome/156.0.8078.79",
+    "live_maps_js": true,
+    "widths_px": [1440, 901, 900, 768, 621, 620, 390],
+    "overflow": false,
+    "font_fallback_overflow": false,
+    "directions_keyboard_focus": true,
+    "zoom_16_to_17": true,
+    "actual_mouse_pan": true,
+    "coordinates_preserved": true,
+    "max_marker_anchor_offset_css_px": 0.0078125,
+    "exceptions": 0,
+    "google_warning": "Headless WebGL unavailable; Google used raster fallback.",
+    "gpu_vector_render_verified": false
+  },
+  "visual_review": {
+    "agent_review": "No neighboring business labels or icons in reviewed viewport, zoom and pan screenshots.",
+    "exhaustive_poi_inventory": null,
+    "human_approval": "pending",
+    "actual_honorato_logo": false,
+    "marker": "neutral pin",
+    "logo_reason": "LOGO_MISSING"
+  },
+  "local_verification": {
+    "budget_and_location_tests_passed": 8,
+    "typecheck_errors": 0,
+    "typecheck_warnings": 0,
+    "typecheck_hints": 0,
+    "eleventh_initialization_rejected": true,
+    "malformed_budget_fails_closed": true,
+    "config_get_and_cross_site_post_rejected": true,
+    "private_config_routes_unavailable": true
+  },
+  "privacy": {
+    "restricted_inputs_or_media_committed": false,
+    "key_or_oauth_committed": false,
+    "oauth_delivered_to_browser": false,
+    "private_evidence_directory": ".tools/honorato-google-live",
+    "business_publication_allowed": false
+  },
+  "deployment": "local private preview only"
+}

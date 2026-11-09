@@ -157,3 +157,21 @@ The user confirmed that no Google project, Map ID or cloud style is configured y
 The existing Google adapter and offline checks do not establish live cartography
 verification. Keep the neutral local sample identified and Google setup pending;
 do not create billing or report the live Google result as complete.
+
+## Authorized Honorato Google trial (2026-11-09)
+
+The user now explicitly requests creation of the Google Cloud project, active
+cloud style, Map ID and restricted browser key, with a maximum authorized trial
+budget of US$1. This supersedes the previous setup-pending instruction for this
+dedicated trial. Spec 007 records the scope. Actual cloud resources and Google
+Maps JavaScript rendering have been verified; this is still a private local trial,
+not commercial publication or human approval of the location family.
+
+Use the existing SingleBusinessLocation component and pinned geographic owner.
+Keep account details, OAuth, browser key, retained Honorato data, bundles and
+screenshots under ignored `.tools/honorato-google-live/`. The browser key is limited
+to Maps JavaScript and localhost/127.0.0.1 port 8780. Preserve BOTH the verified
+Google daily quota of ten map loads and the persistent local ten-initialization
+budget. Do not delete/reset the counter to obtain more trial loads or expand the
+authorized services. The map currently uses the neutral pin because no eligible
+Honorato logo evidence was retained. Do not fabricate a media grant.
