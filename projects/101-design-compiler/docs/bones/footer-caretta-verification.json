@@ -1,0 +1,120 @@
+{
+  "date": "2026-11-08",
+  "checked_at": "2026-11-09T04:51:20.655Z",
+  "status": "PASS",
+  "bone": "footer.directory-watermark@0.1.0",
+  "browser": "Chrome/156.0.8078.79",
+  "restored_from": "b0019b3 (codex/footer-caretta-neutral-20261105)",
+  "viewports": [
+    {
+      "width": 360,
+      "height": 2371,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 599,
+      "height": 1814,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 600,
+      "height": 1726,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 601,
+      "height": 1726,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 768,
+      "height": 1691,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 991,
+      "height": 1429,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 992,
+      "height": 1473,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 993,
+      "height": 1473,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    },
+    {
+      "width": 1440,
+      "height": 1473,
+      "overflow": false,
+      "split_words": 0,
+      "clipped_words": 0,
+      "parts": 130,
+      "upcoming": 5
+    }
+  ],
+  "fallback": {
+    "overflow": false,
+    "parts": 130,
+    "motion": "none",
+    "clipped": []
+  },
+  "routes": [
+    "/bones/footer-caretta/",
+    "/bones/footers/caretta/",
+    "/bones/footers/caretta/instance/"
+  ],
+  "keyboard_native_link": "PASS",
+  "no_client_script": true,
+  "contract_tests": {
+    "passed": 9,
+    "failed": 0,
+    "scope": "Caretta (4) and Little Amps (5)"
+  },
+  "astro_check": {
+    "files": 398,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0,
+    "scope": "Final isolated delivery worktree, including compatibility consumers."
+  },
+  "visual_inspection": "Native captures reviewed at desktop, tablet and narrow mobile against local supplied Caretta reference; no human approval claimed.",
+  "reference_media_committed": false,
+  "human_approval": "pending",
+  "limits": "Reference desktop only. Responsive reflow proposed. No original media redistributed."
+}

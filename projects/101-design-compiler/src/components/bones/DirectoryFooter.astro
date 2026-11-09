@@ -1,0 +1,75 @@
+---
+import { carettaFooterBone, footerContentSchema, type FooterContent } from '../../bones/footer-caretta.ts';
+import FooterEntry from './FooterEntry.astro';
+interface Props { content: FooterContent }
+const content = footerContentSchema.parse(Astro.props.content);
+---
+<footer class="directory-footer" data-section-bone={carettaFooterBone.id} data-bone-version={carettaFooterBone.version} aria-label="Footer de directorio">
+  <div class="transition" data-footer-part="transition"><slot name="transition-label" /></div>
+  <div class="assistants frame" data-footer-part="assistants">
+    <p data-footer-part="assistants-label">{content.assistantsLabel}</p>
+    <ul>{content.assistants.map(item => <li><FooterEntry item={item} /></li>)}</ul>
+  </div>
+  <div class="body frame">
+    <div class="identity" data-footer-part="identity">
+      <p data-footer-part="brand-logo">{content.brandLogo}</p>
+      <p data-footer-part="description">{content.description}</p>
+      <div data-footer-part="backers">
+        <p data-footer-part="backers-label">{content.backersLabel}</p>
+        <ul class="backers">{content.backers.map(item => <li><FooterEntry item={item} /></li>)}</ul>
+      </div>
+    </div>
+    <nav class="directory" data-footer-part="directory" aria-label="Directorio del footer">
+      {content.groups.map(group => <section data-footer-part={group.id} aria-label={group.title}>
+        <h2 data-footer-part={`${group.id}-title`}>{group.title}</h2>
+        <ul>{group.items.map(item => <li><FooterEntry item={item} /></li>)}</ul>
+      </section>)}
+    </nav>
+  </div>
+  <div class="watermark frame" data-footer-part="watermark">{content.watermark}</div>
+  <div class="legal frame" data-footer-part="legal">
+    <p data-footer-part="copyright">{content.copyright}</p>
+    <ul>
+      {content.legal.map(item => <li><FooterEntry item={item} /></li>)}
+      <li><button type="button" disabled data-footer-part="cookies">{content.cookies.label}</button>
+        <span data-footer-part="cookies-status">{content.cookies.statusLabel}</span></li>
+      <li><FooterEntry item={content.trust} /></li>
+      <li><FooterEntry item={content.social} /></li>
+      <li><FooterEntry item={content.email} /></li>
+    </ul>
+  </div>
+</footer>
+<style>
+  /* Composition only. No brand palette, font, radii, artwork or effects. */
+  .directory-footer { word-break: normal; overflow-wrap: normal; hyphens: none; }
+  .directory-footer :global(*) { box-sizing: border-box; min-width: 0; }
+  .frame { width: calc(100% - 2rem); max-width: 68rem; margin-inline: auto; }
+  .transition { min-height: 10rem; }
+  .assistants { display: flex; justify-content: flex-end; align-items: center; gap: 1rem; min-height: 7rem; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  .assistants > ul { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .assistants li { flex: 1 1 5rem; }
+  .assistants > p { flex: 0 1 12rem; }
+  .body { display: grid; grid-template-columns: 3fr 5fr; gap: 2rem; }
+  .identity { max-width: 18rem; }
+  .backers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .directory { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+  h2 { margin: 0 0 1rem; font-size: 1em; font-weight: normal; }
+  .directory li { margin-bottom: 1rem; }
+  .watermark { display: flex; align-items: center; min-height: 8rem; }
+  .legal { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding-block: 1rem; }
+  .legal ul { display: flex; align-items: baseline; flex-wrap: wrap; gap: 1rem; }
+  .legal li { max-width: 15rem; }
+  .legal button { font: inherit; white-space: normal; }
+  .legal [data-footer-part="cookies-status"] { display: block; font-size: .875em; }
+  @media (max-width: 991px) {
+    .body { grid-template-columns: minmax(0, 1fr); }
+    .identity { max-width: none; }
+    .backers { display: flex; flex-wrap: wrap; }
+    .assistants { flex-direction: column; align-items: stretch; padding-block: 1rem; }
+    .assistants > p { flex: none; }
+  }
+  @media (max-width: 599px) {
+    .directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>

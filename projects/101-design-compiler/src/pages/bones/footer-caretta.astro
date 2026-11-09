@@ -1,0 +1,38 @@
+---
+import DirectoryFooter from '../../components/bones/DirectoryFooter.astro';
+import { carettaFooterBone as bone, neutralFooter, footerAnatomy } from '../../bones/footer-caretta.ts';
+const parts = footerAnatomy();
+---
+<!doctype html>
+<html lang="es">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Hueso de footer · caretta/08</title></head>
+  <body>
+    <header class="workshop">
+      <h1>Footer caretta/08 · hueso sin piel</h1>
+      <p><code>{bone.id}@{bone.version}</code> · Reconstrucción para revisión. Sin aprobación humana.</p>
+      <p>Textos e iconos identifican espacios; no son contenido de una marca. Los contornos son guías del taller.</p>
+      <p><a href={bone.source.url}>Ver referencia original</a> · <a href="#parts">Consultar cada parte</a></p>
+      <p>No hay destinos vinculados ni gestor de cookies. Los elementos próximos conservan su estado.
+        La distribución móvil es una adaptación funcional propuesta; la captura aportada sólo prueba escritorio.</p>
+    </header>
+    <div class="anatomy-guides">
+      <DirectoryFooter content={neutralFooter}>
+        <span slot="transition-label">Banda superior · espacio sin tratamiento gráfico</span>
+      </DirectoryFooter>
+    </div>
+    <main class="workshop" id="parts">
+      <h2>Inventario de partes</h2>
+      <p>La columna de referencia describe el original; esos textos no se vinculan al hueso neutro.</p>
+      <dl>{parts.map(part => <div><dt><code>{part.id}</code> · {part.label}</dt><dd>{part.kind} · Referencia: {part.reference}</dd></div>)}</dl>
+    </main>
+  </body>
+</html>
+<style>
+  :global(body) { margin: 0; }
+  .workshop { margin: 1rem; }
+  .workshop code { white-space: normal; }
+  .workshop dl > div { margin-block: 1rem; }
+  .workshop dd { margin-inline-start: 1rem; }
+  .anatomy-guides :global([data-footer-part]) { outline: 1px dotted #999; outline-offset: -1px; }
+  .anatomy-guides :global(.transition > span) { display: block; padding: 1rem; }
+</style>
