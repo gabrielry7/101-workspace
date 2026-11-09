@@ -1,0 +1,6 @@
+# Investigación
+- Reutilizar tres recetas y primitiva real; taller neutro primero. Una ilustración estática perdería comportamiento/anclaje.
+- AdvancedMarkerElement admite visual DOM compartido; Google también ofrece PinElement.glyphSrc. Mantener gates y medición comunes. [Marcadores](https://developers.google.com/maps/documentation/javascript/advanced-markers/graphic-markers).
+- Cloud JSON: pointOfInterest.label.visible=false oculta texto y pins; transitStation tiene jerarquía propia. Revisar overrides descendientes y publicar/asociar estilo. clickableIcons=false sólo desactiva clicks. [JSON](https://developers.google.com/maps/documentation/javascript/cloud-customization/json-reference), [importación](https://developers.google.com/maps/documentation/javascript/cloud-customization/json), [herencia](https://developers.google.com/maps/documentation/javascript/cloud-customization/taxonomy).
+- Cero llamadas Google: el usuario aún no dispone de configuración. Requiere proyecto habilitado, clave web restringida y Map ID propio. [Preparación](https://developers.google.com/maps/documentation/javascript/cloud-customization/setup), [restricciones](https://developers.google.com/maps/api-security-best-practices).
+- Investigación mediante agente de sólo lectura solicitado por speckit-plan. Sin acceso a claves, cuentas ni APIs facturables.

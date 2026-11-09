@@ -3,7 +3,7 @@ import { rightsGate, evaluateSuitability } from '../media/gate.ts';
 import { MediaAssetV1, MediaUsageV1 } from '../media/contracts.ts';
 
 export const locationBone = {
-  id: 'location.single-business', version: '0.1.0', family: 'location',
+  id: 'location.single-business', version: '0.2.0', family: 'location',
   variants: ['direct', 'map-led', 'editorial'],
   owner: { package: '@101/location-map', version: '0.3.0', commit: '6c0ed29940985bfb1789280c1972e47386775193' },
   review: 'pending-human-review',
@@ -14,6 +14,8 @@ export const locationBone = {
     ['directions', 'Abrir indicaciones', 'acción elegible del dueño'],
     ['map-viewport', 'Mapa y controles', 'primitiva de Tomás'],
     ['business-marker', 'Un único marcador geográfico', 'hueso; logo de piel validado'],
+    ['marker-pin', 'Forma de pin y punta anclada', 'hueso; mismo destino con o sin logo'],
+    ['brand-logo-slot', 'Espacio de logo dentro del pin', 'medio de marca con permisos'],
     ['provider-attribution', 'Créditos del proveedor', 'proveedor; no ocultables'],
     ['status-fallback', 'Estado y alternativa', 'hueso'],
   ],

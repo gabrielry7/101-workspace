@@ -50,7 +50,14 @@ const measure = `(() => {
     }
   }
   return {width:innerWidth,overflow:document.documentElement.scrollWidth>innerWidth+1,words,clipped,
-    maps:[...document.querySelectorAll('[data-location-bone-config]')].map(el=>({id:el.closest('section').id,...el.locationBone?.inspect()}))};
+    maps:[...document.querySelectorAll('[data-location-bone-config]')].map(el=>{
+      const pin=el.querySelector('[data-location-part="marker-pin"]');
+      const logo=el.querySelector('[data-location-part="brand-logo-slot"]');
+      const p=pin?.getBoundingClientRect(),l=logo?.getBoundingClientRect();
+      return {id:el.closest('section').id,...el.locationBone?.inspect(),pinPresent:!!pin,
+        logoInsidePin:!l||!!p&&l.left>=p.left&&l.right<=p.right&&l.top>=p.top&&l.bottom<=p.top+p.width,
+        neutralTitle:el.closest('section').dataset.skin!=='neutral'||getComputedStyle(el.closest('section').querySelector('h2')).fontSize===getComputedStyle(el.closest('section')).fontSize};
+    })};
 })()`;
 const reports: any[] = [];
 try {
@@ -78,6 +85,10 @@ try {
     await writeFile(resolve(output,'smoke.json'),JSON.stringify({first,network,errors},null,2));
   } else {
     assert.equal(first.maps.find((m:any)=>m.id==='comparison-brand').state,'ready');
+    assert.ok(await browser.evaluate("document.getElementById('variants').compareDocumentPosition(document.getElementById('comparison')) & Node.DOCUMENT_POSITION_FOLLOWING"));
+    assert.ok(await browser.evaluate("document.getElementById('google').textContent.includes('por configurar')"));
+    const cloudStyle=await browser.evaluate("fetch('/google-no-pois.style.json').then(r=>r.json())");
+    assert.equal(cloudStyle.styles.find((item:any)=>item.id==='pointOfInterest').label.visible,false);
     for(const width of [360,619,620,621,679,680,681,719,720,721,768,899,900,901,1200,1201,1440]) {
       await browser.call('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:false});
       await browser.evaluate('new Promise(r=>setTimeout(r,120))');
@@ -91,7 +102,13 @@ try {
       assert.deepEqual(result.clipped,[],`clipping at ${width}`);
       for(const map of result.maps.filter((m:any)=>m.state==='ready')) {
         assert.deepEqual(map.rendered_poi_ids,[]);
+        assert.equal(map.pinPresent,true,`missing pin ${map.id} at ${width}`);
+        assert.equal(map.logoInsidePin,true,`logo outside pin ${map.id} at ${width}`);
+        assert.equal(map.neutralTitle,true,`brand title styling on neutral ${map.id}`);
         if(map.marker_anchor_offset_px!==null&&!map.id.startsWith('state-')) assert.ok(map.marker_anchor_offset_px<=1,`anchor ${map.id} at ${width}: ${map.marker_anchor_offset_px}`);
+      }
+      for(const id of ['variant-direct','variant-map-led','variant-editorial']) {
+        assert.equal(result.maps.find((m:any)=>m.id===id).marker_kind,'logo',`neutral logo slot ${id}`);
       }
       if([360,768,1440].includes(width))await capture('workshop-'+width);
       if([360,768,1440].includes(width)) {

@@ -47,6 +47,8 @@ export async function runGoogleChecks(source) {
   await wait(); await wait();
   const info = control.inspect();
   check(info.state === 'ready' && info.marker_kind === 'logo', 'configured Google adapter renders logo');
+  check(markers[0].wrapper.querySelector('[data-location-part="marker-pin"]')
+    && markers[0].wrapper.querySelector('[data-location-part="brand-logo-slot"]'), 'logo remains inside a pin on the actual provider marker');
   check(maps[0].options.clickableIcons === false && maps[0].options.mapTypeControl === false
     && maps[0].options.mapId === 'offline-map' && !('styles' in maps[0].options), 'cloud style mode never mixes inline styles');
   check(markers[0].gmpDraggable === false && markers[0].gmpClickable === true, 'marker remains accessible and non-draggable');

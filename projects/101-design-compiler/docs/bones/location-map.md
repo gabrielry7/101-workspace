@@ -3,8 +3,55 @@
 Dirección del usuario: 2026-11-05. Estado: implementación local de MapLibre y
 adaptador Google JS; verificación viva de Google y aprobación humana pendientes. Esta ficha amplía la
 [spec 002](../../specs/002-section-bones/spec.md), sin declarar completado su
-piloto de navegación/hero. ID ejecutable: `location.single-business@0.1.0`.
+piloto de navegación/hero. ID ejecutable actual: `location.single-business@0.2.0`.
 Implementación y evidencia en [spec 005](../../specs/005-location-map-bones/spec.md).
+
+## Revisión 2026-11-08 — huesos neutros y pin con logo
+
+La [spec 006](../../specs/006-neutral-location-bones/spec.md) aplica la dirección
+del usuario: presentar las tres composiciones primero sin piel, igual que Little
+Amps. Nombre, dirección, acciones y logo son espacios identificados; la tipografía
+del neutro se hereda y se retiran acabados de marca. La comparación con piel queda
+como demostración secundaria. Las guías y preparación de Google son del operador.
+
+El logo ahora queda **dentro de una forma de pin**, en vez de reemplazar esa forma
+por una caja. El marco mide 64 × 80 px y contiene la imagen en 44 × 44 px, sin
+deformación ni recorte. La punta del SVG se mide mediante su transformación real
+en pantalla. Pin neutro y pin con logo conservan el mismo anclaje geográfico.
+Se versiona la modificación; configuraciones guardadas de 0.1.0 no se restauran
+silenciosamente sobre 0.2.0.
+
+El usuario confirmó que todavía no tiene proyecto/Map ID/estilo de Google. La
+muestra sigue usando el dueño MapLibre existente y cartografía sintética. El
+adaptador Google está preparado y comprobado offline; su apariencia real sigue
+pendiente de configuración y revisión viva.
+
+### Preparar el estilo de Google
+
+1. Crear un proyecto propio habilitado para Maps JavaScript API. Gestionar su
+   facturación en esa cuenta y restringir la clave web por sitios y API permitida.
+2. En **Map styles**, crear un estilo e importar
+   `tooling/bones/google-no-pois.style.json`, también descargable desde el taller.
+   `pointOfInterest.label.visible: false` oculta texto y pins de lugares;
+   `infrastructure.transitStation` cubre las estaciones de su jerarquía separada.
+   Se conservan calles y contexto. Revisar categorías hijas que puedan sobrescribir
+   la visibilidad del padre. `clickableIcons: false` sólo impide clicks, no oculta.
+3. Ajustar allí colores de agua, vías y demás elementos, publicar el estilo y
+   asociarlo a un **Map ID de JavaScript**. Un archivo JSON descargado sin publicar
+   ni asociar no modifica el mapa real.
+4. Pasar la configuración privada al `google` del componente existente: `enabled`,
+   `apiKey`, `mapId` y `styleReview` del mismo ID con `pois: none`, referencia y fecha.
+   Mantenerla fuera de Git; no poner claves en especificaciones o capturas.
+   El estilo cloud no se pasa como `MapOptions.styles`.
+5. Vincular datos reales mediante `bindLocationBone` y el logo con sus permisos.
+   Verificar en navegador el estilo publicado: cero negocios ajenos al mover y
+   ampliar, un solo pin con logo, punta anclada, créditos y alternativas útiles.
+
+Referencias oficiales: [importar JSON](https://developers.google.com/maps/documentation/javascript/cloud-customization/json),
+[publicar/asociar estilos](https://developers.google.com/maps/documentation/javascript/cloud-customization/map-styles),
+[jerarquía](https://developers.google.com/maps/documentation/javascript/cloud-customization/taxonomy),
+[restricciones de claves](https://developers.google.com/maps/api-security-best-practices).
+Esta entrega no crea cuentas, activa facturación ni hace llamadas a Google.
 
 ## Resultado solicitado
 
@@ -99,8 +146,8 @@ y créditos de los demás proveedores.
 - El logo debe pertenecer al negocio y pasar los gates existentes de medios,
   ámbito y publicación. Usar una referencia al recurso validado; no admitir HTML
   o SVG arbitrario como una vía alternativa a esos controles.
-- El logo **sustituye** al dibujo del pin; no es una imagen flotante ni otro
-  marcador adicional. Su anclaje explícito permanece en la coordenada real al
+- El logo ocupa el interior del pin en la versión 0.2.0; no es una imagen flotante
+  ni otro marcador adicional. Su anclaje permanece en la coordenada real al
   cambiar zoom, encuadre, tamaño o piel. El inspector debe medir el anclaje real,
   sin seguir buscando únicamente la punta del SVG antiguo.
 - Conservar proporción y legibilidad del logo, con tamaño acotado y superficie

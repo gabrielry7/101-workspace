@@ -6,7 +6,8 @@ import type { LocationVariant } from '../../bones/location-map.ts';
 interface Props { runtimeURL?: string | undefined; basemap?: Record<string, unknown> | undefined; originalURL?: string | undefined; }
 const { runtimeURL, basemap, originalURL } = Astro.props;
 const input = fixtureLocationInput();
-const neutral = { ...input, marker: { kind: 'pin' as const, reason: 'NEUTRAL_LOGO_SLOT' } };
+const neutral = input; // Authorized synthetic slot labelled Logo, inside the same pin.
+const withoutLogo = { ...input, marker: { kind: 'pin' as const, reason: 'NEUTRAL_LOGO_SLOT' } };
 const variants: { id: LocationVariant; title: string; note: string }[] = [
   { id: 'direct', title: 'Información al lado del mapa', note: 'Título arriba. Dirección y acciones a la izquierda; mapa a la derecha. Se apila a 620 px.' },
   { id: 'map-led', title: 'El mapa como protagonista', note: 'Nombre y dirección forman una cabecera; el mapa ocupa todo el ancho debajo. Se apila a 720 px.' },
@@ -19,27 +20,42 @@ const variants: { id: LocationVariant; title: string; note: string }[] = [
 </head><body>
 <main>
   <header class="workshop-header"><h1>Huesos de ubicación</h1>
-    <p>Una sucursal. Ningún establecimiento alrededor. El logo ocupa el lugar del pin sin cambiar la ubicación.</p>
-    <p class="disclosure">Taller local · datos, calles y logo sintéticos. No representa un negocio real. Versión 0.1.0 pendiente de revisión humana.</p>
-    <nav aria-label="Vistas del taller"><a href="#comparison">Comparación</a><a href="#variants">Tres composiciones</a><a href="#states">Estados alternativos</a><a href="#anatomy">Partes del hueso</a></nav>
+    <p>Una sucursal. Ningún negocio alrededor. Un pin con espacio para el logo de la empresa.</p>
+    <p class="disclosure">Muestra local con MapLibre · calles, datos y logo sintéticos. Google Maps todavía no está configurado. Versión {locationBone.version}, pendiente de revisión humana.</p>
+    <nav aria-label="Vistas del taller"><a href="#variants">Tres huesos neutros</a><a href="#google">Preparar Google Maps</a><a href="#comparison">Prueba de piel</a><a href="#states">Alternativas</a><a href="#anatomy">Inventario de partes</a></nav>
+    <label class="anatomy-toggle"><input type="checkbox" data-workshop-anatomy/> Ver anatomía de los huesos</label>
   </header>
-  <section id="comparison" class="workshop-section"><h2>Del original a la marca</h2>
-    <p>La misma primitiva de mapas de Thomas. Compara su referencia, la estructura sin piel y una aplicación de prueba.</p>
+  <section id="variants" class="workshop-section"><h2>Tres composiciones neutras</h2>
+    <p>Igual que el footer Little Amps: espacios identificados, sin identidad de cliente. Se conservan la estructura, el mapa interactivo y sus alternativas. El texto «Logo» identifica el recurso que ocuparía ese espacio.</p>
+    {variants.map((variant, index) => <article class="variant"><h3>{index + 1}. {variant.title}</h3><p>{variant.note}</p>
+      <Location id={`variant-${variant.id}`} input={neutral} variant={variant.id} runtimeURL={runtimeURL} basemap={basemap}/>
+    </article>)}
+  </section>
+  <section id="google" class="workshop-section google-preparation" aria-labelledby="google-title">
+    <h2 id="google-title">Google Maps · por configurar</h2>
+    <p>Estas mismas estructuras pueden consumir el adaptador de Google. La muestra de arriba comprueba el hueso sobre cartografía sintética; no acredita el aspecto de un mapa real de Google.</p>
+    <ol>
+      <li>Preparar un proyecto con Maps JavaScript API y una clave de navegador restringida.</li>
+      <li>Crear un estilo de mapa, importar la base sin lugares y personalizar sus colores. Revisar que ninguna categoría hija vuelva a mostrar lugares.</li>
+      <li>Publicar el estilo y asociarlo a un Map ID de JavaScript. Después vincular la ubicación y el logo autorizados de la sucursal y comprobar el resultado real.</li>
+    </ol>
+    <p>El estilo oculta nombres e iconos de lugares; desactivar sus clics por sí solo no los oculta. El pin de nuestro negocio es un marcador independiente, anclado a sus coordenadas. Los créditos del proveedor permanecen visibles.</p>
+    {runtimeURL && <p><a href="/google-no-pois.style.json" download="google-no-pois.style.json">Descargar estilo inicial sin lugares</a></p>}
+    <p><a href="https://developers.google.com/maps/documentation/javascript/cloud-customization/json" target="_blank" rel="noopener noreferrer">Cómo importar el estilo en Google ↗</a></p>
+    <p class="disclosure">Estado: adaptador preparado y comprobado offline. Proyecto, estilo publicado y prueba viva pendientes. Este taller no realiza solicitudes a Google.</p>
+  </section>
+  <section id="comparison" class="workshop-section"><h2>Prueba de piel, separada del hueso</h2>
+    <p>Comparación secundaria para comprobar que cambiar colores o tipografía conserva composición, destino y forma del pin. La piel de ejemplo no es una marca aprobada.</p>
     {originalURL && <details><summary>Abrir original de Thomas con los mismos datos sintéticos</summary>
       <iframe src={originalURL} title="Composición original de Thomas, con datos sintéticos" loading="lazy"></iframe>
       <p>Referencia privada conservada; su marca no se convierte en contenido de otro negocio.</p>
     </details>}
     <div class="comparison">
-      <section><h3>Hueso neutro</h3><Location id="comparison-neutral" input={neutral} runtimeURL={runtimeURL} basemap={basemap}/></section>
+      <section><h3>Alternativa sin logo</h3><Location id="comparison-neutral" input={withoutLogo} runtimeURL={runtimeURL} basemap={basemap}/></section>
       <section><h3>Con piel y logo de prueba</h3><Location id="comparison-brand" input={input} skin="paper" runtimeURL={runtimeURL} basemap={basemap}/></section>
     </div>
     <div class="workshop-controls"><button type="button" data-workshop-skin="neutral">Piel neutra</button><button type="button" data-workshop-skin="paper">Piel clara</button><button type="button" data-workshop-skin="ink">Piel oscura</button><button type="button" data-workshop-pan>Desplazar mapa</button><button type="button" data-workshop-zoom>Acercar</button><button type="button" data-workshop-save>Guardar configuración</button><button type="button" data-workshop-restore>Restaurar</button></div>
     <p data-workshop-status role="status">Los controles actúan sobre la vista de marca. El lugar permanece fijo.</p>
-  </section>
-  <section id="variants" class="workshop-section"><h2>Tres composiciones, un mismo mapa</h2><p>Recetas tomadas de las demos de Thomas. El neutro retira fuentes, colores y acabados de marca; conserva regiones, orden y funciones.</p>
-    {variants.map(variant => <article class="variant"><h3>{variant.title}</h3><p>{variant.note}</p>
-      <Location id={`variant-${variant.id}`} input={neutral} variant={variant.id} runtimeURL={runtimeURL} basemap={basemap}/>
-    </article>)}
   </section>
   <section id="states" class="workshop-section"><h2>Cuando falta algo</h2>
     <details><summary>Logo no disponible: se conserva el pin</summary><Location id="state-no-logo" input={{...input, marker:{kind:'pin',reason:'LOGO_MISSING'}}} runtimeURL={runtimeURL} basemap={basemap}/></details>
@@ -48,7 +64,6 @@ const variants: { id: LocationVariant; title: string; note: string }[] = [
     <details><summary>Google necesita datos y configuración reales: alternativa sin llamadas externas</summary><Location id="state-google" input={input} provider="google_js" runtimeURL={runtimeURL}/></details>
   </section>
   <section id="anatomy" class="workshop-section"><h2>Qué pertenece a cada parte</h2><p>Las guías y este inventario sólo aparecen en el taller. La piel cambia colores y logo; los datos fijan el destino; el hueso conserva estructura y comportamiento.</p>
-    <label class="anatomy-toggle"><input type="checkbox" data-workshop-anatomy/> Mostrar límites de las partes</label>
     <div class="table-scroll"><table><thead><tr><th>Parte</th><th>Función</th><th>Responsable</th></tr></thead><tbody>{locationBone.parts.map(part=><tr><td><code>{part[0]}</code></td><td>{part[1]}</td><td>{part[2]}</td></tr>)}</tbody></table></div>
   </section>
 </main>
@@ -88,6 +103,7 @@ const variants: { id: LocationVariant; title: string; note: string }[] = [
   th { font-weight:600; }
   code { font-size:.875rem; }
   .anatomy-toggle { display:flex;align-items:center;gap:12px; }
+  .google-preparation li { max-width:75ch;margin-block:12px; }
   :global(body[data-anatomy="true"] [data-location-part]) { outline:1px dashed #777;outline-offset:-1px; }
   @media(min-width:1800px) { .comparison { grid-template-columns:1fr 1fr; } }
   @media(forced-colors:active) { :global(body) { background:Canvas;color:CanvasText; }button { background:ButtonFace;color:ButtonText;border-color:ButtonText; } }

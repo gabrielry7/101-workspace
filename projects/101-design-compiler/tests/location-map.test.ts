@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
+import { readFile } from 'node:fs/promises';
 import { bindLocationBone, resolveLocationLogo, locationVariant, displayLocation } from '../src/bones/location-map.ts';
 import { fixtureLocation, fixtureLogoEvidence } from '../src/bones/location-map-fixture.ts';
 import { fixedPresentation } from '../src/bones/location-map-runtime.js';
@@ -52,6 +53,13 @@ test('Google configuration needs a real map ID and matching reviewed cloud style
     { ...value, enabled: 'yes' },
     { ...value, apiKey: '' }, { ...value, styleReview: { ...value.styleReview, pois: 'all' } },
     { ...value, styleReview: { ...value.styleReview, mapId: 'another' } }]) assert.equal(googleConfiguration(edit), null);
+});
+
+test('downloadable Google cloud style hides POI text/pins and transit labels through the current schema', async () => {
+  const style = JSON.parse(await readFile(new URL('../tooling/bones/google-no-pois.style.json', import.meta.url), 'utf8'));
+  assert.equal(style.styles.find((item: any) => item.id === 'pointOfInterest')?.label.visible, false);
+  assert.equal(style.styles.find((item: any) => item.id === 'infrastructure.transitStation')?.label.visible, false);
+  assert.ok(style.styles.every((item: any) => item.label?.visible === false));
 });
 
 test('actual pinned owner preserves coordinates, rejects restricted reuse and cannot navigate synthetic input', async context => {

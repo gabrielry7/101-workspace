@@ -42,6 +42,7 @@ for (const name of ['familjengrotesk.woff', 'bodonimoda.woff']) await copyFile(r
 // Retain the upstream font notices in this private build.
 for (const name of ['familjengrotesk-OFL.txt', 'bodonimoda-OFL.txt']) await copyFile(resolve(fontDir, name), resolve(publicDir, 'fonts', name));
 await writeFile(resolve(publicDir, 'fixture-logo.svg'), fixtureLogo);
+await copyFile(resolve(project, 'tooling/bones/google-no-pois.style.json'), resolve(publicDir, 'google-no-pois.style.json'));
 await copyFile(resolve(project, 'tests/fixtures/location-map-google-browser.js'), resolve(publicDir, 'google-browser-test.js'));
 const context = JSON.parse(await readFile(resolve(owner, 'demo/context.geojson'), 'utf8'));
 const ids = ['synthetic/nearby-1', 'synthetic/nearby-2', 'synthetic/nearby-3'];

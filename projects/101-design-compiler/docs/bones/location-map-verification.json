@@ -1,17 +1,18 @@
 {
-  "version": "location.single-business@0.1.0",
-  "date": "2026-11-05",
-  "owner_commit": "6c0ed29940985bfb1789280c1972e47386775193",
-  "owner_source_modified": false,
-  "private_owner_distributed": false,
-  "fixture": "synthetic; no real business or navigation",
-  "feature_tests": {
-    "passed": 5,
+  "schema": "101-location-bone-verification-v2",
+  "bone": "location.single-business@0.2.0",
+  "checked_at": "2026-11-09T04:54:31.551793+00:00",
+  "browser": "Chrome/156.0.8078.79",
+  "contract_tests": {
+    "passed": 6,
     "failed": 0
   },
+  "typecheck": {
+    "errors": 0,
+    "warnings": 0
+  },
   "native_browser": {
-    "version": "Edg/156.0.4314.58",
-    "widths": [
+    "viewports": [
       360,
       619,
       620,
@@ -30,27 +31,32 @@
       1201,
       1440
     ],
-    "overflow": false,
-    "artificial_word_breaks": false,
-    "max_marker_anchor_error_css_px": 0.5,
-    "pan_zoom_skin_restore_preserve_coordinate": true,
-    "logo_failure_neutral_pin": true,
-    "missing_coordinate_no_pin": true,
+    "neutral_compositions": [
+      "direct",
+      "map-led",
+      "editorial"
+    ],
+    "pin_present_with_logo": true,
+    "logo_contained": true,
+    "max_pin_tip_offset_css_px": 0.5,
+    "poi_policy": "none",
+    "page_overflow": false,
+    "split_words": [],
     "keyboard": {
       "markerActivationFocusesGoogle": true
     },
-    "reduced_motion": true,
-    "forced_colors": true,
-    "font_fallback": true,
-    "without_javascript": true,
-    "external_requests": [],
-    "local_response_errors": []
+    "no_js": {
+      "address": "Dirección de la sucursal · dato de prueba",
+      "placeholder": true
+    },
+    "reduced_motion_and_forced_colors": true
   },
   "google": {
-    "offline_api_checks": [
+    "results": [
       "no configuration makes zero Google calls",
       "destroy before loader completion never mounts",
       "configured Google adapter renders logo",
+      "logo remains inside a pin on the actual provider marker",
       "cloud style mode never mixes inline styles",
       "marker remains accessible and non-draggable",
       "logo uses measured geographic anchor",
@@ -62,37 +68,18 @@
       "failed logo preserves coordinate",
       "Google loader failure retains fallback"
     ],
-    "live_verified": false,
-    "blocker": "No real Google key, map ID and reviewed published cloud style supplied; zero paid calls."
+    "google_live_verified": false,
+    "api_double": true
   },
-  "project": {
-    "check": "passed; 0 errors/warnings/hints",
-    "build": "passed; 535 pages",
-    "test": {
-      "passed": 525,
-      "failed": 3,
-      "failure_area": "historical lock-files source mismatch on already modified legacy files; not resealed"
-    }
-  },
-  "design_detector": [],
-  "human_approval": false,
-  "deployment": false,
-  "source_sha256": {
-    "src/bones/location-map.ts": "56029537b67d6d47339c8903b8f136cef299b5446642323f6060ff940c991c92",
-    "src/bones/location-map-fixture.ts": "5c7cb00e695dbc256a7dc93718b424ab9c30a69b9ad02af4b3cb309ff2d02ee1",
-    "src/bones/location-map-entry.js": "1185b155e5054907bcb29d42a03cc6181095451f49956cf5b7199789d7f575ac",
-    "src/bones/location-map-marker.js": "4a7fb758e7efa1450c8b5698fbee35af92299befc7958551354bd366c3debc34",
-    "src/bones/location-map-runtime.js": "2165fedc2f33a82c0584e52e9abcfe617fd2a62f004d97d685809138781f8663",
-    "src/bones/location-map-google.js": "0a7b05983bbc8f3e7728fdcbf45be1b80e19d129ab395f79278e8d61034098ed",
-    "src/bones/location-map-workshop.js": "cd17bd45aebd5802e8e7c2512960f3545d4b18e3767fe3ffd1dc6e252eff4e50",
-    "src/components/bones/SingleBusinessLocation.astro": "0771d3df7ecaee1b12767f1d6e802516acba7b6e05f98a059c8cd5a74404279a",
-    "src/pages/bones/location-map.astro": "57a34536a0180e83c9e5876f931e6ee1c4241fa1834f017659e5d2a7e4f8ae9f",
-    "tooling/bones/prepare-location-map.mjs": "160185f412ddafb02ebe23369c6ea3e4b74887b022000db4368b6b0d150912de",
-    "tooling/bones/serve-location-map.mjs": "91376c6429bbfed20350794e99f8cf6d53499ce3af26013712d91e24efaec394",
-    "tooling/bones/google-no-pois.style.json": "947712ef09beaa244c319790da6972da370725f77446d4824606a64e134d00e4",
-    "tests/location-map.test.ts": "21db96d2af08d7cea4c8755edd10ee1b4ebba720dcc6f85ecd26b5d275a72575",
-    "tests/fixtures/location-map-google-browser.js": "174a604603f7af86be6ea51ad87e058d41fa0ca4245d25c5cddf4cb2863f63da",
-    "scripts/audit-location-map.ts": "48b2ede410375bdd7d7405f3fbb7477db4be1d1780dbf581becf0e8ce16e7422"
-  },
-  "private_captures": ".tools/location-map-bones/audit (not distributed)"
+  "network": [],
+  "errors": [],
+  "google_live_verified": false,
+  "human_visual_approval": "pending",
+  "limits": [
+    "The user has no Google project/map ID/style configured yet.",
+    "Google checks use an explicitly labelled offline API double; the live basemap is not verified.",
+    "Preview uses synthetic local cartography and sample logo.",
+    "Historical restaurant media and global legacy build are outside this task scope."
+  ],
+  "build": "Existing Astro component and actual pinned private owner compiled locally; private code and build are not published."
 }

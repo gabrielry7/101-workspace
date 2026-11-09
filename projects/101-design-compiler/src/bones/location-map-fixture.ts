@@ -4,7 +4,7 @@ import { proposeUsage } from '../media/plan.ts';
 import { resolveLocationLogo } from './location-map.ts';
 import type { LogoEvidence, LocationBoneInput } from './location-map.ts';
 
-export const fixtureLogo = '<svg xmlns="http://www.w3.org/2000/svg" width="180" height="90" viewBox="0 0 180 90"><rect width="180" height="90" fill="#fff"/><rect x="4" y="4" width="172" height="82" rx="4" fill="none" stroke="#222" stroke-width="2"/><text x="90" y="57" text-anchor="middle" fill="#222" font-family="Georgia,serif" font-size="42">Logo</text></svg>';
+export const fixtureLogo = '<svg xmlns="http://www.w3.org/2000/svg" width="180" height="90" viewBox="0 0 180 90"><text x="90" y="57" text-anchor="middle" fill="#222" font-family="Arial,sans-serif" font-size="42">Logo</text></svg>';
 export const fixtureLocation = {
   schema_version: 1, business_id: 'synthetic-business', location_id: 'synthetic-location',
   name: 'Nombre del negocio', address: 'Dirección de la sucursal · dato de prueba',
@@ -22,7 +22,7 @@ export function fixtureLogoEvidence(): LogoEvidence {
   asset.uri = '/fixture-logo.svg'; asset.original_sha256 = sha; asset.file_sha256 = sha;
   asset.hash_review = syntheticReview(sha); asset.relevance[0]!.review = syntheticReview(sha);
   asset.inspection.review = syntheticReview(sha); asset.inspection.width = 180; asset.inspection.height = 90;
-  asset.inspection.subject = 'Texto Logo dentro de un rectángulo: gráfico de prueba, ninguna empresa real.';
+  asset.inspection.subject = 'Texto Logo sobre fondo transparente: espacio gráfico de prueba, ninguna empresa real.';
   asset.inspection.findings = ['SYNTHETIC_TEST_ASSET; NOT A REAL BRAND OR LEGAL GRANT'];
   grant.original_sha256 = sha;
   const usage = proposeUsage(need, asset, { client_id: 'synthetic-client', project_id: 'synthetic-project',
