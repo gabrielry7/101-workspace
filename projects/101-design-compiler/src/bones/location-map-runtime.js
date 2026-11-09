@@ -1,7 +1,7 @@
 import { attachMarkerVisual } from './location-map-marker.js';
 import { mountGoogleLocation } from './location-map-google.js';
 
-export const LOCATION_BONE_VERSION = 'location.single-business@0.2.0';
+export const LOCATION_BONE_VERSION = 'location.single-business@0.2.1';
 export function fixedPresentation(value = {}) {
   if (!value || typeof value !== 'object' || Array.isArray(value)
     || Object.keys(value).some(key => !['colors', 'zoom', 'pois'].includes(key))) {
@@ -44,7 +44,7 @@ export function mountSingleBusinessLocation(root, config, owner) {
       }, { signal: keyboard.signal });
       visual = attachMarkerVisual(pin, config.marker, location.name, state => {
         root.dataset.markerKind = state.kind; root.dataset.logoReason = state.reason;
-      });
+      }, { showLabel: config.markerLabel !== false });
       return { destroy: () => { keyboard.abort(); visual?.destroy(); } };
     },
   });

@@ -1,5 +1,5 @@
 /** The host element belongs to the real provider marker, never a viewport overlay. */
-export function attachMarkerVisual(host, binding, name, onChange = () => {}) {
+export function attachMarkerVisual(host, binding, name, onChange = () => {}, { showLabel = true } = {}) {
   host.classList.add('single-business-marker');
   host.setAttribute('aria-label', `Cómo llegar a ${name}`);
   const visual = document.createElement('span');
@@ -18,9 +18,12 @@ export function attachMarkerVisual(host, binding, name, onChange = () => {}) {
   const dot = document.createElementNS(frame.namespaceURI, 'circle');
   dot.setAttribute('cx', '32'); dot.setAttribute('cy', '32'); dot.setAttribute('r', '7');
   dot.setAttribute('fill', 'currentColor'); frame.append(outline, dot);
-  const label = document.createElement('span');
-  label.className = 'location-map__marker-label'; label.textContent = name;
-  host.replaceChildren(visual, label);
+  host.replaceChildren(visual);
+  if (showLabel) {
+    const label = document.createElement('span');
+    label.className = 'location-map__marker-label'; label.textContent = name;
+    host.append(label);
+  }
   let kind = 'pin', reason = binding?.reason || 'LOGO_MISSING', disposed = false;
   function pin() {
     dot.removeAttribute('visibility');
@@ -42,7 +45,8 @@ export function attachMarkerVisual(host, binding, name, onChange = () => {}) {
     image.src = binding.url;
   }
   return {
-    inspect: () => ({ marker_kind: kind, logo_reason: reason }),
+    inspect: () => ({ marker_kind: kind, logo_reason: reason,
+      marker_label_visible: showLabel }),
     // The same bottom-center tip anchors the logo pin and its neutral fallback.
     anchor: () => {
       const matrix = frame.getScreenCTM();

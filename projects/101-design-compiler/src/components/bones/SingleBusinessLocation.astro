@@ -5,9 +5,11 @@ interface Props {
   id: string; input: LocationBoneInput; variant?: LocationVariant; skin?: LocationSkin;
   runtimeURL?: string | undefined; provider?: 'maplibre' | 'google_js';
   basemap?: Record<string, unknown> | undefined; google?: Record<string, unknown> | undefined;
+  markerLabel?: boolean;
 }
 const { id, input, variant: variantValue = 'direct', skin: skinValue = 'neutral', runtimeURL,
-  provider = 'maplibre', basemap, google } = Astro.props;
+  provider = 'maplibre', basemap, google, markerLabel = true } = Astro.props;
+if (typeof markerLabel !== 'boolean') throw Error('BOOLEAN_MARKER_LABEL_REQUIRED');
 if (!/^[a-zA-Z][a-zA-Z0-9_-]{0,79}$/.test(id)) throw Error('LOCATION_ID_REQUIRED');
 const variant = locationVariant(variantValue), skin = locationSkin(skinValue);
 if (runtimeURL && !/^\/(?!\/)[a-zA-Z0-9_./-]+\.js$/.test(runtimeURL)) throw Error('LOCAL_LOCATION_RUNTIME_REQUIRED');
@@ -17,7 +19,7 @@ for (const link of input.directions) {
   if (url.protocol !== 'https:' || url.username || url.password) throw Error('UNSAFE_DIRECTIONS_LINK');
 }
 const navigationId = `${id}-directions`;
-const config = { location: input.location, marker: input.marker, provider, basemap, google,
+const config = { location: input.location, marker: input.marker, markerLabel, provider, basemap, google,
   workerURL: runtimeURL?.replace(/[^/]+$/, 'maplibre-gl-worker.mjs'),
   navigationId, presentation: { colors: mapSkins[skin], zoom: 16, pois: { mode: 'none', ids: [], limit: 0 } } };
 ---

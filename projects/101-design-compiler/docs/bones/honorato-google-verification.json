@@ -2,7 +2,7 @@
   "schema": "101-honorato-google-live-verification-v1",
   "verified_on": "2026-11-09",
   "feature": "007-honorato-google-live",
-  "bone": "location.single-business@0.2.0",
+  "bone": "location.single-business@0.2.1",
   "component": "SingleBusinessLocation.astro",
   "owner": "@101/location-map@0.3.0",
   "owner_commit": "6c0ed29940985bfb1789280c1972e47386775193",
@@ -24,35 +24,50 @@
   "budget": {
     "authorized_usd": 1,
     "persistent_total_initialization_limit": 10,
-    "agent_initializations_reserved": 2,
-    "remaining_after_agent_verification": 8,
+    "agent_initializations_reserved": 3,
+    "remaining_after_agent_verification": 6,
     "usd_per_1000_assuming_no_free_tier": 7,
     "ten_load_estimate_usd_before_tax": 0.07,
     "pricing_source": "https://developers.google.com/maps/billing-and-pricing/pricing",
-    "actual_billed_cost": "not measured"
+    "actual_billed_cost": "not measured",
+    "reservations_at_latest_verification": 4
   },
   "browser": {
     "version": "Chrome/156.0.8078.79",
     "live_maps_js": true,
-    "widths_px": [1440, 901, 900, 768, 621, 620, 390],
+    "widths_px": [
+      1440,
+      901,
+      900,
+      768,
+      621,
+      620,
+      390
+    ],
     "overflow": false,
     "font_fallback_overflow": false,
     "directions_keyboard_focus": true,
     "zoom_16_to_17": true,
     "actual_mouse_pan": true,
     "coordinates_preserved": true,
-    "max_marker_anchor_offset_css_px": 0.0078125,
+    "max_marker_anchor_offset_css_px": 0.5128863638496799,
     "exceptions": 0,
     "google_warning": "Headless WebGL unavailable; Google used raster fallback.",
-    "gpu_vector_render_verified": false
+    "gpu_vector_render_verified": false,
+    "logo_image_decoded": true,
+    "marker_label_elements": 0,
+    "accessible_business_name": true,
+    "failed_logo_preserves_pin_coordinate_and_hidden_label": true
   },
   "visual_review": {
     "agent_review": "No neighboring business labels or icons in reviewed viewport, zoom and pan screenshots.",
     "exhaustive_poi_inventory": null,
     "human_approval": "pending",
-    "actual_honorato_logo": false,
-    "marker": "neutral pin",
-    "logo_reason": "LOGO_MISSING"
+    "actual_honorato_logo": true,
+    "marker": "retained Honorato brand symbol inside existing pin",
+    "logo_reason": "LOGO_MEDIA_GATES_PASSED",
+    "marker_label_visible": false,
+    "permission_basis": "Explicit user permission recorded privately for local Honorato preview; no independent title audit or public redistribution license claimed."
   },
   "local_verification": {
     "budget_and_location_tests_passed": 8,
@@ -62,7 +77,11 @@
     "eleventh_initialization_rejected": true,
     "malformed_budget_fails_closed": true,
     "config_get_and_cross_site_post_rejected": true,
-    "private_config_routes_unavailable": true
+    "private_config_routes_unavailable": true,
+    "workshop_regression_widths": 17,
+    "google_offline_checks": 17,
+    "workshop_regression_errors": 0,
+    "workshop_initial_harness_failure": "Expired CDP InterceptionId on first pass; retained log; retry passed."
   },
   "privacy": {
     "restricted_inputs_or_media_committed": false,

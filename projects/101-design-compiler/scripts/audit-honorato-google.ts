@@ -41,11 +41,26 @@ try {
   assert.equal(first?.state, 'ready', first?.reason);
   assert.equal(first.provider, 'google_js');
   await pause(1200);
+  const appearance = await browser.evaluate(`(() => {
+    const host = document.querySelector('[data-location-bone-config]');
+    const pin = host.querySelector('.single-business-marker');
+    const image = pin.querySelector('.single-business-marker__logo');
+    return { logo: image?.complete && image.naturalWidth > 0,
+      labels: host.querySelectorAll('.location-map__marker-label').length,
+      pin_frame: !!pin.querySelector('[data-location-part="marker-pin"]'),
+      accessible_name: pin.getAttribute('aria-label') };
+  })()`);
+  assert.equal(appearance.logo, true, 'Honorato logo must load from the permission-gated asset');
+  assert.equal(appearance.labels, 0, 'Honorato must not render a name box');
+  assert.equal(appearance.pin_frame, true, 'Logo must retain the existing pin silhouette');
+  assert.ok(appearance.accessible_name?.includes('Honorato'));
   const checkPosition = (info: any) => {
     assert.deepEqual(info.marker_coordinate, first.marker_coordinate);
     assert.deepEqual(info.expected_coordinate, first.expected_coordinate);
     assert.ok(info.marker_anchor_offset_px !== null && info.marker_anchor_offset_px <= 1);
     assert.equal(info.publication_allowed, false);
+    assert.equal(info.marker_kind, 'logo');
+    assert.equal(info.marker_label_visible, false);
   };
   const viewports = [];
   for (const width of [1440, 901, 900, 768, 621, 620, 390]) {
@@ -84,14 +99,29 @@ try {
   const markerAfter = await position();
   assert.ok(Math.hypot(markerAfter.x - markerBefore.x, markerAfter.y - markerBefore.y) > 10, 'Real pan must move marker on screen');
   await snapshot('live-pan');
+  const clip = await browser.evaluate(`(() => {
+    const r=document.querySelector('.single-business-marker').getBoundingClientRect();
+    return { x:r.x-20, y:r.y-20, width:r.width+40, height:r.height+40, scale:2 };
+  })()`);
+  const detail = await browser.call('Page.captureScreenshot', { format:'png', clip });
+  await writeFile(resolve(folder, 'honorato-logo-pin.png'), Buffer.from(detail.data, 'base64'));
   await browser.evaluate(`document.querySelector('.location-bone nav a').focus()`);
   assert.equal(await browser.evaluate(`document.activeElement.matches('.location-bone nav a')`), true);
+  // A failed logo must keep the same marker, destination and hidden-label choice.
+  await browser.evaluate(`document.querySelector('.single-business-marker__logo').src='/missing-honorato-logo-test.svg'`);
+  for (let i=0; i<40 && (await inspect()).logo_reason !== 'LOGO_LOAD_FAILED'; i++) await pause(100);
+  const logoFailure = await inspect();
+  assert.equal(logoFailure.marker_kind, 'pin');
+  assert.equal(logoFailure.logo_reason, 'LOGO_LOAD_FAILED');
+  assert.equal(logoFailure.marker_label_visible, false);
+  assert.deepEqual(logoFailure.marker_coordinate, first.marker_coordinate);
+  assert.ok(logoFailure.marker_anchor_offset_px <= 1);
   assert.equal(exceptions.length, 0);
   const reservationAfter = JSON.parse(await readFile(resolve(folder, 'trial-budget.json'), 'utf8')).reserved;
   assert.equal(reservationAfter, reservationBefore + 1, 'Resizing, zoom and pan must reuse the same map');
   await writeFile(resolve(folder, 'browser-extended-report.json'), JSON.stringify({
     browser: browser.version, provider: first.provider, viewports, zoom, pan,
-    markerBefore, markerAfter, consoleErrors, exceptions, font_fallback_overflow: false,
+    markerBefore, markerAfter, appearance, logoFailure, consoleErrors, exceptions, font_fallback_overflow: false,
     keyboard_directions_focus: true, agent_map_initializations: 1,
     reservations_after: reservationAfter, visual_review: 'pending-agent-review', human_approval: 'pending',
   }, null, 2) + '\n');

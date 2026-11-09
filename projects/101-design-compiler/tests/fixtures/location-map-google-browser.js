@@ -60,6 +60,15 @@ export async function runGoogleChecks(source) {
   let rejected = false; try { control.setPresentation({ pois: { mode: 'all' } }); } catch { rejected=true; }
   check(rejected, 'Google adapter rejects restoring POIs');
   control.destroy(); check(markers[0].map === null, 'destroy detaches provider marker');
+  const bare = makeRoot();
+  const withoutLabel = mountGoogleLocation(bare, { ...base, markerLabel: false }, owner, services);
+  await wait(); await wait();
+  check(withoutLabel.inspect().marker_kind === 'logo' && !bare.querySelector('.location-map__marker-label'),
+    'explicit false removes name box while retaining logo pin');
+  check(bare.querySelector('.single-business-marker')?.getAttribute('aria-label').includes(location.name),
+    'pin without visible label retains accessible business name');
+  check(withoutLabel.inspect().marker_anchor_offset_px <= 1, 'hidden label preserves pin tip anchor');
+  withoutLabel.destroy();
   const broken = mountGoogleLocation(makeRoot(), { ...base, marker: { ...source.marker, url: '/missing-google-logo.svg' } }, owner, services);
   for(let i=0;i<50&&broken.inspect().logo_reason!=='LOGO_LOAD_FAILED';i++) await wait();
   check(broken.inspect().marker_kind === 'pin' && broken.inspect().logo_reason === 'LOGO_LOAD_FAILED', 'Google image error keeps neutral marker');

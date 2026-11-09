@@ -77,7 +77,7 @@ export function mountGoogleLocation(root, config, owner, services = {}) {
       const position = marker?.position;
       const actual = position ? [typeof position.lng === 'function' ? position.lng() : position.lng,
         typeof position.lat === 'function' ? position.lat() : position.lat] : null;
-      return { bone_version: 'location.single-business@0.2.0', provider: 'google_js', state, reason,
+      return { bone_version: 'location.single-business@0.2.1', provider: 'google_js', state, reason,
         location_id: location.location_id, expected_coordinate: location.coordinate
           ? [location.coordinate.longitude, location.coordinate.latitude] : null,
         marker_coordinate: actual, coordinate_source: location.coordinate?.source || null,
@@ -122,7 +122,7 @@ export function mountGoogleLocation(root, config, owner, services = {}) {
     host.dataset.locationPart = 'business-marker';
     visual = attachMarkerVisual(host, config.marker, location.name, info => {
       root.dataset.markerKind = info.kind; root.dataset.logoReason = info.reason;
-    });
+    }, { showLabel: config.markerLabel !== false });
     marker = new api.marker.AdvancedMarkerElement({ map,
       position: { lat: location.coordinate.latitude, lng: location.coordinate.longitude },
       title: `Cómo llegar a ${location.name}`, gmpClickable: true, gmpDraggable: false,

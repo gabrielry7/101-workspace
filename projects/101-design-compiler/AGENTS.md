@@ -173,5 +173,13 @@ screenshots under ignored `.tools/honorato-google-live/`. The browser key is lim
 to Maps JavaScript and localhost/127.0.0.1 port 8780. Preserve BOTH the verified
 Google daily quota of ten map loads and the persistent local ten-initialization
 budget. Do not delete/reset the counter to obtain more trial loads or expand the
-authorized services. The map currently uses the neutral pin because no eligible
+authorized services. The first trial used the neutral pin because no eligible
 Honorato logo evidence was retained. Do not fabricate a media grant.
+
+The user subsequently explicitly confirmed permission to use the Honorato logo
+and requested its symbol inside the same pin, without the visible name box.
+That statement is recorded privately as user-attested permission for the local
+trial; it is not an independently audited ownership claim or a redistribution
+license. The retained symbol is bound through the existing media contracts.
+Version 0.2.1 exposes `markerLabel` (default true); Honorato uses false while
+retaining its accessible name, direction action and geographic anchor.

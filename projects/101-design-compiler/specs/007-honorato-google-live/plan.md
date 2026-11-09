@@ -26,3 +26,22 @@ PASS: mismo componente y dueños; paquete privado sin redistribución; coordenad
 Google en Google; pin neutro por LOGO_MISSING; OAuth sólo en gcloud/memoria.
 Verificados cuota efectiva 10/día, contador local total 10 y origen/API de la key.
 Google real y límites automáticos comprobados; aprobación visual humana pendiente.
+
+## Refinamiento del marcador (2026-11-09)
+Entrada: confirmación explícita del usuario sobre permiso del logo. Registrar
+evidencia privada con el SHA de los archivos y su declaración real; no copiar
+fixtures sintéticos ni afirmar una verificación independiente de titularidad.
+Conservar el símbolo SVG existente extraído del archivo de marca, sin redibujarlo.
+Añadir `markerLabel` booleano a SingleBusinessLocation y pasarlo a ambos adaptadores
+mediante attachMarkerVisual. Por defecto true; Honorato usa false. El pin conserva
+64×80, el logo 44×44 con object-fit contain y el mismo anclaje. Versión 0.2.1.
+Auditoría Google: exigir marker_kind=logo, imagen decodificada y cero etiquetas;
+reutilizar una sola carga para los anchos/zoom/arrastre y conservar las capturas
+anteriores antes de generar las nuevas. Sin cambios de servicios, clave o cuota.
+
+Resultado: Google real mostró el símbolo dentro del pin y cero recuadros de nombre,
+con nombre accesible. Siete anchos, fuente alternativa, zoom y arrastre: sin overflow;
+desviación máxima de la punta 0.513 px. Error de imagen conserva la coordenada y
+la etiqueta oculta. El taller conservó sus etiquetas y pasó 17 anchos y 17 checks
+Google offline. Primera pasada del taller encontró una intercepción CDP caducada;
+se conservó el log y el reintento pasó sin errores. Ocho tests y check sin diagnósticos.

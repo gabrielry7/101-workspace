@@ -206,6 +206,11 @@ La demo no tiene destinos reales y lo indica; sus acciones son huecos deshabilit
 La comprobación de teclado con enlaces está en una ruta de prueba identificada.
 Guardar/restaurar conserva piel y zoom versionados en el navegador, sin editar hechos.
 
+En 0.2.1, `markerLabel` permite ocultar el recuadro del nombre sin quitar el nombre
+accesible del pin. Su valor por defecto es `true`. La prueba de Honorato usa
+`false` y el símbolo con permiso confirmado por el usuario dentro de la misma
+silueta; ver [evidencia de Google real](honorato-google.md).
+
 En un consumidor autorizado: validar con el `locationInput`/`navigationLinks` del
 dueño mediante `bindLocationBone`, suministrar la evidencia del logo y pasar ese
 `input` al componente. El `runtimeURL` debe ser un bundle local preparado con el

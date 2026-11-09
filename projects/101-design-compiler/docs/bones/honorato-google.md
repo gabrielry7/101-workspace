@@ -1,7 +1,9 @@
 # Honorato: prueba local con Google Maps real
 
 Fecha: 2026-11-09. Spec: [007](../../specs/007-honorato-google-live/spec.md).
-Vista local: <http://127.0.0.1:8780/>. Rama: `codex/honorato-google-live-20261109`.
+Vista local: <http://127.0.0.1:8780/>. Rama del refinamiento:
+`codex/honorato-logo-pin-20261109`; creación del proyecto en
+`codex/honorato-google-live-20261109`.
 
 Se creó un proyecto dedicado, se vinculó la cuenta de facturación accesible y se
 habilitaron Maps JavaScript, Map Management y API Keys. El estilo propio oculta
@@ -22,11 +24,24 @@ El consumidor instancia **SingleBusinessLocation.astro** y el adaptador existent
 El paquete retenido de Honorato sigue siendo privado y `publication_allowed:false`.
 Sus coordenadas de fuente Google se presentan sobre Google.
 
-El marcador es el pin neutro del mismo hueso `location.single-business@0.2.0`.
-No se encontró un logo real que pase los controles de permisos y alcance. El SVG
-reconstruido sin validación no se promovió a activo autorizado. Un futuro logo
-debe entrar por `bindLocationBone` y los controles existentes de medios; el archivo
-opcional privado `logo-evidence.json` añade `render_file`, cuyo SHA256 debe coincidir.
+El marcador actual usa el símbolo de Honorato dentro del mismo pin, versión
+`location.single-business@0.2.1`. El usuario confirmó expresamente permiso para usar
+el logo. Su declaración está registrada en privado como autorización para esta
+prueba local; no se presenta como un contrato externo ni una auditoría independiente
+de titularidad. El símbolo procede del SVG de marca retenido: se conservan sus
+trazos y se separa del wordmark horizontal para que quepa de forma legible en el pin.
+
+La evidencia pasa por `bindLocationBone` y los controles existentes de medios,
+incluyendo lineage/hash del archivo original y del símbolo. El archivo privado
+`logo-evidence.json` añade `render_file`, cuyo SHA256 debe coincidir. No se copió
+un grant sintético ni se usó un booleano para saltar los controles. La prueba
+inicial de 0.2.0 usaba el pin neutro; sus capturas se conservaron en `before-logo/`.
+
+Honorato pasa `markerLabel={false}` al componente para quitar el recuadro visible
+del nombre. El pin conserva su silueta 64×80, el logo 44×44 proporcional, el nombre
+accesible y la acción de indicaciones. Otros consumidores mantienen la etiqueta
+por defecto. Si falla la imagen, vuelve el pin neutro sin mover el destino ni
+reintroducir el recuadro oculto.
 
 ## Presupuesto y privacidad
 
@@ -40,8 +55,9 @@ cupo inválido falla cerrado. No borrar/resetear el contador para ampliar la pru
 La [tarifa Dynamic Maps](https://developers.google.com/maps/billing-and-pricing/pricing)
 publicada es US$7/1.000 en el primer tramo de pago. Se presupuestan las diez cargas
 como US$0,07 antes de impuestos, sin asumir disponibilidad del tramo gratuito.
-La estimación no es una lectura de factura. Dos inicializaciones se reservaron para
-las verificaciones del agente; al terminar esas verificaciones quedaban ocho.
+La estimación no es una lectura de factura. La verificación inicial reservó dos
+inicializaciones del agente y el refinamiento del logo una más. Tras verificar el
+logo, el contador total marcaba 4/10 y quedaban seis; incluye otra visita a la vista.
 Mover, ampliar y redimensionar el mismo mapa no crea otra instancia.
 No se invocaron Places ni Street View. No se confía en alertas de facturación como
 corte duro. La gestión de mapas no tiene cargo según la documentación oficial.
@@ -52,6 +68,8 @@ archivos privados están en `.tools/honorato-google-live/`, ignorados por Git:
 
 - `cloud-state.json`: identificadores de recursos y límites de esta prueba.
 - `browser-config.json`: configuración web, permisos de archivo 0600.
+- `logo-permission.txt`, `logo-evidence.json` y `logo-review/`: declaración real,
+  evidencia de medios y símbolos privados; no redistribuir en el repositorio público.
 - `trial-budget.json`: reservas persistentes; conservar al reiniciar/recompilar.
 - `preview/`: consumidor, bundle del dueño privado y datos conservados.
 - `browser-*-report.json` y PNG: evidencia local restringida.
@@ -99,7 +117,15 @@ Ver [resumen verificable sin datos privados](honorato-google-verification.json).
 Se comprobaron siete anchos (390–1440 px), ambos lados de los breakpoints del
 consumidor directo, fuente alternativa, foco de indicaciones, zoom 16→17 y arrastre
 real con ratón. Sin overflow ni excepciones; coordenada conservada y desviación
-máxima de la punta de 0,0078125 px CSS.
+máxima de la punta de 0,5129 px CSS en la verificación del logo, incluido el arrastre.
+El logo se decodificó correctamente, no hay elementos de etiqueta visibles y el
+nombre accesible sigue presente. También se provocó un error de imagen y se verificó
+el pin de alternativa con la misma coordenada, sin otra inicialización del mapa.
+
+La regresión del taller local pasó 17 anchos y 17 comprobaciones Google con el
+doble offline, sin llamadas externas. Conserva las etiquetas de otros consumidores.
+La primera pasada falló por una intercepción CDP caducada del harness; el log quedó
+retenido y el reintento pasó sin errores. Ocho tests y typecheck sin diagnósticos.
 
 Las capturas revisadas por el agente muestran sólo el marcador de Honorato y las
 calles/geografía, sin negocios ajenos en esas vistas. Google no expone un inventario
@@ -109,6 +135,6 @@ Chromium headless sin GPU cayó al mapa raster de Google con el aviso esperado d
 WebGL; el estilo y AdvancedMarker funcionaron en ese fallback. El render vectorial
 en un dispositivo con GPU no se verificó en este entorno.
 
-Pendientes para ampliar el alcance: revisión visual humana y logo de Honorato con
-evidencia válida. Cambiar el dominio o ampliar cargas requiere revisar las
-restricciones y el presupuesto. Los 60 medios históricos siguen fuera de alcance.
+Pendiente: revisión visual humana del resultado. Cambiar el dominio o ampliar cargas
+requiere revisar las restricciones y el presupuesto. Los 60 medios históricos siguen
+fuera de alcance.

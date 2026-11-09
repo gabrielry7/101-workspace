@@ -45,12 +45,13 @@ const input = ${JSON.stringify(input)};
 <body><header class="operator"><h1>Honorato · Google Maps</h1><p>Prueba local del mismo hueso de ubicación. Datos de la ficha conservada; la entrada exacta puede variar.</p>
 <p data-trial-status role="status">Conectando Google Maps con el estilo propio…</p><p data-trial-meter></p>
 ${input.marker.kind !== 'logo' ? '<p>Pin neutro: falta un logo de Honorato con permiso de uso registrado.</p>' : ''}
-</header><main><Location id="honorato-location" input={input} provider="google_js"/><script type="module" src="/honorato-google-client.js" is:inline></script></main>
+</header><main><Location id="honorato-location" input={input} provider="google_js" markerLabel={false}/><script type="module" src="/honorato-google-client.js" is:inline></script></main>
 <style is:global>body{margin:0;background:#f5f5f3;color:#222;font:16px/1.5 system-ui,sans-serif}.operator,main{max-width:1320px;margin:0 auto;padding:28px}.operator h1{font-size:28px;font-weight:500}.operator p{max-width:85ch}main{padding-top:0}.location-bone{border:1px solid #aaa}@media(max-width:600px){.operator,main{padding:20px}}</style>
 </body></html>`);
 await astroBuild({ root: preview, configFile: false, output: 'static', logLevel: 'error' });
 await writeFile(resolve(folder, 'build-receipt.json'), JSON.stringify({ source_packet_sha256: createHash('sha256').update(packetBytes).digest('hex'),
   business_id: packet.business_id, location_id: packet.location_id, publication_allowed: false,
   provider: 'google_js', marker: input.marker.kind, marker_reason: input.marker.reason, private_build: true,
-  google_live_verified: false, component: 'SingleBusinessLocation.astro' }, null, 2));
+  google_live_verified: false, marker_label_visible: false,
+  component: 'SingleBusinessLocation.astro' }, null, 2));
 console.log('Built private Honorato consumer with the existing Astro component. No map loaded during build.');
