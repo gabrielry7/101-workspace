@@ -11,10 +11,12 @@
 - [x] T006 [US3] Estilo descargable en tooling/bones/prepare-location-map.mjs; procedimiento en docs/bones/location-map.md y taller.
 ## Verificación
 - [x] T007 Contratos, tipos, navegador y capturas mediante scripts/audit-location-map.ts.
-- [ ] T008 Revisar diff, converger documentos y verificar commit/push de la rama.
+- [x] T008 Revisar diff, converger documentos y verificar commit/push de la rama.
 
 Dependencias: T001 → T002 → T003/T004 → T005/T006 → T007 → T008.
 T005/T006 tienen archivos independientes salvo documentación. Implementación no delegada.
 MVP: recetas neutras y pin de logo. Google vivo es dependencia externa.
 
 Convergencia técnica: seis pruebas de contrato, check 0 errores/avisos, build privado del mismo componente y auditoría nativa de 17 anchos pasan. Pin/slot/contención/punta, fallos, teclado, sin JS, fuentes de respaldo y preferencias comprobados. Capturas móvil/tablet/escritorio inspeccionadas. Google vivo y aprobación visual humana pendientes. No hay hooks de extensión configurados. Gate posterior de constitución: PASS.
+
+Entrega de implementación verificada en el remoto: `f1d3e0c52641d115e1a0e0d1579dbe85c5cc952b`, rama `codex/location-neutral-bones-20261108`. Fuentes y recibo propios; el paquete/build privado y cambios concurrentes de Caretta quedaron fuera del commit. Vista local: http://127.0.0.1:8777/.

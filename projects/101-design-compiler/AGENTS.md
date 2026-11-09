@@ -142,3 +142,18 @@ push, publish restricted media/data or push to Thomas's repository automatically
 The local standalone history differs from the GitHub monorepo: use a clean clone
 or worktree of the destination and transfer only reviewed task files. See
 `docs/bones/github.md`. Report any push failure explicitly instead of claiming delivery.
+
+## Current map refinement and recovery priority (2026-11-08)
+
+The user explicitly deprioritizes the sixty missing historical restaurant media
+files. Focus on the current section bones; do not pursue those originals or treat
+their legacy global-build failures as blockers for unrelated bone deliveries.
+
+Map refinement is recorded in `specs/006-neutral-location-bones/`: three neutral
+compositions of the existing location family, named slots like Little Amps, and a
+logo contained inside a geographically anchored pin. Current version is 0.2.0.
+These are three compositions, not three independent approved library families.
+The user confirmed that no Google project, Map ID or cloud style is configured yet.
+The existing Google adapter and offline checks do not establish live cartography
+verification. Keep the neutral local sample identified and Google setup pending;
+do not create billing or report the live Google result as complete.
