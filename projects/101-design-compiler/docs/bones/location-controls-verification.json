@@ -1,0 +1,63 @@
+{
+  "schema": "101-location-controls-verification-v1",
+  "verified_on": "2026-11-09",
+  "bone": "location.single-business@0.3.0",
+  "component": "SingleBusinessLocation.astro",
+  "operator_panel": "LocationMapControls.astro",
+  "controls": [
+    "section skin: neutral/paper/ink",
+    "composition: direct/map-led/editorial",
+    "zoom 3..18",
+    "height 280..560px",
+    "marker label",
+    "pin fill/border",
+    "save/restore/reset visual settings"
+  ],
+  "browser": "Chrome/156.0.8078.79",
+  "responsive_cases": 45,
+  "widths_px": [
+    390,
+    620,
+    621,
+    680,
+    681,
+    720,
+    721,
+    768,
+    900,
+    901,
+    1100,
+    1101,
+    1200,
+    1201,
+    1440
+  ],
+  "overflow": false,
+  "split_address_or_heading_words": false,
+  "same_canvas_and_controller": true,
+  "coordinates_preserved": true,
+  "max_marker_anchor_offset_css_px": 0.25,
+  "all_three_skin_captures_reviewed": true,
+  "keyboard_focus": true,
+  "persistence_and_invalid_saved_state": true,
+  "controls_work_before_provider_and_when_exhausted": true,
+  "api_double": true,
+  "google_live_verified_for_this_panel": false,
+  "latest_retained_live_google_proof": "honorato-google-verification.json (version 0.2.1)",
+  "real_google_initializations_consumed": 0,
+  "persistent_reservations_observed": 9,
+  "unit_and_contract_tests_passed": 10,
+  "typecheck": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "existing_workshop_regression": {
+    "widths": 17,
+    "offline_google_checks": 17,
+    "passed": true
+  },
+  "cloud_style_or_quota_modified": false,
+  "private_data_media_or_credentials_committed": false,
+  "human_visual_approval": "pending"
+}

@@ -12,3 +12,8 @@ Orden: T001 → T002 → T003 → T004 → T005 → T006. La preparación local 
 - [x] T007 Registrar la autorización explícita del usuario y verificar/vincular el símbolo de Honorato mediante los contratos existentes (HG-05/07). Declaración, hashes y lineage privados; sin fixtures sintéticos ni auditoría de titularidad inventada.
 - [x] T008 Mostrar el logo dentro del mismo pin y desactivar el recuadro del nombre en Honorato, conservando accesibilidad y la etiqueta por defecto para otros consumidores (HG-04/05). Opción markerLabel=false; versión 0.2.1.
 - [x] T009 Verificar Google real, logo sin etiqueta, móvil/escritorio y anclaje al mover/ampliar; actualizar resultado y guardar commit/push sin medios privados (HG-03/06/08). Siete anchos Google, fallback por error de imagen, anclaje máximo 0.513 px; regresión offline de 17 anchos y 17 comprobaciones Google aprobada, ocho tests y typecheck sin diagnósticos.
+
+## Controlador en tiempo real
+- [x] T010 Añadir panel de operador y validación de opciones visuales, reutilizando pieles, partes y composiciones existentes (HG-04/07). Tres pieles/composiciones, zoom, altura, etiqueta y colores; persistencia estricta sin datos privados.
+- [x] T011 Aplicar controles a la misma instancia y permitir etiqueta dinámica; arranque explícito y consulta de cupo sin reservar cargas (HG-04/06). Mismo canvas/controlador; GET status no expone key y no modifica el contador.
+- [x] T012 Verificar panel, accesibilidad, persistencia, cupo agotado y ausencia de nuevas cargas con navegador offline; documentar alcance y entregar commit/push (HG-06/08). 45 casos responsive, tres pieles, nombre/foco y 10 tests; typecheck sin diagnósticos. Última carga conservada para el usuario, sin nuevo render Google vivo del panel.

@@ -183,3 +183,13 @@ trial; it is not an independently audited ownership claim or a redistribution
 license. The retained symbol is bound through the existing media contracts.
 Version 0.2.1 exposes `markerLabel` (default true); Honorato uses false while
 retaining its accessible name, direction action and geographic anchor.
+
+The user now requests a live controller for visual experimentation. Version 0.3.0
+adds the local operator panel for section skins, existing compositions, zoom,
+height, label and pin colors. Preserve the same map instance while applying edits.
+The trial had 9/10 reservations at the start of this refinement: opening the page
+now only reads `/trial-status`; Google starts once on an explicit activation click.
+Panel verification uses an identified offline API double and consumes no Google
+loads. Do not claim this is a new live-Google verification or reset/expand the cap.
+Section skin does not recolor Google's cartography. Saved browser settings contain
+only validated visual options, never credentials, business facts or coordinates.

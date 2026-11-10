@@ -1,7 +1,7 @@
 import { attachMarkerVisual } from './location-map-marker.js';
 import { mountGoogleLocation } from './location-map-google.js';
 
-export const LOCATION_BONE_VERSION = 'location.single-business@0.2.1';
+export const LOCATION_BONE_VERSION = 'location.single-business@0.3.0';
 export function fixedPresentation(value = {}) {
   if (!value || typeof value !== 'object' || Array.isArray(value)
     || Object.keys(value).some(key => !['colors', 'zoom', 'pois'].includes(key))) {
@@ -61,6 +61,10 @@ export function mountSingleBusinessLocation(root, config, owner) {
       return { ...state, bone_version: LOCATION_BONE_VERSION, ...visual?.inspect(),
         marker_anchor_offset_px: offset, verification: 'native-source-bound',
         poi_policy: { mode: 'none', limit: 0, ids: [] } };
+    },
+    setMarkerLabel(visible) {
+      if (typeof visible !== 'boolean') throw Error('BOOLEAN_MARKER_LABEL_REQUIRED');
+      config.markerLabel = visible; visual?.setLabelVisible(visible);
     },
     setPresentation(next) { native.setPresentation(fixedPresentation(next)); },
     // Workshop-only bounded camera actions use the same provider; they never move the marker.

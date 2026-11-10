@@ -67,3 +67,26 @@ indicaciones se conservan. Mantener fallback neutro al fallar la imagen, anclaje
 **Prueba de aceptación**: Google real carga el logo dentro del pin sin recuadro del
 nombre; escritorio/móvil, zoom y arrastre mantienen el destino. Guardar evidencia
 local y código propio en GitHub, sin publicar el SVG o la declaración privada.
+
+## Controlador de prueba en tiempo real (2026-11-09)
+El usuario solicita un panel para ver inmediatamente el efecto de cada ajuste,
+por ejemplo cambiar la piel de neutra a tinta. Añadir un taller local de Honorato
+con piel neutra/papel/tinta, las tres composiciones existentes, etiqueta del pin,
+zoom, altura del mapa y colores de fondo/borde del pin. Guardar/recuperar sólo
+opciones visuales validadas en este navegador y restablecer los valores iniciales.
+Reutilizar el mismo componente, partes y mapa; ningún control recrea el proveedor.
+La piel modifica la sección; la cartografía conserva el estilo cloud y el logo
+conserva sus propios colores. Coordenadas y política sin negocios ajenos no son
+controles de diseño. No publicar datos/medios ni ampliar el límite de la prueba.
+
+El contador existente marca 9/10 al iniciar este alcance. Por ello abrir el taller
+no debe reservar una carga: Google se activa mediante un botón explícito, una sola
+vez por visita. El panel funciona antes de activarlo y puede ajustarse sin recargar.
+El estado/cupo se consulta sin entregar la key ni reservar cargas. Al agotarse,
+la sección y los controles permanecen utilizables sin iniciar Google. La última
+carga se conserva para el usuario; la auditoría del panel usa un doble offline
+identificado y debe informar este límite, sin declararlo prueba de Google vivo.
+**Aceptación**: cambiar piel cambia fondo/texto/tipografía/botones al instante,
+sin cambiar el nodo del mapa, coordenadas, logo o consumo. Etiqueta, composiciones,
+zoom/altura/colores y guardar/recuperar/restablecer funcionan; sin overflow en móvil
+y escritorio. Nombre accesible, contraste y navegación por teclado conservados.

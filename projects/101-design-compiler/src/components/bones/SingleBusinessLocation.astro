@@ -14,6 +14,7 @@ if (!/^[a-zA-Z][a-zA-Z0-9_-]{0,79}$/.test(id)) throw Error('LOCATION_ID_REQUIRED
 const variant = locationVariant(variantValue), skin = locationSkin(skinValue);
 if (runtimeURL && !/^\/(?!\/)[a-zA-Z0-9_./-]+\.js$/.test(runtimeURL)) throw Error('LOCAL_LOCATION_RUNTIME_REQUIRED');
 const content = displayLocation.parse(input.location);
+const addressParts = (content.address ?? 'Dirección pendiente de confirmar.').split(/(\s+)/);
 for (const link of input.directions) {
   const url = new URL(link.url);
   if (url.protocol !== 'https:' || url.username || url.password) throw Error('UNSAFE_DIRECTIONS_LINK');
@@ -30,7 +31,7 @@ const config = { location: input.location, marker: input.marker, markerLabel, pr
       <span data-location-part="business-name">{content.name}</span>
     </h2>
     {variant !== 'direct' && <div class="location-bone__information">
-      <address data-location-part="address">{content.address ?? 'Dirección pendiente de confirmar.'}</address>
+      <address data-location-part="address">{addressParts.map(part => /\S/.test(part) ? <span>{part}</span> : part)}</address>
       <nav id={navigationId} data-location-part="directions" aria-label={`Indicaciones para ${content.name}`}>
         {input.directions.map(link => <a data-map-app={link.provider} href={link.url} target="_blank" rel="noopener noreferrer">Abrir en {link.label}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>)}
         {!input.directions.length && input.synthetic && ['Google Maps','Waze','Apple Maps'].map(name => <span class="location-bone__action-placeholder" aria-disabled="true">Abrir en {name}</span>)}
@@ -40,7 +41,7 @@ const config = { location: input.location, marker: input.marker, markerLabel, pr
   </header>
   <div class="location-bone__body">
     {variant === 'direct' && <div class="location-bone__information">
-      <address data-location-part="address">{content.address ?? 'Dirección pendiente de confirmar.'}</address>
+      <address data-location-part="address">{addressParts.map(part => /\S/.test(part) ? <span>{part}</span> : part)}</address>
       <nav id={navigationId} data-location-part="directions" aria-label={`Indicaciones para ${content.name}`}>
         {input.directions.map(link => <a data-map-app={link.provider} href={link.url} target="_blank" rel="noopener noreferrer">Abrir en {link.label}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>)}
         {!input.directions.length && input.synthetic && ['Google Maps','Waze','Apple Maps'].map(name => <span class="location-bone__action-placeholder" aria-disabled="true">Abrir en {name}</span>)}
@@ -66,6 +67,7 @@ const config = { location: input.location, marker: input.marker, markerLabel, pr
   .location-bone * { box-sizing:border-box; }
   .location-bone h2 { font-size:clamp(2rem,4vw,4.5rem);line-height:1.08;font-weight:400;letter-spacing:-.025em;margin:0;text-wrap:balance;overflow-wrap:normal;word-break:normal; }
   .location-bone address { font:inherit;font-size:1.15rem;line-height:1.5;margin:0 0 1.5rem;max-width:34ch;text-wrap:pretty; }
+  .location-bone address span { white-space:nowrap; }
   .location-bone[data-skin="neutral"] h2 { font:inherit;letter-spacing:normal;text-wrap:pretty; }
   .location-bone[data-skin="neutral"] address { font:inherit; }
   .location-bone nav { display:grid;gap:10px; }

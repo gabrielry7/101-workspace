@@ -32,6 +32,11 @@ try {
   await browser.call('Network.setBlockedURLs', { urls: [] });
   await browser.call('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
   await browser.call('Page.navigate', { url: 'http://127.0.0.1:8780/' });
+  for (let i=0; i<80; i++) {
+    if (await browser.evaluate(`document.querySelector('[data-google-start]')?.disabled === false`)) break;
+    await pause(100);
+  }
+  await browser.evaluate(`document.querySelector('[data-google-start]').click()`);
   let first;
   for (let i = 0; i < 160; i++) {
     first = await inspect();

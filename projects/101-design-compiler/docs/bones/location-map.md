@@ -211,6 +211,12 @@ accesible del pin. Su valor por defecto es `true`. La prueba de Honorato usa
 `false` y el símbolo con permiso confirmado por el usuario dentro de la misma
 silueta; ver [evidencia de Google real](honorato-google.md).
 
+En 0.3.0 el taller de Honorato incluye controles de piel, composición, zoom,
+altura, etiqueta y colores del pin sin recrear el mapa. La etiqueta puede cambiar
+con `setMarkerLabel(boolean)` sobre ambos adaptadores. El panel de operador es
+independiente del componente de cliente. Google se activa explícitamente para
+conservar el cupo de prueba; el cambio de piel sólo modifica la sección.
+
 En un consumidor autorizado: validar con el `locationInput`/`navigationLinks` del
 dueño mediante `bindLocationBone`, suministrar la evidencia del logo y pasar ese
 `input` al componente. El `runtimeURL` debe ser un bundle local preparado con el

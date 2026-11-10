@@ -47,6 +47,7 @@ export function mountGoogleLocation(root, config, owner, services = {}) {
   let destroyed = false, map, marker, overlay, visual, observer, api, timer;
   let state = 'fallback', reason = !eligible.render ? eligible.reason : 'GOOGLE_CONFIGURATION_REQUIRED';
   let presentation = owner.presentation(config.presentation);
+  let markerLabel = config.markerLabel !== false;
   root.replaceChildren(); root.classList.add('location-map'); root.dataset.mapProvider = 'google_js';
   const canvas = document.createElement('div'); canvas.className = 'location-map__canvas';
   canvas.setAttribute('role', 'region'); canvas.setAttribute('aria-label', `Mapa de ${location.name}`);
@@ -77,7 +78,8 @@ export function mountGoogleLocation(root, config, owner, services = {}) {
       const position = marker?.position;
       const actual = position ? [typeof position.lng === 'function' ? position.lng() : position.lng,
         typeof position.lat === 'function' ? position.lat() : position.lat] : null;
-      return { bone_version: 'location.single-business@0.2.1', provider: 'google_js', state, reason,
+      return { bone_version: 'location.single-business@0.3.0', provider: 'google_js', state, reason,
+        camera_zoom: map?.getZoom?.() ?? presentation.zoom,
         location_id: location.location_id, expected_coordinate: location.coordinate
           ? [location.coordinate.longitude, location.coordinate.latitude] : null,
         marker_coordinate: actual, coordinate_source: location.coordinate?.source || null,
@@ -86,6 +88,10 @@ export function mountGoogleLocation(root, config, owner, services = {}) {
         verification: services.verification || 'google-live-style-not-machine-verified',
         style_review_reference: googleConfig?.styleReview.reference || null,
         publication_allowed: location.publication_allowed };
+    },
+    setMarkerLabel(visible) {
+      if (typeof visible !== 'boolean') throw Error('BOOLEAN_MARKER_LABEL_REQUIRED');
+      markerLabel = visible; visual?.setLabelVisible(visible);
     },
     setPresentation(next) {
       if (destroyed) throw Error('MAP_DESTROYED');
@@ -122,7 +128,7 @@ export function mountGoogleLocation(root, config, owner, services = {}) {
     host.dataset.locationPart = 'business-marker';
     visual = attachMarkerVisual(host, config.marker, location.name, info => {
       root.dataset.markerKind = info.kind; root.dataset.logoReason = info.reason;
-    }, { showLabel: config.markerLabel !== false });
+    }, { showLabel: markerLabel });
     marker = new api.marker.AdvancedMarkerElement({ map,
       position: { lat: location.coordinate.latitude, lng: location.coordinate.longitude },
       title: `Cómo llegar a ${location.name}`, gmpClickable: true, gmpDraggable: false,

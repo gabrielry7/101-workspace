@@ -1,0 +1,35 @@
+---
+interface Props { target: string; }
+const { target } = Astro.props;
+---
+<section class="map-controls" data-location-controls data-controls-target={target} aria-labelledby={`${target}-controls-title`}>
+  <details open>
+    <summary><strong id={`${target}-controls-title`}>Prueba el hueso en tiempo real</strong><span>Abrir / cerrar controles</span></summary>
+    <p>La piel cambia la sección. Las calles conservan el estilo de Google y el logo conserva sus colores.</p>
+    <form aria-label="Ajustes de la vista del mapa">
+      <label>Piel de la sección<select name="skin"><option value="neutral">Neutra</option><option value="paper">Papel</option><option value="ink">Tinta</option></select></label>
+      <label>Composición<select name="variant"><option value="direct">Información al lado</option><option value="map-led">Mapa protagonista</option><option value="editorial">Editorial</option></select></label>
+      <label>Zoom · <output data-value="zoom">16</output><input name="zoom" type="range" min="3" max="18" value="16" step="1"/></label>
+      <label>Altura del mapa · <output data-value="mapHeight">438</output> px<input name="mapHeight" type="range" min="280" max="560" value="438" step="1"/></label>
+      <label class="color-field">Fondo del pin<input name="pinPaper" type="color" value="#f4f4f4"/></label>
+      <label class="color-field">Borde del pin<input name="pinInk" type="color" value="#222222"/></label>
+      <label class="checkbox"><input name="markerLabel" type="checkbox"/> Mostrar el nombre sobre el pin</label>
+    </form>
+    <div class="actions"><button type="button" data-controls-reset>Restablecer</button><button type="button" data-controls-save>Guardar ajustes</button><button type="button" data-controls-restore>Recuperar ajustes</button></div>
+    <p data-controls-status role="status">Los cambios se aplican al instante en la vista de abajo.</p>
+  </details>
+</section>
+<style>
+  .map-controls{background:#fff;color:#222;border:1px solid #aaa;padding:20px 24px;margin-bottom:24px;font:16px/1.5 system-ui,sans-serif}
+  summary{display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;min-height:44px}
+  summary strong{font-size:18px;font-weight:600}summary span{font-size:13px;color:#555}
+  p{margin:12px 0;max-width:90ch;font-size:14px}form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:18px 24px;margin:22px 0}
+  label{display:block;font-size:14px;font-weight:500;min-width:0}select{display:block;width:100%;margin-top:8px;padding:8px 10px;min-height:44px;font:inherit;color:inherit;background:#fff;border:1px solid #999}
+  input[type=range]{display:block;width:100%;margin:8px 0 0;height:44px;accent-color:#222}
+  .color-field{display:flex;align-items:center;justify-content:space-between;gap:12px}.color-field input{width:70px;height:44px;padding:3px;border:1px solid #999;background:#fff}
+  .checkbox{grid-column:1/-1;display:flex;align-items:center;gap:10px;min-height:44px}.checkbox input{width:20px;height:20px;accent-color:#222}
+  .actions{display:flex;flex-wrap:wrap;gap:10px}button{flex:1 1 70px;font:inherit;font-size:13px;color:#222;background:#fff;border:1px solid #999;padding:9px 8px;min-height:44px}
+  button:hover{background:#eee}:is(button,input,select,summary):focus-visible{outline:3px solid #222;outline-offset:4px}
+  @media(max-width:900px){form{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:620px){.map-controls{padding:16px}form{grid-template-columns:1fr}summary{align-items:flex-start}summary span{max-width:10ch}}
+</style>

@@ -1,8 +1,9 @@
 # Honorato: prueba local con Google Maps real
 
 Fecha: 2026-11-09. Spec: [007](../../specs/007-honorato-google-live/spec.md).
-Vista local: <http://127.0.0.1:8780/>. Rama del refinamiento:
-`codex/honorato-logo-pin-20261109`; creación del proyecto en
+Vista local: <http://127.0.0.1:8780/>. Rama del controlador:
+`codex/honorato-map-controls-20261109`; logo en `codex/honorato-logo-pin-20261109`;
+creación del proyecto en
 `codex/honorato-google-live-20261109`.
 
 Se creó un proyecto dedicado, se vinculó la cuenta de facturación accesible y se
@@ -24,8 +25,9 @@ El consumidor instancia **SingleBusinessLocation.astro** y el adaptador existent
 El paquete retenido de Honorato sigue siendo privado y `publication_allowed:false`.
 Sus coordenadas de fuente Google se presentan sobre Google.
 
-El marcador actual usa el símbolo de Honorato dentro del mismo pin, versión
-`location.single-business@0.2.1`. El usuario confirmó expresamente permiso para usar
+El marcador usa el símbolo de Honorato dentro del mismo pin. El logo se verificó
+con Google real en `location.single-business@0.2.1`; el controlador local es 0.3.0.
+El usuario confirmó expresamente permiso para usar
 el logo. Su declaración está registrada en privado como autorización para esta
 prueba local; no se presenta como un contrato externo ni una auditoría independiente
 de titularidad. El símbolo procede del SVG de marca retenido: se conservan sus
@@ -44,6 +46,17 @@ por defecto. Si falla la imagen, vuelve el pin neutro sin mover el destino ni
 reintroducir el recuadro oculto.
 
 ## Presupuesto y privacidad
+
+Desde el controlador 0.3.0 abrir el taller sólo consulta el cupo, sin reservar
+cargas. **Activar Google · usa 1 carga** inicia el proveedor una única vez en esa
+visita. Cambiar ajustes no lo recrea. Al empezar este refinamiento el contador
+marcaba 9/10; sus pruebas no consumieron la última carga. Al agotarse se pueden
+seguir probando las pieles de la sección sin iniciar Google.
+
+El panel permite piel neutra/papel/tinta, las tres composiciones, zoom, altura,
+etiqueta y fondo/borde del pin. La piel se aplica a la sección, no a la cartografía
+cloud ni al logo. Guarda, recupera y restablece opciones visuales sin datos privados.
+Ver [verificación del controlador](location-controls-verification.json).
 
 El usuario autorizó **hasta US$1** para esta prueba. Se impuso y releyó una cuota
 efectiva de **10 cargas diarias** para `maps-backend.googleapis.com/billable_default`
@@ -88,7 +101,7 @@ restaurados, la configuración creada y gcloud autenticado:
 python tooling/bones/provision-google-cloud.py
 # Compilar el consumidor privado, sin iniciar Google Maps.
 node --experimental-strip-types tooling/bones/prepare-honorato-google.mjs
-# Mantener este proceso abierto. Cada visita nueva reserva una carga.
+# Mantener este proceso abierto. Sólo activar Google reserva una carga.
 node tooling/bones/serve-honorato-google.mjs
 ```
 
@@ -103,6 +116,20 @@ Comprobaciones sin carga de Google:
 node --experimental-strip-types --test tests/google-trial-budget.test.ts tests/location-map.test.ts
 npm run check
 ```
+
+Auditoría del controlador sin gastar cargas (servidor activo):
+
+```bash
+node --experimental-strip-types --test tests/location-map-controls.test.ts
+H4_BROWSER_PATH=/home/tom/.local/bin/chromium node --experimental-strip-types scripts/audit-location-controls.ts
+```
+
+El navegador de esta auditoría intercepta configuración/SDK con un doble offline
+identificado; no entrega la clave real ni pide cartografía Google. Verifica 45
+casos responsive de las tres composiciones y capturas de tres pieles, persistencia,
+zoom, etiqueta, altura, identidad del canvas/controlador y estado sin cargas.
+El contador persistente queda intacto. Esta prueba no equivale a un nuevo render
+Google vivo de 0.3.0: el último render vivo conservado corresponde al pin de 0.2.1.
 
 Comprobación real opcional, con el servidor anterior activo: **consume una reserva**.
 No forma parte de `npm test`, no reintenta ni reinicia el contador.

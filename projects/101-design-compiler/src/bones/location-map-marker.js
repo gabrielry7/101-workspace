@@ -19,11 +19,17 @@ export function attachMarkerVisual(host, binding, name, onChange = () => {}, { s
   dot.setAttribute('cx', '32'); dot.setAttribute('cy', '32'); dot.setAttribute('r', '7');
   dot.setAttribute('fill', 'currentColor'); frame.append(outline, dot);
   host.replaceChildren(visual);
-  if (showLabel) {
+  let labelVisible = showLabel;
+  function setLabelVisible(visible) {
+    if (typeof visible !== 'boolean') throw Error('BOOLEAN_MARKER_LABEL_REQUIRED');
+    labelVisible = visible;
+    host.querySelector('.location-map__marker-label')?.remove();
+    if (!visible) return;
     const label = document.createElement('span');
     label.className = 'location-map__marker-label'; label.textContent = name;
     host.append(label);
   }
+  setLabelVisible(labelVisible);
   let kind = 'pin', reason = binding?.reason || 'LOGO_MISSING', disposed = false;
   function pin() {
     dot.removeAttribute('visibility');
@@ -46,7 +52,8 @@ export function attachMarkerVisual(host, binding, name, onChange = () => {}, { s
   }
   return {
     inspect: () => ({ marker_kind: kind, logo_reason: reason,
-      marker_label_visible: showLabel }),
+      marker_label_visible: labelVisible }),
+    setLabelVisible,
     // The same bottom-center tip anchors the logo pin and its neutral fallback.
     anchor: () => {
       const matrix = frame.getScreenCTM();

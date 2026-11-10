@@ -25,6 +25,15 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(403); res.end('Local trial only'); return;
     }
     const path = decodeURIComponent(new URL(req.url, 'http://127.0.0.1:8780').pathname);
+    if (path === '/trial-status' && req.method === 'GET') {
+      const budget = JSON.parse(await readFile(resolve(folder, 'trial-budget.json'), 'utf8'));
+      if (budget.schema !== '101-google-trial-budget-v1' || budget.limit !== 10
+        || !Number.isInteger(budget.reserved) || budget.reserved < 0 || budget.reserved > 10) {
+        res.writeHead(503); res.end('Trial status unavailable'); return;
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ reserved: budget.reserved, limit: 10, remaining: 10 - budget.reserved })); return;
+    }
     if (path === '/trial-config') {
       if (req.method !== 'POST' || req.headers.origin && !origins.has(req.headers.origin)
         || req.headers['sec-fetch-site'] === 'cross-site') {

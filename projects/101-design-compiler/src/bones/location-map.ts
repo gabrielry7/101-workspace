@@ -3,7 +3,7 @@ import { rightsGate, evaluateSuitability } from '../media/gate.ts';
 import { MediaAssetV1, MediaUsageV1 } from '../media/contracts.ts';
 
 export const locationBone = {
-  id: 'location.single-business', version: '0.2.1', family: 'location',
+  id: 'location.single-business', version: '0.3.0', family: 'location',
   variants: ['direct', 'map-led', 'editorial'],
   owner: { package: '@101/location-map', version: '0.3.0', commit: '6c0ed29940985bfb1789280c1972e47386775193' },
   review: 'pending-human-review',

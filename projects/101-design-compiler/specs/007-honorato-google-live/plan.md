@@ -45,3 +45,26 @@ desviación máxima de la punta 0.513 px. Error de imagen conserva la coordenada
 la etiqueta oculta. El taller conservó sus etiquetas y pasó 17 anchos y 17 checks
 Google offline. Primera pasada del taller encontró una intercepción CDP caducada;
 se conservó el log y el reintento pasó sin errores. Ocho tests y check sin diagnósticos.
+
+## Controlador local
+LocationMapControls.astro es un panel de operador separado del componente de cliente.
+location-map-controls.js valida y aplica sólo opciones visuales: usa data-skin,
+las clases/partes existentes y mueve el mismo bloque de información entre header/body
+para las tres composiciones, conservando el nodo del mapa y las acciones existentes.
+Se amplía el visual del marcador con setLabelVisible y ambos adaptadores con
+setMarkerLabel; no se remonta el mapa. Versión del hueso 0.3.0.
+El cliente privado se compila con esbuild para compartir estos controles. Se consulta
+GET /trial-status sin reserva; POST /trial-config sólo tras activar Google una vez.
+Se mantiene el cupo persistente de 10 y no se consumen cargas para verificar el panel.
+Pruebas de validación de configuración y navegador offline con API double, siete
+anchos/breakpoints, pieles/composiciones, identidad de mapa, foco, persistencia,
+estado agotado y cero llamadas reales a Google. Evidencia local etiquetada offline.
+
+Resultado: 45 casos (15 anchos × tres composiciones), las tres pieles revisadas,
+misma instancia/canvas y cero reservas reales consumidas. El estado agotado permite
+seguir cambiando piel. Persistencia inválida rechazada sin cambiar la vista. Se
+evitó partir el número de edificio con guion envolviendo tokens de la dirección
+en spans nowrap, sin alterar su texto. Diez tests y typecheck sin diagnósticos;
+regresión del taller de 17 anchos y 17 checks Google offline aprobada. No se consumió
+la última reserva para una nueva prueba viva del controlador. Recibo público en
+docs/bones/location-controls-verification.json; capturas/reports privados.
