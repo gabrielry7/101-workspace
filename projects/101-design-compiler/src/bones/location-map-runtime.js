@@ -1,7 +1,8 @@
 import { attachMarkerVisual } from './location-map-marker.js';
 import { mountGoogleLocation } from './location-map-google.js';
+import { openFreeMapRequest, openFreeMapStyle } from './location-map-openfreemap.js';
 
-export const LOCATION_BONE_VERSION = 'location.single-business@0.3.0';
+export const LOCATION_BONE_VERSION = 'location.single-business@0.4.0';
 export function fixedPresentation(value = {}) {
   if (!value || typeof value !== 'object' || Array.isArray(value)
     || Object.keys(value).some(key => !['colors', 'zoom', 'pois'].includes(key))) {
@@ -28,15 +29,36 @@ export function mountSingleBusinessLocation(root, config, owner) {
       setPresentation: () => { throw Error('INCOMPATIBLE_MAP_PROVIDER'); }, destroy() {} };
   }
   let map, visual;
+  const openFreeMap = config.basemap?.format === 'openfreemap';
+  const sample = openFreeMap && location.coordinate?.purpose === 'synthetic';
+  let openPresentation = openFreeMap ? owner.presentation(presentation) : null;
+  const basemap = openFreeMap ? { ...config.basemap, format: 'geojson' } : config.basemap;
   const native = owner.mountLocationMap(root, {
-    location, provider, presentation, basemap: config.basemap, workerURL: config.workerURL,
+    location, provider, presentation, basemap, workerURL: config.workerURL,
     detailsMode: 'external', navigationId: config.navigationId,
     decorateMap({ map: actualMap }) {
       map = actualMap;
+      if (openFreeMap) {
+        map.setTransformRequest(url => openFreeMapRequest(url, document.baseURI));
+        map.setStyle(openFreeMapStyle(openPresentation.colors, basemap.fontURL), { diff: false });
+      }
       const pin = root.querySelector('.location-map__marker');
       if (!pin) throw Error('OWNER_BUSINESS_MARKER_MISSING');
       pin.dataset.locationPart = 'business-marker';
       const keyboard = new AbortController();
+      if (sample) {
+        pin.setAttribute('tabindex', '-1');
+        pin.setAttribute('aria-disabled', 'true');
+        root.addEventListener('location-map-state', event => {
+          const status = root.querySelector('.location-map__status');
+          if (event.detail.state === 'ready') {
+            status.textContent = 'Cartografía real de OpenStreetMap. El pin señala un punto de muestra.';
+          }
+          if (['fallback', 'degraded'].includes(event.detail.state)) {
+            status.textContent = 'Mapa no disponible. Puedes consultar la dirección de la sucursal.';
+          }
+        }, { signal: keyboard.signal });
+      }
       pin.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault(); event.stopPropagation(); pin.click();
@@ -45,6 +67,7 @@ export function mountSingleBusinessLocation(root, config, owner) {
       visual = attachMarkerVisual(pin, config.marker, location.name, state => {
         root.dataset.markerKind = state.kind; root.dataset.logoReason = state.reason;
       }, { showLabel: config.markerLabel !== false });
+      if (sample) pin.setAttribute('aria-label', `Pin de muestra de ${location.name}`);
       return { destroy: () => { keyboard.abort(); visual?.destroy(); } };
     },
   });
@@ -60,13 +83,29 @@ export function mountSingleBusinessLocation(root, config, owner) {
       }
       return { ...state, bone_version: LOCATION_BONE_VERSION, ...visual?.inspect(),
         marker_anchor_offset_px: offset, verification: 'native-source-bound',
+        ...(openFreeMap ? { cartography: 'openfreemap',
+          cartography_layers: map?.getStyle()?.layers?.map(layer => layer['source-layer']).filter(Boolean) ?? [] } : {}),
         poi_policy: { mode: 'none', limit: 0, ids: [] } };
     },
     setMarkerLabel(visible) {
       if (typeof visible !== 'boolean') throw Error('BOOLEAN_MARKER_LABEL_REQUIRED');
       config.markerLabel = visible; visual?.setLabelVisible(visible);
     },
-    setPresentation(next) { native.setPresentation(fixedPresentation(next)); },
+    setPresentation(next) {
+      const changes = fixedPresentation(next);
+      if (!openFreeMap) {
+        native.setPresentation(changes);
+        return;
+      }
+      const previous = openPresentation.colors;
+      openPresentation = owner.presentation({ ...openPresentation, ...changes,
+        colors: { ...previous, ...changes.colors } });
+      for (const color of ['paper', 'ink', 'pin']) root.style.setProperty(`--map-${color}`, openPresentation.colors[color]);
+      if (['land', 'water', 'building', 'roadOutline', 'road'].some(color => previous[color] !== openPresentation.colors[color])) {
+        map?.setStyle(openFreeMapStyle(openPresentation.colors, basemap.fontURL));
+      }
+      if (Object.hasOwn(changes, 'zoom')) map?.jumpTo({ zoom: openPresentation.zoom });
+    },
     // Workshop-only bounded camera actions use the same provider; they never move the marker.
     panBy(x, y) { map?.panBy([x, y], { duration: 0 }); },
     zoomBy(delta) { if (map) map.jumpTo({ zoom: Math.min(18, Math.max(3, map.getZoom() + delta)) }); },

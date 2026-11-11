@@ -19,12 +19,13 @@ export function parseLocationControls(value) {
 }
 
 /** Operator-only controls reuse the same component parts and provider instance. */
-export function mountLocationControls(panel, section) {
+export function mountLocationControls(panel, section, options = {}) {
   const host = section.querySelector('[data-location-bone-config]');
   const form = panel.querySelector('form');
   const status = panel.querySelector('[data-controls-status]');
-  const storageKey = '101-location-controls-v1';
-  let state = { ...defaultLocationControls }, lastController, lastZoom;
+  const storageKey = options.storageKey ?? '101-location-controls-v1';
+  const initial = parseLocationControls({ ...defaultLocationControls, ...options.initial });
+  let state = { ...initial }, lastController, lastZoom;
   const field = name => form.elements.namedItem(name);
   function sync() {
     for (const name of ['skin', 'variant', 'zoom', 'mapHeight', 'pinPaper', 'pinInk']) field(name).value = state[name];
@@ -69,7 +70,7 @@ export function mountLocationControls(panel, section) {
     catch { status.textContent = 'Ese ajuste no es compatible. Se conserva la configuración anterior.'; sync(); }
   });
   panel.querySelector('[data-controls-reset]').addEventListener('click', () => {
-    state = { ...defaultLocationControls }; apply(); status.textContent = 'Vista inicial restablecida.';
+    state = { ...initial }; apply(); status.textContent = 'Vista inicial restablecida.';
   });
   panel.querySelector('[data-controls-save]').addEventListener('click', () => {
     try { localStorage.setItem(storageKey, JSON.stringify(state)); status.textContent = 'Ajustes guardados en este navegador.'; }

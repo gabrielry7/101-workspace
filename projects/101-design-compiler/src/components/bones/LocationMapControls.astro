@@ -1,11 +1,11 @@
 ---
-interface Props { target: string; }
-const { target } = Astro.props;
+interface Props { target: string; initiallyOpen?: boolean; note?: string; }
+const { target, initiallyOpen = true, note = 'La piel cambia la sección. Las calles conservan el estilo de Google y el logo conserva sus colores.' } = Astro.props;
 ---
 <section class="map-controls" data-location-controls data-controls-target={target} aria-labelledby={`${target}-controls-title`}>
-  <details open>
+  <details open={initiallyOpen}>
     <summary><strong id={`${target}-controls-title`}>Prueba el hueso en tiempo real</strong><span>Abrir / cerrar controles</span></summary>
-    <p>La piel cambia la sección. Las calles conservan el estilo de Google y el logo conserva sus colores.</p>
+    <p>{note}</p>
     <form aria-label="Ajustes de la vista del mapa">
       <label>Piel de la sección<select name="skin"><option value="neutral">Neutra</option><option value="paper">Papel</option><option value="ink">Tinta</option></select></label>
       <label>Composición<select name="variant"><option value="direct">Información al lado</option><option value="map-led">Mapa protagonista</option><option value="editorial">Editorial</option></select></label>
@@ -16,7 +16,7 @@ const { target } = Astro.props;
       <label class="checkbox"><input name="markerLabel" type="checkbox"/> Mostrar el nombre sobre el pin</label>
     </form>
     <div class="actions"><button type="button" data-controls-reset>Restablecer</button><button type="button" data-controls-save>Guardar ajustes</button><button type="button" data-controls-restore>Recuperar ajustes</button></div>
-    <p data-controls-status role="status">Los cambios se aplican al instante en la vista de abajo.</p>
+    <p data-controls-status role="status">Los cambios se aplican al instante en el mapa.</p>
   </details>
 </section>
 <style>

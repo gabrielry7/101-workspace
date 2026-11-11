@@ -7,7 +7,8 @@ import { build as astroBuild } from 'astro';
 const project = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const source = resolve(project, process.env.LOCATION_MAP_OWNER || '.tools/bones-handoff-20261105/source');
 const owner = resolve(source, 'packages/location-map');
-const preview = resolve(project, '.tools/location-map-bones/preview');
+const honorato = process.argv.includes('--honorato');
+const preview = resolve(project, honorato ? '.tools/honorato-openfreemap/preview' : '.tools/location-map-bones/preview');
 const publicDir = resolve(preview, 'public');
 const pinned = {
   'src/client.js': '58cb821219e4e93f123528974d57e4c122bb719c20879c9baf4fa6a56706d730',
@@ -70,7 +71,11 @@ html = html.replaceAll('__BUSINESS_NAME__', esc(fixtureLocation.name)).replaceAl
   .replace("../fonts/", '/fonts/');
 await writeFile(resolve(publicDir, 'original/index.html'), html);
 await writeFile(resolve(publicDir, 'original/runtime.js'), `import {owner} from '/location-runtime.js';\nowner.mountLocationMap(document.getElementById('map'),{location:${JSON.stringify(fixtureLocationInput().location)},basemap:${JSON.stringify(basemap)},workerURL:'/maplibre-gl-worker.mjs',detailsMode:'external',presentation:{zoom:16}});`);
+if (honorato) {
+  const { prepareHonoratoOpenFreeMap } = await import('./prepare-honorato-openfreemap.mjs');
+  await prepareHonoratoOpenFreeMap({ project, source, preview, publicDir, owner: original, build });
+}
 await astroBuild({ root: preview, configFile: false, output: 'static', logLevel: 'error' });
 await writeFile(resolve(preview, '../build-receipt.json'), JSON.stringify({ source: 'private pinned owner',
   pinned, synthetic: true, publication_allowed: false, providers_executed: ['maplibre'], google_live_verified: false }, null, 2));
-console.log('Built private location workshop: .tools/location-map-bones/preview/dist; no paid requests.');
+console.log(`Built private location workshop in ${relative(project, resolve(preview, 'dist'))}; no paid requests.`);

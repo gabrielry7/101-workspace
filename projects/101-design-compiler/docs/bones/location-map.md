@@ -234,6 +234,24 @@ una prueba dedicada de hasta US$1 y se verificó Google real con Honorato; ver
 [configuración, límites y resultado](honorato-google.md). El taller sintético de
 8777 conserva su propósito y no inicia esa prueba por su cuenta.
 
+### Vista privada de Honorato en OpenFreeMap
+
+```sh
+node --experimental-strip-types tooling/bones/prepare-location-map.mjs --honorato
+node tooling/bones/serve-location-map.mjs --honorato
+```
+
+Abrir http://127.0.0.1:8778/honorato/. El build requiere el checkout privado
+fijado y la evidencia local del símbolo utilizado en la prueba anterior. Se
+genera en `.tools/honorato-openfreemap/`, en un directorio separado del taller.
+El navegador solicita el mapa vectorial a OpenFreeMap, con capas de calles,
+edificios, vegetación y agua. El panel permite ajustar la sección, el encuadre y
+el pin. La paleta toma el rojo de la web de Honorato y el crema de Studio.
+
+El pin de muestra se ubica en la geometría OSM de Complex Llanogrande. La
+coordenada exacta del local queda pendiente. La dirección de la sucursal está
+visible durante la prueba, incluso si falla la carga del mapa.
+
 ### Antecedente de verificación del dueño
 
 Verificación local de la base el 2026-11-05, Windows y Node 26.7.0:

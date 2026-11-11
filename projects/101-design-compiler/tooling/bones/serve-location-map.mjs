@@ -2,7 +2,10 @@ import http from 'node:http';
 import { readFile, realpath } from 'node:fs/promises';
 import { resolve, relative, isAbsolute, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-const root = await realpath(fileURLToPath(new URL('../../.tools/location-map-bones/preview/dist/', import.meta.url)));
+const honorato = process.argv.includes('--honorato');
+const folder = honorato ? 'honorato-openfreemap' : 'location-map-bones';
+const port = honorato ? 8778 : 8777;
+const root = await realpath(fileURLToPath(new URL(`../../.tools/${folder}/preview/dist/`, import.meta.url)));
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css',
   '.json': 'application/json', '.geojson': 'application/geo+json', '.svg': 'image/svg+xml', '.woff': 'font/woff', '.png': 'image/png' };
 const server = http.createServer(async (req, res) => {
@@ -16,5 +19,5 @@ const server = http.createServer(async (req, res) => {
     res.end(req.method === 'HEAD' ? undefined : data);
   } catch { res.writeHead(404); res.end('Not found'); }
 });
-server.listen(8777, '127.0.0.1', () => console.log('Location bones: http://127.0.0.1:8777/'));
+server.listen(port, '127.0.0.1', () => console.log(`Location bones: http://127.0.0.1:${port}/${honorato ? 'honorato/' : ''}`));
 process.on('SIGINT', () => server.close()); process.on('SIGTERM', () => server.close());

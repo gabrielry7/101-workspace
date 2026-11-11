@@ -6,12 +6,16 @@ interface Props {
   runtimeURL?: string | undefined; provider?: 'maplibre' | 'google_js';
   basemap?: Record<string, unknown> | undefined; google?: Record<string, unknown> | undefined;
   markerLabel?: boolean;
+  mapColors?: Partial<Record<keyof typeof mapSkins.neutral, string>>;
 }
 const { id, input, variant: variantValue = 'direct', skin: skinValue = 'neutral', runtimeURL,
-  provider = 'maplibre', basemap, google, markerLabel = true } = Astro.props;
+  provider = 'maplibre', basemap, google, markerLabel = true, mapColors } = Astro.props;
 if (typeof markerLabel !== 'boolean') throw Error('BOOLEAN_MARKER_LABEL_REQUIRED');
 if (!/^[a-zA-Z][a-zA-Z0-9_-]{0,79}$/.test(id)) throw Error('LOCATION_ID_REQUIRED');
 const variant = locationVariant(variantValue), skin = locationSkin(skinValue);
+for (const [key, value] of Object.entries(mapColors ?? {})) {
+  if (!Object.hasOwn(mapSkins.neutral, key) || !/^#[a-f0-9]{6}$/i.test(value)) throw Error('MAP_COLOR_FORMAT');
+}
 if (runtimeURL && !/^\/(?!\/)[a-zA-Z0-9_./-]+\.js$/.test(runtimeURL)) throw Error('LOCAL_LOCATION_RUNTIME_REQUIRED');
 const content = displayLocation.parse(input.location);
 const addressParts = (content.address ?? 'Dirección pendiente de confirmar.').split(/(\s+)/);
@@ -22,7 +26,7 @@ for (const link of input.directions) {
 const navigationId = `${id}-directions`;
 const config = { location: input.location, marker: input.marker, markerLabel, provider, basemap, google,
   workerURL: runtimeURL?.replace(/[^/]+$/, 'maplibre-gl-worker.mjs'),
-  navigationId, presentation: { colors: mapSkins[skin], zoom: 16, pois: { mode: 'none', ids: [], limit: 0 } } };
+  navigationId, presentation: { colors: { ...mapSkins[skin], ...mapColors }, zoom: 16, pois: { mode: 'none', ids: [], limit: 0 } } };
 ---
 <section id={id} class:list={['location-bone', `location-bone--${variant}`]} data-skin={skin}
   data-bone={`${locationBone.id}@${locationBone.version}`} data-variant={variant} aria-labelledby={`${id}-title`}>
