@@ -1,4 +1,5 @@
 import { locationBone, locationSkin, locationVariant } from './location-map.ts';
+import { locationEditorFields, mapEditorOptions, parseLocationEditor } from './location-map-editor.ts';
 
 export const defaultLocationControls = Object.freeze({
   bone: `${locationBone.id}@${locationBone.version}`, skin: 'neutral', variant: 'direct',
@@ -25,14 +26,49 @@ export function mountLocationControls(panel, section, options = {}) {
   const status = panel.querySelector('[data-controls-status]');
   const storageKey = options.storageKey ?? '101-location-controls-v1';
   const initial = parseLocationControls({ ...defaultLocationControls, ...options.initial });
-  let state = { ...initial }, lastController, lastZoom;
+  const initialEditor = options.editor ? parseLocationEditor(options.editor) : null;
+  let editor = initialEditor;
+  let state = { ...initial }, lastController, lastZoom, lastMarkerLabel;
   const field = name => form.elements.namedItem(name);
+  const editorFields = initialEditor ? Object.entries(locationEditorFields) : [];
+  const sectionColors = ['sectionPaper', 'sectionInk', 'sectionLine', 'sectionAccent'];
+  if (editor) section.dataset.locationEditor = '';
+
   function sync() {
     for (const name of ['skin', 'variant', 'zoom', 'mapHeight', 'pinPaper', 'pinInk']) field(name).value = state[name];
     field('markerLabel').checked = state.markerLabel;
     for (const name of ['zoom', 'mapHeight']) panel.querySelector(`[data-value="${name}"]`).textContent = state[name];
+    for (const [name, { kind }] of editorFields) {
+      if (kind === 'checkbox') field(name).checked = editor[name];
+      else field(name).value = editor[name];
+      if (kind === 'range') panel.querySelector(`[data-value="${name}"]`).textContent = editor[name];
+    }
   }
-  function apply() {
+  function applyEditor(controller) {
+    const css = {
+      'pin-dot': editor.pinDot,
+      'pin-dot-radius': editor.pinDotSize / 2 + 'px',
+      'pin-scale': editor.pinScale / 100,
+      'pin-stroke': editor.pinStroke,
+      'logo-scale': editor.logoScale + '%',
+      'label-paper': editor.labelPaper,
+      'label-ink': editor.labelInk,
+      'label-line': editor.labelLine,
+      'label-size': editor.labelSize + 'px',
+      'title-scale': editor.titleScale / 100,
+    };
+    for (const [name, value] of Object.entries(css)) section.style.setProperty('--editor-' + name, value);
+    for (const name of sectionColors) {
+      const variable = '--editor-section-' + name.slice('section'.length).toLowerCase();
+      if (editor.sectionCustom) section.style.setProperty(variable, editor[name]);
+      else section.style.removeProperty(variable);
+    }
+    section.dataset.editorFont = editor.sectionFont;
+    section.toggleAttribute('data-hide-map-zoom', !editor.showZoomButtons);
+    section.toggleAttribute('data-hide-pin-logo', !editor.showLogo);
+    controller?.setOpenFreeMapOptions?.(mapEditorOptions(editor));
+  }
+  function apply({ resetZoom = false } = {}) {
     section.dataset.skin = state.skin;
     for (const variant of locationBone.variants) section.classList.toggle(`location-bone--${variant}`, state.variant === variant);
     section.dataset.variant = state.variant;
@@ -51,10 +87,11 @@ export function mountLocationControls(panel, section, options = {}) {
     const controller = host.locationBone;
     if (controller) {
       controller.setPresentation({ colors: { paper: state.pinPaper, ink: state.pinInk },
-        ...(controller !== lastController || lastZoom !== state.zoom ? { zoom: state.zoom } : {}) });
-      controller.setMarkerLabel(state.markerLabel);
-      lastController = controller; lastZoom = state.zoom;
+        ...(resetZoom || controller !== lastController || lastZoom !== state.zoom ? { zoom: state.zoom } : {}) });
+      if (controller !== lastController || lastMarkerLabel !== state.markerLabel) controller.setMarkerLabel(state.markerLabel);
+      lastController = controller; lastZoom = state.zoom; lastMarkerLabel = state.markerLabel;
     }
+    if (editor) applyEditor(controller);
     sync();
     return { ...state };
   }
@@ -64,21 +101,50 @@ export function mountLocationControls(panel, section, options = {}) {
       zoom: Number(field('zoom').value), mapHeight: Number(field('mapHeight').value),
       pinPaper: field('pinPaper').value, pinInk: field('pinInk').value });
   }
+  function readEditor(changedField) {
+    const next = Object.fromEntries(editorFields.map(([name, { kind }]) => {
+      const input = field(name);
+      const value = kind === 'checkbox' ? input.checked : kind === 'range' ? input.valueAsNumber : input.value;
+      return [name, value];
+    }));
+    if (sectionColors.includes(changedField)) next.sectionCustom = true;
+    return parseLocationEditor(next);
+  }
   form.addEventListener('submit', event => event.preventDefault());
-  form.addEventListener('input', () => {
-    try { state = read(); apply(); status.textContent = 'Cambios aplicados en esta vista, sin recargar el mapa.'; }
+  form.addEventListener('input', event => {
+    try {
+      const next = read();
+      if (editor) editor = readEditor(event.target.name);
+      state = next;
+      apply();
+      status.textContent = 'Ajustes aplicados.';
+    }
     catch { status.textContent = 'Ese ajuste no es compatible. Se conserva la configuración anterior.'; sync(); }
   });
   panel.querySelector('[data-controls-reset]').addEventListener('click', () => {
-    state = { ...initial }; apply(); status.textContent = 'Vista inicial restablecida.';
+    state = { ...initial }; editor = initialEditor;
+    apply({ resetZoom: true });
+    if (editor) host.locationBone?.recenter?.();
+    status.textContent = 'Vista inicial restablecida.';
   });
+  panel.querySelector('[data-controls-recenter]')?.addEventListener('click', () => host.locationBone?.recenter?.());
   panel.querySelector('[data-controls-save]').addEventListener('click', () => {
-    try { localStorage.setItem(storageKey, JSON.stringify(state)); status.textContent = 'Ajustes guardados en este navegador.'; }
+    try { localStorage.setItem(storageKey, JSON.stringify(editor ? { ...state, editor } : state)); status.textContent = 'Ajustes guardados en este navegador.'; }
     catch { status.textContent = 'Este navegador no permite guardar los ajustes.'; }
   });
   panel.querySelector('[data-controls-restore]').addEventListener('click', () => {
-    try { state = parseLocationControls(JSON.parse(localStorage.getItem(storageKey))); apply();
-      status.textContent = 'Ajustes recuperados sin recargar el mapa.'; }
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey));
+      const { editor: savedEditor, ...savedControls } = saved;
+      if (savedControls.bone === 'location.single-business@0.4.0') savedControls.bone = defaultLocationControls.bone;
+      const next = parseLocationControls(savedControls);
+      const nextEditor = savedEditor === undefined ? initialEditor : parseLocationEditor(savedEditor);
+      if (nextEditor && !initialEditor) throw Error('LOCATION_EDITOR_UNAVAILABLE');
+      state = next;
+      editor = nextEditor;
+      apply({ resetZoom: true });
+      status.textContent = 'Ajustes recuperados.';
+    }
     catch { status.textContent = 'No hay ajustes guardados compatibles con esta versión.'; }
   });
   sync(); apply();

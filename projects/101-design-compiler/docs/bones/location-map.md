@@ -252,6 +252,13 @@ El pin de muestra se ubica en la geometría OSM de Complex Llanogrande. La
 coordenada exacta del local queda pendiente. La dirección de la sucursal está
 visible durante la prueba, incluso si falla la carga del mapa.
 
+En 0.5.0, **Editar mapa** empieza por nueve colores cartográficos independientes.
+El panel también ajusta capas, opacidades, vías, tipografía de sus nombres,
+cámara, interacción, tamaño y estilo del pin, logo, etiqueta y sección. El mapa
+y el panel comparten pantalla en escritorio. En móvil, **Ver mapa** vuelve al
+resultado desde los controles. Guardar, recuperar y restablecer abarcan todo el
+panel. Se pueden recuperar ajustes guardados con 0.4.0.
+
 ### Antecedente de verificación del dueño
 
 Verificación local de la base el 2026-11-05, Windows y Node 26.7.0:

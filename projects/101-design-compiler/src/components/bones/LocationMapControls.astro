@@ -1,12 +1,44 @@
 ---
-interface Props { target: string; initiallyOpen?: boolean; note?: string; }
-const { target, initiallyOpen = true, note = 'La piel cambia la sección. Las calles conservan el estilo de Google y el logo conserva sus colores.' } = Astro.props;
+import { locationEditorFields, locationEditorGroups } from '../../bones/location-map-editor.ts';
+import type { LocationEditorOptions } from '../../bones/location-map-editor.ts';
+interface Props { target: string; initiallyOpen?: boolean; note?: string; editor?: LocationEditorOptions; }
+const { target, initiallyOpen = true, note = 'La piel cambia la sección. Las calles conservan el estilo de Google y el logo conserva sus colores.', editor } = Astro.props;
 ---
-<section class="map-controls" data-location-controls data-controls-target={target} aria-labelledby={`${target}-controls-title`}>
+<section id={`${target}-controls`} class:list={['map-controls', { 'map-controls--editor': editor }]}
+  data-location-controls data-controls-target={target} aria-labelledby={`${target}-controls-title`}>
   <details open={initiallyOpen}>
-    <summary><strong id={`${target}-controls-title`}>Prueba el hueso en tiempo real</strong><span>Abrir / cerrar controles</span></summary>
-    <p>{note}</p>
+    <summary><strong id={`${target}-controls-title`}>{editor ? 'Editar mapa' : 'Prueba el hueso en tiempo real'}</strong>
+      {!editor && <span>Abrir / cerrar controles</span>}</summary>
+    {note && <p>{note}</p>}
     <form aria-label="Ajustes de la vista del mapa">
+      {editor && <a class="map-link" href={`#${target}`}>Ver mapa</a>}
+      {editor && locationEditorGroups.map(group => (
+        <details class="editor-group" open={group.open}>
+          <summary>{group.title}</summary>
+          <div class="fields">
+            {group.fields.map(name => {
+              const field = locationEditorFields[name];
+              return (
+                <label class:list={{ 'color-field': field.kind === 'color', checkbox: field.kind === 'checkbox' }}>
+                  {field.kind === 'checkbox' && <input name={name} type="checkbox" checked={Boolean(editor[name])}/>}
+                  {field.label}
+                  {field.kind === 'color' && <input name={name} type="color" value={String(editor[name])}/>}
+                  {field.kind === 'range' && <>
+                    {' · '}<output data-value={name}>{editor[name]}</output>
+                    <input name={name} type="range" min={field.min} max={field.max} step={field.step} value={Number(editor[name])}/>
+                  </>}
+                  {field.kind === 'select' && <select name={name}>
+                    {Object.entries(field.options).map(([value, label]) => <option value={value} selected={editor[name] === value}>{label}</option>)}
+                  </select>}
+                </label>
+              );
+            })}
+          </div>
+          {group.recenter && <button type="button" data-controls-recenter>Recentrar en el pin</button>}
+        </details>
+      ))}
+      <fieldset class="fields general">
+      {editor && <legend>Vista, sección y pin</legend>}
       <label>Piel de la sección<select name="skin"><option value="neutral">Neutra</option><option value="paper">Papel</option><option value="ink">Tinta</option></select></label>
       <label>Composición<select name="variant"><option value="direct">Información al lado</option><option value="map-led">Mapa protagonista</option><option value="editorial">Editorial</option></select></label>
       <label>Zoom · <output data-value="zoom">16</output><input name="zoom" type="range" min="3" max="18" value="16" step="1"/></label>
@@ -14,6 +46,7 @@ const { target, initiallyOpen = true, note = 'La piel cambia la sección. Las ca
       <label class="color-field">Fondo del pin<input name="pinPaper" type="color" value="#f4f4f4"/></label>
       <label class="color-field">Borde del pin<input name="pinInk" type="color" value="#222222"/></label>
       <label class="checkbox"><input name="markerLabel" type="checkbox"/> Mostrar el nombre sobre el pin</label>
+      </fieldset>
     </form>
     <div class="actions"><button type="button" data-controls-reset>Restablecer</button><button type="button" data-controls-save>Guardar ajustes</button><button type="button" data-controls-restore>Recuperar ajustes</button></div>
     <p data-controls-status role="status">Los cambios se aplican al instante en el mapa.</p>
@@ -23,13 +56,29 @@ const { target, initiallyOpen = true, note = 'La piel cambia la sección. Las ca
   .map-controls{background:#fff;color:#222;border:1px solid #aaa;padding:20px 24px;margin-bottom:24px;font:16px/1.5 system-ui,sans-serif}
   summary{display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;min-height:44px}
   summary strong{font-size:18px;font-weight:600}summary span{font-size:13px;color:#555}
-  p{margin:12px 0;max-width:90ch;font-size:14px}form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:18px 24px;margin:22px 0}
+  p{margin:12px 0;max-width:90ch;font-size:14px}form{margin:22px 0}
+  .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:18px 24px}
+  .general{border:0;padding:0;margin:0;min-width:0}
+  .general legend{padding:0;margin-bottom:12px;font-weight:600}
   label{display:block;font-size:14px;font-weight:500;min-width:0}select{display:block;width:100%;margin-top:8px;padding:8px 10px;min-height:44px;font:inherit;color:inherit;background:#fff;border:1px solid #999}
   input[type=range]{display:block;width:100%;margin:8px 0 0;height:44px;accent-color:#222}
   .color-field{display:flex;align-items:center;justify-content:space-between;gap:12px}.color-field input{width:70px;height:44px;padding:3px;border:1px solid #999;background:#fff}
   .checkbox{grid-column:1/-1;display:flex;align-items:center;gap:10px;min-height:44px}.checkbox input{width:20px;height:20px;accent-color:#222}
   .actions{display:flex;flex-wrap:wrap;gap:10px}button{flex:1 1 70px;font:inherit;font-size:13px;color:#222;background:#fff;border:1px solid #999;padding:9px 8px;min-height:44px}
   button:hover{background:#eee}:is(button,input,select,summary):focus-visible{outline:3px solid #222;outline-offset:4px}
-  @media(max-width:900px){form{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(max-width:620px){.map-controls{padding:16px}form{grid-template-columns:1fr}summary{align-items:flex-start}summary span{max-width:10ch}}
+  .map-controls--editor{background:#fffcf6;border-color:#d4b7a5;border-radius:10px;padding:16px 18px}
+  .map-controls--editor summary{display:list-item;min-height:0;padding:8px 0;font-weight:600}
+  .map-controls--editor form{margin:12px 0}
+  .map-controls--editor .fields{grid-template-columns:1fr;gap:7px}
+  .map-controls--editor .general{margin-top:16px}
+  .map-controls--editor input[type=color]{width:54px}
+  .map-controls--editor .checkbox input{flex:none}
+  .editor-group{border-top:1px solid #e0cfc1;padding:4px 0}
+  .editor-group[open]{padding-bottom:10px}
+  .editor-group button{margin-top:8px;width:100%}
+  .map-link{display:block;position:sticky;top:0;z-index:1;padding:7px 0;background:#fffcf6;color:inherit;text-underline-offset:3px}
+  .map-link:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+  @media(min-width:1200px){.map-link{display:none}}
+  @media(max-width:900px){.fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:620px){.map-controls{padding:16px}.fields{grid-template-columns:1fr}summary{align-items:flex-start}summary span{max-width:10ch}}
 </style>

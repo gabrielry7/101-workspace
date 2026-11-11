@@ -1,8 +1,9 @@
 import { attachMarkerVisual } from './location-map-marker.js';
 import { mountGoogleLocation } from './location-map-google.js';
-import { openFreeMapRequest, openFreeMapStyle } from './location-map-openfreemap.js';
+import { openFreeMapRequest, openFreeMapStyle, updateOpenFreeMapLayers } from './location-map-openfreemap.js';
+import { openFreeMapDefaults, parseOpenFreeMapOptions } from './location-map-editor.ts';
 
-export const LOCATION_BONE_VERSION = 'location.single-business@0.4.0';
+export const LOCATION_BONE_VERSION = 'location.single-business@0.5.0';
 export function fixedPresentation(value = {}) {
   if (!value || typeof value !== 'object' || Array.isArray(value)
     || Object.keys(value).some(key => !['colors', 'zoom', 'pois'].includes(key))) {
@@ -32,7 +33,15 @@ export function mountSingleBusinessLocation(root, config, owner) {
   const openFreeMap = config.basemap?.format === 'openfreemap';
   const sample = openFreeMap && location.coordinate?.purpose === 'synthetic';
   let openPresentation = openFreeMap ? owner.presentation(presentation) : null;
+  let mapOptions = openFreeMap ? openFreeMapDefaults(openPresentation.colors) : null;
+  let appliedStyle;
   const basemap = openFreeMap ? { ...config.basemap, format: 'geojson' } : config.basemap;
+  function applyLayers() {
+    if (!appliedStyle) return;
+    const nextStyle = openFreeMapStyle(mapOptions, basemap);
+    updateOpenFreeMapLayers(map, appliedStyle, nextStyle);
+    appliedStyle = nextStyle;
+  }
   const native = owner.mountLocationMap(root, {
     location, provider, presentation, basemap, workerURL: config.workerURL,
     detailsMode: 'external', navigationId: config.navigationId,
@@ -40,7 +49,12 @@ export function mountSingleBusinessLocation(root, config, owner) {
       map = actualMap;
       if (openFreeMap) {
         map.setTransformRequest(url => openFreeMapRequest(url, document.baseURI));
-        map.setStyle(openFreeMapStyle(openPresentation.colors, basemap.fontURL), { diff: false });
+        const initialStyle = openFreeMapStyle(mapOptions, basemap);
+        map.once('style.load', () => {
+          appliedStyle = initialStyle;
+          applyLayers();
+        });
+        map.setStyle(initialStyle, { diff: false });
       }
       const pin = root.querySelector('.location-map__marker');
       if (!pin) throw Error('OWNER_BUSINESS_MARKER_MISSING');
@@ -100,15 +114,43 @@ export function mountSingleBusinessLocation(root, config, owner) {
       const previous = openPresentation.colors;
       openPresentation = owner.presentation({ ...openPresentation, ...changes,
         colors: { ...previous, ...changes.colors } });
-      for (const color of ['paper', 'ink', 'pin']) root.style.setProperty(`--map-${color}`, openPresentation.colors[color]);
-      if (['land', 'water', 'building', 'roadOutline', 'road'].some(color => previous[color] !== openPresentation.colors[color])) {
-        map?.setStyle(openFreeMapStyle(openPresentation.colors, basemap.fontURL));
+      for (const color of ['paper', 'ink', 'pin']) {
+        if (previous[color] !== openPresentation.colors[color]) root.style.setProperty(`--map-${color}`, openPresentation.colors[color]);
       }
+      const previousDefaults = openFreeMapDefaults(previous);
+      const updatedDefaults = openFreeMapDefaults(openPresentation.colors);
+      for (const key of Object.keys(previousDefaults)) {
+        if (previousDefaults[key] !== updatedDefaults[key]) mapOptions[key] = updatedDefaults[key];
+      }
+      applyLayers();
       if (Object.hasOwn(changes, 'zoom')) map?.jumpTo({ zoom: openPresentation.zoom });
     },
+    ...(openFreeMap ? {
+      setOpenFreeMapOptions(options) {
+        const next = parseOpenFreeMapOptions(options);
+        const camera = {};
+        for (const key of ['bearing', 'pitch']) {
+          if (next[key] !== mapOptions[key]) camera[key] = next[key];
+        }
+        for (const key of ['scrollZoom', 'dragPan']) {
+          if (next[key] !== mapOptions[key]) map?.[key][next[key] ? 'enable' : 'disable']();
+        }
+        mapOptions = next;
+        if (Object.keys(camera).length) map?.jumpTo(camera);
+        applyLayers();
+      },
+      recenter() {
+        if (location.coordinate) map?.jumpTo({ center: [location.coordinate.longitude, location.coordinate.latitude] });
+      },
+      inspectEditor() {
+        return { bearing: map?.getBearing(), pitch: map?.getPitch(),
+          scrollZoom: map?.scrollZoom.isEnabled(), dragPan: map?.dragPan.isEnabled(),
+          layers: map?.getStyle()?.layers };
+      },
+    } : {}),
     // Workshop-only bounded camera actions use the same provider; they never move the marker.
     panBy(x, y) { map?.panBy([x, y], { duration: 0 }); },
     zoomBy(delta) { if (map) map.jumpTo({ zoom: Math.min(18, Math.max(3, map.getZoom() + delta)) }); },
-    destroy() { native.destroy(); visual = undefined; map = undefined; },
+    destroy() { native.destroy(); visual = undefined; map = undefined; appliedStyle = undefined; },
   };
 }

@@ -11,3 +11,12 @@ mapa. El anclaje quedó dentro de 1 px y se verificó el diseño entre 360 y
 indisponibilidad. Los resultados detallados y las capturas se guardaron en el
 taller privado. Pasaron las comprobaciones de Astro y TypeScript, las diez
 pruebas de contrato y controles y la auditoría del taller sintético.
+
+- [x] T004 Vincular todos los campos de edición a la vista y a su persistencia.
+- [x] T005 Verificar la aplicación y recuperación de cada grupo, el mapa real y la vista adaptable.
+
+La revisión 0.5.0 se comprobó con 61 campos en Chromium. Se inspeccionaron los
+valores de capa, cámara y CSS, el guardado y la recuperación de ajustes nuevos
+y de 0.4.0, la recuperación de la vista inicial, el anclaje y la alternativa
+con la fuente bloqueada. La misma instancia sirvió para todas las ediciones.
+La inspección cubrió 360–1440 px y la fuente de respaldo.
