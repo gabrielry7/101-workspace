@@ -81,7 +81,9 @@ def test_scope_csrf_rights_expiry_and_source_deletion(social):
     assert social.client.post(ROOT+'/packs',json=value,headers=social.headers).status_code==409
     assert approval(social,pack).status_code==200
     assert social.client.delete(ROOT+'/assets/'+value['asset_id'],headers=social.headers).status_code==200
-    for ending in ('','/image','/export'):
+    stale=social.client.get(ROOT+'/packs/'+pack['id'])
+    assert stale.status_code==200 and stale.json()['stale'] and not stale.json()['media_available']
+    for ending in ('/image','/export'):
         assert social.client.get(ROOT+'/packs/'+pack['id']+ending).status_code==409
 
 def test_invalid_material_and_unresolved_claims(social):

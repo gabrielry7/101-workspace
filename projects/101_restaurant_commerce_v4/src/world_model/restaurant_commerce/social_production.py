@@ -1,6 +1,6 @@
 """Offline social production. No provider calls or publication authority.
 
-Owner statements are scoped to a pack, never promoted to canonical Truth.
+Owner assertions remain marketing inputs, never promoted to canonical Truth.
 Original bytes and editable revisions remain separate from rendered outputs.
 """
 from __future__ import annotations
@@ -64,7 +64,8 @@ class Approval(Base):
 
 def upgrade(engine):
     """Explicit additive offline migration; stop writers and back up first."""
-    Base.metadata.create_all(engine, tables=[Base.metadata.tables[n] for n in ('social_assets','social_packs','social_revisions','social_approvals')])
+    from .social_migrations import upgrade_social
+    upgrade_social(engine)
 
 
 class Strict(BaseModel):
@@ -78,8 +79,18 @@ class Fact(Strict):
     valid_until: AwareDatetime
 
 
+class FactReference(Strict):
+    context_version_id: str = Field(max_length=100)
+    fact_id: str = Field(max_length=64)
+    fact_revision: int = Field(ge=1)
+
+
+
 class Brief(Strict):
     schema_version: Literal['1'] = '1'
+    location_id: UUID | None = None
+    context_version_id: str | None = Field(default=None, max_length=100)
+    fact_refs: list[FactReference] = Field(default_factory=list, max_length=12)
     request_id: UUID
     asset_id: str
     objective: str = Field(min_length=1, max_length=300)
@@ -107,6 +118,8 @@ class Brief(Strict):
         for fact in self.facts:
             if any(ord(c) < 32 and c not in '\n\t' for c in fact.text) or re.search(r'\[[^]]+\]', fact.text):
                 raise ValueError('placeholder_or_control_character')
+        if len({r.fact_id for r in self.fact_refs}) != len(self.fact_refs):
+            raise ValueError('duplicate_fact_reference')
         return self
 
 
@@ -171,21 +184,38 @@ def render(original, brief):
         'purpose':'requires_human_review', 'performance':'unavailable'}
 
 
-def current(session, business, pack_id, now):
+def pack_state(session, business, pack_id, now):
+    from .social_context import stale_reasons
     pack = owned(session, Pack, pack_id, business)
     rev = session.get(Revision, f'{pack.id}:{pack.revision}')
     require(rev is not None, 'missing_revision')
     doc = json.loads(rev.document)
-    asset_check(session, doc['brief']['asset_id'], business, now)
-    require(all(future(f['valid_until'], now) for f in doc['brief']['facts']), 'fact_expired')
+    reasons = stale_reasons(session, business, doc, now)
+    for fact in doc['brief']['facts']:
+        if not future(fact['valid_until'], now):
+            reasons.append({'fact_id': fact['id'], 'reason': 'fact_expired'})
+    media_available = True
+    try:
+        asset_check(session, doc['brief']['asset_id'], business, now)
+    except HTTPException as error:
+        reasons.append({'reason': error.detail})
+        media_available = False
     approval = session.get(Approval, rev.id)
+    return pack, rev, doc, approval, reasons, media_available
+
+
+def current(session, business, pack_id, now):
+    pack, rev, doc, approval, reasons, _ = pack_state(session, business, pack_id, now)
+    require(not reasons, reasons[0]['reason'] if reasons else 'stale_draft')
     return pack, rev, doc, approval
 
 
 def document(session, business, pack_id, now):
-    pack, rev, doc, approval = current(session,business,pack_id,now)
+    pack, rev, doc, approval, reasons, media = pack_state(session,business,pack_id,now)
     return {'id':pack.id,'revision':pack.revision,'digest':rev.digest,'document':doc,
-        'approved':approval is not None and approval.digest == rev.digest,
+        'approved':not reasons and approval is not None and approval.digest == rev.digest,
+        'stale':bool(reasons), 'stale_reasons':reasons, 'media_available':media,
+        'historically_approved':approval is not None,
         'review':json.loads(rev.report), 'publication':{'status':'manual_export_only','post_id':None},
         'results':{'value':None,'reason':'not_published','search_traffic':None}}
 
@@ -200,6 +230,8 @@ def register(app, get_session, scoped_staff):
         principal = scoped_staff(request,session,business_id,'growth.write')
         require_ready(session)
         return principal
+    from .social_context import register as register_context, validate_pack_context, attach_dependencies
+    register_context(app, get_session, read, write)
     root='/api/operator/restaurants/{business_id}/social'
 
     @app.get(root, dependencies=[Depends(read)])
@@ -252,17 +284,22 @@ def register(app, get_session, scoped_staff):
         stable_id=hashlib.sha256((business+':'+str(payload.request_id)).encode()).hexdigest()[:32]
         if pack_id is None and session.get(Pack,stable_id) is not None:
             existing=document(session,business,stable_id,now)
-            require(existing['document']['brief']==payload.model_dump(mode='json'),'idempotency_conflict')
+            require(Brief.model_validate(existing['document']['brief']).model_dump(mode='json')==payload.model_dump(mode='json'),'idempotency_conflict')
             return existing
         asset, meta=asset_check(session,payload.asset_id,business,now)
         require(all(future(f.valid_until.isoformat(),now) for f in payload.facts),'fact_expired')
+        if payload.location_id:
+            resolver = getattr(app.state, 'social_location_belongs_to_business', None)
+            require(resolver is not None, 'canonical_location_validation_unavailable', 503)
+            require(resolver(business, str(payload.location_id)), 'location_not_in_business', 404)
+        business_brief = validate_pack_context(session, business, payload, now)
         png, report=render(asset.original,payload)
         facts={f.id:f.text for f in payload.facts}
         caption='\n\n'.join(facts[key] for key in payload.caption_fact_ids)
         doc={'schema_version':'1','renderer':VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
             'caption':caption,'copy_mode':'deterministic_confirmed_statements', 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
-            'intended_action':'manual_export','destination_account':None}
+            'intended_action':'manual_export','destination_account':None, 'business_brief':business_brief}
         if pack_id is None:
             require(payload.expected_revision==0,'revision_conflict')
             pack=Pack(id=stable_id,business_id=business,revision=1)
@@ -276,6 +313,8 @@ def register(app, get_session, scoped_staff):
         encoded=canonical(doc)
         digest=hashlib.sha256((encoded+hashlib.sha256(png).hexdigest()).encode()).hexdigest()
         session.add(Revision(id=f'{pack.id}:{pack.revision}',pack_id=pack.id,document=encoded,digest=digest,image=png,report=canonical(report)))
+        session.flush()
+        attach_dependencies(session, f'{pack.id}:{pack.revision}', payload)
         session.commit()
         return document(session,business,pack.id,now)
 
@@ -290,7 +329,8 @@ def register(app, get_session, scoped_staff):
         return document(session,business_id,pack_id,utcnow())
     @app.get(root+'/packs/{pack_id}/image',dependencies=[Depends(read)])
     def image(business_id: str,pack_id: str,session=Depends(get_session)):
-        _,rev,_,_=current(session,business_id,pack_id,utcnow())
+        _,rev,doc,_,_,_=pack_state(session,business_id,pack_id,utcnow())
+        asset_check(session,doc['brief']['asset_id'],business_id,utcnow())
         return Response(rev.image,media_type='image/jpeg',headers={'Cache-Control':'no-store'})
     @app.post(root+'/packs/{pack_id}/approve')
     def approve(business_id: str,pack_id: str,payload: Decision,principal=Depends(write),session=Depends(get_session)):

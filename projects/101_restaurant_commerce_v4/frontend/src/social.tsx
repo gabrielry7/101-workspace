@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { endpoint } from './ui';
 import './social.css';
+import {SocialContext, type BusinessContext} from './social-context';
 import {InstagramPanel} from './social-instagram';
-type Pack = {id:string;revision:number;digest:string;approved:boolean;document:{caption:string;brief:any;fixture:boolean}};
+type Pack = {id:string;revision:number;digest:string;approved:boolean;stale:boolean;media_available:boolean;stale_reasons:any[];document:{caption:string;brief:any;fixture:boolean}};
 export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:string;demo:boolean}) {
  const root=endpoint(business)+'/social';
+ const [context,setContext]=useState<BusinessContext|null>(null),[selectedFacts,setSelectedFacts]=useState<any[]>([]);
+ const [contextVersion,setContextVersion]=useState<string|null>(null);
  const [lastFile,setLastFile]=useState<File|null>(null);
  const [progress,setProgress]=useState<number|null>(null),[library,setLibrary]=useState<any[]>([]);
  const [requestId,setRequestId]=useState(()=>crypto.randomUUID());
@@ -19,9 +22,9 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
   const data=await r.json(); if(!r.ok) throw new Error(typeof data.detail==='string'?data.detail:'Revisa los campos y vuelve a intentar.'); return data;
  }
  async function run(fn:()=>Promise<void>){setBusy(true);setError('');try{await fn()}catch(e){setError(String(e))}finally{setBusy(false)}}
- async function refresh(){setPacks((await request('')).packs);setLibrary((await request('/assets')).assets)}
+ async function refresh(){setContext(await request('/context'));setPacks((await request('')).packs);setLibrary((await request('/assets')).assets)}
  useEffect(()=>{void run(refresh)},[business]);
- function load(p:Pack){setDirty(false);setPack(p);const b=p.document.brief;setRequestId(b.request_id||crypto.randomUUID());setAsset(b.asset_id);setFacts(b.facts.map((f:any)=>f.text).join('\n\n'));setQuestion(b.question);setObjective(b.objective);setBrand(b.brand_direction);setExpiry(b.facts[0].valid_until.slice(0,10));setCrop(b.focal_x);setConfirmed(false);setReview(false)}
+ function load(p:Pack){setDirty(false);setPack(p);const b=p.document.brief;setRequestId(b.request_id||crypto.randomUUID());setAsset(b.asset_id);setFacts(b.facts.filter((f:any)=>!(b.fact_refs||[]).some((r:any)=>r.fact_id===f.id)).map((f:any)=>f.text).join('\n\n'));setSelectedFacts((b.fact_refs||[]).map((r:any)=>({...r,...b.facts.find((f:any)=>f.id===r.fact_id)})));setContextVersion(b.context_version_id||null);setQuestion(b.question);setObjective(b.objective);setBrand(b.brand_direction);setExpiry(b.facts[0].valid_until.slice(0,10));setCrop(b.focal_x);setConfirmed(false);setReview(false)}
  async function upload(file:File){
   setLastFile(file);setProgress(0);
   if(file.size>12*1024*1024)throw new Error('La fotografía debe pesar menos de 12 MB.');
@@ -39,18 +42,23 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
  }
  async function save(){
   const statements=facts.split('\n\n').filter(Boolean).map((text,i)=>({id:'fact_'+i,text,source:'Confirmación explícita en el espacio del negocio',valid_until:expiry+'T23:59:59Z'}));
-  const brief={request_id:requestId,asset_id:asset,objective,hypothesis:'Propuesta del negocio; todavía no hay resultados para evaluarla.',question,question_source:'owner_suggestion',question_evidence:question,facts:statements,caption_fact_ids:statements.map(f=>f.id),focal_x:crop,focal_y:.5,brand_direction:brand,reference_reason:'Dirección proporcionada por el negocio; revisión humana pendiente.',primary_measure:'qualified_inquiries',confirmed,expected_revision:pack?.revision||0};
+  const linked=selectedFacts.map(f=>({id:f.id,text:f.text,source:f.source,valid_until:f.valid_until}));
+  const allFacts=[...statements,...linked];
+  const brief={context_version_id:contextVersion,fact_refs:selectedFacts.map(f=>({context_version_id:f.context_version_id,fact_id:f.id,fact_revision:f.fact_revision})),request_id:requestId,asset_id:asset,objective,hypothesis:'Propuesta del negocio; todavía no hay resultados para evaluarla.',question,question_source:'owner_suggestion',question_evidence:question,facts:allFacts,caption_fact_ids:allFacts.map(f=>f.id),focal_x:crop,focal_y:.5,brand_direction:brand,reference_reason:'Dirección proporcionada por el negocio; revisión humana pendiente.',primary_measure:'qualified_inquiries',confirmed,expected_revision:pack?.revision||0};
   setPack(await request('/packs'+(pack?'/'+pack.id:''),pack?'PUT':'POST',brief));setReview(false);setDirty(false);await refresh();
  }
  return <section className="social-workspace"><header><h1>Contenido para tus redes</h1><p>Prepara una fotografía y su texto. Revisa el resultado antes de descargarlo.</p></header>
+ <SocialContext context={context} request={request} onSaved={c=>{setContext(c);if(pack)void run(async()=>{setPack(await request('/packs/'+pack.id));setReview(false);setConfirmed(false)})}}/>
  <InstagramPanel business={business} csrf={csrf}/><p className="social-note">Fotografía protagonista y texto confirmado. Los resultados de esta publicación aparecerán después de publicarla y medirla.</p>
  {error&&<p role="alert">{error}</p>}
  <div className="social-grid"><form onChange={()=>setDirty(true)} onSubmit={e=>{e.preventDefault();void run(save)}}>
  <label>Trabajo guardado<select value={pack?.id||''} onChange={e=>{if(e.target.value)void run(async()=>load(await request('/packs/'+e.target.value)));else{setPack(null);setRequestId(crypto.randomUUID());setReview(false)}}}><option value="">Crear una publicación</option>{packs.map(p=><option key={p.id} value={p.id}>Publicación {p.id.slice(0,6)} · versión {p.revision}</option>)}</select></label>
+ {context?.brief&&<div className="social-context-choice"><p>Reutiliza los datos guardados del negocio.</p><button type="button" className="button secondary" onClick={()=>{setObjective(context.brief.objective);setContextVersion(context.id||null);setDirty(true);setConfirmed(false)}}>Usar objetivo del negocio</button>
+ {context.facts.filter(f=>f.current_status==='confirmed').map(f=><label className="social-check" key={f.id}><input type="checkbox" checked={selectedFacts.some(s=>s.id===f.id)} onChange={e=>{setSelectedFacts(old=>e.target.checked?[...old,{...f,context_version_id:context.id,fact_revision:f.revision}]:old.filter(s=>s.id!==f.id));setConfirmed(false);setDirty(true)}}/>{f.text}</label>)}</div>}
  <label>¿Qué quieres conseguir?<input required value={objective} onChange={e=>setObjective(e.target.value)}/></label>
  <label>¿Qué pregunta debe responder?<input required value={question} onChange={e=>setQuestion(e.target.value)}/></label>
- <label>Texto que puedes confirmar<textarea required rows={5} value={facts} onChange={e=>setFacts(e.target.value)}/></label>
- <p>Separa las afirmaciones con una línea vacía. Este texto será el pie de foto.</p>
+ <label>Texto que puedes confirmar<textarea required={!selectedFacts.length} rows={5} value={facts} onChange={e=>setFacts(e.target.value)}/></label>
+ <p>Texto adicional confirmado para esta publicación. Separa las afirmaciones con una línea vacía.</p>
  <label>Revisar estos datos y el permiso de la foto antes de<input required type="date" value={expiry} onChange={e=>setExpiry(e.target.value)}/></label>
  <label>¿Cómo debe verse y sonar?<textarea required value={brand} onChange={e=>setBrand(e.target.value)}/></label>
  <label>Permiso para usar esta fotografía<input value={rights} onChange={e=>setRights(e.target.value)} placeholder="Es nuestra foto y autorizamos su uso en esta publicación"/></label>
@@ -61,5 +69,5 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
  <label>Encuadre horizontal<input type="range" min="0" max="1" step=".05" value={crop} onChange={e=>setCrop(Number(e.target.value))}/></label>
  <label className="social-check"><input type="checkbox" checked={confirmed} onChange={e=>setConfirmed(e.target.checked)}/>Confirmo que estas afirmaciones son actuales y correctas.</label>
  <button className="button primary" type="submit" disabled={busy||!asset||!confirmed}>{busy?'Preparando…':pack?'Guardar nueva versión':'Preparar publicación'}</button>
- </form><aside>{pack?<><h2>Revisa la versión {pack.revision}</h2>{dirty&&<p role="status">Hay cambios sin guardar. Guarda una nueva versión para revisarlos.</p>}{pack.document.fixture&&<p>Material de prueba</p>}<img className="social-image" src={root+'/packs/'+pack.id+'/image?v='+pack.revision} alt="Vista previa de la publicación"/><p className="social-caption">{pack.document.caption}</p><p>Mediremos consultas de compra. Sin publicación ni mediciones todavía.</p><label className="social-check"><input type="checkbox" checked={review} onChange={e=>setReview(e.target.checked)}/>Revisé la fotografía, el texto, el encuadre y su relación con el objetivo.</label><button className="button primary" disabled={busy||dirty||!review||pack.approved} onClick={()=>void run(async()=>setPack(await request('/packs/'+pack.id+'/approve','POST',{digest:pack.digest,craft_reviewed:true,brand_reviewed:true,purpose_reviewed:true})))}>{pack.approved?'Versión aprobada':'Aprobar esta versión'}</button>{pack.approved&&<p><a href={root+'/packs/'+pack.id+'/export'}>Descargar foto, texto y archivo editable</a></p>}</>:<><h2>Tu publicación aparecerá aquí</h2><p>Usaremos tu fotografía y las afirmaciones que confirmes. Podrás ajustar el encuadre y guardar otra versión.</p></>}</aside></div></section>
+ </form><aside>{pack?<><h2>Revisa la versión {pack.revision}</h2>{dirty&&<p role="status">Hay cambios sin guardar. Guarda una nueva versión para revisarlos.</p>}{pack.stale&&<div role="status" className="social-stale"><p>Esta versión necesita revisión: cambió o venció información que utiliza. Su aprobación anterior ya no permite descargarla.</p>{!pack.media_available&&<p>La fotografía ya no está autorizada. Selecciona otra.</p>}<button type="button" className="button secondary" disabled={busy} onClick={()=>void run(async()=>{const c=await request('/context');setContext(c);setSelectedFacts(old=>old.map(f=>{const latest=c.facts.find((v:any)=>v.id===f.id&&v.current_status==='confirmed');return latest?{...latest,context_version_id:c.id,fact_revision:latest.revision}:null}).filter(Boolean));if(contextVersion&&c.brief){setContextVersion(c.id);setObjective(c.brief.objective)}setConfirmed(false);setReview(false);setDirty(true)})}>Revisar con los datos actuales</button></div>}{selectedFacts.length>0&&dirty&&<p className="social-caption">Datos para la nueva versión: {selectedFacts.map(f=>f.text).join(' · ')}</p>}{pack.document.fixture&&<p>Material de prueba</p>}{pack.media_available&&<img className="social-image" src={root+'/packs/'+pack.id+'/image?v='+pack.revision} alt="Vista previa de la publicación"/>}<p className="social-caption">{pack.document.caption}</p><p>Mediremos consultas de compra. Sin publicación ni mediciones todavía.</p><label className="social-check"><input type="checkbox" checked={review} onChange={e=>setReview(e.target.checked)}/>Revisé la fotografía, el texto, el encuadre y su relación con el objetivo.</label><button className="button primary" disabled={busy||dirty||pack.stale||!review||pack.approved} onClick={()=>void run(async()=>setPack(await request('/packs/'+pack.id+'/approve','POST',{digest:pack.digest,craft_reviewed:true,brand_reviewed:true,purpose_reviewed:true})))}>{pack.approved?'Versión aprobada':'Aprobar esta versión'}</button>{pack.approved&&!dirty&&<p><a href={root+'/packs/'+pack.id+'/export'}>Descargar foto, texto y archivo editable</a></p>}</>:<><h2>Tu publicación aparecerá aquí</h2><p>Usaremos tu fotografía y las afirmaciones que confirmes. Podrás ajustar el encuadre y guardar otra versión.</p></>}</aside></div></section>
 }

@@ -3,11 +3,13 @@
 import io
 import os
 import zipfile
+from uuid import uuid4
 from types import SimpleNamespace
 
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import inspect, select
+from sqlalchemy.engine import make_url
 from test_social_production import approval, brief, photo
 from world_model.restaurant_commerce.api import create_app
 from world_model.restaurant_commerce.campaign_demo import BUSINESS, OTHER
@@ -34,12 +36,30 @@ def login(client):
 
 
 @pytest.mark.parametrize("backend", ["sqlite", "postgres"])
-def test_existing_workspace_upgrade_restart_and_revocation(tmp_path, backend):
+def test_existing_workspace_upgrade_restart_and_revocation(tmp_path, backend, request):
     url = "sqlite:///" + str(tmp_path / "shared.db")
     if backend == "postgres":
         url = os.environ.get("SOCIAL_TEST_DISPOSABLE_POSTGRES_URL")
         if not url:
             pytest.skip("Explicitly disposable PostgreSQL required; test drops social tables")
+        # Every run gets fresh state, including memberships revoked by the test.
+        # Only the explicitly disposable test target is eligible for this cleanup.
+        admin = make_engine(url)
+        schema = "social_test_" + uuid4().hex
+        with admin.begin() as connection:
+            connection.exec_driver_sql("CREATE SCHEMA " + schema)
+
+        def cleanup():
+            with admin.begin() as connection:
+                connection.exec_driver_sql("DROP SCHEMA " + schema + " CASCADE")
+            admin.dispose()
+
+        request.addfinalizer(cleanup)
+        url = (
+            make_url(url)
+            .update_query_dict({"options": "-csearch_path=" + schema})
+            .render_as_string(hide_password=False)
+        )
     app = app_for_demo(url, size=8)
     engine = app.state.engine
     # Rehearse an installation predating social, preserving its contacts/campaigns.

@@ -23,7 +23,8 @@ python -m world_model.restaurant_commerce.maintenance upgrade-social --offline
 ```
 
 This additively creates `social_assets`, `social_packs`, `social_revisions`,
-`social_approvals` and `social_uploads`; it is repeatable. It refuses incomplete
+`social_approvals`, `social_uploads`, `social_contexts`, `social_context_versions`
+and `social_fact_dependencies`; it is repeatable. It refuses incomplete
 existing social tables rather than silently accepting an incompatible schema.
 No contacts, orders, memberships, campaigns or provisioning records are replaced.
 Startup does not silently install social tables into an existing database. An
@@ -61,3 +62,63 @@ Production hosting, current owner-approved material, stronger static design/copy
 video and publication/outcome learning remain on `docs/social/ROADMAP.md` in the
 base repository. The existing public social preview stays independently configured
 until a shared deployment is explicitly verified.
+
+## Current marketing assertions and recovery (N02)
+
+`social_context.py` adds three tables: `social_contexts` (current pointer per existing
+business/location), `social_context_versions` (immutable context/fact snapshots),
+and `social_fact_dependencies` (exact pack revision → fact version). Run the same
+explicit offline `upgrade-social` command after backup and stopping writers. It
+backfills old pack facts as `legacy_pack_assertion` versions; it never rewrites old
+pack JSON, approval digests, original media or rendered bytes. Repeating it is safe.
+Startup on the previous five-table schema returns scoped503 until upgraded.
+Rollback to the previous application retains all eight tables and original bytes;
+new context data becomes inaccessible in that old UI. Re-upgrade before using new
+facts again. Do not drop tables or restore over later uploads as a code rollback.
+
+The short business brief saves offering, objective, buying destination, constraints
+and locale. Optional capacity/margin are null when unknown. Individual facts retain
+a typed string representation (`text`, exact decimal `number`/`money`, `boolean`),
+unit/currency, source, effective/expiry timestamps, authenticated verifier and
+revision. A price caption is derived from its exact stored amount/currency, not a
+second independently editable price string. Changes increment only the affected
+fact revision; omitted facts become withdrawn tombstones, so re-adding an ID cannot
+make an old approval valid again. Concurrent edits require the expected version.
+
+These are **owner/operator marketing assertions for explicit manual review**, not
+canonical Business records, legal-ownership verification or global Truth decisions.
+No historical caption, Genome value or connection import is automatically confirmed.
+The provisioning composition installs `social_location_belongs_to_business`; it
+checks the canonical BusinessLocation row's Business FK. An uncomposed demo can use
+its ordinary business scope but cannot invent canonical location membership. Location
+facts cannot be selected into business-wide or another location's packs. No canonical
+Genome/Truth rows are written, and no automated publishing authority is granted.
+
+`GET /social/context` and `PUT /social/context` operate on current assertions;
+`GET /social/context/history` retains their historical basis. A pack includes exact
+`fact_refs` plus optional `context_version_id` and snapshots its business brief.
+Changed, withdrawn or expired selected facts and changed brief fields block approval
+and export. Unrelated fact changes do not invalidate selected facts. A scoped pack
+GET remains readable for correction, with `stale_reasons` and historical approval
+status. Valid photographs remain previewable; revoked/expired source pixels remain
+blocked. The owner chooses current data, confirms the correction, saves a new pack
+revision and reviews it again. Old exported/approved snapshots remain unchanged;
+there is still no publication receipt subsystem.
+
+## Repeatable focused release command (N01)
+
+Build the frontend, then run `scripts/verify_social.sh` using a Python environment
+with the declared test dependencies and an installed Playwright browser. Set
+`SOCIAL_TEST_DISPOSABLE_POSTGRES_URL` to a UTF-8 **disposable** PostgreSQL database;
+the script refuses to omit this gate. The PG test uses a fresh uniquely named schema
+per run and removes only that schema afterward. Existing retained DBs must not be
+used. Optional `PYTHON`, `COMMERCE_BROWSER_EXECUTABLE`, `SOCIAL_BROWSER_EVIDENCE`
+select the interpreter/browser/artifact location. No credentials are printed.
+
+The command covers API scope/CSRF/viewer denials, both resumable JPEG/PNG uploads,
+duplicate completion, revision approval/export, legacy schema/backfill, expiry and
+withdrawal, lost-update rejection, SQLite/PG restart, mocked Instagram behavior and
+two desktop/mobile browser journeys through Presencia → Instagram. It makes no
+provider/model/publication calls. Canonical provisioning scope is separately tested
+in the World Model consumer suite with `PROVISIONING_COMMERCE_SOURCE` pointing to
+the installed/reviewed commerce package source.

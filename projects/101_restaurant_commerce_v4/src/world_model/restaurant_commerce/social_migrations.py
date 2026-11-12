@@ -8,7 +8,8 @@ def social_tables():
     from .social_production import Approval, Asset, Pack, Revision
     from .social_uploads import Upload
 
-    return [model.__table__ for model in (Asset, Pack, Revision, Approval, Upload)]
+    from .social_context import Context, ContextVersion, FactDependency
+    return [model.__table__ for model in (Asset, Pack, Revision, Approval, Upload, Context, ContextVersion, FactDependency)]
 
 
 def schema_ready(bind):
@@ -43,3 +44,6 @@ def upgrade_social(engine):
             table.create(connection, checkfirst=True)
         if not schema_ready(connection):
             raise RuntimeError("Social schema is not ready")
+
+        from .social_context import backfill_legacy
+        backfill_legacy(connection)

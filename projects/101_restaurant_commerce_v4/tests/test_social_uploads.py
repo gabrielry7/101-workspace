@@ -1,4 +1,5 @@
 import base64,hashlib,io
+import pytest
 from datetime import datetime,timedelta,timezone
 from PIL import Image
 from test_social_production import social,env,factory,ROOT,OTHER,BUSINESS
@@ -6,8 +7,9 @@ from test_social_production import social,env,factory,ROOT,OTHER,BUSINESS
 def start(e,raw):
     return e.client.post(ROOT+'/uploads',headers=e.headers,json={'total':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'rights_statement':'Synthetic test material authorized for this fixture','expires_at':(datetime.now(timezone.utc)+timedelta(days=2)).isoformat(),'permitted_use':'production','fixture':True})
 
-def test_large_resumable_photo_and_repeated_completion(social):
-    out=io.BytesIO();Image.effect_noise((1200,1500),30).convert('RGB').save(out,format='PNG');raw=out.getvalue()
+@pytest.mark.parametrize("image_format", ["PNG", "JPEG"])
+def test_large_resumable_photo_and_repeated_completion(social, image_format):
+    out=io.BytesIO();Image.effect_noise((1200,1500),30).convert('RGB').save(out,format=image_format,quality=100);raw=out.getvalue()
     assert len(raw)>500000
     r=start(social,raw);assert r.status_code==200,r.text
     route=ROOT+'/uploads/'+r.json()['id']

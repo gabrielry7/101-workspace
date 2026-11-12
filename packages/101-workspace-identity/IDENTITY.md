@@ -266,3 +266,15 @@ summary and PDF composition belong to commerce monthly-reports.tsx and
 monthly_report_pdf.py. Three primary figures, previous values and short source states;
 no generated headlines/advice. Saved snapshots supply both views. Unknown is an em
 placeholder, measured zero is numeric. Legacy sample charts never enter these reports.
+
+### Social business information and stale drafts — 2026-11-12
+
+Reuse the current business shell, Inter, white working surfaces and compact form
+controls (standing reference03). Keep reusable business information in one collapsible
+section above the post editor. Show unknown capacity/margin explicitly; don't prefill
+unconfirmed business claims. Fact rows separate value, source, dates and correction.
+A stale draft stays readable beside its form; explain why review is needed, retain
+permitted photography, and require fresh confirmation/approval after correction.
+Use existing border/surface roles with fallback values for the adopted shell; controls
+remain at least44px, with a single-column phone form. Merchant creative fonts remain
+independent. Test synthetic material is labeled in the preview.
