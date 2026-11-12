@@ -10,7 +10,7 @@ export function SocialContext({request,onSaved,context}:{request:(path:string,me
   const payload=facts.map(f=>Object.fromEntries(fields.map(k=>[k,k==='currency'?(f.kind==='money'?f.currency:null):f[k]??null])));
   onSaved(await request('/context','PUT',{expected_revision:context?.revision||0,brief,facts:payload,confirmed:true}));
  }catch(e){setError(String(e))}finally{setBusy(false)}}
- return <details className="social-context" open={!context?.brief}><summary>Información de tu negocio {context?.revision?`· versión ${context.revision}`:''}</summary>
+ return <details className="social-context business-context" open={!context?.brief}><summary>Información de tu negocio {context?.revision?`· versión ${context.revision}`:''}</summary>
  <p>Guarda lo que ofreces y cómo comprarlo. Podrás reutilizarlo en tus publicaciones y corregirlo cuando cambie.</p>
  <form onSubmit={e=>void save(e)}>
  <div className="social-context-fields">{[['offering','¿Qué quieres ofrecer?'],['objective','Objetivo del negocio'],['buying_destination','¿Cómo pueden comprar o pedir?'],['constraints','Condiciones o restricciones'],['locale','Idioma y región']].map(([key,label])=><label key={key}>{label}<input required={key!=='constraints'} value={brief[key]} onChange={e=>{setBrief({...brief,[key]:e.target.value});setConfirmed(false)}}/></label>)}

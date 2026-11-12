@@ -91,12 +91,16 @@ class Brief(Strict):
     location_id: UUID | None = None
     context_version_id: str | None = Field(default=None, max_length=100)
     fact_refs: list[FactReference] = Field(default_factory=list, max_length=12)
+    creative_version_id: str | None = Field(default=None, max_length=100)
+    reference_ids: list[str] = Field(default_factory=list, max_length=12)
+    question_id: str | None = Field(default=None, max_length=64)
+    revision_reason: Literal['initial', 'factual_correction', 'brand_preference', 'strategy', 'layout'] = 'initial'
     request_id: UUID
     asset_id: str
     objective: str = Field(min_length=1, max_length=300)
     hypothesis: str = Field(min_length=1, max_length=600)
     question: str = Field(min_length=1, max_length=300)
-    question_source: Literal['owner_suggestion', 'customer_question', 'hypothesis']
+    question_source: Literal['owner_suggestion', 'customer_question', 'hypothesis', 'platform_observation', 'manual_research']
     question_evidence: str = Field(min_length=1, max_length=500)
     facts: list[Fact] = Field(min_length=1, max_length=12)
     caption_fact_ids: list[str] = Field(min_length=1, max_length=12)
@@ -112,6 +116,8 @@ class Brief(Strict):
 
     @model_validator(mode='after')
     def references(self):
+        if len(set(self.reference_ids)) != len(self.reference_ids):
+            raise ValueError('duplicate_reference')
         ids = [f.id for f in self.facts]
         if len(set(ids)) != len(ids) or not set(self.caption_fact_ids) <= set(ids):
             raise ValueError('unresolved_or_duplicate_fact')
@@ -190,7 +196,8 @@ def pack_state(session, business, pack_id, now):
     rev = session.get(Revision, f'{pack.id}:{pack.revision}')
     require(rev is not None, 'missing_revision')
     doc = json.loads(rev.document)
-    reasons = stale_reasons(session, business, doc, now)
+    from .social_creative import stale_reasons as creative_stale
+    reasons = stale_reasons(session, business, doc, now) + creative_stale(session, business, doc, now)
     for fact in doc['brief']['facts']:
         if not future(fact['valid_until'], now):
             reasons.append({'fact_id': fact['id'], 'reason': 'fact_expired'})
@@ -232,6 +239,8 @@ def register(app, get_session, scoped_staff):
         return principal
     from .social_context import register as register_context, validate_pack_context, attach_dependencies
     register_context(app, get_session, read, write)
+    from .social_creative import register as register_creative, snapshot as creative_snapshot
+    register_creative(app, get_session, read, write)
     root='/api/operator/restaurants/{business_id}/social'
 
     @app.get(root, dependencies=[Depends(read)])
@@ -293,13 +302,14 @@ def register(app, get_session, scoped_staff):
             require(resolver is not None, 'canonical_location_validation_unavailable', 503)
             require(resolver(business, str(payload.location_id)), 'location_not_in_business', 404)
         business_brief = validate_pack_context(session, business, payload, now)
+        creative = creative_snapshot(session, business, payload, now)
         png, report=render(asset.original,payload)
         facts={f.id:f.text for f in payload.facts}
         caption='\n\n'.join(facts[key] for key in payload.caption_fact_ids)
         doc={'schema_version':'1','renderer':VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
             'caption':caption,'copy_mode':'deterministic_confirmed_statements', 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
-            'intended_action':'manual_export','destination_account':None, 'business_brief':business_brief}
+            'intended_action':'manual_export','destination_account':None, 'business_brief':business_brief, 'creative_snapshot':creative}
         if pack_id is None:
             require(payload.expected_revision==0,'revision_conflict')
             pack=Pack(id=stable_id,business_id=business,revision=1)

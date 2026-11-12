@@ -122,3 +122,48 @@ two desktop/mobile browser journeys through Presencia → Instagram. It makes no
 provider/model/publication calls. Canonical provisioning scope is separately tested
 in the World Model consumer suite with `PROVISIONING_COMMERCE_SOURCE` pointing to
 the installed/reviewed commerce package source.
+
+## Brand references and sourced questions (N03)
+
+`social_creative.py` owns two additive tables, `social_creative_boards` and
+`social_creative_versions`, keyed to the existing business and optionally validated
+canonical location. Use the same offline `upgrade-social` command after backup and
+stopping writers. Existing facts, originals, pack revisions and approvals are not
+rewritten. Rollback retains these tables; the previous UI simply cannot edit them.
+No customer references or questions are invented during migration.
+
+`GET/PUT /social/creative` reads/saves the board with optimistic revision checks.
+`GET /social/creative/history` returns prior snapshots. Voice/visual rules are
+independent of the business fact store. References retain positive/negative/borderline
+judgments, reasons, source, observation/expiry, permission statement, content type,
+and local-alternative/remote-comparable/creative/own-brand purpose. A URL is a saved
+reference, never a fetch authorization. Links are not automatically collected; no
+third-party pixels are downloaded. Existing owned library assets may be referenced
+without acquiring additional output rights. Reference-only media still cannot become
+the production photo, and revoked/expired reference assets block dependent exports.
+
+Questions distinguish owner suggestion, actual customer question, platform observation,
+manual research and hypothesis. They retain source context/date, intent, next action
+and IDs of facts needed to answer. Questions without an answer can be saved, but
+cannot be selected for production until current answer facts are supplied. Selection
+requires exact fact versions under the existing N02 validation. There are no search
+volume/rank/view input fields: unknown demand remains null, including for a platform
+observation. This is manual research intake, not a live social-search integration.
+
+Pack fields `creative_version_id`, `reference_ids` and `question_id` resolve on the
+server into an immutable `creative_snapshot`. Only selected references/question are
+snapshotted with the voice rules and version. Relevant changed/withdrawn/expired
+context invalidates current approval/export while keeping recovery metadata readable.
+Unselected example edits do not unnecessarily invalidate a pack. Per-item and style
+revision counters prevent reviving an old approval by retiring and re-adding context.
+Historical versions remain unchanged. `revision_reason` distinguishes factual,
+style, strategy and crop edits; editing a pack never silently trains or overwrites
+persistent brand preferences. Explicit board edits retain actor, date and reason.
+
+The existing UI adds a collapsible board with References / Voice and style / Questions,
+then selection controls in the post brief. The review displays the selected source
+context. Saved context can be reused in another pack after leaving and returning,
+with no retyping. Source text remains untrusted data, never executable instructions.
+The exported editable JSON is an internal posting-package record, not permission
+to republish references; only the approved post image/caption are finished content.
+No taste model, competitor crawler, generated copy or automatic planning is added.

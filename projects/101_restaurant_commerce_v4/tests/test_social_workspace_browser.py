@@ -125,7 +125,7 @@ def test_owner_corrects_shared_price_and_recovers_draft(site, tmp_path):
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     original = page.locator(".social-image").get_attribute("src")
-    page.locator(".social-context summary").click()
+    page.locator(".business-context summary").click()
     field.get_by_label("Valor", exact=True).fill("15000")
     page.get_by_label("He revisado esta información").check()
     page.get_by_role("button", name="Guardar información del negocio", exact=True).click()
@@ -154,13 +154,164 @@ def test_owner_corrects_shared_price_and_recovers_draft(site, tmp_path):
     page.evaluate("window.scrollTo(0,0)")
     page.screenshot(path=str(evidence / "corrected-desktop.png"), full_page=True)
     page.set_viewport_size({"width": 390, "height": 844})
-    page.locator(".social-context summary").click()
+    page.locator(".business-context summary").click()
     page.screenshot(path=str(evidence / "facts-mobile.png"), full_page=True)
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
-    measurements = page.locator(".social-context").evaluate("""e => ({font:getComputedStyle(e).fontFamily,
+    measurements = page.locator(".business-context").evaluate("""e => ({font:getComputedStyle(e).fontFamily,
         inputHeight:e.querySelector('input').getBoundingClientRect().height,
         overflow:document.documentElement.scrollWidth>innerWidth})""")
     import json
 
     (evidence / "facts-layout.json").write_text(json.dumps(measurements, indent=2))
     assert "Inter" in measurements["font"] and measurements["inputHeight"] >= 44
+
+
+def test_owner_reuses_brand_examples_and_sourced_question(site, tmp_path):
+    import json
+    from playwright.sync_api import expect
+
+    page, context, url, app, *_ = site
+    evidence = Path(os.environ.get("SOCIAL_BROWSER_EVIDENCE", str(tmp_path / "evidence")))
+    evidence.mkdir(parents=True, exist_ok=True)
+    page.goto("/workspace/social?business=" + BUSINESS)
+    page.get_by_label("Usuario", exact=True).fill("multi.owner")
+    page.get_by_label("Contraseña", exact=True).fill(PASSWORD)
+    page.get_by_role("button", name="Entrar", exact=True).click()
+    page.get_by_role("heading", name="Contenido para tus redes").wait_for()
+    page.get_by_label("¿Qué quieres ofrecer?", exact=True).fill("Producto sintético")
+    page.get_by_label("Objetivo del negocio", exact=True).fill("Explicar cómo pedir")
+    page.get_by_label("¿Cómo pueden comprar o pedir?", exact=True).fill("En el local de prueba")
+    page.get_by_role("button", name="Añadir dato", exact=True).click()
+    fact = page.locator(".social-fact").first
+    fact.get_by_label("Nombre del dato", exact=True).fill("Cómo pedir")
+    fact.get_by_label("Valor", exact=True).fill("Los pedidos de prueba se coordinan en el local.")
+    deadline = (date.today() + timedelta(days=7)).isoformat()
+    fact.get_by_label("Revisar antes de", exact=True).fill(deadline)
+    page.get_by_label("He revisado esta información").check()
+    page.get_by_role("button", name="Guardar información del negocio", exact=True).click()
+    page.get_by_text("Información de tu negocio · versión 1", exact=True).wait_for()
+    board = page.locator(".creative-board")
+    board.locator("summary").click()
+    board.get_by_role("button", name="Voz y estilo", exact=True).click()
+    board.get_by_label("Dirección visual", exact=True).fill("Luz natural, producto protagonista.")
+    board.get_by_label("Cómo hablamos", exact=True).fill(
+        "Frases cortas. Sin prometer lo que no sabemos."
+    )
+
+    def save_board(reason, version):
+        board.get_by_label("Motivo de este cambio", exact=True).fill(reason)
+        board.get_by_label("Revisé las fuentes").check()
+        board.get_by_role("button", name="Guardar referencias y preguntas", exact=True).click()
+        expect(board.locator("summary")).to_contain_text("versión " + str(version))
+
+    save_board("Dirección inicial para esta prueba", 1)
+    board.get_by_role("button", name="Referencias", exact=True).click()
+    for index, (title, judgment, group, reason) in enumerate(
+        [
+            ("Texto claro", "positive", "own_brand", "Explica el siguiente paso."),
+            (
+                "Promesa exagerada",
+                "negative",
+                "creative_reference",
+                "No usar afirmaciones sin respaldo.",
+            ),
+            (
+                "Otra panadería",
+                "borderline",
+                "remote_comparable",
+                "La composición ayuda; su mercado no es comparable.",
+            ),
+        ],
+        start=2,
+    ):
+        board.get_by_role("button", name="Añadir referencia", exact=True).click()
+        board.get_by_label("Título de la referencia", exact=True).fill(title)
+        board.get_by_label("Juicio de referencia", exact=True).select_option(judgment)
+        board.get_by_label("Propósito de referencia", exact=True).select_option(group)
+        board.get_by_label("Por qué encaja o no", exact=True).fill(reason)
+        board.get_by_label("Ejemplo o descripción", exact=True).fill(
+            "Texto sintético para evaluar una referencia."
+        )
+        board.get_by_label("Permiso para revisar este ejemplo", exact=True).fill(
+            "Ejemplo propio creado para esta prueba."
+        )
+        board.get_by_label("Fuente y contexto", exact=True).fill("Kit sintético de evaluación")
+        board.get_by_label("Volver a revisar antes de", exact=True).fill(deadline)
+        save_board("Clasificar el ejemplo por su uso", index)
+    page.evaluate("window.scrollTo(0,0)")
+    page.screenshot(path=str(evidence / "n03-reference-desktop.png"), full_page=True)
+    board.get_by_role("button", name="Preguntas", exact=True).click()
+    board.get_by_role("button", name="Añadir pregunta", exact=True).click()
+    board.get_by_label("Pregunta a responder", exact=True).fill("¿Cómo hago un pedido?")
+    board.get_by_label("Origen de la pregunta", exact=True).select_option("hypothesis")
+    board.get_by_label("Siguiente paso útil", exact=True).fill("Consultar en el local de prueba")
+    board.get_by_label("Los pedidos de prueba se coordinan en el local.", exact=True).check()
+    board.get_by_label("Fuente y contexto", exact=True).fill(
+        "Idea hipotética del operador; no es una pregunta observada."
+    )
+    board.get_by_label("Volver a revisar antes de", exact=True).fill(deadline)
+    save_board("Probar una explicación de pedidos", 5)
+    page.set_viewport_size({"width": 390, "height": 844})
+    board.scroll_into_view_if_needed()
+    page.screenshot(path=str(evidence / "n03-question-mobile.png"), full_page=True)
+    assert page.evaluate("document.documentElement.scrollWidth<=innerWidth")
+    page.set_viewport_size({"width": 1440, "height": 1000})
+    board.locator("summary").click()
+    form = page.locator(".social-grid form")
+    form.get_by_role("button", name="Usar objetivo del negocio", exact=True).click()
+    form.get_by_role("button", name="Usar voz y estilo guardados", exact=True).click()
+    form.get_by_label("Texto claro · nos gusta", exact=True).check()
+    form.get_by_label("Pregunta guardada", exact=True).select_option(label="¿Cómo hago un pedido?")
+    expect(form.get_by_label("¿Qué pregunta debe responder?", exact=True)).to_have_value(
+        "¿Cómo hago un pedido?"
+    )
+    expect(form.get_by_label("Origen de esta pregunta", exact=True)).to_have_value("hypothesis")
+    form.get_by_label("Revisar estos datos").fill(deadline)
+    form.get_by_label("Permiso para usar").fill("Fotografía sintética autorizada para prueba")
+    photo = tmp_path / "n03-fixture.jpg"
+    Image.new("RGB", (1200, 1500), "#a49381").save(photo)
+    form.locator("input[type=file]").set_input_files(str(photo))
+    page.get_by_text("Fotografía recibida.", exact=True).wait_for()
+    form.get_by_label("Confirmo que").check()
+    form.get_by_role("button", name="Preparar publicación", exact=True).click()
+    page.get_by_role("heading", name="Revisa la versión 1").wait_for()
+    page.get_by_label("Revisé la fotografía").check()
+    page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
+    page.get_by_role("button", name="Versión aprobada").wait_for()
+    page.locator(".creative-receipt summary").click()
+    expect(page.locator(".creative-receipt")).to_contain_text("Hipótesis por comprobar")
+    with page.expect_download() as download:
+        page.get_by_role("link", name="Descargar foto", exact=False).click()
+    download.value.save_as(str(evidence / "n03-approved-package.zip"))
+    import zipfile
+
+    with zipfile.ZipFile(evidence / "n03-approved-package.zip") as z:
+        saved = json.loads(z.read("editable.json"))
+        assert saved["creative_snapshot"]["question"]["source_kind"] == "hypothesis"
+        assert saved["creative_snapshot"]["search_volume"] is None
+        assert saved["creative_snapshot"]["references"][0]["judgment"] == "positive"
+    # Same source context is usable for a NEW pack after navigating away and back.
+    page.get_by_role("link", name="Clientes", exact=True).click()
+    page.locator(".customer-link").first.wait_for()
+    open_social(page)
+    form.get_by_role("button", name="Usar objetivo del negocio", exact=True).click()
+    form.get_by_role("button", name="Usar voz y estilo guardados", exact=True).click()
+    form.get_by_label("Pregunta guardada", exact=True).select_option(label="¿Cómo hago un pedido?")
+    expect(form.get_by_label("¿Cómo debe verse y sonar?")).to_have_value(
+        "Luz natural, producto protagonista."
+    )
+    expect(form.get_by_label("¿Qué pregunta debe responder?", exact=True)).to_have_value(
+        "¿Cómo hago un pedido?"
+    )
+    page.evaluate("window.scrollTo(0,0)")
+    page.locator(".creative-board summary").click()
+    page.screenshot(path=str(evidence / "n03-reuse-desktop.png"), full_page=True)
+    measurements = page.locator(".creative-board").evaluate("""e=>({font:getComputedStyle(e).fontFamily,
+        controlHeight:e.querySelector('button').getBoundingClientRect().height,
+        overflow:document.documentElement.scrollWidth>innerWidth})""")
+    (evidence / "n03-layout.json").write_text(json.dumps(measurements, indent=2))
+    assert "Inter" in measurements["font"] and measurements["controlHeight"] >= 44
+    # Business changes also clear brand/question context.
+    page.locator(".sidebar select").select_option(OTHER)
+    expect(page.get_by_label("¿Qué pregunta debe responder?", exact=True)).to_have_value("")
+    assert form.get_by_role("button", name="Usar voz y estilo guardados", exact=True).count() == 0

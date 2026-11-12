@@ -278,3 +278,15 @@ permitted photography, and require fresh confirmation/approval after correction.
 Use existing border/surface roles with fallback values for the adopted shell; controls
 remain at least44px, with a single-column phone form. Merchant creative fonts remain
 independent. Test synthetic material is labeled in the preview.
+
+### Social references and questions — 2026-11-12
+
+Reuse the business-information panel and shared Inter/white surfaces from the N02
+recipe and standing reference03. A collapsible board keeps reference cards, voice
+rules and questions separate. Show the judgment AND why a reference matters; keep
+its comparison group distinct from whether the owner likes it. Cards never imply
+measured commercial success. Questions show their origin and unknown demand clearly.
+Use existing44px controls, a wrapping three-button switcher and stacked phone fields.
+Post review retains a compact expandable source-context receipt. A factual correction
+must not become a style preference, and research examples must not become output
+photography by default. Source and permission fields remain explicit owner inputs.
