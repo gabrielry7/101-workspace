@@ -1,5 +1,5 @@
 import { MonthlyReports } from "./monthly-reports";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Dialog } from "@base-ui/react/dialog";
 import { CSPProvider } from "@base-ui/react/csp-provider";
@@ -244,16 +244,21 @@ function App() {
   });
   const sidebarClose = useRef<HTMLButtonElement>(null);
   const sidebarOpen = useRef<HTMLButtonElement>(null);
+  const sidebarFocusPending = useRef(false);
+  useLayoutEffect(() => {
+    if (sidebarFocusPending.current) {
+      sidebarFocusPending.current = false;
+      (sidebarCollapsed ? sidebarOpen : sidebarClose).current?.focus();
+    }
+  }, [sidebarCollapsed]);
   function toggleSidebar(collapsed: boolean) {
+    sidebarFocusPending.current = true;
     setSidebarCollapsed(collapsed);
     try {
       localStorage.setItem("101-sidebar-collapsed", String(collapsed));
     } catch {
       /* optional preference */
     }
-    requestAnimationFrame(() =>
-      (collapsed ? sidebarOpen : sidebarClose).current?.focus(),
-    );
   }
   const [qr, setQr] = useState(
     new URLSearchParams(location.search).get("invite") === "1",

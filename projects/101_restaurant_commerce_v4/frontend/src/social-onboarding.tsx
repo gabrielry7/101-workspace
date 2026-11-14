@@ -146,7 +146,12 @@ export function SocialOnboarding({
     [error, setError] = useState("");
   const heading = useRef<HTMLHeadingElement>(null),
     form = useRef<HTMLFormElement>(null);
+  const firstStepRender = useRef(true);
   useEffect(() => {
+    if (firstStepRender.current) {
+      firstStepRender.current = false;
+      return;
+    }
     heading.current?.focus();
   }, [step]);
   function change<K extends keyof Answers>(key: K, value: Answers[K]) {
