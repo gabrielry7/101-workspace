@@ -290,3 +290,12 @@ Use existing44px controls, a wrapping three-button switcher and stacked phone fi
 Post review retains a compact expandable source-context receipt. A factual correction
 must not become a style preference, and research examples must not become output
 photography by default. Source and permission fields remain explicit owner inputs.
+
+Social guided setup (2026-11-13): reuse the existing white context panel, shared
+Inter and native radio/checkbox controls. Five steps cover priority, buying routes,
+first content idea, available material and review. Choices start unselected;
+custom answers and explicit unknowns are first-class. Only relevant details open.
+Choice rows use visible borders and at least44px touch targets, two columns on
+wide screens and one on phones. Review offers per-answer edits and explicit save;
+loading does not expose an empty editable context. Voice examples live in the
+existing brand board and remain editable before separate confirmation.

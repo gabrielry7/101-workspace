@@ -167,3 +167,35 @@ with no retyping. Source text remains untrusted data, never executable instructi
 The exported editable JSON is an internal posting-package record, not permission
 to republish references; only the approved post image/caption are finished content.
 No taste model, competitor crawler, generated copy or automatic planning is added.
+
+### Guided business setup
+
+`social_onboarding.py` validates explicit choice IDs and custom details;
+`PUT /social/context/onboarding` compiles them into the existing business brief
+and appends an immutable context version. The normal owner scope, CSRF, canonical
+location check and expected-revision conflict protection apply. No new table or
+provider call. Unknown offering/objective/buying destination/locale are null.
+The snapshot retains the original answers, selected IDs, materials and dates/actor
+from the context writer. Choices do not create confirmed marketing facts.
+
+`social-onboarding.tsx` presents four short questions then review with optional
+conditions/lead time. A custom answer is retained across reloads. Nothing is
+preselected; selection is not saved until final confirmation. Unsaved navigation
+is intentionally not resumable: the form says when saving happens. Current facts,
+capacity/margin and historical versions survive. Unchanged expired facts stay
+expired without being reverified when only onboarding changes. Existing manual
+fact editing remains available. Guided summary fields are edited through the guide;
+a direct API rewrite of those fields retires the old guided projection while
+preserving its historical version. Capacity/margin/fact-only edits retain answers.
+
+Material choices describe what the owner says they have; they are not uploaded
+files, usage permission or a promise of an automated proposal. Photo upload and
+approval/export remain the actual production path. Video capture/editing and
+automatic research/proposals remain future work. The voice examples use the
+existing creative board and do not turn factual corrections into style preferences.
+
+Validation: `scripts/verify_social.sh` now includes onboarding API cases and the
+fourth owner browser workflow. Source and renderer output remain synthetic fixtures.
+Rollback should retain context JSON; older clients cannot safely edit newly nullable
+brief fields. Prefer a forward fix or temporarily disable writes before an older
+application rollback; never discard saved answers or fact history.

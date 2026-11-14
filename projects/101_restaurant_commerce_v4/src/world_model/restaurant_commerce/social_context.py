@@ -21,6 +21,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Mapped, Session, mapped_column
 
 from .models import Base, utcnow
+from .social_onboarding import OnboardingInput
 from .social_production import FactReference, Strict, canonical, future, require
 
 TABLES = {"social_contexts", "social_context_versions", "social_fact_dependencies"}
@@ -99,11 +100,11 @@ def statement(fact):
 
 
 class BusinessBrief(Strict):
-    offering: str = Field(min_length=1, max_length=300)
-    objective: str = Field(min_length=1, max_length=300)
-    buying_destination: str = Field(min_length=1, max_length=500)
-    constraints: str = Field(default="", max_length=600)
-    locale: str = Field(pattern=r"^[a-z]{2}(?:-[A-Z]{2})?$")
+    offering: str | None = Field(default=None, min_length=1, max_length=3000)
+    objective: str | None = Field(default=None, min_length=1, max_length=3000)
+    buying_destination: str | None = Field(default=None, min_length=1, max_length=15000)
+    constraints: str = Field(default="", max_length=15000)
+    locale: str | None = Field(default=None, pattern=r"^[a-z]{2}(?:-[A-Z]{2})?$")
     # Explicit unknowns, never inferred from absence or a social caption.
     capacity: str | None = Field(default=None, max_length=300)
     margin: str | None = Field(default=None, max_length=300)
@@ -340,6 +341,9 @@ def register(app, get_session, read, write):
         principal=Depends(write),
         session=Depends(get_session),
     ):
+        return save_context(business_id, payload, principal, session)
+
+    def save_context(business_id, payload, principal, session, onboarding=None):
         location = str(payload.location_id) if payload.location_id else None
         check_scope(business_id, location)
         cid = scope_id(business_id, location)
@@ -351,12 +355,12 @@ def register(app, get_session, read, write):
         facts = []
         for item in payload.facts:
             value = item.model_dump(mode="json")
-            if item.status == "confirmed":
+            before = prior.get(item.id)
+            unchanged = before and all(before.get(k) == v for k, v in value.items())
+            if item.status == "confirmed" and not unchanged:
                 require(
                     item.effective_at <= now and item.valid_until > now, "fact_not_current", 422
                 )
-            before = prior.get(item.id)
-            unchanged = before and all(before.get(k) == v for k, v in value.items())
             facts.append(
                 {
                     **value,
@@ -411,12 +415,53 @@ def register(app, get_session, read, write):
             "publication_authority": "none_manual_review_required",
             "brief": payload.brief.model_dump(mode="json"),
             "facts": facts,
+            "onboarding": onboarding
+            if onboarding is not None
+            else (
+                old.get("onboarding")
+                if old.get("brief")
+                and all(
+                    old["brief"].get(key) == getattr(payload.brief, key)
+                    for key in (
+                        "offering",
+                        "objective",
+                        "buying_destination",
+                        "constraints",
+                        "locale",
+                    )
+                )
+                else None
+            ),
             "verifier": principal.actor_id,
             "verified_at": now.isoformat(),
         }
         session.add(ContextVersion(id=vid, context_id=cid, document=canonical(snapshot)))
         session.commit()
         return read_context(session, business_id, location)
+
+    @app.put(root + "/onboarding")
+    def onboarding(
+        business_id: str,
+        payload: OnboardingInput,
+        principal=Depends(write),
+        session=Depends(get_session),
+    ):
+        location = str(payload.location_id) if payload.location_id else None
+        check_scope(business_id, location)
+        old = read_context(session, business_id, location)
+        fields = {**(old.get("brief") or {}), **payload.answers.brief_fields()}
+        # Existing fact IDs/versions and unknowns survive; choices are not fact assertions.
+        facts = [{key: fact.get(key) for key in Assertion.model_fields} for fact in old["facts"]]
+        value = ContextInput(
+            expected_revision=payload.expected_revision,
+            location_id=location,
+            brief=fields,
+            facts=facts,
+            confirmed=True,
+        )
+        return save_context(
+            business_id, value, principal, session, payload.answers.model_dump(mode="json")
+        )
 
     @app.get(root + "/history", dependencies=[Depends(read)])
     def history(business_id: str, location_id: UUID | None = None, session=Depends(get_session)):

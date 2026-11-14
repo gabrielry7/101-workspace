@@ -7,6 +7,7 @@ export PYTHONPATH="$social_project/src${PYTHONPATH:+:$PYTHONPATH}"
 "${PYTHON:-python}" -m pytest \
   "$social_project/tests/test_social_production.py" \
   "$social_project/tests/test_social_context.py" \
+  "$social_project/tests/test_social_onboarding.py" \
   "$social_project/tests/test_social_creative.py" \
   "$social_project/tests/test_social_uploads.py" \
   "$social_project/tests/test_social_workspace.py" \
