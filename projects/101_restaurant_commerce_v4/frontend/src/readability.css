@@ -458,3 +458,16 @@ td {
     height: 30px;
   }
 }
+
+/* Shared desktop sidebar toggle; mobile keeps the existing accessible drawer. */
+.sidebar .business-icon { display: none; }
+.sidebar .business > div { flex: 1; min-width: 0; }
+.sidebar .business { gap: 4px; padding: 6px 8px 6px 12px; }
+.sidebar-collapse, .sidebar-reopen { width: 44px; height: 44px; flex-shrink: 0; }
+.sidebar[hidden] { display: none; }
+.workspace.sidebar-collapsed > .main { margin-left: 0; }
+@media (max-width: 700px) { .sidebar-reopen { display: none; } }
+@media (min-width: 701px) {
+  .sidebar-collapsed .topbar > .breadcrumb { margin-right: auto; }
+  .sidebar-reopen { margin-right: 12px; }
+}

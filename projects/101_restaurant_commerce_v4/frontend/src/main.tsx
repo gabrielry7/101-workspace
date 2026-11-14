@@ -22,6 +22,8 @@ import {
   Mail,
   Megaphone,
   Menu,
+  PanelLeftClose,
+  PanelLeftOpen,
   MessageCircle,
   Phone,
   Plug,
@@ -233,6 +235,26 @@ function App() {
   const routeMemory = useRef<Record<string, string>>({});
   const routeScroll = useRef<Record<string, number>>({});
   const [menu, setMenu] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem("101-sidebar-collapsed") === "true";
+    } catch {
+      return false;
+    }
+  });
+  const sidebarClose = useRef<HTMLButtonElement>(null);
+  const sidebarOpen = useRef<HTMLButtonElement>(null);
+  function toggleSidebar(collapsed: boolean) {
+    setSidebarCollapsed(collapsed);
+    try {
+      localStorage.setItem("101-sidebar-collapsed", String(collapsed));
+    } catch {
+      /* optional preference */
+    }
+    requestAnimationFrame(() =>
+      (collapsed ? sidebarOpen : sidebarClose).current?.focus(),
+    );
+  }
   const [qr, setQr] = useState(
     new URLSearchParams(location.search).get("invite") === "1",
   );
@@ -376,7 +398,7 @@ function App() {
     setScreen(target);
     setMenu(false);
   }
-  function nav() {
+  function nav(mobile = false) {
     return (
       <>
         <div className="business">
@@ -430,6 +452,20 @@ function App() {
               {business ? "Espacio del negocio" : "Gestión de negocios"}
             </span>
           </div>
+          {!mobile && (
+            <button
+              ref={sidebarClose}
+              type="button"
+              className="icon-button sidebar-collapse"
+              aria-label="Ocultar barra lateral"
+              title="Ocultar barra lateral"
+              aria-controls="workspace-sidebar"
+              aria-expanded={true}
+              onClick={() => toggleSidebar(true)}
+            >
+              <PanelLeftClose size={20} />
+            </button>
+          )}
         </div>
         {business && (
           <nav aria-label="Principal">
@@ -482,7 +518,14 @@ function App() {
               <ChartNoAxesColumnIncreasing />
               Analítica web
             </a>
-            <a href={`/workspace/reports?business=${bid}`} className={screen === "reports" ? "active" : ""} onClick={(e) => goScreen(e, "reports")}><ChartNoAxesColumnIncreasing />Reportes</a>
+            <a
+              href={`/workspace/reports?business=${bid}`}
+              className={screen === "reports" ? "active" : ""}
+              onClick={(e) => goScreen(e, "reports")}
+            >
+              <ChartNoAxesColumnIncreasing />
+              Reportes
+            </a>
             <details className="presence">
               <summary>
                 <Globe2 />
@@ -614,12 +657,32 @@ function App() {
       </div>
     );
   return (
-    <div className="workspace">
-      <aside className="sidebar">{nav()}</aside>
+    <div className={`workspace ${sidebarCollapsed ? "sidebar-collapsed" : ""}`}>
+      <aside
+        className="sidebar"
+        id="workspace-sidebar"
+        hidden={sidebarCollapsed}
+      >
+        {nav()}
+      </aside>
       <main
         className={`main ${selected && screen === "customers" ? "has-detail" : ""}`}
       >
         <header className="topbar">
+          {sidebarCollapsed && (
+            <button
+              ref={sidebarOpen}
+              type="button"
+              className="icon-button sidebar-reopen"
+              aria-label="Mostrar barra lateral"
+              title="Mostrar barra lateral"
+              aria-controls="workspace-sidebar"
+              aria-expanded={false}
+              onClick={() => toggleSidebar(false)}
+            >
+              <PanelLeftOpen size={20} />
+            </button>
+          )}
           <button
             className="icon-button mobile-menu"
             aria-label="Abrir navegación"
@@ -1056,7 +1119,7 @@ function App() {
             >
               <X />
             </Dialog.Close>
-            {nav()}
+            {nav(true)}
           </Dialog.Popup>
         </Dialog.Portal>
       </Dialog.Root>

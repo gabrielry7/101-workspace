@@ -299,3 +299,10 @@ Choice rows use visible borders and at least44px touch targets, two columns on
 wide screens and one on phones. Review offers per-answer edits and explicit save;
 loading does not expose an empty editable context. Voice examples live in the
 existing brand board and remain editable before separate confirmation.
+
+Sidebar visibility (2026-11-13): a44px panel toggle sits beside the business name
+in the desktop sidebar header, replacing its decorative bag icon to preserve space.
+Hiding the sidebar releases its full width; the header exposes a matching reopen
+button next to the page label. Focus moves between the two controls and visibility
+is remembered locally, independent of business data. The existing phone drawer,
+close button and Escape behavior remain separate. No branding row is reintroduced.
