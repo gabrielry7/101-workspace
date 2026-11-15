@@ -471,3 +471,16 @@ td {
   .sidebar-collapsed .topbar > .breadcrumb { margin-right: auto; }
   .sidebar-reopen { margin-right: 12px; }
 }
+
+/* Company and page titles share one continuous header baseline. */
+.sidebar { --sidebar-gutter:18px; padding-top:0; }
+.sidebar > .business { box-sizing:border-box; flex-shrink:0; height:64px; margin:0 calc(-1 * var(--sidebar-gutter)) 24px; padding:10px 10px 10px 20px; border:0; border-bottom:1px solid var(--line,#e7e7e4); border-radius:0; background:transparent; gap:8px; }
+.sidebar > .business strong,.sidebar > .business select { display:block; width:100%; font-size:14px; font-weight:650; line-height:1.4; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; }
+.sidebar > .business .sidebar-collapse { margin-left:auto; }
+@media (max-width:1200px) { .sidebar { --sidebar-gutter:13px; } .sidebar > .business { padding-left:16px; padding-right:6px; } }
+@media (max-width:700px) {
+ .mobile-nav { padding-top:0; }
+ .mobile-nav > .business { box-sizing:border-box; flex-shrink:0; height:60px; margin:0 -19px 24px; padding:8px 62px 8px 20px; border:0; border-bottom:1px solid var(--line,#e7e7e4); border-radius:0; background:transparent; }
+ .mobile-nav > .business strong,.mobile-nav > .business select { font-size:14px; font-weight:650; line-height:1.4; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; }
+ .mobile-nav .close-nav { top:8px; right:10px; width:44px; height:44px; }
+}

@@ -407,17 +407,15 @@ function App() {
     return (
       <>
         <div className="business">
-          <span className="business-icon">
-            <ShoppingBag size={20} />
-          </span>
           <div>
             {identity && identity.businesses.length > 1 ? (
               <>
-                <label className="sr-only" htmlFor="business">
+                <label className="sr-only" htmlFor={mobile ? "mobile-business" : "business"}>
                   Negocio
                 </label>
                 <select
-                  id="business"
+                  id={mobile ? "mobile-business" : "business"}
+                  title={business?.name}
                   value={bid}
                   onChange={(e) => {
                     setSearch("");
@@ -446,16 +444,13 @@ function App() {
                 </select>
               </>
             ) : (
-              <strong>
+              <strong title={business?.name}>
                 {business?.name ||
                   (identity?.platform_admin
                     ? "Administración 101"
                     : "Selecciona un negocio")}
               </strong>
             )}
-            <span>
-              {business ? "Espacio del negocio" : "Gestión de negocios"}
-            </span>
           </div>
           {!mobile && (
             <button
@@ -1122,7 +1117,7 @@ function App() {
               className="icon-button close-nav"
               aria-label="Cerrar navegación"
             >
-              <X />
+              <PanelLeftClose size={20} />
             </Dialog.Close>
             {nav(true)}
           </Dialog.Popup>

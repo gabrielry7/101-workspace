@@ -313,3 +313,11 @@ failed/needs-review/completed status; activity and manual effort open on demand.
 Retry names the failed step; completed work opens its actual saved result. Unknown
 machine costs are explicitly uncalculated. Photo review/approval remains a separate
 working surface. Phone actions wrap; no status is conveyed solely by color.
+
+Company header (2026-11-15): following the supplied Modsley reference, the company
+name/business selector and panel toggle occupy one flat full-width sidebar header.
+Remove the rounded business card, decorative icon and subtitle. Its64px desktop
+height aligns exactly with the page header; the phone drawer uses60px with the same
+name/close arrangement. Names remain one line with ellipsis/full-name tooltip;
+selection,44px toggle, saved collapse preference and keyboard focus remain active.
+This updates the business header itself; no separate101branding row is introduced.
