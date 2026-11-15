@@ -3,12 +3,14 @@ import { endpoint } from './ui';
 import './social.css';
 import {SocialCreative, sourceLabels, type CreativeBoard} from './social-creative';
 import {SocialContext, type BusinessContext} from './social-context';
+import {SocialProposals} from './social-proposals';
 import {ProductionJobs} from './social-jobs';
 import {InstagramPanel} from './social-instagram';
 type Pack = {id:string;revision:number;digest:string;approved:boolean;stale:boolean;media_available:boolean;stale_reasons:any[];document:{caption:string;brief:any;fixture:boolean;creative_snapshot?:any}};
 export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:string;demo:boolean}) {
  const root=endpoint(business)+'/social';
  const [context,setContext]=useState<BusinessContext|null>(null),[selectedFacts,setSelectedFacts]=useState<any[]>([]);
+ const [proposalDecision,setProposalDecision]=useState<string|null>(null);
  const [contextVersion,setContextVersion]=useState<string|null>(null);
  const [creative,setCreative]=useState<CreativeBoard|null>(null),[creativeVersion,setCreativeVersion]=useState<string|null>(null);
  const [referenceIds,setReferenceIds]=useState<string[]>([]),[questionId,setQuestionId]=useState<string|null>(null);
@@ -30,7 +32,7 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
  async function run(fn:()=>Promise<void>){setBusy(true);setError('');try{await fn()}catch(e){setError(String(e))}finally{setBusy(false)}}
  async function refresh(){setCreative(await request('/creative'));setContext(await request('/context'));setPacks((await request('')).packs);setLibrary((await request('/assets')).assets)}
  useEffect(()=>{void run(refresh)},[business]);
- function load(p:Pack){setDirty(false);setPack(p);const b=p.document.brief;setRequestId(b.request_id||crypto.randomUUID());setAsset(b.asset_id);setFacts(b.facts.filter((f:any)=>!(b.fact_refs||[]).some((r:any)=>r.fact_id===f.id)).map((f:any)=>f.text).join('\n\n'));setSelectedFacts((b.fact_refs||[]).map((r:any)=>({...r,...b.facts.find((f:any)=>f.id===r.fact_id)})));setContextVersion(b.context_version_id||null);setCreativeVersion(b.creative_version_id||null);setReferenceIds(b.reference_ids||[]);setQuestionId(b.question_id||null);setQuestionSource(b.question_source);setQuestionEvidence(b.question_evidence);setRevisionReason('strategy');setQuestion(b.question);setObjective(b.objective);setBrand(b.brand_direction);setExpiry(b.facts[0].valid_until.slice(0,10));setCrop(b.focal_x);setConfirmed(false);setReview(false)}
+ function load(p:Pack){setDirty(false);setPack(p);const b=p.document.brief;setProposalDecision(b.proposal_decision_id||null);setRequestId(b.request_id||crypto.randomUUID());setAsset(b.asset_id);setFacts(b.facts.filter((f:any)=>!(b.fact_refs||[]).some((r:any)=>r.fact_id===f.id)).map((f:any)=>f.text).join('\n\n'));setSelectedFacts((b.fact_refs||[]).map((r:any)=>({...r,...b.facts.find((f:any)=>f.id===r.fact_id)})));setContextVersion(b.context_version_id||null);setCreativeVersion(b.creative_version_id||null);setReferenceIds(b.reference_ids||[]);setQuestionId(b.question_id||null);setQuestionSource(b.question_source);setQuestionEvidence(b.question_evidence);setRevisionReason('strategy');setQuestion(b.question);setObjective(b.objective);setBrand(b.brand_direction);setExpiry(b.facts[0].valid_until.slice(0,10));setCrop(b.focal_x);setConfirmed(false);setReview(false)}
  async function upload(file:File){
   setLastFile(file);setProgress(0);
   if(file.size>12*1024*1024)throw new Error('La fotografía debe pesar menos de 12 MB.');
@@ -50,7 +52,7 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
   const statements=facts.split('\n\n').filter(Boolean).map((text,i)=>({id:'fact_'+i,text,source:'Confirmación explícita en el espacio del negocio',valid_until:expiry+'T23:59:59Z'}));
   const linked=selectedFacts.map(f=>({id:f.id,text:f.text,source:f.source,valid_until:f.valid_until}));
   const allFacts=[...statements,...linked];
-  const brief={creative_version_id:creativeVersion,reference_ids:referenceIds,question_id:questionId,revision_reason:pack?revisionReason:'initial',context_version_id:contextVersion,fact_refs:selectedFacts.map(f=>({context_version_id:f.context_version_id,fact_id:f.id,fact_revision:f.fact_revision})),request_id:!pack&&activeJob?crypto.randomUUID():requestId,asset_id:asset,objective,hypothesis:'Propuesta del negocio; todavía no hay resultados para evaluarla.',question,question_source:questionSource,question_evidence:questionEvidence||'Idea ingresada por el negocio',facts:allFacts,caption_fact_ids:allFacts.map(f=>f.id),focal_x:crop,focal_y:.5,brand_direction:brand,reference_reason:'Dirección proporcionada por el negocio; revisión humana pendiente.',primary_measure:'qualified_inquiries',confirmed,expected_revision:pack?.revision||0};
+  const brief={proposal_decision_id:proposalDecision,creative_version_id:creativeVersion,reference_ids:referenceIds,question_id:questionId,revision_reason:pack?revisionReason:'initial',context_version_id:contextVersion,fact_refs:selectedFacts.map(f=>({context_version_id:f.context_version_id,fact_id:f.id,fact_revision:f.fact_revision})),request_id:!pack&&activeJob?crypto.randomUUID():requestId,asset_id:asset,objective,hypothesis:proposalDecision?pack?.document.brief.hypothesis:'Propuesta del negocio; todavía no hay resultados para evaluarla.',question,question_source:questionSource,question_evidence:questionEvidence||'Idea ingresada por el negocio',facts:allFacts,caption_fact_ids:allFacts.map(f=>f.id),focal_x:crop,focal_y:.5,brand_direction:brand,reference_reason:'Dirección proporcionada por el negocio; revisión humana pendiente.',primary_measure:proposalDecision?pack?.document.brief.primary_measure:'qualified_inquiries',confirmed,expected_revision:pack?.revision||0};
   const job=await request('/jobs','POST',{kind:'photo_render',brief,pack_id:pack?.id||null});setActiveJob(job.id);setJobPending(['queued','running'].includes(job.state));setReview(false);setDirty(false);
  }
  function useQuestion(id:string, board=creative, factsContext=context){
@@ -62,6 +64,7 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
   setDirty(true);setConfirmed(false);setReview(false);
  }
  async function recover(){
+  setProposalDecision(null);
   const c=await request('/context'),b=await request('/creative');setContext(c);setCreative(b);
   setSelectedFacts(old=>old.map(f=>{const latest=c.facts.find((v:any)=>v.id===f.id&&v.current_status==='confirmed');return latest?{...latest,context_version_id:c.id,fact_revision:latest.revision}:null}).filter(Boolean));
   if(contextVersion&&c.brief){setContextVersion(c.id);setObjective(c.brief.objective||'')}
@@ -71,11 +74,12 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
  return <section className="social-workspace"><header><h1>Contenido para tus redes</h1><p>Prepara una fotografía y su texto. Revisa el resultado antes de descargarlo.</p></header>
  <SocialContext context={context} request={request} onSaved={c=>{setContext(c);if(pack)void run(async()=>{setPack(await request('/packs/'+pack.id));setReview(false);setConfirmed(false)})}}/>
  <SocialCreative board={creative} context={context} library={library} request={request} onSaved={b=>{setCreative(b);if(pack)void run(async()=>{setPack(await request('/packs/'+pack.id));setConfirmed(false);setReview(false)})}}/>
+ <SocialProposals business={business} csrf={csrf} context={context} creative={creative} library={library} onProduction={job=>{setActiveJob(job.id);setJobPending(['queued','running'].includes(job.state));setReview(false);setDirty(false)}}/>
  <InstagramPanel business={business} csrf={csrf}/><p className="social-note">Fotografía protagonista y texto confirmado. Los resultados de esta publicación aparecerán después de publicarla y medirla.</p>
  <ProductionJobs business={business} csrf={csrf} asset={asset} activeJob={activeJob} onState={setJobPending} onComplete={async id=>{const p=await request('/packs/'+id);load(p);setActiveJob(null);await refresh()}}/>
  {error&&<p role="alert">{error}</p>}
  <div className="social-grid" id="social-production-form"><form onChange={()=>setDirty(true)} onSubmit={e=>{e.preventDefault();void run(save)}}><fieldset className="production-fields" disabled={jobPending}>
- <label>Trabajo guardado<select value={pack?.id||''} onChange={e=>{if(e.target.value)void run(async()=>load(await request('/packs/'+e.target.value)));else{setPack(null);setRequestId(crypto.randomUUID());setReview(false)}}}><option value="">Crear una publicación</option>{packs.map(p=><option key={p.id} value={p.id}>Publicación {p.id.slice(0,6)} · versión {p.revision}</option>)}</select></label>
+ <label>Trabajo guardado<select value={pack?.id||''} onChange={e=>{if(e.target.value)void run(async()=>load(await request('/packs/'+e.target.value)));else{setPack(null);setProposalDecision(null);setRequestId(crypto.randomUUID());setReview(false)}}}><option value="">Crear una publicación</option>{packs.map(p=><option key={p.id} value={p.id}>Publicación {p.id.slice(0,6)} · versión {p.revision}</option>)}</select></label>
  {context?.brief&&<div className="social-context-choice"><p>Reutiliza los datos guardados del negocio.</p><button type="button" className="button secondary" disabled={!context.brief.objective} onClick={()=>{setObjective(context.brief.objective||'');setContextVersion(context.id||null);setDirty(true);setConfirmed(false)}}>Usar objetivo del negocio</button>
  {context.facts.filter(f=>f.current_status==='confirmed').map(f=><label className="social-check" key={f.id}><input type="checkbox" checked={selectedFacts.some(s=>s.id===f.id)} onChange={e=>{setSelectedFacts(old=>e.target.checked?[...old,{...f,context_version_id:context.id,fact_revision:f.revision}]:old.filter(s=>s.id!==f.id));setConfirmed(false);setDirty(true)}}/>{f.text}</label>)}</div>}
  <label>¿Qué quieres conseguir?<input required value={objective} onChange={e=>setObjective(e.target.value)}/></label>

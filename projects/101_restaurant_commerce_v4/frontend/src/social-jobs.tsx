@@ -17,6 +17,7 @@ const states: Record<string, string> = {
   queued: "En cola",
   running: "Preparando",
   succeeded: "Listo",
+  uncertain: "Resultado del modelo sin confirmar",
   failed: "No se pudo terminar",
   needs_input: "Necesita revisión",
   superseded: "Los datos cambiaron",
@@ -33,6 +34,12 @@ const reasons: Record<string, string> = {
     "Cambió la información del trabajo. Prepara una nueva versión.",
   revision_conflict: "Ya existe una versión más reciente.",
   job_authorization_revoked: "Cambió el acceso de quien pidió este trabajo.",
+  model_outcome_unknown:
+    "No se repetirá automáticamente una solicitud con resultado incierto.",
+  proposal_response_needs_review:
+    "Se recibió una respuesta que necesita revisión. No se cobrará otra solicitud automáticamente.",
+  proposal_context_changed:
+    "Cambió la información del negocio. Prepara otra propuesta con los datos actuales.",
   attempt_limit:
     "El trabajo alcanzó el límite de intentos. Contacta al equipo de 101.",
 };
@@ -189,7 +196,9 @@ export function ProductionJobs({
             <strong>
               {j.kind === "photo_render"
                 ? "Preparar fotografía y texto"
-                : "Revisar archivo"}
+                : j.kind === "proposal_generate"
+                  ? "Preparar propuesta"
+                  : "Revisar archivo"}
             </strong>
             <p>{j.title}</p>
             <p role="status">
@@ -213,7 +222,7 @@ export function ProductionJobs({
                 Abrir resultado
               </button>
             )}
-            {j.state === "failed" && (
+            {j.state === "failed" && j.kind !== "proposal_generate" && (
               <button
                 type="button"
                 className="button secondary"
@@ -234,8 +243,11 @@ export function ProductionJobs({
           {expanded === j.id && (
             <div className="production-activity">
               <p>
-                Costos externos: 0. Costo de procesamiento y almacenamiento: sin
-                calcular.
+                Costo externo estimado:{" "}
+                {j.cost.provider_microusd == null
+                  ? "sin confirmar"
+                  : `${(j.cost.provider_microusd / 1_000_000).toFixed(6)} USD`}
+                . Costo de procesamiento y almacenamiento: sin calcular.
               </p>
               {!j.attempts.length && (
                 <p>

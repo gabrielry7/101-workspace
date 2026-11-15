@@ -321,3 +321,13 @@ height aligns exactly with the page header; the phone drawer uses60px with the s
 name/close arrangement. Names remain one line with ellipsis/full-name tooltip;
 selection,44px toggle, saved collapse preference and keyboard focus remain active.
 This updates the business header itself; no separate101branding row is introduced.
+
+Social proposal review (N05,15 November2026): keep facts, references and proposal
+review in the shared white/Inter panels. Inputs collapse after preparation so the
+owner can compare two copy approaches, inspect claim sources, edit the chosen text
+and record a factual/style/strategy reason. The model/template route stays explicit;
+no universal quality score or invented search volume. Reuse shell, form controls,
+buttons and responsive two-column layout; the proposal comparison is a local bone
+owned by Social, separate from the final publication approval.44px actions and
+phone wrapping are checked against reference03. Copy choice buttons align at the
+bottom of each option, and whole-copy review remains distinct from claim citations.

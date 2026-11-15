@@ -95,6 +95,7 @@ class Brief(Strict):
     reference_ids: list[str] = Field(default_factory=list, max_length=12)
     question_id: str | None = Field(default=None, max_length=64)
     revision_reason: Literal['initial', 'factual_correction', 'brand_preference', 'strategy', 'layout'] = 'initial'
+    proposal_decision_id: str | None = Field(default=None,max_length=64)
     request_id: UUID
     asset_id: str
     objective: str = Field(min_length=1, max_length=300)
@@ -207,6 +208,10 @@ def pack_state(session, business, pack_id, now):
     except HTTPException as error:
         reasons.append({'reason': error.detail})
         media_available = False
+    if doc['brief'].get('proposal_decision_id'):
+        from .social_proposals import current_decision
+        try: current_decision(session,business,doc['brief']['proposal_decision_id'])
+        except HTTPException as error: reasons.append({'reason':error.detail})
     approval = session.get(Approval, rev.id)
     return pack, rev, doc, approval, reasons, media_available
 
@@ -241,6 +246,8 @@ def register(app, get_session, scoped_staff):
     register_context(app, get_session, read, write)
     from .social_creative import register as register_creative, snapshot as creative_snapshot
     register_creative(app, get_session, read, write)
+    from .social_proposals import register as register_proposals
+    register_proposals(app, get_session, read, write)
     root='/api/operator/restaurants/{business_id}/social'
 
     @app.get(root, dependencies=[Depends(read)])
@@ -307,8 +314,16 @@ def register(app, get_session, scoped_staff):
         creative = creative_snapshot(session, business, payload, now)
         facts={f.id:f.text for f in payload.facts}
         caption='\n\n'.join(facts[key] for key in payload.caption_fact_ids)
+        proposal_snapshot=None
+        if payload.proposal_decision_id:
+            from .social_proposals import resolve_decision
+            decision,ctx,proposal=resolve_decision(session,business,payload.proposal_decision_id,app)
+            require(payload.context_version_id==ctx['context_version_id'] and payload.creative_version_id==ctx['brand_version_id'] and payload.asset_id==ctx['asset']['id'],'proposal_snapshot_mismatch')
+            require(set(payload.caption_fact_ids)=={f['id'] for f in ctx['facts']},'proposal_fact_snapshot_mismatch')
+            caption=decision['text'];proposal_snapshot={'proposal_id':proposal.id,'decision_id':payload.proposal_decision_id,'mode':proposal.mode,'review':decision}
+
         doc={'schema_version':'1','renderer':VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
-            'caption':caption,'copy_mode':'deterministic_confirmed_statements', 'asset_sha256':meta['sha256'],
+            'caption':caption,'copy_mode':'reviewed_proposal' if proposal_snapshot else 'deterministic_confirmed_statements', 'proposal_snapshot':proposal_snapshot, 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
             'intended_action':'manual_export','destination_account':None, 'business_brief':business_brief, 'creative_snapshot':creative}
         if snapshot is not None:
@@ -381,5 +396,15 @@ def register(app, get_session, scoped_staff):
             from .social_jobs import info as job_info
             production = session.scalar(select(ProductionJob).where(ProductionJob.business_id==business_id,ProductionJob.result_revision==rev.id,ProductionJob.state=='succeeded').order_by(ProductionJob.created_at.desc()).limit(1))
             archive.writestr('production.json', canonical(job_info(session,production) if production else {'state':'legacy_synchronous','attempts':None,'total_cost_microusd':None}))
-            archive.writestr('measurement.json' ,canonical({'primary':doc['brief']['primary_measure'],'value':None,'reason':'not_published','provider_cost_usd':0,'compute_cost_usd':None}))
+            provider_cost = 0
+            if doc.get('proposal_snapshot'):
+                from .social_proposals import proposal_info
+                from .social_proposal_models import Proposal
+                proposal = owned(session,Proposal,doc['proposal_snapshot']['proposal_id'],business_id)
+                generation = session.get(ProductionJob,proposal.job_id)
+                generation_info = job_info(session,generation)
+                archive.writestr('proposal.json',canonical({'proposal':proposal_info(session,proposal,app),'generation':generation_info}))
+                micro = generation_info['cost']['provider_microusd']
+                provider_cost = micro/1_000_000 if micro is not None else None
+            archive.writestr('measurement.json',canonical({'primary':doc['brief']['primary_measure'],'value':None,'reason':'not_published','provider_cost_usd':provider_cost,'compute_cost_usd':None}))
         return Response(result.getvalue(),media_type='application/zip',headers={'Content-Disposition':f'attachment; filename="social-{pack_id}.zip"','Cache-Control':'no-store'})

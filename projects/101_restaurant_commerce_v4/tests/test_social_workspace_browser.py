@@ -111,7 +111,7 @@ def test_owner_corrects_shared_price_and_recovers_draft(site, tmp_path):
     page.get_by_role("button", name="Guardar información del negocio", exact=True).click()
     page.get_by_text("Información de tu negocio · versión 1", exact=True).wait_for()
     page.get_by_role("button", name="Usar objetivo del negocio", exact=True).click()
-    page.get_by_label("Precio: 12000 COP.", exact=True).check()
+    page.locator("#social-production-form").get_by_label("Precio: 12000 COP.", exact=True).check()
     page.get_by_label("¿Qué pregunta debe responder?", exact=True).fill("¿Cuánto cuesta?")
     page.get_by_label("Revisar estos datos").fill((date.today() + timedelta(days=7)).isoformat())
     page.get_by_label("¿Cómo debe verse y sonar?").fill("Fotografía protagonista.")
@@ -170,6 +170,7 @@ def test_owner_corrects_shared_price_and_recovers_draft(site, tmp_path):
 
 def test_owner_reuses_brand_examples_and_sourced_question(site, tmp_path):
     import json
+
     from playwright.sync_api import expect
 
     page, context, url, app, *_ = site
@@ -323,6 +324,7 @@ def test_owner_reuses_brand_examples_and_sourced_question(site, tmp_path):
 
 def test_guided_onboarding_custom_reuse_and_unknowns(site, tmp_path):
     import json
+
     from playwright.sync_api import expect
 
     page, context, url, app, *_ = site
@@ -412,7 +414,9 @@ def test_guided_onboarding_custom_reuse_and_unknowns(site, tmp_path):
     expect(page.get_by_label("¿Qué quieres conseguir?", exact=True)).to_have_value(
         "Recibir más pedidos"
     )
-    page.get_by_label("Imagen sintética de prueba.", exact=True).check()
+    page.locator("#social-production-form").get_by_label(
+        "Imagen sintética de prueba.", exact=True
+    ).check()
     page.get_by_label("¿Qué pregunta debe responder?", exact=True).fill(
         "¿Qué muestra la imagen de prueba?"
     )
@@ -479,6 +483,7 @@ def test_guided_onboarding_custom_reuse_and_unknowns(site, tmp_path):
 
 def test_durable_job_retry_and_return_to_result(site, tmp_path):
     import json
+
     from playwright.sync_api import expect
     from world_model.restaurant_commerce import social_jobs
 
@@ -554,3 +559,115 @@ def test_durable_job_retry_and_return_to_result(site, tmp_path):
     assert [a["state"] for a in done["attempts"]] == ["failed", "succeeded"]
     assert done["cost"]["total_microusd"] is None
     (evidence / "n04-job.json").write_text(json.dumps(done, indent=2))
+
+
+def test_owner_reviews_two_proposals_and_produces_exact_selected_copy(site, tmp_path):
+    """N05 normal UI, template mode explicitly labeled; no API fixture shortcut."""
+    import json
+    import zipfile
+
+    from playwright.sync_api import expect
+
+    page, context, url, app, *_ = site
+    evidence = Path(os.environ.get("SOCIAL_BROWSER_EVIDENCE", str(tmp_path / "evidence")))
+    evidence.mkdir(parents=True, exist_ok=True)
+    page.goto("/workspace/social?business=" + BUSINESS)
+    page.get_by_label("Usuario", exact=True).fill("multi.owner")
+    page.get_by_label("Contraseña", exact=True).fill(PASSWORD)
+    page.get_by_role("button", name="Entrar", exact=True).click()
+    page.get_by_role("heading", name="Contenido para tus redes").wait_for()
+    page.get_by_role("button", name="Cerrar sin guardar", exact=True).click()
+    page.locator(".social-context-manual summary").click()
+    page.get_by_label("¿Qué quieres ofrecer?", exact=True).fill("Producto sintético")
+    page.get_by_label("Objetivo del negocio", exact=True).fill("Explicar cómo pedir")
+    page.get_by_label("¿Cómo pueden comprar o pedir?", exact=True).fill("En el local de prueba")
+    page.get_by_role("button", name="Añadir dato", exact=True).click()
+    fact = page.locator(".social-fact").first
+    fact.get_by_label("Nombre del dato", exact=True).fill("Precio")
+    fact.get_by_label("Tipo", exact=True).select_option("money")
+    fact.get_by_label("Valor", exact=True).fill("12000")
+    fact.get_by_label("Moneda", exact=True).fill("COP")
+    fact.get_by_label("Revisar antes de", exact=True).fill(
+        (date.today() + timedelta(days=7)).isoformat()
+    )
+    page.get_by_label("He revisado esta información").check()
+    page.get_by_role("button", name="Guardar información del negocio", exact=True).click()
+    page.get_by_text("Información de tu negocio · versión 1", exact=True).wait_for()
+    page.get_by_label("Revisar estos datos").fill((date.today() + timedelta(days=7)).isoformat())
+    photo = tmp_path / "proposal-fixture.png"
+    Image.new("RGB", (1200, 1500), "#998877").save(photo)
+    page.get_by_label("Permiso para usar").fill("Imagen sintética creada para esta prueba.")
+    page.locator("input[type=file]").set_input_files(str(photo))
+    page.get_by_text("Fotografía recibida.", exact=True).wait_for()
+    panel = page.locator(".proposal-panel")
+    panel.locator("summary").first.click()
+    panel.get_by_label("Fotografía para esta idea").select_option(index=1)
+    panel.get_by_label("Precio: 12000 COP.", exact=True).check()
+    panel.get_by_label("Pregunta o tema").fill("¿Cuánto cuesta?")
+    panel.get_by_role("button", name="Preparar propuesta y dos textos", exact=True).click()
+    panel.get_by_role("button", name="Elegir texto conversado", exact=True).wait_for()
+    assert "No se llamó a un modelo." in panel.inner_text()
+    assert panel.locator(".proposal-options article").count() == 2
+    panel.get_by_role("button", name="Elegir texto conversado", exact=True).click()
+    text = panel.get_by_label("Texto elegido · puedes editarlo", exact=True)
+    text.fill("Precio: 15000 COP.")
+    panel.get_by_label("Comprobé cada afirmación").check()
+    panel.get_by_label("Revisé el texto completo").check()
+    panel.get_by_label("Motivo de la decisión").fill("Prueba de corrección de precio")
+    panel.get_by_role("button", name="Guardar texto revisado", exact=True).click()
+    expect(panel.get_by_role("alert")).to_contain_text("sin respaldo")
+    selected = "Te contamos el precio.\n\nPrecio: 12000 COP."
+    text.fill(selected)
+    panel.get_by_label("Comprobé cada afirmación").check()
+    panel.get_by_label("Revisé el texto completo").check()
+    panel.get_by_label("Tipo de decisión").select_option("style_preference")
+    panel.get_by_label("Motivo de la decisión").fill("Una entrada más clara para esta prueba")
+    panel.get_by_role("button", name="Guardar texto revisado", exact=True).click()
+    panel.get_by_role("button", name="Preparar publicación con este texto", exact=True).wait_for()
+    page.screenshot(path=str(evidence / "proposal-desktop-after.png"), full_page=True)
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.screenshot(path=str(evidence / "proposal-mobile-selected.png"), full_page=True)
+    assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+    metrics = panel.evaluate("""e => ({font:getComputedStyle(e).fontFamily,
+        width:e.getBoundingClientRect().width,
+        actionHeights:[...e.querySelectorAll('button')].filter(x=>x.offsetParent).map(x=>x.getBoundingClientRect().height),
+        overflow:document.documentElement.scrollWidth>innerWidth})""")
+    (evidence / "proposal-layout.json").write_text(json.dumps(metrics, indent=2))
+    assert "Inter" in metrics["font"] and min(metrics["actionHeights"]) >= 44
+    panel.get_by_role("button", name="Preparar publicación con este texto", exact=True).click()
+    page.get_by_role("heading", name="Revisa la versión 1").wait_for()
+    assert page.locator("aside .social-caption").inner_text() == selected
+    page.get_by_label("Revisé la fotografía").check()
+    page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
+    page.get_by_role("button", name="Versión aprobada").wait_for()
+    with page.expect_download() as download:
+        page.get_by_role("link", name="Descargar foto", exact=False).click()
+    package = evidence / "proposal-approved-package.zip"
+    download.value.save_as(str(package))
+    with zipfile.ZipFile(package) as z:
+        assert z.read("caption.txt").decode() == selected
+        (evidence / "proposal-post.jpg").write_bytes(z.read("post.jpg"))
+    # Crop revision preserves the reviewed copy, hypothesis and intended measure.
+    pack_id = page.get_by_label("Trabajo guardado").input_value()
+    api = "/api/operator/restaurants/" + BUSINESS + "/social/packs/" + pack_id
+    before = page.request.get(api).json()
+    page.get_by_label("Encuadre horizontal").fill("0.3")
+    page.get_by_label("Confirmo que").check()
+    page.get_by_role("button", name="Guardar nueva versión", exact=True).click()
+    page.get_by_role("heading", name="Revisa la versión 2").wait_for()
+    after = page.request.get(api).json()
+    assert after["document"]["caption"] == selected and not after["approved"]
+    for field in ("hypothesis", "primary_measure"):
+        assert after["document"]["brief"][field] == before["document"]["brief"][field]
+    page.get_by_label("Revisé la fotografía").check()
+    page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
+    page.get_by_role("button", name="Versión aprobada").wait_for()
+    page.set_viewport_size({"width": 1440, "height": 1000})
+    page.screenshot(path=str(evidence / "proposal-approved-desktop.png"), full_page=True)
+    page.reload()
+    page.locator(".proposal-panel > summary").click()
+    panel.get_by_label("Propuestas guardadas").select_option(index=1)
+    panel.get_by_role("button", name="Preparar publicación con este texto", exact=True).wait_for()
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.screenshot(path=str(evidence / "proposal-mobile-after.png"), full_page=True)
+    assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
