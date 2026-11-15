@@ -29,7 +29,8 @@ from .social_production import TABLES as SOCIAL_TABLES
 from .social_uploads import Upload  # register additive metadata
 from .social_context import TABLES as CONTEXT_TABLES
 from .social_creative import TABLES as CREATIVE_TABLES
-SOCIAL_TABLES = SOCIAL_TABLES | {"social_uploads"} | CONTEXT_TABLES | CREATIVE_TABLES
+from .social_job_models import TABLES as JOB_TABLES
+SOCIAL_TABLES = JOB_TABLES | SOCIAL_TABLES | {"social_uploads"} | CONTEXT_TABLES | CREATIVE_TABLES
 
 
 def make_engine(database_url: str | None = None) -> Engine:

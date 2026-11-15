@@ -10,7 +10,8 @@ def social_tables():
 
     from .social_context import Context, ContextVersion, FactDependency
     from .social_creative import CreativeBoard, CreativeVersion
-    return [model.__table__ for model in (Asset, Pack, Revision, Approval, Upload, Context, ContextVersion, FactDependency, CreativeBoard, CreativeVersion)]
+    from .social_job_models import ProductionJob, ProductionAttempt, ProductionEffort
+    return [model.__table__ for model in (Asset, Pack, Revision, Approval, Upload, Context, ContextVersion, FactDependency, CreativeBoard, CreativeVersion, ProductionJob, ProductionAttempt, ProductionEffort)]
 
 
 def schema_ready(bind):

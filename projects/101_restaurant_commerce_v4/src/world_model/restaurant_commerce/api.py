@@ -146,6 +146,7 @@ def create_app(
     max_body_bytes: int = 1_048_576,
     storefront_cache_ttl_seconds: float = 15.0,
     auto_init_schema: bool | None = None,
+    social_worker_enabled: bool = True,
     payment_recovery_enabled: bool = True,
     provider_recovery_enabled: bool = True,
     payment_recovery_interval_seconds: float = 1.0,
@@ -280,6 +281,10 @@ def create_app(
 
     @asynccontextmanager
     async def lifespan(_app):
+        from .social_jobs import start_worker as start_social_worker
+        social_stop = social_thread = None
+        if social_worker_enabled:
+            social_stop, social_thread = start_social_worker(SessionLocal, _app)
         instagram_stop = instagram_thread = None
         if instagram_runtime and instagram_runtime.worker:
             instagram_stop, instagram_thread = start_worker(SessionLocal, instagram_runtime)
@@ -297,6 +302,9 @@ def create_app(
             yield
         finally:
             readiness.close()
+            if social_stop:
+                social_stop.set()
+                social_thread.join(timeout=5)
             if instagram_stop:
                 instagram_stop.set()
                 instagram_thread.join(timeout=5)

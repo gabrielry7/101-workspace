@@ -306,3 +306,10 @@ Hiding the sidebar releases its full width; the header exposes a matching reopen
 button next to the page label. Focus moves between the two controls and visibility
 is remembered locally, independent of business data. The existing phone drawer,
 close button and Escape behavior remain separate. No branding row is reintroduced.
+
+Social production activity (N04,2026-11-14): reuse the shared white working panel,
+Inter, normal action buttons and44px controls. A compact list shows queued/running/
+failed/needs-review/completed status; activity and manual effort open on demand.
+Retry names the failed step; completed work opens its actual saved result. Unknown
+machine costs are explicitly uncalculated. Photo review/approval remains a separate
+working surface. Phone actions wrap; no status is conveyed solely by color.

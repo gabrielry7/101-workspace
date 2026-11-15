@@ -199,3 +199,62 @@ fourth owner browser workflow. Source and renderer output remain synthetic fixtu
 Rollback should retain context JSON; older clients cannot safely edit newly nullable
 brief fields. Prefer a forward fix or temporarily disable writes before an older
 application rollback; never discard saved answers or fact history.
+
+### N04 durable local production
+
+The normal photo form now queues `photo_render` through `POST /social/jobs`, then
+polls only while work is pending and the page is visible. A small SQL worker starts
+with the existing app lifespan (`social_worker_enabled=False` disables it for a
+separate worker/test composition). No external broker/service or dependency.
+Existing synchronous pack endpoints remain compatible for installed clients;
+only the new job route records durable attempts. Legacy export says so explicitly.
+
+New additive tables: `social_production_jobs`, `social_production_attempts`,
+`social_production_effort`. Back up/stop writers and use the existing explicit
+`maintenance upgrade-social --offline`. Fresh installations include these tables;
+an existing N03 database is unavailable for social writes until explicitly upgraded.
+No job is seeded or historical attempt invented. Original assets, context versions,
+pack revisions and approvals are untouched by the migration.
+
+Reuse decision: extend commerce's SQL lease/generation and lifespan-thread pattern
+from `connections.py`, adding individual attempts, input/version fencing and a
+committed byte checkpoint. Archive analysis `source.snapshot` requires archive.sqlite
+paths and its model runner uses separate grant authority; neither is a tenant owner
+asset API. `inspect_asset` adapts verified owner bytes to the same bounded EXIF/RGB/
+no-upscale JPEG preparation contract as archive `Preparer.image`, preserving source
+asset ID/hash, business, original capture vs upload time, usage basis and expiry.
+This is a local media adapter, not an archive import, semantic model or ASR.
+It makes a640px thumbnail, probe dimensions and inherited provenance available.
+
+Job inputs include current exact fact/creative context, expected pack revision,
+source hash, recipe/renderer/tool versions, actor and account auth version. Duplicate
+requests return the same job. SQL uniqueness also fences simultaneous original
+request creation. Claims commit a30-second lease and new attempt before rendering;
+completion rechecks authority, source, context and current revision under a fresh
+lease check and commits pack plus job success together. Local renders/checkpoints
+are bounded; no model-generated commands or arbitrary job types are accepted.
+The worker renews the lease when it checkpoints. Operations exceeding their lease
+are discarded/reclaimed rather than allowed to overwrite another worker's result.
+
+Attempt states survive process death. A worker killed after checkpoint but before
+completion leaves bytes/digest/report available to a new lease; the interrupted
+attempt stays recorded. Max5 attempts per job; visible failures need explicit retry.
+Changed-input results are superseded or need review. Newly changed facts/brand/source
+require a new job rather than retrying obsolete inputs. Each retry independently
+revalidates current inputs. Revoked sources purge queued/checkpoint/thumbnail bytes;
+worker maintenance purges inaccessible derivatives after expiry. Reads always enforce
+expiry even if no worker is available. Lease tokens and input snapshots are not
+returned by the activity API. Approval is still human and binds the resulting version.
+
+All currently allowlisted jobs are local. Paid/model jobs and positive budgets are
+rejected. Each attempt records a zero external reservation/actual provider cost,
+null model/prompt, recipe/tool version, runtime/output size when known and checkpoint
+reuse. Compute/storage/total cost remain null until prices/usage are configured;
+no all-in-free claim. Owner/reviewer effort is explicitly self-reported, scoped and
+idempotent. Successful exports include `production.json` for that exact revision.
+
+Rollback: keep the three additive tables and all historical inputs/results. Stop
+the worker and context writes before running older code. Older code can still
+serve completed pack revisions but cannot recover jobs; never delete the queue or
+restore a backup over newer work. Public hosting/boot-persistent service setup is
+still a separate operational task. No live model, provider or publication enabled.

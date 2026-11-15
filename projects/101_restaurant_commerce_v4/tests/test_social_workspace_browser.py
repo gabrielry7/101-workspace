@@ -475,3 +475,82 @@ def test_guided_onboarding_custom_reuse_and_unknowns(site, tmp_path):
             indent=2,
         )
     )
+
+
+def test_durable_job_retry_and_return_to_result(site, tmp_path):
+    import json
+    from playwright.sync_api import expect
+    from world_model.restaurant_commerce import social_jobs
+
+    page, context, url, app, *_ = site
+    app.state.social_worker_paused = True
+    evidence = Path(os.environ.get("SOCIAL_BROWSER_EVIDENCE", str(tmp_path / "evidence")))
+    evidence.mkdir(parents=True, exist_ok=True)
+    page.goto("/workspace/social?business=" + BUSINESS)
+    page.get_by_label("Usuario", exact=True).fill("multi.owner")
+    page.get_by_label("Contraseña", exact=True).fill(PASSWORD)
+    page.get_by_role("button", name="Entrar", exact=True).click()
+    page.get_by_role("region", name="Guía de tu negocio").wait_for()
+    page.get_by_label("¿Qué quieres conseguir?", exact=True).fill("Explicar esta imagen sintética")
+    page.get_by_label("¿Qué pregunta debe responder?", exact=True).fill("¿Qué muestra?")
+    page.get_by_label("Texto que puedes confirmar").fill(
+        "Archivo sintético para probar la recuperación."
+    )
+    page.get_by_label("Revisar estos datos").fill((date.today() + timedelta(days=7)).isoformat())
+    page.get_by_label("¿Cómo debe verse y sonar?").fill("Natural y claro")
+    page.get_by_label("Permiso para usar").fill("Material sintético creado para esta prueba")
+    photo = tmp_path / "queue.jpg"
+    Image.new("RGB", (1200, 1500), "#9b8876").save(photo)
+    page.locator("input[type=file]").set_input_files(str(photo))
+    page.get_by_text("Fotografía recibida.", exact=True).wait_for()
+    page.get_by_label("Confirmo que").check()
+    page.get_by_role("button", name="Preparar publicación", exact=True).click()
+    panel = page.get_by_role("region", name="Preparación de contenido")
+    expect(panel).to_contain_text("En cola")
+    page.screenshot(path=str(evidence / "n04-queued-desktop.png"), full_page=True)
+    root = "/api/operator/restaurants/" + BUSINESS + "/social"
+    job = page.request.get(root + "/jobs").json()["jobs"][0]
+    pair = social_jobs.claim(app.state.session_factory, job_id=job["id"])
+    social_jobs.failed(app.state.session_factory, *pair, RuntimeError("Synthetic one-time failure"))
+    expect(panel).to_contain_text("No se pudo terminar")
+    panel.get_by_role("button", name="Ver actividad", exact=True).click()
+    expect(panel).to_contain_text("Costo de procesamiento y almacenamiento: sin calcular")
+    page.set_viewport_size({"width": 390, "height": 844})
+    panel.screenshot(path=str(evidence / "n04-failed-mobile.png"))
+    panel.get_by_role("button", name="Reintentar este paso", exact=True).click()
+    expect(panel).to_contain_text("En cola")
+    # Leave the route while the saved task is queued. Worker completes independently.
+    page.set_viewport_size({"width": 1440, "height": 1000})
+    page.get_by_role("link", name="Clientes", exact=True).click()
+    page.locator(".customer-link").first.wait_for()
+    assert social_jobs.dispatch_one(app.state.session_factory, app)
+    open_social(page)
+    panel.get_by_role("button", name="Abrir resultado", exact=True).wait_for()
+    panel.get_by_role("button", name="Abrir resultado", exact=True).click()
+    page.get_by_role("heading", name="Revisa la versión 1").wait_for()
+    assert (
+        page.locator("aside .social-caption").inner_text()
+        == "Archivo sintético para probar la recuperación."
+    )
+    panel.get_by_role("button", name="Ver actividad", exact=True).click()
+    panel.get_by_label("Tiempo dedicado (segundos)").fill("45")
+    panel.get_by_role("button", name="Registrar tiempo", exact=True).click()
+    expect(panel).to_contain_text("45 s")
+    page.get_by_label("Revisé la fotografía").check()
+    page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
+    page.get_by_role("button", name="Versión aprobada").wait_for()
+    with page.expect_download() as download:
+        page.get_by_role("link", name="Descargar foto", exact=False).click()
+    download.value.save_as(str(evidence / "n04-approved-package.zip"))
+    panel.screenshot(path=str(evidence / "n04-recovered-desktop.png"))
+    layout = panel.evaluate(
+        """e=>({font:getComputedStyle(e).fontFamily,buttonHeight:e.querySelector('button').getBoundingClientRect().height})"""
+    )
+    page.set_viewport_size({"width": 390, "height": 844})
+    assert page.evaluate("document.documentElement.scrollWidth<=innerWidth")
+    layout["mobileOverflow"] = False
+    (evidence / "n04-layout.json").write_text(json.dumps(layout))
+    done = page.request.get(root + "/jobs/" + job["id"]).json()
+    assert [a["state"] for a in done["attempts"]] == ["failed", "succeeded"]
+    assert done["cost"]["total_microusd"] is None
+    (evidence / "n04-job.json").write_text(json.dumps(done, indent=2))

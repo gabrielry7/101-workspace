@@ -285,13 +285,15 @@ def register(app, get_session, scoped_staff):
         for rev in session.scalars(select(Revision).join(Pack).where(Pack.business_id==business_id)):
             if json.loads(rev.document)['brief']['asset_id']==asset_id:
                 rev.image=b''
+        from .social_jobs import purge_asset
+        purge_asset(session, business_id, asset_id)
         session.commit()
         return {'revoked':True}
 
-    def save(business, payload, principal, session, pack_id=None):
+    def save(business, payload, principal, session, pack_id=None, *, prepare_only=False, rendered=None, snapshot=None, commit=True):
         now=utcnow()
         stable_id=hashlib.sha256((business+':'+str(payload.request_id)).encode()).hexdigest()[:32]
-        if pack_id is None and session.get(Pack,stable_id) is not None:
+        if not prepare_only and pack_id is None and session.get(Pack,stable_id) is not None:
             existing=document(session,business,stable_id,now)
             require(Brief.model_validate(existing['document']['brief']).model_dump(mode='json')==payload.model_dump(mode='json'),'idempotency_conflict')
             return existing
@@ -303,13 +305,22 @@ def register(app, get_session, scoped_staff):
             require(resolver(business, str(payload.location_id)), 'location_not_in_business', 404)
         business_brief = validate_pack_context(session, business, payload, now)
         creative = creative_snapshot(session, business, payload, now)
-        png, report=render(asset.original,payload)
         facts={f.id:f.text for f in payload.facts}
         caption='\n\n'.join(facts[key] for key in payload.caption_fact_ids)
         doc={'schema_version':'1','renderer':VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
             'caption':caption,'copy_mode':'deterministic_confirmed_statements', 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
             'intended_action':'manual_export','destination_account':None, 'business_brief':business_brief, 'creative_snapshot':creative}
+        if snapshot is not None:
+            require(all(snapshot[k] == doc[k] for k in ('brief','asset_sha256','business_brief','creative_snapshot','renderer')), 'job_inputs_changed')
+            doc = snapshot
+        if prepare_only:
+            if pack_id:
+                require(owned(session, Pack, pack_id, business).revision == payload.expected_revision, 'revision_conflict')
+            else:
+                require(payload.expected_revision == 0, 'revision_conflict')
+            return doc
+        png, report = rendered if rendered is not None else render(asset.original, payload)
         if pack_id is None:
             require(payload.expected_revision==0,'revision_conflict')
             pack=Pack(id=stable_id,business_id=business,revision=1)
@@ -325,8 +336,12 @@ def register(app, get_session, scoped_staff):
         session.add(Revision(id=f'{pack.id}:{pack.revision}',pack_id=pack.id,document=encoded,digest=digest,image=png,report=canonical(report)))
         session.flush()
         attach_dependencies(session, f'{pack.id}:{pack.revision}', payload)
-        session.commit()
+        if commit:
+            session.commit()
         return document(session,business,pack.id,now)
+
+    from .social_jobs import register as register_jobs
+    register_jobs(app, get_session, read, write, save)
 
     @app.post(root+'/packs')
     def create(business_id: str,payload: Brief,principal=Depends(write),session=Depends(get_session)):
@@ -362,5 +377,9 @@ def register(app, get_session, scoped_staff):
             archive.writestr('caption.txt',doc['caption'])
             archive.writestr('editable.json',rev.document)
             archive.writestr('approval.json',canonical({'digest':rev.digest,'actor_id':approval.actor_id,'at':approval.approved_at,'scope':'manual_export'}))
-            archive.writestr('measurement.json',canonical({'primary':doc['brief']['primary_measure'],'value':None,'reason':'not_published','provider_cost_usd':0,'compute_cost_usd':None}))
+            from .social_job_models import ProductionJob
+            from .social_jobs import info as job_info
+            production = session.scalar(select(ProductionJob).where(ProductionJob.business_id==business_id,ProductionJob.result_revision==rev.id,ProductionJob.state=='succeeded').order_by(ProductionJob.created_at.desc()).limit(1))
+            archive.writestr('production.json', canonical(job_info(session,production) if production else {'state':'legacy_synchronous','attempts':None,'total_cost_microusd':None}))
+            archive.writestr('measurement.json' ,canonical({'primary':doc['brief']['primary_measure'],'value':None,'reason':'not_published','provider_cost_usd':0,'compute_cost_usd':None}))
         return Response(result.getvalue(),media_type='application/zip',headers={'Content-Disposition':f'attachment; filename="social-{pack_id}.zip"','Cache-Control':'no-store'})
