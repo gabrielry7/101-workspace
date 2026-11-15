@@ -111,13 +111,14 @@ def input_check(session, job, app):
         )
         require(
             all(
-                current[k] == inputs["snapshot"][k]
+                current.get(k) == inputs["snapshot"].get(k)
                 for k in (
                     "brief",
                     "business_brief",
                     "creative_snapshot",
                     "asset_sha256",
                     "renderer",
+                    "design",
                 )
             ),
             "job_inputs_changed",

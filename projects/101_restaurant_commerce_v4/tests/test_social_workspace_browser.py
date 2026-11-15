@@ -671,3 +671,202 @@ def test_owner_reviews_two_proposals_and_produces_exact_selected_copy(site, tmp_
     page.set_viewport_size({"width": 390, "height": 844})
     page.screenshot(path=str(evidence / "proposal-mobile-after.png"), full_page=True)
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+
+
+def test_owner_edits_static_layers_corrects_price_and_views_history(
+    site, tmp_path, caption_from_price=True
+):
+    """Real owner UI → actual licensed typography → corrected price without photo/layout loss."""
+    import io
+    import json
+    import zipfile
+    from PIL import ImageDraw
+    from playwright.sync_api import expect
+
+    page, context, url, app, *_ = site
+    evidence = Path(os.environ.get("SOCIAL_BROWSER_EVIDENCE", str(tmp_path / "evidence")))
+    evidence.mkdir(parents=True, exist_ok=True)
+    page.goto("/workspace/social?business=" + BUSINESS)
+    page.get_by_label("Usuario", exact=True).fill("multi.owner")
+    page.get_by_label("Contraseña", exact=True).fill(PASSWORD)
+    page.get_by_role("button", name="Entrar", exact=True).click()
+    page.get_by_role("heading", name="Contenido para tus redes").wait_for()
+    page.get_by_role("button", name="Cerrar sin guardar", exact=True).click()
+    page.locator(".social-context-manual summary").click()
+    page.get_by_label("¿Qué quieres ofrecer?", exact=True).fill(
+        "Material sintético para verificar el diseño"
+    )
+    page.get_by_label("Objetivo del negocio", exact=True).fill("Explicar una pieza de prueba")
+    page.get_by_label("¿Cómo pueden comprar o pedir?", exact=True).fill(
+        "Ruta de prueba sin publicación"
+    )
+    page.get_by_role("button", name="Añadir dato", exact=True).click()
+    fact = page.locator(".social-fact").first
+    fact.get_by_label("Nombre del dato", exact=True).fill("Precio")
+    fact.get_by_label("Tipo", exact=True).select_option("money")
+    fact.get_by_label("Valor", exact=True).fill("12000")
+    fact.get_by_label("Moneda", exact=True).fill("COP")
+    deadline = (date.today() + timedelta(days=7)).isoformat()
+    fact.get_by_label("Revisar antes de", exact=True).fill(deadline)
+    page.get_by_label("He revisado esta información").check()
+    page.get_by_role("button", name="Guardar información del negocio", exact=True).click()
+    page.get_by_text("Información de tu negocio · versión 1", exact=True).wait_for()
+    form = page.locator("#social-production-form")
+    form.get_by_role("button", name="Usar objetivo del negocio", exact=True).click()
+    if caption_from_price:
+        form.get_by_label("Precio: 12000 COP.", exact=True).check()
+    else:
+        form.get_by_label("Texto que puedes confirmar", exact=True).fill(
+            "Imagen sintética para esta prueba."
+        )
+    form.get_by_label("¿Qué pregunta debe responder?", exact=True).fill(
+        "¿Cuál es el precio de esta pieza de prueba?"
+    )
+    form.get_by_label("Revisar estos datos").fill(deadline)
+    form.get_by_label("¿Cómo debe verse y sonar?").fill(
+        "Foto real sin retoques, título legible y precio confirmado."
+    )
+    form.get_by_label("Permiso para usar").fill(
+        "Fixture geométrico creado por el autor de esta prueba."
+    )
+    source = Image.new("RGB", (1200, 1500), "#d4c4ac")
+    draw = ImageDraw.Draw(source)
+    draw.rectangle((0, 1000, 1200, 1500), fill="#b1b69f")
+    draw.ellipse((180, 210, 1080, 1110), fill="#b76d4d")
+    draw.ellipse((310, 340, 950, 980), fill="#e8dac5")
+    photo = tmp_path / "canvas-fixture.png"
+    source.save(photo)
+    form.locator("input[type=file]").set_input_files(str(photo))
+    page.get_by_text("Fotografía recibida.", exact=True).wait_for()
+    editor = page.locator(".social-design-editor")
+    editor.locator("summary").first.click()
+    editor.get_by_label("Composición", exact=True).select_option("photo_first")
+    title = "Una imagen para explicar el próximo paso"
+    editor.get_by_label("Título de la imagen", exact=True).fill(title)
+    editor.get_by_label("Precio · dato o texto", exact=True).select_option(
+        label="Precio: 12000 COP."
+    )
+    form.get_by_label("Confirmo que").check()
+    form.get_by_role("button", name="Preparar publicación", exact=True).click()
+    page.get_by_role("heading", name="Revisa la versión 1").wait_for()
+    packid = page.get_by_label("Trabajo guardado").input_value()
+    api = "/api/operator/restaurants/" + BUSINESS + "/social/packs/" + packid
+    before = page.request.get(api).json()
+    first_image = page.request.get(api + "/image").body()
+    assert before["document"]["design"]["layers"][-1]["text"] == "Precio: 12000 COP."
+    if not caption_from_price:
+        price_id = before["document"]["design"]["layers"][-1]["fact_id"]
+        assert price_id not in before["document"]["brief"]["caption_fact_ids"]
+        assert price_id in [r["fact_id"] for r in before["document"]["brief"]["fact_refs"]]
+    page.locator("aside .social-image").screenshot(path=str(evidence / "photo-first-12000.png"))
+    page.get_by_label("Revisé la fotografía").check()
+    page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
+    page.get_by_role("button", name="Versión aprobada").wait_for()
+    form.get_by_role("link", name="Ver imagen preparada · versión 1", exact=True).click()
+    page.screenshot(path=str(evidence / "design-review-desktop-after.png"), full_page=False)
+    page.get_by_role("link", name="Volver a editar el diseño", exact=True).click()
+    editor.screenshot(path=str(evidence / "design-editor-desktop-after.png"))
+    page.screenshot(path=str(evidence / "design-desktop-after.png"), full_page=True)
+    # Overflow is actionable and cannot create a misleading successful version.
+    editor.get_by_label("Título de la imagen", exact=True).fill("Texto de prueba " * 18)
+    form.get_by_label("Confirmo que").check()
+    form.get_by_role("button", name="Guardar nueva versión", exact=True).click()
+    expect(page.get_by_role("alert")).to_contain_text("no cabe")
+    assert page.request.get(api).json()["revision"] == 1
+    editor.get_by_label("Título de la imagen", exact=True).fill(title)
+    editor.get_by_label("Nuevo precio confirmado").fill("15000")
+    editor.get_by_label("Confirmo este nuevo precio.", exact=True).check()
+    editor.get_by_role("button", name="Actualizar precio del negocio", exact=True).click()
+    page.locator(".social-stale").wait_for()
+    assert page.get_by_role("link", name="Descargar foto", exact=False).count() == 0
+    form.get_by_label("Confirmo que").check()
+    form.get_by_role("button", name="Guardar nueva versión", exact=True).click()
+    page.get_by_role("heading", name="Revisa la versión 2").wait_for()
+    after = page.request.get(api).json()
+    a, b = before["document"]["design"], after["document"]["design"]
+    assert a["layers"][1] == b["layers"][1] and a["styles"] == b["styles"]
+    assert a["layers"][2] == b["layers"][2] and b["layers"][-1]["text"] == "Precio: 15000 COP."
+    assert not after["approved"]
+    page.locator("aside .social-image").screenshot(path=str(evidence / "photo-first-15000.png"))
+    page.get_by_label("Revisé la fotografía").check()
+    page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
+    page.get_by_role("button", name="Versión aprobada").wait_for()
+    with page.expect_download() as download:
+        page.get_by_role("link", name="Descargar foto", exact=False).click()
+    package = evidence / "photo-first-package.zip"
+    download.value.save_as(str(package))
+    with zipfile.ZipFile(package) as z:
+        (evidence / "photo-first-final.jpg").write_bytes(z.read("post.jpg"))
+        assert json.loads(z.read("design.json")) == b
+        assert z.read("caption.txt").decode() == (
+            "Precio: 15000 COP." if caption_from_price else "Imagen sintética para esta prueba."
+        )
+    editor.get_by_label("Composición", exact=True).select_option("information")
+    editor.get_by_label("Color del fondo", exact=True).fill("#253b39")
+    editor.get_by_label("Color del texto", exact=True).fill("#f5f1e9")
+    form.get_by_label("Confirmo que").check()
+    form.get_by_role("button", name="Guardar nueva versión", exact=True).click()
+    page.get_by_role("heading", name="Revisa la versión 3").wait_for()
+    page.get_by_label("Revisé la fotografía").check()
+    page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
+    page.get_by_role("button", name="Versión aprobada").wait_for()
+    with page.expect_download() as download:
+        page.get_by_role("link", name="Descargar foto", exact=False).click()
+    package = evidence / "information-package.zip"
+    download.value.save_as(str(package))
+    with zipfile.ZipFile(package) as z:
+        (evidence / "information-final.jpg").write_bytes(z.read("post.jpg"))
+    information = page.request.get(api).json()
+    # Independent photo replacement preserves the composed typography and text.
+    second = tmp_path / "replacement.png"
+    Image.new("RGB", (1400, 1700), "#b2bed0").save(second)
+    form.locator("input[type=file]").set_input_files(str(second))
+    page.get_by_text("Fotografía recibida.", exact=True).wait_for()
+    form.get_by_label("Confirmo que").check()
+    form.get_by_role("button", name="Guardar nueva versión", exact=True).click()
+    page.get_by_role("heading", name="Revisa la versión 4").wait_for()
+    final = page.request.get(api).json()
+    assert final["document"]["design"]["styles"] == information["document"]["design"]["styles"]
+    assert (
+        final["document"]["design"]["layers"][2:] == information["document"]["design"]["layers"][2:]
+    )
+    assert (
+        final["document"]["design"]["layers"][1]["asset_id"]
+        != information["document"]["design"]["layers"][1]["asset_id"]
+    )
+    history = page.locator(".social-design-history")
+    history.locator("summary").click()
+    history.get_by_role("button", name="Ver imagen y texto 1", exact=True).click()
+    expect(
+        history.get_by_text(
+            "Precio: 12000 COP." if caption_from_price else "Imagen sintética para esta prueba.",
+            exact=True,
+        )
+    ).to_be_visible()
+    assert page.request.get(api + "/revisions/1/image").body() == first_image
+    page.screenshot(path=str(evidence / "design-history-desktop.png"), full_page=True)
+    page.set_viewport_size({"width": 390, "height": 844})
+    editor.scroll_into_view_if_needed()
+    editor.screenshot(path=str(evidence / "design-editor-mobile-after.png"))
+    page.screenshot(path=str(evidence / "design-mobile-after.png"), full_page=True)
+    assert page.evaluate("document.documentElement.scrollWidth<=innerWidth")
+    metrics = editor.evaluate("""e=>({font:getComputedStyle(e).fontFamily,
+      actionHeights:[...e.querySelectorAll('button')].filter(x=>x.offsetParent).map(x=>x.getBoundingClientRect().height),
+      overflow:document.documentElement.scrollWidth>innerWidth})""")
+    (evidence / "design-layout.json").write_text(json.dumps(metrics, indent=2))
+    assert "Inter" in metrics["font"] and min(metrics["actionHeights"]) >= 44
+    page.reload()
+    page.get_by_label("Trabajo guardado").select_option(packid)
+    page.get_by_role("heading", name="Revisa la versión 4").wait_for()
+    assert editor.get_by_label("Composición", exact=True).input_value() == "information"
+    assert editor.get_by_label("Título de la imagen", exact=True).input_value() == title
+
+
+def test_owner_price_only_in_design_stales_without_caption_dependency(site, tmp_path, monkeypatch):
+    directory = (
+        Path(os.environ.get("SOCIAL_BROWSER_EVIDENCE", str(tmp_path / "evidence"))) / "overlay-only"
+    )
+    monkeypatch.setenv("SOCIAL_BROWSER_EVIDENCE", str(directory))
+    test_owner_edits_static_layers_corrects_price_and_views_history(
+        site, tmp_path, caption_from_price=False
+    )

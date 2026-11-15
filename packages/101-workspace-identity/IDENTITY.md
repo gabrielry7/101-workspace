@@ -331,3 +331,17 @@ buttons and responsive two-column layout; the proposal comparison is a local bon
 owned by Social, separate from the final publication approval.44px actions and
 phone wrapping are checked against reference03. Copy choice buttons align at the
 bottom of each option, and whole-copy review remains distinct from claim citations.
+
+Social static editor (N06,15 November2026): the existing photo form gains a
+collapsible design panel, shared Inter controls and separate title/information/
+price fields. Photo-only, photo-first and information presets share the same
+version/review surface. Color and typography controls stay separate from source
+facts; geometry is behind focused advanced disclosures. Changing a price writes
+the current fact through the existing confirmed-context writer and stales affected
+work; the photograph and layer geometry survive correction.44px actions, wrapping
+controls and readable fact sources are checked on phones. The review panel now
+sizes to its content; anchors join editing and prepared review without a new page.
+Historical images are clearly historical and never substitute for current approval.
+Creative output typography currently uses the existing licensed Inter Regular
+face;101UI typography stays governed by this identity, separately from merchant
+content choices. No default serif, font substitution or universal taste score.

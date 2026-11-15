@@ -12,6 +12,7 @@ import re
 import time
 import zipfile
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Literal
 from uuid import UUID, uuid4
 
@@ -22,6 +23,7 @@ from pydantic import BaseModel, ConfigDict, Field, AwareDatetime, model_validato
 from sqlalchemy import ForeignKey, LargeBinary, String, Text, select, update
 from sqlalchemy.orm import Mapped, mapped_column
 from .models import Base, utcnow
+from .social_design import Design, compile_scene, draw_scene, changes as design_changes, VERSION as DESIGN_VERSION
 
 VERSION = 'social-photo-v1'
 MAX_BYTES = 12 * 1024 * 1024
@@ -88,6 +90,7 @@ class FactReference(Strict):
 
 class Brief(Strict):
     schema_version: Literal['1'] = '1'
+    design: Design | None = None
     location_id: UUID | None = None
     context_version_id: str | None = Field(default=None, max_length=100)
     fact_refs: list[FactReference] = Field(default_factory=list, max_length=12)
@@ -176,6 +179,16 @@ def asset_check(session, identifier, business, now):
 
 def render(original, brief):
     started = time.monotonic()
+    if brief.design is not None:
+        scene = compile_scene(brief, original)
+        data = draw_scene(original, scene)
+        return data, {'renderer':DESIGN_VERSION,'width':1080,'height':1350,
+            'render_ms':round((time.monotonic()-started)*1000),'model_calls':0,
+            'provider_cost_usd':0,'compute_cost_usd':None,'technical':'passed',
+            'scene_sha256':scene['sha256'],'fonts':scene['fonts'],
+            'checks':['dimensions','decode','resolution','bounds','glyphs','overflow','contrast','exact_fact_text'],
+            'craft':'requires_human_review','brand':'requires_human_review',
+            'purpose':'requires_human_review','performance':'unavailable'}
     with Image.open(io.BytesIO(original)) as source:
         require(source.width * source.height <= 24_000_000, 'image_pixel_limit', 422)
         image = ImageOps.exif_transpose(source).convert('RGB')
@@ -264,6 +277,40 @@ def register(app, get_session, scoped_staff):
             'capabilities':{'instagram':connection['state'],'generation':'deterministic_preview','publication':'manual_export_only'},
             'baseline':baseline}
 
+    @app.get(root+'/design/options',dependencies=[Depends(read)])
+    def design_options(business_id: str):
+        from .social_design import presets, font_record
+        return {'presets':presets(),'fonts':[font_record()],'renderer':DESIGN_VERSION}
+
+    @app.get(root+'/packs/{pack_id}/history',dependencies=[Depends(read)])
+    def history(business_id: str,pack_id: str,before_revision: int | None=None,session=Depends(get_session)):
+        pack=owned(session,Pack,pack_id,business_id)
+        ceiling=min(before_revision or pack.revision+1,pack.revision+1)
+        require(ceiling>0,'invalid_revision',422)
+        result=[]
+        for number in range(ceiling-1,max(0,ceiling-21),-1):
+            rev=session.get(Revision,f'{pack.id}:{number}')
+            if not rev: continue
+            doc=json.loads(rev.document)
+            approval=session.get(Approval,rev.id)
+            previous=session.get(Revision,f'{pack.id}:{number-1}') if number>1 else None
+            result.append({'revision':number,'digest':rev.digest,'caption':doc['caption'],
+                'historically_approved':approval is not None,'current':number==pack.revision,
+                'at':doc.get('confirmed_at'),'reason':doc['brief'].get('revision_reason','initial'),
+                'changes':doc.get('changes') or design_changes(json.loads(previous.document) if previous else None,doc),
+                'layout':doc.get('design',{}).get('layout') if doc.get('design') else 'photo_only'})
+        return {'revisions':result,'before_revision':result[-1]['revision'] if result and result[-1]['revision']>1 else None}
+
+    @app.get(root+'/packs/{pack_id}/revisions/{number}/image',dependencies=[Depends(read)])
+    def revision_image(business_id: str,pack_id: str,number: int,session=Depends(get_session)):
+        pack=owned(session,Pack,pack_id,business_id)
+        require(1<=number<=pack.revision,'not_found',404)
+        rev=session.get(Revision,f'{pack.id}:{number}')
+        require(rev is not None,'not_found',404)
+        doc=json.loads(rev.document)
+        asset_check(session,doc['brief']['asset_id'],business_id,utcnow())
+        return Response(rev.image,media_type='image/jpeg',headers={'Cache-Control':'no-store'})
+
     @app.post(root+'/assets')
     def intake(business_id: str, payload: Intake, principal=Depends(write), session=Depends(get_session)):
         require(future(payload.expires_at.isoformat(),utcnow()), 'asset_expired')
@@ -318,16 +365,17 @@ def register(app, get_session, scoped_staff):
         if payload.proposal_decision_id:
             from .social_proposals import resolve_decision
             decision,ctx,proposal=resolve_decision(session,business,payload.proposal_decision_id,app)
-            require(payload.context_version_id==ctx['context_version_id'] and payload.creative_version_id==ctx['brand_version_id'] and payload.asset_id==ctx['asset']['id'],'proposal_snapshot_mismatch')
+            require(payload.context_version_id==ctx['context_version_id'] and payload.creative_version_id==ctx['brand_version_id'] and (payload.asset_id==ctx['asset']['id'] or pack_id is not None),'proposal_snapshot_mismatch')
             require(set(payload.caption_fact_ids)=={f['id'] for f in ctx['facts']},'proposal_fact_snapshot_mismatch')
-            caption=decision['text'];proposal_snapshot={'proposal_id':proposal.id,'decision_id':payload.proposal_decision_id,'mode':proposal.mode,'review':decision}
+            caption=decision['text'];proposal_snapshot={'proposal_id':proposal.id,'decision_id':payload.proposal_decision_id,'mode':proposal.mode,'review':decision,'proposed_asset_id':ctx['asset']['id'],'owner_replaced_photo':payload.asset_id!=ctx['asset']['id']}
 
-        doc={'schema_version':'1','renderer':VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
+        scene=compile_scene(payload,asset.original)
+        doc={'design':scene,'schema_version':'1','renderer':DESIGN_VERSION if scene else VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
             'caption':caption,'copy_mode':'reviewed_proposal' if proposal_snapshot else 'deterministic_confirmed_statements', 'proposal_snapshot':proposal_snapshot, 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
             'intended_action':'manual_export','destination_account':None, 'business_brief':business_brief, 'creative_snapshot':creative}
         if snapshot is not None:
-            require(all(snapshot[k] == doc[k] for k in ('brief','asset_sha256','business_brief','creative_snapshot','renderer')), 'job_inputs_changed')
+            require(all(snapshot.get(k) == doc.get(k) for k in ('brief','asset_sha256','business_brief','creative_snapshot','renderer','design')), 'job_inputs_changed')
             doc = snapshot
         if prepare_only:
             if pack_id:
@@ -346,6 +394,10 @@ def register(app, get_session, scoped_staff):
             result=session.execute(update(Pack).where(Pack.id==pack_id,Pack.revision==payload.expected_revision).values(revision=Pack.revision+1))
             require(result.rowcount==1,'revision_conflict')
             session.refresh(pack)
+        previous = session.get(Revision,f'{pack.id}:{pack.revision-1}') if pack.revision>1 else None
+        doc['changes'] = design_changes(json.loads(previous.document) if previous else None,doc)
+        if scene:
+            require(report.get('scene_sha256')==scene['sha256'],'design_render_changed')
         encoded=canonical(doc)
         digest=hashlib.sha256((encoded+hashlib.sha256(png).hexdigest()).encode()).hexdigest()
         session.add(Revision(id=f'{pack.id}:{pack.revision}',pack_id=pack.id,document=encoded,digest=digest,image=png,report=canonical(report)))
@@ -391,6 +443,10 @@ def register(app, get_session, scoped_staff):
             archive.writestr('original',asset.original)
             archive.writestr('caption.txt',doc['caption'])
             archive.writestr('editable.json',rev.document)
+            if doc.get('design'):
+                archive.writestr('design.json',canonical(doc['design']))
+                archive.writestr('fonts.json',canonical(doc['design']['fonts']))
+                archive.writestr('INTER-LICENSE.txt',(Path(__file__).parent/'web'/'workspace'/'assets'/'INTER-LICENSE.txt').read_text())
             archive.writestr('approval.json',canonical({'digest':rev.digest,'actor_id':approval.actor_id,'at':approval.approved_at,'scope':'manual_export'}))
             from .social_job_models import ProductionJob
             from .social_jobs import info as job_info
