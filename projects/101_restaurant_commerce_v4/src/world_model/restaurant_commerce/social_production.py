@@ -10,9 +10,7 @@ import io
 import json
 import re
 import time
-import zipfile
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Literal
 from uuid import UUID, uuid4
 
@@ -88,7 +86,13 @@ class FactReference(Strict):
 
 
 
+class Handoff(Strict):
+    platform: Literal['unspecified', 'instagram', 'facebook', 'tiktok'] = 'unspecified'
+    account_label: str = Field(default='', max_length=120)
+
+
 class Brief(Strict):
+    handoff: Handoff = Field(default_factory=Handoff)
     schema_version: Literal['1'] = '1'
     design: Design | None = None
     location_id: UUID | None = None
@@ -144,9 +148,10 @@ class Intake(Strict):
 
 class Decision(Strict):
     digest: str = Field(pattern=r'^[a-f0-9]{64}$')
-    craft_reviewed: Literal[True]
-    brand_reviewed: Literal[True]
-    purpose_reviewed: Literal[True]
+    review_id: str | None = Field(default=None, max_length=64)
+    craft_reviewed: Literal[True] | None = None
+    brand_reviewed: Literal[True] | None = None
+    purpose_reviewed: Literal[True] | None = None
 
 
 def canonical(value):
@@ -225,7 +230,8 @@ def pack_state(session, business, pack_id, now):
         from .social_proposals import current_decision
         try: current_decision(session,business,doc['brief']['proposal_decision_id'])
         except HTTPException as error: reasons.append({'reason':error.detail})
-    approval = session.get(Approval, rev.id)
+    from .social_reviews import effective_approval
+    approval = effective_approval(session, rev, doc)
     return pack, rev, doc, approval, reasons, media_available
 
 
@@ -237,10 +243,11 @@ def current(session, business, pack_id, now):
 
 def document(session, business, pack_id, now):
     pack, rev, doc, approval, reasons, media = pack_state(session,business,pack_id,now)
-    return {'id':pack.id,'revision':pack.revision,'digest':rev.digest,'document':doc,
+    from .social_reviews import state, ever_approved
+    return {'review_state':state(session,rev,doc,bool(reasons)),'id':pack.id,'revision':pack.revision,'digest':rev.digest,'document':doc,
         'approved':not reasons and approval is not None and approval.digest == rev.digest,
         'stale':bool(reasons), 'stale_reasons':reasons, 'media_available':media,
-        'historically_approved':approval is not None,
+        'historically_approved':ever_approved(session,rev.id),
         'review':json.loads(rev.report), 'publication':{'status':'manual_export_only','post_id':None},
         'results':{'value':None,'reason':'not_published','search_traffic':None}}
 
@@ -261,6 +268,8 @@ def register(app, get_session, scoped_staff):
     register_creative(app, get_session, read, write)
     from .social_proposals import register as register_proposals
     register_proposals(app, get_session, read, write)
+    from .social_reviews import register as register_reviews
+    register_reviews(app,get_session,read,write)
     root='/api/operator/restaurants/{business_id}/social'
 
     @app.get(root, dependencies=[Depends(read)])
@@ -292,10 +301,12 @@ def register(app, get_session, scoped_staff):
             rev=session.get(Revision,f'{pack.id}:{number}')
             if not rev: continue
             doc=json.loads(rev.document)
-            approval=session.get(Approval,rev.id)
+            from .social_reviews import ever_approved, latest
+            assessment=latest(session,rev.id,'assessment')
+            review_summary=json.loads(assessment.document) if assessment else None
             previous=session.get(Revision,f'{pack.id}:{number-1}') if number>1 else None
-            result.append({'revision':number,'digest':rev.digest,'caption':doc['caption'],
-                'historically_approved':approval is not None,'current':number==pack.revision,
+            result.append({'review_summary':review_summary,'revision':number,'digest':rev.digest,'caption':doc['caption'],
+                'historically_approved':ever_approved(session,rev.id),'current':number==pack.revision,
                 'at':doc.get('confirmed_at'),'reason':doc['brief'].get('revision_reason','initial'),
                 'changes':doc.get('changes') or design_changes(json.loads(previous.document) if previous else None,doc),
                 'layout':doc.get('design',{}).get('layout') if doc.get('design') else 'photo_only'})
@@ -373,7 +384,7 @@ def register(app, get_session, scoped_staff):
         doc={'design':scene,'schema_version':'1','renderer':DESIGN_VERSION if scene else VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
             'caption':caption,'copy_mode':'reviewed_proposal' if proposal_snapshot else 'deterministic_confirmed_statements', 'proposal_snapshot':proposal_snapshot, 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
-            'intended_action':'manual_export','destination_account':None, 'business_brief':business_brief, 'creative_snapshot':creative}
+            'review_contract':'social-review-v1','intended_action':'manual_export','destination_account':{'authorization':'owner_manual_handoff',**payload.handoff.model_dump()}, 'business_brief':business_brief, 'creative_snapshot':creative}
         if snapshot is not None:
             require(all(snapshot.get(k) == doc.get(k) for k in ('brief','asset_sha256','business_brief','creative_snapshot','renderer','design')), 'job_inputs_changed')
             doc = snapshot
@@ -426,41 +437,11 @@ def register(app, get_session, scoped_staff):
         return Response(rev.image,media_type='image/jpeg',headers={'Cache-Control':'no-store'})
     @app.post(root+'/packs/{pack_id}/approve')
     def approve(business_id: str,pack_id: str,payload: Decision,principal=Depends(write),session=Depends(get_session)):
-        pack,rev,_,old=current(session,business_id,pack_id,utcnow())
-        require(rev.digest==payload.digest,'approval_changed')
-        if old is None:
-            session.add(Approval(revision_id=rev.id,actor_id=principal.actor_id,digest=rev.digest,approved_at=utcnow().isoformat()))
-            session.commit()
+        from .social_reviews import approve as approve_review
+        approve_review(session,business_id,pack_id,payload,principal)
         return document(session,business_id,pack_id,utcnow())
     @app.get(root+'/packs/{pack_id}/export',dependencies=[Depends(read)])
     def export(business_id: str,pack_id: str,session=Depends(get_session)):
-        _,rev,doc,approval=current(session,business_id,pack_id,utcnow())
-        require(approval is not None and approval.digest==rev.digest,'approval_required')
-        result=io.BytesIO()
-        asset,_=asset_check(session,doc['brief']['asset_id'],business_id,utcnow())
-        with zipfile.ZipFile(result,'w',zipfile.ZIP_DEFLATED) as archive:
-            archive.writestr('post.jpg',rev.image)
-            archive.writestr('original',asset.original)
-            archive.writestr('caption.txt',doc['caption'])
-            archive.writestr('editable.json',rev.document)
-            if doc.get('design'):
-                archive.writestr('design.json',canonical(doc['design']))
-                archive.writestr('fonts.json',canonical(doc['design']['fonts']))
-                archive.writestr('INTER-LICENSE.txt',(Path(__file__).parent/'web'/'workspace'/'assets'/'INTER-LICENSE.txt').read_text())
-            archive.writestr('approval.json',canonical({'digest':rev.digest,'actor_id':approval.actor_id,'at':approval.approved_at,'scope':'manual_export'}))
-            from .social_job_models import ProductionJob
-            from .social_jobs import info as job_info
-            production = session.scalar(select(ProductionJob).where(ProductionJob.business_id==business_id,ProductionJob.result_revision==rev.id,ProductionJob.state=='succeeded').order_by(ProductionJob.created_at.desc()).limit(1))
-            archive.writestr('production.json', canonical(job_info(session,production) if production else {'state':'legacy_synchronous','attempts':None,'total_cost_microusd':None}))
-            provider_cost = 0
-            if doc.get('proposal_snapshot'):
-                from .social_proposals import proposal_info
-                from .social_proposal_models import Proposal
-                proposal = owned(session,Proposal,doc['proposal_snapshot']['proposal_id'],business_id)
-                generation = session.get(ProductionJob,proposal.job_id)
-                generation_info = job_info(session,generation)
-                archive.writestr('proposal.json',canonical({'proposal':proposal_info(session,proposal,app),'generation':generation_info}))
-                micro = generation_info['cost']['provider_microusd']
-                provider_cost = micro/1_000_000 if micro is not None else None
-            archive.writestr('measurement.json',canonical({'primary':doc['brief']['primary_measure'],'value':None,'reason':'not_published','provider_cost_usd':provider_cost,'compute_cost_usd':None}))
-        return Response(result.getvalue(),media_type='application/zip',headers={'Content-Disposition':f'attachment; filename="social-{pack_id}.zip"','Cache-Control':'no-store'})
+        from .social_exports import package
+        result=package(session,business_id,pack_id,app)
+        return Response(result,media_type='application/zip',headers={'Content-Disposition':f'attachment; filename="social-{pack_id}.zip"','Cache-Control':'no-store'})

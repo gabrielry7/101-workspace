@@ -31,7 +31,8 @@ const names: Record<string, string> = {
 export function designError(detail: any): string {
   if (typeof detail !== "string")
     return "Revisa los campos y vuelve a intentar.";
-  if (!detail.startsWith("design:")) return detail;
+  const reviewMessages:Record<string,string>={structured_review_required:'Guarda una revisión completa de esta versión antes de aprobarla.',review_not_ready:'Resuelve los cambios pedidos antes de aprobar.',review_version_changed:'La versión cambió. Abre la versión actual para revisarla.',approval_changed:'La versión cambió. Vuelve a revisarla.',comparison_brief_mismatch:'Estas versiones tienen datos, objetivos o referencias diferentes. Compara alternativas del mismo contexto.',comparison_context_changed:'Cambió o venció el contexto de esta comparación. Prepara otra.',comparison_output_changed:'Cambió un archivo de la comparación. Vuelve a abrir las versiones.',distinct_comparison_required:'Elige dos versiones con imágenes o textos diferentes.',comparison_already_voted:'Esta elección ya se guardó y no se puede reemplazar.',source_deleted_or_revoked:'La fotografía ya no está autorizada. Selecciona otra.',technical_review_blocked:'Hay un problema con el archivo. Prepara una nueva versión.',export_output_changed:'Cambió el archivo exportado. Prepara otra versión y revísala.'};
+  if (!detail.startsWith("design:")) return reviewMessages[detail]||detail;
   const [, role, code] = detail.split(":");
   const labels: Record<string, string> = {
     ...names,
@@ -504,6 +505,7 @@ export function SocialHistory({
             {h.current ? " · actual" : ""}
           </h3>
           <p>{h.changes.map(changeName).join(" · ")}</p>
+          {h.review_summary&&<p>Revisión: {({ready:'lista para aprobar',changes_requested:'cambios pedidos',rejected:'descartada'} as any)[h.review_summary.outcome]} · {h.review_summary.reason}</p>}
           <p>
             {h.historically_approved
               ? "Esta versión recibió aprobación."

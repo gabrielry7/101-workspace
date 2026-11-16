@@ -11,6 +11,17 @@ from test_combined_workspace_browser import site  # noqa: F401
 from world_model.restaurant_commerce.campaign_demo import BUSINESS, OTHER, PASSWORD
 
 
+def complete_review(page):
+    review=page.get_by_role('region',name='Revisión de esta versión')
+    details=review.locator('.review-assessment')
+    if not details.evaluate('el=>el.open'): details.locator('summary').click()
+    for label in ['Calidad técnica','Exactitud de los datos','Composición y claridad','Estilo del negocio','Cumple el propósito']:
+        review.get_by_label(label,exact=True).select_option('acceptable')
+    review.get_by_label('Motivo de la decisión',exact=True).fill('Revisión humana de la imagen y texto sintéticos para esta prueba.')
+    review.get_by_role('button',name='Guardar revisión',exact=True).click()
+    review.get_by_text('Última revisión: lista para aprobar',exact=True).wait_for()
+
+
 def open_social(page):
     presence = page.locator(".sidebar details.presence")
     if not presence.evaluate("element => element.open"):
@@ -45,7 +56,7 @@ def test_social_roundtrip_in_combined_dashboard(site, tmp_path):
     page.get_by_label("Confirmo que").check()
     page.get_by_role("button", name="Preparar publicación", exact=True).click()
     page.get_by_role("heading", name="Revisa la versión 1").wait_for()
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     # Existing modules retain the session and business selected by the shared shell.
@@ -123,7 +134,7 @@ def test_owner_corrects_shared_price_and_recovers_draft(site, tmp_path):
     page.get_by_label("Confirmo que").check()
     page.get_by_role("button", name="Preparar publicación", exact=True).click()
     page.get_by_role("heading", name="Revisa la versión 1").wait_for()
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     original = page.locator(".social-image").get_attribute("src")
@@ -147,7 +158,7 @@ def test_owner_corrects_shared_price_and_recovers_draft(site, tmp_path):
     page.get_by_role("button", name="Guardar nueva versión", exact=True).click()
     page.get_by_role("heading", name="Revisa la versión 2").wait_for()
     assert page.locator("aside .social-caption").inner_text() == "Precio: 15000 COP."
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     with page.expect_download() as download:
@@ -280,7 +291,7 @@ def test_owner_reuses_brand_examples_and_sourced_question(site, tmp_path):
     form.get_by_label("Confirmo que").check()
     form.get_by_role("button", name="Preparar publicación", exact=True).click()
     page.get_by_role("heading", name="Revisa la versión 1").wait_for()
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     page.locator(".creative-receipt summary").click()
@@ -431,7 +442,7 @@ def test_guided_onboarding_custom_reuse_and_unknowns(site, tmp_path):
     page.get_by_role("button", name="Preparar publicación", exact=True).click()
     page.get_by_role("heading", name="Revisa la versión 1").wait_for()
     expect(page.locator("aside .social-caption")).to_have_text("Imagen sintética de prueba.")
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     with page.expect_download() as download:
@@ -541,7 +552,7 @@ def test_durable_job_retry_and_return_to_result(site, tmp_path):
     panel.get_by_label("Tiempo dedicado (segundos)").fill("45")
     panel.get_by_role("button", name="Registrar tiempo", exact=True).click()
     expect(panel).to_contain_text("45 s")
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     with page.expect_download() as download:
@@ -637,7 +648,7 @@ def test_owner_reviews_two_proposals_and_produces_exact_selected_copy(site, tmp_
     panel.get_by_role("button", name="Preparar publicación con este texto", exact=True).click()
     page.get_by_role("heading", name="Revisa la versión 1").wait_for()
     assert page.locator("aside .social-caption").inner_text() == selected
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     with page.expect_download() as download:
@@ -659,7 +670,7 @@ def test_owner_reviews_two_proposals_and_produces_exact_selected_copy(site, tmp_
     assert after["document"]["caption"] == selected and not after["approved"]
     for field in ("hypothesis", "primary_measure"):
         assert after["document"]["brief"][field] == before["document"]["brief"][field]
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     page.set_viewport_size({"width": 1440, "height": 1000})
@@ -677,7 +688,6 @@ def test_owner_edits_static_layers_corrects_price_and_views_history(
     site, tmp_path, caption_from_price=True
 ):
     """Real owner UI → actual licensed typography → corrected price without photo/layout loss."""
-    import io
     import json
     import zipfile
     from PIL import ImageDraw
@@ -759,7 +769,7 @@ def test_owner_edits_static_layers_corrects_price_and_views_history(
         assert price_id not in before["document"]["brief"]["caption_fact_ids"]
         assert price_id in [r["fact_id"] for r in before["document"]["brief"]["fact_refs"]]
     page.locator("aside .social-image").screenshot(path=str(evidence / "photo-first-12000.png"))
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     form.get_by_role("link", name="Ver imagen preparada · versión 1", exact=True).click()
@@ -788,7 +798,7 @@ def test_owner_edits_static_layers_corrects_price_and_views_history(
     assert a["layers"][2] == b["layers"][2] and b["layers"][-1]["text"] == "Precio: 15000 COP."
     assert not after["approved"]
     page.locator("aside .social-image").screenshot(path=str(evidence / "photo-first-15000.png"))
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     with page.expect_download() as download:
@@ -807,7 +817,7 @@ def test_owner_edits_static_layers_corrects_price_and_views_history(
     form.get_by_label("Confirmo que").check()
     form.get_by_role("button", name="Guardar nueva versión", exact=True).click()
     page.get_by_role("heading", name="Revisa la versión 3").wait_for()
-    page.get_by_label("Revisé la fotografía").check()
+    complete_review(page)
     page.get_by_role("button", name="Aprobar esta versión", exact=True).click()
     page.get_by_role("button", name="Versión aprobada").wait_for()
     with page.expect_download() as download:
@@ -870,3 +880,94 @@ def test_owner_price_only_in_design_stales_without_caption_dependency(site, tmp_
     test_owner_edits_static_layers_corrects_price_and_views_history(
         site, tmp_path, caption_from_price=False
     )
+
+
+def test_structured_review_rejection_revision_pair_and_export(site, tmp_path):
+    import hashlib
+    import json
+    import zipfile
+    from PIL import ImageDraw
+
+    page, context, url, app, *_ = site
+    evidence = Path(os.environ.get('SOCIAL_BROWSER_EVIDENCE',str(tmp_path/'evidence')))
+    evidence.mkdir(parents=True,exist_ok=True)
+    image=Image.new('RGB',(1400,1500),'#d6cbb9')
+    draw=ImageDraw.Draw(image);draw.rectangle((100,200,650,1100),fill='#845632');draw.ellipse((750,400,1300,1000),fill='#bd9158')
+    photo=tmp_path/'review-synthetic.jpg';image.save(photo)
+    page.goto('/workspace/social?business='+BUSINESS)
+    page.get_by_label('Usuario',exact=True).fill('multi.owner')
+    page.get_by_label('Contraseña',exact=True).fill(PASSWORD)
+    page.get_by_role('button',name='Entrar',exact=True).click()
+    page.get_by_role('heading',name='Contenido para tus redes').wait_for()
+    page.get_by_role('button',name='Cerrar sin guardar',exact=True).click()
+    page.get_by_label('¿Qué quieres conseguir?').fill('Mostrar una imagen sintética con claridad')
+    page.get_by_label('¿Qué pregunta debe responder?').fill('¿Qué muestra esta imagen de prueba?')
+    page.get_by_label('Texto que puedes confirmar').fill('Imagen sintética para revisar el encuadre.')
+    page.get_by_label('Revisar estos datos').fill((date.today()+timedelta(days=7)).isoformat())
+    page.get_by_label('¿Cómo debe verse y sonar?').fill('Simple, natural, sin texto sobre la foto.')
+    page.get_by_label('Permiso para usar').fill('Imagen sintética creada para esta prueba de software.')
+    page.get_by_label('Destino de publicación manual').select_option('instagram')
+    page.get_by_label('Cuenta de destino').fill('@fixture-only')
+    page.locator('input[type=file]').set_input_files(str(photo))
+    page.get_by_text('Fotografía recibida.',exact=True).wait_for()
+    page.get_by_label('Confirmo que').check()
+    page.get_by_role('button',name='Preparar publicación',exact=True).click()
+    page.get_by_role('heading',name='Revisa la versión 1').wait_for()
+    review=page.get_by_role('region',name='Revisión de esta versión')
+    assert page.get_by_role('button',name='Aprobar esta versión',exact=True).is_disabled()
+    for label in ['Calidad técnica','Exactitud de los datos','Composición y claridad','Estilo del negocio','Cumple el propósito']:
+        review.get_by_label(label,exact=True).select_option('acceptable')
+    review.get_by_label('Composición y claridad',exact=True).select_option('needs_changes')
+    review.get_by_label('Nota: composición y claridad',exact=True).fill('El producto queda demasiado cerca del borde.')
+    review.get_by_label('Decisión de revisión').select_option('rejected')
+    review.get_by_label('Motivo de la decisión').fill('Descartamos esta versión: cambiar el encuadre.')
+    review.get_by_role('button',name='Guardar revisión',exact=True).click()
+    review.get_by_text('Última revisión: versión descartada',exact=True).wait_for()
+    page.locator('.review-queue-item').get_by_text('Versión 1 · Descartado').wait_for()
+    assert page.get_by_role('link',name='Descargar foto',exact=False).count()==0
+    # Open the exact queued version without any database intervention.
+    page.locator('.review-queue-item').first.click()
+    page.wait_for_function("()=>document.activeElement.id==='social-post-review'")
+    page.get_by_label('Encuadre horizontal',exact=True).fill('0')
+    page.get_by_label('Confirmo que').check()
+    page.get_by_role('button',name='Guardar nueva versión',exact=True).click()
+    page.get_by_role('heading',name='Revisa la versión 2').wait_for()
+    complete_review(page)
+    page.get_by_role('button',name='Aprobar esta versión',exact=True).click()
+    page.get_by_role('button',name='Versión aprobada',exact=True).wait_for()
+    pair=page.locator('.review-comparison');pair.locator('summary').first.click()
+    pair.get_by_label('Primera versión',exact=True).select_option('1')
+    pair.get_by_label('Segunda versión',exact=True).select_option('2')
+    with page.expect_response(lambda r:r.url.endswith('/comparisons') and r.request.method=='POST') as comparison_response:
+        pair.get_by_role('button',name='Preparar comparación',exact=True).click()
+    assert comparison_response.value.ok, comparison_response.value.text()
+    pair.get_by_role('heading',name='¿Cuál encaja mejor? · Estilo del negocio').wait_for()
+    pair.get_by_label('Tu elección',exact=True).select_option('both_unacceptable')
+    pair.get_by_label('Motivo de tu elección',exact=True).fill('Ambas son solo pruebas de encuadre; necesitamos una fotografía real.')
+    pair.get_by_label('Encuadre incómodo',exact=True).check()
+    pair.get_by_role('button',name='Guardar elección',exact=True).click()
+    pair.get_by_text('Elección guardada: Ninguna sirve',exact=False).wait_for()
+    # Pairwise preference is independent: it never silently rewrites approval or brand rules.
+    page.get_by_role('button',name='Versión aprobada',exact=True).wait_for()
+    with page.expect_download() as download:
+        page.get_by_role('link',name='Descargar foto',exact=False).click()
+    output=evidence/'review-package.zip';download.value.save_as(str(output))
+    with zipfile.ZipFile(output) as z:
+        manifest=json.loads(z.read('manifest.json'))
+        assert manifest['revision_id'].endswith(':2')
+        for name,item in manifest['files'].items():
+            assert hashlib.sha256(z.read(name)).hexdigest()==item['sha256']
+        assert json.loads(z.read('approval.json'))['mode']=='structured'
+    page.locator('#social-post-review').scroll_into_view_if_needed()
+    page.screenshot(path=str(evidence/'review-desktop.png'))
+    page.locator('.review-pair').screenshot(path=str(evidence/'comparison-desktop.png'))
+    page.locator('.structured-review').screenshot(path=str(evidence/'review-detail-desktop.png'))
+    page.locator('.review-queue').screenshot(path=str(evidence/'queue-desktop.png'))
+    page.set_viewport_size({'width':390,'height':844})
+    review.scroll_into_view_if_needed()
+    page.screenshot(path=str(evidence/'review-mobile.png'))
+    page.locator('.review-pair').screenshot(path=str(evidence/'comparison-mobile.png'))
+    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+    measurements=page.locator('.structured-review').evaluate('''el=>({font:getComputedStyle(el).fontFamily,controls:[...el.querySelectorAll('button,select,input:not([type=checkbox])')].filter(e=>e.getBoundingClientRect().height).map(e=>({name:e.textContent?.slice(0,60)||e.getAttribute('aria-label'),height:e.getBoundingClientRect().height})),overflow:document.documentElement.scrollWidth>innerWidth})''')
+    assert all(c['height']>=44 for c in measurements['controls'])
+    (evidence/'review-measurements.json').write_text(json.dumps(measurements,indent=2))

@@ -1,3 +1,4 @@
+# ruff: noqa: F401,F811 -- imported pytest fixtures
 import base64
 import io
 import json
@@ -43,9 +44,25 @@ def create(env):
     assert response.status_code==200,response.text
     return value,response.json()
 
+def assessment_payload(pack, outcome='ready', **changes):
+    result={'request_id':str(uuid4()),'digest':pack['digest'],'outcome':outcome,
+            'reason':'Engineering fixture reviewer checked the full output',
+            **{key:{'verdict':'acceptable','reason':''} for key in ('technical','factual','craft','brand_fit','purpose')}}
+    result.update(changes)
+    return result
+
+
 def approval(env,pack):
-    return env.client.post(ROOT+'/packs/'+pack['id']+'/approve',headers=env.headers,
-        json={'digest':pack['digest'],'craft_reviewed':True,'brand_reviewed':True,'purpose_reviewed':True})
+    route=ROOT+'/packs/'+pack['id']
+    reviews=env.client.get(route+'/reviews')
+    review_id=None
+    if reviews.status_code==200 and reviews.json()['digest']==pack['digest'] and not pack.get('stale'):
+        existing=[e for e in reviews.json()['events'] if e['kind']=='assessment']
+        if existing: review_id=existing[-1]['id']
+        else:
+            saved=env.client.post(route+'/reviews',json=assessment_payload(pack),headers=env.headers)
+            if saved.status_code==200: review_id=saved.json()['id']
+    return env.client.post(route+'/approve',headers=env.headers,json={'digest':pack['digest'],'review_id':review_id})
 
 def test_real_upload_edit_approve_export(social):
     value,pack=create(social)

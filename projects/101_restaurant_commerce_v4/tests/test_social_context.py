@@ -22,7 +22,8 @@ from test_social_production import (
 from world_model.restaurant_commerce.models import StaffMembership
 from world_model.restaurant_commerce.social_context import Context, ContextVersion, FactDependency
 from world_model.restaurant_commerce.social_migrations import upgrade_social
-from world_model.restaurant_commerce.social_production import Approval, Revision
+from world_model.restaurant_commerce.social_production import Revision
+from world_model.restaurant_commerce.social_reviews import ever_approved, effective_approval
 
 
 def context_payload():
@@ -134,7 +135,7 @@ def test_changed_price_stale_recovery_preserves_history_and_unrelated_fact(socia
     assert social.client.get(route + "/export").status_code == 200
     with social.factory() as s:
         assert s.get(Revision, pack["id"] + ":1").document == frozen
-        assert s.get(Approval, pack["id"] + ":1") is not None
+        assert ever_approved(s, pack["id"] + ":1")
     history = social.client.get(ROOT + "/context/history").json()["versions"]
     assert history[0]["facts"][0]["value"] == "12000"
 
@@ -208,7 +209,7 @@ def test_expiry_withdrawal_and_legacy_backfill(social):
         assert s.get(Revision, legacy["id"] + ":1").document == frozen
         version = s.get(ContextVersion, "legacy:" + legacy["id"] + ":1")
         assert json.loads(version.document)["basis"] == "legacy_pack_assertion"
-        assert s.get(Approval, legacy["id"] + ":1") is not None
+        assert ever_approved(s, legacy["id"] + ":1")
     assert social.client.get(ROOT + "/packs/" + legacy["id"] + "/export").status_code == 200
 
 
@@ -259,6 +260,6 @@ def test_v1_database_additive_upgrade_preserves_digest_approval_and_original(soc
     with social.factory() as s:
         assert s.get(Revision, pack["id"] + ":1").document == frozen
         assert s.get(Asset, value["asset_id"]).original == original
-        assert s.get(Approval, pack["id"] + ":1").digest == pack["digest"]
+        assert effective_approval(s,s.get(Revision,pack["id"]+":1"),json.loads(frozen)).digest == pack["digest"]
         assert s.get(ContextVersion, "legacy:" + pack["id"] + ":1") is not None
     assert social.client.get(ROOT + "/packs/" + pack["id"] + "/export").status_code == 200
