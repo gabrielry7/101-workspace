@@ -401,6 +401,7 @@ export function SocialReview({
           {pack.approved && !dirty && (
             <p>
               <a
+                className="button secondary"
                 href={
                   endpoint(business) + "/social/packs/" + pack.id + "/export"
                 }
