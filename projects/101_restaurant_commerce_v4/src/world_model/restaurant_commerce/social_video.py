@@ -21,6 +21,7 @@ from .social_production import (
     current,
     future,
     owned,
+    pack_state,
     require,
 )
 from .social_video_contracts import SHOTS, VERSION, ShootInput, Timeline, VideoRenderInput
@@ -108,7 +109,7 @@ def source_reasons(session, business, doc):
         require(sources == doc.get("video_sources"), "video_sources_changed")
         return []
     except HTTPException as e:
-        return [{"reason": e.detail}]
+        return [{"reason": e.detail, "scope": "video_source"}]
 
 
 def output(session, rev, doc):
@@ -321,7 +322,13 @@ def register(app, get_session, read, write):
     ):
         from .social_jobs import JobInput, enqueue
 
-        pack, _, doc, _ = current(session, business_id, pack_id, utcnow())
+        pack, _, doc, _, reasons, _ = pack_state(session, business_id, pack_id, utcnow())
+        # Replace an unavailable take without authorizing the old output or
+        # bypassing changed facts/brand/anchor rights. Validate every new take.
+        require(
+            all(r.get("scope") == "video_source" for r in reasons),
+            "video_brief_needs_current_facts",
+        )
         require(pack.revision == payload.expected_revision, "revision_conflict")
         validate_timeline(session, business_id, payload.timeline, pack_id=pack_id, doc=doc)
         brief = copy.deepcopy(doc["brief"])

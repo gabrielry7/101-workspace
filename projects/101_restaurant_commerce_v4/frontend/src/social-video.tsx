@@ -2,6 +2,19 @@ import { useEffect, useState } from "react";
 import { endpoint } from "./ui";
 
 export const videoErrors: Record<string, string> = {
+  video_brief_needs_current_facts:
+    "Actualiza y confirma los datos o permisos del pack antes de preparar otra versión.",
+  video_metadata_invalid_rerecord:
+    "No podemos leer los datos de esta toma. Usa el archivo original de la cámara o grábala otra vez.",
+  video_codec_unsupported:
+    "Este formato de vídeo no es compatible. Prueba el MP4 o MOV original de la cámara.",
+  video_streams_unsupported:
+    "Este archivo contiene pistas que no podemos editar. Usa una toma original con una sola imagen y pista de audio.",
+  video_resolution_limit:
+    "Esta toma excede el tamaño permitido. Prueba una grabación vertical en 1080p.",
+  video_upload_limit:
+    "Cada toma puede pesar hasta 64 MB. Elige un fragmento más breve.",
+
   video_tools_unavailable:
     "El equipo de 101 debe habilitar el procesamiento de vídeo.",
   video_record_vertically: "Graba esta toma en vertical y vuelve a subirla.",
@@ -291,7 +304,14 @@ export function SocialVideo({
             reales; después podrás elegir las tomas y ajustar el corte.
           </p>
           {error && <p role="alert">{error}</p>}
-          <fieldset disabled={busy || disabled || pack.stale}>
+          <fieldset
+            disabled={
+              busy ||
+              disabled ||
+              (pack.stale &&
+                pack.stale_reasons.some((r: any) => r.scope !== "video_source"))
+            }
+          >
             {!shoot ? (
               <button
                 type="button"
