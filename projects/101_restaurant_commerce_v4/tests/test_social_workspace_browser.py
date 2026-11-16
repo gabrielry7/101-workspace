@@ -1056,6 +1056,13 @@ def test_manual_publication_results_correction_and_next_content(site,tmp_path):
     assert not report['publication']['independently_verified'] and report['fixture']
     assert [e['request']['value'] for e in report['history'] if e['kind']=='metric' and e['request']['metric']=='qualified_inquiries']==[0,2]
     (evidence/'results-report.json').write_text(json.dumps(report,indent=2))
+    with page.expect_download() as source_download:
+        page.get_by_role('link',name='Descargar foto',exact=False).click()
+    source_package=evidence/'source-results-package.zip';source_download.value.save_as(str(source_package))
+    with zipfile.ZipFile(source_package) as archive:
+        assert json.loads(archive.read('results.json'))['primary']['value']==2
+        assert json.loads(archive.read('measurement.json'))['value']==2
+
     results.screenshot(path=str(evidence/'results-desktop.png'))
     page.set_viewport_size({'width':390,'height':844})
     results.locator('.results-next').screenshot(path=str(evidence/'next-decision-mobile.png'))
@@ -1089,3 +1096,25 @@ def test_manual_publication_results_correction_and_next_content(site,tmp_path):
     with zipfile.ZipFile(package) as z:
         assert json.loads(z.read('editable.json'))['learning_snapshot']['publication_id']==pub_id
     page.locator('#social-post-review').screenshot(path=str(evidence/'next-content-desktop.png'))
+    # Source correction after approval cannot leave a dependent draft exportable.
+    page.get_by_label('Trabajo guardado').select_option(original_pack)
+    old_results=page.locator('.social-results')
+    old_results.get_by_role('heading',name='Consultas de compra · 2',exact=True).wait_for()
+    card=old_results.locator('.results-observations article').filter(has=page.get_by_role('heading',name='Consultas de compra · 2',exact=True))
+    card.get_by_role('button',name='Corregir este resultado',exact=True).click()
+    correction=old_results.locator('.results-observation-form')
+    correction.get_by_label('Valor medido',exact=False).fill('3')
+    correction.get_by_label('Motivo o limitación',exact=True).fill('Nueva corrección sintética después de preparar la siguiente publicación.')
+    correction.get_by_role('button',name='Guardar corrección del resultado',exact=True).click()
+    expect(old_results.locator('.results-primary strong')).to_have_text('3')
+    page.get_by_label('Trabajo guardado').select_option(next_pack)
+    page.get_by_role('button',name='Revisar resultados de origen',exact=True).wait_for()
+    blocked_export=page.request.get(root+'/packs/'+next_pack+'/export')
+    assert blocked_export.status==409
+    page.get_by_role('button',name='Revisar resultados de origen',exact=True).click()
+    expect(page.get_by_label('Trabajo guardado')).to_have_value(original_pack)
+    expect(page.get_by_label('Publicación registrada',exact=True)).to_have_value(pub_id)
+    corrected=page.request.get(root+'/publications/'+pub_id+'/report').json()
+    assert corrected['decisions'][-1]['stale']
+    (evidence/'results-report-corrected.json').write_text(json.dumps(corrected,indent=2))
+    (evidence/'correction-check.json').write_text(json.dumps({'dependent_pack_id':next_pack,'export_http_status_after_correction':blocked_export.status,'prior_decision_stale':corrected['decisions'][-1]['stale'],'current_reported_inquiries':corrected['primary']['value'],'fixture':True},indent=2))

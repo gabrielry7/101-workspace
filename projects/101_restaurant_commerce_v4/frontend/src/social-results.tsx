@@ -80,11 +80,13 @@ const resultErrors: Record<string, string> = {
 export function SocialResults({
   business,
   csrf,
+  initialPublicationId,
   pack,
   dirty,
   onChanged,
   onLearning,
 }: {
+  initialPublicationId?: string;
   business: string;
   csrf: string;
   pack: any;
@@ -95,7 +97,7 @@ export function SocialResults({
   const root = endpoint(business) + "/social";
   const [pubs, setPubs] = useState<any[]>([]),
     [plans, setPlans] = useState<any[]>([]),
-    [selected, setSelected] = useState(""),
+    [selected, setSelected] = useState(initialPublicationId || ""),
     [report, setReport] = useState<any>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
@@ -185,8 +187,8 @@ export function SocialResults({
     }
   }
   useEffect(() => {
-    void run(() => refresh());
-  }, [pack.id, pack.digest]);
+    void run(() => refresh(initialPublicationId || selected));
+  }, [pack.id, pack.digest, initialPublicationId]);
   useEffect(() => {
     if (selected) {
       setCorrecting(null);
