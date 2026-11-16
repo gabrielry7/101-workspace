@@ -217,8 +217,8 @@
 .quick-actions {
   padding: 22px;
 }
-.quick-actions h2 {
-  margin-bottom: 15px;
+.quick-actions > a:first-child {
+  border-top: 0;
 }
 .quick-actions > a {
   display: flex;

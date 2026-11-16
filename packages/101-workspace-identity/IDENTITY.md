@@ -32,7 +32,7 @@ actual commerce consumer imports these tokens into its production build.
   backgrounds. Use distinct white working surfaces, deliberate accent roles and
   readable secondary text. This supersedes the earlier overbroad “no gray canvas”.
   `pairings.css` contains seven review candidates, including gray + white. The actual
-  demo workspace exposes a local “Vista de color” selector across its existing
+  explicitly internal workspace exposes a local “Vista de color” selector across its existing
   workflows. None is the permanent default yet; “Actual · comparar” restores the
   original tokens. Public merchant branding stays separate.
 - Green/amber/red express statuses with written labels; color alone is insufficient.
@@ -190,15 +190,20 @@ guard and preserves uncertain requests. Rendered review/measurements are in shar
 
 ## Actual-app color review (2026-11-05)
 
-`frontend/src/color-preview.tsx` is a new demo-only review control. Existing shell,
+`frontend/src/color-preview.tsx` is an internal review control. Existing shell,
 customer list/detail/QR, campaign editor/report, sales and loyalty components remain
 owned by their existing modules. `frontend/src/color-preview.css` maps their visual
 roles into shared `pairings.css`; geometry, evidence and actions are unchanged.
-Candidates are browser-local, not business configuration. The explicit demo policy
-controls mounting; the query string/local storage cannot enable it in ordinary
+Candidates are browser-local, not business configuration. The server environment `COMMERCE_ENV=internal` controls mounting, independently
+of the fictional-data `demo_mode` disclosure; the query string/local storage cannot enable it in ordinary
 mode. Storage failures fall back to the current rendering. Use `?pairing=cobalt`
 or `?pairing=gray-white` for direct review links. Other pairings: ink, violet,
 forest, lime. The control does not change public checkout or branded email previews.
+
+Merchant copy must inform, guide or explain. Remove generic or repetitive slogans;
+retain useful explanations, permissions, safety information and fictional-data disclosures.
+The merchant Home does not promote the internal Identity specimen. Its navigation
+and direct route are available only in the explicitly internal environment.
 
 Comparison delivery: show several actual-app renders together with direct links.
 Name surface order explicitly: white panels on gray (`gray-white`) and gray panels

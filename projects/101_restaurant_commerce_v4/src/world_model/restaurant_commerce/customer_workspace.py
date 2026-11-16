@@ -296,9 +296,14 @@ def register(app, get_session, scoped_staff):
     @app.get("/workspace/reports")
     @app.get("/workspace/analytics")
     @app.get("/workspace/onboarding")
-    @app.get("/workspace/identity")
     def workspace_page():
         return FileResponse(web / "index.html", headers={"Cache-Control": "no-store"})
+
+    @app.get("/workspace/identity")
+    def internal_identity_page():
+        if app.state.environment != "internal":
+            raise HTTPException(404, "Not found")
+        return workspace_page()
 
     class ImmutableAssets(StaticFiles):
         async def get_response(self, path, scope):

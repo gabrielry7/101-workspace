@@ -9,7 +9,6 @@ import {
   Globe2,
   ArrowUpRight,
   Check,
-  Palette,
 } from "lucide-react";
 import {
   amount,
@@ -176,7 +175,7 @@ export function HomeView(props: ViewProps) {
     );
   return (
     <div className="page new-view home-view">
-      <PageHeading title="Inicio" description="Lo que pasó. Lo que falta.">
+      <PageHeading title="Inicio">
         <PeriodPicker {...props} />
       </PageHeading>
       {r.error ? (
@@ -280,7 +279,6 @@ export function HomeView(props: ViewProps) {
             </section>
             <aside className="home-aside">
               <section className="work-surface quick-actions">
-                <h2>Hacer algo</h2>
                 <a href={link("campaigns", { campaign: "new" })}>
                   <Megaphone />
                   Crear campaña
@@ -294,14 +292,6 @@ export function HomeView(props: ViewProps) {
                 <a href={link("analytics")}>
                   <Globe2 />
                   Ver analítica web<span className="number-chip">Demo</span>
-                </a>
-              </section>
-              <section className="identity-note">
-                <Palette size={22} />
-                <strong>101 Workspace</strong>
-                <p>Los mismos controles, en todo tu espacio.</p>
-                <a href={link("identity")}>
-                  Ver identidad <ArrowUpRight size={14} />
                 </a>
               </section>
             </aside>
