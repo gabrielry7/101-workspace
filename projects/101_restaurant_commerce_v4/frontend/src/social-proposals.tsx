@@ -24,11 +24,15 @@ const flags: Record<string, string> = {
 export function SocialProposals({
   business,
   csrf,
+  learning,
+  onClearLearning,
   context,
   creative,
   library,
   onProduction,
 }: {
+  learning?: any;
+  onClearLearning?: () => void;
   business: string;
   csrf: string;
   context: BusinessContext | null;
@@ -53,6 +57,14 @@ export function SocialProposals({
     [entire, setEntire] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
+  useEffect(() => {
+    if (learning) {
+      setTopic(learning.next_question);
+      setQuestion("");
+      setSelected("");
+      requestId.current = crypto.randomUUID();
+    }
+  }, [learning?.id]);
   const root = endpoint(business) + "/social/proposals";
   const requestId = useRef(crypto.randomUUID()),
     decisionId = useRef(crypto.randomUUID());
@@ -137,6 +149,7 @@ export function SocialProposals({
     try {
       const p = await request("", "POST", {
         request_id: requestId.current,
+        learning_decision_id: learning?.id || null,
         mode,
         expected_context_revision: context?.revision || 0,
         expected_brand_revision: creative?.revision || 0,
@@ -212,6 +225,21 @@ export function SocialProposals({
   return (
     <details className="social-context proposal-panel">
       <summary>Ideas y textos para publicar</summary>
+      {learning && (
+        <div className="results-origin">
+          <p>
+            Esta propuesta usará la decisión basada en resultados:{" "}
+            {learning.summary}
+          </p>
+          <button
+            type="button"
+            className="button secondary"
+            onClick={onClearLearning}
+          >
+            Preparar sin esta decisión
+          </button>
+        </div>
+      )}
       <p>
         Prepara una propuesta a partir de los datos, la voz y el material que
         selecciones.

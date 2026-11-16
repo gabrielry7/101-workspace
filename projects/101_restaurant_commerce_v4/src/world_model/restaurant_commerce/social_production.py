@@ -102,6 +102,7 @@ class Brief(Strict):
     reference_ids: list[str] = Field(default_factory=list, max_length=12)
     question_id: str | None = Field(default=None, max_length=64)
     revision_reason: Literal['initial', 'factual_correction', 'brand_preference', 'strategy', 'layout'] = 'initial'
+    learning_decision_id: str | None = Field(default=None,max_length=64)
     proposal_decision_id: str | None = Field(default=None,max_length=64)
     request_id: UUID
     asset_id: str
@@ -231,6 +232,10 @@ def pack_state(session, business, pack_id, now):
         try: current_decision(session,business,doc['brief']['proposal_decision_id'])
         except HTTPException as error: reasons.append({'reason':error.detail})
     from .social_reviews import effective_approval
+    if doc['brief'].get('learning_decision_id'):
+        from .social_results import learning_context
+        try: learning_context(session,business,doc['brief']['learning_decision_id'])
+        except HTTPException as error: reasons.append({'reason':error.detail})
     approval = effective_approval(session, rev, doc)
     return pack, rev, doc, approval, reasons, media_available
 
@@ -244,12 +249,14 @@ def current(session, business, pack_id, now):
 def document(session, business, pack_id, now):
     pack, rev, doc, approval, reasons, media = pack_state(session,business,pack_id,now)
     from .social_reviews import state, ever_approved
+    from .social_results import pack_receipt_summary
+    receipt=pack_receipt_summary(session,business,pack.id,rev.id)
     return {'review_state':state(session,rev,doc,bool(reasons)),'id':pack.id,'revision':pack.revision,'digest':rev.digest,'document':doc,
         'approved':not reasons and approval is not None and approval.digest == rev.digest,
         'stale':bool(reasons), 'stale_reasons':reasons, 'media_available':media,
         'historically_approved':ever_approved(session,rev.id),
-        'review':json.loads(rev.report), 'publication':{'status':'manual_export_only','post_id':None},
-        'results':{'value':None,'reason':'not_published','search_traffic':None}}
+        'review':json.loads(rev.report), 'publication':receipt,
+        'results':{'value':None,'reason':'see_sourced_observations' if receipt['post_id'] else 'not_published','search_traffic':None}}
 
 
 def register(app, get_session, scoped_staff):
@@ -270,6 +277,8 @@ def register(app, get_session, scoped_staff):
     register_proposals(app, get_session, read, write)
     from .social_reviews import register as register_reviews
     register_reviews(app,get_session,read,write)
+    from .social_results import register as register_results
+    register_results(app,get_session,read,write)
     root='/api/operator/restaurants/{business_id}/social'
 
     @app.get(root, dependencies=[Depends(read)])
@@ -380,11 +389,17 @@ def register(app, get_session, scoped_staff):
             require(set(payload.caption_fact_ids)=={f['id'] for f in ctx['facts']},'proposal_fact_snapshot_mismatch')
             caption=decision['text'];proposal_snapshot={'proposal_id':proposal.id,'decision_id':payload.proposal_decision_id,'mode':proposal.mode,'review':decision,'proposed_asset_id':ctx['asset']['id'],'owner_replaced_photo':payload.asset_id!=ctx['asset']['id']}
 
+        learning=None
+        if payload.learning_decision_id:
+            from .social_results import learning_context
+            learning=learning_context(session,business,payload.learning_decision_id)
+            require(pack_id!=learning['source_pack_id'],'learning_requires_new_pack')
         scene=compile_scene(payload,asset.original)
         doc={'design':scene,'schema_version':'1','renderer':DESIGN_VERSION if scene else VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
             'caption':caption,'copy_mode':'reviewed_proposal' if proposal_snapshot else 'deterministic_confirmed_statements', 'proposal_snapshot':proposal_snapshot, 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
             'review_contract':'social-review-v1','intended_action':'manual_export','destination_account':{'authorization':'owner_manual_handoff',**payload.handoff.model_dump()}, 'business_brief':business_brief, 'creative_snapshot':creative}
+        if learning is not None: doc['learning_snapshot']=learning
         if snapshot is not None:
             require(all(snapshot.get(k) == doc.get(k) for k in ('brief','asset_sha256','business_brief','creative_snapshot','renderer','design')), 'job_inputs_changed')
             doc = snapshot

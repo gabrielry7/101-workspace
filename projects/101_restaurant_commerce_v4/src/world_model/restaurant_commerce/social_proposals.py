@@ -38,6 +38,7 @@ SYSTEM = (
 
 class ProposalInput(Strict):
     request_id: UUID
+    learning_decision_id: str | None = Field(default=None, max_length=64)
     expected_context_revision: int = Field(ge=0)
     expected_brand_revision: int = Field(ge=0)
     location_id: UUID | None = None
@@ -166,7 +167,7 @@ def assemble(session, business, p, app):
                 "observed_at": q["observed_at"],
             }
         )
-    return {
+    result = {
         "schema_version": "1",
         "business_id": business,
         "location_id": location,
@@ -197,6 +198,21 @@ def assemble(session, business, p, app):
         "search_volume_reason": "not_measured",
         "prompt_version": PROMPT_VERSION,
     }
+    if p.learning_decision_id:
+        from .social_results import learning_context
+
+        learning = learning_context(session, business, p.learning_decision_id)
+        result["learning"] = learning
+        result["prompt_version"] = PROMPT_VERSION + "-learning-v1"
+        result["evidence"].append(
+            {
+                "id": "learning:" + learning["id"],
+                "basis": "owner_reported_outcome_and_review",
+                "text": learning["observation"],
+                "source": learning["publication_id"],
+            }
+        )
+    return result
 
 
 def still_current(session, proposal, app):
@@ -243,13 +259,20 @@ def preview(context):
     return ProposalOutput.model_validate(
         {
             "idea": context["question"]["text"],
-            "observation": "El negocio eligió esta prioridad: " + context["brief"]["objective"],
-            "evidence_ids": ["owner_priority"],
+            "observation": context["learning"]["observation"]
+            if context.get("learning")
+            else "El negocio eligió esta prioridad: " + context["brief"]["objective"],
+            "evidence_ids": ["owner_priority"]
+            + (["learning:" + context["learning"]["id"]] if context.get("learning") else []),
             "hypothesis": (
                 "Explicar esta información puede ayudar a recibir consultas más claras. "
-                "Aún no hay resultados."
+                "La siguiente publicación sigue siendo una hipótesis a evaluar."
             ),
             "reason": (
+                context["learning"]["action_label"] + ": " + context["learning"]["owner_reason"]
+            )
+            if context.get("learning")
+            else (
                 "Usar los datos confirmados y la fotografía seleccionada "
                 "para responder la pregunta elegida."
             ),
@@ -258,7 +281,11 @@ def preview(context):
             "missing_material": [],
             "customer_action": context["brief"].get("buying_destination")
             or "Confirmar primero cómo puede comprar el cliente.",
-            "primary_measure": "qualified_inquiries",
+            "primary_measure": {"owner_effort_seconds": "owner_effort"}.get(
+                context["learning"]["primary_metric"], context["learning"]["primary_metric"]
+            )
+            if context.get("learning")
+            else "qualified_inquiries",
             "copy_options": [
                 {
                     "id": "informational",
@@ -325,6 +352,15 @@ def check_copy(value, claims, context):
 
 def validate_output(raw, context, mode):
     output = ProposalOutput.model_validate(raw)
+    if context.get("learning"):
+        require(
+            "learning:" + context["learning"]["id"] in output.evidence_ids,
+            "learning_citation_required",
+        )
+        expected = {"owner_effort_seconds": "owner_effort"}.get(
+            context["learning"]["primary_metric"], context["learning"]["primary_metric"]
+        )
+        require(output.primary_measure == expected, "learning_primary_mismatch")
     require(
         set(output.evidence_ids) <= {e["id"] for e in context["evidence"]},
         "unknown_proposal_evidence",
@@ -392,7 +428,12 @@ def enqueue_proposal(session, business, p, principal, app):
     request = p.model_dump(mode="json")
     saved = {"request": request, "context": context, "mode": p.mode}
     if old:
-        require(json.loads(old.input_json) == saved, "idempotency_conflict")
+        old_value = json.loads(old.input_json)
+        normalized = {
+            **old_value,
+            "request": ProposalInput.model_validate(old_value["request"]).model_dump(mode="json"),
+        }
+        require(normalized == saved, "idempotency_conflict")
         return proposal_info(session, old, app)
     require(
         session.scalar(
@@ -514,6 +555,7 @@ def production_brief(session, business, identifier, app):
             "primary_measure": output["primary_measure"],
             "confirmed": True,
             "proposal_decision_id": identifier,
+            "learning_decision_id": c.get("learning", {}).get("id"),
         }
     )
 

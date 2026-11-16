@@ -13,7 +13,8 @@ def social_tables():
     from .social_job_models import ProductionJob, ProductionAttempt, ProductionEffort
     from .social_proposal_models import Proposal, ProposalDecision
     from .social_review_models import ReviewEvent, Comparison
-    return [model.__table__ for model in (Asset, Pack, Revision, Approval, Upload, Context, ContextVersion, FactDependency, CreativeBoard, CreativeVersion, ProductionJob, ProductionAttempt, ProductionEffort, Proposal, ProposalDecision, ReviewEvent, Comparison)]
+    from .social_result_models import Publication, PublicationVersion, ResultEvent
+    return [model.__table__ for model in (Asset, Pack, Revision, Approval, Upload, Context, ContextVersion, FactDependency, CreativeBoard, CreativeVersion, ProductionJob, ProductionAttempt, ProductionEffort, Proposal, ProposalDecision, ReviewEvent, Comparison, Publication, PublicationVersion, ResultEvent)]
 
 
 def schema_ready(bind):

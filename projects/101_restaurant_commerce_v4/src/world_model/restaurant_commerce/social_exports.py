@@ -99,6 +99,15 @@ def package(session, business, pack_id, app):
             "compute_cost_usd": None,
         }
     )
+    from .social_results import pack_receipt_summary, report
+    receipt=pack_receipt_summary(session,business,pack_id,rev.id)
+    if receipt['post_id']:
+        results=report(session,business,receipt['publication_id'])
+        files['results.json']=canonical(results)
+        measurement=__import__('json').loads(files['measurement.json'])
+        primary=results['primary']
+        measurement.update(value=primary['value'],reason=primary['reason'],availability=primary['availability'],reporting_basis='owner_report',publication_id=receipt['publication_id'],observation=primary,receipt_count=receipt['receipt_count'])
+        files['measurement.json']=canonical(measurement)
     files["README.txt"] = (
         "Paquete para publicación manual\n\n"
         "Usa post.jpg y caption.txt en el destino indicado en approval.json.\n"
@@ -109,7 +118,8 @@ def package(session, business, pack_id, app):
         "original conserva la fotografía autorizada.\n"
         "No se incluyen fuentes. INTER-LICENSE.txt describe la licencia cuando corresponde.\n"
         "manifest.json enumera bytes y SHA-256 de los archivos excepto el manifiesto.\n"
-        "Los resultados comerciales siguen sin medirse.\n"
+        "Si existe results.json, contiene observaciones declaradas y sus límites.\n"
+        "La aprobación creativa no demuestra un resultado comercial.\n"
     )
     files = {
         name: value.encode("utf-8") if isinstance(value, str) else value
