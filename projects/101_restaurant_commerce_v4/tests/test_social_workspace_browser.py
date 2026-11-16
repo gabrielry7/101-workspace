@@ -760,6 +760,7 @@ def test_owner_edits_static_layers_corrects_price_and_views_history(
     form.get_by_role("button", name="Preparar publicación", exact=True).click()
     page.get_by_role("heading", name="Revisa la versión 1").wait_for()
     packid = page.get_by_label("Trabajo guardado").input_value()
+    assert packid, "The announced preview and saved-work selector must identify the same pack"
     api = "/api/operator/restaurants/" + BUSINESS + "/social/packs/" + packid
     before = page.request.get(api).json()
     first_image = page.request.get(api + "/image").body()
