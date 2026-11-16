@@ -1,7 +1,7 @@
 """Run every Social gate in bounded processes, retaining one combined JUnit report.
 
 Long-lived PIL/SQL/browser fixture state exceeded this machine's memory limit in
-one 179-case pytest process. These batches change process lifetime, not selection.
+one full pytest process. These batches change process lifetime, not selection.
 """
 
 import subprocess
