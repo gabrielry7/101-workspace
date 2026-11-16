@@ -289,6 +289,15 @@ def test_revocation_purges_all_video_derivatives_and_blocks_history(queue, clips
         assert row.final == row.preview == row.cover == b""
         assert session.get(ClipMedia, aid).analysis == b""
         assert session.get(jobs.Job, j["id"]).state == "needs_input"
+    replacement = upload(q, s, "process", clips[0])
+    assert replacement.status_code == 200, replacement.text
+    changed = copy.deepcopy(t)
+    changed["clips"][1]["asset_id"] = replacement.json()["id"]
+    recovered, _ = render(q, p, changed)
+    assert recovered["revision"] == 3 and not recovered["approved"]
+    assert recovered["document"]["brief"]["video"]["clips"][0]["asset_id"] == takes[0]["id"]
+    assert recovered["document"]["brief"]["video"]["clips"][2]["asset_id"] == takes[2]["id"]
+    assert q.client.get(route + "/video/preview").status_code == 200
 
 
 def test_bad_upload_has_specific_rerecord_request_and_no_fake_take(queue, clips, tmp_path):
@@ -632,3 +641,61 @@ def test_named_video_partial_upload_resume_duplicate_completion_and_photo_librar
     assert q.client.post(route + "/complete", headers=q.headers).json()["id"] == aid
     assert not any(a["id"] == aid for a in q.client.get(ROOT + "/assets").json()["assets"])
     assert q.client.get(ROOT + "/video/takes/" + aid + "/analysis").status_code == 200
+
+
+def test_focal_point_changes_actual_crop_pixels(tmp_path):
+    from PIL import Image
+    from world_model.restaurant_commerce.social_video_media import intake, encode, unpack
+    from world_model.restaurant_commerce.social_video_contracts import Timeline
+
+    wide = tmp_path / "portrait-wide.mp4"
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-nostdin",
+            "-v",
+            "error",
+            "-f",
+            "lavfi",
+            "-i",
+            "color=c=red:s=960x1280:r=30,drawbox=x=400:y=120:w=160:h=160:color=white:t=fill",
+            "-t",
+            "1",
+            "-c:v",
+            "libx264",
+            "-threads",
+            "1",
+            "-preset",
+            "ultrafast",
+            str(wide),
+        ],
+        check=True,
+        capture_output=True,
+        timeout=15,
+    )
+    raw = wide.read_bytes()
+    meta = intake(raw)[0]
+    centers = []
+    for focal in (0, 1):
+        timeline = Timeline.model_validate(
+            {
+                "shoot_id": "fixture",
+                "clips": [
+                    {
+                        "shot_id": shot,
+                        "asset_id": "fixture-" + str(i),
+                        "source_in": 0,
+                        "source_out": 1000,
+                        "timeline_start": i * 1000,
+                        "focal_x": focal,
+                    }
+                    for i, shot in enumerate(("detail", "process", "finish"))
+                ],
+            }
+        )
+        data, _ = encode([raw] * 3, timeline, [meta] * 3)
+        im = Image.open(io.BytesIO(unpack(data)["cover.jpg"])).convert("RGB")
+        xs = [x for y in range(150, 450) for x in range(im.width) if min(im.getpixel((x, y))) > 220]
+        centers.append(sum(xs) / len(xs))
+    # 960×1280 scales to1440×1920: 360px of horizontal crop travel.
+    assert abs((centers[0] - centers[1]) - 360) < 3
