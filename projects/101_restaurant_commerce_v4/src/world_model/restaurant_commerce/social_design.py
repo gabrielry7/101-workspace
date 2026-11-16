@@ -368,6 +368,14 @@ def changes(previous, current):
         return ["initial"]
     if previous["caption"] != current["caption"]:
         changed.append("caption")
+    old_video, new_video = previous["brief"].get("video"), current["brief"].get("video")
+    if bool(old_video) != bool(new_video):
+        changed.append("video.added" if new_video else "video.removed")
+    elif old_video and new_video:
+        for before_clip, after_clip in zip(old_video["clips"],new_video["clips"],strict=True):
+            for key in ("asset_id","source_in","source_out","focal_x","focal_y","audio_mode"):
+                if before_clip.get(key)!=after_clip.get(key):
+                    changed.append("video."+after_clip["shot_id"]+"."+key)
     a, b = previous.get("design"), current.get("design")
     for field in ("asset_id", "focal_x", "focal_y"):
         if previous["brief"].get(field) != current["brief"].get(field):

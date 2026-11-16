@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, AwareDatetime, model_validato
 from sqlalchemy import ForeignKey, LargeBinary, String, Text, select, update
 from sqlalchemy.orm import Mapped, mapped_column
 from .models import Base, utcnow
+from .social_video_contracts import Timeline
 from .social_design import Design, compile_scene, draw_scene, changes as design_changes, VERSION as DESIGN_VERSION
 
 VERSION = 'social-photo-v1'
@@ -95,6 +96,7 @@ class Brief(Strict):
     handoff: Handoff = Field(default_factory=Handoff)
     schema_version: Literal['1'] = '1'
     design: Design | None = None
+    video: Timeline | None = None
     location_id: UUID | None = None
     context_version_id: str | None = Field(default=None, max_length=100)
     fact_refs: list[FactReference] = Field(default_factory=list, max_length=12)
@@ -125,6 +127,8 @@ class Brief(Strict):
 
     @model_validator(mode='after')
     def references(self):
+        if self.video is not None and self.design is not None:
+            raise ValueError('video_and_static_design_are_separate')
         if len(set(self.reference_ids)) != len(self.reference_ids):
             raise ValueError('duplicate_reference')
         ids = [f.id for f in self.facts]
@@ -157,6 +161,20 @@ class Decision(Strict):
 
 def canonical(value):
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
+
+
+def same_snapshot(expected, actual):
+    # Legacy queued photo requests predate the optional video field. Resolve only
+    # schema defaults; real fact/asset/brand changes still invalidate their work.
+    keys=('brief','asset_sha256','business_brief','creative_snapshot','renderer','design','video_sources')
+    for key in keys:
+        a,b=expected.get(key),actual.get(key)
+        if key=='brief':
+            a=Brief.model_validate(a).model_dump(mode='json')
+            b=Brief.model_validate(b).model_dump(mode='json')
+        if a!=b:
+            return False
+    return True
 
 
 def require(condition, reason, status=409):
@@ -236,6 +254,10 @@ def pack_state(session, business, pack_id, now):
         from .social_results import learning_context
         try: learning_context(session,business,doc['brief']['learning_decision_id'])
         except HTTPException as error: reasons.append({'reason':error.detail})
+    from .social_video import source_reasons
+    video_reasons = source_reasons(session, business, doc)
+    reasons += video_reasons
+    media_available = media_available and not video_reasons
     approval = effective_approval(session, rev, doc)
     return pack, rev, doc, approval, reasons, media_available
 
@@ -279,6 +301,8 @@ def register(app, get_session, scoped_staff):
     register_reviews(app,get_session,read,write)
     from .social_results import register as register_results
     register_results(app,get_session,read,write)
+    from .social_video import register as register_video
+    register_video(app,get_session,read,write)
     root='/api/operator/restaurants/{business_id}/social'
 
     @app.get(root, dependencies=[Depends(read)])
@@ -318,7 +342,7 @@ def register(app, get_session, scoped_staff):
                 'historically_approved':ever_approved(session,rev.id),'current':number==pack.revision,
                 'at':doc.get('confirmed_at'),'reason':doc['brief'].get('revision_reason','initial'),
                 'changes':doc.get('changes') or design_changes(json.loads(previous.document) if previous else None,doc),
-                'layout':doc.get('design',{}).get('layout') if doc.get('design') else 'photo_only'})
+                'media_kind':'video' if doc.get('video_output') else 'photo','layout':doc.get('design',{}).get('layout') if doc.get('design') else 'photo_only'})
         return {'revisions':result,'before_revision':result[-1]['revision'] if result and result[-1]['revision']>1 else None}
 
     @app.get(root+'/packs/{pack_id}/revisions/{number}/image',dependencies=[Depends(read)])
@@ -329,6 +353,8 @@ def register(app, get_session, scoped_staff):
         require(rev is not None,'not_found',404)
         doc=json.loads(rev.document)
         asset_check(session,doc['brief']['asset_id'],business_id,utcnow())
+        from .social_video import source_reasons
+        require(not source_reasons(session,business_id,doc),'video_source_unavailable')
         return Response(rev.image,media_type='image/jpeg',headers={'Cache-Control':'no-store'})
 
     @app.post(root+'/assets')
@@ -359,12 +385,14 @@ def register(app, get_session, scoped_staff):
         for rev in session.scalars(select(Revision).join(Pack).where(Pack.business_id==business_id)):
             if json.loads(rev.document)['brief']['asset_id']==asset_id:
                 rev.image=b''
+        from .social_video import purge
+        purge(session,business_id,asset_id)
         from .social_jobs import purge_asset
         purge_asset(session, business_id, asset_id)
         session.commit()
         return {'revoked':True}
 
-    def save(business, payload, principal, session, pack_id=None, *, prepare_only=False, rendered=None, snapshot=None, commit=True):
+    def save(business, payload, principal, session, pack_id=None, *, prepare_only=False, rendered=None, snapshot=None, commit=True, video_files=None):
         now=utcnow()
         stable_id=hashlib.sha256((business+':'+str(payload.request_id)).encode()).hexdigest()[:32]
         if not prepare_only and pack_id is None and session.get(Pack,stable_id) is not None:
@@ -394,14 +422,22 @@ def register(app, get_session, scoped_staff):
             from .social_results import learning_context
             learning=learning_context(session,business,payload.learning_decision_id)
             require(pack_id!=learning['source_pack_id'],'learning_requires_new_pack')
-        scene=compile_scene(payload,asset.original)
+        require(meta.get('media_kind','photo') == 'photo','photo_anchor_required',422)
+        require(payload.video is None or prepare_only or video_files is not None,'video_requires_durable_render')
+        scene=None if payload.video else compile_scene(payload,asset.original)
         doc={'design':scene,'schema_version':'1','renderer':DESIGN_VERSION if scene else VERSION,'business_id':business,'brief':payload.model_dump(mode='json'),
             'caption':caption,'copy_mode':'reviewed_proposal' if proposal_snapshot else 'deterministic_confirmed_statements', 'proposal_snapshot':proposal_snapshot, 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
             'review_contract':'social-review-v1','intended_action':'manual_export','destination_account':{'authorization':'owner_manual_handoff',**payload.handoff.model_dump()}, 'business_brief':business_brief, 'creative_snapshot':creative}
+        if payload.video:
+            from .social_video import validate_timeline
+            from .social_video_contracts import VERSION as VIDEO_VERSION
+            doc['renderer']=VIDEO_VERSION
+            doc['video_sources']=validate_timeline(session,business,payload.video,pack_id=pack_id,doc=doc,lock=True)
+            doc['fixture']=doc['fixture'] or any(s['fixture'] for s in doc['video_sources'])
         if learning is not None: doc['learning_snapshot']=learning
         if snapshot is not None:
-            require(all(snapshot.get(k) == doc.get(k) for k in ('brief','asset_sha256','business_brief','creative_snapshot','renderer','design')), 'job_inputs_changed')
+            require(same_snapshot(snapshot,doc), 'job_inputs_changed')
             doc = snapshot
         if prepare_only:
             if pack_id:
@@ -424,10 +460,16 @@ def register(app, get_session, scoped_staff):
         doc['changes'] = design_changes(json.loads(previous.document) if previous else None,doc)
         if scene:
             require(report.get('scene_sha256')==scene['sha256'],'design_render_changed')
+        if payload.video:
+            doc['video_output']={k:report[k] for k in ('files','width','height','duration_ms','fps','tool_version')}
         encoded=canonical(doc)
         digest=hashlib.sha256((encoded+hashlib.sha256(png).hexdigest()).encode()).hexdigest()
         session.add(Revision(id=f'{pack.id}:{pack.revision}',pack_id=pack.id,document=encoded,digest=digest,image=png,report=canonical(report)))
         session.flush()
+        if payload.video:
+            from .social_video_models import VideoOutput
+            session.add(VideoOutput(revision_id=f'{pack.id}:{pack.revision}',business_id=business,final=video_files['video.mp4'],preview=video_files['preview.mp4'],cover=video_files['cover.jpg']))
+            session.flush()
         attach_dependencies(session, f'{pack.id}:{pack.revision}', payload)
         if commit:
             session.commit()
@@ -449,6 +491,8 @@ def register(app, get_session, scoped_staff):
     def image(business_id: str,pack_id: str,session=Depends(get_session)):
         _,rev,doc,_,_,_=pack_state(session,business_id,pack_id,utcnow())
         asset_check(session,doc['brief']['asset_id'],business_id,utcnow())
+        from .social_video import source_reasons
+        require(not source_reasons(session,business_id,doc),'video_source_unavailable')
         return Response(rev.image,media_type='image/jpeg',headers={'Cache-Control':'no-store'})
     @app.post(root+'/packs/{pack_id}/approve')
     def approve(business_id: str,pack_id: str,payload: Decision,principal=Depends(write),session=Depends(get_session)):

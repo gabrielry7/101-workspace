@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { endpoint } from "./ui";
 import { designError } from "./social-design";
+import { videoErrors } from "./social-video";
 const labels: Record<string, string> = {
   technical: "Calidad técnica",
   factual: "Exactitud de los datos",
@@ -17,6 +18,17 @@ const descriptions: Record<string, string> = {
   brand_fit:
     "La presentación y la voz coinciden con las referencias del negocio.",
   purpose: "Responde la pregunta y deja claro el siguiente paso adecuado.",
+};
+const videoDescriptions: Record<string, string> = {
+  technical:
+    "El vídeo se reproduce completo, el sonido se entiende y el encuadre conserva lo importante.",
+  factual:
+    "El texto, las acciones y cualquier voz describen lo que realmente ofrece el negocio, sin cambiar su significado.",
+  craft: "La secuencia, los cortes, el encuadre y el ritmo funcionan juntos.",
+  brand_fit:
+    "La imagen, el sonido y el ritmo coinciden con las referencias del negocio.",
+  purpose:
+    "La secuencia responde la pregunta y permite entender el siguiente paso.",
 };
 const statuses: Record<string, string> = {
   ready_for_review: "Por revisar",
@@ -55,7 +67,7 @@ function useRequest(business: string, csrf: string) {
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     const d = await r.json();
-    if (!r.ok) throw new Error(designError(d.detail));
+    if (!r.ok) throw new Error(videoErrors[d.detail] || designError(d.detail));
     return d;
   };
 }
@@ -177,6 +189,7 @@ export function SocialReview({
     >({}),
     [reason, setReason] = useState(""),
     [outcome, setOutcome] = useState("ready");
+  const [watched, setWatched] = useState(false);
   async function refresh() {
     setData(await request("/packs/" + pack.id + "/reviews"));
   }
@@ -186,6 +199,7 @@ export function SocialReview({
     setReason("");
     setError("");
     setOutcome("ready");
+    setWatched(false);
     void refresh().catch((e) => setError(String(e)));
   }, [pack.id, pack.digest, pack.review_state]);
   async function run(fn: () => Promise<void>) {
@@ -220,7 +234,7 @@ export function SocialReview({
             {data.technical.status === "passed"
               ? "correcta"
               : "necesita corrección"}
-            . El sistema no decide si la imagen es apropiada para tu negocio.
+            . El sistema no decide si el contenido es apropiado para tu negocio.
           </p>
           {data.legacy_approval && (
             <p>
@@ -245,6 +259,7 @@ export function SocialReview({
                     request_id: crypto.randomUUID(),
                     digest: pack.digest,
                     outcome,
+                    video_watched_and_listened: watched,
                     reason,
                     ...criteria,
                   });
@@ -278,7 +293,11 @@ export function SocialReview({
                         <option value="uncertain">Tengo dudas</option>
                       </select>
                     </label>
-                    <p>{descriptions[key]}</p>
+                    <p>
+                      {pack.document.video_output
+                        ? videoDescriptions[key]
+                        : descriptions[key]}
+                    </p>
                     <label>
                       Nota: {label.toLowerCase()}
                       <input
@@ -301,6 +320,17 @@ export function SocialReview({
                     </label>
                   </div>
                 ))}
+                {pack.document.video_output && (
+                  <label className="social-check">
+                    <input
+                      type="checkbox"
+                      checked={watched}
+                      onChange={(e) => setWatched(e.target.checked)}
+                    />
+                    He visto y escuchado el vídeo completo; revisé los cortes,
+                    el encuadre y el significado.
+                  </label>
+                )}
                 <label>
                   Decisión de revisión
                   <select
@@ -330,9 +360,10 @@ export function SocialReview({
                   className="button secondary"
                   disabled={
                     outcome === "ready" &&
-                    Object.keys(labels).some(
-                      (k) => criteria[k]?.verdict !== "acceptable",
-                    )
+                    ((!!pack.document.video_output && !watched) ||
+                      Object.keys(labels).some(
+                        (k) => criteria[k]?.verdict !== "acceptable",
+                      ))
                   }
                 >
                   Guardar revisión
@@ -406,7 +437,9 @@ export function SocialReview({
                   endpoint(business) + "/social/packs/" + pack.id + "/export"
                 }
               >
-                Descargar foto, texto y archivo editable
+                {pack.document.video_output
+                  ? "Descargar vídeo, portada, texto y archivo editable"
+                  : "Descargar foto, texto y archivo editable"}
               </a>
             </p>
           )}
@@ -433,13 +466,15 @@ export function SocialReview({
           )}
         </>
       )}
-      <SocialComparison
-        key={pack.digest}
-        business={business}
-        csrf={csrf}
-        pack={pack}
-        dirty={dirty}
-      />
+      {!pack.document.video_output && (
+        <SocialComparison
+          key={pack.digest}
+          business={business}
+          csrf={csrf}
+          pack={pack}
+          dirty={dirty}
+        />
+      )}
     </section>
   );
 }

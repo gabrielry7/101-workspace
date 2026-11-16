@@ -43,16 +43,21 @@ from .social_production import (
     owned,
     render,
     require,
+    same_snapshot,
 )
 from .staff import ROLES
 
 LEASE_SECONDS = 30
+
+def lease_seconds(job):
+    return 240 if job.kind == "video_render" else LEASE_SECONDS
+
 MAX_ATTEMPTS = 5
 RECIPE = "social-local-production-v1"
 
 
 class JobInput(Strict):
-    kind: Literal["photo_render", "inspect_asset"] = "photo_render"
+    kind: Literal["photo_render", "inspect_asset", "video_render"] = "photo_render"
     brief: Brief | None = None
     pack_id: str | None = Field(default=None, max_length=64)
     asset_id: str | None = Field(default=None, max_length=64)
@@ -99,7 +104,7 @@ def input_check(session, job, app):
         and hashlib.sha256(asset.original).hexdigest() == meta["sha256"],
         "source_changed",
     )
-    if job.kind == "photo_render":
+    if job.kind in {"photo_render", "video_render"}:
         payload = Brief.model_validate(inputs["brief"])
         current = app.state.social_save(
             job.business_id,
@@ -109,23 +114,13 @@ def input_check(session, job, app):
             inputs["edit_pack_id"],
             prepare_only=True,
         )
-        require(
-            all(
-                current.get(k) == inputs["snapshot"].get(k)
-                for k in (
-                    "brief",
-                    "business_brief",
-                    "creative_snapshot",
-                    "asset_sha256",
-                    "renderer",
-                    "design",
-                )
-            ),
-            "job_inputs_changed",
-        )
+        require(same_snapshot(inputs["snapshot"],current), "job_inputs_changed")
         if inputs["edit_pack_id"] is None:
             existing = session.get(Pack, job.pack_id)
             require(existing is None, "revision_conflict")
+    if job.kind == "video_render":
+        from .social_video import job_sources
+        job_sources(session,job,inputs)
     if job.kind == "proposal_generate":
         from .social_proposal_models import Proposal
         from .social_proposals import still_current
@@ -208,7 +203,7 @@ def info(session, job):
     if job.state == "succeeded":
         try:
             asset_check(session, job.asset_id, job.business_id, utcnow())
-            if job.kind == "photo_render":
+            if job.kind in {"photo_render", "video_render"}:
                 p = document(session, job.business_id, job.pack_id, utcnow())
                 if p["stale"] or str(p["revision"]) != job.result_revision.rsplit(":", 1)[-1]:
                     result.update(state="superseded", reason="newer_or_changed_inputs")
@@ -232,10 +227,12 @@ def enqueue(session, business, payload, principal, app):
         "production_queue_limit",
         429,
     )
-    if payload.kind == "photo_render":
+    if payload.kind in {"photo_render", "video_render"}:
         require(
             payload.brief is not None and payload.asset_id is None, "render_brief_required", 422
         )
+        require((payload.kind == "video_render") == (payload.brief.video is not None), "job_kind_mismatch", 422)
+        require(payload.kind != "video_render" or payload.pack_id is not None,"video_pack_required",422)
         snapshot = app.state.social_save(
             business, payload.brief, principal, session, payload.pack_id, prepare_only=True
         )
@@ -274,6 +271,9 @@ def enqueue(session, business, payload, principal, app):
             "rights_statement": meta["rights_statement"],
         },
     )
+    if payload.kind == "video_render":
+        from .social_video_media import tools
+        inputs["video_tool_version"] = tools()[2]
     stable = {k: v for k, v in inputs.items() if k != "snapshot"}
     if "snapshot" in inputs:
         stable["snapshot"] = {
@@ -374,7 +374,7 @@ def claim(factory, *, worker="social-local-worker", now=None, job_id=None):
         job.state, job.lease, job.lease_until, job.reason = (
             "running",
             token,
-            now + LEASE_SECONDS,
+            now + lease_seconds(job),
             None,
         )
         job.generation += 1
@@ -434,6 +434,9 @@ def produce(original, job, inputs):
 def checkpoint(factory, app, jid, token, *, transform=produce):
     with factory() as probe:
         kind = probe.get(Job, jid).kind
+    if kind == "video_render":
+        from .social_video import checkpoint as montage
+        return montage(factory, app, jid, token)
     if kind == "proposal_generate":
         from .social_proposal_worker import checkpoint as generate
 
@@ -498,6 +501,9 @@ def complete(factory, app, jid, token):
             job.result_bytes = (
                 b""  # Canonical revision owns final pixels; don't retain a duplicate.
             )
+        if job.kind == "video_render":
+            from .social_video import complete as complete_video
+            complete_video(session,job,app,inputs)
         if job.kind == "proposal_generate":
             from .social_proposal_worker import complete as complete_proposal
 
@@ -567,9 +573,13 @@ def dispatch_one(factory, app):
 
 
 def purge_asset(session, business, asset_id, reason="source_deleted_or_revoked"):
-    for job in session.scalars(
-        select(Job).where(Job.business_id == business, Job.asset_id == asset_id)
-    ):
+    from .social_video import purge
+    purge(session,business,asset_id)
+    for job in session.scalars(select(Job).where(Job.business_id == business)):
+        inputs=json.loads(job.input_json)
+        source_ids=[c["asset_id"] for c in (inputs.get("brief",{}).get("video") or {}).get("clips",[])]
+        if job.asset_id != asset_id and asset_id not in source_ids:
+            continue
         job.result_bytes, job.result_json, job.checkpoint = b"", None, None
         if job.kind == "proposal_generate":
             from .social_proposal_models import Proposal
@@ -596,6 +606,8 @@ def purge_asset(session, business, asset_id, reason="source_deleted_or_revoked")
 
 def purge_unavailable(factory):
     with factory() as session:
+        from .social_video import sweep
+        sweep(session)
         candidates = session.scalars(
             select(Job)
             .where(or_(Job.state.in_(["queued", "running", "succeeded"]), Job.result_bytes != b""))
@@ -606,6 +618,15 @@ def purge_unavailable(factory):
         for job in candidates:
             try:
                 asset_check(session, job.asset_id, job.business_id, utcnow())
+                if job.kind == "video_render":
+                    for c in json.loads(job.input_json)["brief"]["video"]["clips"]:
+                        try:
+                            asset_check(session,c["asset_id"],job.business_id,utcnow())
+                        except HTTPException as e:
+                            from .social_video import purge
+                            purge(session,job.business_id,c["asset_id"])
+                            purge_asset(session,job.business_id,c["asset_id"],str(e.detail))
+                            raise
             except HTTPException as error:
                 purge_asset(session, job.business_id, job.asset_id, str(error.detail))
             # Round-robin the bounded sweep, including valid old completed jobs.
