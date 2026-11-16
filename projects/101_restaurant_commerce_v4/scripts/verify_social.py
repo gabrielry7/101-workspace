@@ -30,7 +30,8 @@ BATCHES = (
             "instagram_connections",
         ),
     ),
-    ("workspace-video-browser", ("social_workspace_browser", "social_video_browser")),
+    ("workspace-browser", ("social_workspace_browser",)),
+    ("video-browser", ("social_video_browser",)),
 )
 
 
