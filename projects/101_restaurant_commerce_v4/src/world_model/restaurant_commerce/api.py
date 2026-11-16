@@ -587,7 +587,7 @@ def create_app(
 
     @app.get("/api/browser-policy")
     def browser_url_policy():
-        return {**browser_policy, "demo_mode": demo_mode, "wompi_sandbox": wompi_sandbox is not None}
+        return {**browser_policy, "demo_mode": demo_mode, "internal_tools": environment == "internal", "wompi_sandbox": wompi_sandbox is not None}
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):

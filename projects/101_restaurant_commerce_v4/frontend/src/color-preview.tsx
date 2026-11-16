@@ -24,7 +24,7 @@ function initialPairing() {
   }
   return "original";
 }
-/** Mounted only in the explicit demo. No business setting or provider action. */
+/** Mounted only in the explicitly internal environment; independent of demo data. No business setting or provider action. */
 export function ColorPreview() {
   const [pairing, setPairing] = useState(initialPairing);
   useEffect(() => {
@@ -62,7 +62,7 @@ export function ColorPreview() {
           ))}
         </select>
       </label>
-      <span>Prueba visual · solo en este navegador</span>
+      <span>Herramientas internas</span>
     </div>
   );
 }

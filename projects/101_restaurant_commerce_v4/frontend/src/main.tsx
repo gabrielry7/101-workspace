@@ -191,13 +191,7 @@ function Login({ onLogin }: { onLogin: (id: Identity) => void }) {
           }
         }}
       >
-        <span className="eyebrow">TU NEGOCIO, A MANO</span>
-        <h1>
-          Un buen día
-          <br />
-          empieza aquí.
-        </h1>
-        <p>Entra a tu espacio de trabajo.</p>
+        <h1>Iniciar sesión</h1>
         <label>
           Usuario
           <input name="username" autoComplete="username" required autoFocus />
@@ -221,7 +215,6 @@ function Login({ onLogin }: { onLogin: (id: Identity) => void }) {
           <ArrowRight size={17} />
         </button>
       </form>
-      <small>101 · Herramientas para hacer más.</small>
     </div>
   );
 }
@@ -263,7 +256,7 @@ function App() {
   const [qr, setQr] = useState(
     new URLSearchParams(location.search).get("invite") === "1",
   );
-  const [policy, setPolicy] = useState<{ demo_mode: boolean }>();
+  const [policy, setPolicy] = useState<{ demo_mode: boolean; internal_tools: boolean }>();
   const [search, setSearch] = useState(params.get("q") || "");
   const scrollRef = useRef(0);
   const returnFocus = useRef<HTMLAnchorElement | null>(null);
@@ -280,7 +273,7 @@ function App() {
   };
   useEffect(() => {
     refreshIdentity();
-    api<{ demo_mode: boolean }>("/api/browser-policy")
+    api<{ demo_mode: boolean; internal_tools: boolean }>("/api/browser-policy")
       .then(setPolicy)
       .catch(() => {});
     const pop = () => {
@@ -562,13 +555,13 @@ function App() {
           )}
           {business && (
             <>
-              <a
+              {policy?.internal_tools && <a
                 href={`/workspace/identity?business=${bid}`}
                 onClick={(e) => goScreen(e, "identity")}
               >
                 <Palette />
                 Identidad
-              </a>
+              </a>}
               <a href={legacy("/connections")}>
                 <Plug />
                 Conexiones
@@ -717,10 +710,9 @@ function App() {
                 Demostración · datos ficticios
               </span>
             )}
-            <span className="version-label">HECHO PARA TU DÍA A DÍA</span>
           </div>
         </header>
-        {policy?.demo_mode && <ColorPreview />}
+        {policy?.internal_tools && <ColorPreview />}
         {["sales", "customers"].includes(screen) && params.get("date_from") && (
           <div className="date-context">
             {params.get("date_from")} — {params.get("date_to")} · por fecha de
@@ -764,7 +756,7 @@ function App() {
         ) : screen === "analytics" ? (
           <AnalyticsView business={bid} params={params} navigate={navigate} />
         ) : screen === "identity" ? (
-          <IdentityView />
+          policy?.internal_tools ? <IdentityView /> : null
         ) : screen === "campaigns" ? (
           <CampaignView
             key={bid}
@@ -803,7 +795,6 @@ function App() {
               <div>
                 <span className="eyebrow">CONOCE A QUIENES VUELVEN</span>
                 <h1>Clientes</h1>
-                <p>Cada visita empieza con una persona.</p>
               </div>
               <div className="loyalty-directory-actions">
                 <div className="loyalty-entry">
@@ -859,14 +850,7 @@ function App() {
                   <QrCode size={34} strokeWidth={1.6} />
                 </span>
                 <span>
-                  <strong>
-                    Un escaneo.
-                    <br />
-                    Una nueva conexión.
-                  </strong>
-                  <small>
-                    Comparte tu código QR <ArrowUp />
-                  </small>
+                  <strong>Compartir QR <ArrowUp /></strong>
                 </span>
               </button>
             </div>

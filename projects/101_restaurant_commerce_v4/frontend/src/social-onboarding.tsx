@@ -264,7 +264,6 @@ export function SocialOnboarding({
     <section className="social-onboarding" aria-label="Guía de tu negocio">
       <div className="onboarding-progress">
         <span>Paso {step + 1} de 5</span>
-        <span>Tu negocio, a tu manera</span>
       </div>
       <progress aria-label="Progreso de la guía" max={5} value={step + 1} />
       <h2 ref={heading} tabIndex={-1}>

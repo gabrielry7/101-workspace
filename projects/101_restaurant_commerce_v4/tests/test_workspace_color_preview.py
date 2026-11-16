@@ -1,6 +1,8 @@
 """Actual workspace, local presentation choices, retained business data/navigation."""
 
 # ruff: noqa: F811 -- pytest fixtures are injected by name
+import pytest
+
 from test_browser_security import browser, playwright  # noqa: F401
 from test_combined_workspace_browser import site  # noqa: F401
 
@@ -14,6 +16,7 @@ def login(page):
 
 def test_palette_preserves_customer_state_and_survives_navigation(site):
     page, *_ = site
+    page.route("**/api/browser-policy", lambda r: r.fulfill(json={"demo_mode": True, "internal_tools": True}))
     page.goto("/workspace/customers?pairing=gray-white")
     login(page)
     search = page.get_by_label("Buscar clientes")
@@ -49,11 +52,13 @@ def test_palette_preserves_customer_state_and_survives_navigation(site):
     assert page.locator("html").get_attribute("data-workspace-pairing") is None
 
 
-def test_palette_not_mounted_when_demo_policy_is_off(site):
+@pytest.mark.parametrize("demo", [True, False])
+def test_internal_tools_absent_from_merchant_and_demo(site, demo):
     page, *_ = site
     page.route(
-        "**/api/browser-policy", lambda route: route.fulfill(json={"demo_mode": False})
+        "**/api/browser-policy", lambda route: route.fulfill(json={"demo_mode": demo, "internal_tools": False})
     )
+    page.add_init_script("localStorage.setItem('101.workspace.color-preview', 'lime')")
     page.goto("/workspace/customers?pairing=lime")
     page.get_by_label("Usuario", exact=True).fill("101")
     page.get_by_label("Contraseña", exact=True).fill("101")
@@ -61,3 +66,8 @@ def test_palette_not_mounted_when_demo_policy_is_off(site):
     playwright.expect(page.locator("tbody tr")).to_have_count(25)
     assert page.get_by_label("Vista de color", exact=True).count() == 0
     assert page.locator("html").get_attribute("data-workspace-pairing") is None
+
+    assert page.get_by_role("link", name="Identidad", exact=True).count() == 0
+    assert page.locator(".demo-badge").count() == int(demo)
+    page.get_by_role("button", name="Compartir QR").click()
+    playwright.expect(page.get_by_role("dialog")).to_be_visible()

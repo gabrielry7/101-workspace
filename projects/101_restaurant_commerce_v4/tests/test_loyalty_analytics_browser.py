@@ -178,6 +178,7 @@ def capture(page, name):
 def test_complete_itt_interval_nonbuyers_csv_and_mobile(site):
     page, app, data = site
     before = count(app, LoyaltyLedgerEntry)
+    page.route("**/api/browser-policy", lambda r: r.fulfill(json={"demo_mode": True, "internal_tools": True}))
     login(page, data)
     page.get_by_text("Evaluación disponible", exact=True).wait_for()
     comparison = page.get_by_role(

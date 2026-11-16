@@ -20,6 +20,7 @@ from .service import RestaurantCommerceService
 
 def app_for_demo(database_url, origin="http://127.0.0.1:8831"):
     app = console_app(database_url, origin, analytics_enabled=True)
+    app.state.monthly_report_demo_business = BUSINESS
     with app.state.session_factory() as s:
         key = "synthetic-profit-analysis-v1"
         if s.scalar(

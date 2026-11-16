@@ -53,9 +53,9 @@ def previous(month):
     return f"{year if m > 1 else year - 1:04}-{m - 1 if m > 1 else 12:02}"
 
 
-def financial(session, business, selected, currency):
+def financial(session, business, selected, currency, *, demo=False):
     rows = money_totals(session, business, selected)
-    row = next((r for r in rows if r["scope"] == "provider" and r["currency"] == currency), None)
+    row = next((r for r in rows if r["scope"] == ("test" if demo else "provider") and r["currency"] == currency), None)
     if row is None:
         return dict(
             net=None,
@@ -76,11 +76,11 @@ def financial(session, business, selected, currency):
         if row["paid_orders"]
         else None
     )
-    row.update(coverage="unknown", note="Cobertura histórica sin verificar.")
+    row.update(coverage="synthetic" if demo else "unknown", note="Demostración: datos ficticios." if demo else "Cobertura histórica sin verificar.")
     return row
 
 
-def campaign_rows(session, business, selected, currency):
+def campaign_rows(session, business, selected, currency, *, demo=False):
     from .campaign_models import (
         Campaign,
         CampaignJob,
@@ -99,7 +99,7 @@ def campaign_rows(session, business, selected, currency):
         .where(
             CampaignJob.business_id == business,
             Campaign.business_id == business,
-            CampaignJob.scope == "live",
+            CampaignJob.scope == ("test" if demo else "live"),
             CampaignJob.submitted_at >= selected["start"],
             CampaignJob.submitted_at < selected["end"],
         )
@@ -116,7 +116,7 @@ def campaign_rows(session, business, selected, currency):
         .where(
             CampaignJob.business_id == business,
             Campaign.business_id == business,
-            CampaignJob.scope == "live",
+            CampaignJob.scope == ("test" if demo else "live"),
             CampaignVisit.scanner.is_(False),
             CampaignVisit.at >= selected["start"],
             CampaignVisit.at < selected["end"],
@@ -139,13 +139,13 @@ def campaign_rows(session, business, selected, currency):
         )
     ):
         doc = json.loads(revision.document)
-        if credit.scope != "live":
+        if credit.scope != ("test" if demo else "live"):
             continue
         payments = [
             p
             for p in order.payments
             if p.currency == currency
-            and p.provider not in {"simulated", "cash_at_pickup"}
+            and (p.provider == "simulated" if demo else p.provider not in {"simulated", "cash_at_pickup"})
             and p.status in {"paid", "refunded"}
         ]
         if not payments:
@@ -158,12 +158,12 @@ def campaign_rows(session, business, selected, currency):
     return result
 
 
-def campaign_activity(session, business, span):
+def campaign_activity(session, business, span, *, demo=False):
     from sqlalchemy import func
 
     from .campaign_models import CampaignJob, CampaignVisit
 
-    base = [CampaignJob.business_id == business, CampaignJob.scope == "live"]
+    base = [CampaignJob.business_id == business, CampaignJob.scope == ("test" if demo else "live")]
     known = session.scalar(select(func.count()).select_from(CampaignJob).where(*base))
     if not known:
         return {"accepted": None, "visits": None}
@@ -188,7 +188,7 @@ def campaign_activity(session, business, span):
     return {"accepted": accepted, "visits": visits}
 
 
-def build(session, business, month, currency, website_reader=None, request=None, now=None):
+def build(session, business, month, currency, website_reader=None, request=None, now=None, *, demo=False):
     profile = session.get(RestaurantCommerceProfile, business)
     if not profile:
         raise HTTPException(404)
@@ -225,13 +225,13 @@ def build(session, business, month, currency, website_reader=None, request=None,
                 }
         values.append(
             dict(
-                activity=campaign_activity(session, business, span),
+                activity=campaign_activity(session, business, span, demo=demo),
                 month=m,
                 start=span["start"].isoformat(),
                 end=span["end"].isoformat(),
-                sales=financial(session, business, span, currency),
+                sales=financial(session, business, span, currency, demo=demo),
                 website=website,
-                campaigns=campaign_rows(session, business, span, currency),
+                campaigns=campaign_rows(session, business, span, currency, demo=demo),
             )
         )
     ids = set(values[0]["campaigns"]) | set(values[1]["campaigns"])
@@ -264,6 +264,7 @@ def build(session, business, month, currency, website_reader=None, request=None,
         v.pop("campaigns")
     return dict(
         version=1,
+        demo=demo,
         business_id=business,
         business_name=profile.display_name,
         month=month,
@@ -273,7 +274,7 @@ def build(session, business, month, currency, website_reader=None, request=None,
         currencies=currencies,
         periods=values,
         campaigns=rows,
-        gaps=[
+        gaps=(["Demostración: datos ficticios."] if demo else []) + [
             "Pedidos agrupados por fecha de creación, con devoluciones registradas hasta esta actualización.",
             "Google y posiciones en buscadores: sin historial mensual conectado.",
         ],
@@ -361,7 +362,9 @@ def register(app, get_session, scoped_staff):
 
         with committed_snapshot(session) as snapshot:
             document = build(
-                snapshot, business_id, month, currency, cached_reader if reader else None, request
+                snapshot, business_id, month, currency, cached_reader if reader else None, request,
+                demo=bool(app.state.demo_mode and app.state.environment in {"development", "internal"}
+                          and getattr(app.state, "monthly_report_demo_business", None) == business_id),
             )
         scoped_staff(request, session, business_id, "finance.read")
         scoped_staff(request, session, business_id, "growth.read")
