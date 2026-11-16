@@ -130,9 +130,15 @@ def package(session, business, pack_id, app):
         "La aprobación creativa no demuestra un resultado comercial.\n"
     )
     if doc.get("video_output"):
-        files["README.txt"] += ("\nEste paquete contiene un montaje de tomas reales: usa video.mp4, cover.jpg y caption.txt.\n"
+        files["README.txt"] = ("Paquete de vídeo para publicación manual\n\n"
+            "Usa video.mp4, cover.jpg y caption.txt en el destino indicado en approval.json.\n"
+            "Este ZIP no publica ni conecta una cuenta. La aprobación corresponde solo a esta versión.\n"
+            "Si cambias contenido o destino, vuelve a revisarlo antes de publicar.\n"
             "preview.mp4 es una copia pequeña; post.jpg es solo una miniatura para el espacio de trabajo.\n"
             "timeline.json conserva tomas, tiempos, encuadre y sonido; originals/ conserva las tomas autorizadas.\n"
+            "original conserva la foto inicial del pack, no una toma del vídeo.\n"
+            "video-sources.json conserva permisos, vencimientos y datos técnicos.\n"
+            "manifest.json enumera bytes y SHA-256 de los archivos excepto el manifiesto.\n"
             "No se generaron escenas, música ni transcripción. La revisión completa de sonido y significado es humana.\n")
     files = {
         name: value.encode("utf-8") if isinstance(value, str) else value

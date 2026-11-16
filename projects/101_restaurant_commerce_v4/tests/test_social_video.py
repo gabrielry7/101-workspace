@@ -190,6 +190,8 @@ def test_actual_montage_full_workflow_and_targeted_revision(queue, clips, tmp_pa
     with zipfile.ZipFile(io.BytesIO(zdata.content)) as z:
         assert len([name for name in z.namelist() if name.startswith("originals/")]) == 3
         assert z.read("video.mp4") == final.content
+        assert z.read("README.txt").decode().startswith("Paquete de vídeo")
+        assert "Usa post.jpg" not in z.read("README.txt").decode()
         assert json.loads(z.read("timeline.json"))["clips"][1]["asset_id"] == takes[1]["id"]
         for name, m in json.loads(z.read("manifest.json"))["files"].items():
             assert (
