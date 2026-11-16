@@ -175,6 +175,23 @@ def test_spoken_word_correction_approval_manifest_and_preserved_cuts(queue, clip
     with q.factory() as session:
         row = session.get(Transcript, t["id"])
         assert row.machine_json == "" and row.raw_json == ""
+        from sqlalchemy import select
+        from world_model.restaurant_commerce.social_production import Revision
+        from world_model.restaurant_commerce.social_speech_models import TranscriptEdit
+
+        for revision in session.scalars(select(Revision).where(Revision.pack_id == p["id"])):
+            document = json.loads(revision.document)
+            if document.get("speech_snapshot"):
+                assert document["speech_snapshot"] == {"purged": True}
+                assert json.loads(revision.report)["subtitles"] == {"purged": True}
+        for job in session.scalars(select(jobs.Job).where(jobs.Job.pack_id == p["id"])):
+            snapshot = json.loads(job.input_json).get("snapshot", {})
+            if snapshot.get("speech_snapshot"):
+                assert snapshot["speech_snapshot"] == {"purged": True}
+        for edit in session.scalars(
+            select(TranscriptEdit).where(TranscriptEdit.transcript_id == t["id"])
+        ):
+            assert json.loads(edit.document) == {}
 
 
 def test_speech_needs_runtime_and_no_lost_negations(queue, clips):

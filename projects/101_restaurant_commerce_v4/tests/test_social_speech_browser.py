@@ -86,3 +86,18 @@ def test_spoken_capture_word_revision_and_export(site, clips, tmp_path):
     assert layout["buttons"]
     assert "Inter" in layout["font"] and all(b["height"] >= 44 for b in layout["buttons"])
     (out / "layout.json").write_text(json.dumps(layout, ensure_ascii=False, indent=2))
+
+    # A replacement answer must not inherit the previous take's corrected words.
+    detail = panel.get_by_label("Toma elegida: El producto", exact=True).input_value()
+    finish = panel.get_by_label("Toma elegida: El resultado", exact=True).input_value()
+    panel.get_by_label("Subir toma: Tu respuesta", exact=True).set_input_files(str(clips[0]))
+    speech.get_by_role("button", name="Transcribir respuesta en español", exact=True).wait_for()
+    assert panel.get_by_role(
+        "button", name="Preparar vídeo con subtítulos", exact=True
+    ).is_disabled()
+    assert panel.get_by_label("Toma elegida: El producto", exact=True).input_value() == detail
+    assert panel.get_by_label("Toma elegida: El resultado", exact=True).input_value() == finish
+    speech.get_by_role("button", name="Transcribir respuesta en español", exact=True).click()
+    speech.get_by_label("Palabra 3", exact=True).wait_for(timeout=30000)
+    assert speech.get_by_label("Palabra 3", exact=True).input_value() == "panes."
+    assert fake.calls == 2

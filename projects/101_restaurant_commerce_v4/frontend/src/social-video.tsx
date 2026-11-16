@@ -196,6 +196,12 @@ export function SocialVideo({
     };
   }, [open, pack.id, pack.digest]);
   function update(id: string, change: Partial<Cut>) {
+    if (
+      id === "process" &&
+      change.asset_id &&
+      change.asset_id !== cuts.process?.asset_id
+    )
+      setSpeech(null);
     setCuts((old) => ({ ...old, [id]: { ...old[id], ...change } }));
     setAttempt(crypto.randomUUID());
     dirty(true);
