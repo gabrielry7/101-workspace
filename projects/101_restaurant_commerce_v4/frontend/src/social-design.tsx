@@ -442,7 +442,12 @@ const changeNames: Record<string, string> = {
   brief_or_review: "Información o revisión",
 };
 function changeName(value: string) {
-  const [type, role] = value.split(".");
+  const [type, role, field] = value.split(".");
+  if(type==="video") {
+    if(role==="added") return "Se añadió el montaje";
+    if(role==="removed") return "Se volvió a una imagen";
+    return "Vídeo · "+({detail:"producto",process:"proceso",finish:"resultado"} as any)[role]+": "+({asset_id:"otra toma",source_in:"inicio del corte",source_out:"fin del corte",focal_x:"encuadre horizontal",focal_y:"encuadre vertical",audio_mode:"sonido"} as any)[field];
+  }
   return (
     changeNames[value] ||
     (type === "text"
@@ -517,11 +522,12 @@ export function SocialHistory({
             className="button secondary"
             onClick={() => setView(view === h.revision ? null : h.revision)}
           >
-            {view === h.revision ? "Cerrar vista" : "Ver imagen y texto"}{" "}
+            {view === h.revision ? "Cerrar vista" : h.media_kind==="video"?"Ver vídeo y texto":"Ver imagen y texto"}{" "}
             {h.revision}
           </button>
           {view === h.revision && (
             <>
+              {h.media_kind==="video"&&<video className="video-preview" controls preload="none" aria-label={"Vídeo histórico de la versión "+h.revision} src={root+"/revisions/"+h.revision+"/video"}/>}
               <img
                 className="social-image"
                 src={root + "/revisions/" + h.revision + "/image"}

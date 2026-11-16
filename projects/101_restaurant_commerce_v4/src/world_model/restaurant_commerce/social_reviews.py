@@ -62,6 +62,7 @@ class Assessment(Strict):
     brand_fit: Criterion
     purpose: Criterion
     reason: str = Field(min_length=1, max_length=1200)
+    video_watched_and_listened: bool = False
 
     @model_validator(mode="after")
     def ready(self):
@@ -159,7 +160,7 @@ def events(session, revision_id):
 
 
 def scope(rev, doc):
-    return {
+    result = {
         "business_id": doc["business_id"],
         "revision_id": rev.id,
         "digest": rev.digest,
@@ -174,9 +175,13 @@ def scope(rev, doc):
         "intended_action": doc["intended_action"],
         "destination": doc.get("destination_account"),
     }
+    if doc.get("video_output"):
+        result["video"] = doc["video_output"]
+        result["video_sources_sha256"] = digest(doc.get("video_sources"))
+    return result
 
 
-def technical(rev):
+def technical(rev, session=None):
     defects = []
     try:
         with Image.open(io.BytesIO(rev.image)) as im:
@@ -192,6 +197,14 @@ def technical(rev):
         defects.append("artifact_digest_changed")
     if json.loads(rev.report).get("technical") != "passed":
         defects.append("renderer_checks_not_passed")
+    doc=json.loads(rev.document)
+    if doc.get("video_output") and session is not None:
+        from .social_video import output
+        from fastapi import HTTPException
+        try:
+            output(session,rev,doc)
+        except HTTPException:
+            defects.append("video_output_changed")
     return {
         "status": "passed" if not defects else "blocked",
         "defects": defects,
@@ -314,6 +327,8 @@ def locked_current(session, business, pack_id):
         .with_for_update()
         .execution_options(populate_existing=True)
     )
+    for source in sorted(doc.get("video_sources",[]),key=lambda s:s["asset_id"]):
+        session.scalar(select(Asset).where(Asset.id==source["asset_id"]).with_for_update().execution_options(populate_existing=True))
     session.execute(
         update(Pack)
         .where(Pack.id == pack_id, Pack.business_id == business)
@@ -322,6 +337,9 @@ def locked_current(session, business, pack_id):
     session.expire_all()
     result = current(session, business, pack_id, current_time())
     require(result[0].revision == expected, "review_version_changed")
+    if result[2].get("video_output"):
+        from .social_video import output
+        output(session,result[1],result[2])
     return result
 
 
@@ -339,7 +357,7 @@ def approve(session, business, pack_id, payload, principal):
         require(
             value["outcome"] == "ready" and value["scope"] == scope(rev, doc), "review_not_ready"
         )
-        require(technical(rev)["status"] == "passed", "technical_review_blocked")
+        require(technical(rev,session)["status"] == "passed", "technical_review_blocked")
         if not (old and getattr(old, "review_id", None) == assessment.id):
             record(
                 session,
@@ -407,6 +425,7 @@ def validate_pair_source(session, business, rev):
     from .social_context import stale_reasons
     from .social_creative import stale_reasons as brand_stale
     from .social_production import asset_check, future
+    require(not json.loads(rev.document).get("video_output"),"video_comparison_needs_full_temporal_review")
 
     doc = json.loads(rev.document)
     lock_context(session, doc)
@@ -470,7 +489,7 @@ def register(app, get_session, read, write):
             "digest": p["digest"],
             "scope": scope(rev, p["document"]),
             "state": p["review_state"],
-            "technical": technical(rev),
+            "technical": technical(rev,session),
             "events": events(session, rev.id),
             "commercial": {"value": None, "reason": "not_measured", "source": None},
             "reason_tags": TAGS,
@@ -489,10 +508,14 @@ def register(app, get_session, read, write):
     ):
         _, rev, doc, _ = locked_current(session, business_id, pack_id)
         require(payload.digest == rev.digest, "review_version_changed")
-        check = technical(rev)
+        check = technical(rev,session)
         if payload.outcome == "ready":
             require(check["status"] == "passed", "technical_review_blocked")
+            require(not doc.get("video_output") or payload.video_watched_and_listened,
+                    "watch_and_listen_to_complete_video")
         value = payload.model_dump(mode="json")
+        if not doc.get("video_output"):
+            value.pop("video_watched_and_listened",None)
         value.update(
             scope=scope(rev, doc),
             technical_checks=check,

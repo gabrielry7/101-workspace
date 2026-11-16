@@ -345,3 +345,14 @@ Historical images are clearly historical and never substitute for current approv
 Creative output typography currently uses the existing licensed Inter Regular
 face;101UI typography stays governed by this identity, separately from merchant
 content choices. No default serif, font substitution or universal taste score.
+
+Social guided video (N10 first recipe,16 November2026): reuse the Social pack,
+shared Inter/white panels,44px controls, N04 activity and N07 review/approval.
+The shot guide, take selector and bounded trim/crop/audio editor are new Social
+pieces; framing diagrams are neutral guidance and never merchant content. Saved
+video views collapse the photo editor, show one playable preview and link directly
+to the guide. Permission, source time and material remain separate from geometry.
+Phone fields stack; replace one take without losing the other choices. Full-video
+watch/listen acknowledgment is independent of final approval. Comparisons based
+only on a cover never stand in for temporal/video review. Before/refined desktop
+and390px evidence lives in docs/social/n10-evidence in the World Model repository.

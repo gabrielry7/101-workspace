@@ -15,7 +15,7 @@ def package(session, business, pack_id, app):
     # Serialize against material edits and review decisions; revalidate every export.
     _, rev, doc, approval = locked_current(session, business, pack_id)
     require(approval is not None and approval.digest == rev.digest, "approval_required")
-    require(technical(rev)["status"] == "passed", "export_output_changed")
+    require(technical(rev,session)["status"] == "passed", "export_output_changed")
     asset, meta = asset_check(session, doc["brief"]["asset_id"], business, current_time())
     require(
         hashlib.sha256(asset.original).hexdigest() == doc["asset_sha256"] == meta["sha256"],
@@ -27,6 +27,14 @@ def package(session, business, pack_id, app):
         "caption.txt": doc["caption"],
         "editable.json": rev.document,
     }
+    if doc.get("video_output"):
+        from .social_video import output, clip_check
+        video=output(session,rev,doc)
+        files.update({"video.mp4":video.final,"preview.mp4":video.preview,"cover.jpg":video.cover,
+                      "timeline.json":canonical(doc["brief"]["video"]),"video-sources.json":canonical(doc["video_sources"])})
+        for source in doc["video_sources"]:
+            take,_=clip_check(session,business,source["asset_id"])
+            files[f"originals/{take.id}.mp4"]=take.original
     if doc.get("design"):
         files.update(
             {
@@ -53,7 +61,7 @@ def package(session, business, pack_id, app):
         {
             "contract": doc.get("review_contract"),
             "events": events(session, rev.id),
-            "technical": technical(rev),
+            "technical": technical(rev,session),
             "commercial": {"value": None, "reason": "not_measured"},
             "legacy_notice": None
             if getattr(approval, "mode", None) == "structured"
@@ -121,6 +129,11 @@ def package(session, business, pack_id, app):
         "Si existe results.json, contiene observaciones declaradas y sus límites.\n"
         "La aprobación creativa no demuestra un resultado comercial.\n"
     )
+    if doc.get("video_output"):
+        files["README.txt"] += ("\nEste paquete contiene un montaje de tomas reales: usa video.mp4, cover.jpg y caption.txt.\n"
+            "preview.mp4 es una copia pequeña; post.jpg es solo una miniatura para el espacio de trabajo.\n"
+            "timeline.json conserva tomas, tiempos, encuadre y sonido; originals/ conserva las tomas autorizadas.\n"
+            "No se generaron escenas, música ni transcripción. La revisión completa de sonido y significado es humana.\n")
     files = {
         name: value.encode("utf-8") if isinstance(value, str) else value
         for name, value in files.items()

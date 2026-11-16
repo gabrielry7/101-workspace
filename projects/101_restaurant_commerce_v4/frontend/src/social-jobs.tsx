@@ -196,6 +196,8 @@ export function ProductionJobs({
             <strong>
               {j.kind === "photo_render"
                 ? "Preparar fotografía y texto"
+                : j.kind === "video_render"
+                  ? "Preparar montaje de vídeo"
                 : j.kind === "proposal_generate"
                   ? "Preparar propuesta"
                   : "Revisar archivo"}
