@@ -93,6 +93,9 @@ class Handoff(Strict):
 
 
 class Brief(Strict):
+    research_version_id: str | None = Field(default=None,max_length=100)
+    research_post_ids: list[str] = Field(default_factory=list,max_length=4)
+    research_search_ids: list[str] = Field(default_factory=list,max_length=4)
     handoff: Handoff = Field(default_factory=Handoff)
     schema_version: Literal['1'] = '1'
     design: Design | None = None
@@ -166,7 +169,7 @@ def canonical(value):
 def same_snapshot(expected, actual):
     # Legacy queued photo requests predate the optional video field. Resolve only
     # schema defaults; real fact/asset/brand changes still invalidate their work.
-    keys=('brief','asset_sha256','business_brief','creative_snapshot','renderer','design','video_sources')
+    keys=('brief','asset_sha256','business_brief','creative_snapshot','renderer','design','video_sources','research_snapshot')
     for key in keys:
         a,b=expected.get(key),actual.get(key)
         if key=='brief':
@@ -249,6 +252,8 @@ def pack_state(session, business, pack_id, now):
         from .social_proposals import current_decision
         try: current_decision(session,business,doc['brief']['proposal_decision_id'])
         except HTTPException as error: reasons.append({'reason':error.detail})
+    from .social_research import stale_reasons as research_stale
+    reasons += research_stale(session,business,doc)
     from .social_reviews import effective_approval
     if doc['brief'].get('learning_decision_id'):
         from .social_results import learning_context
@@ -303,6 +308,10 @@ def register(app, get_session, scoped_staff):
     register_results(app,get_session,read,write)
     from .social_video import register as register_video
     register_video(app,get_session,read,write)
+    from .social_research import register as register_research
+    register_research(app,get_session,read,write)
+    from .social_auto_review import register as register_auto_review
+    register_auto_review(app,get_session,read,write)
     root='/api/operator/restaurants/{business_id}/social'
 
     @app.get(root, dependencies=[Depends(read)])
@@ -429,12 +438,18 @@ def register(app, get_session, scoped_staff):
             'caption':caption,'copy_mode':'reviewed_proposal' if proposal_snapshot else 'deterministic_confirmed_statements', 'proposal_snapshot':proposal_snapshot, 'asset_sha256':meta['sha256'],
             'fixture':meta['fixture'],'confirmed_by':principal.actor_id,'confirmed_at':now.isoformat(),
             'review_contract':'social-review-v1','intended_action':'manual_export','destination_account':{'authorization':'owner_manual_handoff',**payload.handoff.model_dump()}, 'business_brief':business_brief, 'creative_snapshot':creative}
+        if proposal_snapshot and ctx.get('search_plan'):
+            proposal_snapshot['search_plan']=ctx['search_plan']
         if payload.video:
             from .social_video import validate_timeline
             from .social_video_contracts import VERSION as VIDEO_VERSION
             doc['renderer']=VIDEO_VERSION
             doc['video_sources']=validate_timeline(session,business,payload.video,pack_id=pack_id,doc=doc,lock=True)
             doc['fixture']=doc['fixture'] or any(s['fixture'] for s in doc['video_sources'])
+        if payload.research_version_id:
+            from .social_research import snapshot as research_snapshot
+            doc['research_snapshot']=research_snapshot(session,business,payload.research_version_id,payload.research_post_ids,payload.research_search_ids,str(payload.location_id) if payload.location_id else None)
+            doc['fixture']=doc['fixture'] or any(p['fixture'] for k in ('posts','searches') for p in doc['research_snapshot'][k])
         if learning is not None: doc['learning_snapshot']=learning
         if snapshot is not None:
             require(same_snapshot(snapshot,doc), 'job_inputs_changed')

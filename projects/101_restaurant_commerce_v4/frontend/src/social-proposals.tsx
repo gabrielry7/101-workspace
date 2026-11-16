@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { endpoint } from "./ui";
 import type { BusinessContext } from "./social-context";
+import type { ResearchSelection } from "./social-research";
 import type { CreativeBoard } from "./social-creative";
 const sourceNames: Record<string, string> = {
   owner_suggestion: "Idea del negocio",
@@ -24,6 +25,8 @@ const flags: Record<string, string> = {
 export function SocialProposals({
   business,
   csrf,
+  research,
+  onClearResearch,
   learning,
   onClearLearning,
   context,
@@ -31,6 +34,8 @@ export function SocialProposals({
   library,
   onProduction,
 }: {
+  research?: ResearchSelection | null;
+  onClearResearch?: () => void;
   learning?: any;
   onClearLearning?: () => void;
   business: string;
@@ -65,6 +70,31 @@ export function SocialProposals({
       requestId.current = crypto.randomUUID();
     }
   }, [learning?.id]);
+  useEffect(() => {
+    if (research) {
+      setSelected("");
+      requestId.current = crypto.randomUUID();
+      if (research.question_id) {
+        setQuestion(research.question_id);
+        const q = creative?.questions.find(
+          (q) => q.id === research.question_id,
+        );
+        if (q)
+          setIds(
+            q.answer_fact_ids.filter((id: string) =>
+              context?.facts.some(
+                (f) => f.id === id && f.current_status === "confirmed",
+              ),
+            ),
+          );
+      }
+    }
+  }, [
+    research?.version_id,
+    JSON.stringify(research?.post_ids),
+    JSON.stringify(research?.search_ids),
+    research?.question_id,
+  ]);
   const root = endpoint(business) + "/social/proposals";
   const requestId = useRef(crypto.randomUUID()),
     decisionId = useRef(crypto.randomUUID());
@@ -158,6 +188,10 @@ export function SocialProposals({
         question_id: question || null,
         question: topic,
         reference_ids: refs,
+        search_plan_enabled: !!question,
+        research_version_id: research?.version_id || null,
+        research_post_ids: research?.post_ids || [],
+        research_search_ids: research?.search_ids || [],
         location_id: context?.location_id || null,
       });
       await refresh();
@@ -225,6 +259,22 @@ export function SocialProposals({
   return (
     <details className="social-context proposal-panel">
       <summary>Ideas y textos para publicar</summary>
+      {research && (
+        <div className="results-origin">
+          <p>
+            Evidencia seleccionada: {research.post_ids.length} publicaciones y{" "}
+            {research.search_ids.length} observaciones de búsqueda. Sus fuentes
+            y límites quedarán vinculados a esta propuesta.
+          </p>
+          <button
+            type="button"
+            className="button secondary"
+            onClick={onClearResearch}
+          >
+            Preparar sin esta investigación
+          </button>
+        </div>
+      )}
       {learning && (
         <div className="results-origin">
           <p>
@@ -249,6 +299,21 @@ export function SocialProposals({
           Primero confirma una prioridad y el idioma del negocio en «Información
           de tu negocio».
         </p>
+      )}
+      {active?.input?.search_plan && (
+        <div className="proposal-search-plan">
+          <h3>Pregunta y respuesta para esta pieza</h3>
+          <p>{active.input.search_plan.question}</p>
+          {active.input.search_plan.answer_facts.map((f: any) => (
+            <p key={f.id}>{f.text}</p>
+          ))}
+          <p>{active.input.search_plan.what_to_show}</p>
+          <p>Siguiente paso: {active.input.search_plan.next_action}</p>
+          <p>
+            Sin volumen de búsqueda, posición universal ni pesos de
+            clasificación medidos.
+          </p>
+        </div>
       )}
       <details className="proposal-input" open={!active}>
         <summary>Datos para preparar la propuesta</summary>
@@ -433,6 +498,36 @@ export function SocialProposals({
                 ? "No sabemos si el proveedor terminó la solicitud. No se repetirá automáticamente."
                 : "Esta propuesta necesita revisión antes de continuar."}
             </p>
+          )}
+          {active.input?.research && (
+            <details className="proposal-research-sources">
+              <summary>Investigación utilizada y sus límites</summary>
+              {active.input.research.posts.map((p: any) => (
+                <div key={p.id}>
+                  <p>
+                    <strong>Observación:</strong> {p.observation}
+                  </p>
+                  <p>
+                    <strong>Hipótesis:</strong> {p.hypothesis}
+                  </p>
+                  <p>Otras explicaciones: {p.alternatives}</p>
+                  <p>Qué probar: {p.adaptation}</p>
+                  <p>
+                    Fuente: {p.source} · {p.observed_at}
+                  </p>
+                </div>
+              ))}
+              {active.input.research.searches.map((s: any) => (
+                <p key={s.id}>
+                  {s.query}: {s.observation} · {s.observation_context} · fuente{" "}
+                  {s.source}.
+                </p>
+              ))}
+              <p>
+                Ejemplos seleccionados; no es un historial completo ni prueba de
+                causalidad.
+              </p>
+            </details>
           )}
           {active.output && (
             <>

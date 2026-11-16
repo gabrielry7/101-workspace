@@ -50,7 +50,7 @@ from .staff import ROLES
 LEASE_SECONDS = 30
 
 def lease_seconds(job):
-    return 240 if job.kind == "video_render" else LEASE_SECONDS
+    return 240 if job.kind == "video_render" else 120 if job.kind == "creative_review" else LEASE_SECONDS
 
 MAX_ATTEMPTS = 5
 RECIPE = "social-local-production-v1"
@@ -121,6 +121,10 @@ def input_check(session, job, app):
     if job.kind == "video_render":
         from .social_video import job_sources
         job_sources(session,job,inputs)
+    if job.kind == "creative_review":
+        from .social_auto_review import still_current
+        from .social_research_models import AutomatedReview
+        still_current(session,session.get(AutomatedReview,job.id))
     if job.kind == "proposal_generate":
         from .social_proposal_models import Proposal
         from .social_proposals import still_current
@@ -189,7 +193,7 @@ def info(session, job):
             "reason": "local_resource_prices_not_configured",
         },
     }
-    if job.kind == "proposal_generate":
+    if job.kind in {"proposal_generate","creative_review"}:
         usages = [json.loads(a.usage_json) for a in attempts]
         dispatched = [u for u in usages if u.get("dispatch_started")]
         if dispatched:
@@ -343,7 +347,7 @@ def claim(factory, *, worker="social-local-worker", now=None, job_id=None):
         if job.state == "running":
             attempt = session.get(Attempt, f"{job.id}:{job.generation}")
             if (
-                job.kind == "proposal_generate"
+                job.kind in {"proposal_generate","creative_review"}
                 and json.loads(attempt.usage_json).get("dispatch_started")
                 and not job.checkpoint
             ):
@@ -434,6 +438,9 @@ def produce(original, job, inputs):
 def checkpoint(factory, app, jid, token, *, transform=produce):
     with factory() as probe:
         kind = probe.get(Job, jid).kind
+    if kind == "creative_review":
+        from .social_auto_review import checkpoint as review
+        return review(factory,app,jid,token)
     if kind == "video_render":
         from .social_video import checkpoint as montage
         return montage(factory, app, jid, token)
@@ -504,6 +511,9 @@ def complete(factory, app, jid, token):
         if job.kind == "video_render":
             from .social_video import complete as complete_video
             complete_video(session,job,app,inputs)
+        if job.kind == "creative_review":
+            from .social_auto_review import complete as complete_review
+            complete_review(session,job,app)
         if job.kind == "proposal_generate":
             from .social_proposal_worker import complete as complete_proposal
 
@@ -536,20 +546,19 @@ def failed(factory, jid, token, error):
             if isinstance(error, HTTPException)
             else "failed"
         )
-        if job.kind == "proposal_generate":
+        if job.kind in {"proposal_generate","creative_review"}:
             from .social_proposal_models import Proposal
-
-            row = session.get(Proposal, jid)
+            from .social_research_models import AutomatedReview
+            row = session.get(Proposal if job.kind=="proposal_generate" else AutomatedReview, jid)
             a = session.get(Attempt, f"{jid}:{job.generation}")
             if json.loads(a.usage_json).get("dispatch_started") and not job.checkpoint:
                 state, reason = "uncertain", "model_outcome_unknown"
             if row.mode == "model" and job.checkpoint and reason not in {"source_deleted_or_revoked", "asset_expired", "reference_only_asset"}:
-                state, reason = "needs_input", "proposal_response_needs_review"
-            row.report_json = canonical(
-                {"mode": row.mode, "reason": reason, "semantic_support": "unverified"}
-            )
+                state, reason = "needs_input", "proposal_response_needs_review" if job.kind=="proposal_generate" else "creative_review_response_needs_review"
+            if job.kind=="proposal_generate":
+                row.report_json = canonical({"mode": row.mode, "reason": reason, "semantic_support": "unverified"})
         job.state, job.reason, job.lease, job.lease_until = state, reason, None, None
-        if job.kind != "proposal_generate" or reason in {
+        if job.kind not in {"proposal_generate","creative_review"} or reason in {
             "source_deleted_or_revoked",
             "asset_expired",
         }:
@@ -581,6 +590,10 @@ def purge_asset(session, business, asset_id, reason="source_deleted_or_revoked")
         if job.asset_id != asset_id and asset_id not in source_ids:
             continue
         job.result_bytes, job.result_json, job.checkpoint = b"", None, None
+        if job.kind == "creative_review":
+            from .social_research_models import AutomatedReview
+            review=session.get(AutomatedReview,job.id)
+            if review:review.output_json,review.feedback_json=None,None
         if job.kind == "proposal_generate":
             from .social_proposal_models import Proposal
 
@@ -694,11 +707,11 @@ def register(app, get_session, read, write, save):
         owned(session, Job, job_id, business_id)
         job = lock(session, job_id)
         require(job.state in {"failed", "needs_input"}, "job_not_retryable")
-        if job.kind == "proposal_generate":
+        if job.kind in {"proposal_generate","creative_review"}:
             from .social_proposal_models import Proposal
-
+            from .social_research_models import AutomatedReview
             require(
-                session.get(Proposal, job.id).mode != "model",
+                session.get(Proposal if job.kind=="proposal_generate" else AutomatedReview, job.id).mode != "model",
                 "model_retry_requires_new_authorization",
             )
         require(job.generation < MAX_ATTEMPTS, "attempt_limit")

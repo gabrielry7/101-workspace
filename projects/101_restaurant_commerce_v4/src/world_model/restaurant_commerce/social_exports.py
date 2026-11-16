@@ -86,6 +86,19 @@ def package(session, business, pack_id, app):
         if production
         else {"state": "legacy_synchronous", "attempts": None, "total_cost_microusd": None}
     )
+    if doc.get("research_snapshot"):
+        files["research.json"] = canonical(doc["research_snapshot"])
+    from .social_research_models import AutomatedReview
+    from .social_auto_review import info as automated_info
+    advisory = [automated_info(session, row, app) for row in session.scalars(
+        select(AutomatedReview).where(AutomatedReview.business_id == business,
+                                     AutomatedReview.revision_id == rev.id)
+        .join(ProductionJob, ProductionJob.id == AutomatedReview.id)
+        .order_by(ProductionJob.created_at).limit(100))]
+    files["automated-review.json"] = canonical({
+        "purpose": "advisory_checks_not_owner_approval", "reviews": advisory,
+        "evaluated_model_quality": False, "learned_taste_model": False,
+    })
     provider_cost = 0
     if doc.get("proposal_snapshot"):
         from .social_proposal_models import Proposal
@@ -98,12 +111,16 @@ def package(session, business, pack_id, app):
         )
         micro = generation_info["cost"]["provider_microusd"]
         provider_cost = micro / 1_000_000 if micro is not None else None
+    for check in advisory:
+        micro = check["activity"]["cost"]["provider_microusd"]
+        provider_cost = provider_cost + micro / 1_000_000 if provider_cost is not None and micro is not None else None
     files["measurement.json"] = canonical(
         {
             "primary": doc["brief"]["primary_measure"],
             "value": None,
             "reason": "not_published",
             "provider_cost_usd": provider_cost,
+            "cost_scope": "source_proposal_and_current_revision_advisory_attempts",
             "compute_cost_usd": None,
         }
     )
@@ -128,6 +145,8 @@ def package(session, business, pack_id, app):
         "manifest.json enumera bytes y SHA-256 de los archivos excepto el manifiesto.\n"
         "Si existe results.json, contiene observaciones declaradas y sus límites.\n"
         "La aprobación creativa no demuestra un resultado comercial.\n"
+        "research.json conserva anotaciones de referencia, no fotografías ajenas reutilizables.\n"
+        "automated-review.json contiene comprobaciones orientativas; no sustituye review.json ni approval.json.\n"
     )
     if doc.get("video_output"):
         files["README.txt"] = ("Paquete de vídeo para publicación manual\n\n"

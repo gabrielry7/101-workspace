@@ -37,6 +37,10 @@ SYSTEM = (
 
 
 class ProposalInput(Strict):
+    search_plan_enabled: bool = False
+    research_version_id: str | None = Field(default=None,max_length=100)
+    research_post_ids: list[str] = Field(default_factory=list,max_length=4)
+    research_search_ids: list[str] = Field(default_factory=list,max_length=4)
     request_id: UUID
     learning_decision_id: str | None = Field(default=None, max_length=64)
     expected_context_revision: int = Field(ge=0)
@@ -212,6 +216,23 @@ def assemble(session, business, p, app):
                 "source": learning["publication_id"],
             }
         )
+    if p.research_version_id or p.research_post_ids or p.research_search_ids:
+        from .social_research import snapshot as research_snapshot
+        research=research_snapshot(session,business,p.research_version_id,p.research_post_ids,p.research_search_ids,location)
+        if research:
+            require(not research["searches"] or q is not None,"search_research_requires_selected_question")
+            require(all(s["question_id"]==q["id"] for s in research["searches"]),"research_question_mismatch")
+            result["research"]=research
+            result["prompt_version"]+="-research-v1"
+            for kind in ("posts","searches"):
+                for item in research[kind]:
+                    result["evidence"].append({"id":"research:"+kind+":"+item["id"],"basis":"hypothesis" if item.get("source_kind")=="hypothesis" else "manual_reference_observation", "text":item["observation"],"source":item["source"],"observed_at":item["observed_at"]})
+    if q and p.search_plan_enabled:
+        result["prompt_version"]+="-search-v1"
+        result["search_plan"]={"question":q["text"],"intent":q["intent"],"source_kind":q["source_kind"],"source":q["source"],
+            "answer_facts":[{"id":f["id"],"text":f["text"]} for f in facts if f["id"] in q["answer_fact_ids"]],
+            "what_to_show":"Usar material propio que muestre la respuesta; la selección del dueño no es análisis visual automático.",
+            "natural_wording":q["text"],"next_action":q["next_action"],"search_volume":None,"ranking_weights":None}
     return result
 
 
@@ -224,9 +245,13 @@ def still_current(session, proposal, app):
 
 
 def model_context(context):
+    from .social_research import model_summary
+    research=model_summary(context.get("research"))
     # Reference-only media/URLs/excerpts never leave the workspace through this adapter.
     return {
-        **{k: v for k, v in context.items() if k not in {"references", "facts", "asset"}},
+        **{k: v for k, v in context.items() if k not in {"references", "facts", "asset","research","evidence"}},
+        "research":research,
+        "evidence":[{k:e[k] for k in ("id","basis","text")} for e in context["evidence"]],
         "facts": [
             {
                 k: f.get(k)
@@ -253,6 +278,8 @@ def model_context(context):
 
 
 def preview(context):
+    research=context.get("research")
+    chosen=research["posts"][0] if research and research["posts"] else None
     facts = context["facts"]
     body = "\n\n".join(f["text"] for f in facts)
     claims = [{"text": f["text"], "fact_ids": [f["id"]]} for f in facts]
@@ -261,10 +288,11 @@ def preview(context):
             "idea": context["question"]["text"],
             "observation": context["learning"]["observation"]
             if context.get("learning")
-            else "El negocio eligió esta prioridad: " + context["brief"]["objective"],
+            else chosen["observation"] if chosen else research["searches"][0]["observation"] if research and research["searches"] else "El negocio eligió esta prioridad: " + context["brief"]["objective"],
             "evidence_ids": ["owner_priority"]
-            + (["learning:" + context["learning"]["id"]] if context.get("learning") else []),
-            "hypothesis": (
+            + (["learning:" + context["learning"]["id"]] if context.get("learning") else [])
+            + [e["id"] for e in context["evidence"] if e["id"].startswith("research:")],
+            "hypothesis": chosen["hypothesis"] if chosen else (
                 "Explicar esta información puede ayudar a recibir consultas más claras. "
                 "La siguiente publicación sigue siendo una hipótesis a evaluar."
             ),
@@ -272,7 +300,7 @@ def preview(context):
                 context["learning"]["action_label"] + ": " + context["learning"]["owner_reason"]
             )
             if context.get("learning")
-            else (
+            else chosen["adaptation"]+" Posibles explicaciones alternativas: "+chosen["alternatives"] if chosen else (
                 "Usar los datos confirmados y la fotografía seleccionada "
                 "para responder la pregunta elegida."
             ),
@@ -361,6 +389,9 @@ def validate_output(raw, context, mode):
             context["learning"]["primary_metric"], context["learning"]["primary_metric"]
         )
         require(output.primary_measure == expected, "learning_primary_mismatch")
+    if context.get("research"):
+        required={e["id"] for e in context["evidence"] if e["id"].startswith("research:")}
+        require(required <= set(output.evidence_ids),"research_citation_required")
     require(
         set(output.evidence_ids) <= {e["id"] for e in context["evidence"]},
         "unknown_proposal_evidence",
@@ -420,6 +451,7 @@ def enqueue_proposal(session, business, p, principal, app):
     context = assemble(session, business, p, app)
     generator = getattr(app.state, "social_generator", None)
     if p.mode == "model":
+        model_context(context)  # Enforce research/derived-baseline permission before any paid reservation.
         require(
             generator is not None and generator.allowed(business), "proposal_model_not_enabled", 503
         )
@@ -554,6 +586,9 @@ def production_brief(session, business, identifier, app):
             "reference_reason": "Contexto seleccionado y revisado para esta propuesta.",
             "primary_measure": output["primary_measure"],
             "confirmed": True,
+            "research_version_id": c.get("research",{}).get("version_id"),
+            "research_post_ids": [p["id"] for p in c.get("research",{}).get("posts",[])],
+            "research_search_ids": [p["id"] for p in c.get("research",{}).get("searches",[])],
             "proposal_decision_id": identifier,
             "learning_decision_id": c.get("learning", {}).get("id"),
         }

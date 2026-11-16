@@ -8,7 +8,6 @@ from .social_job_models import ProductionAttempt as Attempt
 from .social_production import canonical, require
 from .social_proposal_models import Proposal
 from .social_proposals import (
-    PROMPT_VERSION,
     SYSTEM,
     ProposalOutput,
     model_context,
@@ -47,12 +46,12 @@ def checkpoint(factory, app, jid, token):
                     s, job, model_context(context), ProposalOutput.model_json_schema(), SYSTEM
                 )
             )
-            usage.update(dispatch_started=True, prompt_version=PROMPT_VERSION)
+            usage.update(dispatch_started=True, prompt_version=context["prompt_version"])
             attempt.usage_json = canonical(usage)
             job.lease_until = time.time() + 120
             s.commit()
         else:
-            usage.update(prompt_version=PROMPT_VERSION, mode="deterministic_preview")
+            usage.update(prompt_version=context["prompt_version"], mode="deterministic_preview")
             attempt.usage_json = canonical(usage)
             s.commit()
     started = time.monotonic()
@@ -81,7 +80,7 @@ def checkpoint(factory, app, jid, token):
         # Retain received output/cost BEFORE current-source validation or parsing.
         job.result_bytes = encoded
         job.checkpoint = hashlib.sha256(encoded).hexdigest()
-        job.result_json = canonical({"prompt_version": PROMPT_VERSION, "mode": mode})
+        job.result_json = canonical({"prompt_version": context["prompt_version"], "mode": mode})
         job.lease_until = time.time() + 120
         job.updated_at = time.time()
         s.commit()

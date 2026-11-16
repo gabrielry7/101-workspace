@@ -9,6 +9,9 @@ export PYTHONPATH="$social_project/src${PYTHONPATH:+:$PYTHONPATH}"
   "$social_project/tests/test_social_design.py" \
   "$social_project/tests/test_social_reviews.py" \
   "$social_project/tests/test_social_results.py" \
+  "$social_project/tests/test_social_research.py" \
+  "$social_project/tests/test_social_auto_review.py" \
+  "$social_project/tests/test_social_research_browser.py" \
   "$social_project/tests/test_social_video.py" \
   "$social_project/tests/test_social_jobs.py" \
   "$social_project/tests/test_social_proposals.py" \

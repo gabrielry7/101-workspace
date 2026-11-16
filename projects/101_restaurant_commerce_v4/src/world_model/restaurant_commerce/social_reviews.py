@@ -175,6 +175,8 @@ def scope(rev, doc):
         "intended_action": doc["intended_action"],
         "destination": doc.get("destination_account"),
     }
+    if doc.get("research_snapshot"):
+        result["research_sha256"] = digest(doc["research_snapshot"])
     if doc.get("video_output"):
         result["video"] = doc["video_output"]
         result["video_sources_sha256"] = digest(doc.get("video_sources"))
