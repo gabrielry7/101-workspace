@@ -32,6 +32,15 @@ def package(session, business, pack_id, app):
         video=output(session,rev,doc)
         files.update({"video.mp4":video.final,"preview.mp4":video.preview,"cover.jpg":video.cover,
                       "timeline.json":canonical(doc["brief"]["video"]),"video-sources.json":canonical(doc["video_sources"])})
+        if doc.get("speech_snapshot"):
+            from .social_subtitles import text_exports
+            speech=doc["speech_snapshot"]
+            files.update({"transcript-machine.json":canonical(speech["machine"]),
+                          "transcript-corrected.json":canonical({k:v for k,v in speech.items() if k != "machine"}),
+                          "subtitle-plan.json":canonical(speech["subtitle_plan"]),
+                          **text_exports(speech["subtitle_plan"])})
+            files["timeline.json"]=canonical({**doc["brief"]["video"], "captions":speech["subtitle_plan"]["cues"]})
+            files["INTER-LICENSE.txt"]=(Path(__file__).parent / "web" / "workspace" / "assets" / "INTER-LICENSE.txt").read_text()
         for source in doc["video_sources"]:
             take,_=clip_check(session,business,source["asset_id"])
             files[f"originals/{take.id}.mp4"]=take.original
@@ -81,6 +90,10 @@ def package(session, business, pack_id, app):
         .order_by(ProductionJob.created_at.desc())
         .limit(1)
     )
+    if doc.get("speech_snapshot"):
+        speech_job=session.get(ProductionJob, doc["speech_snapshot"]["id"])
+        require(speech_job is not None and speech_job.business_id == business, "speech_job_missing")
+        files["speech-production.json"]=canonical(job_info(session, speech_job))
     files["production.json"] = canonical(
         job_info(session, production)
         if production
@@ -158,7 +171,8 @@ def package(session, business, pack_id, app):
             "original conserva la foto inicial del pack, no una toma del vídeo.\n"
             "video-sources.json conserva permisos, vencimientos y datos técnicos.\n"
             "manifest.json enumera bytes y SHA-256 de los archivos excepto el manifiesto.\n"
-            "No se generaron escenas, música ni transcripción. La revisión completa de sonido y significado es humana.\n")
+            + ("La transcripción automática y las correcciones están separadas. subtitles.srt y subtitles.vtt contienen los subtítulos corregidos.\n" if doc.get("speech_snapshot") else "No se generó transcripción.\n") +
+            "No se generaron escenas ni música. La revisión completa de sonido y significado es humana.\n")
     files = {
         name: value.encode("utf-8") if isinstance(value, str) else value
         for name, value in files.items()

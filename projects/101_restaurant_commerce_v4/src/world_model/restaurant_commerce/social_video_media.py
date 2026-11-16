@@ -20,7 +20,7 @@ from fastapi import HTTPException
 from PIL import Image, ImageOps
 
 from .social_production import require
-from .social_video_contracts import MAX_CLIP_BYTES, MAX_OUTPUT_BYTES, VERSION
+from .social_video_contracts import MAX_CLIP_BYTES, MAX_OUTPUT_BYTES, VERSION, SPEECH_VERSION
 
 
 def command(args, timeout=25):
@@ -148,7 +148,7 @@ def _probe(path, *, source=True):
     n, d = fps_text.split("/")
     fps = float(n) / float(d) if float(d) else 0
     require(
-        math.isfinite(duration) and 0.5 <= duration <= 30.1 and 0 < fps <= 61,
+        math.isfinite(duration) and 0.5 <= duration <= (30.1 if source else 32.2) and 0 < fps <= 61,
         "video_duration_or_framerate_limit",
         422,
     )
@@ -174,7 +174,7 @@ def _probe(path, *, source=True):
         "audio_codec": audios[0].get("codec_name") if audios else None,
         "tool_version": tools()[2],
         "semantic_review": "human_required",
-        "transcription": "not_requested_natural_sound_recipe",
+        "transcription": "separate_job_when_requested",
     }
 
 
@@ -235,7 +235,7 @@ def intake(raw):
         return meta, analysis.read_bytes(), poster.read_bytes()
 
 
-def encode(raws, timeline, metadata):
+def encode(raws, timeline, metadata, *, subtitle_plan=None):
     """Validated integer time ranges/focal numbers only; no user filter strings."""
     with tempfile.TemporaryDirectory(prefix="101-video-render-") as td:
         td = Path(td)
@@ -317,6 +317,23 @@ def encode(raws, timeline, metadata):
             ],
             15,
         )
+        if subtitle_plan:
+            from .social_subtitles import ass
+            from .social_design import FONT_PATH, font_record
+            font_record()
+            fonts = td / "fonts"
+            fonts.mkdir()
+            shutil.copyfile(FONT_PATH, fonts / "inter.ttf")
+            script = td / "subtitles.ass"
+            script.write_text(ass(subtitle_plan), encoding="utf-8")
+            subtitled = td / "subtitled.mp4"
+            # All filter paths and ASS style instructions are owned by the compiler.
+            command(base() + input_flags(final) + [
+                "-vf", f"ass=filename={script}:fontsdir={fonts}",
+                "-c:v", "libx264", "-threads", "1", "-preset", "veryfast", "-crf", "23",
+                "-c:a", "copy", "-map_metadata", "-1", "-movflags", "+faststart",
+                "-fs", str(MAX_OUTPUT_BYTES), str(subtitled)], 55)
+            final = subtitled
         info = probe(final, source=False)
         expected = sum(c.source_out - c.source_in for c in timeline.clips)
         require(
@@ -367,7 +384,7 @@ def encode(raws, timeline, metadata):
         }
         require(sum(map(len, files.values())) <= MAX_OUTPUT_BYTES, "video_output_size_limit", 422)
         report = {
-            "renderer": VERSION,
+            "renderer": SPEECH_VERSION if timeline.speech else VERSION,
             "tool_version": tools()[2],
             "technical": "passed",
             "width": 1080,
@@ -375,8 +392,9 @@ def encode(raws, timeline, metadata):
             "duration_ms": info["duration_ms"],
             "fps": 30,
             "audio": "selected_natural_sound_or_explicit_mute",
-            "transcription": "not_requested",
-            "checks": ["full_decode", "duration", "dimensions", "source_bounds", "hashes"],
+            "transcription": "reviewed_source_words" if subtitle_plan else "not_requested",
+            "subtitles": subtitle_plan,
+            "checks": ["full_decode", "duration", "dimensions", "source_bounds", "hashes"] + (["subtitle_timing", "subtitle_layout_safe_regions", "font_glyphs"] if subtitle_plan else []),
             "craft": "requires_complete_watch_and_listen",
             "performance": "unavailable",
             "files": {

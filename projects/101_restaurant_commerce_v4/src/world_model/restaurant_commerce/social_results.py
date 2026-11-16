@@ -199,6 +199,8 @@ def operation_summary(session, pub):
 
     for document in documents[:1000]:
         doc = json.loads(document)
+        if doc.get("speech_snapshot", {}).get("id"):
+            generation_ids.add(doc["speech_snapshot"]["id"])
         if doc.get("proposal_snapshot"):
             proposal = session.get(Proposal, doc["proposal_snapshot"]["proposal_id"])
             if proposal:

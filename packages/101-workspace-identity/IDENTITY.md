@@ -361,3 +361,5 @@ Phone fields stack; replace one take without losing the other choices. Full-vide
 watch/listen acknowledgment is independent of final approval. Comparisons based
 only on a cover never stand in for temporal/video review. Before/refined desktop
 and390px evidence lives in docs/social/n10-evidence in the World Model repository.
+
+Social speech correction (N12,2026-11-16): extend the existing Video panel with source-timed word fields, explicit meaning review and correction history. Reuse Inter, white panels and44px controls; fields wrap on phones. Subtitle size is a bounded creative setting, separate from UI typography. Voice-service availability, machine transcript, owner corrections and exact approval remain distinct. Desktop/mobile evidence is recorded in the World Model Social N12 report.

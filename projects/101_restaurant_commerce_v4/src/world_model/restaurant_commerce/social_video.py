@@ -24,7 +24,7 @@ from .social_production import (
     pack_state,
     require,
 )
-from .social_video_contracts import SHOTS, VERSION, ShootInput, Timeline, VideoRenderInput
+from .social_video_contracts import VERSION, SPEECH_VERSION, ShootInput, Timeline, VideoRenderInput, shots_for
 from .social_video_models import ClipMedia, Shoot, VideoOutput
 
 
@@ -75,6 +75,7 @@ def validate_timeline(session, business, timeline, *, pack_id=None, doc=None, lo
             json.loads(shoot.document)["context_hash"] == guide_context(doc),
             "video_guide_context_changed",
         )
+    require(json.loads(shoot.document).get("timeline_recipe", "product_process_montage") == timeline.recipe, "video_recipe_mismatch")
     result = []
     for c in timeline.clips:
         if lock:
@@ -107,6 +108,9 @@ def source_reasons(session, business, doc):
         timeline = Timeline.model_validate(doc["brief"]["video"])
         sources = validate_timeline(session, business, timeline)
         require(sources == doc.get("video_sources"), "video_sources_changed")
+        if timeline.speech:
+            from .social_speech import snapshot
+            require(snapshot(session, business, timeline) == doc.get("speech_snapshot"), "transcript_changed")
         return []
     except HTTPException as e:
         return [{"reason": e.detail, "scope": "video_source"}]
@@ -133,6 +137,8 @@ def output(session, rev, doc):
 
 
 def purge(session, business, asset_id):
+    from .social_speech import purge as purge_speech
+    purge_speech(session, business, asset_id)
     media = session.get(ClipMedia, asset_id)
     if media and media.business_id == business:
         media.analysis, media.poster = b"", b""
@@ -142,6 +148,13 @@ def purge(session, business, asset_id):
             doc["brief"]["asset_id"] == asset_id
             or any(s["asset_id"] == asset_id for s in doc.get("video_sources", []))
         ):
+            if doc.get("speech_snapshot"):
+                doc["speech_snapshot"] = {"purged": True}
+                rev.document = canonical(doc)
+                report = json.loads(rev.report)
+                if report.get("subtitles"):
+                    report["subtitles"] = {"purged": True}
+                    rev.report = canonical(report)
             rev.image = b""
             row = session.get(VideoOutput, rev.id)
             if row:
@@ -194,17 +207,20 @@ def shoot_info(session, shoot):
         **doc,
         "takes": takes,
         "missing_shots": [
-            s["id"] for s in SHOTS if not any(t["shot_id"] == s["id"] for t in takes)
+            s["id"] for s in doc["shots"] if not any(t["shot_id"] == s["id"] for t in takes)
         ],
     }
 
 
 def register(app, get_session, read, write):
+    from .social_speech import register as register_speech
+    register_speech(app, get_session, read, write)
     root = "/api/operator/restaurants/{business_id}/social"
 
     @app.get(root + "/video/capability", dependencies=[Depends(read)])
     def capability(business_id: str):
         from .social_video_media import tools
+        from .social_speech import capability as speech_capability
 
         try:
             version = tools()[2]
@@ -213,7 +229,7 @@ def register(app, get_session, read, write):
                 "recipe": VERSION,
                 "tool": version,
                 "live_account_required": False,
-                "transcription": "not_built",
+                "transcription": speech_capability(app, business_id),
                 "publishing": "manual_export_only",
             }
         except HTTPException:
@@ -232,7 +248,8 @@ def register(app, get_session, read, write):
             owned(session, Shoot, old.id, business_id)
             require(
                 old.pack_id == payload.pack_id
-                and old.revision_id == f"{payload.pack_id}:{payload.expected_revision}",
+                and old.revision_id == f"{payload.pack_id}:{payload.expected_revision}"
+                and json.loads(old.document).get("timeline_recipe", "product_process_montage") == payload.recipe,
                 "shoot_idempotency_conflict",
             )
             return shoot_info(session, old)
@@ -262,12 +279,15 @@ def register(app, get_session, read, write):
                     "actor_id": principal.actor_id,
                     "objective": doc["brief"]["objective"],
                     "caption": doc["caption"],
-                    "shots": list(SHOTS),
+                    "timeline_recipe": payload.recipe,
+                    "shots": list(shots_for(payload.recipe)),
+                    "question": doc["brief"]["question"],
+                    "answer_facts": [f["text"] for f in doc["brief"]["facts"]],
                     "guidance": (
                         "Graba en vertical, 5–10 segundos por toma, con luz de frente y sin mover "
                         "el teléfono. Deja un segundo antes y después de la acción. Usa la cámara "
                         "normal en SDR; conserva el sonido del lugar. "
-                        "No necesitas música ni hablar."
+                        + ("Para la respuesta, habla con claridad y usa solo los datos confirmados. Máximo 20 segundos de voz. No hables en los planos de producto y resultado." if payload.recipe == "spoken_answer" else "No necesitas música ni hablar.")
                     ),
                     "semantic_review": (
                         "El dueño debe confirmar que las acciones y el producto "
@@ -303,12 +323,12 @@ def register(app, get_session, read, write):
         row, _ = clip_check(session, business_id, asset_id)
         media = session.get(ClipMedia, row.id)
         require(media is not None, "video_analysis_unavailable")
-        require(kind in {"analysis", "poster"}, "not_found", 404)
-        data = media.analysis if kind == "analysis" else media.poster
+        require(kind in {"analysis", "poster", "original"}, "not_found", 404)
+        data = row.original if kind == "original" else media.analysis if kind == "analysis" else media.poster
         require(bool(data), "video_analysis_unavailable")
         return Response(
             data,
-            media_type="video/mp4" if kind == "analysis" else "image/jpeg",
+            media_type="video/mp4" if kind != "poster" else "image/jpeg",
             headers={"Cache-Control": "no-store"},
         )
 
@@ -397,7 +417,7 @@ def checkpoint(factory, app, jid, token):
             usage = json.loads(attempt.usage_json)
             usage.update(
                 checkpoint_reused=True,
-                recipe_version=VERSION,
+                recipe_version=SPEECH_VERSION if timeline.speech else VERSION,
                 tool_version=tools()[2],
                 output_bytes=len(job.result_bytes),
             )
@@ -406,7 +426,8 @@ def checkpoint(factory, app, jid, token):
             return
         originals = [session.get(Asset, c.asset_id).original for c in timeline.clips]
         session.rollback()
-    data, report = encode(originals, timeline, [s["media"] for s in sources])
+    plan = inputs["snapshot"].get("speech_snapshot", {}).get("subtitle_plan")
+    data, report = encode(originals, timeline, [s["media"] for s in sources], subtitle_plan=plan)
     with factory() as session:
         job = jobs.leased(session, jid, token)
         jobs.input_check(session, job, app)
@@ -419,7 +440,7 @@ def checkpoint(factory, app, jid, token):
         attempt = session.get(jobs.Attempt, f"{jid}:{job.generation}")
         usage = json.loads(attempt.usage_json)
         usage.update(
-            recipe_version=VERSION,
+            recipe_version=SPEECH_VERSION if timeline.speech else VERSION,
             tool_version=tools()[2],
             output_bytes=len(data),
             elapsed_ms=round((time.monotonic() - start) * 1000),

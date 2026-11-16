@@ -372,7 +372,7 @@ def test_portrait_rotation_hdr_and_silent_source_contract(clips, tmp_path):
         timeout=10,
     )
     meta, analysis, poster = intake(silent.read_bytes())
-    assert not meta["has_audio"] and meta["transcription"] == "not_requested_natural_sound_recipe"
+    assert not meta["has_audio"] and meta["transcription"] == "separate_job_when_requested"
     assert analysis and poster
     # Phone rotation is applied to displayed geometry before orientation checks.
     rotated = tmp_path / "rotated.mp4"

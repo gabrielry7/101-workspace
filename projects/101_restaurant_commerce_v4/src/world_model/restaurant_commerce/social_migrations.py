@@ -14,9 +14,10 @@ def social_tables():
     from .social_proposal_models import Proposal, ProposalDecision
     from .social_review_models import ReviewEvent, Comparison
     from .social_result_models import Publication, PublicationVersion, ResultEvent
+    from .social_speech_models import Transcript, TranscriptEdit
     from .social_video_models import Shoot, ClipMedia, VideoOutput
     from .social_research_models import ResearchBoard, ResearchVersion, AutomatedReview
-    return [model.__table__ for model in (Asset, Pack, Revision, Approval, Upload, Context, ContextVersion, FactDependency, CreativeBoard, CreativeVersion, ProductionJob, ProductionAttempt, ProductionEffort, Proposal, ProposalDecision, ReviewEvent, Comparison, Publication, PublicationVersion, ResultEvent, Shoot, ClipMedia, VideoOutput, ResearchBoard, ResearchVersion, AutomatedReview)]
+    return [model.__table__ for model in (Asset, Pack, Revision, Approval, Upload, Context, ContextVersion, FactDependency, CreativeBoard, CreativeVersion, ProductionJob, ProductionAttempt, ProductionEffort, Proposal, ProposalDecision, ReviewEvent, Comparison, Publication, PublicationVersion, ResultEvent, Shoot, ClipMedia, VideoOutput, ResearchBoard, ResearchVersion, AutomatedReview, Transcript, TranscriptEdit)]
 
 
 def schema_ready(bind):

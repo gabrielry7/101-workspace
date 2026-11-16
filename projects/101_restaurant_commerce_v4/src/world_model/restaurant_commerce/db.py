@@ -35,7 +35,8 @@ from .social_review_models import TABLES as REVIEW_TABLES
 from .social_result_models import TABLES as RESULT_TABLES
 from .social_video_models import TABLES as VIDEO_TABLES
 from .social_research_models import TABLES as RESEARCH_TABLES
-SOCIAL_TABLES = RESEARCH_TABLES | VIDEO_TABLES | RESULT_TABLES | REVIEW_TABLES | PROPOSAL_TABLES | JOB_TABLES | SOCIAL_TABLES | {"social_uploads"} | CONTEXT_TABLES | CREATIVE_TABLES
+from .social_speech_models import TABLES as SPEECH_TABLES
+SOCIAL_TABLES = SPEECH_TABLES | RESEARCH_TABLES | VIDEO_TABLES | RESULT_TABLES | REVIEW_TABLES | PROPOSAL_TABLES | JOB_TABLES | SOCIAL_TABLES | {"social_uploads"} | CONTEXT_TABLES | CREATIVE_TABLES
 
 
 def make_engine(database_url: str | None = None) -> Engine:

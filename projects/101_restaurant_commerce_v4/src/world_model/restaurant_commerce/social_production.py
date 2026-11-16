@@ -169,7 +169,7 @@ def canonical(value):
 def same_snapshot(expected, actual):
     # Legacy queued photo requests predate the optional video field. Resolve only
     # schema defaults; real fact/asset/brand changes still invalidate their work.
-    keys=('brief','asset_sha256','business_brief','creative_snapshot','renderer','design','video_sources','research_snapshot')
+    keys=('brief','asset_sha256','business_brief','creative_snapshot','renderer','design','video_sources','speech_snapshot','research_snapshot')
     for key in keys:
         a,b=expected.get(key),actual.get(key)
         if key=='brief':
@@ -442,10 +442,13 @@ def register(app, get_session, scoped_staff):
             proposal_snapshot['search_plan']=ctx['search_plan']
         if payload.video:
             from .social_video import validate_timeline
-            from .social_video_contracts import VERSION as VIDEO_VERSION
-            doc['renderer']=VIDEO_VERSION
+            from .social_video_contracts import VERSION as VIDEO_VERSION, SPEECH_VERSION
+            doc['renderer']=SPEECH_VERSION if payload.video.speech else VIDEO_VERSION
             doc['video_sources']=validate_timeline(session,business,payload.video,pack_id=pack_id,doc=doc,lock=True)
             doc['fixture']=doc['fixture'] or any(s['fixture'] for s in doc['video_sources'])
+            if payload.video.speech:
+                from .social_speech import snapshot as speech_snapshot
+                doc['speech_snapshot']=speech_snapshot(session,business,payload.video,lock=True)
         if payload.research_version_id:
             from .social_research import snapshot as research_snapshot
             doc['research_snapshot']=research_snapshot(session,business,payload.research_version_id,payload.research_post_ids,payload.research_search_ids,str(payload.location_id) if payload.location_id else None)

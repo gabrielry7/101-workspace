@@ -50,14 +50,14 @@ from .staff import ROLES
 LEASE_SECONDS = 30
 
 def lease_seconds(job):
-    return 240 if job.kind == "video_render" else 120 if job.kind == "creative_review" else LEASE_SECONDS
+    return 240 if job.kind in {"video_render", "speech_transcribe"} else 120 if job.kind == "creative_review" else LEASE_SECONDS
 
 MAX_ATTEMPTS = 5
 RECIPE = "social-local-production-v1"
 
 
 class JobInput(Strict):
-    kind: Literal["photo_render", "inspect_asset", "video_render"] = "photo_render"
+    kind: Literal["photo_render", "inspect_asset", "video_render", "speech_transcribe"] = "photo_render"
     brief: Brief | None = None
     pack_id: str | None = Field(default=None, max_length=64)
     asset_id: str | None = Field(default=None, max_length=64)
@@ -121,6 +121,9 @@ def input_check(session, job, app):
     if job.kind == "video_render":
         from .social_video import job_sources
         job_sources(session,job,inputs)
+    if job.kind == "speech_transcribe":
+        from .social_speech import still_current
+        still_current(session, job, app)
     if job.kind == "creative_review":
         from .social_auto_review import still_current
         from .social_research_models import AutomatedReview
@@ -278,6 +281,9 @@ def enqueue(session, business, payload, principal, app):
     if payload.kind == "video_render":
         from .social_video_media import tools
         inputs["video_tool_version"] = tools()[2]
+    if payload.kind == "speech_transcribe":
+        from .social_speech import prepare
+        inputs.update(prepare(session, business, aid, app))
     stable = {k: v for k, v in inputs.items() if k != "snapshot"}
     if "snapshot" in inputs:
         stable["snapshot"] = {
@@ -438,6 +444,9 @@ def produce(original, job, inputs):
 def checkpoint(factory, app, jid, token, *, transform=produce):
     with factory() as probe:
         kind = probe.get(Job, jid).kind
+    if kind == "speech_transcribe":
+        from .social_speech import checkpoint as transcribe
+        return transcribe(factory, app, jid, token)
     if kind == "creative_review":
         from .social_auto_review import checkpoint as review
         return review(factory,app,jid,token)
@@ -508,6 +517,9 @@ def complete(factory, app, jid, token):
             job.result_bytes = (
                 b""  # Canonical revision owns final pixels; don't retain a duplicate.
             )
+        if job.kind == "speech_transcribe":
+            from .social_speech import complete as complete_speech
+            complete_speech(session, job)
         if job.kind == "video_render":
             from .social_video import complete as complete_video
             complete_video(session,job,app,inputs)
@@ -589,6 +601,9 @@ def purge_asset(session, business, asset_id, reason="source_deleted_or_revoked")
         source_ids=[c["asset_id"] for c in (inputs.get("brief",{}).get("video") or {}).get("clips",[])]
         if job.asset_id != asset_id and asset_id not in source_ids:
             continue
+        if inputs.get("snapshot", {}).get("speech_snapshot"):
+            inputs["snapshot"]["speech_snapshot"] = {"purged": True}
+            job.input_json = canonical(inputs)
         job.result_bytes, job.result_json, job.checkpoint = b"", None, None
         if job.kind == "creative_review":
             from .social_research_models import AutomatedReview

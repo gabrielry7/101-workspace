@@ -198,9 +198,11 @@ export function ProductionJobs({
                 ? "Preparar fotografía y texto"
                 : j.kind === "video_render"
                   ? "Preparar montaje de vídeo"
-                : j.kind === "proposal_generate"
-                  ? "Preparar propuesta"
-                  : "Revisar archivo"}
+                  : j.kind === "speech_transcribe"
+                    ? "Transcripción de la respuesta"
+                    : j.kind === "proposal_generate"
+                      ? "Preparar propuesta"
+                      : "Revisar archivo"}
             </strong>
             <p>{j.title}</p>
             <p role="status">

@@ -147,6 +147,7 @@ def create_app(
     storefront_cache_ttl_seconds: float = 15.0,
     auto_init_schema: bool | None = None,
     social_generator=None,
+    social_transcriber=None,
     social_worker_enabled: bool = True,
     payment_recovery_enabled: bool = True,
     provider_recovery_enabled: bool = True,
@@ -570,6 +571,7 @@ def create_app(
     from .instagram_routes import register as register_instagram
     register_instagram(app, get_session, scoped_staff, instagram_runtime, staff_cookie, production)
     app.state.social_generator = social_generator
+    app.state.social_transcriber = social_transcriber
     from .social_production import register as register_social
     register_social(app, get_session, scoped_staff)
     from .social_uploads import register as register_uploads

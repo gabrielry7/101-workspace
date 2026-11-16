@@ -1,7 +1,32 @@
 import { useEffect, useState } from "react";
 import { endpoint } from "./ui";
+import { SocialSpeech } from "./social-speech";
 
 export const videoErrors: Record<string, string> = {
+  speech_runtime_unavailable:
+    "El equipo de 101 debe habilitar el servicio de transcripción. Puedes continuar con un montaje sin voz.",
+  speech_processing_not_authorized:
+    "101 debe habilitar la transcripción para este negocio.",
+  speech_worker_unavailable_or_invalid:
+    "La transcripción no pudo completarse. 101 debe revisar el servicio; tu toma se conserva.",
+  speech_not_detected_rerecord:
+    "No se reconoció voz. Graba la respuesta con claridad, en un lugar tranquilo.",
+  speech_audio_missing_rerecord:
+    "Esta respuesta no tiene audio. Grábala otra vez con el micrófono activado.",
+  speech_too_quiet_rerecord:
+    "La voz está demasiado baja. Acerca el teléfono y graba en un lugar más tranquilo.",
+  speech_clipped_rerecord:
+    "El sonido está saturado. Aléjate un poco del micrófono y graba otra vez.",
+  speech_trim_would_remove_words:
+    "El corte deja palabras fuera. Incluye la respuesta completa o graba una respuesta más breve.",
+  transcript_revision_conflict:
+    "Alguien corrigió esta transcripción. Cierra y vuelve a abrir el panel para revisar la versión actual.",
+  transcript_changed:
+    "Cambió la transcripción. Revisa las palabras actuales y prepara una nueva versión.",
+  subtitle_text_overflow:
+    "Una palabra o frase no cabe en los subtítulos. Revisa la corrección antes de continuar.",
+  subtitle_unsupported_character:
+    "Hay un carácter no compatible en los subtítulos. Usa texto sencillo y revisa la corrección.",
   video_brief_needs_current_facts:
     "Actualiza y confirma los datos o permisos del pack antes de preparar otra versión.",
   video_metadata_invalid_rerecord:
@@ -82,6 +107,8 @@ export function SocialVideo({
     Record<string, { id: string; key: string }>
   >({});
   const [progress, setProgress] = useState<Record<string, string>>({});
+  const [recipe, setRecipe] = useState("product_process_montage");
+  const [speech, setSpeech] = useState<any>(null);
   const [attempt, setAttempt] = useState(() => crypto.randomUUID());
   async function request(path: string, method = "GET", body?: unknown) {
     const r = await fetch(root + path, {
@@ -139,6 +166,8 @@ export function SocialVideo({
               };
     }
     setCuts(next);
+    setRecipe(s.timeline_recipe || "product_process_montage");
+    setSpeech(saved?.speech || null);
     setShoot(s);
     dirty(false);
   }
@@ -281,7 +310,12 @@ export function SocialVideo({
     const j = await request("/packs/" + pack.id + "/video", "POST", {
       request_id: attempt,
       expected_revision: pack.revision,
-      timeline: { shoot_id: shoot.id, clips },
+      timeline: {
+        shoot_id: shoot.id,
+        recipe: shoot.timeline_recipe || "product_process_montage",
+        clips,
+        speech: shoot.timeline_recipe === "spoken_answer" ? speech : null,
+      },
       confirmed: true,
     });
     onJob(j.id);
@@ -312,6 +346,23 @@ export function SocialVideo({
                 pack.stale_reasons.some((r: any) => r.scope !== "video_source"))
             }
           >
+            {!shoot && (
+              <label>
+                Tipo de vídeo
+                <select
+                  aria-label="Tipo de vídeo"
+                  value={recipe}
+                  onChange={(e) => setRecipe(e.target.value)}
+                >
+                  <option value="product_process_montage">
+                    Producto o proceso, con sonido natural
+                  </option>
+                  <option value="spoken_answer">
+                    Respuesta hablada, con subtítulos
+                  </option>
+                </select>
+              </label>
+            )}
             {!shoot ? (
               <button
                 type="button"
@@ -323,6 +374,7 @@ export function SocialVideo({
                         request_id: crypto.randomUUID(),
                         pack_id: pack.id,
                         expected_revision: pack.revision,
+                        recipe,
                       }),
                     ),
                   )
@@ -333,6 +385,15 @@ export function SocialVideo({
             ) : (
               <>
                 <p className="video-guidance">{shoot.guidance}</p>
+                {shoot.timeline_recipe === "spoken_answer" && (
+                  <div className="social-caption">
+                    <p>Pregunta: {shoot.question}</p>
+                    <p>
+                      Usa estos datos confirmados:{" "}
+                      {shoot.answer_facts?.join(" ")}
+                    </p>
+                  </div>
+                )}
                 <details>
                   <summary>Permiso del material</summary>
                   <label>
@@ -495,12 +556,18 @@ export function SocialVideo({
                                 root +
                                 "/video/takes/" +
                                 selected.id +
-                                "/analysis"
+                                (shoot.timeline_recipe === "spoken_answer" &&
+                                shot.id === "process"
+                                  ? "/original"
+                                  : "/analysis")
                               }
                               aria-label={"Revisar toma: " + shot.title}
                             />
                             <p>
-                              Vista de análisis: primeros cinco segundos.
+                              {shoot.timeline_recipe === "spoken_answer" &&
+                              shot.id === "process"
+                                ? "Respuesta original completa."
+                                : "Vista de análisis: primeros cinco segundos."}{" "}
                               Original: {selected.media.width} ×{" "}
                               {selected.media.height} ·{" "}
                               {selected.media.has_audio
@@ -609,20 +676,67 @@ export function SocialVideo({
                 </ol>
                 <p>
                   Duración elegida: {total.toFixed(1)} s. Cada plano puede durar
-                  entre 0,5 y 6 segundos; el montaje completo, hasta 18
-                  segundos.
+                  entre 0,5 y 6 segundos.{" "}
+                  {shoot.timeline_recipe === "spoken_answer"
+                    ? "La respuesta hablada admite hasta 20 segundos; el vídeo completo, hasta 32."
+                    : "El montaje completo admite hasta 18 segundos."}
                 </p>
+                {shoot.timeline_recipe === "spoken_answer" && cuts.process && (
+                  <SocialSpeech
+                    key={cuts.process.asset_id}
+                    asset={cuts.process.asset_id}
+                    saved={speech}
+                    request={request}
+                    disabled={disabled || busy}
+                    onJob={onJob}
+                    errorMessage={(reason) =>
+                      videoErrors[reason] ||
+                      "No se pudo transcribir. Revisa la toma y vuelve a intentarlo."
+                    }
+                    onDirty={() => dirty(true)}
+                    onChange={(value) => {
+                      setSpeech(
+                        value ? { ...value, size: speech?.size || 48 } : null,
+                      );
+                      setAttempt(crypto.randomUUID());
+                    }}
+                  />
+                )}
+                {speech && (
+                  <label>
+                    Tamaño de subtítulos
+                    <select
+                      aria-label="Tamaño de subtítulos"
+                      value={speech.size || 48}
+                      onChange={(e) => {
+                        setSpeech({ ...speech, size: Number(e.target.value) });
+                        setAttempt(crypto.randomUUID());
+                        dirty(true);
+                      }}
+                    >
+                      <option value={40}>Pequeño</option>
+                      <option value={48}>Mediano</option>
+                      <option value={56}>Grande</option>
+                    </select>
+                  </label>
+                )}
                 <p>
-                  Esta receta no transcribe ni añade música. Revisa el encuadre
-                  y conserva el significado de cualquier voz que se escuche.
+                  Conservamos el sonido real; no añadimos música. Revisa el
+                  encuadre y el significado completo de la voz.
                 </p>
                 <button
                   type="button"
                   className="button primary"
-                  disabled={shotIds.some((id) => !cuts[id]) || !changed}
+                  disabled={
+                    shotIds.some((id) => !cuts[id]) ||
+                    !changed ||
+                    (shoot.timeline_recipe === "spoken_answer" && !speech)
+                  }
                   onClick={() => void run(render)}
                 >
-                  Preparar montaje
+                  {shoot.timeline_recipe === "spoken_answer"
+                    ? "Preparar vídeo con subtítulos"
+                    : "Preparar montaje"}
                 </button>
                 {changed && (
                   <button
@@ -643,6 +757,7 @@ export function SocialVideo({
                           request_id: crypto.randomUUID(),
                           pack_id: pack.id,
                           expected_revision: pack.revision,
+                          recipe,
                         }),
                       ),
                     )
