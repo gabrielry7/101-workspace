@@ -30,3 +30,11 @@ de la cartografía. El pin mantiene su identificación como punto de muestra.
 
 La comparación con los colores originales usa la paleta del estilo Bright de
 OpenFreeMap en el mapa del taller. Los colores proceden de su estilo publicado.
+
+## Abrir la fachada en Street View
+
+Añadir una acción opcional que abra la vista real de la fachada en Google
+Street View, con el encuadre del enlace seleccionado. Reutilizar el componente
+de ubicación para las tres composiciones. El destino procede de una vista
+comprobada de la sucursal. El taller muestra un estado pendiente mientras
+se obtiene ese enlace. La acción funciona con HTML y abre una pestaña nueva.

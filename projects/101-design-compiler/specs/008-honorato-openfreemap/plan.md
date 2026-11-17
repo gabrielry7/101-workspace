@@ -17,3 +17,10 @@ sigue disponible en la misma instancia. El taller abre con zoom 18 e inclinació
 de 60 grados. La recuperación de ajustes de 0.5.0 rellena sólo los campos nuevos.
 Comprobar teselas reales, alturas disponibles, alternancia 2D/3D, persistencia,
 anclaje, escritorio y móvil. Conservar las capturas bajo el taller privado.
+
+La acción de Street View usa un enlace web opcional del componente existente.
+El builder vincula el enlace desde un archivo privado de Honorato. Validar
+protocolo y dominio de Google Maps, conservar la orientación y mostrar un estado
+pendiente al faltar el destino. Verificar la vista externa con navegador y
+la acción en el taller con teclado, móvil y ambas composiciones alternativas.
+Versionar la acción como 0.7.0 y recuperar los ajustes visuales de 0.6.0.

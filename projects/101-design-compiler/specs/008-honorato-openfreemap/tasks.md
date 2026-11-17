@@ -38,3 +38,13 @@ La vista vuelve al ejemplo de edificios en 3D con su composición y controles an
 Los colores base se consultaron en el estilo Bright publicado. La vista
 reutiliza el hueso de ubicación y sus capas con esa paleta. Chromium verificó
 la carga real, los controles de edificios, la persistencia y el diseño adaptable.
+
+- [ ] T011 Localizar y comprobar una vista real de la fachada de Honorato.
+- [x] T012 Incorporar la acción al hueso y verificarla en el taller.
+
+Se revisó la ficha de Honorato y se encontró una foto frontal identificable.
+Las panorámicas obtenidas al explorar los puntos cercanos muestran otros
+locales. T011 continúa pendiente de una panorámica de la fachada comprobada.
+El taller muestra la acción pendiente de vincular. La prueba sintética verificó
+el enlace, panorama, cámara, apertura en otra pestaña, teclado y HTML sin JS.
+La inspección de Honorato cubrió las tres composiciones y 360–1440 px.

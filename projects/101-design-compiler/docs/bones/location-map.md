@@ -266,6 +266,16 @@ La extrusión usa las alturas aproximadas de OpenFreeMap. Las huellas de
 edificios conservan la representación en zonas sin altura. El pin continúa
 siendo una muestra identificada. Se recuperan los ajustes guardados de 0.5.0.
 
+En 0.7.0 `streetViewURL` permite añadir la acción **Ver fachada en Street View**
+a las tres composiciones. El enlace conserva la panorámica y la orientación
+elegidas y abre Google Maps en una pestaña nueva. Con `null` se muestra el
+estado pendiente de vincular. El taller de Honorato lee el destino opcional de
+`.tools/honorato-openfreemap/street-view.json`, con un campo `url`.
+
+La búsqueda localizó una foto frontal real de Honorato en su ficha de Google
+Maps. Las panorámicas cercanas revisadas corresponden a otros locales. La vista
+Street View de la fachada de Honorato continúa pendiente de un enlace comprobado.
+
 ### Antecedente de verificación del dueño
 
 Verificación local de la base el 2026-11-05, Windows y Node 26.7.0:

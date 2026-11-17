@@ -1,7 +1,7 @@
 import { readFile, writeFile, mkdir, stat } from 'node:fs/promises';
 import { resolve, dirname, relative, sep } from 'node:path';
 import { createHash } from 'node:crypto';
-import { bindLocationBone } from '../../src/bones/location-map.ts';
+import { bindLocationBone, googleStreetViewLink } from '../../src/bones/location-map.ts';
 import { locationEditorDefaults } from '../../src/bones/location-map-editor.ts';
 
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -62,6 +62,13 @@ export async function prepareHonoratoOpenFreeMap({ project, source, preview, pub
   const editor = { ...locationEditorDefaults(mapColors), buildings3d: true, pitch: 60, bearing: -25,
     vegetation: '#d8e8c8', vegetationOpacity: 100, buildingOutline: '#dfdbd7',
     roadText: '#666666', roadHalo: '#ffffff', lightColor: '#ffffff' };
+  let streetViewURL = null;
+  try {
+    const streetView = JSON.parse(await readFile(resolve(work, 'street-view.json'), 'utf8'));
+    streetViewURL = googleStreetViewLink(streetView.url);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
   const astroImport = path => relative(pageDir, resolve(project, path)).split(sep).join('/');
   await writeFile(resolve(pageDir, 'honorato.astro'), `---
 import Location from '${astroImport('src/components/bones/SingleBusinessLocation.astro')}';
@@ -69,6 +76,7 @@ import Controls from '${astroImport('src/components/bones/LocationMapControls.as
 const input = ${JSON.stringify(input)};
 const colors = ${JSON.stringify(mapColors)};
 const editor = ${JSON.stringify(editor)};
+const streetViewURL = ${JSON.stringify(streetViewURL)};
 const basemap = { format: 'openfreemap', url: '/openfreemap-empty.geojson', fontURL: '/fonts/familjengrotesk.woff',
   alternateFontURL: '/fonts/bodonimoda.woff', attribution: 'OpenFreeMap · OpenStreetMap' };
 ---
@@ -81,7 +89,7 @@ const basemap = { format: 'openfreemap', url: '/openfreemap-empty.geojson', font
   <main class="honorato-preview" aria-label="Vista previa del mapa de Honorato">
     <p class="preview-note"><strong>Paleta original de OpenFreeMap Bright.</strong> Edificios con alturas aproximadas. Pin de muestra en Ciudadela Complex, con la ubicación exacta del local por confirmar.</p>
     <a class="edit-link" href="#honorato-open-map-controls">Editar mapa</a>
-    <Location id="honorato-open-map" input={input} skin="paper" runtimeURL="/location-runtime.js" basemap={basemap} mapColors={colors} markerLabel={false}/>
+    <Location id="honorato-open-map" input={input} skin="paper" runtimeURL="/location-runtime.js" basemap={basemap} mapColors={colors} markerLabel={false} streetViewURL={streetViewURL}/>
     <Controls target="honorato-open-map" note="" editor={editor}/>
   </main>
   <script is:inline type="module" src="/honorato-openfreemap-controls.js"></script>
@@ -159,5 +167,6 @@ mountLocationControls(panel, section, { storageKey: '101-honorato-openfreemap-co
     provider: 'openfreemap', source: coordinate.source, sample_pin: true, publication_allowed: false,
     palette_basis: 'OpenFreeMap Bright base cartographic colors', palette_reference: 'https://tiles.openfreemap.org/styles/bright',
     mapColors, editor,
+    street_view: streetViewURL ? 'linked' : 'pending',
   }, null, 2) + '\n');
 }

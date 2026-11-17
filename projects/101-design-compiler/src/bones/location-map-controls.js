@@ -137,7 +137,7 @@ export function mountLocationControls(panel, section, options = {}) {
       const saved = JSON.parse(localStorage.getItem(storageKey));
       const { editor: savedEditor, ...savedControls } = saved;
       const legacyEditor = savedControls.bone === 'location.single-business@0.5.0';
-      if (['location.single-business@0.4.0', 'location.single-business@0.5.0'].includes(savedControls.bone)) {
+      if (['location.single-business@0.4.0', 'location.single-business@0.5.0', 'location.single-business@0.6.0'].includes(savedControls.bone)) {
         savedControls.bone = defaultLocationControls.bone;
       }
       const next = parseLocationControls(savedControls);

@@ -1,15 +1,16 @@
 ---
-import { displayLocation, locationVariant, locationSkin, mapSkins, locationBone } from '../../bones/location-map.ts';
+import { displayLocation, googleStreetViewLink, locationVariant, locationSkin, mapSkins, locationBone } from '../../bones/location-map.ts';
 import type { LocationBoneInput, LocationVariant, LocationSkin } from '../../bones/location-map.ts';
 interface Props {
   id: string; input: LocationBoneInput; variant?: LocationVariant; skin?: LocationSkin;
   runtimeURL?: string | undefined; provider?: 'maplibre' | 'google_js';
   basemap?: Record<string, unknown> | undefined; google?: Record<string, unknown> | undefined;
   markerLabel?: boolean;
+  streetViewURL?: string | null;
   mapColors?: Partial<Record<keyof typeof mapSkins.neutral, string>>;
 }
 const { id, input, variant: variantValue = 'direct', skin: skinValue = 'neutral', runtimeURL,
-  provider = 'maplibre', basemap, google, markerLabel = true, mapColors } = Astro.props;
+  provider = 'maplibre', basemap, google, markerLabel = true, mapColors, streetViewURL } = Astro.props;
 if (typeof markerLabel !== 'boolean') throw Error('BOOLEAN_MARKER_LABEL_REQUIRED');
 if (!/^[a-zA-Z][a-zA-Z0-9_-]{0,79}$/.test(id)) throw Error('LOCATION_ID_REQUIRED');
 const variant = locationVariant(variantValue), skin = locationSkin(skinValue);
@@ -24,6 +25,7 @@ for (const link of input.directions) {
   if (url.protocol !== 'https:' || url.username || url.password) throw Error('UNSAFE_DIRECTIONS_LINK');
 }
 const navigationId = `${id}-directions`;
+const streetViewHref = typeof streetViewURL === 'string' ? googleStreetViewLink(streetViewURL) : null;
 const config = { location: input.location, marker: input.marker, markerLabel, provider, basemap, google,
   workerURL: runtimeURL?.replace(/[^/]+$/, 'maplibre-gl-worker.mjs'),
   navigationId, presentation: { colors: { ...mapSkins[skin], ...mapColors }, zoom: 16, pois: { mode: 'none', ids: [], limit: 0 } } };
@@ -41,6 +43,11 @@ const config = { location: input.location, marker: input.marker, markerLabel, pr
         {!input.directions.length && input.synthetic && ['Google Maps','Waze','Apple Maps'].map(name => <span class="location-bone__action-placeholder" aria-disabled="true">Abrir en {name}</span>)}
         {!input.directions.length && <p class="location-bone__unavailable">{input.synthetic ? 'Acciones de muestra · sin destinos reales.' : 'Indicaciones pendientes de datos utilizables.'}</p>}
       </nav>
+      {streetViewURL !== undefined && <div class="location-bone__street-view" data-location-part="street-view" data-street-view-state={streetViewHref ? 'ready' : 'pending'}>
+        {streetViewHref
+          ? <a href={streetViewHref} target="_blank" rel="noopener noreferrer">Ver fachada en Street View <span aria-hidden="true">↗</span></a>
+          : <><span class="location-bone__street-view-pending" aria-disabled="true">Ver fachada en Street View</span><p>Vista de fachada pendiente de vincular.</p></>}
+      </div>}
     </div>}
   </header>
   <div class="location-bone__body">
@@ -51,6 +58,11 @@ const config = { location: input.location, marker: input.marker, markerLabel, pr
         {!input.directions.length && input.synthetic && ['Google Maps','Waze','Apple Maps'].map(name => <span class="location-bone__action-placeholder" aria-disabled="true">Abrir en {name}</span>)}
         {!input.directions.length && <p class="location-bone__unavailable">{input.synthetic ? 'Acciones de muestra · sin destinos reales.' : 'Indicaciones pendientes de datos utilizables.'}</p>}
       </nav>
+      {streetViewURL !== undefined && <div class="location-bone__street-view" data-location-part="street-view" data-street-view-state={streetViewHref ? 'ready' : 'pending'}>
+        {streetViewHref
+          ? <a href={streetViewHref} target="_blank" rel="noopener noreferrer">Ver fachada en Street View <span aria-hidden="true">↗</span></a>
+          : <><span class="location-bone__street-view-pending" aria-disabled="true">Ver fachada en Street View</span><p>Vista de fachada pendiente de vincular.</p></>}
+      </div>}
     </div>}
     <div class="location-bone__map" data-location-part="map-viewport">
       <div data-location-bone-config={JSON.stringify(config)} data-map-state="unmounted" data-map-reason="RUNTIME_NOT_LOADED">
@@ -79,6 +91,12 @@ const config = { location: input.location, marker: input.marker, markerLabel, pr
   .location-bone__action-placeholder { display:flex;align-items:center;min-height:56px;padding:12px 16px;border:1px dashed var(--section-line);font-size:.95rem; }
   .location-bone nav .location-bone__unavailable { grid-column:1/-1; }
   .location-bone nav a:hover { text-decoration:underline;text-underline-offset:4px; }
+  .location-bone__street-view { margin-top:20px; }
+  .location-bone__street-view a,.location-bone__street-view-pending { display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;border:1px solid var(--section-line);padding:12px 16px;color:inherit;font:inherit;text-decoration:none; }
+  .location-bone__street-view a:hover { text-decoration:underline;text-underline-offset:4px; }
+  .location-bone__street-view a:focus-visible { outline:3px solid var(--section-accent);outline-offset:4px; }
+  .location-bone__street-view-pending { border-style:dashed; }
+  .location-bone__street-view p { font-size:.875rem;line-height:1.5;margin:10px 0 0; }
   .location-bone nav a:focus-visible { outline:3px solid var(--section-accent);outline-offset:4px; }
   .location-bone nav svg { flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6; }
   .location-bone__information,.location-bone__map { min-width:0; }

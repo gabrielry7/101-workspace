@@ -3,10 +3,26 @@ import assert from 'node:assert/strict';
 import { pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
 import { readFile } from 'node:fs/promises';
-import { bindLocationBone, resolveLocationLogo, locationVariant, displayLocation } from '../src/bones/location-map.ts';
+import { bindLocationBone, googleStreetViewLink, resolveLocationLogo, locationVariant, displayLocation } from '../src/bones/location-map.ts';
 import { fixtureLocation, fixtureLogoEvidence } from '../src/bones/location-map-fixture.ts';
 import { fixedPresentation } from '../src/bones/location-map-runtime.js';
 import { googleConfiguration } from '../src/bones/location-map-google.js';
+
+test('Street View preserves the panorama and camera of a selected view', () => {
+  const link = 'https://www.google.com/maps/@?api=1&map_action=pano&pano=synthetic-test-panorama&heading=230&pitch=-5&fov=70';
+  assert.equal(googleStreetViewLink(link), link);
+  assert.equal(googleStreetViewLink('https://maps.app.goo.gl/synthetic-test-link'), 'https://maps.app.goo.gl/synthetic-test-link');
+  assert.equal(googleStreetViewLink('https://www.google.com/maps/@1,2,3a,75y,90t/data=!3m7!1e1!3m5!1ssynthetic'),
+    'https://www.google.com/maps/@1,2,3a,75y,90t/data=!3m7!1e1!3m5!1ssynthetic');
+  for (const value of [
+    'javascript:alert(1)', 'http://www.google.com/maps/@?api=1&map_action=pano&pano=test',
+    'https://www.google.com.evil.example/maps/@?api=1&map_action=pano&pano=test',
+    'https://user:password@www.google.com/maps/@?api=1&map_action=pano&pano=test',
+    'https://www.google.com/maps/search/?api=1&query=other',
+    'https://www.google.com/maps/@?api=1&map_action=pano',
+    'https://www.google.com/maps/@1,2,3a,75y,90t/data=!3m8!1e2!3m6!1ssynthetic-photo',
+  ]) assert.throws(() => googleStreetViewLink(value));
+});
 
 test('single-business policy rejects all ways to reactivate nearby businesses or alter facts', () => {
   assert.deepEqual(fixedPresentation({ zoom: 16 }).pois, { mode: 'none', ids: [], limit: 0 });
