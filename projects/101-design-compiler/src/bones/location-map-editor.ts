@@ -5,7 +5,17 @@ const range = (label: string, initial: number, min: number, max: number, step: n
 const choice = (label: string, initial: string, options: Record<string, string>) =>
   ({ label, initial, options, kind: 'select' } as const);
 
+const building3dFields = {
+  buildings3d: toggle('Edificios en 3D', false),
+  buildingHeightScale: range('Escala de altura (%)', 100, 50, 300, 5),
+  lightColor: color('Color de la luz', '#fff8eb'),
+  lightIntensity: range('Intensidad de luz (%)', 45, 0, 100, 1),
+  lightDirection: range('Dirección de luz (°)', 210, 0, 360, 1),
+  lightElevation: range('Elevación de luz (°)', 45, 0, 90, 1),
+};
+
 export const openFreeMapFields = {
+  ...building3dFields,
   land: color('Fondo del mapa', '#f3e9dc'),
   vegetation: color('Vegetación', '#e2cfb8'),
   water: color('Agua', '#c6d7d4'),
@@ -72,6 +82,9 @@ export type OpenFreeMapOptions = Values<typeof openFreeMapFields>;
 export type LocationEditorOptions = Values<typeof locationEditorFields>;
 
 export const locationEditorGroups = [
+  { title: 'Edificios en 3D', open: true, fields: [
+    'buildings3d', 'buildingHeightScale', 'lightColor', 'lightIntensity', 'lightDirection', 'lightElevation',
+  ] },
   { title: 'Colores del mapa', open: true, fields: [
     'land', 'vegetation', 'water', 'building', 'buildingOutline', 'road', 'roadOutline', 'roadText', 'roadHalo',
   ] },
@@ -93,6 +106,8 @@ export const locationEditorGroups = [
 function defaults<T extends Record<string, Field>>(fields: T): Values<T> {
   return Object.fromEntries(Object.entries(fields).map(([key, field]) => [key, field.initial])) as Values<T>;
 }
+
+export const building3dDefaults = Object.freeze(defaults(building3dFields));
 
 function validate<T extends Record<string, Field>>(fields: T, value: unknown): Values<T> {
   if (!value || typeof value !== 'object' || Array.isArray(value)

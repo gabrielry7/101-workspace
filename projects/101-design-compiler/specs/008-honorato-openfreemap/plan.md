@@ -10,3 +10,10 @@ La revisión 0.5.0 comparte un catálogo tipado de campos entre el panel y la
 validación. Actualiza las propiedades de capas del MapLibre existente, usa
 variables CSS para la presentación y conserva los controles anteriores y la
 lectura de ajustes válidos de 0.4.0. El guardado sigue siendo local al navegador.
+
+La revisión 0.6.0 añade una capa `fill-extrusion` de la fuente vectorial
+existente y usa `render_height`, `render_min_height` y `hide_3d`. El modo 2D
+sigue disponible en la misma instancia. El taller abre con zoom 18 e inclinación
+de 60 grados. La recuperación de ajustes de 0.5.0 rellena sólo los campos nuevos.
+Comprobar teselas reales, alturas disponibles, alternancia 2D/3D, persistencia,
+anclaje, escritorio y móvil. Conservar las capturas bajo el taller privado.

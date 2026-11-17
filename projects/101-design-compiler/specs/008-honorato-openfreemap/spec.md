@@ -19,3 +19,11 @@ Los ajustes son de presentación. La fuente, los créditos, la política de
 negocios vecinos, la geometría del pin y los datos del negocio quedan vinculados
 por el contrato existente. Se verificará cada campo en la vista de Honorato
 con cartografía real, sin recrear la instancia del mapa.
+
+## Ejemplo de edificios en 3D
+
+Mostrar Honorato con los edificios de OpenFreeMap en volumen y una cámara
+inclinada. El panel permite activar y desactivar el 3D, ajustar la escala de
+altura y la iluminación. Color, opacidad y visibilidad continúan usando los
+ajustes de edificios existentes. Las alturas se presentan como aproximaciones
+de la cartografía. El pin mantiene su identificación como punto de muestra.

@@ -259,6 +259,13 @@ y el panel comparten pantalla en escritorio. En móvil, **Ver mapa** vuelve al
 resultado desde los controles. Guardar, recuperar y restablecer abarcan todo el
 panel. Se pueden recuperar ajustes guardados con 0.4.0.
 
+En 0.6.0 Honorato abre con edificios en 3D, zoom 18 e inclinación de 60 grados.
+**Editar mapa → Edificios en 3D** permite comparar la vista plana y el volumen,
+ajustar la escala de altura y cambiar color, intensidad y dirección de luz.
+La extrusión usa las alturas aproximadas de OpenFreeMap. Las huellas de
+edificios conservan la representación en zonas sin altura. El pin continúa
+siendo una muestra identificada. Se recuperan los ajustes guardados de 0.5.0.
+
 ### Antecedente de verificación del dueño
 
 Verificación local de la base el 2026-11-05, Windows y Node 26.7.0:

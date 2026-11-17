@@ -35,6 +35,8 @@ export function openFreeMapStyle(options, { fontURL, alternateFontURL }) {
   const lineLayout = { 'line-cap': options.roadCap, 'line-join': options.roadJoin };
   return {
     version: 8,
+    light: { anchor: 'viewport', color: options.lightColor, intensity: options.lightIntensity / 100,
+      position: [1.5, options.lightDirection, 90 - options.lightElevation] },
     sources: { context: { type: 'vector', url: `${origin}/planet`, attribution } },
     'font-faces': {
       'Location Map': [{ url: fontURL }],
@@ -61,6 +63,13 @@ export function openFreeMapStyle(options, { fontURL, alternateFontURL }) {
         filter: roadFilter, layout: lineLayout,
         paint: { 'line-color': options.road, 'line-width': roadWidth(options.roadScale / 100),
           'line-opacity': options.roadOpacity / 100 } },
+      { id: 'buildings-3d', type: 'fill-extrusion', source: 'context', 'source-layer': 'building',
+        minzoom: options.buildingMinZoom, filter: ['!=', ['get', 'hide_3d'], true],
+        layout: { visibility: visibility(options.showBuildings && options.buildings3d) },
+        paint: { 'fill-extrusion-color': options.building,
+          'fill-extrusion-height': ['*', ['max', 0, ['to-number', ['get', 'render_height'], 0]], options.buildingHeightScale / 100],
+          'fill-extrusion-base': ['*', ['max', 0, ['to-number', ['get', 'render_min_height'], 0]], options.buildingHeightScale / 100],
+          'fill-extrusion-opacity': options.buildingOpacity / 100 } },
       { id: 'road-names', type: 'symbol', source: 'context', 'source-layer': 'transportation_name', minzoom: options.roadTextMinZoom,
         filter: ['all', roadFilter, ['has', 'name']],
         layout: { 'symbol-placement': options.roadTextPlacement, 'text-field': ['get', 'name'],
@@ -74,6 +83,7 @@ export function openFreeMapStyle(options, { fontURL, alternateFontURL }) {
 
 export function updateOpenFreeMapLayers(map, previous, next) {
   const changed = (before, after) => JSON.stringify(before) !== JSON.stringify(after);
+  if (changed(previous.light, next.light)) map.setLight(next.light);
   for (const [index, layer] of next.layers.entries()) {
     const before = previous.layers[index];
     for (const [key, value] of Object.entries(layer.paint ?? {})) {

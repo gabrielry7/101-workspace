@@ -58,7 +58,7 @@ export async function prepareHonoratoOpenFreeMap({ project, source, preview, pub
 
   await writeFile(resolve(publicDir, 'openfreemap-empty.geojson'), '{"type":"FeatureCollection","features":[]}');
   const pageDir = resolve(preview, 'src/pages');
-  const editor = locationEditorDefaults(mapColors);
+  const editor = { ...locationEditorDefaults(mapColors), buildings3d: true, pitch: 60, bearing: -25 };
   const astroImport = path => relative(pageDir, resolve(project, path)).split(sep).join('/');
   await writeFile(resolve(pageDir, 'honorato.astro'), `---
 import Location from '${astroImport('src/components/bones/SingleBusinessLocation.astro')}';
@@ -76,7 +76,7 @@ const basemap = { format: 'openfreemap', url: '/openfreemap-empty.geojson', font
   <title>Honorato en OpenFreeMap</title><link rel="icon" href="data:,"/><link rel="stylesheet" href="/location-runtime.css"/>
 </head><body>
   <main class="honorato-preview" aria-label="Vista previa del mapa de Honorato">
-    <p class="preview-note"><strong>Vista previa en OpenFreeMap.</strong> Pin de muestra en Ciudadela Complex. La ubicación exacta del local está por confirmar.</p>
+    <p class="preview-note"><strong>Honorato con edificios en 3D.</strong> Alturas aproximadas de OpenFreeMap. Pin de muestra en Ciudadela Complex, con la ubicación exacta del local por confirmar.</p>
     <a class="edit-link" href="#honorato-open-map-controls">Editar mapa</a>
     <Location id="honorato-open-map" input={input} skin="paper" runtimeURL="/location-runtime.js" basemap={basemap} mapColors={colors} markerLabel={false}/>
     <Controls target="honorato-open-map" note="" editor={editor}/>
@@ -146,7 +146,7 @@ const section = document.getElementById('honorato-open-map');
 const panel = document.querySelector('[data-location-controls]');
 mountLocationControls(panel, section, { storageKey: '101-honorato-openfreemap-controls-v1',
   editor: ${JSON.stringify(editor)},
-  initial: { skin: 'paper', pinPaper: ${JSON.stringify(mapColors.paper)}, pinInk: ${JSON.stringify(mapColors.ink)} } });`,
+  initial: { skin: 'paper', zoom: 18, pinPaper: ${JSON.stringify(mapColors.paper)}, pinInk: ${JSON.stringify(mapColors.ink)} } });`,
       resolveDir: project,
     },
     bundle: true, format: 'esm', target: 'es2022',

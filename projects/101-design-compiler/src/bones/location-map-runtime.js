@@ -3,7 +3,7 @@ import { mountGoogleLocation } from './location-map-google.js';
 import { openFreeMapRequest, openFreeMapStyle, updateOpenFreeMapLayers } from './location-map-openfreemap.js';
 import { openFreeMapDefaults, parseOpenFreeMapOptions } from './location-map-editor.ts';
 
-export const LOCATION_BONE_VERSION = 'location.single-business@0.5.0';
+export const LOCATION_BONE_VERSION = 'location.single-business@0.6.0';
 export function fixedPresentation(value = {}) {
   if (!value || typeof value !== 'object' || Array.isArray(value)
     || Object.keys(value).some(key => !['colors', 'zoom', 'pois'].includes(key))) {
@@ -145,6 +145,7 @@ export function mountSingleBusinessLocation(root, config, owner) {
       inspectEditor() {
         return { bearing: map?.getBearing(), pitch: map?.getPitch(),
           scrollZoom: map?.scrollZoom.isEnabled(), dragPan: map?.dragPan.isEnabled(),
+          light: map?.getLight(),
           layers: map?.getStyle()?.layers };
       },
     } : {}),

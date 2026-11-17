@@ -1,5 +1,5 @@
 import { locationBone, locationSkin, locationVariant } from './location-map.ts';
-import { locationEditorFields, mapEditorOptions, parseLocationEditor } from './location-map-editor.ts';
+import { building3dDefaults, locationEditorFields, mapEditorOptions, parseLocationEditor } from './location-map-editor.ts';
 
 export const defaultLocationControls = Object.freeze({
   bone: `${locationBone.id}@${locationBone.version}`, skin: 'neutral', variant: 'direct',
@@ -136,9 +136,13 @@ export function mountLocationControls(panel, section, options = {}) {
     try {
       const saved = JSON.parse(localStorage.getItem(storageKey));
       const { editor: savedEditor, ...savedControls } = saved;
-      if (savedControls.bone === 'location.single-business@0.4.0') savedControls.bone = defaultLocationControls.bone;
+      const legacyEditor = savedControls.bone === 'location.single-business@0.5.0';
+      if (['location.single-business@0.4.0', 'location.single-business@0.5.0'].includes(savedControls.bone)) {
+        savedControls.bone = defaultLocationControls.bone;
+      }
       const next = parseLocationControls(savedControls);
-      const nextEditor = savedEditor === undefined ? initialEditor : parseLocationEditor(savedEditor);
+      const nextEditor = savedEditor === undefined ? initialEditor
+        : parseLocationEditor(legacyEditor ? { ...building3dDefaults, ...savedEditor } : savedEditor);
       if (nextEditor && !initialEditor) throw Error('LOCATION_EDITOR_UNAVAILABLE');
       state = next;
       editor = nextEditor;

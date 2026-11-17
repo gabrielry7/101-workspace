@@ -20,3 +20,12 @@ valores de capa, cámara y CSS, el guardado y la recuperación de ajustes nuevos
 y de 0.4.0, la recuperación de la vista inicial, el anclaje y la alternativa
 con la fuente bloqueada. La misma instancia sirvió para todas las ediciones.
 La inspección cubrió 360–1440 px y la fuente de respaldo.
+
+- [x] T006 Añadir y exponer la extrusión y la iluminación en la misma vista.
+- [x] T007 Verificar el ejemplo vivo, el modo 2D, los ajustes anteriores y las capturas.
+
+Chromium verificó la muestra 0.6.0 con teselas de OpenFreeMap, luz y extrusión
+activas. Cambiar a 2D, modificar escala, color y opacidad, ocultar edificios y
+guardar/restaurar conservaron la instancia. Se recuperaron ajustes de 0.5.0 y
+se comprobó el anclaje dentro de 1 px y el diseño entre 360 y 1440 px.
+Las capturas y los reportes permanecen en el taller privado.

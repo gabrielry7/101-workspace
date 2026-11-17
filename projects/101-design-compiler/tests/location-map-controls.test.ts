@@ -4,6 +4,7 @@ import { defaultLocationControls, parseLocationControls } from '../src/bones/loc
 import { locationEditorDefaults, locationEditorFields, locationEditorGroups, mapEditorOptions,
   parseLocationEditor, parseOpenFreeMapOptions } from '../src/bones/location-map-editor.ts';
 import { mapSkins } from '../src/bones/location-map.ts';
+import { openFreeMapStyle } from '../src/bones/location-map-openfreemap.js';
 
 test('saved visual settings accept supported skins and compositions without business data', () => {
   for (const skin of ['neutral', 'paper', 'ink']) for (const variant of ['direct', 'map-led', 'editorial']) {
@@ -43,5 +44,20 @@ test('OpenFreeMap editor rejects changes to geography and invalid styling values
   for (const patch of [
     { coordinate: [0, 0] }, { showPois: true }, { source: 'other' }, { pitch: 61 }, { pinScale: 0 },
     { land: 'url(https://example.invalid)' }, { roadCap: 'unknown' }, { dragPan: 'true' }, { logoScale: NaN },
+    { buildingHeightScale: 0 }, { lightDirection: 361 }, { lightElevation: -1 }, { lightIntensity: Infinity },
   ]) assert.throws(() => parseLocationEditor({ ...defaults, ...patch }), /INVALID_LOCATION_EDITOR/);
+});
+
+test('3D mode retains building footprints and excludes outlines from extrusion', () => {
+  const options = mapEditorOptions(locationEditorDefaults(mapSkins.paper));
+  const basemap = { fontURL: '/font.woff', alternateFontURL: '/serif.woff' };
+  const style = openFreeMapStyle({ ...options, buildings3d: true, buildingHeightScale: 150 }, basemap);
+  const buildings = style.layers.find(layer => layer.id === 'buildings-3d')!;
+  assert.equal(buildings.type, 'fill-extrusion');
+  assert.deepEqual(buildings.layout, { visibility: 'visible' });
+  assert.deepEqual(buildings.filter, ['!=', ['get', 'hide_3d'], true]);
+  assert.equal(buildings.paint?.['fill-extrusion-height']?.at(-1), 1.5);
+  assert.deepEqual(style.layers.find(layer => layer.id === 'buildings')?.layout, { visibility: 'visible' });
+  const flat = openFreeMapStyle(options, basemap);
+  assert.deepEqual(flat.layers.find(layer => layer.id === 'buildings-3d')?.layout, { visibility: 'none' });
 });
