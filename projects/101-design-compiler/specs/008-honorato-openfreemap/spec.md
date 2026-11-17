@@ -27,3 +27,10 @@ inclinada. El panel permite activar y desactivar el 3D, ajustar la escala de
 altura y la iluminación. Color, opacidad y visibilidad continúan usando los
 ajustes de edificios existentes. Las alturas se presentan como aproximaciones
 de la cartografía. El pin mantiene su identificación como punto de muestra.
+
+## Nombres de calles cercanas
+
+Mostrar los nombres y referencias disponibles en la cartografía, legibles
+durante la vista inclinada. Permitir priorizar su visibilidad aunque se
+superpongan y ajustar su perspectiva desde el panel. Los accesos que carecen
+de nombre conservan la información disponible de la fuente.

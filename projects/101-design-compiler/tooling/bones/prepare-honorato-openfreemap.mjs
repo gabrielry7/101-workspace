@@ -58,7 +58,8 @@ export async function prepareHonoratoOpenFreeMap({ project, source, preview, pub
 
   await writeFile(resolve(publicDir, 'openfreemap-empty.geojson'), '{"type":"FeatureCollection","features":[]}');
   const pageDir = resolve(preview, 'src/pages');
-  const editor = { ...locationEditorDefaults(mapColors), buildings3d: true, pitch: 60, bearing: -25 };
+  const editor = { ...locationEditorDefaults(mapColors), buildings3d: true, pitch: 60, bearing: -25,
+    roadTextOverlap: true, roadTextSpacing: 140, roadTextSize: 14 };
   const astroImport = path => relative(pageDir, resolve(project, path)).split(sep).join('/');
   await writeFile(resolve(pageDir, 'honorato.astro'), `---
 import Location from '${astroImport('src/components/bones/SingleBusinessLocation.astro')}';
@@ -79,7 +80,7 @@ const basemap = { format: 'openfreemap', url: '/openfreemap-empty.geojson', font
     <p class="preview-note"><strong>Honorato con edificios en 3D.</strong> Alturas aproximadas de OpenFreeMap. Pin de muestra en Ciudadela Complex, con la ubicación exacta del local por confirmar.</p>
     <a class="edit-link" href="#honorato-open-map-controls">Editar mapa</a>
     <Location id="honorato-open-map" input={input} skin="paper" runtimeURL="/location-runtime.js" basemap={basemap} mapColors={colors} markerLabel={false}/>
-    <Controls target="honorato-open-map" note="" editor={editor}/>
+    <Controls target="honorato-open-map" note="Algunos tramos de esta zona carecen de nombre en OpenStreetMap." editor={editor}/>
   </main>
   <script is:inline type="module" src="/honorato-openfreemap-controls.js"></script>
 </body></html>
@@ -146,7 +147,7 @@ const section = document.getElementById('honorato-open-map');
 const panel = document.querySelector('[data-location-controls]');
 mountLocationControls(panel, section, { storageKey: '101-honorato-openfreemap-controls-v1',
   editor: ${JSON.stringify(editor)},
-  initial: { skin: 'paper', zoom: 18, pinPaper: ${JSON.stringify(mapColors.paper)}, pinInk: ${JSON.stringify(mapColors.ink)} } });`,
+  initial: { skin: 'paper', variant: 'map-led', zoom: 17, pinPaper: ${JSON.stringify(mapColors.paper)}, pinInk: ${JSON.stringify(mapColors.ink)} } });`,
       resolveDir: project,
     },
     bundle: true, format: 'esm', target: 'es2022',

@@ -1,5 +1,5 @@
 import { locationBone, locationSkin, locationVariant } from './location-map.ts';
-import { building3dDefaults, locationEditorFields, mapEditorOptions, parseLocationEditor } from './location-map-editor.ts';
+import { building3dDefaults, roadLabelDefaults, locationEditorFields, mapEditorOptions, parseLocationEditor } from './location-map-editor.ts';
 
 export const defaultLocationControls = Object.freeze({
   bone: `${locationBone.id}@${locationBone.version}`, skin: 'neutral', variant: 'direct',
@@ -137,12 +137,14 @@ export function mountLocationControls(panel, section, options = {}) {
       const saved = JSON.parse(localStorage.getItem(storageKey));
       const { editor: savedEditor, ...savedControls } = saved;
       const legacyEditor = savedControls.bone === 'location.single-business@0.5.0';
-      if (['location.single-business@0.4.0', 'location.single-business@0.5.0'].includes(savedControls.bone)) {
+      const legacyLabels = ['location.single-business@0.5.0', 'location.single-business@0.6.0'].includes(savedControls.bone);
+      if (['location.single-business@0.4.0', 'location.single-business@0.5.0', 'location.single-business@0.6.0'].includes(savedControls.bone)) {
         savedControls.bone = defaultLocationControls.bone;
       }
       const next = parseLocationControls(savedControls);
       const nextEditor = savedEditor === undefined ? initialEditor
-        : parseLocationEditor(legacyEditor ? { ...building3dDefaults, ...savedEditor } : savedEditor);
+        : parseLocationEditor({ ...(legacyEditor ? building3dDefaults : {}),
+          ...(legacyLabels ? roadLabelDefaults : {}), ...savedEditor });
       if (nextEditor && !initialEditor) throw Error('LOCATION_EDITOR_UNAVAILABLE');
       state = next;
       editor = nextEditor;

@@ -14,8 +14,14 @@ const building3dFields = {
   lightElevation: range('Elevación de luz (°)', 45, 0, 90, 1),
 };
 
+const roadLabelFields = {
+  roadTextOverlap: toggle('Permitir superposición de nombres', false),
+  roadTextPitch: choice('Perspectiva de nombres', 'viewport', { viewport: 'Texto legible en pantalla', map: 'Inclinar junto al mapa' }),
+};
+
 export const openFreeMapFields = {
   ...building3dFields,
+  ...roadLabelFields,
   land: color('Fondo del mapa', '#f3e9dc'),
   vegetation: color('Vegetación', '#e2cfb8'),
   water: color('Agua', '#c6d7d4'),
@@ -82,6 +88,10 @@ export type OpenFreeMapOptions = Values<typeof openFreeMapFields>;
 export type LocationEditorOptions = Values<typeof locationEditorFields>;
 
 export const locationEditorGroups = [
+  { title: 'Nombres de calles', open: true, fields: [
+    'showRoadNames', 'roadTextOverlap', 'roadTextPitch', 'roadTextOpacity', 'roadFont', 'roadTextPlacement',
+    'roadTextSize', 'roadTextSpacing', 'roadHaloWidth', 'roadTextMinZoom',
+  ] },
   { title: 'Edificios en 3D', open: true, fields: [
     'buildings3d', 'buildingHeightScale', 'lightColor', 'lightIntensity', 'lightDirection', 'lightElevation',
   ] },
@@ -91,8 +101,7 @@ export const locationEditorGroups = [
   { title: 'Capas y estilos', fields: [
     'showVegetation', 'vegetationOpacity', 'showWater', 'waterOpacity', 'showBuildings', 'buildingOpacity',
     'buildingMinZoom', 'showMainRoads', 'showLocalRoads', 'showPaths', 'roadOpacity', 'roadScale', 'roadCasing',
-    'roadCap', 'roadJoin', 'showRoadNames', 'roadTextOpacity', 'roadFont', 'roadTextPlacement', 'roadTextSize',
-    'roadTextSpacing', 'roadHaloWidth', 'roadTextMinZoom',
+    'roadCap', 'roadJoin',
   ] },
   { title: 'Cámara e interacción', fields: ['bearing', 'pitch', 'scrollZoom', 'dragPan', 'showZoomButtons'], recenter: true },
   { title: 'Pin, logo y etiqueta', fields: [
@@ -108,6 +117,7 @@ function defaults<T extends Record<string, Field>>(fields: T): Values<T> {
 }
 
 export const building3dDefaults = Object.freeze(defaults(building3dFields));
+export const roadLabelDefaults = Object.freeze(defaults(roadLabelFields));
 
 function validate<T extends Record<string, Field>>(fields: T, value: unknown): Values<T> {
   if (!value || typeof value !== 'object' || Array.isArray(value)

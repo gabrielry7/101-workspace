@@ -17,3 +17,13 @@ sigue disponible en la misma instancia. El taller abre con zoom 18 e inclinació
 de 60 grados. La recuperación de ajustes de 0.5.0 rellena sólo los campos nuevos.
 Comprobar teselas reales, alturas disponibles, alternancia 2D/3D, persistencia,
 anclaje, escritorio y móvil. Conservar las capturas bajo el taller privado.
+
+La corrección 0.6.1 usa texto orientado al visor sobre las líneas de calle,
+acepta nombres en español, nombres locales y referencias de vía. Honorato
+prioriza etiquetas disponibles con separación menor y superposición permitida.
+El panel incluye perspectiva y superposición. Recuperar ajustes de 0.6.0 y
+0.5.0 completando estos campos. Revisar la tesela local y las etiquetas reales
+en Chromium, tanto con inclinación como en vista plana.
+
+La vista inicial usa la composición existente con mapa protagonista y zoom 17
+para incluir más vías cercanas y dar espacio a sus rótulos.

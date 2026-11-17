@@ -29,3 +29,14 @@ activas. Cambiar a 2D, modificar escala, color y opacidad, ocultar edificios y
 guardar/restaurar conservaron la instancia. Se recuperaron ajustes de 0.5.0 y
 se comprobó el anclaje dentro de 1 px y el diseño entre 360 y 1440 px.
 Las capturas y los reportes permanecen en el taller privado.
+
+- [x] T008 Mejorar la presencia y legibilidad de los nombres disponibles.
+- [x] T009 Verificar la vista real, el panel y la recuperación de ajustes anteriores.
+
+La inspección de la tesela identificó nombres para las vías Guarne–Llano Grande,
+San Nicolás–La Ceja y Club Llanogrande. El extracto OSM identifica accesos y
+tramos de la vía frente al local sin nombre. Chromium mostró los nombres
+disponibles al cambiar el encuadre, con texto legible en la vista inclinada.
+Se verificaron los controles, el guardado, la recuperación de 0.6.0 y 0.5.0,
+la vista plana y anchos de 360–1440 px. Pasaron Astro, TypeScript y las trece
+pruebas del alcance. Capturas y detalles permanecen en el taller privado.

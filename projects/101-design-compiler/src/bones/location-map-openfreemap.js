@@ -32,6 +32,7 @@ export function openFreeMapStyle(options, { fontURL, alternateFontURL }) {
     ...(options.showPaths ? ['track', 'path'] : []),
   ];
   const roadFilter = ['in', ['get', 'class'], ['literal', roadClasses]];
+  const roadName = ['coalesce', ['get', 'name:es'], ['get', 'name'], ['get', 'name:latin'], ['get', 'ref'], ''];
   const lineLayout = { 'line-cap': options.roadCap, 'line-join': options.roadJoin };
   return {
     version: 8,
@@ -71,10 +72,13 @@ export function openFreeMapStyle(options, { fontURL, alternateFontURL }) {
           'fill-extrusion-base': ['*', ['max', 0, ['to-number', ['get', 'render_min_height'], 0]], options.buildingHeightScale / 100],
           'fill-extrusion-opacity': options.buildingOpacity / 100 } },
       { id: 'road-names', type: 'symbol', source: 'context', 'source-layer': 'transportation_name', minzoom: options.roadTextMinZoom,
-        filter: ['all', roadFilter, ['has', 'name']],
-        layout: { 'symbol-placement': options.roadTextPlacement, 'text-field': ['get', 'name'],
+        filter: ['all', roadFilter, ['!=', roadName, '']],
+        layout: { 'symbol-placement': options.roadTextPlacement, 'text-field': roadName,
           'text-font': [options.roadFont === 'serif' && alternateFontURL ? 'Location Serif' : 'Location Map'],
-          'text-size': options.roadTextSize, 'symbol-spacing': options.roadTextSpacing, visibility: visibility(options.showRoadNames) },
+          'text-size': options.roadTextSize, 'symbol-spacing': options.roadTextSpacing,
+          'text-pitch-alignment': options.roadTextPitch, 'text-rotation-alignment': options.roadTextPitch,
+          'text-allow-overlap': options.roadTextOverlap, 'text-max-angle': 80, 'text-padding': 1,
+          visibility: visibility(options.showRoadNames) },
         paint: { 'text-color': options.roadText, 'text-halo-color': options.roadHalo,
           'text-halo-width': options.roadHaloWidth, 'text-opacity': options.roadTextOpacity / 100 } },
     ],
