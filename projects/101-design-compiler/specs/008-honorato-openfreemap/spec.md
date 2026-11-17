@@ -27,3 +27,6 @@ inclinada. El panel permite activar y desactivar el 3D, ajustar la escala de
 altura y la iluminación. Color, opacidad y visibilidad continúan usando los
 ajustes de edificios existentes. Las alturas se presentan como aproximaciones
 de la cartografía. El pin mantiene su identificación como punto de muestra.
+
+La comparación con los colores originales usa la paleta del estilo Bright de
+OpenFreeMap en el mapa del taller. Los colores proceden de su estilo publicado.

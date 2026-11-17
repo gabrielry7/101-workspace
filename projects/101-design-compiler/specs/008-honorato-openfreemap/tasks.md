@@ -32,3 +32,9 @@ Las capturas y los reportes permanecen en el taller privado.
 
 Por indicación del usuario se restauran las etiquetas y el encuadre de 0.6.0.
 La vista vuelve al ejemplo de edificios en 3D con su composición y controles anteriores.
+
+- [x] T010 Mostrar la paleta original de OpenFreeMap Bright y comprobar la vista.
+
+Los colores base se consultaron en el estilo Bright publicado. La vista
+reutiliza el hueso de ubicación y sus capas con esa paleta. Chromium verificó
+la carga real, los controles de edificios, la persistencia y el diseño adaptable.

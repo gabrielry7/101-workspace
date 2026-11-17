@@ -5,9 +5,10 @@ import { bindLocationBone } from '../../src/bones/location-map.ts';
 import { locationEditorDefaults } from '../../src/bones/location-map-editor.ts';
 
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
+// Base colors from https://tiles.openfreemap.org/styles/bright.
 const mapColors = {
-  paper: '#faf6ee', land: '#f3e9dc', water: '#c6d7d4',
-  road: '#fffdf8', roadOutline: '#bea58f', building: '#e2cfb8',
+  paper: '#faf6ee', land: '#f8f4f0', water: '#aecfe2',
+  road: '#ffffff', roadOutline: '#cfcdca', building: '#dfdbd7',
   ink: '#bf0000', pin: '#bf0000',
 };
 
@@ -58,7 +59,9 @@ export async function prepareHonoratoOpenFreeMap({ project, source, preview, pub
 
   await writeFile(resolve(publicDir, 'openfreemap-empty.geojson'), '{"type":"FeatureCollection","features":[]}');
   const pageDir = resolve(preview, 'src/pages');
-  const editor = { ...locationEditorDefaults(mapColors), buildings3d: true, pitch: 60, bearing: -25 };
+  const editor = { ...locationEditorDefaults(mapColors), buildings3d: true, pitch: 60, bearing: -25,
+    vegetation: '#d8e8c8', vegetationOpacity: 100, buildingOutline: '#dfdbd7',
+    roadText: '#666666', roadHalo: '#ffffff', lightColor: '#ffffff' };
   const astroImport = path => relative(pageDir, resolve(project, path)).split(sep).join('/');
   await writeFile(resolve(pageDir, 'honorato.astro'), `---
 import Location from '${astroImport('src/components/bones/SingleBusinessLocation.astro')}';
@@ -76,7 +79,7 @@ const basemap = { format: 'openfreemap', url: '/openfreemap-empty.geojson', font
   <title>Honorato en OpenFreeMap</title><link rel="icon" href="data:,"/><link rel="stylesheet" href="/location-runtime.css"/>
 </head><body>
   <main class="honorato-preview" aria-label="Vista previa del mapa de Honorato">
-    <p class="preview-note"><strong>Honorato con edificios en 3D.</strong> Alturas aproximadas de OpenFreeMap. Pin de muestra en Ciudadela Complex, con la ubicación exacta del local por confirmar.</p>
+    <p class="preview-note"><strong>Paleta original de OpenFreeMap Bright.</strong> Edificios con alturas aproximadas. Pin de muestra en Ciudadela Complex, con la ubicación exacta del local por confirmar.</p>
     <a class="edit-link" href="#honorato-open-map-controls">Editar mapa</a>
     <Location id="honorato-open-map" input={input} skin="paper" runtimeURL="/location-runtime.js" basemap={basemap} mapColors={colors} markerLabel={false}/>
     <Controls target="honorato-open-map" note="" editor={editor}/>
@@ -154,6 +157,7 @@ mountLocationControls(panel, section, { storageKey: '101-honorato-openfreemap-co
   });
   await writeFile(resolve(work, 'honorato-build-receipt.json'), JSON.stringify({
     provider: 'openfreemap', source: coordinate.source, sample_pin: true, publication_allowed: false,
-    palette_basis: 'Honorato website red and black, Studio cream, adapted map surfaces', mapColors,
+    palette_basis: 'OpenFreeMap Bright base cartographic colors', palette_reference: 'https://tiles.openfreemap.org/styles/bright',
+    mapColors, editor,
   }, null, 2) + '\n');
 }
