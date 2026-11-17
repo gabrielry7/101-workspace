@@ -266,13 +266,6 @@ La extrusión usa las alturas aproximadas de OpenFreeMap. Las huellas de
 edificios conservan la representación en zonas sin altura. El pin continúa
 siendo una muestra identificada. Se recuperan los ajustes guardados de 0.5.0.
 
-En 0.6.1 la vista de Honorato abre con mapa protagonista y zoom 17. Los nombres
-de calles se muestran horizontales al visor para conservar la lectura con el
-mapa inclinado. **Nombres de calles** permite regular su perspectiva, densidad y
-superposición. El estilo admite el nombre en español, el nombre local y la
-referencia de la vía. Algunos tramos de la cartografía, incluida la carretera
-frente al local y varios accesos internos, carecen de nombre registrado.
-
 ### Antecedente de verificación del dueño
 
 Verificación local de la base el 2026-11-05, Windows y Node 26.7.0:

@@ -45,7 +45,6 @@ test('OpenFreeMap editor rejects changes to geography and invalid styling values
     { coordinate: [0, 0] }, { showPois: true }, { source: 'other' }, { pitch: 61 }, { pinScale: 0 },
     { land: 'url(https://example.invalid)' }, { roadCap: 'unknown' }, { dragPan: 'true' }, { logoScale: NaN },
     { buildingHeightScale: 0 }, { lightDirection: 361 }, { lightElevation: -1 }, { lightIntensity: Infinity },
-    { roadTextOverlap: 'true' }, { roadTextPitch: 'invalid' },
   ]) assert.throws(() => parseLocationEditor({ ...defaults, ...patch }), /INVALID_LOCATION_EDITOR/);
 });
 
