@@ -5,7 +5,7 @@ from .social_design import font, font_record, glyphs
 from .social_production import require
 
 
-def layout(words, clip, size=48):
+def layout(words, clip, size=48, *, granularity="words"):
     require(
         words and words[0]["start"] >= clip.source_in and words[-1]["end"] <= clip.source_out,
         "speech_trim_would_remove_words",
@@ -18,7 +18,12 @@ def layout(words, clip, size=48):
 
     def lines(items):
         result, line = [], ""
-        for w in items:
+        literal_items = (
+            items
+            if granularity == "words"
+            else [{"text": token} for item in items for token in item["text"].split()]
+        )
+        for w in literal_items:
             text = w["text"]
             require(
                 all(ord(c) in allowed and c not in "{}\\<>" for c in text),
@@ -54,6 +59,11 @@ def layout(words, clip, size=48):
         )
 
     for word in words:
+        if granularity == "segments":
+            group = [word]
+            emit()
+            group = []
+            continue
         candidate = group + [word]
         if group and (
             len(lines(candidate)) > 2
@@ -77,7 +87,9 @@ def layout(words, clip, size=48):
             "max_lines": 2,
         },
         "meaning_review": "human_required",
-        "timing": "source_word_mapping",
+        "timing": "owner_supplied_segment_mapping"
+        if granularity == "segments"
+        else "source_word_mapping",
     }
 
 

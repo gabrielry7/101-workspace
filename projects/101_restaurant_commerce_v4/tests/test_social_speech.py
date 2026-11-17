@@ -138,6 +138,14 @@ def test_spoken_word_correction_approval_manifest_and_preserved_cuts(queue, clip
     assert q.client.get(path + "/export").status_code == 200
     payload = correction(t)
     route = ROOT + "/transcripts/" + t["id"] + "/corrections"
+    # Owner-entered ranges must not allow rewriting recognizer-supplied word timing.
+    protected = correction(t, changes=[{"index": 2, "text": "panes.", "start": 1100, "end": 1900}])
+    rejected = q.client.post(route, json=protected, headers=q.headers)
+    assert (
+        rejected.status_code == 422
+        and rejected.json()["detail"] == "automatic_word_times_protected"
+    )
+    assert "origin" not in t and "granularity" not in t  # Preserve legacy approval snapshots.
     response = q.client.post(route, json=payload, headers=q.headers)
     assert response.status_code == 200, response.text
     newer = response.json()

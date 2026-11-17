@@ -18,8 +18,9 @@ BATCHES = (
     ),
     ("research-advisory", ("social_research", "social_auto_review", "social_research_browser")),
     ("media-jobs", ("social_video", "social_jobs")),
-    ("speech", ("social_speech",)),
+    ("speech", ("social_speech", "social_manual_speech")),
     ("speech-browser", ("social_speech_browser",)),
+    ("manual-subtitle-browser", ("social_manual_speech_browser",)),
     (
         "context-connections",
         (

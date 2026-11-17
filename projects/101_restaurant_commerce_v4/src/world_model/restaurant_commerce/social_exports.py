@@ -35,10 +35,12 @@ def package(session, business, pack_id, app):
         if doc.get("speech_snapshot"):
             from .social_subtitles import text_exports
             speech=doc["speech_snapshot"]
-            files.update({"transcript-machine.json":canonical(speech["machine"]),
+            files.update({"transcript-original.json":canonical(speech["machine"]),
                           "transcript-corrected.json":canonical({k:v for k,v in speech.items() if k != "machine"}),
                           "subtitle-plan.json":canonical(speech["subtitle_plan"]),
                           **text_exports(speech["subtitle_plan"])})
+            if speech.get("origin", "automatic") == "automatic":
+                files["transcript-machine.json"]=canonical(speech["machine"])
             files["timeline.json"]=canonical({**doc["brief"]["video"], "captions":speech["subtitle_plan"]["cues"]})
             files["INTER-LICENSE.txt"]=(Path(__file__).parent / "web" / "workspace" / "assets" / "INTER-LICENSE.txt").read_text()
         for source in doc["video_sources"]:
@@ -171,7 +173,7 @@ def package(session, business, pack_id, app):
             "original conserva la foto inicial del pack, no una toma del vídeo.\n"
             "video-sources.json conserva permisos, vencimientos y datos técnicos.\n"
             "manifest.json enumera bytes y SHA-256 de los archivos excepto el manifiesto.\n"
-            + ("La transcripción automática y las correcciones están separadas. subtitles.srt y subtitles.vtt contienen los subtítulos corregidos.\n" if doc.get("speech_snapshot") else "No se generó transcripción.\n") +
+            + ("La transcripción original y las correcciones están separadas. subtitles.srt y subtitles.vtt contienen los subtítulos corregidos.\n" if doc.get("speech_snapshot") else "No se generó transcripción.\n") +
             "No se generaron escenas ni música. La revisión completa de sonido y significado es humana.\n")
     files = {
         name: value.encode("utf-8") if isinstance(value, str) else value

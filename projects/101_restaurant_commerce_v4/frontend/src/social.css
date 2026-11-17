@@ -52,3 +52,9 @@
 
 .social-video .speech-meaning { display:flex; align-items:flex-start; gap:12px; min-height:44px; font-weight:400; }
 .social-video .speech-meaning input[type=checkbox] { width:22px; min-height:22px; height:22px; flex:none; margin:2px 0; }
+
+.manual-subtitles { margin-top:20px; }
+.manual-caption { padding:16px 0; border-bottom:1px solid var(--border,#c4c9c8); }
+.speech-times { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.speech-word { min-width:0; }
+.manual-subtitles fieldset { min-width:0; }

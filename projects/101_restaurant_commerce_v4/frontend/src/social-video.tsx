@@ -3,6 +3,12 @@ import { endpoint } from "./ui";
 import { SocialSpeech } from "./social-speech";
 
 export const videoErrors: Record<string, string> = {
+  manual_caption_times_invalid:
+    "Los tiempos deben estar dentro de la toma y en orden, sin superponerse.",
+  manual_transcript_idempotency_conflict:
+    "Esta solicitud ya se guardó con otro contenido. Vuelve a revisar los subtítulos.",
+  automatic_word_times_protected:
+    "Los tiempos automáticos se conservan. Para fijar tus propios tiempos, usa subtítulos manuales.",
   speech_runtime_unavailable:
     "El equipo de 101 debe habilitar el servicio de transcripción. Puedes continuar con un montaje sin voz.",
   speech_processing_not_authorized:

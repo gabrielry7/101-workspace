@@ -363,3 +363,11 @@ only on a cover never stand in for temporal/video review. Before/refined desktop
 and390px evidence lives in docs/social/n10-evidence in the World Model repository.
 
 Social speech correction (N12,2026-11-16): extend the existing Video panel with source-timed word fields, explicit meaning review and correction history. Reuse Inter, white panels and44px controls; fields wrap on phones. Subtitle size is a bounded creative setting, separate from UI typography. Voice-service availability, machine transcript, owner corrections and exact approval remain distinct. Desktop/mobile evidence is recorded in the World Model Social N12 report.
+
+Owner-entered subtitles (2026-11-17): when voice recognition is unavailable, keep
+the answer clip playable and offer a focused disclosure for short captions with
+explicit source start/end times. Start with blank times; never imply automatic
+alignment or confidence. Label saved text as supplied by the business, retain the
+original and correction history, and permit time corrections only for this source.
+Use the same Inter, white panels and44px controls; time fields stay in two readable
+columns on phones. Text/time changes require a new render, review and approval.

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ManualSubtitles } from "./social-manual-subtitles";
 
 type Binding = { transcript_id: string; revision: number; reviewed: true };
 export function SocialSpeech({
@@ -23,6 +24,9 @@ export function SocialSpeech({
   const [capability, setCapability] = useState<any>(null);
   const [transcript, setTranscript] = useState<any>(null);
   const [words, setWords] = useState<Record<number, string>>({});
+  const [times, setTimes] = useState<
+    Record<number, { start: string; end: string }>
+  >({});
   const [busy, setBusy] = useState(false),
     [pending, setPending] = useState<string | null>(null);
   const [error, setError] = useState("");
@@ -34,6 +38,14 @@ export function SocialSpeech({
   function accept(t: any) {
     setTranscript(t);
     setWords(Object.fromEntries(t.words.map((w: any) => [w.index, w.text])));
+    setTimes(
+      Object.fromEntries(
+        t.words.map((w: any) => [
+          w.index,
+          { start: String(w.start / 1000), end: String(w.end / 1000) },
+        ]),
+      ),
+    );
     const same =
       saved?.transcript_id === t.id && saved?.revision === t.revision;
     setReviewed(!!same);
@@ -108,22 +120,40 @@ export function SocialSpeech({
   }
   const changes =
     transcript?.words
-      .filter((w: any) => words[w.index] !== w.text)
-      .map((w: any) => ({ index: w.index, text: words[w.index] })) || [];
+      .filter(
+        (w: any) =>
+          words[w.index] !== w.text ||
+          (transcript.origin === "owner_supplied" &&
+            (Math.round(Number(times[w.index]?.start) * 1000) !== w.start ||
+              Math.round(Number(times[w.index]?.end) * 1000) !== w.end)),
+      )
+      .map((w: any) => ({
+        index: w.index,
+        text: words[w.index],
+        ...(transcript.origin === "owner_supplied"
+          ? {
+              start: Math.round(Number(times[w.index]?.start) * 1000),
+              end: Math.round(Number(times[w.index]?.end) * 1000),
+            }
+          : {}),
+      })) || [];
+  const manual = transcript?.origin === "owner_supplied";
+  const unit = manual ? "Fragmento" : "Palabra";
   return (
     <section className="speech-editor" aria-label="Transcripción y subtítulos">
       <h3>Tu respuesta, con subtítulos</h3>
       <p>
         Escucha la toma y revisa cada palabra, especialmente nombres, precios,
-        condiciones y negaciones. La transcripción automática puede equivocarse.
+        condiciones y negaciones.{" "}
+        {!manual && "La transcripción automática puede equivocarse. "}
         Las correcciones de texto no cambian lo que se escucha.
       </p>
       {error && <p role="alert">{error}</p>}
       {!transcript && capability?.state === "blocked" && (
         <p role="status">
           La transcripción necesita que 101 conecte el servicio de voz para este
-          negocio. Tus tomas se conservan; puedes continuar con un montaje sin
-          voz.
+          negocio. Puedes escribir subtítulos con tiempos reales en la opción de
+          abajo.
         </p>
       )}
       {!transcript && (
@@ -147,31 +177,81 @@ export function SocialSpeech({
           {pending ? "Transcribiendo…" : "Transcribir respuesta en español"}
         </button>
       )}
+      {!transcript && (
+        <ManualSubtitles
+          asset={asset}
+          request={request}
+          disabled={disabled || busy || !!pending}
+          onDirty={onDirty}
+          onSaved={accept}
+        />
+      )}
       {transcript && (
         <>
           <p>
-            Texto automático sin verificar · revisión {transcript.revision}. Los
-            tiempos corresponden a la toma original.
+            {manual
+              ? "Subtítulos escritos por el negocio"
+              : "Texto automático sin verificar"}{" "}
+            · revisión {transcript.revision}. Los tiempos corresponden a la toma
+            original.
           </p>
           <div className="speech-words">
             {transcript.words.map((w: any) => (
-              <label key={w.index}>
-                Palabra {w.index + 1} · {(w.start / 1000).toFixed(2)}–
-                {(w.end / 1000).toFixed(2)} s{w.uncertain ? " · revisar" : ""}
-                <input
-                  aria-label={`Palabra ${w.index + 1}`}
-                  value={words[w.index] || ""}
-                  maxLength={64}
-                  disabled={disabled || busy}
-                  onChange={(e) => {
-                    setWords((old) => ({ ...old, [w.index]: e.target.value }));
-                    setReviewed(false);
-                    onChange(null);
-                    onDirty();
-                    setAttempt(crypto.randomUUID());
-                  }}
-                />
-              </label>
+              <div key={w.index} className="speech-word">
+                <label>
+                  {unit} {w.index + 1} · {(w.start / 1000).toFixed(2)}–
+                  {(w.end / 1000).toFixed(2)} s
+                  {w.uncertain && !reviewed ? " · revisar" : ""}
+                  <input
+                    aria-label={`${unit} ${w.index + 1}`}
+                    value={words[w.index] || ""}
+                    maxLength={64}
+                    disabled={disabled || busy}
+                    onChange={(e) => {
+                      setWords((old) => ({
+                        ...old,
+                        [w.index]: e.target.value,
+                      }));
+                      setReviewed(false);
+                      onChange(null);
+                      onDirty();
+                      setAttempt(crypto.randomUUID());
+                    }}
+                  />
+                </label>
+                {manual && (
+                  <div className="speech-times">
+                    {(["start", "end"] as const).map((field) => (
+                      <label key={field}>
+                        {field === "start" ? "Desde" : "Hasta"} (s), fragmento{" "}
+                        {w.index + 1}
+                        <input
+                          aria-label={`${field === "start" ? "Desde" : "Hasta"} (s), fragmento ${w.index + 1}`}
+                          type="number"
+                          min="0"
+                          max="30"
+                          step=".01"
+                          value={times[w.index]?.[field] || ""}
+                          disabled={disabled || busy}
+                          onChange={(e) => {
+                            setTimes((old) => ({
+                              ...old,
+                              [w.index]: {
+                                ...old[w.index],
+                                [field]: e.target.value,
+                              },
+                            }));
+                            setReviewed(false);
+                            onChange(null);
+                            onDirty();
+                            setAttempt(crypto.randomUUID());
+                          }}
+                        />
+                      </label>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
           <label className="speech-meaning">
@@ -230,6 +310,17 @@ export function SocialSpeech({
                       },
                     );
                     setTranscript(t);
+                    setTimes(
+                      Object.fromEntries(
+                        t.words.map((w: any) => [
+                          w.index,
+                          {
+                            start: String(w.start / 1000),
+                            end: String(w.end / 1000),
+                          },
+                        ]),
+                      ),
+                    );
                     setWords(
                       Object.fromEntries(
                         t.words.map((w: any) => [w.index, w.text]),
@@ -245,7 +336,9 @@ export function SocialSpeech({
                   })
                 }
               >
-                Guardar correcciones de palabras
+                {manual
+                  ? "Guardar correcciones de subtítulos"
+                  : "Guardar correcciones de palabras"}
               </button>
             </>
           )}

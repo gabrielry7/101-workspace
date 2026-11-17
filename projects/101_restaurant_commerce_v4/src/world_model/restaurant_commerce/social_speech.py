@@ -32,6 +32,7 @@ def capability(app, business=None):
         "quality": "requires_word_and_meaning_review",
         "language": "es",
         "paid_fallback": False,
+        "manual_subtitles": "available",
     }
 
 
@@ -71,7 +72,7 @@ def view(session, row, revision=None):
         )
     ]
     history.sort(key=lambda x: x["revision"])
-    return {
+    value = {
         "id": row.id,
         "asset_id": row.asset_id,
         "source_sha256": row.source_sha256,
@@ -82,6 +83,9 @@ def view(session, row, revision=None):
         "history": history,
         "review_required": True,
     }
+    if machine.get("origin") == "owner_supplied":
+        value.update(origin="owner_supplied", granularity="segments")
+    return value
 
 
 def snapshot(session, business, timeline, *, lock=False, current=True):
@@ -93,7 +97,12 @@ def snapshot(session, business, timeline, *, lock=False, current=True):
     value = view(session, row, timeline.speech.revision)
     from .social_subtitles import layout
 
-    value["subtitle_plan"] = layout(value["words"], timeline.clips[1], timeline.speech.size)
+    value["subtitle_plan"] = layout(
+        value["words"],
+        timeline.clips[1],
+        timeline.speech.size,
+        granularity=value.get("granularity", "words"),
+    )
     # Freeze only the selected revision's history. Later corrections cannot mutate an old snapshot.
     value["history"] = [h for h in value["history"] if h["revision"] <= value["revision"]]
     value.pop("current_revision")
@@ -251,6 +260,10 @@ def purge(session, business, asset_id):
 def register(app, get_session, read, write):
     root = "/api/operator/restaurants/{business_id}/social"
 
+    from .social_manual_speech import register as register_manual
+
+    register_manual(app, root, get_session, write)
+
     @app.get(root + "/speech/capability", dependencies=[Depends(read)])
     def caps(business_id: str):
         return capability(app, business_id)
@@ -301,7 +314,7 @@ def register(app, get_session, read, write):
             old = json.loads(edit.document)
             if old.get("request_id") == key:
                 require(
-                    old["request"] == payload.model_dump(mode="json"),
+                    old["request"] == payload.model_dump(mode="json", exclude_none=True),
                     "transcript_idempotency_conflict",
                 )
                 return view(session, row)
@@ -311,6 +324,24 @@ def register(app, get_session, read, write):
         for change in payload.changes:
             require(change.index < len(words), "speech_word_missing", 422)
             words[change.index].update(text=change.text, owner_corrected=True)
+            if change.start is not None or change.end is not None:
+                require(
+                    json.loads(row.machine_json).get("origin") == "owner_supplied",
+                    "automatic_word_times_protected",
+                    422,
+                )
+                require(
+                    change.start is not None and change.end is not None,
+                    "manual_caption_times_invalid",
+                    422,
+                )
+                words[change.index].update(start=change.start, end=change.end)
+        if json.loads(row.machine_json).get("origin") == "owner_supplied":
+            from .social_manual_speech import ranges
+            from .social_video import clip_check
+
+            _, meta = clip_check(session, business_id, row.asset_id)
+            ranges(words, meta["media"]["duration_ms"])
         revision = row.revision + 1
         updated = session.execute(
             update(Transcript)
@@ -330,7 +361,7 @@ def register(app, get_session, read, write):
                         "recorded_at": utcnow().isoformat(),
                         "reason": payload.reason,
                         "request_id": key,
-                        "request": payload.model_dump(mode="json"),
+                        "request": payload.model_dump(mode="json", exclude_none=True),
                     }
                 ),
             )

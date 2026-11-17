@@ -1,4 +1,4 @@
-"""Bounded literal words; no model commands, styling or time edits in corrections."""
+"""Bounded literal text; optional source ranges apply only to owner-entered captions."""
 
 import unicodedata
 from typing import Literal
@@ -37,6 +37,8 @@ class Machine(Strict):
 
 
 class Correction(Strict):
+    start: int | None = Field(default=None, ge=0, le=30000, strict=True)
+    end: int | None = Field(default=None, ge=1, le=30100, strict=True)
     index: int = Field(ge=0, le=249)
     text: str = Field(min_length=1, max_length=64)
 
