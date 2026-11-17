@@ -24,3 +24,8 @@ protocolo y dominio de Google Maps, conservar la orientación y mostrar un estad
 pendiente al faltar el destino. Verificar la vista externa con navegador y
 la acción en el taller con teclado, móvil y ambas composiciones alternativas.
 Versionar la acción como 0.7.0 y recuperar los ajustes visuales de 0.6.0.
+
+En 0.7.1 se vincula el enlace suministrado por el usuario a la entrada al
+complejo y se permite indicar su etiqueta. Conservar la URL completa con su
+panorámica y orientación. Admitir enlaces compartidos que incluyen la ficha del
+negocio y recuperar los ajustes visuales de 0.7.0.

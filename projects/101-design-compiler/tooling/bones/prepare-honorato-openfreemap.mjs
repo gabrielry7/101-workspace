@@ -63,9 +63,11 @@ export async function prepareHonoratoOpenFreeMap({ project, source, preview, pub
     vegetation: '#d8e8c8', vegetationOpacity: 100, buildingOutline: '#dfdbd7',
     roadText: '#666666', roadHalo: '#ffffff', lightColor: '#ffffff' };
   let streetViewURL = null;
+  let streetViewLabel = 'Ver fachada en Street View';
   try {
     const streetView = JSON.parse(await readFile(resolve(work, 'street-view.json'), 'utf8'));
     streetViewURL = googleStreetViewLink(streetView.url);
+    streetViewLabel = streetView.label ?? streetViewLabel;
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
@@ -77,6 +79,7 @@ const input = ${JSON.stringify(input)};
 const colors = ${JSON.stringify(mapColors)};
 const editor = ${JSON.stringify(editor)};
 const streetViewURL = ${JSON.stringify(streetViewURL)};
+const streetViewLabel = ${JSON.stringify(streetViewLabel)};
 const basemap = { format: 'openfreemap', url: '/openfreemap-empty.geojson', fontURL: '/fonts/familjengrotesk.woff',
   alternateFontURL: '/fonts/bodonimoda.woff', attribution: 'OpenFreeMap · OpenStreetMap' };
 ---
@@ -89,7 +92,7 @@ const basemap = { format: 'openfreemap', url: '/openfreemap-empty.geojson', font
   <main class="honorato-preview" aria-label="Vista previa del mapa de Honorato">
     <p class="preview-note"><strong>Paleta original de OpenFreeMap Bright.</strong> Edificios con alturas aproximadas. Pin de muestra en Ciudadela Complex, con la ubicación exacta del local por confirmar.</p>
     <a class="edit-link" href="#honorato-open-map-controls">Editar mapa</a>
-    <Location id="honorato-open-map" input={input} skin="paper" runtimeURL="/location-runtime.js" basemap={basemap} mapColors={colors} markerLabel={false} streetViewURL={streetViewURL}/>
+    <Location id="honorato-open-map" input={input} skin="paper" runtimeURL="/location-runtime.js" basemap={basemap} mapColors={colors} markerLabel={false} streetViewURL={streetViewURL} streetViewLabel={streetViewLabel}/>
     <Controls target="honorato-open-map" note="" editor={editor}/>
   </main>
   <script is:inline type="module" src="/honorato-openfreemap-controls.js"></script>
@@ -168,5 +171,6 @@ mountLocationControls(panel, section, { storageKey: '101-honorato-openfreemap-co
     palette_basis: 'OpenFreeMap Bright base cartographic colors', palette_reference: 'https://tiles.openfreemap.org/styles/bright',
     mapColors, editor,
     street_view: streetViewURL ? 'linked' : 'pending',
+    street_view_label: streetViewLabel,
   }, null, 2) + '\n');
 }

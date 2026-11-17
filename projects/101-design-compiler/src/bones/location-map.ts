@@ -3,7 +3,7 @@ import { rightsGate, evaluateSuitability } from '../media/gate.ts';
 import { MediaAssetV1, MediaUsageV1 } from '../media/contracts.ts';
 
 export const locationBone = {
-  id: 'location.single-business', version: '0.7.0', family: 'location',
+  id: 'location.single-business', version: '0.7.1', family: 'location',
   variants: ['direct', 'map-led', 'editorial'],
   owner: { package: '@101/location-map', version: '0.3.0', commit: '6c0ed29940985bfb1789280c1972e47386775193' },
   review: 'pending-human-review',
@@ -12,7 +12,7 @@ export const locationBone = {
     ['business-name', 'Nombre del negocio', 'contenido con fuente'],
     ['address', 'Dirección de la sucursal', 'contenido con fuente'],
     ['directions', 'Abrir indicaciones', 'acción elegible del dueño'],
-    ['street-view', 'Ver fachada en Street View', 'enlace comprobado de la sucursal'],
+    ['street-view', 'Vista real de fachada o acceso', 'enlace elegido para la sucursal'],
     ['map-viewport', 'Mapa y controles', 'primitiva de Tomás'],
     ['business-marker', 'Un único marcador geográfico', 'hueso; logo de piel validado'],
     ['marker-pin', 'Forma de pin y punta anclada', 'hueso; mismo destino con o sin logo'],
@@ -33,8 +33,8 @@ export function googleStreetViewLink(value: string): string {
   const panorama = url.pathname === '/maps/@' && url.searchParams.get('api') === '1'
     && url.searchParams.get('map_action') === 'pano'
     && Boolean(url.searchParams.get('pano') || url.searchParams.get('viewpoint'));
-  const sharedPanorama = url.pathname.startsWith('/maps/@') && /,3a(?:,|\/)/.test(url.pathname)
-    && /!1e1(?:!|$)/.test(url.pathname);
+  const sharedPanorama = /^\/maps\/(?:place\/[^/]+\/)?@/.test(url.pathname)
+    && /!1e1(?:!|$)/.test(url.pathname) && /!1s[^!\/]+/.test(url.pathname);
   const shortLink = (url.hostname === 'maps.app.goo.gl' && /^\/[a-zA-Z0-9_-]+$/.test(url.pathname))
     || (url.hostname === 'goo.gl' && /^\/maps\/[a-zA-Z0-9_-]+$/.test(url.pathname));
   if (!(googleMaps && (panorama || sharedPanorama)) && !shortLink) throw Error('STREET_VIEW_LINK_REQUIRED');

@@ -33,8 +33,8 @@ OpenFreeMap en el mapa del taller. Los colores proceden de su estilo publicado.
 
 ## Abrir la fachada en Street View
 
-Añadir una acción opcional que abra la vista real de la fachada en Google
-Street View, con el encuadre del enlace seleccionado. Reutilizar el componente
-de ubicación para las tres composiciones. El destino procede de una vista
-comprobada de la sucursal. El taller muestra un estado pendiente mientras
-se obtiene ese enlace. La acción funciona con HTML y abre una pestaña nueva.
+Añadir una acción opcional que abra una vista real de la fachada o del acceso en
+Google Street View, con el encuadre del enlace seleccionado. Reutilizar el
+componente de ubicación para las tres composiciones. En Honorato, el usuario
+elige la entrada al complejo y el botón debe identificar ese destino. La acción
+funciona con HTML y abre una pestaña nueva.

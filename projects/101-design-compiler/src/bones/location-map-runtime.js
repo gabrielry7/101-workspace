@@ -3,7 +3,7 @@ import { mountGoogleLocation } from './location-map-google.js';
 import { openFreeMapRequest, openFreeMapStyle, updateOpenFreeMapLayers } from './location-map-openfreemap.js';
 import { openFreeMapDefaults, parseOpenFreeMapOptions } from './location-map-editor.ts';
 
-export const LOCATION_BONE_VERSION = 'location.single-business@0.7.0';
+export const LOCATION_BONE_VERSION = 'location.single-business@0.7.1';
 export function fixedPresentation(value = {}) {
   if (!value || typeof value !== 'object' || Array.isArray(value)
     || Object.keys(value).some(key => !['colors', 'zoom', 'pois'].includes(key))) {

@@ -39,12 +39,18 @@ Los colores base se consultaron en el estilo Bright publicado. La vista
 reutiliza el hueso de ubicación y sus capas con esa paleta. Chromium verificó
 la carga real, los controles de edificios, la persistencia y el diseño adaptable.
 
-- [ ] T011 Localizar y comprobar una vista real de la fachada de Honorato.
+- [x] T011 Vincular y comprobar la vista de entrada al complejo elegida por el usuario.
 - [x] T012 Incorporar la acción al hueso y verificarla en el taller.
 
 Se revisó la ficha de Honorato y se encontró una foto frontal identificable.
 Las panorámicas obtenidas al explorar los puntos cercanos muestran otros
-locales. T011 continúa pendiente de una panorámica de la fachada comprobada.
-El taller muestra la acción pendiente de vincular. La prueba sintética verificó
+locales. El usuario eligió posteriormente una panorámica de la entrada al complejo.
+La prueba sintética verificó
 el enlace, panorama, cámara, apertura en otra pestaña, teclado y HTML sin JS.
 La inspección de Honorato cubrió las tres composiciones y 360–1440 px.
+
+La versión 0.7.1 conserva el enlace completo del usuario y muestra
+«Ver entrada al complejo en Street View». Su miniatura carga y permite
+identificar la entrada de Ciudadela Complex. El visor completo de Google
+mostró indisponibilidad en Chromium de pruebas. La acción conserva el destino
+exacto en las tres composiciones, con teclado, móvil y HTML sin JavaScript.

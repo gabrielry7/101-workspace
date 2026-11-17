@@ -7,11 +7,14 @@ interface Props {
   basemap?: Record<string, unknown> | undefined; google?: Record<string, unknown> | undefined;
   markerLabel?: boolean;
   streetViewURL?: string | null;
+  streetViewLabel?: string;
   mapColors?: Partial<Record<keyof typeof mapSkins.neutral, string>>;
 }
 const { id, input, variant: variantValue = 'direct', skin: skinValue = 'neutral', runtimeURL,
-  provider = 'maplibre', basemap, google, markerLabel = true, mapColors, streetViewURL } = Astro.props;
+  provider = 'maplibre', basemap, google, markerLabel = true, mapColors, streetViewURL,
+  streetViewLabel = 'Ver fachada en Street View' } = Astro.props;
 if (typeof markerLabel !== 'boolean') throw Error('BOOLEAN_MARKER_LABEL_REQUIRED');
+if (typeof streetViewLabel !== 'string' || !streetViewLabel.trim()) throw Error('STREET_VIEW_LABEL_REQUIRED');
 if (!/^[a-zA-Z][a-zA-Z0-9_-]{0,79}$/.test(id)) throw Error('LOCATION_ID_REQUIRED');
 const variant = locationVariant(variantValue), skin = locationSkin(skinValue);
 for (const [key, value] of Object.entries(mapColors ?? {})) {
@@ -45,8 +48,8 @@ const config = { location: input.location, marker: input.marker, markerLabel, pr
       </nav>
       {streetViewURL !== undefined && <div class="location-bone__street-view" data-location-part="street-view" data-street-view-state={streetViewHref ? 'ready' : 'pending'}>
         {streetViewHref
-          ? <a href={streetViewHref} target="_blank" rel="noopener noreferrer">Ver fachada en Street View <span aria-hidden="true">↗</span></a>
-          : <><span class="location-bone__street-view-pending" aria-disabled="true">Ver fachada en Street View</span><p>Vista de fachada pendiente de vincular.</p></>}
+          ? <a href={streetViewHref} target="_blank" rel="noopener noreferrer">{streetViewLabel} <span aria-hidden="true">↗</span></a>
+          : <><span class="location-bone__street-view-pending" aria-disabled="true">{streetViewLabel}</span><p>Vista de fachada pendiente de vincular.</p></>}
       </div>}
     </div>}
   </header>
@@ -60,8 +63,8 @@ const config = { location: input.location, marker: input.marker, markerLabel, pr
       </nav>
       {streetViewURL !== undefined && <div class="location-bone__street-view" data-location-part="street-view" data-street-view-state={streetViewHref ? 'ready' : 'pending'}>
         {streetViewHref
-          ? <a href={streetViewHref} target="_blank" rel="noopener noreferrer">Ver fachada en Street View <span aria-hidden="true">↗</span></a>
-          : <><span class="location-bone__street-view-pending" aria-disabled="true">Ver fachada en Street View</span><p>Vista de fachada pendiente de vincular.</p></>}
+          ? <a href={streetViewHref} target="_blank" rel="noopener noreferrer">{streetViewLabel} <span aria-hidden="true">↗</span></a>
+          : <><span class="location-bone__street-view-pending" aria-disabled="true">{streetViewLabel}</span><p>Vista de fachada pendiente de vincular.</p></>}
       </div>}
     </div>}
     <div class="location-bone__map" data-location-part="map-viewport">

@@ -14,6 +14,8 @@ test('Street View preserves the panorama and camera of a selected view', () => {
   assert.equal(googleStreetViewLink('https://maps.app.goo.gl/synthetic-test-link'), 'https://maps.app.goo.gl/synthetic-test-link');
   assert.equal(googleStreetViewLink('https://www.google.com/maps/@1,2,3a,75y,90t/data=!3m7!1e1!3m5!1ssynthetic'),
     'https://www.google.com/maps/@1,2,3a,75y,90t/data=!3m7!1e1!3m5!1ssynthetic');
+  const entrance = 'https://www.google.com/maps/place/Synthetic/@1,2,2122a,19.9y,329.13h,86.36t/data=!3m10!1e1!3m8!1ssynthetic-entrance!2e0';
+  assert.equal(googleStreetViewLink(entrance), entrance);
   for (const value of [
     'javascript:alert(1)', 'http://www.google.com/maps/@?api=1&map_action=pano&pano=test',
     'https://www.google.com.evil.example/maps/@?api=1&map_action=pano&pano=test',
