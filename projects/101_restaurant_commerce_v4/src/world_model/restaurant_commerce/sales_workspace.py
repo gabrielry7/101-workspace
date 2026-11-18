@@ -3,9 +3,9 @@
 from collections import defaultdict
 from typing import Literal
 from fastapi import Depends, HTTPException, Query, Request
-from sqlalchemy import func, select
+from sqlalchemy import JSON, and_, case, cast, func, or_, select
 from sqlalchemy.orm import Session
-from .models import Order, Payment, PaymentReconciliation
+from .models import Customer, Order, Payment, PaymentReconciliation
 from .enums import ORDER_TRANSITIONS, OrderStatus
 from .errors import InvalidTransitionError
 from .refunds import refunded_total
@@ -13,7 +13,7 @@ from .service import RestaurantCommerceService
 
 
 def listing(
-    session, business, q="", status="active", offset=0, limit=25, selected=None, online_only=False, currency=None
+    session, business, q="", status="active", offset=0, limit=25, selected=None, online_only=False, currency=None, payment_status="all"
 ):
     service = RestaurantCommerceService(session)
     from .workspace_period import clauses
@@ -36,13 +36,25 @@ def listing(
         base = base.where(Order.status.notin_(["completed", "cancelled"]))
     elif status != "all":
         base = base.where(Order.status == status)
+    if payment_status != "all":
+        base = base.where(Order.payment_status == payment_status)
     if q:
         term = (
             "%"
             + q.lower().replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
             + "%"
         )
-        base = base.where(func.lower(Order.public_code).like(term, escape="\\"))
+        # Match the displayed historical contact. A present snapshot with no name
+        # must not inherit a later/current Customer name. Filter before pagination.
+        snapshot_name = (func.json_extract(Order.customer_snapshot_json, "$.name")
+                         if session.bind.dialect.name == "sqlite" else
+                         cast(Order.customer_snapshot_json, JSON)["name"].as_string())
+        name = case((and_(Order.customer_snapshot_json.is_not(None), Order.customer_snapshot_json != ""),
+                     snapshot_name), else_=Customer.name)
+        base = base.outerjoin(Customer, Order.customer_id == Customer.id).where(or_(
+            func.lower(Order.public_code).like(term, escape="\\"),
+            func.lower(name).like(term, escape="\\"),
+        ))
     count = session.scalar(select(func.count()).select_from(base.subquery()))
     rows = list(
         session.scalars(
@@ -153,6 +165,8 @@ def detail(session, business, order_id):
 
 
 def register(app, get_session, scoped_staff):
+    from .reservation_workspace import register as register_reservations
+    register_reservations(app, get_session, scoped_staff)
     root = "/api/operator/restaurants/{business_id}/sales"
 
     def read(
@@ -168,6 +182,7 @@ def register(app, get_session, scoped_staff):
         date_to: str | None = None,
         online_only: bool = False,
         currency: str | None = None,
+        payment_status: Literal["all", "paid", "pending", "unpaid", "refunded", "failed"] = "all",
         status: Literal[
             "active",
             "all",
@@ -195,7 +210,7 @@ def register(app, get_session, scoped_staff):
             offset,
             limit,
             period(date_from, date_to, timezone_name=session.get(RestaurantCommerceProfile, business_id).timezone),
-            online_only, currency,
+            online_only, currency, payment_status,
         )
 
         result["money"] = money_totals(session, business_id, period(date_from, date_to, timezone_name=session.get(RestaurantCommerceProfile, business_id).timezone))

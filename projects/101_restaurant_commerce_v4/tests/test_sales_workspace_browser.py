@@ -28,7 +28,7 @@ def enter(page, user="campaign.manager"):
 
 
 def open_order(page, code):
-    page.get_by_label("Buscar pedido por código").fill(code)
+    page.get_by_label("Buscar pedido por código o cliente").fill(code)
     playwright.expect(page.locator(".sale-link")).to_have_count(1)
     playwright.expect(page.locator(".sale-link")).to_contain_text(code)
     page.locator(".sale-link").click()
@@ -86,14 +86,14 @@ def test_operations_cash_cancel_and_context(site):
         "Cancelado"
     )
     page.get_by_label("Cerrar pedido").click()
-    playwright.expect(page.get_by_label("Buscar pedido por código")).to_have_value(
+    playwright.expect(page.get_by_label("Buscar pedido por código o cliente")).to_have_value(
         "DEMO-205"
     )
     page.get_by_role("link", name="Clientes", exact=True).click()
     page.get_by_label("Buscar clientes").fill("Mateo")
     playwright.expect(page.locator(".customer-link")).to_have_count(4)
     page.get_by_role("link", name="Ventas", exact=True).click()
-    playwright.expect(page.get_by_label("Buscar pedido por código")).to_have_value(
+    playwright.expect(page.get_by_label("Buscar pedido por código o cliente")).to_have_value(
         "DEMO-205"
     )
     page.get_by_role("link", name="Clientes", exact=True).click()

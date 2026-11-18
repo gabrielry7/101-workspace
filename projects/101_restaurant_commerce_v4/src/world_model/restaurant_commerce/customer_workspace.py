@@ -288,6 +288,7 @@ def register(app, get_session, scoped_staff):
     web = Path(__file__).parent / "web" / "workspace"
 
     @app.get("/workspace")
+    @app.get("/workspace/login")
     @app.get("/workspace/customers")
     @app.get("/workspace/sales")
     @app.get("/workspace/home")

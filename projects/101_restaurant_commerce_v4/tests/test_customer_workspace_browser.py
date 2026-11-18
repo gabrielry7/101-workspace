@@ -82,6 +82,9 @@ def login(page, user="campaign.manager"):
     page.get_by_label("Usuario", exact=True).fill(user)
     page.get_by_label("Contraseña", exact=True).fill(PASSWORD)
     page.get_by_role("button", name="Entrar", exact=True).click()
+    if user == "multi.owner":
+        page.get_by_role("button", name="Honorato · demostración", exact=True).click()
+        page.wait_for_url("**/workspace/customers?business=" + BUSINESS)
     playwright.expect(page.locator("tbody tr")).to_have_count(25)
     page.evaluate("document.fonts.ready")
 
@@ -221,7 +224,11 @@ def test_business_switch_stale_response_and_legacy_context(site):
     ).json()
     page.route("**/customers?q=Luc*", lambda route: held.append(route))
     page.get_by_label("Buscar clientes").fill("Lucía")
-    page.wait_for_timeout(300)  # Let the debounced request remain pending.
+    # Wait for the intercepted request, not a guessed debounce/network duration.
+    for _ in range(100):
+        if held:
+            break
+        page.wait_for_timeout(50)
     assert held
     select.select_option(OTHER)
     playwright.expect(page.locator("tbody tr")).to_have_count(7)

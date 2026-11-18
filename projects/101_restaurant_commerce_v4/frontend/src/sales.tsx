@@ -27,6 +27,8 @@ import {
 } from "./ui";
 import "./sales.css";
 import { periodQuery } from "./workspace-views";
+import { ReservationWorkspace } from "./reservations";
+import { ContactHandoff } from "./contact-handoff";
 
 type Row = {
   id: string;
@@ -41,7 +43,13 @@ type Row = {
   customer_name: string | null;
 };
 type Listing = {
-  money: {scope:string;currency:string;net:number;paid_orders:number;refunds:number}[];
+  money: {
+    scope: string;
+    currency: string;
+    net: number;
+    paid_orders: number;
+    refunds: number;
+  }[];
   items: Row[];
   count: number;
   counts: Record<string, number>;
@@ -152,7 +160,49 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
   timeZone: "America/Bogota",
 });
 
-export function SalesWorkspace({
+export function SalesWorkspace(props: Props) {
+  const view =
+    props.params.get("view") === "reservations" ? "reservations" : "orders";
+  return (
+    <>
+      <div className="tabs sales-views" aria-label="Secciones de ventas">
+        {[
+          ["orders", "Pedidos"],
+          ["reservations", "Reservas"],
+        ].map(([key, title]) => (
+          <button
+            key={key}
+            className={view === key ? "selected" : ""}
+            aria-pressed={view === key}
+            onClick={() =>
+              props.navigate(
+                {
+                  view: key,
+                  order: null,
+                  reservation: null,
+                  offset: null,
+                  reservation_offset: null,
+                  date_from: null,
+                  date_to: null,
+                },
+                true,
+              )
+            }
+          >
+            {title}
+          </button>
+        ))}
+      </div>
+      {view === "orders" ? (
+        <OrdersWorkspace {...props} />
+      ) : (
+        <ReservationWorkspace {...props} />
+      )}
+    </>
+  );
+}
+
+function OrdersWorkspace({
   business,
   permissions,
   csrf,
@@ -180,7 +230,7 @@ export function SalesWorkspace({
     return () => clearTimeout(timer);
   }, [search, query]);
   const list = useResource<Listing>(
-    `${endpoint(business)}/sales?q=${encodeURIComponent(query)}&status=${status}&offset=${offset}&limit=25&${periodQuery(params)}&online_only=${params.get("online_only")||"false"}${params.get("currency")?"&currency="+encodeURIComponent(params.get("currency")!):""}`,
+    `${endpoint(business)}/sales?q=${encodeURIComponent(query)}&status=${status}&payment_status=${encodeURIComponent(params.get("payment_status") || "all")}&offset=${offset}&limit=25&${periodQuery(params)}&online_only=${params.get("online_only") || "false"}${params.get("currency") ? "&currency=" + encodeURIComponent(params.get("currency")!) : ""}`,
   );
   useEffect(() => {
     if (!selected && previousSelected.current) {
@@ -220,7 +270,32 @@ export function SalesWorkspace({
             Actualizar
           </button>
         </section>
-        {list.data?.money.filter(r=>r.scope==="provider").map(r=><section className="sales-summary" key={r.currency} aria-label="Ventas en línea"><div><span>Ventas en línea</span><strong>{amount(r.net,r.currency)}</strong></div><div><span>Pedidos pagados</span><strong>{r.paid_orders}</strong></div><div><span>Valor promedio por pedido</span><strong>{r.paid_orders?amount(Math.round(r.net/r.paid_orders),r.currency):"—"}</strong></div></section>)}
+        {list.data?.money
+          .filter((r) => r.scope === "provider")
+          .map((r) => (
+            <section
+              className="sales-summary"
+              key={r.currency}
+              aria-label="Ventas en línea"
+            >
+              <div>
+                <span>Ventas en línea</span>
+                <strong>{amount(r.net, r.currency)}</strong>
+              </div>
+              <div>
+                <span>Pedidos pagados</span>
+                <strong>{r.paid_orders}</strong>
+              </div>
+              <div>
+                <span>Valor promedio por pedido</span>
+                <strong>
+                  {r.paid_orders
+                    ? amount(Math.round(r.net / r.paid_orders), r.currency)
+                    : "—"}
+                </strong>
+              </div>
+            </section>
+          ))}
         <section className="sales-summary" aria-label="Estado de los pedidos">
           <div>
             <span>
@@ -291,8 +366,8 @@ export function SalesWorkspace({
                 <input
                   type="search"
                   value={search}
-                  aria-label="Buscar pedido por código"
-                  placeholder="Buscar código de pedido"
+                  aria-label="Buscar pedido por código o cliente"
+                  placeholder="Buscar código o cliente"
                   onChange={(e) => setSearch(e.target.value)}
                 />
                 {search && (
@@ -306,6 +381,28 @@ export function SalesWorkspace({
                     <X size={16} />
                   </button>
                 )}
+              </label>
+              <label className="filter">
+                <span className="sr-only">Estado del pago</span>
+                <select
+                  aria-label="Estado del pago"
+                  value={params.get("payment_status") || "all"}
+                  onChange={(e) =>
+                    navigate({
+                      payment_status:
+                        e.target.value === "all" ? null : e.target.value,
+                      offset: null,
+                      order: null,
+                    })
+                  }
+                >
+                  <option value="all">Todos los pagos</option>
+                  {Object.entries(payName).map(([key, title]) => (
+                    <option key={key} value={key}>
+                      {title}
+                    </option>
+                  ))}
+                </select>
               </label>
               <label className="filter">
                 <span className="sr-only">Estado del pedido</span>
@@ -395,7 +492,15 @@ export function SalesWorkspace({
                             previousScroll.current =
                               scroll.current?.scrollTop || 0;
                             returnFocus.current = e.currentTarget;
-                            navigate({ order: o.id }, true);
+                            navigate(
+                              {
+                                order: o.id,
+                                ...(search.trim() !== query
+                                  ? { q: search.trim() || null, offset: null }
+                                  : {}),
+                              },
+                              true,
+                            );
                           }}
                         >
                           <strong>#{o.public_code}</strong>
@@ -486,6 +591,7 @@ export function SalesWorkspace({
           id={selected}
           csrf={csrf}
           canOperate={permissions.includes("operations.write")}
+          canContact={permissions.includes("contact.read")}
           close={close}
           changed={list.retry}
         />
@@ -499,6 +605,7 @@ function SaleDetail({
   id,
   csrf,
   canOperate,
+  canContact,
   close,
   changed,
 }: {
@@ -506,6 +613,7 @@ function SaleDetail({
   id: string;
   csrf: string;
   canOperate: boolean;
+  canContact: boolean;
   close: () => void;
   changed: () => void;
 }) {
@@ -636,6 +744,9 @@ function SaleDetail({
           <div className="sale-customer">
             <strong>{d.customer_name || "Cliente sin nombre"}</strong>
             <span>{d.customer_phone || "Sin teléfono registrado"}</span>
+            {canContact && d.customer_phone && (
+              <ContactHandoff kind="orders" id={d.id} />
+            )}
             <small>
               {d.identity_verified
                 ? "Identidad verificada"

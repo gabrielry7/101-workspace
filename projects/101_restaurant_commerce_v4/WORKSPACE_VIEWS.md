@@ -1,5 +1,29 @@
 # 101 Workspace: identity, Inicio, Campaigns and analytics example
 
+## Shared staff entry — 18 November 2026
+
+`workspace_access.py` supplies one `/workspace/login` entry for the eight legacy
+staff pages and normal `/workspace` routes. It runs inside the existing security/
+reliability middleware; redirects retain its CSP/referrer/cache headers. Public
+customer/token/OAuth/webhook paths and JSON APIs retain their separate policies.
+
+`GET /api/staff/entry` resolves an allowlisted local return destination under the
+existing staff session. It maps legacy `business_id` to workspace `business`,
+requires explicit selection for multiple memberships, and never silently substitutes
+another business for an inaccessible one. Known selection/filter/date query state
+survives login; external URLs, recursive `next`, secrets, fragments and duplicate
+parameters do not. No credentials enter return state or local storage.
+
+The existing cookie, password policy, development-only 101 alias, roles, CSRF and
+API 401/403 contracts are unchanged. Logout broadcasts a credential-free notice
+across tabs; refresh generations prevent old identity replies restoring a logged-out
+view. Legacy navigation links carry the selected business while those tools remain
+in service. Unmigrated pages are not redirected to incomplete replacements.
+
+Native Sales reservations/order-filter/contact changes are described in
+`SALES_WORKSPACE.md`; future finance, delivery, settings, growth and channel moves
+still need their own acceptance evidence before legacy retirement.
+
 The shared identity lives in `../../packages/101-workspace-identity/`:
 `IDENTITY.md`, `tokens.css`, and `decisions.json`. The frontend imports the actual
 CSS package. `/workspace/identity` is its running sample sheet. Every requested

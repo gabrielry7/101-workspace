@@ -51,6 +51,7 @@ import {
   type Customer,
 } from "./ui";
 import { SalesWorkspace } from "./sales";
+import { WorkspaceEntry } from "./workspace-entry";
 import { LoyaltyWorkspace } from "./loyalty";
 import {
   HomeView,
@@ -74,6 +75,7 @@ const screenFromPath = () => {
     "identity",
     "onboarding",
     "social",
+    "login",
   ].includes(path)
     ? path
     : "home";
@@ -220,6 +222,7 @@ function Login({ onLogin }: { onLogin: (id: Identity) => void }) {
 }
 function App() {
   const [identity, setIdentity] = useState<Identity | null | undefined>();
+  const authGeneration = useRef(0);
   const [authError, setAuthError] = useState("");
   const [params, setParams] = useState(
     () => new URLSearchParams(location.search),
@@ -256,17 +259,24 @@ function App() {
   const [qr, setQr] = useState(
     new URLSearchParams(location.search).get("invite") === "1",
   );
-  const [policy, setPolicy] = useState<{ demo_mode: boolean; internal_tools: boolean }>();
+  const [policy, setPolicy] = useState<{
+    demo_mode: boolean;
+    internal_tools: boolean;
+  }>();
   const [search, setSearch] = useState(params.get("q") || "");
   const scrollRef = useRef(0);
   const returnFocus = useRef<HTMLAnchorElement | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const previousCustomer = useRef(params.get("customer"));
   const refreshIdentity = () => {
+    const generation = ++authGeneration.current;
     setAuthError("");
     api<Identity>("/api/staff/me")
-      .then(setIdentity)
+      .then((value) => {
+        if (generation === authGeneration.current) setIdentity(value);
+      })
       .catch((e) => {
+        if (generation !== authGeneration.current) return;
         if (e.status === 401) setIdentity(null);
         else setAuthError(e.message);
       });
@@ -281,7 +291,15 @@ function App() {
       setParams(new URLSearchParams(location.search));
       setSearch(new URLSearchParams(location.search).get("q") || "");
     };
-    const expire = () => setIdentity(null);
+    const expire = () => {
+      ++authGeneration.current;
+      setIdentity(null);
+      routeMemory.current = {};
+      routeScroll.current = {};
+    };
+    const sessionChanged = (event: StorageEvent) => {
+      if (event.key === "101-session-ended") expire();
+    };
     const visible = () => {
       if (!document.hidden) refreshIdentity();
     };
@@ -292,11 +310,13 @@ function App() {
     window.addEventListener("pageshow", restored);
     window.addEventListener("popstate", pop);
     window.addEventListener("session-expired", expire);
+    window.addEventListener("storage", sessionChanged);
     return () => {
       document.removeEventListener("visibilitychange", visible);
       window.removeEventListener("pageshow", restored);
       window.removeEventListener("popstate", pop);
       window.removeEventListener("session-expired", expire);
+      window.removeEventListener("storage", sessionChanged);
     };
   }, []);
   useEffect(() => {
@@ -312,7 +332,9 @@ function App() {
   const requested = params.get("business");
   const business =
     identity?.businesses.find((b) => b.business_id === requested) ||
-    (!requested ? identity?.businesses[0] : undefined);
+    (!requested && identity?.businesses.length === 1
+      ? identity.businesses[0]
+      : undefined);
   const bid = business?.business_id || "";
   const loyalty = screen === "customers" && params.get("view") === "loyalty";
   const selected = loyalty ? null : params.get("customer");
@@ -375,6 +397,25 @@ function App() {
   }
   const legacy = (path: string) =>
     `${path}?business_id=${encodeURIComponent(bid)}`;
+  async function endSession(all = false) {
+    try {
+      await api(all ? "/api/staff/logout-all" : "/api/staff/logout", {
+        method: "POST",
+        headers: { "X-101-CSRF": identity?.csrf || "" },
+      });
+      ++authGeneration.current;
+      setIdentity(null);
+      routeMemory.current = {};
+      routeScroll.current = {};
+      try {
+        localStorage.setItem("101-session-ended", String(Date.now()));
+      } catch {
+        /* optional cross-tab notice */
+      }
+    } catch {
+      setAuthError("No se pudo cerrar la sesión. Inténtalo de nuevo.");
+    }
+  }
   function goScreen(e: React.MouseEvent<HTMLAnchorElement>, target: string) {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault();
@@ -403,7 +444,10 @@ function App() {
           <div>
             {identity && identity.businesses.length > 1 ? (
               <>
-                <label className="sr-only" htmlFor={mobile ? "mobile-business" : "business"}>
+                <label
+                  className="sr-only"
+                  htmlFor={mobile ? "mobile-business" : "business"}
+                >
                   Negocio
                 </label>
                 <select
@@ -426,6 +470,10 @@ function App() {
                       loyaltyId: null,
                       loyaltyEdit: null,
                       loyaltyVersion: null,
+                      reservation: null,
+                      reservation_status: null,
+                      reservation_offset: null,
+                      payment_status: null,
                     });
                   }}
                 >
@@ -555,13 +603,15 @@ function App() {
           )}
           {business && (
             <>
-              {policy?.internal_tools && <a
-                href={`/workspace/identity?business=${bid}`}
-                onClick={(e) => goScreen(e, "identity")}
-              >
-                <Palette />
-                Identidad
-              </a>}
+              {policy?.internal_tools && (
+                <a
+                  href={`/workspace/identity?business=${bid}`}
+                  onClick={(e) => goScreen(e, "identity")}
+                >
+                  <Palette />
+                  Identidad
+                </a>
+              )}
               <a href={legacy("/connections")}>
                 <Plug />
                 Conexiones
@@ -573,32 +623,42 @@ function App() {
             <span className="account-avatar">
               {identity?.username.slice(0, 1).toUpperCase()}
             </span>
-            <span>
-              <strong>{identity?.username}</strong>
-              <small>
-                {identity?.platform_admin
-                  ? "Administrador 101"
-                  : business?.role === "manager"
-                    ? "Administrador"
-                    : "Equipo"}
-              </small>
-            </span>
+            <details
+              className="account-security"
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node | null))
+                  e.currentTarget.open = false;
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  e.currentTarget.open = false;
+                  e.currentTarget.querySelector("summary")?.focus();
+                }
+              }}
+            >
+              <summary aria-label="Opciones de sesión">
+                <strong>{identity?.username}</strong>
+                <small>
+                  {identity?.platform_admin
+                    ? "Administrador 101"
+                    : business?.role === "manager"
+                      ? "Administrador"
+                      : "Equipo"}
+                </small>
+              </summary>
+              <div className="session-menu">
+                <button
+                  className="button secondary"
+                  onClick={() => endSession(true)}
+                >
+                  Cerrar todas mis sesiones
+                </button>
+              </div>
+            </details>
             <button
               className="icon-button"
               aria-label="Cerrar sesión"
-              onClick={async () => {
-                try {
-                  await api("/api/staff/logout", {
-                    method: "POST",
-                    headers: { "X-101-CSRF": identity?.csrf || "" },
-                  });
-                  setIdentity(null);
-                } catch {
-                  setAuthError(
-                    "No se pudo cerrar la sesión. Inténtalo de nuevo.",
-                  );
-                }
-              }}
+              onClick={() => endSession(false)}
             >
               <LogOut size={17} />
             </button>
@@ -619,15 +679,25 @@ function App() {
     return (
       <Login
         onLogin={(id) => {
+          ++authGeneration.current;
           setIdentity(id);
-          navigate({ customer: null });
         }}
       />
     );
-  if (!business && screen !== "onboarding" && !identity.platform_admin)
+  if (screen === "login")
+    return (
+      <WorkspaceEntry
+        target={params.get("next") || "/workspace/home"}
+        businesses={identity.businesses}
+        onSignOut={() => endSession(false)}
+      />
+    );
+  if (!business && screen !== "onboarding")
     return (
       <div className="state">
-        <h1>Este negocio no está disponible</h1>
+        <h1>
+          {requested ? "Este negocio no está disponible" : "Elige tu negocio"}
+        </h1>
         <p>Elige uno de tus negocios para continuar.</p>
         {identity.businesses.map((b) => (
           <button
@@ -647,6 +717,9 @@ function App() {
             {b.name}
           </button>
         ))}
+        <button className="button secondary" onClick={() => endSession(false)}>
+          Cambiar de usuario
+        </button>
       </div>
     );
   return (
@@ -715,8 +788,10 @@ function App() {
         {policy?.internal_tools && <ColorPreview />}
         {["sales", "customers"].includes(screen) && params.get("date_from") && (
           <div className="date-context">
-            {params.get("date_from")} — {params.get("date_to")} · por fecha de
-            creación{" "}
+            {params.get("date_from")} — {params.get("date_to")} ·{" "}
+            {screen === "sales" && params.get("view") === "reservations"
+              ? "por fecha de reserva"
+              : "por fecha de creación"}{" "}
             <button
               className="back-link"
               onClick={() =>
@@ -756,7 +831,9 @@ function App() {
         ) : screen === "analytics" ? (
           <AnalyticsView business={bid} params={params} navigate={navigate} />
         ) : screen === "identity" ? (
-          policy?.internal_tools ? <IdentityView /> : null
+          policy?.internal_tools ? (
+            <IdentityView />
+          ) : null
         ) : screen === "campaigns" ? (
           <CampaignView
             key={bid}
@@ -850,7 +927,9 @@ function App() {
                   <QrCode size={34} strokeWidth={1.6} />
                 </span>
                 <span>
-                  <strong>Compartir QR <ArrowUp /></strong>
+                  <strong>
+                    Compartir QR <ArrowUp />
+                  </strong>
                 </span>
               </button>
             </div>

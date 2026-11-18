@@ -392,3 +392,16 @@ requires a fresh exact-version review; resetting restores the selected recipe.
 Keep professional family structures distinct. Actual email geometry and solid
 contrast are measured with the existing component-preview instrument, without
 shipping that inspector into recipient emails or calling a ratio a taste score.
+
+
+### Shared entry and Sales reservations — 18 November 2026
+
+Reuse the existing login, business identity, list/detail, tab, confirmation and
+status bones from references02/03. `workspace-entry.tsx` resolves an authorized
+return destination; its business choices are explicit. `reservations.tsx` composes
+a compact queue and detail, with merchant-local times. `contact-handoff.tsx`
+separates preparing a message from opening its external composer. Account identity
+contains session options; a standalone logout icon remains available. New
+reservation and view-switch buttons have44px minimum targets. Spacing and select
+borders were refined after actual phone inspection. Keep all merchant fonts and
+source facts separate from these UI choices.

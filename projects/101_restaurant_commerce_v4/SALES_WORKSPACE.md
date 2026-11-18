@@ -1,7 +1,8 @@
 # Sales and readability iteration — 0.24.0
 
 `/workspace/sales` adds orders to the same merchant shell as Customers. Search a
-code, filter status, open an order, accept/prepare/mark ready/hand over, or cancel
+code or historical customer name, filter order/payment status, open an order,
+accept/prepare/mark ready/hand over, or cancel
 an unpaid order with a reason. Normal transitions take one click. Cash handover
 requires explicit confirmation that the money was received; it uses the existing
 cash payment authority. A read-only staff role can inspect without operation buttons.
@@ -48,13 +49,44 @@ initial conditions; restarting preserves prior actions.
 | Canonical historical contact snapshot | Conservative missing-name/phone defaults allow partial snapshots to render without inventing contact evidence or rewriting history. |
 
 Read API: `GET /api/operator/restaurants/{business}/sales` accepts literal `q`
-(order code, max80), `status=active|all|<order status>`, `offset`, `limit`1–100.
+(order code or displayed historical contact name, max80),
+`status=active|all|<order status>`, `payment_status=all|<order payment status>`,
+`offset`, `limit`1–100. Search/filter run before count/pagination. A present contact
+snapshot with no name does not borrow a current Customer name. SQLite/PostgreSQL
+JSON extraction preserves that distinction.
 Counts are for the business; list count is for the filter. Detail appends
 `/{order_id}` and checks both IDs. Audience/customer data are not duplicated.
 Paid/refunded money is grouped by currency and test/cash/provider source. The
 order's discounted total is displayed once; captured payment minus confirmed
 refunds is separate. COP retains the app's whole-peso accounting convention.
 A provider label alone does not certify a live transaction or settlement.
+
+## Native reservations and contact handoff — 18 November 2026
+
+Sales now has Pedidos / Reservas views in the same shell. The reservation queue is
+paginated, filters by state and uses the merchant timezone. Explicit date filters
+apply to `starts_at`, not creation time; changing between order/reservation views
+clears inherited dates. Detail supports the existing allowed transitions, with
+confirmation for cancellation/no-show and an explicit state check after a lost
+response. Viewer/finance roles cannot mutate or prepare contact messages.
+
+`reservation_workspace.py` supplies `GET .../sales-reservations` and `/{id}` read
+projections with counts, timezone, source fields and allowed actions. Existing
+`PATCH /api/operator/reservations/{id}` remains the write owner. Its optional
+`expected_version` checks a refreshed/locked current row before same-state handling;
+the response exposes the existing ORM version. Legacy status-only callers remain
+compatible. No schema change or cancellation-reason field was added.
+
+`contact-handoff.tsx` reuses the existing order/reservation WhatsApp APIs under
+`contact.read`. Omitting the destination uses the canonical contact snapshot;
+existing explicit destinations are still accepted after phone validation. The UI
+prepares a message, then offers a separate link to the WhatsApp composer. It sends
+no message and creates no delivery claim. These were API-only capabilities at the
+baseline, so the new controls are intentional additions.
+
+The main Admin fallback remains: deliveries, settings, stock and financial
+resolution are not replaced by this slice. Their absence must remain in the
+consolidation ledger, not be hidden by removing the old page.
 
 ## Reused and extracted interface pieces (bones)
 

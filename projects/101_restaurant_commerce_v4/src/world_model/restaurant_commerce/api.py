@@ -367,7 +367,9 @@ def create_app(
                 return response
 
         try:
-            response = await call_next(request)
+            response = await app.state.staff_html_boundary(request)
+            if response is None:
+                response = await call_next(request)
         except Exception:
             logger.exception(
                 "Unhandled restaurant commerce request failure",
@@ -442,6 +444,8 @@ def create_app(
 
     staff_cookie = "__Host-commerce_staff" if production else staff.COOKIE
     register_staff_routes(app, get_session, staff_cookie, production)
+    from .workspace_access import register as register_workspace_access
+    register_workspace_access(app, get_session, staff_cookie)
 
     def scoped_staff(request, session, business_id, permission):
         account, auth_session = staff.authenticate(session, request.cookies.get(staff_cookie))
@@ -913,17 +917,22 @@ def create_app(
         patch: ReservationStatusPatch,
         service: RestaurantCommerceService = Depends(get_service),
     ):
-        return service.transition_reservation(reservation_id, patch.status)
+        return service.transition_reservation(reservation_id, patch.status, expected_version=patch.expected_version)
 
     @app.get("/api/operator/orders/{order_id}/whatsapp", dependencies=[Depends(require_operator)])
     def order_whatsapp(
         order_id: str,
-        destination_phone: str,
+        destination_phone: str | None = None,
         service: RestaurantCommerceService = Depends(get_service),
     ):
         order = service.order_out(order_id)
         message = format_order_message(order)
-        return {"message": message, "url": whatsapp_click_to_chat_url(destination_phone, message)}
+        from .schemas import normalize_customer_phone
+        try:
+            phone = normalize_customer_phone(destination_phone if destination_phone is not None else order.customer_phone)
+        except ValueError as exc:
+            raise HTTPException(422, "No valid contact phone") from exc
+        return {"message": message, "url": whatsapp_click_to_chat_url(phone, message)}
 
     @app.get(
         "/api/operator/reservations/{reservation_id}/whatsapp",
@@ -931,12 +940,17 @@ def create_app(
     )
     def reservation_whatsapp(
         reservation_id: str,
-        destination_phone: str,
+        destination_phone: str | None = None,
         service: RestaurantCommerceService = Depends(get_service),
     ):
         reservation = service.reservation_out(reservation_id)
         message = format_reservation_message(reservation)
-        return {"message": message, "url": whatsapp_click_to_chat_url(destination_phone, message)}
+        from .schemas import normalize_customer_phone
+        try:
+            phone = normalize_customer_phone(destination_phone if destination_phone is not None else reservation.customer_phone)
+        except ValueError as exc:
+            raise HTTPException(422, "No valid contact phone") from exc
+        return {"message": message, "url": whatsapp_click_to_chat_url(phone, message)}
 
     @app.get(
         "/api/operator/restaurants/{business_id}/customers/{customer_id}/loyalty",

@@ -1909,6 +1909,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             public_code=reservation.public_code,
             business_id=reservation.business_id,
             status=reservation.status,
+            version=reservation.version,
             starts_at=reservation.starts_at,
             party_size=reservation.party_size,
             notes=reservation.notes,
@@ -1939,10 +1940,14 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         )
         return [self._reservation_to_out(row) for row in self.session.scalars(stmt).all()]
 
-    def transition_reservation(self, reservation_id: str, new_status: str) -> ReservationOut:
-        reservation = self.session.get(Reservation, reservation_id)
+    def transition_reservation(self, reservation_id: str, new_status: str, *, expected_version=None) -> ReservationOut:
+        reservation = self.session.scalar(select(Reservation).where(
+            Reservation.id == reservation_id
+        ).with_for_update().execution_options(populate_existing=True))
         if not reservation:
             raise NotFoundError("Reservation not found")
+        if expected_version is not None and reservation.version != expected_version:
+            raise InvalidTransitionError("Reservation changed; refresh before acting")
         try:
             current = ReservationStatus(reservation.status)
             target = ReservationStatus(new_status)

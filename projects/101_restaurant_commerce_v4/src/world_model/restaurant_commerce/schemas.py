@@ -241,6 +241,7 @@ class OrderStatusPatch(StrictModel):
 
 class ReservationStatusPatch(StrictModel):
     status: str = Field(min_length=2, max_length=32, pattern=r"^[a-z_]+$")
+    expected_version: int | None = Field(default=None, ge=1)
 
 
 class ModifierOptionOut(StrictModel):
@@ -375,6 +376,7 @@ class ReservationOut(StrictModel):
     public_code: str
     business_id: str
     status: str
+    version: int
     starts_at: datetime
     party_size: int
     notes: str | None

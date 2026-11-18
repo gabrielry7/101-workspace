@@ -278,6 +278,11 @@ a:focus-visible > .nav-external {
   min-width: 0;
   flex: 1;
 }
+.account-security { position: relative; flex: 1; min-width: 0; }
+.account-security summary { cursor: pointer; list-style: none; min-height: 44px; display: flex; flex-direction: column; justify-content: center; }
+.account-security summary::-webkit-details-marker { display: none; }
+.session-menu { position: absolute; bottom: calc(100% + 8px); left: -32px; width: 220px; padding: 8px; background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 4px 16px #00000012; z-index: 20; }
+.session-menu .button { width: 100%; white-space: normal; }
 .account strong {
   display: block;
   overflow: hidden;
@@ -1236,6 +1241,12 @@ tbody tr.current {
   margin: auto;
   padding: 45px 0;
 }
+.entry-businesses {
+  width: 400px;
+  max-width: 100%;
+  margin: auto;
+}
+.entry-businesses p { line-height: 1.6; }
 .login h1 {
   font-size: 42px;
   line-height: 1.15;
