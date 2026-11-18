@@ -85,7 +85,7 @@ def register(app, get_session, scoped_staff, options, demo_mode):
 
     @app.post(root, dependencies=[Depends(write)])
     def campaign_create(business_id: str, payload: c.Draft, session: Session = Depends(get_session)):
-        return c.save_draft(session, business_id, payload, now())
+        return c.save_draft(session, business_id, payload, now(), origin=base_url)
 
     @app.post(root + '/pause', dependencies=[Depends(write)])
     def campaign_pause(business_id: str, payload: PauseInput, session: Session = Depends(get_session)):
@@ -93,21 +93,67 @@ def register(app, get_session, scoped_staff, options, demo_mode):
         session.commit()
         return {'paused':payload.paused}
 
+    @app.get('/assets/email-fonts/{filename}')
+    def email_font(filename: str):
+        import re
+        from .campaign_react_email import RUNTIME
+        if not re.fullmatch(r'[a-z-]+-latin-(400|500|600)-normal\.woff2',filename): raise HTTPException(404,'font_not_found')
+        path=RUNTIME/'fonts'/filename
+        if not path.is_file(): raise HTTPException(404,'font_not_found')
+        return FileResponse(path,media_type='font/woff2',headers={'Cache-Control':'public,max-age=86400'})
+
+    @app.get(root + '/email-templates', dependencies=[Depends(read)])
+    def email_templates(business_id: str):
+        from .campaign_react_email import catalog
+        return catalog()
+
     @app.get(root + '/{campaign_id}', dependencies=[Depends(read)])
     def campaign_preview(business_id: str, campaign_id: str, session: Session = Depends(get_session)):
         return c.preview(session, business_id, campaign_id, now())
 
     @app.get(root + '/{campaign_id}/email', dependencies=[Depends(read)])
     def campaign_email_preview(business_id: str, campaign_id: str, request: Request,
-                               session: Session = Depends(get_session)):
+                               session: Session = Depends(get_session), template_id: str | None = None):
         from .campaign_preview_security import secure_preview
-        rendered = c.preview(session, business_id, campaign_id, now())['email']['html']
-        rendered, request.state.campaign_preview_csp = secure_preview(rendered)
+        if template_id is not None:
+            from .campaign_react_email import EmailDesign, preview_selected
+            try: template_id = EmailDesign(template_id=template_id).template_id
+            except ValueError: raise HTTPException(422, 'email_template_invalid') from None
+            rendered = preview_selected(session, business_id, campaign_id, template_id, origin=base_url)['html']
+        else:
+            rendered = c.preview(session, business_id, campaign_id, now())['email']['html']
+        use_remote = template_id != 'legacy' if template_id is not None else bool(c.preview(session, business_id, campaign_id, now())['document'].get('email_design'))
+        rendered, request.state.campaign_preview_csp = secure_preview(rendered, remote_assets=use_remote)
         return HTMLResponse(rendered)
+
+    @app.get(root + '/{campaign_id}/email-content', dependencies=[Depends(read)])
+    def email_content(business_id: str, campaign_id: str, template_id: str, session: Session = Depends(get_session)):
+        from .campaign_react_email import EmailDesign, preview_selected
+        try: template_id = EmailDesign(template_id=template_id).template_id
+        except ValueError: raise HTTPException(422, 'email_template_invalid') from None
+        return preview_selected(session, business_id, campaign_id, template_id, origin=base_url)
+
+    @app.post(root + '/{campaign_id}/design', dependencies=[Depends(write)])
+    def campaign_design(business_id: str, campaign_id: str, payload: dict, session: Session = Depends(get_session)):
+        from .campaign_react_email import EmailDesign
+        if set(payload) != {'digest', 'email_design'}: raise HTTPException(422, 'email_design_invalid')
+        try: design = EmailDesign.model_validate(payload['email_design'])
+        except ValueError: raise HTTPException(422, 'email_design_invalid') from None
+        session.execute(update(CampaignSettings).where(CampaignSettings.business_id == business_id)
+                        .values(dispatch_version=CampaignSettings.dispatch_version + 1))
+        campaign = c.scoped_campaign(session, business_id, campaign_id)
+        revision = session.get(CampaignRevision, campaign.revision_id)
+        if revision.digest != payload['digest']: raise HTTPException(409, 'preview_changed')
+        document = json.loads(revision.document)
+        if document['channel'] != 'email': raise HTTPException(422, 'email_design_requires_email_channel')
+        # Retain all existing copy/offer/audience/schedule fields; only the design is replaced.
+        values = {k:v for k,v in document.items() if k in c.Draft.model_fields and k != 'email_design'}
+        draft = c.Draft.model_validate({**values, 'email_design': design.model_dump()})
+        return c.save_draft(session, business_id, draft, now(), campaign_id, origin=base_url)
 
     @app.put(root + '/{campaign_id}', dependencies=[Depends(write)])
     def campaign_edit(business_id: str, campaign_id: str, payload: c.Draft, session: Session = Depends(get_session)):
-        return c.save_draft(session, business_id, payload, now(), campaign_id)
+        return c.save_draft(session, business_id, payload, now(), campaign_id, origin=base_url)
 
     @app.post(root + '/{campaign_id}/approve')
     def campaign_approve(business_id: str, campaign_id: str, payload: ApprovalInput,

@@ -12,11 +12,14 @@ from html.parser import HTMLParser
 class _Preview(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=False)
+        self.nonce = secrets.token_urlsafe(24)
         self.styles = {}
         self.parts = []
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
+        if tag == "style":
+            values["nonce"] = self.nonce
         style = values.pop("style", None)
         if style is not None:
             name = self.styles.setdefault(style, f"preview-style-{len(self.styles)}")
@@ -49,11 +52,11 @@ class _Preview(HTMLParser):
         self.parts.append("<!--" + data + "-->")
 
 
-def secure_preview(rendered_html):
+def secure_preview(rendered_html, *, remote_assets=False):
     parser = _Preview()
     parser.feed(rendered_html)
     parser.close()
-    nonce = secrets.token_urlsafe(24)
+    nonce = parser.nonce
     # Style values originate in the trusted renderer. Escape angle brackets as
     # CSS escapes as well, so a future value cannot terminate this style element.
     rules = "\n".join(
@@ -65,10 +68,16 @@ def secure_preview(rendered_html):
     markup = (
         markup.replace("</head>", sheet + "</head>", 1) if "</head>" in markup else sheet + markup
     )
+    assets = " https: http://127.0.0.1:* http://localhost:*" if remote_assets else ""
+    fonts = "font-src 'self'; " if remote_assets else ""
     policy = (
-        "default-src 'none'; img-src 'self'; style-src 'nonce-"
+        "default-src 'none'; img-src 'self'"
+        + assets
+        + "; style-src 'nonce-"
         + nonce
-        + "'; style-src-attr 'none'; frame-ancestors 'self'; base-uri 'none'; "
+        + "'; style-src-attr 'none'; "
+        + fonts
+        + "frame-ancestors 'self'; base-uri 'none'; "
         "form-action 'none'; sandbox allow-same-origin"
     )
     return markup, policy

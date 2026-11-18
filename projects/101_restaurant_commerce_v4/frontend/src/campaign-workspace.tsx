@@ -42,8 +42,18 @@ type Meta = {
   customers: Person[];
   channels: Record<string, string>;
 };
+type EmailDesign = {
+  template_id: string;
+  image_url?: string | null;
+  image_alt?: string;
+  cta_label?: string;
+};
+type TemplateCatalog = {
+  templates: { id: string; name: string; available: boolean }[];
+};
 type Draft = {
   channel: string;
+  email_design?: EmailDesign | null;
   sender: string;
   content: { subject: string; title: string; body: string; terms: string };
   customer_ids: string[];
@@ -53,6 +63,7 @@ type Draft = {
   budget_microusd: number;
 };
 type Preview = {
+  render_error?: string | null;
   id: string;
   state: string;
   digest: string;
@@ -167,6 +178,7 @@ function localTime(iso: string) {
 function freshDraft(m: Meta): Draft {
   return {
     channel: "email",
+    email_design: { template_id: "matte" },
     sender: m.sender || "",
     content: { subject: "", title: "", body: "", terms: "" },
     customer_ids: [],
@@ -192,6 +204,14 @@ async function mutate(
   if (!r.ok) {
     const d = await r.json().catch(() => ({}));
     const known: Record<string, string> = {
+      email_renderer_unavailable:
+        "No está disponible la preparación del diseño. Puedes usar Clásico anterior o intentarlo de nuevo.",
+      email_render_failed:
+        "No se pudo preparar el diseño. Revisa la imagen o inténtalo de nuevo.",
+      renderer_revision_changed:
+        "El diseño cambió. Guarda una versión nueva y vuelve a revisarla.",
+      preview_changed:
+        "La campaña cambió. Actualiza antes de guardar el diseño.",
       revision_changed: "La versión cambió. Vuelve a revisar la campaña.",
       valid_approval_required: "Esta versión necesita aprobación.",
       campaign_expired:
@@ -459,7 +479,21 @@ function CampaignDetail(
   const { id, business, csrf, meta, canWrite, close, saved, demo } = props,
     base = endpoint(business) + "/campaigns";
   const resource = useResource<Preview>(id === "new" ? null : base + "/" + id);
+  const templates = useResource<TemplateCatalog>(base + "/email-templates");
+  const [viewDesign, setViewDesign] = useState<string | null>(null);
   const [d, setD] = useState<Preview>();
+  const unsavedDesign =
+    !!viewDesign &&
+    viewDesign !== (d?.document.email_design?.template_id || "legacy");
+  const alternate = useResource<{ text: string }>(
+    id !== "new" && unsavedDesign
+      ? base +
+          "/" +
+          id +
+          "/email-content?template_id=" +
+          encodeURIComponent(viewDesign)
+      : null,
+  );
   const [form, setForm] = useState<Draft>(() => freshDraft(meta));
   const [editing, setEditing] = useState(id === "new");
   const [busy, setBusy] = useState(false);
@@ -474,9 +508,17 @@ function CampaignDetail(
   useEffect(() => {
     if (resource.data) {
       setD(resource.data);
+      setViewDesign(null);
       const doc = resource.data.document;
       setForm({
         channel: doc.channel,
+        email_design: doc.email_design
+          ? (Object.fromEntries(
+              Object.entries(doc.email_design).filter(
+                ([k]) => k !== "template_version",
+              ),
+            ) as EmailDesign)
+          : { template_id: "legacy" },
         sender: doc.sender,
         content: doc.content,
         customer_ids: doc.customer_ids,
@@ -607,6 +649,96 @@ function CampaignDetail(
               <span className="badge">Email</span>
             </div>
             <div className="form-fields">
+              <label>
+                Diseño del correo
+                <select
+                  aria-label="Diseño del correo"
+                  value={form.email_design?.template_id || "legacy"}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      email_design: {
+                        ...form.email_design,
+                        template_id: e.target.value,
+                      },
+                    })
+                  }
+                >
+                  {(
+                    templates.data?.templates || [
+                      {
+                        id: "legacy",
+                        name: "Clásico anterior",
+                        available: true,
+                      },
+                    ]
+                  ).map((t) => (
+                    <option key={t.id} value={t.id} disabled={!t.available}>
+                      {t.name}
+                      {t.available ? "" : " · no disponible"}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {form.email_design?.template_id !== "legacy" && (
+                <details>
+                  <summary>Imagen y botón · opcional</summary>
+                  <div className="form-fields">
+                    <label>
+                      Imagen del correo · URL
+                      <input
+                        type="url"
+                        value={form.email_design?.image_url || ""}
+                        onChange={(e) =>
+                          setForm({
+                            ...form,
+                            email_design: {
+                              ...form.email_design!,
+                              image_url: e.target.value || null,
+                            },
+                          })
+                        }
+                        placeholder="https://tu-negocio.com/foto.jpg"
+                      />
+                    </label>
+                    <label>
+                      Descripción de la imagen
+                      <input
+                        maxLength={200}
+                        value={form.email_design?.image_alt || ""}
+                        onChange={(e) =>
+                          setForm({
+                            ...form,
+                            email_design: {
+                              ...form.email_design!,
+                              image_alt: e.target.value,
+                            },
+                          })
+                        }
+                      />
+                    </label>
+                    <label>
+                      Texto del botón
+                      <input
+                        maxLength={80}
+                        value={
+                          form.email_design?.cta_label ||
+                          "Ver la carta y pedir →"
+                        }
+                        onChange={(e) =>
+                          setForm({
+                            ...form,
+                            email_design: {
+                              ...form.email_design!,
+                              cta_label: e.target.value,
+                            },
+                          })
+                        }
+                      />
+                    </label>
+                  </div>
+                </details>
+              )}
               <label>
                 Remitente
                 <input
@@ -788,17 +920,103 @@ function CampaignDetail(
           <div className="campaign-review">
             <section className="work-surface email-preview">
               <div className="section-heading">
-                <h2>Mensaje guardado</h2>
+                <h2>
+                  {unsavedDesign ? "Vista de otro diseño" : "Mensaje guardado"}
+                </h2>
                 <span className="caption">
                   {d!.document.channel === "email"
                     ? "HTML + texto"
                     : "Contenido del canal"}
                 </span>
               </div>
+              {d!.render_error && (
+                <p className="action-notice" role="alert">
+                  El diseño no está disponible. Puedes editar la campaña y
+                  elegir Clásico anterior, o intentarlo de nuevo.
+                </p>
+              )}
+              {d!.document.channel === "email" && (
+                <div className="form-fields email-design-controls">
+                  <label>
+                    Probar otro diseño
+                    <select
+                      aria-label="Probar otro diseño"
+                      value={
+                        viewDesign ||
+                        d!.document.email_design?.template_id ||
+                        "legacy"
+                      }
+                      disabled={busy}
+                      onChange={(e) => {
+                        setViewDesign(e.target.value);
+                        setChecked(false);
+                      }}
+                    >
+                      {templates.data?.templates.map((t) => (
+                        <option key={t.id} value={t.id} disabled={!t.available}>
+                          {t.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  {viewDesign &&
+                    viewDesign !==
+                      (d!.document.email_design?.template_id || "legacy") && (
+                      <>
+                        <p role="status">
+                          Vista de prueba. La campaña y su aprobación siguen con
+                          el diseño guardado.
+                        </p>
+                        {canWrite && (
+                          <button
+                            type="button"
+                            className="button secondary"
+                            disabled={busy}
+                            onClick={() =>
+                              run(async () => {
+                                const next = await mutate(
+                                  base + "/" + id + "/design",
+                                  csrf,
+                                  "POST",
+                                  {
+                                    digest: d!.digest,
+                                    email_design: {
+                                      ...form.email_design,
+                                      template_id: viewDesign,
+                                    },
+                                  },
+                                );
+                                setD(next);
+                                setViewDesign(null);
+                                setChecked(false);
+                                saved(next.id);
+                                resource.retry();
+                                setMessage(
+                                  "Diseño guardado en una nueva versión. Revisa y aprueba de nuevo.",
+                                );
+                              })
+                            }
+                          >
+                            Guardar este diseño
+                          </button>
+                        )}
+                      </>
+                    )}
+                  {alternate.error && <p role="alert">{alternate.error}</p>}
+                </div>
+              )}
               {d!.document.channel === "email" ? (
                 <iframe
-                  key={d!.digest}
-                  src={base + "/" + id + "/email"}
+                  key={d!.digest + String(viewDesign)}
+                  src={
+                    base +
+                    "/" +
+                    id +
+                    "/email" +
+                    (unsavedDesign
+                      ? "?template_id=" + encodeURIComponent(viewDesign)
+                      : "")
+                  }
                   sandbox="allow-same-origin"
                   title="Vista previa del correo"
                 />
@@ -807,7 +1025,7 @@ function CampaignDetail(
               )}
               <details className="plain-preview">
                 <summary>Versión de texto</summary>
-                <pre>{d!.email.text}</pre>
+                <pre>{alternate.data?.text || d!.email.text}</pre>
               </details>
             </section>
             <div className="review-side">
@@ -868,6 +1086,7 @@ function CampaignDetail(
                       <input
                         type="checkbox"
                         checked={checked}
+                        disabled={unsavedDesign || !!d!.render_error}
                         onChange={(e) => setChecked(e.target.checked)}
                       />
                       Revisé el mensaje, destinatarios, fechas y presupuesto de
@@ -875,7 +1094,13 @@ function CampaignDetail(
                     </label>
                     <button
                       className="button primary"
-                      disabled={busy || !checked || meta.scope !== "test"}
+                      disabled={
+                        busy ||
+                        !checked ||
+                        meta.scope !== "test" ||
+                        unsavedDesign ||
+                        !!d!.render_error
+                      }
                       onClick={() => run(() => act("approve"))}
                     >
                       <Check size={16} />
@@ -886,7 +1111,7 @@ function CampaignDetail(
                 {canWrite && d!.approved && d!.state === "approved" && (
                   <button
                     className="button primary"
-                    disabled={busy}
+                    disabled={busy || unsavedDesign || !!d!.render_error}
                     onClick={() => run(() => act("schedule"))}
                   >
                     <CalendarDays size={16} />

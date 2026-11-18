@@ -1092,3 +1092,32 @@
     padding: 27px 0 18px;
   }
 }
+
+/* Campaign-only design controls reuse the shared form/type/action bones. */
+.email-design-controls {
+  padding: 0 24px 20px;
+  border-bottom: 1px solid var(--wm-border);
+  display: grid;
+  gap: 12px;
+}
+.email-design-controls label {
+  display: grid;
+  gap: 8px;
+}
+.email-design-controls select {
+  width: 100%;
+  min-height: 44px;
+}
+.email-design-controls p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.email-design-controls button {
+  justify-self: start;
+}
+@media (max-width: 600px) {
+  .email-design-controls {
+    padding: 0 18px 18px;
+  }
+}

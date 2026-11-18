@@ -13,6 +13,7 @@ from .models import Customer, Order, Payment, RestaurantCommerceProfile, utcnow
 from .campaign_models import (CampaignSettings, ContactPermission, PermissionEvidence, Campaign,
     CampaignRevision, CampaignApproval, CampaignJob, CampaignAttempt, CampaignEvent, CampaignVisit, CampaignOrderCredit, SmsSender)
 from .campaign_email import render, VERSION
+from . import campaign_react_email as react_email
 from .campaign_delivery import Message, Submission
 from .staff import aware
 from .schemas import StrictModel
@@ -50,6 +51,7 @@ class Draft(StrictModel):
     channel: Literal['email', 'whatsapp', 'sms'] = 'email'
     sender: str = Field(min_length=3, max_length=320)
     content: Copy
+    email_design: react_email.EmailDesign | None = None
     customer_ids: list[str] = Field(min_length=1, max_length=500)
     scheduled_at: datetime
     expires_at: datetime
@@ -179,7 +181,7 @@ def eligibility(session, business, customer, document, now, *, expected_destinat
             'reasons': reasons + unknown, 'destination': destination}
 
 
-def save_draft(session, business, draft, now, campaign_id=None):
+def save_draft(session, business, draft, now, campaign_id=None, *, origin="http://127.0.0.1:8799"):
     cfg = settings(session, business)
     config = json.loads(cfg.config_json)
     campaign = scoped_campaign(session, business, campaign_id) if campaign_id else Campaign(business_id=business)
@@ -205,11 +207,24 @@ def save_draft(session, business, draft, now, campaign_id=None):
             if rev and json.loads(rev.document).get('promotion_code') == draft.promotion_code:
                 raise HTTPException(409, 'promotion_already_bound')
     doc = draft.model_dump(mode='json')
+    doc.pop('email_design', None)
+    design = draft.email_design
+    if campaign_id and 'email_design' not in draft.model_fields_set:
+        old = json.loads(session.get(CampaignRevision, campaign.revision_id).document)
+        design = react_email.EmailDesign.model_validate({k:v for k,v in old.get('email_design', {}).items() if k != 'template_version'})
+    if draft.channel != 'email' and design and design.template_id != 'legacy':
+        raise HTTPException(422, 'email_design_requires_email_channel')
     doc.update({'recipients': recipients, 'brand': config.get('brand', {'name':'Demo'}),
         'renderer': VERSION, 'provider': 'simulated_email' if draft.scope == 'test' else 'ses',
         'unit_cost_microusd': 0 if draft.scope == 'test' else config.get('unit_cost_microusd'),
         'attribution_window_days': 7, 'policy_version': 'co-marketing-v1',
         'audience_rule': 'explicit-existing-customers-v1'})
+    if draft.channel == 'email' and design:
+        selected = react_email.bind(design.model_dump())
+        if selected:
+            doc.update(email_design=selected, renderer=react_email.renderer_version(), email_origin=origin)
+            # Validate rendering before storing a new revision. No orphan draft on a local renderer failure.
+            render(doc, recipients[0], '#preview-ordering-link', '#preview-unsubscribe')
     if draft.channel == 'whatsapp' and draft.whatsapp_template_id:
         from . import whatsapp
         doc['whatsapp'] = whatsapp.snapshot(session,business,draft.whatsapp_template_id,draft.whatsapp_parameters)
@@ -260,7 +275,13 @@ def preview(session, business, campaign_id, now):
         rows.append({**recipient, **result})
     allowed = sum(r['status'] == 'allowed' for r in rows)
     cost = doc['unit_cost_microusd']
-    email = render(doc, next((r for r in doc['recipients'] if r.get('snapshot_eligible')), doc['recipients'][0]), '#preview-ordering-link', '#preview-unsubscribe')
+    render_error = None
+    try:
+        email = render(doc, next((r for r in doc['recipients'] if r.get('snapshot_eligible')), doc['recipients'][0]), '#preview-ordering-link', '#preview-unsubscribe') if doc['channel'] == 'email' else {'html':'','text':'','subject':''}
+    except HTTPException as exc:
+        if not doc.get('email_design'): raise
+        render_error = str(exc.detail)
+        email = {'html':'<!doctype html><html lang="es"><head><meta charset="utf-8"></head><body><h1>El diseño no está disponible</h1><p>Puedes editar la campaña y elegir otro diseño. Este mensaje no es un correo listo para enviar.</p></body></html>', 'text':'El diseño no está disponible.', 'subject':doc['content']['subject']}
     if doc.get('whatsapp'):
         from . import whatsapp
         from html import escape
@@ -279,6 +300,7 @@ def preview(session, business, campaign_id, now):
         'estimated_cost_microusd': estimated_cost(doc,[r for r in rows if r['status']=='allowed']),
         'cost_currency': 'USD', 'simulation_clock': now.isoformat(),
         'email': email,
+        'render_error': render_error,
         'approved': session.get(CampaignApproval, revision.id) is not None}
 
 
@@ -291,6 +313,9 @@ def approve(session, business, campaign_id, expected_digest, actor, now):
     doc = json.loads(revision.document)
     if revision.digest != expected_digest or digest(revision.document) != expected_digest:
         raise HTTPException(409, 'preview_changed')
+    if not react_email.compatible(doc): raise HTTPException(409, 'renderer_revision_changed')
+    if doc.get('email_design'):
+        render(doc, next((r for r in doc['recipients'] if r.get('snapshot_eligible')), doc['recipients'][0]), '#preview-ordering-link', '#preview-unsubscribe')
     if doc['scope'] != 'test': raise HTTPException(409, 'live_send_disabled')
     if doc['channel'] not in {'email','whatsapp','sms'} or (doc['channel']=='whatsapp' and not doc.get('whatsapp')):
         raise HTTPException(409, doc['channel'] + '_unconfigured')
@@ -383,7 +408,7 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
             elif campaign.revision_id != revision.id: reason = 'revision_superseded'
             elif not approval or approval.digest != revision.digest or digest(revision.document) != revision.digest or approval.scope != job.scope:
                 reason = 'approval_invalid'
-            elif doc['renderer'] != VERSION: reason = 'renderer_revision_changed'
+            elif not react_email.compatible(doc): reason = 'renderer_revision_changed'
             elif job.scope != 'test': reason = 'global_live_send_disabled'
             elif date(doc['expires_at']) <= now: reason = 'campaign_expired'
             elif date(doc['scheduled_at']) > now: reason = 'schedule_not_due'
@@ -408,7 +433,14 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
                 continue
             recipient = next(r for r in doc['recipients'] if r['id'] == job.customer_id)
             unsub = base_url + '/campaign-unsubscribe/' + job.unsubscribe_token
-            email = render(doc, recipient, base_url + '/campaign-link/' + job.tracking_token, unsub)
+            try:
+                email = render(doc, recipient, base_url + '/campaign-link/' + job.tracking_token, unsub) if doc['channel'] == 'email' else {'subject':'','html':'','text':''}
+            except HTTPException as exc:
+                # Local rendering failed before transmission. Preserve queued state; no provider retry ambiguity.
+                job.reason = str(exc.detail)
+                session.commit()
+                processed += 1
+                continue
             message = Message(job.id, doc['sender'], job.destination, email['subject'], email['html'], email['text'], unsub)
             if doc.get('whatsapp'):
                 from . import whatsapp

@@ -8,7 +8,7 @@ import re
 VERSION = 'honorato-editorial-v1'
 
 
-def render(document, recipient, ordering_url, unsubscribe_url):
+def render_legacy(document, recipient, ordering_url, unsubscribe_url):
     content = document['content']
     expiry = datetime.fromisoformat(document['expires_at'].replace('Z', '+00:00')).astimezone(ZoneInfo('America/Bogota')).strftime('%d/%m/%Y %H:%M · Bogotá')
     name = recipient.get('name') or 'amigo de la casa'
@@ -29,3 +29,10 @@ def render(document, recipient, ordering_url, unsubscribe_url):
 <tr><td style="padding:24px 28px;border-top:1px solid #ddd6c9;font:13px/1.6 Arial,sans-serif"><p>Recibes esta invitación por tu permiso de comunicaciones de {brand}.</p><a style="color:#27392d" href="{escape(unsubscribe_url, quote=True)}">Dejar de recibir promociones</a></td></tr></table></td></tr></table></body></html>'''
     text = f"{label}\n{document['brand']['name']}\nHola, {name}.\n\n{content['title']}\n\n{content['body']}\n\nVer la carta y pedir: {ordering_url}\n{content['terms']}\nVigencia: {expiry}\nDejar de recibir promociones: {unsubscribe_url}"
     return {'html': html, 'text': text, 'subject': content['subject']}
+
+
+def render(document, recipient, ordering_url, unsubscribe_url):
+    if document.get("email_design"):
+        from .campaign_react_email import render as render_react
+        return render_react(document, recipient, ordering_url, unsubscribe_url)
+    return render_legacy(document, recipient, ordering_url, unsubscribe_url)

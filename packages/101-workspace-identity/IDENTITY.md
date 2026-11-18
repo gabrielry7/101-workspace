@@ -371,3 +371,14 @@ alignment or confidence. Label saved text as supplied by the business, retain th
 original and correction history, and permit time corrections only for this source.
 Use the same Inter, white panels and44px controls; time fields stay in two readable
 columns on phones. Text/time changes require a new render, review and approval.
+
+Campaign email designs (2026-11-18): reuse CampaignDetail and its existing shared
+Inter form/select/action/review bones. One compact design strip previews alternatives
+without writing a revision; unsaved comparisons clear review and disable approval
+and scheduling. A saved choice creates a new exact-version review. Keep the101UI
+font separate from the creative fonts of the six email layouts. The new local strip
+is owned by campaign-workspace.tsx; React Email owns email-compatible primitives,
+while101owns content/brand bindings and each adapted layout. Verified44px controls,
+desktop/390px layouts and explicit unavailable-render states. Original family source,
+licensed fonts and adaptation notes remain in email-renderer; this adds no gallery
+or visual builder.

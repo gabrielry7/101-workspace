@@ -31,7 +31,7 @@ browser = ["playwright>=1.40"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-"world_model.restaurant_commerce" = ["web/*.html", "web/*.js", "web/*.css", "web/*.png", "web/*.ttf", "web/workspace/index.html", "web/workspace/*.txt", "web/workspace/assets/*"]
+"world_model.restaurant_commerce" = ["email_runtime/*", "email_runtime/fonts/*", "web/*.html", "web/*.js", "web/*.css", "web/*.png", "web/*.ttf", "web/workspace/index.html", "web/workspace/*.txt", "web/workspace/assets/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

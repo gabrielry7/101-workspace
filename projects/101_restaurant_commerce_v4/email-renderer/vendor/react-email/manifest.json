@@ -1,0 +1,86 @@
+{
+  "repository": "https://github.com/resend/react-email",
+  "commit": "beda35bb12cad36c202534601591cc98c651c8c9",
+  "source_root": "apps/demo/emails",
+  "license": "MIT; retained LICENSE.md",
+  "families_reviewed": {
+    "01-Barebone": [
+      "activation.tsx",
+      "feature-announcement.tsx",
+      "password-reset.tsx",
+      "product-update.tsx",
+      "subscription-confirmation.tsx",
+      "subscription-update.tsx",
+      "text-only.tsx",
+      "theme-fonts.tsx",
+      "theme.ts",
+      "welcome.tsx"
+    ],
+    "02-Matte": [
+      "activation.tsx",
+      "collage-fonts.tsx",
+      "feature-announcement.tsx",
+      "password-reset.tsx",
+      "product-update.tsx",
+      "subscription-confirmation.tsx",
+      "subscription-update.tsx",
+      "text-only.tsx",
+      "theme.ts",
+      "welcome.tsx"
+    ],
+    "03-Protocol": [
+      "activation.tsx",
+      "dither-fonts.tsx",
+      "feature-announcement.tsx",
+      "password-reset.tsx",
+      "product-update.tsx",
+      "subscription-confirmation.tsx",
+      "subscription-update.tsx",
+      "text-only.tsx",
+      "theme.ts",
+      "welcome.tsx"
+    ],
+    "04-Arcane": [
+      "abandoned-cart.tsx",
+      "activation.tsx",
+      "newsletter.tsx",
+      "order-confirmation.tsx",
+      "order-shipping.tsx",
+      "password-reset.tsx",
+      "promo.tsx",
+      "skin-fonts.tsx",
+      "theme.ts",
+      "welcome.tsx"
+    ],
+    "05-Studio": [
+      "abandoned-cart.tsx",
+      "activation.tsx",
+      "newsletter.tsx",
+      "order-confirmation.tsx",
+      "order-shipping.tsx",
+      "password-reset.tsx",
+      "promo.tsx",
+      "tech-fonts.tsx",
+      "theme.ts",
+      "welcome.tsx"
+    ]
+  },
+  "files": {
+    "01-Barebone/feature-announcement.tsx": "741ba157af88061355631b1152db0dbd43752cb625b043fff159377b84099cef",
+    "01-Barebone/theme.ts": "6d62a6afcff3dde6d12c2ce0d9ed170153d71acdbb9a33284107a9f45801a2d7",
+    "01-Barebone/theme-fonts.tsx": "4c89605119a1d1f39ce84615a18130562b69bffa4ba19f4f23643c79d54f0a6c",
+    "02-Matte/feature-announcement.tsx": "98021d9e4235f271561df7797d54c4e2b911e35bbdde0ca9529268c60abc8b95",
+    "02-Matte/theme.ts": "e1d02d6fc06925ac3c149b3dae867f4162115566c9f47eb6db3249c85df536cd",
+    "02-Matte/collage-fonts.tsx": "a3fdb2ec607baebfb9ea26a70a527472992223da40e9c7f5de8a6c9bdf8232f0",
+    "03-Protocol/feature-announcement.tsx": "486797559ccfe32cfe5eca25fce9ba01a210013806c4420239e2212df84a49d8",
+    "03-Protocol/theme.ts": "934963b995895faeb02f89cb0566ae52df68d1299e505e3eeaa74af04e3aaf93",
+    "03-Protocol/dither-fonts.tsx": "b0537598fb585335004e117689ddc824917c01c6d3b535b925204b40accfdca5",
+    "04-Arcane/promo.tsx": "eee8f109ae14559d3f63277b5dcd9b4a5bbc4187a1986f5a600bf1ac2d3b8060",
+    "04-Arcane/theme.ts": "97f68834176aa9d71360d702b7d443f2d3299864e4680c1409b1eb6b0f1fdf63",
+    "04-Arcane/skin-fonts.tsx": "719c4195854faae9cdc9071b5590a47e5d29bf9d33e89c78b7ba367ae8c7c7b5",
+    "05-Studio/promo.tsx": "ef93dbd251a2046023f03c4a0206fd2eec929d7139e29deac30195f25d8fe8ef",
+    "05-Studio/theme.ts": "e2f5ca9f13178d6163ab0ecda337c117307a0c26840be6d20ccb66d2fc294c23",
+    "05-Studio/tech-fonts.tsx": "788bd69766cf2315a7a1465b549f5e43489bb404fab654a4d5157cb06930e4e4"
+  },
+  "adaptation_policy": "Only source layouts/themes/fonts are retained here. Demo company claims, testimonials, offers, addresses, links and product photographs are not merchant facts or production assets."
+}

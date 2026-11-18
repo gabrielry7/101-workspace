@@ -190,3 +190,17 @@ The official WhatsApp transport, template snapshots, authenticated callback/inbo
 and opt-out path now reuse this lifecycle. See [WHATSAPP.md](WHATSAPP.md) for
 configuration, supported template shapes, synthetic browser proof and activation
 limits. SMS now uses the same lifecycle; see [SMS.md](SMS.md). Real sending remains disabled.
+
+## React Email integration —18November2026
+
+The existing React campaign editor now selects among Clásico and one adapted design
+from each official React Email family: Barebone, Matte, Protocol, Arcane and Studio.
+Read-only comparisons do not mutate the campaign; saving a design changes only that
+revision's design and requires new approval. Unsaved alternate previews cannot be
+approved or scheduled. Node rendering failures remain before provider submission.
+
+[Setup, source/license inventory, deployment and detailed contracts](email-renderer/README.md).
+Python owns existing permissions, immutable revisions, approval, scheduling and SES;
+Node is a bounded JSON renderer. Legacy Python revisions and non-email channels
+retain their old path. No new tables or migration; no gallery, visual builder,
+Resend provider, AI layouts or live campaign activation is introduced.
