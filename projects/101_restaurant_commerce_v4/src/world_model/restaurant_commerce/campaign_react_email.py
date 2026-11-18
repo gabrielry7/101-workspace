@@ -15,6 +15,8 @@ from zoneinfo import ZoneInfo
 from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from .campaign_email_chassis import EmailChassis
+
 TemplateId = Literal["legacy", "classic", "barebone", "matte", "protocol", "arcane", "studio"]
 RUNTIME = Path(__file__).parent / "email_runtime"
 NAMES = {
@@ -47,6 +49,7 @@ class EmailDesign(BaseModel):
     image_url: str | None = Field(default=None, max_length=2048)
     image_alt: str = Field(default="", max_length=200)
     cta_label: str = Field(default="Ver la carta y pedir →", min_length=1, max_length=80)
+    chassis: EmailChassis | None = None
 
     @field_validator("image_url")
     @classmethod
@@ -59,6 +62,8 @@ class EmailDesign(BaseModel):
 
     @model_validator(mode="after")
     def image_description(self):
+        if self.template_id == "legacy" and self.chassis is not None:
+            raise ValueError("legacy_has_no_chassis")
         if self.image_url and not self.image_alt.strip():
             raise ValueError("email_image_description_required")
         for value in (self.image_alt, self.cta_label):
@@ -67,10 +72,14 @@ class EmailDesign(BaseModel):
         return self
 
 
-def runtime_manifest():
+def runtime_manifest(version=2):
     try:
-        manifest = json.loads((RUNTIME / "manifest.json").read_text())
-        bundle_hash = hashlib.sha256((RUNTIME / "renderer.cjs").read_bytes()).hexdigest()
+        manifest = json.loads(
+            (RUNTIME / ("manifest.json" if version == 1 else "manifest-v2.json")).read_text()
+        )
+        bundle_hash = hashlib.sha256(
+            (RUNTIME / ("renderer.cjs" if version == 1 else "renderer-v2.cjs.gz")).read_bytes()
+        ).hexdigest()
         if bundle_hash != manifest["bundle_sha256"]:
             raise ValueError("artifact_changed")
         for name, digest in manifest["assets"].items():
@@ -80,6 +89,14 @@ def runtime_manifest():
             ):
                 raise ValueError("font_asset_changed")
         joined = "|".join(k + ":" + v for k, v in manifest["assets"].items())
+        metadata = manifest.get("metadata", {})
+        for name, digest in metadata.items():
+            if (
+                Path(name).name != name
+                or hashlib.sha256((RUNTIME / name).read_bytes()).hexdigest() != digest
+            ):
+                raise ValueError("metadata_changed")
+        joined += "|".join(k + ":" + v for k, v in metadata.items())
         if (
             hashlib.sha256((bundle_hash + joined).encode()).hexdigest()
             != manifest["renderer_sha256"]
@@ -90,23 +107,33 @@ def runtime_manifest():
         raise HTTPException(503, "email_renderer_unavailable") from None
 
 
-def node_command():
+def node_command(version=2):
     executable = os.environ.get("CAMPAIGN_EMAIL_NODE") or shutil.which("node")
     if not executable or not Path(executable).is_file() or not os.access(executable, os.X_OK):
         raise HTTPException(503, "email_renderer_unavailable")
-    return [executable, "--max-old-space-size=192", str(RUNTIME / "renderer.cjs")]
+    return [
+        executable,
+        "--max-old-space-size=192",
+        str(RUNTIME / ("renderer.cjs" if version == 1 else "renderer-v2-loader.cjs")),
+    ]
 
 
-def renderer_version():
-    node_command()
-    return "react-email-v1:" + runtime_manifest()["renderer_sha256"]
+def renderer_version(version=2):
+    node_command(version)
+    return "react-email-v" + str(version) + ":" + runtime_manifest(version)["renderer_sha256"]
 
 
 def bind(design):
     value = EmailDesign.model_validate(design).model_dump()
+    if value["chassis"] is None:
+        value.pop("chassis")
+    else:
+        value["chassis"] = EmailChassis.model_validate(value["chassis"]).model_dump(
+            exclude_none=True
+        )
     if value["template_id"] == "legacy":
         return None
-    return {**value, "template_version": "1"}
+    return {**value, "template_version": "2"}
 
 
 def compatible(document):
@@ -116,12 +143,13 @@ def compatible(document):
         return document.get("renderer") == VERSION
     try:
         design = document["email_design"]
+        version = int(design.get("template_version", "0"))
         return (
-            design.get("template_version") == "1"
-            and design.get("template_id") in runtime_manifest()["templates"]
-            and document.get("renderer") == renderer_version()
+            version in {1, 2}
+            and design.get("template_id") in runtime_manifest(version)["templates"]
+            and document.get("renderer") == renderer_version(version)
         )
-    except HTTPException:
+    except (HTTPException, ValueError, TypeError):
         return False
 
 
@@ -136,6 +164,7 @@ def catalog():
             for k, v in NAMES.items()
         ],
         "renderer": version,
+        "chassis": json.loads((RUNTIME / "chassis.json").read_text()) if version else None,
     }
 
 
@@ -143,6 +172,7 @@ def render(document, recipient, ordering_url, unsubscribe_url):
     if not compatible(document):
         raise HTTPException(409, "renderer_revision_changed")
     design = document["email_design"]
+    version = int(design["template_version"])
     origin = document.get("email_origin", "http://127.0.0.1:8799")
     try:
         absolute_url(origin)
@@ -183,11 +213,13 @@ def render(document, recipient, ordering_url, unsubscribe_url):
                 "unsubscribe_url": unsubscribe_url,
             },
         }
+        if version == 2:
+            inputs["chassis"] = design.get("chassis")
         raw = json.dumps(inputs, ensure_ascii=False).encode()
         if len(raw) > 131072:
             raise ValueError("input_limit")
         result = subprocess.run(
-            node_command(),
+            node_command(version),
             input=raw,
             capture_output=True,
             timeout=12,

@@ -35,7 +35,7 @@ def test_six_real_renderers_preserve_copy_personalization_and_links(env):
         assert r.status_code == 200, r.text
         p = r.json()
         assert p["document"]["email_design"]["template_id"] == template
-        assert p["document"]["renderer"].startswith("react-email-v1:")
+        assert p["document"]["renderer"].startswith("react-email-v2:")
         email = p["email"]
         assert "<script>" not in email["html"] and "&lt;script&gt;" in email["html"]
         assert (
@@ -189,7 +189,7 @@ def test_bundle_version_change_blocks_instead_of_switching_design(env, monkeypat
     approved(env, styled(env))
     with env.factory() as session:
         affected = set(session.scalars(select(CampaignJob.id).where(CampaignJob.state == "queued")))
-    monkeypatch.setattr(re, "renderer_version", lambda: "react-email-v1:changed")
+    monkeypatch.setattr(re, "renderer_version", lambda *a: "react-email-v2:changed")
     c.dispatch(env.factory, env.options["integrations"], now=CLOCK)
     assert not env.adapter.messages
     with env.factory() as s:

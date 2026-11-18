@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  EmailChassisControls,
+  type EmailChassis,
+} from "./email-chassis-controls";
+import {
   ArrowLeft,
   ArrowRight,
   Plus,
@@ -47,6 +51,7 @@ type EmailDesign = {
   image_url?: string | null;
   image_alt?: string;
   cta_label?: string;
+  chassis?: EmailChassis | null;
 };
 type TemplateCatalog = {
   templates: { id: string; name: string; available: boolean }[];
@@ -660,6 +665,10 @@ function CampaignDetail(
                       email_design: {
                         ...form.email_design,
                         template_id: e.target.value,
+                        chassis:
+                          e.target.value === "legacy"
+                            ? undefined
+                            : form.email_design?.chassis,
                       },
                     })
                   }
@@ -680,6 +689,17 @@ function CampaignDetail(
                   ))}
                 </select>
               </label>
+              {form.email_design?.template_id !== "legacy" && (
+                <EmailChassisControls
+                  value={form.email_design?.chassis}
+                  change={(chassis) =>
+                    setForm({
+                      ...form,
+                      email_design: { ...form.email_design!, chassis },
+                    })
+                  }
+                />
+              )}
               {form.email_design?.template_id !== "legacy" && (
                 <details>
                   <summary>Imagen y botón · opcional</summary>

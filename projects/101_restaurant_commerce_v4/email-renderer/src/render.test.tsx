@@ -3,6 +3,7 @@ import { test } from "node:test";
 import { renderEmail } from "./index";
 import { fixture } from "./fixture";
 import { templateIds } from "./contract";
+import { chassisSchema } from "./chassis";
 
 test("all six designs preserve the same escaped message and useful links", async () => {
   const html = new Set<string>();
@@ -41,4 +42,35 @@ test("untrusted renderer instructions and unsafe URLs are rejected", async () =>
       content: { ...fixture.content, body: "bad\u0000text" },
     }),
   );
+});
+
+test("one chassis applies to six recipes without changing copy, sources or destinations", async () => {
+  const chassis = chassisSchema.parse({
+    schema_version: "1",
+    coat: "neutral",
+    geometry: { maxWidth: 560 },
+    bones: { surfaces: { controls: { radius: 12 }, content: { padding: 24 } } },
+    typography: {
+      heading: { fontSize: 24 },
+      body: { fontFamily: "Georgia", color: "#123456" },
+    },
+  });
+  for (const template_id of templateIds) {
+    const source = await renderEmail({ ...fixture, template_id });
+    const styled = await renderEmail({ ...fixture, template_id, chassis });
+    assert.equal(source.text, styled.text);
+    assert.ok(styled.html.includes('data-101-bone-role="heading"'));
+    assert.ok(styled.html.includes("font-size:24px"));
+    assert.ok(styled.html.includes("#123456"));
+    assert.ok(styled.html.includes(fixture.personalization.unsubscribe_url));
+  }
+  for (const invalid of [
+    { schema_version: "1", css: "display:none" },
+    { schema_version: "1", bones: { surfaces: { footer: { opacity: 0 } } } },
+    {
+      schema_version: "1",
+      typography: { body: { fontFamily: "url(unsafe)" } },
+    },
+  ])
+    assert.throws(() => chassisSchema.parse(invalid));
 });

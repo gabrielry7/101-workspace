@@ -382,3 +382,13 @@ while101owns content/brand bindings and each adapted layout. Verified44px contro
 desktop/390px layouts and explicit unavailable-render states. Original family source,
 licensed fonts and adaptation notes remain in email-renderer; this adds no gallery
 or visual builder.
+
+Email chassis (2026-11-18): extend the same campaign form with one collapsed
+**Huesos y chasis** group. Source/neutral styles, bounded fields and JSON export/
+import use existing Inter, 44px controls, white surfaces and wrapping actions.
+Creative text geometry and fonts remain separate from the 101 UI. The style
+configuration contains no campaign facts or recipient/action data. Saving changes
+requires a fresh exact-version review; resetting restores the selected recipe.
+Keep professional family structures distinct. Actual email geometry and solid
+contrast are measured with the existing component-preview instrument, without
+shipping that inspector into recipient emails or calling a ratio a taste score.

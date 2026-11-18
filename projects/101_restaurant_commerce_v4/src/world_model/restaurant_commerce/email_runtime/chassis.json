@@ -1,0 +1,1057 @@
+{
+  "schema_version": "1",
+  "contract": "101-email-chassis-v1",
+  "shared_bones": "101-bones-v1",
+  "anatomy": [
+    {
+      "role": "panel",
+      "category": "surface",
+      "type": "container",
+      "parent": null,
+      "status": "reused",
+      "source": "templates/*.tsx → React Email Container",
+      "selector": "[data-101-bone-role=\"panel\"]"
+    },
+    {
+      "role": "card",
+      "category": "surface",
+      "type": "container",
+      "parent": "panel",
+      "status": "reused",
+      "source": "templates/*.tsx → React Email Section",
+      "selector": "[data-101-bone-role=\"card\"]"
+    },
+    {
+      "role": "stage",
+      "category": "surface",
+      "type": "container",
+      "parent": "panel",
+      "status": "reused",
+      "source": "templates/*.tsx → React Email Section",
+      "selector": "[data-101-bone-role=\"stage\"]"
+    },
+    {
+      "role": "intro",
+      "category": "surface",
+      "type": "container",
+      "parent": "panel",
+      "status": "reused",
+      "source": "templates/*.tsx → React Email Section",
+      "selector": "[data-101-bone-role=\"intro\"]"
+    },
+    {
+      "role": "content",
+      "category": "surface",
+      "type": "container",
+      "parent": "panel",
+      "status": "reused",
+      "source": "templates/*.tsx → React Email Section",
+      "selector": "[data-101-bone-role=\"content\"]"
+    },
+    {
+      "role": "footer",
+      "category": "surface",
+      "type": "container",
+      "parent": "panel",
+      "status": "reused",
+      "source": "templates/*.tsx → React Email Section",
+      "selector": "[data-101-bone-role=\"footer\"]"
+    },
+    {
+      "role": "brand",
+      "category": "media",
+      "type": "logo",
+      "parent": "panel",
+      "status": "reused",
+      "source": "parts.tsx Brand → frozen business name/logo",
+      "selector": "[data-101-bone-role=\"brand\"]"
+    },
+    {
+      "role": "controls",
+      "category": "button",
+      "type": "primary",
+      "parent": "content",
+      "status": "reused",
+      "source": "parts.tsx Action → existing tracked ordering URL",
+      "selector": "[data-101-bone-role=\"controls\"]"
+    },
+    {
+      "role": "photo",
+      "category": "media",
+      "type": "image",
+      "parent": "panel",
+      "status": "reused",
+      "source": "parts.tsx Photo → approved image URL",
+      "selector": "[data-101-bone-role=\"photo\"]"
+    },
+    {
+      "role": "heading",
+      "category": "text",
+      "type": "heading",
+      "parent": "intro",
+      "status": "reused",
+      "source": "templates/*.tsx → React Email Heading",
+      "selector": "[data-101-bone-role=\"heading\"]",
+      "hierarchy": {
+        "group": "message",
+        "level": 1
+      }
+    },
+    {
+      "role": "body",
+      "category": "text",
+      "type": "body",
+      "parent": "content",
+      "status": "reused",
+      "source": "parts.tsx Words",
+      "selector": "[data-101-bone-role=\"body\"]",
+      "hierarchy": {
+        "group": "message",
+        "level": 2
+      }
+    },
+    {
+      "role": "content-inset",
+      "category": "layout",
+      "type": "spacing",
+      "parent": "content",
+      "status": "reused",
+      "source": "React Email Section internal cell owns padding",
+      "selector": "[data-101-bone-role=\"content\"] > tbody > tr > td"
+    },
+    {
+      "role": "label",
+      "category": "text",
+      "type": "feedback",
+      "parent": "intro",
+      "status": "reused",
+      "source": "campaign scope → parts.tsx",
+      "selector": "[data-101-bone-role=\"label\"]",
+      "hierarchy": {
+        "group": "message",
+        "level": 3
+      }
+    },
+    {
+      "role": "action",
+      "category": "text",
+      "type": "button-label",
+      "parent": "controls",
+      "status": "reused",
+      "source": "parts.tsx Action → existing tracked ordering URL",
+      "selector": "[data-101-bone-role=\"action\"]",
+      "hierarchy": {
+        "group": "action",
+        "level": 1
+      }
+    },
+    {
+      "role": "meta",
+      "category": "text",
+      "type": "body",
+      "parent": "footer",
+      "status": "reused",
+      "source": "parts.tsx Terms/Footer → existing terms/expiry/unsubscribe",
+      "selector": "[data-101-bone-role=\"meta\"]",
+      "hierarchy": {
+        "group": "legal",
+        "level": 3
+      }
+    }
+  ],
+  "recipes": {
+    "classic": {
+      "parts": [
+        {
+          "role": "panel",
+          "category": "surface",
+          "type": "container",
+          "parent": null,
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Container",
+          "selector": "[data-101-bone-role=\"panel\"]"
+        },
+        {
+          "role": "intro",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"intro\"]"
+        },
+        {
+          "role": "content",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"content\"]"
+        },
+        {
+          "role": "footer",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"footer\"]"
+        },
+        {
+          "role": "brand",
+          "category": "media",
+          "type": "logo",
+          "parent": "intro",
+          "status": "reused",
+          "source": "parts.tsx Brand → frozen business name/logo",
+          "selector": "[data-101-bone-role=\"brand\"]"
+        },
+        {
+          "role": "controls",
+          "category": "button",
+          "type": "primary",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"controls\"]"
+        },
+        {
+          "role": "photo",
+          "category": "media",
+          "type": "image",
+          "parent": "panel",
+          "status": "reused",
+          "source": "parts.tsx Photo → approved image URL",
+          "selector": "[data-101-bone-role=\"photo\"]"
+        },
+        {
+          "role": "heading",
+          "category": "text",
+          "type": "heading",
+          "parent": "content",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Heading",
+          "selector": "[data-101-bone-role=\"heading\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 1
+          }
+        },
+        {
+          "role": "body",
+          "category": "text",
+          "type": "body",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Words",
+          "selector": "[data-101-bone-role=\"body\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 2
+          }
+        },
+        {
+          "role": "content-inset",
+          "category": "layout",
+          "type": "spacing",
+          "parent": "content",
+          "status": "reused",
+          "source": "React Email Section internal cell owns padding",
+          "selector": "[data-101-bone-role=\"content\"] > tbody > tr > td"
+        },
+        {
+          "role": "label",
+          "category": "text",
+          "type": "feedback",
+          "parent": "intro",
+          "status": "reused",
+          "source": "campaign scope → parts.tsx",
+          "selector": "[data-101-bone-role=\"label\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 3
+          }
+        },
+        {
+          "role": "action",
+          "category": "text",
+          "type": "button-label",
+          "parent": "controls",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"action\"]",
+          "hierarchy": {
+            "group": "action",
+            "level": 1
+          }
+        },
+        {
+          "role": "meta",
+          "category": "text",
+          "type": "body",
+          "parent": null,
+          "status": "reused",
+          "source": "parts.tsx Terms/Footer → existing terms/expiry/unsubscribe",
+          "selector": "[data-101-bone-role=\"meta\"]",
+          "hierarchy": {
+            "group": "legal",
+            "level": 3
+          }
+        }
+      ],
+      "metadata_parent_scope": "Legal text repeats in content and footer; actual DOM ancestry is recorded per instance by the shared measurement tool."
+    },
+    "barebone": {
+      "parts": [
+        {
+          "role": "panel",
+          "category": "surface",
+          "type": "container",
+          "parent": null,
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Container",
+          "selector": "[data-101-bone-role=\"panel\"]"
+        },
+        {
+          "role": "stage",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"stage\"]"
+        },
+        {
+          "role": "content",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"content\"]"
+        },
+        {
+          "role": "footer",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"footer\"]"
+        },
+        {
+          "role": "brand",
+          "category": "media",
+          "type": "logo",
+          "parent": "panel",
+          "status": "reused",
+          "source": "parts.tsx Brand → frozen business name/logo",
+          "selector": "[data-101-bone-role=\"brand\"]"
+        },
+        {
+          "role": "controls",
+          "category": "button",
+          "type": "primary",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"controls\"]"
+        },
+        {
+          "role": "photo",
+          "category": "media",
+          "type": "image",
+          "parent": "panel",
+          "status": "reused",
+          "source": "parts.tsx Photo → approved image URL",
+          "selector": "[data-101-bone-role=\"photo\"]"
+        },
+        {
+          "role": "heading",
+          "category": "text",
+          "type": "heading",
+          "parent": "content",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Heading",
+          "selector": "[data-101-bone-role=\"heading\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 1
+          }
+        },
+        {
+          "role": "body",
+          "category": "text",
+          "type": "body",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Words",
+          "selector": "[data-101-bone-role=\"body\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 2
+          }
+        },
+        {
+          "role": "content-inset",
+          "category": "layout",
+          "type": "spacing",
+          "parent": "content",
+          "status": "reused",
+          "source": "React Email Section internal cell owns padding",
+          "selector": "[data-101-bone-role=\"content\"] > tbody > tr > td"
+        },
+        {
+          "role": "label",
+          "category": "text",
+          "type": "feedback",
+          "parent": "content",
+          "status": "reused",
+          "source": "campaign scope → parts.tsx",
+          "selector": "[data-101-bone-role=\"label\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 3
+          }
+        },
+        {
+          "role": "action",
+          "category": "text",
+          "type": "button-label",
+          "parent": "controls",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"action\"]",
+          "hierarchy": {
+            "group": "action",
+            "level": 1
+          }
+        },
+        {
+          "role": "meta",
+          "category": "text",
+          "type": "body",
+          "parent": null,
+          "status": "reused",
+          "source": "parts.tsx Terms/Footer → existing terms/expiry/unsubscribe",
+          "selector": "[data-101-bone-role=\"meta\"]",
+          "hierarchy": {
+            "group": "legal",
+            "level": 3
+          }
+        }
+      ],
+      "metadata_parent_scope": "Legal text repeats in content and footer; actual DOM ancestry is recorded per instance by the shared measurement tool."
+    },
+    "matte": {
+      "parts": [
+        {
+          "role": "panel",
+          "category": "surface",
+          "type": "container",
+          "parent": null,
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Container",
+          "selector": "[data-101-bone-role=\"panel\"]"
+        },
+        {
+          "role": "card",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"card\"]"
+        },
+        {
+          "role": "content",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"content\"]"
+        },
+        {
+          "role": "footer",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"footer\"]"
+        },
+        {
+          "role": "brand",
+          "category": "media",
+          "type": "logo",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Brand → frozen business name/logo",
+          "selector": "[data-101-bone-role=\"brand\"]"
+        },
+        {
+          "role": "controls",
+          "category": "button",
+          "type": "primary",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"controls\"]"
+        },
+        {
+          "role": "photo",
+          "category": "media",
+          "type": "image",
+          "parent": "panel",
+          "status": "reused",
+          "source": "parts.tsx Photo → approved image URL",
+          "selector": "[data-101-bone-role=\"photo\"]"
+        },
+        {
+          "role": "heading",
+          "category": "text",
+          "type": "heading",
+          "parent": "content",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Heading",
+          "selector": "[data-101-bone-role=\"heading\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 1
+          }
+        },
+        {
+          "role": "body",
+          "category": "text",
+          "type": "body",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Words",
+          "selector": "[data-101-bone-role=\"body\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 2
+          }
+        },
+        {
+          "role": "content-inset",
+          "category": "layout",
+          "type": "spacing",
+          "parent": "content",
+          "status": "reused",
+          "source": "React Email Section internal cell owns padding",
+          "selector": "[data-101-bone-role=\"content\"] > tbody > tr > td"
+        },
+        {
+          "role": "label",
+          "category": "text",
+          "type": "feedback",
+          "parent": "content",
+          "status": "reused",
+          "source": "campaign scope → parts.tsx",
+          "selector": "[data-101-bone-role=\"label\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 3
+          }
+        },
+        {
+          "role": "action",
+          "category": "text",
+          "type": "button-label",
+          "parent": "controls",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"action\"]",
+          "hierarchy": {
+            "group": "action",
+            "level": 1
+          }
+        },
+        {
+          "role": "meta",
+          "category": "text",
+          "type": "body",
+          "parent": null,
+          "status": "reused",
+          "source": "parts.tsx Terms/Footer → existing terms/expiry/unsubscribe",
+          "selector": "[data-101-bone-role=\"meta\"]",
+          "hierarchy": {
+            "group": "legal",
+            "level": 3
+          }
+        }
+      ],
+      "metadata_parent_scope": "Legal text repeats in content and footer; actual DOM ancestry is recorded per instance by the shared measurement tool."
+    },
+    "protocol": {
+      "parts": [
+        {
+          "role": "panel",
+          "category": "surface",
+          "type": "container",
+          "parent": null,
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Container",
+          "selector": "[data-101-bone-role=\"panel\"]"
+        },
+        {
+          "role": "intro",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"intro\"]"
+        },
+        {
+          "role": "content",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"content\"]"
+        },
+        {
+          "role": "footer",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"footer\"]"
+        },
+        {
+          "role": "brand",
+          "category": "media",
+          "type": "logo",
+          "parent": "intro",
+          "status": "reused",
+          "source": "parts.tsx Brand → frozen business name/logo",
+          "selector": "[data-101-bone-role=\"brand\"]"
+        },
+        {
+          "role": "controls",
+          "category": "button",
+          "type": "primary",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"controls\"]"
+        },
+        {
+          "role": "photo",
+          "category": "media",
+          "type": "image",
+          "parent": "panel",
+          "status": "reused",
+          "source": "parts.tsx Photo → approved image URL",
+          "selector": "[data-101-bone-role=\"photo\"]"
+        },
+        {
+          "role": "heading",
+          "category": "text",
+          "type": "heading",
+          "parent": "content",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Heading",
+          "selector": "[data-101-bone-role=\"heading\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 1
+          }
+        },
+        {
+          "role": "body",
+          "category": "text",
+          "type": "body",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Words",
+          "selector": "[data-101-bone-role=\"body\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 2
+          }
+        },
+        {
+          "role": "content-inset",
+          "category": "layout",
+          "type": "spacing",
+          "parent": "content",
+          "status": "reused",
+          "source": "React Email Section internal cell owns padding",
+          "selector": "[data-101-bone-role=\"content\"] > tbody > tr > td"
+        },
+        {
+          "role": "label",
+          "category": "text",
+          "type": "feedback",
+          "parent": "intro",
+          "status": "reused",
+          "source": "campaign scope → parts.tsx",
+          "selector": "[data-101-bone-role=\"label\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 3
+          }
+        },
+        {
+          "role": "action",
+          "category": "text",
+          "type": "button-label",
+          "parent": "controls",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"action\"]",
+          "hierarchy": {
+            "group": "action",
+            "level": 1
+          }
+        },
+        {
+          "role": "meta",
+          "category": "text",
+          "type": "body",
+          "parent": null,
+          "status": "reused",
+          "source": "parts.tsx Terms/Footer → existing terms/expiry/unsubscribe",
+          "selector": "[data-101-bone-role=\"meta\"]",
+          "hierarchy": {
+            "group": "legal",
+            "level": 3
+          }
+        }
+      ],
+      "metadata_parent_scope": "Legal text repeats in content and footer; actual DOM ancestry is recorded per instance by the shared measurement tool."
+    },
+    "arcane": {
+      "parts": [
+        {
+          "role": "panel",
+          "category": "surface",
+          "type": "container",
+          "parent": null,
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Container",
+          "selector": "[data-101-bone-role=\"panel\"]"
+        },
+        {
+          "role": "stage",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"stage\"]"
+        },
+        {
+          "role": "intro",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"intro\"]"
+        },
+        {
+          "role": "content",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"content\"]"
+        },
+        {
+          "role": "footer",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"footer\"]"
+        },
+        {
+          "role": "brand",
+          "category": "media",
+          "type": "logo",
+          "parent": "panel",
+          "status": "reused",
+          "source": "parts.tsx Brand → frozen business name/logo",
+          "selector": "[data-101-bone-role=\"brand\"]"
+        },
+        {
+          "role": "controls",
+          "category": "button",
+          "type": "primary",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"controls\"]"
+        },
+        {
+          "role": "photo",
+          "category": "media",
+          "type": "image",
+          "parent": "panel",
+          "status": "reused",
+          "source": "parts.tsx Photo → approved image URL",
+          "selector": "[data-101-bone-role=\"photo\"]"
+        },
+        {
+          "role": "heading",
+          "category": "text",
+          "type": "heading",
+          "parent": "intro",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Heading",
+          "selector": "[data-101-bone-role=\"heading\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 1
+          }
+        },
+        {
+          "role": "body",
+          "category": "text",
+          "type": "body",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Words",
+          "selector": "[data-101-bone-role=\"body\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 2
+          }
+        },
+        {
+          "role": "content-inset",
+          "category": "layout",
+          "type": "spacing",
+          "parent": "content",
+          "status": "reused",
+          "source": "React Email Section internal cell owns padding",
+          "selector": "[data-101-bone-role=\"content\"] > tbody > tr > td"
+        },
+        {
+          "role": "label",
+          "category": "text",
+          "type": "feedback",
+          "parent": "intro",
+          "status": "reused",
+          "source": "campaign scope → parts.tsx",
+          "selector": "[data-101-bone-role=\"label\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 3
+          }
+        },
+        {
+          "role": "action",
+          "category": "text",
+          "type": "button-label",
+          "parent": "controls",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"action\"]",
+          "hierarchy": {
+            "group": "action",
+            "level": 1
+          }
+        },
+        {
+          "role": "meta",
+          "category": "text",
+          "type": "body",
+          "parent": null,
+          "status": "reused",
+          "source": "parts.tsx Terms/Footer → existing terms/expiry/unsubscribe",
+          "selector": "[data-101-bone-role=\"meta\"]",
+          "hierarchy": {
+            "group": "legal",
+            "level": 3
+          }
+        }
+      ],
+      "metadata_parent_scope": "Legal text repeats in content and footer; actual DOM ancestry is recorded per instance by the shared measurement tool."
+    },
+    "studio": {
+      "parts": [
+        {
+          "role": "panel",
+          "category": "surface",
+          "type": "container",
+          "parent": null,
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Container",
+          "selector": "[data-101-bone-role=\"panel\"]"
+        },
+        {
+          "role": "stage",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"stage\"]"
+        },
+        {
+          "role": "intro",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"intro\"]"
+        },
+        {
+          "role": "content",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"content\"]"
+        },
+        {
+          "role": "footer",
+          "category": "surface",
+          "type": "container",
+          "parent": "panel",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Section",
+          "selector": "[data-101-bone-role=\"footer\"]"
+        },
+        {
+          "role": "brand",
+          "category": "media",
+          "type": "logo",
+          "parent": "intro",
+          "status": "reused",
+          "source": "parts.tsx Brand → frozen business name/logo",
+          "selector": "[data-101-bone-role=\"brand\"]"
+        },
+        {
+          "role": "controls",
+          "category": "button",
+          "type": "primary",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"controls\"]"
+        },
+        {
+          "role": "photo",
+          "category": "media",
+          "type": "image",
+          "parent": "panel",
+          "status": "reused",
+          "source": "parts.tsx Photo → approved image URL",
+          "selector": "[data-101-bone-role=\"photo\"]"
+        },
+        {
+          "role": "heading",
+          "category": "text",
+          "type": "heading",
+          "parent": "intro",
+          "status": "reused",
+          "source": "templates/*.tsx → React Email Heading",
+          "selector": "[data-101-bone-role=\"heading\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 1
+          }
+        },
+        {
+          "role": "body",
+          "category": "text",
+          "type": "body",
+          "parent": "content",
+          "status": "reused",
+          "source": "parts.tsx Words",
+          "selector": "[data-101-bone-role=\"body\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 2
+          }
+        },
+        {
+          "role": "content-inset",
+          "category": "layout",
+          "type": "spacing",
+          "parent": "content",
+          "status": "reused",
+          "source": "React Email Section internal cell owns padding",
+          "selector": "[data-101-bone-role=\"content\"] > tbody > tr > td"
+        },
+        {
+          "role": "label",
+          "category": "text",
+          "type": "feedback",
+          "parent": "intro",
+          "status": "reused",
+          "source": "campaign scope → parts.tsx",
+          "selector": "[data-101-bone-role=\"label\"]",
+          "hierarchy": {
+            "group": "message",
+            "level": 3
+          }
+        },
+        {
+          "role": "action",
+          "category": "text",
+          "type": "button-label",
+          "parent": "controls",
+          "status": "reused",
+          "source": "parts.tsx Action → existing tracked ordering URL",
+          "selector": "[data-101-bone-role=\"action\"]",
+          "hierarchy": {
+            "group": "action",
+            "level": 1
+          }
+        },
+        {
+          "role": "meta",
+          "category": "text",
+          "type": "body",
+          "parent": null,
+          "status": "reused",
+          "source": "parts.tsx Terms/Footer → existing terms/expiry/unsubscribe",
+          "selector": "[data-101-bone-role=\"meta\"]",
+          "hierarchy": {
+            "group": "legal",
+            "level": 3
+          }
+        }
+      ],
+      "metadata_parent_scope": "Legal text repeats in content and footer; actual DOM ancestry is recorded per instance by the shared measurement tool."
+    }
+  },
+  "coats": [
+    "source",
+    "neutral"
+  ],
+  "supported_surfaces": [
+    "panel",
+    "card",
+    "stage",
+    "brand",
+    "intro",
+    "content",
+    "photo",
+    "controls",
+    "footer"
+  ],
+  "typography_roles": [
+    "heading",
+    "body",
+    "label",
+    "action",
+    "meta"
+  ],
+  "limits": "Email-safe adapter. No opacity, hidden parts, arbitrary CSS/HTML, animation, webpage grid/flex or action destination edits."
+}

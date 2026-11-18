@@ -23,8 +23,60 @@ from the normal authenticated101campaign editor and is not the delivery service.
 No Resend sending SDK, account or provider replaces SES.
 
 The package lock pins rendering, development preview and font dependencies.
-`npm run build` produces a bundled `renderer.cjs`, an asset/version manifest and
-full license notices under `src/world_model/restaurant_commerce/email_runtime`.
+
+## Reusable email chassis
+
+The six recipes now have a separate `101-email-chassis-v1` visual contract. The
+normal editor's **Huesos y chasis** disclosure applies source/neutral coats, shape,
+width, text styles, content spacing/colors and button geometry. Export/import JSON
+contains only that configuration: not content, branding evidence, recipients or
+destinations. Saving it creates a new campaign revision requiring review/approval.
+Reset removes the override and returns to that family's source recipe.
+
+`src/chassis.ts` adapts the existing 101 bones validator and semantic-anatomy
+validator. Their byte-pinned build inputs live under `vendor/101-bones/`, with
+owner/commit/hashes; do not fork their vocabulary or silently accept website-only
+operations. The native React Email Container/Section/Heading/Img/Button and existing
+Brand/Words/Terms/Footer parts remain their rendering owners. The new adapter
+compiles supported visual properties into ordinary inline email styles; it does
+not ship the website's CSS variables, grid/flex, JavaScript or inspector in email.
+
+`email_runtime/chassis.json` records parts, source owners, semantic categories,
+logical parentage, per-recipe parts, supported properties and explicit limits.
+Repeated legal text spans several actual parents; browser measurements record
+the physical DOM ancestry per instance. Missing optional images remain missing,
+and recipes without an intro surface do not acquire an invented intro block.
+
+Supported configuration:
+
+- `schema_version: "1"`, `coat: "source" | "neutral"`.
+- `geometry`: `maxWidth` 320–800px, `logoWidth` 48–240px.
+- `bones.shape`: recipe, square, soft or round.
+- `bones.surfaces`: panel, card, stage, brand, intro, content, photo, controls and footer;
+  bounded fill, radius, border width/color, padding, top/bottom margins and shadow.
+- `bones.colors`: existing heading/intro/action/date/brand semantic roles.
+- `typography`: heading/body/label/action/meta with allowlisted families, bounded
+  size/weight/line height/tracking/case/color. Available font weights are retained;
+  a requested unavailable weight may be synthesized by the email client.
+
+No arbitrary CSS/HTML, hiding/opacity, scripts, action URLs, custom font downloads,
+layout code or campaign claims are accepted in a chassis. Geometry and surface
+edits apply only where a recipe has that part; the catalog explicitly records
+its available parts. Changing a style does not rewrite copy, facts, image URLs or
+unsubscribe. A website profile may contain unsupported roles/properties such as
+avatar, collection or grid gaps; this email adapter rejects them rather than
+pretending they work. Full automatic brand-book application is a later consumer.
+
+The fixed v1 renderer/manifest remain packaged for previously approved revisions.
+New revisions bind template version2 and a separate renderer identity. The v2
+bundle is gzip-compressed at rest and loaded by fixed trusted server code; the
+bundle, loader, fonts and chassis catalog are hash-bound. No submitted code enters
+that loader. Rebuilding v2 requires affected v2 revisions to be reviewed again;
+it does not invalidate v1 approval. No database migration is needed.
+
+`npm run build` produces the v2 bundle/loader, asset/version manifest, chassis
+catalog and full license notices under `src/world_model/restaurant_commerce/email_runtime`.
+The original v1 bundle/manifest are retained without rebuilding.
 The Python wheel includes those files and the licensed fonts. Production needs the
 built wheel plus a Node22+ executable; it does not need npm, a Node service,
 `node_modules`, a TypeScript loader or the developer preview. Build artifacts before

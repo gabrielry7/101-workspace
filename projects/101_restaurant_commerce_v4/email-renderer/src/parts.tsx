@@ -12,6 +12,7 @@ import {
   type TailwindConfig,
 } from "react-email";
 import type { EmailProps } from "./contract";
+import { bone, type, effectiveChassis } from "./chassis";
 export function Shell({
   p,
   config,
@@ -34,7 +35,8 @@ export function Shell({
         style={{
           margin: 0,
           padding: 0,
-          backgroundColor: background,
+          backgroundColor:
+            effectiveChassis(p).coat === "neutral" ? "#f4f4f5" : background,
           fontFamily: p.brand.font || font || "Inter,Arial,sans-serif",
         }}
       >
@@ -43,6 +45,23 @@ export function Shell({
       </Body>
     </Html>
   );
+  if (config && effectiveChassis(p).coat === "neutral") {
+    const theme = config.theme || {},
+      extend = theme.extend || {};
+    const colors = Object.fromEntries(
+      Object.keys(extend.colors || {}).map((key) => [
+        key,
+        key.startsWith("bg")
+          ? "#ffffff"
+          : key === "stroke"
+            ? "#d4d4d8"
+            : key === "brand"
+              ? "#202020"
+              : "#404040",
+      ]),
+    );
+    config = { ...config, theme: { ...theme, extend: { ...extend, colors } } };
+  }
   return config ? <Tailwind config={config}>{html}</Tailwind> : html;
 }
 export function Brand({
@@ -60,7 +79,7 @@ export function Brand({
       style={{
         display: "block",
         width: "100%",
-        maxWidth: 180,
+        maxWidth: effectiveChassis(p).geometry.logoWidth || 180,
         boxSizing: "border-box",
         padding: ["protocol", "arcane"].includes(p.template_id)
           ? "8px"
@@ -70,11 +89,22 @@ export function Brand({
           : undefined,
         height: "auto",
         margin: center ? "0 auto" : "0",
+        ...bone(p, "brand").style,
       }}
+      data-101-bone="media"
+      data-101-bone-role="brand"
     />
   ) : (
     <Text
-      style={{ margin: 0, fontSize: 20, lineHeight: "28px", fontWeight: 600 }}
+      style={{
+        margin: 0,
+        fontSize: 20,
+        lineHeight: "28px",
+        fontWeight: 600,
+        color: effectiveChassis(p).bones.colors.brand,
+      }}
+      data-101-bone="text"
+      data-101-bone-role="brand"
     >
       {p.brand.name}
     </Text>
@@ -92,7 +122,10 @@ export function Photo({ p, width = 592 }: { p: EmailProps; width?: number }) {
         maxWidth: width,
         height: "auto",
         border: 0,
+        ...bone(p, "photo").style,
       }}
+      data-101-bone="media"
+      data-101-bone-role="photo"
     />
   ) : null;
 }
@@ -107,7 +140,11 @@ export function Words({
     <>
       <Text
         className={className}
-        style={{ margin: "0 0 20px", fontSize: 16, lineHeight: "26px" }}
+        {...type(p, "body", {
+          margin: "0 0 20px",
+          fontSize: 16,
+          lineHeight: "26px",
+        })}
       >
         Hola, {p.personalization.name}.
       </Text>
@@ -115,13 +152,13 @@ export function Words({
         <Text
           key={i}
           className={className}
-          style={{
+          {...type(p, "body", {
             margin: "0 0 20px",
             fontSize: 16,
             lineHeight: "26px",
             whiteSpace: "pre-line",
             overflowWrap: "anywhere",
-          }}
+          })}
         >
           {s}
         </Text>
@@ -133,16 +170,16 @@ export function Terms({ p }: { p: EmailProps }) {
   return (
     <>
       <Text
-        style={{
+        {...type(p, "meta", {
           fontSize: 13,
           lineHeight: "21px",
           whiteSpace: "pre-line",
           overflowWrap: "anywhere",
-        }}
+        })}
       >
         {p.content.terms}
       </Text>
-      <Text style={{ fontSize: 12, lineHeight: "20px" }}>
+      <Text {...type(p, "meta", { fontSize: 12, lineHeight: "20px" })}>
         Vigencia: {p.content.expiry}
       </Text>
     </>
@@ -151,13 +188,17 @@ export function Terms({ p }: { p: EmailProps }) {
 export function Footer({ p, color }: { p: EmailProps; color: string }) {
   return (
     <>
-      <Text style={{ fontSize: 12, lineHeight: "20px", color }}>
+      <Text {...type(p, "meta", { fontSize: 12, lineHeight: "20px", color })}>
         Recibes esta invitación por tu permiso de comunicaciones de{" "}
         {p.brand.name}.
       </Text>
       <Link
         href={p.personalization.unsubscribe_url}
-        style={{ fontSize: 12, color, textDecoration: "underline" }}
+        {...type(p, "meta", {
+          fontSize: 12,
+          color,
+          textDecoration: "underline",
+        })}
       >
         Dejar de recibir promociones
       </Link>
@@ -202,9 +243,15 @@ export function Action({
         fontWeight: 600,
         lineHeight: "24px",
         maxWidth: "100%",
+        ...bone(p, "controls").style,
+        ...type(p, "action").style,
       }}
+      data-101-bone="surface"
+      data-101-bone-role="controls"
     >
-      {p.content.cta_label}
+      <span data-101-bone="text" data-101-bone-role="action">
+        {p.content.cta_label}
+      </span>
     </Button>
   );
 }

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { chassisSchema } from "./chassis";
 const text = (n: number) =>
   z
     .string()
@@ -22,6 +23,7 @@ export const inputSchema = z
     schema_version: z.literal("1"),
     font_base_url: url,
     template_id: z.enum(templateIds),
+    chassis: chassisSchema.nullable().optional(),
     content: z
       .object({
         subject: text(180),

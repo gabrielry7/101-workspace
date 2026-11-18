@@ -12,7 +12,9 @@
       "node",
       "react",
       "react-dom"
-    ]
+    ],
+    "allowJs": true,
+    "checkJs": false
   },
   "include": [
     "src",

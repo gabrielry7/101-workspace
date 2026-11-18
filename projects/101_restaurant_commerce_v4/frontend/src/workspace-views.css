@@ -1118,6 +1118,10 @@
 .email-design-controls button {
   justify-self: start;
 }
+.email-chassis > .form-fields { margin-top: 18px; }
+.email-chassis > p { font-size: 13px; line-height: 1.6; color: var(--wm-muted); }
+.email-chassis .heading-actions { flex-wrap: wrap; }
+.email-chassis input[type="file"] { max-width: 100%; }
 @media (max-width: 600px) {
   .email-design-controls {
     padding: 0 18px 18px;
