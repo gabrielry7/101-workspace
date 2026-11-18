@@ -159,3 +159,46 @@ slice does not replace courier configuration, dispatch or financial resolution;
 blocked actions explain the relevant condition, with an operations link for the
 existing workflow. No deployment, live sender activation or provider test is
 implied by the local demonstration.
+
+## U04–U06 native operations — 18 November 2026
+
+Sales now has Entregas and Revisión de pagos beside Pedidos/Reservas.
+`delivery_workspace.py` supplies bounded, business-scoped delivery reads independently
+of the newest order page; optional delivery/order versions protect reviewed actions.
+Dispatch and cancellation commit the existing idempotency claim before the provider
+boundary. Unconfirmed claims survive rollback/reload and prohibit another submission;
+no automated courier recovery or real-provider reconciliation is claimed. Current
+live adapters are fail-closed stubs; native actions qualify the simulator only.
+Manual pickup/delivery remain demo-only. Delivery completion still calls the existing
+atomic order/loyalty transition; cancellation never implies an order refund.
+
+`finance_workspace.py` supplies scoped open/all/code-search reads and verified refund
+allocation context. Writes still use `financial_workflow.py` and its existing durable
+operations, permissions, immutable refund intent, evidence freshness and audit.
+Inspection is not a refund; refreshing the view makes no provider lookup.
+The confirmation names the order, action, reason and full-refund amount. The original
+checkout amount/currency must agree with the order before the detail can be used.
+Allocation uses confirmed PaymentRefund IDs, original line IDs and either verified
+execution caps or the captured baseline total; missing policy stays blocked.
+Explicit allocation affects loyalty only and is immutable; no invented line split.
+
+Ajustes `/workspace/settings` reuses existing GET/PUT settings and per-item stock
+contracts, including expected versions, audit reasons, unknown-vs-zero stock,
+ordering/scheduled toggles and midnight24:00. Timezone is displayed, as in the old
+contract; this does not add timezone editing. A row save/check preserves other rows'
+unsaved changes. Existing stock/capacity reservations and old accepted orders remain
+owned by the original services.
+
+Reportes `?view=daily` preserves merchant-local order-creation-day/current-payment
+semantics, all-date review count, confirmed full/partial refunds, unknown settlement
+and fees. It adds optional currency segmentation and refuses mixed money totals.
+Monthly reporting remains a separately selected existing workflow. No schema change,
+new dependency, paid action or automatic recurring work is introduced. Old staff
+pages remain behind shared login until the later retirement gate.
+
+Checks: `tests/test_operations_workspace.py`,
+`tests/test_operations_workspace_browser.py`, existing delivery/hardening, operations,
+financial-resolution, workspace and canonical provisioning consumers. SQLite,
+disposable loopback PostgreSQL and real Chromium use labeled synthetic inputs;
+retained dashboard checks must be read-only. Root product-design parity/evidence
+tracks their actual execution and remaining live-provider limits.

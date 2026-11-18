@@ -297,6 +297,7 @@ def register(app, get_session, scoped_staff):
     @app.get("/workspace/reports")
     @app.get("/workspace/analytics")
     @app.get("/workspace/onboarding")
+    @app.get("/workspace/settings")
     def workspace_page():
         return FileResponse(web / "index.html", headers={"Cache-Control": "no-store"})
 

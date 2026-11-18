@@ -405,3 +405,17 @@ contains session options; a standalone logout icon remains available. New
 reservation and view-switch buttons have44px minimum targets. Spacing and select
 borders were refined after actual phone inspection. Keep all merchant fonts and
 source facts separate from these UI choices.
+
+### Native operations and finance — 18 November 2026
+
+U04–U06 reuse references02/03 and the current Sales list/detail, shared tabs,
+Base UI confirmation, Inter and white surface bones. New composition owners:
+`deliveries.tsx`, `operation-settings.tsx`, `financial-review.tsx`,
+`daily-finance.tsx`; their scoped styling is `operations-workspace.css`.
+`operations-ui.tsx` shares bounded errors and single-command/unknown states.
+Delivery and finance details reuse the fixed `detail sale-detail` bone; on phones
+that pane becomes the focused full-width view. Settings use two-column desktop
+forms and single-column phone rows; each inventory item keeps its own edits/version.
+New targets are at least44px. Technical statuses, confirmed money and unknowns
+remain distinct. Inspect actual1440/390/320px screens; screenshots do not establish
+live provider qualification. Public storefront and email creative keep their brands.

@@ -837,6 +837,8 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
     def _delivery_to_out(self, delivery: Delivery) -> DeliveryOut:
         return DeliveryOut(
             id=delivery.id,
+            version=delivery.version,
+            order_version=delivery.order.version,
             order_public_code=delivery.order.public_code,
             order_status=delivery.order.status,
             order_payment_status=delivery.order.payment_status,
@@ -906,18 +908,25 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         stmt = stmt.order_by(Delivery.created_at.desc()).limit(min(max(limit, 1), 500))
         return [self._delivery_to_out(delivery) for delivery in self.session.scalars(stmt).all()]
 
-    def dispatch_delivery(self, order_id: str) -> DeliveryOut:
+    def dispatch_delivery(self, order_id: str, *, expected_version=None, expected_order_version=None) -> DeliveryOut:
+        self._lock_order_money(order_id)
         stmt = (
             select(Order)
             .where(Order.id == order_id).with_for_update()
             .options(selectinload(Order.customer), selectinload(Order.delivery).selectinload(Delivery.quote))
+            .execution_options(populate_existing=True)
         )
         order = self.session.scalar(stmt)
         if not order:
             raise NotFoundError("Order not found")
+        if order.delivery:
+            self._check_delivery_version(order.delivery, expected_version, expected_order_version)
         if self.session.scalar(select(FinancialOperation.id).where(FinancialOperation.order_id == order.id,
                 FinancialOperation.kind == "refund", FinancialOperation.state != "withdrawn").limit(1)):
             raise InvalidTransitionError("Refund intent prevents delivery dispatch")
+        if self.session.scalar(select(PaymentReconciliation.id).where(
+            PaymentReconciliation.order_id == order_id, PaymentReconciliation.status == "open").limit(1)):
+            raise InvalidTransitionError("Payment reconciliation is required before delivery dispatch")
         if order.fulfillment_type != FulfillmentType.DELIVERY.value or not order.delivery:
             raise ValidationError("Order is not a delivery order")
         if order.payment_status != PaymentStatus.PAID.value:
@@ -960,6 +969,11 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             delivery.destination_longitude,
             delivery.destination_instructions,
         )
+        self._persist_delivery_action(claim, delivery)
+        if self.session.scalar(select(PaymentReconciliation.id).where(
+            PaymentReconciliation.order_id == order_id, PaymentReconciliation.status == "open").limit(1)) or self.session.scalar(select(FinancialOperation.id).where(
+                FinancialOperation.order_id == order_id, FinancialOperation.kind == "refund", FinancialOperation.state != "withdrawn").limit(1)):
+            raise InvalidTransitionError("Financial review prevents delivery dispatch")
         provider_idempotency_key = f"delivery:{order.id}"
         try:
             result = self.provider_executor.call(
@@ -1093,6 +1107,8 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         event_id: str | None = None,
         occurred_at: datetime | None = None,
         raw_event_json: str | None = None,
+        expected_version=None,
+        expected_order_version=None,
     ) -> DeliveryOut:
         delivery = self.session.scalar(
             select(Delivery)
@@ -1105,6 +1121,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             raise ValidationError("Delivery provider does not match provider reference")
         self._lock_order_money(delivery.order_id)
         self.session.refresh(delivery)
+        self._check_delivery_version(delivery, expected_version, expected_order_version)
 
         receipt = None
         if event_id:
@@ -1179,12 +1196,33 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
         self._commit_events(events)
         return self.delivery_out(delivery.id)
 
-    def cancel_delivery(self, order_id: str) -> DeliveryOut:
+    def _persist_delivery_action(self, claim, delivery):
+        # Commit the existing idempotency record BEFORE crossing a courier boundary.
+        # A timeout/crash leaves an explicit hold, never permission to submit again.
+        # No provider recovery API is assumed. Reacquire the order lock and reject
+        # concurrent source changes before making the external call.
+        delivery_version, order_version = delivery.version, delivery.order.version
+        self._commit()
+        self._lock_order_money(delivery.order_id)
+        self.session.refresh(delivery)
+        self.session.refresh(delivery.order)
+        self._check_delivery_version(delivery, delivery_version, order_version)
+
+    @staticmethod
+    def _check_delivery_version(delivery, expected_version=None, expected_order_version=None):
+        if ((expected_version is not None and delivery.version != expected_version)
+                or (expected_order_version is not None and delivery.order.version != expected_order_version)):
+            raise InvalidTransitionError("Delivery or order changed; refresh before acting")
+
+    def cancel_delivery(self, order_id: str, *, expected_version=None, expected_order_version=None) -> DeliveryOut:
+        self._lock_order_money(order_id)
         delivery = self.session.scalar(
             select(Delivery).where(Delivery.order_id == order_id).options(selectinload(Delivery.order))
+            .with_for_update().execution_options(populate_existing=True)
         )
         if not delivery:
             raise NotFoundError("Delivery not found for order")
+        self._check_delivery_version(delivery, expected_version, expected_order_version)
         current = DeliveryStatus(delivery.status)
         if current == DeliveryStatus.DELIVERED:
             raise InvalidTransitionError("Delivered fulfillment cannot be cancelled")
@@ -1192,11 +1230,20 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             raise InvalidTransitionError("Delivery cannot be cancelled after courier pickup")
         if current == DeliveryStatus.CANCELLED:
             return self.delivery_out(delivery.id)
+        if not delivery.provider_delivery_reference and self.session.scalar(select(IdempotencyRecord.id).where(
+            IdempotencyRecord.scope == f"delivery.dispatch:{order_id}", IdempotencyRecord.status != "completed").limit(1)):
+            raise InvalidTransitionError("Courier dispatch is unconfirmed; review before cancellation")
+        claim = acquire_idempotency(self.session, scope=f"delivery.cancel:{order_id}", key="cancel",
+            fingerprint=request_fingerprint({"order_id": order_id, "delivery_id": delivery.id}))
+        if not claim.acquired:
+            self.session.refresh(delivery)
+            return self.delivery_out(delivery.id)
         provider = self.delivery_providers.get(delivery.provider)
         if not provider:
             raise ValidationError(f"Unsupported delivery provider: {delivery.provider}")
         target = DeliveryStatus.CANCELLED.value
         if delivery.provider_delivery_reference:
+            self._persist_delivery_action(claim, delivery)
             try:
                 target = self.provider_executor.call(
                     provider.name,
@@ -1215,6 +1262,7 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
             provider_status=target,
             dedupe_key=f"cancel:{delivery.id}:{delivery.provider_delivery_reference or 'undispatched'}",
         )
+        complete_idempotency(self.session, claim.record_id, entity_id=delivery.id)
         if changed:
             order = delivery.order or self.session.get(Order, delivery.order_id)
             self._commit_event(

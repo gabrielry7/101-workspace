@@ -106,6 +106,7 @@ class FinancialWorkflowMixin:
                     "id": r.id,
                     "reason": r.reason,
                     "status": r.status,
+                    "created_at": r.created_at,
                     "resolvable": not self._refund_evidence_review(r)
                     or (available and getattr(provider, "refund_enabled", False) is True),
                 }

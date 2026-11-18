@@ -12,7 +12,7 @@ from typing import Iterator
 from uuid import uuid4
 from urllib.parse import urlsplit
 
-from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request
+from fastapi import Body, Depends, FastAPI, Header, HTTPException, Query, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, Response
@@ -56,6 +56,7 @@ from .payments import (
 )
 from .reliability import ProviderExecutor
 from .schemas import (
+    DeliveryActionIn,
     FinancialActionRequest,
     FinancialResolutionRequest,
     ErrorResponse,
@@ -863,16 +864,16 @@ def create_app(
         response_model=DeliveryOut,
         dependencies=[Depends(require_operator)],
     )
-    def operator_dispatch_delivery(order_id: str, service: RestaurantCommerceService = Depends(get_service)):
-        return service.dispatch_delivery(order_id)
+    def operator_dispatch_delivery(order_id: str, body: DeliveryActionIn | None = Body(default=None), service: RestaurantCommerceService = Depends(get_service)):
+        return service.dispatch_delivery(order_id, **(body.model_dump() if body else {}))
 
     @app.post(
         "/api/operator/orders/{order_id}/delivery/cancel",
         response_model=DeliveryOut,
         dependencies=[Depends(require_operator)],
     )
-    def operator_cancel_delivery(order_id: str, service: RestaurantCommerceService = Depends(get_service)):
-        return service.cancel_delivery(order_id)
+    def operator_cancel_delivery(order_id: str, body: DeliveryActionIn | None = Body(default=None), service: RestaurantCommerceService = Depends(get_service)):
+        return service.cancel_delivery(order_id, **(body.model_dump() if body else {}))
 
     @app.patch(
         "/api/operator/deliveries/{delivery_id}/status",
@@ -894,7 +895,8 @@ def create_app(
             )
         if not delivery.provider_delivery_reference:
             raise HTTPException(status_code=409, detail="Delivery has not been dispatched")
-        return service.apply_delivery_status(delivery.provider_delivery_reference, patch.status)
+        return service.apply_delivery_status(delivery.provider_delivery_reference, patch.status,
+            expected_version=patch.expected_version, expected_order_version=patch.expected_order_version)
 
     @app.get(
         "/api/operator/restaurants/{business_id}/reservations",

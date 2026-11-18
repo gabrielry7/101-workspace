@@ -1,4 +1,5 @@
-import { MonthlyReports } from "./monthly-reports";
+import { ReportsWorkspace } from "./daily-finance";
+import { OperationSettingsView } from "./operation-settings";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Dialog } from "@base-ui/react/dialog";
@@ -76,6 +77,7 @@ const screenFromPath = () => {
     "onboarding",
     "social",
     "login",
+    "settings",
   ].includes(path)
     ? path
     : "home";
@@ -90,6 +92,7 @@ const screenNames: Record<string, string> = {
   analytics: "Analítica web",
   identity: "Identidad",
   onboarding: "Negocios",
+  settings: "Ajustes",
 };
 
 type Business = {
@@ -474,6 +477,14 @@ function App() {
                       reservation_status: null,
                       reservation_offset: null,
                       payment_status: null,
+                      delivery: null,
+                      delivery_status: null,
+                      delivery_offset: null,
+                      review_order: null,
+                      finance_q: null,
+                      finance_offset: null,
+                      currency: null,
+                      day: null,
                     });
                   }}
                 >
@@ -616,6 +627,15 @@ function App() {
                 <Plug />
                 Conexiones
                 <ExternalLink className="nav-external" />
+              </a>
+              <a
+                href={`/workspace/settings?business=${encodeURIComponent(bid)}`}
+                onClick={(e) => goScreen(e, "settings")}
+                className={screen === "settings" ? "active" : ""}
+                aria-current={screen === "settings" ? "page" : undefined}
+              >
+                <SlidersHorizontal />
+                Ajustes
               </a>
             </>
           )}
@@ -769,6 +789,8 @@ function App() {
               <ChartNoAxesColumnIncreasing size={16} />
             ) : screen === "onboarding" ? (
               <LayersIcon size={16} />
+            ) : screen === "settings" ? (
+              <SlidersHorizontal size={16} />
             ) : screen === "identity" ? (
               <Palette size={16} />
             ) : (
@@ -825,7 +847,22 @@ function App() {
             demo={!!policy?.demo_mode}
           />
         ) : screen === "reports" ? (
-          <MonthlyReports key={bid} business={bid} csrf={identity.csrf} />
+          <ReportsWorkspace
+            key={bid}
+            business={bid}
+            csrf={identity.csrf}
+            params={params}
+            navigate={navigate}
+          />
+        ) : screen === "settings" ? (
+          <OperationSettingsView
+            key={bid}
+            business={bid}
+            csrf={identity.csrf}
+            permissions={business?.permissions || []}
+            params={params}
+            navigate={navigate}
+          />
         ) : screen === "home" ? (
           <HomeView business={bid} params={params} navigate={navigate} />
         ) : screen === "analytics" ? (

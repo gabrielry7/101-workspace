@@ -353,13 +353,17 @@ class OperationsMixin:
                 if not changed:
                     raise ValidationError("No quedan suficientes unidades. Actualiza el pedido.")
 
-    def daily_finance(self, business_id, day):
+    def daily_finance(self, business_id, day, currency=None):
         profile = self._ops_profile(business_id)
         zone = ZoneInfo(profile.timezone)
         if day.year < 1900 or day.year > 9998:
             raise ValidationError("Fecha fuera del rango permitido")
         begin = datetime.combine(day, time(), zone).astimezone(UTC)
         end = datetime.combine(day + timedelta(days=1), time(), zone).astimezone(UTC)
+        cohort = [Order.business_id == business_id, Order.created_at >= begin, Order.created_at < end]
+        currencies = list(self.session.scalars(select(Order.currency).where(*cohort).distinct().order_by(Order.currency)))
+        if currency:
+            cohort.append(Order.currency == currency)
         count, gross, refunds, unconfirmed = self.session.execute(
             select(
                 func.count(Order.id),
@@ -388,7 +392,7 @@ class OperationsMixin:
                     0,
                 ),
             ).where(
-                Order.business_id == business_id, Order.created_at >= begin, Order.created_at < end
+                *cohort
             )
         ).one()
         holds = self.session.scalar(
@@ -407,15 +411,15 @@ class OperationsMixin:
             .join(Payment, Payment.id == PaymentRefund.payment_id)
             .join(Order, Order.id == Payment.order_id)
             .where(
-                Order.business_id == business_id,
-                Order.created_at >= begin,
-                Order.created_at < end,
+                *cohort,
                 Payment.status == "paid",
             )
         )
         return {
             "date": day.isoformat(),
             "timezone": profile.timezone,
+            "currencies": currencies,
+            "currency": currency or (currencies[0] if len(currencies) == 1 else profile.currency if not currencies else None),
             "basis": "order_creation_day_current_local_payment_state",
             "orders": count,
             "gross_minor": gross,
@@ -469,7 +473,8 @@ def register_operations(app, get_service, require_operator):
     def daily_finance(
         business_id: str,
         day: date = Query(),
+        currency: str | None = Query(None, pattern=r"^[A-Z]{3}$"),
         principal=Depends(require_operator),
         service=Depends(get_service),
     ):
-        return service.daily_finance(business_id, day)
+        return service.daily_finance(business_id, day, currency=currency)

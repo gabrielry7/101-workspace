@@ -87,6 +87,8 @@ class DeliveryTrackingOut(StrictModel):
 
 class DeliveryOut(StrictModel):
     id: str
+    version: int
+    order_version: int
     order_public_code: str
     order_status: str
     order_payment_status: str
@@ -116,6 +118,13 @@ class DeliveryOut(StrictModel):
 
 class DeliveryStatusPatch(StrictModel):
     status: str = Field(min_length=2, max_length=32, pattern=r"^[a-z_]+$")
+    expected_version: int | None = Field(default=None, ge=1)
+    expected_order_version: int | None = Field(default=None, ge=1)
+
+
+class DeliveryActionIn(StrictModel):
+    expected_version: int | None = Field(default=None, ge=1)
+    expected_order_version: int | None = Field(default=None, ge=1)
 
 
 class DeliveryWebhookIn(StrictModel):

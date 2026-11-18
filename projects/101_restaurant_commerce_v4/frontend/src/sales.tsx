@@ -29,6 +29,8 @@ import "./sales.css";
 import { periodQuery } from "./workspace-views";
 import { ReservationWorkspace } from "./reservations";
 import { ContactHandoff } from "./contact-handoff";
+import { DeliveryWorkspace } from "./deliveries";
+import { FinancialReviewWorkspace } from "./financial-review";
 
 type Row = {
   id: string;
@@ -161,14 +163,19 @@ const timeFormatter = new Intl.DateTimeFormat("es-CO", {
 });
 
 export function SalesWorkspace(props: Props) {
-  const view =
-    props.params.get("view") === "reservations" ? "reservations" : "orders";
+  const view = ["reservations", "deliveries", "reviews"].includes(
+    props.params.get("view") || "",
+  )
+    ? props.params.get("view")!
+    : "orders";
   return (
     <>
       <div className="tabs sales-views" aria-label="Secciones de ventas">
         {[
           ["orders", "Pedidos"],
           ["reservations", "Reservas"],
+          ["deliveries", "Entregas"],
+          ["reviews", "Revisión de pagos"],
         ].map(([key, title]) => (
           <button
             key={key}
@@ -182,6 +189,9 @@ export function SalesWorkspace(props: Props) {
                   reservation: null,
                   offset: null,
                   reservation_offset: null,
+                  delivery: null,
+                  delivery_offset: null,
+                  review_order: null,
                   date_from: null,
                   date_to: null,
                 },
@@ -195,6 +205,10 @@ export function SalesWorkspace(props: Props) {
       </div>
       {view === "orders" ? (
         <OrdersWorkspace {...props} />
+      ) : view === "deliveries" ? (
+        <DeliveryWorkspace {...props} />
+      ) : view === "reviews" ? (
+        <FinancialReviewWorkspace {...props} />
       ) : (
         <ReservationWorkspace {...props} />
       )}
@@ -592,6 +606,7 @@ function OrdersWorkspace({
           csrf={csrf}
           canOperate={permissions.includes("operations.write")}
           canContact={permissions.includes("contact.read")}
+          canFinance={permissions.includes("finance.read")}
           close={close}
           changed={list.retry}
         />
@@ -606,6 +621,7 @@ function SaleDetail({
   csrf,
   canOperate,
   canContact,
+  canFinance,
   close,
   changed,
 }: {
@@ -614,6 +630,7 @@ function SaleDetail({
   csrf: string;
   canOperate: boolean;
   canContact: boolean;
+  canFinance: boolean;
   close: () => void;
   changed: () => void;
 }) {
@@ -741,6 +758,14 @@ function SaleDetail({
             <Status value={d.status} />
             <Status value={d.payment_status} payment />
           </div>
+          {canFinance && (
+            <a
+              className="button secondary"
+              href={`/workspace/sales?business=${encodeURIComponent(business)}&view=reviews&review_order=${encodeURIComponent(d.id)}`}
+            >
+              Ver historial financiero
+            </a>
+          )}
           <div className="sale-customer">
             <strong>{d.customer_name || "Cliente sin nombre"}</strong>
             <span>{d.customer_phone || "Sin teléfono registrado"}</span>

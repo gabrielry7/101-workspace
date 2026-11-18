@@ -21,8 +21,8 @@ view. Legacy navigation links carry the selected business while those tools rema
 in service. Unmigrated pages are not redirected to incomplete replacements.
 
 Native Sales reservations/order-filter/contact changes are described in
-`SALES_WORKSPACE.md`; future finance, delivery, settings, growth and channel moves
-still need their own acceptance evidence before legacy retirement.
+`SALES_WORKSPACE.md`; native finance/delivery/settings and daily reports are described there too.
+Growth/channel moves remain open; legacy retirement retains its separate gate.
 
 The shared identity lives in `../../packages/101-workspace-identity/`:
 `IDENTITY.md`, `tokens.css`, and `decisions.json`. The frontend imports the actual
