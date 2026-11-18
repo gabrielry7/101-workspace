@@ -3,6 +3,7 @@ import { z } from "zod";
 // The actual shared validators are pinned build inputs, not a second bones implementation.
 import { boneProfile } from "../vendor/101-bones/contract.js";
 import { validateBoneAnatomy } from "../vendor/101-bones/types.js";
+import sharedTypography from "../vendor/101-bones/typography.json";
 
 const color = z.string().regex(/^#[a-fA-F0-9]{6}$/);
 const length = (max: number) => z.number().finite().min(0).max(max);
@@ -39,6 +40,10 @@ const fonts = [
   "IBM Plex Mono",
   "Geist",
 ] as const;
+// Keep the shared neutral family as the source, gated by available email fonts.
+const neutralFamily = z
+  .enum(fonts)
+  .parse(sharedTypography.sans.split(",")[0].trim());
 const typeStyle = z
   .object({
     fontFamily: z.enum(fonts).optional(),
@@ -145,7 +150,11 @@ export function effectiveChassis(p: Props): EmailChassis {
     typography: Object.fromEntries(
       typeRoles.map((role) => [
         role,
-        { fontFamily: "Inter", textTransform: "none", ...c.typography[role] },
+        {
+          fontFamily: neutralFamily,
+          textTransform: "none",
+          ...c.typography[role],
+        },
       ]),
     ),
   } as EmailChassis;
