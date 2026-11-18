@@ -28,6 +28,10 @@ def test_campaign_templates_in_shared_workspace_desktop_phone(site, tmp_path):
         "Prueba sintética. No representa una oferta de Honorato."
     )
     page.get_by_label("Diseño del correo", exact=True).select_option("matte")
+    form_measure = page.get_by_label("Diseño del correo", exact=True).evaluate(
+        "e=>({height:e.getBoundingClientRect().height,font:getComputedStyle(e).fontFamily})"
+    )
+    assert form_measure["height"] >= 44 and "Inter" in form_measure["font"]
     page.locator(".audience-picker label").filter(has_text="persona0@example.test").get_by_role(
         "checkbox"
     ).check()
@@ -104,6 +108,7 @@ def test_campaign_templates_in_shared_workspace_desktop_phone(site, tmp_path):
         json.dumps(
             {
                 "font_controls": measure,
+                "form_controls": form_measure,
                 "all_six_designs": True,
                 "readonly_comparison": True,
                 "fresh_approval": True,

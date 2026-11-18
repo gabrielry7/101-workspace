@@ -568,7 +568,9 @@
   font-weight: 600;
 }
 .form-fields input:not([type="checkbox"]),
-.form-fields textarea {
+.form-fields textarea,
+.campaign-editor .form-fields select,
+.email-design-controls select {
   width: 100%;
   font: inherit;
   font-weight: 400;
@@ -1096,7 +1098,7 @@
 /* Campaign-only design controls reuse the shared form/type/action bones. */
 .email-design-controls {
   padding: 0 24px 20px;
-  border-bottom: 1px solid var(--wm-border);
+  border-bottom: 1px solid var(--wm-line);
   display: grid;
   gap: 12px;
 }
