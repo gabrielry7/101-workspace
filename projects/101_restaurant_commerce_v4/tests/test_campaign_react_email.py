@@ -257,3 +257,12 @@ def test_missing_font_asset_blocks_current_bundle_instead_of_silent_substitution
     with pytest.raises(HTTPException) as error:
         re.runtime_manifest()
     assert error.value.status_code == 503
+
+
+def test_packaged_fonts_are_served_locally_with_bounded_names(env):
+    response = env.client.get("/assets/email-fonts/instrument-serif-latin-400-normal.woff2")
+    assert response.status_code == 200
+    assert response.content.startswith(b"wOF2")
+    assert response.headers["content-type"] == "font/woff2"
+    assert env.client.get("/assets/email-fonts/not-a-font.woff2").status_code == 404
+    assert env.client.get("/assets/email-fonts/inter-LICENSE.txt").status_code == 404
