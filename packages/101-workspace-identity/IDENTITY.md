@@ -445,3 +445,14 @@ Spacing and source/error labels were refined after inspecting actual desktop/pho
 renders, then rendered and inspected again. Current sources, simulation, expiration
 and missing values remain visibly distinct. This does not alter merchant creative
 identity or authorize live connections/sends.
+
+Customer checkout editor (2026-11-19): `/workspace/website` reuses the existing
+Inter/white working panels,44px actions and compact two-column layout from
+references02/03. The editor changes the merchant checkout's separately owned
+chassis; it does not impose staff tokens on public merchant output. At390px the
+Open site action keeps a visible label and a preview jump avoids long backtracking.
+The embedded preview uses a static header so it cannot cover the checkout title.
+Desktop/phone captures were inspected, refined and inspected again. Reused shared
+bones validators, typed anatomy and geometry/contrast measurements are owned by
+`@101/checkout-chassis`; original commerce handlers retain prices and actions.
+Neutral/fictional warm coats are examples, not selected merchant identities.

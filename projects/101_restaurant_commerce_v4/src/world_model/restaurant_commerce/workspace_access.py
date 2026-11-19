@@ -42,6 +42,7 @@ WORKSPACE_PAGES = frozenset(
         "/workspace/onboarding",
         "/workspace/settings",
         "/workspace/connections",
+        "/workspace/website",
     }
 )
 RETURN_KEYS = frozenset(

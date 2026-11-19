@@ -1,3 +1,4 @@
+import { CheckoutDesignView } from "./checkout-design";
 import { restoreLegacySection } from "./legacy-section";
 import { SignupContent, SignupTools } from "./signup-tools";
 import { Catalog, CustomerSections } from "./growth-workspace";
@@ -83,6 +84,7 @@ const screenFromPath = () => {
     "login",
     "settings",
     "connections",
+    "website",
   ].includes(path)
     ? path
     : "home";
@@ -99,6 +101,7 @@ const screenNames: Record<string, string> = {
   onboarding: "Negocios",
   settings: "Ajustes",
   connections: "Conexiones",
+  website: "Sitio web",
 };
 
 type Business = {
@@ -607,15 +610,8 @@ function App() {
                 <ChevronDown size={14} />
               </summary>
               <div>
-                <a
-                  href={
-                    business?.slug
-                      ? `/r/${encodeURIComponent(business.slug)}`
-                      : `/?business_id=${encodeURIComponent(bid)}`
-                  }
-                >
+                <a href={`/workspace/website?business=${encodeURIComponent(bid)}`} onClick={(e) => goScreen(e, "website")} className={screen === "website" ? "active" : ""}>
                   Sitio web
-                  <ExternalLink size={13} />
                 </a>
                 <a
                   href={`/workspace/connections?business=${encodeURIComponent(bid)}&provider=google`}
@@ -907,6 +903,8 @@ function App() {
             permissions={business?.permissions || []}
             demo={!!policy?.demo_mode}
           />
+        ) : screen === "website" ? (
+          <CheckoutDesignView key={bid} business={bid} csrf={identity.csrf} permissions={business?.permissions || []} />
         ) : screen === "settings" ? (
           <OperationSettingsView
             key={bid}

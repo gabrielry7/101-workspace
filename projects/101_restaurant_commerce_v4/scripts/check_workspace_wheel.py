@@ -66,6 +66,18 @@ with TestClient(app) as c:
         ).status_code
         == 200
     )
+    from world_model.restaurant_commerce.checkout_design import CONTRACT
+    design_url = "/api/operator/restaurants/" + bid + "/checkout-design"
+    assert c.get("/workspace/website").status_code == 200
+    assert c.get(design_url).json()["revision"] == 0
+    csrf = c.get("/api/staff/me").json()["csrf"]
+    changed = c.put(design_url, headers={"X-101-CSRF": csrf}, json={"expected_revision":0,"profile":CONTRACT["presets"]["neutral"]})
+    assert changed.status_code == 200, changed.text
+    assert c.get("/api/restaurants/" + bid + "/checkout-design").json()["revision"] == 1
+    preview = c.get("/?business_id=" + bid + "&checkout_preview=1")
+    assert preview.status_code == 200 and preview.headers["X-Frame-Options"] == "SAMEORIGIN"
+    for asset in ["checkout-chassis.js","checkout-chassis.css","checkout-contract.js","checkout-anatomy.js","checkout-bones.js","checkout-types.js"]:
+        assert c.get("/assets/"+asset).status_code == 200
     redirects = {}
     for old in sorted(LEGACY_PAGES):
         r = c.get(old + "?business_id=" + bid, follow_redirects=False)
@@ -80,6 +92,7 @@ with TestClient(app) as c:
         json.dumps(
             {
                 "app_imported_from_wheel": True,
+                "checkout_design_round_trip": True,
                 "retired_entries": redirects,
                 "missing_business": 400,
                 "public_merchant": 200,

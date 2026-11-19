@@ -412,6 +412,9 @@ def create_app(
                 request.state, "campaign_preview_csp",
                 "default-src 'none'; frame-ancestors 'self'; sandbox",
             )
+        if getattr(request.state, "checkout_preview_authorized", False) and response.status_code == 200:
+            response.headers["X-Frame-Options"] = "SAMEORIGIN"
+            response.headers["Content-Security-Policy"] = response.headers["Content-Security-Policy"].replace("frame-ancestors 'none'", "frame-ancestors 'self'")
         if production:
             response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
         if (
@@ -571,6 +574,8 @@ def create_app(
         )
 
     from .customer_workspace import register as register_workspace
+    from .checkout_design import register as register_checkout_design
+    register_checkout_design(app, get_session, scoped_staff)
     register_workspace(app, get_session, scoped_staff)
     from .monthly_reports import register as register_monthly
     register_monthly(app, get_session, scoped_staff)
@@ -607,7 +612,7 @@ def create_app(
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "connections.js", "connections-consent.js", "connections-callback.js", "connections.css", "signup.js", "signup-owner.js", "signup.css", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js"}:
+        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "connections.js", "connections-consent.js", "connections-callback.js", "connections.css", "signup.js", "signup-owner.js", "signup.css", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js", "checkout-chassis.js", "checkout-bones.js", "checkout-types.js", "checkout-anatomy.js", "checkout-contract.js", "checkout-chassis.css"}:
             raise HTTPException(status_code=404, detail="Asset not found")
         return FileResponse(WEB_DIR / filename, media_type="image/png" if filename.endswith(".png") else "text/css" if filename.endswith(".css") else "text/javascript",
                             headers={"Cache-Control": "no-cache"})
@@ -620,7 +625,12 @@ def create_app(
             return FileResponse(WEB_DIR / "storefront-entry.html", status_code=400)
         if session.get(RestaurantCommerceProfile, ids[0]) is None:
             return FileResponse(WEB_DIR / "storefront-entry.html", status_code=404)
-        return FileResponse(WEB_DIR / "index.html")
+        if "checkout_preview" in request.query_params:
+            if request.query_params.getlist("checkout_preview") != ["1"]:
+                raise HTTPException(400, "Invalid preview")
+            scoped_staff(request, session, ids[0], "operations.read")
+            request.state.checkout_preview_authorized = True
+        return FileResponse(WEB_DIR / "index.html", headers={"Cache-Control":"no-store"})
 
     @app.get("/r/{slug}")
     def merchant_storefront(slug: str, request: Request, session: Session = Depends(get_session)):

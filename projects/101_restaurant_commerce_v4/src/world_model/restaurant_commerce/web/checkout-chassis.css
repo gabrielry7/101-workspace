@@ -1,0 +1,228 @@
+/* Font face only: never import the staff identity's global body/heading rules into merchant output. */
+@font-face{font-family:"Inter";font-style:normal;font-display:swap;font-weight:100 900;src:url("/workspace-assets/assets/inter-latin-wght-normal.woff2") format("woff2")}
+/* Customer checkout only. Existing menu/reservation/signup and merchant UI retain their owners. */
+[data-checkout-chassis] .shell {
+  max-width: var(--cx-maxWidth, 1200px);
+  gap: var(--cx-gap, 40px);
+  padding-inline: var(--cx-inset, 28px);
+  grid-template-columns: minmax(0, 1fr) var(--cx-formWidth, 370px);
+}
+[data-checkout-chassis][data-checkout-layout="stacked"] .shell {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: var(--cx-maxWidth, 900px);
+}
+[data-checkout-chassis] .checkout-section {
+  display: contents;
+}
+[data-checkout-chassis] :is(#cart, #itemDialog, #mobileCart) {
+  --ink: var(--cx-ink, #203c32);
+  --muted: var(--cx-muted, #5b6a61);
+  --card: var(--cx-surface, #fffef9);
+  --line: var(--cx-line, #d8ded4);
+  --accent: var(--cx-accent, #254d3d);
+  --soft: var(--cx-soft, #e9eee4);
+  color: var(--ink);
+  font-family: var(--cx-bodyFont, inherit);
+  font-size: var(--cx-bodySize, 16px);
+}
+[data-checkout-chassis] #cart {
+  background: var(--bones-panel-fill, var(--cx-surface, #fffef9));
+  border-radius: var(--bones-panel-radius, 18px);
+  border-width: var(--bones-panel-border-width, 1px);
+  border-color: var(--bones-panel-border-color, var(--line));
+  padding: var(--bones-panel-padding, 24px);
+  box-shadow: var(--bones-panel-shadow, none);
+}
+[data-checkout-chassis] #cart h2,
+[data-checkout-chassis] #itemDialog h2 {
+  font-family: var(--cx-headingFont, inherit);
+  font-size: var(--cx-headingSize, 25px);
+}
+[data-checkout-chassis] :is(#cart, #itemDialog) label {
+  font-size: var(--cx-labelSize, 14px);
+}
+[data-checkout-chassis] :is(#cart, #itemDialog) :is(input, select, textarea) {
+  font: inherit;
+  border-color: var(--cx-line, #a8b3a8);
+  background: var(--cx-canvas, #fffefb);
+  color: var(--ink);
+}
+[data-checkout-chassis]
+  :is(#cart, #itemDialog)
+  :is(button, input, select, textarea, summary):focus-visible {
+  outline-color: var(--cx-focus, #b77d24);
+}
+[data-checkout-chassis] :is(#cart, #itemDialog) button {
+  background: var(--accent);
+  color: var(--cx-onAccent, #fffef9);
+  border-radius: var(--bones-controls-radius, 10px);
+  font-size: var(--cx-actionSize, 14px);
+  min-height: 44px;
+}
+[data-checkout-chassis] :is(#cart, #itemDialog) button.secondary {
+  background: var(--soft);
+  color: var(--ink);
+  border-color: var(--line);
+}
+[data-checkout-chassis] #fulfillmentChooser button.off {
+  background: transparent;
+  color: var(--ink);
+}
+[data-checkout-chassis] #fulfillmentChooser {
+  background: var(--soft);
+}
+[data-checkout-chassis] #cartRows .cart-row {
+  background: var(--bones-card-fill, transparent);
+  border-radius: var(--bones-card-radius, 0);
+  padding: var(--bones-card-padding, 14px) 0;
+  border-color: var(--bones-card-border-color, var(--line));
+  border-bottom-width: var(--bones-card-border-width, 1px);
+  margin-top: var(--bones-card-margin-top, 0);
+  margin-bottom: var(--bones-card-margin-bottom, 0);
+  box-shadow: var(--bones-card-shadow, none);
+}
+[data-checkout-chassis] #itemDialog {
+  background: var(--bones-dialog-fill, var(--card));
+  padding: var(--bones-dialog-padding, 24px);
+  border-radius: var(--bones-dialog-radius, 18px);
+  border-width: var(--bones-dialog-border-width, 1px);
+  border-color: var(--bones-dialog-border-color, var(--line));
+  box-shadow: var(--bones-dialog-shadow, none);
+}
+[data-checkout-chassis] #checkoutRecovery .notice {
+  background: var(--bones-provider-fill, var(--soft));
+  color: var(--ink);
+  padding: var(--bones-provider-padding, 14px);
+  border-radius: var(--bones-provider-radius, 10px);
+  border-color: var(--bones-provider-border-color, var(--line));
+  border-width: var(--bones-provider-border-width, 1px);
+}
+[data-checkout-chassis] #cart .success {
+  background: var(--cx-success, #eaf3df);
+  color: var(--cx-onSuccess, var(--ink));
+}
+[data-checkout-chassis] #cart .error {
+  background: var(--cx-error, #fff0e8);
+  color: var(--cx-onError, #6b3221);
+}
+[data-checkout-chassis] #mobileCart {
+  background: var(--cx-accent, #254d3d);
+  color: var(--cx-onAccent, #ffffff);
+  border-radius: var(--bones-controls-radius, 12px);
+}
+/* Wrappers preserve the source coat's original geometry until independently edited. */
+[data-checkout-chassis][data-101-bone-edits*="stage."] #checkoutFulfillment {
+  display: block;
+  background: var(--bones-stage-fill, transparent);
+  padding: var(--bones-stage-padding, 0);
+  border-radius: var(--bones-stage-radius, 0);
+  border: var(--bones-stage-border-width, 0) solid
+    var(--bones-stage-border-color, var(--cx-line, #d8ded4));
+  margin-top: var(--bones-stage-margin-top, 0);
+  margin-bottom: var(--bones-stage-margin-bottom, 0);
+  box-shadow: var(--bones-stage-shadow, none);
+}
+[data-checkout-chassis][data-101-bone-edits*="content."] #checkoutContact {
+  display: block;
+  background: var(--bones-content-fill, transparent);
+  padding: var(--bones-content-padding, 0);
+  border-radius: var(--bones-content-radius, 0);
+  border: var(--bones-content-border-width, 0) solid
+    var(--bones-content-border-color, var(--cx-line, #d8ded4));
+  margin-top: var(--bones-content-margin-top, 0);
+  margin-bottom: var(--bones-content-margin-bottom, 0);
+  box-shadow: var(--bones-content-shadow, none);
+}
+[data-checkout-chassis] #checkoutExtras {
+  background: var(--bones-story-fill, transparent);
+  padding: var(--bones-story-padding, 0);
+  border-radius: var(--bones-story-radius, 0);
+  border: var(--bones-story-border-width, 0) solid
+    var(--bones-story-border-color, var(--cx-line, #d8ded4));
+  margin-top: var(--bones-story-margin-top, 0);
+  margin-bottom: var(--bones-story-margin-bottom, 0);
+  box-shadow: var(--bones-story-shadow, none);
+}
+@media (max-width: 900px) {
+  [data-checkout-chassis] .shell {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 680px;
+    gap: var(--cx-gap, 24px);
+  }
+}
+@media (max-width: 400px) {
+  [data-checkout-chassis] .shell {
+    padding-inline: var(--cx-inset, 16px);
+  }
+  [data-checkout-chassis] #cart {
+    padding: var(--bones-panel-padding, 18px);
+  }
+}
+[data-checkout-chassis] :is(#cart, #itemDialog) label.option {
+  font-size: var(--cx-labelSize, 13px);
+}
+[data-checkout-chassis] #cartRows button {
+  font-size: var(--cx-actionSize, 12px);
+  min-height: var(--cx-rowTarget, 32px);
+}
+[data-checkout-chassis] #cartRows .cart-row {
+  padding: var(--bones-card-padding, 14px) var(--bones-card-padding, 0px);
+}
+[data-checkout-chassis] #cart {
+  margin-top: var(--bones-panel-margin-top, 0);
+  margin-bottom: var(--bones-panel-margin-bottom, 0);
+}
+[data-checkout-chassis] #checkoutRecovery .notice {
+  margin-top: var(--bones-provider-margin-top, 14px);
+  margin-bottom: var(--bones-provider-margin-bottom, 14px);
+  box-shadow: var(--bones-provider-shadow, none);
+}
+[data-checkout-chassis] #itemDialog {
+  margin-top: var(--bones-dialog-margin-top, auto);
+  margin-bottom: var(--bones-dialog-margin-bottom, auto);
+}
+[data-checkout-chassis] :is(#cart, #itemDialog) button {
+  border-width: var(--bones-controls-border-width, 1px);
+  border-color: var(--bones-controls-border-color, transparent);
+  padding: var(--bones-controls-padding, 11px)
+    var(--bones-controls-padding, 19px);
+  margin-top: var(--bones-controls-margin-top, 0);
+  margin-bottom: var(--bones-controls-margin-bottom, 0);
+  box-shadow: var(--bones-controls-shadow, none);
+}
+[data-checkout-chassis][data-101-bone-edits*="controls.fill"]
+  :is(#cart, #itemDialog)
+  button {
+  background: var(--bones-controls-fill);
+}
+[data-checkout-chassis] :is(#cart, #itemDialog) button.secondary {
+  border-color: var(--bones-controls-border-color, var(--line));
+}
+[data-checkout-chassis] #cartRows button {
+  padding: var(--bones-controls-padding, 6px)
+    var(--bones-controls-padding, 10px);
+  margin-top: var(--bones-controls-margin-top, 6px);
+  margin-bottom: var(--bones-controls-margin-bottom, 0);
+  margin-right: 8px;
+}
+
+/* The editor's embedded document has no fixed merchant header to cover the selected checkout. */
+[data-checkout-preview="true"] .site-header {
+  position: static;
+}
+[data-checkout-chassis] #checkoutRecovery .notice {
+  padding: var(--bones-provider-padding, 14px)
+    var(--bones-provider-padding, 16px);
+}
+
+[data-checkout-chassis] #cart {
+  overflow-wrap: anywhere;
+}
+[data-checkout-chassis] #fulfillmentChooser button {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+[data-checkout-chassis] #cart .field-pair > *,
+[data-checkout-chassis] #cart .coords > * {
+  min-width: 0;
+}

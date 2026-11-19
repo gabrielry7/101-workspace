@@ -1,0 +1,25 @@
+{
+  "source_repository": "101-world-model",
+  "files": {
+    "checkout-bones.js": {
+      "owner": "packages/site-runtime/src/bones/contract.js",
+      "sha256": "e442e4fd9dafd00ffe9d46e3cb8991c7b299105a4c21a00be322239e3fc00936"
+    },
+    "checkout-types.js": {
+      "owner": "packages/site-runtime/src/bones/types.js",
+      "sha256": "817735cbbcbdd295021ed5c715c0a8d5f7e6549897564bc0913a54e39d7cdbb4"
+    },
+    "typography.json": {
+      "owner": "packages/site-runtime/src/bones/typography.json",
+      "sha256": "42e3b332176b3610beff4592fd1c31a2a23bcd8e68705fe543709712b9d49989"
+    },
+    "measure.js": {
+      "owner": "packages/component-preview/measure.js",
+      "sha256": "e0a48d8e5c97a216ea8170a6c9b5a79cd2dc6f2052825cc89998ad1949135796"
+    },
+    "content-bounds.js": {
+      "owner": "packages/component-preview/content-bounds.js",
+      "sha256": "19d02d68115f6255885c1c09303048b599c7981a34020bd1411003a3e704b233"
+    }
+  }
+}

@@ -6,13 +6,15 @@ const {node: h, replace, safeURL, bind, start, path} = window.CommerceUI;
 const itemDialog = document.getElementById("itemDialog");
 const qs=new URLSearchParams(location.search),businessId=qs.get('business_id');let store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
 document.getElementById('merchantOwnerEntry').href='/workspace/sales?business='+encodeURIComponent(businessId);
+const checkoutPreview=qs.get('checkout_preview')==='1';
 let noticeTimer, foodGeneration=0, deliveryGeneration=0, quoteUpdatedAt=0, quoteTimer;
 let pickupData=null;
 const draftKey='101.cart.v1:'+businessId;
 const statuses={awaiting_payment:'Esperando pago',placed:'Recibido',accepted:'Aceptado',preparing:'En preparación',ready:'Listo para recoger',completed:'Entregado',cancelled:'Cancelado'};
 const paymentStatuses={pending:'Pendiente',unpaid:'Sin pagar',paid:'Pagado',failed:'No aprobado',refunded:'Devuelto'};
-function saveDraft(){try{localStorage.setItem(draftKey,JSON.stringify({at:Date.now(),items:cartPayload()}));}catch(_){recoveryStorageAvailable=false;}}
+function saveDraft(){if(checkoutPreview)return;try{localStorage.setItem(draftKey,JSON.stringify({at:Date.now(),items:cartPayload()}));}catch(_){recoveryStorageAvailable=false;}}
 function restoreDraft(){
+  if(checkoutPreview)return;
   try{const draft=JSON.parse(localStorage.getItem(draftKey));if(!draft||Date.now()-draft.at>7200000||!Array.isArray(draft.items))return;
     const items=store.menus.flatMap(m=>m.categories.flatMap(c=>c.items));
     cart=draft.items.slice(0,100).map(row=>({item:items.find(i=>i.id===row.menu_item_id),quantity:row.quantity,selections:row.modifiers})).filter(row=>row.item&&Number.isInteger(row.quantity)&&row.quantity>0&&row.quantity<=50&&Array.isArray(row.selections));
@@ -36,6 +38,7 @@ let checkoutBusy=false, checkoutIntent=null, reservationBusy=false, reservationI
 const recoveryStorageKey='101.checkout.v1:'+businessId, recoveryTtlMs=24*60*60*1000;
 let recoveryRecord=null, recoveryState='idle', recoveredOrder=null, recoveryBusy=false, recoveryStorageAvailable=true;
 function readPendingCheckout(){
+  if(checkoutPreview)return;
   try {
     const raw=localStorage.getItem(recoveryStorageKey);
     if(!raw)return;
@@ -166,6 +169,7 @@ function notice(msg,type='success') {
   if(type!=='error')noticeTimer=setTimeout(()=>replace($('notice')),7000);
 }
 async function api(url,opts={}){
+  if(new URLSearchParams(location.search).get("checkout_preview")==="1" && opts.method && !(opts.method==="POST" && url.endsWith("/orders/quote")))throw new Error("Vista previa: abre el sitio para hacer un pedido.");
   const r=await window.CommerceUI.request(url,{...opts,headers:{'Content-Type':'application/json',...(opts.headers||{})}});
   const d=await r.json();if(!r.ok){const e=new Error(typeof d.detail==='string'?d.detail:'Revisa los datos e intenta de nuevo.');e.status=r.status;throw e;}return d;
 }
@@ -195,7 +199,7 @@ function renderMenu() {
       h('div',{},h('button',{disabled:!item.available,onClick:()=>openItem(item)},!item.available?'Agotado':item.modifier_groups.length?'Elegir':'Agregar'))));
   }
 }
-function trackAnalytics(name,data,id){try{window.analytics101?.event(name,data,id);}catch(_){/* Analytics never blocks commerce. */}}
+function trackAnalytics(name,data,id){if(checkoutPreview)return;try{window.analytics101?.event(name,data,id);}catch(_){/* Analytics never blocks commerce. */}}
 function openItem(item) {
   trackAnalytics('product_view',{product_id:String(item.id)},'view:'+intentKey());
   activeItem=item;
@@ -264,6 +268,7 @@ function showKnownOrder(order){
   recoveredOrder=order;recoveryState='found';checkoutIntent=null;clearTimeout(noticeTimer);replace($('notice'));renderRecovery();
 }
 async function checkout(){
+  if(checkoutPreview)return notice("Vista previa: abre el sitio para hacer un pedido.","error");
   if(navigator.onLine===false)return notice('Sin conexión. No se envió otro pedido. Reconecta y consulta el estado.','error');
   if(checkoutBusy||recoveryBusy||checkoutCoordinating)return;
   if(!navigator.locks)return notice('Este navegador no permite coordinar el pedido entre pestañas. Usa un navegador actualizado con conexión segura.','error');
@@ -323,6 +328,7 @@ function merchantDate(value){
 function showReservation(){$('menu').classList.add('hidden');$('reservationPanel').classList.remove('hidden');readReservationRecord();}function showOrder(){$('menu').classList.remove('hidden');$('reservationPanel').classList.add('hidden')}let reservationRecord=null;
 const reservationStorageKey='101.reservation.v1:'+businessId;
 function readReservationRecord(){
+  if(checkoutPreview)return;
   try{const raw=localStorage.getItem(reservationStorageKey);if(raw){const record=JSON.parse(raw);if(!/^[a-f0-9]{32}$/.test(record.key))throw new Error();reservationRecord=record;}}
   catch(_){reservationRecord={invalid:true};}
   $('reservationRecovery').textContent=reservationRecord?(reservationRecord.received?'Solicitud anterior #'+reservationRecord.public_code+'. El restaurante debe confirmar la reserva.':'Hay una solicitud anterior sin confirmar. Vuelve a ingresar los mismos datos para consultar con la misma referencia; no crearemos otra solicitud.') :'';
@@ -330,6 +336,7 @@ function readReservationRecord(){
 }
 function newReservation(){if(!reservationRecord?.received||!confirm('¿Iniciar una reserva diferente? La anterior no se cancela.'))return;try{localStorage.removeItem(reservationStorageKey);reservationRecord=null;reservationIntent=null;lockInputs('#reservationPanel input, #reservationPanel textarea',false);['rName','rPhone','rDate','rNotes'].forEach(id=>$(id).value='');$('rWhatsappOptIn').checked=false;readReservationRecord();}catch(_){notice('No se pudo guardar el cambio. No envíes otra reserva.','error');}}
 async function reserve(){
+  if(checkoutPreview)return notice("Vista previa: abre el sitio para reservar.","error");
   if(reservationCoordinating||reservationBusy)return;
   if(navigator.onLine===false||!navigator.locks)return notice('Necesitas conexión y un navegador compatible para reservar con seguridad.','error');
   reservationCoordinating=true;
