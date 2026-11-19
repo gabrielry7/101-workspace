@@ -115,7 +115,7 @@ def test_storefront_catalog_modifiers_cart_and_errors(site):
         g['name']=PAYLOAD
         for option in g['options']: option['name']=PAYLOAD
     overrides[url]=store
-    page.goto('https://commerce.test/')
+    page.goto('https://commerce.test/?business_id=demo-restaurant-bogota')
     page.locator('#menu article').first.wait_for()
     article=page.locator('#menu article').filter(has_text=PAYLOAD).first
     article.get_by_role('button').click()
@@ -208,7 +208,7 @@ def test_layout_and_keyboard_smoke(site,width):
 
 def test_customer_checkout_and_reservation_controls(site):
     page,client,_,requests,errors,external=site
-    page.goto('https://commerce.test/')
+    page.goto('https://commerce.test/?business_id=demo-restaurant-bogota')
     article=page.locator('#menu article').filter(has_text='Smash 101')
     article.get_by_role('button').click()
     page.locator('#modifierGroups input[type=radio]').first.check()
@@ -234,7 +234,7 @@ def test_checkout_redirect_policy_and_strict_csp(site):
     store=client.get(url).json(); store['payment_provider']='wompi'; overrides[url]=store
     overrides['/api/restaurants/demo-restaurant-bogota/orders']={
         'public_code':PAYLOAD,'payments':[{'checkout_url':'javascript:window.auditXss=true'}]}
-    page.goto('https://commerce.test/')
+    page.goto('https://commerce.test/?business_id=demo-restaurant-bogota')
     page.locator('#menu article').filter(has_text='Smash 101').get_by_role('button').click()
     page.locator('#modifierGroups input[type=radio]').first.check()
     page.get_by_role('button',name='Agregar al pedido',exact=True).click()
@@ -279,7 +279,7 @@ def test_reservation_checkbox_records_only_explicit_request(site):
     from sqlalchemy import select
     import json
     page,client,_,requests,errors,external=site
-    page.goto('https://commerce.test/')
+    page.goto('https://commerce.test/?business_id=demo-restaurant-bogota')
     page.get_by_role('button',name='Reservar',exact=True).click()
     assert not page.locator('#rWhatsappOptIn').is_checked()
     for opted,phone in [(False,'3007770001'),(True,'3007770002')]:

@@ -343,13 +343,6 @@ function OrdersWorkspace({
             <h2>
               Pedidos <span>{list.data ? count(list.data.count) : "…"}</span>
             </h2>
-            <a
-              className="legacy-link"
-              href={`/admin?business_id=${encodeURIComponent(business)}`}
-            >
-              Operaciones completas
-              <ExternalLink size={13} />
-            </a>
           </div>
           <div className="toolbar">
             <div className="tabs" aria-label="Filtrar pedidos">
@@ -960,13 +953,6 @@ function SaleDetail({
             <p className="detail-note">
               El total del pedido y el dinero recibido se muestran por separado.
             </p>
-            <a
-              className="legacy-link"
-              href={`/admin?business_id=${encodeURIComponent(business)}`}
-            >
-              Abrir operaciones completas
-              <ExternalLink size={14} />
-            </a>
           </section>
         </div>
       )}

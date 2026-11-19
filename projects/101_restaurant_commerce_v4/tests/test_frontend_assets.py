@@ -8,7 +8,7 @@ def test_scripts_are_served_with_strict_policy(tmp_path):
     with TestClient(app) as c:
         for route in ['/','/admin','/delivery','/growth']:
             r=c.get(route)
-            assert r.status_code==200
+            assert r.status_code==(400 if route=="/" else 200)
             policy=r.headers['content-security-policy']
             assert "script-src 'self';" in policy
             assert "script-src-attr 'none'" in policy

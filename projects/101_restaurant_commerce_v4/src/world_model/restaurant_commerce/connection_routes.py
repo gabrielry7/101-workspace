@@ -1,7 +1,7 @@
 """Owner UI and business-scoped connector routes."""
 from pathlib import Path
 from fastapi import Depends, HTTPException, Request
-from fastapi.responses import FileResponse
+from fastapi.responses import RedirectResponse, FileResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy.orm import Session
 from . import connections as c, staff
@@ -33,7 +33,7 @@ def register_connections(app, get_session, scoped_staff, runtime, staff_cookie, 
 
     @app.get('/connections', include_in_schema=False)
     def connections_page():
-        return FileResponse(web / 'connections.html', headers={'Cache-Control': 'no-store'})
+        return RedirectResponse("/workspace/connections?provider=google", status_code=307)
 
     @app.get('/connections/demo-authorize', include_in_schema=False)
     def simulated_consent(request: Request, session: Session = Depends(get_session)):
@@ -83,9 +83,9 @@ def register_connections(app, get_session, scoped_staff, runtime, staff_cookie, 
             session_hash = auth_session.token_hash
         def permission(session, business):
             scoped_staff(request, session, business, 'settings.write')
-        c.complete_authorization(app.state.session_factory, body.state, session_hash, runtime,
+        business = c.complete_authorization(app.state.session_factory, body.state, session_hash, runtime,
                                  permission, code=body.code, denied=bool(body.error))
-        return {'completed': True}
+        return {'completed': True, 'business_id': business}
 
     @app.post(root + '/google/select')
     def select(business_id: str, body: Selection, request: Request, session: Session = Depends(get_session)):

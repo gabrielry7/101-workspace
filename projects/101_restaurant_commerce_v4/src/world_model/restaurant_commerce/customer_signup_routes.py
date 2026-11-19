@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Literal
 from urllib.parse import quote
 from fastapi import Depends, HTTPException, Request, Response
-from fastapi.responses import FileResponse
+from fastapi.responses import RedirectResponse, FileResponse
 from pydantic import Field, field_validator
 from sqlalchemy import delete, inspect
 from sqlalchemy.orm import Session
@@ -90,7 +90,7 @@ def register(app, get_session, scoped_staff, options, demo_mode, production):
 
     @app.get('/customers/signup')
     def owner_page():
-        return FileResponse(web / 'signup-owner.html')
+        return RedirectResponse("/workspace/customers?view=signup", status_code=307)
 
     @app.get(root)
     def metadata(business_id: str, request: Request, session: Session = Depends(get_session)):

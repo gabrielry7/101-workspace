@@ -1,3 +1,5 @@
+import { restoreLegacySection } from "./legacy-section";
+import { SignupContent, SignupTools } from "./signup-tools";
 import { Catalog, CustomerSections } from "./growth-workspace";
 import { ChannelConnections } from "./channel-config";
 import { ReportsWorkspace } from "./daily-finance";
@@ -156,13 +158,6 @@ type Detail = Customer & {
     refunded_minor: number;
     net_minor: number;
   }[];
-};
-type Signup = {
-  business_name: string;
-  signup_url: string | null;
-  qr_url: string | null;
-  available: boolean;
-  mode: string;
 };
 function Login({ onLogin }: { onLogin: (id: Identity) => void }) {
   const [error, setError] = useState("");
@@ -347,7 +342,10 @@ function App() {
   const catalogue =
     screen === "customers" &&
     ["promotions", "rewards"].includes(params.get("view") || "");
-  const selected = loyalty || catalogue ? null : params.get("customer");
+  const selected =
+    loyalty || catalogue || params.get("view") === "signup"
+      ? null
+      : params.get("customer");
   const kind = params.get("kind") || "all";
   const offset = Math.max(0, Number(params.get("offset")) || 0);
   const query = params.get("q") || "";
@@ -366,16 +364,26 @@ function App() {
     setParams(p);
   }
   useEffect(() => {
-    if (screen !== "customers" || loyalty || catalogue || search === query)
+    if (
+      screen !== "customers" ||
+      loyalty ||
+      catalogue ||
+      params.get("view") === "signup" ||
+      search === query
+    )
       return;
     const timer = setTimeout(
       () => navigate({ q: search.trim(), offset: null, customer: null }),
       180,
     );
     return () => clearTimeout(timer);
-  }, [search, query, screen, loyalty, catalogue]);
+  }, [search, query, screen, loyalty, catalogue, params.get("view")]);
   const list = useResource<Listing>(
-    bid && screen === "customers" && !loyalty && !catalogue
+    bid &&
+      screen === "customers" &&
+      !loyalty &&
+      !catalogue &&
+      params.get("view") !== "signup"
       ? `${endpoint(bid)}/customers?q=${encodeURIComponent(query)}&kind=${encodeURIComponent(kind)}&offset=${offset}&limit=25&${periodQuery(params)}`
       : null,
   );
@@ -406,8 +414,6 @@ function App() {
     if (history.state?.customerWorkspace) history.back();
     else navigate({ customer: null });
   }
-  const legacy = (path: string) =>
-    `${path}?business_id=${encodeURIComponent(bid)}`;
   async function endSession(all = false) {
     try {
       await api(all ? "/api/staff/logout-all" : "/api/staff/logout", {
@@ -601,11 +607,21 @@ function App() {
                 <ChevronDown size={14} />
               </summary>
               <div>
-                <a href={`/r/${encodeURIComponent(business?.slug || bid)}`}>
+                <a
+                  href={
+                    business?.slug
+                      ? `/r/${encodeURIComponent(business.slug)}`
+                      : `/?business_id=${encodeURIComponent(bid)}`
+                  }
+                >
                   Sitio web
                   <ExternalLink size={13} />
                 </a>
-                <a href={legacy("/connections")}>Google</a>
+                <a
+                  href={`/workspace/connections?business=${encodeURIComponent(bid)}&provider=google`}
+                >
+                  Google
+                </a>
                 <a
                   href={`/workspace/social?business=${bid}`}
                   onClick={(e) => goScreen(e, "social")}
@@ -640,7 +656,7 @@ function App() {
                 </a>
               )}
               <a
-                href={`/workspace/connections?business=${encodeURIComponent(bid)}&provider=whatsapp`}
+                href={`/workspace/connections?business=${encodeURIComponent(bid)}&provider=google`}
                 className={screen === "connections" ? "active" : ""}
                 aria-current={screen === "connections" ? "page" : undefined}
                 onClick={(e) => goScreen(e, "connections")}
@@ -931,6 +947,8 @@ function App() {
             params={params}
             navigate={navigate}
           />
+        ) : screen === "customers" && params.get("view") === "signup" ? (
+          <SignupTools key={bid} business={bid} />
         ) : catalogue ? (
           <Catalog
             key={bid + params.get("view")}
@@ -1491,12 +1509,6 @@ function SignupDialog({
   open: boolean;
   setOpen: (v: boolean) => void;
 }) {
-  const result = useResource<Signup>(
-    open ? `${endpoint(business)}/signup` : null,
-  );
-  const [copied, setCopied] = useState(false);
-  useEffect(() => setCopied(false), [open, business]);
-  const d = result.data;
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Portal>
@@ -1514,93 +1526,13 @@ function SignupDialog({
             Un código QR para tu negocio. Compártelo, imprímelo o déjalo donde
             empieza una conversación.
           </Dialog.Description>
-          {result.error ? (
-            <Failure message={result.error} retry={result.retry} />
-          ) : !d ? (
-            <Loading />
-          ) : d.signup_url ? (
-            <>
-              <div className="qr-card">
-                <span className="qr-business">{d.business_name}</span>
-                <img
-                  src={`${endpoint(business)}/signup/qr.png`}
-                  width="208"
-                  height="208"
-                  alt={`Código QR de registro para ${d.business_name}`}
-                />
-                <strong>Escanea. Únete. Vuelve.</strong>
-                <span>Con tu teléfono o tu correo.</span>
-              </div>
-              {d.mode === "test" && (
-                <p className="test-note">
-                  Demostración local · registro y códigos de prueba.
-                </p>
-              )}
-              {!d.available && (
-                <p role="status" className="test-note">
-                  La verificación aún no está configurada. El enlace estará
-                  disponible cuando se active.
-                </p>
-              )}
-              <div className="qr-downloads">
-                <a
-                  className="button primary"
-                  download
-                  href={`${endpoint(business)}/signup/qr.png`}
-                >
-                  <ArrowDownToLine size={16} />
-                  Descargar PNG
-                </a>
-                <a
-                  className="button secondary"
-                  download
-                  href={`${endpoint(business)}/signup/qr.svg`}
-                >
-                  SVG
-                  <ArrowDownToLine size={15} />
-                </a>
-              </div>
-              <label className="link-label">
-                O comparte el enlace
-                <input
-                  readOnly
-                  value={d.signup_url}
-                  aria-label="Enlace de registro"
-                  onFocus={(e) => e.target.select()}
-                />
-              </label>
-              <button
-                className="button copy-button"
-                onClick={async () => {
-                  try {
-                    await navigator.clipboard.writeText(d.signup_url!);
-                    setCopied(true);
-                  } catch {
-                    setCopied(false);
-                  }
-                }}
-              >
-                {copied ? <Check size={16} /> : <Copy size={16} />}
-                <span aria-live="polite">
-                  {copied ? "Enlace copiado" : "Copiar enlace"}
-                </span>
-              </button>
-            </>
-          ) : (
-            <div className="state">
-              <QrCode />
-              <h3>Tu enlace aún no está listo</h3>
-              <p>Falta configurar la dirección pública del negocio.</p>
-              <a href="/customers/signup" className="button secondary">
-                Ver configuración
-              </a>
-            </div>
-          )}
+          {open && <SignupContent key={business} business={business} />}
         </Dialog.Popup>
       </Dialog.Portal>
     </Dialog.Root>
   );
 }
+restoreLegacySection();
 createRoot(document.getElementById("root")!).render(
   <CSPProvider disableStyleElements>
     {location.pathname === "/connections/instagram/callback" ? (

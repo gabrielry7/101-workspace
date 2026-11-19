@@ -318,9 +318,18 @@ def create_app(
                 stop.set()
                 thread.join(timeout=5)
 
-    app = FastAPI(lifespan=lifespan, title="101 Restaurant Commerce", version="0.18.1",
+    app = FastAPI(docs_url=None,
+                  redoc_url=None,
+                  openapi_url="/openapi.json" if environment in {"development", "internal"} else None,
+                  lifespan=lifespan, title="101 Restaurant Commerce", version="0.18.1",
                   responses={status: {"model": ErrorResponse} for status in
                              (400, 401, 403, 404, 409, 410, 413, 422, 429, 500, 503)})
+    if environment in {"development", "internal"}:
+        @app.get("/docs", include_in_schema=False)
+        @app.get("/redoc", include_in_schema=False)
+        def developer_schema():
+            # Same-origin schema; no CDN/inline script exception to the app CSP.
+            return RedirectResponse("/openapi.json", status_code=307)
     app.add_middleware(GZipMiddleware, minimum_size=1000, compresslevel=5)
     app.add_middleware(MaxBodySizeMiddleware, max_bytes=max_body_bytes)
     app.state.engine = engine
@@ -604,30 +613,41 @@ def create_app(
                             headers={"Cache-Control": "no-cache"})
 
     @app.get("/")
-    def storefront_page():
+    def storefront_page(request: Request, session: Session = Depends(get_session)):
+        from .models import RestaurantCommerceProfile
+        ids = request.query_params.getlist("business_id")
+        if len(ids) != 1 or not ids[0].strip() or len(ids[0]) > 200:
+            return FileResponse(WEB_DIR / "storefront-entry.html", status_code=400)
+        if session.get(RestaurantCommerceProfile, ids[0]) is None:
+            return FileResponse(WEB_DIR / "storefront-entry.html", status_code=404)
         return FileResponse(WEB_DIR / "index.html")
 
     @app.get("/r/{slug}")
-    def merchant_storefront(slug: str, session: Session = Depends(get_session)):
+    def merchant_storefront(slug: str, request: Request, session: Session = Depends(get_session)):
         from sqlalchemy import select
-        from urllib.parse import quote as url_quote
+        from urllib.parse import urlencode
         from .models import RestaurantCommerceProfile
         profile = session.scalar(select(RestaurantCommerceProfile).where(RestaurantCommerceProfile.slug == slug))
         if profile is None:
-            raise HTTPException(404, "Restaurante no encontrado")
-        return RedirectResponse("/?business_id=" + url_quote(profile.business_id, safe=""), status_code=307)
+            return FileResponse(WEB_DIR / "storefront-entry.html", status_code=404)
+        ids = request.query_params.getlist("business_id")
+        if len(ids) > 1 or (ids and ids[0] != profile.business_id):
+            return FileResponse(WEB_DIR / "storefront-entry.html", status_code=400)
+        values = [(key,value) for key,value in request.query_params.multi_items() if key != "business_id"]
+        values.append(("business_id", profile.business_id))
+        return RedirectResponse("/?" + urlencode(values), status_code=307)
 
     @app.get("/admin")
     def admin_page():
-        return FileResponse(WEB_DIR / "admin.html")
+        return RedirectResponse("/workspace/sales", status_code=307)
 
     @app.get("/growth")
     def growth_page():
-        return FileResponse(WEB_DIR / "growth.html")
+        return RedirectResponse("/workspace/customers", status_code=307)
 
     @app.get("/delivery")
     def delivery_page():
-        return FileResponse(WEB_DIR / "delivery.html")
+        return RedirectResponse("/workspace/sales?view=deliveries", status_code=307)
 
     if demo_mode:
         @app.get("/demo")

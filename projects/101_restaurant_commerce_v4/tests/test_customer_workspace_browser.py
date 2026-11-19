@@ -237,7 +237,7 @@ def test_business_switch_stale_response_and_legacy_context(site):
     page.wait_for_timeout(50)
     assert "Lucía Fernández" not in page.locator("tbody").inner_text()
     page.get_by_role("link", name="Ventas", exact=False).click()
-    playwright.expect(page.locator("#business")).to_have_value(OTHER)
+    playwright.expect(page.get_by_label("Negocio", exact=True)).to_have_value(OTHER)
     page.goto("/workspace/customers?business=not-authorized")
     playwright.expect(
         page.get_by_role("heading", name="Este negocio no está disponible")

@@ -188,3 +188,64 @@ Native workflow tests: test_growth_channels_workspace.py and
 React Email and shared workspace consumers remain release gates. Synthetic media,
 contacts and transports qualify software only; real sending stays disabled.
 No old staff entry page is retired by this slice. U10–U13 remain separate work.
+
+## U10–U13: complete native entry and controlled release
+
+Conexiones now contains Google/Instagram alongside the existing phone-channel
+controls. `account-connections.tsx` consumes existing OAuth/session/resource,
+cache and durable-job contracts. `ProviderTabs` is extracted from the same shared
+tab bone; no provider credentials or second connection store are introduced.
+Writes retain `settings.write` for account authorization and `growth.write` for
+phone-channel controls. Current data, missing/expired cache, limited history,
+partial imports, zero and unknown metrics remain separate. Cache timestamps now
+carry explicit UTC. Google reviews remain only the latest page (up to50).
+
+`signup-tools.tsx` extracts the working QR/link content from the existing invite
+dialog. Clientes → Registro adds the original source/stage event funnel; a QR
+scan/page-open is not a completed membership or a unique visitor. PNG/SVG retain
+source=qr while copied/opened links use source=website. Clipboard failure selects
+the same URL for copying. Public phone/email verification and membership authority
+remain unchanged. Public signup header links retain the actual merchant.
+
+`workspace_access.py` now redirects the eight exact old staff paths to native
+shared destinations, after the existing login/business selection. Supported
+records/filters remain; callbacks, API methods, public checkout/signup and token
+links are not included in that page policy. `legacy-section.ts` translates the
+four real old Admin anchors before React initializes, including sign-in returns.
+Unknown fragments do not create another feature or an external redirect.
+
+Bare/blank/unknown/duplicate business storefront requests now have an explicit safe
+400/404 page. `/r/{slug}` retains compatible payment-return query context and rejects
+conflicting business IDs. Existing provisioning hostname→business resolution is
+still authoritative; no new hostname or canonical identity map was created.
+Owner entry links point to the same authorized merchant Sales workspace.
+
+Production does not expose docs/redoc/OpenAPI. Development/internal docs aliases
+redirect to the same-origin OpenAPI JSON, avoiding the old Swagger CDN/inline-CSP
+conflict. Customer/provider APIs retain their normal authorization/signature rules.
+The eight old staff HTML route handlers no longer serve independent interfaces.
+Their unserved historical files remain for source rollback; no required public,
+callback or shared-browser asset was deleted on an unverified dependency assumption.
+
+Native migration proof lives in test_workspace_completion, its browser counterpart,
+and the updated existing Connections/signup/common-entry browser tests. Public
+checkout/recovery, saved PDF, loyalty/permissions, campaign tokens/hooks, current
+phone workflows, email/chassis and canonical provisioning/Social consumers remain
+release checks. Earlier DOM-specific milestone suites are historical references,
+not a claim that a full production security qualification was rerun here.
+
+Build the frontend, then qualify an actual application wheel outside this source:
+
+```sh
+npm --prefix frontend run build
+TMPDIR=/short/on-disk/path python scripts/check_workspace_wheel.py /path/to/app.whl --report /path/to/report.json
+```
+
+The wheel check uses dependencies from the selected Python environment, synthetic
+records and no provider HTTP. It does not replace the existing hash-locked installer,
+security audit, live provider validation or production deployment qualification.
+The shared consolidation report retains SQLite/PostgreSQL/browser/consumer evidence,
+backup/restore comparison and a read-only rollback rehearsal on a private data copy.
+No schema migration, reset, external send, permission expansion or new dependency
+is part of this UI consolidation. Real merchant acceptance and machine-off hosting
+remain separate from software-preservation proof.

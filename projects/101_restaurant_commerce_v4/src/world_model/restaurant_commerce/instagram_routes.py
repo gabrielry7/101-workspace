@@ -81,8 +81,8 @@ def register(app,get_session,scoped_staff,runtime,staff_cookie,production):
             staff.csrf_check(request,auth)
             session_hash=auth.token_hash
         def permission(session,business):scoped_staff(request,session,business,'settings.write')
-        c.complete_authorization(app.state.session_factory,body.state,session_hash,runtime,permission,code=body.code,denied=bool(body.error))
-        return {'completed':True}
+        business=c.complete_authorization(app.state.session_factory,body.state,session_hash,runtime,permission,code=body.code,denied=bool(body.error))
+        return {'completed':True,'business_id':business}
     @app.post(root+'/select',dependencies=[Depends(write)])
     def select(business_id:str,body:Selection,session=Depends(get_session)):
         configured();c.select_location(session,business_id,body.account_id,runtime)

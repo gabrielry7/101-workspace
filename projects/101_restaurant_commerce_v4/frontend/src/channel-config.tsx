@@ -1,3 +1,4 @@
+import { AccountConnection, ProviderTabs } from "./account-connections";
 import { useState } from "react";
 import { RefreshCw } from "lucide-react";
 import { api, endpoint, useResource, Failure, Loading } from "./ui";
@@ -126,6 +127,13 @@ export function blocker(value: string) {
   return labels[value] || value.replaceAll("_", " ");
 }
 export function ChannelConnections(props: Props) {
+  return ["whatsapp", "sms"].includes(props.params.get("provider") || "") ? (
+    <PhoneConnections {...props} />
+  ) : (
+    <AccountConnection {...props} />
+  );
+}
+export function PhoneConnections(props: Props) {
   const { business, csrf, permissions, demo, params, navigate } = props,
     provider = params.get("provider") === "sms" ? "sms" : "whatsapp",
     root = endpoint(business);
@@ -166,29 +174,7 @@ export function ChannelConnections(props: Props) {
           Descartar cambios y actualizar
         </button>
       </section>
-      <div className="tabs channel-tabs" aria-label="Canales de conexión">
-        {["whatsapp", "sms"].map((key) => (
-          <button
-            key={key}
-            aria-pressed={provider === key}
-            className={provider === key ? "selected" : ""}
-            onClick={() => {
-              setCurrent(undefined);
-              setConfirm(null);
-              navigate({ provider: key }, true);
-            }}
-          >
-            {key === "whatsapp" ? "WhatsApp" : "SMS"}
-          </button>
-        ))}
-      </div>
-      <p className="source-note">
-        Google e Instagram conservan su configuración actual:{" "}
-        <a href={`/connections?business_id=${encodeURIComponent(business)}`}>
-          abrir conexiones de cuentas
-        </a>
-        .
-      </p>
+      <ProviderTabs params={params} navigate={navigate} />
       <OperationNotice message={notice} />
       <OperationNotice message={op.message} />
       {config.error && !value ? (

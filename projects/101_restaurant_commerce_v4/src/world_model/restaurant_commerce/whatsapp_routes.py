@@ -5,7 +5,7 @@ import json
 from datetime import timedelta
 from pathlib import Path
 from fastapi import Depends, HTTPException, Request
-from fastapi.responses import FileResponse, PlainTextResponse
+from fastapi.responses import RedirectResponse, FileResponse, PlainTextResponse
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from pydantic import Field
@@ -25,7 +25,7 @@ def register(app,get_session,read,write,integrations,now,demo_mode):
     root='/api/operator/restaurants/{business_id}/whatsapp'
 
     @app.get('/whatsapp')
-    def page(): return FileResponse(Path(__file__).parent/'web/whatsapp.html')
+    def page(): return RedirectResponse("/workspace/connections?provider=whatsapp", status_code=307)
 
     @app.get(root,dependencies=[Depends(read)])
     def configuration(business_id:str,session:Session=Depends(get_session)):

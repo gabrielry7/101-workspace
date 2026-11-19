@@ -339,8 +339,11 @@ export function CampaignView(
       <div className="page new-view">
         <PageHeading title="Campañas" />
         <Failure message={meta.error} retry={meta.retry} />
-        <a className="legacy-link" href={`/campaigns?business_id=${business}`}>
-          Configuración de campañas
+        <a
+          className="legacy-link"
+          href={`/workspace/connections?business=${encodeURIComponent(business)}&provider=google`}
+        >
+          Revisar conexiones
         </a>
       </div>
     );
@@ -548,10 +551,9 @@ export function CampaignView(
           </p>
           <a
             className="legacy-link"
-            href={`/campaigns?business_id=${business}`}
+            href={`/workspace/connections?business=${encodeURIComponent(business)}&provider=google`}
           >
-            Configuración de canales y operaciones avanzadas{" "}
-            <ArrowRight size={14} />
+            Conexiones de este negocio <ArrowRight size={14} />
           </a>
         </>
       )}

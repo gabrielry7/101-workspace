@@ -290,3 +290,139 @@
     display: block;
   }
 }
+.signup-working {
+  padding: 24px;
+  max-width: 780px;
+  margin-top: 24px;
+}
+.signup-working .link-label input {
+  width: 100%;
+  min-height: 44px;
+}
+.signup-funnel {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.signup-funnel table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+.signup-funnel th,
+.signup-funnel td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+.signup-tools .source-note {
+  line-height: 1.6;
+}
+@media (max-width: 700px) {
+  .signup-working {
+    padding: 18px;
+  }
+  .signup-funnel th,
+  .signup-funnel td {
+    padding: 12px 5px;
+    font-size: 13px;
+  }
+}
+.account-status,
+.connection-snapshot {
+  padding: 24px;
+  margin: 22px 0;
+  overflow-wrap: anywhere;
+}
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+.connection-table table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.connection-table td,
+.connection-table th {
+  padding: 14px 8px;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+.connection-snapshot .catalogue-grid {
+  padding: 0;
+}
+.connection-snapshot .catalogue-item {
+  margin: 14px 0;
+}
+@media (max-width: 700px) {
+  .account-status,
+  .connection-snapshot {
+    padding: 18px;
+  }
+  .connection-table td,
+  .connection-table th {
+    font-size: 13px;
+    padding: 12px 5px;
+  }
+  .account-connections .page-heading {
+    flex-wrap: wrap;
+  }
+  .account-connections .page-heading > .button {
+    font-size: 13px;
+  }
+  .account-connections .page-heading > .button > svg:last-child {
+    display: block;
+  }
+}
+/* The shared directory hides its second column on phones; signup stages remain visible. */
+.signup-funnel table th:nth-child(n),
+.signup-funnel table td:nth-child(n) {
+  display: table-cell;
+  white-space: normal;
+}
+.signup-funnel table {
+  table-layout: fixed;
+}
+.signup-funnel th:first-child {
+  width: 23%;
+}
+.signup-funnel th:last-child {
+  width: 25%;
+}
+.account-status > p,
+.connection-snapshot > p {
+  margin: 12px 0;
+  line-height: 1.6;
+}
+.connection-snapshot > h2,
+.connection-snapshot > h3 {
+  margin: 22px 0 12px;
+}
+.connection-state {
+  font-weight: 600;
+}
+.connection-table table th:nth-child(n),
+.connection-table table td:nth-child(n) {
+  display: table-cell;
+  white-space: normal;
+}
+.connection-table table {
+  table-layout: fixed;
+}
+.connection-table th:first-child {
+  width: 30%;
+}
+.connection-table th:last-child {
+  width: 20%;
+}
+.connection-table table th:last-child,
+.connection-table table td:last-child,
+.signup-funnel table th:last-child,
+.signup-funnel table td:last-child {
+  text-align: right;
+  padding-left: 12px;
+}

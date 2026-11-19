@@ -63,12 +63,13 @@ def test_all_staff_html_uses_one_entry_without_changing_public_or_api_access(env
             assert r.headers["cache-control"] == "no-store"
             assert "base-uri 'none'" in r.headers["content-security-policy"]
         assert c.get("/workspace/login").status_code == 200
-        assert c.get("/").status_code == 200
+        assert c.get("/").status_code == 400
+        assert c.get("/?business_id=" + BUSINESS).status_code == 200
         assert c.get("/api/staff/me").status_code == 401
         assert c.get(ROOT).status_code == 401
         assert c.post("/api/staff/logout").status_code == 401
         assert c.get("/workspace/identity").status_code == 404
-    # No old functionality is removed as a side effect of moving login.
+    # Qualified old entries now reach the native shared interface.
     for path in LEGACY_PAGES:
         assert env.client.get(path, params={"business_id": BUSINESS}).status_code == 200
 
@@ -109,7 +110,7 @@ def test_return_preserves_context_and_requires_explicit_multi_business_selection
     assert result["needs_business"] and result["destination"] is None
     assert c.get("/admin", follow_redirects=False).status_code == 307
     result = c.get("/api/staff/entry", params={"next": "/admin", "business": OTHER}).json()
-    assert result["destination"] == "/admin?business_id=" + OTHER
+    assert result["destination"] == "/workspace/sales?business=" + OTHER
     result = c.get("/api/staff/entry", params={"next": "/admin?business_id=foreign"}).json()
     assert result["denied"] and result["needs_business"]
     result = c.get("/api/staff/entry", params={"next": target, "business": OTHER}).json()

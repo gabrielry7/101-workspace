@@ -125,8 +125,8 @@ def test_business_selection_legacy_access_and_cross_tab_logout(site):
     assert "/workspace/login" in page.url
     # Select from the authorized options, never whichever membership sorts first.
     page.locator(".entry-businesses button").first.click()
-    playwright.expect(page).to_have_url(re.compile("/admin\\?business_id="))
-    legacy_business = parse_qs(urlsplit(page.url).query)["business_id"][0]
+    playwright.expect(page).to_have_url(re.compile("/workspace/sales\\?business="))
+    legacy_business = parse_qs(urlsplit(page.url).query)["business"][0]
     assert legacy_business in {BUSINESS, OTHER}
     page.goto(f"/workspace/sales?business={BUSINESS}")
     playwright.expect(page.locator(".sale-link")).to_have_count(25)

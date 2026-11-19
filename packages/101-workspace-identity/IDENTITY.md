@@ -433,3 +433,15 @@ restores provider choice. Source/scope, unknown price, manual handoff, simulatio
 and provider evidence remain distinct. Actual1440/390/320px captures and their
 measurements are retained in the shared consolidation U07–U09 report. Live provider
 capability remains separate.
+
+Workspace completion (18 November2026): Google/Instagram account panels and native
+signup/funnel reuse the existing white surfaces, Inter, review dialogs and tabs from
+references02/03. `ProviderTabs` and `SignupContent` are extracted existing bones;
+`account-connections.tsx` and `signup-tools.tsx` compose those without embedding facts
+in styling. Native entry mapping retains the company header and business context.
+Observed phone refinements explicitly keep metric names and signup stages visible
+against old directory-column rules; bounded three-column tables wrap at320px.
+Spacing and source/error labels were refined after inspecting actual desktop/phone
+renders, then rendered and inspected again. Current sources, simulation, expiration
+and missing values remain visibly distinct. This does not alter merchant creative
+identity or authorize live connections/sends.

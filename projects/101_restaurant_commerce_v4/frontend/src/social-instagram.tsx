@@ -1,22 +1,84 @@
-import {useEffect,useState} from 'react';
-import {endpoint} from './ui';
-const labels:Record<string,string>={unconfigured:'Falta configurar la conexión',disconnected:'Sin conectar',authorizing:'Esperando autorización',discovering:'Consultando la cuenta',choose_location:'Confirma la cuenta',syncing:'Importando publicaciones',connected:'Importación completada',partial:'Importación parcial',access_denied:'Permiso no concedido',reconnect_required:'Vuelve a conectar la cuenta',sync_error:'No pudimos completar la importación',disconnecting:'Desconectada aquí; retira el acceso en Instagram'};
-export function InstagramPanel({business,csrf}:{business:string;csrf:string}) {
- const [data,setData]=useState<any>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
- const root=endpoint(business)+'/social/instagram';
- async function refresh(){const r=await fetch(root);if(!r.ok)throw Error('No pudimos consultar la conexión.');setData(await r.json())}
- useEffect(()=>{void refresh().catch(e=>setError(String(e)));const t=setInterval(()=>void refresh().catch(()=>{}),5000);return()=>clearInterval(t)},[business]);
- async function action(name:string,body?:unknown){setBusy(true);setError('');try{const r=await fetch(root+'/'+name,{method:'POST',headers:{'Content-Type':'application/json','X-101-CSRF':csrf},body:body===undefined?undefined:JSON.stringify(body)});const out=await r.json();if(!r.ok)throw Error(out.detail||'No pudimos completar la acción.');if(out.url){location.assign(out.url);return}await refresh()}catch(e){setError(String(e))}finally{setBusy(false)}}
- return <section className="instagram-panel"><div><h2>Instagram</h2><p>{data?labels[data.state]||data.state:'Consultando conexión…'}</p></div>{error&&<p role="alert">{error}</p>}
- {data?.state==='unconfigured'?<p>Falta terminar la configuración de la aplicación de Meta y su dirección de retorno. Mientras tanto, puedes trabajar con tus fotografías. No hay una cuenta conectada.</p>:<><div className="instagram-actions"><button className="button secondary" disabled={busy} onClick={()=>void action('authorize')}>Conectar Instagram</button>{data?.selected&&<button className="button secondary" disabled={busy} onClick={()=>void action('refresh')}>Actualizar publicaciones</button>}<button className="button secondary" disabled={busy||data?.state==='disconnected'} onClick={()=>void action('disconnect')}>Desconectar</button></div><p>Se autoriza una cuenta profesional cada vez. Revisa el usuario antes de importar. Esta primera conexión caduca y puede pedirte autorización de nuevo.</p></>}
- {data?.verification==='fixture'&&<p>Conexión de prueba · datos ficticios</p>}
- {data?.error&&<p role="status">Detalle de acceso: {data.error}</p>}
- {data?.state==='choose_location'&&data.assets.map((a:any)=><button className="button primary" key={a.key} onClick={()=>void action('select',{account_id:a.key})}>Usar @{a.name}</button>)}
- {data?.snapshot&&<><h3>{data.snapshot.coverage.posts} publicaciones disponibles</h3><p>{data.snapshot.coverage.has_more?'Hay más publicaciones fuera de esta importación.':'Se llegó al final de la lista accesible.'} Alcance, ventas y tráfico de búsqueda no disponibles.</p><div className="instagram-posts">{data.snapshot.posts.map((p:any)=><article key={p.id}><strong>{p.format} · {p.published_at_native||'Fecha no disponible'}</strong><p>{p.caption||'Sin texto'}</p><small>Me gusta: {p.metrics.likes.value??'No disponible'} · Comentarios: {p.metrics.comments.value??'No disponible'}</small></article>)}</div><p>Los textos importados son históricos. Confirma precios, ofertas y disponibilidad antes de reutilizarlos.</p></>}
- </section>
+import { useEffect, useState } from "react";
+import { endpoint } from "./ui";
+const labels: Record<string, string> = {
+  unconfigured: "Falta configurar la conexión",
+  disconnected: "Sin conectar",
+  authorizing: "Esperando autorización",
+  discovering: "Consultando la cuenta",
+  choose_location: "Confirma la cuenta",
+  syncing: "Importando publicaciones",
+  connected: "Importación completada",
+  partial: "Importación parcial",
+  access_denied: "Permiso no concedido",
+  reconnect_required: "Vuelve a conectar la cuenta",
+  sync_error: "No pudimos completar la importación",
+  disconnecting: "Desconectada aquí; retira el acceso en Instagram",
+};
+export function InstagramPanel({
+  business,
+}: {
+  business: string;
+  csrf: string;
+}) {
+  return (
+    <section className="instagram-panel">
+      <div>
+        <h2>Instagram</h2>
+        <p>
+          La cuenta, sus permisos y las publicaciones importadas se revisan en
+          Conexiones.
+        </p>
+      </div>
+      <a
+        className="button secondary"
+        href={`/workspace/connections?business=${encodeURIComponent(business)}&provider=instagram`}
+      >
+        Revisar conexión de Instagram
+      </a>
+    </section>
+  );
 }
-export function InstagramCallback(){
- const [message,setMessage]=useState('Terminando la conexión…');
- useEffect(()=>{const query=new URLSearchParams(location.search);history.replaceState(null,'','/connections/instagram/callback');void(async()=>{try{const me=await fetch('/api/staff/me');if(!me.ok)throw Error('Inicia sesión y vuelve a conectar Instagram.');const identity=await me.json();const result=await fetch('/connections/instagram/complete',{method:'POST',headers:{'Content-Type':'application/json','X-101-CSRF':identity.csrf},body:JSON.stringify({state:query.get('state'),code:query.get('code'),error:query.get('error')})});if(!result.ok)throw Error('La autorización venció o no pudo completarse. Vuelve a conectar la cuenta.');location.replace('/workspace/social')}catch(e){setMessage(String(e))}})()},[]);
- return <main className="social-workspace"><h1>Conectar Instagram</h1><p role="status">{message}</p><a href="/workspace/social">Volver a contenido</a></main>
+export function InstagramCallback() {
+  const [message, setMessage] = useState("Terminando la conexión…");
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    history.replaceState(null, "", "/connections/instagram/callback");
+    void (async () => {
+      try {
+        const me = await fetch("/api/staff/me");
+        if (!me.ok) throw Error("Inicia sesión y vuelve a conectar Instagram.");
+        const identity = await me.json();
+        const result = await fetch("/connections/instagram/complete", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-101-CSRF": identity.csrf,
+          },
+          body: JSON.stringify({
+            state: query.get("state"),
+            code: query.get("code"),
+            error: query.get("error"),
+          }),
+        });
+        if (!result.ok)
+          throw Error(
+            "La autorización venció o no pudo completarse. Vuelve a conectar la cuenta.",
+          );
+        const out = await result.json();
+        location.replace(
+          "/workspace/connections?provider=instagram&business=" +
+            encodeURIComponent(out.business_id),
+        );
+      } catch (e) {
+        setMessage(String(e));
+      }
+    })();
+  }, []);
+  return (
+    <main className="social-workspace">
+      <h1>Conectar Instagram</h1>
+      <p role="status">{message}</p>
+      <a href="/workspace/social">Volver a contenido</a>
+    </main>
+  );
 }

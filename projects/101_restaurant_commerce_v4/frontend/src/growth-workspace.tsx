@@ -52,6 +52,7 @@ export function CustomerSections({ business, params, navigate }: Props) {
         ["loyalty", "Fidelización"],
         ["promotions", "Promociones"],
         ["rewards", "Recompensas"],
+        ["signup", "Registro"],
       ].map(([key, title]) => (
         <button
           key={key}

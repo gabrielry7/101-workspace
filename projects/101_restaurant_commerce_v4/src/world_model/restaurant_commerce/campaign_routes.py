@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 from fastapi import Depends, HTTPException, Request
-from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
+from fastapi.responses import RedirectResponse, FileResponse, HTMLResponse, RedirectResponse
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import select, update
 from sqlalchemy.orm import Session
@@ -74,7 +74,7 @@ def register(app, get_session, scoped_staff, options, demo_mode):
 
     @app.get('/campaigns')
     def campaign_page():
-        return FileResponse(Path(__file__).parent / 'web/campaigns.html')
+        return RedirectResponse("/workspace/campaigns", status_code=307)
 
     @app.get(root, dependencies=[Depends(read)])
     def campaign_list(business_id: str, session: Session = Depends(get_session)):

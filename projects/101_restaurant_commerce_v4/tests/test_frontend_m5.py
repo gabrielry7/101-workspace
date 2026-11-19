@@ -64,7 +64,7 @@ def live(tmp_path, browser):
 
 
 def add(page):
-    page.goto("/")
+    page.goto("/?business_id=" + BID)
     page.locator("#menu article").filter(has_text="Papas").get_by_role("button").click()
     page.locator("#cName").fill("Synthetic M5")
     page.locator("#cPhone").fill("3005550101")
@@ -170,7 +170,7 @@ def test_reservation_lost_response_reloaded_same_intent_and_timezone(live):
     when = (datetime.now(UTC) + timedelta(days=3)).strftime("%Y-%m-%d") + "T12:00"
 
     def fill():
-        page.goto("/")
+        page.goto("/?business_id=" + BID)
         page.get_by_role("button", name="Reservar", exact=True).click()
         page.locator("#rName").fill("Synthetic reservation")
         page.locator("#rPhone").fill("3005550102")
@@ -222,7 +222,7 @@ def test_unavailable_storage_and_locks_fail_before_checkout(live):
 
 def test_poll_singleflight_hidden_offline_and_bounded_response(live):
     page, context, app, _, _ = live
-    page.goto("/")
+    page.goto("/?business_id=" + BID)
     page.locator("#menu article").first.wait_for()
     result = page.evaluate("""async()=>{
       let calls=0,running=0,max=0;
@@ -278,7 +278,7 @@ def test_layout_accessibility_and_slow_network(live):
       if(!e.hadRecentInput)m5metrics.cls+=e.value})
       .observe({type:'layout-shift',buffered:true});"""
     )
-    page.goto("/")
+    page.goto("/?business_id=" + BID)
     page.locator("#menu article").first.wait_for(timeout=30000)
     page.locator("#bootNotice").wait_for(state="hidden", timeout=30000)
     page.wait_for_timeout(500)
@@ -320,7 +320,7 @@ def test_layout_accessibility_and_slow_network(live):
 def test_missing_javascript_keeps_checkout_disabled(live, browser):
     page, context, app, url, _ = live
     page.route("**/assets/index.js*", lambda r: r.abort())
-    page.goto("/")
+    page.goto("/?business_id=" + BID)
     playwright.expect(page.locator("#bootNotice")).to_be_visible()
     playwright.expect(page.locator("#checkoutButton")).to_be_disabled()
     with browser.new_context(java_script_enabled=False) as nojs:
@@ -388,7 +388,7 @@ def test_five_percent_read_loss_and_unknown_staff_action(live):
 def test_keyboard_dialog_and_two_hundred_percent_zoom(live):
     page, context, app, _, _ = live
     page.set_viewport_size({"width": 768, "height": 1024})
-    page.goto("/")
+    page.goto("/?business_id=" + BID)
     page.locator("#menu article").first.wait_for()
     page.keyboard.press("Tab")
     playwright.expect(page.get_by_role("link", name="Ir al menú", exact=True)).to_be_focused()

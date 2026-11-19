@@ -110,7 +110,7 @@ def complete_authorization(factory, state, session_hash, runtime, authorize, *, 
         row = lock(session, grant.connection_id)
         if row.generation != grant.generation or row.mode != runtime.mode or row.provider != runtime.provider or row.state != 'authorizing':
             raise HTTPException(409, 'Authorization superseded')
-        connection_id, generation = row.id, row.generation
+        connection_id, generation, business = row.id, row.generation, row.business_id
         verifier = runtime.open(grant.verifier)['verifier']
         consumed = session.execute(delete(Authorization).where(Authorization.state_hash == digest(state),
             Authorization.session_hash == session_hash, Authorization.generation == row.generation))
@@ -120,7 +120,7 @@ def complete_authorization(factory, state, session_hash, runtime, authorize, *, 
         row.next_sync = now + timedelta(minutes=10)
         session.commit()  # Consume before the single-use exchange; no blind retry.
     if denied:
-        return
+        return business
     try:
         tokens = runtime.adapter.exchange(code, verifier, now)
         error = None
@@ -130,7 +130,7 @@ def complete_authorization(factory, state, session_hash, runtime, authorize, *, 
         row = lock(session, connection_id)
         if row.generation != generation or row.state != 'exchanging':
             # A concurrent disconnect must never restore a connection.
-            return
+            return business
         if tokens is None:
             row.state, row.error = 'reconnect_required', error
         else:
@@ -140,6 +140,8 @@ def complete_authorization(factory, state, session_hash, runtime, authorize, *, 
             row.assets_until = row.snapshot_until = row.last_success = None
             enqueue(session, row, 'discover', now)
         session.commit()
+
+    return business
 
 
 def select_location(session, business, selected, runtime):
@@ -219,7 +221,8 @@ def document(session, business, runtime):
     job = session.get(Job, row.id)
     return {'provider': runtime.provider, 'mode': row.mode, 'state': row.state, 'error': row.error,
             'selected': row.selected, 'assets': assets, 'snapshot': snapshot,
-            'last_success': row.last_success, 'cache_expires_at': row.snapshot_until,
+            'last_success': aware(row.last_success) if row.last_success else None,
+            'cache_expires_at': aware(row.snapshot_until) if row.snapshot_until else None,
             'job': {'state': job.state, 'attempts': job.attempts} if job else None,
             'capabilities': getattr(runtime.adapter, 'capabilities', {'read_listing': True, 'read_reviews': True, 'read_metrics': True,
                              'write_listing': False, 'reply_reviews': False})}

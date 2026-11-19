@@ -5,7 +5,7 @@ import secrets
 from pathlib import Path
 from urllib.parse import urlencode,urlsplit
 from fastapi import Depends,HTTPException,Request
-from fastapi.responses import FileResponse,Response
+from fastapi.responses import RedirectResponse, FileResponse,Response
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from . import sms
@@ -24,7 +24,7 @@ def register(app,get_session,read,write,integrations,now,demo_mode):
     root='/api/operator/restaurants/{business_id}/sms'
 
     @app.get('/sms')
-    def page():return FileResponse(Path(__file__).parent/'web/sms.html')
+    def page():return RedirectResponse("/workspace/connections?provider=sms", status_code=307)
 
     @app.get(root,dependencies=[Depends(read)])
     def config(business_id:str,session:Session=Depends(get_session)):

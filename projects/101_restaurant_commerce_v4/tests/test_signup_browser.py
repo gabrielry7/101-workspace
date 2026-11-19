@@ -33,12 +33,12 @@ def site(tmp_path,browser):
 def test_owner_qr_phone_email_and_persistent_membership(site):
     page,context,url,errors,external=site
     out=Path(os.environ.get('SIGNUP_BROWSER_EVIDENCE','/tmp/101-signup-browser'));out.mkdir(parents=True,exist_ok=True)
-    page.goto('/customers/signup');page.locator('#staffUsername').fill('campaign.manager');page.locator('#staffPassword').fill(PASSWORD);page.locator('#staffSignIn').click()
-    playwright.expect(page.locator('#qr')).to_be_visible();assert page.locator('#qr').evaluate('(img)=>img.complete && img.naturalWidth>100')
+    page.goto('/customers/signup');page.get_by_label('Usuario',exact=True).fill('campaign.manager');page.get_by_label('Contraseña',exact=True).fill(PASSWORD);page.get_by_role('button',name='Entrar',exact=True).click()
+    playwright.expect(page.get_by_alt_text(re.compile('^Código QR de registro'))).to_be_visible();page.wait_for_function("()=>{const q=document.querySelector('.qr-card img');return q?.complete&&q.naturalWidth>100}")
     page.screenshot(path=str(out/'owner-desktop.png'),full_page=True)
-    with page.expect_download() as result:page.locator('#png').click()
+    with page.expect_download() as result:page.get_by_role('link',name='Descargar PNG',exact=True).click()
     result.value.save_as(out/'signup-qr.png')
-    website=page.locator('#link').input_value();assert '?source=website' in website
+    website=page.get_by_label('Enlace de registro',exact=True).input_value();assert '?source=website' in website
     page.goto('/join/'+BUSINESS+'?source=qr')
     playwright.expect(page.locator('#phone')).to_be_visible()
     page.locator('#chooseEmail').click();playwright.expect(page.locator('#phoneFields')).to_be_hidden()
@@ -47,18 +47,18 @@ def test_owner_qr_phone_email_and_persistent_membership(site):
     code=re.search(r'\b\d{6}\b',page.locator('#demoCode').inner_text()).group()
     page.screenshot(path=str(out/'email-code.png'),full_page=True)
     page.locator('#code').fill(code);page.locator('#verifyCode').click()
-    playwright.expect(page.locator('#welcome')).to_have_text('Ya eres parte.')
+    playwright.expect(page.locator('#welcome')).to_have_text('Ya eres parte.');playwright.expect(page.locator('#welcome')).to_be_visible()
     page.reload();playwright.expect(page.locator('#accountDetail')).to_contain_text('customer@example.test')
     page.locator('#visit').click()
     playwright.expect(page.locator('#customerSignup')).to_be_visible()
     assert page.locator('#customerSignup').get_attribute('href')=='/join/'+BUSINESS+'?source=website'
     page.goto('/join/'+OTHER);playwright.expect(page.locator('#join')).to_be_visible();page.locator('#join').click()
-    playwright.expect(page.locator('#welcome')).to_have_text('Ya eres parte.')
+    playwright.expect(page.locator('#welcome')).to_have_text('Ya eres parte.');playwright.expect(page.locator('#welcome')).to_be_visible()
     page.locator('#logout').click();playwright.expect(page.locator('#phone')).to_be_visible()
     page.locator('#phone').fill('3005550100');page.locator('#sendCode').click()
     playwright.expect(page.locator('#demoCode')).to_contain_text('Código de prueba')
     code=re.search(r'\b\d{6}\b',page.locator('#demoCode').inner_text()).group()
-    page.locator('#code').fill(code);page.locator('#verifyCode').click();playwright.expect(page.locator('#welcome')).to_have_text('Ya eres parte.')
+    page.locator('#code').fill(code);page.locator('#verifyCode').click();playwright.expect(page.locator('#welcome')).to_have_text('Ya eres parte.');playwright.expect(page.locator('#welcome')).to_be_visible()
     page.screenshot(path=str(out/'phone-success.png'),full_page=True)
     page.locator('#logout').click();playwright.expect(page.locator('#phone')).to_be_visible()
     for width in [390,1440]:

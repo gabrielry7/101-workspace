@@ -1,6 +1,6 @@
 """One staff HTML entry; existing staff/API authority still governs all data.
 
-Legacy views remain accessible until their native replacements are qualified.
+Legacy staff entries redirect to qualified native replacements.
 Customer, OAuth bridge, webhook and asset routes deliberately do not match here.
 """
 
@@ -100,6 +100,31 @@ def safe_destination(value):
     return urlunsplit(("", "", parsed.path, urlencode(values), ""))
 
 
+def native_legacy(path, query):
+    """Translate only the eight retired staff entries; callbacks are separate."""
+    target = {"/admin": "/workspace/sales", "/delivery": "/workspace/sales",
+              "/growth": "/workspace/customers", "/campaigns": "/workspace/campaigns",
+              "/whatsapp": "/workspace/connections", "/sms": "/workspace/connections",
+              "/connections": "/workspace/connections", "/customers/signup": "/workspace/customers"}[path]
+    if path == "/delivery": query["view"] = "deliveries"
+    if path == "/customers/signup": query["view"] = "signup"
+    if path == "/growth":
+        if query.get("view") in {"outbox", "messages", "winback"}:
+            target, query["view"] = "/workspace/campaigns", "outbox"
+        elif query.get("view") in {"analytics", "growth", "report"}:
+            target, query["view"] = "/workspace/reports", "growth"
+    if path in {"/whatsapp", "/sms"}:
+        channel = path[1:]
+        if query.get("conversation") or query.get("view") in {"inbox", "conversations", "replies"}:
+            target, query["view"], query["channel"] = "/workspace/campaigns", "inbox", channel
+        else:
+            query["provider"] = channel
+            query.pop("view", None)
+    if path == "/connections" and query.get("provider") not in {"google", "instagram", "whatsapp", "sms"}:
+        query["provider"] = "google"
+    return target
+
+
 def entry(session, account, destination, business=None):
     destination = safe_destination(destination)
     parsed = urlsplit(destination)
@@ -142,12 +167,12 @@ def entry(session, account, destination, business=None):
         return {"destination": "/workspace/onboarding", "needs_business": False, "denied": False}
     if not selected and not platform:
         return {"destination": None, "needs_business": True, "denied": denied}
-    key = "business_id" if parsed.path in LEGACY_PAGES else "business"
-    query.pop("business_id" if key == "business" else "business", None)
+    query.pop("business_id", None)
+    path = native_legacy(parsed.path, query) if parsed.path in LEGACY_PAGES else parsed.path
     if selected:
-        query[key] = selected
+        query["business"] = selected
     return {
-        "destination": parsed.path + ("?" + urlencode(query) if query else ""),
+        "destination": path + ("?" + urlencode(query) if query else ""),
         "needs_business": False,
         "denied": False,
     }

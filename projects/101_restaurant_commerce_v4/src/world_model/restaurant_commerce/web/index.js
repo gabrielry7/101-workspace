@@ -4,7 +4,8 @@ if(window.CommerceSupported===false)return;
 
 const {node: h, replace, safeURL, bind, start, path} = window.CommerceUI;
 const itemDialog = document.getElementById("itemDialog");
-const qs=new URLSearchParams(location.search),businessId=qs.get('business_id')||'demo-restaurant-bogota';let store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
+const qs=new URLSearchParams(location.search),businessId=qs.get('business_id');let store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
+document.getElementById('merchantOwnerEntry').href='/workspace/sales?business='+encodeURIComponent(businessId);
 let noticeTimer, foodGeneration=0, deliveryGeneration=0, quoteUpdatedAt=0, quoteTimer;
 let pickupData=null;
 const draftKey='101.cart.v1:'+businessId;
