@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { GrowthReport } from "./growth-workspace";
 import { MonthlyReports } from "./monthly-reports";
 import { endpoint, amount, useResource, Failure, Loading } from "./ui";
 import type { OperationSettings } from "./operation-settings";
@@ -29,25 +30,29 @@ export function ReportsWorkspace({
   params: URLSearchParams;
   navigate: (changes: Record<string, string | null>) => void;
 }) {
-  const daily = params.get("view") === "daily";
+  const view = params.get("view") || "monthly",
+    daily = view === "daily";
   return (
     <>
       <div className="tabs sales-views" aria-label="Secciones de reportes">
         {[
           ["monthly", "Mensual"],
           ["daily", "Resumen diario"],
+          ["growth", "Comercio y clientes"],
         ].map(([key, title]) => (
           <button
             key={key}
-            aria-pressed={daily === (key === "daily")}
-            className={daily === (key === "daily") ? "selected" : ""}
+            aria-pressed={view === key}
+            className={view === key ? "selected" : ""}
             onClick={() => navigate({ view: key })}
           >
             {title}
           </button>
         ))}
       </div>
-      {daily ? (
+      {view === "growth" ? (
+        <GrowthReport business={business} params={params} navigate={navigate} />
+      ) : daily ? (
         <DailyFinance
           key={business}
           business={business}

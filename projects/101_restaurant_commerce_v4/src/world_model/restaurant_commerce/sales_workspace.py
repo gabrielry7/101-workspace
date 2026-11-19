@@ -169,6 +169,8 @@ def register(app, get_session, scoped_staff):
     from .finance_workspace import register as register_finance
     register_deliveries(app, get_session, scoped_staff)
     register_finance(app, get_session, scoped_staff)
+    from .growth_workspace import register as register_growth
+    register_growth(app, get_session, scoped_staff)
     from .reservation_workspace import register as register_reservations
     register_reservations(app, get_session, scoped_staff)
     root = "/api/operator/restaurants/{business_id}/sales"

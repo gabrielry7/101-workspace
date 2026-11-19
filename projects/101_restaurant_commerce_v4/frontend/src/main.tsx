@@ -1,3 +1,5 @@
+import { Catalog, CustomerSections } from "./growth-workspace";
+import { ChannelConnections } from "./channel-config";
 import { ReportsWorkspace } from "./daily-finance";
 import { OperationSettingsView } from "./operation-settings";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -60,7 +62,7 @@ import {
   IdentityView,
   periodQuery,
 } from "./workspace-views";
-import { CampaignView } from "./campaign-workspace";
+import { CampaignWorkspace } from "./campaign-workspace";
 import { InstagramCallback } from "./social-instagram";
 import { SocialWorkspace } from "./social";
 import { ColorPreview } from "./color-preview";
@@ -78,6 +80,7 @@ const screenFromPath = () => {
     "social",
     "login",
     "settings",
+    "connections",
   ].includes(path)
     ? path
     : "home";
@@ -93,6 +96,7 @@ const screenNames: Record<string, string> = {
   identity: "Identidad",
   onboarding: "Negocios",
   settings: "Ajustes",
+  connections: "Conexiones",
 };
 
 type Business = {
@@ -340,7 +344,10 @@ function App() {
       : undefined);
   const bid = business?.business_id || "";
   const loyalty = screen === "customers" && params.get("view") === "loyalty";
-  const selected = loyalty ? null : params.get("customer");
+  const catalogue =
+    screen === "customers" &&
+    ["promotions", "rewards"].includes(params.get("view") || "");
+  const selected = loyalty || catalogue ? null : params.get("customer");
   const kind = params.get("kind") || "all";
   const offset = Math.max(0, Number(params.get("offset")) || 0);
   const query = params.get("q") || "";
@@ -359,15 +366,16 @@ function App() {
     setParams(p);
   }
   useEffect(() => {
-    if (screen !== "customers" || loyalty || search === query) return;
+    if (screen !== "customers" || loyalty || catalogue || search === query)
+      return;
     const timer = setTimeout(
       () => navigate({ q: search.trim(), offset: null, customer: null }),
       180,
     );
     return () => clearTimeout(timer);
-  }, [search, query, screen, loyalty]);
+  }, [search, query, screen, loyalty, catalogue]);
   const list = useResource<Listing>(
-    bid && screen === "customers" && !loyalty
+    bid && screen === "customers" && !loyalty && !catalogue
       ? `${endpoint(bid)}/customers?q=${encodeURIComponent(query)}&kind=${encodeURIComponent(kind)}&offset=${offset}&limit=25&${periodQuery(params)}`
       : null,
   );
@@ -485,6 +493,14 @@ function App() {
                       finance_offset: null,
                       currency: null,
                       day: null,
+                      conversation: null,
+                      inbox_offset: null,
+                      inbox_scope: null,
+                      message_offset: null,
+                      reply_offset: null,
+                      outbox_offset: null,
+                      outbox_status: null,
+                      test_review: null,
                     });
                   }}
                 >
@@ -623,10 +639,14 @@ function App() {
                   Identidad
                 </a>
               )}
-              <a href={legacy("/connections")}>
+              <a
+                href={`/workspace/connections?business=${encodeURIComponent(bid)}&provider=whatsapp`}
+                className={screen === "connections" ? "active" : ""}
+                aria-current={screen === "connections" ? "page" : undefined}
+                onClick={(e) => goScreen(e, "connections")}
+              >
                 <Plug />
                 Conexiones
-                <ExternalLink className="nav-external" />
               </a>
               <a
                 href={`/workspace/settings?business=${encodeURIComponent(bid)}`}
@@ -808,6 +828,13 @@ function App() {
           </div>
         </header>
         {policy?.internal_tools && <ColorPreview />}
+        {screen === "customers" && (
+          <CustomerSections
+            business={bid}
+            params={params}
+            navigate={navigate}
+          />
+        )}
         {["sales", "customers"].includes(screen) && params.get("date_from") && (
           <div className="date-context">
             {params.get("date_from")} — {params.get("date_to")} ·{" "}
@@ -854,6 +881,16 @@ function App() {
             params={params}
             navigate={navigate}
           />
+        ) : screen === "connections" ? (
+          <ChannelConnections
+            key={bid + params.get("provider")}
+            business={bid}
+            params={params}
+            navigate={navigate}
+            csrf={identity.csrf}
+            permissions={business?.permissions || []}
+            demo={!!policy?.demo_mode}
+          />
         ) : screen === "settings" ? (
           <OperationSettingsView
             key={bid}
@@ -872,7 +909,7 @@ function App() {
             <IdentityView />
           ) : null
         ) : screen === "campaigns" ? (
-          <CampaignView
+          <CampaignWorkspace
             key={bid}
             business={bid}
             params={params}
@@ -891,6 +928,13 @@ function App() {
             business={bid}
             permissions={business?.permissions || []}
             csrf={identity.csrf}
+            params={params}
+            navigate={navigate}
+          />
+        ) : catalogue ? (
+          <Catalog
+            key={bid + params.get("view")}
+            business={bid}
             params={params}
             navigate={navigate}
           />

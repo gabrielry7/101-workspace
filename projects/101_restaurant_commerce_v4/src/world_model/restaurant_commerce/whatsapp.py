@@ -27,6 +27,7 @@ class Input(BaseModel):
 
 
 class SenderInput(Input):
+    expected_digest: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
     phone_id: str = Field(pattern=r'^\d{5,30}$')
     waba_id: str = Field(pattern=r'^\d{5,30}$')
     version: str = Field(pattern=r'^v\d{2}\.0$')
@@ -87,6 +88,8 @@ def binding(doc):
 def configure(session, business, payload, now):
     lock(session, business)
     cfg = c.settings(session, business)
+    if payload.expected_digest is not None and payload.expected_digest != c.digest(c.canonical(sender_document(session,business))):
+        raise HTTPException(409,"Los ajustes cambiaron; actualiza antes de guardar.")
     if cfg.scope != 'test':
         if not payload.link_origin.startswith('https://'): raise HTTPException(422,'https_origin_required')
         payload=payload.model_copy(update={'status':'UNVERIFIED','quality':'UNKNOWN','allowance':0,
@@ -99,7 +102,7 @@ def configure(session, business, payload, now):
         row = WhatsAppSender(business_id=business, scope=cfg.scope, phone_id=payload.phone_id); session.add(row)
     row.scope = cfg.scope
     row.phone_id = payload.phone_id
-    row.document, row.updated_at = c.canonical(payload.model_dump()), now
+    row.document, row.updated_at = c.canonical(payload.model_dump(exclude={"expected_digest"})), now
     from sqlalchemy.exc import IntegrityError
     try: session.commit()
     except IntegrityError:
@@ -131,7 +134,7 @@ def template_out(row):
 def readiness(session,business,now):
     sender = sender_document(session,business)
     return {'scope':c.settings(session,business).scope, 'live_enabled':False,
-        'state':'unconfigured' if not sender else 'simulation_only' if c.settings(session,business).scope=='test' else 'configured_inactive', 'sender':sender,
+        'sender_digest':c.digest(c.canonical(sender)), 'state':'unconfigured' if not sender else 'simulation_only' if c.settings(session,business).scope=='test' else 'configured_inactive', 'sender':sender,
         'templates':[template_out(t) for t in session.scalars(select(WhatsAppTemplate).where(WhatsAppTemplate.business_id==business))],
         'provider_readiness':'not_verified_live', 'reply_policy':'Staff only; genuine inbound opens 24 hours; no automatic response'}
 
@@ -293,7 +296,9 @@ def queue_reply(session,business,conversation_id,payload,actor,now):
 
 def dispatch_replies(sessions,integrations,now,business=None):
     with sessions() as session:
-        session.execute(update(WhatsAppReply).where(WhatsAppReply.state=='sending',WhatsAppReply.claimed_at<now-timedelta(minutes=2)).values(state='unknown',reason='worker_interrupted'))
+        stale = update(WhatsAppReply).where(WhatsAppReply.state=='sending',WhatsAppReply.claimed_at<now-timedelta(minutes=2))
+        if business: stale = stale.where(WhatsAppReply.business_id==business)
+        session.execute(stale.values(state='unknown',reason='worker_interrupted'))
         session.commit()
         query=select(WhatsAppReply.id).where(WhatsAppReply.state=='queued')
         if business: query=query.where(WhatsAppReply.business_id==business)

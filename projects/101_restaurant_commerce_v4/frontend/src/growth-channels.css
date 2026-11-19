@@ -1,0 +1,292 @@
+.tabs.growth-tabs button,
+.tabs.channel-tabs button {
+  min-height: 44px;
+}
+.catalogue-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 24px;
+  gap: 24px;
+}
+.catalogue-item {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  min-width: 0;
+}
+.catalogue-item h2,
+.outbox-message h2 {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+.catalogue-item p,
+.outbox-message p,
+.channel-report p {
+  margin: 10px 0;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.catalogue-item > strong {
+  display: block;
+  margin-top: 15px;
+}
+.catalogue-item small {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.channel-report,
+.retention-plan,
+.prepared-handoff {
+  padding: 24px;
+  margin: 22px 0;
+}
+.retention-plan {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: end;
+}
+.retention-plan h2,
+.retention-plan > p {
+  flex-basis: 100%;
+  margin: 0;
+}
+.retention-plan label,
+.channel-filter {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+.retention-plan input,
+.channel-filter select,
+.channel-form input,
+.channel-form select,
+.channel-form textarea {
+  min-height: 44px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+}
+.channel-filter {
+  width: fit-content;
+  margin: 20px 0;
+  max-width: 100%;
+}
+.outbox-message {
+  padding: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.outbox-message h2 {
+  margin-top: 14px;
+}
+.message-copy {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.growth-channel-page .icon-button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.growth-channel-page .report-grid {
+  margin-top: 20px;
+}
+@media (max-width: 700px) {
+  .catalogue-grid {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+  .outbox-message,
+  .retention-plan,
+  .prepared-handoff,
+  .channel-report {
+    padding: 18px;
+  }
+  .retention-plan > * {
+    max-width: 100%;
+  }
+}
+.channel-form,
+.readiness-summary,
+.template-list,
+.provider-probes,
+.campaign-business-tools,
+.provider-test-review,
+.template-editor,
+.inbox-simulation {
+  padding: 24px;
+  margin: 20px 0;
+}
+.channel-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: grid;
+  gap: 20px;
+}
+.channel-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.channel-form label:not(.check-label):not(.review-check) {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+.channel-form input:not([type="checkbox"]),
+.channel-form select,
+.channel-form textarea {
+  width: 100%;
+  min-width: 0;
+}
+.channel-form textarea {
+  min-height: 96px;
+}
+.channel-form .button,
+.provider-probes .button,
+.campaign-business-tools .button {
+  margin: 12px 12px 0 0;
+}
+.channel-tabs {
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+  max-width: 100%;
+}
+.tabs.channel-tabs button,
+.tabs.growth-tabs button {
+  min-height: 44px;
+}
+.channel-state {
+  margin: 20px 0;
+}
+.readiness-summary h2,
+.channel-form h2,
+.template-list h2 {
+  margin: 0 0 18px;
+}
+.readiness-summary h3 {
+  font-size: 16px;
+  margin-top: 22px;
+}
+.readiness-summary li,
+.test-review-result li {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+.channel-form details {
+  min-width: 0;
+}
+.template-editor summary,
+.inbox-simulation summary,
+.campaign-business-tools summary,
+.provider-test-review summary {
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.6;
+  padding: 10px 0;
+}
+.template-editor .channel-form,
+.inbox-simulation .channel-form,
+.provider-test-review .channel-form {
+  padding: 0;
+  margin-top: 16px;
+}
+.test-review-result {
+  margin-top: 22px;
+  overflow-wrap: anywhere;
+}
+.inbox-list > p {
+  padding: 24px;
+}
+.inbox-row {
+  display: grid;
+  gap: 8px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+.inbox-row:hover {
+  background: #faf9fc;
+}
+.inbox-row small,
+.conversation-message small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.inbox-row p {
+  margin: 5px 0;
+}
+.conversation-message {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 14px 0;
+  overflow-wrap: anywhere;
+}
+.conversation-detail .channel-form {
+  padding: 0;
+}
+.conversation-detail section {
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.channel-inbox .icon-button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.campaign-business-tools > .readiness-summary {
+  padding: 18px;
+  background: #fff;
+}
+.sms-report-detail {
+  padding: 20px;
+}
+@media (max-width: 700px) {
+  .channel-fields {
+    grid-template-columns: 1fr;
+  }
+  .channel-form,
+  .readiness-summary,
+  .template-list,
+  .provider-probes,
+  .campaign-business-tools,
+  .provider-test-review,
+  .template-editor,
+  .inbox-simulation {
+    padding: 18px;
+  }
+  .channel-form .check-label,
+  .channel-form .review-check {
+    min-height: 44px;
+  }
+  .inbox-row {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .growth-channel-page .page-heading,
+  .channel-connections .page-heading {
+    flex-wrap: wrap;
+  }
+  .growth-channel-page .page-heading > .button,
+  .channel-connections .page-heading > .button {
+    font-size: 13px;
+  }
+  .growth-channel-page .page-heading > .button > svg:last-child,
+  .channel-connections .page-heading > .button > svg:last-child {
+    display: block;
+  }
+}

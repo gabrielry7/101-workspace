@@ -87,8 +87,9 @@ acceptance, delivery, missing receipts, unknown outcomes, visits and attributed
 sales remain distinct. The demo dispatch button processes due work for the selected
 business, as labelled; other campaigns may share its contact-frequency limit.
 
-Email editing is the migrated path. Existing WhatsApp/SMS adapters and setup remain
-in their existing advanced screens. Unconfigured status is visible. A campaign's
+Email, WhatsApp and SMS editing now share Campañas. Existing sender/template
+configuration is native in Conexiones; bounded conversation history and test-only
+human replies are in Campañas → Conversaciones. Unconfigured status is visible. A campaign's
 customer picker uses the existing metadata cap of500contacts; larger audience
 selection is a subsequent API/UI improvement. Browser image loading is not read
 proof. Read-only roles can inspect but cannot approve or schedule.
@@ -134,3 +135,56 @@ Open Inicio or `/workspace/customers?view=loyalty`. This applies existing loyalt
 migrations to the local fixture and seeds synthetic examples once; restarts preserve
 operator edits. Configuration is enabled here; execution, assignment and Stage7
 analytics remain disabled. The normal production startup is unchanged.
+
+
+## U07–U09: growth and channels in the shared workspace
+
+Existing records/services remain authoritative; no schema, canonical business,
+customer, campaign, queue or credential store was added.
+
+- Clientes → Promociones/Recompensas reads the original catalogues. Creation
+  remains the existing manager-only API; there was no old catalogue creation UI.
+- Reportes → Comercio y clientes retains the original all-history currently-paid,
+  completed-order arithmetic. It does not subtract partial refunds and is not the
+  newer refund-adjusted report. Mixed-currency money is withheld rather than summed.
+- Campañas → Mensajes manuales explicitly plans win-back through the original
+  rule/planner, displays bounded old-outbox history and prepares the original
+  WhatsApp handoff. Neither planning nor handoff means delivery. Current campaign
+  WhatsApp withdrawal also blocks this older handoff; missing new permission rows
+  retain the old verified-flag policy. The legacy outbox still is not automatic
+  provider/frequency history (see CAMPAIGNS.md before live activation).
+- Campañas now edits existing WhatsApp template/parameter and SMS campaigns,
+  retaining promotion links, immutable revisions, exact approvals, schedule/expiry,
+  cancellation, current eligibility and unknown outcomes. SMS segmentation/cost
+  uses the full server-rendered message, including tracked links. Email's React
+  Email templates/chassis and v1/v2 rendering paths remain unchanged.
+- The collapsible operating panel shows local readiness and explicit business
+  pause/resume. A pause can cause processed due jobs to be skipped; resuming does
+  not revive them. A provider-test review freezes one recipient/version/cost limit
+  but always has send_authorized=false. Saving or inspecting it never sends.
+- Conexiones → WhatsApp/SMS uses explicit allowed sender fields (no secrets),
+  templates, readiness and individually reviewed probes/imports. A saved sender
+  digest detects stale edits; imported provider metadata is not resubmitted as
+  editable fields. Non-test declarations remain unverified. Google/Instagram stay
+  with their existing owner until U10; no fake native connection is claimed.
+- Campañas → Conversaciones paginates original WhatsApp transport conversations
+  and SMS inbound evidence. Transport identity is not a new customer match.
+  Source/provider and acquisition times remain distinct. Test-only WhatsApp replies
+  retain actor assignment, request-key dedupe, current sender/scope, 24-hour window,
+  pause and opt-out checks. SMS has history and STOP/HELP tests, not invented replies.
+- Demo campaign dispatch and demo reply dispatch are separate. Each processes only
+  its selected business; stale-send cleanup no longer modifies another business.
+  No mutation retries automatically after an ambiguous response. A separate GET
+  checks saved state; browser Back restores provider selection.
+
+New composition owners: frontend growth-workspace, channel-config, channel-inbox
+and campaign-channel-controls; existing shell/tabs/list-detail/Base UI dialogs and
+operations-ui command controls are reused bones. Geometry, surfaces, type and
+status roles stay in growth-channels.css and the shared identity. New backend
+modules provide bounded scoped projections, not a replacement execution engine.
+
+Native workflow tests: test_growth_channels_workspace.py and
+ test_growth_channels_workspace_browser.py. Existing campaign/WhatsApp/SMS,
+React Email and shared workspace consumers remain release gates. Synthetic media,
+contacts and transports qualify software only; real sending stays disabled.
+No old staff entry page is retired by this slice. U10–U13 remain separate work.

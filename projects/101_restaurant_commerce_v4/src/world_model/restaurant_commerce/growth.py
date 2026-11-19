@@ -523,6 +523,8 @@ class RestaurantGrowthService:
             status, suppression = "suppressed", "MARKETING_OPT_IN_REQUIRED"
         if not customer.phone:
             status, suppression = "suppressed", "CONTACT_PHONE_REQUIRED"
+        if self._manual_permission_blocked(rule.business_id, customer.id, rule.purpose):
+            status, suppression = "suppressed", "CURRENT_CHANNEL_PERMISSION_REQUIRED"
         candidate = OutboundMessage(
             business_id=rule.business_id,
             customer_id=customer.id,
@@ -559,6 +561,23 @@ class RestaurantGrowthService:
         rows = self.session.scalars(stmt.order_by(OutboundMessage.scheduled_at.asc()).limit(limit)).all()
         return [self._message_out(m) for m in rows]
 
+    def _manual_permission_blocked(self, business_id, customer_id, purpose):
+        # Existing imported flags remain a historical fallback; an explicit newer
+        # channel withdrawal/unknown overrides them in the current business scope.
+        if purpose != "marketing":
+            return False
+        from .campaign_models import CampaignSettings, ContactPermission
+        cfg = self.session.get(CampaignSettings, business_id)
+        if not cfg:
+            return False
+        permission = self.session.scalar(select(ContactPermission).where(
+            ContactPermission.business_id == business_id,
+            ContactPermission.customer_id == customer_id,
+            ContactPermission.channel == "whatsapp",
+            ContactPermission.scope == cfg.scope,
+            ContactPermission.purpose == "marketing"))
+        return permission is not None and permission.state != "granted"
+
     def mark_handoff(self, message_id: str) -> OutboundMessageOut:
         message = self.session.get(OutboundMessage, message_id)
         if not message:
@@ -575,7 +594,8 @@ class RestaurantGrowthService:
         if (not customer or customer.business_id != message.business_id
                 or message.destination != customer.phone or not customer.whatsapp_opt_in
                 or not customer.whatsapp_verified_at
-                or (message.purpose == "marketing" and (not customer.marketing_opt_in or not customer.marketing_verified_at))):
+                or (message.purpose == "marketing" and (not customer.marketing_opt_in or not customer.marketing_verified_at))
+                or self._manual_permission_blocked(message.business_id, message.customer_id, message.purpose)):
             message.status = "suppressed"
             message.suppression_reason = "CONSENT_OR_RECIPIENT_CHANGED"
             self.session.commit()

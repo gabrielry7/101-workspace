@@ -36,6 +36,8 @@ def register(app, get_session, scoped_staff, options, demo_mode):
 
     from .sms_routes import register as register_sms
     register_sms(app,get_session,read,write,integrations,now,demo_mode)
+    from .channel_workspace import register as register_channel_workspace
+    register_channel_workspace(app,get_session,read,write,integrations,now,demo_mode)
 
     root = '/api/operator/restaurants/{business_id}/campaigns'
 
@@ -224,7 +226,7 @@ def register(app, get_session, scoped_staff, options, demo_mode):
         def simulate_dispatch(business_id: str, session: Session = Depends(get_session)):
             if c.settings(session, business_id).scope != 'test': raise HTTPException(409, 'Test scope required')
             session.commit()
-            return c.dispatch(app.state.session_factory, integrations, now=now(), base_url=base_url, business=business_id)
+            return c.dispatch(app.state.session_factory, integrations, now=now(), base_url=base_url, business=business_id, include_replies=False)
 
         @app.post(root + '/{campaign_id}/simulate-receipt', dependencies=[Depends(write)])
         def simulate_receipt(business_id: str, campaign_id: str, session: Session = Depends(get_session)):

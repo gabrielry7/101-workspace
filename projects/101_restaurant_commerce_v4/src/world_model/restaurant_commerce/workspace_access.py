@@ -41,6 +41,7 @@ WORKSPACE_PAGES = frozenset(
         "/workspace/analytics",
         "/workspace/onboarding",
         "/workspace/settings",
+        "/workspace/connections",
     }
 )
 RETURN_KEYS = frozenset(
@@ -74,6 +75,7 @@ RETURN_KEYS = frozenset(
         "reservation",
         "reservation_status",
         "reservation_offset",
+        "channel", "provider", "conversation", "inbox_offset", "inbox_scope", "message_offset", "reply_offset", "outbox_status", "outbox_offset", "test_review",
         "section", "day", "delivery", "delivery_status", "delivery_offset", "review_order", "finance_q", "finance_offset", "review_scope",
     }
 )
@@ -128,6 +130,7 @@ def entry(session, account, destination, business=None):
             "delivery_offset",
             "review_order",
             "finance_offset",
+            "conversation", "inbox_offset", "message_offset", "reply_offset", "outbox_offset", "test_review",
         ):
             query.pop(key, None)
     denied = bool(requested and requested not in member_ids)

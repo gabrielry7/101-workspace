@@ -1,3 +1,12 @@
+import { ManualOutbox } from "./growth-workspace";
+import { ChannelInbox } from "./channel-inbox";
+import {
+  CampaignBusinessTools,
+  PhoneCampaignFields,
+  ProviderTestReview,
+} from "./campaign-channel-controls";
+import type { ChannelConfig } from "./channel-config";
+import { ApiError } from "./ui";
 import { useEffect, useRef, useState } from "react";
 import {
   EmailChassisControls,
@@ -38,7 +47,7 @@ type Person = {
   email: string | null;
   phone: string | null;
 };
-type Meta = {
+export type Meta = {
   scope: string;
   paused: boolean;
   clock: string;
@@ -56,8 +65,11 @@ type EmailDesign = {
 type TemplateCatalog = {
   templates: { id: string; name: string; available: boolean }[];
 };
-type Draft = {
+export type Draft = {
   channel: string;
+  promotion_code: string | null;
+  whatsapp_template_id: string | null;
+  whatsapp_parameters: string[];
   email_design?: EmailDesign | null;
   sender: string;
   content: { subject: string; title: string; body: string; terms: string };
@@ -67,7 +79,7 @@ type Draft = {
   scope: string;
   budget_microusd: number;
 };
-type Preview = {
+export type Preview = {
   render_error?: string | null;
   id: string;
   state: string;
@@ -83,6 +95,9 @@ type Preview = {
     destination: string | null;
     status: string;
     reasons: string[];
+    sms_segments?: number;
+    sms_encoding?: string;
+    sms_cost_microusd?: number | null;
   }[];
   email: { text: string };
   simulation_clock: string;
@@ -109,16 +124,32 @@ type Report = {
   refunds: number;
   net_revenue: number;
   currency: string;
-  delivery_cost_microusd: number;
+  delivery_cost_microusd: number | null;
+  read_signals: number | "unavailable";
+  sms?: {
+    estimated_submitted_segments: number;
+    estimated_delivery_cost_microusd: number | null;
+    provider_status_counts: Record<string, number>;
+    route_receipt_support: string[];
+    cost_note: string;
+  };
   scope: string;
   deliveries: {
     id: string;
     state: string;
     reason: string | null;
+    customer_id: string;
+    message_id: string | null;
     tracking_url: string;
     unsubscribe_url: string;
   }[];
 };
+const channelState = (value: string) =>
+  ({
+    unconfigured: "sin configurar",
+    simulation_only: "solo simulación",
+    configured_inactive: "configurado, sin envío real",
+  })[value] || "requiere revisión";
 const states: Record<string, string> = {
   draft: "Borrador",
   approved: "Aprobada",
@@ -183,6 +214,9 @@ function localTime(iso: string) {
 function freshDraft(m: Meta): Draft {
   return {
     channel: "email",
+    promotion_code: null,
+    whatsapp_template_id: null,
+    whatsapp_parameters: [],
     email_design: { template_id: "matte" },
     sender: m.sender || "",
     content: { subject: "", title: "", body: "", terms: "" },
@@ -223,12 +257,61 @@ async function mutate(
         "La campaña venció. Cambia las fechas y vuelve a aprobar.",
       live_send_not_enabled: "El envío real no está habilitado.",
     };
-    throw new Error(
+    if (r.status === 401) window.dispatchEvent(new Event("session-expired"));
+    const error = new ApiError(r.status);
+    error.message =
       known[d.detail] ||
-        "No se pudo completar la acción. Actualiza y revisa la versión, permisos y fechas.",
-    );
+      (r.status < 500 && typeof d.detail === "string"
+        ? d.detail.slice(0, 300)
+        : "No se confirmó la acción. Comprueba el estado antes de continuar.");
+    throw error;
   }
   return r.json();
+}
+export function CampaignWorkspace(
+  props: ViewProps & { csrf: string; permissions: string[]; demo: boolean },
+) {
+  const view = props.params.get("view") || "campaigns";
+  return (
+    <>
+      <div
+        className="tabs sales-views channel-tabs"
+        aria-label="Secciones de campañas"
+      >
+        {[
+          ["campaigns", "Campañas"],
+          ["outbox", "Mensajes manuales"],
+          ["inbox", "Conversaciones"],
+        ].map(([key, title]) => (
+          <button
+            key={key}
+            className={view === key ? "selected" : ""}
+            aria-pressed={view === key}
+            onClick={() =>
+              props.navigate(
+                {
+                  view: key,
+                  campaign: null,
+                  conversation: null,
+                  test_review: null,
+                },
+                true,
+              )
+            }
+          >
+            {title}
+          </button>
+        ))}
+      </div>
+      {view === "outbox" ? (
+        <ManualOutbox {...props} />
+      ) : view === "inbox" ? (
+        <ChannelInbox {...props} />
+      ) : (
+        <CampaignView {...props} />
+      )}
+    </>
+  );
 }
 export function CampaignView(
   props: ViewProps & { csrf: string; permissions: string[]; demo: boolean },
@@ -242,13 +325,14 @@ export function CampaignView(
     state = params.get("state") || "all",
     offset = Number(params.get("offset")) || 0;
   const [search, setSearch] = useState(query);
+  const [toolsOpen, setToolsOpen] = useState(false);
   useEffect(() => setSearch(query), [query]);
   const selectedPeriod = currentPeriod(params);
   const list = useResource<{ items: Summary[]; count: number }>(
     `${endpoint(business)}/workspace/campaigns?${new URLSearchParams({ date_from: selectedPeriod.from, date_to: selectedPeriod.to })}&q=${encodeURIComponent(query)}&state=${state}&offset=${offset}`,
   );
   function open(next: string | null) {
-    navigate({ campaign: next }, true);
+    navigate({ campaign: next, test_review: null }, true);
   }
   if (meta.error)
     return (
@@ -297,25 +381,29 @@ export function CampaignView(
               Crear campaña
             </button>
           </PageHeading>
+          <CampaignBusinessTools
+            business={business}
+            csrf={csrf}
+            canWrite={canWrite}
+            meta={meta.data}
+            changed={meta.retry}
+            open={toolsOpen}
+            setOpen={setToolsOpen}
+          />
           <div className="campaign-toolbar">
             <PeriodPicker {...props} />
             <div className="channel-status">
               <span>
                 <Mail size={16} />
-                Email · simulación
+                Email ·{" "}
+                {meta.data.scope === "test"
+                  ? "simulación"
+                  : "envío no activado"}
               </span>
               <span>
-                WhatsApp ·{" "}
-                {meta.data.channels.whatsapp === "unconfigured"
-                  ? "sin configurar"
-                  : meta.data.channels.whatsapp}
+                WhatsApp · {channelState(meta.data.channels.whatsapp)}
               </span>
-              <span>
-                SMS ·{" "}
-                {meta.data.channels.sms === "unconfigured"
-                  ? "sin configurar"
-                  : meta.data.channels.sms}
-              </span>
+              <span>SMS · {channelState(meta.data.channels.sms)}</span>
             </div>
           </div>
           {meta.data.paused && (
@@ -500,6 +588,14 @@ function CampaignDetail(
       : null,
   );
   const [form, setForm] = useState<Draft>(() => freshDraft(meta));
+  const [uncertain, setUncertain] = useState(false);
+  const wa = useResource<ChannelConfig>(
+      base.replace(/\/campaigns$/, "/whatsapp"),
+    ),
+    sms = useResource<ChannelConfig>(base.replace(/\/campaigns$/, "/sms"));
+  const promotions = useResource<
+    { code: string; name: string; enabled: boolean }[]
+  >(endpoint(business) + "/promotions");
   const [editing, setEditing] = useState(id === "new");
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
@@ -508,7 +604,9 @@ function CampaignDetail(
   const [checked, setChecked] = useState(false);
   const [confirmCancel, setConfirmCancel] = useState(false);
   const report = useResource<Report>(
-    id === "new" ? null : base + "/" + id + "/report?scope=" + meta.scope,
+    id === "new"
+      ? null
+      : base + "/" + id + "/report?scope=" + (d?.document.scope || meta.scope),
   );
   useEffect(() => {
     if (resource.data) {
@@ -517,6 +615,9 @@ function CampaignDetail(
       const doc = resource.data.document;
       setForm({
         channel: doc.channel,
+        promotion_code: doc.promotion_code ?? null,
+        whatsapp_template_id: doc.whatsapp_template_id ?? null,
+        whatsapp_parameters: doc.whatsapp_parameters || [],
         email_design: doc.email_design
           ? (Object.fromEntries(
               Object.entries(doc.email_design).filter(
@@ -542,6 +643,7 @@ function CampaignDetail(
     try {
       await action();
     } catch (e) {
+      if (!(e instanceof ApiError && e.status < 500)) setUncertain(true);
       setMessage(
         e instanceof Error
           ? e.message
@@ -555,6 +657,7 @@ function CampaignDetail(
   async function refresh() {
     const next = await api<Preview>(base + "/" + id);
     setD(next);
+    setUncertain(false);
     setChecked(false);
     report.retry();
   }
@@ -610,7 +713,7 @@ function CampaignDetail(
               <RefreshCw size={16} />
               Actualizar
             </button>
-            {canWrite && d?.document.channel === "email" && (
+            {canWrite && !uncertain && (
               <button
                 className="button secondary"
                 onClick={() => {
@@ -627,6 +730,19 @@ function CampaignDetail(
       {message && (
         <div className="action-notice" role="status">
           {message}
+        </div>
+      )}
+      {uncertain && (
+        <div className="action-notice" role="status">
+          No recibimos confirmación. Comprueba el estado guardado antes de
+          repetir una acción.
+          <button
+            className="button secondary"
+            disabled={busy}
+            onClick={() => (id === "new" ? close() : run(refresh))}
+          >
+            Comprobar campaña guardada
+          </button>
         </div>
       )}
       {editing ? (
@@ -651,123 +767,175 @@ function CampaignDetail(
           <section className="work-surface editor-copy">
             <div className="section-heading">
               <h2>Mensaje</h2>
-              <span className="badge">Email</span>
+              <span className="badge">
+                {form.channel === "email"
+                  ? "Email"
+                  : form.channel === "whatsapp"
+                    ? "WhatsApp"
+                    : "SMS"}
+              </span>
             </div>
             <div className="form-fields">
               <label>
-                Diseño del correo
+                Canal
                 <select
-                  aria-label="Diseño del correo"
-                  value={form.email_design?.template_id || "legacy"}
-                  onChange={(e) =>
+                  aria-label="Canal de la campaña"
+                  value={form.channel}
+                  onChange={(e) => {
+                    const channel = e.target.value;
                     setForm({
                       ...form,
-                      email_design: {
-                        ...form.email_design,
-                        template_id: e.target.value,
-                        chassis:
-                          e.target.value === "legacy"
-                            ? undefined
-                            : form.email_design?.chassis,
-                      },
-                    })
-                  }
+                      channel,
+                      email_design:
+                        channel === "email" ? { template_id: "matte" } : null,
+                      sender:
+                        channel === "email"
+                          ? meta.sender
+                          : String(
+                              (channel === "whatsapp"
+                                ? wa.data?.sender?.phone_id
+                                : sms.data?.sender?.sender) || "",
+                            ),
+                      whatsapp_template_id:
+                        channel === "whatsapp"
+                          ? form.whatsapp_template_id
+                          : null,
+                      whatsapp_parameters:
+                        channel === "whatsapp" ? form.whatsapp_parameters : [],
+                    });
+                  }}
                 >
-                  {(
-                    templates.data?.templates || [
-                      {
-                        id: "legacy",
-                        name: "Clásico anterior",
-                        available: true,
-                      },
-                    ]
-                  ).map((t) => (
-                    <option key={t.id} value={t.id} disabled={!t.available}>
-                      {t.name}
-                      {t.available ? "" : " · no disponible"}
-                    </option>
-                  ))}
+                  <option value="email">Email</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="sms">SMS</option>
                 </select>
               </label>
-              {form.email_design?.template_id !== "legacy" && (
-                <EmailChassisControls
-                  value={form.email_design?.chassis}
-                  change={(chassis) =>
-                    setForm({
-                      ...form,
-                      email_design: { ...form.email_design!, chassis },
-                    })
-                  }
+              {form.channel === "email" ? (
+                <>
+                  <label>
+                    Diseño del correo
+                    <select
+                      aria-label="Diseño del correo"
+                      value={form.email_design?.template_id || "legacy"}
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          email_design: {
+                            ...form.email_design,
+                            template_id: e.target.value,
+                            chassis:
+                              e.target.value === "legacy"
+                                ? undefined
+                                : form.email_design?.chassis,
+                          },
+                        })
+                      }
+                    >
+                      {(
+                        templates.data?.templates || [
+                          {
+                            id: "legacy",
+                            name: "Clásico anterior",
+                            available: true,
+                          },
+                        ]
+                      ).map((t) => (
+                        <option key={t.id} value={t.id} disabled={!t.available}>
+                          {t.name}
+                          {t.available ? "" : " · no disponible"}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  {form.email_design?.template_id !== "legacy" && (
+                    <EmailChassisControls
+                      value={form.email_design?.chassis}
+                      change={(chassis) =>
+                        setForm({
+                          ...form,
+                          email_design: { ...form.email_design!, chassis },
+                        })
+                      }
+                    />
+                  )}
+                  {form.email_design?.template_id !== "legacy" && (
+                    <details>
+                      <summary>Imagen y botón · opcional</summary>
+                      <div className="form-fields">
+                        <label>
+                          Imagen del correo · URL
+                          <input
+                            type="url"
+                            value={form.email_design?.image_url || ""}
+                            onChange={(e) =>
+                              setForm({
+                                ...form,
+                                email_design: {
+                                  ...form.email_design!,
+                                  image_url: e.target.value || null,
+                                },
+                              })
+                            }
+                            placeholder="https://tu-negocio.com/foto.jpg"
+                          />
+                        </label>
+                        <label>
+                          Descripción de la imagen
+                          <input
+                            maxLength={200}
+                            value={form.email_design?.image_alt || ""}
+                            onChange={(e) =>
+                              setForm({
+                                ...form,
+                                email_design: {
+                                  ...form.email_design!,
+                                  image_alt: e.target.value,
+                                },
+                              })
+                            }
+                          />
+                        </label>
+                        <label>
+                          Texto del botón
+                          <input
+                            maxLength={80}
+                            value={
+                              form.email_design?.cta_label ||
+                              "Ver la carta y pedir →"
+                            }
+                            onChange={(e) =>
+                              setForm({
+                                ...form,
+                                email_design: {
+                                  ...form.email_design!,
+                                  cta_label: e.target.value,
+                                },
+                              })
+                            }
+                          />
+                        </label>
+                      </div>
+                    </details>
+                  )}
+                  <label>
+                    Remitente
+                    <input
+                      value={form.sender}
+                      onChange={(e) =>
+                        setForm({ ...form, sender: e.target.value })
+                      }
+                      required
+                      type="email"
+                    />
+                  </label>
+                </>
+              ) : (
+                <PhoneCampaignFields
+                  business={business}
+                  form={form}
+                  change={setForm}
                 />
               )}
-              {form.email_design?.template_id !== "legacy" && (
-                <details>
-                  <summary>Imagen y botón · opcional</summary>
-                  <div className="form-fields">
-                    <label>
-                      Imagen del correo · URL
-                      <input
-                        type="url"
-                        value={form.email_design?.image_url || ""}
-                        onChange={(e) =>
-                          setForm({
-                            ...form,
-                            email_design: {
-                              ...form.email_design!,
-                              image_url: e.target.value || null,
-                            },
-                          })
-                        }
-                        placeholder="https://tu-negocio.com/foto.jpg"
-                      />
-                    </label>
-                    <label>
-                      Descripción de la imagen
-                      <input
-                        maxLength={200}
-                        value={form.email_design?.image_alt || ""}
-                        onChange={(e) =>
-                          setForm({
-                            ...form,
-                            email_design: {
-                              ...form.email_design!,
-                              image_alt: e.target.value,
-                            },
-                          })
-                        }
-                      />
-                    </label>
-                    <label>
-                      Texto del botón
-                      <input
-                        maxLength={80}
-                        value={
-                          form.email_design?.cta_label ||
-                          "Ver la carta y pedir →"
-                        }
-                        onChange={(e) =>
-                          setForm({
-                            ...form,
-                            email_design: {
-                              ...form.email_design!,
-                              cta_label: e.target.value,
-                            },
-                          })
-                        }
-                      />
-                    </label>
-                  </div>
-                </details>
-              )}
-              <label>
-                Remitente
-                <input
-                  value={form.sender}
-                  onChange={(e) => setForm({ ...form, sender: e.target.value })}
-                  required
-                  type="email"
-                />
-              </label>
               <label>
                 Asunto
                 <input
@@ -787,17 +955,19 @@ function CampaignDetail(
                   maxLength={180}
                 />
               </label>
-              <label>
-                Mensaje
-                <textarea
-                  value={form.content.body}
-                  onChange={(e) => content("body", e.target.value)}
-                  required
-                  maxLength={4000}
-                  rows={7}
-                  placeholder="Escribe como hablarías con tus clientes."
-                />
-              </label>
+              {form.channel !== "whatsapp" && (
+                <label>
+                  Mensaje
+                  <textarea
+                    value={form.content.body}
+                    onChange={(e) => content("body", e.target.value)}
+                    required
+                    maxLength={4000}
+                    rows={7}
+                    placeholder="Escribe como hablarías con tus clientes."
+                  />
+                </label>
+              )}
               <label>
                 Condiciones y vigencia
                 <textarea
@@ -840,7 +1010,10 @@ function CampaignDetail(
                       />
                       <span>
                         <strong>{p.name || "Sin nombre"}</strong>
-                        <small>{p.email || "Sin correo"}</small>
+                        <small>
+                          {(form.channel === "email" ? p.email : p.phone) ||
+                            "Sin contacto para este canal"}
+                        </small>
                       </span>
                     </label>
                   ))}
@@ -887,6 +1060,27 @@ function CampaignDetail(
                   />
                 </label>
                 <label>
+                  Promoción existente · opcional
+                  <select
+                    aria-label="Promoción existente"
+                    value={form.promotion_code || ""}
+                    onChange={(e) =>
+                      setForm({
+                        ...form,
+                        promotion_code: e.target.value || null,
+                      })
+                    }
+                  >
+                    <option value="">Sin promoción asociada</option>
+                    {promotions.data?.map((p) => (
+                      <option key={p.code} value={p.code}>
+                        {p.code} · {p.name}
+                        {p.enabled ? "" : " · deshabilitada"}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <label>
                   Presupuesto máximo · USD
                   <input
                     type="number"
@@ -917,7 +1111,9 @@ function CampaignDetail(
             <p>Guardar una edición invalida la aprobación anterior.</p>
             <button
               className="button primary"
-              disabled={busy || !canWrite || !form.customer_ids.length}
+              disabled={
+                busy || uncertain || !canWrite || !form.customer_ids.length
+              }
             >
               Guardar y revisar <ArrowRight size={16} />
             </button>
@@ -966,7 +1162,7 @@ function CampaignDetail(
                         d!.document.email_design?.template_id ||
                         "legacy"
                       }
-                      disabled={busy}
+                      disabled={busy || uncertain}
                       onChange={(e) => {
                         setViewDesign(e.target.value);
                         setChecked(false);
@@ -991,7 +1187,7 @@ function CampaignDetail(
                           <button
                             type="button"
                             className="button secondary"
-                            disabled={busy}
+                            disabled={busy || uncertain}
                             onClick={() =>
                               run(async () => {
                                 const next = await mutate(
@@ -1041,7 +1237,7 @@ function CampaignDetail(
                   title="Vista previa del correo"
                 />
               ) : (
-                <p className="panel-note">{d!.document.content.body}</p>
+                <p className="panel-note message-copy">{d!.email.text}</p>
               )}
               <details className="plain-preview">
                 <summary>Versión de texto</summary>
@@ -1116,6 +1312,7 @@ function CampaignDetail(
                       className="button primary"
                       disabled={
                         busy ||
+                        uncertain ||
                         !checked ||
                         meta.scope !== "test" ||
                         unsavedDesign ||
@@ -1131,7 +1328,9 @@ function CampaignDetail(
                 {canWrite && d!.approved && d!.state === "approved" && (
                   <button
                     className="button primary"
-                    disabled={busy || unsavedDesign || !!d!.render_error}
+                    disabled={
+                      busy || uncertain || unsavedDesign || !!d!.render_error
+                    }
                     onClick={() => run(() => act("schedule"))}
                   >
                     <CalendarDays size={16} />
@@ -1141,7 +1340,7 @@ function CampaignDetail(
                 {canWrite && d!.state !== "cancelled" && (
                   <button
                     className="button secondary"
-                    disabled={busy}
+                    disabled={busy || uncertain}
                     onClick={() => setConfirmCancel(true)}
                   >
                     Cancelar campaña
@@ -1159,7 +1358,7 @@ function CampaignDetail(
                     </p>
                     <button
                       className="button secondary"
-                      disabled={busy}
+                      disabled={busy || uncertain}
                       onClick={() => run(() => act("cancel"))}
                     >
                       Sí, cancelar campaña
@@ -1199,6 +1398,12 @@ function CampaignDetail(
                             ? "Sin confirmar"
                             : "Excluido"}
                       </span>
+                      {p.sms_segments !== undefined && (
+                        <small>
+                          {p.sms_segments} segmentos · {p.sms_encoding} ·{" "}
+                          {cost(p.sms_cost_microusd ?? null)}
+                        </small>
+                      )}
                       {p.reasons.map((reason) => (
                         <small key={reason}>
                           {reasons[reason] || reason.replaceAll("_", " ")}
@@ -1210,6 +1415,18 @@ function CampaignDetail(
               </section>
             </div>
           </div>
+          {d!.document.channel !== "email" && (
+            <ProviderTestReview
+              key={business + id + (props.params.get("test_review") || "")}
+              business={business}
+              csrf={csrf}
+              canWrite={canWrite}
+              preview={d!}
+              meta={meta}
+              params={props.params}
+              navigate={props.navigate}
+            />
+          )}
           <section className="work-surface campaign-report">
             <div className="section-heading">
               <h2>Resultados</h2>
@@ -1239,6 +1456,17 @@ function CampaignDetail(
                       report.data.provider_reported_delivery,
                     ],
                     ["Visitas al enlace", report.data.tracked_visits],
+                    ["Visitas de escáner", report.data.scanner_visits],
+                    [
+                      "Lecturas reportadas",
+                      report.data.read_signals === "unavailable"
+                        ? "No disponibles"
+                        : report.data.read_signals,
+                    ],
+                    [
+                      "Costo registrado · USD",
+                      cost(report.data.delivery_cost_microusd),
+                    ],
                     ["Pedidos pagados", report.data.paid_orders],
                     [
                       "Capturado menos devuelto",
@@ -1259,12 +1487,40 @@ function CampaignDetail(
                   {report.data.receipt_missing} sin recibo de entrega. Una
                   visita no prueba que sea una persona.
                 </p>
+                {d!.document.channel === "sms" && report.data.sms && (
+                  <section className="sms-report-detail">
+                    <h3>Detalle de SMS</h3>
+                    <p>
+                      {report.data.sms.estimated_submitted_segments} segmentos
+                      sometidos · estimación{" "}
+                      {cost(report.data.sms.estimated_delivery_cost_microusd)}
+                    </p>
+                    <p>
+                      Recibos de la ruta:{" "}
+                      {report.data.sms.route_receipt_support.join(", ") ||
+                        "Sin datos"}
+                      .
+                    </p>
+                    {Object.entries(report.data.sms.provider_status_counts).map(
+                      ([state, n]) => (
+                        <p key={state}>
+                          {state}: {n}
+                        </p>
+                      ),
+                    )}
+                    <p className="source-note">
+                      Estos estados son históricos y no se suman entre sí. El
+                      precio usa la tarifa guardada; no verifica la factura del
+                      proveedor. En simulación no se incurre en costo.
+                    </p>
+                  </section>
+                )}
                 {demo && meta.scope === "test" && canWrite && (
                   <div className="simulation-actions">
                     <span className="badge">Solo demostración</span>
                     <button
                       className="button secondary"
-                      disabled={busy}
+                      disabled={busy || uncertain}
                       onClick={() =>
                         run(async () => {
                           await mutate(
@@ -1283,7 +1539,7 @@ function CampaignDetail(
                     </button>
                     <button
                       className="button secondary"
-                      disabled={busy}
+                      disabled={busy || uncertain}
                       onClick={() =>
                         run(async () => {
                           await mutate(
@@ -1309,6 +1565,10 @@ function CampaignDetail(
                           {deliveryStates[j.state] || j.state}
                           {j.reason ? " · " + explainReason(j.reason) : ""}
                         </span>
+                        <small>
+                          Contacto: {j.customer_id} · Referencia:{" "}
+                          {j.message_id || "Sin confirmar"}
+                        </small>
                         {demo && (
                           <>
                             <a href={j.tracking_url}>

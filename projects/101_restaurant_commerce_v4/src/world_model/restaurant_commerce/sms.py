@@ -16,6 +16,7 @@ from .sms_delivery import segments,provider_reason
 
 
 class SenderInput(StrictModel):
+    expected_digest: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
     account_sid:str=Field(pattern=r'^AC[a-fA-F0-9]{32}$')
     sender:str=Field(pattern=r'^(?:\+[1-9]\d{7,14}|\d{3,6})$')
     route:Literal['international_long_code','short_code','unverified']='unverified'
@@ -51,7 +52,9 @@ def sender_document(session,business):
 
 def configure(session,business,payload,now):
     cfg=c.settings(session,business);lock(session,business)
-    doc=payload.model_dump(mode='json');binding=c.digest(doc['account_sid']+':'+doc['sender'])
+    if payload.expected_digest is not None and payload.expected_digest != c.digest(c.canonical(sender_document(session,business))):
+        raise HTTPException(409,"Los ajustes cambiaron; actualiza antes de guardar.")
+    doc=payload.model_dump(mode='json', exclude={"expected_digest"});binding=c.digest(doc['account_sid']+':'+doc['sender'])
     other=session.scalar(select(SmsSender).where(SmsSender.binding_key==binding,SmsSender.business_id!=business))
     if other:raise HTTPException(409,'sms_sender_already_bound')
     if cfg.scope!='test':
@@ -66,7 +69,7 @@ def configure(session,business,payload,now):
 def readiness(session,business):
     cfg=c.settings(session,business);doc=sender_document(session,business)
     return {'scope':cfg.scope,'state':'unconfigured' if doc is None else 'simulation_only' if cfg.scope=='test' else 'configured_inactive',
-        'sender':doc,'live_enabled':False,'provider_verified':False,
+        'sender':doc,'sender_digest':c.digest(c.canonical(doc)),'live_enabled':False,'provider_verified':False,
         'withdrawal':'Tracked unsubscribe link; reply STOP/BAJA only if this route supports inbound messages'}
 
 

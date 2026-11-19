@@ -17,6 +17,6 @@ $('load').onclick=run(load);$('refresh').onclick=run(inbox);$('templates').oncha
 $('senderForm').onsubmit=run(async()=>{const data=Object.fromEntries(senderKeys.map(k=>[k,$(k).value]));data.allowance=Number(data.allowance);data.unit_cost_microusd=0;await api(root()+'/sender','PUT',data);await load();});
 $('templateForm').onsubmit=run(async()=>{await api(root()+'/templates','POST',{provider_id:$('provider_id').value,name:$('templateName').value,language:$('language').value,category:'MARKETING',status:$('templateState').value,body:$('templateBody').value,footer:$('footer').value,source:'Operator synthetic template fixture',expires_at:$('expires_at').value});await load();});
 $('inboundForm').onsubmit=run(async()=>{await api(root()+'/simulate-inbound','POST',{customer_id:$('customer').value,text:$('inboundText').value,request_key:crypto.randomUUID()});await inbox();});
-$('dispatchReplies').onclick=run(async()=>{await api('/api/operator/restaurants/'+encodeURIComponent(business)+'/campaigns/simulate/dispatch','POST',{});await inbox();});
+$('dispatchReplies').onclick=run(async()=>{await api('/api/operator/restaurants/'+encodeURIComponent(business)+'/channel-workspace/simulate-replies','POST',{});await inbox();});
 window.addEventListener('staffchange',e=>{if(e.detail.authenticated)run(load)();else{$('conversations').replaceChildren();config=null;}});
 })();

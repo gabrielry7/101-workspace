@@ -419,3 +419,17 @@ forms and single-column phone rows; each inventory item keeps its own edits/vers
 New targets are at least44px. Technical statuses, confirmed money and unknowns
 remain distinct. Inspect actual1440/390/320px screens; screenshots do not establish
 live provider qualification. Public storefront and email creative keep their brands.
+
+Growth/channel consolidation (18 November 2026): native catalogues, original-growth
+report, manual outbox, WhatsApp/SMS campaigns, sender/template configuration and
+bounded conversation detail reuse references02/03, Inter, white working surfaces,
+existing tabs/list-detail/confirmation and operations-ui controls. New compositions
+are owned by growth-workspace.tsx, channel-config.tsx, channel-inbox.tsx and
+campaign-channel-controls.tsx; growth-channels.css owns their editable geometry.
+No new theme or merchant brand is introduced. Responsive refinements retain44px
+tab/actions, visible refresh controls, wrapping suppression explanations and a
+one-column phone form. Operating-panel expansion survives state refresh; Back
+restores provider choice. Source/scope, unknown price, manual handoff, simulation
+and provider evidence remain distinct. Actual1440/390/320px captures and their
+measurements are retained in the shared consolidation U07–U09 report. Live provider
+capability remains separate.

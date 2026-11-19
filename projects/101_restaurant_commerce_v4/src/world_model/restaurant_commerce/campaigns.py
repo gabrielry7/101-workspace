@@ -378,12 +378,14 @@ def cancel(session, business, campaign_id):
     return {'state':'cancelled', 'note':'Submitted messages cannot be recalled'}
 
 
-def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:8799', limit=25, business=None):
+def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:8799', limit=25, business=None, include_replies=True):
     now = now or utcnow()
     # An expired transmission lease is UNKNOWN, never automatically requeued.
     with sessions() as session:
-        session.execute(update(CampaignJob).where(CampaignJob.state == 'sending',
-            CampaignJob.claimed_at < now-timedelta(minutes=2)).values(state='unknown', reason='worker_interrupted'))
+        stale = update(CampaignJob).where(CampaignJob.state == 'sending',
+            CampaignJob.claimed_at < now-timedelta(minutes=2))
+        if business: stale = stale.where(CampaignJob.business_id == business)
+        session.execute(stale.values(state='unknown', reason='worker_interrupted'))
         session.commit()
         query = select(CampaignJob.id).where(CampaignJob.state == 'queued', CampaignJob.due_at <= now)
         if business: query = query.where(CampaignJob.business_id == business)
@@ -478,7 +480,7 @@ def dispatch(sessions, integrations, *, now=None, base_url='http://127.0.0.1:879
             session.commit()
         processed += 1
     from . import whatsapp
-    replies=whatsapp.dispatch_replies(sessions,integrations,now,business)
+    replies=whatsapp.dispatch_replies(sessions,integrations,now,business) if include_replies else 0
     return {'processed': processed, 'replies_processed':replies, 'mode':'test', 'real_provider_calls':0}
 
 
