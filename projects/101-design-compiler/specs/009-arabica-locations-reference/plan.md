@@ -27,3 +27,8 @@ provider and history. Save screenshots privately; commit a non-sensitive receipt
 Constitution check: specification precedes implementation; reuse existing stack,
 protect unrelated Caretta files and restricted references, label this study's
 authority, retain accessibility and avoid claiming human visual approval.
+
+Correction 0.1.1: restrict delegated navigation to anchors, since the root uses
+the same data attribute for state. Enable explicit gestures in embedded views
+and preserve manual camera changes through ResizeObserver callbacks. A focused
+real-input iframe audit covers pan, wheel, touch, resizing and outside scrolling.

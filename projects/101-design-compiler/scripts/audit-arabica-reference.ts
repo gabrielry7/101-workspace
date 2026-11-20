@@ -1,6 +1,6 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { openLocalBrowser } from './lib/local-browser.ts';
-import { validateReferenceCatalogue } from '../src/references/arabica-locations.js';
+import { validateReferenceCatalogue, referenceVersion } from '../src/references/arabica-locations.js';
 
 const live = process.argv.includes('--live');
 const root = '.tools/arabica-locations-reference';
@@ -90,7 +90,7 @@ try {
   // an extra billable Google reservation or fake geographic screenshot.
   await browser.evaluate(`(async()=>{const {mountArabicaReference}=await import('/arabica/arabica-client.js');const old=document.querySelector('.arabica-reference'),copy=old.cloneNode(true);old.replaceWith(copy);window.failedReference=mountArabicaReference(copy,JSON.parse(document.getElementById('arabica-reference-input').textContent),{reserve:async()=>({ok:true,json:async()=>({google:{}})}),load:async()=>{throw Error('offline test')}});await window.failedReference.activate()})()`);
   check(await browser.evaluate("window.failedReference.inspect().state === 'unavailable' && document.querySelectorAll('.reference-panel a').length > 0"), 'provider failure retains the location navigation');
-  await writeFile(output + '/audit.json', JSON.stringify({ version: '0.1.0', checkedAt: new Date().toISOString(),
+  await writeFile(output + '/audit.json', JSON.stringify({ version: referenceVersion, checkedAt: new Date().toISOString(),
     original: catalogue.source, reference_views: catalogue.pages.length, google_live_verified: live,
     google_api_initializations: googleScripts, matrix, checks, human_visual_approval: false }, null, 2));
   console.log(JSON.stringify({ passed: checks.length, google_live_verified: live, google_api_initializations: googleScripts, widths: sizes }));

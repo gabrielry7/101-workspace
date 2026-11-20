@@ -55,7 +55,7 @@ import catalogue from '${localImport('.tools/arabica-locations-reference/prepare
 await build({ entryPoints: [resolve(project, 'src/references/arabica-locations-client.js')], bundle: true,
   outfile: resolve(preview, 'public/arabica/arabica-client.js'), format: 'esm', target: 'es2022', minify: true });
 await astroBuild({ root: preview, configFile: false, output: 'static', build: { assets: 'arabica/_astro' }, logLevel: 'error' });
-await writeFile(resolve(work, 'build-receipt.json'), JSON.stringify({ version: '0.1.0',
+await writeFile(resolve(work, 'build-receipt.json'), JSON.stringify({ version: '0.1.1',
   reference: catalogue.source, observed_at: catalogue.observedAt, pages: catalogue.pages.length,
   retained_assets: assetMap.size + 3, publication_allowed: false, google_initializations: 0,
   map_provider: 'google', authorization: 'existing bounded trial; activation required' }, null, 2));

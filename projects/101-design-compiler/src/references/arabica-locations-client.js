@@ -67,7 +67,9 @@ export function mountArabicaReference(root, catalogue, services = {}) {
     announcement.textContent = `${view.panelHeading}: ${view.links.map(link => link.name).join(', ')}`;
   }
   root.addEventListener('click', event => {
-    const link = event.target.closest('[data-reference-view]');
+    // The root carries data-reference-view as state too. Only explicit links
+    // navigate; map gestures/controls and carousel buttons must not match it.
+    const link = event.target.closest('a[data-reference-view]');
     if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
     event.preventDefault(); const id = link.dataset.referenceView;
     navigate(id, true);
@@ -75,7 +77,9 @@ export function mountArabicaReference(root, catalogue, services = {}) {
   });
   const readURL = () => new URL(location.href).searchParams.get('view') || 'world';
   window.addEventListener('popstate', () => navigate(readURL()));
-  const observer = new ResizeObserver(() => { if (api && map) { api.event.trigger(map, 'resize'); camera(); } });
+  // Resizing must retain a visitor's pan/zoom. A selected location owns the
+  // initial framing; only navigating to another location applies it again.
+  const observer = new ResizeObserver(() => { if (api && map) api.event.trigger(map, 'resize'); });
   observer.observe(canvas);
   const menu = root.querySelector('.reference-menu-button');
   const nav = root.querySelector('.reference-navigation');
@@ -91,7 +95,7 @@ export function mountArabicaReference(root, catalogue, services = {}) {
       api = await (services.load || loadGoogleMaps)(google);
       const [lng, lat] = offsetCamera(view.center, view.zoom, innerWidth);
       map = new api.Map(canvas, { center: { lat, lng }, zoom: view.zoom, styles: view.mapStyle,
-        draggable: true, scrollwheel: false, streetViewControl: true, mapTypeId: 'roadmap',
+        gestureHandling: 'greedy', keyboardShortcuts: true, streetViewControl: true, mapTypeId: 'roadmap',
         disableDefaultUI: true, scaleControl: true, zoomControl: true });
       plot();
       api.event.addListenerOnce(map, 'idle', () => { gate.hidden = true; root.dataset.mapState = 'ready'; });
@@ -105,8 +109,9 @@ export function mountArabicaReference(root, catalogue, services = {}) {
   }
   activate.addEventListener('click', start);
   navigate(readURL());
-  return { navigate, activate: start, inspect: () => ({ version: '0.1.0', view: view.id,
+  return { navigate, activate: start, inspect: () => ({ version: '0.1.1', view: view.id,
     provider: 'google', mapInstances: map ? 1 : 0, markerCount: markers.length,
+    gestureHandling: map?.get('gestureHandling') ?? null,
     markerCoordinates: markers.map(marker => marker.getPosition().toJSON()),
     camera: map ? { center: map.getCenter().toJSON(), zoom: map.getZoom() } : null,
     state: root.dataset.mapState || 'inactive' }) };

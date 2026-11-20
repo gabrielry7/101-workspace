@@ -1,6 +1,6 @@
 # % Arabica locations · private reference reproduction
 
-Date: 2026-11-17. Version: 0.1.0, visual review pending.
+Date: 2026-11-17. Version: 0.1.1, visual review pending.
 User requests a faithful copy of https://arabica.com/en/locations/ first;
 conversion into section bones is explicitly deferred.
 
@@ -35,6 +35,10 @@ pages and the rest of the brand website is outside this section's scope.
 - R6: Original media/fonts/snapshots and their local build stay under ignored
   `.tools/arabica-locations-reference/`; no public deployment or redistribution.
   Commit and push only own implementation, tooling, spec and verification summary.
+- R7 (user correction): Real mouse drag, wheel zoom and one-finger touch must
+  move the map inside an embedded preview as well. Preserve the user's camera
+  across layout resizing; reframe only when choosing another location. Page
+  scrolling remains possible outside the map. Verify with actual input events.
 
 ## Acceptance scenarios
 

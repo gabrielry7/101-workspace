@@ -1,0 +1,21 @@
+{
+  "version": "0.1.1",
+  "checkedAt": "2026-11-20T03:03:01.363Z",
+  "google_live_verified": true,
+  "google_api_initializations": 1,
+  "embedded_preview": true,
+  "checks": [
+    "real Google map loads inside iframe",
+    "gestures explicitly enabled in embedded preview",
+    "actual mouse drag moves geographic centre",
+    "mouse wheel zooms the map",
+    "resize preserves manual pan and zoom",
+    "single-finger drag moves the map inside iframe",
+    "map drag does not scroll the surrounding page",
+    "touch outside the map still scrolls the page",
+    "choosing a country still applies its reference framing",
+    "all gesture checks reuse one Google initialization"
+  ],
+  "private_evidence_directory": ".tools/arabica-locations-reference/verification/",
+  "human_visual_approval": false
+}

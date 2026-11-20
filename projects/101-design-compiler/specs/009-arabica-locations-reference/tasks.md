@@ -9,6 +9,9 @@
 - [x] T6 / R6: Record exact verification limits, review scoped diff, commit/push
   own files and verify remote SHA. Keep reference preview available for review.
 
+- [x] T7 / R7: Fix delegated root clicks, enable gestures and preserve manual
+  camera on resize; verify ten actual-input checks inside an iframe.
+
 Consistency review: every requirement has an observable scenario and task;
 provider choice and pixel fidelity remain separate from layout completeness.
 

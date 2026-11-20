@@ -1,6 +1,6 @@
 # % Arabica · reproducción privada de ubicaciones
 
-Versión 0.1.0. Referencia: https://arabica.com/en/locations/.
+Versión 0.1.1. Referencia: https://arabica.com/en/locations/.
 [Spec](../../specs/009-arabica-locations-reference/spec.md),
 [plan](../../specs/009-arabica-locations-reference/plan.md),
 [tareas](../../specs/009-arabica-locations-reference/tasks.md).
@@ -76,3 +76,23 @@ privado `verification/`. El resumen versionado no contiene imágenes, fuentes,
 credenciales ni código privado de Thomas. El acceso público a los recursos de la
 referencia no se presenta como una licencia de redistribución. La revisión visual
 del usuario y la extracción del hueso siguen siendo pasos separados.
+
+## Corrección de movimiento · 0.1.1
+
+El mapa conserva la posición al terminar un arrastre, usar controles o cambiar
+el tamaño de la vista. El manejador general de clics ahora admite únicamente
+enlaces de navegación: antes confundía el atributo de estado del contenedor con
+un enlace y volvía a seleccionar la región tras interacciones del mapa.
+Los gestos se configuran explícitamente para arrastre con ratón/dedo y zoom con
+rueda; el observador de tamaño no vuelve a aplicar el encuadre inicial.
+
+La comprobación anterior no cubría el arrastre real. La regresión específica
+pasó diez comprobaciones con entrada nativa en un iframe: ratón, rueda, retención
+de cámara al redimensionar, un dedo, scroll exterior y selección posterior de
+país. Reutilizó una inicialización de Google. Ejecutar sólo dentro del cupo:
+
+```sh
+node --experimental-strip-types scripts/audit-arabica-pan.ts --live
+```
+
+Recibo resumido: [arabica-pan-verification.json](arabica-pan-verification.json).
