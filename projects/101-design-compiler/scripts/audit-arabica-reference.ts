@@ -48,7 +48,7 @@ try {
     await browser.evaluate("window.arabicaReference.navigate('world', true)");
   }
   for (const id of ['japan', 'japan/kyoto', 'united-kingdom', 'united-kingdom/london']) {
-    await browser.evaluate(`(()=>{const link=document.querySelector('[data-reference-panel] [data-reference-view="${id}"]');if(link)link.click();else window.arabicaReference.navigate(${JSON.stringify(id)},true)})()`);
+    await browser.evaluate(`(()=>{const link=document.querySelector('[data-directory-panel] [data-directory-target="${id}"]');if(link)link.click();else window.arabicaReference.navigate(${JSON.stringify(id)},true)})()`);
     await wait(live ? 1600 : 100);
     const state = await browser.evaluate('window.arabicaReference.inspect()');
     check(state.view === id, `navigation: ${id}`);

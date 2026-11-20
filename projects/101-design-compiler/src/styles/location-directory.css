@@ -1,0 +1,64 @@
+/* Structure and native defaults only. All selectors have zero specificity so a
+   separately bound brand skin can supply typography/colour without a new recipe. */
+:where(.location-directory){font-family:inherit;font-size:1rem;line-height:1.5;width:100%;word-break:normal;overflow-wrap:normal;hyphens:none}
+:where(.location-directory *){box-sizing:border-box;min-width:0}
+:where(.ld-title){font:inherit;font-weight:normal;padding:60px 82px 24px;margin:0}
+:where(.ld-map-area){position:relative;height:calc(100vh - 400px);min-height:300px}
+:where(.ld-map){position:relative;width:100%;height:100%}
+:where(.ld-map-placeholder){height:100%;display:grid;place-content:center;text-align:center;gap:12px;padding:24px}
+:where(.ld-panel){position:absolute;left:40px;top:0;width:230px;padding:20px 20px 5px;background:Canvas;color:CanvasText;z-index:2}
+:where(.ld-panel-heading){font:inherit;font-weight:normal;display:flex;align-items:center;gap:8px;min-height:25px;margin:0 0 14px}
+:where(.ld-icon){width:25px;height:25px;flex:none}
+:where(.ld-panel ul){list-style:none;padding:0;margin:13px 0}
+:where(.ld-regions){margin:13px 0}
+:where(.ld-region-group){display:contents}
+:where(.ld-region-group h3){font:inherit;display:inline;margin-left:5px}
+:where(.ld-region-item){margin:10px 0 0 25px}
+:where(.ld-count){padding-left:20px;font-size:inherit}
+:where(.ld-panel a){color:inherit;text-underline-offset:3px}
+:where(.ld-cities,.ld-future-scroll){height:323px;overflow-y:auto;margin:0 -20px 20px;padding:0 10px 0 20px;overscroll-behavior-y:contain}
+:where(.ld-cities li,.ld-future-scroll li){padding:6px 4px}
+:where(.ld-cities a[aria-current]){font-weight:bold}
+:where(.ld-panel-divider){height:1px;background:currentColor;margin:15px 0 25px}
+:where(.ld-back){position:absolute;bottom:-65px;left:0;right:0;background:Canvas;color:CanvasText}
+:where(.ld-back a){display:flex;align-items:center;gap:8px;padding:17px 20px 12px;min-height:50px}
+:where(.ld-cards){margin:80px 0 50px;padding:10px 0}
+:where(.ld-cards-inner){padding:0 82px}
+:where(.ld-cards h2){font:inherit;font-weight:normal;margin:30px 0 40px;display:flex;align-items:center;gap:14px}
+:where(.ld-card-track){display:flex;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin}
+:where(.ld-card){width:270px;flex:0 0 270px;padding-bottom:30px;scroll-snap-align:start}
+:where(.ld-card-body){display:block;color:inherit}
+:where(.ld-card-media){width:270px;aspect-ratio:270/118.125;display:grid;place-items:center;text-align:center;padding:8px}
+:where(.ld-card-media img){display:block;width:100%;height:100%;object-fit:cover}
+:where(.ld-card h3){font:inherit;font-weight:normal;margin:14px 0 0}
+:where(.ld-card-dots){display:none}
+:where(.ld-new-stores){margin-top:0}
+:where(.ld-new-stores .ld-cards-inner){padding-left:302px}
+:where(.ld-new-stores h2){margin-bottom:20px}
+:where(.ld-new-stores .ld-card){width:306px;flex-basis:306px}
+:where(.ld-new-stores .ld-card-track){max-width:1000px}
+:where(.ld-announcement){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:where(.location-directory a:focus-visible,.location-directory button:focus-visible,.ld-card-track:focus-visible){outline:2px solid Highlight;outline-offset:4px}
+:where(.ld-nojs){position:relative;z-index:3;background:Canvas;color:CanvasText;margin-top:40px;padding:24px}
+@media(max-width:1000px) and (min-width:781px){:where(.ld-panel){left:20px;width:210px}:where(.ld-new-stores .ld-cards-inner){padding-left:250px;padding-right:20px}}
+@media(max-width:780px){
+ :where(.location-directory){width:90%;margin-inline:auto}
+ :where(.ld-title){padding:60px 25px 24px}
+ :where(.ld-map-area){height:auto;min-height:0;padding-top:300px;padding-bottom:100px}
+ :where(.ld-map){position:absolute!important;left:-10px;top:0!important;width:calc(100% + 20px);height:300px!important}
+ :where(.ld-panel){position:relative;left:0;top:0;width:auto;margin:0 -10px;padding:30px 40px 5px}
+ :where(.ld-future-scroll){height:450px}
+ :where(.ld-back){bottom:-50px}
+ :where(.ld-cards,.ld-new-stores){margin-top:-40px;margin-bottom:50px;padding:10px 0 40px}
+ :where(.ld-cards-inner,.ld-new-stores .ld-cards-inner){padding:0}
+ :where(.ld-cards h2){margin:30px 0}
+ :where(.ld-card-track,.ld-new-stores .ld-card-track){padding:0 20px;scroll-padding-left:20px}
+ :where(.ld-card,.ld-new-stores .ld-card){flex-basis:100%;min-width:0}
+ :where(.ld-card-body){padding:0 10px;text-align:center}
+ :where(.ld-card-media){width:min(270px,100%);margin-inline:auto}
+ :where(.ld-card-dots){display:flex;justify-content:center;gap:10px;margin:10px 0}
+ :where(.ld-card-dots button){width:10px;height:10px;padding:0;border:1px solid currentColor;background:Canvas;border-radius:50%;cursor:pointer}
+ :where(.ld-card-dots button[aria-current]){background:currentColor}
+}
+@media(max-width:430px){:where(.ld-title){padding-left:15px}}
+@media(prefers-reduced-motion:reduce){:where(.location-directory *){scroll-behavior:auto!important;transition:none!important;animation:none!important}}

@@ -85,6 +85,12 @@ no recrearlos bajo un nombre nuevo.
 
 ## Ejemplo de selección, sin datos inventados
 
+La extracción ejecutable de directorio con mapa está documentada en
+[location-directory](location-directory.md), versión 0.1.0. Conserva composición,
+jerarquía y carril compartidos con la referencia; el mapa y las fotos neutros son
+espacios por vincular. Su verificación técnica no establece aprobación visual ni
+implementa el selector general.
+
 Una receta de hero admite título, propuesta, acción y un medio autorizado. Su
 comportamiento especifica si la imagen permanece en flujo o se fija y libera con
 el scroll. La piel decide las fuentes y colores. El negocio aporta título, enlace,

@@ -1,6 +1,11 @@
 # % Arabica · reproducción privada de ubicaciones
 
-Versión 0.1.1. Referencia: https://arabica.com/en/locations/.
+Versión 0.2.0. Referencia: https://arabica.com/en/locations/.
+
+La sección ahora consume el [hueso de directorio jerárquico](../bones/location-directory.md)
+con el mismo componente y controlador que el taller neutro. Mantiene sus datos,
+piel y adaptador de Google privados. La extracción comparó la geometría con el
+archivo 0.1.1 sin activar Google; no constituye otra prueba de cartografía viva.
 [Spec](../../specs/009-arabica-locations-reference/spec.md),
 [plan](../../specs/009-arabica-locations-reference/plan.md),
 [tareas](../../specs/009-arabica-locations-reference/tasks.md).

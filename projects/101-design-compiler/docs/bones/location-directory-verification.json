@@ -1,0 +1,94 @@
+{
+  "schema": "101-location-directory-public-verification-v1",
+  "checked_at": "2026-11-20T12:40:47.807Z",
+  "bone": "location.directory-map-hierarchy@0.1.0",
+  "browser": "Chrome/156.0.8078.79",
+  "approval": "pending-human-review",
+  "builds": {
+    "neutral_workshop": "passed",
+    "private_reference_102_views": "passed"
+  },
+  "contract_tests": {
+    "passed": 6,
+    "failed": 0
+  },
+  "native_bone_checks": {
+    "passed": 94,
+    "failed": 0
+  },
+  "native_reference_regression": {
+    "passed": 42,
+    "google_live_verified": false,
+    "google_api_initializations": 0,
+    "widths": [
+      360,
+      390,
+      559,
+      560,
+      561,
+      767,
+      768,
+      779,
+      780,
+      781,
+      1024,
+      1440
+    ]
+  },
+  "viewport_widths": [
+    360,
+    390,
+    430,
+    431,
+    559,
+    560,
+    561,
+    768,
+    779,
+    780,
+    781,
+    1000,
+    1001,
+    1024,
+    1440
+  ],
+  "reference_layout_comparison": {
+    "widths": [
+      390,
+      1440
+    ],
+    "hierarchy_levels": 3,
+    "maximum_allowed_geometry_delta_px": 1,
+    "result": "passed"
+  },
+  "coverage": [
+    "hierarchy-and-explicit-anchor-navigation",
+    "active-selection",
+    "browser-history",
+    "keyboard-focus",
+    "unbound-map-preserved",
+    "provider-selection-event",
+    "unique-canonical-anatomy",
+    "unknown-counts-and-empty-state",
+    "native-touch-and-pagination",
+    "whole-words-and-no-document-overflow",
+    "long-labels-and-font-fallback",
+    "multiple-instances",
+    "no-javascript-native-data",
+    "reduced-motion",
+    "forced-colours",
+    "provider-failure-retains-navigation"
+  ],
+  "external_requests_during_bone_audit": 0,
+  "google_initializations_this_delivery": 0,
+  "google_live_verified_this_delivery": false,
+  "both_persistent_trial_ledgers_unchanged": true,
+  "browser_runtime_exceptions": 0,
+  "private_evidence_location": ".tools/location-directory-bone/verification/",
+  "limits": [
+    "Native Chromium checks and screenshot inspection are technical verification, not human visual approval.",
+    "No live Google activation or new billing authorization.",
+    "Restricted media, catalogue, original fonts and screenshots remain outside Git.",
+    "No general library selector or Thomas service deployment."
+  ]
+}

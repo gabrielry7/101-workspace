@@ -1,4 +1,4 @@
-export const referenceVersion = '0.1.1';
+export const referenceVersion = '0.2.0';
 
 export function referenceViewId(value) {
   const url = new URL(value, 'https://arabica.com');

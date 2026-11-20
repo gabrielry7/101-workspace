@@ -1,12 +1,11 @@
 ---
-import { validateReferenceCatalogue, referenceViewId, referenceHref, referenceVersion } from '../../references/arabica-locations.js';
+import Directory from '../bones/LocationDirectory.astro';
+import { bindArabicaDirectory } from '../../references/arabica-directory.ts';
+import { validateReferenceCatalogue, referenceVersion } from '../../references/arabica-locations.js';
 import '../../styles/arabica-reference.css';
 const { catalogue: supplied, runtimeURL = '/arabica/arabica-client.js' } = Astro.props;
 const catalogue = validateReferenceCatalogue(supplied);
-const localLink = (url: string) => {
-  const id = referenceViewId(url);
-  return id ? referenceHref(id) : url;
-};
+const { content, images } = bindArabicaDirectory(catalogue);
 const serialised = JSON.stringify(catalogue).replace(/</g, '\\u003c');
 ---
 <div class="arabica-reference" data-reference-version={referenceVersion}>
@@ -15,60 +14,25 @@ const serialised = JSON.stringify(catalogue).replace(/</g, '\\u003c');
     <button class="reference-menu-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="reference-navigation"><span class="reference-icon" aria-hidden="true">&#xe910;</span></button>
     <a class="reference-logo" href="https://arabica.com/en/" aria-label="% Arabica home"><span class="reference-icon" aria-hidden="true">&#xe906;</span></a>
     <nav class="reference-navigation" id="reference-navigation" aria-label="Main navigation">
-      <a href="https://arabica.com/en/philosophy/">Philosophy</a>
-      <a href="/arabica/" data-reference-view="world" aria-current="page">Locations</a>
-      <a href="https://arabica.com/en/shop/">Shop</a>
-      <a href="https://arabica.com/en/films/">Films</a>
-      <a href="https://arabica.com/en/contact/">Contact</a>
+      <a href="https://arabica.com/en/philosophy/">Philosophy</a><a href="/arabica/" data-reference-view="world" aria-current="page">Locations</a>
+      <a href="https://arabica.com/en/shop/">Shop</a><a href="https://arabica.com/en/films/">Films</a><a href="https://arabica.com/en/contact/">Contact</a>
     </nav>
     <div class="reference-header-right"><a href="https://arabica.com/en/location/arabica-shokudo/">% Shokudō</a><a href="https://www.instagram.com/arabica.coffee/" aria-label="Instagram"><span class="reference-icon" aria-hidden="true">&#xe903;</span></a></div>
   </header>
-  <main class="reference-content" id="reference-locations">
-    <h1 class="reference-title" tabindex="-1">Locations</h1>
-    <section class="reference-map-area" aria-label="Locations map and regions">
-      <div class="reference-map" data-reference-map role="region" aria-label="% Arabica locations map"></div>
-      <div class="reference-map-gate" data-map-gate>
-        <button type="button" data-activate-map>Activar Google Maps</button>
-        <p data-map-status role="status">La lista de ubicaciones está disponible.</p>
-      </div>
-      <div data-reference-panel></div>
-    </section>
-    <div data-reference-cards></div>
-    <p class="reference-announcement" aria-live="polite" data-view-announcement></p>
-    <noscript><p>JavaScript is required for the local map. <a href="https://arabica.com/en/locations/">Visit the original locations page.</a></p></noscript>
+  <main id="reference-locations">
+    <Directory id="arabica-directory" content={content} runtimeURL={null} autoMount={false} queryKey="view" headingLevel={1}>
+      <fragment slot="map"><span aria-hidden="true"></span></fragment>
+      <fragment slot="map-overlay"><div class="reference-map-gate" data-map-gate><button type="button" data-activate-map>Activar Google Maps</button><p data-map-status role="status">La lista de ubicaciones está disponible.</p></div></fragment>
+      <fragment slot="icon">{(role: string) => role === 'back'
+        ? <><span class="reference-icon" aria-hidden="true">&#xe900;</span><span class="reference-icon reference-world-icon" aria-hidden="true">&#xe905;</span></>
+        : <span class="reference-icon" aria-hidden="true">{role === 'cards' ? '\ue906' : '\ue904'}</span>}</fragment>
+      <fragment slot="card-media">{(slot: {viewId:string;cardId:string;label:string}) => <img src={images.get(`${slot.viewId}:${slot.cardId}`)!.url} alt={slot.label} loading="lazy" width="270" height="118"/>}</fragment>
+    </Directory>
   </main>
 </div>
-{catalogue.pages.map((page: any) => (
-  <template data-reference-template={page.id}>
-    <aside class:list={['reference-panel', { 'reference-panel-world': page.level === 'world' }]} aria-label={page.panelHeading}>
-      <h2 class="reference-panel-heading"><span class="reference-icon" aria-hidden="true">&#xe904;</span>{page.panelHeading}</h2>
-      {page.level === 'world' ? (
-        <div class="reference-regions">
-          {page.groups.map((group: any) => (
-            <section class="reference-region-group" aria-label={group.name}>
-              <h3>{group.name}</h3><br/>
-              {group.items.map((item: any) => <div class="reference-region-item"><a href={localLink(item.url)} data-reference-view={referenceViewId(item.url)}><span>{item.name}</span>{' '}<span class="reference-count">{item.count}</span></a></div>)}<br/>
-            </section>
-          ))}
-        </div>
-      ) : (
-        <ul class="reference-cities">{page.links.map((item: any) => <li><a href={localLink(item.url)} data-reference-view={referenceViewId(item.url)} aria-current={referenceViewId(item.url) === page.id ? 'location' : undefined}><span>{item.name}</span>{' '}<span class="reference-count">{item.count}</span></a></li>)}</ul>
-      )}
-      {page.states.length > 0 && <><div class="reference-panel-divider"></div><ul class="reference-future-scroll">{page.states.map((state: any) => <><li><h2 class="reference-panel-heading"><span class="reference-icon" aria-hidden="true">&#xe904;</span>{state.name}</h2></li>{state.items.map((name: string) => <li>{name}</li>)}</>)}</ul></>}
-      {page.back && <div class="reference-back"><a href={localLink(page.back)} data-reference-view={referenceViewId(page.back)}><span class="reference-icon" aria-hidden="true">&#xe900;</span><span class="reference-icon reference-world-icon" aria-hidden="true">&#xe905;</span>Go Back</a></div>}
-    </aside>
-    {page.cards.length > 0 && (
-      <section class:list={['reference-cards', { 'reference-new-stores': page.level === 'world' }]} aria-label={page.cardsHeading || 'Locations'}>
-        <div class="reference-cards-inner">
-          <h2><span class="reference-icon" aria-hidden="true">&#xe906;</span>{page.cardsHeading?.replace(/^%\s*/, '') || 'New stores'}</h2>
-          <div class="reference-card-track" tabindex="0" aria-label="Scroll through locations">
-            {page.cards.map((card: any) => <article class="reference-card"><a href={card.url}><img src={card.image} alt={card.name} loading="lazy" width="270" height="118"/><h3>{card.name}</h3></a></article>)}
-          </div>
-          <div class="reference-card-dots" aria-label="Choose location"></div>
-        </div>
-      </section>
-    )}
-  </template>
-))}
 <script type="application/json" id="arabica-reference-input" set:html={serialised}></script>
 <script is:inline type="module" src={runtimeURL}></script>
+<style is:global>
+  .arabica-reference .location-directory { font: inherit; }
+  .arabica-reference .ld-card-media { display: block; padding: 0; aspect-ratio: auto; }
+</style>

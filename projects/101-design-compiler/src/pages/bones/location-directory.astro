@@ -1,0 +1,45 @@
+---
+import Directory from '../../components/bones/LocationDirectory.astro';
+import { locationDirectoryBone as bone, neutralLocationDirectory as content, locationDirectoryAnatomy } from '../../bones/location-directory.ts';
+const parts = locationDirectoryAnatomy(content);
+---
+<!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="data:,"/><title>Directorio de ubicaciones · hueso sin piel</title></head>
+<body>
+  <header class="directory-workshop">
+    <h1>Directorio de ubicaciones · sin piel</h1>
+    <p><code>{bone.id}@{bone.version}</code> · Datos sintéticos para revisar la estructura. Aprobación visual pendiente.</p>
+    <nav aria-label="Revisión"><a href="#directory-stage">Ver hueso</a> · <a href="#directory-anatomy">Partes y espacios</a> · <a href="#directory-skin">Piel retirada</a> · <a href="http://127.0.0.1:8780/arabica/">Ver copia de referencia</a></nav>
+    <button type="button" id="directory-guides" aria-pressed="true">Ocultar guías de espacios</button>
+  </header>
+  <div id="directory-stage" class="directory-stage show-parts"><Directory id="directory-neutral" content={content} queryKey="view"/></div>
+  <main class="directory-workshop directory-documentation">
+    <section id="directory-anatomy"><h2>Partes y espacios</h2><p>La lista y las tarjetas funcionan. El mapa y las fotos son espacios por vincular.</p>
+      <details><summary>Inventario de {parts.length} partes</summary><dl>{parts.map(part => <div><dt><code>{part.id}</code> · {part.kind}</dt><dd>{part.purpose}<br/>Responsable: {part.owner}</dd></div>)}</dl></details>
+    </section>
+    <section id="directory-skin"><h2>Piel retirada</h2><dl>
+      <div><dt>Identidad</dt><dd>Logo, iconos de marca, tipografías, paleta, sombras y acabados quedan fuera del hueso.</dd></div>
+      <div><dt>Contenido</dt><dd>Grupos, regiones, ciudades, recuentos y locales son entradas configurables. Los ejemplos son sintéticos; los destinos de los locales están sin vincular.</dd></div>
+      <div><dt>Medios</dt><dd>Cada local tiene un espacio de foto. Los originales de la referencia no se usan como imágenes de otro negocio.</dd></div>
+      <div><dt>Mapa</dt><dd>Bloque independiente del proveedor. En este hueso sólo se reserva su posición y su respuesta a la selección; no se carga cartografía ni se consume Google.</dd></div>
+      <div><dt>Comportamiento</dt><dd>Panel sobre el mapa en escritorio; mapa arriba y lista debajo en móvil. Selección, regreso, historial y recorrido táctil de tarjetas pertenecen al hueso.</dd></div>
+    </dl></section>
+  </main>
+  <script>
+    const button = document.getElementById('directory-guides')!;
+    button.addEventListener('click', () => { const visible = document.getElementById('directory-stage')!.classList.toggle('show-parts'); button.setAttribute('aria-pressed', String(visible)); button.textContent = visible ? 'Ocultar guías de espacios' : 'Mostrar guías de espacios'; });
+  </script>
+</body></html>
+<style is:global>
+body { margin: 0; font-size: 16px; }
+.directory-workshop { margin: 24px; max-width: 90ch; line-height: 1.5; }
+.directory-workshop h1 { font-size: 1.5rem; }
+.directory-workshop code { overflow-wrap: anywhere; }
+.directory-workshop button { font: inherit; margin-top: 16px; }
+.directory-documentation { margin-top: 80px; }
+.directory-workshop dl > div { padding-block: 16px; border-bottom: 1px solid #ccc; }
+.directory-workshop dd { margin: 8px 0 0; }
+.directory-stage { position: relative; }
+.show-parts [data-directory-part] { outline: 1px dotted #aaa; outline-offset: -1px; }
+.show-parts [data-slot-kind] { background: #f5f5f5; }
+.show-parts .ld-card-media { border: 1px dashed #aaa; }
+</style>

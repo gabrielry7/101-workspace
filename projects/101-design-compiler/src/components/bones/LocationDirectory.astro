@@ -1,0 +1,43 @@
+---
+import { locationDirectorySchema, locationDirectoryBone as bone, type LocationDirectoryContent } from '../../bones/location-directory.ts';
+import View from './LocationDirectoryView.astro';
+import '../../styles/location-directory.css';
+interface Props { id?: string; content: LocationDirectoryContent; runtimeURL?: string|null; autoMount?: boolean; queryKey?: string; headingLevel?: 1|2|3 }
+const { id = 'location-directory', runtimeURL = '/location-directory.js', autoMount = true,
+  queryKey = `location-${id}`, headingLevel = 2 } = Astro.props;
+if (!/^[a-z][a-z0-9-]{0,70}$/.test(id) || !/^[a-z][a-z0-9-]{0,90}$/.test(queryKey)) throw Error('INVALID_DIRECTORY_INSTANCE');
+const content = locationDirectorySchema.parse(Astro.props.content);
+const rootView = content.views.find(view => view.id === content.rootId)!;
+const Title = `h${headingLevel}` as 'h1'|'h2'|'h3';
+// These strings are output of trusted Astro render slots, never HTML input in
+// business data. The neutral contract only accepts labels for media slots.
+const icons: Record<string,string> = {};
+if (Astro.slots.has('icon')) for (const role of ['location','opening','back','cards']) icons[role] = await Astro.slots.render('icon', [role]);
+const media: Record<string,string> = {};
+if (Astro.slots.has('card-media')) for (const view of content.views) for (const card of view.cards) {
+  media[`${view.id}:${card.id}`] = await Astro.slots.render('card-media', [{ viewId: view.id, cardId: card.id, label: card.imageLabel }]);
+}
+const json = JSON.stringify(content).replace(/</g, '\\u003c');
+---
+<section id={id} class="location-directory ld-content reference-content" data-section-bone={bone.id} data-bone-version={bone.version}
+  data-directory-query={queryKey} data-directory-auto={autoMount || undefined} data-directory-part="section" aria-label={content.title}>
+  <Title class="ld-title reference-title" data-directory-part="title" tabindex="-1">{content.title}</Title>
+  <div class="ld-map-area reference-map-area" aria-label={content.labels.navigation}>
+    <div class="ld-map reference-map" data-directory-map data-reference-map data-directory-part="map-slot" data-slot-kind="location-map" role="region" aria-label={content.mapLabel}>
+      <slot name="map"><div class="ld-map-placeholder"><strong>{content.mapLabel}</strong><span data-map-view-label>{rootView.title}</span></div></slot>
+    </div>
+    <slot name="map-overlay"/>
+    <div data-directory-panel><View content={content} view={rootView} instanceId={id} icons={icons} media={media} mode="panel"/></div>
+  </div>
+  <div data-directory-cards><View content={content} view={rootView} instanceId={id} icons={icons} media={media} mode="cards"/></div>
+  <p class="ld-announcement reference-announcement" aria-live="polite" data-directory-status data-directory-part="status"></p>
+  {content.views.map(view => <template data-directory-template={view.id}><View content={content} view={view} instanceId={id} icons={icons} media={media}/></template>)}
+  <script is:inline type="application/json" data-directory-input set:html={json}></script>
+  <noscript><div class="ld-nojs"><p>Datos de ubicaciones disponibles sin JavaScript.</p>
+    {content.views.map(view => <section id={`${id}-view-${view.id}`}><details open><summary>{view.title}</summary><ul>
+      {[...view.entries, ...view.groups.flatMap(group => group.items)].map(item => <li>{item.label}{item.count !== null && ` (${item.count})`}</li>)}
+      {view.cards.map(card => <li>{card.action.state === 'available' ? <a href={card.action.href}>{card.title}</a> : card.title}</li>)}
+    </ul></details></section>)}
+  </div></noscript>
+</section>
+{runtimeURL && <script is:inline type="module" src={runtimeURL}></script>}
