@@ -105,7 +105,7 @@ price/stock edits; a changed mapping or new source stops for reconciliation.
 Only demo-mode, scoped `settings.write` may import. A catalog cannot enable live
 payments. Original bound retries still reconcile before new-write guards.
 
-The checkout and a connected website share the existing `101:commerce-cart:...`
+The checkout and a connected website share the existing `101:selection-cart:<business>:v1`
 selection contract from World Model `packages/site-runtime/src/commerce/selection-cart.js`.
 The copied browser asset is pinned byte-for-byte; it stores product references
 and quantities, never authoritative prices. Quotes and fulfillment remain here.
