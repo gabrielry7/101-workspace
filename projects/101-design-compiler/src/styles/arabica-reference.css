@@ -1,0 +1,600 @@
+@font-face{
+  font-family:ReferenceAvenir;
+  src:url('/arabica/assets/avenir-roman.woff2') format('woff2');
+  font-display:swap;
+  font-weight:400
+}
+@font-face{
+  font-family:ReferenceAvenirHeavy;
+  src:url('/arabica/assets/avenir-heavy.woff2') format('woff2');
+  font-display:swap;
+  font-weight:400 900
+}
+@font-face{
+  font-family:ReferenceArabicaIcons;
+  src:url('/arabica/assets/arabica-icons.woff') format('woff');
+  font-display:block
+}
+*{
+  box-sizing:border-box
+}
+html{
+  background:#fff;
+  scroll-behavior:auto
+}
+body{
+  margin:0;
+  background:#fff;
+  color:#1a1919;
+  font:13px/1.6 ReferenceAvenir,Arial,sans-serif;
+  overflow-x:hidden
+}
+.arabica-reference a{
+  color:inherit;
+  text-decoration:none
+}
+.arabica-reference button{
+  font:inherit;
+  cursor:pointer
+}
+.arabica-reference a:focus-visible,.arabica-reference button:focus-visible,.reference-card-track:focus-visible{
+  outline:2px solid #9d663f;
+  outline-offset:4px
+}
+.reference-icon{
+  font-family:ReferenceArabicaIcons!important;
+  font-style:normal;
+  font-weight:400;
+  line-height:1;
+  display:inline-block;
+  -webkit-font-smoothing:antialiased
+}
+.reference-header{
+  height:28px;
+  margin-top:25px;
+  padding:0 40px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  text-transform:uppercase;
+  text-shadow:0 2px 2px #0005;
+  letter-spacing:1.5px;
+  font-family:ReferenceAvenirHeavy,Arial,sans-serif;
+  font-size:14px
+}
+.reference-logo{
+  font-size:23px;
+  line-height:28px
+}
+.reference-navigation{
+  display:flex;
+  gap:30px;
+  align-items:center
+}
+.reference-header-right{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:20px
+}
+.reference-header-right .reference-icon{
+  font-size:18px
+}
+.reference-menu-button{
+  display:none
+}
+.reference-title{
+  font-family:ReferenceAvenirHeavy,Arial,sans-serif;
+  font-size:18px;
+  line-height:27px;
+  letter-spacing:3.4px;
+  font-weight:400;
+  text-transform:uppercase;
+  margin:0;
+  padding:60px 82px 24px;
+  overflow-wrap:normal;
+  word-break:normal
+}
+.reference-map-area{
+  position:relative;
+  min-height:300px;
+  height:calc(100vh - 400px)
+}
+.reference-map{
+  width:100%;
+  height:100%;
+  background:#f8f8f8;
+  overflow:hidden;
+  position:relative
+}
+.reference-panel{
+  position:absolute;
+  z-index:2;
+  left:40px;
+  top:0;
+  width:230px;
+  background:#fff;
+  padding:20px 20px 5px;
+  box-shadow:0 8px 20px #0000001a;
+  border-radius:2px
+}
+.reference-panel-heading{
+  font:400 13px/16.714px ReferenceAvenir,Arial,sans-serif;
+  color:#cbcbcb;
+  text-transform:uppercase;
+  margin:0 0 14px;
+  min-height:25px;
+  display:flex;
+  align-items:center;
+  gap:8px
+}
+.reference-panel-heading .reference-icon{
+  font-size:25px;
+  color:#1a1919;
+  width:23px;
+  flex:none
+}
+.reference-panel ul{
+  list-style:none;
+  padding:0;
+  margin:13px 0
+}
+.reference-region-group h3{
+  font:inherit;
+  margin:0 0 0 5px
+}
+.reference-region-group ul{
+  margin:10px 0 30.8px 25px
+}
+.reference-region-group:last-child ul{
+  margin-bottom:26px
+}
+.reference-region-group li{
+  margin-top:10px
+}
+.reference-region-group a{
+  white-space:nowrap
+}
+.reference-count{
+  opacity:.2;
+  padding-left:20px;
+  font-size:12px
+}
+.reference-panel a{
+  transition:opacity .3s ease-in-out
+}
+.reference-panel a:hover{
+  opacity:.5
+}
+.reference-cities{
+  height:343px;
+  overflow-y:auto;
+  margin-top:13px!important;
+  margin-bottom:0!important
+}
+.reference-cities li{
+  padding:6px 4px;
+  color:#363636
+}
+.reference-cities a[aria-current]{
+  font-family:ReferenceAvenirHeavy,Arial,sans-serif
+}
+.reference-cities a[aria-current] .reference-count{
+  opacity:1
+}
+.reference-cities a[aria-current]:hover{
+  opacity:1
+}
+.reference-opening-state{
+  margin-top:24px
+}
+.reference-opening-state .reference-panel-heading .reference-icon{
+  color:#ba7f7f
+}
+.reference-opening-state ul{
+  margin:13px 0
+}
+.reference-opening-state li{
+  padding:6px 4px
+}
+.reference-opening-state:last-of-type .reference-panel-heading .reference-icon{
+  color:#ba7f7f
+}
+.reference-back{
+  position:absolute;
+  bottom:-65px;
+  left:0;
+  right:0;
+  background:#fff;
+  border-radius:2px;
+  box-shadow:0 8px 20px #0000001a
+}
+.reference-back a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#9d663f;
+  padding:17px 20px 12px;
+  min-height:50px
+}
+.reference-back a:hover{
+  color:#1a1919;
+  opacity:1
+}
+.reference-back .reference-world-icon{
+  font-size:28px;
+  margin-right:2px
+}
+.reference-cards{
+  background:#f8f8f8;
+  margin:80px 0 50px;
+  padding:10px 0
+}
+.reference-cards-inner{
+  padding:0 82px
+}
+.reference-cards h2{
+  font:400 18px/27px ReferenceAvenirHeavy,Arial,sans-serif;
+  letter-spacing:3.4px;
+  text-transform:uppercase;
+  margin:30px 0 40px;
+  display:flex;
+  align-items:center;
+  gap:14px
+}
+.reference-cards h2 .reference-icon{
+  font-size:23px;
+  letter-spacing:0
+}
+.reference-card-track{
+  display:flex;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none
+}
+.reference-card-track::-webkit-scrollbar{
+  display:none
+}
+.reference-card{
+  width:270px;
+  flex:0 0 270px;
+  padding:0 0 30px;
+  margin:0;
+  scroll-snap-align:start
+}
+.reference-card a{
+  display:block
+}
+.reference-card img{
+  display:block;
+  object-fit:cover;
+  width:270px;
+  height:118.125px;
+  border-radius:2px
+}
+.reference-card h3{
+  font:400 13px/20.8px ReferenceAvenir,Arial,sans-serif;
+  letter-spacing:0;
+  margin:14px 0 0;
+  overflow-wrap:normal;
+  word-break:normal
+}
+.reference-card a:hover{
+  opacity:.6
+}
+.reference-card-dots{
+  display:none
+}
+.reference-new-stores{
+  margin-top:0
+}
+.reference-new-stores .reference-cards-inner{
+  padding-left:302px;
+  padding-right:82px
+}
+.reference-new-stores h2{
+  font-size:14px;
+  line-height:27px;
+  text-shadow:0 2px 2px #0005;
+  margin-top:30px;
+  margin-bottom:20px
+}
+.reference-new-stores .reference-card{
+  width:306px;
+  flex-basis:306px
+}
+.reference-new-stores .reference-card-track{
+  max-width:1000px
+}
+.reference-map-gate{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  pointer-events:none
+}
+.reference-map-gate button{
+  pointer-events:auto;
+  border:1px solid #1a1919;
+  background:#fff;
+  color:#1a1919;
+  padding:12px 20px;
+  box-shadow:0 4px 20px #0001
+}
+.reference-map-gate p{
+  background:#fff;
+  padding:4px 10px;
+  margin:0;
+  max-width:36ch;
+  text-align:center
+}
+.reference-map-gate[hidden]{
+  display:none
+}
+.reference-map-gate button:disabled{
+  cursor:default;
+  opacity:.5
+}
+.reference-announcement,.reference-skip:not(:focus){
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0
+}
+.reference-skip:focus{
+  display:block;
+  padding:8px;
+  background:#fff;
+  position:fixed;
+  z-index:10;
+  top:0;
+  left:0
+}
+@media(max-width:1000px) and (min-width:781px){
+  .reference-panel{
+    left:20px;
+    width:210px
+  }
+  .reference-new-stores .reference-cards-inner{
+    padding-left:250px;
+    padding-right:20px
+  }
+  .reference-navigation{
+    gap:20px
+  }
+}
+@media(max-width:780px){
+  .reference-header{
+    height:23.8px;
+    margin-top:20px;
+    padding:0 5%;
+    gap:7px;
+    font-size:14px;
+    letter-spacing:.5px
+  }
+  .reference-menu-button{
+    display:block;
+    padding:0;
+    border:0;
+    background:none;
+    line-height:1;
+    font-size:16px;
+    text-shadow:0 2px 2px #0005
+  }
+  .reference-logo{
+    font-size:23px;
+    line-height:23.8px
+  }
+  .reference-navigation{
+    display:none;
+    position:absolute;
+    top:58px;
+    left:0;
+    right:0;
+    background:#fff;
+    padding:25px;
+    z-index:5;
+    box-shadow:0 8px 20px #0002;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px
+  }
+  .reference-navigation[data-open]{
+    display:flex
+  }
+  .reference-header-right{
+    gap:20px
+  }
+  .reference-content{
+    width:90%;
+    margin:0 auto
+  }
+  .reference-title{
+    padding:60px 25px 24px;
+    font-size:21px;
+    line-height:31.5px
+  }
+  .reference-map-area{
+    height:auto;
+    min-height:0;
+    padding-top:300px;
+    padding-bottom:100px
+  }
+  .reference-map{
+    position:absolute;
+    top:0;
+    left:-10px;
+    width:calc(100% + 20px);
+    height:300px
+  }
+  .reference-map-gate{
+    inset:0 -10px auto;
+    height:300px
+  }
+  .reference-map-gate p{
+    font-size:11px
+  }
+  .reference-panel{
+    position:relative;
+    left:0;
+    top:0;
+    width:auto;
+    margin:0 -10px;
+    padding:30px 40px 5px
+  }
+  .reference-cities{
+    height:343px
+  }
+  .reference-cities li{
+    font-size:15px
+  }
+  .reference-region-group li{
+    margin-top:10px
+  }
+  .reference-region-group ul{
+    margin-left:25px;
+    margin-bottom:30.8px
+  }
+  .reference-opening-state li{
+    font-size:15px
+  }
+  .reference-back{
+    bottom:-50px
+  }
+  .reference-cards,.reference-new-stores{
+    margin-top:-40px;
+    margin-bottom:50px;
+    padding:10px 0 40px;
+    background:none
+  }
+  .reference-cards-inner,.reference-new-stores .reference-cards-inner{
+    padding:0
+  }
+  .reference-cards h2{
+    margin:30px 0 30px;
+    font-size:14px;
+    line-height:27px;
+    letter-spacing:3.4px
+  }
+  .reference-card-track,.reference-new-stores .reference-card-track{
+    padding:0 20px;
+    scroll-padding-left:20px
+  }
+  .reference-card,.reference-new-stores .reference-card{
+    flex-basis:100%;
+    min-width:0
+  }
+  .reference-card a{
+    padding:0 10px;
+    text-align:center
+  }
+  .reference-card img{
+    max-width:100%;
+    width:270px;
+    margin:0 auto
+  }
+  .reference-card-dots{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:10px 0
+  }
+  .reference-card-dots button{
+    border:0;
+    background:#ccc;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    padding:0
+  }
+  .reference-card-dots button[aria-current]{
+    background:#1a1919
+  }
+}
+@media(max-width:430px){
+  .reference-title{
+    padding-left:15px
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .arabica-reference *{
+    scroll-behavior:auto!important;
+    transition:none!important;
+    animation:none!important
+  }
+}
+@media(forced-colors:active){
+  .reference-panel,.reference-back,.reference-map-gate button{
+    border:1px solid CanvasText
+  }
+  .reference-panel-heading,.reference-count{
+    color:CanvasText;
+    opacity:1
+  }
+}
+/* Measured source flow: group labels and line breaks share the same list. */
+.reference-regions{
+  margin:13px 0
+}
+.reference-region-group{
+  display:contents
+}
+.reference-region-group h3{
+  display:inline;
+  margin-left:5px
+}
+.reference-region-item{
+  margin:10px 0 0 25px
+}
+.reference-panel-divider{
+  height:1px;
+  background:#e9e9e9;
+  margin:15px 0 25px
+}
+.reference-panel .reference-future-scroll,.reference-panel .reference-cities{
+  margin:0 -20px 20px!important;
+  padding:0 10px 0 20px;
+  overflow-y:auto;
+  height:323px
+}
+.reference-future-scroll li{
+  padding:6px 4px
+}
+.reference-future-scroll .reference-panel-heading .reference-icon{
+  color:#ba7f7f;
+  font-size:21px;
+  width:15px
+}
+.reference-future-scroll .reference-panel-heading{
+  gap:8px
+}
+.reference-back .reference-world-icon{
+  font-size:18px
+}
+@media(max-width:780px){
+  .reference-map{
+    position:absolute!important;
+    height:300px!important;
+    top:0!important
+  }
+  .reference-header{
+    padding-left:17px;
+    padding-right:20px;
+    gap:0;
+    letter-spacing:1px
+  }
+  .reference-menu-button{
+    font-size:14px
+  }
+}
+.reference-card h3 { line-height:21px; }
+@media(max-width:780px){.reference-panel .reference-future-scroll{height:450px}}

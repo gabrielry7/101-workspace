@@ -15,7 +15,8 @@ if (!google || cloud.budget_usd !== 1 || cloud.max_initializations !== 10 || clo
 }
 const origins = new Set(['http://127.0.0.1:8780', 'http://localhost:8780']);
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript',
-  '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.avif': 'image/avif' };
+  '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.avif': 'image/avif',
+  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.woff': 'font/woff', '.woff2': 'font/woff2' };
 const server = http.createServer(async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -34,13 +35,25 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ reserved: budget.reserved, limit: 10, remaining: 10 - budget.reserved })); return;
     }
-    if (path === '/trial-config') {
+    if (path === '/trial-config' || path === '/arabica/trial-config') {
       if (req.method !== 'POST' || req.headers.origin && !origins.has(req.headers.origin)
         || req.headers['sec-fetch-site'] === 'cross-site') {
         res.writeHead(403); res.end('Local request required'); return;
       }
       let budget;
-      try { budget = reserveTrialLoad(resolve(folder, 'trial-budget.json'), 10); }
+      try {
+        let ledger = resolve(folder, 'trial-budget.json');
+        if (path === '/arabica/trial-config') {
+          const referenceFolder = resolve(project, '.tools/arabica-locations-reference');
+          const grant = JSON.parse(await readFile(resolve(referenceFolder, 'google-permission.json'), 'utf8'));
+          if (grant.schema !== '101-arabica-google-permission-v1' || grant.additional_initializations !== 10
+            || grant.total_budget_usd !== 1 || grant.daily_maps_limit !== 10 || grant.authority !== 'explicit_user_reply') {
+            throw Error('REFERENCE_GOOGLE_PERMISSION_REQUIRED');
+          }
+          ledger = resolve(referenceFolder, 'trial-budget.json');
+        }
+        budget = reserveTrialLoad(ledger, 10);
+      }
       catch (error) {
         res.writeHead(error.message === 'TRIAL_BUDGET_EXHAUSTED' ? 429 : 503);
         res.end('Trial initialization unavailable'); return;
@@ -49,8 +62,12 @@ const server = http.createServer(async (req, res) => {
       res.end(JSON.stringify({ google, budget })); return;
     }
     if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405); res.end(); return; }
-    const file = await realpath(resolve(root, '.' + path + (path.endsWith('/') ? 'index.html' : '')));
-    const rel = relative(root, file);
+    // The optional reference shares the restricted origin; its explicit grant
+    // authorizes a separate ten-load ledger without resetting Honorato's ledger.
+    const selectedRoot = path.startsWith('/arabica/')
+      ? await realpath(resolve(project, '.tools/arabica-locations-reference/preview/dist')) : root;
+    const file = await realpath(resolve(selectedRoot, '.' + path + (path.endsWith('/') ? 'index.html' : '')));
+    const rel = relative(selectedRoot, file);
     if (rel.startsWith('..') || isAbsolute(rel)) throw Error('OUTSIDE_ROOT');
     const bytes = await readFile(file);
     res.writeHead(200, { 'Content-Type': types[extname(file)] || 'application/octet-stream' });
