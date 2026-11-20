@@ -111,7 +111,7 @@ if (
 ) {
   const host = document.body,
     query = new URLSearchParams(location.search),
-    business = query.get("business_id");
+    business = query.get("business_id") || host.dataset.commerceBusiness;
   const preview =
     query.get("checkout_preview") === "1" && window.parent !== window;
   window.CheckoutChassis = {

@@ -424,7 +424,9 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                 )
             menus.append(MenuOut(id=menu.id, name=menu.name, categories=categories))
 
+        from .catalog_connection import context as catalog_context
         output = StorefrontOut(
+            catalog_context=catalog_context(self.session,business_id),
             business_id=profile.business_id,
             slug=profile.slug,
             display_name=profile.display_name,
@@ -1371,6 +1373,13 @@ class RestaurantCommerceService(PaymentWorkflowMixin, FinancialWorkflowMixin, Op
                 if not existing or not existing.customer_snapshot_json or existing.access_token_version:
                     raise IdempotencyConflictError("Order replay requires an active original binding")
                 return self.process_payment_intent(claim.entity_id)
+
+        # Reconcile an already committed original request before guarding new writes.
+        from .catalog_connection import context as source_catalog_context
+        if source_catalog_context(self.session, business_id) and (
+            profile.payment_provider != "simulated" or request.payment_provider != "simulated"
+        ):
+            raise ValidationError("El catálogo de prueba solo permite pagos simulados")
 
         if self.loyalty_experiment is not None:
             from .loyalty_assignment_checkout import prepare_checkout

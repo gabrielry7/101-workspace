@@ -4,17 +4,31 @@ if(window.CommerceSupported===false)return;
 
 const {node: h, replace, safeURL, bind, start, path} = window.CommerceUI;
 const itemDialog = document.getElementById("itemDialog");
-const qs=new URLSearchParams(location.search),businessId=qs.get('business_id');let store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
+const qs=new URLSearchParams(location.search),businessId=qs.get('business_id')||document.body.dataset.commerceBusiness;let store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
 document.getElementById('merchantOwnerEntry').href='/workspace/sales?business='+encodeURIComponent(businessId);
 const checkoutPreview=qs.get('checkout_preview')==='1';
 let noticeTimer, foodGeneration=0, deliveryGeneration=0, quoteUpdatedAt=0, quoteTimer;
-let pickupData=null;
+let pickupData=null, selectionOwner=null, selectionBlocked=false;
 const draftKey='101.cart.v1:'+businessId;
 const statuses={awaiting_payment:'Esperando pago',placed:'Recibido',accepted:'Aceptado',preparing:'En preparación',ready:'Listo para recoger',completed:'Entregado',cancelled:'Cancelado'};
 const paymentStatuses={pending:'Pendiente',unpaid:'Sin pagar',paid:'Pagado',failed:'No aprobado',refunded:'Devuelto'};
-function saveDraft(){if(checkoutPreview)return;try{localStorage.setItem(draftKey,JSON.stringify({at:Date.now(),items:cartPayload()}));}catch(_){recoveryStorageAvailable=false;}}
+function saveDraft(){if(checkoutPreview||selectionBlocked)return;
+  if(selectionOwner){try{const reverse=new Map(store.catalog_context.products.map(p=>[p.menu_item_id,p.ref]));localStorage.setItem(selectionOwner.cartKey(businessId),JSON.stringify({schema:selectionOwner.CART_SCHEMA,lines:cart.map(x=>({productRef:reverse.get(x.item.id),quantity:x.quantity}))}));}catch(_){recoveryStorageAvailable=false;}return;}
+  try{localStorage.setItem(draftKey,JSON.stringify({at:Date.now(),items:cartPayload()}));}catch(_){recoveryStorageAvailable=false;}}
 function restoreDraft(){
   if(checkoutPreview)return;
+  if(selectionOwner){
+    try{
+      const raw=JSON.parse(localStorage.getItem(selectionOwner.cartKey(businessId))||'null');
+      const mapping=store.catalog_context.products, lines=selectionOwner.cartLines(raw,mapping.map(p=>p.ref));
+      if(raw&&(!Array.isArray(raw.lines)||lines.length!==raw.lines.length||lines.some(l=>l.quantity>50)))throw Error('invalid');
+      const items=store.menus.flatMap(m=>m.categories.flatMap(c=>c.items));
+      const selected=lines.map(l=>({item:items.find(i=>i.id===mapping.find(p=>p.ref===l.productRef)?.menu_item_id),quantity:l.quantity,selections:[]}));
+      if(selected.some(l=>!l.item||!l.item.available))throw Error('unavailable');
+      cart=selected;
+    }catch(_){selectionBlocked=true;notice('No pudimos recuperar todos los productos. Vuelve a la carta y revisa el carrito antes de continuar.','error');}
+    return;
+  }
   try{const draft=JSON.parse(localStorage.getItem(draftKey));if(!draft||Date.now()-draft.at>7200000||!Array.isArray(draft.items))return;
     const items=store.menus.flatMap(m=>m.categories.flatMap(c=>c.items));
     cart=draft.items.slice(0,100).map(row=>({item:items.find(i=>i.id===row.menu_item_id),quantity:row.quantity,selections:row.modifiers})).filter(row=>row.item&&Number.isInteger(row.quantity)&&row.quantity>0&&row.quantity<=50&&Array.isArray(row.selections));
@@ -141,7 +155,7 @@ async function continueRecoveredPayment(){
     const payment=recoveredOrder.payments?.[0];
     if(!payment)throw new Error('El pago aún está pendiente de confirmación.');
     if(payment.provider==='simulated'){
-      const paid=await api(`/api/payments/simulated/${path(payment.provider_reference)}/complete`,{method:'POST'});
+      const paid=await api(`/api/payments/simulated/${path(payment.provider_reference)}/complete${store?.catalog_context?"?business_id="+path(businessId):""}`,{method:'POST'});
       recoveredOrder={...recoveredOrder,...paid};
     } else if(payment.checkout_url){
       if(!recoveryStorageAvailable)throw new Error('No podemos guardar la recuperación. Contacta al restaurante antes de pagar.');
@@ -176,9 +190,16 @@ async function api(url,opts={}){
 async function load(){
   try{
     store=await api(`/api/restaurants/${path(businessId)}/storefront`);
+    if(store.catalog_context){
+      selectionOwner=await import('/assets/selection-cart.js');
+      const context=store.catalog_context;
+      $('restaurantMeta').textContent='Prueba de compra · catálogo archivado';
+      const banner=h('div',{className:'notice',role:'status'},'Compra de prueba. Precios del menú archivado del '+context.source_published_at.slice(0,10)+'. No se cobrará dinero ni se enviará un pedido a Honorato. Precio y disponibilidad actuales por confirmar.');
+      $('cart').prepend(banner);
+    }
     api(`/api/customer/signup/${path(businessId)}`).then(data=>{const link=$('customerSignup');if(data.available){link.href='/join/'+path(businessId)+'?source=website';link.hidden=false;}}).catch(()=>{});
     $('restaurantName').textContent=store.display_name;document.title=`${store.display_name} · Pedido directo`;
-    $('restaurantMeta').textContent='Pedido directo · '+store.timezone;
+    if(!store.catalog_context)$('restaurantMeta').textContent='Pedido directo · '+store.timezone;
     $('pickupInstructions').textContent=store.pickup_instructions||'';
     readReservationRecord();$('reservationTab').hidden=!store.accepts_reservations&&!reservationRecord;
     if(!store.delivery_enabled)$('deliveryBtn').disabled=true;

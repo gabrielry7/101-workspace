@@ -304,6 +304,7 @@ class RewardOut(StrictModel):
 
 
 class StorefrontOut(StrictModel):
+    catalog_context: dict | None = None
     business_id: str
     slug: str
     display_name: str

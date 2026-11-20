@@ -67,6 +67,7 @@ with TestClient(app) as c:
         == 200
     )
     from world_model.restaurant_commerce.checkout_design import CONTRACT
+    assert c.get("/api/restaurants/" + bid + "/catalog-connection").json()["connected"] is False
     design_url = "/api/operator/restaurants/" + bid + "/checkout-design"
     assert c.get("/workspace/website").status_code == 200
     assert c.get(design_url).json()["revision"] == 0
@@ -76,7 +77,7 @@ with TestClient(app) as c:
     assert c.get("/api/restaurants/" + bid + "/checkout-design").json()["revision"] == 1
     preview = c.get("/?business_id=" + bid + "&checkout_preview=1")
     assert preview.status_code == 200 and preview.headers["X-Frame-Options"] == "SAMEORIGIN"
-    for asset in ["checkout-chassis.js","checkout-chassis.css","checkout-contract.js","checkout-anatomy.js","checkout-bones.js","checkout-types.js"]:
+    for asset in ["checkout-chassis.js","checkout-chassis.css","checkout-contract.js","checkout-anatomy.js","checkout-bones.js","checkout-types.js","selection-cart.js"]:
         assert c.get("/assets/"+asset).status_code == 200
     redirects = {}
     for old in sorted(LEGACY_PAGES):

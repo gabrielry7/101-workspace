@@ -1,0 +1,232 @@
+{
+  "schema_version": "1",
+  "scope": "test",
+  "currency": "COP",
+  "location_id": "14b737a2-9446-47bb-9821-95b4ef528e5f",
+  "source_url": "https://www.instagram.com/stories/honoratobakehouse/3899527297857337705/",
+  "source_published_at": "2026-05-18T04:51:37+00:00",
+  "observed_at": "2026-10-26T20:24:33.861592+00:00",
+  "source_sha256": "fcf57b0c0bf403e91f914320c42e3b8c0f9dd48af19fe6b3c2cb400d7916b5f0",
+  "unit_multiplier": 1000,
+  "unit_confirmation": "User confirmed 19 November 2026: menu amounts are thousands of Colombian pesos; this does not confirm current prices.",
+  "current_price_confirmed": false,
+  "current_availability_confirmed": false,
+  "products": [
+    {
+      "ref": "babka",
+      "name": "Babka de cacao dulce",
+      "category": "Hojaldres",
+      "price_minor": 34000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:54,55",
+      "source_price": "34"
+    },
+    {
+      "ref": "bases-pizza",
+      "name": "Bases de pizza x2",
+      "category": "Panes",
+      "price_minor": 19000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:50,51",
+      "source_price": "19"
+    },
+    {
+      "ref": "bun-ajonjoli",
+      "name": "Bun dulce de ajonjolí",
+      "category": "Hojaldres",
+      "price_minor": 8900,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:52,53",
+      "source_price": "8,9"
+    },
+    {
+      "ref": "bun-canela",
+      "name": "Bun dulce de canela",
+      "category": "Hojaldres",
+      "price_minor": 9400,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:15,16",
+      "source_price": "9,4"
+    },
+    {
+      "ref": "bun-cardamomo",
+      "name": "Bun dulce de cardamomo",
+      "category": "Hojaldres",
+      "price_minor": 9400,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:17,18",
+      "source_price": "9,4"
+    },
+    {
+      "ref": "bun-queso",
+      "name": "Bun salado de queso",
+      "category": "Hojaldres",
+      "price_minor": 10900,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:19,20",
+      "source_price": "10,9"
+    },
+    {
+      "ref": "burger-brioche",
+      "name": "Burger brioche x4",
+      "category": "Panes",
+      "price_minor": 18000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:13,14",
+      "source_price": "18"
+    },
+    {
+      "ref": "croissant-jamon",
+      "name": "Croissant de jamón ahumado",
+      "category": "Hojaldres",
+      "price_minor": 15900,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:33,34",
+      "source_price": "15,9"
+    },
+    {
+      "ref": "croissant-mantequilla",
+      "name": "Croissant de mantequilla",
+      "category": "Hojaldres",
+      "price_minor": 9400,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:31,32",
+      "source_price": "9,4"
+    },
+    {
+      "ref": "demi-baguette",
+      "name": "Demi baguette",
+      "category": "Panes",
+      "price_minor": 4900,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:9,10",
+      "source_price": "4,9"
+    },
+    {
+      "ref": "focaccia-ajo-negro",
+      "name": "Focaccia de ajo negro",
+      "category": "Panes",
+      "price_minor": 40000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:48,49",
+      "source_price": "40"
+    },
+    {
+      "ref": "focaccia",
+      "name": "Focaccia",
+      "category": "Panes",
+      "price_minor": 30000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:46,47",
+      "source_price": "30"
+    },
+    {
+      "ref": "galleta",
+      "name": "Galleta melcochuda de chocolate",
+      "category": "Dulces",
+      "price_minor": 7500,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:21,22",
+      "source_price": "7,5"
+    },
+    {
+      "ref": "galleta-especial",
+      "name": "Galleta especial",
+      "category": "Dulces",
+      "price_minor": 9000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:23,24",
+      "source_price": "9"
+    },
+    {
+      "ref": "miche",
+      "name": "Miche",
+      "category": "Panes",
+      "price_minor": 30000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:40,41",
+      "source_price": "30"
+    },
+    {
+      "ref": "molde-brioche",
+      "name": "Molde brioche",
+      "category": "Panes",
+      "price_minor": 25000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:11,12",
+      "source_price": "25"
+    },
+    {
+      "ref": "molde-ajonjoli-centeno",
+      "name": "Molde con ajonjolí y centeno",
+      "category": "Panes",
+      "price_minor": 30000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:44,45",
+      "source_price": "30"
+    },
+    {
+      "ref": "rugbrod",
+      "name": "Molde danés · rugbrød",
+      "category": "Panes",
+      "price_minor": 34000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:38,39",
+      "source_price": "34"
+    },
+    {
+      "ref": "nuez",
+      "name": "Molde de nuez de nogal",
+      "category": "Panes",
+      "price_minor": 26000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:7,8",
+      "source_price": "26"
+    },
+    {
+      "ref": "molde-avena",
+      "name": "Molde semi-integral con avena",
+      "category": "Panes",
+      "price_minor": 30000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:42,43",
+      "source_price": "30"
+    },
+    {
+      "ref": "pain-chocolat",
+      "name": "Pain au chocolat",
+      "category": "Hojaldres",
+      "price_minor": 15900,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:35,36",
+      "source_price": "15,9"
+    },
+    {
+      "ref": "banano-entero",
+      "name": "Pan de banano · entero",
+      "category": "Dulces",
+      "price_minor": 70000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:29,30",
+      "source_price": "70"
+    },
+    {
+      "ref": "banano-porcion",
+      "name": "Pan de banano · porción",
+      "category": "Dulces",
+      "price_minor": 9900,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:27,28",
+      "source_price": "9,9"
+    },
+    {
+      "ref": "campo",
+      "name": "Pan de campo",
+      "category": "Panes",
+      "price_minor": 20000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:3,4",
+      "source_price": "20"
+    },
+    {
+      "ref": "campo-molde",
+      "name": "Pan de campo en molde",
+      "category": "Panes",
+      "price_minor": 20000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:5,6",
+      "source_price": "20"
+    },
+    {
+      "ref": "pan-croissant",
+      "name": "Pan de croissant",
+      "category": "Hojaldres",
+      "price_minor": 40000,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:56,57",
+      "source_price": "40"
+    },
+    {
+      "ref": "tarta-mini",
+      "name": "Tarta vasca",
+      "category": "Dulces",
+      "price_minor": 15900,
+      "source_ref": "ocr:670491c3f867777cba12accb108bdd539b94fd88709ad5bd10584c065909fca6/regions:25,26",
+      "source_price": "15,9"
+    }
+  ]
+}

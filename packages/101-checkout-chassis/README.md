@@ -91,3 +91,31 @@ tracking pages or merchant dashboard, and does not automate brand synthesis.
 Original controller and server security continue governing actual payments.
 Software tests use synthetic businesses/orders; no real order, send, provider
 activation, payment or merchant acceptance is established by this work.
+
+## Source-catalog test adoption
+
+`catalog_connection.py` connects explicitly enrolled, simulated COP test merchants
+into the existing Menu/MenuCategory/MenuItem, quote, order and operator owners.
+It retains the source amount and multiplier separately from currentness. The
+public context never marks archived prices or stock as currently confirmed.
+Existing databases need the explicit additive
+`upgrade_catalog_connection(engine)` migration. Fresh databases include the
+`restaurant_catalog_connections` table. Repeated enrollment preserves operator
+price/stock edits; a changed mapping or new source stops for reconciliation.
+Only demo-mode, scoped `settings.write` may import. A catalog cannot enable live
+payments. Original bound retries still reconcile before new-write guards.
+
+The checkout and a connected website share the existing `101:commerce-cart:...`
+selection contract from World Model `packages/site-runtime/src/commerce/selection-cart.js`.
+The copied browser asset is pinned byte-for-byte; it stores product references
+and quantities, never authoritative prices. Quotes and fulfillment remain here.
+The controller also accepts a server-bound `data-commerce-business` for scoped
+same-origin routes; query parameters remain compatible. Preview mode never writes
+that selection. The optional simulated-payment `business_id` is verified through
+the existing payment/order join before changing state.
+
+Rollback: stop new test imports/orders, retain the new table and transactional
+records, and return to the previous source/controller. Do not drop menus, orders,
+customers, or restore an old backup over newer orders. No provider, dependency,
+font or music license was introduced. This is local test integration, not current
+merchant authorization, real payments, inventory assurance or production hosting.

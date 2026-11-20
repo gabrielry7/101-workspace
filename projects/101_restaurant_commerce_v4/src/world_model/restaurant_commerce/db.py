@@ -24,6 +24,7 @@ from .migrations import (
 from .customer_signup_models import TABLES as SIGNUP_TABLES
 from .connection_models import TABLES as CONNECTION_TABLES
 from .monthly_reports import TABLES as MONTHLY_TABLES
+from .catalog_connection import TABLES as CATALOG_TABLES
 from .checkout_design import TABLES as CHECKOUT_TABLES
 from .models import Base
 from .social_production import TABLES as SOCIAL_TABLES
@@ -88,7 +89,7 @@ def init_schema(engine: Engine) -> None:
         t
         for t in Base.metadata.sorted_tables
         if t.name not in (EXECUTION_TABLES | ASSIGNMENT_TABLES | MEASUREMENT_TABLES)
-        and (not existing or t.name not in (SIGNUP_TABLES | CONNECTION_TABLES | SOCIAL_TABLES | MONTHLY_TABLES | CHECKOUT_TABLES))
+        and (not existing or t.name not in (SIGNUP_TABLES | CONNECTION_TABLES | SOCIAL_TABLES | MONTHLY_TABLES | CHECKOUT_TABLES | CATALOG_TABLES))
         and (
             not existing
             or t.name

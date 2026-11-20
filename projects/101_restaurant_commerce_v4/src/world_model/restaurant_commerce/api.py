@@ -576,6 +576,8 @@ def create_app(
     from .customer_workspace import register as register_workspace
     from .checkout_design import register as register_checkout_design
     register_checkout_design(app, get_session, scoped_staff)
+    from .catalog_connection import register as register_catalog_connection
+    register_catalog_connection(app, get_session, scoped_staff)
     register_workspace(app, get_session, scoped_staff)
     from .monthly_reports import register as register_monthly
     register_monthly(app, get_session, scoped_staff)
@@ -612,7 +614,7 @@ def create_app(
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):
-        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "connections.js", "connections-consent.js", "connections-callback.js", "connections.css", "signup.js", "signup-owner.js", "signup.css", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js", "checkout-chassis.js", "checkout-bones.js", "checkout-types.js", "checkout-anatomy.js", "checkout-contract.js", "checkout-chassis.css"}:
+        if filename not in {"brand-ad5abbbd672d1f408b7eb235e06e3f435acad153d08bec2c316f5708037ec730.png", "connections.js", "connections-consent.js", "connections-callback.js", "connections.css", "signup.js", "signup-owner.js", "signup.css", "campaigns.js", "whatsapp.js", "sms.js", "campaigns.css", "shared.js", "staff.js", "index.js", "admin.js", "delivery.js", "growth.js", "boot.js", "theme.css", "growth.css", "delivery.css", "operations.js", "selection-cart.js", "checkout-chassis.js", "checkout-bones.js", "checkout-types.js", "checkout-anatomy.js", "checkout-contract.js", "checkout-chassis.css"}:
             raise HTTPException(status_code=404, detail="Asset not found")
         return FileResponse(WEB_DIR / filename, media_type="image/png" if filename.endswith(".png") else "text/css" if filename.endswith(".css") else "text/javascript",
                             headers={"Cache-Control": "no-cache"})
@@ -772,10 +774,21 @@ def create_app(
         @app.post("/api/payments/simulated/{provider_reference}/complete", response_model=OrderOut)
         def complete_simulated_payment(
             provider_reference: str,
+            business_id: str | None = None,
             service: RestaurantCommerceService = Depends(get_service),
         ):
             if not provider_reference.startswith("sim_"):
                 raise HTTPException(status_code=400, detail="Only simulated payments may use this endpoint")
+            if business_id is not None:
+                from .models import Payment
+                payment = service.session.scalar(
+                    select(Payment).join(Order, Payment.order_id == Order.id).where(
+                        Payment.provider_reference == provider_reference,
+                        Order.business_id == business_id,
+                    )
+                )
+                if payment is None:
+                    raise HTTPException(404, "Payment not found for this business")
             return service.apply_payment_status(provider_reference, PaymentStatus.PAID.value)
 
     @app.post("/api/restaurants/{business_id}/reservations", response_model=ReservationOut)
