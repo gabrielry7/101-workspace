@@ -13,7 +13,7 @@ import {ProductionJobs} from './social-jobs';
 import {InstagramPanel} from './social-instagram';
 import {SocialDesign,SocialHistory,ownedLayerId,designError,type DesignSpec} from './social-design';
 type Pack = {id:string;revision:number;digest:string;approved:boolean;stale:boolean;media_available:boolean;stale_reasons:any[];document:{caption:string;brief:any;fixture:boolean;video_output?:any;learning_snapshot?:any;creative_snapshot?:any}};
-export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:string;demo:boolean}) {
+export function SocialWorkspace({business,csrf,demo,initialPack}:{business:string;csrf:string;demo:boolean;initialPack?:string|null}) {
  const root=endpoint(business)+'/social';
  const [context,setContext]=useState<BusinessContext|null>(null),[selectedFacts,setSelectedFacts]=useState<any[]>([]);
  const [design,setDesign]=useState<DesignSpec|null>(null),[designCopy,setDesignCopy]=useState<Record<string,string>>({});
@@ -44,7 +44,7 @@ export function SocialWorkspace({business,csrf,demo}:{business:string;csrf:strin
  }
  async function run(fn:()=>Promise<void>){setBusy(true);setError('');try{await fn()}catch(e){setError(String(e))}finally{setBusy(false)}}
  async function refresh(){setCreative(await request('/creative'));setContext(await request('/context'));setPacks((await request('')).packs);setLibrary((await request('/assets')).assets)}
- useEffect(()=>{void run(refresh)},[business]);
+ useEffect(()=>{void run(async()=>{await refresh();if(initialPack)load(await request('/packs/'+encodeURIComponent(initialPack)))})},[business,initialPack]);
  function load(p:Pack){setVideoDirty(false);setResultsPublication(undefined);setNextLearning(null);setDirty(false);setPack(p);setPacks(old=>[...old.filter(item=>item.id!==p.id),{id:p.id,revision:p.revision}]);const b=p.document.brief;setHandoff(b.handoff||{platform:'unspecified',account_label:''});setDesign(b.design||null);setDesignCopy(Object.fromEntries(['headline','detail'].map(role=>[role,b.facts.find((f:any)=>f.id===ownedLayerId(role))?.text||''])));setCropY(b.focal_y);setProposalDecision(b.proposal_decision_id||null);setRequestId(b.request_id||crypto.randomUUID());setAsset(b.asset_id);setFacts(b.facts.filter((f:any)=>!['headline','detail'].some(role=>f.id===ownedLayerId(role))&&!(b.fact_refs||[]).some((r:any)=>r.fact_id===f.id)).map((f:any)=>f.text).join('\n\n'));setSelectedFacts((b.fact_refs||[]).filter((r:any)=>b.caption_fact_ids.includes(r.fact_id)).map((r:any)=>({...r,...b.facts.find((f:any)=>f.id===r.fact_id)})));setContextVersion(b.context_version_id||null);setCreativeVersion(b.creative_version_id||null);setReferenceIds(b.reference_ids||[]);setQuestionId(b.question_id||null);setQuestionSource(b.question_source);setQuestionEvidence(b.question_evidence);setRevisionReason('strategy');setQuestion(b.question);setObjective(b.objective);setBrand(b.brand_direction);setExpiry(b.facts[0].valid_until.slice(0,10));setCrop(b.focal_x);setConfirmed(false);setReview(false)}
  async function upload(file:File){
   setLastFile(file);setProgress(0);

@@ -456,3 +456,20 @@ Desktop/phone captures were inspected, refined and inspected again. Reused share
 bones validators, typed anatomy and geometry/contrast measurements are owned by
 `@101/checkout-chassis`; original commerce handlers retain prices and actions.
 Neutral/fictional warm coats are examples, not selected merchant identities.
+
+## Connected merchant operating demo (2026-11-20)
+
+Home keeps actual current-work and result records, with a compact store entry and
+an optional tool directory (collapsed on phones). Unsigned Social packs join the
+same review queue and open their exact saved revision in Contenido. Website groups
+Mi tienda, Productos and the existing checkout editor. Test-price edits have
+revision checks and preserve prior order totals. Reuse shared Inter, white surfaces,
+44px controls and the existing semantic tokens; public merchant branding remains
+separate. The explicit banner reads Modo demo · sin cobros ni envíos.
+
+Demo transactions, test clocks/calendars and synthetic contact permissions stay
+labeled. Available navigation never implies live authorization or web analytics.
+Analytics routing uses the actual platform enrollment capability, not UUID shape.
+The readiness details identify actual activation gates without a universal score.
+Full desktop/phone proof and bounds live in World Model
+`docs/product-design/honorato-workspace/README.md`.

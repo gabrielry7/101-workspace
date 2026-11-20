@@ -1,3 +1,4 @@
+import {MerchantLaunch,merchantContext,MissingWebAnalytics,type MerchantContext} from "./merchant-workspace";
 import { ProvisionedAnalytics } from "./provisioned-analytics";
 import { useEffect, useState } from "react";
 import {
@@ -6,6 +7,7 @@ import {
   Users,
   ShoppingBag,
   Megaphone,
+  Image as ImageIcon,
   Globe2,
   ArrowUpRight,
   Check,
@@ -123,6 +125,7 @@ export function PageHeading({
   );
 }
 const Icon = {
+  social: ImageIcon,
   order: ShoppingBag,
   customer: Users,
   campaign: Megaphone,
@@ -231,6 +234,7 @@ export function HomeView(props: ViewProps) {
             </div>
           </section>
           <p className="data-footnote">{d.accounting}</p>
+          <MerchantLaunch business={business}/>
           <div className="home-columns">
             <section className="work-surface attention-panel">
               <div className="section-heading">
@@ -291,7 +295,7 @@ export function HomeView(props: ViewProps) {
                 </a>
                 <a href={link("analytics")}>
                   <Globe2 />
-                  Ver analítica web<span className="number-chip">Demo</span>
+                  Ver analítica web
                 </a>
               </section>
             </aside>
@@ -325,8 +329,12 @@ export function HomeView(props: ViewProps) {
   );
 }
 export function AnalyticsView(props: ViewProps) {
-  return /^[0-9a-f]{8}-[0-9a-f-]{27}$/i.test(props.business)
-    ? <ProvisionedAnalytics {...props} /> : <DemoAnalyticsView {...props} />;
+  const context = useResource<MerchantContext>(merchantContext(props.business));
+  if(context.error) return <Failure message={context.error} retry={context.retry}/>;
+  if(!context.data) return <Loading/>;
+  if(context.data.web_analytics === "platform") return <ProvisionedAnalytics {...props}/>;
+  if(context.data.web_analytics === "demo_samples") return <DemoAnalyticsView {...props}/>;
+  return <MissingWebAnalytics business={props.business}/>;
 }
 function DemoAnalyticsView(props: ViewProps) {
   const p = currentPeriod(props.params);

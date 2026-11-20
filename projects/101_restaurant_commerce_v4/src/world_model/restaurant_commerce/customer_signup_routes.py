@@ -108,7 +108,7 @@ def register(app, get_session, scoped_staff, options, demo_mode, production):
         return {'business_id': business_id, 'business_name': business.display_name, 'available': ready,
                 'mode': signup.scope(options) if ready else 'unconfigured', 'account': me, 'channels': channels,
                 'countries': options.get('allowed_regions', ['CO']),
-                'storefront_url': '/r/' + quote(business.slug, safe='')}
+                'storefront_url': getattr(app.state, 'merchant_workspaces', {}).get(business_id, {}).get('store_url') or '/r/' + quote(business.slug, safe='')}
 
     @app.post(root + '/opened')
     def opened(business_id: str, payload: Source, request: Request, session: Session = Depends(get_session)):

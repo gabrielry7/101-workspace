@@ -187,7 +187,7 @@ def register(app, get_session, scoped_staff, options, demo_mode):
     def campaign_link(token: str, request: Request, session: Session = Depends(get_session)):
         business, cookie = c.visit(session, token, now(), request.headers.get('user-agent',''))
         from urllib.parse import quote
-        response = RedirectResponse('/?business_id=' + quote(business, safe=''), status_code=303)
+        response = RedirectResponse(getattr(app.state, 'merchant_workspaces', {}).get(business, {}).get('store_url') or '/?business_id=' + quote(business, safe=''), status_code=303)
         response.set_cookie('campaign_visit_' + c.digest(business)[:16], cookie,
             httponly=True, secure=not demo_mode, samesite='lax', max_age=7*86400)
         response.headers['Referrer-Policy'] = 'no-referrer'

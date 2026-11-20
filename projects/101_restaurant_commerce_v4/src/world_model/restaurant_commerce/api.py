@@ -135,6 +135,7 @@ def create_app(
     operator_token: str | None = None,
     environment: str | None = None,
     demo_mode: bool | None = None,
+    offline_demo: bool = False,
     public_access_secret: str | None = None,
     webhook_secrets: dict[str, str] | None = None,
     payment_providers: dict[str, PaymentProvider] | None = None,
@@ -184,9 +185,34 @@ def create_app(
                       "tracking_origins": validated_origins(tracking_url_origins)}
     from .connections import from_environment, start_worker
     from .connection_routes import register_connections
-    connections_runtime = connections_runtime or from_environment()
     from .connection_instagram import from_environment as instagram_from_environment
-    instagram_runtime = instagram_runtime or instagram_from_environment()
+    if offline_demo:
+        if (environment or os.getenv("COMMERCE_ENV", "development")) == "production" or demo_mode is False:
+            raise RuntimeError("Offline demo requires a nonproduction demo environment")
+        if connections_runtime or instagram_runtime or financial_providers or wompi_sandbox:
+            raise RuntimeError("Offline demo forbids external account and financial adapters")
+        if social_generator or social_transcriber:
+            raise RuntimeError("Offline demo uses local previews and manual speech corrections")
+        if event_sink is not None and type(event_sink) is not NullEventSink:
+            raise RuntimeError("Offline demo forbids external event sinks")
+        for name, provider in (payment_providers or {}).items():
+            if name != "simulated" or type(provider) is not SimulatedPaymentProvider:
+                raise RuntimeError("Offline demo accepts only simulated payments")
+        for name, provider in (delivery_providers or {}).items():
+            if name != "simulated_delivery" or type(provider) is not SimulatedDeliveryProvider:
+                raise RuntimeError("Offline demo accepts only simulated fulfillment")
+        for integration in (campaign_options or {}).get("integrations", {}).values():
+            if integration.get("scope") != "test" or integration["adapter"].capabilities.get("network") is not False:
+                raise RuntimeError("Offline demo accepts only nonnetwork test transports")
+        for adapter in (signup_options or {}).get("adapters", {}).values():
+            if getattr(adapter, "network", None) is not False:
+                raise RuntimeError("Offline demo accepts only simulated signup verification")
+        connections_runtime = instagram_runtime = None
+        payment_providers = {"simulated": SimulatedPaymentProvider()}
+        delivery_providers = {"simulated_delivery": SimulatedDeliveryProvider()}
+    else:
+        connections_runtime = connections_runtime or from_environment()
+        instagram_runtime = instagram_runtime or instagram_from_environment()
     campaign_options = campaign_options or {}
     if loyalty_configuration_enabled is None:
         loyalty_flag = os.getenv("COMMERCE_LOYALTY_CONFIGURATION_ENABLED", "0")
@@ -344,6 +370,8 @@ def create_app(
     app.state.metrics = metrics
     app.state.webhook_secrets = configured_webhook_secrets
     app.state.demo_mode = demo_mode
+    app.state.offline_demo = offline_demo
+    app.state.merchant_workspaces = {}
     app.state.environment = environment
     app.state.auto_init_schema = auto_init_schema
 
@@ -436,9 +464,12 @@ def create_app(
                 session.rollback()
                 raise
 
-    def get_service(session: Session = Depends(get_session)) -> RestaurantCommerceService:
+    def get_service(request: Request, session: Session = Depends(get_session)) -> RestaurantCommerceService:
+        from .customer_checkout import verified_checkout_customer
+        verified = verified_checkout_customer(request, session, signup_options, production=production)
         service = RestaurantCommerceService(
             session,
+            verified_customer_id=verified,
             payment_providers=payment_providers,
             financial_providers=financial_providers,
             delivery_providers=delivery_providers,
@@ -585,6 +616,8 @@ def create_app(
     register_sales(app, get_session, scoped_staff)
     from .workspace_overview import register as register_overview
     register_overview(app, get_session, scoped_staff)
+    from .merchant_workspace import register as register_merchant_workspace
+    register_merchant_workspace(app, get_session, scoped_staff)
     from .customer_signup_routes import register as register_signup
     register_connections(app, get_session, scoped_staff, connections_runtime, staff_cookie, production)
     register_signup(app, get_session, scoped_staff, signup_options, demo_mode, production)
@@ -610,7 +643,7 @@ def create_app(
 
     @app.get("/api/browser-policy")
     def browser_url_policy():
-        return {**browser_policy, "demo_mode": demo_mode, "internal_tools": environment == "internal", "wompi_sandbox": wompi_sandbox is not None}
+        return {**browser_policy, "demo_mode": demo_mode, "offline_demo": offline_demo, "internal_tools": environment == "internal", "wompi_sandbox": wompi_sandbox is not None}
 
     @app.get("/assets/{filename}")
     def browser_script(filename: str):

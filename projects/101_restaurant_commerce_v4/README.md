@@ -330,3 +330,36 @@ it. No production data, live providers or paid services are used.
 
 The custom shared shell and customer directory are available at `/workspace/customers`.
 See [CUSTOMER_WORKSPACE.md](CUSTOMER_WORKSPACE.md) for the local demo, existing-module integration, tests and reproducible 10,000-customer performance measurement.
+
+
+## Explicit offline merchant rehearsal
+
+`merchant_demo.app_for_demo` composes the ordinary workspace, catalog, signup,
+orders, loyalty and campaign services for one already-enrolled merchant. Its
+`offline_demo=True` server policy rejects network-capable campaign/signup adapters,
+external payment/delivery providers and live connection/model adapters. It uses
+simulated payments, local OTP and message receipts, and test-only contacts/consent.
+No new tables or credentials are required. Normal production composition remains
+separate; switching a UI badge cannot enable real spending or messages.
+
+The authenticated `/api/operator/restaurants/{business}/workspace/context` connects
+Home to the selected merchant's store and actual modules. Web analytics require
+an explicitly registered demo fixture or a provisioned analytics binding; business
+ID shape is never a capability check. Catalog price edits use the existing source
+connection's optimistic revision and preserve order snapshots and archived source.
+Phone-verified membership, customer CSRF and normal phone checks bind a checkout to
+an account; email-only signup does not grant phone identity.
+
+`prepare_social_example` is an explicit optional preparation step, using ordinary
+resumable photo upload and static-render APIs. It labels archived material fixture-only,
+creates no approval and asserts no current products, offers or publication rights.
+Startup preserves existing packs/material, owner edits, pauses and history. Rendering
+failure exits nonzero; retry reuses the same completed original. Campaign fixtures
+have a stored frozen midday test clock and synthetic calendar, rather than claiming
+live contact-window qualification. See root `docs/product-design/honorato-workspace/`
+for the selected Honorato composition, browser evidence and deployment gates.
+
+Verify with `pytest tests/test_merchant_demo.py` (PostgreSQL case requires a disposable
+`COMMERCE_PAYMENT_TEST_DATABASE_URL`) and `scripts/check_workspace_wheel.py` against
+a built application wheel. No live sends or real campaign budgets are part of these
+checks. There are no new dependency or license choices in this integration.

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { api } from "./ui";
+import { api, useResource } from "./ui";
 
 export function ContactHandoff({
   kind,
@@ -8,6 +8,7 @@ export function ContactHandoff({
   kind: "orders" | "reservations";
   id: string;
 }) {
+  const policy = useResource<{offline_demo?:boolean}>("/api/browser-policy");
   const [draft, setDraft] = useState<{ message: string; url: string }>();
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -42,18 +43,17 @@ export function ContactHandoff({
       ) : (
         <>
           <p>
-            Revisa el mensaje antes de abrir WhatsApp. Se enviará cuando tú lo
-            confirmes allí.
+            {policy.data?.offline_demo ? "Vista de prueba: este mensaje no se enviará." : "Revisa el mensaje antes de abrir WhatsApp. Se enviará cuando tú lo confirmes allí."}
           </p>
           <p className="handoff-message">{draft.message}</p>
-          <a
+          {!policy.data?.offline_demo && policy.data && <a
             className="button secondary"
             href={draft.url}
             target="_blank"
             rel="noopener noreferrer"
           >
             Abrir WhatsApp
-          </a>
+          </a>}
         </>
       )}
       {error && <p role="alert">{error}</p>}

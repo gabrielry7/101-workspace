@@ -176,6 +176,14 @@ def overview(session, business, selected):
                     "kind": "connection",
                 }
             )
+    # Content is reviewed from the same current-work queue as orders and campaigns.
+    if {"social_packs", "social_approvals"} <= tables:
+        from .social_production import Approval, Pack
+        for pack in session.scalars(select(Pack).where(Pack.business_id == business).limit(5)):
+            if session.get(Approval, f"{pack.id}:{pack.revision}") is None:
+                attention.append({"id": "social-" + pack.id, "title": "Publicación por revisar",
+                    "detail": f"Versión {pack.revision} · pendiente de revisión y aprobación",
+                    "href": link("social", pack=pack.id), "action": "Revisar publicación", "kind": "social"})
     activity.sort(key=lambda r: str(r["at"]), reverse=True)
     return {
         "period": {"from": selected["from"], "to": selected["to"]},

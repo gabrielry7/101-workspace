@@ -55,10 +55,12 @@ export function CheckoutDesignView({
   business,
   csrf,
   permissions,
+  storeUrl,
 }: {
   business: string;
   csrf: string;
   permissions: string[];
+  storeUrl?: string;
 }) {
   const url = endpoint(business) + "/checkout-design",
     resource = useResource<Saved>(url),
@@ -220,7 +222,7 @@ export function CheckoutDesignView({
         </div>
         <a
           className="button secondary"
-          href={`/?business_id=${encodeURIComponent(business)}`}
+          href={storeUrl || `/?business_id=${encodeURIComponent(business)}`}
           target="_blank"
           rel="noreferrer"
         >

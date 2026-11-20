@@ -86,6 +86,11 @@ with TestClient(app) as c:
         dest = c.get(r.headers["location"])
         assert dest.status_code == 200 and "staffUsername" not in dest.text
         redirects[old] = r.headers["location"].split("?")[0]
+    context = c.get("/api/operator/restaurants/" + bid + "/workspace/context")
+    assert context.status_code == 200 and context.json()["web_analytics"] == "unconfigured"
+    from world_model.restaurant_commerce.merchant_demo import app_for_demo
+    from world_model.restaurant_commerce.customer_checkout import verified_checkout_customer
+    assert callable(app_for_demo) and callable(verified_checkout_customer)
     assert c.get("/api/operator/restaurants/" + bid + "/connections").status_code == 200
     assert c.get("/api/operator/restaurants/" + bid + "/signup").status_code == 200
     assert c.get("/workspace-assets/assets/101-ui-font.css").status_code == 200

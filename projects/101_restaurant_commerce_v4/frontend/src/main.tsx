@@ -1,4 +1,4 @@
-import { CheckoutDesignView } from "./checkout-design";
+import { WebsiteWorkspace } from "./merchant-workspace";
 import { restoreLegacySection } from "./legacy-section";
 import { SignupContent, SignupTools } from "./signup-tools";
 import { Catalog, CustomerSections } from "./growth-workspace";
@@ -266,6 +266,7 @@ function App() {
   );
   const [policy, setPolicy] = useState<{
     demo_mode: boolean;
+    offline_demo?: boolean;
     internal_tools: boolean;
   }>();
   const [search, setSearch] = useState(params.get("q") || "");
@@ -288,7 +289,7 @@ function App() {
   };
   useEffect(() => {
     refreshIdentity();
-    api<{ demo_mode: boolean; internal_tools: boolean }>("/api/browser-policy")
+    api<{ demo_mode: boolean; offline_demo?: boolean; internal_tools: boolean }>("/api/browser-policy")
       .then(setPolicy)
       .catch(() => {});
     const pop = () => {
@@ -834,7 +835,7 @@ function App() {
             {policy?.demo_mode && (
               <span className="demo-badge">
                 <span />
-                Demostración · datos ficticios
+                {policy.offline_demo ? "Modo demo · sin cobros ni envíos" : "Demostración · datos ficticios"}
               </span>
             )}
           </div>
@@ -884,6 +885,7 @@ function App() {
             business={bid}
             csrf={identity.csrf}
             demo={!!policy?.demo_mode}
+            initialPack={params.get("pack")}
           />
         ) : screen === "reports" ? (
           <ReportsWorkspace
@@ -904,7 +906,7 @@ function App() {
             demo={!!policy?.demo_mode}
           />
         ) : screen === "website" ? (
-          <CheckoutDesignView key={bid} business={bid} csrf={identity.csrf} permissions={business?.permissions || []} />
+          <WebsiteWorkspace key={bid} business={bid} csrf={identity.csrf} permissions={business?.permissions || []} params={params} navigate={navigate} />
         ) : screen === "settings" ? (
           <OperationSettingsView
             key={bid}

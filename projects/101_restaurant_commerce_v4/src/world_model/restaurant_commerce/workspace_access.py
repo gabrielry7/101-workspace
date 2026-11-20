@@ -52,6 +52,7 @@ RETURN_KEYS = frozenset(
         "customer",
         "order",
         "campaign",
+        "pack",
         "q",
         "offset",
         "kind",

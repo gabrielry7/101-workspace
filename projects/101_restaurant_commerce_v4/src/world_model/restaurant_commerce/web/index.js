@@ -4,7 +4,7 @@ if(window.CommerceSupported===false)return;
 
 const {node: h, replace, safeURL, bind, start, path} = window.CommerceUI;
 const itemDialog = document.getElementById("itemDialog");
-const qs=new URLSearchParams(location.search),businessId=qs.get('business_id')||document.body.dataset.commerceBusiness;let store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
+const qs=new URLSearchParams(location.search),businessId=qs.get('business_id')||document.body.dataset.commerceBusiness;let customerCSRF=null,store=null,cart=[],activeItem=null,foodQuote=null,deliveryQuote=null,fulfillment='pickup';const money=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);const $=id=>document.getElementById(id);
 document.getElementById('merchantOwnerEntry').href='/workspace/sales?business='+encodeURIComponent(businessId);
 const checkoutPreview=qs.get('checkout_preview')==='1';
 let noticeTimer, foodGeneration=0, deliveryGeneration=0, quoteUpdatedAt=0, quoteTimer;
@@ -184,7 +184,7 @@ function notice(msg,type='success') {
 }
 async function api(url,opts={}){
   if(new URLSearchParams(location.search).get("checkout_preview")==="1" && opts.method && !(opts.method==="POST" && url.endsWith("/orders/quote")))throw new Error("Vista previa: abre el sitio para hacer un pedido.");
-  const r=await window.CommerceUI.request(url,{...opts,headers:{'Content-Type':'application/json',...(opts.headers||{})}});
+  const r=await window.CommerceUI.request(url,{...opts,headers:{'Content-Type':'application/json',...(customerCSRF?{'X-101-Customer-CSRF':customerCSRF}:{}),...(opts.headers||{})}});
   const d=await r.json();if(!r.ok){const e=new Error(typeof d.detail==='string'?d.detail:'Revisa los datos e intenta de nuevo.');e.status=r.status;throw e;}return d;
 }
 async function load(){
@@ -194,10 +194,10 @@ async function load(){
       selectionOwner=await import('/assets/selection-cart.js');
       const context=store.catalog_context;
       $('restaurantMeta').textContent='Prueba de compra · catálogo archivado';
-      const banner=h('div',{className:'notice',role:'status'},'Compra de prueba. Precios del menú archivado del '+context.source_published_at.slice(0,10)+'. No se cobrará dinero ni se enviará un pedido a Honorato. Precio y disponibilidad actuales por confirmar.');
+      const banner=h('div',{className:'notice',role:'status'},'Compra de prueba basada en la carta archivada del '+context.source_published_at.slice(0,10)+'. Sin cobros ni pedidos reales. Precio y disponibilidad actuales por confirmar.');
       $('cart').prepend(banner);
     }
-    api(`/api/customer/signup/${path(businessId)}`).then(data=>{const link=$('customerSignup');if(data.available){link.href='/join/'+path(businessId)+'?source=website';link.hidden=false;}}).catch(()=>{});
+    try{const data=await api(`/api/customer/signup/${path(businessId)}`);const link=$('customerSignup');if(data.available){link.href='/join/'+path(businessId)+'?source=website';link.hidden=false;}if(data.account?.member&&data.account.login_method==='phone'){customerCSRF=data.account.csrf;$('cPhone').value=data.account.identifier;$('cPhone').readOnly=true;link.textContent='Mi registro';}}catch(_){}
     $('restaurantName').textContent=store.display_name;document.title=`${store.display_name} · Pedido directo`;
     if(!store.catalog_context)$('restaurantMeta').textContent='Pedido directo · '+store.timezone;
     $('pickupInstructions').textContent=store.pickup_instructions||'';
